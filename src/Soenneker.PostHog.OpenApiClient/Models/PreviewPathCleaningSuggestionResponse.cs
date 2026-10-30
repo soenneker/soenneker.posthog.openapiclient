@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PreviewPathCleaningSuggestionResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("changed_path_count") is { } nullNodeChangedPathCount && nullNodeChangedPathCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangedPathCount = null;
+            if (parseNode.GetChildNode("examples") is { } nullNodeExamples && nullNodeExamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Examples = null;
+            if (parseNode.GetChildNode("sampled_path_count") is { } nullNodeSampledPathCount && nullNodeSampledPathCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampledPathCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many of the sampled paths the suggested rules rewrite in total.</summary>
-        public int? ChangedPathCount { get; set; }
+        public int? ChangedPathCount { get => _explicitNullValueChangedPathCount; set { _explicitNullValueChangedPathCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changed_path_count"); else _explicitNullProperties?.Remove("changed_path_count"); } }
+        private int? _explicitNullValueChangedPathCount = default!;
         /// <summary>Up to 20 before/after pairs for sampled paths the suggested rules would rewrite.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningPreviewExample>? Examples { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningPreviewExample>? Examples { get => _explicitNullValueExamples; set { _explicitNullValueExamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("examples"); else _explicitNullProperties?.Remove("examples"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningPreviewExample>? _explicitNullValueExamples = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningPreviewExample> Examples { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningPreviewExample> Examples { get => _explicitNullValueExamples; set { _explicitNullValueExamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("examples"); else _explicitNullProperties?.Remove("examples"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningPreviewExample> _explicitNullValueExamples = default!;
 #endif
         /// <summary>How many top paths were sampled for this preview.</summary>
-        public int? SampledPathCount { get; set; }
+        public int? SampledPathCount { get => _explicitNullValueSampledPathCount; set { _explicitNullValueSampledPathCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampled_path_count"); else _explicitNullProperties?.Remove("sampled_path_count"); } }
+        private int? _explicitNullValueSampledPathCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PreviewPathCleaningSuggestionResponse"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PreviewPathCleaningSuggestionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PreviewPathCleaningSuggestionResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PreviewPathCleaningSuggestionResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("changed_path_count", ChangedPathCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningPreviewExample>("examples", Examples);
             writer.WriteIntValue("sampled_path_count", SampledPathCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

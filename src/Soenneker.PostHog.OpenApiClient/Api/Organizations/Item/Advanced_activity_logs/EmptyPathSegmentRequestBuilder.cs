@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activi
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActivityLogList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActivityLogList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActivityLogList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedActivityLogList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Organization-wide view of activity logs across every project in the organization.Mounted at /api/organizations/&lt;organization_id&gt;/advanced_activity_logs/.Restricted to organization admins and owners.

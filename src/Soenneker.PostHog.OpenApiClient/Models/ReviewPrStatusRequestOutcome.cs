@@ -11,23 +11,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewPrStatusRequestOutcome : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("review_id") is { } nullNodeReviewId && nullNodeReviewId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewId = null;
+            if (parseNode.GetChildNode("run_index") is { } nullNodeRunIndex && nullNodeRunIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIndex = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Why it was skipped or failed: &apos;flash_after_full&apos; (Standard dropped after a Deep review), &apos;review_failed&apos;, &apos;stopped&apos; (Resolve died partway), &apos;no_matching_run&apos; (nothing ran for the request and nothing is queued, for example when the queue replaced it), or a Resolve skip reason such as &apos;pr_not_open&apos;, &apos;resolution_not_opted_in&apos;, &apos;no_unresolved_threads&apos;, &apos;pr_in_merge_queue&apos;. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>The review to read with `review-hog-reviews-get`; null before the PR has one.</summary>
-        public Guid? ReviewId { get; set; }
+        public Guid? ReviewId { get => _explicitNullValueReviewId; set { _explicitNullValueReviewId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_id"); else _explicitNullProperties?.Remove("review_id"); } }
+        private Guid? _explicitNullValueReviewId = default!;
         /// <summary>The review turn that answered or failed the request, for `review-hog-reviews-get`. Null for &apos;resolve_only&apos; and while pending.</summary>
-        public int? RunIndex { get; set; }
+        public int? RunIndex { get => _explicitNullValueRunIndex; set { _explicitNullValueRunIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_index"); else _explicitNullProperties?.Remove("run_index"); } }
+        private int? _explicitNullValueRunIndex = default!;
         /// <summary>* `pending` - Pending* `completed` - Completed* `skipped` - Skipped* `failed` - Failed* `unknown` - Unknown</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome"/> and sets the default values.
         /// </summary>
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("review_id", ReviewId);
             writer.WriteIntValue("run_index", RunIndex);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

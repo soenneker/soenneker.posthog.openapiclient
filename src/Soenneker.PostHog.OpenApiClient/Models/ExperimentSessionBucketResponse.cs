@@ -12,43 +12,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentSessionBucketResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("considered_metrics") is { } nullNodeConsideredMetrics && nullNodeConsideredMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConsideredMetrics = null;
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("excluded_metrics") is { } nullNodeExcludedMetrics && nullNodeExcludedMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedMetrics = null;
+            if (parseNode.GetChildNode("filter_test_accounts") is { } nullNodeFilterTestAccounts && nullNodeFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTestAccounts = null;
+            if (parseNode.GetChildNode("session_ids") is { } nullNodeSessionIds && nullNodeSessionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionIds = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+            if (parseNode.GetChildNode("used_exposure_fallback") is { } nullNodeUsedExposureFallback && nullNodeUsedExposureFallback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedExposureFallback = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The metrics the bucket was actually computed over. Load-bearing for &apos;no_metric_activity&apos;: &apos;fired nothing&apos; only means something next to the list of metrics it was evaluated against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric>? ConsideredMetrics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric>? ConsideredMetrics { get => _explicitNullValueConsideredMetrics; set { _explicitNullValueConsideredMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("considered_metrics"); else _explicitNullProperties?.Remove("considered_metrics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric>? _explicitNullValueConsideredMetrics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric> ConsideredMetrics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric> ConsideredMetrics { get => _explicitNullValueConsideredMetrics; set { _explicitNullValueConsideredMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("considered_metrics"); else _explicitNullProperties?.Remove("considered_metrics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketMetric> _explicitNullValueConsideredMetrics = default!;
 #endif
         /// <summary>Start of the window scanned, never before the experiment started. At most 30 days before date_to when the scan found an exposure to anchor on. When it found none, how far back the search for one reached, which the project&apos;s recording retention bounds. Matches outside the window are not returned.</summary>
-        public DateTimeOffset? DateFrom { get; set; }
+        public DateTimeOffset? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private DateTimeOffset? _explicitNullValueDateFrom = default!;
         /// <summary>End of the window scanned: 24 hours after the latest exposure captured in a session, capped at the experiment&apos;s end date or now. The pad covers the metric events a session fires after its exposure. The scan ends at the experiment&apos;s end date, or now while it runs, when that exposure can&apos;t be located, so an experiment whose exposures stopped long ago is still scanned where its sessions are.</summary>
-        public DateTimeOffset? DateTo { get; set; }
+        public DateTimeOffset? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private DateTimeOffset? _explicitNullValueDateTo = default!;
         /// <summary>Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketExcludedMetric>? ExcludedMetrics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketExcludedMetric>? ExcludedMetrics { get => _explicitNullValueExcludedMetrics; set { _explicitNullValueExcludedMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_metrics"); else _explicitNullProperties?.Remove("excluded_metrics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketExcludedMetric>? _explicitNullValueExcludedMetrics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketExcludedMetric> ExcludedMetrics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketExcludedMetric> ExcludedMetrics { get => _explicitNullValueExcludedMetrics; set { _explicitNullValueExcludedMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_metrics"); else _explicitNullProperties?.Remove("excluded_metrics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketExcludedMetric> _explicitNullValueExcludedMetrics = default!;
 #endif
         /// <summary>Whether the project&apos;s test-account filters were applied, following the experiment&apos;s exposure criteria, the same rule the experiment&apos;s recordings list uses.</summary>
-        public bool? FilterTestAccounts { get; set; }
+        public bool? FilterTestAccounts { get => _explicitNullValueFilterTestAccounts; set { _explicitNullValueFilterTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_test_accounts"); else _explicitNullProperties?.Remove("filter_test_accounts"); } }
+        private bool? _explicitNullValueFilterTestAccounts = default!;
         /// <summary>IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment&apos;s exposed sessions, so the exposure filter can stay in place alongside them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SessionIds { get; set; }
+        public List<string>? SessionIds { get => _explicitNullValueSessionIds; set { _explicitNullValueSessionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_ids"); else _explicitNullProperties?.Remove("session_ids"); } }
+        private List<string>? _explicitNullValueSessionIds = default!;
 #nullable restore
 #else
-        public List<string> SessionIds { get; set; }
+        public List<string> SessionIds { get => _explicitNullValueSessionIds; set { _explicitNullValueSessionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_ids"); else _explicitNullProperties?.Remove("session_ids"); } }
+        private List<string> _explicitNullValueSessionIds = default!;
 #endif
         /// <summary>True when more sessions matched than the limit returned. Older matches were dropped first.</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>True when the exposed population was matched on the stamped $feature/&lt;flag key&gt; event property instead of the exposure event, because the default exposure event has only ever been captured server-side and can never match a session. The sessions then mean &apos;the flag was active in this session&apos;, not &apos;the exposure moment was captured&apos;. The variant comes from the flag&apos;s value on each event, so a returning user can appear under a variant they were re-bucketed into later.</summary>
-        public bool? UsedExposureFallback { get; set; }
+        public bool? UsedExposureFallback { get => _explicitNullValueUsedExposureFallback; set { _explicitNullValueUsedExposureFallback = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_exposure_fallback"); else _explicitNullProperties?.Remove("used_exposure_fallback"); } }
+        private bool? _explicitNullValueUsedExposureFallback = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketResponse"/> and sets the default values.
         /// </summary>
@@ -64,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionBucketResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -99,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("session_ids", SessionIds);
             writer.WriteBoolValue("truncated", Truncated);
             writer.WriteBoolValue("used_exposure_fallback", UsedExposureFallback);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

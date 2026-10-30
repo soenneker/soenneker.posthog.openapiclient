@@ -12,34 +12,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccessControlPropertyRule : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("access_level") is { } nullNodeAccessLevel && nullNodeAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessLevel = null;
+            if (parseNode.GetChildNode("property") is { } nullNodeProperty && nullNodeProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Property = null;
+            if (parseNode.GetChildNode("property_definition_id") is { } nullNodePropertyDefinitionId && nullNodePropertyDefinitionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertyDefinitionId = null;
+            if (parseNode.GetChildNode("property_type") is { } nullNodePropertyType && nullNodePropertyType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertyType = null;
+        }
+
         /// <summary>The rule&apos;s level: `none`, `read` or `read_write`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccessLevel { get; set; }
+        public string? AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
+        private string? _explicitNullValueAccessLevel = default!;
 #nullable restore
 #else
-        public string AccessLevel { get; set; }
+        public string AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
+        private string _explicitNullValueAccessLevel = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The property name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Property { get; set; }
+        public string? Property { get => _explicitNullValueProperty; set { _explicitNullValueProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property"); else _explicitNullProperties?.Remove("property"); } }
+        private string? _explicitNullValueProperty = default!;
 #nullable restore
 #else
-        public string Property { get; set; }
+        public string Property { get => _explicitNullValueProperty; set { _explicitNullValueProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property"); else _explicitNullProperties?.Remove("property"); } }
+        private string _explicitNullValueProperty = default!;
 #endif
         /// <summary>The property definition id.</summary>
-        public Guid? PropertyDefinitionId { get; set; }
+        public Guid? PropertyDefinitionId { get => _explicitNullValuePropertyDefinitionId; set { _explicitNullValuePropertyDefinitionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property_definition_id"); else _explicitNullProperties?.Remove("property_definition_id"); } }
+        private Guid? _explicitNullValuePropertyDefinitionId = default!;
         /// <summary>Whether the property is a `person` or an `event` property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PropertyType { get; set; }
+        public string? PropertyType { get => _explicitNullValuePropertyType; set { _explicitNullValuePropertyType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property_type"); else _explicitNullProperties?.Remove("property_type"); } }
+        private string? _explicitNullValuePropertyType = default!;
 #nullable restore
 #else
-        public string PropertyType { get; set; }
+        public string PropertyType { get => _explicitNullValuePropertyType; set { _explicitNullValuePropertyType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property_type"); else _explicitNullProperties?.Remove("property_type"); } }
+        private string _explicitNullValuePropertyType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccessControlPropertyRule"/> and sets the default values.
@@ -56,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccessControlPropertyRule CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlPropertyRule();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlPropertyRule(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("property", Property);
             writer.WriteGuidValue("property_definition_id", PropertyDefinitionId);
             writer.WriteStringValue("property_type", PropertyType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

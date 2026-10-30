@@ -11,7 +11,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedUser : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allow_impersonation") is { } nullNodeAllowImpersonation && nullNodeAllowImpersonation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowImpersonation = null;
+            if (parseNode.GetChildNode("allow_sidebar_suggestions") is { } nullNodeAllowSidebarSuggestions && nullNodeAllowSidebarSuggestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSidebarSuggestions = null;
+            if (parseNode.GetChildNode("anonymize_data") is { } nullNodeAnonymizeData && nullNodeAnonymizeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnonymizeData = null;
+            if (parseNode.GetChildNode("current_password") is { } nullNodeCurrentPassword && nullNodeCurrentPassword.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentPassword = null;
+            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("events_column_config") is { } nullNodeEventsColumnConfig && nullNodeEventsColumnConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsColumnConfig = null;
+            if (parseNode.GetChildNode("first_name") is { } nullNodeFirstName && nullNodeFirstName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstName = null;
+            if (parseNode.GetChildNode("has_seen_product_intro_for") is { } nullNodeHasSeenProductIntroFor && nullNodeHasSeenProductIntroFor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasSeenProductIntroFor = null;
+            if (parseNode.GetChildNode("hedgehog_config") is { } nullNodeHedgehogConfig && nullNodeHedgehogConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HedgehogConfig = null;
+            if (parseNode.GetChildNode("hide_mcp_hints") is { } nullNodeHideMcpHints && nullNodeHideMcpHints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideMcpHints = null;
+            if (parseNode.GetChildNode("is_staff") is { } nullNodeIsStaff && nullNodeIsStaff.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsStaff = null;
+            if (parseNode.GetChildNode("last_name") is { } nullNodeLastName && nullNodeLastName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastName = null;
+            if (parseNode.GetChildNode("notification_settings") is { } nullNodeNotificationSettings && nullNodeNotificationSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotificationSettings = null;
+            if (parseNode.GetChildNode("passkeys_enabled_for_2fa") is { } nullNodePasskeysEnabledFor2fa && nullNodePasskeysEnabledFor2fa.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasskeysEnabledFor2fa = null;
+            if (parseNode.GetChildNode("password") is { } nullNodePassword && nullNodePassword.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Password = null;
+            if (parseNode.GetChildNode("role_at_organization") is { } nullNodeRoleAtOrganization && nullNodeRoleAtOrganization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoleAtOrganization = null;
+            if (parseNode.GetChildNode("set_current_organization") is { } nullNodeSetCurrentOrganization && nullNodeSetCurrentOrganization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetCurrentOrganization = null;
+            if (parseNode.GetChildNode("set_current_team") is { } nullNodeSetCurrentTeam && nullNodeSetCurrentTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetCurrentTeam = null;
+            if (parseNode.GetChildNode("shortcut_position") is { } nullNodeShortcutPosition && nullNodeShortcutPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShortcutPosition = null;
+            if (parseNode.GetChildNode("theme_mode") is { } nullNodeThemeMode && nullNodeThemeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThemeMode = null;
+            if (parseNode.GetChildNode("toolbar_mode") is { } nullNodeToolbarMode && nullNodeToolbarMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolbarMode = null;
+            if (parseNode.GetChildNode("ui_configuration") is { } nullNodeUiConfiguration && nullNodeUiConfiguration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UiConfiguration = null;
+        }
+
         /// <summary>Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -23,18 +52,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The allow_impersonation property</summary>
-        public bool? AllowImpersonation { get; set; }
+        public bool? AllowImpersonation { get => _explicitNullValueAllowImpersonation; set { _explicitNullValueAllowImpersonation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_impersonation"); else _explicitNullProperties?.Remove("allow_impersonation"); } }
+        private bool? _explicitNullValueAllowImpersonation = default!;
         /// <summary>The allow_sidebar_suggestions property</summary>
-        public bool? AllowSidebarSuggestions { get; set; }
+        public bool? AllowSidebarSuggestions { get => _explicitNullValueAllowSidebarSuggestions; set { _explicitNullValueAllowSidebarSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_sidebar_suggestions"); else _explicitNullProperties?.Remove("allow_sidebar_suggestions"); } }
+        private bool? _explicitNullValueAllowSidebarSuggestions = default!;
         /// <summary>Whether PostHog should anonymize events captured for this user when identified.</summary>
-        public bool? AnonymizeData { get; set; }
+        public bool? AnonymizeData { get => _explicitNullValueAnonymizeData; set { _explicitNullValueAnonymizeData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anonymize_data"); else _explicitNullProperties?.Remove("anonymize_data"); } }
+        private bool? _explicitNullValueAnonymizeData = default!;
         /// <summary>The user&apos;s current password. Required when changing `password` if the user already has a usable password set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentPassword { get; set; }
+        public string? CurrentPassword { get => _explicitNullValueCurrentPassword; set { _explicitNullValueCurrentPassword = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_password"); else _explicitNullProperties?.Remove("current_password"); } }
+        private string? _explicitNullValueCurrentPassword = default!;
 #nullable restore
 #else
-        public string CurrentPassword { get; set; }
+        public string CurrentPassword { get => _explicitNullValueCurrentPassword; set { _explicitNullValueCurrentPassword = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_password"); else _explicitNullProperties?.Remove("current_password"); } }
+        private string _explicitNullValueCurrentPassword = default!;
 #endif
         /// <summary>The date_joined property</summary>
         public DateTimeOffset? DateJoined { get; private set; }
@@ -49,26 +83,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get; set; }
+        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public string Email { get; set; }
+        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string _explicitNullValueEmail = default!;
 #endif
         /// <summary>The events_column_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? EventsColumnConfig { get; set; }
+        public UntypedNode? EventsColumnConfig { get => _explicitNullValueEventsColumnConfig; set { _explicitNullValueEventsColumnConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_column_config"); else _explicitNullProperties?.Remove("events_column_config"); } }
+        private UntypedNode? _explicitNullValueEventsColumnConfig = default!;
 #nullable restore
 #else
-        public UntypedNode EventsColumnConfig { get; set; }
+        public UntypedNode EventsColumnConfig { get => _explicitNullValueEventsColumnConfig; set { _explicitNullValueEventsColumnConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_column_config"); else _explicitNullProperties?.Remove("events_column_config"); } }
+        private UntypedNode _explicitNullValueEventsColumnConfig = default!;
 #endif
         /// <summary>The first_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstName { get; set; }
+        public string? FirstName { get => _explicitNullValueFirstName; set { _explicitNullValueFirstName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_name"); else _explicitNullProperties?.Remove("first_name"); } }
+        private string? _explicitNullValueFirstName = default!;
 #nullable restore
 #else
-        public string FirstName { get; set; }
+        public string FirstName { get => _explicitNullValueFirstName; set { _explicitNullValueFirstName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_name"); else _explicitNullProperties?.Remove("first_name"); } }
+        private string _explicitNullValueFirstName = default!;
 #endif
         /// <summary>When the last re-authentication stops counting as fresh. Changing `email` after this needs a new re-authentication. Null when the session has none on record.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,10 +123,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The has_seen_product_intro_for property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? HasSeenProductIntroFor { get; set; }
+        public UntypedNode? HasSeenProductIntroFor { get => _explicitNullValueHasSeenProductIntroFor; set { _explicitNullValueHasSeenProductIntroFor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_seen_product_intro_for"); else _explicitNullProperties?.Remove("has_seen_product_intro_for"); } }
+        private UntypedNode? _explicitNullValueHasSeenProductIntroFor = default!;
 #nullable restore
 #else
-        public UntypedNode HasSeenProductIntroFor { get; set; }
+        public UntypedNode HasSeenProductIntroFor { get => _explicitNullValueHasSeenProductIntroFor; set { _explicitNullValueHasSeenProductIntroFor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_seen_product_intro_for"); else _explicitNullProperties?.Remove("has_seen_product_intro_for"); } }
+        private UntypedNode _explicitNullValueHasSeenProductIntroFor = default!;
 #endif
         /// <summary>The has_social_auth property</summary>
         public bool? HasSocialAuth { get; private set; }
@@ -95,13 +137,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The hedgehog_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? HedgehogConfig { get; set; }
+        public UntypedNode? HedgehogConfig { get => _explicitNullValueHedgehogConfig; set { _explicitNullValueHedgehogConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hedgehog_config"); else _explicitNullProperties?.Remove("hedgehog_config"); } }
+        private UntypedNode? _explicitNullValueHedgehogConfig = default!;
 #nullable restore
 #else
-        public UntypedNode HedgehogConfig { get; set; }
+        public UntypedNode HedgehogConfig { get => _explicitNullValueHedgehogConfig; set { _explicitNullValueHedgehogConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hedgehog_config"); else _explicitNullProperties?.Remove("hedgehog_config"); } }
+        private UntypedNode _explicitNullValueHedgehogConfig = default!;
 #endif
         /// <summary>When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions.</summary>
-        public bool? HideMcpHints { get; set; }
+        public bool? HideMcpHints { get => _explicitNullValueHideMcpHints; set { _explicitNullValueHideMcpHints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hide_mcp_hints"); else _explicitNullProperties?.Remove("hide_mcp_hints"); } }
+        private bool? _explicitNullValueHideMcpHints = default!;
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The is_2fa_enabled property</summary>
@@ -131,14 +176,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The is_organization_first_user property</summary>
         public bool? IsOrganizationFirstUser { get; private set; }
         /// <summary>Designates whether the user can log into this admin site.</summary>
-        public bool? IsStaff { get; set; }
+        public bool? IsStaff { get => _explicitNullValueIsStaff; set { _explicitNullValueIsStaff = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_staff"); else _explicitNullProperties?.Remove("is_staff"); } }
+        private bool? _explicitNullValueIsStaff = default!;
         /// <summary>The last_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastName { get; set; }
+        public string? LastName { get => _explicitNullValueLastName; set { _explicitNullValueLastName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_name"); else _explicitNullProperties?.Remove("last_name"); } }
+        private string? _explicitNullValueLastName = default!;
 #nullable restore
 #else
-        public string LastName { get; set; }
+        public string LastName { get => _explicitNullValueLastName; set { _explicitNullValueLastName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_name"); else _explicitNullProperties?.Remove("last_name"); } }
+        private string _explicitNullValueLastName = default!;
 #endif
         /// <summary>Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user&apos;s own choice underneath. Read-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -151,10 +199,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty? NotificationSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty? NotificationSettings { get => _explicitNullValueNotificationSettings; set { _explicitNullValueNotificationSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notification_settings"); else _explicitNullProperties?.Remove("notification_settings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty? _explicitNullValueNotificationSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty NotificationSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty NotificationSettings { get => _explicitNullValueNotificationSettings; set { _explicitNullValueNotificationSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notification_settings"); else _explicitNullProperties?.Remove("notification_settings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserNotificationSettingsProperty _explicitNullValueNotificationSettings = default!;
 #endif
         /// <summary>The onboarding_delegated_to_invite property</summary>
         public Guid? OnboardingDelegatedToInvite { get; private set; }
@@ -191,14 +241,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationBasic> Organizations { get; private set; }
 #endif
         /// <summary>Whether passkeys are enabled for 2FA authentication. Users can disable this to use only TOTP for 2FA while keeping passkeys for login.</summary>
-        public bool? PasskeysEnabledFor2fa { get; set; }
+        public bool? PasskeysEnabledFor2fa { get => _explicitNullValuePasskeysEnabledFor2fa; set { _explicitNullValuePasskeysEnabledFor2fa = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passkeys_enabled_for_2fa"); else _explicitNullProperties?.Remove("passkeys_enabled_for_2fa"); } }
+        private bool? _explicitNullValuePasskeysEnabledFor2fa = default!;
         /// <summary>The password property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Password { get; set; }
+        public string? Password { get => _explicitNullValuePassword; set { _explicitNullValuePassword = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password"); else _explicitNullProperties?.Remove("password"); } }
+        private string? _explicitNullValuePassword = default!;
 #nullable restore
 #else
-        public string Password { get; set; }
+        public string Password { get => _explicitNullValuePassword; set { _explicitNullValuePassword = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("password"); else _explicitNullProperties?.Remove("password"); } }
+        private string _explicitNullValuePassword = default!;
 #endif
         /// <summary>The pending_email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -221,7 +274,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>True if the user belongs to an organization that a partner provisioned, has not yet acknowledged the access on their account, and has at least one Personal API Key or passkey, or a third-party OAuth application that can currently act as them. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only.</summary>
         public bool? RequiresCredentialReview { get; private set; }
         /// <summary>* `engineering` - Engineering* `data` - Data* `product` - Product Management* `founder` - Founder* `leadership` - Leadership* `marketing` - Marketing* `sales` - Sales / Success* `student` - Student* `other` - Other</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum? RoleAtOrganization { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum? RoleAtOrganization { get => _explicitNullValueRoleAtOrganization; set { _explicitNullValueRoleAtOrganization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role_at_organization"); else _explicitNullProperties?.Remove("role_at_organization"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RoleAtOrganizationEnum? _explicitNullValueRoleAtOrganization = default!;
         /// <summary>The scene_personalisation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -241,26 +295,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The set_current_organization property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SetCurrentOrganization { get; set; }
+        public string? SetCurrentOrganization { get => _explicitNullValueSetCurrentOrganization; set { _explicitNullValueSetCurrentOrganization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_current_organization"); else _explicitNullProperties?.Remove("set_current_organization"); } }
+        private string? _explicitNullValueSetCurrentOrganization = default!;
 #nullable restore
 #else
-        public string SetCurrentOrganization { get; set; }
+        public string SetCurrentOrganization { get => _explicitNullValueSetCurrentOrganization; set { _explicitNullValueSetCurrentOrganization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_current_organization"); else _explicitNullProperties?.Remove("set_current_organization"); } }
+        private string _explicitNullValueSetCurrentOrganization = default!;
 #endif
         /// <summary>The set_current_team property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SetCurrentTeam { get; set; }
+        public string? SetCurrentTeam { get => _explicitNullValueSetCurrentTeam; set { _explicitNullValueSetCurrentTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_current_team"); else _explicitNullProperties?.Remove("set_current_team"); } }
+        private string? _explicitNullValueSetCurrentTeam = default!;
 #nullable restore
 #else
-        public string SetCurrentTeam { get; set; }
+        public string SetCurrentTeam { get => _explicitNullValueSetCurrentTeam; set { _explicitNullValueSetCurrentTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_current_team"); else _explicitNullProperties?.Remove("set_current_team"); } }
+        private string _explicitNullValueSetCurrentTeam = default!;
 #endif
         /// <summary>The shortcut_position property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition? ShortcutPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition? ShortcutPosition { get => _explicitNullValueShortcutPosition; set { _explicitNullValueShortcutPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shortcut_position"); else _explicitNullProperties?.Remove("shortcut_position"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition? _explicitNullValueShortcutPosition = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition ShortcutPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition ShortcutPosition { get => _explicitNullValueShortcutPosition; set { _explicitNullValueShortcutPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shortcut_position"); else _explicitNullProperties?.Remove("shortcut_position"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserShortcutPosition _explicitNullValueShortcutPosition = default!;
 #endif
         /// <summary>The team property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -273,26 +333,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The theme_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode? ThemeMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode? ThemeMode { get => _explicitNullValueThemeMode; set { _explicitNullValueThemeMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("theme_mode"); else _explicitNullProperties?.Remove("theme_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode? _explicitNullValueThemeMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode ThemeMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode ThemeMode { get => _explicitNullValueThemeMode; set { _explicitNullValueThemeMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("theme_mode"); else _explicitNullProperties?.Remove("theme_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode _explicitNullValueThemeMode = default!;
 #endif
         /// <summary>The toolbar_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode? ToolbarMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode? ToolbarMode { get => _explicitNullValueToolbarMode; set { _explicitNullValueToolbarMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toolbar_mode"); else _explicitNullProperties?.Remove("toolbar_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode? _explicitNullValueToolbarMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode ToolbarMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode ToolbarMode { get => _explicitNullValueToolbarMode; set { _explicitNullValueToolbarMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toolbar_mode"); else _explicitNullProperties?.Remove("toolbar_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode _explicitNullValueToolbarMode = default!;
 #endif
         /// <summary>Per-user UI customization, validated against the `UserUIConfiguration` schema. Covers SQL editor settings such as Vim mode and the vimrc. Send the complete object: it replaces the stored value wholesale. Null means no customization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? UiConfiguration { get; set; }
+        public UntypedNode? UiConfiguration { get => _explicitNullValueUiConfiguration; set { _explicitNullValueUiConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ui_configuration"); else _explicitNullProperties?.Remove("ui_configuration"); } }
+        private UntypedNode? _explicitNullValueUiConfiguration = default!;
 #nullable restore
 #else
-        public UntypedNode UiConfiguration { get; set; }
+        public UntypedNode UiConfiguration { get => _explicitNullValueUiConfiguration; set { _explicitNullValueUiConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ui_configuration"); else _explicitNullProperties?.Remove("ui_configuration"); } }
+        private UntypedNode _explicitNullValueUiConfiguration = default!;
 #endif
         /// <summary>The uuid property</summary>
         public Guid? Uuid { get; private set; }
@@ -311,7 +377,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUser(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -406,6 +472,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserThemeMode>("theme_mode", ThemeMode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserToolbarMode>("toolbar_mode", ToolbarMode);
             writer.WriteObjectValue<UntypedNode>("ui_configuration", UiConfiguration);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,44 +12,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentSessionMetricHit : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("first_timestamp") is { } nullNodeFirstTimestamp && nullNodeFirstTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstTimestamp = null;
+            if (parseNode.GetChildNode("metric_name") is { } nullNodeMetricName && nullNodeMetricName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricName = null;
+            if (parseNode.GetChildNode("metric_uuid") is { } nullNodeMetricUuid && nullNodeMetricUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricUuid = null;
+            if (parseNode.GetChildNode("sources") is { } nullNodeSources && nullNodeSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sources = null;
+            if (parseNode.GetChildNode("timestamps") is { } nullNodeTimestamps && nullNodeTimestamps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamps = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total number of events in the session matching any of the metric&apos;s event/action sources.</summary>
-        public int? EventCount { get; set; }
+        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        private int? _explicitNullValueEventCount = default!;
         /// <summary>Timestamp of the first event in the session matching the metric.</summary>
-        public DateTimeOffset? FirstTimestamp { get; set; }
+        public DateTimeOffset? FirstTimestamp { get => _explicitNullValueFirstTimestamp; set { _explicitNullValueFirstTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_timestamp"); else _explicitNullProperties?.Remove("first_timestamp"); } }
+        private DateTimeOffset? _explicitNullValueFirstTimestamp = default!;
         /// <summary>Display name of the metric, or an event-derived title (matching the experiment UI) when unnamed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricName { get; set; }
+        public string? MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_name"); else _explicitNullProperties?.Remove("metric_name"); } }
+        private string? _explicitNullValueMetricName = default!;
 #nullable restore
 #else
-        public string MetricName { get; set; }
+        public string MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_name"); else _explicitNullProperties?.Remove("metric_name"); } }
+        private string _explicitNullValueMetricName = default!;
 #endif
         /// <summary>UUID of the experiment metric (inline primary/secondary or saved) whose events fired.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricUuid { get; set; }
+        public string? MetricUuid { get => _explicitNullValueMetricUuid; set { _explicitNullValueMetricUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_uuid"); else _explicitNullProperties?.Remove("metric_uuid"); } }
+        private string? _explicitNullValueMetricUuid = default!;
 #nullable restore
 #else
-        public string MetricUuid { get; set; }
+        public string MetricUuid { get => _explicitNullValueMetricUuid; set { _explicitNullValueMetricUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_uuid"); else _explicitNullProperties?.Remove("metric_uuid"); } }
+        private string _explicitNullValueMetricUuid = default!;
 #endif
         /// <summary>Which of the metric&apos;s sources fired, so a hit reads as &apos;step 2 of 3&apos; or &apos;the start event of a retention metric&apos; rather than an unqualified &apos;this metric happened&apos;. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan&apos;s aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHit>? Sources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHit>? Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHit>? _explicitNullValueSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHit> Sources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHit> Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHit> _explicitNullValueSources = default!;
 #endif
         /// <summary>Ascending timestamps of the metric&apos;s matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<DateTimeOffset?>? Timestamps { get; set; }
+        public List<DateTimeOffset?>? Timestamps { get => _explicitNullValueTimestamps; set { _explicitNullValueTimestamps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamps"); else _explicitNullProperties?.Remove("timestamps"); } }
+        private List<DateTimeOffset?>? _explicitNullValueTimestamps = default!;
 #nullable restore
 #else
-        public List<DateTimeOffset?> Timestamps { get; set; }
+        public List<DateTimeOffset?> Timestamps { get => _explicitNullValueTimestamps; set { _explicitNullValueTimestamps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamps"); else _explicitNullProperties?.Remove("timestamps"); } }
+        private List<DateTimeOffset?> _explicitNullValueTimestamps = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit"/> and sets the default values.
@@ -66,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -97,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("metric_uuid", MetricUuid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHit>("sources", Sources);
             writer.WriteCollectionOfPrimitiveValues<DateTimeOffset?>("timestamps", Timestamps);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

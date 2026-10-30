@@ -11,29 +11,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HeatmapPreflightResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("blocked_by") is { } nullNodeBlockedBy && nullNodeBlockedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockedBy = null;
+            if (parseNode.GetChildNode("body_excerpt") is { } nullNodeBodyExcerpt && nullNodeBodyExcerpt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BodyExcerpt = null;
+            if (parseNode.GetChildNode("framing") is { } nullNodeFraming && nullNodeFraming.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Framing = null;
+            if (parseNode.GetChildNode("http_status") is { } nullNodeHttpStatus && nullNodeHttpStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HttpStatus = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Which response header forbids embedding, when framing is &apos;blocked&apos;. Null otherwise.* `x_frame_options` - x_frame_options* `frame_ancestors` - frame_ancestors</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy? BlockedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy? BlockedBy { get => _explicitNullValueBlockedBy; set { _explicitNullValueBlockedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_by"); else _explicitNullProperties?.Remove("blocked_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy? _explicitNullValueBlockedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy BlockedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy BlockedBy { get => _explicitNullValueBlockedBy; set { _explicitNullValueBlockedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_by"); else _explicitNullProperties?.Remove("blocked_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseBlockedBy _explicitNullValueBlockedBy = default!;
 #endif
         /// <summary>Short whitespace-collapsed excerpt of the response body, only present for non-2xx responses, so the user can see what their host returned. Truncated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BodyExcerpt { get; set; }
+        public string? BodyExcerpt { get => _explicitNullValueBodyExcerpt; set { _explicitNullValueBodyExcerpt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_excerpt"); else _explicitNullProperties?.Remove("body_excerpt"); } }
+        private string? _explicitNullValueBodyExcerpt = default!;
 #nullable restore
 #else
-        public string BodyExcerpt { get; set; }
+        public string BodyExcerpt { get => _explicitNullValueBodyExcerpt; set { _explicitNullValueBodyExcerpt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body_excerpt"); else _explicitNullProperties?.Remove("body_excerpt"); } }
+        private string _explicitNullValueBodyExcerpt = default!;
 #endif
         /// <summary>* `allowed` - allowed* `blocked` - blocked* `unknown` - unknown</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming? Framing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming? Framing { get => _explicitNullValueFraming; set { _explicitNullValueFraming = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("framing"); else _explicitNullProperties?.Remove("framing"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming? _explicitNullValueFraming = default!;
         /// <summary>HTTP status the page returned to us. A 4xx or 5xx here points at the customer&apos;s host or CDN rather than at PostHog. Null when the page could not be reached at all.</summary>
-        public int? HttpStatus { get; set; }
+        public int? HttpStatus { get => _explicitNullValueHttpStatus; set { _explicitNullValueHttpStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("http_status"); else _explicitNullProperties?.Remove("http_status"); } }
+        private int? _explicitNullValueHttpStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponse"/> and sets the default values.
         /// </summary>
@@ -49,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("body_excerpt", BodyExcerpt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapPreflightResponseFraming>("framing", Framing);
             writer.WriteIntValue("http_status", HttpStatus);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

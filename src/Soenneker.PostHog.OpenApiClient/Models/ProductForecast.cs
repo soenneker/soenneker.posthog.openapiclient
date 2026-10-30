@@ -11,60 +11,89 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ProductForecast : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("addons") is { } nullNodeAddons && nullNodeAddons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Addons = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("projected_amount_usd") is { } nullNodeProjectedAmountUsd && nullNodeProjectedAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsd = null;
+            if (parseNode.GetChildNode("projected_amount_usd_with_limit") is { } nullNodeProjectedAmountUsdWithLimit && nullNodeProjectedAmountUsdWithLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsdWithLimit = null;
+            if (parseNode.GetChildNode("projected_usage") is { } nullNodeProjectedUsage && nullNodeProjectedUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedUsage = null;
+            if (parseNode.GetChildNode("tier_forecast") is { } nullNodeTierForecast && nullNodeTierForecast.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierForecast = null;
+            if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The addons property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem>? Addons { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem>? Addons { get => _explicitNullValueAddons; set { _explicitNullValueAddons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addons"); else _explicitNullProperties?.Remove("addons"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem>? _explicitNullValueAddons = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem> Addons { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem> Addons { get => _explicitNullValueAddons; set { _explicitNullValueAddons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addons"); else _explicitNullProperties?.Remove("addons"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem> _explicitNullValueAddons = default!;
 #endif
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get; set; }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string _explicitNullValueKey = default!;
 #endif
         /// <summary>* `product` - Product* `addon` - Addon</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? _explicitNullValueKind = default!;
         /// <summary>The projected_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedAmountUsd { get; set; }
+        public string? ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
+        private string? _explicitNullValueProjectedAmountUsd = default!;
 #nullable restore
 #else
-        public string ProjectedAmountUsd { get; set; }
+        public string ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
+        private string _explicitNullValueProjectedAmountUsd = default!;
 #endif
         /// <summary>The projected_amount_usd_with_limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedAmountUsdWithLimit { get; set; }
+        public string? ProjectedAmountUsdWithLimit { get => _explicitNullValueProjectedAmountUsdWithLimit; set { _explicitNullValueProjectedAmountUsdWithLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd_with_limit"); else _explicitNullProperties?.Remove("projected_amount_usd_with_limit"); } }
+        private string? _explicitNullValueProjectedAmountUsdWithLimit = default!;
 #nullable restore
 #else
-        public string ProjectedAmountUsdWithLimit { get; set; }
+        public string ProjectedAmountUsdWithLimit { get => _explicitNullValueProjectedAmountUsdWithLimit; set { _explicitNullValueProjectedAmountUsdWithLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd_with_limit"); else _explicitNullProperties?.Remove("projected_amount_usd_with_limit"); } }
+        private string _explicitNullValueProjectedAmountUsdWithLimit = default!;
 #endif
         /// <summary>The projected_usage property</summary>
-        public int? ProjectedUsage { get; set; }
+        public int? ProjectedUsage { get => _explicitNullValueProjectedUsage; set { _explicitNullValueProjectedUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_usage"); else _explicitNullProperties?.Remove("projected_usage"); } }
+        private int? _explicitNullValueProjectedUsage = default!;
         /// <summary>The tier_forecast property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast>? TierForecast { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast>? TierForecast { get => _explicitNullValueTierForecast; set { _explicitNullValueTierForecast = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_forecast"); else _explicitNullProperties?.Remove("tier_forecast"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast>? _explicitNullValueTierForecast = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast> TierForecast { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast> TierForecast { get => _explicitNullValueTierForecast; set { _explicitNullValueTierForecast = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_forecast"); else _explicitNullProperties?.Remove("tier_forecast"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast> _explicitNullValueTierForecast = default!;
 #endif
         /// <summary>The usage_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsageKey { get; set; }
+        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        private string? _explicitNullValueUsageKey = default!;
 #nullable restore
 #else
-        public string UsageKey { get; set; }
+        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        private string _explicitNullValueUsageKey = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast"/> and sets the default values.
@@ -81,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,6 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("projected_usage", ProjectedUsage);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast>("tier_forecast", TierForecast);
             writer.WriteStringValue("usage_key", UsageKey);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

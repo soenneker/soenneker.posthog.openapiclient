@@ -11,56 +11,86 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ManagedWarehouseTrinoMonitoringSnapshotResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("as_of") is { } nullNodeAsOf && nullNodeAsOf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AsOf = null;
+            if (parseNode.GetChildNode("available") is { } nullNodeAvailable && nullNodeAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Available = null;
+            if (parseNode.GetChildNode("limits") is { } nullNodeLimits && nullNodeLimits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limits = null;
+            if (parseNode.GetChildNode("org_id") is { } nullNodeOrgId && nullNodeOrgId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrgId = null;
+            if (parseNode.GetChildNode("queries") is { } nullNodeQueries && nullNodeQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Queries = null;
+            if (parseNode.GetChildNode("queries_truncated") is { } nullNodeQueriesTruncated && nullNodeQueriesTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueriesTruncated = null;
+            if (parseNode.GetChildNode("schema_version") is { } nullNodeSchemaVersion && nullNodeSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaVersion = null;
+            if (parseNode.GetChildNode("totals") is { } nullNodeTotals && nullNodeTotals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Totals = null;
+            if (parseNode.GetChildNode("trino") is { } nullNodeTrino && nullNodeTrino.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trino = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UTC timestamp when this snapshot was assembled.</summary>
-        public DateTimeOffset? AsOf { get; set; }
+        public DateTimeOffset? AsOf { get => _explicitNullValueAsOf; set { _explicitNullValueAsOf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("as_of"); else _explicitNullProperties?.Remove("as_of"); } }
+        private DateTimeOffset? _explicitNullValueAsOf = default!;
         /// <summary>Whether live query data could be read. When false, totals are zero and do not mean the warehouse is idle.</summary>
-        public bool? Available { get; set; }
+        public bool? Available { get => _explicitNullValueAvailable; set { _explicitNullValueAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available"); else _explicitNullProperties?.Remove("available"); } }
+        private bool? _explicitNullValueAvailable = default!;
         /// <summary>Concurrency and queue limits.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits? Limits { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits? Limits { get => _explicitNullValueLimits; set { _explicitNullValueLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limits"); else _explicitNullProperties?.Remove("limits"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits? _explicitNullValueLimits = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits Limits { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits Limits { get => _explicitNullValueLimits; set { _explicitNullValueLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limits"); else _explicitNullProperties?.Remove("limits"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits _explicitNullValueLimits = default!;
 #endif
         /// <summary>Organization whose managed warehouse is represented.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrgId { get; set; }
+        public string? OrgId { get => _explicitNullValueOrgId; set { _explicitNullValueOrgId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("org_id"); else _explicitNullProperties?.Remove("org_id"); } }
+        private string? _explicitNullValueOrgId = default!;
 #nullable restore
 #else
-        public string OrgId { get; set; }
+        public string OrgId { get => _explicitNullValueOrgId; set { _explicitNullValueOrgId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("org_id"); else _explicitNullProperties?.Remove("org_id"); } }
+        private string _explicitNullValueOrgId = default!;
 #endif
         /// <summary>In-flight queries, longest-running first, capped at 200 rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringQuery>? Queries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringQuery>? Queries { get => _explicitNullValueQueries; set { _explicitNullValueQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queries"); else _explicitNullProperties?.Remove("queries"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringQuery>? _explicitNullValueQueries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringQuery> Queries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringQuery> Queries { get => _explicitNullValueQueries; set { _explicitNullValueQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queries"); else _explicitNullProperties?.Remove("queries"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringQuery> _explicitNullValueQueries = default!;
 #endif
         /// <summary>Whether the query list was capped. Totals always cover every in-flight query.</summary>
-        public bool? QueriesTruncated { get; set; }
+        public bool? QueriesTruncated { get => _explicitNullValueQueriesTruncated; set { _explicitNullValueQueriesTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queries_truncated"); else _explicitNullProperties?.Remove("queries_truncated"); } }
+        private bool? _explicitNullValueQueriesTruncated = default!;
         /// <summary>Version of the Trino monitoring response schema.</summary>
-        public int? SchemaVersion { get; set; }
+        public int? SchemaVersion { get => _explicitNullValueSchemaVersion; set { _explicitNullValueSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_version"); else _explicitNullProperties?.Remove("schema_version"); } }
+        private int? _explicitNullValueSchemaVersion = default!;
         /// <summary>Current in-flight query totals.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals? Totals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals? Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals? _explicitNullValueTotals = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals Totals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals _explicitNullValueTotals = default!;
 #endif
         /// <summary>Trino lifecycle details for the organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTrino? Trino { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTrino? Trino { get => _explicitNullValueTrino; set { _explicitNullValueTrino = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trino"); else _explicitNullProperties?.Remove("trino"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTrino? _explicitNullValueTrino = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTrino Trino { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTrino Trino { get => _explicitNullValueTrino; set { _explicitNullValueTrino = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trino"); else _explicitNullProperties?.Remove("trino"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTrino _explicitNullValueTrino = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponse"/> and sets the default values.
@@ -77,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,6 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("schema_version", SchemaVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals>("totals", Totals);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTrino>("trino", Trino);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

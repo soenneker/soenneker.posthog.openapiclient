@@ -12,36 +12,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataQualityOverviewCheck : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ai_model") is { } nullNodeAiModel && nullNodeAiModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiModel = null;
+            if (parseNode.GetChildNode("check_type") is { } nullNodeCheckType && nullNodeCheckType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckType = null;
+            if (parseNode.GetChildNode("column_name") is { } nullNodeColumnName && nullNodeColumnName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColumnName = null;
+            if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("created_source") is { } nullNodeCreatedSource && nullNodeCreatedSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedSource = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("reasoning") is { } nullNodeReasoning && nullNodeReasoning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reasoning = null;
+            if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Model that generated the check, if AI-authored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AiModel { get; set; }
+        public string? AiModel { get => _explicitNullValueAiModel; set { _explicitNullValueAiModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_model"); else _explicitNullProperties?.Remove("ai_model"); } }
+        private string? _explicitNullValueAiModel = default!;
 #nullable restore
 #else
-        public string AiModel { get; set; }
+        public string AiModel { get => _explicitNullValueAiModel; set { _explicitNullValueAiModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_model"); else _explicitNullProperties?.Remove("ai_model"); } }
+        private string _explicitNullValueAiModel = default!;
 #endif
         /// <summary>* `not_null` - not_null* `unique` - unique* `accepted_values` - accepted_values* `relationships` - relationships* `row_count` - row_count* `freshness` - freshness* `custom_sql` - custom_sql</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckCheckType? CheckType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckCheckType? CheckType { get => _explicitNullValueCheckType; set { _explicitNullValueCheckType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_type"); else _explicitNullProperties?.Remove("check_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckCheckType? _explicitNullValueCheckType = default!;
         /// <summary>Column the check applies to. Omit for table-scoped types like row_count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ColumnName { get; set; }
+        public string? ColumnName { get => _explicitNullValueColumnName; set { _explicitNullValueColumnName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_name"); else _explicitNullProperties?.Remove("column_name"); } }
+        private string? _explicitNullValueColumnName = default!;
 #nullable restore
 #else
-        public string ColumnName { get; set; }
+        public string ColumnName { get => _explicitNullValueColumnName; set { _explicitNullValueColumnName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_name"); else _explicitNullProperties?.Remove("column_name"); } }
+        private string _explicitNullValueColumnName = default!;
 #endif
         /// <summary>AI author&apos;s confidence in the check, 0-1.</summary>
-        public double? Confidence { get; set; }
+        public double? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
+        private double? _explicitNullValueConfidence = default!;
         /// <summary>Type-specific configuration, validated against the check type&apos;s JSON schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckConfigProperty? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckConfigProperty? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckConfigProperty? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckConfigProperty Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckConfigProperty Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckConfigProperty _explicitNullValueConfig = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -54,17 +81,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>* `user` - user* `ai_generated` - ai_generated</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckCreatedSource? CreatedSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckCreatedSource? CreatedSource { get => _explicitNullValueCreatedSource; set { _explicitNullValueCreatedSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_source"); else _explicitNullProperties?.Remove("created_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckCreatedSource? _explicitNullValueCreatedSource = default!;
         /// <summary>Why this check exists and what a failure means.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Disabled checks are never run by any trigger.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>When the current streak of failing runs started, so a failing check can say how long it has been failing. Null when the check is not failing.</summary>
         public DateTimeOffset? FailingSince { get; private set; }
         /// <summary>sha256 of the subject, type, column, and config. Re-creating the same check upserts.</summary>
@@ -92,10 +123,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional identifier-safe handle, unique per project. Omit to address the check by id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckName? Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckName? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckName? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckName Name { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckName Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckName _explicitNullValueName = default!;
 #endif
         /// <summary>Email of the human accountable for this check, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,13 +141,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>AI author&apos;s reasoning, surfaced as review context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reasoning { get; set; }
+        public string? Reasoning { get => _explicitNullValueReasoning; set { _explicitNullValueReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning"); else _explicitNullProperties?.Remove("reasoning"); } }
+        private string? _explicitNullValueReasoning = default!;
 #nullable restore
 #else
-        public string Reasoning { get; set; }
+        public string Reasoning { get => _explicitNullValueReasoning; set { _explicitNullValueReasoning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning"); else _explicitNullProperties?.Remove("reasoning"); } }
+        private string _explicitNullValueReasoning = default!;
 #endif
         /// <summary>* `error` - error* `warn` - warn</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSeverity? Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSeverity? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSeverity? _explicitNullValueSeverity = default!;
         /// <summary>Current metric name for opening its Tests tab, or null for other subjects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -152,10 +188,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Free-form string labels for grouping and filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -174,7 +212,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheck CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheck();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheck(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -235,6 +273,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reasoning", Reasoning);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityOverviewCheckSeverity>("severity", Severity);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

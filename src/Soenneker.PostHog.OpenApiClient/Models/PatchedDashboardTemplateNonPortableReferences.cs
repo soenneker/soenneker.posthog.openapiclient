@@ -12,20 +12,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedDashboardTemplateNonPortableReferences : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("cohorts") is { } nullNodeCohorts && nullNodeCohorts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cohorts = null;
+            if (parseNode.GetChildNode("warehouse_tables") is { } nullNodeWarehouseTables && nullNodeWarehouseTables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WarehouseTables = null;
+        }
+
         /// <summary>Count of distinct action references in the template&apos;s tiles that are specific to the source project.</summary>
-        public int? Actions { get; set; }
+        public int? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private int? _explicitNullValueActions = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Count of distinct cohort references in the template&apos;s tiles that are specific to the source project.</summary>
-        public int? Cohorts { get; set; }
+        public int? Cohorts { get => _explicitNullValueCohorts; set { _explicitNullValueCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohorts"); else _explicitNullProperties?.Remove("cohorts"); } }
+        private int? _explicitNullValueCohorts = default!;
         /// <summary>Names of data warehouse tables referenced by the template&apos;s tiles that are specific to the source project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? WarehouseTables { get; set; }
+        public List<string>? WarehouseTables { get => _explicitNullValueWarehouseTables; set { _explicitNullValueWarehouseTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_tables"); else _explicitNullProperties?.Remove("warehouse_tables"); } }
+        private List<string>? _explicitNullValueWarehouseTables = default!;
 #nullable restore
 #else
-        public List<string> WarehouseTables { get; set; }
+        public List<string> WarehouseTables { get => _explicitNullValueWarehouseTables; set { _explicitNullValueWarehouseTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_tables"); else _explicitNullProperties?.Remove("warehouse_tables"); } }
+        private List<string> _explicitNullValueWarehouseTables = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplateNonPortableReferences"/> and sets the default values.
@@ -42,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplateNonPortableReferences CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplateNonPortableReferences();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplateNonPortableReferences(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("actions", Actions);
             writer.WriteIntValue("cohorts", Cohorts);
             writer.WriteCollectionOfPrimitiveValues<string>("warehouse_tables", WarehouseTables);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

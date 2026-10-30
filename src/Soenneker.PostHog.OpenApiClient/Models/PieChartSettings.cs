@@ -11,13 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PieChartSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("showTotal") is { } nullNodeShowTotal && nullNodeShowTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTotal = null;
+            if (parseNode.GetChildNode("sliceContent") is { } nullNodeSliceContent && nullNodeSliceContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SliceContent = null;
+            if (parseNode.GetChildNode("valueDisplay") is { } nullNodeValueDisplay && nullNodeValueDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueDisplay = null;
+        }
+
         /// <summary>Whether to show the aggregation total. Defaults to on only when slices show values.</summary>
-        public bool? ShowTotal { get; set; }
+        public bool? ShowTotal { get => _explicitNullValueShowTotal; set { _explicitNullValueShowTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTotal"); else _explicitNullProperties?.Remove("showTotal"); } }
+        private bool? _explicitNullValueShowTotal = default!;
         /// <summary>What to render on each slice. Defaults to values.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SliceContent? SliceContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SliceContent? SliceContent { get => _explicitNullValueSliceContent; set { _explicitNullValueSliceContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sliceContent"); else _explicitNullProperties?.Remove("sliceContent"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SliceContent? _explicitNullValueSliceContent = default!;
         /// <summary>Whether slice values show as absolute amounts or shares of the total. Only applies when `sliceContent` is `values`.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplay? ValueDisplay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplay? ValueDisplay { get => _explicitNullValueValueDisplay; set { _explicitNullValueValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valueDisplay"); else _explicitNullProperties?.Remove("valueDisplay"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplay? _explicitNullValueValueDisplay = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -26,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("showTotal", ShowTotal);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SliceContent>("sliceContent", SliceContent);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplay>("valueDisplay", ValueDisplay);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueDisplay>("valueDisplay", ValueDisplay);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

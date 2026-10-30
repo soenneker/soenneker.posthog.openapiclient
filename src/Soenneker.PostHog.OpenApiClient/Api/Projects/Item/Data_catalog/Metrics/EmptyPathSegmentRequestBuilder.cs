@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataCatalogMetricList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataCatalogMetricList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataCatalogMetricList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataCatalogMetricList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a metric. When a live metric already holds the name, returns 409 unless overwrite is true, in which case the existing metric is refined with the fields sent.
@@ -73,6 +73,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_catalog.Metrics
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "409", global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricNameConflict.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetric>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetric.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

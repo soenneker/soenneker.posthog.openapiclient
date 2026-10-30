@@ -11,7 +11,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalScoutPrecheckTest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("interval_minutes") is { } nullNodeIntervalMinutes && nullNodeIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntervalMinutes = null;
+            if (parseNode.GetChildNode("now") is { } nullNodeNow && nullNodeNow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Now = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("row_count") is { } nullNodeRowCount && nullNodeRowCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowCount = null;
+            if (parseNode.GetChildNode("rows_text") is { } nullNodeRowsText && nullNodeRowsText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsText = null;
+            if (parseNode.GetChildNode("since") is { } nullNodeSince && nullNodeSince.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Since = null;
+            if (parseNode.GetChildNode("would_run") is { } nullNodeWouldRun && nullNodeWouldRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WouldRun = null;
+        }
+
         /// <summary>The member scheduled runs check the query as, when that is not you. The test runs with your access, so a table you can read can still fail on a scheduled run, and the run then starts as if there were no pre-check. Null when scheduled runs check it as you.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,39 +41,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The column names of the result, in order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Columns { get; set; }
+        public List<string>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<string> Columns { get; set; }
+        public List<string> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string> _explicitNullValueColumns = default!;
 #endif
         /// <summary>Why the query failed, when it failed. A syntax or schema error is given as written; other failures read as a general message. Null when the query ran.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string _explicitNullValueError = default!;
 #endif
         /// <summary>The value bound to `{interval_minutes}`: the scout&apos;s rolling interval, or for a cron schedule the gap in minutes between the fire times around now.</summary>
-        public int? IntervalMinutes { get; set; }
+        public int? IntervalMinutes { get => _explicitNullValueIntervalMinutes; set { _explicitNullValueIntervalMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval_minutes"); else _explicitNullProperties?.Remove("interval_minutes"); } }
+        private int? _explicitNullValueIntervalMinutes = default!;
         /// <summary>The value bound to `{now}`.</summary>
-        public DateTimeOffset? Now { get; set; }
+        public DateTimeOffset? Now { get => _explicitNullValueNow; set { _explicitNullValueNow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("now"); else _explicitNullProperties?.Remove("now"); } }
+        private DateTimeOffset? _explicitNullValueNow = default!;
         /// <summary>* `rows` - Rows* `no_rows` - No Rows* `false_value` - False Value* `query_error` - Query Error</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTestReason? Reason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTestReason? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTestReason? _explicitNullValueReason = default!;
         /// <summary>How many rows the query returned, at most 50.</summary>
-        public int? RowCount { get; set; }
+        public int? RowCount { get => _explicitNullValueRowCount; set { _explicitNullValueRowCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_count"); else _explicitNullProperties?.Remove("row_count"); } }
+        private int? _explicitNullValueRowCount = default!;
         /// <summary>The rows as the scout reads them: one JSON object per line, cut before the text passes the size limit. Empty when the query returned no rows or failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RowsText { get; set; }
+        public string? RowsText { get => _explicitNullValueRowsText; set { _explicitNullValueRowsText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_text"); else _explicitNullProperties?.Remove("rows_text"); } }
+        private string? _explicitNullValueRowsText = default!;
 #nullable restore
 #else
-        public string RowsText { get; set; }
+        public string RowsText { get => _explicitNullValueRowsText; set { _explicitNullValueRowsText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_text"); else _explicitNullProperties?.Remove("rows_text"); } }
+        private string _explicitNullValueRowsText = default!;
 #endif
         /// <summary>The value bound to `{since}`: the start of the last run that ran, or when the scout was created.</summary>
-        public DateTimeOffset? Since { get; set; }
+        public DateTimeOffset? Since { get => _explicitNullValueSince; set { _explicitNullValueSince = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("since"); else _explicitNullProperties?.Remove("since"); } }
+        private DateTimeOffset? _explicitNullValueSince = default!;
         /// <summary>Whether a scheduled run that started now would run the scout. False means it would skip the run.</summary>
-        public bool? WouldRun { get; set; }
+        public bool? WouldRun { get => _explicitNullValueWouldRun; set { _explicitNullValueWouldRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("would_run"); else _explicitNullProperties?.Remove("would_run"); } }
+        private bool? _explicitNullValueWouldRun = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTest"/> and sets the default values.
         /// </summary>
@@ -73,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -111,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("rows_text", RowsText);
             writer.WriteDateTimeOffsetValue("since", Since);
             writer.WriteBoolValue("would_run", WouldRun);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

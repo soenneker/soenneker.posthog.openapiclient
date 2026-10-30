@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccountsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccountsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccountsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccountsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List the accounts a source&apos;s typed-in credentials can reach, in the sharedIntegrationAccount shape.The OAuth twin takes an integration id because the token already lives on the server. Herethe credentials are still in the form, so they arrive in the body — POST, not GET, to keep aprivate key out of the URL and out of anything that logs one. Nothing is cached for the samereason: the cache key would have to include the credentials.

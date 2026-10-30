@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class NotebookSqlv2RunResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("run_id") is { } nullNodeRunId && nullNodeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunId = null;
+            if (parseNode.GetChildNode("sandbox_hourly_price") is { } nullNodeSandboxHourlyPrice && nullNodeSandboxHourlyPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SandboxHourlyPrice = null;
+            if (parseNode.GetChildNode("starts_sandbox") is { } nullNodeStartsSandbox && nullNodeStartsSandbox.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartsSandbox = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifier of the dispatched run. Poll the run result endpoint with it until the status is terminal.</summary>
-        public Guid? RunId { get; set; }
+        public Guid? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
+        private Guid? _explicitNullValueRunId = default!;
         /// <summary>What the sandbox this run provisions costs per hour in USD. Null when the run needs no new sandbox, or when the backend is not charged.</summary>
-        public double? SandboxHourlyPrice { get; set; }
+        public double? SandboxHourlyPrice { get => _explicitNullValueSandboxHourlyPrice; set { _explicitNullValueSandboxHourlyPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox_hourly_price"); else _explicitNullProperties?.Remove("sandbox_hourly_price"); } }
+        private double? _explicitNullValueSandboxHourlyPrice = default!;
         /// <summary>True when this run has to provision a sandbox because none is live for the caller, checked here rather than inferred from a client&apos;s cached kernel status. Tell the user what that costs.</summary>
-        public bool? StartsSandbox { get; set; }
+        public bool? StartsSandbox { get => _explicitNullValueStartsSandbox; set { _explicitNullValueStartsSandbox = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("starts_sandbox"); else _explicitNullProperties?.Remove("starts_sandbox"); } }
+        private bool? _explicitNullValueStartsSandbox = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunResponse"/> and sets the default values.
         /// </summary>
@@ -35,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("run_id", RunId);
             writer.WriteDoubleValue("sandbox_hourly_price", SandboxHourlyPrice);
             writer.WriteBoolValue("starts_sandbox", StartsSandbox);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

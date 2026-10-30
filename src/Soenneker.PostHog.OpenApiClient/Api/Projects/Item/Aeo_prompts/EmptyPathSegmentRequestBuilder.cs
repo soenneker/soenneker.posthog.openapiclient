@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAeoPromptList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAeoPromptList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAeoPromptList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAeoPromptList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists the project&apos;s AEO prompt set, ordered by topic and then rank, one page at a time. Filter by topic or by on/off state. Archived prompts are left out unless include_archived is true. Each prompt carries its latest check per answer engine.

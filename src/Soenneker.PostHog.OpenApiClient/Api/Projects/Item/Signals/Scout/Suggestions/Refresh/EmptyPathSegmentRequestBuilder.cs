@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Sugges
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionRefresh>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionRefresh.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionRefresh>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionRefresh.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Re-run the suggestion scan for this project now instead of waiting for the scheduled refresh. Runs headlessly; poll the list endpoint for the new batch (`generated_at` advances). Capped per project per day.

@@ -11,74 +11,122 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EditReportResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("charts_set") is { } nullNodeChartsSet && nullNodeChartsSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChartsSet = null;
+            if (parseNode.GetChildNode("content_revision_count") is { } nullNodeContentRevisionCount && nullNodeContentRevisionCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentRevisionCount = null;
+            if (parseNode.GetChildNode("corroboration_collapsed") is { } nullNodeCorroborationCollapsed && nullNodeCorroborationCollapsed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorroborationCollapsed = null;
+            if (parseNode.GetChildNode("decision_fields_set") is { } nullNodeDecisionFieldsSet && nullNodeDecisionFieldsSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecisionFieldsSet = null;
+            if (parseNode.GetChildNode("evidence_appended") is { } nullNodeEvidenceAppended && nullNodeEvidenceAppended.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceAppended = null;
+            if (parseNode.GetChildNode("is_content_revision") is { } nullNodeIsContentRevision && nullNodeIsContentRevision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsContentRevision = null;
+            if (parseNode.GetChildNode("links_appended") is { } nullNodeLinksAppended && nullNodeLinksAppended.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinksAppended = null;
+            if (parseNode.GetChildNode("metrics_set") is { } nullNodeMetricsSet && nullNodeMetricsSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricsSet = null;
+            if (parseNode.GetChildNode("note_appended") is { } nullNodeNoteAppended && nullNodeNoteAppended.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoteAppended = null;
+            if (parseNode.GetChildNode("report_id") is { } nullNodeReportId && nullNodeReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportId = null;
+            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("repository_set") is { } nullNodeRepositorySet && nullNodeRepositorySet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepositorySet = null;
+            if (parseNode.GetChildNode("reviewers_set") is { } nullNodeReviewersSet && nullNodeReviewersSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewersSet = null;
+            if (parseNode.GetChildNode("suggested_prompts_set") is { } nullNodeSuggestedPromptsSet && nullNodeSuggestedPromptsSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedPromptsSet = null;
+            if (parseNode.GetChildNode("supersedes_implementation") is { } nullNodeSupersedesImplementation && nullNodeSupersedesImplementation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupersedesImplementation = null;
+            if (parseNode.GetChildNode("tags_set") is { } nullNodeTagsSet && nullNodeTagsSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TagsSet = null;
+            if (parseNode.GetChildNode("updated_fields") is { } nullNodeUpdatedFields && nullNodeUpdatedFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedFields = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many charts the report now shows, or null if the edit left its charts as they were (the field omitted, or a re-send of what was already stored). 0 means the edit took the report&apos;s charts down.</summary>
-        public int? ChartsSet { get; set; }
+        public int? ChartsSet { get => _explicitNullValueChartsSet; set { _explicitNullValueChartsSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("charts_set"); else _explicitNullProperties?.Remove("charts_set"); } }
+        private int? _explicitNullValueChartsSet = default!;
         /// <summary>How many times a scout has rewritten this report&apos;s title or summary, counting this edit.</summary>
-        public int? ContentRevisionCount { get; set; }
+        public int? ContentRevisionCount { get => _explicitNullValueContentRevisionCount; set { _explicitNullValueContentRevisionCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_revision_count"); else _explicitNullProperties?.Remove("content_revision_count"); } }
+        private int? _explicitNullValueContentRevisionCount = default!;
         /// <summary>Whether your note raised the report&apos;s corroboration count instead of landing as its own entry. Only notes marked corroboration_only can collapse; free-form notes remain in the work log.</summary>
-        public bool? CorroborationCollapsed { get; set; }
+        public bool? CorroborationCollapsed { get => _explicitNullValueCorroborationCollapsed; set { _explicitNullValueCorroborationCollapsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corroboration_collapsed"); else _explicitNullProperties?.Remove("corroboration_collapsed"); } }
+        private bool? _explicitNullValueCorroborationCollapsed = default!;
         /// <summary>Which work decisions the edit replaced (`actionability`, `priority`). Empty when you set none, or re-sent the decisions the report already held.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DecisionFieldsSet { get; set; }
+        public List<string>? DecisionFieldsSet { get => _explicitNullValueDecisionFieldsSet; set { _explicitNullValueDecisionFieldsSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_fields_set"); else _explicitNullProperties?.Remove("decision_fields_set"); } }
+        private List<string>? _explicitNullValueDecisionFieldsSet = default!;
 #nullable restore
 #else
-        public List<string> DecisionFieldsSet { get; set; }
+        public List<string> DecisionFieldsSet { get => _explicitNullValueDecisionFieldsSet; set { _explicitNullValueDecisionFieldsSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_fields_set"); else _explicitNullProperties?.Remove("decision_fields_set"); } }
+        private List<string> _explicitNullValueDecisionFieldsSet = default!;
 #endif
         /// <summary>How many observations this edit added to the report&apos;s evidence rail; 0 if none.</summary>
-        public int? EvidenceAppended { get; set; }
+        public int? EvidenceAppended { get => _explicitNullValueEvidenceAppended; set { _explicitNullValueEvidenceAppended = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_appended"); else _explicitNullProperties?.Remove("evidence_appended"); } }
+        private int? _explicitNullValueEvidenceAppended = default!;
         /// <summary>Whether this edit actually rewrote the report&apos;s title or summary. False for a note, a reviewer change, or a re-send of the text the report already had.</summary>
-        public bool? IsContentRevision { get; set; }
+        public bool? IsContentRevision { get => _explicitNullValueIsContentRevision; set { _explicitNullValueIsContentRevision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_content_revision"); else _explicitNullProperties?.Remove("is_content_revision"); } }
+        private bool? _explicitNullValueIsContentRevision = default!;
         /// <summary>How many typed report-to-report links this edit wrote; 0 if none.</summary>
-        public int? LinksAppended { get; set; }
+        public int? LinksAppended { get => _explicitNullValueLinksAppended; set { _explicitNullValueLinksAppended = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links_appended"); else _explicitNullProperties?.Remove("links_appended"); } }
+        private int? _explicitNullValueLinksAppended = default!;
         /// <summary>How many impact metrics the report now shows, or null when untouched/unchanged. 0 means the edit removed every metric.</summary>
-        public int? MetricsSet { get; set; }
+        public int? MetricsSet { get => _explicitNullValueMetricsSet; set { _explicitNullValueMetricsSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics_set"); else _explicitNullProperties?.Remove("metrics_set"); } }
+        private int? _explicitNullValueMetricsSet = default!;
         /// <summary>Whether the edit included a note. True for a collapsed corroboration too, where the report&apos;s count moves and no work-log entry is written. Read `corroboration_collapsed` to tell the two apart.</summary>
-        public bool? NoteAppended { get; set; }
+        public bool? NoteAppended { get => _explicitNullValueNoteAppended; set { _explicitNullValueNoteAppended = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note_appended"); else _explicitNullProperties?.Remove("note_appended"); } }
+        private bool? _explicitNullValueNoteAppended = default!;
         /// <summary>Id of the edited report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportId { get; set; }
+        public string? ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private string? _explicitNullValueReportId = default!;
 #nullable restore
 #else
-        public string ReportId { get; set; }
+        public string ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private string _explicitNullValueReportId = default!;
 #endif
         /// <summary>The repository the report points at now, read back from the report rather than echoed from the request; null when the report has no target. Compare it with the `repository` you sent to confirm the correction landed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Repository { get; set; }
+        public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string? _explicitNullValueRepository = default!;
 #nullable restore
 #else
-        public string Repository { get; set; }
+        public string Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string _explicitNullValueRepository = default!;
 #endif
         /// <summary>Whether the report&apos;s repository was replaced (true for a cleared target too).</summary>
-        public bool? RepositorySet { get; set; }
+        public bool? RepositorySet { get => _explicitNullValueRepositorySet; set { _explicitNullValueRepositorySet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_set"); else _explicitNullProperties?.Remove("repository_set"); } }
+        private bool? _explicitNullValueRepositorySet = default!;
         /// <summary>Whether the report&apos;s suggested reviewers were replaced.</summary>
-        public bool? ReviewersSet { get; set; }
+        public bool? ReviewersSet { get => _explicitNullValueReviewersSet; set { _explicitNullValueReviewersSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewers_set"); else _explicitNullProperties?.Remove("reviewers_set"); } }
+        private bool? _explicitNullValueReviewersSet = default!;
         /// <summary>How many prompts the report now suggests, or null if the edit left them as they were (the field omitted, or a re-send of what was already stored). 0 means the edit took the report&apos;s suggested prompts down.</summary>
-        public int? SuggestedPromptsSet { get; set; }
+        public int? SuggestedPromptsSet { get => _explicitNullValueSuggestedPromptsSet; set { _explicitNullValueSuggestedPromptsSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_prompts_set"); else _explicitNullProperties?.Remove("suggested_prompts_set"); } }
+        private int? _explicitNullValueSuggestedPromptsSet = default!;
         /// <summary>Whether the edit recorded that the report&apos;s pull request should be replaced. False when you did not ask for it, when the edit changed no content, or when the report has already been rewritten too many times.</summary>
-        public bool? SupersedesImplementation { get; set; }
+        public bool? SupersedesImplementation { get => _explicitNullValueSupersedesImplementation; set { _explicitNullValueSupersedesImplementation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supersedes_implementation"); else _explicitNullProperties?.Remove("supersedes_implementation"); } }
+        private bool? _explicitNullValueSupersedesImplementation = default!;
         /// <summary>How many tags the report now carries, or null if the edit left them as they were (the field omitted, or a re-send of what was already stored). 0 means the edit removed the report&apos;s tags.</summary>
-        public int? TagsSet { get; set; }
+        public int? TagsSet { get => _explicitNullValueTagsSet; set { _explicitNullValueTagsSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags_set"); else _explicitNullProperties?.Remove("tags_set"); } }
+        private int? _explicitNullValueTagsSet = default!;
         /// <summary>Which presentation fields changed (e.g. `title`, `summary`); empty if only a note was appended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? UpdatedFields { get; set; }
+        public List<string>? UpdatedFields { get => _explicitNullValueUpdatedFields; set { _explicitNullValueUpdatedFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_fields"); else _explicitNullProperties?.Remove("updated_fields"); } }
+        private List<string>? _explicitNullValueUpdatedFields = default!;
 #nullable restore
 #else
-        public List<string> UpdatedFields { get; set; }
+        public List<string> UpdatedFields { get => _explicitNullValueUpdatedFields; set { _explicitNullValueUpdatedFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_fields"); else _explicitNullProperties?.Remove("updated_fields"); } }
+        private List<string> _explicitNullValueUpdatedFields = default!;
 #endif
         /// <summary>Request fields the edit did not apply, each with the reason. Empty when every field applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EditReportResponse"/> and sets the default values.
@@ -95,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EditReportResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EditReportResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EditReportResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -150,6 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("tags_set", TagsSet);
             writer.WriteCollectionOfPrimitiveValues<string>("updated_fields", UpdatedFields);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EditReportWarning>("warnings", Warnings);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

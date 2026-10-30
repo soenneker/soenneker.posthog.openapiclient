@@ -11,101 +11,152 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PathsFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("edgeLimit") is { } nullNodeEdgeLimit && nullNodeEdgeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EdgeLimit = null;
+            if (parseNode.GetChildNode("endPoint") is { } nullNodeEndPoint && nullNodeEndPoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndPoint = null;
+            if (parseNode.GetChildNode("excludeEvents") is { } nullNodeExcludeEvents && nullNodeExcludeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeEvents = null;
+            if (parseNode.GetChildNode("includeEventTypes") is { } nullNodeIncludeEventTypes && nullNodeIncludeEventTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeEventTypes = null;
+            if (parseNode.GetChildNode("localPathCleaningFilters") is { } nullNodeLocalPathCleaningFilters && nullNodeLocalPathCleaningFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocalPathCleaningFilters = null;
+            if (parseNode.GetChildNode("maxEdgeWeight") is { } nullNodeMaxEdgeWeight && nullNodeMaxEdgeWeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxEdgeWeight = null;
+            if (parseNode.GetChildNode("minEdgeWeight") is { } nullNodeMinEdgeWeight && nullNodeMinEdgeWeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinEdgeWeight = null;
+            if (parseNode.GetChildNode("pathDropoffKey") is { } nullNodePathDropoffKey && nullNodePathDropoffKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PathDropoffKey = null;
+            if (parseNode.GetChildNode("pathEndKey") is { } nullNodePathEndKey && nullNodePathEndKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PathEndKey = null;
+            if (parseNode.GetChildNode("pathGroupings") is { } nullNodePathGroupings && nullNodePathGroupings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PathGroupings = null;
+            if (parseNode.GetChildNode("pathReplacements") is { } nullNodePathReplacements && nullNodePathReplacements.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PathReplacements = null;
+            if (parseNode.GetChildNode("pathsHogQLExpression") is { } nullNodePathsHogQLExpression && nullNodePathsHogQLExpression.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PathsHogQLExpression = null;
+            if (parseNode.GetChildNode("pathStartKey") is { } nullNodePathStartKey && nullNodePathStartKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PathStartKey = null;
+            if (parseNode.GetChildNode("showFullUrls") is { } nullNodeShowFullUrls && nullNodeShowFullUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowFullUrls = null;
+            if (parseNode.GetChildNode("startPoint") is { } nullNodeStartPoint && nullNodeStartPoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartPoint = null;
+            if (parseNode.GetChildNode("stepLimit") is { } nullNodeStepLimit && nullNodeStepLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepLimit = null;
+            if (parseNode.GetChildNode("stripQueryString") is { } nullNodeStripQueryString && nullNodeStripQueryString.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StripQueryString = null;
+        }
+
         /// <summary>The edgeLimit property</summary>
-        public int? EdgeLimit { get; set; }
+        public int? EdgeLimit { get => _explicitNullValueEdgeLimit; set { _explicitNullValueEdgeLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edgeLimit"); else _explicitNullProperties?.Remove("edgeLimit"); } }
+        private int? _explicitNullValueEdgeLimit = default!;
         /// <summary>The endPoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndPoint { get; set; }
+        public string? EndPoint { get => _explicitNullValueEndPoint; set { _explicitNullValueEndPoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endPoint"); else _explicitNullProperties?.Remove("endPoint"); } }
+        private string? _explicitNullValueEndPoint = default!;
 #nullable restore
 #else
-        public string EndPoint { get; set; }
+        public string EndPoint { get => _explicitNullValueEndPoint; set { _explicitNullValueEndPoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endPoint"); else _explicitNullProperties?.Remove("endPoint"); } }
+        private string _explicitNullValueEndPoint = default!;
 #endif
         /// <summary>The excludeEvents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludeEvents { get; set; }
+        public List<string>? ExcludeEvents { get => _explicitNullValueExcludeEvents; set { _explicitNullValueExcludeEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeEvents"); else _explicitNullProperties?.Remove("excludeEvents"); } }
+        private List<string>? _explicitNullValueExcludeEvents = default!;
 #nullable restore
 #else
-        public List<string> ExcludeEvents { get; set; }
+        public List<string> ExcludeEvents { get => _explicitNullValueExcludeEvents; set { _explicitNullValueExcludeEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeEvents"); else _explicitNullProperties?.Remove("excludeEvents"); } }
+        private List<string> _explicitNullValueExcludeEvents = default!;
 #endif
         /// <summary>The includeEventTypes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType?>? IncludeEventTypes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType?>? IncludeEventTypes { get => _explicitNullValueIncludeEventTypes; set { _explicitNullValueIncludeEventTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("includeEventTypes"); else _explicitNullProperties?.Remove("includeEventTypes"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathType?>? _explicitNullValueIncludeEventTypes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType?> IncludeEventTypes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathType?> IncludeEventTypes { get => _explicitNullValueIncludeEventTypes; set { _explicitNullValueIncludeEventTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("includeEventTypes"); else _explicitNullProperties?.Remove("includeEventTypes"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathType?> _explicitNullValueIncludeEventTypes = default!;
 #endif
         /// <summary>The localPathCleaningFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>? LocalPathCleaningFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>? LocalPathCleaningFilters { get => _explicitNullValueLocalPathCleaningFilters; set { _explicitNullValueLocalPathCleaningFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("localPathCleaningFilters"); else _explicitNullProperties?.Remove("localPathCleaningFilters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>? _explicitNullValueLocalPathCleaningFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter> LocalPathCleaningFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter> LocalPathCleaningFilters { get => _explicitNullValueLocalPathCleaningFilters; set { _explicitNullValueLocalPathCleaningFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("localPathCleaningFilters"); else _explicitNullProperties?.Remove("localPathCleaningFilters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter> _explicitNullValueLocalPathCleaningFilters = default!;
 #endif
         /// <summary>The maxEdgeWeight property</summary>
-        public int? MaxEdgeWeight { get; set; }
+        public int? MaxEdgeWeight { get => _explicitNullValueMaxEdgeWeight; set { _explicitNullValueMaxEdgeWeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxEdgeWeight"); else _explicitNullProperties?.Remove("maxEdgeWeight"); } }
+        private int? _explicitNullValueMaxEdgeWeight = default!;
         /// <summary>The minEdgeWeight property</summary>
-        public int? MinEdgeWeight { get; set; }
+        public int? MinEdgeWeight { get => _explicitNullValueMinEdgeWeight; set { _explicitNullValueMinEdgeWeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minEdgeWeight"); else _explicitNullProperties?.Remove("minEdgeWeight"); } }
+        private int? _explicitNullValueMinEdgeWeight = default!;
         /// <summary>Relevant only within actors query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PathDropoffKey { get; set; }
+        public string? PathDropoffKey { get => _explicitNullValuePathDropoffKey; set { _explicitNullValuePathDropoffKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathDropoffKey"); else _explicitNullProperties?.Remove("pathDropoffKey"); } }
+        private string? _explicitNullValuePathDropoffKey = default!;
 #nullable restore
 #else
-        public string PathDropoffKey { get; set; }
+        public string PathDropoffKey { get => _explicitNullValuePathDropoffKey; set { _explicitNullValuePathDropoffKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathDropoffKey"); else _explicitNullProperties?.Remove("pathDropoffKey"); } }
+        private string _explicitNullValuePathDropoffKey = default!;
 #endif
         /// <summary>Relevant only within actors query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PathEndKey { get; set; }
+        public string? PathEndKey { get => _explicitNullValuePathEndKey; set { _explicitNullValuePathEndKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathEndKey"); else _explicitNullProperties?.Remove("pathEndKey"); } }
+        private string? _explicitNullValuePathEndKey = default!;
 #nullable restore
 #else
-        public string PathEndKey { get; set; }
+        public string PathEndKey { get => _explicitNullValuePathEndKey; set { _explicitNullValuePathEndKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathEndKey"); else _explicitNullProperties?.Remove("pathEndKey"); } }
+        private string _explicitNullValuePathEndKey = default!;
 #endif
         /// <summary>The pathGroupings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PathGroupings { get; set; }
+        public List<string>? PathGroupings { get => _explicitNullValuePathGroupings; set { _explicitNullValuePathGroupings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathGroupings"); else _explicitNullProperties?.Remove("pathGroupings"); } }
+        private List<string>? _explicitNullValuePathGroupings = default!;
 #nullable restore
 #else
-        public List<string> PathGroupings { get; set; }
+        public List<string> PathGroupings { get => _explicitNullValuePathGroupings; set { _explicitNullValuePathGroupings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathGroupings"); else _explicitNullProperties?.Remove("pathGroupings"); } }
+        private List<string> _explicitNullValuePathGroupings = default!;
 #endif
         /// <summary>The pathReplacements property</summary>
-        public bool? PathReplacements { get; set; }
+        public bool? PathReplacements { get => _explicitNullValuePathReplacements; set { _explicitNullValuePathReplacements = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathReplacements"); else _explicitNullProperties?.Remove("pathReplacements"); } }
+        private bool? _explicitNullValuePathReplacements = default!;
         /// <summary>The pathsHogQLExpression property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PathsHogQLExpression { get; set; }
+        public string? PathsHogQLExpression { get => _explicitNullValuePathsHogQLExpression; set { _explicitNullValuePathsHogQLExpression = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathsHogQLExpression"); else _explicitNullProperties?.Remove("pathsHogQLExpression"); } }
+        private string? _explicitNullValuePathsHogQLExpression = default!;
 #nullable restore
 #else
-        public string PathsHogQLExpression { get; set; }
+        public string PathsHogQLExpression { get => _explicitNullValuePathsHogQLExpression; set { _explicitNullValuePathsHogQLExpression = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathsHogQLExpression"); else _explicitNullProperties?.Remove("pathsHogQLExpression"); } }
+        private string _explicitNullValuePathsHogQLExpression = default!;
 #endif
         /// <summary>Relevant only within actors query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PathStartKey { get; set; }
+        public string? PathStartKey { get => _explicitNullValuePathStartKey; set { _explicitNullValuePathStartKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathStartKey"); else _explicitNullProperties?.Remove("pathStartKey"); } }
+        private string? _explicitNullValuePathStartKey = default!;
 #nullable restore
 #else
-        public string PathStartKey { get; set; }
+        public string PathStartKey { get => _explicitNullValuePathStartKey; set { _explicitNullValuePathStartKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathStartKey"); else _explicitNullProperties?.Remove("pathStartKey"); } }
+        private string _explicitNullValuePathStartKey = default!;
 #endif
         /// <summary>The showFullUrls property</summary>
-        public bool? ShowFullUrls { get; set; }
+        public bool? ShowFullUrls { get => _explicitNullValueShowFullUrls; set { _explicitNullValueShowFullUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showFullUrls"); else _explicitNullProperties?.Remove("showFullUrls"); } }
+        private bool? _explicitNullValueShowFullUrls = default!;
         /// <summary>The startPoint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StartPoint { get; set; }
+        public string? StartPoint { get => _explicitNullValueStartPoint; set { _explicitNullValueStartPoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("startPoint"); else _explicitNullProperties?.Remove("startPoint"); } }
+        private string? _explicitNullValueStartPoint = default!;
 #nullable restore
 #else
-        public string StartPoint { get; set; }
+        public string StartPoint { get => _explicitNullValueStartPoint; set { _explicitNullValueStartPoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("startPoint"); else _explicitNullProperties?.Remove("startPoint"); } }
+        private string _explicitNullValueStartPoint = default!;
 #endif
         /// <summary>The stepLimit property</summary>
-        public int? StepLimit { get; set; }
+        public int? StepLimit { get => _explicitNullValueStepLimit; set { _explicitNullValueStepLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepLimit"); else _explicitNullProperties?.Remove("stepLimit"); } }
+        private int? _explicitNullValueStepLimit = default!;
         /// <summary>Remove the query string from page view URLs, so pages that differ only in query parameters become one path item</summary>
-        public bool? StripQueryString { get; set; }
+        public bool? StripQueryString { get => _explicitNullValueStripQueryString; set { _explicitNullValueStripQueryString = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stripQueryString"); else _explicitNullProperties?.Remove("stripQueryString"); } }
+        private bool? _explicitNullValueStripQueryString = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter"/> and sets the default values.
         /// </summary>
@@ -122,7 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PathsFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -174,7 +225,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showFullUrls", ShowFullUrls);
             writer.WriteStringValue("startPoint", StartPoint);
             writer.WriteIntValue("stepLimit", StepLimit);
-            writer.WriteBoolValue("stripQueryString", StripQueryString);
+            writer.WriteBoolValue("stripQueryString", StripQueryString);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

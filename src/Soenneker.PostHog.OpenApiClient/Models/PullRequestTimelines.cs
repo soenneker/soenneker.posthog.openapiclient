@@ -11,51 +11,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PullRequestTimelines : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
+            if (parseNode.GetChildNode("has_membership_data") is { } nullNodeHasMembershipData && nullNodeHasMembershipData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMembershipData = null;
+            if (parseNode.GetChildNode("items") is { } nullNodeItems && nullNodeItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Items = null;
+            if (parseNode.GetChildNode("jobs_available") is { } nullNodeJobsAvailable && nullNodeJobsAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobsAvailable = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("merge_queue_state_available") is { } nullNodeMergeQueueStateAvailable && nullNodeMergeQueueStateAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueStateAvailable = null;
+            if (parseNode.GetChildNode("red_seconds_per_merged_pr") is { } nullNodeRedSecondsPerMergedPr && nullNodeRedSecondsPerMergedPr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RedSecondsPerMergedPr = null;
+            if (parseNode.GetChildNode("review_data_available") is { } nullNodeReviewDataAvailable && nullNodeReviewDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewDataAvailable = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("scope_kind") is { } nullNodeScopeKind && nullNodeScopeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeKind = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The now every open PR&apos;s timeline ends at.</summary>
-        public DateTimeOffset? GeneratedAt { get; set; }
+        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
+        private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
         /// <summary>True when the team membership table is synced. A github_team scope without it lists no pull requests.</summary>
-        public bool? HasMembershipData { get; set; }
+        public bool? HasMembershipData { get => _explicitNullValueHasMembershipData; set { _explicitNullValueHasMembershipData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_membership_data"); else _explicitNullProperties?.Remove("has_membership_data"); } }
+        private bool? _explicitNullValueHasMembershipData = default!;
         /// <summary>The pull requests in scope, newest first: open PRs plus PRs merged in the window, or the one pull request of a pull_request scope.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimeline>? Items { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimeline>? Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimeline>? _explicitNullValueItems = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimeline> Items { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimeline> Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimeline> _explicitNullValueItems = default!;
 #endif
         /// <summary>False when workflow jobs aren&apos;t synced: a check a re-run turned green is not visible, and no red stretch reads red_master_broken.</summary>
-        public bool? JobsAvailable { get; set; }
+        public bool? JobsAvailable { get => _explicitNullValueJobsAvailable; set { _explicitNullValueJobsAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs_available"); else _explicitNullProperties?.Remove("jobs_available"); } }
+        private bool? _explicitNullValueJobsAvailable = default!;
         /// <summary>The maximum number of PRs returned.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>Every pull request merged in the selected scope and window.</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>True when the Trunk merge-queue table is synced, so out_of_merge_queue can appear.</summary>
-        public bool? MergeQueueStateAvailable { get; set; }
+        public bool? MergeQueueStateAvailable { get => _explicitNullValueMergeQueueStateAvailable; set { _explicitNullValueMergeQueueStateAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_state_available"); else _explicitNullProperties?.Remove("merge_queue_state_available"); } }
+        private bool? _explicitNullValueMergeQueueStateAvailable = default!;
         /// <summary>Average red time per merged pull request, grouped by the evidence that classifies each red stretch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime>? RedSecondsPerMergedPr { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime>? RedSecondsPerMergedPr { get => _explicitNullValueRedSecondsPerMergedPr; set { _explicitNullValueRedSecondsPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("red_seconds_per_merged_pr"); else _explicitNullProperties?.Remove("red_seconds_per_merged_pr"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime>? _explicitNullValueRedSecondsPerMergedPr = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime> RedSecondsPerMergedPr { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime> RedSecondsPerMergedPr { get => _explicitNullValueRedSecondsPerMergedPr; set { _explicitNullValueRedSecondsPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("red_seconds_per_merged_pr"); else _explicitNullProperties?.Remove("red_seconds_per_merged_pr"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime> _explicitNullValueRedSecondsPerMergedPr = default!;
 #endif
         /// <summary>False when reviews aren&apos;t synced: review stretches read review_state_unknown.</summary>
-        public bool? ReviewDataAvailable { get; set; }
+        public bool? ReviewDataAvailable { get => _explicitNullValueReviewDataAvailable; set { _explicitNullValueReviewDataAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_data_available"); else _explicitNullProperties?.Remove("review_data_available"); } }
+        private bool? _explicitNullValueReviewDataAvailable = default!;
         /// <summary>The GitHub login, GitHub team slug, or &apos;owner/name#number&apos; the timelines are for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Scope { get; set; }
+        public string? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private string? _explicitNullValueScope = default!;
 #nullable restore
 #else
-        public string Scope { get; set; }
+        public string Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private string _explicitNullValueScope = default!;
 #endif
         /// <summary>* `author` - Author* `github_team` - GitHub Team* `pull_request` - Pull Request</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelinesScopeKind? ScopeKind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelinesScopeKind? ScopeKind { get => _explicitNullValueScopeKind; set { _explicitNullValueScopeKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_kind"); else _explicitNullProperties?.Remove("scope_kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelinesScopeKind? _explicitNullValueScopeKind = default!;
         /// <summary>True when more PRs matched than the limit.</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelines"/> and sets the default values.
         /// </summary>
@@ -71,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelines CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelines();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelines(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("scope", Scope);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelinesScopeKind>("scope_kind", ScopeKind);
             writer.WriteBoolValue("truncated", Truncated);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

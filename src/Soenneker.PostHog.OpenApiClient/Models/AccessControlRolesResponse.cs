@@ -11,34 +11,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccessControlRolesResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("available_project_levels") is { } nullNodeAvailableProjectLevels && nullNodeAvailableProjectLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableProjectLevels = null;
+            if (parseNode.GetChildNode("available_resource_levels") is { } nullNodeAvailableResourceLevels && nullNodeAvailableResourceLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableResourceLevels = null;
+            if (parseNode.GetChildNode("can_edit") is { } nullNodeCanEdit && nullNodeCanEdit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanEdit = null;
+            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The project access levels, lowest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AvailableProjectLevels { get; set; }
+        public List<string>? AvailableProjectLevels { get => _explicitNullValueAvailableProjectLevels; set { _explicitNullValueAvailableProjectLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_project_levels"); else _explicitNullProperties?.Remove("available_project_levels"); } }
+        private List<string>? _explicitNullValueAvailableProjectLevels = default!;
 #nullable restore
 #else
-        public List<string> AvailableProjectLevels { get; set; }
+        public List<string> AvailableProjectLevels { get => _explicitNullValueAvailableProjectLevels; set { _explicitNullValueAvailableProjectLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_project_levels"); else _explicitNullProperties?.Remove("available_project_levels"); } }
+        private List<string> _explicitNullValueAvailableProjectLevels = default!;
 #endif
         /// <summary>The resource access levels, lowest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AvailableResourceLevels { get; set; }
+        public List<string>? AvailableResourceLevels { get => _explicitNullValueAvailableResourceLevels; set { _explicitNullValueAvailableResourceLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_resource_levels"); else _explicitNullProperties?.Remove("available_resource_levels"); } }
+        private List<string>? _explicitNullValueAvailableResourceLevels = default!;
 #nullable restore
 #else
-        public List<string> AvailableResourceLevels { get; set; }
+        public List<string> AvailableResourceLevels { get => _explicitNullValueAvailableResourceLevels; set { _explicitNullValueAvailableResourceLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_resource_levels"); else _explicitNullProperties?.Remove("available_resource_levels"); } }
+        private List<string> _explicitNullValueAvailableResourceLevels = default!;
 #endif
         /// <summary>Whether the caller may change access rules in this project.</summary>
-        public bool? CanEdit { get; set; }
+        public bool? CanEdit { get => _explicitNullValueCanEdit; set { _explicitNullValueCanEdit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_edit"); else _explicitNullProperties?.Remove("can_edit"); } }
+        private bool? _explicitNullValueCanEdit = default!;
         /// <summary>One entry per role in the organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRoleAccess>? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRoleAccess>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRoleAccess>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRoleAccess> Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRoleAccess> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRoleAccess> _explicitNullValueResults = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRolesResponse"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRolesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRolesResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRolesResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("available_resource_levels", AvailableResourceLevels);
             writer.WriteBoolValue("can_edit", CanEdit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlRoleAccess>("results", Results);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,72 +11,105 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QueryResponseAlternative20 : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bias_risk") is { } nullNodeBiasRisk && nullNodeBiasRisk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BiasRisk = null;
+            if (parseNode.GetChildNode("date_range") is { } nullNodeDateRange && nullNodeDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateRange = null;
+            if (parseNode.GetChildNode("health_checks") is { } nullNodeHealthChecks && nullNodeHealthChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HealthChecks = null;
+            if (parseNode.GetChildNode("health_findings") is { } nullNodeHealthFindings && nullNodeHealthFindings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HealthFindings = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("sample_ratio_mismatch") is { } nullNodeSampleRatioMismatch && nullNodeSampleRatioMismatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleRatioMismatch = null;
+            if (parseNode.GetChildNode("timeseries") is { } nullNodeTimeseries && nullNodeTimeseries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timeseries = null;
+            if (parseNode.GetChildNode("total_exposures") is { } nullNodeTotalExposures && nullNodeTotalExposures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalExposures = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>The bias_risk property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk? BiasRisk { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk? BiasRisk { get => _explicitNullValueBiasRisk; set { _explicitNullValueBiasRisk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bias_risk"); else _explicitNullProperties?.Remove("bias_risk"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk? _explicitNullValueBiasRisk = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk BiasRisk { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk BiasRisk { get => _explicitNullValueBiasRisk; set { _explicitNullValueBiasRisk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bias_risk"); else _explicitNullProperties?.Remove("bias_risk"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiasRisk _explicitNullValueBiasRisk = default!;
 #endif
         /// <summary>The date_range property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_range"); else _explicitNullProperties?.Remove("date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DateRange? _explicitNullValueDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_range"); else _explicitNullProperties?.Remove("date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DateRange _explicitNullValueDateRange = default!;
 #endif
         /// <summary>The result of each check behind `health_findings`, so that a check that did not run is not read as passed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthCheck>? HealthChecks { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthCheck>? HealthChecks { get => _explicitNullValueHealthChecks; set { _explicitNullValueHealthChecks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_checks"); else _explicitNullProperties?.Remove("health_checks"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthCheck>? _explicitNullValueHealthChecks = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthCheck> HealthChecks { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthCheck> HealthChecks { get => _explicitNullValueHealthChecks; set { _explicitNullValueHealthChecks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_checks"); else _explicitNullProperties?.Remove("health_checks"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthCheck> _explicitNullValueHealthChecks = default!;
 #endif
         /// <summary>Health check diagnostics that read the exposures: zero exposures, a sample ratio mismatch, and bias. Empty when every check passed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthFinding>? HealthFindings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthFinding>? HealthFindings { get => _explicitNullValueHealthFindings; set { _explicitNullValueHealthFindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_findings"); else _explicitNullProperties?.Remove("health_findings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthFinding>? _explicitNullValueHealthFindings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthFinding> HealthFindings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthFinding> HealthFindings { get => _explicitNullValueHealthFindings; set { _explicitNullValueHealthFindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_findings"); else _explicitNullProperties?.Remove("health_findings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureHealthFinding> _explicitNullValueHealthFindings = default!;
 #endif
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20Kind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20Kind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20Kind? _explicitNullValueKind = default!;
         /// <summary>The sample_ratio_mismatch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch? SampleRatioMismatch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch? SampleRatioMismatch { get => _explicitNullValueSampleRatioMismatch; set { _explicitNullValueSampleRatioMismatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_ratio_mismatch"); else _explicitNullProperties?.Remove("sample_ratio_mismatch"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch? _explicitNullValueSampleRatioMismatch = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch SampleRatioMismatch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch SampleRatioMismatch { get => _explicitNullValueSampleRatioMismatch; set { _explicitNullValueSampleRatioMismatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_ratio_mismatch"); else _explicitNullProperties?.Remove("sample_ratio_mismatch"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch _explicitNullValueSampleRatioMismatch = default!;
 #endif
         /// <summary>The timeseries property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries>? Timeseries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries>? Timeseries { get => _explicitNullValueTimeseries; set { _explicitNullValueTimeseries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeseries"); else _explicitNullProperties?.Remove("timeseries"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries>? _explicitNullValueTimeseries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries> Timeseries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries> Timeseries { get => _explicitNullValueTimeseries; set { _explicitNullValueTimeseries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeseries"); else _explicitNullProperties?.Remove("timeseries"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries> _explicitNullValueTimeseries = default!;
 #endif
         /// <summary>The total_exposures property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20TotalExposuresProperty? TotalExposures { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20TotalExposuresProperty? TotalExposures { get => _explicitNullValueTotalExposures; set { _explicitNullValueTotalExposures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_exposures"); else _explicitNullProperties?.Remove("total_exposures"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20TotalExposuresProperty? _explicitNullValueTotalExposures = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20TotalExposuresProperty TotalExposures { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20TotalExposuresProperty TotalExposures { get => _explicitNullValueTotalExposures; set { _explicitNullValueTotalExposures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_exposures"); else _explicitNullProperties?.Remove("total_exposures"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20TotalExposuresProperty _explicitNullValueTotalExposures = default!;
 #endif
         /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -86,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -122,7 +155,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SampleRatioMismatch>("sample_ratio_mismatch", SampleRatioMismatch);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureTimeSeries>("timeseries", Timeseries);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryResponseAlternative20TotalExposuresProperty>("total_exposures", TotalExposures);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

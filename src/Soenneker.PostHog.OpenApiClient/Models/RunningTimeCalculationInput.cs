@@ -12,29 +12,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunningTimeCalculationInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_stats") is { } nullNodeBaselineStats && nullNodeBaselineStats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineStats = null;
+            if (parseNode.GetChildNode("baseline_value") is { } nullNodeBaselineValue && nullNodeBaselineValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineValue = null;
+            if (parseNode.GetChildNode("exposure_rate_per_day") is { } nullNodeExposureRatePerDay && nullNodeExposureRatePerDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposureRatePerDay = null;
+            if (parseNode.GetChildNode("metric_type") is { } nullNodeMetricType && nullNodeMetricType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricType = null;
+            if (parseNode.GetChildNode("minimum_detectable_effect") is { } nullNodeMinimumDetectableEffect && nullNodeMinimumDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinimumDetectableEffect = null;
+            if (parseNode.GetChildNode("number_of_variants") is { } nullNodeNumberOfVariants && nullNodeNumberOfVariants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumberOfVariants = null;
+            if (parseNode.GetChildNode("variance") is { } nullNodeVariance && nullNodeVariance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variance = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Raw control-group statistics. When provided, the server derives baseline_value and variance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats? BaselineStats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats? BaselineStats { get => _explicitNullValueBaselineStats; set { _explicitNullValueBaselineStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_stats"); else _explicitNullProperties?.Remove("baseline_stats"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats? _explicitNullValueBaselineStats = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats BaselineStats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats BaselineStats { get => _explicitNullValueBaselineStats; set { _explicitNullValueBaselineStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_stats"); else _explicitNullProperties?.Remove("baseline_stats"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats _explicitNullValueBaselineStats = default!;
 #endif
         /// <summary>Baseline metric value: conversion rate as a fraction 0-1 (funnel), average per user (mean), or the ratio (ratio/retention). Provide this or baseline_stats.</summary>
-        public double? BaselineValue { get; set; }
+        public double? BaselineValue { get => _explicitNullValueBaselineValue; set { _explicitNullValueBaselineValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_value"); else _explicitNullProperties?.Remove("baseline_value"); } }
+        private double? _explicitNullValueBaselineValue = default!;
         /// <summary>Expected exposures per day. When provided, the response includes the recommended running time.</summary>
-        public double? ExposureRatePerDay { get; set; }
+        public double? ExposureRatePerDay { get => _explicitNullValueExposureRatePerDay; set { _explicitNullValueExposureRatePerDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_rate_per_day"); else _explicitNullProperties?.Remove("exposure_rate_per_day"); } }
+        private double? _explicitNullValueExposureRatePerDay = default!;
         /// <summary>* `funnel` - funnel* `mean_count` - mean_count* `mean_sum_or_avg` - mean_sum_or_avg* `ratio` - ratio* `retention` - retention</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType? MetricType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType? MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType? _explicitNullValueMetricType = default!;
         /// <summary>Smallest relative change to detect, as a percentage (e.g. 5 means a 5% lift). Must be &gt; 0.</summary>
-        public double? MinimumDetectableEffect { get; set; }
+        public double? MinimumDetectableEffect { get => _explicitNullValueMinimumDetectableEffect; set { _explicitNullValueMinimumDetectableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum_detectable_effect"); else _explicitNullProperties?.Remove("minimum_detectable_effect"); } }
+        private double? _explicitNullValueMinimumDetectableEffect = default!;
         /// <summary>Total number of variants including control (default 2, at most 100).</summary>
-        public int? NumberOfVariants { get; set; }
+        public int? NumberOfVariants { get => _explicitNullValueNumberOfVariants; set { _explicitNullValueNumberOfVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number_of_variants"); else _explicitNullProperties?.Remove("number_of_variants"); } }
+        private int? _explicitNullValueNumberOfVariants = default!;
         /// <summary>Pre-computed variance per user. Provide this or baseline_stats when metric_type is ratio/retention and baseline_value is given directly. When given, it replaces the variance the calculator derives for any metric type, including p(1-p) for funnels.</summary>
-        public double? Variance { get; set; }
+        public double? Variance { get => _explicitNullValueVariance; set { _explicitNullValueVariance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variance"); else _explicitNullProperties?.Remove("variance"); } }
+        private double? _explicitNullValueVariance = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInput"/> and sets the default values.
         /// </summary>
@@ -51,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("minimum_detectable_effect", MinimumDetectableEffect);
             writer.WriteIntValue("number_of_variants", NumberOfVariants);
             writer.WriteDoubleValue("variance", Variance);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

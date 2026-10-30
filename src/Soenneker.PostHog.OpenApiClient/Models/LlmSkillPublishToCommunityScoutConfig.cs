@@ -12,28 +12,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LlmSkillPublishToCommunityScoutConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("emit") is { } nullNodeEmit && nullNodeEmit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emit = null;
+            if (parseNode.GetChildNode("run_cron_schedule") is { } nullNodeRunCronSchedule && nullNodeRunCronSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCronSchedule = null;
+            if (parseNode.GetChildNode("run_interval_minutes") is { } nullNodeRunIntervalMinutes && nullNodeRunIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIntervalMinutes = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the scout writes its reports to the inbox. False means it runs as a dry run.</summary>
-        public bool? Emit { get; set; }
+        public bool? Emit { get => _explicitNullValueEmit; set { _explicitNullValueEmit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit"); else _explicitNullProperties?.Remove("emit"); } }
+        private bool? _explicitNullValueEmit = default!;
         /// <summary>Five-field cron expression for the scout&apos;s schedule, which takes precedence over the interval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunCronSchedule { get; set; }
+        public string? RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
+        private string? _explicitNullValueRunCronSchedule = default!;
 #nullable restore
 #else
-        public string RunCronSchedule { get; set; }
+        public string RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
+        private string _explicitNullValueRunCronSchedule = default!;
 #endif
         /// <summary>How often the scout runs, in minutes. Ignored when run_cron_schedule is set.</summary>
-        public int? RunIntervalMinutes { get; set; }
+        public int? RunIntervalMinutes { get => _explicitNullValueRunIntervalMinutes; set { _explicitNullValueRunIntervalMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_interval_minutes"); else _explicitNullProperties?.Remove("run_interval_minutes"); } }
+        private int? _explicitNullValueRunIntervalMinutes = default!;
         /// <summary>Tags used to group the scout in the fleet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig"/> and sets the default values.
@@ -50,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("run_cron_schedule", RunCronSchedule);
             writer.WriteIntValue("run_interval_minutes", RunIntervalMinutes);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

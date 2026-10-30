@@ -11,82 +11,118 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FeatureFlagTestEvaluationResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("condition_index") is { } nullNodeConditionIndex && nullNodeConditionIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionIndex = null;
+            if (parseNode.GetChildNode("conditions") is { } nullNodeConditions && nullNodeConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conditions = null;
+            if (parseNode.GetChildNode("conditions_unavailable_reason") is { } nullNodeConditionsUnavailableReason && nullNodeConditionsUnavailableReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionsUnavailableReason = null;
+            if (parseNode.GetChildNode("evaluation_distinct_id") is { } nullNodeEvaluationDistinctId && nullNodeEvaluationDistinctId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationDistinctId = null;
+            if (parseNode.GetChildNode("flag_key") is { } nullNodeFlagKey && nullNodeFlagKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagKey = null;
+            if (parseNode.GetChildNode("payload") is { } nullNodePayload && nullNodePayload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Payload = null;
+            if (parseNode.GetChildNode("person_properties") is { } nullNodePersonProperties && nullNodePersonProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonProperties = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("reason_description") is { } nullNodeReasonDescription && nullNodeReasonDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasonDescription = null;
+            if (parseNode.GetChildNode("result") is { } nullNodeResult && nullNodeResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Result = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The index of the condition that matched, if applicable. For a flag with config version 2, the zero-based index of the rule in `filters.rules` that decided the result, or null when no rule decided it.</summary>
-        public int? ConditionIndex { get; set; }
+        public int? ConditionIndex { get => _explicitNullValueConditionIndex; set { _explicitNullValueConditionIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_index"); else _explicitNullProperties?.Remove("condition_index"); } }
+        private int? _explicitNullValueConditionIndex = default!;
         /// <summary>Detailed analysis of each condition in the feature flag. Always empty for a flag with config version 2, which `conditions_unavailable_reason` then explains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis>? Conditions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis>? Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis>? _explicitNullValueConditions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis> Conditions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis> Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis> _explicitNullValueConditions = default!;
 #endif
         /// <summary>Present only when `conditions` is empty because the evaluated config has no per-condition analysis. An empty list then does not mean the flag has no conditions or rules.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConditionsUnavailableReason { get; set; }
+        public string? ConditionsUnavailableReason { get => _explicitNullValueConditionsUnavailableReason; set { _explicitNullValueConditionsUnavailableReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions_unavailable_reason"); else _explicitNullProperties?.Remove("conditions_unavailable_reason"); } }
+        private string? _explicitNullValueConditionsUnavailableReason = default!;
 #nullable restore
 #else
-        public string ConditionsUnavailableReason { get; set; }
+        public string ConditionsUnavailableReason { get => _explicitNullValueConditionsUnavailableReason; set { _explicitNullValueConditionsUnavailableReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions_unavailable_reason"); else _explicitNullProperties?.Remove("conditions_unavailable_reason"); } }
+        private string _explicitNullValueConditionsUnavailableReason = default!;
 #endif
         /// <summary>The distinct_id used for rollout/variant bucketing. Echoes the caller-provided distinct_id when one was sent; null on the person_id path so the endpoint doesn&apos;t leak the person&apos;s other distinct_ids to a feature_flag:read-only token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvaluationDistinctId { get; set; }
+        public string? EvaluationDistinctId { get => _explicitNullValueEvaluationDistinctId; set { _explicitNullValueEvaluationDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_distinct_id"); else _explicitNullProperties?.Remove("evaluation_distinct_id"); } }
+        private string? _explicitNullValueEvaluationDistinctId = default!;
 #nullable restore
 #else
-        public string EvaluationDistinctId { get; set; }
+        public string EvaluationDistinctId { get => _explicitNullValueEvaluationDistinctId; set { _explicitNullValueEvaluationDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_distinct_id"); else _explicitNullProperties?.Remove("evaluation_distinct_id"); } }
+        private string _explicitNullValueEvaluationDistinctId = default!;
 #endif
         /// <summary>Feature flag key</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FlagKey { get; set; }
+        public string? FlagKey { get => _explicitNullValueFlagKey; set { _explicitNullValueFlagKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_key"); else _explicitNullProperties?.Remove("flag_key"); } }
+        private string? _explicitNullValueFlagKey = default!;
 #nullable restore
 #else
-        public string FlagKey { get; set; }
+        public string FlagKey { get => _explicitNullValueFlagKey; set { _explicitNullValueFlagKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_key"); else _explicitNullProperties?.Remove("flag_key"); } }
+        private string _explicitNullValueFlagKey = default!;
 #endif
         /// <summary>Payload associated with the flag result, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Payload { get; set; }
+        public UntypedNode? Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
+        private UntypedNode? _explicitNullValuePayload = default!;
 #nullable restore
 #else
-        public UntypedNode Payload { get; set; }
+        public UntypedNode Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
+        private UntypedNode _explicitNullValuePayload = default!;
 #endif
         /// <summary>Person properties at the time of evaluation (for historical evaluations)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty? PersonProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty? PersonProperties { get => _explicitNullValuePersonProperties; set { _explicitNullValuePersonProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_properties"); else _explicitNullProperties?.Remove("person_properties"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty? _explicitNullValuePersonProperties = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty PersonProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty PersonProperties { get => _explicitNullValuePersonProperties; set { _explicitNullValuePersonProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_properties"); else _explicitNullProperties?.Remove("person_properties"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponsePersonPropertiesProperty _explicitNullValuePersonProperties = default!;
 #endif
         /// <summary>The reason for the evaluation result</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Human-readable explanation of the evaluation result. Set when the reason code is coarse, for example a non-match decided by a behavioral or realtime cohort whose membership is not fully evaluated here, which can disagree with the cohort&apos;s member list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReasonDescription { get; set; }
+        public string? ReasonDescription { get => _explicitNullValueReasonDescription; set { _explicitNullValueReasonDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason_description"); else _explicitNullProperties?.Remove("reason_description"); } }
+        private string? _explicitNullValueReasonDescription = default!;
 #nullable restore
 #else
-        public string ReasonDescription { get; set; }
+        public string ReasonDescription { get => _explicitNullValueReasonDescription; set { _explicitNullValueReasonDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason_description"); else _explicitNullProperties?.Remove("reason_description"); } }
+        private string _explicitNullValueReasonDescription = default!;
 #endif
         /// <summary>The evaluated value of the feature flag (boolean or variant key string)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Result { get; set; }
+        public UntypedNode? Result { get => _explicitNullValueResult; set { _explicitNullValueResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result"); else _explicitNullProperties?.Remove("result"); } }
+        private UntypedNode? _explicitNullValueResult = default!;
 #nullable restore
 #else
-        public UntypedNode Result { get; set; }
+        public UntypedNode Result { get => _explicitNullValueResult; set { _explicitNullValueResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result"); else _explicitNullProperties?.Remove("result"); } }
+        private UntypedNode _explicitNullValueResult = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponse"/> and sets the default values.
@@ -103,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagTestEvaluationResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -142,6 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("reason_description", ReasonDescription);
             writer.WriteObjectValue<UntypedNode>("result", Result);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

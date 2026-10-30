@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Ite
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Refresh repositories accessible to a specific GitHub installation.

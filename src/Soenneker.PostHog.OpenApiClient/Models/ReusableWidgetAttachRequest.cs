@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReusableWidgetAttachRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("input_bindings") is { } nullNodeInputBindings && nullNodeInputBindings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputBindings = null;
+            if (parseNode.GetChildNode("version_id") is { } nullNodeVersionId && nullNodeVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionId = null;
+            if (parseNode.GetChildNode("widget_id") is { } nullNodeWidgetId && nullNodeWidgetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WidgetId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Notebook-local input mappings keyed by contract slot. Each value names a source dataframe and may include pure Hog source for reshaping its rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequestInputBindingsProperty? InputBindings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequestInputBindingsProperty? InputBindings { get => _explicitNullValueInputBindings; set { _explicitNullValueInputBindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_bindings"); else _explicitNullProperties?.Remove("input_bindings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequestInputBindingsProperty? _explicitNullValueInputBindings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequestInputBindingsProperty InputBindings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequestInputBindingsProperty InputBindings { get => _explicitNullValueInputBindings; set { _explicitNullValueInputBindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_bindings"); else _explicitNullProperties?.Remove("input_bindings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequestInputBindingsProperty _explicitNullValueInputBindings = default!;
 #endif
         /// <summary>Version to pin, or null to follow the reusable widget&apos;s latest version.</summary>
-        public Guid? VersionId { get; set; }
+        public Guid? VersionId { get => _explicitNullValueVersionId; set { _explicitNullValueVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_id"); else _explicitNullProperties?.Remove("version_id"); } }
+        private Guid? _explicitNullValueVersionId = default!;
         /// <summary>Reusable widget to place in this notebook node.</summary>
-        public Guid? WidgetId { get; set; }
+        public Guid? WidgetId { get => _explicitNullValueWidgetId; set { _explicitNullValueWidgetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget_id"); else _explicitNullProperties?.Remove("widget_id"); } }
+        private Guid? _explicitNullValueWidgetId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequest"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetAttachRequestInputBindingsProperty>("input_bindings", InputBindings);
             writer.WriteGuidValue("version_id", VersionId);
             writer.WriteGuidValue("widget_id", WidgetId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

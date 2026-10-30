@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_email_draft
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EmailDraft>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EmailDraft.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EmailDraft>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EmailDraft.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Write a first draft of an email to the people an entity points at. A model writes it when the project has AI drafts on and the organization approved AI data processing; otherwise, or when the model fails, the fixed template for the source is returned. Nothing is saved.

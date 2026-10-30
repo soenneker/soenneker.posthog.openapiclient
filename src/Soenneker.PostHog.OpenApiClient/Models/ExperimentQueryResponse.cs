@@ -11,58 +11,87 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentQueryResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline") is { } nullNodeBaseline && nullNodeBaseline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Baseline = null;
+            if (parseNode.GetChildNode("breakdown_results") is { } nullNodeBreakdownResults && nullNodeBreakdownResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownResults = null;
+            if (parseNode.GetChildNode("clickhouse_sql") is { } nullNodeClickhouseSql && nullNodeClickhouseSql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClickhouseSql = null;
+            if (parseNode.GetChildNode("hogql") is { } nullNodeHogql && nullNodeHogql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hogql = null;
+            if (parseNode.GetChildNode("is_precomputed") is { } nullNodeIsPrecomputed && nullNodeIsPrecomputed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPrecomputed = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("variant_results") is { } nullNodeVariantResults && nullNodeVariantResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantResults = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>The baseline property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated? Baseline { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated? Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated? _explicitNullValueBaseline = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated Baseline { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated _explicitNullValueBaseline = default!;
 #endif
         /// <summary>Results grouped by breakdown value. When present, baseline and variant_results contain aggregated data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult>? BreakdownResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult>? BreakdownResults { get => _explicitNullValueBreakdownResults; set { _explicitNullValueBreakdownResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_results"); else _explicitNullProperties?.Remove("breakdown_results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult>? _explicitNullValueBreakdownResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult> BreakdownResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult> BreakdownResults { get => _explicitNullValueBreakdownResults; set { _explicitNullValueBreakdownResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_results"); else _explicitNullProperties?.Remove("breakdown_results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult> _explicitNullValueBreakdownResults = default!;
 #endif
         /// <summary>The clickhouse_sql property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClickhouseSql { get; set; }
+        public string? ClickhouseSql { get => _explicitNullValueClickhouseSql; set { _explicitNullValueClickhouseSql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clickhouse_sql"); else _explicitNullProperties?.Remove("clickhouse_sql"); } }
+        private string? _explicitNullValueClickhouseSql = default!;
 #nullable restore
 #else
-        public string ClickhouseSql { get; set; }
+        public string ClickhouseSql { get => _explicitNullValueClickhouseSql; set { _explicitNullValueClickhouseSql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clickhouse_sql"); else _explicitNullProperties?.Remove("clickhouse_sql"); } }
+        private string _explicitNullValueClickhouseSql = default!;
 #endif
         /// <summary>The hogql property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hogql { get; set; }
+        public string? Hogql { get => _explicitNullValueHogql; set { _explicitNullValueHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql"); else _explicitNullProperties?.Remove("hogql"); } }
+        private string? _explicitNullValueHogql = default!;
 #nullable restore
 #else
-        public string Hogql { get; set; }
+        public string Hogql { get => _explicitNullValueHogql; set { _explicitNullValueHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql"); else _explicitNullProperties?.Remove("hogql"); } }
+        private string _explicitNullValueHogql = default!;
 #endif
         /// <summary>Whether exposures were served from the precomputation system</summary>
-        public bool? IsPrecomputed { get; set; }
+        public bool? IsPrecomputed { get => _explicitNullValueIsPrecomputed; set { _explicitNullValueIsPrecomputed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_precomputed"); else _explicitNullProperties?.Remove("is_precomputed"); } }
+        private bool? _explicitNullValueIsPrecomputed = default!;
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseKind? _explicitNullValueKind = default!;
         /// <summary>The variant_results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults? VariantResults { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults? VariantResults { get => _explicitNullValueVariantResults; set { _explicitNullValueVariantResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_results"); else _explicitNullProperties?.Remove("variant_results"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults? _explicitNullValueVariantResults = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults VariantResults { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults VariantResults { get => _explicitNullValueVariantResults; set { _explicitNullValueVariantResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_results"); else _explicitNullProperties?.Remove("variant_results"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults _explicitNullValueVariantResults = default!;
 #endif
         /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -72,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,7 +135,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_precomputed", IsPrecomputed);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryResponseVariantResults>("variant_results", VariantResults);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

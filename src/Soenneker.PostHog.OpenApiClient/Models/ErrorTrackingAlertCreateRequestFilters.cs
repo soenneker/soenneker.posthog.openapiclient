@@ -12,14 +12,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingAlertCreateRequestFilters : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("events") is { } nullNodeEvents && nullNodeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Events = null;
+            if (parseNode.GetChildNode("filter_test_accounts") is { } nullNodeFilterTestAccounts && nullNodeFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTestAccounts = null;
+            if (parseNode.GetChildNode("properties") is { } nullNodeProperties && nullNodeProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Properties = null;
+        }
+
         /// <summary>Action filters a transition must match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersActionsItemProperty>? Actions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersActionsItemProperty>? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersActionsItemProperty>? _explicitNullValueActions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersActionsItemProperty> Actions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersActionsItemProperty> Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersActionsItemProperty> _explicitNullValueActions = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -34,20 +47,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event filters a transition must match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersEventsItemProperty>? Events { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersEventsItemProperty>? Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersEventsItemProperty>? _explicitNullValueEvents = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersEventsItemProperty> Events { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersEventsItemProperty> Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersEventsItemProperty> _explicitNullValueEvents = default!;
 #endif
         /// <summary>Whether to exclude internal and test accounts.</summary>
-        public bool? FilterTestAccounts { get; set; }
+        public bool? FilterTestAccounts { get => _explicitNullValueFilterTestAccounts; set { _explicitNullValueFilterTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_test_accounts"); else _explicitNullProperties?.Remove("filter_test_accounts"); } }
+        private bool? _explicitNullValueFilterTestAccounts = default!;
         /// <summary>Property filters a transition must match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersPropertiesItemProperty>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersPropertiesItemProperty>? Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersPropertiesItemProperty>? _explicitNullValueProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersPropertiesItemProperty> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersPropertiesItemProperty> Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersPropertiesItemProperty> _explicitNullValueProperties = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertCreateRequestFilters"/> and sets the default values.
@@ -64,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertCreateRequestFilters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertCreateRequestFilters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertCreateRequestFilters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersEventsItemProperty>("events", Events);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAlertFiltersPropertiesItemProperty>("properties", Properties);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

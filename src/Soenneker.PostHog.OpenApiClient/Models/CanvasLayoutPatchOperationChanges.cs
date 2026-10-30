@@ -12,59 +12,91 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasLayoutPatchOperationChanges : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("component") is { } nullNodeComponent && nullNodeComponent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Component = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("generationTaskId") is { } nullNodeGenerationTaskId && nullNodeGenerationTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationTaskId = null;
+            if (parseNode.GetChildNode("h") is { } nullNodeH && nullNodeH.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) H = null;
+            if (parseNode.GetChildNode("prompt") is { } nullNodePrompt && nullNodePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prompt = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("w") is { } nullNodeW && nullNodeW.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) W = null;
+            if (parseNode.GetChildNode("x") is { } nullNodeX && nullNodeX.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) X = null;
+            if (parseNode.GetChildNode("y") is { } nullNodeY && nullNodeY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Y = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Id of the component canvas this placement renders. Required once the placement is live.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Component { get; set; }
+        public string? Component { get => _explicitNullValueComponent; set { _explicitNullValueComponent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("component"); else _explicitNullProperties?.Remove("component"); } }
+        private string? _explicitNullValueComponent = default!;
 #nullable restore
 #else
-        public string Component { get; set; }
+        public string Component { get => _explicitNullValueComponent; set { _explicitNullValueComponent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("component"); else _explicitNullProperties?.Remove("component"); } }
+        private string _explicitNullValueComponent = default!;
 #endif
         /// <summary>Per-placement settings, validated against the component&apos;s configSchema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChangesConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChangesConfig? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChangesConfig? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChangesConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChangesConfig Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChangesConfig _explicitNullValueConfig = default!;
 #endif
         /// <summary>Id of the agent task currently filling this placement, when one is running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GenerationTaskId { get; set; }
+        public string? GenerationTaskId { get => _explicitNullValueGenerationTaskId; set { _explicitNullValueGenerationTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generationTaskId"); else _explicitNullProperties?.Remove("generationTaskId"); } }
+        private string? _explicitNullValueGenerationTaskId = default!;
 #nullable restore
 #else
-        public string GenerationTaskId { get; set; }
+        public string GenerationTaskId { get => _explicitNullValueGenerationTaskId; set { _explicitNullValueGenerationTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generationTaskId"); else _explicitNullProperties?.Remove("generationTaskId"); } }
+        private string _explicitNullValueGenerationTaskId = default!;
 #endif
         /// <summary>Height, in grid rows.</summary>
-        public int? H { get; set; }
+        public int? H { get => _explicitNullValueH; set { _explicitNullValueH = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("h"); else _explicitNullProperties?.Remove("h"); } }
+        private int? _explicitNullValueH = default!;
         /// <summary>For pending/generating/failed placements: what the user asked this box to become.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public string? Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string? _explicitNullValuePrompt = default!;
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public string Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string _explicitNullValuePrompt = default!;
 #endif
         /// <summary>* `pending` - pending* `generating` - generating* `live` - live* `failed` - failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementChangesStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementChangesStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacementChangesStatus? _explicitNullValueStatus = default!;
         /// <summary>Component version to render: &quot;latest&quot; (the default — follows the component&apos;s published build) or a pinned source version id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Version { get; set; }
+        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private string? _explicitNullValueVersion = default!;
 #nullable restore
 #else
-        public string Version { get; set; }
+        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private string _explicitNullValueVersion = default!;
 #endif
         /// <summary>Width, in grid columns.</summary>
-        public int? W { get; set; }
+        public int? W { get => _explicitNullValueW; set { _explicitNullValueW = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("w"); else _explicitNullProperties?.Remove("w"); } }
+        private int? _explicitNullValueW = default!;
         /// <summary>Left edge, in grid columns (0-based).</summary>
-        public int? X { get; set; }
+        public int? X { get => _explicitNullValueX; set { _explicitNullValueX = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x"); else _explicitNullProperties?.Remove("x"); } }
+        private int? _explicitNullValueX = default!;
         /// <summary>Top edge, in grid rows (0-based).</summary>
-        public int? Y { get; set; }
+        public int? Y { get => _explicitNullValueY; set { _explicitNullValueY = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y"); else _explicitNullProperties?.Remove("y"); } }
+        private int? _explicitNullValueY = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChanges"/> and sets the default values.
         /// </summary>
@@ -80,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChanges CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChanges();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPatchOperationChanges(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("w", W);
             writer.WriteIntValue("x", X);
             writer.WriteIntValue("y", Y);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

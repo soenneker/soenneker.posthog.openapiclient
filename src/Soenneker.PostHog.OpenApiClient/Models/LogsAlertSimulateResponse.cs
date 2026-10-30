@@ -11,33 +11,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsAlertSimulateResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("buckets") is { } nullNodeBuckets && nullNodeBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Buckets = null;
+            if (parseNode.GetChildNode("fire_count") is { } nullNodeFireCount && nullNodeFireCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FireCount = null;
+            if (parseNode.GetChildNode("resolve_count") is { } nullNodeResolveCount && nullNodeResolveCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolveCount = null;
+            if (parseNode.GetChildNode("threshold_count") is { } nullNodeThresholdCount && nullNodeThresholdCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdCount = null;
+            if (parseNode.GetChildNode("threshold_operator") is { } nullNodeThresholdOperator && nullNodeThresholdOperator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdOperator = null;
+            if (parseNode.GetChildNode("total_buckets") is { } nullNodeTotalBuckets && nullNodeTotalBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalBuckets = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Time-bucketed counts with full state machine evaluation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateBucket>? Buckets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateBucket>? Buckets { get => _explicitNullValueBuckets; set { _explicitNullValueBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buckets"); else _explicitNullProperties?.Remove("buckets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateBucket>? _explicitNullValueBuckets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateBucket> Buckets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateBucket> Buckets { get => _explicitNullValueBuckets; set { _explicitNullValueBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buckets"); else _explicitNullProperties?.Remove("buckets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateBucket> _explicitNullValueBuckets = default!;
 #endif
         /// <summary>Number of times the alert would have sent a fire notification.</summary>
-        public int? FireCount { get; set; }
+        public int? FireCount { get => _explicitNullValueFireCount; set { _explicitNullValueFireCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fire_count"); else _explicitNullProperties?.Remove("fire_count"); } }
+        private int? _explicitNullValueFireCount = default!;
         /// <summary>Number of times the alert would have sent a resolve notification.</summary>
-        public int? ResolveCount { get; set; }
+        public int? ResolveCount { get => _explicitNullValueResolveCount; set { _explicitNullValueResolveCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolve_count"); else _explicitNullProperties?.Remove("resolve_count"); } }
+        private int? _explicitNullValueResolveCount = default!;
         /// <summary>Threshold count used for evaluation.</summary>
-        public int? ThresholdCount { get; set; }
+        public int? ThresholdCount { get => _explicitNullValueThresholdCount; set { _explicitNullValueThresholdCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_count"); else _explicitNullProperties?.Remove("threshold_count"); } }
+        private int? _explicitNullValueThresholdCount = default!;
         /// <summary>Threshold operator used for evaluation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThresholdOperator { get; set; }
+        public string? ThresholdOperator { get => _explicitNullValueThresholdOperator; set { _explicitNullValueThresholdOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_operator"); else _explicitNullProperties?.Remove("threshold_operator"); } }
+        private string? _explicitNullValueThresholdOperator = default!;
 #nullable restore
 #else
-        public string ThresholdOperator { get; set; }
+        public string ThresholdOperator { get => _explicitNullValueThresholdOperator; set { _explicitNullValueThresholdOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_operator"); else _explicitNullProperties?.Remove("threshold_operator"); } }
+        private string _explicitNullValueThresholdOperator = default!;
 #endif
         /// <summary>Total number of buckets in the simulation window.</summary>
-        public int? TotalBuckets { get; set; }
+        public int? TotalBuckets { get => _explicitNullValueTotalBuckets; set { _explicitNullValueTotalBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_buckets"); else _explicitNullProperties?.Remove("total_buckets"); } }
+        private int? _explicitNullValueTotalBuckets = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateResponse"/> and sets the default values.
         /// </summary>
@@ -53,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("threshold_count", ThresholdCount);
             writer.WriteStringValue("threshold_operator", ThresholdOperator);
             writer.WriteIntValue("total_buckets", TotalBuckets);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

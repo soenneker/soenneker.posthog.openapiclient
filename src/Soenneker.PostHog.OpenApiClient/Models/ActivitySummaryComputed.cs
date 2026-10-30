@@ -11,44 +11,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ActivitySummaryComputed : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("owned") is { } nullNodeOwned && nullNodeOwned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Owned = null;
+            if (parseNode.GetChildNode("pages") is { } nullNodePages && nullNodePages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pages = null;
+            if (parseNode.GetChildNode("products") is { } nullNodeProducts && nullNodeProducts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Products = null;
+            if (parseNode.GetChildNode("schema_version") is { } nullNodeSchemaVersion && nullNodeSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaVersion = null;
+            if (parseNode.GetChildNode("task_count") is { } nullNodeTaskCount && nullNodeTaskCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskCount = null;
+            if (parseNode.GetChildNode("watched") is { } nullNodeWatched && nullNodeWatched.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Watched = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Objects the user created or changed, the most edited first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject>? Owned { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject>? Owned { get => _explicitNullValueOwned; set { _explicitNullValueOwned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owned"); else _explicitNullProperties?.Remove("owned"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject>? _explicitNullValueOwned = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject> Owned { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject> Owned { get => _explicitNullValueOwned; set { _explicitNullValueOwned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owned"); else _explicitNullProperties?.Remove("owned"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject> _explicitNullValueOwned = default!;
 #endif
         /// <summary>Products whose pages the user opened, the most opened first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits>? Pages { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits>? Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits>? _explicitNullValuePages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits> Pages { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits> Pages { get => _explicitNullValuePages; set { _explicitNullValuePages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pages"); else _explicitNullProperties?.Remove("pages"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits> _explicitNullValuePages = default!;
 #endif
         /// <summary>The products the user works in and the products they only visit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts? Products { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts? Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts? _explicitNullValueProducts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts Products { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts _explicitNullValueProducts = default!;
 #endif
         /// <summary>The version of the shape of these fields.</summary>
-        public int? SchemaVersion { get; set; }
+        public int? SchemaVersion { get => _explicitNullValueSchemaVersion; set { _explicitNullValueSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_version"); else _explicitNullProperties?.Remove("schema_version"); } }
+        private int? _explicitNullValueSchemaVersion = default!;
         /// <summary>The number of tasks the user gave to PostHog AI or the Slack agent.</summary>
-        public int? TaskCount { get; set; }
+        public int? TaskCount { get => _explicitNullValueTaskCount; set { _explicitNullValueTaskCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_count"); else _explicitNullProperties?.Remove("task_count"); } }
+        private int? _explicitNullValueTaskCount = default!;
         /// <summary>Objects the user opened on 3 or more days, the most opened first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject>? Watched { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject>? Watched { get => _explicitNullValueWatched; set { _explicitNullValueWatched = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watched"); else _explicitNullProperties?.Remove("watched"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject>? _explicitNullValueWatched = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject> Watched { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject> Watched { get => _explicitNullValueWatched; set { _explicitNullValueWatched = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watched"); else _explicitNullProperties?.Remove("watched"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject> _explicitNullValueWatched = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed"/> and sets the default values.
@@ -65,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("schema_version", SchemaVersion);
             writer.WriteIntValue("task_count", TaskCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject>("watched", Watched);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

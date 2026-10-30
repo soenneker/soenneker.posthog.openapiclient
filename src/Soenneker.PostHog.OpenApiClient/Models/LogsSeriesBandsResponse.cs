@@ -11,33 +11,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsSeriesBandsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("interval_minutes") is { } nullNodeIntervalMinutes && nullNodeIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntervalMinutes = null;
+            if (parseNode.GetChildNode("series") is { } nullNodeSeries && nullNodeSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Series = null;
+            if (parseNode.GetChildNode("series_truncated") is { } nullNodeSeriesTruncated && nullNodeSeriesTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesTruncated = null;
+            if (parseNode.GetChildNode("service_name") is { } nullNodeServiceName && nullNodeServiceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceName = null;
+            if (parseNode.GetChildNode("window_end") is { } nullNodeWindowEnd && nullNodeWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowEnd = null;
+            if (parseNode.GetChildNode("window_start") is { } nullNodeWindowStart && nullNodeWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowStart = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Display grain requested, or picked to cut the window into about 168 buckets when the request left it out.</summary>
-        public int? IntervalMinutes { get; set; }
+        public int? IntervalMinutes { get => _explicitNullValueIntervalMinutes; set { _explicitNullValueIntervalMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval_minutes"); else _explicitNullProperties?.Remove("interval_minutes"); } }
+        private int? _explicitNullValueIntervalMinutes = default!;
         /// <summary>One entry per (namespace, environment, severity) series, ordered by observed volume descending.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandSeries>? Series { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandSeries>? Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandSeries>? _explicitNullValueSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandSeries> Series { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandSeries> Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandSeries> _explicitNullValueSeries = default!;
 #endif
         /// <summary>True when the service has more series than the response carries; the quietest were dropped.</summary>
-        public bool? SeriesTruncated { get; set; }
+        public bool? SeriesTruncated { get => _explicitNullValueSeriesTruncated; set { _explicitNullValueSeriesTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_truncated"); else _explicitNullProperties?.Remove("series_truncated"); } }
+        private bool? _explicitNullValueSeriesTruncated = default!;
         /// <summary>Service the series belong to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ServiceName { get; set; }
+        public string? ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string? _explicitNullValueServiceName = default!;
 #nullable restore
 #else
-        public string ServiceName { get; set; }
+        public string ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string _explicitNullValueServiceName = default!;
 #endif
         /// <summary>End of the observed window (UTC, exclusive).</summary>
-        public DateTimeOffset? WindowEnd { get; set; }
+        public DateTimeOffset? WindowEnd { get => _explicitNullValueWindowEnd; set { _explicitNullValueWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_end"); else _explicitNullProperties?.Remove("window_end"); } }
+        private DateTimeOffset? _explicitNullValueWindowEnd = default!;
         /// <summary>Start of the observed window (UTC, inclusive).</summary>
-        public DateTimeOffset? WindowStart { get; set; }
+        public DateTimeOffset? WindowStart { get => _explicitNullValueWindowStart; set { _explicitNullValueWindowStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_start"); else _explicitNullProperties?.Remove("window_start"); } }
+        private DateTimeOffset? _explicitNullValueWindowStart = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandsResponse"/> and sets the default values.
         /// </summary>
@@ -53,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("service_name", ServiceName);
             writer.WriteDateTimeOffsetValue("window_end", WindowEnd);
             writer.WriteDateTimeOffsetValue("window_start", WindowStart);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

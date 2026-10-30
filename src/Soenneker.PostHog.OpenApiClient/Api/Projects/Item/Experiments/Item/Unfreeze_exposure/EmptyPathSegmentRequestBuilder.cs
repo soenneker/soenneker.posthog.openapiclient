@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Unf
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Reopen enrollment on an exposure-frozen experiment.Removes the snapshot-cohort condition and freeze markers from every releasegroup, restoring the flag&apos;s original targeting: new users can enroll againand already-enrolled users keep their assigned variant. The snapshot cohortis soft-deleted. The serialized status returns to &apos;running&apos;.Returns 400 if the experiment is not running or its exposure is not frozen.

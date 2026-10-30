@@ -11,42 +11,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ConversionRecommendationState : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("can_generate") is { } nullNodeCanGenerate && nullNodeCanGenerate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanGenerate = null;
+            if (parseNode.GetChildNode("generation_disabled_reason") is { } nullNodeGenerationDisabledReason && nullNodeGenerationDisabledReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationDisabledReason = null;
+            if (parseNode.GetChildNode("latest_run") is { } nullNodeLatestRun && nullNodeLatestRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestRun = null;
+            if (parseNode.GetChildNode("result_run") is { } nullNodeResultRun && nullNodeResultRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultRun = null;
+            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this user can request or initialize project recommendations.</summary>
-        public bool? CanGenerate { get; set; }
+        public bool? CanGenerate { get => _explicitNullValueCanGenerate; set { _explicitNullValueCanGenerate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_generate"); else _explicitNullProperties?.Remove("can_generate"); } }
+        private bool? _explicitNullValueCanGenerate = default!;
         /// <summary>Why this user cannot start an analysis, or null when generation is available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GenerationDisabledReason { get; set; }
+        public string? GenerationDisabledReason { get => _explicitNullValueGenerationDisabledReason; set { _explicitNullValueGenerationDisabledReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_disabled_reason"); else _explicitNullProperties?.Remove("generation_disabled_reason"); } }
+        private string? _explicitNullValueGenerationDisabledReason = default!;
 #nullable restore
 #else
-        public string GenerationDisabledReason { get; set; }
+        public string GenerationDisabledReason { get => _explicitNullValueGenerationDisabledReason; set { _explicitNullValueGenerationDisabledReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_disabled_reason"); else _explicitNullProperties?.Remove("generation_disabled_reason"); } }
+        private string _explicitNullValueGenerationDisabledReason = default!;
 #endif
         /// <summary>Latest analysis, including its actual state and observation period.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? LatestRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? _explicitNullValueLatestRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun LatestRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun _explicitNullValueLatestRun = default!;
 #endif
         /// <summary>Completed analysis that supplied the visible recommendations. Previous results remain available during an update or failure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? ResultRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? ResultRun { get => _explicitNullValueResultRun; set { _explicitNullValueResultRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_run"); else _explicitNullProperties?.Remove("result_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? _explicitNullValueResultRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun ResultRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun ResultRun { get => _explicitNullValueResultRun; set { _explicitNullValueResultRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_run"); else _explicitNullProperties?.Remove("result_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun _explicitNullValueResultRun = default!;
 #endif
         /// <summary>Suggested event or action goals with source evidence and business questions. Configure reviewed goals with the existing editor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults? Results { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults Results { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults _explicitNullValueResults = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationState"/> and sets the default values.
@@ -63,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationState CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationState();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationState(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun>("latest_run", LatestRun);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun>("result_run", ResultRun);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults>("results", Results);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,13 +11,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EventSchema : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("event_definition") is { } nullNodeEventDefinition && nullNodeEventDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventDefinition = null;
+            if (parseNode.GetChildNode("property_group_id") is { } nullNodePropertyGroupId && nullNodePropertyGroupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertyGroupId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The event_definition property</summary>
-        public Guid? EventDefinition { get; set; }
+        public Guid? EventDefinition { get => _explicitNullValueEventDefinition; set { _explicitNullValueEventDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_definition"); else _explicitNullProperties?.Remove("event_definition"); } }
+        private Guid? _explicitNullValueEventDefinition = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The property_group property</summary>
@@ -29,7 +39,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.EventSchemaPropertyGroup PropertyGroup { get; private set; }
 #endif
         /// <summary>The property_group_id property</summary>
-        public Guid? PropertyGroupId { get; set; }
+        public Guid? PropertyGroupId { get => _explicitNullValuePropertyGroupId; set { _explicitNullValuePropertyGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property_group_id"); else _explicitNullProperties?.Remove("property_group_id"); } }
+        private Guid? _explicitNullValuePropertyGroupId = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -47,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EventSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EventSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EventSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("event_definition", EventDefinition);
             writer.WriteGuidValue("property_group_id", PropertyGroupId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

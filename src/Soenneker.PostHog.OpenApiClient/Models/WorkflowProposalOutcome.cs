@@ -11,42 +11,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WorkflowProposalOutcome : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("after") is { } nullNodeAfter && nullNodeAfter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) After = null;
+            if (parseNode.GetChildNode("before") is { } nullNodeBefore && nullNodeBefore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Before = null;
+            if (parseNode.GetChildNode("change_ended_at_version") is { } nullNodeChangeEndedAtVersion && nullNodeChangeEndedAtVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangeEndedAtVersion = null;
+            if (parseNode.GetChildNode("unavailable_guardrails") is { } nullNodeUnavailableGuardrails && nullNodeUnavailableGuardrails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnavailableGuardrails = null;
+            if (parseNode.GetChildNode("versions") is { } nullNodeVersions && nullNodeVersions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Versions = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The versions that carried the change. Null until the proposal is applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? After { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? After { get => _explicitNullValueAfter; set { _explicitNullValueAfter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after"); else _explicitNullProperties?.Remove("after"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? _explicitNullValueAfter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome After { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome After { get => _explicitNullValueAfter; set { _explicitNullValueAfter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after"); else _explicitNullProperties?.Remove("after"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome _explicitNullValueAfter = default!;
 #endif
         /// <summary>The version the change was proposed against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? Before { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? _explicitNullValueBefore = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome Before { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome _explicitNullValueBefore = default!;
 #endif
         /// <summary>The version that changed what the suggestion changed, which is where the after side stops. Null while the change is still live.</summary>
-        public int? ChangeEndedAtVersion { get; set; }
+        public int? ChangeEndedAtVersion { get => _explicitNullValueChangeEndedAtVersion; set { _explicitNullValueChangeEndedAtVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change_ended_at_version"); else _explicitNullProperties?.Remove("change_ended_at_version"); } }
+        private int? _explicitNullValueChangeEndedAtVersion = default!;
         /// <summary>Counter-metrics that cannot be read yet, named so their absence is not read as zero.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? UnavailableGuardrails { get; set; }
+        public List<string>? UnavailableGuardrails { get => _explicitNullValueUnavailableGuardrails; set { _explicitNullValueUnavailableGuardrails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_guardrails"); else _explicitNullProperties?.Remove("unavailable_guardrails"); } }
+        private List<string>? _explicitNullValueUnavailableGuardrails = default!;
 #nullable restore
 #else
-        public List<string> UnavailableGuardrails { get; set; }
+        public List<string> UnavailableGuardrails { get => _explicitNullValueUnavailableGuardrails; set { _explicitNullValueUnavailableGuardrails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_guardrails"); else _explicitNullProperties?.Remove("unavailable_guardrails"); } }
+        private List<string> _explicitNullValueUnavailableGuardrails = default!;
 #endif
         /// <summary>Every published version around the change, each read over its own time live, so a later edit shows up as its own point rather than ending the comparison.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>? Versions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>? Versions { get => _explicitNullValueVersions; set { _explicitNullValueVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("versions"); else _explicitNullProperties?.Remove("versions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>? _explicitNullValueVersions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome> Versions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome> Versions { get => _explicitNullValueVersions; set { _explicitNullValueVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("versions"); else _explicitNullProperties?.Remove("versions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome> _explicitNullValueVersions = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome"/> and sets the default values.
@@ -63,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("change_ended_at_version", ChangeEndedAtVersion);
             writer.WriteCollectionOfPrimitiveValues<string>("unavailable_guardrails", UnavailableGuardrails);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>("versions", Versions);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

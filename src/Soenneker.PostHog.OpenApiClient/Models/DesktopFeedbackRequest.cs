@@ -11,87 +11,127 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DesktopFeedbackRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("app_version") is { } nullNodeAppVersion && nullNodeAppVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppVersion = null;
+            if (parseNode.GetChildNode("feedback_app_logs") is { } nullNodeFeedbackAppLogs && nullNodeFeedbackAppLogs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeedbackAppLogs = null;
+            if (parseNode.GetChildNode("feedback_folder_id") is { } nullNodeFeedbackFolderId && nullNodeFeedbackFolderId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeedbackFolderId = null;
+            if (parseNode.GetChildNode("feedback_task_id") is { } nullNodeFeedbackTaskId && nullNodeFeedbackTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeedbackTaskId = null;
+            if (parseNode.GetChildNode("feedback_type") is { } nullNodeFeedbackType && nullNodeFeedbackType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeedbackType = null;
+            if (parseNode.GetChildNode("feedback_view") is { } nullNodeFeedbackView && nullNodeFeedbackView.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeedbackView = null;
+            if (parseNode.GetChildNode("image_1") is { } nullNodeImage1 && nullNodeImage1.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Image1 = null;
+            if (parseNode.GetChildNode("image_2") is { } nullNodeImage2 && nullNodeImage2.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Image2 = null;
+            if (parseNode.GetChildNode("response") is { } nullNodeResponse && nullNodeResponse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Response = null;
+            if (parseNode.GetChildNode("screenshot") is { } nullNodeScreenshot && nullNodeScreenshot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Screenshot = null;
+            if (parseNode.GetChildNode("session_id") is { } nullNodeSessionId && nullNodeSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionId = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Version of PostHog Desktop that submitted the feedback.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AppVersion { get; set; }
+        public string? AppVersion { get => _explicitNullValueAppVersion; set { _explicitNullValueAppVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_version"); else _explicitNullProperties?.Remove("app_version"); } }
+        private string? _explicitNullValueAppVersion = default!;
 #nullable restore
 #else
-        public string AppVersion { get; set; }
+        public string AppVersion { get => _explicitNullValueAppVersion; set { _explicitNullValueAppVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_version"); else _explicitNullProperties?.Remove("app_version"); } }
+        private string _explicitNullValueAppVersion = default!;
 #endif
         /// <summary>Recent Desktop logs that the user chose to include.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeedbackAppLogs { get; set; }
+        public string? FeedbackAppLogs { get => _explicitNullValueFeedbackAppLogs; set { _explicitNullValueFeedbackAppLogs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_app_logs"); else _explicitNullProperties?.Remove("feedback_app_logs"); } }
+        private string? _explicitNullValueFeedbackAppLogs = default!;
 #nullable restore
 #else
-        public string FeedbackAppLogs { get; set; }
+        public string FeedbackAppLogs { get => _explicitNullValueFeedbackAppLogs; set { _explicitNullValueFeedbackAppLogs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_app_logs"); else _explicitNullProperties?.Remove("feedback_app_logs"); } }
+        private string _explicitNullValueFeedbackAppLogs = default!;
 #endif
         /// <summary>Folder that was active when the feedback form opened.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeedbackFolderId { get; set; }
+        public string? FeedbackFolderId { get => _explicitNullValueFeedbackFolderId; set { _explicitNullValueFeedbackFolderId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_folder_id"); else _explicitNullProperties?.Remove("feedback_folder_id"); } }
+        private string? _explicitNullValueFeedbackFolderId = default!;
 #nullable restore
 #else
-        public string FeedbackFolderId { get; set; }
+        public string FeedbackFolderId { get => _explicitNullValueFeedbackFolderId; set { _explicitNullValueFeedbackFolderId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_folder_id"); else _explicitNullProperties?.Remove("feedback_folder_id"); } }
+        private string _explicitNullValueFeedbackFolderId = default!;
 #endif
         /// <summary>Task that was active when the feedback form opened.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeedbackTaskId { get; set; }
+        public string? FeedbackTaskId { get => _explicitNullValueFeedbackTaskId; set { _explicitNullValueFeedbackTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_task_id"); else _explicitNullProperties?.Remove("feedback_task_id"); } }
+        private string? _explicitNullValueFeedbackTaskId = default!;
 #nullable restore
 #else
-        public string FeedbackTaskId { get; set; }
+        public string FeedbackTaskId { get => _explicitNullValueFeedbackTaskId; set { _explicitNullValueFeedbackTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_task_id"); else _explicitNullProperties?.Remove("feedback_task_id"); } }
+        private string _explicitNullValueFeedbackTaskId = default!;
 #endif
         /// <summary>* `bug` - Bug* `feature` - Feature* `general` - General</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestFeedbackType? FeedbackType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestFeedbackType? FeedbackType { get => _explicitNullValueFeedbackType; set { _explicitNullValueFeedbackType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_type"); else _explicitNullProperties?.Remove("feedback_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestFeedbackType? _explicitNullValueFeedbackType = default!;
         /// <summary>Desktop view that was active when the feedback form opened.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeedbackView { get; set; }
+        public string? FeedbackView { get => _explicitNullValueFeedbackView; set { _explicitNullValueFeedbackView = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_view"); else _explicitNullProperties?.Remove("feedback_view"); } }
+        private string? _explicitNullValueFeedbackView = default!;
 #nullable restore
 #else
-        public string FeedbackView { get; set; }
+        public string FeedbackView { get => _explicitNullValueFeedbackView; set { _explicitNullValueFeedbackView = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback_view"); else _explicitNullProperties?.Remove("feedback_view"); } }
+        private string _explicitNullValueFeedbackView = default!;
 #endif
         /// <summary>First image that the user attached.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public byte[]? Image1 { get; set; }
+        public byte[]? Image1 { get => _explicitNullValueImage1; set { _explicitNullValueImage1 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_1"); else _explicitNullProperties?.Remove("image_1"); } }
+        private byte[]? _explicitNullValueImage1 = default!;
 #nullable restore
 #else
-        public byte[] Image1 { get; set; }
+        public byte[] Image1 { get => _explicitNullValueImage1; set { _explicitNullValueImage1 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_1"); else _explicitNullProperties?.Remove("image_1"); } }
+        private byte[] _explicitNullValueImage1 = default!;
 #endif
         /// <summary>Second image that the user attached.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public byte[]? Image2 { get; set; }
+        public byte[]? Image2 { get => _explicitNullValueImage2; set { _explicitNullValueImage2 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_2"); else _explicitNullProperties?.Remove("image_2"); } }
+        private byte[]? _explicitNullValueImage2 = default!;
 #nullable restore
 #else
-        public byte[] Image2 { get; set; }
+        public byte[] Image2 { get => _explicitNullValueImage2; set { _explicitNullValueImage2 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_2"); else _explicitNullProperties?.Remove("image_2"); } }
+        private byte[] _explicitNullValueImage2 = default!;
 #endif
         /// <summary>Feedback text entered by the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Response { get; set; }
+        public string? Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        private string? _explicitNullValueResponse = default!;
 #nullable restore
 #else
-        public string Response { get; set; }
+        public string Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        private string _explicitNullValueResponse = default!;
 #endif
         /// <summary>Screenshot that the user chose to include.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public byte[]? Screenshot { get; set; }
+        public byte[]? Screenshot { get => _explicitNullValueScreenshot; set { _explicitNullValueScreenshot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("screenshot"); else _explicitNullProperties?.Remove("screenshot"); } }
+        private byte[]? _explicitNullValueScreenshot = default!;
 #nullable restore
 #else
-        public byte[] Screenshot { get; set; }
+        public byte[] Screenshot { get => _explicitNullValueScreenshot; set { _explicitNullValueScreenshot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("screenshot"); else _explicitNullProperties?.Remove("screenshot"); } }
+        private byte[] _explicitNullValueScreenshot = default!;
 #endif
         /// <summary>PostHog session recording identifier for the Desktop session.</summary>
-        public Guid? SessionId { get; set; }
+        public Guid? SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private Guid? _explicitNullValueSessionId = default!;
         /// <summary>* `Generic (Leave feedback button)` - Leave Feedback* `Visiting PostHog web` - Posthog Web</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestSource? _explicitNullValueSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequest"/> and sets the default values.
         /// </summary>
@@ -107,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -150,6 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteByteArrayValue("screenshot", Screenshot);
             writer.WriteGuidValue("session_id", SessionId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackRequestSource>("source", Source);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

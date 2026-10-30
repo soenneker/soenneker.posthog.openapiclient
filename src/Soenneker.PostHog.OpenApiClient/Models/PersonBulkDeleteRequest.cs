@@ -11,31 +11,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PersonBulkDeleteRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("delete_events") is { } nullNodeDeleteEvents && nullNodeDeleteEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteEvents = null;
+            if (parseNode.GetChildNode("delete_recordings") is { } nullNodeDeleteRecordings && nullNodeDeleteRecordings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteRecordings = null;
+            if (parseNode.GetChildNode("distinct_ids") is { } nullNodeDistinctIds && nullNodeDistinctIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIds = null;
+            if (parseNode.GetChildNode("ids") is { } nullNodeIds && nullNodeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ids = null;
+            if (parseNode.GetChildNode("keep_person") is { } nullNodeKeepPerson && nullNodeKeepPerson.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeepPerson = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, queue deletion of all events associated with these persons.</summary>
-        public bool? DeleteEvents { get; set; }
+        public bool? DeleteEvents { get => _explicitNullValueDeleteEvents; set { _explicitNullValueDeleteEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_events"); else _explicitNullProperties?.Remove("delete_events"); } }
+        private bool? _explicitNullValueDeleteEvents = default!;
         /// <summary>If true, queue deletion of all recordings associated with these persons.</summary>
-        public bool? DeleteRecordings { get; set; }
+        public bool? DeleteRecordings { get => _explicitNullValueDeleteRecordings; set { _explicitNullValueDeleteRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_recordings"); else _explicitNullProperties?.Remove("delete_recordings"); } }
+        private bool? _explicitNullValueDeleteRecordings = default!;
         /// <summary>A list of distinct IDs whose associated persons will be deleted (max 1000).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DistinctIds { get; set; }
+        public List<string>? DistinctIds { get => _explicitNullValueDistinctIds; set { _explicitNullValueDistinctIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids"); else _explicitNullProperties?.Remove("distinct_ids"); } }
+        private List<string>? _explicitNullValueDistinctIds = default!;
 #nullable restore
 #else
-        public List<string> DistinctIds { get; set; }
+        public List<string> DistinctIds { get => _explicitNullValueDistinctIds; set { _explicitNullValueDistinctIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids"); else _explicitNullProperties?.Remove("distinct_ids"); } }
+        private List<string> _explicitNullValueDistinctIds = default!;
 #endif
         /// <summary>A list of PostHog person UUIDs to delete (max 1000).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Ids { get; set; }
+        public List<string>? Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
+        private List<string>? _explicitNullValueIds = default!;
 #nullable restore
 #else
-        public List<string> Ids { get; set; }
+        public List<string> Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
+        private List<string> _explicitNullValueIds = default!;
 #endif
         /// <summary>If true, keep the person records but delete their events and recordings.</summary>
-        public bool? KeepPerson { get; set; }
+        public bool? KeepPerson { get => _explicitNullValueKeepPerson; set { _explicitNullValueKeepPerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keep_person"); else _explicitNullProperties?.Remove("keep_person"); } }
+        private bool? _explicitNullValueKeepPerson = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteRequest"/> and sets the default values.
         /// </summary>
@@ -54,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("distinct_ids", DistinctIds);
             writer.WriteCollectionOfPrimitiveValues<string>("ids", Ids);
             writer.WriteBoolValue("keep_person", KeepPerson);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

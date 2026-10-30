@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class NotebookKernelConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cpu_cores") is { } nullNodeCpuCores && nullNodeCpuCores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuCores = null;
+            if (parseNode.GetChildNode("idle_timeout_seconds") is { } nullNodeIdleTimeoutSeconds && nullNodeIdleTimeoutSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdleTimeoutSeconds = null;
+            if (parseNode.GetChildNode("memory_gb") is { } nullNodeMemoryGb && nullNodeMemoryGb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryGb = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>CPU cores for the notebook&apos;s sandbox kernel; must be a supported option.</summary>
-        public double? CpuCores { get; set; }
+        public double? CpuCores { get => _explicitNullValueCpuCores; set { _explicitNullValueCpuCores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_cores"); else _explicitNullProperties?.Remove("cpu_cores"); } }
+        private double? _explicitNullValueCpuCores = default!;
         /// <summary>Maximum lifetime of the sandbox kernel in seconds. It shuts down this long after it starts, even while in use. A running kernel keeps its current lifetime until it restarts.</summary>
-        public int? IdleTimeoutSeconds { get; set; }
+        public int? IdleTimeoutSeconds { get => _explicitNullValueIdleTimeoutSeconds; set { _explicitNullValueIdleTimeoutSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idle_timeout_seconds"); else _explicitNullProperties?.Remove("idle_timeout_seconds"); } }
+        private int? _explicitNullValueIdleTimeoutSeconds = default!;
         /// <summary>Memory in GB for the notebook&apos;s sandbox kernel; must be a supported option.</summary>
-        public double? MemoryGb { get; set; }
+        public double? MemoryGb { get => _explicitNullValueMemoryGb; set { _explicitNullValueMemoryGb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_gb"); else _explicitNullProperties?.Remove("memory_gb"); } }
+        private double? _explicitNullValueMemoryGb = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfig"/> and sets the default values.
         /// </summary>
@@ -35,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("cpu_cores", CpuCores);
             writer.WriteIntValue("idle_timeout_seconds", IdleTimeoutSeconds);
             writer.WriteDoubleValue("memory_gb", MemoryGb);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

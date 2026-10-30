@@ -11,25 +11,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentFlagCleanupTask : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("can_view_task") is { } nullNodeCanViewTask && nullNodeCanViewTask.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanViewTask = null;
+            if (parseNode.GetChildNode("is_terminal") is { } nullNodeIsTerminal && nullNodeIsTerminal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsTerminal = null;
+            if (parseNode.GetChildNode("pr_url") is { } nullNodePrUrl && nullNodePrUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrUrl = null;
+            if (parseNode.GetChildNode("run_status") is { } nullNodeRunStatus && nullNodeRunStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunStatus = null;
+            if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the requesting user can open the task in PostHog Desktop. Cleanup tasks are visible to their creator only, so other viewers should not be shown a task link.</summary>
-        public bool? CanViewTask { get; set; }
+        public bool? CanViewTask { get => _explicitNullValueCanViewTask; set { _explicitNullValueCanViewTask = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_view_task"); else _explicitNullProperties?.Remove("can_view_task"); } }
+        private bool? _explicitNullValueCanViewTask = default!;
         /// <summary>Whether the run has finished (successfully or not). Stop polling once true.</summary>
-        public bool? IsTerminal { get; set; }
+        public bool? IsTerminal { get => _explicitNullValueIsTerminal; set { _explicitNullValueIsTerminal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_terminal"); else _explicitNullProperties?.Remove("is_terminal"); } }
+        private bool? _explicitNullValueIsTerminal = default!;
         /// <summary>URL of the pull request the task opened, when it opened one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrUrl { get; set; }
+        public string? PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
+        private string? _explicitNullValuePrUrl = default!;
 #nullable restore
 #else
-        public string PrUrl { get; set; }
+        public string PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
+        private string _explicitNullValuePrUrl = default!;
 #endif
         /// <summary>* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus? RunStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus? RunStatus { get => _explicitNullValueRunStatus; set { _explicitNullValueRunStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_status"); else _explicitNullProperties?.Remove("run_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus? _explicitNullValueRunStatus = default!;
         /// <summary>ID of the flag-cleanup Desktop task.</summary>
-        public Guid? TaskId { get; set; }
+        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
+        private Guid? _explicitNullValueTaskId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask"/> and sets the default values.
         /// </summary>
@@ -45,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("pr_url", PrUrl);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus>("run_status", RunStatus);
             writer.WriteGuidValue("task_id", TaskId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

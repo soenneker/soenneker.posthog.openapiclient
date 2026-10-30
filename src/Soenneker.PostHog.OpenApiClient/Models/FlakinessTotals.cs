@@ -11,33 +11,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FlakinessTotals : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("at_risk") is { } nullNodeAtRisk && nullNodeAtRisk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AtRisk = null;
+            if (parseNode.GetChildNode("broken") is { } nullNodeBroken && nullNodeBroken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Broken = null;
+            if (parseNode.GetChildNode("by_run_type") is { } nullNodeByRunType && nullNodeByRunType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByRunType = null;
+            if (parseNode.GetChildNode("clean") is { } nullNodeClean && nullNodeClean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clean = null;
+            if (parseNode.GetChildNode("listed") is { } nullNodeListed && nullNodeListed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Listed = null;
+            if (parseNode.GetChildNode("needs_decision") is { } nullNodeNeedsDecision && nullNodeNeedsDecision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsDecision = null;
+            if (parseNode.GetChildNode("quarantined") is { } nullNodeQuarantined && nullNodeQuarantined.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quarantined = null;
+            if (parseNode.GetChildNode("tracked") is { } nullNodeTracked && nullNodeTracked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tracked = null;
+            if (parseNode.GetChildNode("unstable") is { } nullNodeUnstable && nullNodeUnstable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unstable = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifiers whose `flakiness_state` is `at_risk`.</summary>
-        public int? AtRisk { get; set; }
+        public int? AtRisk { get => _explicitNullValueAtRisk; set { _explicitNullValueAtRisk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("at_risk"); else _explicitNullProperties?.Remove("at_risk"); } }
+        private int? _explicitNullValueAtRisk = default!;
         /// <summary>Identifiers whose `flakiness_state` is `broken`.</summary>
-        public int? Broken { get; set; }
+        public int? Broken { get => _explicitNullValueBroken; set { _explicitNullValueBroken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("broken"); else _explicitNullProperties?.Remove("broken"); } }
+        private int? _explicitNullValueBroken = default!;
         /// <summary>Listed identifiers per run type, so one suite&apos;s noise can be told from another&apos;s.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotalsByRunTypeProperty? ByRunType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotalsByRunTypeProperty? ByRunType { get => _explicitNullValueByRunType; set { _explicitNullValueByRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_run_type"); else _explicitNullProperties?.Remove("by_run_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotalsByRunTypeProperty? _explicitNullValueByRunType = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotalsByRunTypeProperty ByRunType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotalsByRunTypeProperty ByRunType { get => _explicitNullValueByRunType; set { _explicitNullValueByRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_run_type"); else _explicitNullProperties?.Remove("by_run_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotalsByRunTypeProperty _explicitNullValueByRunType = default!;
 #endif
         /// <summary>Identifiers whose `flakiness_state` is `clean`. They are listed because they carry a quarantine or older gate failures, and reported here so every listed entry is reachable.</summary>
-        public int? Clean { get; set; }
+        public int? Clean { get => _explicitNullValueClean; set { _explicitNullValueClean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clean"); else _explicitNullProperties?.Remove("clean"); } }
+        private int? _explicitNullValueClean = default!;
         /// <summary>Identifiers with an entry in `entries`.</summary>
-        public int? Listed { get; set; }
+        public int? Listed { get => _explicitNullValueListed; set { _explicitNullValueListed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("listed"); else _explicitNullProperties?.Remove("listed"); } }
+        private int? _explicitNullValueListed = default!;
         /// <summary>The needs_decision property</summary>
-        public int? NeedsDecision { get; set; }
+        public int? NeedsDecision { get => _explicitNullValueNeedsDecision; set { _explicitNullValueNeedsDecision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_decision"); else _explicitNullProperties?.Remove("needs_decision"); } }
+        private int? _explicitNullValueNeedsDecision = default!;
         /// <summary>The quarantined property</summary>
-        public int? Quarantined { get; set; }
+        public int? Quarantined { get => _explicitNullValueQuarantined; set { _explicitNullValueQuarantined = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantined"); else _explicitNullProperties?.Remove("quarantined"); } }
+        private int? _explicitNullValueQuarantined = default!;
         /// <summary>Identifiers with a current baseline, listed or not. The denominator that says how much of the repo renders consistently.</summary>
-        public int? Tracked { get; set; }
+        public int? Tracked { get => _explicitNullValueTracked; set { _explicitNullValueTracked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracked"); else _explicitNullProperties?.Remove("tracked"); } }
+        private int? _explicitNullValueTracked = default!;
         /// <summary>Identifiers whose `flakiness_state` is `unstable`.</summary>
-        public int? Unstable { get; set; }
+        public int? Unstable { get => _explicitNullValueUnstable; set { _explicitNullValueUnstable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unstable"); else _explicitNullProperties?.Remove("unstable"); } }
+        private int? _explicitNullValueUnstable = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotals"/> and sets the default values.
         /// </summary>
@@ -53,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotals CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotals();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FlakinessTotals(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("quarantined", Quarantined);
             writer.WriteIntValue("tracked", Tracked);
             writer.WriteIntValue("unstable", Unstable);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualitySuiteRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualitySuiteRunList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualitySuiteRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedDataQualitySuiteRunList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Run checks now: the ones named by check_ids, every enabled check on the subject named by subject_type and subject_uuid, or every enabled check in the project when neither is given. Returns the suite run to poll for the report.
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_quality_runs
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySuiteRun.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Every check-suite run in the project, newest first. Narrow it to one subject with subject_type and subject_uuid.

@@ -11,19 +11,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GapTopicAction : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("normalized_topic") is { } nullNodeNormalizedTopic && nullNodeNormalizedTopic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NormalizedTopic = null;
+            if (parseNode.GetChildNode("resolved_source_id") is { } nullNodeResolvedSourceId && nullNodeResolvedSourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedSourceId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The normalized topic key identifying the gap cluster to act on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NormalizedTopic { get; set; }
+        public string? NormalizedTopic { get => _explicitNullValueNormalizedTopic; set { _explicitNullValueNormalizedTopic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("normalized_topic"); else _explicitNullProperties?.Remove("normalized_topic"); } }
+        private string? _explicitNullValueNormalizedTopic = default!;
 #nullable restore
 #else
-        public string NormalizedTopic { get; set; }
+        public string NormalizedTopic { get => _explicitNullValueNormalizedTopic; set { _explicitNullValueNormalizedTopic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("normalized_topic"); else _explicitNullProperties?.Remove("normalized_topic"); } }
+        private string _explicitNullValueNormalizedTopic = default!;
 #endif
         /// <summary>Optional knowledge source to link when accepting.</summary>
-        public Guid? ResolvedSourceId { get; set; }
+        public Guid? ResolvedSourceId { get => _explicitNullValueResolvedSourceId; set { _explicitNullValueResolvedSourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_source_id"); else _explicitNullProperties?.Remove("resolved_source_id"); } }
+        private Guid? _explicitNullValueResolvedSourceId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GapTopicAction"/> and sets the default values.
         /// </summary>
@@ -39,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GapTopicAction CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GapTopicAction();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GapTopicAction(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("normalized_topic", NormalizedTopic);
             writer.WriteGuidValue("resolved_source_id", ResolvedSourceId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

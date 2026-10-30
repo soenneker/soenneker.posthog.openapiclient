@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Dele
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Soft-delete a single tile from a dashboard.Works for text, insight, and button tiles. The underlying Insight, Text, or ButtonTileobject is preserved — only the dashboard tile is hidden. To delete the entire dashboard,use the dashboard delete endpoint instead.

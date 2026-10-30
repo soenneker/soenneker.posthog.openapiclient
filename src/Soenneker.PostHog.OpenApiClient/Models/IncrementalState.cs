@@ -12,40 +12,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IncrementalState : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("definition_fingerprint") is { } nullNodeDefinitionFingerprint && nullNodeDefinitionFingerprint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionFingerprint = null;
+            if (parseNode.GetChildNode("last_full_refresh_at") is { } nullNodeLastFullRefreshAt && nullNodeLastFullRefreshAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastFullRefreshAt = null;
+            if (parseNode.GetChildNode("last_run_mode") is { } nullNodeLastRunMode && nullNodeLastRunMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRunMode = null;
+            if (parseNode.GetChildNode("watermark") is { } nullNodeWatermark && nullNodeWatermark.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Watermark = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Fingerprint of the query, incremental key, and unique key the stored rows were built from. When it stops matching, the next run rebuilds the whole table. Lookback is not part of it: changing lookback never forces a rebuild.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefinitionFingerprint { get; set; }
+        public string? DefinitionFingerprint { get => _explicitNullValueDefinitionFingerprint; set { _explicitNullValueDefinitionFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_fingerprint"); else _explicitNullProperties?.Remove("definition_fingerprint"); } }
+        private string? _explicitNullValueDefinitionFingerprint = default!;
 #nullable restore
 #else
-        public string DefinitionFingerprint { get; set; }
+        public string DefinitionFingerprint { get => _explicitNullValueDefinitionFingerprint; set { _explicitNullValueDefinitionFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_fingerprint"); else _explicitNullProperties?.Remove("definition_fingerprint"); } }
+        private string _explicitNullValueDefinitionFingerprint = default!;
 #endif
         /// <summary>When the table was last rebuilt from scratch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastFullRefreshAt { get; set; }
+        public string? LastFullRefreshAt { get => _explicitNullValueLastFullRefreshAt; set { _explicitNullValueLastFullRefreshAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_full_refresh_at"); else _explicitNullProperties?.Remove("last_full_refresh_at"); } }
+        private string? _explicitNullValueLastFullRefreshAt = default!;
 #nullable restore
 #else
-        public string LastFullRefreshAt { get; set; }
+        public string LastFullRefreshAt { get => _explicitNullValueLastFullRefreshAt; set { _explicitNullValueLastFullRefreshAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_full_refresh_at"); else _explicitNullProperties?.Remove("last_full_refresh_at"); } }
+        private string _explicitNullValueLastFullRefreshAt = default!;
 #endif
         /// <summary>Whether the last run updated the table or rebuilt it.* `incremental` - incremental* `full_refresh` - full_refresh</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode? LastRunMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode? LastRunMode { get => _explicitNullValueLastRunMode; set { _explicitNullValueLastRunMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_mode"); else _explicitNullProperties?.Remove("last_run_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode? _explicitNullValueLastRunMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode LastRunMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode LastRunMode { get => _explicitNullValueLastRunMode; set { _explicitNullValueLastRunMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_mode"); else _explicitNullProperties?.Remove("last_run_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode _explicitNullValueLastRunMode = default!;
 #endif
         /// <summary>Highest incremental key value written so far. The next run starts here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Watermark { get; set; }
+        public string? Watermark { get => _explicitNullValueWatermark; set { _explicitNullValueWatermark = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watermark"); else _explicitNullProperties?.Remove("watermark"); } }
+        private string? _explicitNullValueWatermark = default!;
 #nullable restore
 #else
-        public string Watermark { get; set; }
+        public string Watermark { get => _explicitNullValueWatermark; set { _explicitNullValueWatermark = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watermark"); else _explicitNullProperties?.Remove("watermark"); } }
+        private string _explicitNullValueWatermark = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("last_full_refresh_at", LastFullRefreshAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode>("last_run_mode", LastRunMode);
             writer.WriteStringValue("watermark", Watermark);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

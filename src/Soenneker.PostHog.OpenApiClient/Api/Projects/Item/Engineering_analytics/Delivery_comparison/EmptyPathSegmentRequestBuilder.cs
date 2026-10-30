@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparison>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparison.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparison>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparison.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// One author&apos;s median ready to merged time, split at the first approval, next to the same medians for the author&apos;s own team and for the whole repository, over pull requests merged in the window (date_from default -30d). The team is picked from the author&apos;s GitHub teams that own code: a team that pr_number asked to review, else the team the author&apos;s pull requests asked to review most often, else every team. Bots and drafts are excluded.

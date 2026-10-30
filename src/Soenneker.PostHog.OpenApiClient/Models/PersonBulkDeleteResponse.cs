@@ -11,27 +11,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PersonBulkDeleteResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("deletion_errors") is { } nullNodeDeletionErrors && nullNodeDeletionErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletionErrors = null;
+            if (parseNode.GetChildNode("events_queued_for_deletion") is { } nullNodeEventsQueuedForDeletion && nullNodeEventsQueuedForDeletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsQueuedForDeletion = null;
+            if (parseNode.GetChildNode("persons_deleted") is { } nullNodePersonsDeleted && nullNodePersonsDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonsDeleted = null;
+            if (parseNode.GetChildNode("persons_found") is { } nullNodePersonsFound && nullNodePersonsFound.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonsFound = null;
+            if (parseNode.GetChildNode("persons_queued_for_deletion") is { } nullNodePersonsQueuedForDeletion && nullNodePersonsQueuedForDeletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonsQueuedForDeletion = null;
+            if (parseNode.GetChildNode("recordings_queued_for_deletion") is { } nullNodeRecordingsQueuedForDeletion && nullNodeRecordingsQueuedForDeletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordingsQueuedForDeletion = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Persons whose deletion did not fully complete in this request. Each entry contains &apos;person_uuid&apos; and &apos;step&apos;, the deletion step that failed for that person. Failures are reported here rather than as an error status, so a 202 with entries means those persons were not deleted and the request should be retried for them. Two steps are exceptions, and retrying won&apos;t find these persons. For &apos;log_activity&apos;, the person was deleted, but the activity log entry was not written. For &apos;publish_clickhouse_tombstone&apos;, the person was deleted, but it can still show in analytics until a weekly cleanup job removes it. Always empty when the deletion was queued (see persons_queued_for_deletion). Contact support if this persists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty>? DeletionErrors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty>? DeletionErrors { get => _explicitNullValueDeletionErrors; set { _explicitNullValueDeletionErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_errors"); else _explicitNullProperties?.Remove("deletion_errors"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty>? _explicitNullValueDeletionErrors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty> DeletionErrors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty> DeletionErrors { get => _explicitNullValueDeletionErrors; set { _explicitNullValueDeletionErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deletion_errors"); else _explicitNullProperties?.Remove("deletion_errors"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponseDeletionErrorsItemProperty> _explicitNullValueDeletionErrors = default!;
 #endif
         /// <summary>Whether event deletion was requested for the matched persons. If a deletion was already queued for a person, it will not be duplicated.</summary>
-        public bool? EventsQueuedForDeletion { get; set; }
+        public bool? EventsQueuedForDeletion { get => _explicitNullValueEventsQueuedForDeletion; set { _explicitNullValueEventsQueuedForDeletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_queued_for_deletion"); else _explicitNullProperties?.Remove("events_queued_for_deletion"); } }
+        private bool? _explicitNullValueEventsQueuedForDeletion = default!;
         /// <summary>Number of person records deleted from the database during this request. 0 if keep_person was true or if the deletion was queued (see persons_queued_for_deletion).</summary>
-        public int? PersonsDeleted { get; set; }
+        public int? PersonsDeleted { get => _explicitNullValuePersonsDeleted; set { _explicitNullValuePersonsDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("persons_deleted"); else _explicitNullProperties?.Remove("persons_deleted"); } }
+        private int? _explicitNullValuePersonsDeleted = default!;
         /// <summary>Number of persons matched by the provided IDs or distinct IDs.</summary>
-        public int? PersonsFound { get; set; }
+        public int? PersonsFound { get => _explicitNullValuePersonsFound; set { _explicitNullValuePersonsFound = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("persons_found"); else _explicitNullProperties?.Remove("persons_found"); } }
+        private int? _explicitNullValuePersonsFound = default!;
         /// <summary>Number of persons queued for deletion in the background. Their person records and distinct IDs are removed shortly after the request completes. 0 if keep_person was true.</summary>
-        public int? PersonsQueuedForDeletion { get; set; }
+        public int? PersonsQueuedForDeletion { get => _explicitNullValuePersonsQueuedForDeletion; set { _explicitNullValuePersonsQueuedForDeletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("persons_queued_for_deletion"); else _explicitNullProperties?.Remove("persons_queued_for_deletion"); } }
+        private int? _explicitNullValuePersonsQueuedForDeletion = default!;
         /// <summary>Whether recording deletion was requested for the matched persons. If a deletion was already queued for a person, it will not be duplicated.</summary>
-        public bool? RecordingsQueuedForDeletion { get; set; }
+        public bool? RecordingsQueuedForDeletion { get => _explicitNullValueRecordingsQueuedForDeletion; set { _explicitNullValueRecordingsQueuedForDeletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recordings_queued_for_deletion"); else _explicitNullProperties?.Remove("recordings_queued_for_deletion"); } }
+        private bool? _explicitNullValueRecordingsQueuedForDeletion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse"/> and sets the default values.
         /// </summary>
@@ -47,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PersonBulkDeleteResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("persons_found", PersonsFound);
             writer.WriteIntValue("persons_queued_for_deletion", PersonsQueuedForDeletion);
             writer.WriteBoolValue("recordings_queued_for_deletion", RecordingsQueuedForDeletion);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

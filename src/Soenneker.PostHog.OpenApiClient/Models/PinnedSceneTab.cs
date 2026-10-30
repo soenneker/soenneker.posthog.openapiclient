@@ -11,90 +11,129 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PinnedSceneTab : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("customTitle") is { } nullNodeCustomTitle && nullNodeCustomTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomTitle = null;
+            if (parseNode.GetChildNode("hash") is { } nullNodeHash && nullNodeHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hash = null;
+            if (parseNode.GetChildNode("iconType") is { } nullNodeIconType && nullNodeIconType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IconType = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("pathname") is { } nullNodePathname && nullNodePathname.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pathname = null;
+            if (parseNode.GetChildNode("pinned") is { } nullNodePinned && nullNodePinned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pinned = null;
+            if (parseNode.GetChildNode("sceneId") is { } nullNodeSceneId && nullNodeSceneId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SceneId = null;
+            if (parseNode.GetChildNode("sceneKey") is { } nullNodeSceneKey && nullNodeSceneKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SceneKey = null;
+            if (parseNode.GetChildNode("sceneParams") is { } nullNodeSceneParams && nullNodeSceneParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SceneParams = null;
+            if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional user-provided title that overrides `title` in the navigation UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomTitle { get; set; }
+        public string? CustomTitle { get => _explicitNullValueCustomTitle; set { _explicitNullValueCustomTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customTitle"); else _explicitNullProperties?.Remove("customTitle"); } }
+        private string? _explicitNullValueCustomTitle = default!;
 #nullable restore
 #else
-        public string CustomTitle { get; set; }
+        public string CustomTitle { get => _explicitNullValueCustomTitle; set { _explicitNullValueCustomTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customTitle"); else _explicitNullProperties?.Remove("customTitle"); } }
+        private string _explicitNullValueCustomTitle = default!;
 #endif
         /// <summary>Fragment portion of the URL, including the leading `#`. Empty string when there is no fragment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hash { get; set; }
+        public string? Hash { get => _explicitNullValueHash; set { _explicitNullValueHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hash"); else _explicitNullProperties?.Remove("hash"); } }
+        private string? _explicitNullValueHash = default!;
 #nullable restore
 #else
-        public string Hash { get; set; }
+        public string Hash { get => _explicitNullValueHash; set { _explicitNullValueHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hash"); else _explicitNullProperties?.Remove("hash"); } }
+        private string _explicitNullValueHash = default!;
 #endif
         /// <summary>Icon key shown next to the tab in the sidebar — for example `dashboard`, `insight`, `blank`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IconType { get; set; }
+        public string? IconType { get => _explicitNullValueIconType; set { _explicitNullValueIconType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iconType"); else _explicitNullProperties?.Remove("iconType"); } }
+        private string? _explicitNullValueIconType = default!;
 #nullable restore
 #else
-        public string IconType { get; set; }
+        public string IconType { get => _explicitNullValueIconType; set { _explicitNullValueIconType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iconType"); else _explicitNullProperties?.Remove("iconType"); } }
+        private string _explicitNullValueIconType = default!;
 #endif
         /// <summary>Stable identifier for the tab. Generated client-side; safe to omit on create.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>URL pathname the tab points at — for example `/project/123/dashboard/45` or `/project/123/insights`. Combined with `search` and `hash` to reconstruct the destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Pathname { get; set; }
+        public string? Pathname { get => _explicitNullValuePathname; set { _explicitNullValuePathname = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathname"); else _explicitNullProperties?.Remove("pathname"); } }
+        private string? _explicitNullValuePathname = default!;
 #nullable restore
 #else
-        public string Pathname { get; set; }
+        public string Pathname { get => _explicitNullValuePathname; set { _explicitNullValuePathname = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathname"); else _explicitNullProperties?.Remove("pathname"); } }
+        private string _explicitNullValuePathname = default!;
 #endif
         /// <summary>Whether this entry is pinned. Always coerced to true on save — pass true or omit.</summary>
-        public bool? Pinned { get; set; }
+        public bool? Pinned { get => _explicitNullValuePinned; set { _explicitNullValuePinned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned"); else _explicitNullProperties?.Remove("pinned"); } }
+        private bool? _explicitNullValuePinned = default!;
         /// <summary>Scene identifier resolved from the pathname when known — used by the frontend for icon/title hints.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SceneId { get; set; }
+        public string? SceneId { get => _explicitNullValueSceneId; set { _explicitNullValueSceneId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sceneId"); else _explicitNullProperties?.Remove("sceneId"); } }
+        private string? _explicitNullValueSceneId = default!;
 #nullable restore
 #else
-        public string SceneId { get; set; }
+        public string SceneId { get => _explicitNullValueSceneId; set { _explicitNullValueSceneId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sceneId"); else _explicitNullProperties?.Remove("sceneId"); } }
+        private string _explicitNullValueSceneId = default!;
 #endif
         /// <summary>Scene key (logic key) for the destination, paired with `sceneParams` for deeper routing context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SceneKey { get; set; }
+        public string? SceneKey { get => _explicitNullValueSceneKey; set { _explicitNullValueSceneKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sceneKey"); else _explicitNullProperties?.Remove("sceneKey"); } }
+        private string? _explicitNullValueSceneKey = default!;
 #nullable restore
 #else
-        public string SceneKey { get; set; }
+        public string SceneKey { get => _explicitNullValueSceneKey; set { _explicitNullValueSceneKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sceneKey"); else _explicitNullProperties?.Remove("sceneKey"); } }
+        private string _explicitNullValueSceneKey = default!;
 #endif
         /// <summary>Free-form scene parameters captured at pin time, used by the frontend to rehydrate the destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SceneParams { get; set; }
+        public UntypedNode? SceneParams { get => _explicitNullValueSceneParams; set { _explicitNullValueSceneParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sceneParams"); else _explicitNullProperties?.Remove("sceneParams"); } }
+        private UntypedNode? _explicitNullValueSceneParams = default!;
 #nullable restore
 #else
-        public UntypedNode SceneParams { get; set; }
+        public UntypedNode SceneParams { get => _explicitNullValueSceneParams; set { _explicitNullValueSceneParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sceneParams"); else _explicitNullProperties?.Remove("sceneParams"); } }
+        private UntypedNode _explicitNullValueSceneParams = default!;
 #endif
         /// <summary>Query string portion of the URL, including the leading `?`. Empty string when there is no query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Search { get; set; }
+        public string? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        private string? _explicitNullValueSearch = default!;
 #nullable restore
 #else
-        public string Search { get; set; }
+        public string Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        private string _explicitNullValueSearch = default!;
 #endif
         /// <summary>Default tab title derived from the destination scene. Used when `customTitle` is not set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab"/> and sets the default values.
@@ -111,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PinnedSceneTab(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -152,6 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("sceneParams", SceneParams);
             writer.WriteStringValue("search", Search);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

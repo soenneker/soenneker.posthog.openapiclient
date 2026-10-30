@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_a
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get person properties as they existed at a specific point in time.This endpoint reconstructs person properties by querying ClickHouse eventsfor $set and $set_once operations up to the specified timestamp.Query parameters:- distinct_id: The distinct_id of the person- timestamp: ISO datetime string for the point in time (e.g., &quot;2023-06-15T14:30:00Z&quot;)- include_set_once: Whether to handle $set_once operations (default: false)

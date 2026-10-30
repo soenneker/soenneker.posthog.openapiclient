@@ -12,15 +12,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ManagedWarehouseMonitoringSnapshotResponseCoverage : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cp_responders") is { } nullNodeCpResponders && nullNodeCpResponders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpResponders = null;
+            if (parseNode.GetChildNode("cp_total") is { } nullNodeCpTotal && nullNodeCpTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpTotal = null;
+            if (parseNode.GetChildNode("partial") is { } nullNodePartial && nullNodePartial.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Partial = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of control planes that contributed live data.</summary>
-        public int? CpResponders { get; set; }
+        public int? CpResponders { get => _explicitNullValueCpResponders; set { _explicitNullValueCpResponders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cp_responders"); else _explicitNullProperties?.Remove("cp_responders"); } }
+        private int? _explicitNullValueCpResponders = default!;
         /// <summary>Number of control planes queried for live data.</summary>
-        public int? CpTotal { get; set; }
+        public int? CpTotal { get => _explicitNullValueCpTotal; set { _explicitNullValueCpTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cp_total"); else _explicitNullProperties?.Remove("cp_total"); } }
+        private int? _explicitNullValueCpTotal = default!;
         /// <summary>Whether one or more control planes failed to contribute live data.</summary>
-        public bool? Partial { get; set; }
+        public bool? Partial { get => _explicitNullValuePartial; set { _explicitNullValuePartial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partial"); else _explicitNullProperties?.Remove("partial"); } }
+        private bool? _explicitNullValuePartial = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseCoverage"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseCoverage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseCoverage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseCoverage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("cp_responders", CpResponders);
             writer.WriteIntValue("cp_total", CpTotal);
             writer.WriteBoolValue("partial", Partial);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

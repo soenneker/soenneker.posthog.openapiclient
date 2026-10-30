@@ -11,16 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UserFacetSettings : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("custom_facets") is { } nullNodeCustomFacets && nullNodeCustomFacets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomFacets = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry>? CustomFacets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry>? CustomFacets { get => _explicitNullValueCustomFacets; set { _explicitNullValueCustomFacets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_facets"); else _explicitNullProperties?.Remove("custom_facets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry>? _explicitNullValueCustomFacets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry> CustomFacets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry> CustomFacets { get => _explicitNullValueCustomFacets; set { _explicitNullValueCustomFacets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_facets"); else _explicitNullProperties?.Remove("custom_facets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry> _explicitNullValueCustomFacets = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettings"/> and sets the default values.
@@ -37,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry>("custom_facets", CustomFacets);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

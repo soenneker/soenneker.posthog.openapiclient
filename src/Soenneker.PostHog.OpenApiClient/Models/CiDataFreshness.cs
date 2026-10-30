@@ -11,13 +11,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CiDataFreshness : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("jobs_synced_at") is { } nullNodeJobsSyncedAt && nullNodeJobsSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobsSyncedAt = null;
+            if (parseNode.GetChildNode("runs_synced_at") is { } nullNodeRunsSyncedAt && nullNodeRunsSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsSyncedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The same time for the stored workflow jobs. Null when jobs are not synced.</summary>
-        public DateTimeOffset? JobsSyncedAt { get; set; }
+        public DateTimeOffset? JobsSyncedAt { get => _explicitNullValueJobsSyncedAt; set { _explicitNullValueJobsSyncedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs_synced_at"); else _explicitNullProperties?.Remove("jobs_synced_at"); } }
+        private DateTimeOffset? _explicitNullValueJobsSyncedAt = default!;
         /// <summary>When the last completed sync of the stored workflow runs started. Every stored run is at least this fresh. The older of the GitHub and Depot CI times when the repository syncs both. Null when a runs table has never synced.</summary>
-        public DateTimeOffset? RunsSyncedAt { get; set; }
+        public DateTimeOffset? RunsSyncedAt { get => _explicitNullValueRunsSyncedAt; set { _explicitNullValueRunsSyncedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_synced_at"); else _explicitNullProperties?.Remove("runs_synced_at"); } }
+        private DateTimeOffset? _explicitNullValueRunsSyncedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness"/> and sets the default values.
         /// </summary>
@@ -33,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("jobs_synced_at", JobsSyncedAt);
             writer.WriteDateTimeOffsetValue("runs_synced_at", RunsSyncedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

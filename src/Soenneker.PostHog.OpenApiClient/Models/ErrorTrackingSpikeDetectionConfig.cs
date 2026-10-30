@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingSpikeDetectionConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("multiplier") is { } nullNodeMultiplier && nullNodeMultiplier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Multiplier = null;
+            if (parseNode.GetChildNode("snooze_duration_minutes") is { } nullNodeSnoozeDurationMinutes && nullNodeSnoozeDurationMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnoozeDurationMinutes = null;
+            if (parseNode.GetChildNode("threshold") is { } nullNodeThreshold && nullNodeThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Threshold = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The factor by which the current exception count must exceed the baseline to be considered a spike.</summary>
-        public int? Multiplier { get; set; }
+        public int? Multiplier { get => _explicitNullValueMultiplier; set { _explicitNullValueMultiplier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiplier"); else _explicitNullProperties?.Remove("multiplier"); } }
+        private int? _explicitNullValueMultiplier = default!;
         /// <summary>Time to wait before alerting again for the same issue after a spike is detected.</summary>
-        public int? SnoozeDurationMinutes { get; set; }
+        public int? SnoozeDurationMinutes { get => _explicitNullValueSnoozeDurationMinutes; set { _explicitNullValueSnoozeDurationMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snooze_duration_minutes"); else _explicitNullProperties?.Remove("snooze_duration_minutes"); } }
+        private int? _explicitNullValueSnoozeDurationMinutes = default!;
         /// <summary>The minimum number of exceptions required in a 5-minute window before a spike can be detected.</summary>
-        public int? Threshold { get; set; }
+        public int? Threshold { get => _explicitNullValueThreshold; set { _explicitNullValueThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold"); else _explicitNullProperties?.Remove("threshold"); } }
+        private int? _explicitNullValueThreshold = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeDetectionConfig"/> and sets the default values.
         /// </summary>
@@ -35,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeDetectionConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeDetectionConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSpikeDetectionConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("multiplier", Multiplier);
             writer.WriteIntValue("snooze_duration_minutes", SnoozeDurationMinutes);
             writer.WriteIntValue("threshold", Threshold);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

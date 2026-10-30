@@ -12,7 +12,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CustomPropertyDefinition : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("display_type") is { } nullNodeDisplayType && nullNodeDisplayType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayType = null;
+            if (parseNode.GetChildNode("group_type_index") is { } nullNodeGroupTypeIndex && nullNodeGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupTypeIndex = null;
+            if (parseNode.GetChildNode("is_big_number") is { } nullNodeIsBigNumber && nullNodeIsBigNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsBigNumber = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
+            if (parseNode.GetChildNode("target_type") is { } nullNodeTargetType && nullNodeTargetType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
@@ -22,38 +36,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional description of what the property represents.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>* `text` - text* `link` - link* `number` - number* `currency` - currency* `percent` - percent* `date` - date* `datetime` - datetime* `boolean` - boolean* `select` - select</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionDisplayType? DisplayType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionDisplayType? DisplayType { get => _explicitNullValueDisplayType; set { _explicitNullValueDisplayType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_type"); else _explicitNullProperties?.Remove("display_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionDisplayType? _explicitNullValueDisplayType = default!;
         /// <summary>For &apos;group&apos; targets only: which group type (0-4) the property attaches to. Required when target_type is &apos;group&apos;; must be omitted otherwise. Create-only.</summary>
-        public int? GroupTypeIndex { get; set; }
+        public int? GroupTypeIndex { get => _explicitNullValueGroupTypeIndex; set { _explicitNullValueGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_type_index"); else _explicitNullProperties?.Remove("group_type_index"); } }
+        private int? _explicitNullValueGroupTypeIndex = default!;
         /// <summary>Whether a workflow updates this property. Always returned, even when workflow details are hidden.</summary>
         public bool? HasWorkflowReference { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties.</summary>
-        public bool? IsBigNumber { get; set; }
+        public bool? IsBigNumber { get => _explicitNullValueIsBigNumber; set { _explicitNullValueIsBigNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_big_number"); else _explicitNullProperties?.Remove("is_big_number"); } }
+        private bool? _explicitNullValueIsBigNumber = default!;
         /// <summary>True when PostHog writes this property itself. Its name and display type are fixed — an update changing either is rejected.</summary>
         public bool? IsCanonical { get; private set; }
         /// <summary>Human-readable name of the custom property. Unique within the team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>For select properties: the allowed options. Required (non-empty) when display_type is &apos;select&apos;; cleared server-side for other types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption>? Options { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption>? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption>? _explicitNullValueOptions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption> Options { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption> Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption> _explicitNullValueOptions = default!;
 #endif
         /// <summary>Workflows that use this property, resolved by definition id when the caller can view workflows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,7 +95,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource Source { get; private set; }
 #endif
         /// <summary>* `account` - account* `person` - person* `group` - group</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionTargetType? TargetType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionTargetType? TargetType { get => _explicitNullValueTargetType; set { _explicitNullValueTargetType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_type"); else _explicitNullProperties?.Remove("target_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionTargetType? _explicitNullValueTargetType = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -91,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinition();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinition(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -132,6 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption>("options", Options);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionTargetType>("target_type", TargetType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

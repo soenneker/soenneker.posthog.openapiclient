@@ -11,19 +11,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PlatformAlertGroupSnooze : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("grouping_key") is { } nullNodeGroupingKey && nullNodeGroupingKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupingKey = null;
+            if (parseNode.GetChildNode("snooze_until") is { } nullNodeSnoozeUntil && nullNodeSnoozeUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnoozeUntil = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Key of the group to snooze, as the grouping_key of one of the alert&apos;s instances.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupingKey { get; set; }
+        public string? GroupingKey { get => _explicitNullValueGroupingKey; set { _explicitNullValueGroupingKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping_key"); else _explicitNullProperties?.Remove("grouping_key"); } }
+        private string? _explicitNullValueGroupingKey = default!;
 #nullable restore
 #else
-        public string GroupingKey { get; set; }
+        public string GroupingKey { get => _explicitNullValueGroupingKey; set { _explicitNullValueGroupingKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping_key"); else _explicitNullProperties?.Remove("grouping_key"); } }
+        private string _explicitNullValueGroupingKey = default!;
 #endif
         /// <summary>Time until which this group&apos;s notifications are muted. Must be in the future and at most 30 days away. Null clears the group&apos;s snooze. The group keeps being checked, and its firing stays open.</summary>
-        public DateTimeOffset? SnoozeUntil { get; set; }
+        public DateTimeOffset? SnoozeUntil { get => _explicitNullValueSnoozeUntil; set { _explicitNullValueSnoozeUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snooze_until"); else _explicitNullProperties?.Remove("snooze_until"); } }
+        private DateTimeOffset? _explicitNullValueSnoozeUntil = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertGroupSnooze"/> and sets the default values.
         /// </summary>
@@ -39,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertGroupSnooze CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertGroupSnooze();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertGroupSnooze(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("grouping_key", GroupingKey);
             writer.WriteDateTimeOffsetValue("snooze_until", SnoozeUntil);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScanner>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReplayScanner.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScanner>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReplayScanner.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Copy a scanner into a new disabled scanner named &quot;&lt;name&gt; (copy)&quot;.Copies the stored model row rather than the serializer&apos;s read representation, so a querythat no longer validates survives the copy; duplicating through the create endpoint wouldsilently drop it. Experiment targeting is the exception and follows the read path instead.Unlike create, no digest is provisioned: the copy starts disabled and unreviewed.

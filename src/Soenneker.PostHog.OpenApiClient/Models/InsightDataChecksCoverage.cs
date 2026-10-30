@@ -12,32 +12,58 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InsightDataChecksCoverage : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("checked_date_from") is { } nullNodeCheckedDateFrom && nullNodeCheckedDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedDateFrom = null;
+            if (parseNode.GetChildNode("checked_date_to") is { } nullNodeCheckedDateTo && nullNodeCheckedDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedDateTo = null;
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("days_checked") is { } nullNodeDaysChecked && nullNodeDaysChecked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DaysChecked = null;
+            if (parseNode.GetChildNode("days_in_range") is { } nullNodeDaysInRange && nullNodeDaysInRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DaysInRange = null;
+            if (parseNode.GetChildNode("events_checked") is { } nullNodeEventsChecked && nullNodeEventsChecked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsChecked = null;
+            if (parseNode.GetChildNode("filters_test_accounts") is { } nullNodeFiltersTestAccounts && nullNodeFiltersTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FiltersTestAccounts = null;
+            if (parseNode.GetChildNode("sample") is { } nullNodeSample && nullNodeSample.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sample = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The first day the checks read.</summary>
-        public Date? CheckedDateFrom { get; set; }
+        public Date? CheckedDateFrom { get => _explicitNullValueCheckedDateFrom; set { _explicitNullValueCheckedDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_date_from"); else _explicitNullProperties?.Remove("checked_date_from"); } }
+        private Date? _explicitNullValueCheckedDateFrom = default!;
         /// <summary>The last day the checks read.</summary>
-        public Date? CheckedDateTo { get; set; }
+        public Date? CheckedDateTo { get => _explicitNullValueCheckedDateTo; set { _explicitNullValueCheckedDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_date_to"); else _explicitNullProperties?.Remove("checked_date_to"); } }
+        private Date? _explicitNullValueCheckedDateTo = default!;
         /// <summary>The first day of the insight&apos;s date range.</summary>
-        public Date? DateFrom { get; set; }
+        public Date? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private Date? _explicitNullValueDateFrom = default!;
         /// <summary>The last day of the insight&apos;s date range.</summary>
-        public Date? DateTo { get; set; }
+        public Date? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private Date? _explicitNullValueDateTo = default!;
         /// <summary>How many days the checks read. The checks read the newest days of the range, up to 7.</summary>
-        public int? DaysChecked { get; set; }
+        public int? DaysChecked { get => _explicitNullValueDaysChecked; set { _explicitNullValueDaysChecked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days_checked"); else _explicitNullProperties?.Remove("days_checked"); } }
+        private int? _explicitNullValueDaysChecked = default!;
         /// <summary>How many days the insight&apos;s date range holds.</summary>
-        public int? DaysInRange { get; set; }
+        public int? DaysInRange { get => _explicitNullValueDaysInRange; set { _explicitNullValueDaysInRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days_in_range"); else _explicitNullProperties?.Remove("days_in_range"); } }
+        private int? _explicitNullValueDaysInRange = default!;
         /// <summary>How many events the insight reads on the days checked. Counted exactly, or scaled up from the sample when the days hold too many events to count. Null when neither ran.</summary>
-        public int? EventsChecked { get; set; }
+        public int? EventsChecked { get => _explicitNullValueEventsChecked; set { _explicitNullValueEventsChecked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_checked"); else _explicitNullProperties?.Remove("events_checked"); } }
+        private int? _explicitNullValueEventsChecked = default!;
         /// <summary>True when the insight filters out the project&apos;s internal and test users.</summary>
-        public bool? FiltersTestAccounts { get; set; }
+        public bool? FiltersTestAccounts { get => _explicitNullValueFiltersTestAccounts; set { _explicitNullValueFiltersTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_test_accounts"); else _explicitNullProperties?.Remove("filters_test_accounts"); } }
+        private bool? _explicitNullValueFiltersTestAccounts = default!;
         /// <summary>The sample the bot and duplicate checks read. Null when the sample did not run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksSample? Sample { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksSample? Sample { get => _explicitNullValueSample; set { _explicitNullValueSample = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample"); else _explicitNullProperties?.Remove("sample"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksSample? _explicitNullValueSample = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksSample Sample { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksSample Sample { get => _explicitNullValueSample; set { _explicitNullValueSample = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample"); else _explicitNullProperties?.Remove("sample"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksSample _explicitNullValueSample = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage"/> and sets the default values.
@@ -54,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -91,6 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("events_checked", EventsChecked);
             writer.WriteBoolValue("filters_test_accounts", FiltersTestAccounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksSample>("sample", Sample);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

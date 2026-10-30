@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.JobLogInsights>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.JobLogInsights.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.JobLogInsights>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.JobLogInsights.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// What one GitHub Actions job&apos;s log says it did: cache restores (hit, older cache, miss, restore failed) and migrations applied, for the job and per step. Reads the log from GitHub on demand. Only a completed job&apos;s answer is cached. `log_read` is false, never an error, when there is no log to read: a Depot CI job, a job the source does not hold, an expired log, or a failed fetch.

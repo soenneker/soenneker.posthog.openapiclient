@@ -11,25 +11,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class McpToolStatsItem : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("calls") is { } nullNodeCalls && nullNodeCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Calls = null;
+            if (parseNode.GetChildNode("conversations") is { } nullNodeConversations && nullNodeConversations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conversations = null;
+            if (parseNode.GetChildNode("errors") is { } nullNodeErrors && nullNodeErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Errors = null;
+            if (parseNode.GetChildNode("p50_ms") is { } nullNodeP50Ms && nullNodeP50Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50Ms = null;
+            if (parseNode.GetChildNode("p95_ms") is { } nullNodeP95Ms && nullNodeP95Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95Ms = null;
+            if (parseNode.GetChildNode("total_calls") is { } nullNodeTotalCalls && nullNodeTotalCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCalls = null;
+            if (parseNode.GetChildNode("total_conversations") is { } nullNodeTotalConversations && nullNodeTotalConversations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalConversations = null;
+            if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+            if (parseNode.GetChildNode("with_intent") is { } nullNodeWithIntent && nullNodeWithIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WithIntent = null;
+        }
+
         /// <summary>The calls property</summary>
-        public int? Calls { get; set; }
+        public int? Calls { get => _explicitNullValueCalls; set { _explicitNullValueCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls"); else _explicitNullProperties?.Remove("calls"); } }
+        private int? _explicitNullValueCalls = default!;
         /// <summary>The conversations property</summary>
-        public int? Conversations { get; set; }
+        public int? Conversations { get => _explicitNullValueConversations; set { _explicitNullValueConversations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversations"); else _explicitNullProperties?.Remove("conversations"); } }
+        private int? _explicitNullValueConversations = default!;
         /// <summary>The errors property</summary>
-        public int? Errors { get; set; }
+        public int? Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        private int? _explicitNullValueErrors = default!;
         /// <summary>The p50_ms property</summary>
-        public double? P50Ms { get; set; }
+        public double? P50Ms { get => _explicitNullValueP50Ms; set { _explicitNullValueP50Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_ms"); else _explicitNullProperties?.Remove("p50_ms"); } }
+        private double? _explicitNullValueP50Ms = default!;
         /// <summary>The p95_ms property</summary>
-        public double? P95Ms { get; set; }
+        public double? P95Ms { get => _explicitNullValueP95Ms; set { _explicitNullValueP95Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_ms"); else _explicitNullProperties?.Remove("p95_ms"); } }
+        private double? _explicitNullValueP95Ms = default!;
         /// <summary>Calls to any tool in the same window and filters. The denominator for the tool&apos;s call share.</summary>
-        public int? TotalCalls { get; set; }
+        public int? TotalCalls { get => _explicitNullValueTotalCalls; set { _explicitNullValueTotalCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_calls"); else _explicitNullProperties?.Remove("total_calls"); } }
+        private int? _explicitNullValueTotalCalls = default!;
         /// <summary>Conversations with a call to any tool in the same window and filters. The denominator for the tool&apos;s session share.</summary>
-        public int? TotalConversations { get; set; }
+        public int? TotalConversations { get => _explicitNullValueTotalConversations; set { _explicitNullValueTotalConversations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_conversations"); else _explicitNullProperties?.Remove("total_conversations"); } }
+        private int? _explicitNullValueTotalConversations = default!;
         /// <summary>The users property</summary>
-        public int? Users { get; set; }
+        public int? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        private int? _explicitNullValueUsers = default!;
         /// <summary>Calls carrying a non-empty intent payload; the coverage denominator is `calls`.</summary>
-        public int? WithIntent { get; set; }
+        public int? WithIntent { get => _explicitNullValueWithIntent; set { _explicitNullValueWithIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("with_intent"); else _explicitNullProperties?.Remove("with_intent"); } }
+        private int? _explicitNullValueWithIntent = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -38,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.McpToolStatsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.McpToolStatsItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.McpToolStatsItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,7 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("total_calls", TotalCalls);
             writer.WriteIntValue("total_conversations", TotalConversations);
             writer.WriteIntValue("users", Users);
-            writer.WriteIntValue("with_intent", WithIntent);
+            writer.WriteIntValue("with_intent", WithIntent);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

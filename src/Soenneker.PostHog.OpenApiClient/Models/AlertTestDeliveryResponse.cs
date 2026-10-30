@@ -11,20 +11,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AlertTestDeliveryResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("destination_count") is { } nullNodeDestinationCount && nullNodeDestinationCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationCount = null;
+            if (parseNode.GetChildNode("email_recipient_count") is { } nullNodeEmailRecipientCount && nullNodeEmailRecipientCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailRecipientCount = null;
+            if (parseNode.GetChildNode("failed_delivery_channels") is { } nullNodeFailedDeliveryChannels && nullNodeFailedDeliveryChannels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDeliveryChannels = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of active destinations queued for test delivery.</summary>
-        public int? DestinationCount { get; set; }
+        public int? DestinationCount { get => _explicitNullValueDestinationCount; set { _explicitNullValueDestinationCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_count"); else _explicitNullProperties?.Remove("destination_count"); } }
+        private int? _explicitNullValueDestinationCount = default!;
         /// <summary>Number of subscribed users sent a test email.</summary>
-        public int? EmailRecipientCount { get; set; }
+        public int? EmailRecipientCount { get => _explicitNullValueEmailRecipientCount; set { _explicitNullValueEmailRecipientCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_recipient_count"); else _explicitNullProperties?.Remove("email_recipient_count"); } }
+        private int? _explicitNullValueEmailRecipientCount = default!;
         /// <summary>Configured delivery channels that failed to schedule or send.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?>? FailedDeliveryChannels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?>? FailedDeliveryChannels { get => _explicitNullValueFailedDeliveryChannels; set { _explicitNullValueFailedDeliveryChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_delivery_channels"); else _explicitNullProperties?.Remove("failed_delivery_channels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?>? _explicitNullValueFailedDeliveryChannels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?> FailedDeliveryChannels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?> FailedDeliveryChannels { get => _explicitNullValueFailedDeliveryChannels; set { _explicitNullValueFailedDeliveryChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_delivery_channels"); else _explicitNullProperties?.Remove("failed_delivery_channels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?> _explicitNullValueFailedDeliveryChannels = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertTestDeliveryResponse"/> and sets the default values.
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AlertTestDeliveryResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AlertTestDeliveryResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AlertTestDeliveryResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("destination_count", DestinationCount);
             writer.WriteIntValue("email_recipient_count", EmailRecipientCount);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum>("failed_delivery_channels", FailedDeliveryChannels);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

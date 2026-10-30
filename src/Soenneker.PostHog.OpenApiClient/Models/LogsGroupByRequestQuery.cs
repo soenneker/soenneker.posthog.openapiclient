@@ -12,86 +12,126 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsGroupByRequestQuery : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dateRange") is { } nullNodeDateRange && nullNodeDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateRange = null;
+            if (parseNode.GetChildNode("filterGroup") is { } nullNodeFilterGroup && nullNodeFilterGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterGroup = null;
+            if (parseNode.GetChildNode("groupBy") is { } nullNodeGroupBy && nullNodeGroupBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupBy = null;
+            if (parseNode.GetChildNode("groupBys") is { } nullNodeGroupBys && nullNodeGroupBys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupBys = null;
+            if (parseNode.GetChildNode("groupBySource") is { } nullNodeGroupBySource && nullNodeGroupBySource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupBySource = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("orderGroupsBy") is { } nullNodeOrderGroupsBy && nullNodeOrderGroupsBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderGroupsBy = null;
+            if (parseNode.GetChildNode("personId") is { } nullNodePersonId && nullNodePersonId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonId = null;
+            if (parseNode.GetChildNode("searchTerm") is { } nullNodeSearchTerm && nullNodeSearchTerm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchTerm = null;
+            if (parseNode.GetChildNode("serviceNames") is { } nullNodeServiceNames && nullNodeServiceNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceNames = null;
+            if (parseNode.GetChildNode("sessionId") is { } nullNodeSessionId && nullNodeSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionId = null;
+            if (parseNode.GetChildNode("severityLevels") is { } nullNodeSeverityLevels && nullNodeSeverityLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeverityLevels = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Date range to aggregate over. Defaults to last hour.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyDateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyDateRange? _explicitNullValueDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyDateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyDateRange _explicitNullValueDateRange = default!;
 #endif
         /// <summary>Property filters applied before grouping. Same shape as the query-logs endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>? FilterGroup { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>? FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2>? _explicitNullValueFilterGroup = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2> FilterGroup { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2> FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogPropertyFilter2> _explicitNullValueFilterGroup = default!;
 #endif
         /// <summary>The key to group logs by — an attribute key (e.g. &quot;session_id&quot;, &quot;service.name&quot;) or, when groupBySource is &quot;column&quot;, one of the top-level log fields: &quot;severity_level&quot;, &quot;service_name&quot;, &quot;trace_id&quot;, &quot;span_id&quot;, &quot;pattern&quot;. Ignored when groupBys is provided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupBy { get; set; }
+        public string? GroupBy { get => _explicitNullValueGroupBy; set { _explicitNullValueGroupBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupBy"); else _explicitNullProperties?.Remove("groupBy"); } }
+        private string? _explicitNullValueGroupBy = default!;
 #nullable restore
 #else
-        public string GroupBy { get; set; }
+        public string GroupBy { get => _explicitNullValueGroupBy; set { _explicitNullValueGroupBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupBy"); else _explicitNullProperties?.Remove("groupBy"); } }
+        private string _explicitNullValueGroupBy = default!;
 #endif
         /// <summary>Ordered group-by dimensions to combine (a group is one combination of per-dimension values), up to 4. Takes precedence over groupBy/groupBySource; one of the two must be provided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension>? GroupBys { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension>? GroupBys { get => _explicitNullValueGroupBys; set { _explicitNullValueGroupBys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupBys"); else _explicitNullProperties?.Remove("groupBys"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension>? _explicitNullValueGroupBys = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension> GroupBys { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension> GroupBys { get => _explicitNullValueGroupBys; set { _explicitNullValueGroupBys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupBys"); else _explicitNullProperties?.Remove("groupBys"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByDimension> _explicitNullValueGroupBys = default!;
 #endif
         /// <summary>* `log` - log* `resource` - resource* `column` - column</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource? GroupBySource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource? GroupBySource { get => _explicitNullValueGroupBySource; set { _explicitNullValueGroupBySource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupBySource"); else _explicitNullProperties?.Remove("groupBySource"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyGroupBySource? _explicitNullValueGroupBySource = default!;
         /// <summary>Maximum number of groups to return (top-N by orderGroupsBy). Defaults to 100.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>* `log_count` - log_count* `error_count` - error_count* `last_seen` - last_seen</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy? OrderGroupsBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy? OrderGroupsBy { get => _explicitNullValueOrderGroupsBy; set { _explicitNullValueOrderGroupsBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderGroupsBy"); else _explicitNullProperties?.Remove("orderGroupsBy"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByBodyOrderGroupsBy? _explicitNullValueOrderGroupsBy = default!;
         /// <summary>Scope grouping to one person (UUID or numeric ID). Expanded server-side to the person&apos;s distinct IDs and matched against the team&apos;s configured distinct-id log attribute keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PersonId { get; set; }
+        public string? PersonId { get => _explicitNullValuePersonId; set { _explicitNullValuePersonId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personId"); else _explicitNullProperties?.Remove("personId"); } }
+        private string? _explicitNullValuePersonId = default!;
 #nullable restore
 #else
-        public string PersonId { get; set; }
+        public string PersonId { get => _explicitNullValuePersonId; set { _explicitNullValuePersonId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personId"); else _explicitNullProperties?.Remove("personId"); } }
+        private string _explicitNullValuePersonId = default!;
 #endif
         /// <summary>Full-text search term to filter log bodies before grouping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SearchTerm { get; set; }
+        public string? SearchTerm { get => _explicitNullValueSearchTerm; set { _explicitNullValueSearchTerm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("searchTerm"); else _explicitNullProperties?.Remove("searchTerm"); } }
+        private string? _explicitNullValueSearchTerm = default!;
 #nullable restore
 #else
-        public string SearchTerm { get; set; }
+        public string SearchTerm { get => _explicitNullValueSearchTerm; set { _explicitNullValueSearchTerm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("searchTerm"); else _explicitNullProperties?.Remove("searchTerm"); } }
+        private string _explicitNullValueSearchTerm = default!;
 #endif
         /// <summary>Restrict grouping to these service names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ServiceNames { get; set; }
+        public List<string>? ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        private List<string>? _explicitNullValueServiceNames = default!;
 #nullable restore
 #else
-        public List<string> ServiceNames { get; set; }
+        public List<string> ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        private List<string> _explicitNullValueServiceNames = default!;
 #endif
         /// <summary>Scope grouping to one session ID. Matched server-side against the team&apos;s configured session-id log attribute keys plus the built-in conventions, in both log attributes and resource attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionId { get; set; }
+        public string? SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionId"); else _explicitNullProperties?.Remove("sessionId"); } }
+        private string? _explicitNullValueSessionId = default!;
 #nullable restore
 #else
-        public string SessionId { get; set; }
+        public string SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionId"); else _explicitNullProperties?.Remove("sessionId"); } }
+        private string _explicitNullValueSessionId = default!;
 #endif
         /// <summary>Filter by log severity levels before grouping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum?>? SeverityLevels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum?>? SeverityLevels { get => _explicitNullValueSeverityLevels; set { _explicitNullValueSeverityLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severityLevels"); else _explicitNullProperties?.Remove("severityLevels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum?>? _explicitNullValueSeverityLevels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum?> SeverityLevels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum?> SeverityLevels { get => _explicitNullValueSeverityLevels; set { _explicitNullValueSeverityLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severityLevels"); else _explicitNullProperties?.Remove("severityLevels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum?> _explicitNullValueSeverityLevels = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByRequestQuery"/> and sets the default values.
@@ -109,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByRequestQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByRequestQuery();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsGroupByRequestQuery(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -152,6 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteStringValue("sessionId", SessionId);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SeverityLevelsEnum>("severityLevels", SeverityLevels);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

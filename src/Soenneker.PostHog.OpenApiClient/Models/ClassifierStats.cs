@@ -11,27 +11,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ClassifierStats : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("fixed_ranked") is { } nullNodeFixedRanked && nullNodeFixedRanked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FixedRanked = null;
+            if (parseNode.GetChildNode("freeform_ranked") is { } nullNodeFreeformRanked && nullNodeFreeformRanked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FreeformRanked = null;
+            if (parseNode.GetChildNode("total_with_tags") is { } nullNodeTotalWithTags && nullNodeTotalWithTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalWithTags = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Top fixed-vocabulary tags by emission count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount>? FixedRanked { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount>? FixedRanked { get => _explicitNullValueFixedRanked; set { _explicitNullValueFixedRanked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fixed_ranked"); else _explicitNullProperties?.Remove("fixed_ranked"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount>? _explicitNullValueFixedRanked = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount> FixedRanked { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount> FixedRanked { get => _explicitNullValueFixedRanked; set { _explicitNullValueFixedRanked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fixed_ranked"); else _explicitNullProperties?.Remove("fixed_ranked"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount> _explicitNullValueFixedRanked = default!;
 #endif
         /// <summary>Top freeform tags by emission count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount>? FreeformRanked { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount>? FreeformRanked { get => _explicitNullValueFreeformRanked; set { _explicitNullValueFreeformRanked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("freeform_ranked"); else _explicitNullProperties?.Remove("freeform_ranked"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount>? _explicitNullValueFreeformRanked = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount> FreeformRanked { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount> FreeformRanked { get => _explicitNullValueFreeformRanked; set { _explicitNullValueFreeformRanked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("freeform_ranked"); else _explicitNullProperties?.Remove("freeform_ranked"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TagCount> _explicitNullValueFreeformRanked = default!;
 #endif
         /// <summary>Succeeded observations that emitted at least one tag.</summary>
-        public int? TotalWithTags { get; set; }
+        public int? TotalWithTags { get => _explicitNullValueTotalWithTags; set { _explicitNullValueTotalWithTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_with_tags"); else _explicitNullProperties?.Remove("total_with_tags"); } }
+        private int? _explicitNullValueTotalWithTags = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats"/> and sets the default values.
         /// </summary>
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TagCount>("fixed_ranked", FixedRanked);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TagCount>("freeform_ranked", FreeformRanked);
             writer.WriteIntValue("total_with_tags", TotalWithTags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

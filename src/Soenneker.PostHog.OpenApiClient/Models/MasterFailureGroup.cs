@@ -11,48 +11,75 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MasterFailureGroup : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("failed_job") is { } nullNodeFailedJob && nullNodeFailedJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedJob = null;
+            if (parseNode.GetChildNode("first_seen") is { } nullNodeFirstSeen && nullNodeFirstSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstSeen = null;
+            if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
+            if (parseNode.GetChildNode("latest_ci_engine") is { } nullNodeLatestCiEngine && nullNodeLatestCiEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestCiEngine = null;
+            if (parseNode.GetChildNode("latest_run_id") is { } nullNodeLatestRunId && nullNodeLatestRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestRunId = null;
+            if (parseNode.GetChildNode("repo") is { } nullNodeRepo && nullNodeRepo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repo = null;
+            if (parseNode.GetChildNode("run_count") is { } nullNodeRunCount && nullNodeRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCount = null;
+            if (parseNode.GetChildNode("workflow_name") is { } nullNodeWorkflowName && nullNodeWorkflowName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>De-sharded failing job name (matrix &apos;(G/N)&apos; suffix stripped): the group&apos;s failure signature together with the workflow. &apos;&apos; when the job-level source isn&apos;t synced and the group degrades to workflow level.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FailedJob { get; set; }
+        public string? FailedJob { get => _explicitNullValueFailedJob; set { _explicitNullValueFailedJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_job"); else _explicitNullProperties?.Remove("failed_job"); } }
+        private string? _explicitNullValueFailedJob = default!;
 #nullable restore
 #else
-        public string FailedJob { get; set; }
+        public string FailedJob { get => _explicitNullValueFailedJob; set { _explicitNullValueFailedJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_job"); else _explicitNullProperties?.Remove("failed_job"); } }
+        private string _explicitNullValueFailedJob = default!;
 #endif
         /// <summary>When the oldest failing run in the group started.</summary>
-        public DateTimeOffset? FirstSeen { get; set; }
+        public DateTimeOffset? FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
+        private DateTimeOffset? _explicitNullValueFirstSeen = default!;
         /// <summary>When the newest failing run in the group started.</summary>
-        public DateTimeOffset? LastSeen { get; set; }
+        public DateTimeOffset? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private DateTimeOffset? _explicitNullValueLastSeen = default!;
         /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine? LatestCiEngine { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine? LatestCiEngine { get => _explicitNullValueLatestCiEngine; set { _explicitNullValueLatestCiEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_ci_engine"); else _explicitNullProperties?.Remove("latest_ci_engine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine? _explicitNullValueLatestCiEngine = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine LatestCiEngine { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine LatestCiEngine { get => _explicitNullValueLatestCiEngine; set { _explicitNullValueLatestCiEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_ci_engine"); else _explicitNullProperties?.Remove("latest_ci_engine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine _explicitNullValueLatestCiEngine = default!;
 #endif
         /// <summary>Run id of the newest failing run: the drill-down anchor.</summary>
-        public int? LatestRunId { get; set; }
+        public int? LatestRunId { get => _explicitNullValueLatestRunId; set { _explicitNullValueLatestRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run_id"); else _explicitNullProperties?.Remove("latest_run_id"); } }
+        private int? _explicitNullValueLatestRunId = default!;
         /// <summary>Repository the failures occurred in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo? Repo { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo? Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo? _explicitNullValueRepo = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo Repo { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo _explicitNullValueRepo = default!;
 #endif
         /// <summary>Distinct failing default-branch runs in this group within the window.</summary>
-        public int? RunCount { get; set; }
+        public int? RunCount { get => _explicitNullValueRunCount; set { _explicitNullValueRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_count"); else _explicitNullProperties?.Remove("run_count"); } }
+        private int? _explicitNullValueRunCount = default!;
         /// <summary>GitHub Actions workflow name the failing runs belong to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkflowName { get; set; }
+        public string? WorkflowName { get => _explicitNullValueWorkflowName; set { _explicitNullValueWorkflowName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_name"); else _explicitNullProperties?.Remove("workflow_name"); } }
+        private string? _explicitNullValueWorkflowName = default!;
 #nullable restore
 #else
-        public string WorkflowName { get; set; }
+        public string WorkflowName { get => _explicitNullValueWorkflowName; set { _explicitNullValueWorkflowName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_name"); else _explicitNullProperties?.Remove("workflow_name"); } }
+        private string _explicitNullValueWorkflowName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroup"/> and sets the default values.
@@ -69,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroup CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroup();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroup(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,6 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo>("repo", Repo);
             writer.WriteIntValue("run_count", RunCount);
             writer.WriteStringValue("workflow_name", WorkflowName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

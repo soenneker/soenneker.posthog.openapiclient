@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryDescendants>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryDescendants.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryDescendants>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryDescendants.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Return the descendants of this saved query.By default, we return every descendant. The `level` parameter bounds how many hopsforward to walk, so 1 gives the immediate children.

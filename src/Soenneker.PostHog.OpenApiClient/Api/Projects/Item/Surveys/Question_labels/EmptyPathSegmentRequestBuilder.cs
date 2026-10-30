@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Question_lab
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionLabelsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionLabelsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionLabelsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionLabelsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Return a slim list of question labels for the team&apos;s surveys. Used by the frontend to resolve `$survey_response_&lt;question_id&gt;` property keys into human-readable question text without loading the full survey payload.

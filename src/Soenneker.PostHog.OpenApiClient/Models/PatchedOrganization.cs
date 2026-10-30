@@ -11,11 +11,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedOrganization : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allow_publicly_shared_resources") is { } nullNodeAllowPubliclySharedResources && nullNodeAllowPubliclySharedResources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowPubliclySharedResources = null;
+            if (parseNode.GetChildNode("default_anonymize_ips") is { } nullNodeDefaultAnonymizeIps && nullNodeDefaultAnonymizeIps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultAnonymizeIps = null;
+            if (parseNode.GetChildNode("default_role_id") is { } nullNodeDefaultRoleId && nullNodeDefaultRoleId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultRoleId = null;
+            if (parseNode.GetChildNode("enforce_2fa") is { } nullNodeEnforce2fa && nullNodeEnforce2fa.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enforce2fa = null;
+            if (parseNode.GetChildNode("enforce_verified_domains") is { } nullNodeEnforceVerifiedDomains && nullNodeEnforceVerifiedDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnforceVerifiedDomains = null;
+            if (parseNode.GetChildNode("is_ai_data_processing_approved") is { } nullNodeIsAiDataProcessingApproved && nullNodeIsAiDataProcessingApproved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsAiDataProcessingApproved = null;
+            if (parseNode.GetChildNode("is_ai_training_opted_in") is { } nullNodeIsAiTrainingOptedIn && nullNodeIsAiTrainingOptedIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsAiTrainingOptedIn = null;
+            if (parseNode.GetChildNode("logo_media_id") is { } nullNodeLogoMediaId && nullNodeLogoMediaId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogoMediaId = null;
+            if (parseNode.GetChildNode("member_notice") is { } nullNodeMemberNotice && nullNodeMemberNotice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberNotice = null;
+            if (parseNode.GetChildNode("members_can_create_projects") is { } nullNodeMembersCanCreateProjects && nullNodeMembersCanCreateProjects.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MembersCanCreateProjects = null;
+            if (parseNode.GetChildNode("members_can_invite") is { } nullNodeMembersCanInvite && nullNodeMembersCanInvite.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MembersCanInvite = null;
+            if (parseNode.GetChildNode("members_can_see_org_members") is { } nullNodeMembersCanSeeOrgMembers && nullNodeMembersCanSeeOrgMembers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MembersCanSeeOrgMembers = null;
+            if (parseNode.GetChildNode("members_can_use_personal_api_keys") is { } nullNodeMembersCanUsePersonalApiKeys && nullNodeMembersCanUsePersonalApiKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MembersCanUsePersonalApiKeys = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("read_only_mcp_access") is { } nullNodeReadOnlyMcpAccess && nullNodeReadOnlyMcpAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadOnlyMcpAccess = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The allow_publicly_shared_resources property</summary>
-        public bool? AllowPubliclySharedResources { get; set; }
+        public bool? AllowPubliclySharedResources { get => _explicitNullValueAllowPubliclySharedResources; set { _explicitNullValueAllowPubliclySharedResources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_publicly_shared_resources"); else _explicitNullProperties?.Remove("allow_publicly_shared_resources"); } }
+        private bool? _explicitNullValueAllowPubliclySharedResources = default!;
         /// <summary>The available_product_features property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -35,13 +58,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string CustomerId { get; private set; }
 #endif
         /// <summary>Default setting for &apos;Discard client IP data&apos; for new projects in this organization.</summary>
-        public bool? DefaultAnonymizeIps { get; set; }
+        public bool? DefaultAnonymizeIps { get => _explicitNullValueDefaultAnonymizeIps; set { _explicitNullValueDefaultAnonymizeIps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_anonymize_ips"); else _explicitNullProperties?.Remove("default_anonymize_ips"); } }
+        private bool? _explicitNullValueDefaultAnonymizeIps = default!;
         /// <summary>ID of the role to automatically assign to new members joining the organization</summary>
-        public Guid? DefaultRoleId { get; set; }
+        public Guid? DefaultRoleId { get => _explicitNullValueDefaultRoleId; set { _explicitNullValueDefaultRoleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_role_id"); else _explicitNullProperties?.Remove("default_role_id"); } }
+        private Guid? _explicitNullValueDefaultRoleId = default!;
         /// <summary>The enforce_2fa property</summary>
-        public bool? Enforce2fa { get; set; }
+        public bool? Enforce2fa { get => _explicitNullValueEnforce2fa; set { _explicitNullValueEnforce2fa = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enforce_2fa"); else _explicitNullProperties?.Remove("enforce_2fa"); } }
+        private bool? _explicitNullValueEnforce2fa = default!;
         /// <summary>When True, logins, signups, and invites for this organization are restricted to email addresses on its verified domains.</summary>
-        public bool? EnforceVerifiedDomains { get; set; }
+        public bool? EnforceVerifiedDomains { get => _explicitNullValueEnforceVerifiedDomains; set { _explicitNullValueEnforceVerifiedDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enforce_verified_domains"); else _explicitNullProperties?.Remove("enforce_verified_domains"); } }
+        private bool? _explicitNullValueEnforceVerifiedDomains = default!;
         /// <summary>Whether the organization has a countersigned Business Associate Agreement on file. When true, AI training stays opted out and cannot be changed.</summary>
         public bool? HasSignedBaa { get; private set; }
         /// <summary>The id property</summary>
@@ -49,13 +76,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set this to &apos;No&apos; to temporarily disable an organization.</summary>
         public bool? IsActive { get; private set; }
         /// <summary>The is_ai_data_processing_approved property</summary>
-        public bool? IsAiDataProcessingApproved { get; set; }
+        public bool? IsAiDataProcessingApproved { get => _explicitNullValueIsAiDataProcessingApproved; set { _explicitNullValueIsAiDataProcessingApproved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_ai_data_processing_approved"); else _explicitNullProperties?.Remove("is_ai_data_processing_approved"); } }
+        private bool? _explicitNullValueIsAiDataProcessingApproved = default!;
         /// <summary>When True, in-app callouts inviting members to enable AI training are shown.</summary>
         public bool? IsAiTrainingCtaShown { get; private set; }
         /// <summary>When True, the AI training opt-out setting cannot be modified through the UI or API.</summary>
         public bool? IsAiTrainingLocked { get; private set; }
         /// <summary>When True, this organization allows its data to be used to train PostHog AI models.</summary>
-        public bool? IsAiTrainingOptedIn { get; set; }
+        public bool? IsAiTrainingOptedIn { get => _explicitNullValueIsAiTrainingOptedIn; set { _explicitNullValueIsAiTrainingOptedIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_ai_training_opted_in"); else _explicitNullProperties?.Remove("is_ai_training_opted_in"); } }
+        private bool? _explicitNullValueIsAiTrainingOptedIn = default!;
         /// <summary>Legacy field; member-join emails are controlled per user in account notification settings.</summary>
         public bool? IsMemberJoinEmailEnabled { get; private set; }
         /// <summary>(optional) reason for why the organization has been de-activated. This will be displayed to users on the web app.</summary>
@@ -69,25 +98,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set to True when org deletion has been initiated. Blocks all UI access until the async task completes.</summary>
         public bool? IsPendingDeletion { get; private set; }
         /// <summary>The logo_media_id property</summary>
-        public Guid? LogoMediaId { get; set; }
+        public Guid? LogoMediaId { get => _explicitNullValueLogoMediaId; set { _explicitNullValueLogoMediaId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logo_media_id"); else _explicitNullProperties?.Remove("logo_media_id"); } }
+        private Guid? _explicitNullValueLogoMediaId = default!;
         /// <summary>The member_count property</summary>
         public int? MemberCount { get; private set; }
         /// <summary>Notice shown in a banner to every member of the organization. Set to null to remove it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice? MemberNotice { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice? MemberNotice { get => _explicitNullValueMemberNotice; set { _explicitNullValueMemberNotice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_notice"); else _explicitNullProperties?.Remove("member_notice"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice? _explicitNullValueMemberNotice = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice MemberNotice { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice MemberNotice { get => _explicitNullValueMemberNotice; set { _explicitNullValueMemberNotice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_notice"); else _explicitNullProperties?.Remove("member_notice"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice _explicitNullValueMemberNotice = default!;
 #endif
         /// <summary>When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects.</summary>
-        public bool? MembersCanCreateProjects { get; set; }
+        public bool? MembersCanCreateProjects { get => _explicitNullValueMembersCanCreateProjects; set { _explicitNullValueMembersCanCreateProjects = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("members_can_create_projects"); else _explicitNullProperties?.Remove("members_can_create_projects"); } }
+        private bool? _explicitNullValueMembersCanCreateProjects = default!;
         /// <summary>The members_can_invite property</summary>
-        public bool? MembersCanInvite { get; set; }
+        public bool? MembersCanInvite { get => _explicitNullValueMembersCanInvite; set { _explicitNullValueMembersCanInvite = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("members_can_invite"); else _explicitNullProperties?.Remove("members_can_invite"); } }
+        private bool? _explicitNullValueMembersCanInvite = default!;
         /// <summary>When False, members (below admin) only see themselves in the members list and only project members in access control.</summary>
-        public bool? MembersCanSeeOrgMembers { get; set; }
+        public bool? MembersCanSeeOrgMembers { get => _explicitNullValueMembersCanSeeOrgMembers; set { _explicitNullValueMembersCanSeeOrgMembers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("members_can_see_org_members"); else _explicitNullProperties?.Remove("members_can_see_org_members"); } }
+        private bool? _explicitNullValueMembersCanSeeOrgMembers = default!;
         /// <summary>The members_can_use_personal_api_keys property</summary>
-        public bool? MembersCanUsePersonalApiKeys { get; set; }
+        public bool? MembersCanUsePersonalApiKeys { get => _explicitNullValueMembersCanUsePersonalApiKeys; set { _explicitNullValueMembersCanUsePersonalApiKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("members_can_use_personal_api_keys"); else _explicitNullProperties?.Remove("members_can_use_personal_api_keys"); } }
+        private bool? _explicitNullValueMembersCanUsePersonalApiKeys = default!;
         /// <summary>When the requesting user joined this organization. Null if the user is not a member.</summary>
         public DateTimeOffset? MembershipJoinedAt { get; private set; }
         /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
@@ -103,10 +139,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>* `0` - none* `3` - config* `6` - install* `9` - root</summary>
         public int? PluginsAccessLevel { get; private set; }
@@ -119,7 +157,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganizationProjectsItemProperty> Projects { get; private set; }
 #endif
         /// <summary>When True, requests through the PostHog MCP server can read but not change this organization&apos;s data.</summary>
-        public bool? ReadOnlyMcpAccess { get; set; }
+        public bool? ReadOnlyMcpAccess { get => _explicitNullValueReadOnlyMcpAccess; set { _explicitNullValueReadOnlyMcpAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_only_mcp_access"); else _explicitNullProperties?.Remove("read_only_mcp_access"); } }
+        private bool? _explicitNullValueReadOnlyMcpAccess = default!;
         /// <summary>The slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -155,7 +194,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedOrganization(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -225,6 +264,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("members_can_use_personal_api_keys", MembersCanUsePersonalApiKeys);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("read_only_mcp_access", ReadOnlyMcpAccess);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

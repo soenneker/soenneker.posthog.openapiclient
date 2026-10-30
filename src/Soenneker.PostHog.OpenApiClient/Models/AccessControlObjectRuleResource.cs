@@ -11,27 +11,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccessControlObjectRuleResource : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("available_access_levels") is { } nullNodeAvailableAccessLevels && nullNodeAvailableAccessLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableAccessLevels = null;
+            if (parseNode.GetChildNode("minimum_access_level") is { } nullNodeMinimumAccessLevel && nullNodeMinimumAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinimumAccessLevel = null;
+            if (parseNode.GetChildNode("resource") is { } nullNodeResource && nullNodeResource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Resource = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The levels an object rule on this resource type accepts, lowest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AvailableAccessLevels { get; set; }
+        public List<string>? AvailableAccessLevels { get => _explicitNullValueAvailableAccessLevels; set { _explicitNullValueAvailableAccessLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_access_levels"); else _explicitNullProperties?.Remove("available_access_levels"); } }
+        private List<string>? _explicitNullValueAvailableAccessLevels = default!;
 #nullable restore
 #else
-        public List<string> AvailableAccessLevels { get; set; }
+        public List<string> AvailableAccessLevels { get => _explicitNullValueAvailableAccessLevels; set { _explicitNullValueAvailableAccessLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_access_levels"); else _explicitNullProperties?.Remove("available_access_levels"); } }
+        private List<string> _explicitNullValueAvailableAccessLevels = default!;
 #endif
         /// <summary>The lowest level an object rule on this resource can set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MinimumAccessLevel { get; set; }
+        public string? MinimumAccessLevel { get => _explicitNullValueMinimumAccessLevel; set { _explicitNullValueMinimumAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum_access_level"); else _explicitNullProperties?.Remove("minimum_access_level"); } }
+        private string? _explicitNullValueMinimumAccessLevel = default!;
 #nullable restore
 #else
-        public string MinimumAccessLevel { get; set; }
+        public string MinimumAccessLevel { get => _explicitNullValueMinimumAccessLevel; set { _explicitNullValueMinimumAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum_access_level"); else _explicitNullProperties?.Remove("minimum_access_level"); } }
+        private string _explicitNullValueMinimumAccessLevel = default!;
 #endif
         /// <summary>* `action` - action* `access_control` - access_control* `account` - account* `activity_log` - activity_log* `alert` - alert* `annotation` - annotation* `approvals` - approvals* `autoresearch` - autoresearch* `batch_export` - batch_export* `batch_import` - batch_import* `batch_import_support` - batch_import_support* `billing` - billing* `business_knowledge` - business_knowledge* `canvas` - canvas* `cohort` - cohort* `comment` - comment* `conversation` - conversation* `cross_project_dashboard` - cross_project_dashboard* `customer_analytics` - customer_analytics* `customer_task` - customer_task* `customer_journey` - customer_journey* `customer_profile_config` - customer_profile_config* `data_catalog` - data_catalog* `data_catalog_approval` - data_catalog_approval* `data_deletion` - data_deletion* `dashboard` - dashboard* `event_filter` - event_filter* `dashboard_template` - dashboard_template* `dataset` - dataset* `early_access_feature` - early_access_feature* `endpoint` - endpoint* `engineering_analytics` - engineering_analytics* `error_tracking` - error_tracking* `evaluation` - evaluation* `element` - element* `event_definition` - event_definition* `experiment` - experiment* `experiment_holdout` - experiment_holdout* `experiment_saved_metric` - experiment_saved_metric* `export` - export* `external_data_schema` - external_data_schema* `external_data_source` - external_data_source* `feature_flag` - feature_flag* `file_system` - file_system* `file_system_shortcut` - file_system_shortcut* `group` - group* `health_issue` - health_issue* `heatmap` - heatmap* `hog_flow` - hog_flow* `hog_function` - hog_function* `inbox` - inbox* `ingestion_warning` - ingestion_warning* `insight` - insight* `insight_variable` - insight_variable* `integration` - integration* `legal_document` - legal_document* `link` - link* `live_debugger` - live_debugger* `llm_analytics` - llm_analytics* `ai_observability_clusters` - ai_observability_clusters* `llm_gateway` - llm_gateway* `llm_playground` - llm_playground* `llm_prompt` - llm_prompt* `llm_provider_key` - llm_provider_key* `llm_skill` - llm_skill* `logs` - logs* `loop` - loop* `marketing_analytics` - marketing_analytics* `mcp_analytics` - mcp_analytics* `mcp_registry` - mcp_registry* `metrics` - metrics* `notebook` - notebook* `offline_evaluation_ingestion` - offline_evaluation_ingestion* `organization` - organization* `organization_integration` - organization_integration* `organization_member` - organization_member* `person` - person* `plugin` - plugin* `product_enablement` - product_enablement* `product_tour` - product_tour* `project` - project* `property_definition` - property_definition* `query` - query* `query_performance` - query_performance* `replay_scanner` - replay_scanner* `review_hog` - review_hog* `revenue_analytics` - revenue_analytics* `session_recording` - session_recording* `session_recording_playlist` - session_recording_playlist* `sharing_configuration` - sharing_configuration* `signal_scout` - signal_scout* `stamphog` - stamphog* `streamlit_app` - streamlit_app* `subscription` - subscription* `support_ticket` - support_ticket* `survey` - survey* `tagger` - tagger* `ticket` - ticket* `task` - task* `today` - today* `toolbar` - toolbar* `tracing` - tracing* `field_note` - field_note* `uploaded_media` - uploaded_media* `usage_metric` - usage_metric* `user` - user* `user_interview` - user_interview* `vision_action` - vision_action* `vision_alert` - vision_alert* `visual_review` - visual_review* `warehouse_objects` - warehouse_objects* `warehouse_table` - warehouse_table* `warehouse_view` - warehouse_view* `web_analytics` - web_analytics* `webhook` - webhook* `wizard_session` - wizard_session* `wizard_run` - wizard_run</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceResource? Resource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceResource? Resource { get => _explicitNullValueResource; set { _explicitNullValueResource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource"); else _explicitNullProperties?.Remove("resource"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceResource? _explicitNullValueResource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource"/> and sets the default values.
         /// </summary>
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("available_access_levels", AvailableAccessLevels);
             writer.WriteStringValue("minimum_access_level", MinimumAccessLevel);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceResource>("resource", Resource);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

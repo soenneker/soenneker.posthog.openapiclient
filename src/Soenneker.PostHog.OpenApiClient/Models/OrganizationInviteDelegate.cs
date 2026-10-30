@@ -11,32 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OrganizationInviteDelegate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("step_at_delegation") is { } nullNodeStepAtDelegation && nullNodeStepAtDelegation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepAtDelegation = null;
+            if (parseNode.GetChildNode("target_email") is { } nullNodeTargetEmail && nullNodeTargetEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEmail = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional personal message included in the delegation email (up to 1000 characters).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>Onboarding step key the delegator was on when delegating, for analytics only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StepAtDelegation { get; set; }
+        public string? StepAtDelegation { get => _explicitNullValueStepAtDelegation; set { _explicitNullValueStepAtDelegation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_delegation"); else _explicitNullProperties?.Remove("step_at_delegation"); } }
+        private string? _explicitNullValueStepAtDelegation = default!;
 #nullable restore
 #else
-        public string StepAtDelegation { get; set; }
+        public string StepAtDelegation { get => _explicitNullValueStepAtDelegation; set { _explicitNullValueStepAtDelegation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_delegation"); else _explicitNullProperties?.Remove("step_at_delegation"); } }
+        private string _explicitNullValueStepAtDelegation = default!;
 #endif
         /// <summary>Email of the teammate who should complete setup on the inviter&apos;s behalf. Receives a PostHog-branded delegation invite granting admin-level membership on accept.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEmail { get; set; }
+        public string? TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
+        private string? _explicitNullValueTargetEmail = default!;
 #nullable restore
 #else
-        public string TargetEmail { get; set; }
+        public string TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
+        private string _explicitNullValueTargetEmail = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInviteDelegate"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInviteDelegate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInviteDelegate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInviteDelegate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("step_at_delegation", StepAtDelegation);
             writer.WriteStringValue("target_email", TargetEmail);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

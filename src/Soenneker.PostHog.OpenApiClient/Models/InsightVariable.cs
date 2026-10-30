@@ -11,7 +11,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InsightVariable : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("default_value") is { } nullNodeDefaultValue && nullNodeDefaultValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultValue = null;
+            if (parseNode.GetChildNode("is_multi") is { } nullNodeIsMulti && nullNodeIsMulti.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsMulti = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("values") is { } nullNodeValues && nullNodeValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Values = null;
+            if (parseNode.GetChildNode("values_query") is { } nullNodeValuesQuery && nullNodeValuesQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValuesQuery = null;
+            if (parseNode.GetChildNode("values_query_connection_id") is { } nullNodeValuesQueryConnectionId && nullNodeValuesQueryConnectionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValuesQueryConnectionId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Generated code-safe name used in HogQL as {variables.code_name}. Derived from name.</summary>
@@ -29,48 +43,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Default value used when a query references this variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? DefaultValue { get; set; }
+        public UntypedNode? DefaultValue { get => _explicitNullValueDefaultValue; set { _explicitNullValueDefaultValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_value"); else _explicitNullProperties?.Remove("default_value"); } }
+        private UntypedNode? _explicitNullValueDefaultValue = default!;
 #nullable restore
 #else
-        public UntypedNode DefaultValue { get; set; }
+        public UntypedNode DefaultValue { get => _explicitNullValueDefaultValue; set { _explicitNullValueDefaultValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_value"); else _explicitNullProperties?.Remove("default_value"); } }
+        private UntypedNode _explicitNullValueDefaultValue = default!;
 #endif
         /// <summary>UUID of the SQL variable.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Whether a List variable accepts multiple selected values.</summary>
-        public bool? IsMulti { get; set; }
+        public bool? IsMulti { get => _explicitNullValueIsMulti; set { _explicitNullValueIsMulti = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_multi"); else _explicitNullProperties?.Remove("is_multi"); } }
+        private bool? _explicitNullValueIsMulti = default!;
         /// <summary>Human-readable name for the SQL variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>* `String` - String* `Number` - Number* `Boolean` - Boolean* `List` - List* `Date` - Date</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightVariableType? _explicitNullValueType = default!;
         /// <summary>Allowed values for List variables. Null for other variable types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Values { get; set; }
+        public UntypedNode? Values { get => _explicitNullValueValues; set { _explicitNullValueValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values"); else _explicitNullProperties?.Remove("values"); } }
+        private UntypedNode? _explicitNullValueValues = default!;
 #nullable restore
 #else
-        public UntypedNode Values { get; set; }
+        public UntypedNode Values { get => _explicitNullValueValues; set { _explicitNullValueValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values"); else _explicitNullProperties?.Remove("values"); } }
+        private UntypedNode _explicitNullValueValues = default!;
 #endif
         /// <summary>HogQL query whose first result column supplies the allowed values for a List variable. An optional second column supplies display labels.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ValuesQuery { get; set; }
+        public string? ValuesQuery { get => _explicitNullValueValuesQuery; set { _explicitNullValueValuesQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values_query"); else _explicitNullProperties?.Remove("values_query"); } }
+        private string? _explicitNullValueValuesQuery = default!;
 #nullable restore
 #else
-        public string ValuesQuery { get; set; }
+        public string ValuesQuery { get => _explicitNullValueValuesQuery; set { _explicitNullValueValuesQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values_query"); else _explicitNullProperties?.Remove("values_query"); } }
+        private string _explicitNullValueValuesQuery = default!;
 #endif
         /// <summary>ID of the external data source connection values_query runs against. Null runs it against PostHog.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ValuesQueryConnectionId { get; set; }
+        public string? ValuesQueryConnectionId { get => _explicitNullValueValuesQueryConnectionId; set { _explicitNullValueValuesQueryConnectionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values_query_connection_id"); else _explicitNullProperties?.Remove("values_query_connection_id"); } }
+        private string? _explicitNullValueValuesQueryConnectionId = default!;
 #nullable restore
 #else
-        public string ValuesQueryConnectionId { get; set; }
+        public string ValuesQueryConnectionId { get => _explicitNullValueValuesQueryConnectionId; set { _explicitNullValueValuesQueryConnectionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values_query_connection_id"); else _explicitNullProperties?.Remove("values_query_connection_id"); } }
+        private string _explicitNullValueValuesQueryConnectionId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable"/> and sets the default values.
@@ -87,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightVariable(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -124,6 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("values", Values);
             writer.WriteStringValue("values_query", ValuesQuery);
             writer.WriteStringValue("values_query_connection_id", ValuesQueryConnectionId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

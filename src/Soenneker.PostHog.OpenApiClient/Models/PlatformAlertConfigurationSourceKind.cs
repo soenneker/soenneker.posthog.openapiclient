@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `logs` - Logs* `insight` - Insight* `warehouse_source` - Warehouse source* `warehouse_destination` - Warehouse destination</summary>
+    /// <summary>* `logs` - Logs* `insight` - Insight* `warehouse_source` - Warehouse source* `warehouse_destination` - Warehouse destination* `metrics` - Metrics</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PlatformAlertConfigurationSourceKind
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "warehouse_destination")]
         #pragma warning disable CS1591
         WarehouseDestination,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "metrics")]
+        #pragma warning disable CS1591
+        Metrics,
         #pragma warning restore CS1591
     }
 }

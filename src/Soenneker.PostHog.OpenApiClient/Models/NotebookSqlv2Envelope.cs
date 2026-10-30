@@ -11,102 +11,148 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class NotebookSqlv2Envelope : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("first_page") is { } nullNodeFirstPage && nullNodeFirstPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstPage = null;
+            if (parseNode.GetChildNode("frames") is { } nullNodeFrames && nullNodeFrames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Frames = null;
+            if (parseNode.GetChildNode("has_more") is { } nullNodeHasMore && nullNodeHasMore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMore = null;
+            if (parseNode.GetChildNode("media") is { } nullNodeMedia && nullNodeMedia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Media = null;
+            if (parseNode.GetChildNode("result_id") is { } nullNodeResultId && nullNodeResultId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultId = null;
+            if (parseNode.GetChildNode("result_text") is { } nullNodeResultText && nullNodeResultText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultText = null;
+            if (parseNode.GetChildNode("row_count") is { } nullNodeRowCount && nullNodeRowCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowCount = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("stderr") is { } nullNodeStderr && nullNodeStderr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stderr = null;
+            if (parseNode.GetChildNode("stdout") is { } nullNodeStdout && nullNodeStdout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stdout = null;
+            if (parseNode.GetChildNode("timings") is { } nullNodeTimings && nullNodeTimings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timings = null;
+            if (parseNode.GetChildNode("types") is { } nullNodeTypes && nullNodeTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Types = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Result column names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Columns { get; set; }
+        public List<string>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<string> Columns { get; set; }
+        public List<string> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string> _explicitNullValueColumns = default!;
 #endif
         /// <summary>Error message when status is &apos;error&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string _explicitNullValueError = default!;
 #endif
         /// <summary>First page of result rows for display; each row is a list of cell values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UntypedNode>? FirstPage { get; set; }
+        public List<UntypedNode>? FirstPage { get => _explicitNullValueFirstPage; set { _explicitNullValueFirstPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_page"); else _explicitNullProperties?.Remove("first_page"); } }
+        private List<UntypedNode>? _explicitNullValueFirstPage = default!;
 #nullable restore
 #else
-        public List<UntypedNode> FirstPage { get; set; }
+        public List<UntypedNode> FirstPage { get => _explicitNullValueFirstPage; set { _explicitNullValueFirstPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_page"); else _explicitNullProperties?.Remove("first_page"); } }
+        private List<UntypedNode> _explicitNullValueFirstPage = default!;
 #endif
         /// <summary>DuckDB objects a SQL node can SELECT from as of this run, for the schema browser. Only kernel runs (python/duckdb) report these; a hogql run never enters the kernel.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame>? Frames { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame>? Frames { get => _explicitNullValueFrames; set { _explicitNullValueFrames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frames"); else _explicitNullProperties?.Remove("frames"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame>? _explicitNullValueFrames = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame> Frames { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame> Frames { get => _explicitNullValueFrames; set { _explicitNullValueFrames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frames"); else _explicitNullProperties?.Remove("frames"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame> _explicitNullValueFrames = default!;
 #endif
         /// <summary>Whether ClickHouse has more rows beyond first_page (detected by fetching limit+1).</summary>
-        public bool? HasMore { get; set; }
+        public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
+        private bool? _explicitNullValueHasMore = default!;
         /// <summary>Rich outputs from a Python node run, e.g. matplotlib figures as PNGs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media>? Media { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media>? Media { get => _explicitNullValueMedia; set { _explicitNullValueMedia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("media"); else _explicitNullProperties?.Remove("media"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media>? _explicitNullValueMedia = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media> Media { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media> Media { get => _explicitNullValueMedia; set { _explicitNullValueMedia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("media"); else _explicitNullProperties?.Remove("media"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media> _explicitNullValueMedia = default!;
 #endif
         /// <summary>Identifier of the materialized result, used as the paging key.</summary>
-        public Guid? ResultId { get; set; }
+        public Guid? ResultId { get => _explicitNullValueResultId; set { _explicitNullValueResultId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_id"); else _explicitNullProperties?.Remove("result_id"); } }
+        private Guid? _explicitNullValueResultId = default!;
         /// <summary>The plain-text form of a Python node&apos;s last expression, as Jupyter shows it under Out[n]. Absent when the cell ends in a statement, a None value, a semicolon, or a dataframe.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResultText { get; set; }
+        public string? ResultText { get => _explicitNullValueResultText; set { _explicitNullValueResultText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_text"); else _explicitNullProperties?.Remove("result_text"); } }
+        private string? _explicitNullValueResultText = default!;
 #nullable restore
 #else
-        public string ResultText { get; set; }
+        public string ResultText { get => _explicitNullValueResultText; set { _explicitNullValueResultText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_text"); else _explicitNullProperties?.Remove("result_text"); } }
+        private string _explicitNullValueResultText = default!;
 #endif
         /// <summary>Number of rows in the result.</summary>
-        public int? RowCount { get; set; }
+        public int? RowCount { get => _explicitNullValueRowCount; set { _explicitNullValueRowCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_count"); else _explicitNullProperties?.Remove("row_count"); } }
+        private int? _explicitNullValueRowCount = default!;
         /// <summary>Run outcome: &apos;ok&apos;, &apos;error&apos;, or &apos;interrupted&apos; (user-requested stop).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>Captured stderr (including tracebacks) from a Python node run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Stderr { get; set; }
+        public string? Stderr { get => _explicitNullValueStderr; set { _explicitNullValueStderr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stderr"); else _explicitNullProperties?.Remove("stderr"); } }
+        private string? _explicitNullValueStderr = default!;
 #nullable restore
 #else
-        public string Stderr { get; set; }
+        public string Stderr { get => _explicitNullValueStderr; set { _explicitNullValueStderr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stderr"); else _explicitNullProperties?.Remove("stderr"); } }
+        private string _explicitNullValueStderr = default!;
 #endif
         /// <summary>Captured stdout from a Python node run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Stdout { get; set; }
+        public string? Stdout { get => _explicitNullValueStdout; set { _explicitNullValueStdout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stdout"); else _explicitNullProperties?.Remove("stdout"); } }
+        private string? _explicitNullValueStdout = default!;
 #nullable restore
 #else
-        public string Stdout { get; set; }
+        public string Stdout { get => _explicitNullValueStdout; set { _explicitNullValueStdout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stdout"); else _explicitNullProperties?.Remove("stdout"); } }
+        private string _explicitNullValueStdout = default!;
 #endif
         /// <summary>Phase durations in seconds. From the sandbox: input_wait_s (waiting on the data plane), download_s (presigned frame downloads), kernel_boot_s (ensuring the ipykernel is up), exec_s (kernel cell execution), sandbox_total_s (the whole sandbox-side run). From the direct lane: queued_s (enqueue to Celery pickup), clickhouse_s (pickup to completion). Feeds the node-run metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2EnvelopeTimingsProperty? Timings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2EnvelopeTimingsProperty? Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2EnvelopeTimingsProperty? _explicitNullValueTimings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2EnvelopeTimingsProperty Timings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2EnvelopeTimingsProperty Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2EnvelopeTimingsProperty _explicitNullValueTimings = default!;
 #endif
         /// <summary>ClickHouse type per column, as [name, type] pairs; used by the visualization tab.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Types { get; set; }
+        public UntypedNode? Types { get => _explicitNullValueTypes; set { _explicitNullValueTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("types"); else _explicitNullProperties?.Remove("types"); } }
+        private UntypedNode? _explicitNullValueTypes = default!;
 #nullable restore
 #else
-        public UntypedNode Types { get; set; }
+        public UntypedNode Types { get => _explicitNullValueTypes; set { _explicitNullValueTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("types"); else _explicitNullProperties?.Remove("types"); } }
+        private UntypedNode _explicitNullValueTypes = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope"/> and sets the default values.
@@ -125,7 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -137,7 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "first_page", n => { FirstPage = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
+                { "first_page", n => { FirstPage = n.GetCollectionOfObjectValues<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "frames", n => { Frames = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Frame.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "media", n => { Media = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Media.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -172,6 +218,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("stdout", Stdout);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2EnvelopeTimingsProperty>("timings", Timings);
             writer.WriteObjectValue<UntypedNode>("types", Types);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

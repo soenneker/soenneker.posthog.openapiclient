@@ -11,39 +11,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalReportBulkStateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("corrected_repository") is { } nullNodeCorrectedRepository && nullNodeCorrectedRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorrectedRepository = null;
+            if (parseNode.GetChildNode("dismissal_note") is { } nullNodeDismissalNote && nullNodeDismissalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DismissalNote = null;
+            if (parseNode.GetChildNode("dismissal_reason") is { } nullNodeDismissalReason && nullNodeDismissalReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DismissalReason = null;
+            if (parseNode.GetChildNode("ids") is { } nullNodeIds && nullNodeIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ids = null;
+            if (parseNode.GetChildNode("snooze_for") is { } nullNodeSnoozeFor && nullNodeSnoozeFor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnoozeFor = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional, only allowed with dismissal_reason=&apos;wrong_repo&apos;. The repository this report should have targeted, in &apos;owner/repo&apos; format (case-insensitive). It is recorded with the dismissal and fed into future repository selection for this project. When the repository is connected to the project, it also becomes the report&apos;s corrected repo selection, so restoring the report re-researches against it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CorrectedRepository { get; set; }
+        public string? CorrectedRepository { get => _explicitNullValueCorrectedRepository; set { _explicitNullValueCorrectedRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corrected_repository"); else _explicitNullProperties?.Remove("corrected_repository"); } }
+        private string? _explicitNullValueCorrectedRepository = default!;
 #nullable restore
 #else
-        public string CorrectedRepository { get; set; }
+        public string CorrectedRepository { get => _explicitNullValueCorrectedRepository; set { _explicitNullValueCorrectedRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corrected_repository"); else _explicitNullProperties?.Remove("corrected_repository"); } }
+        private string _explicitNullValueCorrectedRepository = default!;
 #endif
         /// <summary>Optional free-form note explaining the dismissal. Capped at 4000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DismissalNote { get; set; }
+        public string? DismissalNote { get => _explicitNullValueDismissalNote; set { _explicitNullValueDismissalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissal_note"); else _explicitNullProperties?.Remove("dismissal_note"); } }
+        private string? _explicitNullValueDismissalNote = default!;
 #nullable restore
 #else
-        public string DismissalNote { get; set; }
+        public string DismissalNote { get => _explicitNullValueDismissalNote; set { _explicitNullValueDismissalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissal_note"); else _explicitNullProperties?.Remove("dismissal_note"); } }
+        private string _explicitNullValueDismissalNote = default!;
 #endif
         /// <summary>* `already_fixed` - Already fixed* `report_unclear` - Report is unclear to me* `analysis_wrong` - Agent&apos;s analysis is wrong* `wrong_assignee` - Wrong assignee* `wrong_repo` - Agent picked the wrong repository* `wontfix_intentional` - Won&apos;t fix - intentional behavior* `wontfix_irrelevant` - Not relevant to this project* `fixed_outside_posthog` - Fixed outside PostHog* `verified_manually` - Verified manually* `no_action_needed` - No action needed* `pr_merged` - PR was merged* `other` - Something else…</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequestDismissalReason? DismissalReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequestDismissalReason? DismissalReason { get => _explicitNullValueDismissalReason; set { _explicitNullValueDismissalReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissal_reason"); else _explicitNullProperties?.Remove("dismissal_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequestDismissalReason? _explicitNullValueDismissalReason = default!;
         /// <summary>Report ids to transition to `state` in one call (1–100). Duplicates are de-duplicated; each id is processed independently so one disallowed transition does not block the rest. `dismissal_reason`, `dismissal_note`, `corrected_repository` and `snooze_for` apply to every id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? Ids { get; set; }
+        public List<Guid?>? Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
+        private List<Guid?>? _explicitNullValueIds = default!;
 #nullable restore
 #else
-        public List<Guid?> Ids { get; set; }
+        public List<Guid?> Ids { get => _explicitNullValueIds; set { _explicitNullValueIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ids"); else _explicitNullProperties?.Remove("ids"); } }
+        private List<Guid?> _explicitNullValueIds = default!;
 #endif
         /// <summary>Optional, only honored when state is &apos;potential&apos;. Number of additional signals the report must accumulate before it is re-promoted into the pipeline — effectively snoozing it until then. Omit to let the report re-enter the pipeline on the next matching signal.</summary>
-        public int? SnoozeFor { get; set; }
+        public int? SnoozeFor { get => _explicitNullValueSnoozeFor; set { _explicitNullValueSnoozeFor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snooze_for"); else _explicitNullProperties?.Remove("snooze_for"); } }
+        private int? _explicitNullValueSnoozeFor = default!;
         /// <summary>* `suppressed` - suppressed* `potential` - potential* `resolved` - resolved* `monitoring` - monitoring</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequestState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequestState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequestState? _explicitNullValueState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequest"/> and sets the default values.
         /// </summary>
@@ -59,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,6 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<Guid?>("ids", Ids);
             writer.WriteIntValue("snooze_for", SnoozeFor);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateRequestState>("state", State);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

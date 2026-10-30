@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Fre
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Experiment>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Experiment.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Freeze exposure on a running experiment while metrics keep flowing.Snapshots the already-exposed users into a static cohort and narrows thelinked feature flag so only those users keep matching — new users can nolonger enter the experiment. ``end_date`` is left null so long-term metrics(revenue/LTV/renewals/retention) keep accumulating. Enrolled users keeptheir assigned variant. The serialized status becomes &apos;exposure_frozen&apos;.Returns 400 if the experiment is not running, exposure is already frozen,the experiment is group-aggregated (group flags cannot be frozen with aperson cohort), or the exposed set is too large to snapshot synchronously.

@@ -11,58 +11,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PanelQueryCheck : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("builder") is { } nullNodeBuilder && nullNodeBuilder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Builder = null;
+            if (parseNode.GetChildNode("histogram_metric") is { } nullNodeHistogramMetric && nullNodeHistogramMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HistogramMetric = null;
+            if (parseNode.GetChildNode("hogql") is { } nullNodeHogql && nullNodeHogql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hogql = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("language") is { } nullNodeLanguage && nullNodeLanguage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Language = null;
+            if (parseNode.GetChildNode("promql") is { } nullNodePromql && nullNodePromql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Promql = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Builder query. Used when language is &apos;builder&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery? Builder { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery? Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery? _explicitNullValueBuilder = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery Builder { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery _explicitNullValueBuilder = default!;
 #endif
         /// <summary>Histogram metric name. Used when language is &apos;histogram&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HistogramMetric { get; set; }
+        public string? HistogramMetric { get => _explicitNullValueHistogramMetric; set { _explicitNullValueHistogramMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("histogram_metric"); else _explicitNullProperties?.Remove("histogram_metric"); } }
+        private string? _explicitNullValueHistogramMetric = default!;
 #nullable restore
 #else
-        public string HistogramMetric { get; set; }
+        public string HistogramMetric { get => _explicitNullValueHistogramMetric; set { _explicitNullValueHistogramMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("histogram_metric"); else _explicitNullProperties?.Remove("histogram_metric"); } }
+        private string _explicitNullValueHistogramMetric = default!;
 #endif
         /// <summary>SQL SELECT over logs or posthog.trace_spans with {filters} in the WHERE clause. Used when language is &apos;hogql&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hogql { get; set; }
+        public string? Hogql { get => _explicitNullValueHogql; set { _explicitNullValueHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql"); else _explicitNullProperties?.Remove("hogql"); } }
+        private string? _explicitNullValueHogql = default!;
 #nullable restore
 #else
-        public string Hogql { get; set; }
+        public string Hogql { get => _explicitNullValueHogql; set { _explicitNullValueHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql"); else _explicitNullProperties?.Remove("hogql"); } }
+        private string _explicitNullValueHogql = default!;
 #endif
         /// <summary>Panel key. The result for the panel carries the same key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get; set; }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string _explicitNullValueKey = default!;
 #endif
         /// <summary>* `promql` - Promql* `builder` - Builder* `histogram` - Histogram* `hogql` - Hogql</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckLanguage? Language { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckLanguage? Language { get => _explicitNullValueLanguage; set { _explicitNullValueLanguage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("language"); else _explicitNullProperties?.Remove("language"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckLanguage? _explicitNullValueLanguage = default!;
         /// <summary>PromQL expression. Used when language is &apos;promql&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Promql { get; set; }
+        public string? Promql { get => _explicitNullValuePromql; set { _explicitNullValuePromql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("promql"); else _explicitNullProperties?.Remove("promql"); } }
+        private string? _explicitNullValuePromql = default!;
 #nullable restore
 #else
-        public string Promql { get; set; }
+        public string Promql { get => _explicitNullValuePromql; set { _explicitNullValuePromql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("promql"); else _explicitNullProperties?.Remove("promql"); } }
+        private string _explicitNullValuePromql = default!;
 #endif
         /// <summary>Panel title, shown in the import progress.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck"/> and sets the default values.
@@ -79,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckLanguage>("language", Language);
             writer.WriteStringValue("promql", Promql);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

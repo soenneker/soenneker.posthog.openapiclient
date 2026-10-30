@@ -11,47 +11,77 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AnomalySearchResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("group_by") is { } nullNodeGroupBy && nullNodeGroupBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupBy = null;
+            if (parseNode.GetChildNode("insights") is { } nullNodeInsights && nullNodeInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Insights = null;
+            if (parseNode.GetChildNode("insights_scored_in_range") is { } nullNodeInsightsScoredInRange && nullNodeInsightsScoredInRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightsScoredInRange = null;
+            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("scoring_enabled") is { } nullNodeScoringEnabled && nullNodeScoringEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoringEnabled = null;
+            if (parseNode.GetChildNode("series") is { } nullNodeSeries && nullNodeSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Series = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+            if (parseNode.GetChildNode("watched_insights") is { } nullNodeWatchedInsights && nullNodeWatchedInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WatchedInsights = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The applied start of the range, in the project timezone.</summary>
-        public DateTimeOffset? DateFrom { get; set; }
+        public DateTimeOffset? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private DateTimeOffset? _explicitNullValueDateFrom = default!;
         /// <summary>The applied end of the range, in the project timezone.</summary>
-        public DateTimeOffset? DateTo { get; set; }
+        public DateTimeOffset? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private DateTimeOffset? _explicitNullValueDateTo = default!;
         /// <summary>* `series` - Series* `insight` - Insight</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnomalySearchResponseGroupBy? GroupBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnomalySearchResponseGroupBy? GroupBy { get => _explicitNullValueGroupBy; set { _explicitNullValueGroupBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_by"); else _explicitNullProperties?.Remove("group_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AnomalySearchResponseGroupBy? _explicitNullValueGroupBy = default!;
         /// <summary>One row per insight, most anomalous first. Empty unless `group_by` is `insight`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyInsightRow>? Insights { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyInsightRow>? Insights { get => _explicitNullValueInsights; set { _explicitNullValueInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights"); else _explicitNullProperties?.Remove("insights"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyInsightRow>? _explicitNullValueInsights = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyInsightRow> Insights { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyInsightRow> Insights { get => _explicitNullValueInsights; set { _explicitNullValueInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights"); else _explicitNullProperties?.Remove("insights"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyInsightRow> _explicitNullValueInsights = default!;
 #endif
         /// <summary>Insights with at least one scored bucket in the range. Results cover only these insights.</summary>
-        public int? InsightsScoredInRange { get; set; }
+        public int? InsightsScoredInRange { get => _explicitNullValueInsightsScoredInRange; set { _explicitNullValueInsightsScoredInRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights_scored_in_range"); else _explicitNullProperties?.Remove("insights_scored_in_range"); } }
+        private int? _explicitNullValueInsightsScoredInRange = default!;
         /// <summary>Says why the result is empty. Null when it is not.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>Whether anomaly scoring scores this project now. False when scoring does not cover the project, or when the project turned it off in its self-driving settings. Scores written before scoring was turned off are still returned.</summary>
-        public bool? ScoringEnabled { get; set; }
+        public bool? ScoringEnabled { get => _explicitNullValueScoringEnabled; set { _explicitNullValueScoringEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scoring_enabled"); else _explicitNullProperties?.Remove("scoring_enabled"); } }
+        private bool? _explicitNullValueScoringEnabled = default!;
         /// <summary>One row per series, most anomalous first. Empty unless `group_by` is `series`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries>? Series { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries>? Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries>? _explicitNullValueSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries> Series { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries> Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries> _explicitNullValueSeries = default!;
 #endif
         /// <summary>True when `limit` or a read cap left rows out.</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>Active insights that scoring checks: saved trends insights that a person viewed, that sit on a dashboard someone opened, or that were edited in the active window (90 days by default), or that have an enabled alert or subscription.</summary>
-        public int? WatchedInsights { get; set; }
+        public int? WatchedInsights { get => _explicitNullValueWatchedInsights; set { _explicitNullValueWatchedInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watched_insights"); else _explicitNullProperties?.Remove("watched_insights"); } }
+        private int? _explicitNullValueWatchedInsights = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AnomalySearchResponse"/> and sets the default values.
         /// </summary>
@@ -67,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AnomalySearchResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AnomalySearchResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AnomalySearchResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries>("series", Series);
             writer.WriteBoolValue("truncated", Truncated);
             writer.WriteIntValue("watched_insights", WatchedInsights);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

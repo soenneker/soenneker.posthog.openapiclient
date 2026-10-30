@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Reques
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResult>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResult.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResult>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResult.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Wake the canvas&apos;s authoring agent to fix a failing build or runtime error.Starts (or signals) an agent run on the authoring task, instructed tostage the fix as a draft the user reviews and promotes. This is thehuman-initiated dispatch step behind error reports; it spends agentcompute, so it never fires automatically, and only the authoringtask&apos;s creator may dispatch — the run executes with their credentials.

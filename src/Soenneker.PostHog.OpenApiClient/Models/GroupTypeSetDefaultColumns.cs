@@ -11,19 +11,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GroupTypeSetDefaultColumns : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("default_columns") is { } nullNodeDefaultColumns && nullNodeDefaultColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultColumns = null;
+            if (parseNode.GetChildNode("group_type_index") is { } nullNodeGroupTypeIndex && nullNodeGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupTypeIndex = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Columns that the groups list of this group type shows by default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DefaultColumns { get; set; }
+        public List<string>? DefaultColumns { get => _explicitNullValueDefaultColumns; set { _explicitNullValueDefaultColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_columns"); else _explicitNullProperties?.Remove("default_columns"); } }
+        private List<string>? _explicitNullValueDefaultColumns = default!;
 #nullable restore
 #else
-        public List<string> DefaultColumns { get; set; }
+        public List<string> DefaultColumns { get => _explicitNullValueDefaultColumns; set { _explicitNullValueDefaultColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_columns"); else _explicitNullProperties?.Remove("default_columns"); } }
+        private List<string> _explicitNullValueDefaultColumns = default!;
 #endif
         /// <summary>Index of the group type to update.</summary>
-        public int? GroupTypeIndex { get; set; }
+        public int? GroupTypeIndex { get => _explicitNullValueGroupTypeIndex; set { _explicitNullValueGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_type_index"); else _explicitNullProperties?.Remove("group_type_index"); } }
+        private int? _explicitNullValueGroupTypeIndex = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GroupTypeSetDefaultColumns"/> and sets the default values.
         /// </summary>
@@ -39,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GroupTypeSetDefaultColumns CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GroupTypeSetDefaultColumns();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GroupTypeSetDefaultColumns(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("default_columns", DefaultColumns);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

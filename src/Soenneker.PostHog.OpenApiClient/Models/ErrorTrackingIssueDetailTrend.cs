@@ -12,40 +12,64 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingIssueDetailTrend : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("change_percent") is { } nullNodeChangePercent && nullNodeChangePercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangePercent = null;
+            if (parseNode.GetChildNode("current_from") is { } nullNodeCurrentFrom && nullNodeCurrentFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentFrom = null;
+            if (parseNode.GetChildNode("current_occurrences") is { } nullNodeCurrentOccurrences && nullNodeCurrentOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentOccurrences = null;
+            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("previous_from") is { } nullNodePreviousFrom && nullNodePreviousFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousFrom = null;
+            if (parseNode.GetChildNode("previous_occurrences") is { } nullNodePreviousOccurrences && nullNodePreviousOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousOccurrences = null;
+            if (parseNode.GetChildNode("previous_to") is { } nullNodePreviousTo && nullNodePreviousTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousTo = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Percent change from the first half to the second half. Absent when the first half has no occurrences.</summary>
-        public int? ChangePercent { get; set; }
+        public int? ChangePercent { get => _explicitNullValueChangePercent; set { _explicitNullValueChangePercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change_percent"); else _explicitNullProperties?.Remove("change_percent"); } }
+        private int? _explicitNullValueChangePercent = default!;
         /// <summary>Start of the second half. The second half ends at the end of dateRange.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentFrom { get; set; }
+        public string? CurrentFrom { get => _explicitNullValueCurrentFrom; set { _explicitNullValueCurrentFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_from"); else _explicitNullProperties?.Remove("current_from"); } }
+        private string? _explicitNullValueCurrentFrom = default!;
 #nullable restore
 #else
-        public string CurrentFrom { get; set; }
+        public string CurrentFrom { get => _explicitNullValueCurrentFrom; set { _explicitNullValueCurrentFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_from"); else _explicitNullProperties?.Remove("current_from"); } }
+        private string _explicitNullValueCurrentFrom = default!;
 #endif
         /// <summary>Occurrences in the second half of dateRange.</summary>
-        public int? CurrentOccurrences { get; set; }
+        public int? CurrentOccurrences { get => _explicitNullValueCurrentOccurrences; set { _explicitNullValueCurrentOccurrences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_occurrences"); else _explicitNullProperties?.Remove("current_occurrences"); } }
+        private int? _explicitNullValueCurrentOccurrences = default!;
         /// <summary>* `new` - New* `increasing` - Increasing* `decreasing` - Decreasing* `stable` - Stable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueTrendDirection? Direction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueTrendDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueTrendDirection? _explicitNullValueDirection = default!;
         /// <summary>Start of the first half.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousFrom { get; set; }
+        public string? PreviousFrom { get => _explicitNullValuePreviousFrom; set { _explicitNullValuePreviousFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_from"); else _explicitNullProperties?.Remove("previous_from"); } }
+        private string? _explicitNullValuePreviousFrom = default!;
 #nullable restore
 #else
-        public string PreviousFrom { get; set; }
+        public string PreviousFrom { get => _explicitNullValuePreviousFrom; set { _explicitNullValuePreviousFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_from"); else _explicitNullProperties?.Remove("previous_from"); } }
+        private string _explicitNullValuePreviousFrom = default!;
 #endif
         /// <summary>Occurrences in the first half of dateRange.</summary>
-        public int? PreviousOccurrences { get; set; }
+        public int? PreviousOccurrences { get => _explicitNullValuePreviousOccurrences; set { _explicitNullValuePreviousOccurrences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_occurrences"); else _explicitNullProperties?.Remove("previous_occurrences"); } }
+        private int? _explicitNullValuePreviousOccurrences = default!;
         /// <summary>End of the first half.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousTo { get; set; }
+        public string? PreviousTo { get => _explicitNullValuePreviousTo; set { _explicitNullValuePreviousTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_to"); else _explicitNullProperties?.Remove("previous_to"); } }
+        private string? _explicitNullValuePreviousTo = default!;
 #nullable restore
 #else
-        public string PreviousTo { get; set; }
+        public string PreviousTo { get => _explicitNullValuePreviousTo; set { _explicitNullValuePreviousTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_to"); else _explicitNullProperties?.Remove("previous_to"); } }
+        private string _explicitNullValuePreviousTo = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend"/> and sets the default values.
@@ -62,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -95,6 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("previous_from", PreviousFrom);
             writer.WriteIntValue("previous_occurrences", PreviousOccurrences);
             writer.WriteStringValue("previous_to", PreviousTo);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

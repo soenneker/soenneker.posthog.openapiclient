@@ -11,9 +11,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CalendarHeatmapFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bucketBySessionStart") is { } nullNodeBucketBySessionStart && nullNodeBucketBySessionStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketBySessionStart = null;
+        }
+
         /// <summary>When true and the series math is `dau`/`unique_users`, each user contributes to the (day-of-week, hour) bucket of their session&apos;s first event only — matching the web overview session-start attribution. When false (default), the user contributes to every bucket they have any event in. No effect on `total` math (event counts are unchanged either way).</summary>
-        public bool? BucketBySessionStart { get; set; }
+        public bool? BucketBySessionStart { get => _explicitNullValueBucketBySessionStart; set { _explicitNullValueBucketBySessionStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucketBySessionStart"); else _explicitNullProperties?.Remove("bucketBySessionStart"); } }
+        private bool? _explicitNullValueBucketBySessionStart = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter"/> and sets the default values.
         /// </summary>
@@ -29,7 +38,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,7 +58,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("bucketBySessionStart", BucketBySessionStart);
+            writer.WriteBoolValue("bucketBySessionStart", BucketBySessionStart);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

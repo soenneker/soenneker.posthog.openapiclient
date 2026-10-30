@@ -12,29 +12,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SymbolStatsRowPrevious : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("busy_count") is { } nullNodeBusyCount && nullNodeBusyCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BusyCount = null;
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("error_count") is { } nullNodeErrorCount && nullNodeErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCount = null;
+            if (parseNode.GetChildNode("p50_busy_nano") is { } nullNodeP50BusyNano && nullNodeP50BusyNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50BusyNano = null;
+            if (parseNode.GetChildNode("p50_duration_nano") is { } nullNodeP50DurationNano && nullNodeP50DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50DurationNano = null;
+            if (parseNode.GetChildNode("p95_busy_nano") is { } nullNodeP95BusyNano && nullNodeP95BusyNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95BusyNano = null;
+            if (parseNode.GetChildNode("p95_duration_nano") is { } nullNodeP95DurationNano && nullNodeP95DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95DurationNano = null;
+            if (parseNode.GetChildNode("p99_busy_nano") is { } nullNodeP99BusyNano && nullNodeP99BusyNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P99BusyNano = null;
+            if (parseNode.GetChildNode("p99_duration_nano") is { } nullNodeP99DurationNano && nullNodeP99DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P99DurationNano = null;
+            if (parseNode.GetChildNode("sum_duration_nano") is { } nullNodeSumDurationNano && nullNodeSumDurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SumDurationNano = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Spans in the period carrying an active/busy time attribute. 0 means busy_* are not meaningful.</summary>
-        public int? BusyCount { get; set; }
+        public int? BusyCount { get => _explicitNullValueBusyCount; set { _explicitNullValueBusyCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("busy_count"); else _explicitNullProperties?.Remove("busy_count"); } }
+        private int? _explicitNullValueBusyCount = default!;
         /// <summary>Number of spans attributed to this symbol in the period.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>Spans whose OTel status is Error (status_code = 2).</summary>
-        public int? ErrorCount { get; set; }
+        public int? ErrorCount { get => _explicitNullValueErrorCount; set { _explicitNullValueErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_count"); else _explicitNullProperties?.Remove("error_count"); } }
+        private int? _explicitNullValueErrorCount = default!;
         /// <summary>Median active (busy) time, in nanoseconds. Excludes awaiting children.</summary>
-        public double? P50BusyNano { get; set; }
+        public double? P50BusyNano { get => _explicitNullValueP50BusyNano; set { _explicitNullValueP50BusyNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_busy_nano"); else _explicitNullProperties?.Remove("p50_busy_nano"); } }
+        private double? _explicitNullValueP50BusyNano = default!;
         /// <summary>Median wall-clock span duration, in nanoseconds.</summary>
-        public double? P50DurationNano { get; set; }
+        public double? P50DurationNano { get => _explicitNullValueP50DurationNano; set { _explicitNullValueP50DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_duration_nano"); else _explicitNullProperties?.Remove("p50_duration_nano"); } }
+        private double? _explicitNullValueP50DurationNano = default!;
         /// <summary>95th-percentile active (busy) time, in nanoseconds.</summary>
-        public double? P95BusyNano { get; set; }
+        public double? P95BusyNano { get => _explicitNullValueP95BusyNano; set { _explicitNullValueP95BusyNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_busy_nano"); else _explicitNullProperties?.Remove("p95_busy_nano"); } }
+        private double? _explicitNullValueP95BusyNano = default!;
         /// <summary>95th-percentile wall-clock span duration, in nanoseconds.</summary>
-        public double? P95DurationNano { get; set; }
+        public double? P95DurationNano { get => _explicitNullValueP95DurationNano; set { _explicitNullValueP95DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_duration_nano"); else _explicitNullProperties?.Remove("p95_duration_nano"); } }
+        private double? _explicitNullValueP95DurationNano = default!;
         /// <summary>99th-percentile active (busy) time, in nanoseconds.</summary>
-        public double? P99BusyNano { get; set; }
+        public double? P99BusyNano { get => _explicitNullValueP99BusyNano; set { _explicitNullValueP99BusyNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p99_busy_nano"); else _explicitNullProperties?.Remove("p99_busy_nano"); } }
+        private double? _explicitNullValueP99BusyNano = default!;
         /// <summary>99th-percentile wall-clock span duration, in nanoseconds.</summary>
-        public double? P99DurationNano { get; set; }
+        public double? P99DurationNano { get => _explicitNullValueP99DurationNano; set { _explicitNullValueP99DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p99_duration_nano"); else _explicitNullProperties?.Remove("p99_duration_nano"); } }
+        private double? _explicitNullValueP99DurationNano = default!;
         /// <summary>Total wall-clock span duration in the period, in nanoseconds (additive across spans).</summary>
-        public double? SumDurationNano { get; set; }
+        public double? SumDurationNano { get => _explicitNullValueSumDurationNano; set { _explicitNullValueSumDurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum_duration_nano"); else _explicitNullProperties?.Remove("sum_duration_nano"); } }
+        private double? _explicitNullValueSumDurationNano = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsRowPrevious"/> and sets the default values.
         /// </summary>
@@ -50,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsRowPrevious CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsRowPrevious();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SymbolStatsRowPrevious(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("p99_busy_nano", P99BusyNano);
             writer.WriteDoubleValue("p99_duration_nano", P99DurationNano);
             writer.WriteDoubleValue("sum_duration_nano", SumDurationNano);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

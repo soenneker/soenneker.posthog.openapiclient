@@ -11,34 +11,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OverviewTotals : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("graded") is { } nullNodeGraded && nullNodeGraded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Graded = null;
+            if (parseNode.GetChildNode("gradedComparison") is { } nullNodeGradedComparison && nullNodeGradedComparison.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradedComparison = null;
+            if (parseNode.GetChildNode("gradedTrend") is { } nullNodeGradedTrend && nullNodeGradedTrend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradedTrend = null;
+            if (parseNode.GetChildNode("sentiment") is { } nullNodeSentiment && nullNodeSentiment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sentiment = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The graded property</summary>
-        public int? Graded { get; set; }
+        public int? Graded { get => _explicitNullValueGraded; set { _explicitNullValueGraded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("graded"); else _explicitNullProperties?.Remove("graded"); } }
+        private int? _explicitNullValueGraded = default!;
         /// <summary>Graded runs in each period, over evaluations with results in both. Null when none has.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? GradedComparison { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? _explicitNullValueGradedComparison = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison GradedComparison { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison _explicitNullValueGradedComparison = default!;
 #endif
         /// <summary>The gradedTrend property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? GradedTrend { get; set; }
+        public List<int?>? GradedTrend { get => _explicitNullValueGradedTrend; set { _explicitNullValueGradedTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedTrend"); else _explicitNullProperties?.Remove("gradedTrend"); } }
+        private List<int?>? _explicitNullValueGradedTrend = default!;
 #nullable restore
 #else
-        public List<int?> GradedTrend { get; set; }
+        public List<int?> GradedTrend { get => _explicitNullValueGradedTrend; set { _explicitNullValueGradedTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedTrend"); else _explicitNullProperties?.Remove("gradedTrend"); } }
+        private List<int?> _explicitNullValueGradedTrend = default!;
 #endif
         /// <summary>The sentiment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment? Sentiment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment? _explicitNullValueSentiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment Sentiment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment _explicitNullValueSentiment = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison>("gradedComparison", GradedComparison);
             writer.WriteCollectionOfPrimitiveValues<int?>("gradedTrend", GradedTrend);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment>("sentiment", Sentiment);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

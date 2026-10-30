@@ -12,34 +12,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CheckIncremental : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("incremental_key") is { } nullNodeIncrementalKey && nullNodeIncrementalKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalKey = null;
+            if (parseNode.GetChildNode("lookback_seconds") is { } nullNodeLookbackSeconds && nullNodeLookbackSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackSeconds = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("unique_key") is { } nullNodeUniqueKey && nullNodeUniqueKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueKey = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Output column whose advancing value marks rows as new. Omit to only list candidates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IncrementalKey { get; set; }
+        public string? IncrementalKey { get => _explicitNullValueIncrementalKey; set { _explicitNullValueIncrementalKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_key"); else _explicitNullProperties?.Remove("incremental_key"); } }
+        private string? _explicitNullValueIncrementalKey = default!;
 #nullable restore
 #else
-        public string IncrementalKey { get; set; }
+        public string IncrementalKey { get => _explicitNullValueIncrementalKey; set { _explicitNullValueIncrementalKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_key"); else _explicitNullProperties?.Remove("incremental_key"); } }
+        private string _explicitNullValueIncrementalKey = default!;
 #endif
         /// <summary>How far back before the watermark to re-read each run, to pick up late-arriving data.</summary>
-        public int? LookbackSeconds { get; set; }
+        public int? LookbackSeconds { get => _explicitNullValueLookbackSeconds; set { _explicitNullValueLookbackSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_seconds"); else _explicitNullProperties?.Remove("lookback_seconds"); } }
+        private int? _explicitNullValueLookbackSeconds = default!;
         /// <summary>The HogQL query to check.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get; set; }
+        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private string? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public string Query { get; set; }
+        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private string _explicitNullValueQuery = default!;
 #endif
         /// <summary>Output columns that identify a row. Must include every GROUP BY column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? UniqueKey { get; set; }
+        public List<string>? UniqueKey { get => _explicitNullValueUniqueKey; set { _explicitNullValueUniqueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key"); else _explicitNullProperties?.Remove("unique_key"); } }
+        private List<string>? _explicitNullValueUniqueKey = default!;
 #nullable restore
 #else
-        public List<string> UniqueKey { get; set; }
+        public List<string> UniqueKey { get => _explicitNullValueUniqueKey; set { _explicitNullValueUniqueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key"); else _explicitNullProperties?.Remove("unique_key"); } }
+        private List<string> _explicitNullValueUniqueKey = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CheckIncremental"/> and sets the default values.
@@ -56,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CheckIncremental CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CheckIncremental();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CheckIncremental(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("lookback_seconds", LookbackSeconds);
             writer.WriteStringValue("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("unique_key", UniqueKey);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

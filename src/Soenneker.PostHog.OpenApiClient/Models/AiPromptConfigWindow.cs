@@ -12,15 +12,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AiPromptConfigWindow : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("end_days_ago") is { } nullNodeEndDaysAgo && nullNodeEndDaysAgo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndDaysAgo = null;
+            if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
+            if (parseNode.GetChildNode("start_days_ago") is { } nullNodeStartDaysAgo && nullNodeStartDaysAgo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartDaysAgo = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Upper bound of the analysis window, in days before the run (0 = now). Required for &apos;days_ago_range&apos; and must be less than start_days_ago; ignored for other modes. 0-365.</summary>
-        public int? EndDaysAgo { get; set; }
+        public int? EndDaysAgo { get => _explicitNullValueEndDaysAgo; set { _explicitNullValueEndDaysAgo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_days_ago"); else _explicitNullProperties?.Remove("end_days_ago"); } }
+        private int? _explicitNullValueEndDaysAgo = default!;
         /// <summary>* `since_last_sent` - Since last report* `last_n_days` - Last N days* `days_ago_range` - Between X and Y days ago</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode? Mode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode? _explicitNullValueMode = default!;
         /// <summary>Lower bound of the analysis window, in days before the run. Required for &apos;last_n_days&apos; (the N) and &apos;days_ago_range&apos;; ignored for &apos;since_last_sent&apos;. 1-365.</summary>
-        public int? StartDaysAgo { get; set; }
+        public int? StartDaysAgo { get => _explicitNullValueStartDaysAgo; set { _explicitNullValueStartDaysAgo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_days_ago"); else _explicitNullProperties?.Remove("start_days_ago"); } }
+        private int? _explicitNullValueStartDaysAgo = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AiPromptConfigWindow"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AiPromptConfigWindow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AiPromptConfigWindow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AiPromptConfigWindow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("end_days_ago", EndDaysAgo);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AiWindowConfigMode>("mode", Mode);
             writer.WriteIntValue("start_days_ago", StartDaysAgo);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

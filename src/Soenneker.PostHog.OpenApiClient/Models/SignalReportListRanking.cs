@@ -12,29 +12,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignalReportListRanking : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("predictions") is { } nullNodePredictions && nullNodePredictions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Predictions = null;
+            if (parseNode.GetChildNode("scored_at") is { } nullNodeScoredAt && nullNodeScoredAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoredAt = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Key of the served model that wrote the score, as `&lt;model_name&gt;@&lt;model_version&gt;`. Do not compare predictions from different keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>The served model&apos;s predictions, one per public outcome that it scored. A prediction says what may happen, never what did: the report&apos;s status and its PR fields say whether it was resolved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingPrediction>? Predictions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingPrediction>? Predictions { get => _explicitNullValuePredictions; set { _explicitNullValuePredictions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("predictions"); else _explicitNullProperties?.Remove("predictions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingPrediction>? _explicitNullValuePredictions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingPrediction> Predictions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingPrediction> Predictions { get => _explicitNullValuePredictions; set { _explicitNullValuePredictions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("predictions"); else _explicitNullProperties?.Remove("predictions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingPrediction> _explicitNullValuePredictions = default!;
 #endif
         /// <summary>When the scoring sweep scored the report.</summary>
-        public DateTimeOffset? ScoredAt { get; set; }
+        public DateTimeOffset? ScoredAt { get => _explicitNullValueScoredAt; set { _explicitNullValueScoredAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scored_at"); else _explicitNullProperties?.Remove("scored_at"); } }
+        private DateTimeOffset? _explicitNullValueScoredAt = default!;
         /// <summary>* `scored` - scored* `stale` - stale* `unscored` - unscored* `not_available` - not_available</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRanking"/> and sets the default values.
         /// </summary>
@@ -50,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRanking CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRanking();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRanking(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingPrediction>("predictions", Predictions);
             writer.WriteDateTimeOffsetValue("scored_at", ScoredAt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportRankingStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,26 +11,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WorkflowCost : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billable_minutes") is { } nullNodeBillableMinutes && nullNodeBillableMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillableMinutes = null;
+            if (parseNode.GetChildNode("costed_jobs") is { } nullNodeCostedJobs && nullNodeCostedJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostedJobs = null;
+            if (parseNode.GetChildNode("estimated_cost_usd") is { } nullNodeEstimatedCostUsd && nullNodeEstimatedCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCostUsd = null;
+            if (parseNode.GetChildNode("excluded_jobs") is { } nullNodeExcludedJobs && nullNodeExcludedJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedJobs = null;
+            if (parseNode.GetChildNode("unsettled_jobs") is { } nullNodeUnsettledJobs && nullNodeUnsettledJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnsettledJobs = null;
+            if (parseNode.GetChildNode("workflow_name") is { } nullNodeWorkflowName && nullNodeWorkflowName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Billable (self-hosted) minutes for this workflow within the scope.</summary>
-        public double? BillableMinutes { get; set; }
+        public double? BillableMinutes { get => _explicitNullValueBillableMinutes; set { _explicitNullValueBillableMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_minutes"); else _explicitNullProperties?.Remove("billable_minutes"); } }
+        private double? _explicitNullValueBillableMinutes = default!;
         /// <summary>Costed jobs for this workflow (billable Linux runner, finished).</summary>
-        public int? CostedJobs { get; set; }
+        public int? CostedJobs { get => _explicitNullValueCostedJobs; set { _explicitNullValueCostedJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("costed_jobs"); else _explicitNullProperties?.Remove("costed_jobs"); } }
+        private int? _explicitNullValueCostedJobs = default!;
         /// <summary>Estimated dollar cost for this workflow, or null when nothing was costable.</summary>
-        public double? EstimatedCostUsd { get; set; }
+        public double? EstimatedCostUsd { get => _explicitNullValueEstimatedCostUsd; set { _explicitNullValueEstimatedCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_cost_usd"); else _explicitNullProperties?.Remove("estimated_cost_usd"); } }
+        private double? _explicitNullValueEstimatedCostUsd = default!;
         /// <summary>Provider-hosted/non-Linux jobs for this workflow, outside the estimate.</summary>
-        public int? ExcludedJobs { get; set; }
+        public int? ExcludedJobs { get => _explicitNullValueExcludedJobs; set { _explicitNullValueExcludedJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_jobs"); else _explicitNullProperties?.Remove("excluded_jobs"); } }
+        private int? _explicitNullValueExcludedJobs = default!;
         /// <summary>Billable Linux jobs still queued/running for this workflow.</summary>
-        public int? UnsettledJobs { get; set; }
+        public int? UnsettledJobs { get => _explicitNullValueUnsettledJobs; set { _explicitNullValueUnsettledJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsettled_jobs"); else _explicitNullProperties?.Remove("unsettled_jobs"); } }
+        private int? _explicitNullValueUnsettledJobs = default!;
         /// <summary>GitHub Actions workflow name this cost is for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkflowName { get; set; }
+        public string? WorkflowName { get => _explicitNullValueWorkflowName; set { _explicitNullValueWorkflowName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_name"); else _explicitNullProperties?.Remove("workflow_name"); } }
+        private string? _explicitNullValueWorkflowName = default!;
 #nullable restore
 #else
-        public string WorkflowName { get; set; }
+        public string WorkflowName { get => _explicitNullValueWorkflowName; set { _explicitNullValueWorkflowName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_name"); else _explicitNullProperties?.Remove("workflow_name"); } }
+        private string _explicitNullValueWorkflowName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost"/> and sets the default values.
@@ -47,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("excluded_jobs", ExcludedJobs);
             writer.WriteIntValue("unsettled_jobs", UnsettledJobs);
             writer.WriteStringValue("workflow_name", WorkflowName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

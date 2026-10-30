@@ -11,16 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedFieldNote : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("comment") is { } nullNodeComment && nullNodeComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Comment = null;
+            if (parseNode.GetChildNode("element_chain") is { } nullNodeElementChain && nullNodeElementChain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ElementChain = null;
+            if (parseNode.GetChildNode("element_context") is { } nullNodeElementContext && nullNodeElementContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ElementContext = null;
+            if (parseNode.GetChildNode("element_text") is { } nullNodeElementText && nullNodeElementText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ElementText = null;
+            if (parseNode.GetChildNode("field_note_status") is { } nullNodeFieldNoteStatus && nullNodeFieldNoteStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FieldNoteStatus = null;
+            if (parseNode.GetChildNode("host") is { } nullNodeHost && nullNodeHost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Host = null;
+            if (parseNode.GetChildNode("pathname") is { } nullNodePathname && nullNodePathname.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pathname = null;
+            if (parseNode.GetChildNode("resolution") is { } nullNodeResolution && nullNodeResolution.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Resolution = null;
+            if (parseNode.GetChildNode("screenshot_url") is { } nullNodeScreenshotUrl && nullNodeScreenshotUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScreenshotUrl = null;
+            if (parseNode.GetChildNode("selector") is { } nullNodeSelector && nullNodeSelector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selector = null;
+            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+            if (parseNode.GetChildNode("viewport") is { } nullNodeViewport && nullNodeViewport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Viewport = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The note the user wrote about the element.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Comment { get; set; }
+        public string? Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
+        private string? _explicitNullValueComment = default!;
 #nullable restore
 #else
-        public string Comment { get; set; }
+        public string Comment { get => _explicitNullValueComment; set { _explicitNullValueComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment"); else _explicitNullProperties?.Remove("comment"); } }
+        private string _explicitNullValueComment = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -35,88 +56,109 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Serialized autocapture-style element chain from the element up to the document root.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ElementChain { get; set; }
+        public string? ElementChain { get => _explicitNullValueElementChain; set { _explicitNullValueElementChain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("element_chain"); else _explicitNullProperties?.Remove("element_chain"); } }
+        private string? _explicitNullValueElementChain = default!;
 #nullable restore
 #else
-        public string ElementChain { get; set; }
+        public string ElementChain { get => _explicitNullValueElementChain; set { _explicitNullValueElementChain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("element_chain"); else _explicitNullProperties?.Remove("element_chain"); } }
+        private string _explicitNullValueElementChain = default!;
 #endif
         /// <summary>Structured element metadata (inferred selectors, attributes, component hints).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteElementContextProperty? ElementContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteElementContextProperty? ElementContext { get => _explicitNullValueElementContext; set { _explicitNullValueElementContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("element_context"); else _explicitNullProperties?.Remove("element_context"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteElementContextProperty? _explicitNullValueElementContext = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteElementContextProperty ElementContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteElementContextProperty ElementContext { get => _explicitNullValueElementContext; set { _explicitNullValueElementContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("element_context"); else _explicitNullProperties?.Remove("element_context"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteElementContextProperty _explicitNullValueElementContext = default!;
 #endif
         /// <summary>Visible text of the element, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ElementText { get; set; }
+        public string? ElementText { get => _explicitNullValueElementText; set { _explicitNullValueElementText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("element_text"); else _explicitNullProperties?.Remove("element_text"); } }
+        private string? _explicitNullValueElementText = default!;
 #nullable restore
 #else
-        public string ElementText { get; set; }
+        public string ElementText { get => _explicitNullValueElementText; set { _explicitNullValueElementText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("element_text"); else _explicitNullProperties?.Remove("element_text"); } }
+        private string _explicitNullValueElementText = default!;
 #endif
         /// <summary>* `pending` - Pending* `acknowledged` - Acknowledged* `resolved` - Resolved* `dismissed` - Dismissed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteFieldNoteStatus? FieldNoteStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteFieldNoteStatus? FieldNoteStatus { get => _explicitNullValueFieldNoteStatus; set { _explicitNullValueFieldNoteStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_note_status"); else _explicitNullProperties?.Remove("field_note_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteFieldNoteStatus? _explicitNullValueFieldNoteStatus = default!;
         /// <summary>Hostname of the page, used to scope field notes to a site.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Host { get; set; }
+        public string? Host { get => _explicitNullValueHost; set { _explicitNullValueHost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host"); else _explicitNullProperties?.Remove("host"); } }
+        private string? _explicitNullValueHost = default!;
 #nullable restore
 #else
-        public string Host { get; set; }
+        public string Host { get => _explicitNullValueHost; set { _explicitNullValueHost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("host"); else _explicitNullProperties?.Remove("host"); } }
+        private string _explicitNullValueHost = default!;
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Path portion of the URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Pathname { get; set; }
+        public string? Pathname { get => _explicitNullValuePathname; set { _explicitNullValuePathname = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathname"); else _explicitNullProperties?.Remove("pathname"); } }
+        private string? _explicitNullValuePathname = default!;
 #nullable restore
 #else
-        public string Pathname { get; set; }
+        public string Pathname { get => _explicitNullValuePathname; set { _explicitNullValuePathname = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathname"); else _explicitNullProperties?.Remove("pathname"); } }
+        private string _explicitNullValuePathname = default!;
 #endif
         /// <summary>Optional note left by the agent when acknowledging, resolving, or dismissing the field note.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Resolution { get; set; }
+        public string? Resolution { get => _explicitNullValueResolution; set { _explicitNullValueResolution = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolution"); else _explicitNullProperties?.Remove("resolution"); } }
+        private string? _explicitNullValueResolution = default!;
 #nullable restore
 #else
-        public string Resolution { get; set; }
+        public string Resolution { get => _explicitNullValueResolution; set { _explicitNullValueResolution = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolution"); else _explicitNullProperties?.Remove("resolution"); } }
+        private string _explicitNullValueResolution = default!;
 #endif
         /// <summary>URL of an uploaded screenshot captured with the field_note.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScreenshotUrl { get; set; }
+        public string? ScreenshotUrl { get => _explicitNullValueScreenshotUrl; set { _explicitNullValueScreenshotUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("screenshot_url"); else _explicitNullProperties?.Remove("screenshot_url"); } }
+        private string? _explicitNullValueScreenshotUrl = default!;
 #nullable restore
 #else
-        public string ScreenshotUrl { get; set; }
+        public string ScreenshotUrl { get => _explicitNullValueScreenshotUrl; set { _explicitNullValueScreenshotUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("screenshot_url"); else _explicitNullProperties?.Remove("screenshot_url"); } }
+        private string _explicitNullValueScreenshotUrl = default!;
 #endif
         /// <summary>CSS selector that locates the element on the page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Selector { get; set; }
+        public string? Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        private string? _explicitNullValueSelector = default!;
 #nullable restore
 #else
-        public string Selector { get; set; }
+        public string Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        private string _explicitNullValueSelector = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Full URL of the page the field note was made on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Url { get; set; }
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public string Url { get; set; }
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>Viewport size when the field note was made, as {width, height}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteViewport? Viewport { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteViewport? Viewport { get => _explicitNullValueViewport; set { _explicitNullValueViewport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewport"); else _explicitNullProperties?.Remove("viewport"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteViewport? _explicitNullValueViewport = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteViewport Viewport { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteViewport Viewport { get => _explicitNullValueViewport; set { _explicitNullValueViewport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewport"); else _explicitNullProperties?.Remove("viewport"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteViewport _explicitNullValueViewport = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNote"/> and sets the default values.
@@ -133,7 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNote CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNote();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNote(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -180,6 +222,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("selector", Selector);
             writer.WriteStringValue("url", Url);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFieldNoteViewport>("viewport", Viewport);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

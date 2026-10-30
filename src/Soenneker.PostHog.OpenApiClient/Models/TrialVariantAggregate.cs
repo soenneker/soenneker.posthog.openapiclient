@@ -11,41 +11,72 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TrialVariantAggregate : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_delta") is { } nullNodeBaselineDelta && nullNodeBaselineDelta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineDelta = null;
+            if (parseNode.GetChildNode("coverage") is { } nullNodeCoverage && nullNodeCoverage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Coverage = null;
+            if (parseNode.GetChildNode("criteria") is { } nullNodeCriteria && nullNodeCriteria.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Criteria = null;
+            if (parseNode.GetChildNode("excluded_runs") is { } nullNodeExcludedRuns && nullNodeExcludedRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedRuns = null;
+            if (parseNode.GetChildNode("is_baseline") is { } nullNodeIsBaseline && nullNodeIsBaseline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsBaseline = null;
+            if (parseNode.GetChildNode("judged_runs") is { } nullNodeJudgedRuns && nullNodeJudgedRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JudgedRuns = null;
+            if (parseNode.GetChildNode("judge_errors") is { } nullNodeJudgeErrors && nullNodeJudgeErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JudgeErrors = null;
+            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("score") is { } nullNodeScore && nullNodeScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Score = null;
+            if (parseNode.GetChildNode("total_runs") is { } nullNodeTotalRuns && nullNodeTotalRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRuns = null;
+            if (parseNode.GetChildNode("variant_id") is { } nullNodeVariantId && nullNodeVariantId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantId = null;
+        }
+
         /// <summary>The baseline_delta property</summary>
-        public double? BaselineDelta { get; set; }
+        public double? BaselineDelta { get => _explicitNullValueBaselineDelta; set { _explicitNullValueBaselineDelta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_delta"); else _explicitNullProperties?.Remove("baseline_delta"); } }
+        private double? _explicitNullValueBaselineDelta = default!;
         /// <summary>The coverage property</summary>
-        public double? Coverage { get; set; }
+        public double? Coverage { get => _explicitNullValueCoverage; set { _explicitNullValueCoverage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coverage"); else _explicitNullProperties?.Remove("coverage"); } }
+        private double? _explicitNullValueCoverage = default!;
         /// <summary>The criteria property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialCriterionAggregate>? Criteria { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialCriterionAggregate>? Criteria { get => _explicitNullValueCriteria; set { _explicitNullValueCriteria = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("criteria"); else _explicitNullProperties?.Remove("criteria"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TrialCriterionAggregate>? _explicitNullValueCriteria = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialCriterionAggregate> Criteria { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialCriterionAggregate> Criteria { get => _explicitNullValueCriteria; set { _explicitNullValueCriteria = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("criteria"); else _explicitNullProperties?.Remove("criteria"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TrialCriterionAggregate> _explicitNullValueCriteria = default!;
 #endif
         /// <summary>The excluded_runs property</summary>
-        public int? ExcludedRuns { get; set; }
+        public int? ExcludedRuns { get => _explicitNullValueExcludedRuns; set { _explicitNullValueExcludedRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_runs"); else _explicitNullProperties?.Remove("excluded_runs"); } }
+        private int? _explicitNullValueExcludedRuns = default!;
         /// <summary>The is_baseline property</summary>
-        public bool? IsBaseline { get; set; }
+        public bool? IsBaseline { get => _explicitNullValueIsBaseline; set { _explicitNullValueIsBaseline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_baseline"); else _explicitNullProperties?.Remove("is_baseline"); } }
+        private bool? _explicitNullValueIsBaseline = default!;
         /// <summary>The judged_runs property</summary>
-        public int? JudgedRuns { get; set; }
+        public int? JudgedRuns { get => _explicitNullValueJudgedRuns; set { _explicitNullValueJudgedRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judged_runs"); else _explicitNullProperties?.Remove("judged_runs"); } }
+        private int? _explicitNullValueJudgedRuns = default!;
         /// <summary>The judge_errors property</summary>
-        public int? JudgeErrors { get; set; }
+        public int? JudgeErrors { get => _explicitNullValueJudgeErrors; set { _explicitNullValueJudgeErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_errors"); else _explicitNullProperties?.Remove("judge_errors"); } }
+        private int? _explicitNullValueJudgeErrors = default!;
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get; set; }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>The score property</summary>
-        public double? Score { get; set; }
+        public double? Score { get => _explicitNullValueScore; set { _explicitNullValueScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score"); else _explicitNullProperties?.Remove("score"); } }
+        private double? _explicitNullValueScore = default!;
         /// <summary>The total_runs property</summary>
-        public int? TotalRuns { get; set; }
+        public int? TotalRuns { get => _explicitNullValueTotalRuns; set { _explicitNullValueTotalRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_runs"); else _explicitNullProperties?.Remove("total_runs"); } }
+        private int? _explicitNullValueTotalRuns = default!;
         /// <summary>The variant_id property</summary>
-        public Guid? VariantId { get; set; }
+        public Guid? VariantId { get => _explicitNullValueVariantId; set { _explicitNullValueVariantId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_id"); else _explicitNullProperties?.Remove("variant_id"); } }
+        private Guid? _explicitNullValueVariantId = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -54,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TrialVariantAggregate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TrialVariantAggregate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TrialVariantAggregate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -94,7 +125,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("label", Label);
             writer.WriteDoubleValue("score", Score);
             writer.WriteIntValue("total_runs", TotalRuns);
-            writer.WriteGuidValue("variant_id", VariantId);
+            writer.WriteGuidValue("variant_id", VariantId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

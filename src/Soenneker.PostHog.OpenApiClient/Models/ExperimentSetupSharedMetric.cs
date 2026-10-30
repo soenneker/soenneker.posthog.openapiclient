@@ -11,59 +11,91 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentSetupSharedMetric : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("action_ids") is { } nullNodeActionIds && nullNodeActionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionIds = null;
+            if (parseNode.GetChildNode("events") is { } nullNodeEvents && nullNodeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Events = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("last_used_at") is { } nullNodeLastUsedAt && nullNodeLastUsedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastUsedAt = null;
+            if (parseNode.GetChildNode("matches_metric_event") is { } nullNodeMatchesMetricEvent && nullNodeMatchesMetricEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchesMetricEvent = null;
+            if (parseNode.GetChildNode("metric_event_roles") is { } nullNodeMetricEventRoles && nullNodeMetricEventRoles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricEventRoles = null;
+            if (parseNode.GetChildNode("metric_type") is { } nullNodeMetricType && nullNodeMetricType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricType = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("used_as_primary") is { } nullNodeUsedAsPrimary && nullNodeUsedAsPrimary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedAsPrimary = null;
+            if (parseNode.GetChildNode("used_as_secondary") is { } nullNodeUsedAsSecondary && nullNodeUsedAsSecondary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedAsSecondary = null;
+        }
+
         /// <summary>Actions the metric counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ActionIds { get; set; }
+        public List<int?>? ActionIds { get => _explicitNullValueActionIds; set { _explicitNullValueActionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("action_ids"); else _explicitNullProperties?.Remove("action_ids"); } }
+        private List<int?>? _explicitNullValueActionIds = default!;
 #nullable restore
 #else
-        public List<int?> ActionIds { get; set; }
+        public List<int?> ActionIds { get => _explicitNullValueActionIds; set { _explicitNullValueActionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("action_ids"); else _explicitNullProperties?.Remove("action_ids"); } }
+        private List<int?> _explicitNullValueActionIds = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Event names the metric counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Events { get; set; }
+        public List<string>? Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        private List<string>? _explicitNullValueEvents = default!;
 #nullable restore
 #else
-        public List<string> Events { get; set; }
+        public List<string> Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        private List<string> _explicitNullValueEvents = default!;
 #endif
         /// <summary>Shared metric id, to attach it instead of creating an inline metric.</summary>
-        public int? Id { get; set; }
+        public int? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private int? _explicitNullValueId = default!;
         /// <summary>When it was last attached to an experiment, or null.</summary>
-        public DateTimeOffset? LastUsedAt { get; set; }
+        public DateTimeOffset? LastUsedAt { get => _explicitNullValueLastUsedAt; set { _explicitNullValueLastUsedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_used_at"); else _explicitNullProperties?.Remove("last_used_at"); } }
+        private DateTimeOffset? _explicitNullValueLastUsedAt = default!;
         /// <summary>Whether the metric counts metric_event, directly or through an action. Null when no metric_event was passed.</summary>
-        public bool? MatchesMetricEvent { get; set; }
+        public bool? MatchesMetricEvent { get => _explicitNullValueMatchesMetricEvent; set { _explicitNullValueMatchesMetricEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matches_metric_event"); else _explicitNullProperties?.Remove("matches_metric_event"); } }
+        private bool? _explicitNullValueMatchesMetricEvent = default!;
         /// <summary>Where metric_event sits in the metric: &apos;funnel_step&apos; and &apos;funnel_final_step&apos; for a funnel, &apos;mean_source&apos;, &apos;ratio_numerator&apos;, &apos;ratio_denominator&apos;, &apos;retention_start&apos; or &apos;retention_completion&apos;. A metric that only starts from the event is a different precedent from one that converts on it. Empty when the metric does not count it, and null when no metric_event was passed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MetricEventRoles { get; set; }
+        public List<string>? MetricEventRoles { get => _explicitNullValueMetricEventRoles; set { _explicitNullValueMetricEventRoles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_event_roles"); else _explicitNullProperties?.Remove("metric_event_roles"); } }
+        private List<string>? _explicitNullValueMetricEventRoles = default!;
 #nullable restore
 #else
-        public List<string> MetricEventRoles { get; set; }
+        public List<string> MetricEventRoles { get => _explicitNullValueMetricEventRoles; set { _explicitNullValueMetricEventRoles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_event_roles"); else _explicitNullProperties?.Remove("metric_event_roles"); } }
+        private List<string> _explicitNullValueMetricEventRoles = default!;
 #endif
         /// <summary>&apos;mean&apos;, &apos;funnel&apos;, &apos;ratio&apos; or &apos;retention&apos;, or null for older metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricType { get; set; }
+        public string? MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
+        private string? _explicitNullValueMetricType = default!;
 #nullable restore
 #else
-        public string MetricType { get; set; }
+        public string MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
+        private string _explicitNullValueMetricType = default!;
 #endif
         /// <summary>Shared metric name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Experiments that use it as a primary metric.</summary>
-        public int? UsedAsPrimary { get; set; }
+        public int? UsedAsPrimary { get => _explicitNullValueUsedAsPrimary; set { _explicitNullValueUsedAsPrimary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_as_primary"); else _explicitNullProperties?.Remove("used_as_primary"); } }
+        private int? _explicitNullValueUsedAsPrimary = default!;
         /// <summary>Experiments that use it as a secondary metric.</summary>
-        public int? UsedAsSecondary { get; set; }
+        public int? UsedAsSecondary { get => _explicitNullValueUsedAsSecondary; set { _explicitNullValueUsedAsSecondary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_as_secondary"); else _explicitNullProperties?.Remove("used_as_secondary"); } }
+        private int? _explicitNullValueUsedAsSecondary = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetric"/> and sets the default values.
         /// </summary>
@@ -79,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetric CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetric();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetric(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,6 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("used_as_primary", UsedAsPrimary);
             writer.WriteIntValue("used_as_secondary", UsedAsSecondary);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

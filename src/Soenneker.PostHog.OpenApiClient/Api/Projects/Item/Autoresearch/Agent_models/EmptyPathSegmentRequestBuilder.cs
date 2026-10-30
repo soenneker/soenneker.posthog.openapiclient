@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Agent_m
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOptions>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOptions.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOptions>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOptions.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Return the models a pipeline&apos;s training agent may run on, with the reasoning efforts each supports and its relative token cost, plus the model and effort a pipeline with blank settings uses. Pass a model id as agent_model and an effort as agent_reasoning_effort on create or update.

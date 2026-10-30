@@ -12,7 +12,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Insight : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("_create_in_folder") is { } nullNodeCreateInFolder && nullNodeCreateInFolder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreateInFolder = null;
+            if (parseNode.GetChildNode("dashboards") is { } nullNodeDashboards && nullNodeDashboards.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dashboards = null;
+            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("derived_name") is { } nullNodeDerivedName && nullNodeDerivedName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DerivedName = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("favorited") is { } nullNodeFavorited && nullNodeFavorited.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Favorited = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("order") is { } nullNodeOrder && nullNodeOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Order = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+        }
+
         /// <summary>The name of each action the insight&apos;s series reference, keyed by action id. A series saved without a name displays this name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -54,19 +71,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CreateInFolder { get; set; }
+        public string? CreateInFolder { get => _explicitNullValueCreateInFolder; set { _explicitNullValueCreateInFolder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_create_in_folder"); else _explicitNullProperties?.Remove("_create_in_folder"); } }
+        private string? _explicitNullValueCreateInFolder = default!;
 #nullable restore
 #else
-        public string CreateInFolder { get; set; }
+        public string CreateInFolder { get => _explicitNullValueCreateInFolder; set { _explicitNullValueCreateInFolder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_create_in_folder"); else _explicitNullProperties?.Remove("_create_in_folder"); } }
+        private string _explicitNullValueCreateInFolder = default!;
 #endif
         /// <summary>        DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead.        A dashboard ID for each of the dashboards that this insight is displayed on.        This field is omitted from session-authenticated responses unless `include_dashboards=true`        is passed. Once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth)        must opt in the same way. Do not rely on it being present.        </summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Dashboards { get; set; }
+        public List<int?>? Dashboards { get => _explicitNullValueDashboards; set { _explicitNullValueDashboards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboards"); else _explicitNullProperties?.Remove("dashboards"); } }
+        private List<int?>? _explicitNullValueDashboards = default!;
 #nullable restore
 #else
-        public List<int?> Dashboards { get; set; }
+        public List<int?> Dashboards { get => _explicitNullValueDashboards; set { _explicitNullValueDashboards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboards"); else _explicitNullProperties?.Remove("dashboards"); } }
+        private List<int?> _explicitNullValueDashboards = default!;
 #endif
         /// <summary>    A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on.    </summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -77,25 +98,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBasic> DashboardTiles { get; private set; }
 #endif
         /// <summary>The deleted property</summary>
-        public bool? Deleted { get; set; }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        private bool? _explicitNullValueDeleted = default!;
         /// <summary>The derived_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DerivedName { get; set; }
+        public string? DerivedName { get => _explicitNullValueDerivedName; set { _explicitNullValueDerivedName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("derived_name"); else _explicitNullProperties?.Remove("derived_name"); } }
+        private string? _explicitNullValueDerivedName = default!;
 #nullable restore
 #else
-        public string DerivedName { get; set; }
+        public string DerivedName { get => _explicitNullValueDerivedName; set { _explicitNullValueDerivedName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("derived_name"); else _explicitNullProperties?.Remove("derived_name"); } }
+        private string _explicitNullValueDerivedName = default!;
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The favorited property</summary>
-        public bool? Favorited { get; set; }
+        public bool? Favorited { get => _explicitNullValueFavorited; set { _explicitNullValueFavorited = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("favorited"); else _explicitNullProperties?.Remove("favorited"); } }
+        private bool? _explicitNullValueFavorited = default!;
         /// <summary>Resolved dashboard and tile filter layers used to explain filter precedence in the UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -137,22 +164,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>    The earliest possible datetime at which we&apos;ll allow the cached results for this insight to be refreshed    by querying the database.    </summary>
         public DateTimeOffset? NextAllowedClientRefresh { get; private set; }
         /// <summary>The order property</summary>
-        public int? Order { get; set; }
+        public int? Order { get => _explicitNullValueOrder; set { _explicitNullValueOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order"); else _explicitNullProperties?.Remove("order"); } }
+        private int? _explicitNullValueOrder = default!;
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema _explicitNullValueQuery = default!;
 #endif
         /// <summary>What ClickHouse read for this insight&apos;s last slow run, with the findings of its query scan.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -170,7 +202,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode QueryStatus { get; private set; }
 #endif
-        /// <summary>The resolved_date_range property</summary>
+        /// <summary>The earlier period that this insight&apos;s query compared against, with both ends resolved to timestamps. Null when comparison is off, when the insight has no result yet, or when its query type does not report the range.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedCompareDateRange? ResolvedCompareDateRange { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedCompareDateRange ResolvedCompareDateRange { get; private set; }
+#endif
+        /// <summary>The period that this insight&apos;s query covered, with both ends resolved to timestamps. Null when the insight has no result yet or its query type does not report the range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedDateRange? ResolvedDateRange { get; private set; }
@@ -205,10 +245,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Tags { get; set; }
+        public UntypedNode? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private UntypedNode? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public UntypedNode Tags { get; set; }
+        public UntypedNode Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private UntypedNode _explicitNullValueTags = default!;
 #endif
         /// <summary>The timezone this chart is displayed in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -259,7 +301,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.Insight CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.Insight();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.Insight(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -298,6 +340,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema>(global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema.CreateFromDiscriminatorValue); } },
                 { "query_scan", n => { QueryScan = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedCompareDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedCompareDateRange.CreateFromDiscriminatorValue); } },
                 { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.InsightResolvedDateRange.CreateFromDiscriminatorValue); } },
                 { "result", n => { Result = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.InsightSearchMatchType.CreateFromDiscriminatorValue); } },
@@ -327,6 +370,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("order", Order);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema>("query", Query);
             writer.WriteObjectValue<UntypedNode>("tags", Tags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

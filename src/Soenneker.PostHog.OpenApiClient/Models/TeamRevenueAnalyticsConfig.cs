@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamRevenueAnalyticsConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_currency") is { } nullNodeBaseCurrency && nullNodeBaseCurrency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseCurrency = null;
+            if (parseNode.GetChildNode("events") is { } nullNodeEvents && nullNodeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Events = null;
+            if (parseNode.GetChildNode("filter_test_accounts") is { } nullNodeFilterTestAccounts && nullNodeFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTestAccounts = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `AED` - AED* `AFN` - AFN* `ALL` - ALL* `AMD` - AMD* `ANG` - ANG* `AOA` - AOA* `ARS` - ARS* `AUD` - AUD* `AWG` - AWG* `AZN` - AZN* `BAM` - BAM* `BBD` - BBD* `BDT` - BDT* `BGN` - BGN* `BHD` - BHD* `BIF` - BIF* `BMD` - BMD* `BND` - BND* `BOB` - BOB* `BRL` - BRL* `BSD` - BSD* `BTC` - BTC* `BTN` - BTN* `BWP` - BWP* `BYN` - BYN* `BZD` - BZD* `CAD` - CAD* `CDF` - CDF* `CHF` - CHF* `CLP` - CLP* `CNY` - CNY* `COP` - COP* `CRC` - CRC* `CVE` - CVE* `CZK` - CZK* `DJF` - DJF* `DKK` - DKK* `DOP` - DOP* `DZD` - DZD* `EGP` - EGP* `ERN` - ERN* `ETB` - ETB* `EUR` - EUR* `FJD` - FJD* `GBP` - GBP* `GEL` - GEL* `GHS` - GHS* `GIP` - GIP* `GMD` - GMD* `GNF` - GNF* `GTQ` - GTQ* `GYD` - GYD* `HKD` - HKD* `HNL` - HNL* `HRK` - HRK* `HTG` - HTG* `HUF` - HUF* `IDR` - IDR* `ILS` - ILS* `INR` - INR* `IQD` - IQD* `IRR` - IRR* `ISK` - ISK* `JMD` - JMD* `JOD` - JOD* `JPY` - JPY* `KES` - KES* `KGS` - KGS* `KHR` - KHR* `KMF` - KMF* `KRW` - KRW* `KWD` - KWD* `KYD` - KYD* `KZT` - KZT* `LAK` - LAK* `LBP` - LBP* `LKR` - LKR* `LRD` - LRD* `LTL` - LTL* `LVL` - LVL* `LSL` - LSL* `LYD` - LYD* `MAD` - MAD* `MDL` - MDL* `MGA` - MGA* `MKD` - MKD* `MMK` - MMK* `MNT` - MNT* `MOP` - MOP* `MRU` - MRU* `MTL` - MTL* `MUR` - MUR* `MVR` - MVR* `MWK` - MWK* `MXN` - MXN* `MYR` - MYR* `MZN` - MZN* `NAD` - NAD* `NGN` - NGN* `NIO` - NIO* `NOK` - NOK* `NPR` - NPR* `NZD` - NZD* `OMR` - OMR* `PAB` - PAB* `PEN` - PEN* `PGK` - PGK* `PHP` - PHP* `PKR` - PKR* `PLN` - PLN* `PYG` - PYG* `QAR` - QAR* `RON` - RON* `RSD` - RSD* `RUB` - RUB* `RWF` - RWF* `SAR` - SAR* `SBD` - SBD* `SCR` - SCR* `SDG` - SDG* `SEK` - SEK* `SGD` - SGD* `SRD` - SRD* `SSP` - SSP* `STN` - STN* `SYP` - SYP* `SZL` - SZL* `THB` - THB* `TJS` - TJS* `TMT` - TMT* `TND` - TND* `TOP` - TOP* `TRY` - TRY* `TTD` - TTD* `TWD` - TWD* `TZS` - TZS* `UAH` - UAH* `UGX` - UGX* `USD` - USD* `UYU` - UYU* `UZS` - UZS* `VES` - VES* `VND` - VND* `VUV` - VUV* `WST` - WST* `XAF` - XAF* `XCD` - XCD* `XOF` - XOF* `XPF` - XPF* `YER` - YER* `ZAR` - ZAR* `ZMW` - ZMW</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum? BaseCurrency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum? BaseCurrency { get => _explicitNullValueBaseCurrency; set { _explicitNullValueBaseCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_currency"); else _explicitNullProperties?.Remove("base_currency"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum? _explicitNullValueBaseCurrency = default!;
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Events { get; set; }
+        public UntypedNode? Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        private UntypedNode? _explicitNullValueEvents = default!;
 #nullable restore
 #else
-        public UntypedNode Events { get; set; }
+        public UntypedNode Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        private UntypedNode _explicitNullValueEvents = default!;
 #endif
         /// <summary>The filter_test_accounts property</summary>
-        public bool? FilterTestAccounts { get; set; }
+        public bool? FilterTestAccounts { get => _explicitNullValueFilterTestAccounts; set { _explicitNullValueFilterTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_test_accounts"); else _explicitNullProperties?.Remove("filter_test_accounts"); } }
+        private bool? _explicitNullValueFilterTestAccounts = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum>("base_currency", BaseCurrency);
             writer.WriteObjectValue<UntypedNode>("events", Events);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

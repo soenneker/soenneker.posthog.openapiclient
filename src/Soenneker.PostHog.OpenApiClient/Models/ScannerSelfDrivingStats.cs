@@ -12,33 +12,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScannerSelfDrivingStats : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("prs_merged") is { } nullNodePrsMerged && nullNodePrsMerged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrsMerged = null;
+            if (parseNode.GetChildNode("prs_opened") is { } nullNodePrsOpened && nullNodePrsOpened.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrsOpened = null;
+            if (parseNode.GetChildNode("pull_requests") is { } nullNodePullRequests && nullNodePullRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PullRequests = null;
+            if (parseNode.GetChildNode("reports") is { } nullNodeReports && nullNodeReports.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reports = null;
+            if (parseNode.GetChildNode("reports_contributed") is { } nullNodeReportsContributed && nullNodeReportsContributed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportsContributed = null;
+            if (parseNode.GetChildNode("signals_emitted") is { } nullNodeSignalsEmitted && nullNodeSignalsEmitted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalsEmitted = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Of the opened PRs, how many have merged.</summary>
-        public int? PrsMerged { get; set; }
+        public int? PrsMerged { get => _explicitNullValuePrsMerged; set { _explicitNullValuePrsMerged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prs_merged"); else _explicitNullProperties?.Remove("prs_merged"); } }
+        private int? _explicitNullValuePrsMerged = default!;
         /// <summary>Implementation PRs opened by self-driving on those reports.</summary>
-        public int? PrsOpened { get; set; }
+        public int? PrsOpened { get => _explicitNullValuePrsOpened; set { _explicitNullValuePrsOpened = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prs_opened"); else _explicitNullProperties?.Remove("prs_opened"); } }
+        private int? _explicitNullValuePrsOpened = default!;
         /// <summary>The newest PRs counted in `prs_opened`, at most 20.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest>? PullRequests { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest>? PullRequests { get => _explicitNullValuePullRequests; set { _explicitNullValuePullRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_requests"); else _explicitNullProperties?.Remove("pull_requests"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest>? _explicitNullValuePullRequests = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest> PullRequests { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest> PullRequests { get => _explicitNullValuePullRequests; set { _explicitNullValuePullRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_requests"); else _explicitNullProperties?.Remove("pull_requests"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingPullRequest> _explicitNullValuePullRequests = default!;
 #endif
         /// <summary>The newest reports counted in `reports_contributed`, at most 20.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport>? Reports { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport>? Reports { get => _explicitNullValueReports; set { _explicitNullValueReports = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reports"); else _explicitNullProperties?.Remove("reports"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport>? _explicitNullValueReports = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport> Reports { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport> Reports { get => _explicitNullValueReports; set { _explicitNullValueReports = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reports"); else _explicitNullProperties?.Remove("reports"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport> _explicitNullValueReports = default!;
 #endif
         /// <summary>Signal reports that include at least one of this scanner&apos;s signals. Reports usually aggregate signals from several sources, so this counts contributions, not sole causes.</summary>
-        public int? ReportsContributed { get; set; }
+        public int? ReportsContributed { get => _explicitNullValueReportsContributed; set { _explicitNullValueReportsContributed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reports_contributed"); else _explicitNullProperties?.Remove("reports_contributed"); } }
+        private int? _explicitNullValueReportsContributed = default!;
         /// <summary>Signals this scanner has pushed into the Signals inbox, all time.</summary>
-        public int? SignalsEmitted { get; set; }
+        public int? SignalsEmitted { get => _explicitNullValueSignalsEmitted; set { _explicitNullValueSignalsEmitted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals_emitted"); else _explicitNullProperties?.Remove("signals_emitted"); } }
+        private int? _explicitNullValueSignalsEmitted = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScannerSelfDrivingStats"/> and sets the default values.
         /// </summary>
@@ -54,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScannerSelfDrivingStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScannerSelfDrivingStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScannerSelfDrivingStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SelfDrivingReport>("reports", Reports);
             writer.WriteIntValue("reports_contributed", ReportsContributed);
             writer.WriteIntValue("signals_emitted", SignalsEmitted);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

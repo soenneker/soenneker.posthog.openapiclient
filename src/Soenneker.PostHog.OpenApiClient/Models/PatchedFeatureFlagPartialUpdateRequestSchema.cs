@@ -11,93 +11,139 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedFeatureFlagPartialUpdateRequestSchema : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("archived") is { } nullNodeArchived && nullNodeArchived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Archived = null;
+            if (parseNode.GetChildNode("ask_rollback_reason") is { } nullNodeAskRollbackReason && nullNodeAskRollbackReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AskRollbackReason = null;
+            if (parseNode.GetChildNode("bucketing_identifier") is { } nullNodeBucketingIdentifier && nullNodeBucketingIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketingIdentifier = null;
+            if (parseNode.GetChildNode("ensure_experience_continuity") is { } nullNodeEnsureExperienceContinuity && nullNodeEnsureExperienceContinuity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnsureExperienceContinuity = null;
+            if (parseNode.GetChildNode("evaluation_contexts") is { } nullNodeEvaluationContexts && nullNodeEvaluationContexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationContexts = null;
+            if (parseNode.GetChildNode("evaluation_runtime") is { } nullNodeEvaluationRuntime && nullNodeEvaluationRuntime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationRuntime = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("is_remote_configuration") is { } nullNodeIsRemoteConfiguration && nullNodeIsRemoteConfiguration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsRemoteConfiguration = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("rollback_reason") is { } nullNodeRollbackReason && nullNodeRollbackReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RollbackReason = null;
+            if (parseNode.GetChildNode("rollback_reason_note") is { } nullNodeRollbackReasonNote && nullNodeRollbackReasonNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RollbackReasonNote = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+        }
+
         /// <summary>Whether the feature flag is active.</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`).</summary>
-        public bool? Archived { get; set; }
+        public bool? Archived { get => _explicitNullValueArchived; set { _explicitNullValueArchived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archived"); else _explicitNullProperties?.Remove("archived"); } }
+        private bool? _explicitNullValueArchived = default!;
         /// <summary>When true, the edit lowers the flag&apos;s exposure, and the request sends no `rollback_reason`, the flag is not saved and the response is a 409 with the code `rollback_reason_required`. Send the edit again without this field to save it, with or without a `rollback_reason`. Ignored for an edit that needs approval and for a config version 2 flag.</summary>
-        public bool? AskRollbackReason { get; set; }
+        public bool? AskRollbackReason { get => _explicitNullValueAskRollbackReason; set { _explicitNullValueAskRollbackReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ask_rollback_reason"); else _explicitNullProperties?.Remove("ask_rollback_reason"); } }
+        private bool? _explicitNullValueAskRollbackReason = default!;
         /// <summary>Identifier used to bucket users into rollout percentages and variants: &apos;distinct_id&apos; (user ID, the default) or &apos;device_id&apos;. Using &apos;device_id&apos; is incompatible with ensure_experience_continuity=True.* `distinct_id` - User ID (default)* `device_id` - Device ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier? BucketingIdentifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier? BucketingIdentifier { get => _explicitNullValueBucketingIdentifier; set { _explicitNullValueBucketingIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucketing_identifier"); else _explicitNullProperties?.Remove("bucketing_identifier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier? _explicitNullValueBucketingIdentifier = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier BucketingIdentifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier BucketingIdentifier { get => _explicitNullValueBucketingIdentifier; set { _explicitNullValueBucketingIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucketing_identifier"); else _explicitNullProperties?.Remove("bucketing_identifier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaBucketingIdentifier _explicitNullValueBucketingIdentifier = default!;
 #endif
         /// <summary>Whether to persist a user&apos;s flag value across the anonymous-to-identified transition (the &apos;persist across authentication steps&apos; option). Incompatible with device_id bucketing.</summary>
-        public bool? EnsureExperienceContinuity { get; set; }
+        public bool? EnsureExperienceContinuity { get => _explicitNullValueEnsureExperienceContinuity; set { _explicitNullValueEnsureExperienceContinuity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ensure_experience_continuity"); else _explicitNullProperties?.Remove("ensure_experience_continuity"); } }
+        private bool? _explicitNullValueEnsureExperienceContinuity = default!;
         /// <summary>Evaluation contexts that control where this flag evaluates at runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EvaluationContexts { get; set; }
+        public List<string>? EvaluationContexts { get => _explicitNullValueEvaluationContexts; set { _explicitNullValueEvaluationContexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_contexts"); else _explicitNullProperties?.Remove("evaluation_contexts"); } }
+        private List<string>? _explicitNullValueEvaluationContexts = default!;
 #nullable restore
 #else
-        public List<string> EvaluationContexts { get; set; }
+        public List<string> EvaluationContexts { get => _explicitNullValueEvaluationContexts; set { _explicitNullValueEvaluationContexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_contexts"); else _explicitNullProperties?.Remove("evaluation_contexts"); } }
+        private List<string> _explicitNullValueEvaluationContexts = default!;
 #endif
         /// <summary>Where this flag is allowed to evaluate: &apos;server&apos; (server-side SDKs only), &apos;client&apos; (client-side SDKs only), or &apos;all&apos; (both). Defaults to &apos;all&apos;.* `server` - Server* `client` - Client* `all` - All</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime? EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime? EvaluationRuntime { get => _explicitNullValueEvaluationRuntime; set { _explicitNullValueEvaluationRuntime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_runtime"); else _explicitNullProperties?.Remove("evaluation_runtime"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime? _explicitNullValueEvaluationRuntime = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime EvaluationRuntime { get => _explicitNullValueEvaluationRuntime; set { _explicitNullValueEvaluationRuntime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_runtime"); else _explicitNullProperties?.Remove("evaluation_runtime"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaEvaluationRuntime _explicitNullValueEvaluationRuntime = default!;
 #endif
         /// <summary>Feature flag targeting configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters _explicitNullValueFilters = default!;
 #endif
         /// <summary>Whether this flag is a remote configuration flag that delivers a payload rather than gating a feature.</summary>
-        public bool? IsRemoteConfiguration { get; set; }
+        public bool? IsRemoteConfiguration { get => _explicitNullValueIsRemoteConfiguration; set { _explicitNullValueIsRemoteConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_remote_configuration"); else _explicitNullProperties?.Remove("is_remote_configuration"); } }
+        private bool? _explicitNullValueIsRemoteConfiguration = default!;
         /// <summary>Feature flag key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get; set; }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string _explicitNullValueKey = default!;
 #endif
         /// <summary>Feature flag description (stored in the `name` field for backwards compatibility).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Why this edit lowers the flag&apos;s exposure, for example a rollback after errors. Stored on the activity log entry of the edit. Not stored for an edit that needs approval or for a config version 2 flag.* `errors` - Errors or bugs* `metrics` - Metrics got worse* `planned` - It was planned* `wrong_configuration` - Wrong configuration* `other` - Other</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason? RollbackReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason? RollbackReason { get => _explicitNullValueRollbackReason; set { _explicitNullValueRollbackReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollback_reason"); else _explicitNullProperties?.Remove("rollback_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason? _explicitNullValueRollbackReason = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason RollbackReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason RollbackReason { get => _explicitNullValueRollbackReason; set { _explicitNullValueRollbackReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollback_reason"); else _explicitNullProperties?.Remove("rollback_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaRollbackReason _explicitNullValueRollbackReason = default!;
 #endif
         /// <summary>A free-text note for `rollback_reason`. Requires `rollback_reason`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RollbackReasonNote { get; set; }
+        public string? RollbackReasonNote { get => _explicitNullValueRollbackReasonNote; set { _explicitNullValueRollbackReasonNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollback_reason_note"); else _explicitNullProperties?.Remove("rollback_reason_note"); } }
+        private string? _explicitNullValueRollbackReasonNote = default!;
 #nullable restore
 #else
-        public string RollbackReasonNote { get; set; }
+        public string RollbackReasonNote { get => _explicitNullValueRollbackReasonNote; set { _explicitNullValueRollbackReasonNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollback_reason_note"); else _explicitNullProperties?.Remove("rollback_reason_note"); } }
+        private string _explicitNullValueRollbackReasonNote = default!;
 #endif
         /// <summary>Organizational tags for this feature flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>The `version` from your most recent read of this flag. Required when the flag&apos;s `filters.version` is 2: the update is then refused with 409 if anyone else changed the flag after that version. Other flags do not check it.</summary>
-        public int? Version { get; set; }
+        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private int? _explicitNullValueVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema"/> and sets the default values.
         /// </summary>
@@ -114,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -163,6 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("rollback_reason_note", RollbackReasonNote);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteIntValue("version", Version);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

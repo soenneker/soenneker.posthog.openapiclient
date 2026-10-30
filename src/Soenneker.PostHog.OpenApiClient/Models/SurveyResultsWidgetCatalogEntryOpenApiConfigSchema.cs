@@ -12,24 +12,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SurveyResultsWidgetCatalogEntryOpenApiConfigSchema : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dateRange") is { } nullNodeDateRange && nullNodeDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateRange = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("surveyId") is { } nullNodeSurveyId && nullNodeSurveyId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyId = null;
+        }
+
         /// <summary>Null or omitted means all time (the survey&apos;s full lifetime).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange? _explicitNullValueDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange _explicitNullValueDateRange = default!;
 #endif
         /// <summary>Maximum number of recent responses to return.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>Survey to show performance stats and recent responses for. Null until the user picks one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SurveyId { get; set; }
+        public string? SurveyId { get => _explicitNullValueSurveyId; set { _explicitNullValueSurveyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surveyId"); else _explicitNullProperties?.Remove("surveyId"); } }
+        private string? _explicitNullValueSurveyId = default!;
 #nullable restore
 #else
-        public string SurveyId { get; set; }
+        public string SurveyId { get => _explicitNullValueSurveyId; set { _explicitNullValueSurveyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surveyId"); else _explicitNullProperties?.Remove("surveyId"); } }
+        private string _explicitNullValueSurveyId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetCatalogEntryOpenApiConfigSchema"/> and sets the default values.
@@ -46,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetCatalogEntryOpenApiConfigSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetCatalogEntryOpenApiConfigSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyResultsWidgetCatalogEntryOpenApiConfigSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,7 +85,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>("dateRange", DateRange);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteStringValue("surveyId", SurveyId);
+            writer.WriteStringValue("surveyId", SurveyId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

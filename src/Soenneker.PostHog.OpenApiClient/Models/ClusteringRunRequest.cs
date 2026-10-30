@@ -12,49 +12,86 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ClusteringRunRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("clustering_job_id") is { } nullNodeClusteringJobId && nullNodeClusteringJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClusteringJobId = null;
+            if (parseNode.GetChildNode("clustering_method") is { } nullNodeClusteringMethod && nullNodeClusteringMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClusteringMethod = null;
+            if (parseNode.GetChildNode("dimensionality_reduction_method") is { } nullNodeDimensionalityReductionMethod && nullNodeDimensionalityReductionMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DimensionalityReductionMethod = null;
+            if (parseNode.GetChildNode("dimensionality_reduction_ndims") is { } nullNodeDimensionalityReductionNdims && nullNodeDimensionalityReductionNdims.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DimensionalityReductionNdims = null;
+            if (parseNode.GetChildNode("embedding_normalization") is { } nullNodeEmbeddingNormalization && nullNodeEmbeddingNormalization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmbeddingNormalization = null;
+            if (parseNode.GetChildNode("event_filters") is { } nullNodeEventFilters && nullNodeEventFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventFilters = null;
+            if (parseNode.GetChildNode("hdbscan_min_samples") is { } nullNodeHdbscanMinSamples && nullNodeHdbscanMinSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HdbscanMinSamples = null;
+            if (parseNode.GetChildNode("kmeans_max_k") is { } nullNodeKmeansMaxK && nullNodeKmeansMaxK.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KmeansMaxK = null;
+            if (parseNode.GetChildNode("kmeans_min_k") is { } nullNodeKmeansMinK && nullNodeKmeansMinK.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KmeansMinK = null;
+            if (parseNode.GetChildNode("lookback_days") is { } nullNodeLookbackDays && nullNodeLookbackDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackDays = null;
+            if (parseNode.GetChildNode("max_samples") is { } nullNodeMaxSamples && nullNodeMaxSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSamples = null;
+            if (parseNode.GetChildNode("min_cluster_size_fraction") is { } nullNodeMinClusterSizeFraction && nullNodeMinClusterSizeFraction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinClusterSizeFraction = null;
+            if (parseNode.GetChildNode("run_label") is { } nullNodeRunLabel && nullNodeRunLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunLabel = null;
+            if (parseNode.GetChildNode("visualization_method") is { } nullNodeVisualizationMethod && nullNodeVisualizationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VisualizationMethod = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If provided, use this clustering job&apos;s analysis_level and event_filters instead of request params</summary>
-        public Guid? ClusteringJobId { get; set; }
+        public Guid? ClusteringJobId { get => _explicitNullValueClusteringJobId; set { _explicitNullValueClusteringJobId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clustering_job_id"); else _explicitNullProperties?.Remove("clustering_job_id"); } }
+        private Guid? _explicitNullValueClusteringJobId = default!;
         /// <summary>* `hdbscan` - hdbscan* `kmeans` - kmeans</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod? ClusteringMethod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod? ClusteringMethod { get => _explicitNullValueClusteringMethod; set { _explicitNullValueClusteringMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clustering_method"); else _explicitNullProperties?.Remove("clustering_method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestClusteringMethod? _explicitNullValueClusteringMethod = default!;
         /// <summary>* `none` - none* `umap` - umap* `pca` - pca</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod? DimensionalityReductionMethod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod? DimensionalityReductionMethod { get => _explicitNullValueDimensionalityReductionMethod; set { _explicitNullValueDimensionalityReductionMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimensionality_reduction_method"); else _explicitNullProperties?.Remove("dimensionality_reduction_method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestDimensionalityReductionMethod? _explicitNullValueDimensionalityReductionMethod = default!;
         /// <summary>Target dimensions for dimensionality reduction (ignored if method is &apos;none&apos;)</summary>
-        public int? DimensionalityReductionNdims { get; set; }
+        public int? DimensionalityReductionNdims { get => _explicitNullValueDimensionalityReductionNdims; set { _explicitNullValueDimensionalityReductionNdims = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimensionality_reduction_ndims"); else _explicitNullProperties?.Remove("dimensionality_reduction_ndims"); } }
+        private int? _explicitNullValueDimensionalityReductionNdims = default!;
         /// <summary>* `none` - none* `l2` - l2</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization? EmbeddingNormalization { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization? EmbeddingNormalization { get => _explicitNullValueEmbeddingNormalization; set { _explicitNullValueEmbeddingNormalization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedding_normalization"); else _explicitNullProperties?.Remove("embedding_normalization"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEmbeddingNormalization? _explicitNullValueEmbeddingNormalization = default!;
         /// <summary>Property filters to scope which traces are included in clustering (PostHog standard format)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty>? EventFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty>? EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty>? _explicitNullValueEventFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty> EventFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty> EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestEventFiltersItemProperty> _explicitNullValueEventFilters = default!;
 #endif
         /// <summary>HDBSCAN min_samples parameter (higher = more conservative clustering)</summary>
-        public int? HdbscanMinSamples { get; set; }
+        public int? HdbscanMinSamples { get => _explicitNullValueHdbscanMinSamples; set { _explicitNullValueHdbscanMinSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hdbscan_min_samples"); else _explicitNullProperties?.Remove("hdbscan_min_samples"); } }
+        private int? _explicitNullValueHdbscanMinSamples = default!;
         /// <summary>Maximum number of clusters to try for k-means</summary>
-        public int? KmeansMaxK { get; set; }
+        public int? KmeansMaxK { get => _explicitNullValueKmeansMaxK; set { _explicitNullValueKmeansMaxK = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kmeans_max_k"); else _explicitNullProperties?.Remove("kmeans_max_k"); } }
+        private int? _explicitNullValueKmeansMaxK = default!;
         /// <summary>Minimum number of clusters to try for k-means</summary>
-        public int? KmeansMinK { get; set; }
+        public int? KmeansMinK { get => _explicitNullValueKmeansMinK; set { _explicitNullValueKmeansMinK = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kmeans_min_k"); else _explicitNullProperties?.Remove("kmeans_min_k"); } }
+        private int? _explicitNullValueKmeansMinK = default!;
         /// <summary>Number of days to look back for traces</summary>
-        public int? LookbackDays { get; set; }
+        public int? LookbackDays { get => _explicitNullValueLookbackDays; set { _explicitNullValueLookbackDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_days"); else _explicitNullProperties?.Remove("lookback_days"); } }
+        private int? _explicitNullValueLookbackDays = default!;
         /// <summary>Maximum number of traces to sample for clustering</summary>
-        public int? MaxSamples { get; set; }
+        public int? MaxSamples { get => _explicitNullValueMaxSamples; set { _explicitNullValueMaxSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_samples"); else _explicitNullProperties?.Remove("max_samples"); } }
+        private int? _explicitNullValueMaxSamples = default!;
         /// <summary>Minimum cluster size as fraction of total samples (e.g., 0.02 = 2%)</summary>
-        public double? MinClusterSizeFraction { get; set; }
+        public double? MinClusterSizeFraction { get => _explicitNullValueMinClusterSizeFraction; set { _explicitNullValueMinClusterSizeFraction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_cluster_size_fraction"); else _explicitNullProperties?.Remove("min_cluster_size_fraction"); } }
+        private double? _explicitNullValueMinClusterSizeFraction = default!;
         /// <summary>Optional label/tag for the clustering run (used as suffix in run_id for tracking experiments)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunLabel { get; set; }
+        public string? RunLabel { get => _explicitNullValueRunLabel; set { _explicitNullValueRunLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_label"); else _explicitNullProperties?.Remove("run_label"); } }
+        private string? _explicitNullValueRunLabel = default!;
 #nullable restore
 #else
-        public string RunLabel { get; set; }
+        public string RunLabel { get => _explicitNullValueRunLabel; set { _explicitNullValueRunLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_label"); else _explicitNullProperties?.Remove("run_label"); } }
+        private string _explicitNullValueRunLabel = default!;
 #endif
         /// <summary>* `umap` - umap* `pca` - pca* `tsne` - tsne</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod? VisualizationMethod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod? VisualizationMethod { get => _explicitNullValueVisualizationMethod; set { _explicitNullValueVisualizationMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization_method"); else _explicitNullProperties?.Remove("visualization_method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod? _explicitNullValueVisualizationMethod = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequest"/> and sets the default values.
         /// </summary>
@@ -77,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -124,6 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("min_cluster_size_fraction", MinClusterSizeFraction);
             writer.WriteStringValue("run_label", RunLabel);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringRunRequestVisualizationMethod>("visualization_method", VisualizationMethod);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,45 +11,73 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ManagedWarehouseSourceSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("applied_schemas") is { } nullNodeAppliedSchemas && nullNodeAppliedSchemas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppliedSchemas = null;
+            if (parseNode.GetChildNode("detail") is { } nullNodeDetail && nullNodeDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detail = null;
+            if (parseNode.GetChildNode("last_applied_at") is { } nullNodeLastAppliedAt && nullNodeLastAppliedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastAppliedAt = null;
+            if (parseNode.GetChildNode("last_synced_at") is { } nullNodeLastSyncedAt && nullNodeLastSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSyncedAt = null;
+            if (parseNode.GetChildNode("readiness_state") is { } nullNodeReadinessState && nullNodeReadinessState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadinessState = null;
+            if (parseNode.GetChildNode("source_id") is { } nullNodeSourceId && nullNodeSourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceId = null;
+            if (parseNode.GetChildNode("source_name") is { } nullNodeSourceName && nullNodeSourceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceName = null;
+            if (parseNode.GetChildNode("source_type") is { } nullNodeSourceType && nullNodeSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceType = null;
+            if (parseNode.GetChildNode("total_schemas") is { } nullNodeTotalSchemas && nullNodeTotalSchemas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalSchemas = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of schemas applied by a completed copy or register workflow.</summary>
-        public int? AppliedSchemas { get; set; }
+        public int? AppliedSchemas { get => _explicitNullValueAppliedSchemas; set { _explicitNullValueAppliedSchemas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied_schemas"); else _explicitNullProperties?.Remove("applied_schemas"); } }
+        private int? _explicitNullValueAppliedSchemas = default!;
         /// <summary>Human-readable explanation of this source&apos;s readiness state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Detail { get; set; }
+        public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        private string? _explicitNullValueDetail = default!;
 #nullable restore
 #else
-        public string Detail { get; set; }
+        public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        private string _explicitNullValueDetail = default!;
 #endif
         /// <summary>Most recent completed copy or register workflow across this source&apos;s schemas, or null if none completed.</summary>
-        public DateTimeOffset? LastAppliedAt { get; set; }
+        public DateTimeOffset? LastAppliedAt { get => _explicitNullValueLastAppliedAt; set { _explicitNullValueLastAppliedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_applied_at"); else _explicitNullProperties?.Remove("last_applied_at"); } }
+        private DateTimeOffset? _explicitNullValueLastAppliedAt = default!;
         /// <summary>Most recent upstream source import completion across this source&apos;s schemas.</summary>
-        public DateTimeOffset? LastSyncedAt { get; set; }
+        public DateTimeOffset? LastSyncedAt { get => _explicitNullValueLastSyncedAt; set { _explicitNullValueLastSyncedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_synced_at"); else _explicitNullProperties?.Remove("last_synced_at"); } }
+        private DateTimeOffset? _explicitNullValueLastSyncedAt = default!;
         /// <summary>* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummaryReadinessState? ReadinessState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummaryReadinessState? ReadinessState { get => _explicitNullValueReadinessState; set { _explicitNullValueReadinessState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readiness_state"); else _explicitNullProperties?.Remove("readiness_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummaryReadinessState? _explicitNullValueReadinessState = default!;
         /// <summary>Imported source connection identifier.</summary>
-        public Guid? SourceId { get; set; }
+        public Guid? SourceId { get => _explicitNullValueSourceId; set { _explicitNullValueSourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_id"); else _explicitNullProperties?.Remove("source_id"); } }
+        private Guid? _explicitNullValueSourceId = default!;
         /// <summary>Display name for the imported source connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceName { get; set; }
+        public string? SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_name"); else _explicitNullProperties?.Remove("source_name"); } }
+        private string? _explicitNullValueSourceName = default!;
 #nullable restore
 #else
-        public string SourceName { get; set; }
+        public string SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_name"); else _explicitNullProperties?.Remove("source_name"); } }
+        private string _explicitNullValueSourceName = default!;
 #endif
         /// <summary>Type of the imported source connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceType { get; set; }
+        public string? SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private string? _explicitNullValueSourceType = default!;
 #nullable restore
 #else
-        public string SourceType { get; set; }
+        public string SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private string _explicitNullValueSourceType = default!;
 #endif
         /// <summary>Number of this source&apos;s schemas visible to the warehouse.</summary>
-        public int? TotalSchemas { get; set; }
+        public int? TotalSchemas { get => _explicitNullValueTotalSchemas; set { _explicitNullValueTotalSchemas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_schemas"); else _explicitNullProperties?.Remove("total_schemas"); } }
+        private int? _explicitNullValueTotalSchemas = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummary"/> and sets the default values.
         /// </summary>
@@ -65,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("source_name", SourceName);
             writer.WriteStringValue("source_type", SourceType);
             writer.WriteIntValue("total_schemas", TotalSchemas);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

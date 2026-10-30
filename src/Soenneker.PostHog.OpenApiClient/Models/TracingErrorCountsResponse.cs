@@ -11,32 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TracingErrorCountsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("sessionResults") is { } nullNodeSessionResults && nullNodeSessionResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionResults = null;
+            if (parseNode.GetChildNode("spanResults") is { } nullNodeSpanResults && nullNodeSpanResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpanResults = null;
+            if (parseNode.GetChildNode("traceResults") is { } nullNodeTraceResults && nullNodeTraceResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceResults = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>One entry per requested session that had exceptions. Sessions with none are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount>? SessionResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount>? SessionResults { get => _explicitNullValueSessionResults; set { _explicitNullValueSessionResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionResults"); else _explicitNullProperties?.Remove("sessionResults"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount>? _explicitNullValueSessionResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount> SessionResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount> SessionResults { get => _explicitNullValueSessionResults; set { _explicitNullValueSessionResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionResults"); else _explicitNullProperties?.Remove("sessionResults"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount> _explicitNullValueSessionResults = default!;
 #endif
         /// <summary>One entry per requested span that had exceptions. Spans with none are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount>? SpanResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount>? SpanResults { get => _explicitNullValueSpanResults; set { _explicitNullValueSpanResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spanResults"); else _explicitNullProperties?.Remove("spanResults"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount>? _explicitNullValueSpanResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount> SpanResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount> SpanResults { get => _explicitNullValueSpanResults; set { _explicitNullValueSpanResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spanResults"); else _explicitNullProperties?.Remove("spanResults"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount> _explicitNullValueSpanResults = default!;
 #endif
         /// <summary>One entry per requested trace that had exceptions. Traces with none are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount>? TraceResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount>? TraceResults { get => _explicitNullValueTraceResults; set { _explicitNullValueTraceResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traceResults"); else _explicitNullProperties?.Remove("traceResults"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount>? _explicitNullValueTraceResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount> TraceResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount> TraceResults { get => _explicitNullValueTraceResults; set { _explicitNullValueTraceResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traceResults"); else _explicitNullProperties?.Remove("traceResults"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount> _explicitNullValueTraceResults = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracingErrorCountsResponse"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TracingErrorCountsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TracingErrorCountsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TracingErrorCountsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount>("sessionResults", SessionResults);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount>("spanResults", SpanResults);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount>("traceResults", TraceResults);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

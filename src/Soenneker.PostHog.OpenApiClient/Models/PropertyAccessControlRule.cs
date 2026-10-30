@@ -12,9 +12,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PropertyAccessControlRule : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("access_level") is { } nullNodeAccessLevel && nullNodeAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessLevel = null;
+            if (parseNode.GetChildNode("organization_member") is { } nullNodeOrganizationMember && nullNodeOrganizationMember.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationMember = null;
+            if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
+        }
+
         /// <summary>* `read_write` - read_write* `read` - read* `none` - none</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel? AccessLevel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel? AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel? _explicitNullValueAccessLevel = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
@@ -24,9 +35,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The organization member UUID this rule applies to, if any.</summary>
-        public Guid? OrganizationMember { get; set; }
+        public Guid? OrganizationMember { get => _explicitNullValueOrganizationMember; set { _explicitNullValueOrganizationMember = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_member"); else _explicitNullProperties?.Remove("organization_member"); } }
+        private Guid? _explicitNullValueOrganizationMember = default!;
         /// <summary>The role UUID this rule applies to, if any.</summary>
-        public Guid? Role { get; set; }
+        public Guid? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
+        private Guid? _explicitNullValueRole = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -44,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRuleAccessLevel>("access_level", AccessLevel);
             writer.WriteGuidValue("organization_member", OrganizationMember);
             writer.WriteGuidValue("role", Role);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

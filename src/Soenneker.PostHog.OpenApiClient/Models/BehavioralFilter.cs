@@ -11,132 +11,195 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BehavioralFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bytecode") is { } nullNodeBytecode && nullNodeBytecode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bytecode = null;
+            if (parseNode.GetChildNode("bytecode_error") is { } nullNodeBytecodeError && nullNodeBytecodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BytecodeError = null;
+            if (parseNode.GetChildNode("conditionHash") is { } nullNodeConditionHash && nullNodeConditionHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionHash = null;
+            if (parseNode.GetChildNode("event_filters") is { } nullNodeEventFilters && nullNodeEventFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventFilters = null;
+            if (parseNode.GetChildNode("event_type") is { } nullNodeEventType && nullNodeEventType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventType = null;
+            if (parseNode.GetChildNode("explicit_datetime") is { } nullNodeExplicitDatetime && nullNodeExplicitDatetime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExplicitDatetime = null;
+            if (parseNode.GetChildNode("explicit_datetime_to") is { } nullNodeExplicitDatetimeTo && nullNodeExplicitDatetimeTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExplicitDatetimeTo = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("min_periods") is { } nullNodeMinPeriods && nullNodeMinPeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinPeriods = null;
+            if (parseNode.GetChildNode("negation") is { } nullNodeNegation && nullNodeNegation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Negation = null;
+            if (parseNode.GetChildNode("operator") is { } nullNodeOperator && nullNodeOperator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Operator = null;
+            if (parseNode.GetChildNode("operator_value") is { } nullNodeOperatorValue && nullNodeOperatorValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OperatorValue = null;
+            if (parseNode.GetChildNode("seq_event") is { } nullNodeSeqEvent && nullNodeSeqEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeqEvent = null;
+            if (parseNode.GetChildNode("seq_event_type") is { } nullNodeSeqEventType && nullNodeSeqEventType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeqEventType = null;
+            if (parseNode.GetChildNode("seq_time_interval") is { } nullNodeSeqTimeInterval && nullNodeSeqTimeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeqTimeInterval = null;
+            if (parseNode.GetChildNode("seq_time_value") is { } nullNodeSeqTimeValue && nullNodeSeqTimeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeqTimeValue = null;
+            if (parseNode.GetChildNode("time_interval") is { } nullNodeTimeInterval && nullNodeTimeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeInterval = null;
+            if (parseNode.GetChildNode("time_value") is { } nullNodeTimeValue && nullNodeTimeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeValue = null;
+            if (parseNode.GetChildNode("total_periods") is { } nullNodeTotalPeriods && nullNodeTotalPeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalPeriods = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+        }
+
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Bytecode { get; set; }
+        public UntypedNode? Bytecode { get => _explicitNullValueBytecode; set { _explicitNullValueBytecode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytecode"); else _explicitNullProperties?.Remove("bytecode"); } }
+        private UntypedNode? _explicitNullValueBytecode = default!;
 #nullable restore
 #else
-        public UntypedNode Bytecode { get; set; }
+        public UntypedNode Bytecode { get => _explicitNullValueBytecode; set { _explicitNullValueBytecode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytecode"); else _explicitNullProperties?.Remove("bytecode"); } }
+        private UntypedNode _explicitNullValueBytecode = default!;
 #endif
         /// <summary>The bytecode_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BytecodeError { get; set; }
+        public string? BytecodeError { get => _explicitNullValueBytecodeError; set { _explicitNullValueBytecodeError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytecode_error"); else _explicitNullProperties?.Remove("bytecode_error"); } }
+        private string? _explicitNullValueBytecodeError = default!;
 #nullable restore
 #else
-        public string BytecodeError { get; set; }
+        public string BytecodeError { get => _explicitNullValueBytecodeError; set { _explicitNullValueBytecodeError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytecode_error"); else _explicitNullProperties?.Remove("bytecode_error"); } }
+        private string _explicitNullValueBytecodeError = default!;
 #endif
         /// <summary>The conditionHash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConditionHash { get; set; }
+        public string? ConditionHash { get => _explicitNullValueConditionHash; set { _explicitNullValueConditionHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditionHash"); else _explicitNullProperties?.Remove("conditionHash"); } }
+        private string? _explicitNullValueConditionHash = default!;
 #nullable restore
 #else
-        public string ConditionHash { get; set; }
+        public string ConditionHash { get => _explicitNullValueConditionHash; set { _explicitNullValueConditionHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditionHash"); else _explicitNullProperties?.Remove("conditionHash"); } }
+        private string _explicitNullValueConditionHash = default!;
 #endif
         /// <summary>The event_filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem>? EventFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem>? EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem>? _explicitNullValueEventFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem> EventFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem> EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterEventFiltersItem> _explicitNullValueEventFilters = default!;
 #endif
         /// <summary>The event_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EventType { get; set; }
+        public string? EventType { get => _explicitNullValueEventType; set { _explicitNullValueEventType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_type"); else _explicitNullProperties?.Remove("event_type"); } }
+        private string? _explicitNullValueEventType = default!;
 #nullable restore
 #else
-        public string EventType { get; set; }
+        public string EventType { get => _explicitNullValueEventType; set { _explicitNullValueEventType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_type"); else _explicitNullProperties?.Remove("event_type"); } }
+        private string _explicitNullValueEventType = default!;
 #endif
         /// <summary>The explicit_datetime property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExplicitDatetime { get; set; }
+        public string? ExplicitDatetime { get => _explicitNullValueExplicitDatetime; set { _explicitNullValueExplicitDatetime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explicit_datetime"); else _explicitNullProperties?.Remove("explicit_datetime"); } }
+        private string? _explicitNullValueExplicitDatetime = default!;
 #nullable restore
 #else
-        public string ExplicitDatetime { get; set; }
+        public string ExplicitDatetime { get => _explicitNullValueExplicitDatetime; set { _explicitNullValueExplicitDatetime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explicit_datetime"); else _explicitNullProperties?.Remove("explicit_datetime"); } }
+        private string _explicitNullValueExplicitDatetime = default!;
 #endif
         /// <summary>The explicit_datetime_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExplicitDatetimeTo { get; set; }
+        public string? ExplicitDatetimeTo { get => _explicitNullValueExplicitDatetimeTo; set { _explicitNullValueExplicitDatetimeTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explicit_datetime_to"); else _explicitNullProperties?.Remove("explicit_datetime_to"); } }
+        private string? _explicitNullValueExplicitDatetimeTo = default!;
 #nullable restore
 #else
-        public string ExplicitDatetimeTo { get; set; }
+        public string ExplicitDatetimeTo { get => _explicitNullValueExplicitDatetimeTo; set { _explicitNullValueExplicitDatetimeTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explicit_datetime_to"); else _explicitNullProperties?.Remove("explicit_datetime_to"); } }
+        private string _explicitNullValueExplicitDatetimeTo = default!;
 #endif
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey? Key { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey Key { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterKey _explicitNullValueKey = default!;
 #endif
         /// <summary>The min_periods property</summary>
-        public int? MinPeriods { get; set; }
+        public int? MinPeriods { get => _explicitNullValueMinPeriods; set { _explicitNullValueMinPeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_periods"); else _explicitNullProperties?.Remove("min_periods"); } }
+        private int? _explicitNullValueMinPeriods = default!;
         /// <summary>The negation property</summary>
-        public bool? Negation { get; set; }
+        public bool? Negation { get => _explicitNullValueNegation; set { _explicitNullValueNegation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negation"); else _explicitNullProperties?.Remove("negation"); } }
+        private bool? _explicitNullValueNegation = default!;
         /// <summary>The operator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Operator { get; set; }
+        public string? Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
+        private string? _explicitNullValueOperator = default!;
 #nullable restore
 #else
-        public string Operator { get; set; }
+        public string Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
+        private string _explicitNullValueOperator = default!;
 #endif
         /// <summary>The operator_value property</summary>
-        public int? OperatorValue { get; set; }
+        public int? OperatorValue { get => _explicitNullValueOperatorValue; set { _explicitNullValueOperatorValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator_value"); else _explicitNullProperties?.Remove("operator_value"); } }
+        private int? _explicitNullValueOperatorValue = default!;
         /// <summary>The seq_event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent? SeqEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent? SeqEvent { get => _explicitNullValueSeqEvent; set { _explicitNullValueSeqEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seq_event"); else _explicitNullProperties?.Remove("seq_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent? _explicitNullValueSeqEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent SeqEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent SeqEvent { get => _explicitNullValueSeqEvent; set { _explicitNullValueSeqEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seq_event"); else _explicitNullProperties?.Remove("seq_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilterSeqEvent _explicitNullValueSeqEvent = default!;
 #endif
         /// <summary>The seq_event_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeqEventType { get; set; }
+        public string? SeqEventType { get => _explicitNullValueSeqEventType; set { _explicitNullValueSeqEventType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seq_event_type"); else _explicitNullProperties?.Remove("seq_event_type"); } }
+        private string? _explicitNullValueSeqEventType = default!;
 #nullable restore
 #else
-        public string SeqEventType { get; set; }
+        public string SeqEventType { get => _explicitNullValueSeqEventType; set { _explicitNullValueSeqEventType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seq_event_type"); else _explicitNullProperties?.Remove("seq_event_type"); } }
+        private string _explicitNullValueSeqEventType = default!;
 #endif
         /// <summary>The seq_time_interval property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeqTimeInterval { get; set; }
+        public string? SeqTimeInterval { get => _explicitNullValueSeqTimeInterval; set { _explicitNullValueSeqTimeInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seq_time_interval"); else _explicitNullProperties?.Remove("seq_time_interval"); } }
+        private string? _explicitNullValueSeqTimeInterval = default!;
 #nullable restore
 #else
-        public string SeqTimeInterval { get; set; }
+        public string SeqTimeInterval { get => _explicitNullValueSeqTimeInterval; set { _explicitNullValueSeqTimeInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seq_time_interval"); else _explicitNullProperties?.Remove("seq_time_interval"); } }
+        private string _explicitNullValueSeqTimeInterval = default!;
 #endif
         /// <summary>The seq_time_value property</summary>
-        public int? SeqTimeValue { get; set; }
+        public int? SeqTimeValue { get => _explicitNullValueSeqTimeValue; set { _explicitNullValueSeqTimeValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seq_time_value"); else _explicitNullProperties?.Remove("seq_time_value"); } }
+        private int? _explicitNullValueSeqTimeValue = default!;
         /// <summary>The time_interval property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TimeInterval { get; set; }
+        public string? TimeInterval { get => _explicitNullValueTimeInterval; set { _explicitNullValueTimeInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_interval"); else _explicitNullProperties?.Remove("time_interval"); } }
+        private string? _explicitNullValueTimeInterval = default!;
 #nullable restore
 #else
-        public string TimeInterval { get; set; }
+        public string TimeInterval { get => _explicitNullValueTimeInterval; set { _explicitNullValueTimeInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_interval"); else _explicitNullProperties?.Remove("time_interval"); } }
+        private string _explicitNullValueTimeInterval = default!;
 #endif
         /// <summary>The time_value property</summary>
-        public int? TimeValue { get; set; }
+        public int? TimeValue { get => _explicitNullValueTimeValue; set { _explicitNullValueTimeValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_value"); else _explicitNullProperties?.Remove("time_value"); } }
+        private int? _explicitNullValueTimeValue = default!;
         /// <summary>The total_periods property</summary>
-        public int? TotalPeriods { get; set; }
+        public int? TotalPeriods { get => _explicitNullValueTotalPeriods; set { _explicitNullValueTotalPeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_periods"); else _explicitNullProperties?.Remove("total_periods"); } }
+        private int? _explicitNullValueTotalPeriods = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BehavioralType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BehavioralType? _explicitNullValueType = default!;
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Value { get; set; }
+        public string? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private string? _explicitNullValueValue = default!;
 #nullable restore
 #else
-        public string Value { get; set; }
+        public string Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private string _explicitNullValueValue = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter"/> and sets the default values.
@@ -153,7 +216,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BehavioralFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -213,7 +276,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("time_value", TimeValue);
             writer.WriteIntValue("total_periods", TotalPeriods);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BehavioralType>("type", Type);
-            writer.WriteStringValue("value", Value);
+            writer.WriteStringValue("value", Value);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

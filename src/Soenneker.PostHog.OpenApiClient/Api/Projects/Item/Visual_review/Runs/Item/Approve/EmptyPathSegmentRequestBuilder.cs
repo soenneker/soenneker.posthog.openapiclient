@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Run>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Run.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Run>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Run.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Mark snapshots reviewed (DB only).Records the per-snapshot &quot;Accept change&quot; decision. Does not commit the baselineor change the GitHub gate — call finalize to ship the run. Works on a quarantinedsnapshot too: a quarantined snapshot approved here is committed by finalize, whichupdates a quarantined story&apos;s baseline entry without lifting the quarantine.

@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewRepositoryWriteResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("taken_from_project") is { } nullNodeTakenFromProject && nullNodeTakenFromProject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakenFromProject = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The repository entry after the write. Null when nothing is left to store, so the entry was deleted and the repository follows the project rule or left the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepository? Repository { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepository? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepository? _explicitNullValueRepository = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepository Repository { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepository Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepository _explicitNullValueRepository = default!;
 #endif
         /// <summary>The project that took all repositories of the installation, when this write took the repository from it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? TakenFromProject { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? TakenFromProject { get => _explicitNullValueTakenFromProject; set { _explicitNullValueTakenFromProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taken_from_project"); else _explicitNullProperties?.Remove("taken_from_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? _explicitNullValueTakenFromProject = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef TakenFromProject { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef TakenFromProject { get => _explicitNullValueTakenFromProject; set { _explicitNullValueTakenFromProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("taken_from_project"); else _explicitNullProperties?.Remove("taken_from_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef _explicitNullValueTakenFromProject = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryWriteResponse"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryWriteResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryWriteResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryWriteResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepository>("repository", Repository);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef>("taken_from_project", TakenFromProject);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

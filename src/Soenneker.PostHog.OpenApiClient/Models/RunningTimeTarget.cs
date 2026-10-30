@@ -12,23 +12,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunningTimeTarget : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("current_sample_size") is { } nullNodeCurrentSampleSize && nullNodeCurrentSampleSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentSampleSize = null;
+            if (parseNode.GetChildNode("minimum_detectable_effect") is { } nullNodeMinimumDetectableEffect && nullNodeMinimumDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinimumDetectableEffect = null;
+            if (parseNode.GetChildNode("outlook") is { } nullNodeOutlook && nullNodeOutlook.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Outlook = null;
+            if (parseNode.GetChildNode("recommended_sample_size") is { } nullNodeRecommendedSampleSize && nullNodeRecommendedSampleSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedSampleSize = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Exposures so far that count toward the target: the control&apos;s and those of the variants that get traffic. A variant at 0% does not count. Null in manual mode, and when no result can size the target.</summary>
-        public int? CurrentSampleSize { get; set; }
+        public int? CurrentSampleSize { get => _explicitNullValueCurrentSampleSize; set { _explicitNullValueCurrentSampleSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_sample_size"); else _explicitNullProperties?.Remove("current_sample_size"); } }
+        private int? _explicitNullValueCurrentSampleSize = default!;
         /// <summary>The relative change, as a percentage, that the target sample is sized to detect.</summary>
-        public double? MinimumDetectableEffect { get; set; }
+        public double? MinimumDetectableEffect { get => _explicitNullValueMinimumDetectableEffect; set { _explicitNullValueMinimumDetectableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum_detectable_effect"); else _explicitNullProperties?.Remove("minimum_detectable_effect"); } }
+        private double? _explicitNullValueMinimumDetectableEffect = default!;
         /// <summary>What the experiment can detect over time, on the same curve the target is sized on. Null in manual mode, before launch, when the current results cover less than 0.1 days, and when no result can size the target.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook? Outlook { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook? Outlook { get => _explicitNullValueOutlook; set { _explicitNullValueOutlook = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outlook"); else _explicitNullProperties?.Remove("outlook"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook? _explicitNullValueOutlook = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook Outlook { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook Outlook { get => _explicitNullValueOutlook; set { _explicitNullValueOutlook = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outlook"); else _explicitNullProperties?.Remove("outlook"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook _explicitNullValueOutlook = default!;
 #endif
         /// <summary>Exposures needed across the analyzed variants, so that the comparison of each variant with the control can detect the minimum detectable effect at the analysis&apos;s confidence level and 80% power. In manual running time mode, the saved target. Otherwise sized from the first primary metric&apos;s current result, with the variance the analysis uses and the flag&apos;s traffic split. Null when no result can size it yet. The variances come from the result and don&apos;t depend on the effect, so the sample scales with 1 / effect²: the target for another effect is recommended_sample_size × (minimum_detectable_effect / effect)².</summary>
-        public int? RecommendedSampleSize { get; set; }
+        public int? RecommendedSampleSize { get => _explicitNullValueRecommendedSampleSize; set { _explicitNullValueRecommendedSampleSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_sample_size"); else _explicitNullProperties?.Remove("recommended_sample_size"); } }
+        private int? _explicitNullValueRecommendedSampleSize = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTarget"/> and sets the default values.
         /// </summary>
@@ -44,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTarget CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTarget();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTarget(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("minimum_detectable_effect", MinimumDetectableEffect);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook>("outlook", Outlook);
             writer.WriteIntValue("recommended_sample_size", RecommendedSampleSize);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

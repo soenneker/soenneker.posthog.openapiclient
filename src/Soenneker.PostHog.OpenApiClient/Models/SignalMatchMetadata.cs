@@ -11,56 +11,81 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalMatchMetadata : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("match_query") is { } nullNodeMatchQuery && nullNodeMatchQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchQuery = null;
+            if (parseNode.GetChildNode("parent_signal_id") is { } nullNodeParentSignalId && nullNodeParentSignalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentSignalId = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("rejected_signal_ids") is { } nullNodeRejectedSignalIds && nullNodeRejectedSignalIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RejectedSignalIds = null;
+            if (parseNode.GetChildNode("specificity") is { } nullNodeSpecificity && nullNodeSpecificity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Specificity = null;
+            if (parseNode.GetChildNode("specificity_rejection") is { } nullNodeSpecificityRejection && nullNodeSpecificityRejection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpecificityRejection = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Query used to find the parent signal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchQuery { get; set; }
+        public string? MatchQuery { get => _explicitNullValueMatchQuery; set { _explicitNullValueMatchQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_query"); else _explicitNullProperties?.Remove("match_query"); } }
+        private string? _explicitNullValueMatchQuery = default!;
 #nullable restore
 #else
-        public string MatchQuery { get; set; }
+        public string MatchQuery { get => _explicitNullValueMatchQuery; set { _explicitNullValueMatchQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_query"); else _explicitNullProperties?.Remove("match_query"); } }
+        private string _explicitNullValueMatchQuery = default!;
 #endif
         /// <summary>Signal already in the report that this one matched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ParentSignalId { get; set; }
+        public string? ParentSignalId { get => _explicitNullValueParentSignalId; set { _explicitNullValueParentSignalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_signal_id"); else _explicitNullProperties?.Remove("parent_signal_id"); } }
+        private string? _explicitNullValueParentSignalId = default!;
 #nullable restore
 #else
-        public string ParentSignalId { get; set; }
+        public string ParentSignalId { get => _explicitNullValueParentSignalId; set { _explicitNullValueParentSignalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_signal_id"); else _explicitNullProperties?.Remove("parent_signal_id"); } }
+        private string _explicitNullValueParentSignalId = default!;
 #endif
         /// <summary>Why the signals were judged to describe the same issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Candidate signals that were considered and rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RejectedSignalIds { get; set; }
+        public List<string>? RejectedSignalIds { get => _explicitNullValueRejectedSignalIds; set { _explicitNullValueRejectedSignalIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected_signal_ids"); else _explicitNullProperties?.Remove("rejected_signal_ids"); } }
+        private List<string>? _explicitNullValueRejectedSignalIds = default!;
 #nullable restore
 #else
-        public List<string> RejectedSignalIds { get; set; }
+        public List<string> RejectedSignalIds { get => _explicitNullValueRejectedSignalIds; set { _explicitNullValueRejectedSignalIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected_signal_ids"); else _explicitNullProperties?.Remove("rejected_signal_ids"); } }
+        private List<string> _explicitNullValueRejectedSignalIds = default!;
 #endif
         /// <summary>PR-specificity gate result, when the gate ran.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? Specificity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? Specificity { get => _explicitNullValueSpecificity; set { _explicitNullValueSpecificity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity"); else _explicitNullProperties?.Remove("specificity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? _explicitNullValueSpecificity = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata Specificity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata Specificity { get => _explicitNullValueSpecificity; set { _explicitNullValueSpecificity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity"); else _explicitNullProperties?.Remove("specificity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata _explicitNullValueSpecificity = default!;
 #endif
         /// <summary>PR-specificity gate result that caused a rejection, when present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? SpecificityRejection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? SpecificityRejection { get => _explicitNullValueSpecificityRejection; set { _explicitNullValueSpecificityRejection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity_rejection"); else _explicitNullProperties?.Remove("specificity_rejection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? _explicitNullValueSpecificityRejection = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata SpecificityRejection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata SpecificityRejection { get => _explicitNullValueSpecificityRejection; set { _explicitNullValueSpecificityRejection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity_rejection"); else _explicitNullProperties?.Remove("specificity_rejection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata _explicitNullValueSpecificityRejection = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata"/> and sets the default values.
@@ -77,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("rejected_signal_ids", RejectedSignalIds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>("specificity", Specificity);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>("specificity_rejection", SpecificityRejection);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

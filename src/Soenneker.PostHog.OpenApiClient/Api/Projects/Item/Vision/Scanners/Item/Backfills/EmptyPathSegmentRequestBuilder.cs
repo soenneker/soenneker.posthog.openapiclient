@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayScannerBackfillList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayScannerBackfillList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayScannerBackfillList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedReplayScannerBackfillList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a backfill: freeze the scanner config, enumerate the exact candidate set, start the tick schedule.The enumeration reruns here rather than trusting the client-confirmed estimate: the count isbilling-relevant, so the authoritative value is computed server-side at creation time. Newsettled sessions between estimate and confirm can nudge total_count slightly.
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfill>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfill.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfill>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReplayScannerBackfill.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Historical backfills of a scanner over a closed time window (nested under a scanner).

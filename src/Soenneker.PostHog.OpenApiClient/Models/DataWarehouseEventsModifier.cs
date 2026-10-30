@@ -11,38 +11,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DataWarehouseEventsModifier : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("distinct_id_field") is { } nullNodeDistinctIdField && nullNodeDistinctIdField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIdField = null;
+            if (parseNode.GetChildNode("id_field") is { } nullNodeIdField && nullNodeIdField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdField = null;
+            if (parseNode.GetChildNode("table_name") is { } nullNodeTableName && nullNodeTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TableName = null;
+            if (parseNode.GetChildNode("timestamp_field") is { } nullNodeTimestampField && nullNodeTimestampField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimestampField = null;
+        }
+
         /// <summary>The distinct_id_field property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DistinctIdField { get; set; }
+        public string? DistinctIdField { get => _explicitNullValueDistinctIdField; set { _explicitNullValueDistinctIdField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_id_field"); else _explicitNullProperties?.Remove("distinct_id_field"); } }
+        private string? _explicitNullValueDistinctIdField = default!;
 #nullable restore
 #else
-        public string DistinctIdField { get; set; }
+        public string DistinctIdField { get => _explicitNullValueDistinctIdField; set { _explicitNullValueDistinctIdField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_id_field"); else _explicitNullProperties?.Remove("distinct_id_field"); } }
+        private string _explicitNullValueDistinctIdField = default!;
 #endif
         /// <summary>The id_field property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdField { get; set; }
+        public string? IdField { get => _explicitNullValueIdField; set { _explicitNullValueIdField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_field"); else _explicitNullProperties?.Remove("id_field"); } }
+        private string? _explicitNullValueIdField = default!;
 #nullable restore
 #else
-        public string IdField { get; set; }
+        public string IdField { get => _explicitNullValueIdField; set { _explicitNullValueIdField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_field"); else _explicitNullProperties?.Remove("id_field"); } }
+        private string _explicitNullValueIdField = default!;
 #endif
         /// <summary>The table_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TableName { get; set; }
+        public string? TableName { get => _explicitNullValueTableName; set { _explicitNullValueTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_name"); else _explicitNullProperties?.Remove("table_name"); } }
+        private string? _explicitNullValueTableName = default!;
 #nullable restore
 #else
-        public string TableName { get; set; }
+        public string TableName { get => _explicitNullValueTableName; set { _explicitNullValueTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_name"); else _explicitNullProperties?.Remove("table_name"); } }
+        private string _explicitNullValueTableName = default!;
 #endif
         /// <summary>The timestamp_field property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TimestampField { get; set; }
+        public string? TimestampField { get => _explicitNullValueTimestampField; set { _explicitNullValueTimestampField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp_field"); else _explicitNullProperties?.Remove("timestamp_field"); } }
+        private string? _explicitNullValueTimestampField = default!;
 #nullable restore
 #else
-        public string TimestampField { get; set; }
+        public string TimestampField { get => _explicitNullValueTimestampField; set { _explicitNullValueTimestampField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp_field"); else _explicitNullProperties?.Remove("timestamp_field"); } }
+        private string _explicitNullValueTimestampField = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -52,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseEventsModifier(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,7 +97,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("distinct_id_field", DistinctIdField);
             writer.WriteStringValue("id_field", IdField);
             writer.WriteStringValue("table_name", TableName);
-            writer.WriteStringValue("timestamp_field", TimestampField);
+            writer.WriteStringValue("timestamp_field", TimestampField);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

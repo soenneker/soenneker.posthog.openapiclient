@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Fla
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTarget>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTarget.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTarget>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTarget.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Repository a flag-cleanup pull request for this experiment would be opened in.Resolution order: the experiment&apos;s saved repository, else the environment&apos;s defaultcleanup repository, else the team&apos;s only connected GitHub repository. When the teamhas several repositories and none is saved (source=ambiguous), pass one via`repository` on end/ship_variant.

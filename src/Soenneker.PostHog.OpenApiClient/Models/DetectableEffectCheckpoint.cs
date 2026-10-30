@@ -11,13 +11,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DetectableEffectCheckpoint : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("detectable_effect") is { } nullNodeDetectableEffect && nullNodeDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DetectableEffect = null;
+            if (parseNode.GetChildNode("weeks_since_launch") is { } nullNodeWeeksSinceLaunch && nullNodeWeeksSinceLaunch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeeksSinceLaunch = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The smallest relative change, as a percentage, that the exposures by this week mark can detect.</summary>
-        public double? DetectableEffect { get; set; }
+        public double? DetectableEffect { get => _explicitNullValueDetectableEffect; set { _explicitNullValueDetectableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detectable_effect"); else _explicitNullProperties?.Remove("detectable_effect"); } }
+        private double? _explicitNullValueDetectableEffect = default!;
         /// <summary>The week mark, in whole weeks since launch.</summary>
-        public int? WeeksSinceLaunch { get; set; }
+        public int? WeeksSinceLaunch { get => _explicitNullValueWeeksSinceLaunch; set { _explicitNullValueWeeksSinceLaunch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weeks_since_launch"); else _explicitNullProperties?.Remove("weeks_since_launch"); } }
+        private int? _explicitNullValueWeeksSinceLaunch = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint"/> and sets the default values.
         /// </summary>
@@ -33,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("detectable_effect", DetectableEffect);
             writer.WriteIntValue("weeks_since_launch", WeeksSinceLaunch);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

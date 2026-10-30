@@ -12,32 +12,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsPatternsDiffResponseWindow : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline") is { } nullNodeBaseline && nullNodeBaseline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Baseline = null;
+            if (parseNode.GetChildNode("current") is { } nullNodeCurrent && nullNodeCurrent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Current = null;
+            if (parseNode.GetChildNode("timezone") is { } nullNodeTimezone && nullNodeTimezone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timezone = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Absolute bounds the server used for the baseline window, when there is one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowBaseline? Baseline { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowBaseline? Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowBaseline? _explicitNullValueBaseline = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowBaseline Baseline { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowBaseline Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowBaseline _explicitNullValueBaseline = default!;
 #endif
         /// <summary>Absolute bounds the server used for the current window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowCurrent? Current { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowCurrent? Current { get => _explicitNullValueCurrent; set { _explicitNullValueCurrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current"); else _explicitNullProperties?.Remove("current"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowCurrent? _explicitNullValueCurrent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowCurrent Current { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowCurrent Current { get => _explicitNullValueCurrent; set { _explicitNullValueCurrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current"); else _explicitNullProperties?.Remove("current"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowCurrent _explicitNullValueCurrent = default!;
 #endif
         /// <summary>Always &quot;UTC&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Timezone { get; set; }
+        public string? Timezone { get => _explicitNullValueTimezone; set { _explicitNullValueTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone"); else _explicitNullProperties?.Remove("timezone"); } }
+        private string? _explicitNullValueTimezone = default!;
 #nullable restore
 #else
-        public string Timezone { get; set; }
+        public string Timezone { get => _explicitNullValueTimezone; set { _explicitNullValueTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone"); else _explicitNullProperties?.Remove("timezone"); } }
+        private string _explicitNullValueTimezone = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffResponseWindow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowBaseline>("baseline", Baseline);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAgentWindowCurrent>("current", Current);
             writer.WriteStringValue("timezone", Timezone);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

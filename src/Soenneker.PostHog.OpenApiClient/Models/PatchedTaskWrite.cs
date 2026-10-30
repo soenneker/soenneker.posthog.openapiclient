@@ -11,137 +11,202 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedTaskWrite : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("archived") is { } nullNodeArchived && nullNodeArchived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Archived = null;
+            if (parseNode.GetChildNode("auto_publish") is { } nullNodeAutoPublish && nullNodeAutoPublish.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoPublish = null;
+            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("channel") is { } nullNodeChannel && nullNodeChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Channel = null;
+            if (parseNode.GetChildNode("ci_prompt") is { } nullNodeCiPrompt && nullNodeCiPrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CiPrompt = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("github_integration") is { } nullNodeGithubIntegration && nullNodeGithubIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubIntegration = null;
+            if (parseNode.GetChildNode("github_user_integration") is { } nullNodeGithubUserIntegration && nullNodeGithubUserIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubUserIntegration = null;
+            if (parseNode.GetChildNode("initial_permission_mode") is { } nullNodeInitialPermissionMode && nullNodeInitialPermissionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InitialPermissionMode = null;
+            if (parseNode.GetChildNode("json_schema") is { } nullNodeJsonSchema && nullNodeJsonSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JsonSchema = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("origin_product") is { } nullNodeOriginProduct && nullNodeOriginProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OriginProduct = null;
+            if (parseNode.GetChildNode("pending_user_artifact_ids") is { } nullNodePendingUserArtifactIds && nullNodePendingUserArtifactIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingUserArtifactIds = null;
+            if (parseNode.GetChildNode("pending_user_message") is { } nullNodePendingUserMessage && nullNodePendingUserMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingUserMessage = null;
+            if (parseNode.GetChildNode("reasoning_effort") is { } nullNodeReasoningEffort && nullNodeReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningEffort = null;
+            if (parseNode.GetChildNode("repositories") is { } nullNodeRepositories && nullNodeRepositories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repositories = null;
+            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("runtime_adapter") is { } nullNodeRuntimeAdapter && nullNodeRuntimeAdapter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuntimeAdapter = null;
+            if (parseNode.GetChildNode("signal_report") is { } nullNodeSignalReport && nullNodeSignalReport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalReport = null;
+            if (parseNode.GetChildNode("signal_report_task_relationship") is { } nullNodeSignalReportTaskRelationship && nullNodeSignalReportTaskRelationship.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalReportTaskRelationship = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("title_manually_set") is { } nullNodeTitleManuallySet && nullNodeTitleManuallySet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TitleManuallySet = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>If true, the task is hidden from default list responses.</summary>
-        public bool? Archived { get; set; }
+        public bool? Archived { get => _explicitNullValueArchived; set { _explicitNullValueArchived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archived"); else _explicitNullProperties?.Remove("archived"); } }
+        private bool? _explicitNullValueArchived = default!;
         /// <summary>When true, the agent pushes its work and opens a draft pull request on completion without an explicit request. Applies when start_run is true or creation reuses a pre-warmed run. Resumed runs keep this setting. Ignored if creation does not start a run. Write-only and not persisted on the task.</summary>
-        public bool? AutoPublish { get; set; }
+        public bool? AutoPublish { get => _explicitNullValueAutoPublish; set { _explicitNullValueAutoPublish = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_publish"); else _explicitNullProperties?.Remove("auto_publish"); } }
+        private bool? _explicitNullValueAutoPublish = default!;
         /// <summary>Base branch for the first run when start_run is true, or for matching a pre-warmed run. Omit to use the repository&apos;s default branch. Write-only and not persisted on the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get; set; }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get; set; }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>Channel this task is owned by (the channel it was kicked off in).</summary>
-        public Guid? Channel { get; set; }
+        public Guid? Channel { get => _explicitNullValueChannel; set { _explicitNullValueChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("channel"); else _explicitNullProperties?.Remove("channel"); } }
+        private Guid? _explicitNullValueChannel = default!;
         /// <summary>Custom prompt for CI fixes. If blank, a default prompt will be used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CiPrompt { get; set; }
+        public string? CiPrompt { get => _explicitNullValueCiPrompt; set { _explicitNullValueCiPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_prompt"); else _explicitNullProperties?.Remove("ci_prompt"); } }
+        private string? _explicitNullValueCiPrompt = default!;
 #nullable restore
 #else
-        public string CiPrompt { get; set; }
+        public string CiPrompt { get => _explicitNullValueCiPrompt; set { _explicitNullValueCiPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_prompt"); else _explicitNullProperties?.Remove("ci_prompt"); } }
+        private string _explicitNullValueCiPrompt = default!;
 #endif
         /// <summary>Free-form description of the work to be done. Used as the prompt passed to the agent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>GitHub integration for this task.</summary>
-        public int? GithubIntegration { get; set; }
+        public int? GithubIntegration { get => _explicitNullValueGithubIntegration; set { _explicitNullValueGithubIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_integration"); else _explicitNullProperties?.Remove("github_integration"); } }
+        private int? _explicitNullValueGithubIntegration = default!;
         /// <summary>User-scoped GitHub integration to use for user-authored cloud runs.</summary>
-        public Guid? GithubUserIntegration { get; set; }
+        public Guid? GithubUserIntegration { get => _explicitNullValueGithubUserIntegration; set { _explicitNullValueGithubUserIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_user_integration"); else _explicitNullProperties?.Remove("github_user_integration"); } }
+        private Guid? _explicitNullValueGithubUserIntegration = default!;
         /// <summary>Agent permission mode for the first run when start_run is true, or for matching a pre-warmed run. Omit to match any warm permission mode. Write-only.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteInitialPermissionMode? InitialPermissionMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteInitialPermissionMode? InitialPermissionMode { get => _explicitNullValueInitialPermissionMode; set { _explicitNullValueInitialPermissionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_permission_mode"); else _explicitNullProperties?.Remove("initial_permission_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteInitialPermissionMode? _explicitNullValueInitialPermissionMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteInitialPermissionMode InitialPermissionMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteInitialPermissionMode InitialPermissionMode { get => _explicitNullValueInitialPermissionMode; set { _explicitNullValueInitialPermissionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_permission_mode"); else _explicitNullProperties?.Remove("initial_permission_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteInitialPermissionMode _explicitNullValueInitialPermissionMode = default!;
 #endif
         /// <summary>JSON schema used to validate the output of the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? JsonSchema { get; set; }
+        public UntypedNode? JsonSchema { get => _explicitNullValueJsonSchema; set { _explicitNullValueJsonSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("json_schema"); else _explicitNullProperties?.Remove("json_schema"); } }
+        private UntypedNode? _explicitNullValueJsonSchema = default!;
 #nullable restore
 #else
-        public UntypedNode JsonSchema { get; set; }
+        public UntypedNode JsonSchema { get => _explicitNullValueJsonSchema; set { _explicitNullValueJsonSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("json_schema"); else _explicitNullProperties?.Remove("json_schema"); } }
+        private UntypedNode _explicitNullValueJsonSchema = default!;
 #endif
         /// <summary>LLM model for the first run when start_run is true, or for matching a pre-warmed run. Write-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
-        /// <summary>* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteOriginProduct? OriginProduct { get; set; }
+        /// <summary>* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import* `knowledge_writer` - Knowledge Writer</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteOriginProduct? OriginProduct { get => _explicitNullValueOriginProduct; set { _explicitNullValueOriginProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origin_product"); else _explicitNullProperties?.Remove("origin_product"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteOriginProduct? _explicitNullValueOriginProduct = default!;
         /// <summary>Run artifact ids (already uploaded to the pre-warmed Run) to attach to the forwarded first message when creation reuses that warm Run, e.g. skill bundles or file attachments. If any id is missing from the warm Run&apos;s manifest, warm reuse is skipped and the task is created cold. Ignored when no warm Run is matched. Not supported when start_run is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PendingUserArtifactIds { get; set; }
+        public List<string>? PendingUserArtifactIds { get => _explicitNullValuePendingUserArtifactIds; set { _explicitNullValuePendingUserArtifactIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_artifact_ids"); else _explicitNullProperties?.Remove("pending_user_artifact_ids"); } }
+        private List<string>? _explicitNullValuePendingUserArtifactIds = default!;
 #nullable restore
 #else
-        public List<string> PendingUserArtifactIds { get; set; }
+        public List<string> PendingUserArtifactIds { get => _explicitNullValuePendingUserArtifactIds; set { _explicitNullValuePendingUserArtifactIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_artifact_ids"); else _explicitNullProperties?.Remove("pending_user_artifact_ids"); } }
+        private List<string> _explicitNullValuePendingUserArtifactIds = default!;
 #endif
         /// <summary>First user message when start_run is true or creation reuses a pre-warmed run. This message can differ from description. Ignored if creation does not start a run. Write-only and not persisted on the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PendingUserMessage { get; set; }
+        public string? PendingUserMessage { get => _explicitNullValuePendingUserMessage; set { _explicitNullValuePendingUserMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_message"); else _explicitNullProperties?.Remove("pending_user_message"); } }
+        private string? _explicitNullValuePendingUserMessage = default!;
 #nullable restore
 #else
-        public string PendingUserMessage { get; set; }
+        public string PendingUserMessage { get => _explicitNullValuePendingUserMessage; set { _explicitNullValuePendingUserMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_message"); else _explicitNullProperties?.Remove("pending_user_message"); } }
+        private string _explicitNullValuePendingUserMessage = default!;
 #endif
         /// <summary>Reasoning effort for the first run when start_run is true, or for matching a pre-warmed run. Write-only.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteReasoningEffort? ReasoningEffort { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteReasoningEffort? _explicitNullValueReasoningEffort = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteReasoningEffort ReasoningEffort { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteReasoningEffort ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteReasoningEffort _explicitNullValueReasoningEffort = default!;
 #endif
         /// <summary>GitHub repositories available to this task, each in `organization/repo` format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Repositories { get; set; }
+        public List<string>? Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
+        private List<string>? _explicitNullValueRepositories = default!;
 #nullable restore
 #else
-        public List<string> Repositories { get; set; }
+        public List<string> Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
+        private List<string> _explicitNullValueRepositories = default!;
 #endif
         /// <summary>Target GitHub repository in `organization/repo` format (e.g. `posthog/posthog-js`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Repository { get; set; }
+        public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string? _explicitNullValueRepository = default!;
 #nullable restore
 #else
-        public string Repository { get; set; }
+        public string Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string _explicitNullValueRepository = default!;
 #endif
         /// <summary>Runtime adapter (&apos;claude&apos; or &apos;codex&apos;) for the first run when start_run is true, or for matching a pre-warmed run. A different adapter prevents warm reuse. Write-only and not persisted on the task.* `claude` - claude* `codex` - codex</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteRuntimeAdapter? RuntimeAdapter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteRuntimeAdapter? RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteRuntimeAdapter? _explicitNullValueRuntimeAdapter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteRuntimeAdapter RuntimeAdapter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteRuntimeAdapter RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWriteRuntimeAdapter _explicitNullValueRuntimeAdapter = default!;
 #endif
         /// <summary>Signal report this task implements, when created from a report.</summary>
-        public Guid? SignalReport { get; set; }
+        public Guid? SignalReport { get => _explicitNullValueSignalReport; set { _explicitNullValueSignalReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_report"); else _explicitNullProperties?.Remove("signal_report"); } }
+        private Guid? _explicitNullValueSignalReport = default!;
         /// <summary>How the created task relates to the signal report (e.g. &apos;implementation&apos;, &apos;discussion&apos;). Recorded as a signals task_run work-log entry; &apos;implementation&apos; also opens the auto-start spend gate. Any routing-safe identifier (lowercase letters, numbers, &apos;_&apos;, &apos;-&apos;) is accepted except labels reserved for server-created tasks (&apos;research&apos;, &apos;repo_selection&apos;, &apos;scout&apos;). Non-implementation labels count toward the report&apos;s discussion task limit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SignalReportTaskRelationship { get; set; }
+        public string? SignalReportTaskRelationship { get => _explicitNullValueSignalReportTaskRelationship; set { _explicitNullValueSignalReportTaskRelationship = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_report_task_relationship"); else _explicitNullProperties?.Remove("signal_report_task_relationship"); } }
+        private string? _explicitNullValueSignalReportTaskRelationship = default!;
 #nullable restore
 #else
-        public string SignalReportTaskRelationship { get; set; }
+        public string SignalReportTaskRelationship { get => _explicitNullValueSignalReportTaskRelationship; set { _explicitNullValueSignalReportTaskRelationship = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_report_task_relationship"); else _explicitNullProperties?.Remove("signal_report_task_relationship"); } }
+        private string _explicitNullValueSignalReportTaskRelationship = default!;
 #endif
         /// <summary>Short human-readable title. Auto-generated from `description` when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>Whether the title was set by a human (vs auto-generated from the description).</summary>
-        public bool? TitleManuallySet { get; set; }
+        public bool? TitleManuallySet { get => _explicitNullValueTitleManuallySet; set { _explicitNullValueTitleManuallySet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title_manually_set"); else _explicitNullProperties?.Remove("title_manually_set"); } }
+        private bool? _explicitNullValueTitleManuallySet = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWrite"/> and sets the default values.
         /// </summary>
@@ -157,7 +222,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWrite CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWrite();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTaskWrite(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -220,6 +285,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("signal_report_task_relationship", SignalReportTaskRelationship);
             writer.WriteStringValue("title", Title);
             writer.WriteBoolValue("title_manually_set", TitleManuallySet);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

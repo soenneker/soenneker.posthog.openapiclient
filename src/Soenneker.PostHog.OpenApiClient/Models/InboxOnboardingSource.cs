@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InboxOnboardingSource : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("source_product") is { } nullNodeSourceProduct && nullNodeSourceProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceProduct = null;
+            if (parseNode.GetChildNode("source_type") is { } nullNodeSourceType && nullNodeSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this source should be enabled at activation.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `jira` - Jira* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout* `signals_check` - Report check* `logs` - Logs* `health_checks` - Health checks* `endpoints` - Endpoints* `replay_vision` - Replay Vision* `analytics` - Product analytics* `freshdesk` - Freshdesk* `freshservice` - Freshservice* `front` - Front* `gorgias` - Gorgias* `kustomer` - Kustomer* `dixa` - Dixa* `plain` - Plain* `gitlab` - GitLab* `gitea` - Gitea* `shortcut` - Shortcut* `sentry` - Sentry* `rollbar` - Rollbar* `bugsnag` - Bugsnag* `honeybadger` - Honeybadger* `raygun` - Raygun* `datadog` - Datadog* `snyk` - Snyk* `sonarqube` - SonarQube* `semgrep` - Semgrep* `rapid7_insightvm` - Rapid7 InsightVM* `featurebase` - Featurebase* `frill` - Frill* `aha` - Aha* `uservoice` - UserVoice* `productboard` - Productboard* `canny` - Canny* `asknicely` - AskNicely* `retently` - Retently* `appfigures` - Appfigures* `appfollow` - AppFollow* `judgeme_reviews` - Judge.me* `intercom` - Intercom* `hubspot` - HubSpot* `engineering_analytics` - Engineering analytics* `google_search_console` - Google Search Console* `pagerduty` - PagerDuty* `opsgenie` - Opsgenie* `incident_io` - incident.io* `firehydrant` - FireHydrant* `squadcast` - Squadcast* `servicenow` - ServiceNow* `solarwinds_service_desk` - SolarWinds Service Desk* `grafana_irm` - Grafana IRM* `xmatters` - xMatters* `betterstack` - Better Stack* `newrelic` - New Relic* `trigger_dev` - Trigger.dev* `checkly` - Checkly* `roark` - Roark* `monte_carlo` - Monte Carlo* `bigeye` - Bigeye* `aws_security_hub` - AWS Security Hub* `aws_guardduty` - AWS GuardDuty* `aws_inspector` - AWS Inspector* `microsoft_defender_cloud_apps` - Microsoft Defender for Cloud Apps* `clickup` - ClickUp* `wrike` - Wrike* `trello` - Trello* `bugherd` - BugHerd* `dynamics365` - Dynamics 365* `zoho_crm` - Zoho CRM* `planhat` - Planhat* `trustpilot` - Trustpilot* `okendo` - Okendo* `sleekplan` - Sleekplan* `bettermode` - Bettermode* `discourse` - Discourse* `mintlify` - Mintlify* `langsmith` - LangSmith* `sprig` - Sprig* `gainsight_px` - Gainsight PX* `dynatrace` - Dynatrace* `statuspage` - Statuspage* `cronitor` - Cronitor* `instatus` - Instatus* `asana` - Asana* `monday` - monday.com* `plane` - Plane* `azure_devops` - Azure DevOps* `helpscout` - Help Scout* `decagon` - Decagon* `vitally` - Vitally* `usersnap` - Usersnap* `typeform` - Typeform* `qualtrics` - Qualtrics* `surveymonkey` - SurveyMonkey* `formbricks` - Formbricks* `survicate` - Survicate* `surveysparrow` - SurveySparrow* `lacework` - Lacework* `orca_security` - Orca Security* `tenable_vulnerability_management` - Tenable Vulnerability Management* `google_play_console` - Google Play Console* `azure_application_insights` - Azure Application Insights* `appsignal` - AppSignal* `cursor` - Cursor</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSourceSourceProduct? SourceProduct { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSourceSourceProduct? SourceProduct { get => _explicitNullValueSourceProduct; set { _explicitNullValueSourceProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_product"); else _explicitNullProperties?.Remove("source_product"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSourceSourceProduct? _explicitNullValueSourceProduct = default!;
         /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation_report` - Evaluation report* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue* `alert_state_change` - Alert state change* `health_issue` - Health issue* `endpoint_execution_failed` - Endpoint execution failed* `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded* `scanner_finding` - Scanner finding* `anomaly_investigation` - Anomaly investigation* `feedback` - Feedback* `review` - Review* `ci_flaky_check` - CI flaky check* `ci_broken_default_branch` - CI broken default branch* `ci_duration_regression` - CI duration regression* `search_opportunity` - Search opportunity* `incident` - Incident</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSourceSourceType? SourceType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSourceSourceType? SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSourceSourceType? _explicitNullValueSourceType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource"/> and sets the default values.
         /// </summary>
@@ -35,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSourceSourceProduct>("source_product", SourceProduct);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSourceSourceType>("source_type", SourceType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

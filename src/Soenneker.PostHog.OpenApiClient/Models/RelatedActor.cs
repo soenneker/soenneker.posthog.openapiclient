@@ -12,7 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RelatedActor : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActor"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,17 +42,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RelatedActor CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.RelatedActor();
-            if("group".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("SerializedGroupActor".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.SerializedGroupActor = new global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActor();
+                
             }
-            else if("person".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("SerializedPersonActor".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.SerializedPersonActor = new global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActor();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("created_at") != null && parseNode.GetChildNode("distinct_ids") != null && parseNode.GetChildNode("id") != null && parseNode.GetChildNode("is_identified") != null && parseNode.GetChildNode("last_seen_at") != null && parseNode.GetChildNode("matched_recordings") != null && parseNode.GetChildNode("name") != null && parseNode.GetChildNode("properties") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag9 && ("person".Equals(tag9.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("uuid") != null && parseNode.GetChildNode("value_at_data_point") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("created_at") != null && parseNode.GetChildNode("group_key") != null && parseNode.GetChildNode("group_type_index") != null && parseNode.GetChildNode("id") != null && parseNode.GetChildNode("matched_recordings") != null && parseNode.GetChildNode("properties") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag7 && ("group".Equals(tag7.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("value_at_data_point") != null))();
+            if (result.SerializedGroupActor == null && result.SerializedPersonActor == null && matchesUnionBranch0 && !matchesUnionBranch1) result.SerializedPersonActor = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActor(), parseNode);
+            if (result.SerializedGroupActor == null && result.SerializedPersonActor == null && matchesUnionBranch1 && !matchesUnionBranch0) result.SerializedGroupActor = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActor(), parseNode);
+            if (result.SerializedGroupActor == null && result.SerializedPersonActor == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,13 +83,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (SerializedGroupActor == null && SerializedPersonActor == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (SerializedGroupActor != null && SerializedPersonActor == null) { if (SerializedGroupActor is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SerializedGroupActor); return; }
+            if (SerializedPersonActor != null && SerializedGroupActor == null) { if (SerializedPersonActor is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SerializedPersonActor); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(SerializedGroupActor != null)
             {
+                if (SerializedGroupActor is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActor>(null, SerializedGroupActor);
             }
             else if(SerializedPersonActor != null)
             {
+                if (SerializedPersonActor is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActor>(null, SerializedPersonActor);
             }
         }

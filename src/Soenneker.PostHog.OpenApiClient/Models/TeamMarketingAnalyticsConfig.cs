@@ -11,54 +11,82 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamMarketingAnalyticsConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("attribution_mode") is { } nullNodeAttributionMode && nullNodeAttributionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributionMode = null;
+            if (parseNode.GetChildNode("attribution_window_days") is { } nullNodeAttributionWindowDays && nullNodeAttributionWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributionWindowDays = null;
+            if (parseNode.GetChildNode("campaign_field_preferences") is { } nullNodeCampaignFieldPreferences && nullNodeCampaignFieldPreferences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CampaignFieldPreferences = null;
+            if (parseNode.GetChildNode("campaign_name_mappings") is { } nullNodeCampaignNameMappings && nullNodeCampaignNameMappings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CampaignNameMappings = null;
+            if (parseNode.GetChildNode("conversion_goals") is { } nullNodeConversionGoals && nullNodeConversionGoals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionGoals = null;
+            if (parseNode.GetChildNode("custom_source_mappings") is { } nullNodeCustomSourceMappings && nullNodeCustomSourceMappings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomSourceMappings = null;
+            if (parseNode.GetChildNode("filter_test_accounts") is { } nullNodeFilterTestAccounts && nullNodeFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTestAccounts = null;
+            if (parseNode.GetChildNode("sources_map") is { } nullNodeSourcesMap && nullNodeSourcesMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesMap = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `first_touch` - First Touch* `last_touch` - Last Touch* `linear` - Linear* `time_decay` - Time Decay* `position_based` - Position Based</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode? AttributionMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode? AttributionMode { get => _explicitNullValueAttributionMode; set { _explicitNullValueAttributionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution_mode"); else _explicitNullProperties?.Remove("attribution_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigAttributionMode? _explicitNullValueAttributionMode = default!;
         /// <summary>How many days back a touchpoint can be credited for a conversion. Between 1 and 90.</summary>
-        public int? AttributionWindowDays { get; set; }
+        public int? AttributionWindowDays { get => _explicitNullValueAttributionWindowDays; set { _explicitNullValueAttributionWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution_window_days"); else _explicitNullProperties?.Remove("attribution_window_days"); } }
+        private int? _explicitNullValueAttributionWindowDays = default!;
         /// <summary>Which field to match campaigns on per integration type, campaign_name or campaign_id. Manual mappings in campaign_name_mappings still take precedence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences? CampaignFieldPreferences { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences? CampaignFieldPreferences { get => _explicitNullValueCampaignFieldPreferences; set { _explicitNullValueCampaignFieldPreferences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaign_field_preferences"); else _explicitNullProperties?.Remove("campaign_field_preferences"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences? _explicitNullValueCampaignFieldPreferences = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences CampaignFieldPreferences { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences CampaignFieldPreferences { get => _explicitNullValueCampaignFieldPreferences; set { _explicitNullValueCampaignFieldPreferences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaign_field_preferences"); else _explicitNullProperties?.Remove("campaign_field_preferences"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignFieldPreferences _explicitNullValueCampaignFieldPreferences = default!;
 #endif
         /// <summary>Manual campaign name aliases, keyed by integration type then by canonical campaign name, with the list of names that should be folded into it. Applied before automatic matching.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings? CampaignNameMappings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings? CampaignNameMappings { get => _explicitNullValueCampaignNameMappings; set { _explicitNullValueCampaignNameMappings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaign_name_mappings"); else _explicitNullProperties?.Remove("campaign_name_mappings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings? _explicitNullValueCampaignNameMappings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings CampaignNameMappings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings CampaignNameMappings { get => _explicitNullValueCampaignNameMappings; set { _explicitNullValueCampaignNameMappings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaign_name_mappings"); else _explicitNullProperties?.Remove("campaign_name_mappings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCampaignNameMappings _explicitNullValueCampaignNameMappings = default!;
 #endif
         /// <summary>The conversion goals configured for marketing analytics, in display order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem>? ConversionGoals { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem>? ConversionGoals { get => _explicitNullValueConversionGoals; set { _explicitNullValueConversionGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goals"); else _explicitNullProperties?.Remove("conversion_goals"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem>? _explicitNullValueConversionGoals = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem> ConversionGoals { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem> ConversionGoals { get => _explicitNullValueConversionGoals; set { _explicitNullValueConversionGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goals"); else _explicitNullProperties?.Remove("conversion_goals"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem> _explicitNullValueConversionGoals = default!;
 #endif
         /// <summary>Custom UTM source values to fold into an integration, keyed by integration type. A UTM source can only belong to one integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings? CustomSourceMappings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings? CustomSourceMappings { get => _explicitNullValueCustomSourceMappings; set { _explicitNullValueCustomSourceMappings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_source_mappings"); else _explicitNullProperties?.Remove("custom_source_mappings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings? _explicitNullValueCustomSourceMappings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings CustomSourceMappings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings CustomSourceMappings { get => _explicitNullValueCustomSourceMappings; set { _explicitNullValueCustomSourceMappings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_source_mappings"); else _explicitNullProperties?.Remove("custom_source_mappings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings _explicitNullValueCustomSourceMappings = default!;
 #endif
         /// <summary>Whether marketing analytics drops traffic matching the project&apos;s test-account filters. Off by default.</summary>
-        public bool? FilterTestAccounts { get; set; }
+        public bool? FilterTestAccounts { get => _explicitNullValueFilterTestAccounts; set { _explicitNullValueFilterTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_test_accounts"); else _explicitNullProperties?.Remove("filter_test_accounts"); } }
+        private bool? _explicitNullValueFilterTestAccounts = default!;
         /// <summary>Column mapping per external data source, keyed by source id. Tells marketing analytics which column holds campaign, source, cost, clicks and impressions for that source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap? SourcesMap { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap? SourcesMap { get => _explicitNullValueSourcesMap; set { _explicitNullValueSourcesMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_map"); else _explicitNullProperties?.Remove("sources_map"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap? _explicitNullValueSourcesMap = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap SourcesMap { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap SourcesMap { get => _explicitNullValueSourcesMap; set { _explicitNullValueSourcesMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_map"); else _explicitNullProperties?.Remove("sources_map"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap _explicitNullValueSourcesMap = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig"/> and sets the default values.
@@ -75,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -110,6 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigCustomSourceMappings>("custom_source_mappings", CustomSourceMappings);
             writer.WriteBoolValue("filter_test_accounts", FilterTestAccounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfigSourcesMap>("sources_map", SourcesMap);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

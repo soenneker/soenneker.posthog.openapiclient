@@ -11,49 +11,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GitHubInstallRequestItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("account_login") is { } nullNodeAccountLogin && nullNodeAccountLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountLogin = null;
+            if (parseNode.GetChildNode("account_type") is { } nullNodeAccountType && nullNodeAccountType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountType = null;
+            if (parseNode.GetChildNode("github_login") is { } nullNodeGithubLogin && nullNodeGithubLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubLogin = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("installation_id") is { } nullNodeInstallationId && nullNodeInstallationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallationId = null;
+            if (parseNode.GetChildNode("requested_at") is { } nullNodeRequestedAt && nullNodeRequestedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedAt = null;
+            if (parseNode.GetChildNode("resolved_at") is { } nullNodeResolvedAt && nullNodeResolvedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedAt = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>GitHub organization or user login the installation was approved under, once known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccountLogin { get; set; }
+        public string? AccountLogin { get => _explicitNullValueAccountLogin; set { _explicitNullValueAccountLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_login"); else _explicitNullProperties?.Remove("account_login"); } }
+        private string? _explicitNullValueAccountLogin = default!;
 #nullable restore
 #else
-        public string AccountLogin { get; set; }
+        public string AccountLogin { get => _explicitNullValueAccountLogin; set { _explicitNullValueAccountLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_login"); else _explicitNullProperties?.Remove("account_login"); } }
+        private string _explicitNullValueAccountLogin = default!;
 #endif
         /// <summary>GitHub account type (`Organization` or `User`) the installation was approved under, once known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccountType { get; set; }
+        public string? AccountType { get => _explicitNullValueAccountType; set { _explicitNullValueAccountType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_type"); else _explicitNullProperties?.Remove("account_type"); } }
+        private string? _explicitNullValueAccountType = default!;
 #nullable restore
 #else
-        public string AccountType { get; set; }
+        public string AccountType { get => _explicitNullValueAccountType; set { _explicitNullValueAccountType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_type"); else _explicitNullProperties?.Remove("account_type"); } }
+        private string _explicitNullValueAccountType = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>GitHub login the install was requested under. Blank if it could not be resolved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubLogin { get; set; }
+        public string? GithubLogin { get => _explicitNullValueGithubLogin; set { _explicitNullValueGithubLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_login"); else _explicitNullProperties?.Remove("github_login"); } }
+        private string? _explicitNullValueGithubLogin = default!;
 #nullable restore
 #else
-        public string GithubLogin { get; set; }
+        public string GithubLogin { get => _explicitNullValueGithubLogin; set { _explicitNullValueGithubLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_login"); else _explicitNullProperties?.Remove("github_login"); } }
+        private string _explicitNullValueGithubLogin = default!;
 #endif
         /// <summary>PostHog GitHubInstallRequest row id.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>GitHub App installation id, set once the request is approved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InstallationId { get; set; }
+        public string? InstallationId { get => _explicitNullValueInstallationId; set { _explicitNullValueInstallationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_id"); else _explicitNullProperties?.Remove("installation_id"); } }
+        private string? _explicitNullValueInstallationId = default!;
 #nullable restore
 #else
-        public string InstallationId { get; set; }
+        public string InstallationId { get => _explicitNullValueInstallationId; set { _explicitNullValueInstallationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_id"); else _explicitNullProperties?.Remove("installation_id"); } }
+        private string _explicitNullValueInstallationId = default!;
 #endif
         /// <summary>When the install approval was requested.</summary>
-        public DateTimeOffset? RequestedAt { get; set; }
+        public DateTimeOffset? RequestedAt { get => _explicitNullValueRequestedAt; set { _explicitNullValueRequestedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_at"); else _explicitNullProperties?.Remove("requested_at"); } }
+        private DateTimeOffset? _explicitNullValueRequestedAt = default!;
         /// <summary>When an org owner approved the request.</summary>
-        public DateTimeOffset? ResolvedAt { get; set; }
+        public DateTimeOffset? ResolvedAt { get => _explicitNullValueResolvedAt; set { _explicitNullValueResolvedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_at"); else _explicitNullProperties?.Remove("resolved_at"); } }
+        private DateTimeOffset? _explicitNullValueResolvedAt = default!;
         /// <summary>* `pending` - Pending* `approved` - Approved* `unidentified` - Unidentified</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItem"/> and sets the default values.
         /// </summary>
@@ -69,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,6 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("requested_at", RequestedAt);
             writer.WriteDateTimeOffsetValue("resolved_at", ResolvedAt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestItemStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

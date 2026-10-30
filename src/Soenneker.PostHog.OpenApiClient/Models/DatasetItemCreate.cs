@@ -11,68 +11,100 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DatasetItemCreate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("client_item_id") is { } nullNodeClientItemId && nullNodeClientItemId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientItemId = null;
+            if (parseNode.GetChildNode("dataset") is { } nullNodeDataset && nullNodeDataset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dataset = null;
+            if (parseNode.GetChildNode("expected_output") is { } nullNodeExpectedOutput && nullNodeExpectedOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedOutput = null;
+            if (parseNode.GetChildNode("input") is { } nullNodeInput && nullNodeInput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Input = null;
+            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("source_event_id") is { } nullNodeSourceEventId && nullNodeSourceEventId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceEventId = null;
+            if (parseNode.GetChildNode("source_output") is { } nullNodeSourceOutput && nullNodeSourceOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceOutput = null;
+            if (parseNode.GetChildNode("source_timestamp") is { } nullNodeSourceTimestamp && nullNodeSourceTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTimestamp = null;
+            if (parseNode.GetChildNode("source_trace_id") is { } nullNodeSourceTraceId && nullNodeSourceTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTraceId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional case-sensitive stable key used for idempotent creates. It cannot be changed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientItemId { get; set; }
+        public string? ClientItemId { get => _explicitNullValueClientItemId; set { _explicitNullValueClientItemId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_item_id"); else _explicitNullProperties?.Remove("client_item_id"); } }
+        private string? _explicitNullValueClientItemId = default!;
 #nullable restore
 #else
-        public string ClientItemId { get; set; }
+        public string ClientItemId { get => _explicitNullValueClientItemId; set { _explicitNullValueClientItemId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_item_id"); else _explicitNullProperties?.Remove("client_item_id"); } }
+        private string _explicitNullValueClientItemId = default!;
 #endif
         /// <summary>Dataset that will own the item.</summary>
-        public Guid? Dataset { get; set; }
+        public Guid? Dataset { get => _explicitNullValueDataset; set { _explicitNullValueDataset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset"); else _explicitNullProperties?.Remove("dataset"); } }
+        private Guid? _explicitNullValueDataset = default!;
         /// <summary>Optional user-authored expected output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? ExpectedOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? ExpectedOutput { get => _explicitNullValueExpectedOutput; set { _explicitNullValueExpectedOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_output"); else _explicitNullProperties?.Remove("expected_output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? _explicitNullValueExpectedOutput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue ExpectedOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue ExpectedOutput { get => _explicitNullValueExpectedOutput; set { _explicitNullValueExpectedOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_output"); else _explicitNullProperties?.Remove("expected_output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue _explicitNullValueExpectedOutput = default!;
 #endif
         /// <summary>Input supplied to the system under test. Any non-null JSON value is accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput? Input { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput? Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput? _explicitNullValueInput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput Input { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateInput _explicitNullValueInput = default!;
 #endif
         /// <summary>Optional JSON object with item metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreateMetadataProperty _explicitNullValueMetadata = default!;
 #endif
         /// <summary>Event ID copied from the source trace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceEventId { get; set; }
+        public string? SourceEventId { get => _explicitNullValueSourceEventId; set { _explicitNullValueSourceEventId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_event_id"); else _explicitNullProperties?.Remove("source_event_id"); } }
+        private string? _explicitNullValueSourceEventId = default!;
 #nullable restore
 #else
-        public string SourceEventId { get; set; }
+        public string SourceEventId { get => _explicitNullValueSourceEventId; set { _explicitNullValueSourceEventId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_event_id"); else _explicitNullProperties?.Remove("source_event_id"); } }
+        private string _explicitNullValueSourceEventId = default!;
 #endif
         /// <summary>Optional actual output captured from the source trace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? SourceOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? SourceOutput { get => _explicitNullValueSourceOutput; set { _explicitNullValueSourceOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_output"); else _explicitNullProperties?.Remove("source_output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue? _explicitNullValueSourceOutput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue SourceOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue SourceOutput { get => _explicitNullValueSourceOutput; set { _explicitNullValueSourceOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_output"); else _explicitNullProperties?.Remove("source_output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue _explicitNullValueSourceOutput = default!;
 #endif
         /// <summary>Timestamp needed to retrieve the event-backed source trace.</summary>
-        public DateTimeOffset? SourceTimestamp { get; set; }
+        public DateTimeOffset? SourceTimestamp { get => _explicitNullValueSourceTimestamp; set { _explicitNullValueSourceTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_timestamp"); else _explicitNullProperties?.Remove("source_timestamp"); } }
+        private DateTimeOffset? _explicitNullValueSourceTimestamp = default!;
         /// <summary>Trace ID copied from the source event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceTraceId { get; set; }
+        public string? SourceTraceId { get => _explicitNullValueSourceTraceId; set { _explicitNullValueSourceTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_trace_id"); else _explicitNullProperties?.Remove("source_trace_id"); } }
+        private string? _explicitNullValueSourceTraceId = default!;
 #nullable restore
 #else
-        public string SourceTraceId { get; set; }
+        public string SourceTraceId { get => _explicitNullValueSourceTraceId; set { _explicitNullValueSourceTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_trace_id"); else _explicitNullProperties?.Remove("source_trace_id"); } }
+        private string _explicitNullValueSourceTraceId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreate"/> and sets the default values.
@@ -89,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemCreate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -126,6 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetJsonValue>("source_output", SourceOutput);
             writer.WriteDateTimeOffsetValue("source_timestamp", SourceTimestamp);
             writer.WriteStringValue("source_trace_id", SourceTraceId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

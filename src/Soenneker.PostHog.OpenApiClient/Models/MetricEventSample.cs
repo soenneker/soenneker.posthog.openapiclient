@@ -11,95 +11,138 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MetricEventSample : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregation_temporality") is { } nullNodeAggregationTemporality && nullNodeAggregationTemporality.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggregationTemporality = null;
+            if (parseNode.GetChildNode("attributes") is { } nullNodeAttributes && nullNodeAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attributes = null;
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("is_monotonic") is { } nullNodeIsMonotonic && nullNodeIsMonotonic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsMonotonic = null;
+            if (parseNode.GetChildNode("metric_name") is { } nullNodeMetricName && nullNodeMetricName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricName = null;
+            if (parseNode.GetChildNode("metric_type") is { } nullNodeMetricType && nullNodeMetricType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricType = null;
+            if (parseNode.GetChildNode("resource_attributes") is { } nullNodeResourceAttributes && nullNodeResourceAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceAttributes = null;
+            if (parseNode.GetChildNode("service_name") is { } nullNodeServiceName && nullNodeServiceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceName = null;
+            if (parseNode.GetChildNode("span_id") is { } nullNodeSpanId && nullNodeSpanId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpanId = null;
+            if (parseNode.GetChildNode("timestamp") is { } nullNodeTimestamp && nullNodeTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamp = null;
+            if (parseNode.GetChildNode("trace_id") is { } nullNodeTraceId && nullNodeTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceId = null;
+            if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
+            if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>For counters: &apos;delta&apos; or &apos;cumulative&apos; (decides whether rate() must diff). Empty for gauges.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AggregationTemporality { get; set; }
+        public string? AggregationTemporality { get => _explicitNullValueAggregationTemporality; set { _explicitNullValueAggregationTemporality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation_temporality"); else _explicitNullProperties?.Remove("aggregation_temporality"); } }
+        private string? _explicitNullValueAggregationTemporality = default!;
 #nullable restore
 #else
-        public string AggregationTemporality { get; set; }
+        public string AggregationTemporality { get => _explicitNullValueAggregationTemporality; set { _explicitNullValueAggregationTemporality = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation_temporality"); else _explicitNullProperties?.Remove("aggregation_temporality"); } }
+        private string _explicitNullValueAggregationTemporality = default!;
 #endif
         /// <summary>Per-emission attributes (high-cardinality labels on the data point).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleAttributesProperty? Attributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleAttributesProperty? Attributes { get => _explicitNullValueAttributes; set { _explicitNullValueAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributes"); else _explicitNullProperties?.Remove("attributes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleAttributesProperty? _explicitNullValueAttributes = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleAttributesProperty Attributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleAttributesProperty Attributes { get => _explicitNullValueAttributes; set { _explicitNullValueAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributes"); else _explicitNullProperties?.Remove("attributes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleAttributesProperty _explicitNullValueAttributes = default!;
 #endif
         /// <summary>Observations behind this point: 1 for gauges/counters, the distribution count for histograms/summaries.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>True for monotonically increasing counters.</summary>
-        public bool? IsMonotonic { get; set; }
+        public bool? IsMonotonic { get => _explicitNullValueIsMonotonic; set { _explicitNullValueIsMonotonic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_monotonic"); else _explicitNullProperties?.Remove("is_monotonic"); } }
+        private bool? _explicitNullValueIsMonotonic = default!;
         /// <summary>Metric this emission belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricName { get; set; }
+        public string? MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_name"); else _explicitNullProperties?.Remove("metric_name"); } }
+        private string? _explicitNullValueMetricName = default!;
 #nullable restore
 #else
-        public string MetricName { get; set; }
+        public string MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_name"); else _explicitNullProperties?.Remove("metric_name"); } }
+        private string _explicitNullValueMetricName = default!;
 #endif
         /// <summary>OTel metric type: gauge, sum, histogram, summary, or exponential_histogram.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricType { get; set; }
+        public string? MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
+        private string? _explicitNullValueMetricType = default!;
 #nullable restore
 #else
-        public string MetricType { get; set; }
+        public string MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
+        private string _explicitNullValueMetricType = default!;
 #endif
         /// <summary>Attributes of the resource (host, pod, service version) that emitted the metric.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleResourceAttributesProperty? ResourceAttributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleResourceAttributesProperty? ResourceAttributes { get => _explicitNullValueResourceAttributes; set { _explicitNullValueResourceAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_attributes"); else _explicitNullProperties?.Remove("resource_attributes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleResourceAttributesProperty? _explicitNullValueResourceAttributes = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleResourceAttributesProperty ResourceAttributes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleResourceAttributesProperty ResourceAttributes { get => _explicitNullValueResourceAttributes; set { _explicitNullValueResourceAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_attributes"); else _explicitNullProperties?.Remove("resource_attributes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSampleResourceAttributesProperty _explicitNullValueResourceAttributes = default!;
 #endif
         /// <summary>Service that emitted the metric.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ServiceName { get; set; }
+        public string? ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string? _explicitNullValueServiceName = default!;
 #nullable restore
 #else
-        public string ServiceName { get; set; }
+        public string ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string _explicitNullValueServiceName = default!;
 #endif
         /// <summary>Span this emission belongs to (hex); empty if none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SpanId { get; set; }
+        public string? SpanId { get => _explicitNullValueSpanId; set { _explicitNullValueSpanId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("span_id"); else _explicitNullProperties?.Remove("span_id"); } }
+        private string? _explicitNullValueSpanId = default!;
 #nullable restore
 #else
-        public string SpanId { get; set; }
+        public string SpanId { get => _explicitNullValueSpanId; set { _explicitNullValueSpanId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("span_id"); else _explicitNullProperties?.Remove("span_id"); } }
+        private string _explicitNullValueSpanId = default!;
 #endif
         /// <summary>When the metric was emitted, ISO 8601.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Timestamp { get; set; }
+        public string? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private string? _explicitNullValueTimestamp = default!;
 #nullable restore
 #else
-        public string Timestamp { get; set; }
+        public string Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
+        private string _explicitNullValueTimestamp = default!;
 #endif
         /// <summary>Trace this emission belongs to (hex, same form the tracing product uses); empty if none. Use it to pivot to the trace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TraceId { get; set; }
+        public string? TraceId { get => _explicitNullValueTraceId; set { _explicitNullValueTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_id"); else _explicitNullProperties?.Remove("trace_id"); } }
+        private string? _explicitNullValueTraceId = default!;
 #nullable restore
 #else
-        public string TraceId { get; set; }
+        public string TraceId { get => _explicitNullValueTraceId; set { _explicitNullValueTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_id"); else _explicitNullProperties?.Remove("trace_id"); } }
+        private string _explicitNullValueTraceId = default!;
 #endif
         /// <summary>Unit of the value, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Unit { get; set; }
+        public string? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private string? _explicitNullValueUnit = default!;
 #nullable restore
 #else
-        public string Unit { get; set; }
+        public string Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private string _explicitNullValueUnit = default!;
 #endif
         /// <summary>The emitted value. For histogram/summary points this is the distribution sum; pair with count.</summary>
-        public double? Value { get; set; }
+        public double? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private double? _explicitNullValueValue = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSample"/> and sets the default values.
         /// </summary>
@@ -115,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSample CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSample();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MetricEventSample(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -160,6 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("trace_id", TraceId);
             writer.WriteStringValue("unit", Unit);
             writer.WriteDoubleValue("value", Value);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

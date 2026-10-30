@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Resum
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowEmailPauseStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WorkflowEmailPauseStatus.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowEmailPauseStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WorkflowEmailPauseStatus.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Resume email sending for a workflow PostHog paused automatically.Self-serve on purpose. Resuming re-arms the detector rather than exempting the workflow, soa workflow that is still generating complaints or hard bounces pauses again within minutes,while a customer who has cleaned up their audience does not have to wait on support.

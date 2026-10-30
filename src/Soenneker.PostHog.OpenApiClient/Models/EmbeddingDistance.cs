@@ -11,24 +11,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EmbeddingDistance : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("distance") is { } nullNodeDistance && nullNodeDistance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Distance = null;
+            if (parseNode.GetChildNode("origin") is { } nullNodeOrigin && nullNodeOrigin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Origin = null;
+            if (parseNode.GetChildNode("result") is { } nullNodeResult && nullNodeResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Result = null;
+        }
+
         /// <summary>The distance property</summary>
-        public double? Distance { get; set; }
+        public double? Distance { get => _explicitNullValueDistance; set { _explicitNullValueDistance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distance"); else _explicitNullProperties?.Remove("distance"); } }
+        private double? _explicitNullValueDistance = default!;
         /// <summary>The origin property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord? Origin { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord? Origin { get => _explicitNullValueOrigin; set { _explicitNullValueOrigin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origin"); else _explicitNullProperties?.Remove("origin"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord? _explicitNullValueOrigin = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord Origin { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord Origin { get => _explicitNullValueOrigin; set { _explicitNullValueOrigin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origin"); else _explicitNullProperties?.Remove("origin"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord _explicitNullValueOrigin = default!;
 #endif
         /// <summary>The result property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord? Result { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord? Result { get => _explicitNullValueResult; set { _explicitNullValueResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result"); else _explicitNullProperties?.Remove("result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord? _explicitNullValueResult = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord Result { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord Result { get => _explicitNullValueResult; set { _explicitNullValueResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result"); else _explicitNullProperties?.Remove("result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord _explicitNullValueResult = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -38,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingDistance CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingDistance();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingDistance(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,7 +77,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("distance", Distance);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord>("origin", Origin);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord>("result", Result);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmbeddingRecord>("result", Result);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -11,36 +11,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentHealthInputsFlag : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("release_conditions") is { } nullNodeReleaseConditions && nullNodeReleaseConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseConditions = null;
+            if (parseNode.GetChildNode("split_text") is { } nullNodeSplitText && nullNodeSplitText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SplitText = null;
+            if (parseNode.GetChildNode("variants") is { } nullNodeVariants && nullNodeVariants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variants = null;
+        }
+
         /// <summary>Whether the flag is enabled.</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the flag is deleted.</summary>
-        public bool? Deleted { get; set; }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        private bool? _explicitNullValueDeleted = default!;
         /// <summary>The flag&apos;s release conditions, in evaluation order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReleaseCondition>? ReleaseConditions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReleaseCondition>? ReleaseConditions { get => _explicitNullValueReleaseConditions; set { _explicitNullValueReleaseConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_conditions"); else _explicitNullProperties?.Remove("release_conditions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReleaseCondition>? _explicitNullValueReleaseConditions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReleaseCondition> ReleaseConditions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReleaseCondition> ReleaseConditions { get => _explicitNullValueReleaseConditions; set { _explicitNullValueReleaseConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_conditions"); else _explicitNullProperties?.Remove("release_conditions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReleaseCondition> _explicitNullValueReleaseConditions = default!;
 #endif
         /// <summary>The split as text, in the form of a change&apos;s before and after, such as &apos;control 50%, test 50%&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SplitText { get; set; }
+        public string? SplitText { get => _explicitNullValueSplitText; set { _explicitNullValueSplitText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("split_text"); else _explicitNullProperties?.Remove("split_text"); } }
+        private string? _explicitNullValueSplitText = default!;
 #nullable restore
 #else
-        public string SplitText { get; set; }
+        public string SplitText { get => _explicitNullValueSplitText; set { _explicitNullValueSplitText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("split_text"); else _explicitNullProperties?.Remove("split_text"); } }
+        private string _explicitNullValueSplitText = default!;
 #endif
         /// <summary>The flag&apos;s variants and their split.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsVariant>? Variants { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsVariant>? Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsVariant>? _explicitNullValueVariants = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsVariant> Variants { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsVariant> Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsVariant> _explicitNullValueVariants = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag"/> and sets the default values.
@@ -57,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReleaseCondition>("release_conditions", ReleaseConditions);
             writer.WriteStringValue("split_text", SplitText);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsVariant>("variants", Variants);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

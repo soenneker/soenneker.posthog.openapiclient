@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLink>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLink.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLink>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SourceConnectLink.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Return a secure browser link for connecting a data warehouse source.The link opens a minimal connect page rendering the source&apos;s full connection form — OAuth optionsincluded — with no table selection and no source creation. The user authenticates in their browser,secrets never pass through the agent, and the agent finishes setup afterwards by passing the storedcredential id to data-warehouse-source-setup.

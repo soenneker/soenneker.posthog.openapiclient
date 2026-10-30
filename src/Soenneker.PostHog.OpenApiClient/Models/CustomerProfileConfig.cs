@@ -11,30 +11,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CustomerProfileConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("sidebar") is { } nullNodeSidebar && nullNodeSidebar.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sidebar = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Content { get; set; }
+        public UntypedNode? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private UntypedNode? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public UntypedNode Content { get; set; }
+        public UntypedNode Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private UntypedNode _explicitNullValueContent = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>* `person` - Person* `group_0` - Group 0* `group_1` - Group 1* `group_2` - Group 2* `group_3` - Group 3* `group_4` - Group 4</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfigScopeEnum? Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfigScopeEnum? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfigScopeEnum? _explicitNullValueScope = default!;
         /// <summary>The sidebar property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Sidebar { get; set; }
+        public UntypedNode? Sidebar { get => _explicitNullValueSidebar; set { _explicitNullValueSidebar = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sidebar"); else _explicitNullProperties?.Remove("sidebar"); } }
+        private UntypedNode? _explicitNullValueSidebar = default!;
 #nullable restore
 #else
-        public UntypedNode Sidebar { get; set; }
+        public UntypedNode Sidebar { get => _explicitNullValueSidebar; set { _explicitNullValueSidebar = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sidebar"); else _explicitNullProperties?.Remove("sidebar"); } }
+        private UntypedNode _explicitNullValueSidebar = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -53,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("content", Content);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerProfileConfigScopeEnum>("scope", Scope);
             writer.WriteObjectValue<UntypedNode>("sidebar", Sidebar);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

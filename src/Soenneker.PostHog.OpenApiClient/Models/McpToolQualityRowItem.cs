@@ -11,57 +11,99 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class McpToolQualityRowItem : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("error_rate_pct") is { } nullNodeErrorRatePct && nullNodeErrorRatePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRatePct = null;
+            if (parseNode.GetChildNode("errors") is { } nullNodeErrors && nullNodeErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Errors = null;
+            if (parseNode.GetChildNode("first_seen") is { } nullNodeFirstSeen && nullNodeFirstSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstSeen = null;
+            if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
+            if (parseNode.GetChildNode("p50_duration_ms") is { } nullNodeP50DurationMs && nullNodeP50DurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50DurationMs = null;
+            if (parseNode.GetChildNode("p95_duration_ms") is { } nullNodeP95DurationMs && nullNodeP95DurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95DurationMs = null;
+            if (parseNode.GetChildNode("p99_duration_ms") is { } nullNodeP99DurationMs && nullNodeP99DurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P99DurationMs = null;
+            if (parseNode.GetChildNode("previous_calls") is { } nullNodePreviousCalls && nullNodePreviousCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousCalls = null;
+            if (parseNode.GetChildNode("previous_errors") is { } nullNodePreviousErrors && nullNodePreviousErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousErrors = null;
+            if (parseNode.GetChildNode("previous_p95_duration_ms") is { } nullNodePreviousP95DurationMs && nullNodePreviousP95DurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousP95DurationMs = null;
+            if (parseNode.GetChildNode("previous_sessions") is { } nullNodePreviousSessions && nullNodePreviousSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousSessions = null;
+            if (parseNode.GetChildNode("sessions") is { } nullNodeSessions && nullNodeSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sessions = null;
+            if (parseNode.GetChildNode("tool") is { } nullNodeTool && nullNodeTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tool = null;
+            if (parseNode.GetChildNode("total_calls") is { } nullNodeTotalCalls && nullNodeTotalCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCalls = null;
+            if (parseNode.GetChildNode("trend_score") is { } nullNodeTrendScore && nullNodeTrendScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrendScore = null;
+            if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+        }
+
         /// <summary>The error_rate_pct property</summary>
-        public double? ErrorRatePct { get; set; }
+        public double? ErrorRatePct { get => _explicitNullValueErrorRatePct; set { _explicitNullValueErrorRatePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_rate_pct"); else _explicitNullProperties?.Remove("error_rate_pct"); } }
+        private double? _explicitNullValueErrorRatePct = default!;
         /// <summary>The errors property</summary>
-        public int? Errors { get; set; }
+        public int? Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        private int? _explicitNullValueErrors = default!;
         /// <summary>The first_seen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstSeen { get; set; }
+        public string? FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
+        private string? _explicitNullValueFirstSeen = default!;
 #nullable restore
 #else
-        public string FirstSeen { get; set; }
+        public string FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
+        private string _explicitNullValueFirstSeen = default!;
 #endif
         /// <summary>The last_seen property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastSeen { get; set; }
+        public string? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private string? _explicitNullValueLastSeen = default!;
 #nullable restore
 #else
-        public string LastSeen { get; set; }
+        public string LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private string _explicitNullValueLastSeen = default!;
 #endif
         /// <summary>The p50_duration_ms property</summary>
-        public double? P50DurationMs { get; set; }
+        public double? P50DurationMs { get => _explicitNullValueP50DurationMs; set { _explicitNullValueP50DurationMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_duration_ms"); else _explicitNullProperties?.Remove("p50_duration_ms"); } }
+        private double? _explicitNullValueP50DurationMs = default!;
         /// <summary>The p95_duration_ms property</summary>
-        public double? P95DurationMs { get; set; }
+        public double? P95DurationMs { get => _explicitNullValueP95DurationMs; set { _explicitNullValueP95DurationMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_duration_ms"); else _explicitNullProperties?.Remove("p95_duration_ms"); } }
+        private double? _explicitNullValueP95DurationMs = default!;
         /// <summary>The p99_duration_ms property</summary>
-        public double? P99DurationMs { get; set; }
+        public double? P99DurationMs { get => _explicitNullValueP99DurationMs; set { _explicitNullValueP99DurationMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p99_duration_ms"); else _explicitNullProperties?.Remove("p99_duration_ms"); } }
+        private double? _explicitNullValueP99DurationMs = default!;
         /// <summary>Calls in the previous period: the same length of time right before the window, or for a to-date range (&quot;This month&quot;) the same part of the previous unit.</summary>
-        public int? PreviousCalls { get; set; }
+        public int? PreviousCalls { get => _explicitNullValuePreviousCalls; set { _explicitNullValuePreviousCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_calls"); else _explicitNullProperties?.Remove("previous_calls"); } }
+        private int? _explicitNullValuePreviousCalls = default!;
         /// <summary>Errored calls in the previous period.</summary>
-        public int? PreviousErrors { get; set; }
+        public int? PreviousErrors { get => _explicitNullValuePreviousErrors; set { _explicitNullValuePreviousErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_errors"); else _explicitNullProperties?.Remove("previous_errors"); } }
+        private int? _explicitNullValuePreviousErrors = default!;
         /// <summary>p95 duration in the previous period, or null when no previous call carried a duration.</summary>
-        public double? PreviousP95DurationMs { get; set; }
+        public double? PreviousP95DurationMs { get => _explicitNullValuePreviousP95DurationMs; set { _explicitNullValuePreviousP95DurationMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_p95_duration_ms"); else _explicitNullProperties?.Remove("previous_p95_duration_ms"); } }
+        private double? _explicitNullValuePreviousP95DurationMs = default!;
         /// <summary>Distinct sessions that called the tool in the previous period.</summary>
-        public int? PreviousSessions { get; set; }
+        public int? PreviousSessions { get => _explicitNullValuePreviousSessions; set { _explicitNullValuePreviousSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_sessions"); else _explicitNullProperties?.Remove("previous_sessions"); } }
+        private int? _explicitNullValuePreviousSessions = default!;
         /// <summary>The sessions property</summary>
-        public int? Sessions { get; set; }
+        public int? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
+        private int? _explicitNullValueSessions = default!;
         /// <summary>The tool property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tool { get; set; }
+        public string? Tool { get => _explicitNullValueTool; set { _explicitNullValueTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool"); else _explicitNullProperties?.Remove("tool"); } }
+        private string? _explicitNullValueTool = default!;
 #nullable restore
 #else
-        public string Tool { get; set; }
+        public string Tool { get => _explicitNullValueTool; set { _explicitNullValueTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool"); else _explicitNullProperties?.Remove("tool"); } }
+        private string _explicitNullValueTool = default!;
 #endif
         /// <summary>The total_calls property</summary>
-        public int? TotalCalls { get; set; }
+        public int? TotalCalls { get => _explicitNullValueTotalCalls; set { _explicitNullValueTotalCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_calls"); else _explicitNullProperties?.Remove("total_calls"); } }
+        private int? _explicitNullValueTotalCalls = default!;
         /// <summary>Sort key ranking growth relative to volume, so a small tool&apos;s spike doesn&apos;t outrank a large tool&apos;s surge. Not a percentage; only meaningful for ordering.</summary>
-        public double? TrendScore { get; set; }
+        public double? TrendScore { get => _explicitNullValueTrendScore; set { _explicitNullValueTrendScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trend_score"); else _explicitNullProperties?.Remove("trend_score"); } }
+        private double? _explicitNullValueTrendScore = default!;
         /// <summary>The users property</summary>
-        public int? Users { get; set; }
+        public int? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        private int? _explicitNullValueUsers = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -70,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.McpToolQualityRowItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,7 +162,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("tool", Tool);
             writer.WriteIntValue("total_calls", TotalCalls);
             writer.WriteDoubleValue("trend_score", TrendScore);
-            writer.WriteIntValue("users", Users);
+            writer.WriteIntValue("users", Users);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

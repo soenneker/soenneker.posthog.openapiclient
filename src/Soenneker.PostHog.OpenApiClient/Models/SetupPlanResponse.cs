@@ -11,24 +11,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SetupPlanResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("degraded") is { } nullNodeDegraded && nullNodeDegraded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Degraded = null;
+            if (parseNode.GetChildNode("readiness") is { } nullNodeReadiness && nullNodeReadiness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Readiness = null;
+            if (parseNode.GetChildNode("suggestions") is { } nullNodeSuggestions && nullNodeSuggestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Suggestions = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Sub-services that failed. Their suggestions are missing, so do NOT present the plan as a complete clean bill of health when this is non-empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Degraded { get; set; }
+        public List<string>? Degraded { get => _explicitNullValueDegraded; set { _explicitNullValueDegraded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("degraded"); else _explicitNullProperties?.Remove("degraded"); } }
+        private List<string>? _explicitNullValueDegraded = default!;
 #nullable restore
 #else
-        public List<string> Degraded { get; set; }
+        public List<string> Degraded { get => _explicitNullValueDegraded; set { _explicitNullValueDegraded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("degraded"); else _explicitNullProperties?.Remove("degraded"); } }
+        private List<string> _explicitNullValueDegraded = default!;
 #endif
         /// <summary>Per-capability readiness, with the suggestions blocking each</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness>? Readiness { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness>? Readiness { get => _explicitNullValueReadiness; set { _explicitNullValueReadiness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readiness"); else _explicitNullProperties?.Remove("readiness"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness>? _explicitNullValueReadiness = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness> Readiness { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness> Readiness { get => _explicitNullValueReadiness; set { _explicitNullValueReadiness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readiness"); else _explicitNullProperties?.Remove("readiness"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CapabilityReadiness> _explicitNullValueReadiness = default!;
 #endif
         /// <summary>Time of the latest seven-day source scan, including cached scans. Null if no scan time is available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -41,21 +57,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ranked suggestions, most important first</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Suggestion>? Suggestions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Suggestion>? Suggestions { get => _explicitNullValueSuggestions; set { _explicitNullValueSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestions"); else _explicitNullProperties?.Remove("suggestions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.Suggestion>? _explicitNullValueSuggestions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Suggestion> Suggestions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Suggestion> Suggestions { get => _explicitNullValueSuggestions; set { _explicitNullValueSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestions"); else _explicitNullProperties?.Remove("suggestions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.Suggestion> _explicitNullValueSuggestions = default!;
 #endif
         /// <summary>One-line summary of the plan</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Summary { get; set; }
+        public string? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private string? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public string Summary { get; set; }
+        public string Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private string _explicitNullValueSummary = default!;
 #endif
         /// <summary>True when the campaign or UTM queries hit their row caps. Rates and totals are then top-N subtotals — present them as approximate rather than exact.</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse"/> and sets the default values.
         /// </summary>
@@ -71,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,6 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Suggestion>("suggestions", Suggestions);
             writer.WriteStringValue("summary", Summary);
             writer.WriteBoolValue("truncated", Truncated);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

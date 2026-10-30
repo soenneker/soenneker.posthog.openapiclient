@@ -11,34 +11,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EmitFindingResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("emitted") is { } nullNodeEmitted && nullNodeEmitted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emitted = null;
+            if (parseNode.GetChildNode("finding_id") is { } nullNodeFindingId && nullNodeFindingId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FindingId = null;
+            if (parseNode.GetChildNode("remediation") is { } nullNodeRemediation && nullNodeRemediation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Remediation = null;
+            if (parseNode.GetChildNode("skipped_reason") is { } nullNodeSkippedReason && nullNodeSkippedReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkippedReason = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether `emit_signal` was actually fired.</summary>
-        public bool? Emitted { get; set; }
+        public bool? Emitted { get => _explicitNullValueEmitted; set { _explicitNullValueEmitted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emitted"); else _explicitNullProperties?.Remove("emitted"); } }
+        private bool? _explicitNullValueEmitted = default!;
         /// <summary>Stable id for the finding (echoed back from request, or generated).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FindingId { get; set; }
+        public string? FindingId { get => _explicitNullValueFindingId; set { _explicitNullValueFindingId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finding_id"); else _explicitNullProperties?.Remove("finding_id"); } }
+        private string? _explicitNullValueFindingId = default!;
 #nullable restore
 #else
-        public string FindingId { get; set; }
+        public string FindingId { get => _explicitNullValueFindingId; set { _explicitNullValueFindingId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finding_id"); else _explicitNullProperties?.Remove("finding_id"); } }
+        private string _explicitNullValueFindingId = default!;
 #endif
         /// <summary>One-line, actionable next step when `skipped_reason` is set and the block is fixable (e.g. an org admin must approve AI data processing). Null when emitted normally or the skip isn&apos;t something the scout can act on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Remediation { get; set; }
+        public string? Remediation { get => _explicitNullValueRemediation; set { _explicitNullValueRemediation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remediation"); else _explicitNullProperties?.Remove("remediation"); } }
+        private string? _explicitNullValueRemediation = default!;
 #nullable restore
 #else
-        public string Remediation { get; set; }
+        public string Remediation { get => _explicitNullValueRemediation; set { _explicitNullValueRemediation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remediation"); else _explicitNullProperties?.Remove("remediation"); } }
+        private string _explicitNullValueRemediation = default!;
 #endif
         /// <summary>`ai_processing_not_approved` | `source_disabled` | null when emitted normally.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SkippedReason { get; set; }
+        public string? SkippedReason { get => _explicitNullValueSkippedReason; set { _explicitNullValueSkippedReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_reason"); else _explicitNullProperties?.Remove("skipped_reason"); } }
+        private string? _explicitNullValueSkippedReason = default!;
 #nullable restore
 #else
-        public string SkippedReason { get; set; }
+        public string SkippedReason { get => _explicitNullValueSkippedReason; set { _explicitNullValueSkippedReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_reason"); else _explicitNullProperties?.Remove("skipped_reason"); } }
+        private string _explicitNullValueSkippedReason = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingResponse"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("finding_id", FindingId);
             writer.WriteStringValue("remediation", Remediation);
             writer.WriteStringValue("skipped_reason", SkippedReason);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

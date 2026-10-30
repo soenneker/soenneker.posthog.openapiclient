@@ -11,163 +11,251 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ChartSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("barGap") is { } nullNodeBarGap && nullNodeBarGap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BarGap = null;
+            if (parseNode.GetChildNode("boxPlot") is { } nullNodeBoxPlot && nullNodeBoxPlot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoxPlot = null;
+            if (parseNode.GetChildNode("chartStyle") is { } nullNodeChartStyle && nullNodeChartStyle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChartStyle = null;
+            if (parseNode.GetChildNode("goalLines") is { } nullNodeGoalLines && nullNodeGoalLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoalLines = null;
+            if (parseNode.GetChildNode("heatmap") is { } nullNodeHeatmap && nullNodeHeatmap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Heatmap = null;
+            if (parseNode.GetChildNode("leftYAxisSettings") is { } nullNodeLeftYAxisSettings && nullNodeLeftYAxisSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LeftYAxisSettings = null;
+            if (parseNode.GetChildNode("legendPosition") is { } nullNodeLegendPosition && nullNodeLegendPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegendPosition = null;
+            if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
+            if (parseNode.GetChildNode("pie") is { } nullNodePie && nullNodePie.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pie = null;
+            if (parseNode.GetChildNode("resultCustomizations") is { } nullNodeResultCustomizations && nullNodeResultCustomizations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultCustomizations = null;
+            if (parseNode.GetChildNode("rightYAxisSettings") is { } nullNodeRightYAxisSettings && nullNodeRightYAxisSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RightYAxisSettings = null;
+            if (parseNode.GetChildNode("scatter") is { } nullNodeScatter && nullNodeScatter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scatter = null;
+            if (parseNode.GetChildNode("seriesBreakdownColumn") is { } nullNodeSeriesBreakdownColumn && nullNodeSeriesBreakdownColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesBreakdownColumn = null;
+            if (parseNode.GetChildNode("showAnnotations") is { } nullNodeShowAnnotations && nullNodeShowAnnotations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowAnnotations = null;
+            if (parseNode.GetChildNode("showLegend") is { } nullNodeShowLegend && nullNodeShowLegend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLegend = null;
+            if (parseNode.GetChildNode("showNullsAsZero") is { } nullNodeShowNullsAsZero && nullNodeShowNullsAsZero.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowNullsAsZero = null;
+            if (parseNode.GetChildNode("showPieTotal") is { } nullNodeShowPieTotal && nullNodeShowPieTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowPieTotal = null;
+            if (parseNode.GetChildNode("showTotalRow") is { } nullNodeShowTotalRow && nullNodeShowTotalRow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTotalRow = null;
+            if (parseNode.GetChildNode("showValuesOnSeries") is { } nullNodeShowValuesOnSeries && nullNodeShowValuesOnSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowValuesOnSeries = null;
+            if (parseNode.GetChildNode("showXAxisBorder") is { } nullNodeShowXAxisBorder && nullNodeShowXAxisBorder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowXAxisBorder = null;
+            if (parseNode.GetChildNode("showXAxisTicks") is { } nullNodeShowXAxisTicks && nullNodeShowXAxisTicks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowXAxisTicks = null;
+            if (parseNode.GetChildNode("showYAxisBorder") is { } nullNodeShowYAxisBorder && nullNodeShowYAxisBorder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowYAxisBorder = null;
+            if (parseNode.GetChildNode("stackBars100") is { } nullNodeStackBars100 && nullNodeStackBars100.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StackBars100 = null;
+            if (parseNode.GetChildNode("valueLabelBackground") is { } nullNodeValueLabelBackground && nullNodeValueLabelBackground.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueLabelBackground = null;
+            if (parseNode.GetChildNode("valueLabelFontSize") is { } nullNodeValueLabelFontSize && nullNodeValueLabelFontSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueLabelFontSize = null;
+            if (parseNode.GetChildNode("valueLabelPosition") is { } nullNodeValueLabelPosition && nullNodeValueLabelPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueLabelPosition = null;
+            if (parseNode.GetChildNode("valueLabelRotation") is { } nullNodeValueLabelRotation && nullNodeValueLabelRotation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueLabelRotation = null;
+            if (parseNode.GetChildNode("xAxis") is { } nullNodeXAxis && nullNodeXAxis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxis = null;
+            if (parseNode.GetChildNode("xAxisDateFormat") is { } nullNodeXAxisDateFormat && nullNodeXAxisDateFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxisDateFormat = null;
+            if (parseNode.GetChildNode("xAxisLabel") is { } nullNodeXAxisLabel && nullNodeXAxisLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxisLabel = null;
+            if (parseNode.GetChildNode("xAxisTickRotation") is { } nullNodeXAxisTickRotation && nullNodeXAxisTickRotation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxisTickRotation = null;
+            if (parseNode.GetChildNode("yAxis") is { } nullNodeYAxis && nullNodeYAxis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxis = null;
+            if (parseNode.GetChildNode("yAxisAtZero") is { } nullNodeYAxisAtZero && nullNodeYAxisAtZero.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxisAtZero = null;
+        }
+
         /// <summary>The barGap property</summary>
-        public double? BarGap { get; set; }
+        public double? BarGap { get => _explicitNullValueBarGap; set { _explicitNullValueBarGap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("barGap"); else _explicitNullProperties?.Remove("barGap"); } }
+        private double? _explicitNullValueBarGap = default!;
         /// <summary>The boxPlot property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings? BoxPlot { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings? BoxPlot { get => _explicitNullValueBoxPlot; set { _explicitNullValueBoxPlot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boxPlot"); else _explicitNullProperties?.Remove("boxPlot"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings? _explicitNullValueBoxPlot = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings BoxPlot { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings BoxPlot { get => _explicitNullValueBoxPlot; set { _explicitNullValueBoxPlot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boxPlot"); else _explicitNullProperties?.Remove("boxPlot"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings _explicitNullValueBoxPlot = default!;
 #endif
         /// <summary>Chart rendering style overrides (line shape). Only applies to line and area charts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? _explicitNullValueChartStyle = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle _explicitNullValueChartStyle = default!;
 #endif
         /// <summary>The goalLines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get => _explicitNullValueGoalLines; set { _explicitNullValueGoalLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goalLines"); else _explicitNullProperties?.Remove("goalLines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? _explicitNullValueGoalLines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get => _explicitNullValueGoalLines; set { _explicitNullValueGoalLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goalLines"); else _explicitNullProperties?.Remove("goalLines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> _explicitNullValueGoalLines = default!;
 #endif
         /// <summary>The heatmap property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings? Heatmap { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings? Heatmap { get => _explicitNullValueHeatmap; set { _explicitNullValueHeatmap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heatmap"); else _explicitNullProperties?.Remove("heatmap"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings? _explicitNullValueHeatmap = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings Heatmap { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings Heatmap { get => _explicitNullValueHeatmap; set { _explicitNullValueHeatmap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heatmap"); else _explicitNullProperties?.Remove("heatmap"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings _explicitNullValueHeatmap = default!;
 #endif
         /// <summary>The leftYAxisSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings? LeftYAxisSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings? LeftYAxisSettings { get => _explicitNullValueLeftYAxisSettings; set { _explicitNullValueLeftYAxisSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leftYAxisSettings"); else _explicitNullProperties?.Remove("leftYAxisSettings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings? _explicitNullValueLeftYAxisSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings LeftYAxisSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings LeftYAxisSettings { get => _explicitNullValueLeftYAxisSettings; set { _explicitNullValueLeftYAxisSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("leftYAxisSettings"); else _explicitNullProperties?.Remove("leftYAxisSettings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings _explicitNullValueLeftYAxisSettings = default!;
 #endif
         /// <summary>Where the legend sits relative to the chart. Unset falls back per chart type: right for pie and donut, bottom for proportion bar, top for the rest.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get => _explicitNullValueLegendPosition; set { _explicitNullValueLegendPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legendPosition"); else _explicitNullProperties?.Remove("legendPosition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? _explicitNullValueLegendPosition = default!;
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings? Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings? _explicitNullValueMetric = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings _explicitNullValueMetric = default!;
 #endif
         /// <summary>The pie property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings? Pie { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings? Pie { get => _explicitNullValuePie; set { _explicitNullValuePie = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pie"); else _explicitNullProperties?.Remove("pie"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings? _explicitNullValuePie = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings Pie { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings Pie { get => _explicitNullValuePie; set { _explicitNullValuePie = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pie"); else _explicitNullProperties?.Remove("pie"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PieChartSettings _explicitNullValuePie = default!;
 #endif
         /// <summary>Per-breakdown-value color customizations. Keyed by the raw breakdown column value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty? ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty? ResultCustomizations { get => _explicitNullValueResultCustomizations; set { _explicitNullValueResultCustomizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resultCustomizations"); else _explicitNullProperties?.Remove("resultCustomizations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty? _explicitNullValueResultCustomizations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty ResultCustomizations { get => _explicitNullValueResultCustomizations; set { _explicitNullValueResultCustomizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resultCustomizations"); else _explicitNullProperties?.Remove("resultCustomizations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsResultCustomizationsProperty _explicitNullValueResultCustomizations = default!;
 #endif
         /// <summary>The rightYAxisSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings? RightYAxisSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings? RightYAxisSettings { get => _explicitNullValueRightYAxisSettings; set { _explicitNullValueRightYAxisSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rightYAxisSettings"); else _explicitNullProperties?.Remove("rightYAxisSettings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings? _explicitNullValueRightYAxisSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings RightYAxisSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings RightYAxisSettings { get => _explicitNullValueRightYAxisSettings; set { _explicitNullValueRightYAxisSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rightYAxisSettings"); else _explicitNullProperties?.Remove("rightYAxisSettings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.YAxisSettings _explicitNullValueRightYAxisSettings = default!;
 #endif
         /// <summary>The scatter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings? Scatter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings? Scatter { get => _explicitNullValueScatter; set { _explicitNullValueScatter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scatter"); else _explicitNullProperties?.Remove("scatter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings? _explicitNullValueScatter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings Scatter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings Scatter { get => _explicitNullValueScatter; set { _explicitNullValueScatter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scatter"); else _explicitNullProperties?.Remove("scatter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings _explicitNullValueScatter = default!;
 #endif
         /// <summary>The seriesBreakdownColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesBreakdownColumn { get; set; }
+        public string? SeriesBreakdownColumn { get => _explicitNullValueSeriesBreakdownColumn; set { _explicitNullValueSeriesBreakdownColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seriesBreakdownColumn"); else _explicitNullProperties?.Remove("seriesBreakdownColumn"); } }
+        private string? _explicitNullValueSeriesBreakdownColumn = default!;
 #nullable restore
 #else
-        public string SeriesBreakdownColumn { get; set; }
+        public string SeriesBreakdownColumn { get => _explicitNullValueSeriesBreakdownColumn; set { _explicitNullValueSeriesBreakdownColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seriesBreakdownColumn"); else _explicitNullProperties?.Remove("seriesBreakdownColumn"); } }
+        private string _explicitNullValueSeriesBreakdownColumn = default!;
 #endif
         /// <summary>The showAnnotations property</summary>
-        public bool? ShowAnnotations { get; set; }
+        public bool? ShowAnnotations { get => _explicitNullValueShowAnnotations; set { _explicitNullValueShowAnnotations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showAnnotations"); else _explicitNullProperties?.Remove("showAnnotations"); } }
+        private bool? _explicitNullValueShowAnnotations = default!;
         /// <summary>The showLegend property</summary>
-        public bool? ShowLegend { get; set; }
+        public bool? ShowLegend { get => _explicitNullValueShowLegend; set { _explicitNullValueShowLegend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLegend"); else _explicitNullProperties?.Remove("showLegend"); } }
+        private bool? _explicitNullValueShowLegend = default!;
         /// <summary>The showNullsAsZero property</summary>
-        public bool? ShowNullsAsZero { get; set; }
+        public bool? ShowNullsAsZero { get => _explicitNullValueShowNullsAsZero; set { _explicitNullValueShowNullsAsZero = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showNullsAsZero"); else _explicitNullProperties?.Remove("showNullsAsZero"); } }
+        private bool? _explicitNullValueShowNullsAsZero = default!;
         /// <summary>The showPieTotal property</summary>
-        public bool? ShowPieTotal { get; set; }
+        public bool? ShowPieTotal { get => _explicitNullValueShowPieTotal; set { _explicitNullValueShowPieTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showPieTotal"); else _explicitNullProperties?.Remove("showPieTotal"); } }
+        private bool? _explicitNullValueShowPieTotal = default!;
         /// <summary>The showTotalRow property</summary>
-        public bool? ShowTotalRow { get; set; }
+        public bool? ShowTotalRow { get => _explicitNullValueShowTotalRow; set { _explicitNullValueShowTotalRow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTotalRow"); else _explicitNullProperties?.Remove("showTotalRow"); } }
+        private bool? _explicitNullValueShowTotalRow = default!;
         /// <summary>The showValuesOnSeries property</summary>
-        public bool? ShowValuesOnSeries { get; set; }
+        public bool? ShowValuesOnSeries { get => _explicitNullValueShowValuesOnSeries; set { _explicitNullValueShowValuesOnSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showValuesOnSeries"); else _explicitNullProperties?.Remove("showValuesOnSeries"); } }
+        private bool? _explicitNullValueShowValuesOnSeries = default!;
         /// <summary>The showXAxisBorder property</summary>
-        public bool? ShowXAxisBorder { get; set; }
+        public bool? ShowXAxisBorder { get => _explicitNullValueShowXAxisBorder; set { _explicitNullValueShowXAxisBorder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showXAxisBorder"); else _explicitNullProperties?.Remove("showXAxisBorder"); } }
+        private bool? _explicitNullValueShowXAxisBorder = default!;
         /// <summary>The showXAxisTicks property</summary>
-        public bool? ShowXAxisTicks { get; set; }
+        public bool? ShowXAxisTicks { get => _explicitNullValueShowXAxisTicks; set { _explicitNullValueShowXAxisTicks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showXAxisTicks"); else _explicitNullProperties?.Remove("showXAxisTicks"); } }
+        private bool? _explicitNullValueShowXAxisTicks = default!;
         /// <summary>The showYAxisBorder property</summary>
-        public bool? ShowYAxisBorder { get; set; }
+        public bool? ShowYAxisBorder { get => _explicitNullValueShowYAxisBorder; set { _explicitNullValueShowYAxisBorder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showYAxisBorder"); else _explicitNullProperties?.Remove("showYAxisBorder"); } }
+        private bool? _explicitNullValueShowYAxisBorder = default!;
         /// <summary>Whether we fill the bars to 100% in stacked mode</summary>
-        public bool? StackBars100 { get; set; }
+        public bool? StackBars100 { get => _explicitNullValueStackBars100; set { _explicitNullValueStackBars100 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stackBars100"); else _explicitNullProperties?.Remove("stackBars100"); } }
+        private bool? _explicitNullValueStackBars100 = default!;
         /// <summary>The valueLabelBackground property</summary>
-        public bool? ValueLabelBackground { get; set; }
+        public bool? ValueLabelBackground { get => _explicitNullValueValueLabelBackground; set { _explicitNullValueValueLabelBackground = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valueLabelBackground"); else _explicitNullProperties?.Remove("valueLabelBackground"); } }
+        private bool? _explicitNullValueValueLabelBackground = default!;
         /// <summary>The valueLabelFontSize property</summary>
-        public double? ValueLabelFontSize { get; set; }
+        public double? ValueLabelFontSize { get => _explicitNullValueValueLabelFontSize; set { _explicitNullValueValueLabelFontSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valueLabelFontSize"); else _explicitNullProperties?.Remove("valueLabelFontSize"); } }
+        private double? _explicitNullValueValueLabelFontSize = default!;
         /// <summary>The valueLabelPosition property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValueLabelPosition? ValueLabelPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValueLabelPosition? ValueLabelPosition { get => _explicitNullValueValueLabelPosition; set { _explicitNullValueValueLabelPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valueLabelPosition"); else _explicitNullProperties?.Remove("valueLabelPosition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValueLabelPosition? _explicitNullValueValueLabelPosition = default!;
         /// <summary>The valueLabelRotation property</summary>
-        public double? ValueLabelRotation { get; set; }
+        public double? ValueLabelRotation { get => _explicitNullValueValueLabelRotation; set { _explicitNullValueValueLabelRotation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valueLabelRotation"); else _explicitNullProperties?.Remove("valueLabelRotation"); } }
+        private double? _explicitNullValueValueLabelRotation = default!;
         /// <summary>The xAxis property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis? XAxis { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis? XAxis { get => _explicitNullValueXAxis; set { _explicitNullValueXAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxis"); else _explicitNullProperties?.Remove("xAxis"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis? _explicitNullValueXAxis = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis XAxis { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis XAxis { get => _explicitNullValueXAxis; set { _explicitNullValueXAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxis"); else _explicitNullProperties?.Remove("xAxis"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis _explicitNullValueXAxis = default!;
 #endif
         /// <summary>The xAxisDateFormat property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XAxisDateFormat { get; set; }
+        public string? XAxisDateFormat { get => _explicitNullValueXAxisDateFormat; set { _explicitNullValueXAxisDateFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisDateFormat"); else _explicitNullProperties?.Remove("xAxisDateFormat"); } }
+        private string? _explicitNullValueXAxisDateFormat = default!;
 #nullable restore
 #else
-        public string XAxisDateFormat { get; set; }
+        public string XAxisDateFormat { get => _explicitNullValueXAxisDateFormat; set { _explicitNullValueXAxisDateFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisDateFormat"); else _explicitNullProperties?.Remove("xAxisDateFormat"); } }
+        private string _explicitNullValueXAxisDateFormat = default!;
 #endif
         /// <summary>The xAxisLabel property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XAxisLabel { get; set; }
+        public string? XAxisLabel { get => _explicitNullValueXAxisLabel; set { _explicitNullValueXAxisLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisLabel"); else _explicitNullProperties?.Remove("xAxisLabel"); } }
+        private string? _explicitNullValueXAxisLabel = default!;
 #nullable restore
 #else
-        public string XAxisLabel { get; set; }
+        public string XAxisLabel { get => _explicitNullValueXAxisLabel; set { _explicitNullValueXAxisLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisLabel"); else _explicitNullProperties?.Remove("xAxisLabel"); } }
+        private string _explicitNullValueXAxisLabel = default!;
 #endif
         /// <summary>The xAxisTickRotation property</summary>
-        public double? XAxisTickRotation { get; set; }
+        public double? XAxisTickRotation { get => _explicitNullValueXAxisTickRotation; set { _explicitNullValueXAxisTickRotation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisTickRotation"); else _explicitNullProperties?.Remove("xAxisTickRotation"); } }
+        private double? _explicitNullValueXAxisTickRotation = default!;
         /// <summary>The yAxis property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>? YAxis { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>? YAxis { get => _explicitNullValueYAxis; set { _explicitNullValueYAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxis"); else _explicitNullProperties?.Remove("yAxis"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>? _explicitNullValueYAxis = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis> YAxis { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis> YAxis { get => _explicitNullValueYAxis; set { _explicitNullValueYAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxis"); else _explicitNullProperties?.Remove("yAxis"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis> _explicitNullValueYAxis = default!;
 #endif
         /// <summary>Deprecated: use `[left|right]YAxisSettings`. Whether the Y axis should start at zero</summary>
-        public bool? YAxisAtZero { get; set; }
+        public bool? YAxisAtZero { get => _explicitNullValueYAxisAtZero; set { _explicitNullValueYAxisAtZero = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxisAtZero"); else _explicitNullProperties?.Remove("yAxisAtZero"); } }
+        private bool? _explicitNullValueYAxisAtZero = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -176,7 +264,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -260,7 +348,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("xAxisLabel", XAxisLabel);
             writer.WriteDoubleValue("xAxisTickRotation", XAxisTickRotation);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>("yAxis", YAxis);
-            writer.WriteBoolValue("yAxisAtZero", YAxisAtZero);
+            writer.WriteBoolValue("yAxisAtZero", YAxisAtZero);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

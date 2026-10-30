@@ -12,46 +12,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TracingAggregationRequestQuery : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("compareFilter") is { } nullNodeCompareFilter && nullNodeCompareFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompareFilter = null;
+            if (parseNode.GetChildNode("dateRange") is { } nullNodeDateRange && nullNodeDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateRange = null;
+            if (parseNode.GetChildNode("filterGroup") is { } nullNodeFilterGroup && nullNodeFilterGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterGroup = null;
+            if (parseNode.GetChildNode("groupByEndpoint") is { } nullNodeGroupByEndpoint && nullNodeGroupByEndpoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupByEndpoint = null;
+            if (parseNode.GetChildNode("includeHealth") is { } nullNodeIncludeHealth && nullNodeIncludeHealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeHealth = null;
+            if (parseNode.GetChildNode("includeImpact") is { } nullNodeIncludeImpact && nullNodeIncludeImpact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeImpact = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("offset") is { } nullNodeOffset && nullNodeOffset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Offset = null;
+            if (parseNode.GetChildNode("serviceNames") is { } nullNodeServiceNames && nullNodeServiceNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceNames = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional comparison-window configuration. When omitted, only the primary window is returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter? CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter? CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter? _explicitNullValueCompareFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter _explicitNullValueCompareFilter = default!;
 #endif
         /// <summary>Date range for the primary window. Defaults to last hour.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange? _explicitNullValueDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange _explicitNullValueDateRange = default!;
 #endif
         /// <summary>Property filters applied to spans in both windows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? FilterGroup { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? _explicitNullValueFilterGroup = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> _explicitNullValueFilterGroup = default!;
 #endif
+        /// <summary>Group HTTP server spans by `METHOD route` (from `http.route`) in place of the span name, so raw paths like `/users/1` and `/users/2` fold into one row. Spans without a route keep their span name. Spans that are not HTTP server spans are left out.</summary>
+        public bool? GroupByEndpoint { get => _explicitNullValueGroupByEndpoint; set { _explicitNullValueGroupByEndpoint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupByEndpoint"); else _explicitNullProperties?.Remove("groupByEndpoint"); } }
+        private bool? _explicitNullValueGroupByEndpoint = default!;
+        /// <summary>Also return `health_status` and `health_reason` per row, comparing each row with the same row in the comparison window, or in the previous period when `compareFilter` is off. Uses the same statuses and thresholds as the service health check. Costs a second window query.</summary>
+        public bool? IncludeHealth { get => _explicitNullValueIncludeHealth; set { _explicitNullValueIncludeHealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("includeHealth"); else _explicitNullProperties?.Remove("includeHealth"); } }
+        private bool? _explicitNullValueIncludeHealth = default!;
         /// <summary>Also return the sessions and people behind each operation. Off by default because it reads the span and resource attribute maps, which the rest of the aggregation never touches.</summary>
-        public bool? IncludeImpact { get; set; }
+        public bool? IncludeImpact { get => _explicitNullValueIncludeImpact; set { _explicitNullValueIncludeImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("includeImpact"); else _explicitNullProperties?.Remove("includeImpact"); } }
+        private bool? _explicitNullValueIncludeImpact = default!;
         /// <summary>Max rows to return, ordered by total_duration_nano DESC. Defaults to 100; hard max 5000. Keep this small to bound the response size — a high value on high-cardinality span names (e.g. untemplated URL paths) returns a very large payload. Prefer narrowing with `serviceNames`/`filterGroup` over raising the limit.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>Row offset for pagination. Combine with `limit` and the `next_offset` returned in the response to page through results beyond the first page.</summary>
-        public int? Offset { get; set; }
+        public int? Offset { get => _explicitNullValueOffset; set { _explicitNullValueOffset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("offset"); else _explicitNullProperties?.Remove("offset"); } }
+        private int? _explicitNullValueOffset = default!;
         /// <summary>Filter by service names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ServiceNames { get; set; }
+        public List<string>? ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        private List<string>? _explicitNullValueServiceNames = default!;
 #nullable restore
 #else
-        public List<string> ServiceNames { get; set; }
+        public List<string> ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        private List<string> _explicitNullValueServiceNames = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationRequestQuery"/> and sets the default values.
@@ -59,6 +92,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public TracingAggregationRequestQuery()
         {
             AdditionalData = new Dictionary<string, object>();
+            GroupByEndpoint = false;
+            IncludeHealth = false;
             IncludeImpact = false;
         }
         /// <summary>
@@ -69,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationRequestQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationRequestQuery();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationRequestQuery(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +117,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange.CreateFromDiscriminatorValue); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "groupByEndpoint", n => { GroupByEndpoint = n.GetBoolValue(); } },
+                { "includeHealth", n => { IncludeHealth = n.GetBoolValue(); } },
                 { "includeImpact", n => { IncludeImpact = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
@@ -98,10 +135,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyCompareFilter>("compareFilter", CompareFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAggregationQueryBodyDateRange>("dateRange", DateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>("filterGroup", FilterGroup);
+            writer.WriteBoolValue("groupByEndpoint", GroupByEndpoint);
+            writer.WriteBoolValue("includeHealth", IncludeHealth);
             writer.WriteBoolValue("includeImpact", IncludeImpact);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("offset", Offset);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

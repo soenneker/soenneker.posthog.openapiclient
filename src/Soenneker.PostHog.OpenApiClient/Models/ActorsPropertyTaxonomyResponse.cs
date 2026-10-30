@@ -11,16 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ActorsPropertyTaxonomyResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("sample_count") is { } nullNodeSampleCount && nullNodeSampleCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleCount = null;
+            if (parseNode.GetChildNode("sample_values") is { } nullNodeSampleValues && nullNodeSampleValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleValues = null;
+        }
+
         /// <summary>The sample_count property</summary>
-        public int? SampleCount { get; set; }
+        public int? SampleCount { get => _explicitNullValueSampleCount; set { _explicitNullValueSampleCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_count"); else _explicitNullProperties?.Remove("sample_count"); } }
+        private int? _explicitNullValueSampleCount = default!;
         /// <summary>The sample_values property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SampleValues { get; set; }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? SampleValues { get => _explicitNullValueSampleValues; set { _explicitNullValueSampleValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_values"); else _explicitNullProperties?.Remove("sample_values"); } }
+        private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueSampleValues = default!;
 #nullable restore
 #else
-        public List<string> SampleValues { get; set; }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> SampleValues { get => _explicitNullValueSampleValues; set { _explicitNullValueSampleValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_values"); else _explicitNullProperties?.Remove("sample_values"); } }
+        private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueSampleValues = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -30,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ActorsPropertyTaxonomyResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -41,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "sample_count", n => { SampleCount = n.GetIntValue(); } },
-                { "sample_values", n => { SampleValues = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "sample_values", n => { SampleValues = n.GetCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -52,7 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("sample_count", SampleCount);
-            writer.WriteCollectionOfPrimitiveValues<string>("sample_values", SampleValues);
+            writer.WriteCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("sample_values", SampleValues);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

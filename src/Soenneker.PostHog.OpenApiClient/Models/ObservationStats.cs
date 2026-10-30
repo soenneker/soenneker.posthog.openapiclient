@@ -11,64 +11,92 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ObservationStats : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("available_tags") is { } nullNodeAvailableTags && nullNodeAvailableTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableTags = null;
+            if (parseNode.GetChildNode("classifier") is { } nullNodeClassifier && nullNodeClassifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Classifier = null;
+            if (parseNode.GetChildNode("coverage") is { } nullNodeCoverage && nullNodeCoverage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Coverage = null;
+            if (parseNode.GetChildNode("labels") is { } nullNodeLabels && nullNodeLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Labels = null;
+            if (parseNode.GetChildNode("monitor") is { } nullNodeMonitor && nullNodeMonitor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Monitor = null;
+            if (parseNode.GetChildNode("scorer") is { } nullNodeScorer && nullNodeScorer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scorer = null;
+            if (parseNode.GetChildNode("status_counts") is { } nullNodeStatusCounts && nullNodeStatusCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusCounts = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>All distinct tags (fixed + freeform) emitted by succeeded observations in the filtered set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AvailableTags { get; set; }
+        public List<string>? AvailableTags { get => _explicitNullValueAvailableTags; set { _explicitNullValueAvailableTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_tags"); else _explicitNullProperties?.Remove("available_tags"); } }
+        private List<string>? _explicitNullValueAvailableTags = default!;
 #nullable restore
 #else
-        public List<string> AvailableTags { get; set; }
+        public List<string> AvailableTags { get => _explicitNullValueAvailableTags; set { _explicitNullValueAvailableTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_tags"); else _explicitNullProperties?.Remove("available_tags"); } }
+        private List<string> _explicitNullValueAvailableTags = default!;
 #endif
         /// <summary>Classifier-type aggregates; null when the scanner is not a classifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats? Classifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats? Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats? _explicitNullValueClassifier = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats Classifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats _explicitNullValueClassifier = default!;
 #endif
         /// <summary>Session-level scanner coverage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage? Coverage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage? Coverage { get => _explicitNullValueCoverage; set { _explicitNullValueCoverage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coverage"); else _explicitNullProperties?.Remove("coverage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage? _explicitNullValueCoverage = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage Coverage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage Coverage { get => _explicitNullValueCoverage; set { _explicitNullValueCoverage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coverage"); else _explicitNullProperties?.Remove("coverage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage _explicitNullValueCoverage = default!;
 #endif
         /// <summary>Team label (thumbs up/down) aggregates over the filtered set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels? Labels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels? Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels? _explicitNullValueLabels = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels Labels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels _explicitNullValueLabels = default!;
 #endif
         /// <summary>Monitor-type aggregates; null when the scanner is not a monitor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats? Monitor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats? Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats? _explicitNullValueMonitor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats Monitor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats _explicitNullValueMonitor = default!;
 #endif
         /// <summary>Scorer-type aggregates; null when the scanner is not a scorer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats? Scorer { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats? Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats? _explicitNullValueScorer = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats Scorer { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats _explicitNullValueScorer = default!;
 #endif
         /// <summary>Counts of observations by terminal status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts? StatusCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts? StatusCounts { get => _explicitNullValueStatusCounts; set { _explicitNullValueStatusCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_counts"); else _explicitNullProperties?.Remove("status_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts? _explicitNullValueStatusCounts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts StatusCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts StatusCounts { get => _explicitNullValueStatusCounts; set { _explicitNullValueStatusCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_counts"); else _explicitNullProperties?.Remove("status_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts _explicitNullValueStatusCounts = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObservationStats"/> and sets the default values.
@@ -85,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ObservationStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ObservationStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ObservationStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,6 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats>("monitor", Monitor);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats>("scorer", Scorer);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts>("status_counts", StatusCounts);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

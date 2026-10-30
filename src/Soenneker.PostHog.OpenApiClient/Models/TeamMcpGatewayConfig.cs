@@ -11,21 +11,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamMcpGatewayConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_default_preset") is { } nullNodeAgentDefaultPreset && nullNodeAgentDefaultPreset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentDefaultPreset = null;
+            if (parseNode.GetChildNode("allow_custom_servers") is { } nullNodeAllowCustomServers && nullNodeAllowCustomServers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowCustomServers = null;
+            if (parseNode.GetChildNode("allow_member_agent_access") is { } nullNodeAllowMemberAgentAccess && nullNodeAllowMemberAgentAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowMemberAgentAccess = null;
+            if (parseNode.GetChildNode("default_servers_enabled") is { } nullNodeDefaultServersEnabled && nullNodeDefaultServersEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultServersEnabled = null;
+            if (parseNode.GetChildNode("member_default_preset") is { } nullNodeMemberDefaultPreset && nullNodeMemberDefaultPreset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemberDefaultPreset = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Baseline preset deriving default policies for tools an agent has no explicit row for.* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset? AgentDefaultPreset { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset? AgentDefaultPreset { get => _explicitNullValueAgentDefaultPreset; set { _explicitNullValueAgentDefaultPreset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_default_preset"); else _explicitNullProperties?.Remove("agent_default_preset"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigAgentDefaultPreset? _explicitNullValueAgentDefaultPreset = default!;
         /// <summary>Whether non-admin members may register custom MCP servers with the gateway.</summary>
-        public bool? AllowCustomServers { get; set; }
+        public bool? AllowCustomServers { get => _explicitNullValueAllowCustomServers; set { _explicitNullValueAllowCustomServers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_custom_servers"); else _explicitNullProperties?.Remove("allow_custom_servers"); } }
+        private bool? _explicitNullValueAllowCustomServers = default!;
         /// <summary>Whether non-admin members may share their available MCP connections with agents and manage agent tool policies.</summary>
-        public bool? AllowMemberAgentAccess { get; set; }
+        public bool? AllowMemberAgentAccess { get => _explicitNullValueAllowMemberAgentAccess; set { _explicitNullValueAllowMemberAgentAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_member_agent_access"); else _explicitNullProperties?.Remove("allow_member_agent_access"); } }
+        private bool? _explicitNullValueAllowMemberAgentAccess = default!;
         /// <summary>Whether servers with no gateway registration — including catalog templates published later — are enabled for the team. A registered server&apos;s own toggle always wins.</summary>
-        public bool? DefaultServersEnabled { get; set; }
+        public bool? DefaultServersEnabled { get => _explicitNullValueDefaultServersEnabled; set { _explicitNullValueDefaultServersEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_servers_enabled"); else _explicitNullProperties?.Remove("default_servers_enabled"); } }
+        private bool? _explicitNullValueDefaultServersEnabled = default!;
         /// <summary>Whether the requesting user can administer the gateway (org admin or explicit project admin).</summary>
         public bool? IsAdmin { get; private set; }
         /// <summary>Baseline preset for members. Empty until an admin applies one from Team settings.* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset? MemberDefaultPreset { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset? MemberDefaultPreset { get => _explicitNullValueMemberDefaultPreset; set { _explicitNullValueMemberDefaultPreset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_default_preset"); else _explicitNullProperties?.Remove("member_default_preset"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset? _explicitNullValueMemberDefaultPreset = default!;
         /// <summary>Catalog template ids that already have a gateway registration, including registrations hidden from the requesting member. Clients use this list to avoid presenting disabled or revoked templates as new.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("allow_member_agent_access", AllowMemberAgentAccess);
             writer.WriteBoolValue("default_servers_enabled", DefaultServersEnabled);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamMcpGatewayConfigMemberDefaultPreset>("member_default_preset", MemberDefaultPreset);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,16 +11,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Annotation : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("creation_type") is { } nullNodeCreationType && nullNodeCreationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreationType = null;
+            if (parseNode.GetChildNode("dashboard_id") is { } nullNodeDashboardId && nullNodeDashboardId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardId = null;
+            if (parseNode.GetChildNode("dashboard_item") is { } nullNodeDashboardItem && nullNodeDashboardItem.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardItem = null;
+            if (parseNode.GetChildNode("date_marker") is { } nullNodeDateMarker && nullNodeDateMarker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateMarker = null;
+            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("emoji") is { } nullNodeEmoji && nullNodeEmoji.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emoji = null;
+            if (parseNode.GetChildNode("hidden_in_user_interface") is { } nullNodeHiddenInUserInterface && nullNodeHiddenInUserInterface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenInUserInterface = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Annotation text shown on charts to describe the change, release, or incident.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Content { get; set; }
+        public string? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private string? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public string Content { get; set; }
+        public string Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private string _explicitNullValueContent = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -33,11 +51,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>* `USR` - user* `GIT` - GitHub</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType? CreationType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType? CreationType { get => _explicitNullValueCreationType; set { _explicitNullValueCreationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creation_type"); else _explicitNullProperties?.Remove("creation_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType? _explicitNullValueCreationType = default!;
         /// <summary>Optional dashboard ID to attach this annotation to. Must belong to the current project.</summary>
-        public int? DashboardId { get; set; }
+        public int? DashboardId { get => _explicitNullValueDashboardId; set { _explicitNullValueDashboardId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_id"); else _explicitNullProperties?.Remove("dashboard_id"); } }
+        private int? _explicitNullValueDashboardId = default!;
         /// <summary>Optional insight ID to attach this annotation to. Must belong to the current project.</summary>
-        public int? DashboardItem { get; set; }
+        public int? DashboardItem { get => _explicitNullValueDashboardItem; set { _explicitNullValueDashboardItem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_item"); else _explicitNullProperties?.Remove("dashboard_item"); } }
+        private int? _explicitNullValueDashboardItem = default!;
         /// <summary>The dashboard_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,19 +68,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string DashboardName { get; private set; }
 #endif
         /// <summary>When this annotation happened (ISO 8601 timestamp). Used to position it on charts.</summary>
-        public DateTimeOffset? DateMarker { get; set; }
+        public DateTimeOffset? DateMarker { get => _explicitNullValueDateMarker; set { _explicitNullValueDateMarker = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_marker"); else _explicitNullProperties?.Remove("date_marker"); } }
+        private DateTimeOffset? _explicitNullValueDateMarker = default!;
         /// <summary>Soft-delete flag. Set to true to hide the annotation, or false to restore it.</summary>
-        public bool? Deleted { get; set; }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        private bool? _explicitNullValueDeleted = default!;
         /// <summary>Optional emoji shown in place of the default badge when this annotation is surfaced on a chart.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Emoji { get; set; }
+        public string? Emoji { get => _explicitNullValueEmoji; set { _explicitNullValueEmoji = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emoji"); else _explicitNullProperties?.Remove("emoji"); } }
+        private string? _explicitNullValueEmoji = default!;
 #nullable restore
 #else
-        public string Emoji { get; set; }
+        public string Emoji { get => _explicitNullValueEmoji; set { _explicitNullValueEmoji = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emoji"); else _explicitNullProperties?.Remove("emoji"); } }
+        private string _explicitNullValueEmoji = default!;
 #endif
         /// <summary>When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.</summary>
-        public bool? HiddenInUserInterface { get; set; }
+        public bool? HiddenInUserInterface { get => _explicitNullValueHiddenInUserInterface; set { _explicitNullValueHiddenInUserInterface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_in_user_interface"); else _explicitNullProperties?.Remove("hidden_in_user_interface"); } }
+        private bool? _explicitNullValueHiddenInUserInterface = default!;
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The insight_derived_name property</summary>
@@ -87,7 +113,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string InsightShortId { get; private set; }
 #endif
         /// <summary>* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed? Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed? _explicitNullValueScope = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -105,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.Annotation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.Annotation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.Annotation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -150,6 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("emoji", Emoji);
             writer.WriteBoolValue("hidden_in_user_interface", HiddenInUserInterface);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed>("scope", Scope);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

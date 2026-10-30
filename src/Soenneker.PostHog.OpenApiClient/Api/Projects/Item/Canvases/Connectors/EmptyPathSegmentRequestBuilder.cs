@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Connectors
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List the connector catalog: every provider and tool a canvas may declare, with the caller&apos;s connection state.Authoring agents read this to write ph.connectors.call sites and thematching capabilities.connectors declarations. Sandbox tokens receiveonly static native tools, with no connection lookup or MCP installation data.

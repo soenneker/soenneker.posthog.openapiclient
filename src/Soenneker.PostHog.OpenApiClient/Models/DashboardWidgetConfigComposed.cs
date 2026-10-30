@@ -8,98 +8,103 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf10"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf9"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DashboardWidgetConfigComposed : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1? DashboardWidgetConfigComposedMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf1? DashboardWidgetConfigComposedOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1 DashboardWidgetConfigComposedMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf1 DashboardWidgetConfigComposedOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf10"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10? DashboardWidgetConfigComposedMember10 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf10? DashboardWidgetConfigComposedOneOf10 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10 DashboardWidgetConfigComposedMember10 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf10 DashboardWidgetConfigComposedOneOf10 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf11"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11? DashboardWidgetConfigComposedMember11 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf11? DashboardWidgetConfigComposedOneOf11 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11 DashboardWidgetConfigComposedMember11 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf11 DashboardWidgetConfigComposedOneOf11 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2? DashboardWidgetConfigComposedMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf2? DashboardWidgetConfigComposedOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2 DashboardWidgetConfigComposedMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf2 DashboardWidgetConfigComposedOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3? DashboardWidgetConfigComposedMember3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf3? DashboardWidgetConfigComposedOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3 DashboardWidgetConfigComposedMember3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf3 DashboardWidgetConfigComposedOneOf3 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4? DashboardWidgetConfigComposedMember4 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf4? DashboardWidgetConfigComposedOneOf4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4 DashboardWidgetConfigComposedMember4 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf4 DashboardWidgetConfigComposedOneOf4 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf5"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5? DashboardWidgetConfigComposedMember5 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf5? DashboardWidgetConfigComposedOneOf5 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5 DashboardWidgetConfigComposedMember5 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf5 DashboardWidgetConfigComposedOneOf5 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf6"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6? DashboardWidgetConfigComposedMember6 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf6? DashboardWidgetConfigComposedOneOf6 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6 DashboardWidgetConfigComposedMember6 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf6 DashboardWidgetConfigComposedOneOf6 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf7"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7? DashboardWidgetConfigComposedMember7 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf7? DashboardWidgetConfigComposedOneOf7 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7 DashboardWidgetConfigComposedMember7 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf7 DashboardWidgetConfigComposedOneOf7 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf8"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8? DashboardWidgetConfigComposedMember8 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf8? DashboardWidgetConfigComposedOneOf8 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8 DashboardWidgetConfigComposedMember8 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf8 DashboardWidgetConfigComposedOneOf8 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf9"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9? DashboardWidgetConfigComposedMember9 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf9? DashboardWidgetConfigComposedOneOf9 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9 DashboardWidgetConfigComposedMember9 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf9 DashboardWidgetConfigComposedOneOf9 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -111,7 +116,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposed();
-            return result;
+            if("DashboardWidgetConfigComposedOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf10".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf11".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf7".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf8".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DashboardWidgetConfigComposedOneOf9".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            if (result.DashboardWidgetConfigComposedOneOf1 == null && result.DashboardWidgetConfigComposedOneOf10 == null && result.DashboardWidgetConfigComposedOneOf11 == null && result.DashboardWidgetConfigComposedOneOf2 == null && result.DashboardWidgetConfigComposedOneOf3 == null && result.DashboardWidgetConfigComposedOneOf4 == null && result.DashboardWidgetConfigComposedOneOf5 == null && result.DashboardWidgetConfigComposedOneOf6 == null && result.DashboardWidgetConfigComposedOneOf7 == null && result.DashboardWidgetConfigComposedOneOf8 == null && result.DashboardWidgetConfigComposedOneOf9 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,49 +171,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(DashboardWidgetConfigComposedMember1 != null)
+            if(DashboardWidgetConfigComposedOneOf1 != null)
             {
-                return DashboardWidgetConfigComposedMember1.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf1.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember10 != null)
+            else if(DashboardWidgetConfigComposedOneOf10 != null)
             {
-                return DashboardWidgetConfigComposedMember10.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf10.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember11 != null)
+            else if(DashboardWidgetConfigComposedOneOf11 != null)
             {
-                return DashboardWidgetConfigComposedMember11.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf11.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember2 != null)
+            else if(DashboardWidgetConfigComposedOneOf2 != null)
             {
-                return DashboardWidgetConfigComposedMember2.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf2.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember3 != null)
+            else if(DashboardWidgetConfigComposedOneOf3 != null)
             {
-                return DashboardWidgetConfigComposedMember3.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf3.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember4 != null)
+            else if(DashboardWidgetConfigComposedOneOf4 != null)
             {
-                return DashboardWidgetConfigComposedMember4.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf4.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember5 != null)
+            else if(DashboardWidgetConfigComposedOneOf5 != null)
             {
-                return DashboardWidgetConfigComposedMember5.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf5.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember6 != null)
+            else if(DashboardWidgetConfigComposedOneOf6 != null)
             {
-                return DashboardWidgetConfigComposedMember6.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf6.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember7 != null)
+            else if(DashboardWidgetConfigComposedOneOf7 != null)
             {
-                return DashboardWidgetConfigComposedMember7.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf7.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember8 != null)
+            else if(DashboardWidgetConfigComposedOneOf8 != null)
             {
-                return DashboardWidgetConfigComposedMember8.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf8.GetFieldDeserializers();
             }
-            else if(DashboardWidgetConfigComposedMember9 != null)
+            else if(DashboardWidgetConfigComposedOneOf9 != null)
             {
-                return DashboardWidgetConfigComposedMember9.GetFieldDeserializers();
+                return DashboardWidgetConfigComposedOneOf9.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -171,50 +223,75 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (DashboardWidgetConfigComposedOneOf1 != null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf1); return; }
+            if (DashboardWidgetConfigComposedOneOf10 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf10); return; }
+            if (DashboardWidgetConfigComposedOneOf11 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf11); return; }
+            if (DashboardWidgetConfigComposedOneOf2 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf2); return; }
+            if (DashboardWidgetConfigComposedOneOf3 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf3); return; }
+            if (DashboardWidgetConfigComposedOneOf4 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf4); return; }
+            if (DashboardWidgetConfigComposedOneOf5 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf5); return; }
+            if (DashboardWidgetConfigComposedOneOf6 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf6); return; }
+            if (DashboardWidgetConfigComposedOneOf7 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf8 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf7); return; }
+            if (DashboardWidgetConfigComposedOneOf8 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf9 == null) { if (DashboardWidgetConfigComposedOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf8); return; }
+            if (DashboardWidgetConfigComposedOneOf9 != null && DashboardWidgetConfigComposedOneOf1 == null && DashboardWidgetConfigComposedOneOf10 == null && DashboardWidgetConfigComposedOneOf11 == null && DashboardWidgetConfigComposedOneOf2 == null && DashboardWidgetConfigComposedOneOf3 == null && DashboardWidgetConfigComposedOneOf4 == null && DashboardWidgetConfigComposedOneOf5 == null && DashboardWidgetConfigComposedOneOf6 == null && DashboardWidgetConfigComposedOneOf7 == null && DashboardWidgetConfigComposedOneOf8 == null) { if (DashboardWidgetConfigComposedOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DashboardWidgetConfigComposedOneOf9); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DashboardWidgetConfigComposedMember1 != null)
+            if(DashboardWidgetConfigComposedOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember1>(null, DashboardWidgetConfigComposedMember1);
+                if (DashboardWidgetConfigComposedOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf1>(null, DashboardWidgetConfigComposedOneOf1);
             }
-            else if(DashboardWidgetConfigComposedMember10 != null)
+            else if(DashboardWidgetConfigComposedOneOf10 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember10>(null, DashboardWidgetConfigComposedMember10);
+                if (DashboardWidgetConfigComposedOneOf10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf10>(null, DashboardWidgetConfigComposedOneOf10);
             }
-            else if(DashboardWidgetConfigComposedMember11 != null)
+            else if(DashboardWidgetConfigComposedOneOf11 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember11>(null, DashboardWidgetConfigComposedMember11);
+                if (DashboardWidgetConfigComposedOneOf11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf11>(null, DashboardWidgetConfigComposedOneOf11);
             }
-            else if(DashboardWidgetConfigComposedMember2 != null)
+            else if(DashboardWidgetConfigComposedOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember2>(null, DashboardWidgetConfigComposedMember2);
+                if (DashboardWidgetConfigComposedOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf2>(null, DashboardWidgetConfigComposedOneOf2);
             }
-            else if(DashboardWidgetConfigComposedMember3 != null)
+            else if(DashboardWidgetConfigComposedOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember3>(null, DashboardWidgetConfigComposedMember3);
+                if (DashboardWidgetConfigComposedOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf3>(null, DashboardWidgetConfigComposedOneOf3);
             }
-            else if(DashboardWidgetConfigComposedMember4 != null)
+            else if(DashboardWidgetConfigComposedOneOf4 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember4>(null, DashboardWidgetConfigComposedMember4);
+                if (DashboardWidgetConfigComposedOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf4>(null, DashboardWidgetConfigComposedOneOf4);
             }
-            else if(DashboardWidgetConfigComposedMember5 != null)
+            else if(DashboardWidgetConfigComposedOneOf5 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember5>(null, DashboardWidgetConfigComposedMember5);
+                if (DashboardWidgetConfigComposedOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf5>(null, DashboardWidgetConfigComposedOneOf5);
             }
-            else if(DashboardWidgetConfigComposedMember6 != null)
+            else if(DashboardWidgetConfigComposedOneOf6 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember6>(null, DashboardWidgetConfigComposedMember6);
+                if (DashboardWidgetConfigComposedOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf6>(null, DashboardWidgetConfigComposedOneOf6);
             }
-            else if(DashboardWidgetConfigComposedMember7 != null)
+            else if(DashboardWidgetConfigComposedOneOf7 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember7>(null, DashboardWidgetConfigComposedMember7);
+                if (DashboardWidgetConfigComposedOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf7>(null, DashboardWidgetConfigComposedOneOf7);
             }
-            else if(DashboardWidgetConfigComposedMember8 != null)
+            else if(DashboardWidgetConfigComposedOneOf8 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember8>(null, DashboardWidgetConfigComposedMember8);
+                if (DashboardWidgetConfigComposedOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf8>(null, DashboardWidgetConfigComposedOneOf8);
             }
-            else if(DashboardWidgetConfigComposedMember9 != null)
+            else if(DashboardWidgetConfigComposedOneOf9 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedMember9>(null, DashboardWidgetConfigComposedMember9);
+                if (DashboardWidgetConfigComposedOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidgetConfigComposedOneOf9>(null, DashboardWidgetConfigComposedOneOf9);
             }
         }
     }

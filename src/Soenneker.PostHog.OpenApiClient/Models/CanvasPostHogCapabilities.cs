@@ -11,52 +11,78 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CanvasPostHogCapabilities : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("agentRequests") is { } nullNodeAgentRequests && nullNodeAgentRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentRequests = null;
+            if (parseNode.GetChildNode("captureEvents") is { } nullNodeCaptureEvents && nullNodeCaptureEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaptureEvents = null;
+            if (parseNode.GetChildNode("inlineQueries") is { } nullNodeInlineQueries && nullNodeInlineQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InlineQueries = null;
+            if (parseNode.GetChildNode("insights") is { } nullNodeInsights && nullNodeInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Insights = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
+        }
+
         /// <summary>Registered action verbs the canvas may invoke via ph.actions (e.g. &apos;annotations.create&apos;, &apos;tasks.create&apos;). Each executes as the viewer; declaring one shows it in the promote review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Actions { get; set; }
+        public List<string>? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<string>? _explicitNullValueActions = default!;
 #nullable restore
 #else
-        public List<string> Actions { get; set; }
+        public List<string> Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<string> _explicitNullValueActions = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agentRequests property</summary>
-        public bool? AgentRequests { get; set; }
+        public bool? AgentRequests { get => _explicitNullValueAgentRequests; set { _explicitNullValueAgentRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agentRequests"); else _explicitNullProperties?.Remove("agentRequests"); } }
+        private bool? _explicitNullValueAgentRequests = default!;
         /// <summary>The captureEvents property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CaptureEvents { get; set; }
+        public List<string>? CaptureEvents { get => _explicitNullValueCaptureEvents; set { _explicitNullValueCaptureEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("captureEvents"); else _explicitNullProperties?.Remove("captureEvents"); } }
+        private List<string>? _explicitNullValueCaptureEvents = default!;
 #nullable restore
 #else
-        public List<string> CaptureEvents { get; set; }
+        public List<string> CaptureEvents { get => _explicitNullValueCaptureEvents; set { _explicitNullValueCaptureEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("captureEvents"); else _explicitNullProperties?.Remove("captureEvents"); } }
+        private List<string> _explicitNullValueCaptureEvents = default!;
 #endif
         /// <summary>The inlineQueries property</summary>
-        public bool? InlineQueries { get; set; }
+        public bool? InlineQueries { get => _explicitNullValueInlineQueries; set { _explicitNullValueInlineQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inlineQueries"); else _explicitNullProperties?.Remove("inlineQueries"); } }
+        private bool? _explicitNullValueInlineQueries = default!;
         /// <summary>The insights property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Insights { get; set; }
+        public List<string>? Insights { get => _explicitNullValueInsights; set { _explicitNullValueInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights"); else _explicitNullProperties?.Remove("insights"); } }
+        private List<string>? _explicitNullValueInsights = default!;
 #nullable restore
 #else
-        public List<string> Insights { get; set; }
+        public List<string> Insights { get => _explicitNullValueInsights; set { _explicitNullValueInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights"); else _explicitNullProperties?.Remove("insights"); } }
+        private List<string> _explicitNullValueInsights = default!;
 #endif
         /// <summary>State scopes the canvas may use via ph.state: &apos;user&apos; (private to each viewer) and/or &apos;shared&apos; (one value per canvas, team-visible).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?>? State { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?>? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?>? _explicitNullValueState = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?> State { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?> State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum?> _explicitNullValueState = default!;
 #endif
         /// <summary>PostHog MCP tools the canvas may run via ph.tools (e.g. &apos;feature-flag-get-definition&apos;, &apos;feature-flag-set-release-condition-rollout&apos;). Each runs as the viewer; declaring one shows it in the promote review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tools { get; set; }
+        public List<string>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<string>? _explicitNullValueTools = default!;
 #nullable restore
 #else
-        public List<string> Tools { get; set; }
+        public List<string> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<string> _explicitNullValueTools = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities"/> and sets the default values.
@@ -74,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -107,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("insights", Insights);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasStateScopeEnum>("state", State);
             writer.WriteCollectionOfPrimitiveValues<string>("tools", Tools);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

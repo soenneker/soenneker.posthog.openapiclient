@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Subs
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DashboardSubscribeNudgeResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DashboardSubscribeNudgeResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DashboardSubscribeNudgeResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DashboardSubscribeNudgeResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Send the requesting user an in-app notification suggesting they subscribe to this dashboard. Deduplicated server-side: at most one notification per user and dashboard, ever, so repeat calls return 200 with created=false.

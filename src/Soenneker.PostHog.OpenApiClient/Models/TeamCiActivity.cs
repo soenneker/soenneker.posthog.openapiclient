@@ -11,27 +11,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamCiActivity : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("owner_team") is { } nullNodeOwnerTeam && nullNodeOwnerTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerTeam = null;
+            if (parseNode.GetChildNode("tests") is { } nullNodeTests && nullNodeTests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tests = null;
+            if (parseNode.GetChildNode("truncated_tests") is { } nullNodeTruncatedTests && nullNodeTruncatedTests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TruncatedTests = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The team slug this activity is scoped to, or &apos;unowned&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OwnerTeam { get; set; }
+        public string? OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        private string? _explicitNullValueOwnerTeam = default!;
 #nullable restore
 #else
-        public string OwnerTeam { get; set; }
+        public string OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        private string _explicitNullValueOwnerTeam = default!;
 #endif
         /// <summary>The team&apos;s owned tests with signal in either window, ranked by the stronger window&apos;s count (the current-vs-prior pairs behind a before/after comparison).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal>? Tests { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal>? Tests { get => _explicitNullValueTests; set { _explicitNullValueTests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tests"); else _explicitNullProperties?.Remove("tests"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal>? _explicitNullValueTests = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal> Tests { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal> Tests { get => _explicitNullValueTests; set { _explicitNullValueTests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tests"); else _explicitNullProperties?.Remove("tests"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal> _explicitNullValueTests = default!;
 #endif
         /// <summary>True when more owned tests had signal than the test cap.</summary>
-        public bool? TruncatedTests { get; set; }
+        public bool? TruncatedTests { get => _explicitNullValueTruncatedTests; set { _explicitNullValueTruncatedTests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated_tests"); else _explicitNullProperties?.Remove("truncated_tests"); } }
+        private bool? _explicitNullValueTruncatedTests = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamCiActivity"/> and sets the default values.
         /// </summary>
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamCiActivity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamCiActivity();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamCiActivity(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("owner_team", OwnerTeam);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal>("tests", Tests);
             writer.WriteBoolValue("truncated_tests", TruncatedTests);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Oauth_applicati
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedOrganizationOAuthApplicationList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedOrganizationOAuthApplicationList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedOrganizationOAuthApplicationList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedOrganizationOAuthApplicationList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// ViewSet for listing OAuth applications at the organization level (read-only).

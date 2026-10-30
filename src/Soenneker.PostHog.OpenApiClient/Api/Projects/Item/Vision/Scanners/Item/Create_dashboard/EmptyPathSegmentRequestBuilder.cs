@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ScannerDashboardResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ScannerDashboardResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ScannerDashboardResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ScannerDashboardResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a dashboard that charts this scanner&apos;s observations, and link it to the scanner.The tiles depend on the scanner type: who the scanner matched, which accounts they belong to,type-specific breakdowns, and the latest matching recordings. Calling it again returns theexisting dashboard rather than a second one.

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Name.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarkdown>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarkdown.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarkdown>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarkdown.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The rendered SKILL.md plus its frontmatter as JSON, for a host that serves the file.Both halves come from one renderer, so a digest a client takes over ``content`` stilldescribes the fields it reads from ``frontmatter``.

@@ -12,29 +12,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RecordCheckResultResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("check_id") is { } nullNodeCheckId && nullNodeCheckId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckId = null;
+            if (parseNode.GetChildNode("check_status") is { } nullNodeCheckStatus && nullNodeCheckStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckStatus = null;
+            if (parseNode.GetChildNode("outcome") is { } nullNodeOutcome && nullNodeOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Outcome = null;
+            if (parseNode.GetChildNode("runs_remaining") is { } nullNodeRunsRemaining && nullNodeRunsRemaining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsRemaining = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The check that was closed.</summary>
-        public Guid? CheckId { get; set; }
+        public Guid? CheckId { get => _explicitNullValueCheckId; set { _explicitNullValueCheckId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_id"); else _explicitNullProperties?.Remove("check_id"); } }
+        private Guid? _explicitNullValueCheckId = default!;
         /// <summary>The check&apos;s status after the verdict. `active` means a recurring check re-armed for its next run; anything else is terminal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CheckStatus { get; set; }
+        public string? CheckStatus { get => _explicitNullValueCheckStatus; set { _explicitNullValueCheckStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_status"); else _explicitNullProperties?.Remove("check_status"); } }
+        private string? _explicitNullValueCheckStatus = default!;
 #nullable restore
 #else
-        public string CheckStatus { get; set; }
+        public string CheckStatus { get => _explicitNullValueCheckStatus; set { _explicitNullValueCheckStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_status"); else _explicitNullProperties?.Remove("check_status"); } }
+        private string _explicitNullValueCheckStatus = default!;
 #endif
         /// <summary>The verdict that was recorded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Outcome { get; set; }
+        public string? Outcome { get => _explicitNullValueOutcome; set { _explicitNullValueOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome"); else _explicitNullProperties?.Remove("outcome"); } }
+        private string? _explicitNullValueOutcome = default!;
 #nullable restore
 #else
-        public string Outcome { get; set; }
+        public string Outcome { get => _explicitNullValueOutcome; set { _explicitNullValueOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome"); else _explicitNullProperties?.Remove("outcome"); } }
+        private string _explicitNullValueOutcome = default!;
 #endif
         /// <summary>Evaluations the check still owes after this one.</summary>
-        public int? RunsRemaining { get; set; }
+        public int? RunsRemaining { get => _explicitNullValueRunsRemaining; set { _explicitNullValueRunsRemaining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_remaining"); else _explicitNullProperties?.Remove("runs_remaining"); } }
+        private int? _explicitNullValueRunsRemaining = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultResponse"/> and sets the default values.
         /// </summary>
@@ -50,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RecordCheckResultResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("check_status", CheckStatus);
             writer.WriteStringValue("outcome", Outcome);
             writer.WriteIntValue("runs_remaining", RunsRemaining);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

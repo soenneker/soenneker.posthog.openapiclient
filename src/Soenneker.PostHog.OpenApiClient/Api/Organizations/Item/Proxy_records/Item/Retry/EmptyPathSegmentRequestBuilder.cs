@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retry provisioning a failed reverse proxy. Only available for proxies in &apos;erroring&apos; or &apos;timed_out&apos; status. Resets the proxy to &apos;waiting&apos; status and restarts the provisioning workflow.

@@ -12,13 +12,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ManagedWarehouseTrinoMonitoringSnapshotResponseLimits : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("max_queued_queries") is { } nullNodeMaxQueuedQueries && nullNodeMaxQueuedQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxQueuedQueries = null;
+            if (parseNode.GetChildNode("max_running_queries") is { } nullNodeMaxRunningQueries && nullNodeMaxRunningQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRunningQueries = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of the organization&apos;s queries that can wait in the queue. Zero when Trino is not enabled.</summary>
-        public int? MaxQueuedQueries { get; set; }
+        public int? MaxQueuedQueries { get => _explicitNullValueMaxQueuedQueries; set { _explicitNullValueMaxQueuedQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_queued_queries"); else _explicitNullProperties?.Remove("max_queued_queries"); } }
+        private int? _explicitNullValueMaxQueuedQueries = default!;
         /// <summary>Maximum number of the organization&apos;s queries that run at the same time. Zero when Trino is not enabled.</summary>
-        public int? MaxRunningQueries { get; set; }
+        public int? MaxRunningQueries { get => _explicitNullValueMaxRunningQueries; set { _explicitNullValueMaxRunningQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_running_queries"); else _explicitNullProperties?.Remove("max_running_queries"); } }
+        private int? _explicitNullValueMaxRunningQueries = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits"/> and sets the default values.
         /// </summary>
@@ -34,7 +45,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("max_queued_queries", MaxQueuedQueries);
             writer.WriteIntValue("max_running_queries", MaxRunningQueries);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

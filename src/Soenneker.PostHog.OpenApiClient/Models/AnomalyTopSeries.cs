@@ -11,40 +11,64 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AnomalyTopSeries : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anomaly_rate") is { } nullNodeAnomalyRate && nullNodeAnomalyRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyRate = null;
+            if (parseNode.GetChildNode("baseline_rate") is { } nullNodeBaselineRate && nullNodeBaselineRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineRate = null;
+            if (parseNode.GetChildNode("breakdown_value") is { } nullNodeBreakdownValue && nullNodeBreakdownValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownValue = null;
+            if (parseNode.GetChildNode("flagged_buckets") is { } nullNodeFlaggedBuckets && nullNodeFlaggedBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlaggedBuckets = null;
+            if (parseNode.GetChildNode("scored_buckets") is { } nullNodeScoredBuckets && nullNodeScoredBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoredBuckets = null;
+            if (parseNode.GetChildNode("series_key") is { } nullNodeSeriesKey && nullNodeSeriesKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesKey = null;
+            if (parseNode.GetChildNode("series_label") is { } nullNodeSeriesLabel && nullNodeSeriesLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesLabel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>`flagged_buckets / scored_buckets`.</summary>
-        public double? AnomalyRate { get; set; }
+        public double? AnomalyRate { get => _explicitNullValueAnomalyRate; set { _explicitNullValueAnomalyRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomaly_rate"); else _explicitNullProperties?.Remove("anomaly_rate"); } }
+        private double? _explicitNullValueAnomalyRate = default!;
         /// <summary>The anomaly rate over the 30 days before the range.</summary>
-        public double? BaselineRate { get; set; }
+        public double? BaselineRate { get => _explicitNullValueBaselineRate; set { _explicitNullValueBaselineRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_rate"); else _explicitNullProperties?.Remove("baseline_rate"); } }
+        private double? _explicitNullValueBaselineRate = default!;
         /// <summary>The breakdown value of the series, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownValue { get; set; }
+        public string? BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_value"); else _explicitNullProperties?.Remove("breakdown_value"); } }
+        private string? _explicitNullValueBreakdownValue = default!;
 #nullable restore
 #else
-        public string BreakdownValue { get; set; }
+        public string BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_value"); else _explicitNullProperties?.Remove("breakdown_value"); } }
+        private string _explicitNullValueBreakdownValue = default!;
 #endif
         /// <summary>Flagged buckets of the series in the range.</summary>
-        public int? FlaggedBuckets { get; set; }
+        public int? FlaggedBuckets { get => _explicitNullValueFlaggedBuckets; set { _explicitNullValueFlaggedBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flagged_buckets"); else _explicitNullProperties?.Remove("flagged_buckets"); } }
+        private int? _explicitNullValueFlaggedBuckets = default!;
         /// <summary>Scored buckets of the series in the range.</summary>
-        public int? ScoredBuckets { get; set; }
+        public int? ScoredBuckets { get => _explicitNullValueScoredBuckets; set { _explicitNullValueScoredBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scored_buckets"); else _explicitNullProperties?.Remove("scored_buckets"); } }
+        private int? _explicitNullValueScoredBuckets = default!;
         /// <summary>Identifies the series.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesKey { get; set; }
+        public string? SeriesKey { get => _explicitNullValueSeriesKey; set { _explicitNullValueSeriesKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_key"); else _explicitNullProperties?.Remove("series_key"); } }
+        private string? _explicitNullValueSeriesKey = default!;
 #nullable restore
 #else
-        public string SeriesKey { get; set; }
+        public string SeriesKey { get => _explicitNullValueSeriesKey; set { _explicitNullValueSeriesKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_key"); else _explicitNullProperties?.Remove("series_key"); } }
+        private string _explicitNullValueSeriesKey = default!;
 #endif
         /// <summary>The series name as the insight shows it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesLabel { get; set; }
+        public string? SeriesLabel { get => _explicitNullValueSeriesLabel; set { _explicitNullValueSeriesLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_label"); else _explicitNullProperties?.Remove("series_label"); } }
+        private string? _explicitNullValueSeriesLabel = default!;
 #nullable restore
 #else
-        public string SeriesLabel { get; set; }
+        public string SeriesLabel { get => _explicitNullValueSeriesLabel; set { _explicitNullValueSeriesLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_label"); else _explicitNullProperties?.Remove("series_label"); } }
+        private string _explicitNullValueSeriesLabel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AnomalyTopSeries"/> and sets the default values.
@@ -61,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AnomalyTopSeries CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AnomalyTopSeries();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AnomalyTopSeries(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -94,6 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("scored_buckets", ScoredBuckets);
             writer.WriteStringValue("series_key", SeriesKey);
             writer.WriteStringValue("series_label", SeriesLabel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

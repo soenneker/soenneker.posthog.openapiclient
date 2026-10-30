@@ -12,27 +12,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScopeRepoDistributionRepo : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("max_seconds") is { } nullNodeMaxSeconds && nullNodeMaxSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSeconds = null;
+            if (parseNode.GetChildNode("mean_seconds") is { } nullNodeMeanSeconds && nullNodeMeanSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeanSeconds = null;
+            if (parseNode.GetChildNode("min_seconds") is { } nullNodeMinSeconds && nullNodeMinSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinSeconds = null;
+            if (parseNode.GetChildNode("p05_seconds") is { } nullNodeP05Seconds && nullNodeP05Seconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P05Seconds = null;
+            if (parseNode.GetChildNode("p25_seconds") is { } nullNodeP25Seconds && nullNodeP25Seconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P25Seconds = null;
+            if (parseNode.GetChildNode("p50_seconds") is { } nullNodeP50Seconds && nullNodeP50Seconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50Seconds = null;
+            if (parseNode.GetChildNode("p75_seconds") is { } nullNodeP75Seconds && nullNodeP75Seconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P75Seconds = null;
+            if (parseNode.GetChildNode("p95_seconds") is { } nullNodeP95Seconds && nullNodeP95Seconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95Seconds = null;
+            if (parseNode.GetChildNode("pr_count") is { } nullNodePrCount && nullNodePrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Slowest duration, in seconds.</summary>
-        public double? MaxSeconds { get; set; }
+        public double? MaxSeconds { get => _explicitNullValueMaxSeconds; set { _explicitNullValueMaxSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_seconds"); else _explicitNullProperties?.Remove("max_seconds"); } }
+        private double? _explicitNullValueMaxSeconds = default!;
         /// <summary>Mean, in seconds.</summary>
-        public double? MeanSeconds { get; set; }
+        public double? MeanSeconds { get => _explicitNullValueMeanSeconds; set { _explicitNullValueMeanSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean_seconds"); else _explicitNullProperties?.Remove("mean_seconds"); } }
+        private double? _explicitNullValueMeanSeconds = default!;
         /// <summary>Fastest duration, in seconds.</summary>
-        public double? MinSeconds { get; set; }
+        public double? MinSeconds { get => _explicitNullValueMinSeconds; set { _explicitNullValueMinSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_seconds"); else _explicitNullProperties?.Remove("min_seconds"); } }
+        private double? _explicitNullValueMinSeconds = default!;
         /// <summary>5th percentile, in seconds: the lower whisker.</summary>
-        public double? P05Seconds { get; set; }
+        public double? P05Seconds { get => _explicitNullValueP05Seconds; set { _explicitNullValueP05Seconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p05_seconds"); else _explicitNullProperties?.Remove("p05_seconds"); } }
+        private double? _explicitNullValueP05Seconds = default!;
         /// <summary>25th percentile, in seconds: the box&apos;s lower edge.</summary>
-        public double? P25Seconds { get; set; }
+        public double? P25Seconds { get => _explicitNullValueP25Seconds; set { _explicitNullValueP25Seconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p25_seconds"); else _explicitNullProperties?.Remove("p25_seconds"); } }
+        private double? _explicitNullValueP25Seconds = default!;
         /// <summary>Median, in seconds.</summary>
-        public double? P50Seconds { get; set; }
+        public double? P50Seconds { get => _explicitNullValueP50Seconds; set { _explicitNullValueP50Seconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_seconds"); else _explicitNullProperties?.Remove("p50_seconds"); } }
+        private double? _explicitNullValueP50Seconds = default!;
         /// <summary>75th percentile, in seconds: the box&apos;s upper edge.</summary>
-        public double? P75Seconds { get; set; }
+        public double? P75Seconds { get => _explicitNullValueP75Seconds; set { _explicitNullValueP75Seconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p75_seconds"); else _explicitNullProperties?.Remove("p75_seconds"); } }
+        private double? _explicitNullValueP75Seconds = default!;
         /// <summary>95th percentile, in seconds: the upper whisker.</summary>
-        public double? P95Seconds { get; set; }
+        public double? P95Seconds { get => _explicitNullValueP95Seconds; set { _explicitNullValueP95Seconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_seconds"); else _explicitNullProperties?.Remove("p95_seconds"); } }
+        private double? _explicitNullValueP95Seconds = default!;
         /// <summary>Pull requests in the distribution. Every statistic is null when this is 0.</summary>
-        public int? PrCount { get; set; }
+        public int? PrCount { get => _explicitNullValuePrCount; set { _explicitNullValuePrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_count"); else _explicitNullProperties?.Remove("pr_count"); } }
+        private int? _explicitNullValuePrCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScopeRepoDistributionRepo"/> and sets the default values.
         /// </summary>
@@ -48,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScopeRepoDistributionRepo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScopeRepoDistributionRepo();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScopeRepoDistributionRepo(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("p75_seconds", P75Seconds);
             writer.WriteDoubleValue("p95_seconds", P95Seconds);
             writer.WriteIntValue("pr_count", PrCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,19 +11,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BatchExportBackfill : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("adjusted_start_at") is { } nullNodeAdjustedStartAt && nullNodeAdjustedStartAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdjustedStartAt = null;
+            if (parseNode.GetChildNode("batch_export") is { } nullNodeBatchExport && nullNodeBatchExport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BatchExport = null;
+            if (parseNode.GetChildNode("end_at") is { } nullNodeEndAt && nullNodeEndAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndAt = null;
+            if (parseNode.GetChildNode("finished_at") is { } nullNodeFinishedAt && nullNodeFinishedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinishedAt = null;
+            if (parseNode.GetChildNode("start_at") is { } nullNodeStartAt && nullNodeStartAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartAt = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("team") is { } nullNodeTeam && nullNodeTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Team = null;
+            if (parseNode.GetChildNode("total_records_count") is { } nullNodeTotalRecordsCount && nullNodeTotalRecordsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRecordsCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The actual start time after adjustment for earliest available data. May differ from start_at if user requested a date before data exists.</summary>
-        public DateTimeOffset? AdjustedStartAt { get; set; }
+        public DateTimeOffset? AdjustedStartAt { get => _explicitNullValueAdjustedStartAt; set { _explicitNullValueAdjustedStartAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adjusted_start_at"); else _explicitNullProperties?.Remove("adjusted_start_at"); } }
+        private DateTimeOffset? _explicitNullValueAdjustedStartAt = default!;
         /// <summary>The BatchExport this backfill belongs to.</summary>
-        public Guid? BatchExport { get; set; }
+        public Guid? BatchExport { get => _explicitNullValueBatchExport; set { _explicitNullValueBatchExport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batch_export"); else _explicitNullProperties?.Remove("batch_export"); } }
+        private Guid? _explicitNullValueBatchExport = default!;
         /// <summary>The timestamp at which this BatchExportBackfill was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The end of the data interval.</summary>
-        public DateTimeOffset? EndAt { get; set; }
+        public DateTimeOffset? EndAt { get => _explicitNullValueEndAt; set { _explicitNullValueEndAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_at"); else _explicitNullProperties?.Remove("end_at"); } }
+        private DateTimeOffset? _explicitNullValueEndAt = default!;
         /// <summary>The timestamp at which this BatchExportBackfill finished, successfully or not.</summary>
-        public DateTimeOffset? FinishedAt { get; set; }
+        public DateTimeOffset? FinishedAt { get => _explicitNullValueFinishedAt; set { _explicitNullValueFinishedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finished_at"); else _explicitNullProperties?.Remove("finished_at"); } }
+        private DateTimeOffset? _explicitNullValueFinishedAt = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The timestamp at which this BatchExportBackfill was last updated.</summary>
@@ -37,13 +56,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillProgress Progress { get; private set; }
 #endif
         /// <summary>The start of the data interval.</summary>
-        public DateTimeOffset? StartAt { get; set; }
+        public DateTimeOffset? StartAt { get => _explicitNullValueStartAt; set { _explicitNullValueStartAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_at"); else _explicitNullProperties?.Remove("start_at"); } }
+        private DateTimeOffset? _explicitNullValueStartAt = default!;
         /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `ContinuedAsNew` - Continued As New* `Failed` - Failed* `FailedRetryable` - Failed Retryable* `Terminated` - Terminated* `TimedOut` - Timedout* `Running` - Running* `Starting` - Starting</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus? _explicitNullValueStatus = default!;
         /// <summary>The team this belongs to.</summary>
-        public int? Team { get; set; }
+        public int? Team { get => _explicitNullValueTeam; set { _explicitNullValueTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team"); else _explicitNullProperties?.Remove("team"); } }
+        private int? _explicitNullValueTeam = default!;
         /// <summary>The total number of records to export. Initially estimated, updated with actual count after completion.</summary>
-        public long? TotalRecordsCount { get; set; }
+        public long? TotalRecordsCount { get => _explicitNullValueTotalRecordsCount; set { _explicitNullValueTotalRecordsCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_records_count"); else _explicitNullProperties?.Remove("total_records_count"); } }
+        private long? _explicitNullValueTotalRecordsCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfill"/> and sets the default values.
         /// </summary>
@@ -59,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfill CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfill();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfill(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillStatus>("status", Status);
             writer.WriteIntValue("team", Team);
             writer.WriteLongValue("total_records_count", TotalRecordsCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

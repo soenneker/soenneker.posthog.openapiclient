@@ -11,146 +11,211 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingIssueDetail : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregations") is { } nullNodeAggregations && nullNodeAggregations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Aggregations = null;
+            if (parseNode.GetChildNode("assignee") is { } nullNodeAssignee && nullNodeAssignee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assignee = null;
+            if (parseNode.GetChildNode("breakdown") is { } nullNodeBreakdown && nullNodeBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breakdown = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("first_release") is { } nullNodeFirstRelease && nullNodeFirstRelease.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstRelease = null;
+            if (parseNode.GetChildNode("first_seen") is { } nullNodeFirstSeen && nullNodeFirstSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstSeen = null;
+            if (parseNode.GetChildNode("function") is { } nullNodeFunction && nullNodeFunction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Function = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("impact") is { } nullNodeImpact && nullNodeImpact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Impact = null;
+            if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
+            if (parseNode.GetChildNode("latest_release") is { } nullNodeLatestRelease && nullNodeLatestRelease.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestRelease = null;
+            if (parseNode.GetChildNode("library") is { } nullNodeLibrary && nullNodeLibrary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Library = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("sparkline") is { } nullNodeSparkline && nullNodeSparkline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sparkline = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("summary_status") is { } nullNodeSummaryStatus && nullNodeSummaryStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryStatus = null;
+            if (parseNode.GetChildNode("top_in_app_frame") is { } nullNodeTopInAppFrame && nullNodeTopInAppFrame.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopInAppFrame = null;
+            if (parseNode.GetChildNode("trend") is { } nullNodeTrend && nullNodeTrend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trend = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Aggregate counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations? Aggregations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations? Aggregations { get => _explicitNullValueAggregations; set { _explicitNullValueAggregations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregations"); else _explicitNullProperties?.Remove("aggregations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations? _explicitNullValueAggregations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations Aggregations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations Aggregations { get => _explicitNullValueAggregations; set { _explicitNullValueAggregations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregations"); else _explicitNullProperties?.Remove("aggregations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAggregations _explicitNullValueAggregations = default!;
 #endif
         /// <summary>Issue assignee.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse? Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse? _explicitNullValueAssignee = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssigneeResponse _explicitNullValueAssignee = default!;
 #endif
         /// <summary>Aggregate over matching events. Returned only when includeBreakdown is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown? Breakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown? Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown? _explicitNullValueBreakdown = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown Breakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown _explicitNullValueBreakdown = default!;
 #endif
         /// <summary>Issue description. List rows truncate it to a short preview; the issue detail query returns it in full.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Release metadata from the issue&apos;s first event, found near first_seen and not limited by dateRange. Compare it with latest_release to see which release introduced the issue. Absent when the first event has no release metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailFirstRelease? FirstRelease { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailFirstRelease? FirstRelease { get => _explicitNullValueFirstRelease; set { _explicitNullValueFirstRelease = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_release"); else _explicitNullProperties?.Remove("first_release"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailFirstRelease? _explicitNullValueFirstRelease = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailFirstRelease FirstRelease { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailFirstRelease FirstRelease { get => _explicitNullValueFirstRelease; set { _explicitNullValueFirstRelease = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_release"); else _explicitNullProperties?.Remove("first_release"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailFirstRelease _explicitNullValueFirstRelease = default!;
 #endif
         /// <summary>First seen timestamp.</summary>
-        public DateTimeOffset? FirstSeen { get; set; }
+        public DateTimeOffset? FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
+        private DateTimeOffset? _explicitNullValueFirstSeen = default!;
         /// <summary>Top function associated with the issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Function { get; set; }
+        public string? Function { get => _explicitNullValueFunction; set { _explicitNullValueFunction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function"); else _explicitNullProperties?.Remove("function"); } }
+        private string? _explicitNullValueFunction = default!;
 #nullable restore
 #else
-        public string Function { get; set; }
+        public string Function { get => _explicitNullValueFunction; set { _explicitNullValueFunction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function"); else _explicitNullProperties?.Remove("function"); } }
+        private string _explicitNullValueFunction = default!;
 #endif
         /// <summary>Error tracking issue ID.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Compact impact counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailImpact? Impact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailImpact? Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailImpact? _explicitNullValueImpact = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailImpact Impact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailImpact Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailImpact _explicitNullValueImpact = default!;
 #endif
         /// <summary>Last seen timestamp.</summary>
-        public DateTimeOffset? LastSeen { get; set; }
+        public DateTimeOffset? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private DateTimeOffset? _explicitNullValueLastSeen = default!;
         /// <summary>Latest release metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease? LatestRelease { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease? LatestRelease { get => _explicitNullValueLatestRelease; set { _explicitNullValueLatestRelease = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_release"); else _explicitNullProperties?.Remove("latest_release"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease? _explicitNullValueLatestRelease = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease LatestRelease { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease LatestRelease { get => _explicitNullValueLatestRelease; set { _explicitNullValueLatestRelease = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_release"); else _explicitNullProperties?.Remove("latest_release"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailLatestRelease _explicitNullValueLatestRelease = default!;
 #endif
         /// <summary>SDK/library associated with the issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Library { get; set; }
+        public string? Library { get => _explicitNullValueLibrary; set { _explicitNullValueLibrary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("library"); else _explicitNullProperties?.Remove("library"); } }
+        private string? _explicitNullValueLibrary = default!;
 #nullable restore
 #else
-        public string Library { get; set; }
+        public string Library { get => _explicitNullValueLibrary; set { _explicitNullValueLibrary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("library"); else _explicitNullProperties?.Remove("library"); } }
+        private string _explicitNullValueLibrary = default!;
 #endif
         /// <summary>Issue name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Issue severity, or null when no severity is assigned.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverity? Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverity? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSeverity? _explicitNullValueSeverity = default!;
         /// <summary>Top source/file associated with the issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Source { get; set; }
+        public string? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private string? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public string Source { get; set; }
+        public string Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private string _explicitNullValueSource = default!;
 #endif
         /// <summary>Optional compact occurrence sparkline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? Sparkline { get; set; }
+        public List<double?>? Sparkline { get => _explicitNullValueSparkline; set { _explicitNullValueSparkline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparkline"); else _explicitNullProperties?.Remove("sparkline"); } }
+        private List<double?>? _explicitNullValueSparkline = default!;
 #nullable restore
 #else
-        public List<double?> Sparkline { get; set; }
+        public List<double?> Sparkline { get => _explicitNullValueSparkline; set { _explicitNullValueSparkline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparkline"); else _explicitNullProperties?.Remove("sparkline"); } }
+        private List<double?> _explicitNullValueSparkline = default!;
 #endif
         /// <summary>Issue status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>A model-written summary of the issue. Present only when summary_status is &apos;ready&apos;. Treat likely_cause as a hypothesis, not a fact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>* `ready` - Ready* `generating` - Generating* `unavailable` - Unavailable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryStatus? SummaryStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryStatus? SummaryStatus { get => _explicitNullValueSummaryStatus; set { _explicitNullValueSummaryStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_status"); else _explicitNullProperties?.Remove("summary_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryStatus? _explicitNullValueSummaryStatus = default!;
         /// <summary>Top in_app application frame.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame? TopInAppFrame { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame? TopInAppFrame { get => _explicitNullValueTopInAppFrame; set { _explicitNullValueTopInAppFrame = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_in_app_frame"); else _explicitNullProperties?.Remove("top_in_app_frame"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame? _explicitNullValueTopInAppFrame = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame TopInAppFrame { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame TopInAppFrame { get => _explicitNullValueTopInAppFrame; set { _explicitNullValueTopInAppFrame = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_in_app_frame"); else _explicitNullProperties?.Remove("top_in_app_frame"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame _explicitNullValueTopInAppFrame = default!;
 #endif
         /// <summary>Whether the issue is getting worse or better: occurrences in the second half of dateRange against the first half. Absent when the issue has no occurrences in dateRange.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend? Trend { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend? Trend { get => _explicitNullValueTrend; set { _explicitNullValueTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trend"); else _explicitNullProperties?.Remove("trend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend? _explicitNullValueTrend = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend Trend { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend Trend { get => _explicitNullValueTrend; set { _explicitNullValueTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trend"); else _explicitNullProperties?.Remove("trend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend _explicitNullValueTrend = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetail"/> and sets the default values.
@@ -167,7 +232,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetail CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetail();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetail(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -228,6 +293,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryStatus>("summary_status", SummaryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame>("top_in_app_frame", TopInAppFrame);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend>("trend", Trend);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

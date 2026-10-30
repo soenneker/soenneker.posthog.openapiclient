@@ -12,13 +12,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TestHogRequestTargetConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("quiet_period_seconds") is { } nullNodeQuietPeriodSeconds && nullNodeQuietPeriodSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuietPeriodSeconds = null;
+            if (parseNode.GetChildNode("window_seconds") is { } nullNodeWindowSeconds && nullNodeWindowSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowSeconds = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>For session samples: only sessions with no activity for this long are previewed, matching when a session evaluation would actually run.</summary>
-        public int? QuietPeriodSeconds { get; set; }
+        public int? QuietPeriodSeconds { get => _explicitNullValueQuietPeriodSeconds; set { _explicitNullValueQuietPeriodSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quiet_period_seconds"); else _explicitNullProperties?.Remove("quiet_period_seconds"); } }
+        private int? _explicitNullValueQuietPeriodSeconds = default!;
         /// <summary>Aggregation window for trace samples, in seconds.</summary>
-        public int? WindowSeconds { get; set; }
+        public int? WindowSeconds { get => _explicitNullValueWindowSeconds; set { _explicitNullValueWindowSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_seconds"); else _explicitNullProperties?.Remove("window_seconds"); } }
+        private int? _explicitNullValueWindowSeconds = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig"/> and sets the default values.
         /// </summary>
@@ -36,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestTargetConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,6 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("quiet_period_seconds", QuietPeriodSeconds);
             writer.WriteIntValue("window_seconds", WindowSeconds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

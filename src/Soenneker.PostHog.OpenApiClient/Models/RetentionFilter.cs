@@ -11,89 +11,148 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RetentionFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregationProperty") is { } nullNodeAggregationProperty && nullNodeAggregationProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggregationProperty = null;
+            if (parseNode.GetChildNode("aggregationPropertyType") is { } nullNodeAggregationPropertyType && nullNodeAggregationPropertyType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggregationPropertyType = null;
+            if (parseNode.GetChildNode("aggregationType") is { } nullNodeAggregationType && nullNodeAggregationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggregationType = null;
+            if (parseNode.GetChildNode("chartStyle") is { } nullNodeChartStyle && nullNodeChartStyle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChartStyle = null;
+            if (parseNode.GetChildNode("cohortLabelStartIndex") is { } nullNodeCohortLabelStartIndex && nullNodeCohortLabelStartIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CohortLabelStartIndex = null;
+            if (parseNode.GetChildNode("cumulative") is { } nullNodeCumulative && nullNodeCumulative.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cumulative = null;
+            if (parseNode.GetChildNode("customAggregationTarget") is { } nullNodeCustomAggregationTarget && nullNodeCustomAggregationTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomAggregationTarget = null;
+            if (parseNode.GetChildNode("dashboardDisplay") is { } nullNodeDashboardDisplay && nullNodeDashboardDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardDisplay = null;
+            if (parseNode.GetChildNode("display") is { } nullNodeDisplay && nullNodeDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Display = null;
+            if (parseNode.GetChildNode("goalLines") is { } nullNodeGoalLines && nullNodeGoalLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoalLines = null;
+            if (parseNode.GetChildNode("meanRetentionCalculation") is { } nullNodeMeanRetentionCalculation && nullNodeMeanRetentionCalculation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeanRetentionCalculation = null;
+            if (parseNode.GetChildNode("minimumOccurrences") is { } nullNodeMinimumOccurrences && nullNodeMinimumOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinimumOccurrences = null;
+            if (parseNode.GetChildNode("period") is { } nullNodePeriod && nullNodePeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Period = null;
+            if (parseNode.GetChildNode("retentionCustomBrackets") is { } nullNodeRetentionCustomBrackets && nullNodeRetentionCustomBrackets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionCustomBrackets = null;
+            if (parseNode.GetChildNode("retentionReference") is { } nullNodeRetentionReference && nullNodeRetentionReference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionReference = null;
+            if (parseNode.GetChildNode("retentionType") is { } nullNodeRetentionType && nullNodeRetentionType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionType = null;
+            if (parseNode.GetChildNode("returningEntity") is { } nullNodeReturningEntity && nullNodeReturningEntity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturningEntity = null;
+            if (parseNode.GetChildNode("selectedInterval") is { } nullNodeSelectedInterval && nullNodeSelectedInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectedInterval = null;
+            if (parseNode.GetChildNode("showMeanLine") is { } nullNodeShowMeanLine && nullNodeShowMeanLine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowMeanLine = null;
+            if (parseNode.GetChildNode("showTrendLines") is { } nullNodeShowTrendLines && nullNodeShowTrendLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTrendLines = null;
+            if (parseNode.GetChildNode("targetEntity") is { } nullNodeTargetEntity && nullNodeTargetEntity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEntity = null;
+            if (parseNode.GetChildNode("timeWindowMode") is { } nullNodeTimeWindowMode && nullNodeTimeWindowMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeWindowMode = null;
+            if (parseNode.GetChildNode("totalIntervals") is { } nullNodeTotalIntervals && nullNodeTotalIntervals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalIntervals = null;
+        }
+
         /// <summary>The property to aggregate when aggregationType is sum or avg</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AggregationProperty { get; set; }
+        public string? AggregationProperty { get => _explicitNullValueAggregationProperty; set { _explicitNullValueAggregationProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregationProperty"); else _explicitNullProperties?.Remove("aggregationProperty"); } }
+        private string? _explicitNullValueAggregationProperty = default!;
 #nullable restore
 #else
-        public string AggregationProperty { get; set; }
+        public string AggregationProperty { get => _explicitNullValueAggregationProperty; set { _explicitNullValueAggregationProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregationProperty"); else _explicitNullProperties?.Remove("aggregationProperty"); } }
+        private string _explicitNullValueAggregationProperty = default!;
 #endif
         /// <summary>The type of property to aggregate on (event, person or data_warehouse). Defaults to event.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType? AggregationPropertyType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType? AggregationPropertyType { get => _explicitNullValueAggregationPropertyType; set { _explicitNullValueAggregationPropertyType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregationPropertyType"); else _explicitNullProperties?.Remove("aggregationPropertyType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType? _explicitNullValueAggregationPropertyType = default!;
         /// <summary>The aggregation type to use for retention</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationType? AggregationType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AggregationType? AggregationType { get => _explicitNullValueAggregationType; set { _explicitNullValueAggregationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregationType"); else _explicitNullProperties?.Remove("aggregationType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AggregationType? _explicitNullValueAggregationType = default!;
         /// <summary>Chart rendering style overrides (line shape).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? _explicitNullValueChartStyle = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle _explicitNullValueChartStyle = default!;
 #endif
         /// <summary>Starting index used when labeling cohort columns (e.g. 0 for D0/D1/D2, 1 for D1/D2/D3). Display-only — does not affect retention calculations.</summary>
-        public int? CohortLabelStartIndex { get; set; }
+        public int? CohortLabelStartIndex { get => _explicitNullValueCohortLabelStartIndex; set { _explicitNullValueCohortLabelStartIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohortLabelStartIndex"); else _explicitNullProperties?.Remove("cohortLabelStartIndex"); } }
+        private int? _explicitNullValueCohortLabelStartIndex = default!;
         /// <summary>The cumulative property</summary>
-        public bool? Cumulative { get; set; }
+        public bool? Cumulative { get => _explicitNullValueCumulative; set { _explicitNullValueCumulative = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cumulative"); else _explicitNullProperties?.Remove("cumulative"); } }
+        private bool? _explicitNullValueCumulative = default!;
         /// <summary>For data warehouse based retention insights when the aggregation target can&apos;t be mapped to persons or groups.</summary>
-        public bool? CustomAggregationTarget { get; set; }
+        public bool? CustomAggregationTarget { get => _explicitNullValueCustomAggregationTarget; set { _explicitNullValueCustomAggregationTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customAggregationTarget"); else _explicitNullProperties?.Remove("customAggregationTarget"); } }
+        private bool? _explicitNullValueCustomAggregationTarget = default!;
         /// <summary>The dashboardDisplay property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType? DashboardDisplay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType? DashboardDisplay { get => _explicitNullValueDashboardDisplay; set { _explicitNullValueDashboardDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboardDisplay"); else _explicitNullProperties?.Remove("dashboardDisplay"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionDashboardDisplayType? _explicitNullValueDashboardDisplay = default!;
         /// <summary>controls the display of the retention graph</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? _explicitNullValueDisplay = default!;
         /// <summary>The goalLines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get => _explicitNullValueGoalLines; set { _explicitNullValueGoalLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goalLines"); else _explicitNullProperties?.Remove("goalLines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? _explicitNullValueGoalLines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get => _explicitNullValueGoalLines; set { _explicitNullValueGoalLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goalLines"); else _explicitNullProperties?.Remove("goalLines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> _explicitNullValueGoalLines = default!;
 #endif
         /// <summary>The meanRetentionCalculation property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation? MeanRetentionCalculation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation? MeanRetentionCalculation { get => _explicitNullValueMeanRetentionCalculation; set { _explicitNullValueMeanRetentionCalculation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meanRetentionCalculation"); else _explicitNullProperties?.Remove("meanRetentionCalculation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MeanRetentionCalculation? _explicitNullValueMeanRetentionCalculation = default!;
         /// <summary>The minimumOccurrences property</summary>
-        public int? MinimumOccurrences { get; set; }
+        public int? MinimumOccurrences { get => _explicitNullValueMinimumOccurrences; set { _explicitNullValueMinimumOccurrences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimumOccurrences"); else _explicitNullProperties?.Remove("minimumOccurrences"); } }
+        private int? _explicitNullValueMinimumOccurrences = default!;
         /// <summary>The period property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod? Period { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod? Period { get => _explicitNullValuePeriod; set { _explicitNullValuePeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period"); else _explicitNullProperties?.Remove("period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionPeriod? _explicitNullValuePeriod = default!;
         /// <summary>Custom brackets for retention calculations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? RetentionCustomBrackets { get; set; }
+        public List<double?>? RetentionCustomBrackets { get => _explicitNullValueRetentionCustomBrackets; set { _explicitNullValueRetentionCustomBrackets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retentionCustomBrackets"); else _explicitNullProperties?.Remove("retentionCustomBrackets"); } }
+        private List<double?>? _explicitNullValueRetentionCustomBrackets = default!;
 #nullable restore
 #else
-        public List<double?> RetentionCustomBrackets { get; set; }
+        public List<double?> RetentionCustomBrackets { get => _explicitNullValueRetentionCustomBrackets; set { _explicitNullValueRetentionCustomBrackets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retentionCustomBrackets"); else _explicitNullProperties?.Remove("retentionCustomBrackets"); } }
+        private List<double?> _explicitNullValueRetentionCustomBrackets = default!;
 #endif
         /// <summary>Whether retention is with regard to initial cohort size, or that of the previous period.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference? RetentionReference { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference? RetentionReference { get => _explicitNullValueRetentionReference; set { _explicitNullValueRetentionReference = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retentionReference"); else _explicitNullProperties?.Remove("retentionReference"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference? _explicitNullValueRetentionReference = default!;
         /// <summary>The retentionType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionType? RetentionType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionType? RetentionType { get => _explicitNullValueRetentionType; set { _explicitNullValueRetentionType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retentionType"); else _explicitNullProperties?.Remove("retentionType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionType? _explicitNullValueRetentionType = default!;
         /// <summary>The returningEntity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? ReturningEntity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? ReturningEntity { get => _explicitNullValueReturningEntity; set { _explicitNullValueReturningEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returningEntity"); else _explicitNullProperties?.Remove("returningEntity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? _explicitNullValueReturningEntity = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity ReturningEntity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity ReturningEntity { get => _explicitNullValueReturningEntity; set { _explicitNullValueReturningEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returningEntity"); else _explicitNullProperties?.Remove("returningEntity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity _explicitNullValueReturningEntity = default!;
 #endif
         /// <summary>The selected interval to display across all cohorts (null = show all intervals for each cohort)</summary>
-        public int? SelectedInterval { get; set; }
+        public int? SelectedInterval { get => _explicitNullValueSelectedInterval; set { _explicitNullValueSelectedInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectedInterval"); else _explicitNullProperties?.Remove("selectedInterval"); } }
+        private int? _explicitNullValueSelectedInterval = default!;
         /// <summary>Draw the mean across cohorts as one line on the retention graph.</summary>
-        public bool? ShowMeanLine { get; set; }
+        public bool? ShowMeanLine { get => _explicitNullValueShowMeanLine; set { _explicitNullValueShowMeanLine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showMeanLine"); else _explicitNullProperties?.Remove("showMeanLine"); } }
+        private bool? _explicitNullValueShowMeanLine = default!;
         /// <summary>The showTrendLines property</summary>
-        public bool? ShowTrendLines { get; set; }
+        public bool? ShowTrendLines { get => _explicitNullValueShowTrendLines; set { _explicitNullValueShowTrendLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTrendLines"); else _explicitNullProperties?.Remove("showTrendLines"); } }
+        private bool? _explicitNullValueShowTrendLines = default!;
         /// <summary>The targetEntity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? TargetEntity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? TargetEntity { get => _explicitNullValueTargetEntity; set { _explicitNullValueTargetEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetEntity"); else _explicitNullProperties?.Remove("targetEntity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? _explicitNullValueTargetEntity = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity TargetEntity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity TargetEntity { get => _explicitNullValueTargetEntity; set { _explicitNullValueTargetEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetEntity"); else _explicitNullProperties?.Remove("targetEntity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity _explicitNullValueTargetEntity = default!;
 #endif
         /// <summary>The time window mode to use for retention calculations</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode? TimeWindowMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode? TimeWindowMode { get => _explicitNullValueTimeWindowMode; set { _explicitNullValueTimeWindowMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeWindowMode"); else _explicitNullProperties?.Remove("timeWindowMode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode? _explicitNullValueTimeWindowMode = default!;
         /// <summary>The totalIntervals property</summary>
-        public int? TotalIntervals { get; set; }
+        public int? TotalIntervals { get => _explicitNullValueTotalIntervals; set { _explicitNullValueTotalIntervals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totalIntervals"); else _explicitNullProperties?.Remove("totalIntervals"); } }
+        private int? _explicitNullValueTotalIntervals = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter"/> and sets the default values.
         /// </summary>
@@ -110,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -174,7 +233,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showTrendLines", ShowTrendLines);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("targetEntity", TargetEntity);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode>("timeWindowMode", TimeWindowMode);
-            writer.WriteIntValue("totalIntervals", TotalIntervals);
+            writer.WriteIntValue("totalIntervals", TotalIntervals);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

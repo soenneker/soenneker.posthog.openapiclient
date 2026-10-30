@@ -11,56 +11,93 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentStatsBaseValidated : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("covariate_sum") is { } nullNodeCovariateSum && nullNodeCovariateSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CovariateSum = null;
+            if (parseNode.GetChildNode("covariate_sum_product") is { } nullNodeCovariateSumProduct && nullNodeCovariateSumProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CovariateSumProduct = null;
+            if (parseNode.GetChildNode("covariate_sum_squares") is { } nullNodeCovariateSumSquares && nullNodeCovariateSumSquares.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CovariateSumSquares = null;
+            if (parseNode.GetChildNode("denominator_sum") is { } nullNodeDenominatorSum && nullNodeDenominatorSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DenominatorSum = null;
+            if (parseNode.GetChildNode("denominator_sum_squares") is { } nullNodeDenominatorSumSquares && nullNodeDenominatorSumSquares.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DenominatorSumSquares = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("number_of_samples") is { } nullNodeNumberOfSamples && nullNodeNumberOfSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumberOfSamples = null;
+            if (parseNode.GetChildNode("numerator_denominator_sum_product") is { } nullNodeNumeratorDenominatorSumProduct && nullNodeNumeratorDenominatorSumProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumeratorDenominatorSumProduct = null;
+            if (parseNode.GetChildNode("step_counts") is { } nullNodeStepCounts && nullNodeStepCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepCounts = null;
+            if (parseNode.GetChildNode("step_sessions") is { } nullNodeStepSessions && nullNodeStepSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepSessions = null;
+            if (parseNode.GetChildNode("sum") is { } nullNodeSum && nullNodeSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sum = null;
+            if (parseNode.GetChildNode("sum_squares") is { } nullNodeSumSquares && nullNodeSumSquares.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SumSquares = null;
+            if (parseNode.GetChildNode("validation_failures") is { } nullNodeValidationFailures && nullNodeValidationFailures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationFailures = null;
+        }
+
         /// <summary>The covariate_sum property</summary>
-        public double? CovariateSum { get; set; }
+        public double? CovariateSum { get => _explicitNullValueCovariateSum; set { _explicitNullValueCovariateSum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("covariate_sum"); else _explicitNullProperties?.Remove("covariate_sum"); } }
+        private double? _explicitNullValueCovariateSum = default!;
         /// <summary>The covariate_sum_product property</summary>
-        public double? CovariateSumProduct { get; set; }
+        public double? CovariateSumProduct { get => _explicitNullValueCovariateSumProduct; set { _explicitNullValueCovariateSumProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("covariate_sum_product"); else _explicitNullProperties?.Remove("covariate_sum_product"); } }
+        private double? _explicitNullValueCovariateSumProduct = default!;
         /// <summary>The covariate_sum_squares property</summary>
-        public double? CovariateSumSquares { get; set; }
+        public double? CovariateSumSquares { get => _explicitNullValueCovariateSumSquares; set { _explicitNullValueCovariateSumSquares = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("covariate_sum_squares"); else _explicitNullProperties?.Remove("covariate_sum_squares"); } }
+        private double? _explicitNullValueCovariateSumSquares = default!;
         /// <summary>The denominator_sum property</summary>
-        public double? DenominatorSum { get; set; }
+        public double? DenominatorSum { get => _explicitNullValueDenominatorSum; set { _explicitNullValueDenominatorSum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_sum"); else _explicitNullProperties?.Remove("denominator_sum"); } }
+        private double? _explicitNullValueDenominatorSum = default!;
         /// <summary>The denominator_sum_squares property</summary>
-        public double? DenominatorSumSquares { get; set; }
+        public double? DenominatorSumSquares { get => _explicitNullValueDenominatorSumSquares; set { _explicitNullValueDenominatorSumSquares = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_sum_squares"); else _explicitNullProperties?.Remove("denominator_sum_squares"); } }
+        private double? _explicitNullValueDenominatorSumSquares = default!;
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get; set; }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string _explicitNullValueKey = default!;
 #endif
         /// <summary>The number_of_samples property</summary>
-        public int? NumberOfSamples { get; set; }
+        public int? NumberOfSamples { get => _explicitNullValueNumberOfSamples; set { _explicitNullValueNumberOfSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number_of_samples"); else _explicitNullProperties?.Remove("number_of_samples"); } }
+        private int? _explicitNullValueNumberOfSamples = default!;
         /// <summary>The numerator_denominator_sum_product property</summary>
-        public double? NumeratorDenominatorSumProduct { get; set; }
+        public double? NumeratorDenominatorSumProduct { get => _explicitNullValueNumeratorDenominatorSumProduct; set { _explicitNullValueNumeratorDenominatorSumProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator_denominator_sum_product"); else _explicitNullProperties?.Remove("numerator_denominator_sum_product"); } }
+        private double? _explicitNullValueNumeratorDenominatorSumProduct = default!;
         /// <summary>The step_counts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? StepCounts { get; set; }
+        public List<int?>? StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
+        private List<int?>? _explicitNullValueStepCounts = default!;
 #nullable restore
 #else
-        public List<int?> StepCounts { get; set; }
+        public List<int?> StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
+        private List<int?> _explicitNullValueStepCounts = default!;
 #endif
         /// <summary>The step_sessions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? StepSessions { get; set; }
+        public UntypedNode? StepSessions { get => _explicitNullValueStepSessions; set { _explicitNullValueStepSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_sessions"); else _explicitNullProperties?.Remove("step_sessions"); } }
+        private UntypedNode? _explicitNullValueStepSessions = default!;
 #nullable restore
 #else
-        public UntypedNode StepSessions { get; set; }
+        public UntypedNode StepSessions { get => _explicitNullValueStepSessions; set { _explicitNullValueStepSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_sessions"); else _explicitNullProperties?.Remove("step_sessions"); } }
+        private UntypedNode _explicitNullValueStepSessions = default!;
 #endif
         /// <summary>The sum property</summary>
-        public double? Sum { get; set; }
+        public double? Sum { get => _explicitNullValueSum; set { _explicitNullValueSum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum"); else _explicitNullProperties?.Remove("sum"); } }
+        private double? _explicitNullValueSum = default!;
         /// <summary>The sum_squares property</summary>
-        public double? SumSquares { get; set; }
+        public double? SumSquares { get => _explicitNullValueSumSquares; set { _explicitNullValueSumSquares = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum_squares"); else _explicitNullProperties?.Remove("sum_squares"); } }
+        private double? _explicitNullValueSumSquares = default!;
         /// <summary>The validation_failures property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure?>? ValidationFailures { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure?>? ValidationFailures { get => _explicitNullValueValidationFailures; set { _explicitNullValueValidationFailures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_failures"); else _explicitNullProperties?.Remove("validation_failures"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure?>? _explicitNullValueValidationFailures = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure?> ValidationFailures { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure?> ValidationFailures { get => _explicitNullValueValidationFailures; set { _explicitNullValueValidationFailures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_failures"); else _explicitNullProperties?.Remove("validation_failures"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure?> _explicitNullValueValidationFailures = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -70,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,7 +151,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("step_sessions", StepSessions);
             writer.WriteDoubleValue("sum", Sum);
             writer.WriteDoubleValue("sum_squares", SumSquares);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure>("validation_failures", ValidationFailures);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsValidationFailure>("validation_failures", ValidationFailures);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activi
     public partial class Available_filtersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The EmptyPathSegment property</summary>
+        [Obsolete("")]
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Available_filters.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Available_filters.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);

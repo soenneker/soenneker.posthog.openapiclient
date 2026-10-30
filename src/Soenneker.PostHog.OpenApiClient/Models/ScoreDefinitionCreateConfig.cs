@@ -8,34 +8,39 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoreDefinitionCreateConfig : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember1? ScoreDefinitionCreateConfigMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf1? ScoreDefinitionCreateConfigOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember1 ScoreDefinitionCreateConfigMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf1 ScoreDefinitionCreateConfigOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember2? ScoreDefinitionCreateConfigMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf2? ScoreDefinitionCreateConfigOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember2 ScoreDefinitionCreateConfigMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf2 ScoreDefinitionCreateConfigOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember3? ScoreDefinitionCreateConfigMember3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf3? ScoreDefinitionCreateConfigOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember3 ScoreDefinitionCreateConfigMember3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf3 ScoreDefinitionCreateConfigOneOf3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -47,7 +52,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfig();
-            return result;
+            if("ScoreDefinitionCreateConfigOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("ScoreDefinitionCreateConfigOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("ScoreDefinitionCreateConfigOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("options") != null && (parseNode.GetChildNode("selection_mode") == null || (parseNode.GetChildNode("selection_mode")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("single".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "multiple".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal))))))();
+            if (result.ScoreDefinitionCreateConfigOneOf1 == null && result.ScoreDefinitionCreateConfigOneOf2 == null && result.ScoreDefinitionCreateConfigOneOf3 == null && matchesUnionBranch0) result.ScoreDefinitionCreateConfigOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf1(), parseNode);
+            if (result.ScoreDefinitionCreateConfigOneOf1 == null && result.ScoreDefinitionCreateConfigOneOf2 == null && result.ScoreDefinitionCreateConfigOneOf3 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,17 +77,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ScoreDefinitionCreateConfigMember1 != null)
+            if(ScoreDefinitionCreateConfigOneOf1 != null)
             {
-                return ScoreDefinitionCreateConfigMember1.GetFieldDeserializers();
+                return ScoreDefinitionCreateConfigOneOf1.GetFieldDeserializers();
             }
-            else if(ScoreDefinitionCreateConfigMember2 != null)
+            else if(ScoreDefinitionCreateConfigOneOf2 != null)
             {
-                return ScoreDefinitionCreateConfigMember2.GetFieldDeserializers();
+                return ScoreDefinitionCreateConfigOneOf2.GetFieldDeserializers();
             }
-            else if(ScoreDefinitionCreateConfigMember3 != null)
+            else if(ScoreDefinitionCreateConfigOneOf3 != null)
             {
-                return ScoreDefinitionCreateConfigMember3.GetFieldDeserializers();
+                return ScoreDefinitionCreateConfigOneOf3.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -75,18 +97,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ScoreDefinitionCreateConfigOneOf1 == null && ScoreDefinitionCreateConfigOneOf2 == null && ScoreDefinitionCreateConfigOneOf3 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ScoreDefinitionCreateConfigOneOf1 != null && ScoreDefinitionCreateConfigOneOf2 == null && ScoreDefinitionCreateConfigOneOf3 == null) { if (ScoreDefinitionCreateConfigOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ScoreDefinitionCreateConfigOneOf1); return; }
+            if (ScoreDefinitionCreateConfigOneOf2 != null && ScoreDefinitionCreateConfigOneOf1 == null && ScoreDefinitionCreateConfigOneOf3 == null) { if (ScoreDefinitionCreateConfigOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ScoreDefinitionCreateConfigOneOf2); return; }
+            if (ScoreDefinitionCreateConfigOneOf3 != null && ScoreDefinitionCreateConfigOneOf1 == null && ScoreDefinitionCreateConfigOneOf2 == null) { if (ScoreDefinitionCreateConfigOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ScoreDefinitionCreateConfigOneOf3); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ScoreDefinitionCreateConfigMember1 != null)
+            if(ScoreDefinitionCreateConfigOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember1>(null, ScoreDefinitionCreateConfigMember1);
+                if (ScoreDefinitionCreateConfigOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf1>(null, ScoreDefinitionCreateConfigOneOf1);
             }
-            else if(ScoreDefinitionCreateConfigMember2 != null)
+            else if(ScoreDefinitionCreateConfigOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember2>(null, ScoreDefinitionCreateConfigMember2);
+                if (ScoreDefinitionCreateConfigOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf2>(null, ScoreDefinitionCreateConfigOneOf2);
             }
-            else if(ScoreDefinitionCreateConfigMember3 != null)
+            else if(ScoreDefinitionCreateConfigOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigMember3>(null, ScoreDefinitionCreateConfigMember3);
+                if (ScoreDefinitionCreateConfigOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionCreateConfigOneOf3>(null, ScoreDefinitionCreateConfigOneOf3);
             }
         }
     }

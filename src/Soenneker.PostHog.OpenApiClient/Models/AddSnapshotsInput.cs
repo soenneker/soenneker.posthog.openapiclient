@@ -11,32 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AddSnapshotsInput : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_hashes") is { } nullNodeBaselineHashes && nullNodeBaselineHashes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineHashes = null;
+            if (parseNode.GetChildNode("snapshots") is { } nullNodeSnapshots && nullNodeSnapshots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snapshots = null;
+            if (parseNode.GetChildNode("story_index_hash") is { } nullNodeStoryIndexHash && nullNodeStoryIndexHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StoryIndexHash = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The baseline_hashes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty? BaselineHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty? BaselineHashes { get => _explicitNullValueBaselineHashes; set { _explicitNullValueBaselineHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_hashes"); else _explicitNullProperties?.Remove("baseline_hashes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty? _explicitNullValueBaselineHashes = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty BaselineHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty BaselineHashes { get => _explicitNullValueBaselineHashes; set { _explicitNullValueBaselineHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_hashes"); else _explicitNullProperties?.Remove("baseline_hashes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty _explicitNullValueBaselineHashes = default!;
 #endif
         /// <summary>The snapshots property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>? Snapshots { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>? Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>? _explicitNullValueSnapshots = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem> Snapshots { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem> Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem> _explicitNullValueSnapshots = default!;
 #endif
         /// <summary>SHA-256 of the story-to-file map the CLI built from the Storybook index.json of this run&apos;s build. Every shard of a run sends the same value. Empty when the run sends no map.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StoryIndexHash { get; set; }
+        public string? StoryIndexHash { get => _explicitNullValueStoryIndexHash; set { _explicitNullValueStoryIndexHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_hash"); else _explicitNullProperties?.Remove("story_index_hash"); } }
+        private string? _explicitNullValueStoryIndexHash = default!;
 #nullable restore
 #else
-        public string StoryIndexHash { get; set; }
+        public string StoryIndexHash { get => _explicitNullValueStoryIndexHash; set { _explicitNullValueStoryIndexHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_hash"); else _explicitNullProperties?.Remove("story_index_hash"); } }
+        private string _explicitNullValueStoryIndexHash = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsInputBaselineHashesProperty>("baseline_hashes", BaselineHashes);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>("snapshots", Snapshots);
             writer.WriteStringValue("story_index_hash", StoryIndexHash);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

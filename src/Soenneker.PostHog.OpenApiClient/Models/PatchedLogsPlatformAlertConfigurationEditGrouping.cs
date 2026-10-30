@@ -12,23 +12,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedLogsPlatformAlertConfigurationEditGrouping : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("keys") is { } nullNodeKeys && nullNodeKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Keys = null;
+            if (parseNode.GetChildNode("max_instances") is { } nullNodeMaxInstances && nullNodeMaxInstances.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxInstances = null;
+            if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
+            if (parseNode.GetChildNode("on_overflow") is { } nullNodeOnOverflow && nullNodeOnOverflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnOverflow = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Result labels whose values make a group, such as service_name. Empty for mode single, required for by_result_labels. Changing them deletes the existing instances and closes their notification threads without a message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Keys { get; set; }
+        public List<string>? Keys { get => _explicitNullValueKeys; set { _explicitNullValueKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keys"); else _explicitNullProperties?.Remove("keys"); } }
+        private List<string>? _explicitNullValueKeys = default!;
 #nullable restore
 #else
-        public List<string> Keys { get; set; }
+        public List<string> Keys { get => _explicitNullValueKeys; set { _explicitNullValueKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keys"); else _explicitNullProperties?.Remove("keys"); } }
+        private List<string> _explicitNullValueKeys = default!;
 #endif
         /// <summary>Most instances the alert keeps at once. Groups past it are not tracked, and the last message says how many were left out.</summary>
-        public int? MaxInstances { get; set; }
+        public int? MaxInstances { get => _explicitNullValueMaxInstances; set { _explicitNullValueMaxInstances = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_instances"); else _explicitNullProperties?.Remove("max_instances"); } }
+        private int? _explicitNullValueMaxInstances = default!;
         /// <summary>* `single` - Single* `by_result_labels` - By result labels</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupingMode? Mode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupingMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GroupingMode? _explicitNullValueMode = default!;
         /// <summary>* `degrade_visible` - Degrade visible</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GroupingOnOverflow? OnOverflow { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GroupingOnOverflow? OnOverflow { get => _explicitNullValueOnOverflow; set { _explicitNullValueOnOverflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("on_overflow"); else _explicitNullProperties?.Remove("on_overflow"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GroupingOnOverflow? _explicitNullValueOnOverflow = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditGrouping"/> and sets the default values.
         /// </summary>
@@ -45,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditGrouping CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditGrouping();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEditGrouping(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("max_instances", MaxInstances);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupingMode>("mode", Mode);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupingOnOverflow>("on_overflow", OnOverflow);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

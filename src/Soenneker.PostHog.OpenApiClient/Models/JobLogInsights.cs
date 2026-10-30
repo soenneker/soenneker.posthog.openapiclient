@@ -11,30 +11,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class JobLogInsights : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("attributed_to_steps") is { } nullNodeAttributedToSteps && nullNodeAttributedToSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributedToSteps = null;
+            if (parseNode.GetChildNode("job") is { } nullNodeJob && nullNodeJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Job = null;
+            if (parseNode.GetChildNode("log_read") is { } nullNodeLogRead && nullNodeLogRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogRead = null;
+            if (parseNode.GetChildNode("log_truncated") is { } nullNodeLogTruncated && nullNodeLogTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogTruncated = null;
+            if (parseNode.GetChildNode("steps") is { } nullNodeSteps && nullNodeSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Steps = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the log&apos;s step markers did not line up with the job&apos;s steps, so the badges are reported for the job only.</summary>
-        public bool? AttributedToSteps { get; set; }
+        public bool? AttributedToSteps { get => _explicitNullValueAttributedToSteps; set { _explicitNullValueAttributedToSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributed_to_steps"); else _explicitNullProperties?.Remove("attributed_to_steps"); } }
+        private bool? _explicitNullValueAttributedToSteps = default!;
         /// <summary>Every badge found in the log, for the job as a whole.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.JobLogBadge>? Job { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.JobLogBadge>? Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.JobLogBadge>? _explicitNullValueJob = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.JobLogBadge> Job { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.JobLogBadge> Job { get => _explicitNullValueJob; set { _explicitNullValueJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job"); else _explicitNullProperties?.Remove("job"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.JobLogBadge> _explicitNullValueJob = default!;
 #endif
         /// <summary>False when no log was read: a Depot CI job, a job the source does not hold, a log GitHub no longer keeps, or a failed fetch. Empty badges then mean &apos;unknown&apos;, not &apos;nothing found&apos;.</summary>
-        public bool? LogRead { get; set; }
+        public bool? LogRead { get => _explicitNullValueLogRead; set { _explicitNullValueLogRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_read"); else _explicitNullProperties?.Remove("log_read"); } }
+        private bool? _explicitNullValueLogRead = default!;
         /// <summary>True when only part of the log was parsed, because the log is too large or its download took too long. The badges are then a lower bound: an outcome in the part that was not parsed is missing.</summary>
-        public bool? LogTruncated { get; set; }
+        public bool? LogTruncated { get => _explicitNullValueLogTruncated; set { _explicitNullValueLogTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_truncated"); else _explicitNullProperties?.Remove("log_truncated"); } }
+        private bool? _explicitNullValueLogTruncated = default!;
         /// <summary>The same badges per step. Only steps with a badge are listed. Empty when `attributed_to_steps` is false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.JobStepLogBadges>? Steps { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.JobStepLogBadges>? Steps { get => _explicitNullValueSteps; set { _explicitNullValueSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("steps"); else _explicitNullProperties?.Remove("steps"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.JobStepLogBadges>? _explicitNullValueSteps = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.JobStepLogBadges> Steps { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.JobStepLogBadges> Steps { get => _explicitNullValueSteps; set { _explicitNullValueSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("steps"); else _explicitNullProperties?.Remove("steps"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.JobStepLogBadges> _explicitNullValueSteps = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.JobLogInsights"/> and sets the default values.
@@ -51,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.JobLogInsights CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.JobLogInsights();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.JobLogInsights(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("log_read", LogRead);
             writer.WriteBoolValue("log_truncated", LogTruncated);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.JobStepLogBadges>("steps", Steps);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

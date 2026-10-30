@@ -11,70 +11,101 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InsightActorsQueryOptionsResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("breakdown") is { } nullNodeBreakdown && nullNodeBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breakdown = null;
+            if (parseNode.GetChildNode("breakdowns") is { } nullNodeBreakdowns && nullNodeBreakdowns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breakdowns = null;
+            if (parseNode.GetChildNode("compare") is { } nullNodeCompare && nullNodeCompare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compare = null;
+            if (parseNode.GetChildNode("day") is { } nullNodeDay && nullNodeDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Day = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("series") is { } nullNodeSeries && nullNodeSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Series = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>The breakdown property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem>? Breakdown { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem>? Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem>? _explicitNullValueBreakdown = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem> Breakdown { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem> Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownItem> _explicitNullValueBreakdown = default!;
 #endif
         /// <summary>The breakdowns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions>? Breakdowns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions>? Breakdowns { get => _explicitNullValueBreakdowns; set { _explicitNullValueBreakdowns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdowns"); else _explicitNullProperties?.Remove("breakdowns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions>? _explicitNullValueBreakdowns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions> Breakdowns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions> Breakdowns { get => _explicitNullValueBreakdowns; set { _explicitNullValueBreakdowns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdowns"); else _explicitNullProperties?.Remove("breakdowns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MultipleBreakdownOptions> _explicitNullValueBreakdowns = default!;
 #endif
         /// <summary>The compare property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem>? Compare { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem>? Compare { get => _explicitNullValueCompare; set { _explicitNullValueCompare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compare"); else _explicitNullProperties?.Remove("compare"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem>? _explicitNullValueCompare = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem> Compare { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem> Compare { get => _explicitNullValueCompare; set { _explicitNullValueCompare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compare"); else _explicitNullProperties?.Remove("compare"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CompareItem> _explicitNullValueCompare = default!;
 #endif
         /// <summary>The day property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayItem>? Day { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayItem>? Day { get => _explicitNullValueDay; set { _explicitNullValueDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("day"); else _explicitNullProperties?.Remove("day"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DayItem>? _explicitNullValueDay = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayItem> Day { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayItem> Day { get => _explicitNullValueDay; set { _explicitNullValueDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("day"); else _explicitNullProperties?.Remove("day"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DayItem> _explicitNullValueDay = default!;
 #endif
         /// <summary>The interval property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem>? Interval { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem>? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem>? _explicitNullValueInterval = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem> Interval { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem> Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem> _explicitNullValueInterval = default!;
 #endif
         /// <summary>The series property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Series>? Series { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Series>? Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.Series>? _explicitNullValueSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Series> Series { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Series> Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.Series> _explicitNullValueSeries = default!;
 #endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem>? Status { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem>? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem>? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem> Status { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem> Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem> _explicitNullValueStatus = default!;
 #endif
         /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -84,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,7 +149,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IntervalItem>("interval", Interval);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Series>("series", Series);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StatusItem>("status", Status);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

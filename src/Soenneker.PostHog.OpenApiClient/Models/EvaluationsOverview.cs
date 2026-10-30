@@ -11,50 +11,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EvaluationsOverview : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("buckets") is { } nullNodeBuckets && nullNodeBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Buckets = null;
+            if (parseNode.GetChildNode("end") is { } nullNodeEnd && nullNodeEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) End = null;
+            if (parseNode.GetChildNode("evaluations") is { } nullNodeEvaluations && nullNodeEvaluations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evaluations = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("passRateOverview") is { } nullNodePassRateOverview && nullNodePassRateOverview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassRateOverview = null;
+            if (parseNode.GetChildNode("previousEnd") is { } nullNodePreviousEnd && nullNodePreviousEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousEnd = null;
+            if (parseNode.GetChildNode("previousStart") is { } nullNodePreviousStart && nullNodePreviousStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousStart = null;
+            if (parseNode.GetChildNode("start") is { } nullNodeStart && nullNodeStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Start = null;
+            if (parseNode.GetChildNode("totals") is { } nullNodeTotals && nullNodeTotals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Totals = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Start of each bucket, in the project&apos;s timezone. Every series is aligned with it. The first bucket can start before `start`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<DateTimeOffset?>? Buckets { get; set; }
+        public List<DateTimeOffset?>? Buckets { get => _explicitNullValueBuckets; set { _explicitNullValueBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buckets"); else _explicitNullProperties?.Remove("buckets"); } }
+        private List<DateTimeOffset?>? _explicitNullValueBuckets = default!;
 #nullable restore
 #else
-        public List<DateTimeOffset?> Buckets { get; set; }
+        public List<DateTimeOffset?> Buckets { get => _explicitNullValueBuckets; set { _explicitNullValueBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buckets"); else _explicitNullProperties?.Remove("buckets"); } }
+        private List<DateTimeOffset?> _explicitNullValueBuckets = default!;
 #endif
         /// <summary>End of the period, exclusive.</summary>
-        public DateTimeOffset? End { get; set; }
+        public DateTimeOffset? End { get => _explicitNullValueEnd; set { _explicitNullValueEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end"); else _explicitNullProperties?.Remove("end"); } }
+        private DateTimeOffset? _explicitNullValueEnd = default!;
         /// <summary>The evaluations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult>? Evaluations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult>? Evaluations { get => _explicitNullValueEvaluations; set { _explicitNullValueEvaluations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluations"); else _explicitNullProperties?.Remove("evaluations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult>? _explicitNullValueEvaluations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult> Evaluations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult> Evaluations { get => _explicitNullValueEvaluations; set { _explicitNullValueEvaluations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluations"); else _explicitNullProperties?.Remove("evaluations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult> _explicitNullValueEvaluations = default!;
 #endif
         /// <summary>`hour` for a period of two days or less, else `day`.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationsOverviewInterval? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationsOverviewInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationsOverviewInterval? _explicitNullValueInterval = default!;
         /// <summary>The passRateOverview property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview? PassRateOverview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview? PassRateOverview { get => _explicitNullValuePassRateOverview; set { _explicitNullValuePassRateOverview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passRateOverview"); else _explicitNullProperties?.Remove("passRateOverview"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview? _explicitNullValuePassRateOverview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview PassRateOverview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview PassRateOverview { get => _explicitNullValuePassRateOverview; set { _explicitNullValuePassRateOverview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passRateOverview"); else _explicitNullProperties?.Remove("passRateOverview"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview _explicitNullValuePassRateOverview = default!;
 #endif
         /// <summary>End of the previous period. While the current period runs, the previous one stops at the same point, so both cover the same length of time.</summary>
-        public DateTimeOffset? PreviousEnd { get; set; }
+        public DateTimeOffset? PreviousEnd { get => _explicitNullValuePreviousEnd; set { _explicitNullValuePreviousEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousEnd"); else _explicitNullProperties?.Remove("previousEnd"); } }
+        private DateTimeOffset? _explicitNullValuePreviousEnd = default!;
         /// <summary>The previousStart property</summary>
-        public DateTimeOffset? PreviousStart { get; set; }
+        public DateTimeOffset? PreviousStart { get => _explicitNullValuePreviousStart; set { _explicitNullValuePreviousStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousStart"); else _explicitNullProperties?.Remove("previousStart"); } }
+        private DateTimeOffset? _explicitNullValuePreviousStart = default!;
         /// <summary>Start of the period, in the project&apos;s timezone.</summary>
-        public DateTimeOffset? Start { get; set; }
-        /// <summary>Totals over the enabled evaluations.</summary>
+        public DateTimeOffset? Start { get => _explicitNullValueStart; set { _explicitNullValueStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start"); else _explicitNullProperties?.Remove("start"); } }
+        private DateTimeOffset? _explicitNullValueStart = default!;
+        /// <summary>Totals over every evaluation&apos;s results in the period, paused ones included.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals? Totals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals? Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals? _explicitNullValueTotals = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals Totals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals _explicitNullValueTotals = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationsOverview"/> and sets the default values.
@@ -71,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EvaluationsOverview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationsOverview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationsOverview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("previousStart", PreviousStart);
             writer.WriteDateTimeOffsetValue("start", Start);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals>("totals", Totals);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

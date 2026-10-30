@@ -46,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedBatchExportList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedBatchExportList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedBatchExportList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedBatchExportList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExport"/></returns>
         /// <param name="body">Request body for create/partial_update on BatchExportViewSet.Mirrors the writeable fields of `BatchExportSerializer` but uses a polymorphic`destination` schema so integration_id is marked required on the types that needit. Responses continue to use `BatchExportSerializer`.</param>
@@ -63,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BatchExport>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BatchExport.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BatchExport>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BatchExport.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

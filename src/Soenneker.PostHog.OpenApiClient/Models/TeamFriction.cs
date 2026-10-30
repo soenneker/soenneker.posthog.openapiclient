@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamFriction : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("github_team") is { } nullNodeGithubTeam && nullNodeGithubTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubTeam = null;
+            if (parseNode.GetChildNode("median_score") is { } nullNodeMedianScore && nullNodeMedianScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianScore = null;
+            if (parseNode.GetChildNode("scored_author_count") is { } nullNodeScoredAuthorCount && nullNodeScoredAuthorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoredAuthorCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>GitHub team slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubTeam { get; set; }
+        public string? GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        private string? _explicitNullValueGithubTeam = default!;
 #nullable restore
 #else
-        public string GithubTeam { get; set; }
+        public string GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        private string _explicitNullValueGithubTeam = default!;
 #endif
         /// <summary>The median friction of the team&apos;s scored members, in &apos;x typical&apos; units.</summary>
-        public double? MedianScore { get; set; }
+        public double? MedianScore { get => _explicitNullValueMedianScore; set { _explicitNullValueMedianScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_score"); else _explicitNullProperties?.Remove("median_score"); } }
+        private double? _explicitNullValueMedianScore = default!;
         /// <summary>Members with enough merged pull requests to score. A team shows only above a floor, so one or two people never read as a team&apos;s figure.</summary>
-        public int? ScoredAuthorCount { get; set; }
+        public int? ScoredAuthorCount { get => _explicitNullValueScoredAuthorCount; set { _explicitNullValueScoredAuthorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scored_author_count"); else _explicitNullProperties?.Remove("scored_author_count"); } }
+        private int? _explicitNullValueScoredAuthorCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("github_team", GithubTeam);
             writer.WriteDoubleValue("median_score", MedianScore);
             writer.WriteIntValue("scored_author_count", ScoredAuthorCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

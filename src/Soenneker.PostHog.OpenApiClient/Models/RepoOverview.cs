@@ -11,220 +11,369 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RepoOverview : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billable_minutes") is { } nullNodeBillableMinutes && nullNodeBillableMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillableMinutes = null;
+            if (parseNode.GetChildNode("billable_minutes_prev") is { } nullNodeBillableMinutesPrev && nullNodeBillableMinutesPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillableMinutesPrev = null;
+            if (parseNode.GetChildNode("cost_per_merge_usd") is { } nullNodeCostPerMergeUsd && nullNodeCostPerMergeUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostPerMergeUsd = null;
+            if (parseNode.GetChildNode("cost_per_merge_usd_prev") is { } nullNodeCostPerMergeUsdPrev && nullNodeCostPerMergeUsdPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostPerMergeUsdPrev = null;
+            if (parseNode.GetChildNode("cost_series") is { } nullNodeCostSeries && nullNodeCostSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostSeries = null;
+            if (parseNode.GetChildNode("cost_series_granularity") is { } nullNodeCostSeriesGranularity && nullNodeCostSeriesGranularity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostSeriesGranularity = null;
+            if (parseNode.GetChildNode("default_branch") is { } nullNodeDefaultBranch && nullNodeDefaultBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultBranch = null;
+            if (parseNode.GetChildNode("delivery_pipeline") is { } nullNodeDeliveryPipeline && nullNodeDeliveryPipeline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeliveryPipeline = null;
+            if (parseNode.GetChildNode("depot_ci_billable_minutes") is { } nullNodeDepotCiBillableMinutes && nullNodeDepotCiBillableMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DepotCiBillableMinutes = null;
+            if (parseNode.GetChildNode("depot_ci_billable_minutes_prev") is { } nullNodeDepotCiBillableMinutesPrev && nullNodeDepotCiBillableMinutesPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DepotCiBillableMinutesPrev = null;
+            if (parseNode.GetChildNode("estimated_cost_usd") is { } nullNodeEstimatedCostUsd && nullNodeEstimatedCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCostUsd = null;
+            if (parseNode.GetChildNode("estimated_cost_usd_prev") is { } nullNodeEstimatedCostUsdPrev && nullNodeEstimatedCostUsdPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCostUsdPrev = null;
+            if (parseNode.GetChildNode("jobs_available") is { } nullNodeJobsAvailable && nullNodeJobsAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobsAvailable = null;
+            if (parseNode.GetChildNode("median_open_to_merge_seconds") is { } nullNodeMedianOpenToMergeSeconds && nullNodeMedianOpenToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianOpenToMergeSeconds = null;
+            if (parseNode.GetChildNode("median_open_to_merge_seconds_prev") is { } nullNodeMedianOpenToMergeSecondsPrev && nullNodeMedianOpenToMergeSecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianOpenToMergeSecondsPrev = null;
+            if (parseNode.GetChildNode("median_ready_to_merge_seconds") is { } nullNodeMedianReadyToMergeSeconds && nullNodeMedianReadyToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianReadyToMergeSeconds = null;
+            if (parseNode.GetChildNode("median_ready_to_merge_seconds_prev") is { } nullNodeMedianReadyToMergeSecondsPrev && nullNodeMedianReadyToMergeSecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianReadyToMergeSecondsPrev = null;
+            if (parseNode.GetChildNode("median_time_to_green_seconds") is { } nullNodeMedianTimeToGreenSeconds && nullNodeMedianTimeToGreenSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianTimeToGreenSeconds = null;
+            if (parseNode.GetChildNode("median_time_to_green_seconds_prev") is { } nullNodeMedianTimeToGreenSecondsPrev && nullNodeMedianTimeToGreenSecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianTimeToGreenSecondsPrev = null;
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("merged_pr_count_prev") is { } nullNodeMergedPrCountPrev && nullNodeMergedPrCountPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCountPrev = null;
+            if (parseNode.GetChildNode("merge_queue_avg_attempts_per_merge") is { } nullNodeMergeQueueAvgAttemptsPerMerge && nullNodeMergeQueueAvgAttemptsPerMerge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueAvgAttemptsPerMerge = null;
+            if (parseNode.GetChildNode("merge_queue_avg_attempts_per_merge_prev") is { } nullNodeMergeQueueAvgAttemptsPerMergePrev && nullNodeMergeQueueAvgAttemptsPerMergePrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueAvgAttemptsPerMergePrev = null;
+            if (parseNode.GetChildNode("merge_queue_billable_minutes") is { } nullNodeMergeQueueBillableMinutes && nullNodeMergeQueueBillableMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueBillableMinutes = null;
+            if (parseNode.GetChildNode("merge_queue_billable_minutes_prev") is { } nullNodeMergeQueueBillableMinutesPrev && nullNodeMergeQueueBillableMinutesPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueBillableMinutesPrev = null;
+            if (parseNode.GetChildNode("merge_queue_failed_gate_merge_share") is { } nullNodeMergeQueueFailedGateMergeShare && nullNodeMergeQueueFailedGateMergeShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueFailedGateMergeShare = null;
+            if (parseNode.GetChildNode("merge_queue_failed_gate_merge_share_prev") is { } nullNodeMergeQueueFailedGateMergeSharePrev && nullNodeMergeQueueFailedGateMergeSharePrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueFailedGateMergeSharePrev = null;
+            if (parseNode.GetChildNode("merge_queue_failed_or_cancelled_share") is { } nullNodeMergeQueueFailedOrCancelledShare && nullNodeMergeQueueFailedOrCancelledShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueFailedOrCancelledShare = null;
+            if (parseNode.GetChildNode("merge_queue_failed_or_cancelled_share_prev") is { } nullNodeMergeQueueFailedOrCancelledSharePrev && nullNodeMergeQueueFailedOrCancelledSharePrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueFailedOrCancelledSharePrev = null;
+            if (parseNode.GetChildNode("merge_queue_median_first_gate_to_merge_seconds") is { } nullNodeMergeQueueMedianFirstGateToMergeSeconds && nullNodeMergeQueueMedianFirstGateToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueMedianFirstGateToMergeSeconds = null;
+            if (parseNode.GetChildNode("merge_queue_median_first_gate_to_merge_seconds_prev") is { } nullNodeMergeQueueMedianFirstGateToMergeSecondsPrev && nullNodeMergeQueueMedianFirstGateToMergeSecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueMedianFirstGateToMergeSecondsPrev = null;
+            if (parseNode.GetChildNode("merge_queue_merged_pr_count") is { } nullNodeMergeQueueMergedPrCount && nullNodeMergeQueueMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueMergedPrCount = null;
+            if (parseNode.GetChildNode("merge_queue_merged_pr_count_prev") is { } nullNodeMergeQueueMergedPrCountPrev && nullNodeMergeQueueMergedPrCountPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueMergedPrCountPrev = null;
+            if (parseNode.GetChildNode("merge_queue_multi_attempt_merge_share") is { } nullNodeMergeQueueMultiAttemptMergeShare && nullNodeMergeQueueMultiAttemptMergeShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueMultiAttemptMergeShare = null;
+            if (parseNode.GetChildNode("merge_queue_multi_attempt_merge_share_prev") is { } nullNodeMergeQueueMultiAttemptMergeSharePrev && nullNodeMergeQueueMultiAttemptMergeSharePrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueMultiAttemptMergeSharePrev = null;
+            if (parseNode.GetChildNode("merge_queue_p90_first_gate_to_merge_seconds") is { } nullNodeMergeQueueP90FirstGateToMergeSeconds && nullNodeMergeQueueP90FirstGateToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueP90FirstGateToMergeSeconds = null;
+            if (parseNode.GetChildNode("merge_queue_p90_first_gate_to_merge_seconds_prev") is { } nullNodeMergeQueueP90FirstGateToMergeSecondsPrev && nullNodeMergeQueueP90FirstGateToMergeSecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueP90FirstGateToMergeSecondsPrev = null;
+            if (parseNode.GetChildNode("merge_queue_p95_first_gate_to_merge_seconds") is { } nullNodeMergeQueueP95FirstGateToMergeSeconds && nullNodeMergeQueueP95FirstGateToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueP95FirstGateToMergeSeconds = null;
+            if (parseNode.GetChildNode("merge_queue_p95_first_gate_to_merge_seconds_prev") is { } nullNodeMergeQueueP95FirstGateToMergeSecondsPrev && nullNodeMergeQueueP95FirstGateToMergeSecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueP95FirstGateToMergeSecondsPrev = null;
+            if (parseNode.GetChildNode("merge_queue_p99_first_gate_to_merge_seconds") is { } nullNodeMergeQueueP99FirstGateToMergeSeconds && nullNodeMergeQueueP99FirstGateToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueP99FirstGateToMergeSeconds = null;
+            if (parseNode.GetChildNode("merge_queue_p99_first_gate_to_merge_seconds_prev") is { } nullNodeMergeQueueP99FirstGateToMergeSecondsPrev && nullNodeMergeQueueP99FirstGateToMergeSecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueP99FirstGateToMergeSecondsPrev = null;
+            if (parseNode.GetChildNode("merge_queue_skip_the_line_count") is { } nullNodeMergeQueueSkipTheLineCount && nullNodeMergeQueueSkipTheLineCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueSkipTheLineCount = null;
+            if (parseNode.GetChildNode("merge_queue_skip_the_line_count_prev") is { } nullNodeMergeQueueSkipTheLineCountPrev && nullNodeMergeQueueSkipTheLineCountPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueSkipTheLineCountPrev = null;
+            if (parseNode.GetChildNode("merge_queue_trunk_available") is { } nullNodeMergeQueueTrunkAvailable && nullNodeMergeQueueTrunkAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueTrunkAvailable = null;
+            if (parseNode.GetChildNode("open_to_merge_series") is { } nullNodeOpenToMergeSeries && nullNodeOpenToMergeSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenToMergeSeries = null;
+            if (parseNode.GetChildNode("open_to_merge_series_granularity") is { } nullNodeOpenToMergeSeriesGranularity && nullNodeOpenToMergeSeriesGranularity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenToMergeSeriesGranularity = null;
+            if (parseNode.GetChildNode("ready_to_merge_series") is { } nullNodeReadyToMergeSeries && nullNodeReadyToMergeSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyToMergeSeries = null;
+            if (parseNode.GetChildNode("ready_to_merge_series_granularity") is { } nullNodeReadyToMergeSeriesGranularity && nullNodeReadyToMergeSeriesGranularity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyToMergeSeriesGranularity = null;
+            if (parseNode.GetChildNode("rerun_cycles") is { } nullNodeRerunCycles && nullNodeRerunCycles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RerunCycles = null;
+            if (parseNode.GetChildNode("rerun_cycles_prev") is { } nullNodeRerunCyclesPrev && nullNodeRerunCyclesPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RerunCyclesPrev = null;
+            if (parseNode.GetChildNode("reverting_pr_count") is { } nullNodeRevertingPrCount && nullNodeRevertingPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevertingPrCount = null;
+            if (parseNode.GetChildNode("reverting_pr_count_prev") is { } nullNodeRevertingPrCountPrev && nullNodeRevertingPrCountPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevertingPrCountPrev = null;
+            if (parseNode.GetChildNode("revert_share") is { } nullNodeRevertShare && nullNodeRevertShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevertShare = null;
+            if (parseNode.GetChildNode("revert_share_prev") is { } nullNodeRevertSharePrev && nullNodeRevertSharePrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevertSharePrev = null;
+            if (parseNode.GetChildNode("revert_share_series") is { } nullNodeRevertShareSeries && nullNodeRevertShareSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevertShareSeries = null;
+            if (parseNode.GetChildNode("revert_share_series_granularity") is { } nullNodeRevertShareSeriesGranularity && nullNodeRevertShareSeriesGranularity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevertShareSeriesGranularity = null;
+            if (parseNode.GetChildNode("run_count") is { } nullNodeRunCount && nullNodeRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCount = null;
+            if (parseNode.GetChildNode("run_count_prev") is { } nullNodeRunCountPrev && nullNodeRunCountPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCountPrev = null;
+            if (parseNode.GetChildNode("success_rate") is { } nullNodeSuccessRate && nullNodeSuccessRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessRate = null;
+            if (parseNode.GetChildNode("success_rate_prev") is { } nullNodeSuccessRatePrev && nullNodeSuccessRatePrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessRatePrev = null;
+            if (parseNode.GetChildNode("success_rate_series") is { } nullNodeSuccessRateSeries && nullNodeSuccessRateSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessRateSeries = null;
+            if (parseNode.GetChildNode("success_rate_series_granularity") is { } nullNodeSuccessRateSeriesGranularity && nullNodeSuccessRateSeriesGranularity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessRateSeriesGranularity = null;
+            if (parseNode.GetChildNode("time_to_green_series") is { } nullNodeTimeToGreenSeries && nullNodeTimeToGreenSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeToGreenSeries = null;
+            if (parseNode.GetChildNode("time_to_green_series_granularity") is { } nullNodeTimeToGreenSeriesGranularity && nullNodeTimeToGreenSeriesGranularity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeToGreenSeriesGranularity = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Billable (self-hosted) job minutes in the window; null when the job-level source isn&apos;t synced.</summary>
-        public double? BillableMinutes { get; set; }
+        public double? BillableMinutes { get => _explicitNullValueBillableMinutes; set { _explicitNullValueBillableMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_minutes"); else _explicitNullProperties?.Remove("billable_minutes"); } }
+        private double? _explicitNullValueBillableMinutes = default!;
         /// <summary>Billable minutes over the previous window; null when the job-level source isn&apos;t synced.</summary>
-        public double? BillableMinutesPrev { get; set; }
+        public double? BillableMinutesPrev { get => _explicitNullValueBillableMinutesPrev; set { _explicitNullValueBillableMinutesPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_minutes_prev"); else _explicitNullProperties?.Remove("billable_minutes_prev"); } }
+        private double? _explicitNullValueBillableMinutesPrev = default!;
         /// <summary>estimated_cost_usd divided by merged_pr_count: the window&apos;s CI cost per merged PR. Null when the job-level source isn&apos;t synced or nothing merged.</summary>
-        public double? CostPerMergeUsd { get; set; }
+        public double? CostPerMergeUsd { get => _explicitNullValueCostPerMergeUsd; set { _explicitNullValueCostPerMergeUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_per_merge_usd"); else _explicitNullProperties?.Remove("cost_per_merge_usd"); } }
+        private double? _explicitNullValueCostPerMergeUsd = default!;
         /// <summary>The same ratio over the previous window. Null when the job-level source isn&apos;t synced or nothing merged.</summary>
-        public double? CostPerMergeUsdPrev { get; set; }
+        public double? CostPerMergeUsdPrev { get => _explicitNullValueCostPerMergeUsdPrev; set { _explicitNullValueCostPerMergeUsdPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_per_merge_usd_prev"); else _explicitNullProperties?.Remove("cost_per_merge_usd_prev"); } }
+        private double? _explicitNullValueCostPerMergeUsdPrev = default!;
         /// <summary>CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn&apos;t synced or include_series=false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket>? CostSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket>? CostSeries { get => _explicitNullValueCostSeries; set { _explicitNullValueCostSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_series"); else _explicitNullProperties?.Remove("cost_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket>? _explicitNullValueCostSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket> CostSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket> CostSeries { get => _explicitNullValueCostSeries; set { _explicitNullValueCostSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_series"); else _explicitNullProperties?.Remove("cost_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket> _explicitNullValueCostSeries = default!;
 #endif
         /// <summary>Bucket width of the cost_series trend, chosen to fit the window: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CostSeriesGranularity { get; set; }
+        public string? CostSeriesGranularity { get => _explicitNullValueCostSeriesGranularity; set { _explicitNullValueCostSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_series_granularity"); else _explicitNullProperties?.Remove("cost_series_granularity"); } }
+        private string? _explicitNullValueCostSeriesGranularity = default!;
 #nullable restore
 #else
-        public string CostSeriesGranularity { get; set; }
+        public string CostSeriesGranularity { get => _explicitNullValueCostSeriesGranularity; set { _explicitNullValueCostSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_series_granularity"); else _explicitNullProperties?.Remove("cost_series_granularity"); } }
+        private string _explicitNullValueCostSeriesGranularity = default!;
 #endif
         /// <summary>&apos;master&apos; or &apos;main&apos;, picked by observed run volume in the window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultBranch { get; set; }
+        public string? DefaultBranch { get => _explicitNullValueDefaultBranch; set { _explicitNullValueDefaultBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_branch"); else _explicitNullProperties?.Remove("default_branch"); } }
+        private string? _explicitNullValueDefaultBranch = default!;
 #nullable restore
 #else
-        public string DefaultBranch { get; set; }
+        public string DefaultBranch { get => _explicitNullValueDefaultBranch; set { _explicitNullValueDefaultBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_branch"); else _explicitNullProperties?.Remove("default_branch"); } }
+        private string _explicitNullValueDefaultBranch = default!;
 #endif
         /// <summary>Where a change&apos;s wall-clock time goes on the way to production, over PRs merged in the window with bots and drafts excluded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline? DeliveryPipeline { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline? DeliveryPipeline { get => _explicitNullValueDeliveryPipeline; set { _explicitNullValueDeliveryPipeline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delivery_pipeline"); else _explicitNullProperties?.Remove("delivery_pipeline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline? _explicitNullValueDeliveryPipeline = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline DeliveryPipeline { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline DeliveryPipeline { get => _explicitNullValueDeliveryPipeline; set { _explicitNullValueDeliveryPipeline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delivery_pipeline"); else _explicitNullProperties?.Remove("delivery_pipeline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RepoOverviewDeliveryPipeline _explicitNullValueDeliveryPipeline = default!;
 #endif
         /// <summary>Slice of billable_minutes from jobs that ran on the Depot CI engine; null when the job-level source isn&apos;t synced.</summary>
-        public double? DepotCiBillableMinutes { get; set; }
+        public double? DepotCiBillableMinutes { get => _explicitNullValueDepotCiBillableMinutes; set { _explicitNullValueDepotCiBillableMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("depot_ci_billable_minutes"); else _explicitNullProperties?.Remove("depot_ci_billable_minutes"); } }
+        private double? _explicitNullValueDepotCiBillableMinutes = default!;
         /// <summary>Depot CI billable minutes over the previous window; null when the job-level source isn&apos;t synced.</summary>
-        public double? DepotCiBillableMinutesPrev { get; set; }
+        public double? DepotCiBillableMinutesPrev { get => _explicitNullValueDepotCiBillableMinutesPrev; set { _explicitNullValueDepotCiBillableMinutesPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("depot_ci_billable_minutes_prev"); else _explicitNullProperties?.Remove("depot_ci_billable_minutes_prev"); } }
+        private double? _explicitNullValueDepotCiBillableMinutesPrev = default!;
         /// <summary>Estimated CI cost in USD (billable minutes x runner-tier rate); null when the job-level source isn&apos;t synced.</summary>
-        public double? EstimatedCostUsd { get; set; }
+        public double? EstimatedCostUsd { get => _explicitNullValueEstimatedCostUsd; set { _explicitNullValueEstimatedCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_cost_usd"); else _explicitNullProperties?.Remove("estimated_cost_usd"); } }
+        private double? _explicitNullValueEstimatedCostUsd = default!;
         /// <summary>Estimated cost over the previous window; null when the job-level source isn&apos;t synced.</summary>
-        public double? EstimatedCostUsdPrev { get; set; }
+        public double? EstimatedCostUsdPrev { get => _explicitNullValueEstimatedCostUsdPrev; set { _explicitNullValueEstimatedCostUsdPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_cost_usd_prev"); else _explicitNullProperties?.Remove("estimated_cost_usd_prev"); } }
+        private double? _explicitNullValueEstimatedCostUsdPrev = default!;
         /// <summary>Whether the job-level source is synced (cost and queue figures exist).</summary>
-        public bool? JobsAvailable { get; set; }
+        public bool? JobsAvailable { get => _explicitNullValueJobsAvailable; set { _explicitNullValueJobsAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs_available"); else _explicitNullProperties?.Remove("jobs_available"); } }
+        private bool? _explicitNullValueJobsAvailable = default!;
         /// <summary>Median merged_at - created_at over PRs merged in the window, bots and drafts excluded. Coarse by design: draft and ready-for-review time are fused. Null when nothing merged.</summary>
-        public double? MedianOpenToMergeSeconds { get; set; }
+        public double? MedianOpenToMergeSeconds { get => _explicitNullValueMedianOpenToMergeSeconds; set { _explicitNullValueMedianOpenToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_open_to_merge_seconds"); else _explicitNullProperties?.Remove("median_open_to_merge_seconds"); } }
+        private double? _explicitNullValueMedianOpenToMergeSeconds = default!;
         /// <summary>The same median over the previous window. Null when nothing merged.</summary>
-        public double? MedianOpenToMergeSecondsPrev { get; set; }
+        public double? MedianOpenToMergeSecondsPrev { get => _explicitNullValueMedianOpenToMergeSecondsPrev; set { _explicitNullValueMedianOpenToMergeSecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_open_to_merge_seconds_prev"); else _explicitNullProperties?.Remove("median_open_to_merge_seconds_prev"); } }
+        private double? _explicitNullValueMedianOpenToMergeSecondsPrev = default!;
         /// <summary>Median per-PR ready_to_merge_seconds (the true cycle time: merged_at minus the last observed ready-for-review transition) over PRs merged in the window, bots and drafts excluded. Null when the issue-events table isn&apos;t synced or no merged PR has an observed value; fall back to median_open_to_merge_seconds and label it open-to-merge.</summary>
-        public double? MedianReadyToMergeSeconds { get; set; }
+        public double? MedianReadyToMergeSeconds { get => _explicitNullValueMedianReadyToMergeSeconds; set { _explicitNullValueMedianReadyToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_ready_to_merge_seconds"); else _explicitNullProperties?.Remove("median_ready_to_merge_seconds"); } }
+        private double? _explicitNullValueMedianReadyToMergeSeconds = default!;
         /// <summary>The same median over the previous window. Null when not observed.</summary>
-        public double? MedianReadyToMergeSecondsPrev { get; set; }
+        public double? MedianReadyToMergeSecondsPrev { get => _explicitNullValueMedianReadyToMergeSecondsPrev; set { _explicitNullValueMedianReadyToMergeSecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_ready_to_merge_seconds_prev"); else _explicitNullProperties?.Remove("median_ready_to_merge_seconds_prev"); } }
+        private double? _explicitNullValueMedianReadyToMergeSecondsPrev = default!;
         /// <summary>Median wall clock for a PR push round to settle fully green over the window: the window-level twin of time_to_green_series, same population and exclusions. Null when no fully green rounds.</summary>
-        public double? MedianTimeToGreenSeconds { get; set; }
+        public double? MedianTimeToGreenSeconds { get => _explicitNullValueMedianTimeToGreenSeconds; set { _explicitNullValueMedianTimeToGreenSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_time_to_green_seconds"); else _explicitNullProperties?.Remove("median_time_to_green_seconds"); } }
+        private double? _explicitNullValueMedianTimeToGreenSeconds = default!;
         /// <summary>The same median over the previous window. Null when no fully green rounds.</summary>
-        public double? MedianTimeToGreenSecondsPrev { get; set; }
+        public double? MedianTimeToGreenSecondsPrev { get => _explicitNullValueMedianTimeToGreenSecondsPrev; set { _explicitNullValueMedianTimeToGreenSecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_time_to_green_seconds_prev"); else _explicitNullProperties?.Remove("median_time_to_green_seconds_prev"); } }
+        private double? _explicitNullValueMedianTimeToGreenSecondsPrev = default!;
         /// <summary>PRs merged in the window, all authors and bots included. billable_minutes and estimated_cost_usd cover every run in the window, including default-branch and unmerged PR runs, so dividing them by this count spreads all CI spend over the merges.</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>Merged-PR count over the previous window.</summary>
-        public int? MergedPrCountPrev { get; set; }
+        public int? MergedPrCountPrev { get => _explicitNullValueMergedPrCountPrev; set { _explicitNullValueMergedPrCountPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count_prev"); else _explicitNullProperties?.Remove("merged_pr_count_prev"); } }
+        private int? _explicitNullValueMergedPrCountPrev = default!;
         /// <summary>Mean distinct gate attempts (distinct gate branches, flake-bisection branches collapsed) per queue-landed merge. Null when no queue-landed merges.</summary>
-        public double? MergeQueueAvgAttemptsPerMerge { get; set; }
+        public double? MergeQueueAvgAttemptsPerMerge { get => _explicitNullValueMergeQueueAvgAttemptsPerMerge; set { _explicitNullValueMergeQueueAvgAttemptsPerMerge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_avg_attempts_per_merge"); else _explicitNullProperties?.Remove("merge_queue_avg_attempts_per_merge"); } }
+        private double? _explicitNullValueMergeQueueAvgAttemptsPerMerge = default!;
         /// <summary>The same mean over the previous window. Null when no queue-landed merges.</summary>
-        public double? MergeQueueAvgAttemptsPerMergePrev { get; set; }
+        public double? MergeQueueAvgAttemptsPerMergePrev { get => _explicitNullValueMergeQueueAvgAttemptsPerMergePrev; set { _explicitNullValueMergeQueueAvgAttemptsPerMergePrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_avg_attempts_per_merge_prev"); else _explicitNullProperties?.Remove("merge_queue_avg_attempts_per_merge_prev"); } }
+        private double? _explicitNullValueMergeQueueAvgAttemptsPerMergePrev = default!;
         /// <summary>Slice of billable_minutes spent on merge-queue batch branches (trunk-merge/**); null when the job-level source isn&apos;t synced.</summary>
-        public double? MergeQueueBillableMinutes { get; set; }
+        public double? MergeQueueBillableMinutes { get => _explicitNullValueMergeQueueBillableMinutes; set { _explicitNullValueMergeQueueBillableMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_billable_minutes"); else _explicitNullProperties?.Remove("merge_queue_billable_minutes"); } }
+        private double? _explicitNullValueMergeQueueBillableMinutes = default!;
         /// <summary>Merge-queue billable minutes over the previous window; null when the job-level source isn&apos;t synced.</summary>
-        public double? MergeQueueBillableMinutesPrev { get; set; }
+        public double? MergeQueueBillableMinutesPrev { get => _explicitNullValueMergeQueueBillableMinutesPrev; set { _explicitNullValueMergeQueueBillableMinutesPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_billable_minutes_prev"); else _explicitNullProperties?.Remove("merge_queue_billable_minutes_prev"); } }
+        private double? _explicitNullValueMergeQueueBillableMinutesPrev = default!;
         /// <summary>Fraction (0-1) of queue-landed merges with at least one failed gate run before merging. Derived from CI run conclusions, not the queue&apos;s own eviction records. Null when no queue-landed merges.</summary>
-        public double? MergeQueueFailedGateMergeShare { get; set; }
+        public double? MergeQueueFailedGateMergeShare { get => _explicitNullValueMergeQueueFailedGateMergeShare; set { _explicitNullValueMergeQueueFailedGateMergeShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_failed_gate_merge_share"); else _explicitNullProperties?.Remove("merge_queue_failed_gate_merge_share"); } }
+        private double? _explicitNullValueMergeQueueFailedGateMergeShare = default!;
         /// <summary>The same fraction over the previous window. Null when no queue-landed merges.</summary>
-        public double? MergeQueueFailedGateMergeSharePrev { get; set; }
+        public double? MergeQueueFailedGateMergeSharePrev { get => _explicitNullValueMergeQueueFailedGateMergeSharePrev; set { _explicitNullValueMergeQueueFailedGateMergeSharePrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_failed_gate_merge_share_prev"); else _explicitNullProperties?.Remove("merge_queue_failed_gate_merge_share_prev"); } }
+        private double? _explicitNullValueMergeQueueFailedGateMergeSharePrev = default!;
         /// <summary>Fraction (0-1) of concluded queue entries (merged, failed, or cancelled) that ended failed or cancelled, from the queue&apos;s own records. Windowed on each entry&apos;s last state change. Null when the Trunk source isn&apos;t synced or nothing concluded.</summary>
-        public double? MergeQueueFailedOrCancelledShare { get; set; }
+        public double? MergeQueueFailedOrCancelledShare { get => _explicitNullValueMergeQueueFailedOrCancelledShare; set { _explicitNullValueMergeQueueFailedOrCancelledShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_failed_or_cancelled_share"); else _explicitNullProperties?.Remove("merge_queue_failed_or_cancelled_share"); } }
+        private double? _explicitNullValueMergeQueueFailedOrCancelledShare = default!;
         /// <summary>The same fraction over the previous window. Null when the Trunk source isn&apos;t synced or nothing concluded.</summary>
-        public double? MergeQueueFailedOrCancelledSharePrev { get; set; }
+        public double? MergeQueueFailedOrCancelledSharePrev { get => _explicitNullValueMergeQueueFailedOrCancelledSharePrev; set { _explicitNullValueMergeQueueFailedOrCancelledSharePrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_failed_or_cancelled_share_prev"); else _explicitNullProperties?.Remove("merge_queue_failed_or_cancelled_share_prev"); } }
+        private double? _explicitNullValueMergeQueueFailedOrCancelledSharePrev = default!;
         /// <summary>Median seconds from a PR&apos;s first observed merge-queue gate run starting to the PR merging. Pending time before gate testing starts is not included. Null when no queue-landed merges.</summary>
-        public double? MergeQueueMedianFirstGateToMergeSeconds { get; set; }
+        public double? MergeQueueMedianFirstGateToMergeSeconds { get => _explicitNullValueMergeQueueMedianFirstGateToMergeSeconds; set { _explicitNullValueMergeQueueMedianFirstGateToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_median_first_gate_to_merge_seconds"); else _explicitNullProperties?.Remove("merge_queue_median_first_gate_to_merge_seconds"); } }
+        private double? _explicitNullValueMergeQueueMedianFirstGateToMergeSeconds = default!;
         /// <summary>The same median over the previous window. Null when no queue-landed merges.</summary>
-        public double? MergeQueueMedianFirstGateToMergeSecondsPrev { get; set; }
+        public double? MergeQueueMedianFirstGateToMergeSecondsPrev { get => _explicitNullValueMergeQueueMedianFirstGateToMergeSecondsPrev; set { _explicitNullValueMergeQueueMedianFirstGateToMergeSecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_median_first_gate_to_merge_seconds_prev"); else _explicitNullProperties?.Remove("merge_queue_median_first_gate_to_merge_seconds_prev"); } }
+        private double? _explicitNullValueMergeQueueMedianFirstGateToMergeSecondsPrev = default!;
         /// <summary>PRs merged in the window with at least one corroborated merge-queue gate run: the population behind every merge_queue_* landing stat. All authors, bots included.</summary>
-        public int? MergeQueueMergedPrCount { get; set; }
+        public int? MergeQueueMergedPrCount { get => _explicitNullValueMergeQueueMergedPrCount; set { _explicitNullValueMergeQueueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_merged_pr_count"); else _explicitNullProperties?.Remove("merge_queue_merged_pr_count"); } }
+        private int? _explicitNullValueMergeQueueMergedPrCount = default!;
         /// <summary>Queue-landed merges over the previous window.</summary>
-        public int? MergeQueueMergedPrCountPrev { get; set; }
+        public int? MergeQueueMergedPrCountPrev { get => _explicitNullValueMergeQueueMergedPrCountPrev; set { _explicitNullValueMergeQueueMergedPrCountPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_merged_pr_count_prev"); else _explicitNullProperties?.Remove("merge_queue_merged_pr_count_prev"); } }
+        private int? _explicitNullValueMergeQueueMergedPrCountPrev = default!;
         /// <summary>Fraction (0-1) of queue-landed merges that needed more than one gate attempt. Null when no queue-landed merges.</summary>
-        public double? MergeQueueMultiAttemptMergeShare { get; set; }
+        public double? MergeQueueMultiAttemptMergeShare { get => _explicitNullValueMergeQueueMultiAttemptMergeShare; set { _explicitNullValueMergeQueueMultiAttemptMergeShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_multi_attempt_merge_share"); else _explicitNullProperties?.Remove("merge_queue_multi_attempt_merge_share"); } }
+        private double? _explicitNullValueMergeQueueMultiAttemptMergeShare = default!;
         /// <summary>The same fraction over the previous window. Null when no queue-landed merges.</summary>
-        public double? MergeQueueMultiAttemptMergeSharePrev { get; set; }
+        public double? MergeQueueMultiAttemptMergeSharePrev { get => _explicitNullValueMergeQueueMultiAttemptMergeSharePrev; set { _explicitNullValueMergeQueueMultiAttemptMergeSharePrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_multi_attempt_merge_share_prev"); else _explicitNullProperties?.Remove("merge_queue_multi_attempt_merge_share_prev"); } }
+        private double? _explicitNullValueMergeQueueMultiAttemptMergeSharePrev = default!;
         /// <summary>p90 of the same first-gate-run-to-merge measure: the tail, where queue pain concentrates. Null when no queue-landed merges.</summary>
-        public double? MergeQueueP90FirstGateToMergeSeconds { get; set; }
+        public double? MergeQueueP90FirstGateToMergeSeconds { get => _explicitNullValueMergeQueueP90FirstGateToMergeSeconds; set { _explicitNullValueMergeQueueP90FirstGateToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_p90_first_gate_to_merge_seconds"); else _explicitNullProperties?.Remove("merge_queue_p90_first_gate_to_merge_seconds"); } }
+        private double? _explicitNullValueMergeQueueP90FirstGateToMergeSeconds = default!;
         /// <summary>The same p90 over the previous window. Null when no queue-landed merges.</summary>
-        public double? MergeQueueP90FirstGateToMergeSecondsPrev { get; set; }
+        public double? MergeQueueP90FirstGateToMergeSecondsPrev { get => _explicitNullValueMergeQueueP90FirstGateToMergeSecondsPrev; set { _explicitNullValueMergeQueueP90FirstGateToMergeSecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_p90_first_gate_to_merge_seconds_prev"); else _explicitNullProperties?.Remove("merge_queue_p90_first_gate_to_merge_seconds_prev"); } }
+        private double? _explicitNullValueMergeQueueP90FirstGateToMergeSecondsPrev = default!;
         /// <summary>p95 of the same first-gate-run-to-merge measure. Null when no queue-landed merges.</summary>
-        public double? MergeQueueP95FirstGateToMergeSeconds { get; set; }
+        public double? MergeQueueP95FirstGateToMergeSeconds { get => _explicitNullValueMergeQueueP95FirstGateToMergeSeconds; set { _explicitNullValueMergeQueueP95FirstGateToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_p95_first_gate_to_merge_seconds"); else _explicitNullProperties?.Remove("merge_queue_p95_first_gate_to_merge_seconds"); } }
+        private double? _explicitNullValueMergeQueueP95FirstGateToMergeSeconds = default!;
         /// <summary>The same p95 over the previous window. Null when no queue-landed merges.</summary>
-        public double? MergeQueueP95FirstGateToMergeSecondsPrev { get; set; }
+        public double? MergeQueueP95FirstGateToMergeSecondsPrev { get => _explicitNullValueMergeQueueP95FirstGateToMergeSecondsPrev; set { _explicitNullValueMergeQueueP95FirstGateToMergeSecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_p95_first_gate_to_merge_seconds_prev"); else _explicitNullProperties?.Remove("merge_queue_p95_first_gate_to_merge_seconds_prev"); } }
+        private double? _explicitNullValueMergeQueueP95FirstGateToMergeSecondsPrev = default!;
         /// <summary>p99 of the same first-gate-run-to-merge measure. Null when no queue-landed merges.</summary>
-        public double? MergeQueueP99FirstGateToMergeSeconds { get; set; }
+        public double? MergeQueueP99FirstGateToMergeSeconds { get => _explicitNullValueMergeQueueP99FirstGateToMergeSeconds; set { _explicitNullValueMergeQueueP99FirstGateToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_p99_first_gate_to_merge_seconds"); else _explicitNullProperties?.Remove("merge_queue_p99_first_gate_to_merge_seconds"); } }
+        private double? _explicitNullValueMergeQueueP99FirstGateToMergeSeconds = default!;
         /// <summary>The same p99 over the previous window. Null when no queue-landed merges.</summary>
-        public double? MergeQueueP99FirstGateToMergeSecondsPrev { get; set; }
+        public double? MergeQueueP99FirstGateToMergeSecondsPrev { get => _explicitNullValueMergeQueueP99FirstGateToMergeSecondsPrev; set { _explicitNullValueMergeQueueP99FirstGateToMergeSecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_p99_first_gate_to_merge_seconds_prev"); else _explicitNullProperties?.Remove("merge_queue_p99_first_gate_to_merge_seconds_prev"); } }
+        private double? _explicitNullValueMergeQueueP99FirstGateToMergeSecondsPrev = default!;
         /// <summary>Queue entries flagged skip-the-line (prioritized past the queue order) in the window, whatever state they reached. Null when the Trunk source isn&apos;t synced.</summary>
-        public int? MergeQueueSkipTheLineCount { get; set; }
+        public int? MergeQueueSkipTheLineCount { get => _explicitNullValueMergeQueueSkipTheLineCount; set { _explicitNullValueMergeQueueSkipTheLineCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_skip_the_line_count"); else _explicitNullProperties?.Remove("merge_queue_skip_the_line_count"); } }
+        private int? _explicitNullValueMergeQueueSkipTheLineCount = default!;
         /// <summary>Skip-the-line entries over the previous window. Null when the Trunk source isn&apos;t synced.</summary>
-        public int? MergeQueueSkipTheLineCountPrev { get; set; }
+        public int? MergeQueueSkipTheLineCountPrev { get => _explicitNullValueMergeQueueSkipTheLineCountPrev; set { _explicitNullValueMergeQueueSkipTheLineCountPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_skip_the_line_count_prev"); else _explicitNullProperties?.Remove("merge_queue_skip_the_line_count_prev"); } }
+        private int? _explicitNullValueMergeQueueSkipTheLineCountPrev = default!;
         /// <summary>Whether the team&apos;s TrunkIo warehouse source has the opt-in merge-queue endpoint synced and readable by the requesting user. When false, every merge_queue_failed_or_cancelled_* and merge_queue_skip_the_line_* field is null; fall back to merge_queue_failed_gate_merge_share.</summary>
-        public bool? MergeQueueTrunkAvailable { get; set; }
+        public bool? MergeQueueTrunkAvailable { get => _explicitNullValueMergeQueueTrunkAvailable; set { _explicitNullValueMergeQueueTrunkAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_trunk_available"); else _explicitNullProperties?.Remove("merge_queue_trunk_available"); } }
+        private bool? _explicitNullValueMergeQueueTrunkAvailable = default!;
         /// <summary>Median time-to-merge (p50 open_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by open_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket>? OpenToMergeSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket>? OpenToMergeSeries { get => _explicitNullValueOpenToMergeSeries; set { _explicitNullValueOpenToMergeSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge_series"); else _explicitNullProperties?.Remove("open_to_merge_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket>? _explicitNullValueOpenToMergeSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket> OpenToMergeSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket> OpenToMergeSeries { get => _explicitNullValueOpenToMergeSeries; set { _explicitNullValueOpenToMergeSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge_series"); else _explicitNullProperties?.Remove("open_to_merge_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OpenToMergeBucket> _explicitNullValueOpenToMergeSeries = default!;
 #endif
         /// <summary>Bucket width of the open_to_merge_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OpenToMergeSeriesGranularity { get; set; }
+        public string? OpenToMergeSeriesGranularity { get => _explicitNullValueOpenToMergeSeriesGranularity; set { _explicitNullValueOpenToMergeSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge_series_granularity"); else _explicitNullProperties?.Remove("open_to_merge_series_granularity"); } }
+        private string? _explicitNullValueOpenToMergeSeriesGranularity = default!;
 #nullable restore
 #else
-        public string OpenToMergeSeriesGranularity { get; set; }
+        public string OpenToMergeSeriesGranularity { get => _explicitNullValueOpenToMergeSeriesGranularity; set { _explicitNullValueOpenToMergeSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge_series_granularity"); else _explicitNullProperties?.Remove("open_to_merge_series_granularity"); } }
+        private string _explicitNullValueOpenToMergeSeriesGranularity = default!;
 #endif
         /// <summary>Median cycle time (p50 per-PR ready_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by ready_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when the issue-events table isn&apos;t synced or include_series=false, so fall back to open_to_merge_series.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeBucket>? ReadyToMergeSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeBucket>? ReadyToMergeSeries { get => _explicitNullValueReadyToMergeSeries; set { _explicitNullValueReadyToMergeSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_to_merge_series"); else _explicitNullProperties?.Remove("ready_to_merge_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeBucket>? _explicitNullValueReadyToMergeSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeBucket> ReadyToMergeSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeBucket> ReadyToMergeSeries { get => _explicitNullValueReadyToMergeSeries; set { _explicitNullValueReadyToMergeSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_to_merge_series"); else _explicitNullProperties?.Remove("ready_to_merge_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeBucket> _explicitNullValueReadyToMergeSeries = default!;
 #endif
         /// <summary>Bucket width of the ready_to_merge_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReadyToMergeSeriesGranularity { get; set; }
+        public string? ReadyToMergeSeriesGranularity { get => _explicitNullValueReadyToMergeSeriesGranularity; set { _explicitNullValueReadyToMergeSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_to_merge_series_granularity"); else _explicitNullProperties?.Remove("ready_to_merge_series_granularity"); } }
+        private string? _explicitNullValueReadyToMergeSeriesGranularity = default!;
 #nullable restore
 #else
-        public string ReadyToMergeSeriesGranularity { get; set; }
+        public string ReadyToMergeSeriesGranularity { get => _explicitNullValueReadyToMergeSeriesGranularity; set { _explicitNullValueReadyToMergeSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_to_merge_series_granularity"); else _explicitNullProperties?.Remove("ready_to_merge_series_granularity"); } }
+        private string _explicitNullValueReadyToMergeSeriesGranularity = default!;
 #endif
         /// <summary>Runs in the window that were a 2nd+ attempt (attempt &gt; 1).</summary>
-        public int? RerunCycles { get; set; }
+        public int? RerunCycles { get => _explicitNullValueRerunCycles; set { _explicitNullValueRerunCycles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerun_cycles"); else _explicitNullProperties?.Remove("rerun_cycles"); } }
+        private int? _explicitNullValueRerunCycles = default!;
         /// <summary>Re-run cycles over the previous window.</summary>
-        public int? RerunCyclesPrev { get; set; }
+        public int? RerunCyclesPrev { get => _explicitNullValueRerunCyclesPrev; set { _explicitNullValueRerunCyclesPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerun_cycles_prev"); else _explicitNullProperties?.Remove("rerun_cycles_prev"); } }
+        private int? _explicitNullValueRerunCyclesPrev = default!;
         /// <summary>PRs merged in the window whose title names a revert: GitHub&apos;s &apos;Revert &quot;...&quot;&apos; or a conventional-commit &apos;revert: ...&apos; / &apos;revert(scope): ...&apos; title. Counts the revert when it merges, not the change it undid, which may have merged in an earlier window. Same population as merged_pr_count.</summary>
-        public int? RevertingPrCount { get; set; }
+        public int? RevertingPrCount { get => _explicitNullValueRevertingPrCount; set { _explicitNullValueRevertingPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reverting_pr_count"); else _explicitNullProperties?.Remove("reverting_pr_count"); } }
+        private int? _explicitNullValueRevertingPrCount = default!;
         /// <summary>Reverting-PR count over the previous window.</summary>
-        public int? RevertingPrCountPrev { get; set; }
+        public int? RevertingPrCountPrev { get => _explicitNullValueRevertingPrCountPrev; set { _explicitNullValueRevertingPrCountPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reverting_pr_count_prev"); else _explicitNullProperties?.Remove("reverting_pr_count_prev"); } }
+        private int? _explicitNullValueRevertingPrCountPrev = default!;
         /// <summary>reverting_pr_count divided by merged_pr_count: the share of merges that undid an earlier merge. The guardrail to watch when review requirements are loosened. Null when nothing merged.</summary>
-        public double? RevertShare { get; set; }
+        public double? RevertShare { get => _explicitNullValueRevertShare; set { _explicitNullValueRevertShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revert_share"); else _explicitNullProperties?.Remove("revert_share"); } }
+        private double? _explicitNullValueRevertShare = default!;
         /// <summary>The same share over the previous window. Null when nothing merged.</summary>
-        public double? RevertSharePrev { get; set; }
+        public double? RevertSharePrev { get => _explicitNullValueRevertSharePrev; set { _explicitNullValueRevertSharePrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revert_share_prev"); else _explicitNullProperties?.Remove("revert_share_prev"); } }
+        private double? _explicitNullValueRevertSharePrev = default!;
         /// <summary>Reverting merges over all merges (all authors, bots included) per bucket across the window, oldest first, zero-filled, bucketed by revert_share_series_granularity. Empty buckets carry a null share; the whole series is empty when include_series=false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket>? RevertShareSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket>? RevertShareSeries { get => _explicitNullValueRevertShareSeries; set { _explicitNullValueRevertShareSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revert_share_series"); else _explicitNullProperties?.Remove("revert_share_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket>? _explicitNullValueRevertShareSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket> RevertShareSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket> RevertShareSeries { get => _explicitNullValueRevertShareSeries; set { _explicitNullValueRevertShareSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revert_share_series"); else _explicitNullProperties?.Remove("revert_share_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket> _explicitNullValueRevertShareSeries = default!;
 #endif
         /// <summary>Bucket width of the revert_share_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RevertShareSeriesGranularity { get; set; }
+        public string? RevertShareSeriesGranularity { get => _explicitNullValueRevertShareSeriesGranularity; set { _explicitNullValueRevertShareSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revert_share_series_granularity"); else _explicitNullProperties?.Remove("revert_share_series_granularity"); } }
+        private string? _explicitNullValueRevertShareSeriesGranularity = default!;
 #nullable restore
 #else
-        public string RevertShareSeriesGranularity { get; set; }
+        public string RevertShareSeriesGranularity { get => _explicitNullValueRevertShareSeriesGranularity; set { _explicitNullValueRevertShareSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revert_share_series_granularity"); else _explicitNullProperties?.Remove("revert_share_series_granularity"); } }
+        private string _explicitNullValueRevertShareSeriesGranularity = default!;
 #endif
         /// <summary>Workflow runs started in the window, all branches and workflows.</summary>
-        public int? RunCount { get; set; }
+        public int? RunCount { get => _explicitNullValueRunCount; set { _explicitNullValueRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_count"); else _explicitNullProperties?.Remove("run_count"); } }
+        private int? _explicitNullValueRunCount = default!;
         /// <summary>Same count over the equal-length window immediately before date_from: the delta baseline.</summary>
-        public int? RunCountPrev { get; set; }
+        public int? RunCountPrev { get => _explicitNullValueRunCountPrev; set { _explicitNullValueRunCountPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_count_prev"); else _explicitNullProperties?.Remove("run_count_prev"); } }
+        private int? _explicitNullValueRunCountPrev = default!;
         /// <summary>Fraction of conclusive runs that succeeded (0-1) in the window. Skipped, cancelled, neutral, and action_required runs are excluded. Null if no run reached a verdict.</summary>
-        public double? SuccessRate { get; set; }
+        public double? SuccessRate { get => _explicitNullValueSuccessRate; set { _explicitNullValueSuccessRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_rate"); else _explicitNullProperties?.Remove("success_rate"); } }
+        private double? _explicitNullValueSuccessRate = default!;
         /// <summary>Conclusive-run success rate over the previous window. Null if no run reached a verdict.</summary>
-        public double? SuccessRatePrev { get; set; }
+        public double? SuccessRatePrev { get => _explicitNullValueSuccessRatePrev; set { _explicitNullValueSuccessRatePrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_rate_prev"); else _explicitNullProperties?.Remove("success_rate_prev"); } }
+        private double? _explicitNullValueSuccessRatePrev = default!;
         /// <summary>CI pass rate (conclusive runs that succeeded, all branches) per bucket across the window, oldest first, bucketed by success_rate_series_granularity. Skipped, cancelled, neutral, and action_required runs are excluded. Empty buckets carry null; the whole series is empty when include_series=false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket>? SuccessRateSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket>? SuccessRateSeries { get => _explicitNullValueSuccessRateSeries; set { _explicitNullValueSuccessRateSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_rate_series"); else _explicitNullProperties?.Remove("success_rate_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket>? _explicitNullValueSuccessRateSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket> SuccessRateSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket> SuccessRateSeries { get => _explicitNullValueSuccessRateSeries; set { _explicitNullValueSuccessRateSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_rate_series"); else _explicitNullProperties?.Remove("success_rate_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateBucket> _explicitNullValueSuccessRateSeries = default!;
 #endif
         /// <summary>Bucket width of the success_rate_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuccessRateSeriesGranularity { get; set; }
+        public string? SuccessRateSeriesGranularity { get => _explicitNullValueSuccessRateSeriesGranularity; set { _explicitNullValueSuccessRateSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_rate_series_granularity"); else _explicitNullProperties?.Remove("success_rate_series_granularity"); } }
+        private string? _explicitNullValueSuccessRateSeriesGranularity = default!;
 #nullable restore
 #else
-        public string SuccessRateSeriesGranularity { get; set; }
+        public string SuccessRateSeriesGranularity { get => _explicitNullValueSuccessRateSeriesGranularity; set { _explicitNullValueSuccessRateSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_rate_series_granularity"); else _explicitNullProperties?.Remove("success_rate_series_granularity"); } }
+        private string _explicitNullValueSuccessRateSeriesGranularity = default!;
 #endif
         /// <summary>Median time-to-green (p50 wall clock for a PR push round to settle fully green) per bucket across the window, oldest first, bucketed by time_to_green_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TimeToGreenBucket>? TimeToGreenSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TimeToGreenBucket>? TimeToGreenSeries { get => _explicitNullValueTimeToGreenSeries; set { _explicitNullValueTimeToGreenSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_to_green_series"); else _explicitNullProperties?.Remove("time_to_green_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TimeToGreenBucket>? _explicitNullValueTimeToGreenSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TimeToGreenBucket> TimeToGreenSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TimeToGreenBucket> TimeToGreenSeries { get => _explicitNullValueTimeToGreenSeries; set { _explicitNullValueTimeToGreenSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_to_green_series"); else _explicitNullProperties?.Remove("time_to_green_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TimeToGreenBucket> _explicitNullValueTimeToGreenSeries = default!;
 #endif
         /// <summary>Bucket width of the time_to_green_series trend: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TimeToGreenSeriesGranularity { get; set; }
+        public string? TimeToGreenSeriesGranularity { get => _explicitNullValueTimeToGreenSeriesGranularity; set { _explicitNullValueTimeToGreenSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_to_green_series_granularity"); else _explicitNullProperties?.Remove("time_to_green_series_granularity"); } }
+        private string? _explicitNullValueTimeToGreenSeriesGranularity = default!;
 #nullable restore
 #else
-        public string TimeToGreenSeriesGranularity { get; set; }
+        public string TimeToGreenSeriesGranularity { get => _explicitNullValueTimeToGreenSeriesGranularity; set { _explicitNullValueTimeToGreenSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_to_green_series_granularity"); else _explicitNullProperties?.Remove("time_to_green_series_granularity"); } }
+        private string _explicitNullValueTimeToGreenSeriesGranularity = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RepoOverview"/> and sets the default values.
@@ -241,7 +390,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RepoOverview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RepoOverview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RepoOverview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -388,6 +537,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("success_rate_series_granularity", SuccessRateSeriesGranularity);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TimeToGreenBucket>("time_to_green_series", TimeToGreenSeries);
             writer.WriteStringValue("time_to_green_series_granularity", TimeToGreenSeriesGranularity);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

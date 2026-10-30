@@ -12,21 +12,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FileDownloadDestinationFileConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("compression") is { } nullNodeCompression && nullNodeCompression.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compression = null;
+            if (parseNode.GetChildNode("format") is { } nullNodeFormat && nullNodeFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Format = null;
+            if (parseNode.GetChildNode("max_size_mb") is { } nullNodeMaxSizeMb && nullNodeMaxSizeMb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSizeMb = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Compress the file with a supported compression format* `zstd` - zstd* `gzip` - gzip* `brotli` - brotli* `lz4` - lz4* `snappy` - snappy</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression? Compression { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression? Compression { get => _explicitNullValueCompression; set { _explicitNullValueCompression = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compression"); else _explicitNullProperties?.Remove("compression"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression? _explicitNullValueCompression = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression Compression { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression Compression { get => _explicitNullValueCompression; set { _explicitNullValueCompression = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compression"); else _explicitNullProperties?.Remove("compression"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression _explicitNullValueCompression = default!;
 #endif
         /// <summary>* `Parquet` - Parquet* `JSONLines` - JSONLines</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat? Format { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat? Format { get => _explicitNullValueFormat; set { _explicitNullValueFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("format"); else _explicitNullProperties?.Remove("format"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat? _explicitNullValueFormat = default!;
         /// <summary>Split the download into files of about this size in MiB. A file can go a little over. Set it to null or 0 to write a single file of any size.</summary>
-        public int? MaxSizeMb { get; set; }
+        public int? MaxSizeMb { get => _explicitNullValueMaxSizeMb; set { _explicitNullValueMaxSizeMb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_size_mb"); else _explicitNullProperties?.Remove("max_size_mb"); } }
+        private int? _explicitNullValueMaxSizeMb = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig"/> and sets the default values.
         /// </summary>
@@ -43,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigCompression>("compression", Compression);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfigFormat>("format", Format);
             writer.WriteIntValue("max_size_mb", MaxSizeMb);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

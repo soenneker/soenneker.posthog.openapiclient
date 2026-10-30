@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_saved_quer
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Resume materialization for several models that were suspended after repeated failures.Accepts a list of view IDs in the request body: {&quot;view_ids&quot;: [&quot;id1&quot;, &quot;id2&quot;, ...]}This endpoint is idempotent - calling it on models that are already running is safe.

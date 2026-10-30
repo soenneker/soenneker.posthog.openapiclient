@@ -11,19 +11,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WorkflowHealthBucket : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bucket_start") is { } nullNodeBucketStart && nullNodeBucketStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketStart = null;
+            if (parseNode.GetChildNode("completed") is { } nullNodeCompleted && nullNodeCompleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Completed = null;
+            if (parseNode.GetChildNode("failures") is { } nullNodeFailures && nullNodeFailures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Failures = null;
+            if (parseNode.GetChildNode("run_count") is { } nullNodeRunCount && nullNodeRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCount = null;
+            if (parseNode.GetChildNode("successes") is { } nullNodeSuccesses && nullNodeSuccesses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Successes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bucket start, aligned to the item&apos;s granularity (top of hour, midnight, or Monday).</summary>
-        public DateTimeOffset? BucketStart { get; set; }
+        public DateTimeOffset? BucketStart { get => _explicitNullValueBucketStart; set { _explicitNullValueBucketStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_start"); else _explicitNullProperties?.Remove("bucket_start"); } }
+        private DateTimeOffset? _explicitNullValueBucketStart = default!;
         /// <summary>Runs that completed in this bucket.</summary>
-        public int? Completed { get; set; }
+        public int? Completed { get => _explicitNullValueCompleted; set { _explicitNullValueCompleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed"); else _explicitNullProperties?.Remove("completed"); } }
+        private int? _explicitNullValueCompleted = default!;
         /// <summary>Completed runs with conclusion &apos;failure&apos;, &apos;timed_out&apos;, &apos;startup_failure&apos;, or &apos;stale&apos;. Skipped, cancelled, neutral, and action_required runs are excluded.</summary>
-        public int? Failures { get; set; }
+        public int? Failures { get => _explicitNullValueFailures; set { _explicitNullValueFailures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failures"); else _explicitNullProperties?.Remove("failures"); } }
+        private int? _explicitNullValueFailures = default!;
         /// <summary>Runs started in this bucket.</summary>
-        public int? RunCount { get; set; }
+        public int? RunCount { get => _explicitNullValueRunCount; set { _explicitNullValueRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_count"); else _explicitNullProperties?.Remove("run_count"); } }
+        private int? _explicitNullValueRunCount = default!;
         /// <summary>Completed runs with conclusion &apos;success&apos; in this bucket.</summary>
-        public int? Successes { get; set; }
+        public int? Successes { get => _explicitNullValueSuccesses; set { _explicitNullValueSuccesses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("successes"); else _explicitNullProperties?.Remove("successes"); } }
+        private int? _explicitNullValueSuccesses = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthBucket"/> and sets the default values.
         /// </summary>
@@ -39,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthBucket CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthBucket();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowHealthBucket(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("failures", Failures);
             writer.WriteIntValue("run_count", RunCount);
             writer.WriteIntValue("successes", Successes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

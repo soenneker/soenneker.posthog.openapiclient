@@ -39,6 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 400 status code</exception>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 401 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 402 status code</exception>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 403 status code</exception>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 404 status code</exception>
         /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError">When receiving a 409 status code</exception>
@@ -59,11 +60,14 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "401", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "402", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "413", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UploadReceipt>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UploadReceipt.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

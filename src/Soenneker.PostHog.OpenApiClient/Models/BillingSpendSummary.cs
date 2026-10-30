@@ -12,43 +12,64 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BillingSpendSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billing_period") is { } nullNodeBillingPeriod && nullNodeBillingPeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingPeriod = null;
+            if (parseNode.GetChildNode("current_total_amount_usd") is { } nullNodeCurrentTotalAmountUsd && nullNodeCurrentTotalAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentTotalAmountUsd = null;
+            if (parseNode.GetChildNode("current_total_amount_usd_after_discount") is { } nullNodeCurrentTotalAmountUsdAfterDiscount && nullNodeCurrentTotalAmountUsdAfterDiscount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentTotalAmountUsdAfterDiscount = null;
+            if (parseNode.GetChildNode("products") is { } nullNodeProducts && nullNodeProducts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Products = null;
+            if (parseNode.GetChildNode("usage_reported_through") is { } nullNodeUsageReportedThrough && nullNodeUsageReportedThrough.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageReportedThrough = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The billing_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? BillingPeriod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? _explicitNullValueBillingPeriod = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod BillingPeriod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod _explicitNullValueBillingPeriod = default!;
 #endif
         /// <summary>The current_total_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentTotalAmountUsd { get; set; }
+        public string? CurrentTotalAmountUsd { get => _explicitNullValueCurrentTotalAmountUsd; set { _explicitNullValueCurrentTotalAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_total_amount_usd"); else _explicitNullProperties?.Remove("current_total_amount_usd"); } }
+        private string? _explicitNullValueCurrentTotalAmountUsd = default!;
 #nullable restore
 #else
-        public string CurrentTotalAmountUsd { get; set; }
+        public string CurrentTotalAmountUsd { get => _explicitNullValueCurrentTotalAmountUsd; set { _explicitNullValueCurrentTotalAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_total_amount_usd"); else _explicitNullProperties?.Remove("current_total_amount_usd"); } }
+        private string _explicitNullValueCurrentTotalAmountUsd = default!;
 #endif
         /// <summary>The current_total_amount_usd_after_discount property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentTotalAmountUsdAfterDiscount { get; set; }
+        public string? CurrentTotalAmountUsdAfterDiscount { get => _explicitNullValueCurrentTotalAmountUsdAfterDiscount; set { _explicitNullValueCurrentTotalAmountUsdAfterDiscount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_total_amount_usd_after_discount"); else _explicitNullProperties?.Remove("current_total_amount_usd_after_discount"); } }
+        private string? _explicitNullValueCurrentTotalAmountUsdAfterDiscount = default!;
 #nullable restore
 #else
-        public string CurrentTotalAmountUsdAfterDiscount { get; set; }
+        public string CurrentTotalAmountUsdAfterDiscount { get => _explicitNullValueCurrentTotalAmountUsdAfterDiscount; set { _explicitNullValueCurrentTotalAmountUsdAfterDiscount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_total_amount_usd_after_discount"); else _explicitNullProperties?.Remove("current_total_amount_usd_after_discount"); } }
+        private string _explicitNullValueCurrentTotalAmountUsdAfterDiscount = default!;
 #endif
         /// <summary>The products property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductSpend>? Products { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductSpend>? Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ProductSpend>? _explicitNullValueProducts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductSpend> Products { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductSpend> Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ProductSpend> _explicitNullValueProducts = default!;
 #endif
         /// <summary>The usage_reported_through property</summary>
-        public Date? UsageReportedThrough { get; set; }
+        public Date? UsageReportedThrough { get => _explicitNullValueUsageReportedThrough; set { _explicitNullValueUsageReportedThrough = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_reported_through"); else _explicitNullProperties?.Remove("usage_reported_through"); } }
+        private Date? _explicitNullValueUsageReportedThrough = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BillingSpendSummary"/> and sets the default values.
         /// </summary>
@@ -64,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BillingSpendSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BillingSpendSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BillingSpendSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("current_total_amount_usd_after_discount", CurrentTotalAmountUsdAfterDiscount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ProductSpend>("products", Products);
             writer.WriteDateValue("usage_reported_through", UsageReportedThrough);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

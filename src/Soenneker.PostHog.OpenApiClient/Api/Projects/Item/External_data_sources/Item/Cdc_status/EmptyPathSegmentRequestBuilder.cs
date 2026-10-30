@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CdcStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CdcStatus.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CdcStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CdcStatus.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Live CDC health for an existing source: slot/publication existence and WAL lag.Reads from the source DB via the engine adapter. Returns ``{&quot;enabled&quot;: false}``when CDC is off, or the stored config plus live ``slot_exists`` /``publication_exists`` / ``lag_bytes`` when on. 400s if the source DB isunreachable so the UI can show a degraded/unreachable state.

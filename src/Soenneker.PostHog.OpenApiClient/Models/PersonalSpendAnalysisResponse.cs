@@ -12,72 +12,103 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PersonalSpendAnalysisResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("by_bucket") is { } nullNodeByBucket && nullNodeByBucket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByBucket = null;
+            if (parseNode.GetChildNode("by_day") is { } nullNodeByDay && nullNodeByDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByDay = null;
+            if (parseNode.GetChildNode("by_day_model") is { } nullNodeByDayModel && nullNodeByDayModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByDayModel = null;
+            if (parseNode.GetChildNode("by_model") is { } nullNodeByModel && nullNodeByModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByModel = null;
+            if (parseNode.GetChildNode("by_product") is { } nullNodeByProduct && nullNodeByProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByProduct = null;
+            if (parseNode.GetChildNode("by_tool") is { } nullNodeByTool && nullNodeByTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByTool = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("top_traces") is { } nullNodeTopTraces && nullNodeTopTraces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopTraces = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Spend grouped by UTC time bucket with per-bucket cost/token components, ordered ascending. Scoped to `product`. Only present when the request set `bucket_minutes`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket? ByBucket { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket? ByBucket { get => _explicitNullValueByBucket; set { _explicitNullValueByBucket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_bucket"); else _explicitNullProperties?.Remove("by_bucket"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket? _explicitNullValueByBucket = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket ByBucket { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket ByBucket { get => _explicitNullValueByBucket; set { _explicitNullValueByBucket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_bucket"); else _explicitNullProperties?.Remove("by_bucket"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByBucket _explicitNullValueByBucket = default!;
 #endif
         /// <summary>Spend grouped by UTC day, ordered ascending. Scoped to `product`. Not subject to `limit`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay? ByDay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay? ByDay { get => _explicitNullValueByDay; set { _explicitNullValueByDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_day"); else _explicitNullProperties?.Remove("by_day"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay? _explicitNullValueByDay = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay ByDay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay ByDay { get => _explicitNullValueByDay; set { _explicitNullValueByDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_day"); else _explicitNullProperties?.Remove("by_day"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByDay _explicitNullValueByDay = default!;
 #endif
         /// <summary>Daily model spend for the scoped product, ordered by day and cost. Includes the six highest-cost models in the selected window plus a null-model row for the remaining models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow>? ByDayModel { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow>? ByDayModel { get => _explicitNullValueByDayModel; set { _explicitNullValueByDayModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_day_model"); else _explicitNullProperties?.Remove("by_day_model"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow>? _explicitNullValueByDayModel = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow> ByDayModel { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow> ByDayModel { get => _explicitNullValueByDayModel; set { _explicitNullValueByDayModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_day_model"); else _explicitNullProperties?.Remove("by_day_model"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DayModelBreakdownRow> _explicitNullValueByDayModel = default!;
 #endif
         /// <summary>Spend grouped by `$ai_model`. Scoped to `product` when set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel? ByModel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel? ByModel { get => _explicitNullValueByModel; set { _explicitNullValueByModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_model"); else _explicitNullProperties?.Remove("by_model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel? _explicitNullValueByModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel ByModel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel ByModel { get => _explicitNullValueByModel; set { _explicitNullValueByModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_model"); else _explicitNullProperties?.Remove("by_model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByModel _explicitNullValueByModel = default!;
 #endif
         /// <summary>Spend grouped by the `ai_product` property — always across all products, never filtered.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct? ByProduct { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct? ByProduct { get => _explicitNullValueByProduct; set { _explicitNullValueByProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_product"); else _explicitNullProperties?.Remove("by_product"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct? _explicitNullValueByProduct = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct ByProduct { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct ByProduct { get => _explicitNullValueByProduct; set { _explicitNullValueByProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_product"); else _explicitNullProperties?.Remove("by_product"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByProduct _explicitNullValueByProduct = default!;
 #endif
         /// <summary>Spend grouped by tool. Scoped to `product` when set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool? ByTool { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool? ByTool { get => _explicitNullValueByTool; set { _explicitNullValueByTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_tool"); else _explicitNullProperties?.Remove("by_tool"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool? _explicitNullValueByTool = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool ByTool { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool ByTool { get => _explicitNullValueByTool; set { _explicitNullValueByTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_tool"); else _explicitNullProperties?.Remove("by_tool"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool _explicitNullValueByTool = default!;
 #endif
         /// <summary>High-level totals for the lookback window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>Deprecated — always returns `{items: [], truncated: false}`. Trace IDs are opaque strings that aren&apos;t actionable in the UI. Kept in the response shape so existing consumers don&apos;t crash; remove your rendering of this field and we&apos;ll drop it from the response entirely in a follow-up.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces? TopTraces { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces? TopTraces { get => _explicitNullValueTopTraces; set { _explicitNullValueTopTraces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_traces"); else _explicitNullProperties?.Remove("top_traces"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces? _explicitNullValueTopTraces = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces TopTraces { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces TopTraces { get => _explicitNullValueTopTraces; set { _explicitNullValueTopTraces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_traces"); else _explicitNullProperties?.Remove("top_traces"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces _explicitNullValueTopTraces = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse"/> and sets the default values.
@@ -94,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,6 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseByTool>("by_tool", ByTool);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary>("summary", Summary);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseTopTraces>("top_traces", TopTraces);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

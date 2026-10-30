@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetail>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetail.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetail>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetail.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// One merged pull request&apos;s friction as a multiple of the typical pull request, with the counts behind it: red CI by cause, re-runs that failed again, CI time per push, the wait for the first approval, merge-queue time and failed queue attempts, and rework. Covers pull requests merged in the last 30 days.

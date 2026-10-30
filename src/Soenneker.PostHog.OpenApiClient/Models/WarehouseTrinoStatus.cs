@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WarehouseTrinoStatus : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("connection") is { } nullNodeConnection && nullNodeConnection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connection = null;
+            if (parseNode.GetChildNode("ready_at") is { } nullNodeReadyAt && nullNodeReadyAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyAt = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Trino connection target. Null until Trino is ready and reachable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoConnection? Connection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoConnection? Connection { get => _explicitNullValueConnection; set { _explicitNullValueConnection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection"); else _explicitNullProperties?.Remove("connection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoConnection? _explicitNullValueConnection = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoConnection Connection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoConnection Connection { get => _explicitNullValueConnection; set { _explicitNullValueConnection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection"); else _explicitNullProperties?.Remove("connection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoConnection _explicitNullValueConnection = default!;
 #endif
         /// <summary>When Trino became ready for the organization</summary>
-        public DateTimeOffset? ReadyAt { get; set; }
+        public DateTimeOffset? ReadyAt { get => _explicitNullValueReadyAt; set { _explicitNullValueReadyAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_at"); else _explicitNullProperties?.Remove("ready_at"); } }
+        private DateTimeOffset? _explicitNullValueReadyAt = default!;
         /// <summary>* `not_enabled` - not_enabled* `pending` - pending* `provisioning` - provisioning* `ready` - ready* `failed` - failed* `unavailable` - unavailable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatusState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatusState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatusState? _explicitNullValueState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoConnection>("connection", Connection);
             writer.WriteDateTimeOffsetValue("ready_at", ReadyAt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatusState>("state", State);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

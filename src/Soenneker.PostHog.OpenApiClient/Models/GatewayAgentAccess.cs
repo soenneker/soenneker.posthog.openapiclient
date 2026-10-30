@@ -12,48 +12,75 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GatewayAgentAccess : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("granted_by") is { } nullNodeGrantedBy && nullNodeGrantedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrantedBy = null;
+            if (parseNode.GetChildNode("handle") is { } nullNodeHandle && nullNodeHandle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Handle = null;
+            if (parseNode.GetChildNode("last_active_at") is { } nullNodeLastActiveAt && nullNodeLastActiveAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastActiveAt = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("service_account_id") is { } nullNodeServiceAccountId && nullNodeServiceAccountId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceAccountId = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Member who shared this server with the agent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? GrantedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? GrantedBy { get => _explicitNullValueGrantedBy; set { _explicitNullValueGrantedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granted_by"); else _explicitNullProperties?.Remove("granted_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? _explicitNullValueGrantedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic GrantedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic GrantedBy { get => _explicitNullValueGrantedBy; set { _explicitNullValueGrantedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("granted_by"); else _explicitNullProperties?.Remove("granted_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasic _explicitNullValueGrantedBy = default!;
 #endif
         /// <summary>Agent identity handle, e.g. posthog-support.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Handle { get; set; }
+        public string? Handle { get => _explicitNullValueHandle; set { _explicitNullValueHandle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("handle"); else _explicitNullProperties?.Remove("handle"); } }
+        private string? _explicitNullValueHandle = default!;
 #nullable restore
 #else
-        public string Handle { get; set; }
+        public string Handle { get => _explicitNullValueHandle; set { _explicitNullValueHandle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("handle"); else _explicitNullProperties?.Remove("handle"); } }
+        private string _explicitNullValueHandle = default!;
 #endif
         /// <summary>When the agent last made a call.</summary>
-        public DateTimeOffset? LastActiveAt { get; set; }
+        public DateTimeOffset? LastActiveAt { get => _explicitNullValueLastActiveAt; set { _explicitNullValueLastActiveAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_active_at"); else _explicitNullProperties?.Remove("last_active_at"); } }
+        private DateTimeOffset? _explicitNullValueLastActiveAt = default!;
         /// <summary>Agent display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>* `personal` - Personal* `team` - Team</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope? Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessScope? _explicitNullValueScope = default!;
         /// <summary>Service account granted access.</summary>
-        public Guid? ServiceAccountId { get; set; }
+        public Guid? ServiceAccountId { get => _explicitNullValueServiceAccountId; set { _explicitNullValueServiceAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_account_id"); else _explicitNullProperties?.Remove("service_account_id"); } }
+        private Guid? _explicitNullValueServiceAccountId = default!;
         /// <summary>* `active` - Active* `paused` - Paused</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus? _explicitNullValueStatus = default!;
         /// <summary>The member whose connection the agent uses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser? User { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser User { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser _explicitNullValueUser = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccess"/> and sets the default values.
@@ -70,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccess CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccess();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccess(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -105,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("service_account_id", ServiceAccountId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayAgentAccessUser>("user", User);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

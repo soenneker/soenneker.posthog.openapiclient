@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Legal_documents
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Short-lived redirect to the signed PDF in object storage. 404 while theenvelope is still out for signature (or if the upload hasn&apos;t completedyet). The underlying presigned URL expires in ~60s; clients should hitthis endpoint each time they want to view the PDF rather than caching.

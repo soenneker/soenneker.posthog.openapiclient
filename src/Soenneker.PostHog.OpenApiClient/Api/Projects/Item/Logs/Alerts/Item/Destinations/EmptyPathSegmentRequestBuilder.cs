@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Alerts.Item.Des
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a notification destination for this alert. One HogFunction is created per alert event kind (firing, resolved, ...) atomically. A PagerDuty destination gets the incident opened and incident closed kinds instead. They follow every start and end of a firing, cooldown included, so each incident it opens is resolved.

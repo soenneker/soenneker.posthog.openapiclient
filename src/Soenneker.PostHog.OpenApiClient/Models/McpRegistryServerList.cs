@@ -11,64 +11,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class McpRegistryServerList : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("auth_method") is { } nullNodeAuthMethod && nullNodeAuthMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthMethod = null;
+            if (parseNode.GetChildNode("canonical_url") is { } nullNodeCanonicalUrl && nullNodeCanonicalUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanonicalUrl = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("is_measured") is { } nullNodeIsMeasured && nullNodeIsMeasured.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsMeasured = null;
+            if (parseNode.GetChildNode("listed_in_registry") is { } nullNodeListedInRegistry && nullNodeListedInRegistry.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ListedInRegistry = null;
+            if (parseNode.GetChildNode("liveness") is { } nullNodeLiveness && nullNodeLiveness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Liveness = null;
+            if (parseNode.GetChildNode("rank_score") is { } nullNodeRankScore && nullNodeRankScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RankScore = null;
+            if (parseNode.GetChildNode("registry_name") is { } nullNodeRegistryName && nullNodeRegistryName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegistryName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Detected auth method (none, oauth, api_key, unknown).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuthMethod { get; set; }
+        public string? AuthMethod { get => _explicitNullValueAuthMethod; set { _explicitNullValueAuthMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_method"); else _explicitNullProperties?.Remove("auth_method"); } }
+        private string? _explicitNullValueAuthMethod = default!;
 #nullable restore
 #else
-        public string AuthMethod { get; set; }
+        public string AuthMethod { get => _explicitNullValueAuthMethod; set { _explicitNullValueAuthMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_method"); else _explicitNullProperties?.Remove("auth_method"); } }
+        private string _explicitNullValueAuthMethod = default!;
 #endif
         /// <summary>Primary hosted remote URL; empty for package-only servers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CanonicalUrl { get; set; }
+        public string? CanonicalUrl { get => _explicitNullValueCanonicalUrl; set { _explicitNullValueCanonicalUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canonical_url"); else _explicitNullProperties?.Remove("canonical_url"); } }
+        private string? _explicitNullValueCanonicalUrl = default!;
 #nullable restore
 #else
-        public string CanonicalUrl { get; set; }
+        public string CanonicalUrl { get => _explicitNullValueCanonicalUrl; set { _explicitNullValueCanonicalUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canonical_url"); else _explicitNullProperties?.Remove("canonical_url"); } }
+        private string _explicitNullValueCanonicalUrl = default!;
 #endif
         /// <summary>Server description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Human-readable server name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Registry server id.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Whether real usage signal exists via MCP Analytics.</summary>
-        public bool? IsMeasured { get; set; }
+        public bool? IsMeasured { get => _explicitNullValueIsMeasured; set { _explicitNullValueIsMeasured = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_measured"); else _explicitNullProperties?.Remove("is_measured"); } }
+        private bool? _explicitNullValueIsMeasured = default!;
         /// <summary>Whether the server appears in the official MCP registry.</summary>
-        public bool? ListedInRegistry { get; set; }
+        public bool? ListedInRegistry { get => _explicitNullValueListedInRegistry; set { _explicitNullValueListedInRegistry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("listed_in_registry"); else _explicitNullProperties?.Remove("listed_in_registry"); } }
+        private bool? _explicitNullValueListedInRegistry = default!;
         /// <summary>Probed liveness state (alive_open, alive_auth, dead, ...).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Liveness { get; set; }
+        public string? Liveness { get => _explicitNullValueLiveness; set { _explicitNullValueLiveness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liveness"); else _explicitNullProperties?.Remove("liveness"); } }
+        private string? _explicitNullValueLiveness = default!;
 #nullable restore
 #else
-        public string Liveness { get; set; }
+        public string Liveness { get => _explicitNullValueLiveness; set { _explicitNullValueLiveness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liveness"); else _explicitNullProperties?.Remove("liveness"); } }
+        private string _explicitNullValueLiveness = default!;
 #endif
         /// <summary>Static score under the requested ranking version; null when the version has no completed run.</summary>
-        public double? RankScore { get; set; }
+        public double? RankScore { get => _explicitNullValueRankScore; set { _explicitNullValueRankScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank_score"); else _explicitNullProperties?.Remove("rank_score"); } }
+        private double? _explicitNullValueRankScore = default!;
         /// <summary>Reverse-DNS name in the official MCP registry; empty for measured-only servers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RegistryName { get; set; }
+        public string? RegistryName { get => _explicitNullValueRegistryName; set { _explicitNullValueRegistryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("registry_name"); else _explicitNullProperties?.Remove("registry_name"); } }
+        private string? _explicitNullValueRegistryName = default!;
 #nullable restore
 #else
-        public string RegistryName { get; set; }
+        public string RegistryName { get => _explicitNullValueRegistryName; set { _explicitNullValueRegistryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("registry_name"); else _explicitNullProperties?.Remove("registry_name"); } }
+        private string _explicitNullValueRegistryName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpRegistryServerList"/> and sets the default values.
@@ -85,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.McpRegistryServerList CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.McpRegistryServerList();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.McpRegistryServerList(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -124,6 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("liveness", Liveness);
             writer.WriteDoubleValue("rank_score", RankScore);
             writer.WriteStringValue("registry_name", RegistryName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

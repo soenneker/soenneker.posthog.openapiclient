@@ -63,6 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Manag
                 { "501", global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringErrorResponse.CreateFromDiscriminatorValue },
                 { "502", global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringErrorResponse.CreateFromDiscriminatorValue },
                 { "504", global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

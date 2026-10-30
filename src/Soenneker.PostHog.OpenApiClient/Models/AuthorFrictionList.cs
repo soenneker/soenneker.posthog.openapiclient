@@ -11,41 +11,65 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AuthorFrictionList : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("available") is { } nullNodeAvailable && nullNodeAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Available = null;
+            if (parseNode.GetChildNode("github_team") is { } nullNodeGithubTeam && nullNodeGithubTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubTeam = null;
+            if (parseNode.GetChildNode("has_membership_data") is { } nullNodeHasMembershipData && nullNodeHasMembershipData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMembershipData = null;
+            if (parseNode.GetChildNode("items") is { } nullNodeItems && nullNodeItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Items = null;
+            if (parseNode.GetChildNode("ranked_author_count") is { } nullNodeRankedAuthorCount && nullNodeRankedAuthorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RankedAuthorCount = null;
+            if (parseNode.GetChildNode("teams") is { } nullNodeTeams && nullNodeTeams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Teams = null;
+            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the per-PR friction view does not exist yet: it needs a GitHub source with workflow runs, workflow jobs and pull requests synced.</summary>
-        public bool? Available { get; set; }
+        public bool? Available { get => _explicitNullValueAvailable; set { _explicitNullValueAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available"); else _explicitNullProperties?.Remove("available"); } }
+        private bool? _explicitNullValueAvailable = default!;
         /// <summary>The team the list is filtered to, or null for every author.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubTeam { get; set; }
+        public string? GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        private string? _explicitNullValueGithubTeam = default!;
 #nullable restore
 #else
-        public string GithubTeam { get; set; }
+        public string GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        private string _explicitNullValueGithubTeam = default!;
 #endif
         /// <summary>False when the team membership table isn&apos;t synced, so a team filter matches nobody.</summary>
-        public bool? HasMembershipData { get; set; }
+        public bool? HasMembershipData { get => _explicitNullValueHasMembershipData; set { _explicitNullValueHasMembershipData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_membership_data"); else _explicitNullProperties?.Remove("has_membership_data"); } }
+        private bool? _explicitNullValueHasMembershipData = default!;
         /// <summary>Authors by friction, most first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction>? Items { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction>? Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction>? _explicitNullValueItems = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction> Items { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction> Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction> _explicitNullValueItems = default!;
 #endif
         /// <summary>Authors with at least 3 merged pull requests, all ranked together. A team list keeps these repository-wide ranks.</summary>
-        public int? RankedAuthorCount { get; set; }
+        public int? RankedAuthorCount { get => _explicitNullValueRankedAuthorCount; set { _explicitNullValueRankedAuthorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranked_author_count"); else _explicitNullProperties?.Remove("ranked_author_count"); } }
+        private int? _explicitNullValueRankedAuthorCount = default!;
         /// <summary>Teams with at least 3 scored members, by median member friction, most first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction>? Teams { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction>? Teams { get => _explicitNullValueTeams; set { _explicitNullValueTeams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teams"); else _explicitNullProperties?.Remove("teams"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction>? _explicitNullValueTeams = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction> Teams { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction> Teams { get => _explicitNullValueTeams; set { _explicitNullValueTeams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teams"); else _explicitNullProperties?.Remove("teams"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction> _explicitNullValueTeams = default!;
 #endif
         /// <summary>Pull requests merged in this many days before the view last refreshed.</summary>
-        public int? WindowDays { get; set; }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionList"/> and sets the default values.
         /// </summary>
@@ -61,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionList CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionList();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionList(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -94,6 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("ranked_author_count", RankedAuthorCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction>("teams", Teams);
             writer.WriteIntValue("window_days", WindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

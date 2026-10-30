@@ -11,32 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportKeyClauses : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("impact") is { } nullNodeImpact && nullNodeImpact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Impact = null;
+            if (parseNode.GetChildNode("lead") is { } nullNodeLead && nullNodeLead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lead = null;
+            if (parseNode.GetChildNode("proposal") is { } nullNodeProposal && nullNodeProposal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Proposal = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The clauses that state the problem or its cause in the impact sentence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? Impact { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? _explicitNullValueImpact = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> Impact { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> _explicitNullValueImpact = default!;
 #endif
         /// <summary>The clauses that state the problem or its cause in the lead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? Lead { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? Lead { get => _explicitNullValueLead; set { _explicitNullValueLead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead"); else _explicitNullProperties?.Remove("lead"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? _explicitNullValueLead = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> Lead { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> Lead { get => _explicitNullValueLead; set { _explicitNullValueLead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead"); else _explicitNullProperties?.Remove("lead"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> _explicitNullValueLead = default!;
 #endif
         /// <summary>The clause that states the fix in the proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? Proposal { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? Proposal { get => _explicitNullValueProposal; set { _explicitNullValueProposal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposal"); else _explicitNullProperties?.Remove("proposal"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>? _explicitNullValueProposal = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> Proposal { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> Proposal { get => _explicitNullValueProposal; set { _explicitNullValueProposal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposal"); else _explicitNullProperties?.Remove("proposal"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause> _explicitNullValueProposal = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReportKeyClauses"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReportKeyClauses CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReportKeyClauses();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReportKeyClauses(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>("impact", Impact);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>("lead", Lead);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.KeyClause>("proposal", Proposal);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

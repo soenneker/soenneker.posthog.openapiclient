@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.F
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedChannelFeedMessageDtoList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedChannelFeedMessageDtoList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedChannelFeedMessageDtoList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedChannelFeedMessageDtoList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// API for a channel&apos;s system-announcement feed — durable &quot;PostHog agent&quot; rows(context created, CONTEXT.md being built) rendered alongside the channel&apos;s taskcards. Read by any team member for a public channel; personal channels are owner-only.
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Task_channels.Item.F
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ChannelFeedMessageDto.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// A channel&apos;s system announcements in chronological order.

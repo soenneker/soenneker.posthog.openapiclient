@@ -12,21 +12,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentInSessionExposure : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("available") is { } nullNodeAvailable && nullNodeAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Available = null;
+            if (parseNode.GetChildNode("unavailable_reason") is { } nullNodeUnavailableReason && nullNodeUnavailableReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnavailableReason = null;
+            if (parseNode.GetChildNode("uses_stamped_fallback") is { } nullNodeUsesStampedFallback && nullNodeUsesStampedFallback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsesStampedFallback = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the in-session exposure scope can answer for this experiment. Mirrors the recordings query, which refuses `experiment_exposure.in_session` exactly when this is false.</summary>
-        public bool? Available { get; set; }
+        public bool? Available { get => _explicitNullValueAvailable; set { _explicitNullValueAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available"); else _explicitNullProperties?.Remove("available"); } }
+        private bool? _explicitNullValueAvailable = default!;
         /// <summary>Why the in-session scope can&apos;t answer for this experiment, worded for display next to the disabled option. Null when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UnavailableReason { get; set; }
+        public string? UnavailableReason { get => _explicitNullValueUnavailableReason; set { _explicitNullValueUnavailableReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_reason"); else _explicitNullProperties?.Remove("unavailable_reason"); } }
+        private string? _explicitNullValueUnavailableReason = default!;
 #nullable restore
 #else
-        public string UnavailableReason { get; set; }
+        public string UnavailableReason { get => _explicitNullValueUnavailableReason; set { _explicitNullValueUnavailableReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_reason"); else _explicitNullProperties?.Remove("unavailable_reason"); } }
+        private string _explicitNullValueUnavailableReason = default!;
 #endif
         /// <summary>True when in-session evidence is the stamped `$feature/&lt;flag_key&gt;` property, which means the flag was active in the session, rather than the exposure event itself being captured there. Copy must not claim the exposure was captured in the session when this is set.</summary>
-        public bool? UsesStampedFallback { get; set; }
+        public bool? UsesStampedFallback { get => _explicitNullValueUsesStampedFallback; set { _explicitNullValueUsesStampedFallback = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uses_stamped_fallback"); else _explicitNullProperties?.Remove("uses_stamped_fallback"); } }
+        private bool? _explicitNullValueUsesStampedFallback = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentInSessionExposure"/> and sets the default values.
         /// </summary>
@@ -42,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentInSessionExposure CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentInSessionExposure();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentInSessionExposure(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("available", Available);
             writer.WriteStringValue("unavailable_reason", UnavailableReason);
             writer.WriteBoolValue("uses_stamped_fallback", UsesStampedFallback);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,24 +11,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WidgetGenerateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("expected_current_version_id") is { } nullNodeExpectedCurrentVersionId && nullNodeExpectedCurrentVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedCurrentVersionId = null;
+            if (parseNode.GetChildNode("generation_id") is { } nullNodeGenerationId && nullNodeGenerationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationId = null;
+            if (parseNode.GetChildNode("generation_operation") is { } nullNodeGenerationOperation && nullNodeGenerationOperation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationOperation = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("prompt") is { } nullNodePrompt && nullNodePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prompt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Current widget version the improvement is based on. Required for improve operations.</summary>
-        public Guid? ExpectedCurrentVersionId { get; set; }
+        public Guid? ExpectedCurrentVersionId { get => _explicitNullValueExpectedCurrentVersionId; set { _explicitNullValueExpectedCurrentVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_current_version_id"); else _explicitNullProperties?.Remove("expected_current_version_id"); } }
+        private Guid? _explicitNullValueExpectedCurrentVersionId = default!;
         /// <summary>Idempotency key for this generation job.</summary>
-        public Guid? GenerationId { get; set; }
+        public Guid? GenerationId { get => _explicitNullValueGenerationId; set { _explicitNullValueGenerationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_id"); else _explicitNullProperties?.Remove("generation_id"); } }
+        private Guid? _explicitNullValueGenerationId = default!;
         /// <summary>* `initial` - initial* `regenerate` - regenerate* `improve` - improve</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation? GenerationOperation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation? GenerationOperation { get => _explicitNullValueGenerationOperation; set { _explicitNullValueGenerationOperation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_operation"); else _explicitNullProperties?.Remove("generation_operation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation? _explicitNullValueGenerationOperation = default!;
         /// <summary>* `claude-haiku-4-5` - claude-haiku-4-5* `claude-sonnet-4-6` - claude-sonnet-4-6* `claude-sonnet-5` - claude-sonnet-5* `claude-opus-5` - claude-opus-5</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel? _explicitNullValueModel = default!;
         /// <summary>Instructions for the generated widget. Initial and improvement instructions accept up to 20,000 characters; regeneration accepts complete instructions up to 50,000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public string? Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string? _explicitNullValuePrompt = default!;
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public string Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string _explicitNullValuePrompt = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequest"/> and sets the default values.
@@ -45,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestGenerationOperation>("generation_operation", GenerationOperation);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetGenerateRequestModel>("model", Model);
             writer.WriteStringValue("prompt", Prompt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

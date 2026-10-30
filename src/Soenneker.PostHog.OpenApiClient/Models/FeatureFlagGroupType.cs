@@ -11,48 +11,77 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FeatureFlagGroupType : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregation_group_type_index") is { } nullNodeAggregationGroupTypeIndex && nullNodeAggregationGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggregationGroupTypeIndex = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("exposure_frozen") is { } nullNodeExposureFrozen && nullNodeExposureFrozen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposureFrozen = null;
+            if (parseNode.GetChildNode("exposure_frozen_cohort") is { } nullNodeExposureFrozenCohort && nullNodeExposureFrozenCohort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposureFrozenCohort = null;
+            if (parseNode.GetChildNode("properties") is { } nullNodeProperties && nullNodeProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Properties = null;
+            if (parseNode.GetChildNode("rollout_percentage") is { } nullNodeRolloutPercentage && nullNodeRolloutPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RolloutPercentage = null;
+            if (parseNode.GetChildNode("sort_key") is { } nullNodeSortKey && nullNodeSortKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SortKey = null;
+            if (parseNode.GetChildNode("users_affected") is { } nullNodeUsersAffected && nullNodeUsersAffected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsersAffected = null;
+            if (parseNode.GetChildNode("variant") is { } nullNodeVariant && nullNodeVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variant = null;
+        }
+
         /// <summary>The aggregation_group_type_index property</summary>
-        public int? AggregationGroupTypeIndex { get; set; }
+        public int? AggregationGroupTypeIndex { get => _explicitNullValueAggregationGroupTypeIndex; set { _explicitNullValueAggregationGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation_group_type_index"); else _explicitNullProperties?.Remove("aggregation_group_type_index"); } }
+        private int? _explicitNullValueAggregationGroupTypeIndex = default!;
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Stamped by the experiment exposure freeze: the group carries a machine-added snapshot-cohort condition.</summary>
-        public bool? ExposureFrozen { get; set; }
+        public bool? ExposureFrozen { get => _explicitNullValueExposureFrozen; set { _explicitNullValueExposureFrozen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_frozen"); else _explicitNullProperties?.Remove("exposure_frozen"); } }
+        private bool? _explicitNullValueExposureFrozen = default!;
         /// <summary>Snapshot cohort the exposure freeze AND&apos;d into this group&apos;s properties.</summary>
-        public double? ExposureFrozenCohort { get; set; }
+        public double? ExposureFrozenCohort { get => _explicitNullValueExposureFrozenCohort; set { _explicitNullValueExposureFrozenCohort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_frozen_cohort"); else _explicitNullProperties?.Remove("exposure_frozen_cohort"); } }
+        private double? _explicitNullValueExposureFrozenCohort = default!;
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesItem>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesItem>? Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesItem>? _explicitNullValueProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesItem> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesItem> Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupTypePropertiesItem> _explicitNullValueProperties = default!;
 #endif
         /// <summary>The rollout_percentage property</summary>
-        public double? RolloutPercentage { get; set; }
+        public double? RolloutPercentage { get => _explicitNullValueRolloutPercentage; set { _explicitNullValueRolloutPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollout_percentage"); else _explicitNullProperties?.Remove("rollout_percentage"); } }
+        private double? _explicitNullValueRolloutPercentage = default!;
         /// <summary>The sort_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SortKey { get; set; }
+        public string? SortKey { get => _explicitNullValueSortKey; set { _explicitNullValueSortKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort_key"); else _explicitNullProperties?.Remove("sort_key"); } }
+        private string? _explicitNullValueSortKey = default!;
 #nullable restore
 #else
-        public string SortKey { get; set; }
+        public string SortKey { get => _explicitNullValueSortKey; set { _explicitNullValueSortKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sort_key"); else _explicitNullProperties?.Remove("sort_key"); } }
+        private string _explicitNullValueSortKey = default!;
 #endif
         /// <summary>The users_affected property</summary>
-        public double? UsersAffected { get; set; }
+        public double? UsersAffected { get => _explicitNullValueUsersAffected; set { _explicitNullValueUsersAffected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users_affected"); else _explicitNullProperties?.Remove("users_affected"); } }
+        private double? _explicitNullValueUsersAffected = default!;
         /// <summary>The variant property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Variant { get; set; }
+        public string? Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
+        private string? _explicitNullValueVariant = default!;
 #nullable restore
 #else
-        public string Variant { get; set; }
+        public string Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
+        private string _explicitNullValueVariant = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -62,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagGroupType(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,7 +127,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("rollout_percentage", RolloutPercentage);
             writer.WriteStringValue("sort_key", SortKey);
             writer.WriteDoubleValue("users_affected", UsersAffected);
-            writer.WriteStringValue("variant", Variant);
+            writer.WriteStringValue("variant", Variant);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

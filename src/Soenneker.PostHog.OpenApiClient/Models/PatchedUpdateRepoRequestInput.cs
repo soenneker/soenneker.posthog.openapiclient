@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedUpdateRepoRequestInput : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_file_paths") is { } nullNodeBaselineFilePaths && nullNodeBaselineFilePaths.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineFilePaths = null;
+            if (parseNode.GetChildNode("debt_digest_enabled") is { } nullNodeDebtDigestEnabled && nullNodeDebtDigestEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DebtDigestEnabled = null;
+            if (parseNode.GetChildNode("enable_pr_comments") is { } nullNodeEnablePrComments && nullNodeEnablePrComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnablePrComments = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The baseline_file_paths property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty? BaselineFilePaths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty? BaselineFilePaths { get => _explicitNullValueBaselineFilePaths; set { _explicitNullValueBaselineFilePaths = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_file_paths"); else _explicitNullProperties?.Remove("baseline_file_paths"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty? _explicitNullValueBaselineFilePaths = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty BaselineFilePaths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty BaselineFilePaths { get => _explicitNullValueBaselineFilePaths; set { _explicitNullValueBaselineFilePaths = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_file_paths"); else _explicitNullProperties?.Remove("baseline_file_paths"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty _explicitNullValueBaselineFilePaths = default!;
 #endif
         /// <summary>Post the visual review debt digest to the Slack channels of the teams that own the snapshots. Off by default. The digest goes out every Monday morning.</summary>
-        public bool? DebtDigestEnabled { get; set; }
+        public bool? DebtDigestEnabled { get => _explicitNullValueDebtDigestEnabled; set { _explicitNullValueDebtDigestEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("debt_digest_enabled"); else _explicitNullProperties?.Remove("debt_digest_enabled"); } }
+        private bool? _explicitNullValueDebtDigestEnabled = default!;
         /// <summary>Post a pull request comment when a run finds visual changes to review.</summary>
-        public bool? EnablePrComments { get; set; }
+        public bool? EnablePrComments { get => _explicitNullValueEnablePrComments; set { _explicitNullValueEnablePrComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_pr_comments"); else _explicitNullProperties?.Remove("enable_pr_comments"); } }
+        private bool? _explicitNullValueEnablePrComments = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInput"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedUpdateRepoRequestInputBaselineFilePathsProperty>("baseline_file_paths", BaselineFilePaths);
             writer.WriteBoolValue("debt_digest_enabled", DebtDigestEnabled);
             writer.WriteBoolValue("enable_pr_comments", EnablePrComments);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,33 +12,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ManagedWarehouseMonitoringSnapshotResponseLimits : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("default_worker_cpu") is { } nullNodeDefaultWorkerCpu && nullNodeDefaultWorkerCpu.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultWorkerCpu = null;
+            if (parseNode.GetChildNode("default_worker_memory") is { } nullNodeDefaultWorkerMemory && nullNodeDefaultWorkerMemory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultWorkerMemory = null;
+            if (parseNode.GetChildNode("default_worker_min_hot_idle") is { } nullNodeDefaultWorkerMinHotIdle && nullNodeDefaultWorkerMinHotIdle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultWorkerMinHotIdle = null;
+            if (parseNode.GetChildNode("default_worker_ttl_seconds") is { } nullNodeDefaultWorkerTtlSeconds && nullNodeDefaultWorkerTtlSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultWorkerTtlSeconds = null;
+            if (parseNode.GetChildNode("max_vcpus") is { } nullNodeMaxVcpus && nullNodeMaxVcpus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxVcpus = null;
+            if (parseNode.GetChildNode("max_workers") is { } nullNodeMaxWorkers && nullNodeMaxWorkers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxWorkers = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Default worker CPU as a Kubernetes resource quantity, such as 2 or 500m.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultWorkerCpu { get; set; }
+        public string? DefaultWorkerCpu { get => _explicitNullValueDefaultWorkerCpu; set { _explicitNullValueDefaultWorkerCpu = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_worker_cpu"); else _explicitNullProperties?.Remove("default_worker_cpu"); } }
+        private string? _explicitNullValueDefaultWorkerCpu = default!;
 #nullable restore
 #else
-        public string DefaultWorkerCpu { get; set; }
+        public string DefaultWorkerCpu { get => _explicitNullValueDefaultWorkerCpu; set { _explicitNullValueDefaultWorkerCpu = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_worker_cpu"); else _explicitNullProperties?.Remove("default_worker_cpu"); } }
+        private string _explicitNullValueDefaultWorkerCpu = default!;
 #endif
         /// <summary>Default worker memory as a Kubernetes resource quantity, such as 8Gi.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultWorkerMemory { get; set; }
+        public string? DefaultWorkerMemory { get => _explicitNullValueDefaultWorkerMemory; set { _explicitNullValueDefaultWorkerMemory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_worker_memory"); else _explicitNullProperties?.Remove("default_worker_memory"); } }
+        private string? _explicitNullValueDefaultWorkerMemory = default!;
 #nullable restore
 #else
-        public string DefaultWorkerMemory { get; set; }
+        public string DefaultWorkerMemory { get => _explicitNullValueDefaultWorkerMemory; set { _explicitNullValueDefaultWorkerMemory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_worker_memory"); else _explicitNullProperties?.Remove("default_worker_memory"); } }
+        private string _explicitNullValueDefaultWorkerMemory = default!;
 #endif
         /// <summary>Minimum number of idle workers the organization keeps warm.</summary>
-        public int? DefaultWorkerMinHotIdle { get; set; }
+        public int? DefaultWorkerMinHotIdle { get => _explicitNullValueDefaultWorkerMinHotIdle; set { _explicitNullValueDefaultWorkerMinHotIdle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_worker_min_hot_idle"); else _explicitNullProperties?.Remove("default_worker_min_hot_idle"); } }
+        private int? _explicitNullValueDefaultWorkerMinHotIdle = default!;
         /// <summary>Default number of seconds an idle worker remains available for reuse.</summary>
-        public int? DefaultWorkerTtlSeconds { get; set; }
+        public int? DefaultWorkerTtlSeconds { get => _explicitNullValueDefaultWorkerTtlSeconds; set { _explicitNullValueDefaultWorkerTtlSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_worker_ttl_seconds"); else _explicitNullProperties?.Remove("default_worker_ttl_seconds"); } }
+        private int? _explicitNullValueDefaultWorkerTtlSeconds = default!;
         /// <summary>Maximum active session vCPUs admitted for the organization. Zero means no organization-specific limit.</summary>
-        public int? MaxVcpus { get; set; }
+        public int? MaxVcpus { get => _explicitNullValueMaxVcpus; set { _explicitNullValueMaxVcpus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_vcpus"); else _explicitNullProperties?.Remove("max_vcpus"); } }
+        private int? _explicitNullValueMaxVcpus = default!;
         /// <summary>Maximum concurrent workers for the organization. Zero means no organization-specific limit.</summary>
-        public int? MaxWorkers { get; set; }
+        public int? MaxWorkers { get => _explicitNullValueMaxWorkers; set { _explicitNullValueMaxWorkers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_workers"); else _explicitNullProperties?.Remove("max_workers"); } }
+        private int? _explicitNullValueMaxWorkers = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseLimits"/> and sets the default values.
         /// </summary>
@@ -54,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseLimits CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseLimits();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseLimits(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("default_worker_ttl_seconds", DefaultWorkerTtlSeconds);
             writer.WriteIntValue("max_vcpus", MaxVcpus);
             writer.WriteIntValue("max_workers", MaxWorkers);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -59,6 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Text_r
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsTextReprCreate400ResponseSchema.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsTextReprCreate500ResponseSchema.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsTextReprCreate503ResponseSchema.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TextReprResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TextReprResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

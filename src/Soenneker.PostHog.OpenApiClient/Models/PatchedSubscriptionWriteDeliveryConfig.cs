@@ -12,19 +12,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedSubscriptionWriteDeliveryConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("include_feedback") is { } nullNodeIncludeFeedback && nullNodeIncludeFeedback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeFeedback = null;
+            if (parseNode.GetChildNode("include_images") is { } nullNodeIncludeImages && nullNodeIncludeImages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeImages = null;
+            if (parseNode.GetChildNode("include_manage_link") is { } nullNodeIncludeManageLink && nullNodeIncludeManageLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeManageLink = null;
+            if (parseNode.GetChildNode("include_posthog_hint") is { } nullNodeIncludePosthogHint && nullNodeIncludePosthogHint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludePosthogHint = null;
+            if (parseNode.GetChildNode("post_all_insights_in_main_message") is { } nullNodePostAllInsightsInMainMessage && nullNodePostAllInsightsInMainMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PostAllInsightsInMainMessage = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Prompt subscriptions only: include report feedback links. Defaults to true when omitted. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that.</summary>
-        public bool? IncludeFeedback { get; set; }
+        public bool? IncludeFeedback { get => _explicitNullValueIncludeFeedback; set { _explicitNullValueIncludeFeedback = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_feedback"); else _explicitNullProperties?.Remove("include_feedback"); } }
+        private bool? _explicitNullValueIncludeFeedback = default!;
         /// <summary>Prompt subscriptions only: include generated chart images. Defaults to true when omitted. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that.</summary>
-        public bool? IncludeImages { get; set; }
+        public bool? IncludeImages { get => _explicitNullValueIncludeImages; set { _explicitNullValueIncludeImages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_images"); else _explicitNullProperties?.Remove("include_images"); } }
+        private bool? _explicitNullValueIncludeImages = default!;
         /// <summary>Prompt subscriptions only: include a link to manage the subscription. Defaults to true when omitted. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that.</summary>
-        public bool? IncludeManageLink { get; set; }
+        public bool? IncludeManageLink { get => _explicitNullValueIncludeManageLink; set { _explicitNullValueIncludeManageLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_manage_link"); else _explicitNullProperties?.Remove("include_manage_link"); } }
+        private bool? _explicitNullValueIncludeManageLink = default!;
         /// <summary>Prompt subscriptions only: include PostHog product guidance. Defaults to true when omitted. Only a Slack report renders the guidance. Email and Microsoft Teams reports leave it out and accept the option without an error, unlike post_all_insights_in_main_message. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that.</summary>
-        public bool? IncludePosthogHint { get; set; }
+        public bool? IncludePosthogHint { get => _explicitNullValueIncludePosthogHint; set { _explicitNullValueIncludePosthogHint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_posthog_hint"); else _explicitNullProperties?.Remove("include_posthog_hint"); } }
+        private bool? _explicitNullValueIncludePosthogHint = default!;
         /// <summary>Slack insight and dashboard subscriptions only: when true, upload all insight images together in the main Slack message instead of posting the first image in the main message and the rest as threaded replies. Defaults to false. The request is rejected when target_type is not &apos;slack&apos;, when the subscription sets prompt instead of insight or dashboard, or when the Slack integration does not hold the files:write permission. Omit it unless the user asks for one combined message.</summary>
-        public bool? PostAllInsightsInMainMessage { get; set; }
+        public bool? PostAllInsightsInMainMessage { get => _explicitNullValuePostAllInsightsInMainMessage; set { _explicitNullValuePostAllInsightsInMainMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("post_all_insights_in_main_message"); else _explicitNullProperties?.Remove("post_all_insights_in_main_message"); } }
+        private bool? _explicitNullValuePostAllInsightsInMainMessage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteDeliveryConfig"/> and sets the default values.
         /// </summary>
@@ -41,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteDeliveryConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteDeliveryConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSubscriptionWriteDeliveryConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("include_manage_link", IncludeManageLink);
             writer.WriteBoolValue("include_posthog_hint", IncludePosthogHint);
             writer.WriteBoolValue("post_all_insights_in_main_message", PostAllInsightsInMainMessage);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

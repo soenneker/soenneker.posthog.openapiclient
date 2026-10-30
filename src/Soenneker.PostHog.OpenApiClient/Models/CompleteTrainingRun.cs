@@ -12,66 +12,96 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CompleteTrainingRun : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("best_iteration_id") is { } nullNodeBestIterationId && nullNodeBestIterationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestIterationId = null;
+            if (parseNode.GetChildNode("distillation") is { } nullNodeDistillation && nullNodeDistillation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Distillation = null;
+            if (parseNode.GetChildNode("headline") is { } nullNodeHeadline && nullNodeHeadline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headline = null;
+            if (parseNode.GetChildNode("model_explanation") is { } nullNodeModelExplanation && nullNodeModelExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelExplanation = null;
+            if (parseNode.GetChildNode("next_steps") is { } nullNodeNextSteps && nullNodeNextSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextSteps = null;
+            if (parseNode.GetChildNode("reader_summary") is { } nullNodeReaderSummary && nullNodeReaderSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReaderSummary = null;
+            if (parseNode.GetChildNode("recommended_next") is { } nullNodeRecommendedNext && nullNodeRecommendedNext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedNext = null;
+            if (parseNode.GetChildNode("report_notebook_short_id") is { } nullNodeReportNotebookShortId && nullNodeReportNotebookShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportNotebookShortId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Advisory nomination. The server promotes the kept iteration with the highest holdout_score; this id only breaks a tie at that score, and a lower-scoring nomination is logged and ignored.</summary>
-        public Guid? BestIterationId { get; set; }
+        public Guid? BestIterationId { get => _explicitNullValueBestIterationId; set { _explicitNullValueBestIterationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_iteration_id"); else _explicitNullProperties?.Remove("best_iteration_id"); } }
+        private Guid? _explicitNullValueBestIterationId = default!;
         /// <summary>A 1–2 sentence distillation of what this run learned — the winning signal, the key transform, the dead-ends. Stored in the run summary as the cheapest thing the next run reads. Max 2000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Distillation { get; set; }
+        public string? Distillation { get => _explicitNullValueDistillation; set { _explicitNullValueDistillation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distillation"); else _explicitNullProperties?.Remove("distillation"); } }
+        private string? _explicitNullValueDistillation = default!;
 #nullable restore
 #else
-        public string Distillation { get; set; }
+        public string Distillation { get => _explicitNullValueDistillation; set { _explicitNullValueDistillation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distillation"); else _explicitNullProperties?.Remove("distillation"); } }
+        private string _explicitNullValueDistillation = default!;
 #endif
         /// <summary>A short title for people, at most 60 characters, on what this run learned. Use plain words, with no column names, SQL or model jargon. Longer text is cut, not rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Headline { get; set; }
+        public string? Headline { get => _explicitNullValueHeadline; set { _explicitNullValueHeadline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headline"); else _explicitNullProperties?.Remove("headline"); } }
+        private string? _explicitNullValueHeadline = default!;
 #nullable restore
 #else
-        public string Headline { get; set; }
+        public string Headline { get => _explicitNullValueHeadline; set { _explicitNullValueHeadline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headline"); else _explicitNullProperties?.Remove("headline"); } }
+        private string _explicitNullValueHeadline = default!;
 #endif
         /// <summary>Global feature importance / directionality bundle for the champion model card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation? ModelExplanation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation? ModelExplanation { get => _explicitNullValueModelExplanation; set { _explicitNullValueModelExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_explanation"); else _explicitNullProperties?.Remove("model_explanation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation? _explicitNullValueModelExplanation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation ModelExplanation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation ModelExplanation { get => _explicitNullValueModelExplanation; set { _explicitNullValueModelExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_explanation"); else _explicitNullProperties?.Remove("model_explanation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRunModelExplanation _explicitNullValueModelExplanation = default!;
 #endif
         /// <summary>Short next steps for people, at most 5 items of a few words each (max 80 characters per item).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? NextSteps { get; set; }
+        public List<string>? NextSteps { get => _explicitNullValueNextSteps; set { _explicitNullValueNextSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_steps"); else _explicitNullProperties?.Remove("next_steps"); } }
+        private List<string>? _explicitNullValueNextSteps = default!;
 #nullable restore
 #else
-        public List<string> NextSteps { get; set; }
+        public List<string> NextSteps { get => _explicitNullValueNextSteps; set { _explicitNullValueNextSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_steps"); else _explicitNullProperties?.Remove("next_steps"); } }
+        private List<string> _explicitNullValueNextSteps = default!;
 #endif
         /// <summary>One or two plain sentences for people on what this run learned. Max 600 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReaderSummary { get; set; }
+        public string? ReaderSummary { get => _explicitNullValueReaderSummary; set { _explicitNullValueReaderSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reader_summary"); else _explicitNullProperties?.Remove("reader_summary"); } }
+        private string? _explicitNullValueReaderSummary = default!;
 #nullable restore
 #else
-        public string ReaderSummary { get; set; }
+        public string ReaderSummary { get => _explicitNullValueReaderSummary; set { _explicitNullValueReaderSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reader_summary"); else _explicitNullProperties?.Remove("reader_summary"); } }
+        private string _explicitNullValueReaderSummary = default!;
 #endif
         /// <summary>What a future run should try next, given what this run learned. Stored in the run summary so the next run reads it during orientation. Keep it short and concrete; max 2000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RecommendedNext { get; set; }
+        public string? RecommendedNext { get => _explicitNullValueRecommendedNext; set { _explicitNullValueRecommendedNext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_next"); else _explicitNullProperties?.Remove("recommended_next"); } }
+        private string? _explicitNullValueRecommendedNext = default!;
 #nullable restore
 #else
-        public string RecommendedNext { get; set; }
+        public string RecommendedNext { get => _explicitNullValueRecommendedNext; set { _explicitNullValueRecommendedNext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_next"); else _explicitNullProperties?.Remove("recommended_next"); } }
+        private string _explicitNullValueRecommendedNext = default!;
 #endif
         /// <summary>Short id of the report notebook you built for this run. Stored in the run summary only if the notebook exists in this project; an unknown id is dropped and does not fail the completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportNotebookShortId { get; set; }
+        public string? ReportNotebookShortId { get => _explicitNullValueReportNotebookShortId; set { _explicitNullValueReportNotebookShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_notebook_short_id"); else _explicitNullProperties?.Remove("report_notebook_short_id"); } }
+        private string? _explicitNullValueReportNotebookShortId = default!;
 #nullable restore
 #else
-        public string ReportNotebookShortId { get; set; }
+        public string ReportNotebookShortId { get => _explicitNullValueReportNotebookShortId; set { _explicitNullValueReportNotebookShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_notebook_short_id"); else _explicitNullProperties?.Remove("report_notebook_short_id"); } }
+        private string _explicitNullValueReportNotebookShortId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRun"/> and sets the default values.
@@ -88,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRun CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRun();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CompleteTrainingRun(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -123,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reader_summary", ReaderSummary);
             writer.WriteStringValue("recommended_next", RecommendedNext);
             writer.WriteStringValue("report_notebook_short_id", ReportNotebookShortId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews.P
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatus.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatus.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Where a pull request&apos;s review runs stand: `state`, the latest completed review turn, and the latest Resolve run. Works for any pull request on the project, also ones the caller did not trigger. Pass the `requested_at` and `head_sha` the trigger returned, and the `run_mode` it was called with, to get `request_outcome`, which says when that request is done.

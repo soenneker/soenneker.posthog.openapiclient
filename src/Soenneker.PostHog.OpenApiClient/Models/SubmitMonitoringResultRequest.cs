@@ -11,36 +11,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SubmitMonitoringResultRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("evidence_reason") is { } nullNodeEvidenceReason && nullNodeEvidenceReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceReason = null;
+            if (parseNode.GetChildNode("evidence_refs") is { } nullNodeEvidenceRefs && nullNodeEvidenceRefs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceRefs = null;
+            if (parseNode.GetChildNode("evidence_status") is { } nullNodeEvidenceStatus && nullNodeEvidenceStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceStatus = null;
+            if (parseNode.GetChildNode("expectation_matches") is { } nullNodeExpectationMatches && nullNodeExpectationMatches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectationMatches = null;
+            if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Explain why the evidence supports this qualification. Must not be blank.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvidenceReason { get; set; }
+        public string? EvidenceReason { get => _explicitNullValueEvidenceReason; set { _explicitNullValueEvidenceReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_reason"); else _explicitNullProperties?.Remove("evidence_reason"); } }
+        private string? _explicitNullValueEvidenceReason = default!;
 #nullable restore
 #else
-        public string EvidenceReason { get; set; }
+        public string EvidenceReason { get => _explicitNullValueEvidenceReason; set { _explicitNullValueEvidenceReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_reason"); else _explicitNullProperties?.Remove("evidence_reason"); } }
+        private string _explicitNullValueEvidenceReason = default!;
 #endif
         /// <summary>Evidence references supporting the conclusion, or an empty list when none are available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EvidenceRefs { get; set; }
+        public List<string>? EvidenceRefs { get => _explicitNullValueEvidenceRefs; set { _explicitNullValueEvidenceRefs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_refs"); else _explicitNullProperties?.Remove("evidence_refs"); } }
+        private List<string>? _explicitNullValueEvidenceRefs = default!;
 #nullable restore
 #else
-        public List<string> EvidenceRefs { get; set; }
+        public List<string> EvidenceRefs { get => _explicitNullValueEvidenceRefs; set { _explicitNullValueEvidenceRefs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_refs"); else _explicitNullProperties?.Remove("evidence_refs"); } }
+        private List<string> _explicitNullValueEvidenceRefs = default!;
 #endif
         /// <summary>* `sufficient` - Sufficient* `insufficient` - Insufficient* `unsupported` - Unsupported* `errored` - Errored</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus? EvidenceStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus? EvidenceStatus { get => _explicitNullValueEvidenceStatus; set { _explicitNullValueEvidenceStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_status"); else _explicitNullProperties?.Remove("evidence_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus? _explicitNullValueEvidenceStatus = default!;
         /// <summary>Whether the authored expectation holds: a boolean for sufficient evidence, null for unsupported or errored evidence.</summary>
-        public bool? ExpectationMatches { get; set; }
+        public bool? ExpectationMatches { get => _explicitNullValueExpectationMatches; set { _explicitNullValueExpectationMatches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectation_matches"); else _explicitNullProperties?.Remove("expectation_matches"); } }
+        private bool? _explicitNullValueExpectationMatches = default!;
         /// <summary>Explain the conclusion using evidence from the assignment&apos;s fixed window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Explanation { get; set; }
+        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        private string? _explicitNullValueExplanation = default!;
 #nullable restore
 #else
-        public string Explanation { get; set; }
+        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        private string _explicitNullValueExplanation = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequest"/> and sets the default values.
@@ -57,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus>("evidence_status", EvidenceStatus);
             writer.WriteBoolValue("expectation_matches", ExpectationMatches);
             writer.WriteStringValue("explanation", Explanation);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

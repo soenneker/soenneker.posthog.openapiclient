@@ -11,15 +11,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentExposureEstimateConfig : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("conversionRateInputType") is { } nullNodeConversionRateInputType && nullNodeConversionRateInputType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionRateInputType = null;
+            if (parseNode.GetChildNode("manualBaselineValue") is { } nullNodeManualBaselineValue && nullNodeManualBaselineValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManualBaselineValue = null;
+            if (parseNode.GetChildNode("manualExposureRate") is { } nullNodeManualExposureRate && nullNodeManualExposureRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManualExposureRate = null;
+            if (parseNode.GetChildNode("manualMetricType") is { } nullNodeManualMetricType && nullNodeManualMetricType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManualMetricType = null;
+        }
+
         /// <summary>&apos;manual&apos; when the baseline value and exposure rate were entered by hand, &apos;automatic&apos; when derived from live experiment data.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRateInputType? ConversionRateInputType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRateInputType? ConversionRateInputType { get => _explicitNullValueConversionRateInputType; set { _explicitNullValueConversionRateInputType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversionRateInputType"); else _explicitNullProperties?.Remove("conversionRateInputType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRateInputType? _explicitNullValueConversionRateInputType = default!;
         /// <summary>Manually entered baseline metric value (a conversion percentage for funnel metrics). Only used in manual mode.</summary>
-        public double? ManualBaselineValue { get; set; }
+        public double? ManualBaselineValue { get => _explicitNullValueManualBaselineValue; set { _explicitNullValueManualBaselineValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manualBaselineValue"); else _explicitNullProperties?.Remove("manualBaselineValue"); } }
+        private double? _explicitNullValueManualBaselineValue = default!;
         /// <summary>Manually entered estimate of users exposed to the experiment per day. Only used in manual mode.</summary>
-        public double? ManualExposureRate { get; set; }
+        public double? ManualExposureRate { get => _explicitNullValueManualExposureRate; set { _explicitNullValueManualExposureRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manualExposureRate"); else _explicitNullProperties?.Remove("manualExposureRate"); } }
+        private double? _explicitNullValueManualExposureRate = default!;
         /// <summary>Metric type the manual baseline value refers to. Only used in manual mode.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricType? ManualMetricType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricType? ManualMetricType { get => _explicitNullValueManualMetricType; set { _explicitNullValueManualMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manualMetricType"); else _explicitNullProperties?.Remove("manualMetricType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricType? _explicitNullValueManualMetricType = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -28,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,7 +69,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRateInputType>("conversionRateInputType", ConversionRateInputType);
             writer.WriteDoubleValue("manualBaselineValue", ManualBaselineValue);
             writer.WriteDoubleValue("manualExposureRate", ManualExposureRate);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricType>("manualMetricType", ManualMetricType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManualMetricType>("manualMetricType", ManualMetricType);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

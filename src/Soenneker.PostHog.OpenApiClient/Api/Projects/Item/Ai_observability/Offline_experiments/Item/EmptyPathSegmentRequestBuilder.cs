@@ -60,6 +60,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
                 { "404", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentRead>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentRead.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -96,6 +98,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Off
                 { "413", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentRead>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentRead.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

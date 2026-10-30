@@ -11,27 +11,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BaselineTotals : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("all_snapshots") is { } nullNodeAllSnapshots && nullNodeAllSnapshots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllSnapshots = null;
+            if (parseNode.GetChildNode("by_run_type") is { } nullNodeByRunType && nullNodeByRunType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByRunType = null;
+            if (parseNode.GetChildNode("currently_quarantined") is { } nullNodeCurrentlyQuarantined && nullNodeCurrentlyQuarantined.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentlyQuarantined = null;
+            if (parseNode.GetChildNode("frequently_tolerated") is { } nullNodeFrequentlyTolerated && nullNodeFrequentlyTolerated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrequentlyTolerated = null;
+            if (parseNode.GetChildNode("recently_tolerated") is { } nullNodeRecentlyTolerated && nullNodeRecentlyTolerated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentlyTolerated = null;
+            if (parseNode.GetChildNode("variant_pileups") is { } nullNodeVariantPileups && nullNodeVariantPileups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantPileups = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The all_snapshots property</summary>
-        public int? AllSnapshots { get; set; }
+        public int? AllSnapshots { get => _explicitNullValueAllSnapshots; set { _explicitNullValueAllSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all_snapshots"); else _explicitNullProperties?.Remove("all_snapshots"); } }
+        private int? _explicitNullValueAllSnapshots = default!;
         /// <summary>The by_run_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty? ByRunType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty? ByRunType { get => _explicitNullValueByRunType; set { _explicitNullValueByRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_run_type"); else _explicitNullProperties?.Remove("by_run_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty? _explicitNullValueByRunType = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty ByRunType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty ByRunType { get => _explicitNullValueByRunType; set { _explicitNullValueByRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_run_type"); else _explicitNullProperties?.Remove("by_run_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotalsByRunTypeProperty _explicitNullValueByRunType = default!;
 #endif
         /// <summary>The currently_quarantined property</summary>
-        public int? CurrentlyQuarantined { get; set; }
+        public int? CurrentlyQuarantined { get => _explicitNullValueCurrentlyQuarantined; set { _explicitNullValueCurrentlyQuarantined = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currently_quarantined"); else _explicitNullProperties?.Remove("currently_quarantined"); } }
+        private int? _explicitNullValueCurrentlyQuarantined = default!;
         /// <summary>The frequently_tolerated property</summary>
-        public int? FrequentlyTolerated { get; set; }
+        public int? FrequentlyTolerated { get => _explicitNullValueFrequentlyTolerated; set { _explicitNullValueFrequentlyTolerated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frequently_tolerated"); else _explicitNullProperties?.Remove("frequently_tolerated"); } }
+        private int? _explicitNullValueFrequentlyTolerated = default!;
         /// <summary>The recently_tolerated property</summary>
-        public int? RecentlyTolerated { get; set; }
+        public int? RecentlyTolerated { get => _explicitNullValueRecentlyTolerated; set { _explicitNullValueRecentlyTolerated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recently_tolerated"); else _explicitNullProperties?.Remove("recently_tolerated"); } }
+        private int? _explicitNullValueRecentlyTolerated = default!;
         /// <summary>Baselines carrying three or more accepted variants of their current hash.</summary>
-        public int? VariantPileups { get; set; }
+        public int? VariantPileups { get => _explicitNullValueVariantPileups; set { _explicitNullValueVariantPileups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_pileups"); else _explicitNullProperties?.Remove("variant_pileups"); } }
+        private int? _explicitNullValueVariantPileups = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals"/> and sets the default values.
         /// </summary>
@@ -47,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BaselineTotals(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("frequently_tolerated", FrequentlyTolerated);
             writer.WriteIntValue("recently_tolerated", RecentlyTolerated);
             writer.WriteIntValue("variant_pileups", VariantPileups);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,160 +12,229 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EditReportRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actionability") is { } nullNodeActionability && nullNodeActionability.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actionability = null;
+            if (parseNode.GetChildNode("actionability_explanation") is { } nullNodeActionabilityExplanation && nullNodeActionabilityExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionabilityExplanation = null;
+            if (parseNode.GetChildNode("already_addressed") is { } nullNodeAlreadyAddressed && nullNodeAlreadyAddressed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlreadyAddressed = null;
+            if (parseNode.GetChildNode("append_evidence") is { } nullNodeAppendEvidence && nullNodeAppendEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppendEvidence = null;
+            if (parseNode.GetChildNode("append_note") is { } nullNodeAppendNote && nullNodeAppendNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppendNote = null;
+            if (parseNode.GetChildNode("charts") is { } nullNodeCharts && nullNodeCharts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Charts = null;
+            if (parseNode.GetChildNode("corroboration_only") is { } nullNodeCorroborationOnly && nullNodeCorroborationOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorroborationOnly = null;
+            if (parseNode.GetChildNode("expected_reviewers") is { } nullNodeExpectedReviewers && nullNodeExpectedReviewers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedReviewers = null;
+            if (parseNode.GetChildNode("links") is { } nullNodeLinks && nullNodeLinks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Links = null;
+            if (parseNode.GetChildNode("metrics") is { } nullNodeMetrics && nullNodeMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metrics = null;
+            if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
+            if (parseNode.GetChildNode("priority_explanation") is { } nullNodePriorityExplanation && nullNodePriorityExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PriorityExplanation = null;
+            if (parseNode.GetChildNode("report_id") is { } nullNodeReportId && nullNodeReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportId = null;
+            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("reviewer_outcome") is { } nullNodeReviewerOutcome && nullNodeReviewerOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewerOutcome = null;
+            if (parseNode.GetChildNode("reviewer_retry_reason") is { } nullNodeReviewerRetryReason && nullNodeReviewerRetryReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewerRetryReason = null;
+            if (parseNode.GetChildNode("suggested_prompts") is { } nullNodeSuggestedPrompts && nullNodeSuggestedPrompts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedPrompts = null;
+            if (parseNode.GetChildNode("suggested_reviewers") is { } nullNodeSuggestedReviewers && nullNodeSuggestedReviewers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedReviewers = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("supersedes_implementation") is { } nullNodeSupersedesImplementation && nullNodeSupersedesImplementation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupersedesImplementation = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>Optional new actionability call, for when new evidence changed your judgment. Replaces the report&apos;s actionability decision and re-runs autostart: `immediately_actionable` can open a draft PR, `requires_human_input` and `not_actionable` stop autostart from opening one. The report&apos;s inbox status does not change. Send it with `actionability_explanation`, and with `already_addressed` when the issue is handled, since the three replace the decision as one unit.* `immediately_actionable` - immediately_actionable* `requires_human_input` - requires_human_input* `not_actionable` - not_actionable</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability? Actionability { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability? Actionability { get => _explicitNullValueActionability; set { _explicitNullValueActionability = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actionability"); else _explicitNullProperties?.Remove("actionability"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability? _explicitNullValueActionability = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability Actionability { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability Actionability { get => _explicitNullValueActionability; set { _explicitNullValueActionability = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actionability"); else _explicitNullProperties?.Remove("actionability"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestActionability _explicitNullValueActionability = default!;
 #endif
         /// <summary>2-3 sentence evidence-grounded justification for `actionability`. Required when you set it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ActionabilityExplanation { get; set; }
+        public string? ActionabilityExplanation { get => _explicitNullValueActionabilityExplanation; set { _explicitNullValueActionabilityExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actionability_explanation"); else _explicitNullProperties?.Remove("actionability_explanation"); } }
+        private string? _explicitNullValueActionabilityExplanation = default!;
 #nullable restore
 #else
-        public string ActionabilityExplanation { get; set; }
+        public string ActionabilityExplanation { get => _explicitNullValueActionabilityExplanation; set { _explicitNullValueActionabilityExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actionability_explanation"); else _explicitNullProperties?.Remove("actionability_explanation"); } }
+        private string _explicitNullValueActionabilityExplanation = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the issue is already handled: fixed, or with a fix in flight. Part of the actionability decision, so it requires `actionability` and `actionability_explanation` too; omitted means false. Set it when a fix lands or starts, so autostart does not open a duplicate PR.</summary>
-        public bool? AlreadyAddressed { get; set; }
+        public bool? AlreadyAddressed { get => _explicitNullValueAlreadyAddressed; set { _explicitNullValueAlreadyAddressed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("already_addressed"); else _explicitNullProperties?.Remove("already_addressed"); } }
+        private bool? _explicitNullValueAlreadyAddressed = default!;
         /// <summary>Optional observations to add to the report&apos;s evidence rail, each becoming a bound signal attributed to this scout — adds to the report&apos;s evidence rather than replacing it. Use this for a new observation a reader should be able to check, and `append_note` for commentary (the owning team knows, a deploy fixed it). The report&apos;s signal count and weight move with the appended rows. Emit plus every append share a cap of 50 signals per report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>? AppendEvidence { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>? AppendEvidence { get => _explicitNullValueAppendEvidence; set { _explicitNullValueAppendEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("append_evidence"); else _explicitNullProperties?.Remove("append_evidence"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence>? _explicitNullValueAppendEvidence = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence> AppendEvidence { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence> AppendEvidence { get => _explicitNullValueAppendEvidence; set { _explicitNullValueAppendEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("append_evidence"); else _explicitNullProperties?.Remove("append_evidence"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence> _explicitNullValueAppendEvidence = default!;
 #endif
         /// <summary>Optional free-form note to append to the report&apos;s work log (attributed to this scout).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AppendNote { get; set; }
+        public string? AppendNote { get => _explicitNullValueAppendNote; set { _explicitNullValueAppendNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("append_note"); else _explicitNullProperties?.Remove("append_note"); } }
+        private string? _explicitNullValueAppendNote = default!;
 #nullable restore
 #else
-        public string AppendNote { get; set; }
+        public string AppendNote { get => _explicitNullValueAppendNote; set { _explicitNullValueAppendNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("append_note"); else _explicitNullProperties?.Remove("append_note"); } }
+        private string _explicitNullValueAppendNote = default!;
 #endif
         /// <summary>The full set of charts the report should show. Replaces the report&apos;s charts rather than adding to them, the way `summary` replaces the summary — so send every chart you want kept. Omit the field (or send null) to leave the report&apos;s existing charts untouched, and send an empty list to take them all down.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>? Charts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>? Charts { get => _explicitNullValueCharts; set { _explicitNullValueCharts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("charts"); else _explicitNullProperties?.Remove("charts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>? _explicitNullValueCharts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart> Charts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart> Charts { get => _explicitNullValueCharts; set { _explicitNullValueCharts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("charts"); else _explicitNullProperties?.Remove("charts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart> _explicitNullValueCharts = default!;
 #endif
         /// <summary>Set only when append_note confirms the finding with no new information. After four confirmations, store only the count. Other notes remain in the work log.</summary>
-        public bool? CorroborationOnly { get; set; }
+        public bool? CorroborationOnly { get => _explicitNullValueCorroborationOnly; set { _explicitNullValueCorroborationOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corroboration_only"); else _explicitNullProperties?.Remove("corroboration_only"); } }
+        private bool? _explicitNullValueCorroborationOnly = default!;
         /// <summary>Report reviewer_assignment.state read before selection began. Required when reviewer corrections are enabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers? ExpectedReviewers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers? ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers? _explicitNullValueExpectedReviewers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers ExpectedReviewers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestExpectedReviewers _explicitNullValueExpectedReviewers = default!;
 #endif
         /// <summary>Typed, directed links from this report to others, recording how the work relates. Use `depends_on` when you split one finding into a stack and the second report&apos;s fix cannot land until the first one&apos;s does, so the order is recorded rather than left to a reader of the diffs. Additive: links join what the report already has rather than replacing them, and only this report gets a row, so link from the side the sentence starts at. Links of the same kind must stay acyclic and every report must be in this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite>? Links { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite>? Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite>? _explicitNullValueLinks = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite> Links { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite> Links { get => _explicitNullValueLinks; set { _explicitNullValueLinks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("links"); else _explicitNullProperties?.Remove("links"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportLinkWrite> _explicitNullValueLinks = default!;
 #endif
         /// <summary>The report&apos;s full impact-metric set. Omit or send null to preserve it; send an empty list to clear it. Every metric requires a bounded live InsightVizNode/TrendsQuery built only from EventsNode or ActionsNode sources and capped at 1,000 estimated longitudinal points. Consumers derive BoldNumber and ActionsBar shapes; a snapshot is only an optional cached fallback. Snapshot-only/queryless payloads are invalid, and legacy rows of that shape are always redacted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>? Metrics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite>? _explicitNullValueMetrics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite> Metrics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite> Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWrite> _explicitNullValueMetrics = default!;
 #endif
         /// <summary>Optional new priority (`P0`-`P4`), for when the issue escalated or eased. Replaces the report&apos;s priority and re-runs autostart, which needs a priority to open a draft PR. Requires `priority_explanation`.* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority? Priority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority? _explicitNullValuePriority = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority Priority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestPriority _explicitNullValuePriority = default!;
 #endif
         /// <summary>2-3 sentence justification for `priority`. Required when `priority` is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PriorityExplanation { get; set; }
+        public string? PriorityExplanation { get => _explicitNullValuePriorityExplanation; set { _explicitNullValuePriorityExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority_explanation"); else _explicitNullProperties?.Remove("priority_explanation"); } }
+        private string? _explicitNullValuePriorityExplanation = default!;
 #nullable restore
 #else
-        public string PriorityExplanation { get; set; }
+        public string PriorityExplanation { get => _explicitNullValuePriorityExplanation; set { _explicitNullValuePriorityExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority_explanation"); else _explicitNullProperties?.Remove("priority_explanation"); } }
+        private string _explicitNullValuePriorityExplanation = default!;
 #endif
         /// <summary>Id of the report to edit (must belong to this project).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportId { get; set; }
+        public string? ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private string? _explicitNullValueReportId = default!;
 #nullable restore
 #else
-        public string ReportId { get; set; }
+        public string ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private string _explicitNullValueReportId = default!;
 #endif
         /// <summary>Optional repository to point the report at, as `owner/repo` — the fix for a report that surfaced against the wrong codebase, so you correct it in place instead of filing a duplicate. It replaces the report&apos;s current target and re-runs autostart, so a report that had no repository to open a PR against can now open a draft PR. Omit the field to leave the target as it is, and pass the `NO_REPO` sentinel for a report where nothing under version control could change.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Repository { get; set; }
+        public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string? _explicitNullValueRepository = default!;
 #nullable restore
 #else
-        public string Repository { get; set; }
+        public string Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string _explicitNullValueRepository = default!;
 #endif
         /// <summary>* `selected` - Selected* `no_suitable_owner` - No suitable owner* `lookup_failed` - Lookup failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestReviewerOutcome? ReviewerOutcome { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestReviewerOutcome? ReviewerOutcome { get => _explicitNullValueReviewerOutcome; set { _explicitNullValueReviewerOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_outcome"); else _explicitNullProperties?.Remove("reviewer_outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequestReviewerOutcome? _explicitNullValueReviewerOutcome = default!;
         /// <summary>Reason the reviewer lookup failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReviewerRetryReason { get; set; }
+        public string? ReviewerRetryReason { get => _explicitNullValueReviewerRetryReason; set { _explicitNullValueReviewerRetryReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_retry_reason"); else _explicitNullProperties?.Remove("reviewer_retry_reason"); } }
+        private string? _explicitNullValueReviewerRetryReason = default!;
 #nullable restore
 #else
-        public string ReviewerRetryReason { get; set; }
+        public string ReviewerRetryReason { get => _explicitNullValueReviewerRetryReason; set { _explicitNullValueReviewerRetryReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_retry_reason"); else _explicitNullProperties?.Remove("reviewer_retry_reason"); } }
+        private string _explicitNullValueReviewerRetryReason = default!;
 #endif
         /// <summary>The full set of follow-up prompts (questions or next-step actions) the report should offer above its `Ask AI` box. Replaces the report&apos;s prompts rather than adding to them, so send every one you want kept. Omit the field (or send null) to leave them untouched, and send an empty list to take them down, which is what you want once a rewrite has left them pointing at the old report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SuggestedPrompts { get; set; }
+        public List<string>? SuggestedPrompts { get => _explicitNullValueSuggestedPrompts; set { _explicitNullValueSuggestedPrompts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_prompts"); else _explicitNullProperties?.Remove("suggested_prompts"); } }
+        private List<string>? _explicitNullValueSuggestedPrompts = default!;
 #nullable restore
 #else
-        public List<string> SuggestedPrompts { get; set; }
+        public List<string> SuggestedPrompts { get => _explicitNullValueSuggestedPrompts; set { _explicitNullValueSuggestedPrompts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_prompts"); else _explicitNullProperties?.Remove("suggested_prompts"); } }
+        private List<string> _explicitNullValueSuggestedPrompts = default!;
 #endif
         /// <summary>Optional reviewers to set on the report (each a `github_login` and/or `user_uuid`), replacing any existing list. Use this to route a report that surfaced with no reviewer — it re-runs autostart, so a report that was missing a qualifying reviewer can now open a draft PR. An empty list clears automatic reviewers when correction rules are enabled. Pins, exclusions, and confirmed lists are preserved. Pass expected_reviewers from the report reviewer_assignment.state read before selection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>? SuggestedReviewers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>? SuggestedReviewers { get => _explicitNullValueSuggestedReviewers; set { _explicitNullValueSuggestedReviewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_reviewers"); else _explicitNullProperties?.Remove("suggested_reviewers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>? _explicitNullValueSuggestedReviewers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer> SuggestedReviewers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer> SuggestedReviewers { get => _explicitNullValueSuggestedReviewers; set { _explicitNullValueSuggestedReviewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_reviewers"); else _explicitNullProperties?.Remove("suggested_reviewers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer> _explicitNullValueSuggestedReviewers = default!;
 #endif
         /// <summary>Optional new summary. Markdown is supported (headings, lists, code, links; images are not rendered); lead with one plain declarative sentence — it becomes the inbox card headline. A heading, or a bold label on a line of its own with a blank line above it, marks a section that a threaded Slack delivery splits into its own reply. The pipeline may later re-research and overwrite it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Summary { get; set; }
+        public string? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private string? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public string Summary { get; set; }
+        public string Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private string _explicitNullValueSummary = default!;
 #endif
         /// <summary>Set this only when your rewrite changes what the fix should be: a different root cause, a different file or layer, a materially wider or narrower scope. More evidence for the same fix is not a reason, because the report&apos;s open pull request already implements it. Setting it true records a replacement decision for a ready report. Policy and eligibility checks gate the replacement. The existing pull request closes only after a successful, verified replacement. Technical failures retry automatically; policy blocks wait for a new edit or research trigger. Only honored alongside a `title` or `summary` that actually changes, and only within the first four content revisions, including revisions that did not request replacement. When the flag is not applied, `warnings` says why.</summary>
-        public bool? SupersedesImplementation { get; set; }
+        public bool? SupersedesImplementation { get => _explicitNullValueSupersedesImplementation; set { _explicitNullValueSupersedesImplementation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supersedes_implementation"); else _explicitNullProperties?.Remove("supersedes_implementation"); } }
+        private bool? _explicitNullValueSupersedesImplementation = default!;
         /// <summary>The report&apos;s full set of slug tags, at most 10. Replaces the report&apos;s tags rather than adding to them, so send every tag you want kept. Omit the field (or send null) to leave them untouched, and send an empty list to remove them. Reuse a slug the project already uses before you coin a new one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>Optional new title. Conventional-commit style (`type(scope): description`) renders with type/scope styling. The pipeline may later re-research and overwrite it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequest"/> and sets the default values.
@@ -182,7 +251,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EditReportRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -245,6 +314,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("supersedes_implementation", SupersedesImplementation);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

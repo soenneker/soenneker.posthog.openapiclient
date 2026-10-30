@@ -11,48 +11,72 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AutocompleteCompletionItem : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("detail") is { } nullNodeDetail && nullNodeDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detail = null;
+            if (parseNode.GetChildNode("documentation") is { } nullNodeDocumentation && nullNodeDocumentation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Documentation = null;
+            if (parseNode.GetChildNode("insertText") is { } nullNodeInsertText && nullNodeInsertText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsertText = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("sortText") is { } nullNodeSortText && nullNodeSortText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SortText = null;
+        }
+
         /// <summary>A human-readable string with additional information about this item, like type or symbol information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Detail { get; set; }
+        public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        private string? _explicitNullValueDetail = default!;
 #nullable restore
 #else
-        public string Detail { get; set; }
+        public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        private string _explicitNullValueDetail = default!;
 #endif
         /// <summary>A human-readable string that represents a doc-comment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Documentation { get; set; }
+        public string? Documentation { get => _explicitNullValueDocumentation; set { _explicitNullValueDocumentation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documentation"); else _explicitNullProperties?.Remove("documentation"); } }
+        private string? _explicitNullValueDocumentation = default!;
 #nullable restore
 #else
-        public string Documentation { get; set; }
+        public string Documentation { get => _explicitNullValueDocumentation; set { _explicitNullValueDocumentation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("documentation"); else _explicitNullProperties?.Remove("documentation"); } }
+        private string _explicitNullValueDocumentation = default!;
 #endif
         /// <summary>A string or snippet that should be inserted in a document when selecting this completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InsertText { get; set; }
+        public string? InsertText { get => _explicitNullValueInsertText; set { _explicitNullValueInsertText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insertText"); else _explicitNullProperties?.Remove("insertText"); } }
+        private string? _explicitNullValueInsertText = default!;
 #nullable restore
 #else
-        public string InsertText { get; set; }
+        public string InsertText { get => _explicitNullValueInsertText; set { _explicitNullValueInsertText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insertText"); else _explicitNullProperties?.Remove("insertText"); } }
+        private string _explicitNullValueInsertText = default!;
 #endif
         /// <summary>The kind of this completion item. Based on the kind an icon is chosen by the editor.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind? _explicitNullValueKind = default!;
         /// <summary>The label of this completion item. By default this is also the text that is inserted when selecting this completion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get; set; }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>Overrides the editor&apos;s default ordering for this item. Set when the backend can rank a suggestion, for example a function whose return type fits the comparison being written.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SortText { get; set; }
+        public string? SortText { get => _explicitNullValueSortText; set { _explicitNullValueSortText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sortText"); else _explicitNullProperties?.Remove("sortText"); } }
+        private string? _explicitNullValueSortText = default!;
 #nullable restore
 #else
-        public string SortText { get; set; }
+        public string SortText { get => _explicitNullValueSortText; set { _explicitNullValueSortText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sortText"); else _explicitNullProperties?.Remove("sortText"); } }
+        private string _explicitNullValueSortText = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -62,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,7 +116,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("insertText", InsertText);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutocompleteCompletionItemKind>("kind", Kind);
             writer.WriteStringValue("label", Label);
-            writer.WriteStringValue("sortText", SortText);
+            writer.WriteStringValue("sortText", SortText);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

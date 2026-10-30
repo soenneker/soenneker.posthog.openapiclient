@@ -12,87 +12,147 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OnlinePerformanceRow : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("average_precision") is { } nullNodeAveragePrecision && nullNodeAveragePrecision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AveragePrecision = null;
+            if (parseNode.GetChildNode("base_rate") is { } nullNodeBaseRate && nullNodeBaseRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseRate = null;
+            if (parseNode.GetChildNode("brier_score") is { } nullNodeBrierScore && nullNodeBrierScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrierScore = null;
+            if (parseNode.GetChildNode("calibration_bins") is { } nullNodeCalibrationBins && nullNodeCalibrationBins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CalibrationBins = null;
+            if (parseNode.GetChildNode("calibration_error") is { } nullNodeCalibrationError && nullNodeCalibrationError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CalibrationError = null;
+            if (parseNode.GetChildNode("confusion") is { } nullNodeConfusion && nullNodeConfusion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confusion = null;
+            if (parseNode.GetChildNode("current_role") is { } nullNodeCurrentRole && nullNodeCurrentRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentRole = null;
+            if (parseNode.GetChildNode("emitted_role") is { } nullNodeEmittedRole && nullNodeEmittedRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmittedRole = null;
+            if (parseNode.GetChildNode("horizon_days") is { } nullNodeHorizonDays && nullNodeHorizonDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HorizonDays = null;
+            if (parseNode.GetChildNode("lift_at_10") is { } nullNodeLiftAt10 && nullNodeLiftAt10.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiftAt10 = null;
+            if (parseNode.GetChildNode("lift_at_20") is { } nullNodeLiftAt20 && nullNodeLiftAt20.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiftAt20 = null;
+            if (parseNode.GetChildNode("likely_threshold") is { } nullNodeLikelyThreshold && nullNodeLikelyThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LikelyThreshold = null;
+            if (parseNode.GetChildNode("mean_p_y") is { } nullNodeMeanPY && nullNodeMeanPY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeanPY = null;
+            if (parseNode.GetChildNode("model_id") is { } nullNodeModelId && nullNodeModelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelId = null;
+            if (parseNode.GetChildNode("n_positive") is { } nullNodeNPositive && nullNodeNPositive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NPositive = null;
+            if (parseNode.GetChildNode("n_scored") is { } nullNodeNScored && nullNodeNScored.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NScored = null;
+            if (parseNode.GetChildNode("prediction_date") is { } nullNodePredictionDate && nullNodePredictionDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PredictionDate = null;
+            if (parseNode.GetChildNode("realized_auc") is { } nullNodeRealizedAuc && nullNodeRealizedAuc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedAuc = null;
+            if (parseNode.GetChildNode("realized_auc_ci_high") is { } nullNodeRealizedAucCiHigh && nullNodeRealizedAucCiHigh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedAucCiHigh = null;
+            if (parseNode.GetChildNode("realized_auc_ci_low") is { } nullNodeRealizedAucCiLow && nullNodeRealizedAucCiLow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedAucCiLow = null;
+            if (parseNode.GetChildNode("validated_at") is { } nullNodeValidatedAt && nullNodeValidatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidatedAt = null;
+            if (parseNode.GetChildNode("validation_run_id") is { } nullNodeValidationRunId && nullNodeValidationRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationRunId = null;
+            if (parseNode.GetChildNode("warning") is { } nullNodeWarning && nullNodeWarning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warning = null;
+            if (parseNode.GetChildNode("weekday") is { } nullNodeWeekday && nullNodeWeekday.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Weekday = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average precision: area under the precision-recall curve. Higher is better, and a random model scores about base_rate. Null when no scored user did the target event, or for dates validated before this metric existed.</summary>
-        public double? AveragePrecision { get; set; }
+        public double? AveragePrecision { get => _explicitNullValueAveragePrecision; set { _explicitNullValueAveragePrecision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_precision"); else _explicitNullProperties?.Remove("average_precision"); } }
+        private double? _explicitNullValueAveragePrecision = default!;
         /// <summary>Fraction of scored users who did the target event (n_positive / n_scored).</summary>
-        public double? BaseRate { get; set; }
+        public double? BaseRate { get => _explicitNullValueBaseRate; set { _explicitNullValueBaseRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_rate"); else _explicitNullProperties?.Remove("base_rate"); } }
+        private double? _explicitNullValueBaseRate = default!;
         /// <summary>Brier score. Lower is better.</summary>
-        public double? BrierScore { get; set; }
+        public double? BrierScore { get => _explicitNullValueBrierScore; set { _explicitNullValueBrierScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brier_score"); else _explicitNullProperties?.Remove("brier_score"); } }
+        private double? _explicitNullValueBrierScore = default!;
         /// <summary>Calibration table with up to 10 bins cut at score quantiles, lowest scores first. Users with equal scores share a bin, so heavy ties give fewer bins. Null for dates validated before this metric existed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin>? CalibrationBins { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin>? CalibrationBins { get => _explicitNullValueCalibrationBins; set { _explicitNullValueCalibrationBins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calibration_bins"); else _explicitNullProperties?.Remove("calibration_bins"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin>? _explicitNullValueCalibrationBins = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin> CalibrationBins { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin> CalibrationBins { get => _explicitNullValueCalibrationBins; set { _explicitNullValueCalibrationBins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calibration_bins"); else _explicitNullProperties?.Remove("calibration_bins"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin> _explicitNullValueCalibrationBins = default!;
 #endif
         /// <summary>Expected calibration error over 10 equal-width bins. Lower is better.</summary>
-        public double? CalibrationError { get; set; }
+        public double? CalibrationError { get => _explicitNullValueCalibrationError; set { _explicitNullValueCalibrationError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calibration_error"); else _explicitNullProperties?.Remove("calibration_error"); } }
+        private double? _explicitNullValueCalibrationError = default!;
         /// <summary>Confusion counts, precision and recall at three cutoffs: top 10%, top 20%, and the Likely segment. Null for dates validated before this metric existed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff? Confusion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff? Confusion { get => _explicitNullValueConfusion; set { _explicitNullValueConfusion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confusion"); else _explicitNullProperties?.Remove("confusion"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff? _explicitNullValueConfusion = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff Confusion { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff Confusion { get => _explicitNullValueConfusion; set { _explicitNullValueConfusion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confusion"); else _explicitNullProperties?.Remove("confusion"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff _explicitNullValueConfusion = default!;
 #endif
         /// <summary>Role the model has now: &apos;champion&apos;, &apos;challenger&apos;, &apos;archived&apos;, or &apos;deleted&apos;. A former champion that a promotion archived keeps its rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentRole { get; set; }
+        public string? CurrentRole { get => _explicitNullValueCurrentRole; set { _explicitNullValueCurrentRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_role"); else _explicitNullProperties?.Remove("current_role"); } }
+        private string? _explicitNullValueCurrentRole = default!;
 #nullable restore
 #else
-        public string CurrentRole { get; set; }
+        public string CurrentRole { get => _explicitNullValueCurrentRole; set { _explicitNullValueCurrentRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_role"); else _explicitNullProperties?.Remove("current_role"); } }
+        private string _explicitNullValueCurrentRole = default!;
 #endif
         /// <summary>Role the model had when it emitted the predictions: &apos;champion&apos; or &apos;challenger&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EmittedRole { get; set; }
+        public string? EmittedRole { get => _explicitNullValueEmittedRole; set { _explicitNullValueEmittedRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emitted_role"); else _explicitNullProperties?.Remove("emitted_role"); } }
+        private string? _explicitNullValueEmittedRole = default!;
 #nullable restore
 #else
-        public string EmittedRole { get; set; }
+        public string EmittedRole { get => _explicitNullValueEmittedRole; set { _explicitNullValueEmittedRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emitted_role"); else _explicitNullProperties?.Remove("emitted_role"); } }
+        private string _explicitNullValueEmittedRole = default!;
 #endif
         /// <summary>Prediction horizon, in days, the predictions were made under.</summary>
-        public int? HorizonDays { get; set; }
+        public int? HorizonDays { get => _explicitNullValueHorizonDays; set { _explicitNullValueHorizonDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("horizon_days"); else _explicitNullProperties?.Remove("horizon_days"); } }
+        private int? _explicitNullValueHorizonDays = default!;
         /// <summary>Positives in the top 10% by score, relative to a random 10%.</summary>
-        public double? LiftAt10 { get; set; }
+        public double? LiftAt10 { get => _explicitNullValueLiftAt10; set { _explicitNullValueLiftAt10 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lift_at_10"); else _explicitNullProperties?.Remove("lift_at_10"); } }
+        private double? _explicitNullValueLiftAt10 = default!;
         /// <summary>Positives in the top 20% by score, relative to a random 20%.</summary>
-        public double? LiftAt20 { get; set; }
+        public double? LiftAt20 { get => _explicitNullValueLiftAt20; set { _explicitNullValueLiftAt20 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lift_at_20"); else _explicitNullProperties?.Remove("lift_at_20"); } }
+        private double? _explicitNullValueLiftAt20 = default!;
         /// <summary>The Likely cut point the &apos;likely&apos; confusion counts used for this date, from the base rate of the dates checked before it. Null when confusion is null.</summary>
-        public double? LikelyThreshold { get; set; }
+        public double? LikelyThreshold { get => _explicitNullValueLikelyThreshold; set { _explicitNullValueLikelyThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_threshold"); else _explicitNullProperties?.Remove("likely_threshold"); } }
+        private double? _explicitNullValueLikelyThreshold = default!;
         /// <summary>Mean predicted probability. Compare it with base_rate: a higher value means the model over-predicts. Null for dates validated before this metric existed.</summary>
-        public double? MeanPY { get; set; }
+        public double? MeanPY { get => _explicitNullValueMeanPY; set { _explicitNullValueMeanPY = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean_p_y"); else _explicitNullProperties?.Remove("mean_p_y"); } }
+        private double? _explicitNullValueMeanPY = default!;
         /// <summary>UUID of the model that emitted the predictions.</summary>
-        public Guid? ModelId { get; set; }
+        public Guid? ModelId { get => _explicitNullValueModelId; set { _explicitNullValueModelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_id"); else _explicitNullProperties?.Remove("model_id"); } }
+        private Guid? _explicitNullValueModelId = default!;
         /// <summary>Number of scored users who did the target event in the horizon.</summary>
-        public int? NPositive { get; set; }
+        public int? NPositive { get => _explicitNullValueNPositive; set { _explicitNullValueNPositive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_positive"); else _explicitNullProperties?.Remove("n_positive"); } }
+        private int? _explicitNullValueNPositive = default!;
         /// <summary>Number of users the model scored on this date.</summary>
-        public int? NScored { get; set; }
+        public int? NScored { get => _explicitNullValueNScored; set { _explicitNullValueNScored = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_scored"); else _explicitNullProperties?.Remove("n_scored"); } }
+        private int? _explicitNullValueNScored = default!;
         /// <summary>Date the predictions were made for (UTC).</summary>
-        public Date? PredictionDate { get; set; }
+        public Date? PredictionDate { get => _explicitNullValuePredictionDate; set { _explicitNullValuePredictionDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prediction_date"); else _explicitNullProperties?.Remove("prediction_date"); } }
+        private Date? _explicitNullValuePredictionDate = default!;
         /// <summary>Realized ROC AUC against actual outcomes. Null when the date has one class only.</summary>
-        public double? RealizedAuc { get; set; }
+        public double? RealizedAuc { get => _explicitNullValueRealizedAuc; set { _explicitNullValueRealizedAuc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_auc"); else _explicitNullProperties?.Remove("realized_auc"); } }
+        private double? _explicitNullValueRealizedAuc = default!;
         /// <summary>Upper bound of the 95% AUC interval (Hanley-McNeil). Null when realized_auc is null.</summary>
-        public double? RealizedAucCiHigh { get; set; }
+        public double? RealizedAucCiHigh { get => _explicitNullValueRealizedAucCiHigh; set { _explicitNullValueRealizedAucCiHigh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_auc_ci_high"); else _explicitNullProperties?.Remove("realized_auc_ci_high"); } }
+        private double? _explicitNullValueRealizedAucCiHigh = default!;
         /// <summary>Lower bound of the 95% AUC interval (Hanley-McNeil). Null when realized_auc is null.</summary>
-        public double? RealizedAucCiLow { get; set; }
+        public double? RealizedAucCiLow { get => _explicitNullValueRealizedAucCiLow; set { _explicitNullValueRealizedAucCiLow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_auc_ci_low"); else _explicitNullProperties?.Remove("realized_auc_ci_low"); } }
+        private double? _explicitNullValueRealizedAucCiLow = default!;
         /// <summary>When the validation run completed.</summary>
-        public DateTimeOffset? ValidatedAt { get; set; }
+        public DateTimeOffset? ValidatedAt { get => _explicitNullValueValidatedAt; set { _explicitNullValueValidatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validated_at"); else _explicitNullProperties?.Remove("validated_at"); } }
+        private DateTimeOffset? _explicitNullValueValidatedAt = default!;
         /// <summary>UUID of the validation run that recorded these metrics.</summary>
-        public Guid? ValidationRunId { get; set; }
+        public Guid? ValidationRunId { get => _explicitNullValueValidationRunId; set { _explicitNullValueValidationRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_run_id"); else _explicitNullProperties?.Remove("validation_run_id"); } }
+        private Guid? _explicitNullValueValidationRunId = default!;
         /// <summary>&apos;single_class_no_auc&apos; when every scored user had the same outcome, otherwise null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Warning { get; set; }
+        public string? Warning { get => _explicitNullValueWarning; set { _explicitNullValueWarning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warning"); else _explicitNullProperties?.Remove("warning"); } }
+        private string? _explicitNullValueWarning = default!;
 #nullable restore
 #else
-        public string Warning { get; set; }
+        public string Warning { get => _explicitNullValueWarning; set { _explicitNullValueWarning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warning"); else _explicitNullProperties?.Remove("warning"); } }
+        private string _explicitNullValueWarning = default!;
 #endif
         /// <summary>ISO weekday of the prediction date: 1 is Monday and 7 is Sunday. Use it to find weekday effects.</summary>
-        public int? Weekday { get; set; }
+        public int? Weekday { get => _explicitNullValueWeekday; set { _explicitNullValueWeekday = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weekday"); else _explicitNullProperties?.Remove("weekday"); } }
+        private int? _explicitNullValueWeekday = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow"/> and sets the default values.
         /// </summary>
@@ -108,7 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -175,6 +235,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("validation_run_id", ValidationRunId);
             writer.WriteStringValue("warning", Warning);
             writer.WriteIntValue("weekday", Weekday);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

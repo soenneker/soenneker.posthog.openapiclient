@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OrganizationNotificationLock : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("locked_value") is { } nullNodeLockedValue && nullNodeLockedValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LockedValue = null;
+            if (parseNode.GetChildNode("scope_id") is { } nullNodeScopeId && nullNodeScopeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeId = null;
+            if (parseNode.GetChildNode("setting") is { } nullNodeSetting && nullNodeSetting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Setting = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The value the organization enforces.</summary>
-        public bool? LockedValue { get; set; }
+        public bool? LockedValue { get => _explicitNullValueLockedValue; set { _explicitNullValueLockedValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locked_value"); else _explicitNullProperties?.Remove("locked_value"); } }
+        private bool? _explicitNullValueLockedValue = default!;
         /// <summary>What the setting applies to: a project ID or an organization ID. Empty for a setting that is a single switch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScopeId { get; set; }
+        public string? ScopeId { get => _explicitNullValueScopeId; set { _explicitNullValueScopeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_id"); else _explicitNullProperties?.Remove("scope_id"); } }
+        private string? _explicitNullValueScopeId = default!;
 #nullable restore
 #else
-        public string ScopeId { get; set; }
+        public string ScopeId { get => _explicitNullValueScopeId; set { _explicitNullValueScopeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_id"); else _explicitNullProperties?.Remove("scope_id"); } }
+        private string _explicitNullValueScopeId = default!;
 #endif
         /// <summary>* `approval_requested` - approval_requested* `approval_resolved` - approval_resolved* `data_catalog_weekly_digest` - data_catalog_weekly_digest* `discussions_mentioned` - discussions_mentioned* `error_tracking_issue_assigned` - error_tracking_issue_assigned* `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled* `materialized_view_sync_failed` - materialized_view_sync_failed* `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily* `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate* `organization_member_join_email_disabled` - organization_member_join_email_disabled* `pipeline_notifications_disabled` - pipeline_notifications_disabled* `project_weekly_digest_disabled` - project_weekly_digest_disabled* `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting? Setting { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting? Setting { get => _explicitNullValueSetting; set { _explicitNullValueSetting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("setting"); else _explicitNullProperties?.Remove("setting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting? _explicitNullValueSetting = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("locked_value", LockedValue);
             writer.WriteStringValue("scope_id", ScopeId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting>("setting", Setting);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

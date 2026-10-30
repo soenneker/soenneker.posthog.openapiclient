@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BulkAddOptOutsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("category_key") is { } nullNodeCategoryKey && nullNodeCategoryKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoryKey = null;
+            if (parseNode.GetChildNode("opt_outs") is { } nullNodeOptOuts && nullNodeOptOuts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OptOuts = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Message category key applied to entries without their own. If omitted, recipients are opted out of all marketing messages.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CategoryKey { get; set; }
+        public string? CategoryKey { get => _explicitNullValueCategoryKey; set { _explicitNullValueCategoryKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_key"); else _explicitNullProperties?.Remove("category_key"); } }
+        private string? _explicitNullValueCategoryKey = default!;
 #nullable restore
 #else
-        public string CategoryKey { get; set; }
+        public string CategoryKey { get => _explicitNullValueCategoryKey; set { _explicitNullValueCategoryKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_key"); else _explicitNullProperties?.Remove("category_key"); } }
+        private string _explicitNullValueCategoryKey = default!;
 #endif
         /// <summary>Recipients to opt out, at most 1000 per request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry>? OptOuts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry>? OptOuts { get => _explicitNullValueOptOuts; set { _explicitNullValueOptOuts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opt_outs"); else _explicitNullProperties?.Remove("opt_outs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry>? _explicitNullValueOptOuts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry> OptOuts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry> OptOuts { get => _explicitNullValueOptOuts; set { _explicitNullValueOptOuts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opt_outs"); else _explicitNullProperties?.Remove("opt_outs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry> _explicitNullValueOptOuts = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkAddOptOutsRequest"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BulkAddOptOutsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BulkAddOptOutsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BulkAddOptOutsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("category_key", CategoryKey);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry>("opt_outs", OptOuts);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

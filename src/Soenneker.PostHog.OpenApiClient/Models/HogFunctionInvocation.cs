@@ -11,40 +11,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HogFunctionInvocation : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("clickhouse_event") is { } nullNodeClickhouseEvent && nullNodeClickhouseEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClickhouseEvent = null;
+            if (parseNode.GetChildNode("configuration") is { } nullNodeConfiguration && nullNodeConfiguration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Configuration = null;
+            if (parseNode.GetChildNode("globals") is { } nullNodeGlobals && nullNodeGlobals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Globals = null;
+            if (parseNode.GetChildNode("invocation_id") is { } nullNodeInvocationId && nullNodeInvocationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvocationId = null;
+            if (parseNode.GetChildNode("mock_async_functions") is { } nullNodeMockAsyncFunctions && nullNodeMockAsyncFunctions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MockAsyncFunctions = null;
+            if (parseNode.GetChildNode("use_draft") is { } nullNodeUseDraft && nullNodeUseDraft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseDraft = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mock ClickHouse event data to test the function with.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationClickhouseEventProperty? ClickhouseEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationClickhouseEventProperty? ClickhouseEvent { get => _explicitNullValueClickhouseEvent; set { _explicitNullValueClickhouseEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clickhouse_event"); else _explicitNullProperties?.Remove("clickhouse_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationClickhouseEventProperty? _explicitNullValueClickhouseEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationClickhouseEventProperty ClickhouseEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationClickhouseEventProperty ClickhouseEvent { get => _explicitNullValueClickhouseEvent; set { _explicitNullValueClickhouseEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clickhouse_event"); else _explicitNullProperties?.Remove("clickhouse_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationClickhouseEventProperty _explicitNullValueClickhouseEvent = default!;
 #endif
         /// <summary>Full function configuration to test. Omit when use_draft is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration? Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration? Configuration { get => _explicitNullValueConfiguration; set { _explicitNullValueConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration"); else _explicitNullProperties?.Remove("configuration"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration? _explicitNullValueConfiguration = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration Configuration { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration Configuration { get => _explicitNullValueConfiguration; set { _explicitNullValueConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration"); else _explicitNullProperties?.Remove("configuration"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration _explicitNullValueConfiguration = default!;
 #endif
         /// <summary>Mock global variables available during test invocation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationGlobalsProperty? Globals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationGlobalsProperty? Globals { get => _explicitNullValueGlobals; set { _explicitNullValueGlobals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("globals"); else _explicitNullProperties?.Remove("globals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationGlobalsProperty? _explicitNullValueGlobals = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationGlobalsProperty Globals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationGlobalsProperty Globals { get => _explicitNullValueGlobals; set { _explicitNullValueGlobals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("globals"); else _explicitNullProperties?.Remove("globals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationGlobalsProperty _explicitNullValueGlobals = default!;
 #endif
         /// <summary>Optional invocation ID for correlation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InvocationId { get; set; }
+        public string? InvocationId { get => _explicitNullValueInvocationId; set { _explicitNullValueInvocationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocation_id"); else _explicitNullProperties?.Remove("invocation_id"); } }
+        private string? _explicitNullValueInvocationId = default!;
 #nullable restore
 #else
-        public string InvocationId { get; set; }
+        public string InvocationId { get => _explicitNullValueInvocationId; set { _explicitNullValueInvocationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocation_id"); else _explicitNullProperties?.Remove("invocation_id"); } }
+        private string _explicitNullValueInvocationId = default!;
 #endif
         /// <summary>Execution logs from the test invocation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,7 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public UntypedNode Logs { get; private set; }
 #endif
         /// <summary>When true (default), async functions like fetch() are simulated.</summary>
-        public bool? MockAsyncFunctions { get; set; }
+        public bool? MockAsyncFunctions { get => _explicitNullValueMockAsyncFunctions; set { _explicitNullValueMockAsyncFunctions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mock_async_functions"); else _explicitNullProperties?.Remove("mock_async_functions"); } }
+        private bool? _explicitNullValueMockAsyncFunctions = default!;
         /// <summary>Invocation result status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +87,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Status { get; private set; }
 #endif
         /// <summary>Test the function&apos;s staged draft instead of passing a configuration. Staged secret inputs are used; secrets the draft doesn&apos;t change fall back to the live values. 400 when nothing is staged.</summary>
-        public bool? UseDraft { get; set; }
+        public bool? UseDraft { get => _explicitNullValueUseDraft; set { _explicitNullValueUseDraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_draft"); else _explicitNullProperties?.Remove("use_draft"); } }
+        private bool? _explicitNullValueUseDraft = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation"/> and sets the default values.
         /// </summary>
@@ -83,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("invocation_id", InvocationId);
             writer.WriteBoolValue("mock_async_functions", MockAsyncFunctions);
             writer.WriteBoolValue("use_draft", UseDraft);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

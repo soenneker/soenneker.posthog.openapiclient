@@ -12,64 +12,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class McpServiceAccountServer : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("connection_state") is { } nullNodeConnectionState && nullNodeConnectionState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectionState = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("icon_domain") is { } nullNodeIconDomain && nullNodeIconDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IconDomain = null;
+            if (parseNode.GetChildNode("icon_key") is { } nullNodeIconKey && nullNodeIconKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IconKey = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("reachable") is { } nullNodeReachable && nullNodeReachable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reachable = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("shared_by") is { } nullNodeSharedBy && nullNodeSharedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedBy = null;
+            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `ready` - ready* `pending_oauth` - pending_oauth* `needs_reauth` - needs_reauth* `disabled` - disabled* `missing_credential` - missing_credential</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState? ConnectionState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState? ConnectionState { get => _explicitNullValueConnectionState; set { _explicitNullValueConnectionState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection_state"); else _explicitNullProperties?.Remove("connection_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerConnectionState? _explicitNullValueConnectionState = default!;
         /// <summary>Server description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Brand domain. Empty for custom servers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IconDomain { get; set; }
+        public string? IconDomain { get => _explicitNullValueIconDomain; set { _explicitNullValueIconDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("icon_domain"); else _explicitNullProperties?.Remove("icon_domain"); } }
+        private string? _explicitNullValueIconDomain = default!;
 #nullable restore
 #else
-        public string IconDomain { get; set; }
+        public string IconDomain { get => _explicitNullValueIconDomain; set { _explicitNullValueIconDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("icon_domain"); else _explicitNullProperties?.Remove("icon_domain"); } }
+        private string _explicitNullValueIconDomain = default!;
 #endif
         /// <summary>Deprecated brand icon key. Empty for custom servers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IconKey { get; set; }
+        public string? IconKey { get => _explicitNullValueIconKey; set { _explicitNullValueIconKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("icon_key"); else _explicitNullProperties?.Remove("icon_key"); } }
+        private string? _explicitNullValueIconKey = default!;
 #nullable restore
 #else
-        public string IconKey { get; set; }
+        public string IconKey { get => _explicitNullValueIconKey; set { _explicitNullValueIconKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("icon_key"); else _explicitNullProperties?.Remove("icon_key"); } }
+        private string _explicitNullValueIconKey = default!;
 #endif
         /// <summary>Gateway server granted to the agent.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Server display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Whether agent runs can use this grant: the server is enabled for the project and an admin has not revoked the sharing member&apos;s access. Independent of connection_state, which reports credential health.</summary>
-        public bool? Reachable { get; set; }
+        public bool? Reachable { get => _explicitNullValueReachable; set { _explicitNullValueReachable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reachable"); else _explicitNullProperties?.Remove("reachable"); } }
+        private bool? _explicitNullValueReachable = default!;
         /// <summary>* `personal` - Personal* `team` - Team</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope? Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope? _explicitNullValueScope = default!;
         /// <summary>The member whose connection the agent uses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy? SharedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy? SharedBy { get => _explicitNullValueSharedBy; set { _explicitNullValueSharedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_by"); else _explicitNullProperties?.Remove("shared_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy? _explicitNullValueSharedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy SharedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy SharedBy { get => _explicitNullValueSharedBy; set { _explicitNullValueSharedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_by"); else _explicitNullProperties?.Remove("shared_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy _explicitNullValueSharedBy = default!;
 #endif
         /// <summary>MCP server URL. Clients derive a brand icon from it when icon_domain is empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Url { get; set; }
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public string Url { get; set; }
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServer"/> and sets the default values.
@@ -86,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServer CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServer();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServer(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -125,6 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerScope>("scope", Scope);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountServerSharedBy>("shared_by", SharedBy);
             writer.WriteStringValue("url", Url);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,101 +11,150 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogPattern : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("error_count") is { } nullNodeErrorCount && nullNodeErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCount = null;
+            if (parseNode.GetChildNode("estimated_count") is { } nullNodeEstimatedCount && nullNodeEstimatedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCount = null;
+            if (parseNode.GetChildNode("estimated_error_count") is { } nullNodeEstimatedErrorCount && nullNodeEstimatedErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedErrorCount = null;
+            if (parseNode.GetChildNode("examples") is { } nullNodeExamples && nullNodeExamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Examples = null;
+            if (parseNode.GetChildNode("first_seen") is { } nullNodeFirstSeen && nullNodeFirstSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstSeen = null;
+            if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
+            if (parseNode.GetChildNode("match_literal") is { } nullNodeMatchLiteral && nullNodeMatchLiteral.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchLiteral = null;
+            if (parseNode.GetChildNode("match_patterns") is { } nullNodeMatchPatterns && nullNodeMatchPatterns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchPatterns = null;
+            if (parseNode.GetChildNode("match_regex") is { } nullNodeMatchRegex && nullNodeMatchRegex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchRegex = null;
+            if (parseNode.GetChildNode("pattern") is { } nullNodePattern && nullNodePattern.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pattern = null;
+            if (parseNode.GetChildNode("pattern_version") is { } nullNodePatternVersion && nullNodePatternVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PatternVersion = null;
+            if (parseNode.GetChildNode("services") is { } nullNodeServices && nullNodeServices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Services = null;
+            if (parseNode.GetChildNode("severity_counts") is { } nullNodeSeverityCounts && nullNodeSeverityCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeverityCounts = null;
+            if (parseNode.GetChildNode("sparkline") is { } nullNodeSparkline && nullNodeSparkline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sparkline = null;
+            if (parseNode.GetChildNode("volume_share_pct") is { } nullNodeVolumeSharePct && nullNodeVolumeSharePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeSharePct = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Occurrences of this pattern within the sample. When `sampled` is true this is a sample count, not the full-window total — prefer `estimated_count` for display.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>Occurrences at severity &quot;error&quot; or &quot;fatal&quot;. A sample count when `sampled` is true, so prefer `estimated_error_count` for display.</summary>
-        public int? ErrorCount { get; set; }
+        public int? ErrorCount { get => _explicitNullValueErrorCount; set { _explicitNullValueErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_count"); else _explicitNullProperties?.Remove("error_count"); } }
+        private int? _explicitNullValueErrorCount = default!;
         /// <summary>Estimated occurrences across the full window, extrapolated from the sample (`count / scanned_count * total_count`). Equals `count` when the window was not sampled.</summary>
-        public int? EstimatedCount { get; set; }
+        public int? EstimatedCount { get => _explicitNullValueEstimatedCount; set { _explicitNullValueEstimatedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_count"); else _explicitNullProperties?.Remove("estimated_count"); } }
+        private int? _explicitNullValueEstimatedCount = default!;
         /// <summary>Estimated error/fatal occurrences across the full window, extrapolated from the sample. Equals `error_count` when the window was not sampled.</summary>
-        public int? EstimatedErrorCount { get; set; }
+        public int? EstimatedErrorCount { get => _explicitNullValueEstimatedErrorCount; set { _explicitNullValueEstimatedErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_error_count"); else _explicitNullProperties?.Remove("estimated_error_count"); } }
+        private int? _explicitNullValueEstimatedErrorCount = default!;
         /// <summary>Up to 10 distinct sampled log lines that produced this pattern, with severity, service, and timestamp for display.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternExample>? Examples { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternExample>? Examples { get => _explicitNullValueExamples; set { _explicitNullValueExamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("examples"); else _explicitNullProperties?.Remove("examples"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternExample>? _explicitNullValueExamples = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternExample> Examples { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternExample> Examples { get => _explicitNullValueExamples; set { _explicitNullValueExamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("examples"); else _explicitNullProperties?.Remove("examples"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternExample> _explicitNullValueExamples = default!;
 #endif
         /// <summary>ISO 8601 timestamp of the earliest occurrence. Taken from the sample when `sampled` is true, from every matching row otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstSeen { get; set; }
+        public string? FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
+        private string? _explicitNullValueFirstSeen = default!;
 #nullable restore
 #else
-        public string FirstSeen { get; set; }
+        public string FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
+        private string _explicitNullValueFirstSeen = default!;
 #endif
         /// <summary>ISO 8601 timestamp of the latest occurrence. Taken from the sample when `sampled` is true, from every matching row otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastSeen { get; set; }
+        public string? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private string? _explicitNullValueLastSeen = default!;
 #nullable restore
 #else
-        public string LastSeen { get; set; }
+        public string LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private string _explicitNullValueLastSeen = default!;
 #endif
         /// <summary>Longest literal run in the template, for plain-text (icontains) filtering when `match_regex` is null. Null when the template has no usable literal content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchLiteral { get; set; }
+        public string? MatchLiteral { get => _explicitNullValueMatchLiteral; set { _explicitNullValueMatchLiteral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_literal"); else _explicitNullProperties?.Remove("match_literal"); } }
+        private string? _explicitNullValueMatchLiteral = default!;
 #nullable restore
 #else
-        public string MatchLiteral { get; set; }
+        public string MatchLiteral { get => _explicitNullValueMatchLiteral; set { _explicitNullValueMatchLiteral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_literal"); else _explicitNullProperties?.Remove("match_literal"); } }
+        private string _explicitNullValueMatchLiteral = default!;
 #endif
         /// <summary>Exact canonical members of a stored-pattern group. Filter pattern IN these values AND pattern_version equals this group&apos;s version. Empty for body mining.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MatchPatterns { get; set; }
+        public List<string>? MatchPatterns { get => _explicitNullValueMatchPatterns; set { _explicitNullValueMatchPatterns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_patterns"); else _explicitNullProperties?.Remove("match_patterns"); } }
+        private List<string>? _explicitNullValueMatchPatterns = default!;
 #nullable restore
 #else
-        public List<string> MatchPatterns { get; set; }
+        public List<string> MatchPatterns { get => _explicitNullValueMatchPatterns; set { _explicitNullValueMatchPatterns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_patterns"); else _explicitNullProperties?.Remove("match_patterns"); } }
+        private List<string> _explicitNullValueMatchPatterns = default!;
 #endif
         /// <summary>RE2-safe regex over raw log bodies that matches lines of this pattern, compiled from the template and validated against the raw bodies of the pattern&apos;s own sampled rows before being offered. Null when the template lacks literal content or validation failed. Never trust an unvalidated predicate. Use with the message/regex log property filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchRegex { get; set; }
+        public string? MatchRegex { get => _explicitNullValueMatchRegex; set { _explicitNullValueMatchRegex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_regex"); else _explicitNullProperties?.Remove("match_regex"); } }
+        private string? _explicitNullValueMatchRegex = default!;
 #nullable restore
 #else
-        public string MatchRegex { get; set; }
+        public string MatchRegex { get => _explicitNullValueMatchRegex; set { _explicitNullValueMatchRegex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_regex"); else _explicitNullProperties?.Remove("match_regex"); } }
+        private string _explicitNullValueMatchRegex = default!;
 #endif
         /// <summary>Log template with variable tokens masked, e.g. &quot;Connected to &lt;ip&gt; in &lt;num&gt;ms&quot;. Body mining masks &lt;timestamp&gt;, &lt;uuid&gt;, &lt;ip&gt;, &lt;hex&gt;, &lt;num&gt;, plus &lt;*&gt; for word positions Drain found to vary. Stored patterns use the ingestion vocabulary instead: &lt;N&gt;, &lt;TIMESTAMP&gt;, &lt;KLOGTIME&gt;, &lt;UUID&gt;, &lt;IP&gt;, &lt;HOST&gt;, &lt;HEX&gt;, &lt;ID&gt;, &lt;EMAIL&gt;, &lt;JSON_ARRAY&gt;, and &lt;JSON:keys&gt; for a JSON body reduced to its key set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Pattern { get; set; }
+        public string? Pattern { get => _explicitNullValuePattern; set { _explicitNullValuePattern = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pattern"); else _explicitNullProperties?.Remove("pattern"); } }
+        private string? _explicitNullValuePattern = default!;
 #nullable restore
 #else
-        public string Pattern { get; set; }
+        public string Pattern { get => _explicitNullValuePattern; set { _explicitNullValuePattern = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pattern"); else _explicitNullProperties?.Remove("pattern"); } }
+        private string _explicitNullValuePattern = default!;
 #endif
         /// <summary>Version required by match_patterns. Null for body mining.</summary>
-        public int? PatternVersion { get; set; }
+        public int? PatternVersion { get => _explicitNullValuePatternVersion; set { _explicitNullValuePatternVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pattern_version"); else _explicitNullProperties?.Remove("pattern_version"); } }
+        private int? _explicitNullValuePatternVersion = default!;
         /// <summary>Up to 4 distinct service names this pattern was observed in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Services { get; set; }
+        public List<string>? Services { get => _explicitNullValueServices; set { _explicitNullValueServices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("services"); else _explicitNullProperties?.Remove("services"); } }
+        private List<string>? _explicitNullValueServices = default!;
 #nullable restore
 #else
-        public List<string> Services { get; set; }
+        public List<string> Services { get => _explicitNullValueServices; set { _explicitNullValueServices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("services"); else _explicitNullProperties?.Remove("services"); } }
+        private List<string> _explicitNullValueServices = default!;
 #endif
         /// <summary>Occurrences keyed by lowercased severity (&quot;trace&quot; through &quot;fatal&quot;). Never extrapolated, because severity dominance is a proportion that scaling would not change. Sample counts when `sampled` is true, counts over every matching row otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternSeverityCountsProperty? SeverityCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternSeverityCountsProperty? SeverityCounts { get => _explicitNullValueSeverityCounts; set { _explicitNullValueSeverityCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity_counts"); else _explicitNullProperties?.Remove("severity_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogPatternSeverityCountsProperty? _explicitNullValueSeverityCounts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternSeverityCountsProperty SeverityCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternSeverityCountsProperty SeverityCounts { get => _explicitNullValueSeverityCounts; set { _explicitNullValueSeverityCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity_counts"); else _explicitNullProperties?.Remove("severity_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogPatternSeverityCountsProperty _explicitNullValueSeverityCounts = default!;
 #endif
         /// <summary>Occurrences per time bucket, aligned index-for-index with the response&apos;s `sparkline_buckets`. When `sampled` is true these are extrapolated like `estimated_count` and show the volume shape over the window rather than exact tallies. Otherwise they are exact per-bucket counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? Sparkline { get; set; }
+        public List<int?>? Sparkline { get => _explicitNullValueSparkline; set { _explicitNullValueSparkline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparkline"); else _explicitNullProperties?.Remove("sparkline"); } }
+        private List<int?>? _explicitNullValueSparkline = default!;
 #nullable restore
 #else
-        public List<int?> Sparkline { get; set; }
+        public List<int?> Sparkline { get => _explicitNullValueSparkline; set { _explicitNullValueSparkline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparkline"); else _explicitNullProperties?.Remove("sparkline"); } }
+        private List<int?> _explicitNullValueSparkline = default!;
 #endif
         /// <summary>Share of the log volume this pattern represents (0–100). Measured over the sample when `sampled` is true, over every matching row otherwise.</summary>
-        public double? VolumeSharePct { get; set; }
+        public double? VolumeSharePct { get => _explicitNullValueVolumeSharePct; set { _explicitNullValueVolumeSharePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_share_pct"); else _explicitNullProperties?.Remove("volume_share_pct"); } }
+        private double? _explicitNullValueVolumeSharePct = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPattern"/> and sets the default values.
         /// </summary>
@@ -121,7 +170,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogPattern CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogPattern();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogPattern(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -172,6 +221,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternSeverityCountsProperty>("severity_counts", SeverityCounts);
             writer.WriteCollectionOfPrimitiveValues<int?>("sparkline", Sparkline);
             writer.WriteDoubleValue("volume_share_pct", VolumeSharePct);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,23 +11,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewProgress : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("done") is { } nullNodeDone && nullNodeDone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Done = null;
+            if (parseNode.GetChildNode("review_mode") is { } nullNodeReviewMode && nullNodeReviewMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewMode = null;
+            if (parseNode.GetChildNode("review_stage") is { } nullNodeReviewStage && nullNodeReviewStage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewStage = null;
+            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Work units finished within the stage; null when the stage has no counter.</summary>
-        public int? Done { get; set; }
+        public int? Done { get => _explicitNullValueDone; set { _explicitNullValueDone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("done"); else _explicitNullProperties?.Remove("done"); } }
+        private int? _explicitNullValueDone = default!;
         /// <summary>What the in-flight turn runs: &apos;full&apos; (Deep) or &apos;flash&apos; (Standard). The row&apos;s `review_mode` describes the last completed turn, which can differ. Null until the turn records its mode, shortly before its review sessions start.* `full` - Deep* `flash` - Standard</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode? ReviewMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode? ReviewMode { get => _explicitNullValueReviewMode; set { _explicitNullValueReviewMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_mode"); else _explicitNullProperties?.Remove("review_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode? _explicitNullValueReviewMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode ReviewMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode ReviewMode { get => _explicitNullValueReviewMode; set { _explicitNullValueReviewMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_mode"); else _explicitNullProperties?.Remove("review_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode _explicitNullValueReviewMode = default!;
 #endif
         /// <summary>* `fetching` - fetching* `chunking` - chunking* `selecting` - selecting* `reviewing` - reviewing* `deduplicating` - deduplicating* `validating` - validating* `finalizing` - finalizing* `single_agent_preparing` - single_agent_preparing* `single_agent_reviewing` - single_agent_reviewing* `single_agent_finalizing` - single_agent_finalizing</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage? ReviewStage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage? ReviewStage { get => _explicitNullValueReviewStage; set { _explicitNullValueReviewStage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_stage"); else _explicitNullProperties?.Remove("review_stage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage? _explicitNullValueReviewStage = default!;
         /// <summary>Work units the stage expects in total; null when unknown.</summary>
-        public int? Total { get; set; }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress"/> and sets the default values.
         /// </summary>
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewMode>("review_mode", ReviewMode);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgressReviewStage>("review_stage", ReviewStage);
             writer.WriteIntValue("total", Total);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

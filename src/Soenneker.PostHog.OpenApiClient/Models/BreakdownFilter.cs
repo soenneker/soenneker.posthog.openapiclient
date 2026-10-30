@@ -11,37 +11,64 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BreakdownFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("breakdown") is { } nullNodeBreakdown && nullNodeBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breakdown = null;
+            if (parseNode.GetChildNode("breakdown_group_type_index") is { } nullNodeBreakdownGroupTypeIndex && nullNodeBreakdownGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownGroupTypeIndex = null;
+            if (parseNode.GetChildNode("breakdown_hide_other_aggregation") is { } nullNodeBreakdownHideOtherAggregation && nullNodeBreakdownHideOtherAggregation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownHideOtherAggregation = null;
+            if (parseNode.GetChildNode("breakdown_histogram_bin_count") is { } nullNodeBreakdownHistogramBinCount && nullNodeBreakdownHistogramBinCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownHistogramBinCount = null;
+            if (parseNode.GetChildNode("breakdown_limit") is { } nullNodeBreakdownLimit && nullNodeBreakdownLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownLimit = null;
+            if (parseNode.GetChildNode("breakdown_normalize_url") is { } nullNodeBreakdownNormalizeUrl && nullNodeBreakdownNormalizeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownNormalizeUrl = null;
+            if (parseNode.GetChildNode("breakdown_path_cleaning") is { } nullNodeBreakdownPathCleaning && nullNodeBreakdownPathCleaning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownPathCleaning = null;
+            if (parseNode.GetChildNode("breakdowns") is { } nullNodeBreakdowns && nullNodeBreakdowns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breakdowns = null;
+            if (parseNode.GetChildNode("breakdown_type") is { } nullNodeBreakdownType && nullNodeBreakdownType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownType = null;
+        }
+
         /// <summary>The breakdown property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilterBreakdown? Breakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilterBreakdown? Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilterBreakdown? _explicitNullValueBreakdown = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilterBreakdown Breakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilterBreakdown Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilterBreakdown _explicitNullValueBreakdown = default!;
 #endif
         /// <summary>The breakdown_group_type_index property</summary>
-        public int? BreakdownGroupTypeIndex { get; set; }
+        public int? BreakdownGroupTypeIndex { get => _explicitNullValueBreakdownGroupTypeIndex; set { _explicitNullValueBreakdownGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_group_type_index"); else _explicitNullProperties?.Remove("breakdown_group_type_index"); } }
+        private int? _explicitNullValueBreakdownGroupTypeIndex = default!;
         /// <summary>The breakdown_hide_other_aggregation property</summary>
-        public bool? BreakdownHideOtherAggregation { get; set; }
+        public bool? BreakdownHideOtherAggregation { get => _explicitNullValueBreakdownHideOtherAggregation; set { _explicitNullValueBreakdownHideOtherAggregation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_hide_other_aggregation"); else _explicitNullProperties?.Remove("breakdown_hide_other_aggregation"); } }
+        private bool? _explicitNullValueBreakdownHideOtherAggregation = default!;
         /// <summary>The breakdown_histogram_bin_count property</summary>
-        public int? BreakdownHistogramBinCount { get; set; }
+        public int? BreakdownHistogramBinCount { get => _explicitNullValueBreakdownHistogramBinCount; set { _explicitNullValueBreakdownHistogramBinCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_histogram_bin_count"); else _explicitNullProperties?.Remove("breakdown_histogram_bin_count"); } }
+        private int? _explicitNullValueBreakdownHistogramBinCount = default!;
         /// <summary>The breakdown_limit property</summary>
-        public int? BreakdownLimit { get; set; }
+        public int? BreakdownLimit { get => _explicitNullValueBreakdownLimit; set { _explicitNullValueBreakdownLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_limit"); else _explicitNullProperties?.Remove("breakdown_limit"); } }
+        private int? _explicitNullValueBreakdownLimit = default!;
         /// <summary>The breakdown_normalize_url property</summary>
-        public bool? BreakdownNormalizeUrl { get; set; }
+        public bool? BreakdownNormalizeUrl { get => _explicitNullValueBreakdownNormalizeUrl; set { _explicitNullValueBreakdownNormalizeUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_normalize_url"); else _explicitNullProperties?.Remove("breakdown_normalize_url"); } }
+        private bool? _explicitNullValueBreakdownNormalizeUrl = default!;
         /// <summary>The breakdown_path_cleaning property</summary>
-        public bool? BreakdownPathCleaning { get; set; }
+        public bool? BreakdownPathCleaning { get => _explicitNullValueBreakdownPathCleaning; set { _explicitNullValueBreakdownPathCleaning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_path_cleaning"); else _explicitNullProperties?.Remove("breakdown_path_cleaning"); } }
+        private bool? _explicitNullValueBreakdownPathCleaning = default!;
         /// <summary>The breakdowns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown>? Breakdowns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown>? Breakdowns { get => _explicitNullValueBreakdowns; set { _explicitNullValueBreakdowns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdowns"); else _explicitNullProperties?.Remove("breakdowns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown>? _explicitNullValueBreakdowns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown> Breakdowns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown> Breakdowns { get => _explicitNullValueBreakdowns; set { _explicitNullValueBreakdowns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdowns"); else _explicitNullProperties?.Remove("breakdowns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown> _explicitNullValueBreakdowns = default!;
 #endif
         /// <summary>The breakdown_type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType? BreakdownType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType? BreakdownType { get => _explicitNullValueBreakdownType; set { _explicitNullValueBreakdownType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_type"); else _explicitNullProperties?.Remove("breakdown_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType? _explicitNullValueBreakdownType = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -50,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,7 +113,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("breakdown_normalize_url", BreakdownNormalizeUrl);
             writer.WriteBoolValue("breakdown_path_cleaning", BreakdownPathCleaning);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Breakdown>("breakdowns", Breakdowns);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType>("breakdown_type", BreakdownType);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownType>("breakdown_type", BreakdownType);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

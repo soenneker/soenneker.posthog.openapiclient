@@ -12,52 +12,78 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PersonPropertiesAtTimeResponsePointInTimeMetadata : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("distinct_ids_count") is { } nullNodeDistinctIdsCount && nullNodeDistinctIdsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIdsCount = null;
+            if (parseNode.GetChildNode("distinct_ids_queried") is { } nullNodeDistinctIdsQueried && nullNodeDistinctIdsQueried.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIdsQueried = null;
+            if (parseNode.GetChildNode("distinct_id_used") is { } nullNodeDistinctIdUsed && nullNodeDistinctIdUsed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIdUsed = null;
+            if (parseNode.GetChildNode("include_set_once") is { } nullNodeIncludeSetOnce && nullNodeIncludeSetOnce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeSetOnce = null;
+            if (parseNode.GetChildNode("person_id_used") is { } nullNodePersonIdUsed && nullNodePersonIdUsed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonIdUsed = null;
+            if (parseNode.GetChildNode("queried_timestamp") is { } nullNodeQueriedTimestamp && nullNodeQueriedTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueriedTimestamp = null;
+            if (parseNode.GetChildNode("query_mode") is { } nullNodeQueryMode && nullNodeQueryMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryMode = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of distinct_ids associated with this person</summary>
-        public int? DistinctIdsCount { get; set; }
+        public int? DistinctIdsCount { get => _explicitNullValueDistinctIdsCount; set { _explicitNullValueDistinctIdsCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids_count"); else _explicitNullProperties?.Remove("distinct_ids_count"); } }
+        private int? _explicitNullValueDistinctIdsCount = default!;
         /// <summary>All distinct_ids that were queried for this person</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DistinctIdsQueried { get; set; }
+        public List<string>? DistinctIdsQueried { get => _explicitNullValueDistinctIdsQueried; set { _explicitNullValueDistinctIdsQueried = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids_queried"); else _explicitNullProperties?.Remove("distinct_ids_queried"); } }
+        private List<string>? _explicitNullValueDistinctIdsQueried = default!;
 #nullable restore
 #else
-        public List<string> DistinctIdsQueried { get; set; }
+        public List<string> DistinctIdsQueried { get => _explicitNullValueDistinctIdsQueried; set { _explicitNullValueDistinctIdsQueried = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids_queried"); else _explicitNullProperties?.Remove("distinct_ids_queried"); } }
+        private List<string> _explicitNullValueDistinctIdsQueried = default!;
 #endif
         /// <summary>The distinct_id parameter used in the request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DistinctIdUsed { get; set; }
+        public string? DistinctIdUsed { get => _explicitNullValueDistinctIdUsed; set { _explicitNullValueDistinctIdUsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_id_used"); else _explicitNullProperties?.Remove("distinct_id_used"); } }
+        private string? _explicitNullValueDistinctIdUsed = default!;
 #nullable restore
 #else
-        public string DistinctIdUsed { get; set; }
+        public string DistinctIdUsed { get => _explicitNullValueDistinctIdUsed; set { _explicitNullValueDistinctIdUsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_id_used"); else _explicitNullProperties?.Remove("distinct_id_used"); } }
+        private string _explicitNullValueDistinctIdUsed = default!;
 #endif
         /// <summary>Whether $set_once operations were included</summary>
-        public bool? IncludeSetOnce { get; set; }
+        public bool? IncludeSetOnce { get => _explicitNullValueIncludeSetOnce; set { _explicitNullValueIncludeSetOnce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_set_once"); else _explicitNullProperties?.Remove("include_set_once"); } }
+        private bool? _explicitNullValueIncludeSetOnce = default!;
         /// <summary>The person_id parameter used in the request</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PersonIdUsed { get; set; }
+        public string? PersonIdUsed { get => _explicitNullValuePersonIdUsed; set { _explicitNullValuePersonIdUsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_id_used"); else _explicitNullProperties?.Remove("person_id_used"); } }
+        private string? _explicitNullValuePersonIdUsed = default!;
 #nullable restore
 #else
-        public string PersonIdUsed { get; set; }
+        public string PersonIdUsed { get => _explicitNullValuePersonIdUsed; set { _explicitNullValuePersonIdUsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_id_used"); else _explicitNullProperties?.Remove("person_id_used"); } }
+        private string _explicitNullValuePersonIdUsed = default!;
 #endif
         /// <summary>The timestamp that was queried in ISO format</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QueriedTimestamp { get; set; }
+        public string? QueriedTimestamp { get => _explicitNullValueQueriedTimestamp; set { _explicitNullValueQueriedTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queried_timestamp"); else _explicitNullProperties?.Remove("queried_timestamp"); } }
+        private string? _explicitNullValueQueriedTimestamp = default!;
 #nullable restore
 #else
-        public string QueriedTimestamp { get; set; }
+        public string QueriedTimestamp { get => _explicitNullValueQueriedTimestamp; set { _explicitNullValueQueriedTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queried_timestamp"); else _explicitNullProperties?.Remove("queried_timestamp"); } }
+        private string _explicitNullValueQueriedTimestamp = default!;
 #endif
         /// <summary>Whether the query used &apos;distinct_id&apos; or &apos;person_id&apos; mode</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QueryMode { get; set; }
+        public string? QueryMode { get => _explicitNullValueQueryMode; set { _explicitNullValueQueryMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_mode"); else _explicitNullProperties?.Remove("query_mode"); } }
+        private string? _explicitNullValueQueryMode = default!;
 #nullable restore
 #else
-        public string QueryMode { get; set; }
+        public string QueryMode { get => _explicitNullValueQueryMode; set { _explicitNullValueQueryMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_mode"); else _explicitNullProperties?.Remove("query_mode"); } }
+        private string _explicitNullValueQueryMode = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponsePointInTimeMetadata"/> and sets the default values.
@@ -74,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponsePointInTimeMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponsePointInTimeMetadata();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PersonPropertiesAtTimeResponsePointInTimeMetadata(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -107,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("person_id_used", PersonIdUsed);
             writer.WriteStringValue("queried_timestamp", QueriedTimestamp);
             writer.WriteStringValue("query_mode", QueryMode);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

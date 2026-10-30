@@ -11,26 +11,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InsightDataChecksRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("client_query_id") is { } nullNodeClientQueryId && nullNodeClientQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientQueryId = null;
+            if (parseNode.GetChildNode("depth") is { } nullNodeDepth && nullNodeDepth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Depth = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>An id for this run, chosen by the client. To stop the queries of the run, send a DELETE request to `query/{client_query_id}/`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientQueryId { get; set; }
+        public string? ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
+        private string? _explicitNullValueClientQueryId = default!;
 #nullable restore
 #else
-        public string ClientQueryId { get; set; }
+        public string ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
+        private string _explicitNullValueClientQueryId = default!;
 #endif
         /// <summary>* `quick` - Read within a small budget, so the checks can run on every load* `full` - Read with the same limits as the insight&apos;s own query</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestDepth? Depth { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestDepth? Depth { get => _explicitNullValueDepth; set { _explicitNullValueDepth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("depth"); else _explicitNullProperties?.Remove("depth"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestDepth? _explicitNullValueDepth = default!;
         /// <summary>The insight query to check, in the shape an insight stores it: an `InsightVizNode` with its `source`. Pass the query of a saved insight, or one that is not saved yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery _explicitNullValueQuery = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequest"/> and sets the default values.
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("client_query_id", ClientQueryId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestDepth>("depth", Depth);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery>("query", Query);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

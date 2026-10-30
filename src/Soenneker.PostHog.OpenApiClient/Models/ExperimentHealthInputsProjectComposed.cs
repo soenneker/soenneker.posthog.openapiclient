@@ -12,24 +12,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentHealthInputsProjectComposed : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("sdk_profile") is { } nullNodeSdkProfile && nullNodeSdkProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SdkProfile = null;
+            if (parseNode.GetChildNode("team_defaults") is { } nullNodeTeamDefaults && nullNodeTeamDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamDefaults = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Which SDKs call feature flags and where flags are evaluated, across the whole project. Skipped for a reader who may not query events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectSdkProfile? SdkProfile { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectSdkProfile? SdkProfile { get => _explicitNullValueSdkProfile; set { _explicitNullValueSdkProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdk_profile"); else _explicitNullProperties?.Remove("sdk_profile"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectSdkProfile? _explicitNullValueSdkProfile = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectSdkProfile SdkProfile { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectSdkProfile SdkProfile { get => _explicitNullValueSdkProfile; set { _explicitNullValueSdkProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdk_profile"); else _explicitNullProperties?.Remove("sdk_profile"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectSdkProfile _explicitNullValueSdkProfile = default!;
 #endif
         /// <summary>The project&apos;s experiment defaults.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectTeamDefaults? TeamDefaults { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectTeamDefaults? TeamDefaults { get => _explicitNullValueTeamDefaults; set { _explicitNullValueTeamDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_defaults"); else _explicitNullProperties?.Remove("team_defaults"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectTeamDefaults? _explicitNullValueTeamDefaults = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectTeamDefaults TeamDefaults { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectTeamDefaults TeamDefaults { get => _explicitNullValueTeamDefaults; set { _explicitNullValueTeamDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_defaults"); else _explicitNullProperties?.Remove("team_defaults"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectTeamDefaults _explicitNullValueTeamDefaults = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectSdkProfile>("sdk_profile", SdkProfile);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectTeamDefaults>("team_defaults", TeamDefaults);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

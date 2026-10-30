@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.A
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMembersResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMembersResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMembersResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AccessControlMembersResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Every organization member&apos;s access in this project. For the project and for each resource type, the response gives the member&apos;s own rule and the level that is enforced. It also says where the enforced level comes from: the member&apos;s rule, a role&apos;s rule, the project default, or full access as an organization admin. Pass `member_id` for one member.

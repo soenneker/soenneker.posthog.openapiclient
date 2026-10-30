@@ -11,16 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ApproveRunRequestInput : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("snapshots") is { } nullNodeSnapshots && nullNodeSnapshots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snapshots = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot &quot;Accept change&quot; action) — it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>? Snapshots { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>? Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>? _explicitNullValueSnapshots = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput> Snapshots { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput> Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput> _explicitNullValueSnapshots = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ApproveRunRequestInput"/> and sets the default values.
@@ -37,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ApproveRunRequestInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ApproveRunRequestInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ApproveRunRequestInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>("snapshots", Snapshots);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

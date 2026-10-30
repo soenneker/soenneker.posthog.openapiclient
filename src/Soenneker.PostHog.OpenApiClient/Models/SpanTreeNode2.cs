@@ -12,61 +12,100 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SpanTreeNode2 : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("avg_duration_nano") is { } nullNodeAvgDurationNano && nullNodeAvgDurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgDurationNano = null;
+            if (parseNode.GetChildNode("avg_start_offset_nano") is { } nullNodeAvgStartOffsetNano && nullNodeAvgStartOffsetNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgStartOffsetNano = null;
+            if (parseNode.GetChildNode("calls_per_parent_invocation") is { } nullNodeCallsPerParentInvocation && nullNodeCallsPerParentInvocation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CallsPerParentInvocation = null;
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("error_count") is { } nullNodeErrorCount && nullNodeErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCount = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("p50_duration_nano") is { } nullNodeP50DurationNano && nullNodeP50DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50DurationNano = null;
+            if (parseNode.GetChildNode("p95_duration_nano") is { } nullNodeP95DurationNano && nullNodeP95DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95DurationNano = null;
+            if (parseNode.GetChildNode("p999_duration_nano") is { } nullNodeP999DurationNano && nullNodeP999DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P999DurationNano = null;
+            if (parseNode.GetChildNode("p99_duration_nano") is { } nullNodeP99DurationNano && nullNodeP99DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P99DurationNano = null;
+            if (parseNode.GetChildNode("parent_name") is { } nullNodeParentName && nullNodeParentName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentName = null;
+            if (parseNode.GetChildNode("parent_service") is { } nullNodeParentService && nullNodeParentService.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentService = null;
+            if (parseNode.GetChildNode("service_name") is { } nullNodeServiceName && nullNodeServiceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceName = null;
+            if (parseNode.GetChildNode("total_duration_nano") is { } nullNodeTotalDurationNano && nullNodeTotalDurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalDurationNano = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mean duration in nanoseconds.</summary>
-        public double? AvgDurationNano { get; set; }
+        public double? AvgDurationNano { get => _explicitNullValueAvgDurationNano; set { _explicitNullValueAvgDurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_duration_nano"); else _explicitNullProperties?.Remove("avg_duration_nano"); } }
+        private double? _explicitNullValueAvgDurationNano = default!;
         /// <summary>Mean nanoseconds from the parent&apos;s start to this node&apos;s start. Zero at the root.</summary>
-        public double? AvgStartOffsetNano { get; set; }
+        public double? AvgStartOffsetNano { get => _explicitNullValueAvgStartOffsetNano; set { _explicitNullValueAvgStartOffsetNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_start_offset_nano"); else _explicitNullProperties?.Remove("avg_start_offset_nano"); } }
+        private double? _explicitNullValueAvgStartOffsetNano = default!;
         /// <summary>Mean calls per parent invocation. Null at the root.</summary>
-        public double? CallsPerParentInvocation { get; set; }
+        public double? CallsPerParentInvocation { get => _explicitNullValueCallsPerParentInvocation; set { _explicitNullValueCallsPerParentInvocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls_per_parent_invocation"); else _explicitNullProperties?.Remove("calls_per_parent_invocation"); } }
+        private double? _explicitNullValueCallsPerParentInvocation = default!;
         /// <summary>Spans aggregated into this node.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>How many of them reported an error status.</summary>
-        public int? ErrorCount { get; set; }
+        public int? ErrorCount { get => _explicitNullValueErrorCount; set { _explicitNullValueErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_count"); else _explicitNullProperties?.Remove("error_count"); } }
+        private int? _explicitNullValueErrorCount = default!;
         /// <summary>Span name for this node.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Median duration in nanoseconds.</summary>
-        public double? P50DurationNano { get; set; }
+        public double? P50DurationNano { get => _explicitNullValueP50DurationNano; set { _explicitNullValueP50DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_duration_nano"); else _explicitNullProperties?.Remove("p50_duration_nano"); } }
+        private double? _explicitNullValueP50DurationNano = default!;
         /// <summary>95th percentile duration in nanoseconds.</summary>
-        public double? P95DurationNano { get; set; }
+        public double? P95DurationNano { get => _explicitNullValueP95DurationNano; set { _explicitNullValueP95DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_duration_nano"); else _explicitNullProperties?.Remove("p95_duration_nano"); } }
+        private double? _explicitNullValueP95DurationNano = default!;
         /// <summary>99.9th percentile duration in nanoseconds.</summary>
-        public double? P999DurationNano { get; set; }
+        public double? P999DurationNano { get => _explicitNullValueP999DurationNano; set { _explicitNullValueP999DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p999_duration_nano"); else _explicitNullProperties?.Remove("p999_duration_nano"); } }
+        private double? _explicitNullValueP999DurationNano = default!;
         /// <summary>99th percentile duration in nanoseconds.</summary>
-        public double? P99DurationNano { get; set; }
+        public double? P99DurationNano { get => _explicitNullValueP99DurationNano; set { _explicitNullValueP99DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p99_duration_nano"); else _explicitNullProperties?.Remove("p99_duration_nano"); } }
+        private double? _explicitNullValueP99DurationNano = default!;
         /// <summary>Parent node&apos;s span name. The literal `&lt;ROOT&gt;` for a root node, which is how a client finds the roots.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ParentName { get; set; }
+        public string? ParentName { get => _explicitNullValueParentName; set { _explicitNullValueParentName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_name"); else _explicitNullProperties?.Remove("parent_name"); } }
+        private string? _explicitNullValueParentName = default!;
 #nullable restore
 #else
-        public string ParentName { get; set; }
+        public string ParentName { get => _explicitNullValueParentName; set { _explicitNullValueParentName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_name"); else _explicitNullProperties?.Remove("parent_name"); } }
+        private string _explicitNullValueParentName = default!;
 #endif
         /// <summary>Parent node&apos;s service. Empty string at the root.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ParentService { get; set; }
+        public string? ParentService { get => _explicitNullValueParentService; set { _explicitNullValueParentService = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_service"); else _explicitNullProperties?.Remove("parent_service"); } }
+        private string? _explicitNullValueParentService = default!;
 #nullable restore
 #else
-        public string ParentService { get; set; }
+        public string ParentService { get => _explicitNullValueParentService; set { _explicitNullValueParentService = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_service"); else _explicitNullProperties?.Remove("parent_service"); } }
+        private string _explicitNullValueParentService = default!;
 #endif
         /// <summary>Service that emitted the spans.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ServiceName { get; set; }
+        public string? ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string? _explicitNullValueServiceName = default!;
 #nullable restore
 #else
-        public string ServiceName { get; set; }
+        public string ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string _explicitNullValueServiceName = default!;
 #endif
         /// <summary>Sum of durations in nanoseconds.</summary>
-        public double? TotalDurationNano { get; set; }
+        public double? TotalDurationNano { get => _explicitNullValueTotalDurationNano; set { _explicitNullValueTotalDurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_duration_nano"); else _explicitNullProperties?.Remove("total_duration_nano"); } }
+        private double? _explicitNullValueTotalDurationNano = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SpanTreeNode2"/> and sets the default values.
         /// </summary>
@@ -82,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SpanTreeNode2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SpanTreeNode2();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SpanTreeNode2(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,6 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("parent_service", ParentService);
             writer.WriteStringValue("service_name", ServiceName);
             writer.WriteDoubleValue("total_duration_nano", TotalDurationNano);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

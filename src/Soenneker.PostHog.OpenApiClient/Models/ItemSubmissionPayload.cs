@@ -12,38 +12,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemSubmissionPayload : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("expected_output") is { } nullNodeExpectedOutput && nullNodeExpectedOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedOutput = null;
+            if (parseNode.GetChildNode("input") is { } nullNodeInput && nullNodeInput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Input = null;
+            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("output") is { } nullNodeOutput && nullNodeOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Output = null;
+        }
+
         /// <summary>The expected_output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput? ExpectedOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput? ExpectedOutput { get => _explicitNullValueExpectedOutput; set { _explicitNullValueExpectedOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_output"); else _explicitNullProperties?.Remove("expected_output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput? _explicitNullValueExpectedOutput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput ExpectedOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput ExpectedOutput { get => _explicitNullValueExpectedOutput; set { _explicitNullValueExpectedOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_output"); else _explicitNullProperties?.Remove("expected_output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput _explicitNullValueExpectedOutput = default!;
 #endif
         /// <summary>The input property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput? Input { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput? Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput? _explicitNullValueInput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput Input { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput _explicitNullValueInput = default!;
 #endif
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty _explicitNullValueMetadata = default!;
 #endif
         /// <summary>The output property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput? Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput? Output { get => _explicitNullValueOutput; set { _explicitNullValueOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output"); else _explicitNullProperties?.Remove("output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput? _explicitNullValueOutput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput Output { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput Output { get => _explicitNullValueOutput; set { _explicitNullValueOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output"); else _explicitNullProperties?.Remove("output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput _explicitNullValueOutput = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -53,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ItemSubmissionPayload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,7 +98,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputExpectedOutput>("expected_output", ExpectedOutput);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputInput>("input", Input);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputMetadataProperty>("metadata", Metadata);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInputOutput>("output", Output);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

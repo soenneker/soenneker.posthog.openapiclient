@@ -11,68 +11,102 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DashboardFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("breakdown_filter") is { } nullNodeBreakdownFilter && nullNodeBreakdownFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownFilter = null;
+            if (parseNode.GetChildNode("compareFilter") is { } nullNodeCompareFilter && nullNodeCompareFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompareFilter = null;
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("explicitDate") is { } nullNodeExplicitDate && nullNodeExplicitDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExplicitDate = null;
+            if (parseNode.GetChildNode("filterTestAccounts") is { } nullNodeFilterTestAccounts && nullNodeFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTestAccounts = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("metricFilters") is { } nullNodeMetricFilters && nullNodeMetricFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricFilters = null;
+            if (parseNode.GetChildNode("metricVariables") is { } nullNodeMetricVariables && nullNodeMetricVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricVariables = null;
+            if (parseNode.GetChildNode("properties") is { } nullNodeProperties && nullNodeProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Properties = null;
+        }
+
         /// <summary>The breakdown_filter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter? BreakdownFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter? BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_filter"); else _explicitNullProperties?.Remove("breakdown_filter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter? _explicitNullValueBreakdownFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter BreakdownFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_filter"); else _explicitNullProperties?.Remove("breakdown_filter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter _explicitNullValueBreakdownFilter = default!;
 #endif
         /// <summary>Period comparison forced onto every insight that supports one. Absent/null = inherit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter? _explicitNullValueCompareFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CompareFilter _explicitNullValueCompareFilter = default!;
 #endif
         /// <summary>The date_from property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateFrom { get; set; }
+        public string? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private string? _explicitNullValueDateFrom = default!;
 #nullable restore
 #else
-        public string DateFrom { get; set; }
+        public string DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private string _explicitNullValueDateFrom = default!;
 #endif
         /// <summary>The date_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateTo { get; set; }
+        public string? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private string? _explicitNullValueDateTo = default!;
 #nullable restore
 #else
-        public string DateTo { get; set; }
+        public string DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private string _explicitNullValueDateTo = default!;
 #endif
         /// <summary>The explicitDate property</summary>
-        public bool? ExplicitDate { get; set; }
+        public bool? ExplicitDate { get => _explicitNullValueExplicitDate; set { _explicitNullValueExplicitDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explicitDate"); else _explicitNullProperties?.Remove("explicitDate"); } }
+        private bool? _explicitNullValueExplicitDate = default!;
         /// <summary>Tri-state test-account override. Null/absent = inherit; true = force on; false = force off.</summary>
-        public bool? FilterTestAccounts { get; set; }
+        public bool? FilterTestAccounts { get => _explicitNullValueFilterTestAccounts; set { _explicitNullValueFilterTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterTestAccounts"); else _explicitNullProperties?.Remove("filterTestAccounts"); } }
+        private bool? _explicitNullValueFilterTestAccounts = default!;
         /// <summary>Time granularity forced onto every insight that supports one. Absent/null = inherit.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IntervalType? _explicitNullValueInterval = default!;
         /// <summary>The metricFilters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>? MetricFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>? MetricFilters { get => _explicitNullValueMetricFilters; set { _explicitNullValueMetricFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricFilters"); else _explicitNullProperties?.Remove("metricFilters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>? _explicitNullValueMetricFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter> MetricFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter> MetricFilters { get => _explicitNullValueMetricFilters; set { _explicitNullValueMetricFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricFilters"); else _explicitNullProperties?.Remove("metricFilters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter> _explicitNullValueMetricFilters = default!;
 #endif
         /// <summary>Variables that metrics tiles refer to as `$name`. Other tiles ignore them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable>? MetricVariables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable>? MetricVariables { get => _explicitNullValueMetricVariables; set { _explicitNullValueMetricVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricVariables"); else _explicitNullProperties?.Remove("metricVariables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable>? _explicitNullValueMetricVariables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable> MetricVariables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable> MetricVariables { get => _explicitNullValueMetricVariables; set { _explicitNullValueMetricVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricVariables"); else _explicitNullProperties?.Remove("metricVariables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable> _explicitNullValueMetricVariables = default!;
 #endif
         /// <summary>The properties property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>? Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>? _explicitNullValueProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem> Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem> _explicitNullValueProperties = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -82,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,7 +154,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntervalType>("interval", Interval);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryFilter>("metricFilters", MetricFilters);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDashboardVariable>("metricVariables", MetricVariables);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>("properties", Properties);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilterPropertiesItem>("properties", Properties);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

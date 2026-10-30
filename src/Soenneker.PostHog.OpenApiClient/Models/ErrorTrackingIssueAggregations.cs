@@ -11,28 +11,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingIssueAggregations : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("occurrences") is { } nullNodeOccurrences && nullNodeOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Occurrences = null;
+            if (parseNode.GetChildNode("sessions") is { } nullNodeSessions && nullNodeSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sessions = null;
+            if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+            if (parseNode.GetChildNode("volume_buckets") is { } nullNodeVolumeBuckets && nullNodeVolumeBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeBuckets = null;
+            if (parseNode.GetChildNode("volumeRange") is { } nullNodeVolumeRange && nullNodeVolumeRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeRange = null;
+        }
+
         /// <summary>The occurrences property</summary>
-        public double? Occurrences { get; set; }
+        public double? Occurrences { get => _explicitNullValueOccurrences; set { _explicitNullValueOccurrences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("occurrences"); else _explicitNullProperties?.Remove("occurrences"); } }
+        private double? _explicitNullValueOccurrences = default!;
         /// <summary>The sessions property</summary>
-        public double? Sessions { get; set; }
+        public double? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
+        private double? _explicitNullValueSessions = default!;
         /// <summary>The users property</summary>
-        public double? Users { get; set; }
+        public double? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        private double? _explicitNullValueUsers = default!;
         /// <summary>The volume_buckets property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket>? VolumeBuckets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket>? VolumeBuckets { get => _explicitNullValueVolumeBuckets; set { _explicitNullValueVolumeBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_buckets"); else _explicitNullProperties?.Remove("volume_buckets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket>? _explicitNullValueVolumeBuckets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket> VolumeBuckets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket> VolumeBuckets { get => _explicitNullValueVolumeBuckets; set { _explicitNullValueVolumeBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_buckets"); else _explicitNullProperties?.Remove("volume_buckets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket> _explicitNullValueVolumeBuckets = default!;
 #endif
         /// <summary>The volumeRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? VolumeRange { get; set; }
+        public List<double?>? VolumeRange { get => _explicitNullValueVolumeRange; set { _explicitNullValueVolumeRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volumeRange"); else _explicitNullProperties?.Remove("volumeRange"); } }
+        private List<double?>? _explicitNullValueVolumeRange = default!;
 #nullable restore
 #else
-        public List<double?> VolumeRange { get; set; }
+        public List<double?> VolumeRange { get => _explicitNullValueVolumeRange; set { _explicitNullValueVolumeRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volumeRange"); else _explicitNullProperties?.Remove("volumeRange"); } }
+        private List<double?> _explicitNullValueVolumeRange = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -42,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,7 +89,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("sessions", Sessions);
             writer.WriteDoubleValue("users", Users);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VolumeBucket>("volume_buckets", VolumeBuckets);
-            writer.WriteCollectionOfPrimitiveValues<double?>("volumeRange", VolumeRange);
+            writer.WriteCollectionOfPrimitiveValues<double?>("volumeRange", VolumeRange);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

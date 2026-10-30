@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Report
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResult>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResult.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResult>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResult.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Report a runtime error observed while rendering a canvas build.Files the report in the authoring task&apos;s thread (deduped per build anderror type) so the canvas&apos;s agent can be asked to fix it. Reports neverstart an agent run by themselves — dispatch is `request_fix`. Only theerror class crosses the server; full messages and stacks stayclient-side because rendering sessions can carry viewer data.

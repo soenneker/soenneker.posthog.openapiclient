@@ -11,50 +11,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MarketingAnalyticsSearchSource : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("keywordTable") is { } nullNodeKeywordTable && nullNodeKeywordTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeywordTable = null;
+            if (parseNode.GetChildNode("performanceMaxSearchTermTable") is { } nullNodePerformanceMaxSearchTermTable && nullNodePerformanceMaxSearchTermTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerformanceMaxSearchTermTable = null;
+            if (parseNode.GetChildNode("placementTable") is { } nullNodePlacementTable && nullNodePlacementTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PlacementTable = null;
+            if (parseNode.GetChildNode("queryPageTable") is { } nullNodeQueryPageTable && nullNodeQueryPageTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryPageTable = null;
+            if (parseNode.GetChildNode("searchTermTable") is { } nullNodeSearchTermTable && nullNodeSearchTermTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchTermTable = null;
+            if (parseNode.GetChildNode("sourceType") is { } nullNodeSourceType && nullNodeSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceType = null;
+            if (parseNode.GetChildNode("statsTable") is { } nullNodeStatsTable && nullNodeStatsTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatsTable = null;
+        }
+
         /// <summary>The keywordTable property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? KeywordTable { get; set; }
+        public string? KeywordTable { get => _explicitNullValueKeywordTable; set { _explicitNullValueKeywordTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keywordTable"); else _explicitNullProperties?.Remove("keywordTable"); } }
+        private string? _explicitNullValueKeywordTable = default!;
 #nullable restore
 #else
-        public string KeywordTable { get; set; }
+        public string KeywordTable { get => _explicitNullValueKeywordTable; set { _explicitNullValueKeywordTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keywordTable"); else _explicitNullProperties?.Remove("keywordTable"); } }
+        private string _explicitNullValueKeywordTable = default!;
 #endif
         /// <summary>Google Ads search terms from Performance Max campaigns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PerformanceMaxSearchTermTable { get; set; }
+        public string? PerformanceMaxSearchTermTable { get => _explicitNullValuePerformanceMaxSearchTermTable; set { _explicitNullValuePerformanceMaxSearchTermTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("performanceMaxSearchTermTable"); else _explicitNullProperties?.Remove("performanceMaxSearchTermTable"); } }
+        private string? _explicitNullValuePerformanceMaxSearchTermTable = default!;
 #nullable restore
 #else
-        public string PerformanceMaxSearchTermTable { get; set; }
+        public string PerformanceMaxSearchTermTable { get => _explicitNullValuePerformanceMaxSearchTermTable; set { _explicitNullValuePerformanceMaxSearchTermTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("performanceMaxSearchTermTable"); else _explicitNullProperties?.Remove("performanceMaxSearchTermTable"); } }
+        private string _explicitNullValuePerformanceMaxSearchTermTable = default!;
 #endif
         /// <summary>The placementTable property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PlacementTable { get; set; }
+        public string? PlacementTable { get => _explicitNullValuePlacementTable; set { _explicitNullValuePlacementTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placementTable"); else _explicitNullProperties?.Remove("placementTable"); } }
+        private string? _explicitNullValuePlacementTable = default!;
 #nullable restore
 #else
-        public string PlacementTable { get; set; }
+        public string PlacementTable { get => _explicitNullValuePlacementTable; set { _explicitNullValuePlacementTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placementTable"); else _explicitNullProperties?.Remove("placementTable"); } }
+        private string _explicitNullValuePlacementTable = default!;
 #endif
         /// <summary>The queryPageTable property</summary>
-        public bool? QueryPageTable { get; set; }
+        public bool? QueryPageTable { get => _explicitNullValueQueryPageTable; set { _explicitNullValueQueryPageTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queryPageTable"); else _explicitNullProperties?.Remove("queryPageTable"); } }
+        private bool? _explicitNullValueQueryPageTable = default!;
         /// <summary>Google Ads search terms from Search campaigns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SearchTermTable { get; set; }
+        public string? SearchTermTable { get => _explicitNullValueSearchTermTable; set { _explicitNullValueSearchTermTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("searchTermTable"); else _explicitNullProperties?.Remove("searchTermTable"); } }
+        private string? _explicitNullValueSearchTermTable = default!;
 #nullable restore
 #else
-        public string SearchTermTable { get; set; }
+        public string SearchTermTable { get => _explicitNullValueSearchTermTable; set { _explicitNullValueSearchTermTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("searchTermTable"); else _explicitNullProperties?.Remove("searchTermTable"); } }
+        private string _explicitNullValueSearchTermTable = default!;
 #endif
         /// <summary>The sourceType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SourceType? SourceType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SourceType? SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceType"); else _explicitNullProperties?.Remove("sourceType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SourceType? _explicitNullValueSourceType = default!;
         /// <summary>For the Google Ads search term breakdown, the campaign table, which carries the account currency.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StatsTable { get; set; }
+        public string? StatsTable { get => _explicitNullValueStatsTable; set { _explicitNullValueStatsTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statsTable"); else _explicitNullProperties?.Remove("statsTable"); } }
+        private string? _explicitNullValueStatsTable = default!;
 #nullable restore
 #else
-        public string StatsTable { get; set; }
+        public string StatsTable { get => _explicitNullValueStatsTable; set { _explicitNullValueStatsTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statsTable"); else _explicitNullProperties?.Remove("statsTable"); } }
+        private string _explicitNullValueStatsTable = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -64,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchSource(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,7 +122,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("queryPageTable", QueryPageTable);
             writer.WriteStringValue("searchTermTable", SearchTermTable);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SourceType>("sourceType", SourceType);
-            writer.WriteStringValue("statsTable", StatsTable);
+            writer.WriteStringValue("statsTable", StatsTable);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FinalizeResult>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FinalizeResult.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FinalizeResult>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FinalizeResult.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Finalize a fully-reviewed run: commit the approved baseline and green the gate.Commits exactly the snapshots approved in the DB (tolerated ones keep their baseline)and only succeeds once every changed/new snapshot is resolved. With approve_all=true,any still-pending changed/new snapshot is approved first; quarantined snapshots areskipped, but a quarantined snapshot approved by identifier is still committed.With commit_to_github=false the server returns the signed baseline YAML instead ofcommitting it.

@@ -11,31 +11,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DashboardCustomization : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("group_display") is { } nullNodeGroupDisplay && nullNodeGroupDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupDisplay = null;
+            if (parseNode.GetChildNode("groups") is { } nullNodeGroups && nullNodeGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groups = null;
+            if (parseNode.GetChildNode("group_titles") is { } nullNodeGroupTitles && nullNodeGroupTitles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupTitles = null;
+            if (parseNode.GetChildNode("layout_compaction") is { } nullNodeLayoutCompaction && nullNodeLayoutCompaction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LayoutCompaction = null;
+            if (parseNode.GetChildNode("tile_spacing") is { } nullNodeTileSpacing && nullNodeTileSpacing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TileSpacing = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `sections` - sections* `tabs` - tabs</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupDisplay? GroupDisplay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupDisplay? GroupDisplay { get => _explicitNullValueGroupDisplay; set { _explicitNullValueGroupDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_display"); else _explicitNullProperties?.Remove("group_display"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupDisplay? _explicitNullValueGroupDisplay = default!;
         /// <summary>Settings for tile groups, keyed by the tiles&apos; group_key. Each group shows as a band of its tiles under a heading that viewers can open and close. Viewers who do not have bands yet see only the group title above its tiles. A write replaces the whole map. Send an empty object or null to remove all group settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupsProperty? Groups { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupsProperty? Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupsProperty? _explicitNullValueGroups = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupsProperty Groups { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupsProperty Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupsProperty _explicitNullValueGroups = default!;
 #endif
         /// <summary>Deprecated: use groups. Titles for tile groups, keyed by group_key. A write replaces all titles and keeps the other group settings. Send an empty object or null to clear titles. Do not send it with groups.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupTitlesProperty? GroupTitles { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupTitlesProperty? GroupTitles { get => _explicitNullValueGroupTitles; set { _explicitNullValueGroupTitles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_titles"); else _explicitNullProperties?.Remove("group_titles"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupTitlesProperty? _explicitNullValueGroupTitles = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupTitlesProperty GroupTitles { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupTitlesProperty GroupTitles { get => _explicitNullValueGroupTitles; set { _explicitNullValueGroupTitles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_titles"); else _explicitNullProperties?.Remove("group_titles"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupTitlesProperty _explicitNullValueGroupTitles = default!;
 #endif
         /// <summary>* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction? LayoutCompaction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction? LayoutCompaction { get => _explicitNullValueLayoutCompaction; set { _explicitNullValueLayoutCompaction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout_compaction"); else _explicitNullProperties?.Remove("layout_compaction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction? _explicitNullValueLayoutCompaction = default!;
         /// <summary>* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing? TileSpacing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing? TileSpacing { get => _explicitNullValueTileSpacing; set { _explicitNullValueTileSpacing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile_spacing"); else _explicitNullProperties?.Remove("tile_spacing"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing? _explicitNullValueTileSpacing = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization"/> and sets the default values.
         /// </summary>
@@ -51,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationGroupTitlesProperty>("group_titles", GroupTitles);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationLayoutCompaction>("layout_compaction", LayoutCompaction);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomizationTileSpacing>("tile_spacing", TileSpacing);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

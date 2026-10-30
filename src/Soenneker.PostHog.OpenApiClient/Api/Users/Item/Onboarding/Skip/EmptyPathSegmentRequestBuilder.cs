@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Onboarding.Skip
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.User>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.User.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.User>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.User.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Mark the current user as having exited onboarding with a non-delegated reason.Idempotent: the skip timestamp is only set on the first successful call.Callers wanting to delegate setup to a teammate must use the dedicated/organizations/{id}/invites/delegate/ endpoint, which atomically creates theinvite and sets reason=&quot;delegated&quot;. This endpoint rejects that reason so statecan&apos;t be faked without a real invite.

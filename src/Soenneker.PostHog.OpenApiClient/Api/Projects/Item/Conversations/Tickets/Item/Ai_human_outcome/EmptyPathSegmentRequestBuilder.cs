@@ -55,6 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "409", global::Soenneker.PostHog.OpenApiClient.Models.TicketError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequest>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AiHumanOutcomeRequest.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

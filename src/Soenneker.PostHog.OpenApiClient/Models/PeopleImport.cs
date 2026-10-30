@@ -11,29 +11,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PeopleImport : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cohort_id") is { } nullNodeCohortId && nullNodeCohortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CohortId = null;
+            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("dropped_duplicate_email") is { } nullNodeDroppedDuplicateEmail && nullNodeDroppedDuplicateEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedDuplicateEmail = null;
+            if (parseNode.GetChildNode("dropped_invalid_email") is { } nullNodeDroppedInvalidEmail && nullNodeDroppedInvalidEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedInvalidEmail = null;
+            if (parseNode.GetChildNode("dropped_too_large") is { } nullNodeDroppedTooLarge && nullNodeDroppedTooLarge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedTooLarge = null;
+            if (parseNode.GetChildNode("new_people") is { } nullNodeNewPeople && nullNodeNewPeople.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewPeople = null;
+            if (parseNode.GetChildNode("row_count") is { } nullNodeRowCount && nullNodeRowCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The static cohort that fills with the imported people.</summary>
-        public int? CohortId { get; set; }
+        public int? CohortId { get => _explicitNullValueCohortId; set { _explicitNullValueCohortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohort_id"); else _explicitNullProperties?.Remove("cohort_id"); } }
+        private int? _explicitNullValueCohortId = default!;
         /// <summary>Person properties the rows set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Columns { get; set; }
+        public List<string>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<string> Columns { get; set; }
+        public List<string> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string> _explicitNullValueColumns = default!;
 #endif
         /// <summary>Rows dropped because an earlier row had the email or distinct ID.</summary>
-        public int? DroppedDuplicateEmail { get; set; }
+        public int? DroppedDuplicateEmail { get => _explicitNullValueDroppedDuplicateEmail; set { _explicitNullValueDroppedDuplicateEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_duplicate_email"); else _explicitNullProperties?.Remove("dropped_duplicate_email"); } }
+        private int? _explicitNullValueDroppedDuplicateEmail = default!;
         /// <summary>Rows dropped for a missing or invalid email.</summary>
-        public int? DroppedInvalidEmail { get; set; }
+        public int? DroppedInvalidEmail { get => _explicitNullValueDroppedInvalidEmail; set { _explicitNullValueDroppedInvalidEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_invalid_email"); else _explicitNullProperties?.Remove("dropped_invalid_email"); } }
+        private int? _explicitNullValueDroppedInvalidEmail = default!;
         /// <summary>Rows dropped for holding more than 4KB of data.</summary>
-        public int? DroppedTooLarge { get; set; }
+        public int? DroppedTooLarge { get => _explicitNullValueDroppedTooLarge; set { _explicitNullValueDroppedTooLarge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_too_large"); else _explicitNullProperties?.Remove("dropped_too_large"); } }
+        private int? _explicitNullValueDroppedTooLarge = default!;
         /// <summary>Rows that create a person who isn&apos;t in PostHog yet.</summary>
-        public int? NewPeople { get; set; }
+        public int? NewPeople { get => _explicitNullValueNewPeople; set { _explicitNullValueNewPeople = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_people"); else _explicitNullProperties?.Remove("new_people"); } }
+        private int? _explicitNullValueNewPeople = default!;
         /// <summary>People created or updated.</summary>
-        public int? RowCount { get; set; }
+        public int? RowCount { get => _explicitNullValueRowCount; set { _explicitNullValueRowCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_count"); else _explicitNullProperties?.Remove("row_count"); } }
+        private int? _explicitNullValueRowCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PeopleImport"/> and sets the default values.
         /// </summary>
@@ -49,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PeopleImport CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PeopleImport();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PeopleImport(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("dropped_too_large", DroppedTooLarge);
             writer.WriteIntValue("new_people", NewPeople);
             writer.WriteIntValue("row_count", RowCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

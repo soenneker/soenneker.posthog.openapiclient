@@ -12,94 +12,134 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedAccountProperties : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billing_id") is { } nullNodeBillingId && nullNodeBillingId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingId = null;
+            if (parseNode.GetChildNode("email_domains") is { } nullNodeEmailDomains && nullNodeEmailDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailDomains = null;
+            if (parseNode.GetChildNode("hubspot_deal_id") is { } nullNodeHubspotDealId && nullNodeHubspotDealId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HubspotDealId = null;
+            if (parseNode.GetChildNode("known_emails") is { } nullNodeKnownEmails && nullNodeKnownEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KnownEmails = null;
+            if (parseNode.GetChildNode("metabase_link") is { } nullNodeMetabaseLink && nullNodeMetabaseLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetabaseLink = null;
+            if (parseNode.GetChildNode("sfdc_id") is { } nullNodeSfdcId && nullNodeSfdcId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SfdcId = null;
+            if (parseNode.GetChildNode("slack_channel_id") is { } nullNodeSlackChannelId && nullNodeSlackChannelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelId = null;
+            if (parseNode.GetChildNode("stripe_customer_id") is { } nullNodeStripeCustomerId && nullNodeStripeCustomerId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StripeCustomerId = null;
+            if (parseNode.GetChildNode("usage_dashboard_link") is { } nullNodeUsageDashboardLink && nullNodeUsageDashboardLink.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageDashboardLink = null;
+            if (parseNode.GetChildNode("website_domain") is { } nullNodeWebsiteDomain && nullNodeWebsiteDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebsiteDomain = null;
+            if (parseNode.GetChildNode("zendesk_id") is { } nullNodeZendeskId && nullNodeZendeskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZendeskId = null;
+        }
+
         /// <summary>The billing_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BillingId { get; set; }
+        public string? BillingId { get => _explicitNullValueBillingId; set { _explicitNullValueBillingId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_id"); else _explicitNullProperties?.Remove("billing_id"); } }
+        private string? _explicitNullValueBillingId = default!;
 #nullable restore
 #else
-        public string BillingId { get; set; }
+        public string BillingId { get => _explicitNullValueBillingId; set { _explicitNullValueBillingId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_id"); else _explicitNullProperties?.Remove("billing_id"); } }
+        private string _explicitNullValueBillingId = default!;
 #endif
         /// <summary>Email domains owned by this account&apos;s company, used to match inbound touchpoints to the account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EmailDomains { get; set; }
+        public List<string>? EmailDomains { get => _explicitNullValueEmailDomains; set { _explicitNullValueEmailDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_domains"); else _explicitNullProperties?.Remove("email_domains"); } }
+        private List<string>? _explicitNullValueEmailDomains = default!;
 #nullable restore
 #else
-        public List<string> EmailDomains { get; set; }
+        public List<string> EmailDomains { get => _explicitNullValueEmailDomains; set { _explicitNullValueEmailDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_domains"); else _explicitNullProperties?.Remove("email_domains"); } }
+        private List<string> _explicitNullValueEmailDomains = default!;
 #endif
         /// <summary>The hubspot_deal_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HubspotDealId { get; set; }
+        public string? HubspotDealId { get => _explicitNullValueHubspotDealId; set { _explicitNullValueHubspotDealId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hubspot_deal_id"); else _explicitNullProperties?.Remove("hubspot_deal_id"); } }
+        private string? _explicitNullValueHubspotDealId = default!;
 #nullable restore
 #else
-        public string HubspotDealId { get; set; }
+        public string HubspotDealId { get => _explicitNullValueHubspotDealId; set { _explicitNullValueHubspotDealId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hubspot_deal_id"); else _explicitNullProperties?.Remove("hubspot_deal_id"); } }
+        private string _explicitNullValueHubspotDealId = default!;
 #endif
         /// <summary>Individual email addresses pinned to this account, matched before the domain fallback.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? KnownEmails { get; set; }
+        public List<string>? KnownEmails { get => _explicitNullValueKnownEmails; set { _explicitNullValueKnownEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("known_emails"); else _explicitNullProperties?.Remove("known_emails"); } }
+        private List<string>? _explicitNullValueKnownEmails = default!;
 #nullable restore
 #else
-        public List<string> KnownEmails { get; set; }
+        public List<string> KnownEmails { get => _explicitNullValueKnownEmails; set { _explicitNullValueKnownEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("known_emails"); else _explicitNullProperties?.Remove("known_emails"); } }
+        private List<string> _explicitNullValueKnownEmails = default!;
 #endif
         /// <summary>The metabase_link property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetabaseLink { get; set; }
+        public string? MetabaseLink { get => _explicitNullValueMetabaseLink; set { _explicitNullValueMetabaseLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metabase_link"); else _explicitNullProperties?.Remove("metabase_link"); } }
+        private string? _explicitNullValueMetabaseLink = default!;
 #nullable restore
 #else
-        public string MetabaseLink { get; set; }
+        public string MetabaseLink { get => _explicitNullValueMetabaseLink; set { _explicitNullValueMetabaseLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metabase_link"); else _explicitNullProperties?.Remove("metabase_link"); } }
+        private string _explicitNullValueMetabaseLink = default!;
 #endif
         /// <summary>The sfdc_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SfdcId { get; set; }
+        public string? SfdcId { get => _explicitNullValueSfdcId; set { _explicitNullValueSfdcId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sfdc_id"); else _explicitNullProperties?.Remove("sfdc_id"); } }
+        private string? _explicitNullValueSfdcId = default!;
 #nullable restore
 #else
-        public string SfdcId { get; set; }
+        public string SfdcId { get => _explicitNullValueSfdcId; set { _explicitNullValueSfdcId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sfdc_id"); else _explicitNullProperties?.Remove("sfdc_id"); } }
+        private string _explicitNullValueSfdcId = default!;
 #endif
         /// <summary>The slack_channel_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackChannelId { get; set; }
+        public string? SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
+        private string? _explicitNullValueSlackChannelId = default!;
 #nullable restore
 #else
-        public string SlackChannelId { get; set; }
+        public string SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
+        private string _explicitNullValueSlackChannelId = default!;
 #endif
         /// <summary>The stripe_customer_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StripeCustomerId { get; set; }
+        public string? StripeCustomerId { get => _explicitNullValueStripeCustomerId; set { _explicitNullValueStripeCustomerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stripe_customer_id"); else _explicitNullProperties?.Remove("stripe_customer_id"); } }
+        private string? _explicitNullValueStripeCustomerId = default!;
 #nullable restore
 #else
-        public string StripeCustomerId { get; set; }
+        public string StripeCustomerId { get => _explicitNullValueStripeCustomerId; set { _explicitNullValueStripeCustomerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stripe_customer_id"); else _explicitNullProperties?.Remove("stripe_customer_id"); } }
+        private string _explicitNullValueStripeCustomerId = default!;
 #endif
         /// <summary>The usage_dashboard_link property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsageDashboardLink { get; set; }
+        public string? UsageDashboardLink { get => _explicitNullValueUsageDashboardLink; set { _explicitNullValueUsageDashboardLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_dashboard_link"); else _explicitNullProperties?.Remove("usage_dashboard_link"); } }
+        private string? _explicitNullValueUsageDashboardLink = default!;
 #nullable restore
 #else
-        public string UsageDashboardLink { get; set; }
+        public string UsageDashboardLink { get => _explicitNullValueUsageDashboardLink; set { _explicitNullValueUsageDashboardLink = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_dashboard_link"); else _explicitNullProperties?.Remove("usage_dashboard_link"); } }
+        private string _explicitNullValueUsageDashboardLink = default!;
 #endif
         /// <summary>Primary company website hostname used for account identity and logo lookup.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WebsiteDomain { get; set; }
+        public string? WebsiteDomain { get => _explicitNullValueWebsiteDomain; set { _explicitNullValueWebsiteDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("website_domain"); else _explicitNullProperties?.Remove("website_domain"); } }
+        private string? _explicitNullValueWebsiteDomain = default!;
 #nullable restore
 #else
-        public string WebsiteDomain { get; set; }
+        public string WebsiteDomain { get => _explicitNullValueWebsiteDomain; set { _explicitNullValueWebsiteDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("website_domain"); else _explicitNullProperties?.Remove("website_domain"); } }
+        private string _explicitNullValueWebsiteDomain = default!;
 #endif
         /// <summary>The zendesk_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ZendeskId { get; set; }
+        public string? ZendeskId { get => _explicitNullValueZendeskId; set { _explicitNullValueZendeskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zendesk_id"); else _explicitNullProperties?.Remove("zendesk_id"); } }
+        private string? _explicitNullValueZendeskId = default!;
 #nullable restore
 #else
-        public string ZendeskId { get; set; }
+        public string ZendeskId { get => _explicitNullValueZendeskId; set { _explicitNullValueZendeskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zendesk_id"); else _explicitNullProperties?.Remove("zendesk_id"); } }
+        private string _explicitNullValueZendeskId = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -109,7 +149,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedAccountProperties CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedAccountProperties();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedAccountProperties(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -149,7 +191,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("stripe_customer_id", StripeCustomerId);
             writer.WriteStringValue("usage_dashboard_link", UsageDashboardLink);
             writer.WriteStringValue("website_domain", WebsiteDomain);
-            writer.WriteStringValue("zendesk_id", ZendeskId);
+            writer.WriteStringValue("zendesk_id", ZendeskId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

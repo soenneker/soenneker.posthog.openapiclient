@@ -55,6 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Datasets.Item.Export
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "409", global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportRead>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DatasetExportRead.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

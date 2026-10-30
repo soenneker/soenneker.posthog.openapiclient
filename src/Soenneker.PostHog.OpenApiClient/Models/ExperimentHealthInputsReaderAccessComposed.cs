@@ -12,20 +12,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentHealthInputsReaderAccessComposed : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("can_query_events") is { } nullNodeCanQueryEvents && nullNodeCanQueryEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanQueryEvents = null;
+            if (parseNode.GetChildNode("can_read_flag_history") is { } nullNodeCanReadFlagHistory && nullNodeCanReadFlagHistory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanReadFlagHistory = null;
+            if (parseNode.GetChildNode("denied_event_properties") is { } nullNodeDeniedEventProperties && nullNodeDeniedEventProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeniedEventProperties = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the reader may query events, which the flag-change and forced-variant checks need.</summary>
-        public bool? CanQueryEvents { get; set; }
+        public bool? CanQueryEvents { get => _explicitNullValueCanQueryEvents; set { _explicitNullValueCanQueryEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_query_events"); else _explicitNullProperties?.Remove("can_query_events"); } }
+        private bool? _explicitNullValueCanQueryEvents = default!;
         /// <summary>Whether the reader may read the flag&apos;s history, which the flag-change checks need.</summary>
-        public bool? CanReadFlagHistory { get; set; }
+        public bool? CanReadFlagHistory { get => _explicitNullValueCanReadFlagHistory; set { _explicitNullValueCanReadFlagHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_read_flag_history"); else _explicitNullProperties?.Remove("can_read_flag_history"); } }
+        private bool? _explicitNullValueCanReadFlagHistory = default!;
         /// <summary>Event properties the reader is denied. The forced-variant and release-condition checks skip their scan when one of them is a flag call property it reads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DeniedEventProperties { get; set; }
+        public List<string>? DeniedEventProperties { get => _explicitNullValueDeniedEventProperties; set { _explicitNullValueDeniedEventProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denied_event_properties"); else _explicitNullProperties?.Remove("denied_event_properties"); } }
+        private List<string>? _explicitNullValueDeniedEventProperties = default!;
 #nullable restore
 #else
-        public List<string> DeniedEventProperties { get; set; }
+        public List<string> DeniedEventProperties { get => _explicitNullValueDeniedEventProperties; set { _explicitNullValueDeniedEventProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denied_event_properties"); else _explicitNullProperties?.Remove("denied_event_properties"); } }
+        private List<string> _explicitNullValueDeniedEventProperties = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed"/> and sets the default values.
@@ -42,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("can_query_events", CanQueryEvents);
             writer.WriteBoolValue("can_read_flag_history", CanReadFlagHistory);
             writer.WriteCollectionOfPrimitiveValues<string>("denied_event_properties", DeniedEventProperties);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

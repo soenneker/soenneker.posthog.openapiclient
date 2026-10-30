@@ -57,6 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
             {
                 { "403", global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlocked.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.PostHog.OpenApiClient.Models.CallToolBlocked.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -11,52 +11,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class StickinessFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chartStyle") is { } nullNodeChartStyle && nullNodeChartStyle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChartStyle = null;
+            if (parseNode.GetChildNode("computedAs") is { } nullNodeComputedAs && nullNodeComputedAs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputedAs = null;
+            if (parseNode.GetChildNode("display") is { } nullNodeDisplay && nullNodeDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Display = null;
+            if (parseNode.GetChildNode("hiddenLegendIndexes") is { } nullNodeHiddenLegendIndexes && nullNodeHiddenLegendIndexes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenLegendIndexes = null;
+            if (parseNode.GetChildNode("legendPosition") is { } nullNodeLegendPosition && nullNodeLegendPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegendPosition = null;
+            if (parseNode.GetChildNode("resultCustomizationBy") is { } nullNodeResultCustomizationBy && nullNodeResultCustomizationBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultCustomizationBy = null;
+            if (parseNode.GetChildNode("resultCustomizations") is { } nullNodeResultCustomizations && nullNodeResultCustomizations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultCustomizations = null;
+            if (parseNode.GetChildNode("showLegend") is { } nullNodeShowLegend && nullNodeShowLegend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLegend = null;
+            if (parseNode.GetChildNode("showMultipleYAxes") is { } nullNodeShowMultipleYAxes && nullNodeShowMultipleYAxes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowMultipleYAxes = null;
+            if (parseNode.GetChildNode("showValuesOnSeries") is { } nullNodeShowValuesOnSeries && nullNodeShowValuesOnSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowValuesOnSeries = null;
+            if (parseNode.GetChildNode("stickinessCriteria") is { } nullNodeStickinessCriteria && nullNodeStickinessCriteria.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StickinessCriteria = null;
+        }
+
         /// <summary>Chart rendering style overrides (line shape).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? _explicitNullValueChartStyle = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle _explicitNullValueChartStyle = default!;
 #endif
         /// <summary>The computedAs property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationMode? ComputedAs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationMode? ComputedAs { get => _explicitNullValueComputedAs; set { _explicitNullValueComputedAs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computedAs"); else _explicitNullProperties?.Remove("computedAs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.StickinessComputationMode? _explicitNullValueComputedAs = default!;
         /// <summary>The display property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? _explicitNullValueDisplay = default!;
         /// <summary>The hiddenLegendIndexes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? HiddenLegendIndexes { get; set; }
+        public List<int?>? HiddenLegendIndexes { get => _explicitNullValueHiddenLegendIndexes; set { _explicitNullValueHiddenLegendIndexes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hiddenLegendIndexes"); else _explicitNullProperties?.Remove("hiddenLegendIndexes"); } }
+        private List<int?>? _explicitNullValueHiddenLegendIndexes = default!;
 #nullable restore
 #else
-        public List<int?> HiddenLegendIndexes { get; set; }
+        public List<int?> HiddenLegendIndexes { get => _explicitNullValueHiddenLegendIndexes; set { _explicitNullValueHiddenLegendIndexes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hiddenLegendIndexes"); else _explicitNullProperties?.Remove("hiddenLegendIndexes"); } }
+        private List<int?> _explicitNullValueHiddenLegendIndexes = default!;
 #endif
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get => _explicitNullValueLegendPosition; set { _explicitNullValueLegendPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legendPosition"); else _explicitNullProperties?.Remove("legendPosition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? _explicitNullValueLegendPosition = default!;
         /// <summary>Whether result datasets are associated by their values or by their order.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy? ResultCustomizationBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy? ResultCustomizationBy { get => _explicitNullValueResultCustomizationBy; set { _explicitNullValueResultCustomizationBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resultCustomizationBy"); else _explicitNullProperties?.Remove("resultCustomizationBy"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResultCustomizationBy? _explicitNullValueResultCustomizationBy = default!;
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations? ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations? ResultCustomizations { get => _explicitNullValueResultCustomizations; set { _explicitNullValueResultCustomizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resultCustomizations"); else _explicitNullProperties?.Remove("resultCustomizations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations? _explicitNullValueResultCustomizations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations ResultCustomizations { get => _explicitNullValueResultCustomizations; set { _explicitNullValueResultCustomizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resultCustomizations"); else _explicitNullProperties?.Remove("resultCustomizations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilterResultCustomizations _explicitNullValueResultCustomizations = default!;
 #endif
         /// <summary>The showLegend property</summary>
-        public bool? ShowLegend { get; set; }
+        public bool? ShowLegend { get => _explicitNullValueShowLegend; set { _explicitNullValueShowLegend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLegend"); else _explicitNullProperties?.Remove("showLegend"); } }
+        private bool? _explicitNullValueShowLegend = default!;
         /// <summary>The showMultipleYAxes property</summary>
-        public bool? ShowMultipleYAxes { get; set; }
+        public bool? ShowMultipleYAxes { get => _explicitNullValueShowMultipleYAxes; set { _explicitNullValueShowMultipleYAxes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showMultipleYAxes"); else _explicitNullProperties?.Remove("showMultipleYAxes"); } }
+        private bool? _explicitNullValueShowMultipleYAxes = default!;
         /// <summary>The showValuesOnSeries property</summary>
-        public bool? ShowValuesOnSeries { get; set; }
+        public bool? ShowValuesOnSeries { get => _explicitNullValueShowValuesOnSeries; set { _explicitNullValueShowValuesOnSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showValuesOnSeries"); else _explicitNullProperties?.Remove("showValuesOnSeries"); } }
+        private bool? _explicitNullValueShowValuesOnSeries = default!;
         /// <summary>The stickinessCriteria property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria? StickinessCriteria { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria? StickinessCriteria { get => _explicitNullValueStickinessCriteria; set { _explicitNullValueStickinessCriteria = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stickinessCriteria"); else _explicitNullProperties?.Remove("stickinessCriteria"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria? _explicitNullValueStickinessCriteria = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria StickinessCriteria { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria StickinessCriteria { get => _explicitNullValueStickinessCriteria; set { _explicitNullValueStickinessCriteria = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stickinessCriteria"); else _explicitNullProperties?.Remove("stickinessCriteria"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria _explicitNullValueStickinessCriteria = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -66,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,7 +139,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showLegend", ShowLegend);
             writer.WriteBoolValue("showMultipleYAxes", ShowMultipleYAxes);
             writer.WriteBoolValue("showValuesOnSeries", ShowValuesOnSeries);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria>("stickinessCriteria", StickinessCriteria);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessCriteria>("stickinessCriteria", StickinessCriteria);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

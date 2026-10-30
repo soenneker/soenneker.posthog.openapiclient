@@ -11,108 +11,160 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DataSourceHealthEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("connected") is { } nullNodeConnected && nullNodeConnected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connected = null;
+            if (parseNode.GetChildNode("diagnosis") is { } nullNodeDiagnosis && nullNodeDiagnosis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Diagnosis = null;
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("fix_suggestion") is { } nullNodeFixSuggestion && nullNodeFixSuggestion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FixSuggestion = null;
+            if (parseNode.GetChildNode("is_native") is { } nullNodeIsNative && nullNodeIsNative.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsNative = null;
+            if (parseNode.GetChildNode("last_error") is { } nullNodeLastError && nullNodeLastError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastError = null;
+            if (parseNode.GetChildNode("last_sync_at") is { } nullNodeLastSyncAt && nullNodeLastSyncAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSyncAt = null;
+            if (parseNode.GetChildNode("last_sync_status") is { } nullNodeLastSyncStatus && nullNodeLastSyncStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSyncStatus = null;
+            if (parseNode.GetChildNode("required_tables") is { } nullNodeRequiredTables && nullNodeRequiredTables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiredTables = null;
+            if (parseNode.GetChildNode("rows_last_24h") is { } nullNodeRowsLast24h && nullNodeRowsLast24h.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsLast24h = null;
+            if (parseNode.GetChildNode("rows_last_7d") is { } nullNodeRowsLast7d && nullNodeRowsLast7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsLast7d = null;
+            if (parseNode.GetChildNode("schema_columns_mapped") is { } nullNodeSchemaColumnsMapped && nullNodeSchemaColumnsMapped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaColumnsMapped = null;
+            if (parseNode.GetChildNode("schema_columns_required_missing") is { } nullNodeSchemaColumnsRequiredMissing && nullNodeSchemaColumnsRequiredMissing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaColumnsRequiredMissing = null;
+            if (parseNode.GetChildNode("schemas_url") is { } nullNodeSchemasUrl && nullNodeSchemasUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemasUrl = null;
+            if (parseNode.GetChildNode("settings_url") is { } nullNodeSettingsUrl && nullNodeSettingsUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SettingsUrl = null;
+            if (parseNode.GetChildNode("sources_map_present") is { } nullNodeSourcesMapPresent && nullNodeSourcesMapPresent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesMapPresent = null;
+            if (parseNode.GetChildNode("source_type") is { } nullNodeSourceType && nullNodeSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether a live source of this type is connected</summary>
-        public bool? Connected { get; set; }
+        public bool? Connected { get => _explicitNullValueConnected; set { _explicitNullValueConnected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected"); else _explicitNullProperties?.Remove("connected"); } }
+        private bool? _explicitNullValueConnected = default!;
         /// <summary>Human-readable diagnosis of this source&apos;s health</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Diagnosis { get; set; }
+        public string? Diagnosis { get => _explicitNullValueDiagnosis; set { _explicitNullValueDiagnosis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnosis"); else _explicitNullProperties?.Remove("diagnosis"); } }
+        private string? _explicitNullValueDiagnosis = default!;
 #nullable restore
 #else
-        public string Diagnosis { get; set; }
+        public string Diagnosis { get => _explicitNullValueDiagnosis; set { _explicitNullValueDiagnosis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnosis"); else _explicitNullProperties?.Remove("diagnosis"); } }
+        private string _explicitNullValueDiagnosis = default!;
 #endif
         /// <summary>Human-readable integration name (e.g. &apos;Google Ads&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Suggested fix when the source is unhealthy</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FixSuggestion { get; set; }
+        public string? FixSuggestion { get => _explicitNullValueFixSuggestion; set { _explicitNullValueFixSuggestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fix_suggestion"); else _explicitNullProperties?.Remove("fix_suggestion"); } }
+        private string? _explicitNullValueFixSuggestion = default!;
 #nullable restore
 #else
-        public string FixSuggestion { get; set; }
+        public string FixSuggestion { get => _explicitNullValueFixSuggestion; set { _explicitNullValueFixSuggestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fix_suggestion"); else _explicitNullProperties?.Remove("fix_suggestion"); } }
+        private string _explicitNullValueFixSuggestion = default!;
 #endif
         /// <summary>Whether this is a native marketing integration</summary>
-        public bool? IsNative { get; set; }
+        public bool? IsNative { get => _explicitNullValueIsNative; set { _explicitNullValueIsNative = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_native"); else _explicitNullProperties?.Remove("is_native"); } }
+        private bool? _explicitNullValueIsNative = default!;
         /// <summary>Latest unresolved sync error message, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastError { get; set; }
+        public string? LastError { get => _explicitNullValueLastError; set { _explicitNullValueLastError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_error"); else _explicitNullProperties?.Remove("last_error"); } }
+        private string? _explicitNullValueLastError = default!;
 #nullable restore
 #else
-        public string LastError { get; set; }
+        public string LastError { get => _explicitNullValueLastError; set { _explicitNullValueLastError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_error"); else _explicitNullProperties?.Remove("last_error"); } }
+        private string _explicitNullValueLastError = default!;
 #endif
         /// <summary>When the source last completed a sync</summary>
-        public DateTimeOffset? LastSyncAt { get; set; }
+        public DateTimeOffset? LastSyncAt { get => _explicitNullValueLastSyncAt; set { _explicitNullValueLastSyncAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_sync_at"); else _explicitNullProperties?.Remove("last_sync_at"); } }
+        private DateTimeOffset? _explicitNullValueLastSyncAt = default!;
         /// <summary>Sync status: ok/error/stale/tables_failed/not_connected/never</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastSyncStatus { get; set; }
+        public string? LastSyncStatus { get => _explicitNullValueLastSyncStatus; set { _explicitNullValueLastSyncStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_sync_status"); else _explicitNullProperties?.Remove("last_sync_status"); } }
+        private string? _explicitNullValueLastSyncStatus = default!;
 #nullable restore
 #else
-        public string LastSyncStatus { get; set; }
+        public string LastSyncStatus { get => _explicitNullValueLastSyncStatus; set { _explicitNullValueLastSyncStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_sync_status"); else _explicitNullProperties?.Remove("last_sync_status"); } }
+        private string _explicitNullValueLastSyncStatus = default!;
 #endif
         /// <summary>Per-required-table sync status for this integration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RequiredTableStatus>? RequiredTables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RequiredTableStatus>? RequiredTables { get => _explicitNullValueRequiredTables; set { _explicitNullValueRequiredTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_tables"); else _explicitNullProperties?.Remove("required_tables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RequiredTableStatus>? _explicitNullValueRequiredTables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RequiredTableStatus> RequiredTables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RequiredTableStatus> RequiredTables { get => _explicitNullValueRequiredTables; set { _explicitNullValueRequiredTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_tables"); else _explicitNullProperties?.Remove("required_tables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RequiredTableStatus> _explicitNullValueRequiredTables = default!;
 #endif
         /// <summary>Rows synced in the last 24 hours</summary>
-        public int? RowsLast24h { get; set; }
+        public int? RowsLast24h { get => _explicitNullValueRowsLast24h; set { _explicitNullValueRowsLast24h = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_last_24h"); else _explicitNullProperties?.Remove("rows_last_24h"); } }
+        private int? _explicitNullValueRowsLast24h = default!;
         /// <summary>Rows synced in the last 7 days</summary>
-        public int? RowsLast7d { get; set; }
+        public int? RowsLast7d { get => _explicitNullValueRowsLast7d; set { _explicitNullValueRowsLast7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_last_7d"); else _explicitNullProperties?.Remove("rows_last_7d"); } }
+        private int? _explicitNullValueRowsLast7d = default!;
         /// <summary>Schema columns currently mapped for this source</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SchemaColumnsMapped { get; set; }
+        public List<string>? SchemaColumnsMapped { get => _explicitNullValueSchemaColumnsMapped; set { _explicitNullValueSchemaColumnsMapped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_columns_mapped"); else _explicitNullProperties?.Remove("schema_columns_mapped"); } }
+        private List<string>? _explicitNullValueSchemaColumnsMapped = default!;
 #nullable restore
 #else
-        public List<string> SchemaColumnsMapped { get; set; }
+        public List<string> SchemaColumnsMapped { get => _explicitNullValueSchemaColumnsMapped; set { _explicitNullValueSchemaColumnsMapped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_columns_mapped"); else _explicitNullProperties?.Remove("schema_columns_mapped"); } }
+        private List<string> _explicitNullValueSchemaColumnsMapped = default!;
 #endif
         /// <summary>Required schema columns that are not yet mapped</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SchemaColumnsRequiredMissing { get; set; }
+        public List<string>? SchemaColumnsRequiredMissing { get => _explicitNullValueSchemaColumnsRequiredMissing; set { _explicitNullValueSchemaColumnsRequiredMissing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_columns_required_missing"); else _explicitNullProperties?.Remove("schema_columns_required_missing"); } }
+        private List<string>? _explicitNullValueSchemaColumnsRequiredMissing = default!;
 #nullable restore
 #else
-        public List<string> SchemaColumnsRequiredMissing { get; set; }
+        public List<string> SchemaColumnsRequiredMissing { get => _explicitNullValueSchemaColumnsRequiredMissing; set { _explicitNullValueSchemaColumnsRequiredMissing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_columns_required_missing"); else _explicitNullProperties?.Remove("schema_columns_required_missing"); } }
+        private List<string> _explicitNullValueSchemaColumnsRequiredMissing = default!;
 #endif
         /// <summary>URL to the per-source Schemas tab, or null if not connected</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SchemasUrl { get; set; }
+        public string? SchemasUrl { get => _explicitNullValueSchemasUrl; set { _explicitNullValueSchemasUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemas_url"); else _explicitNullProperties?.Remove("schemas_url"); } }
+        private string? _explicitNullValueSchemasUrl = default!;
 #nullable restore
 #else
-        public string SchemasUrl { get; set; }
+        public string SchemasUrl { get => _explicitNullValueSchemasUrl; set { _explicitNullValueSchemasUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemas_url"); else _explicitNullProperties?.Remove("schemas_url"); } }
+        private string _explicitNullValueSchemasUrl = default!;
 #endif
         /// <summary>URL to the Marketing analytics global settings page</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SettingsUrl { get; set; }
+        public string? SettingsUrl { get => _explicitNullValueSettingsUrl; set { _explicitNullValueSettingsUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("settings_url"); else _explicitNullProperties?.Remove("settings_url"); } }
+        private string? _explicitNullValueSettingsUrl = default!;
 #nullable restore
 #else
-        public string SettingsUrl { get; set; }
+        public string SettingsUrl { get => _explicitNullValueSettingsUrl; set { _explicitNullValueSettingsUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("settings_url"); else _explicitNullProperties?.Remove("settings_url"); } }
+        private string _explicitNullValueSettingsUrl = default!;
 #endif
         /// <summary>Whether a column mapping exists for this source</summary>
-        public bool? SourcesMapPresent { get; set; }
+        public bool? SourcesMapPresent { get => _explicitNullValueSourcesMapPresent; set { _explicitNullValueSourcesMapPresent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_map_present"); else _explicitNullProperties?.Remove("sources_map_present"); } }
+        private bool? _explicitNullValueSourcesMapPresent = default!;
         /// <summary>External data source type key (e.g. &apos;GoogleAds&apos;, &apos;MetaAds&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceType { get; set; }
+        public string? SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private string? _explicitNullValueSourceType = default!;
 #nullable restore
 #else
-        public string SourceType { get; set; }
+        public string SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private string _explicitNullValueSourceType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry"/> and sets the default values.
@@ -129,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -182,6 +234,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("settings_url", SettingsUrl);
             writer.WriteBoolValue("sources_map_present", SourcesMapPresent);
             writer.WriteStringValue("source_type", SourceType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

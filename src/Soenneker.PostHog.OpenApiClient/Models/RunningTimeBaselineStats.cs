@@ -12,29 +12,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunningTimeBaselineStats : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("denominator_sum") is { } nullNodeDenominatorSum && nullNodeDenominatorSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DenominatorSum = null;
+            if (parseNode.GetChildNode("denominator_sum_squares") is { } nullNodeDenominatorSumSquares && nullNodeDenominatorSumSquares.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DenominatorSumSquares = null;
+            if (parseNode.GetChildNode("number_of_samples") is { } nullNodeNumberOfSamples && nullNodeNumberOfSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumberOfSamples = null;
+            if (parseNode.GetChildNode("numerator_denominator_sum_product") is { } nullNodeNumeratorDenominatorSumProduct && nullNodeNumeratorDenominatorSumProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumeratorDenominatorSumProduct = null;
+            if (parseNode.GetChildNode("step_counts") is { } nullNodeStepCounts && nullNodeStepCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepCounts = null;
+            if (parseNode.GetChildNode("sum") is { } nullNodeSum && nullNodeSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sum = null;
+            if (parseNode.GetChildNode("sum_squares") is { } nullNodeSumSquares && nullNodeSumSquares.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SumSquares = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Sum of the denominator values. Required for ratio/retention metrics.</summary>
-        public double? DenominatorSum { get; set; }
+        public double? DenominatorSum { get => _explicitNullValueDenominatorSum; set { _explicitNullValueDenominatorSum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_sum"); else _explicitNullProperties?.Remove("denominator_sum"); } }
+        private double? _explicitNullValueDenominatorSum = default!;
         /// <summary>Sum of squared denominator values (ratio/retention variance).</summary>
-        public double? DenominatorSumSquares { get; set; }
+        public double? DenominatorSumSquares { get => _explicitNullValueDenominatorSumSquares; set { _explicitNullValueDenominatorSumSquares = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_sum_squares"); else _explicitNullProperties?.Remove("denominator_sum_squares"); } }
+        private double? _explicitNullValueDenominatorSumSquares = default!;
         /// <summary>Number of control-group samples (users/units) observed.</summary>
-        public int? NumberOfSamples { get; set; }
+        public int? NumberOfSamples { get => _explicitNullValueNumberOfSamples; set { _explicitNullValueNumberOfSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number_of_samples"); else _explicitNullProperties?.Remove("number_of_samples"); } }
+        private int? _explicitNullValueNumberOfSamples = default!;
         /// <summary>Sum of numerator×denominator products, used for the delta-method covariance term.</summary>
-        public double? NumeratorDenominatorSumProduct { get; set; }
+        public double? NumeratorDenominatorSumProduct { get => _explicitNullValueNumeratorDenominatorSumProduct; set { _explicitNullValueNumeratorDenominatorSumProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator_denominator_sum_product"); else _explicitNullProperties?.Remove("numerator_denominator_sum_product"); } }
+        private double? _explicitNullValueNumeratorDenominatorSumProduct = default!;
         /// <summary>Per-step counts for funnel metrics; the last entry is the final-step count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? StepCounts { get; set; }
+        public List<double?>? StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
+        private List<double?>? _explicitNullValueStepCounts = default!;
 #nullable restore
 #else
-        public List<double?> StepCounts { get; set; }
+        public List<double?> StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
+        private List<double?> _explicitNullValueStepCounts = default!;
 #endif
         /// <summary>Sum of the metric values across the control group (for funnels, the numerator/conversions).</summary>
-        public double? Sum { get; set; }
+        public double? Sum { get => _explicitNullValueSum; set { _explicitNullValueSum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum"); else _explicitNullProperties?.Remove("sum"); } }
+        private double? _explicitNullValueSum = default!;
         /// <summary>Sum of squared metric values. Mean metrics read their variance from it, and ratio/retention metrics need it. Without it, a mean metric&apos;s variance is approximated from the baseline value.</summary>
-        public double? SumSquares { get; set; }
+        public double? SumSquares { get => _explicitNullValueSumSquares; set { _explicitNullValueSumSquares = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum_squares"); else _explicitNullProperties?.Remove("sum_squares"); } }
+        private double? _explicitNullValueSumSquares = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats"/> and sets the default values.
         /// </summary>
@@ -51,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<double?>("step_counts", StepCounts);
             writer.WriteDoubleValue("sum", Sum);
             writer.WriteDoubleValue("sum_squares", SumSquares);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,7 +11,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingSuppressionRule : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("disabled_data") is { } nullNodeDisabledData && nullNodeDisabledData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisabledData = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("order_key") is { } nullNodeOrderKey && nullNodeOrderKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderKey = null;
+            if (parseNode.GetChildNode("sampling_rate") is { } nullNodeSamplingRate && nullNodeSamplingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
@@ -19,25 +30,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The disabled_data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? DisabledData { get; set; }
+        public UntypedNode? DisabledData { get => _explicitNullValueDisabledData; set { _explicitNullValueDisabledData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled_data"); else _explicitNullProperties?.Remove("disabled_data"); } }
+        private UntypedNode? _explicitNullValueDisabledData = default!;
 #nullable restore
 #else
-        public UntypedNode DisabledData { get; set; }
+        public UntypedNode DisabledData { get => _explicitNullValueDisabledData; set { _explicitNullValueDisabledData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled_data"); else _explicitNullProperties?.Remove("disabled_data"); } }
+        private UntypedNode _explicitNullValueDisabledData = default!;
 #endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Filters { get; set; }
+        public UntypedNode? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private UntypedNode? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public UntypedNode Filters { get; set; }
+        public UntypedNode Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private UntypedNode _explicitNullValueFilters = default!;
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The order_key property</summary>
-        public int? OrderKey { get; set; }
+        public int? OrderKey { get => _explicitNullValueOrderKey; set { _explicitNullValueOrderKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_key"); else _explicitNullProperties?.Remove("order_key"); } }
+        private int? _explicitNullValueOrderKey = default!;
         /// <summary>The sampling_rate property</summary>
-        public double? SamplingRate { get; set; }
+        public double? SamplingRate { get => _explicitNullValueSamplingRate; set { _explicitNullValueSamplingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_rate"); else _explicitNullProperties?.Remove("sampling_rate"); } }
+        private double? _explicitNullValueSamplingRate = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -55,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRule CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRule();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSuppressionRule(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("filters", Filters);
             writer.WriteIntValue("order_key", OrderKey);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

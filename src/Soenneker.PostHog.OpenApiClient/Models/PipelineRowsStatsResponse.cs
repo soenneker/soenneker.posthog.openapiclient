@@ -11,39 +11,66 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PipelineRowsStatsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billing_available") is { } nullNodeBillingAvailable && nullNodeBillingAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingAvailable = null;
+            if (parseNode.GetChildNode("billing_interval") is { } nullNodeBillingInterval && nullNodeBillingInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingInterval = null;
+            if (parseNode.GetChildNode("billing_period_end") is { } nullNodeBillingPeriodEnd && nullNodeBillingPeriodEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingPeriodEnd = null;
+            if (parseNode.GetChildNode("billing_period_start") is { } nullNodeBillingPeriodStart && nullNodeBillingPeriodStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingPeriodStart = null;
+            if (parseNode.GetChildNode("breakdown_of_rows_by_source") is { } nullNodeBreakdownOfRowsBySource && nullNodeBreakdownOfRowsBySource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownOfRowsBySource = null;
+            if (parseNode.GetChildNode("materialized_rows_in_billing_period") is { } nullNodeMaterializedRowsInBillingPeriod && nullNodeMaterializedRowsInBillingPeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaterializedRowsInBillingPeriod = null;
+            if (parseNode.GetChildNode("pending_billing_rows") is { } nullNodePendingBillingRows && nullNodePendingBillingRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingBillingRows = null;
+            if (parseNode.GetChildNode("total_rows") is { } nullNodeTotalRows && nullNodeTotalRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRows = null;
+            if (parseNode.GetChildNode("tracked_billing_rows") is { } nullNodeTrackedBillingRows && nullNodeTrackedBillingRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrackedBillingRows = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether billing answered. When false, only the counts derived from runs are meaningful.</summary>
-        public bool? BillingAvailable { get; set; }
+        public bool? BillingAvailable { get => _explicitNullValueBillingAvailable; set { _explicitNullValueBillingAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_available"); else _explicitNullProperties?.Remove("billing_available"); } }
+        private bool? _explicitNullValueBillingAvailable = default!;
         /// <summary>Length of the billing period, for example &apos;month&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BillingInterval { get; set; }
+        public string? BillingInterval { get => _explicitNullValueBillingInterval; set { _explicitNullValueBillingInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_interval"); else _explicitNullProperties?.Remove("billing_interval"); } }
+        private string? _explicitNullValueBillingInterval = default!;
 #nullable restore
 #else
-        public string BillingInterval { get; set; }
+        public string BillingInterval { get => _explicitNullValueBillingInterval; set { _explicitNullValueBillingInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_interval"); else _explicitNullProperties?.Remove("billing_interval"); } }
+        private string _explicitNullValueBillingInterval = default!;
 #endif
         /// <summary>End of the current billing period.</summary>
-        public DateTimeOffset? BillingPeriodEnd { get; set; }
+        public DateTimeOffset? BillingPeriodEnd { get => _explicitNullValueBillingPeriodEnd; set { _explicitNullValueBillingPeriodEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period_end"); else _explicitNullProperties?.Remove("billing_period_end"); } }
+        private DateTimeOffset? _explicitNullValueBillingPeriodEnd = default!;
         /// <summary>Start of the current billing period.</summary>
-        public DateTimeOffset? BillingPeriodStart { get; set; }
+        public DateTimeOffset? BillingPeriodStart { get => _explicitNullValueBillingPeriodStart; set { _explicitNullValueBillingPeriodStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period_start"); else _explicitNullProperties?.Remove("billing_period_start"); } }
+        private DateTimeOffset? _explicitNullValueBillingPeriodStart = default!;
         /// <summary>Rows synced in the billing period, keyed by source id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponseBreakdownOfRowsBySourceProperty? BreakdownOfRowsBySource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponseBreakdownOfRowsBySourceProperty? BreakdownOfRowsBySource { get => _explicitNullValueBreakdownOfRowsBySource; set { _explicitNullValueBreakdownOfRowsBySource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_of_rows_by_source"); else _explicitNullProperties?.Remove("breakdown_of_rows_by_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponseBreakdownOfRowsBySourceProperty? _explicitNullValueBreakdownOfRowsBySource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponseBreakdownOfRowsBySourceProperty BreakdownOfRowsBySource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponseBreakdownOfRowsBySourceProperty BreakdownOfRowsBySource { get => _explicitNullValueBreakdownOfRowsBySource; set { _explicitNullValueBreakdownOfRowsBySource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_of_rows_by_source"); else _explicitNullProperties?.Remove("breakdown_of_rows_by_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponseBreakdownOfRowsBySourceProperty _explicitNullValueBreakdownOfRowsBySource = default!;
 #endif
         /// <summary>Rows written by materialized view runs in the billing period.</summary>
-        public int? MaterializedRowsInBillingPeriod { get; set; }
+        public int? MaterializedRowsInBillingPeriod { get => _explicitNullValueMaterializedRowsInBillingPeriod; set { _explicitNullValueMaterializedRowsInBillingPeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("materialized_rows_in_billing_period"); else _explicitNullProperties?.Remove("materialized_rows_in_billing_period"); } }
+        private int? _explicitNullValueMaterializedRowsInBillingPeriod = default!;
         /// <summary>Rows synced since billing last counted.</summary>
-        public int? PendingBillingRows { get; set; }
+        public int? PendingBillingRows { get => _explicitNullValuePendingBillingRows; set { _explicitNullValuePendingBillingRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_billing_rows"); else _explicitNullProperties?.Remove("pending_billing_rows"); } }
+        private int? _explicitNullValuePendingBillingRows = default!;
         /// <summary>Rows synced in the billing period, billed and not yet billed.</summary>
-        public int? TotalRows { get; set; }
+        public int? TotalRows { get => _explicitNullValueTotalRows; set { _explicitNullValueTotalRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_rows"); else _explicitNullProperties?.Remove("total_rows"); } }
+        private int? _explicitNullValueTotalRows = default!;
         /// <summary>Rows billing has already counted.</summary>
-        public int? TrackedBillingRows { get; set; }
+        public int? TrackedBillingRows { get => _explicitNullValueTrackedBillingRows; set { _explicitNullValueTrackedBillingRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracked_billing_rows"); else _explicitNullProperties?.Remove("tracked_billing_rows"); } }
+        private int? _explicitNullValueTrackedBillingRows = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponse"/> and sets the default values.
         /// </summary>
@@ -59,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PipelineRowsStatsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("pending_billing_rows", PendingBillingRows);
             writer.WriteIntValue("total_rows", TotalRows);
             writer.WriteIntValue("tracked_billing_rows", TrackedBillingRows);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

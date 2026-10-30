@@ -12,30 +12,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsAlertSimulateRequestFilters : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("filterGroup") is { } nullNodeFilterGroup && nullNodeFilterGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterGroup = null;
+            if (parseNode.GetChildNode("serviceNames") is { } nullNodeServiceNames && nullNodeServiceNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceNames = null;
+            if (parseNode.GetChildNode("severityLevels") is { } nullNodeSeverityLevels && nullNodeSeverityLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeverityLevels = null;
+        }
+
         /// <summary>The filterGroup property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter? FilterGroup { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter? FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter? _explicitNullValueFilterGroup = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter FilterGroup { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter _explicitNullValueFilterGroup = default!;
 #endif
         /// <summary>The serviceNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ServiceNames { get; set; }
+        public List<string>? ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        private List<string>? _explicitNullValueServiceNames = default!;
 #nullable restore
 #else
-        public List<string> ServiceNames { get; set; }
+        public List<string> ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        private List<string> _explicitNullValueServiceNames = default!;
 #endif
         /// <summary>The severityLevels property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?>? SeverityLevels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?>? SeverityLevels { get => _explicitNullValueSeverityLevels; set { _explicitNullValueSeverityLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severityLevels"); else _explicitNullProperties?.Remove("severityLevels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?>? _explicitNullValueSeverityLevels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?> SeverityLevels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?> SeverityLevels { get => _explicitNullValueSeverityLevels; set { _explicitNullValueSeverityLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severityLevels"); else _explicitNullProperties?.Remove("severityLevels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel?> _explicitNullValueSeverityLevels = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -45,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,7 +85,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter>("filterGroup", FilterGroup);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>("severityLevels", SeverityLevels);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LogSeverityLevel>("severityLevels", SeverityLevels);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

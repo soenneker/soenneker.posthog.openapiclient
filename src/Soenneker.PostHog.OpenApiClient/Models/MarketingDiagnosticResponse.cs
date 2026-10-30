@@ -11,48 +11,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MarketingDiagnosticResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("conversion_goals") is { } nullNodeConversionGoals && nullNodeConversionGoals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionGoals = null;
+            if (parseNode.GetChildNode("integrations") is { } nullNodeIntegrations && nullNodeIntegrations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Integrations = null;
+            if (parseNode.GetChildNode("overall_status") is { } nullNodeOverallStatus && nullNodeOverallStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OverallStatus = null;
+            if (parseNode.GetChildNode("recommended_actions") is { } nullNodeRecommendedActions && nullNodeRecommendedActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedActions = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Conversion goal summary, when requested</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse? ConversionGoals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse? ConversionGoals { get => _explicitNullValueConversionGoals; set { _explicitNullValueConversionGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goals"); else _explicitNullProperties?.Remove("conversion_goals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse? _explicitNullValueConversionGoals = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse ConversionGoals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse ConversionGoals { get => _explicitNullValueConversionGoals; set { _explicitNullValueConversionGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goals"); else _explicitNullProperties?.Remove("conversion_goals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse _explicitNullValueConversionGoals = default!;
 #endif
         /// <summary>Per-integration cross-domain diagnostics</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic>? Integrations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic>? Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic>? _explicitNullValueIntegrations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic> Integrations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic> Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnostic> _explicitNullValueIntegrations = default!;
 #endif
         /// <summary>healthy/degraded/broken/no_sources</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OverallStatus { get; set; }
+        public string? OverallStatus { get => _explicitNullValueOverallStatus; set { _explicitNullValueOverallStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overall_status"); else _explicitNullProperties?.Remove("overall_status"); } }
+        private string? _explicitNullValueOverallStatus = default!;
 #nullable restore
 #else
-        public string OverallStatus { get; set; }
+        public string OverallStatus { get => _explicitNullValueOverallStatus; set { _explicitNullValueOverallStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overall_status"); else _explicitNullProperties?.Remove("overall_status"); } }
+        private string _explicitNullValueOverallStatus = default!;
 #endif
         /// <summary>Top global recommended actions across all integrations</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction>? RecommendedActions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction>? RecommendedActions { get => _explicitNullValueRecommendedActions; set { _explicitNullValueRecommendedActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_actions"); else _explicitNullProperties?.Remove("recommended_actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction>? _explicitNullValueRecommendedActions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction> RecommendedActions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction> RecommendedActions { get => _explicitNullValueRecommendedActions; set { _explicitNullValueRecommendedActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_actions"); else _explicitNullProperties?.Remove("recommended_actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction> _explicitNullValueRecommendedActions = default!;
 #endif
         /// <summary>One-line plain-English summary of the diagnostic</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Summary { get; set; }
+        public string? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private string? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public string Summary { get; set; }
+        public string Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private string _explicitNullValueSummary = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponse"/> and sets the default values.
@@ -69,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MarketingDiagnosticResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("overall_status", OverallStatus);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.RecommendedAction>("recommended_actions", RecommendedActions);
             writer.WriteStringValue("summary", Summary);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

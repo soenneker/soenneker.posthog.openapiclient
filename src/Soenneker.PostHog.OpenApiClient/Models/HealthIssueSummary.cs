@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HealthIssueSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("snoozed") is { } nullNodeSnoozed && nullNodeSnoozed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snoozed = null;
+            if (parseNode.GetChildNode("unsnoozed") is { } nullNodeUnsnoozed && nullNodeUnsnoozed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unsnoozed = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Counts for active, non-dismissed issues whose snooze has not expired yet. Reported separately so callers can decide for themselves whether a snoozed issue is worth surfacing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed? Snoozed { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed? Snoozed { get => _explicitNullValueSnoozed; set { _explicitNullValueSnoozed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snoozed"); else _explicitNullProperties?.Remove("snoozed"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed? _explicitNullValueSnoozed = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed Snoozed { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed Snoozed { get => _explicitNullValueSnoozed; set { _explicitNullValueSnoozed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snoozed"); else _explicitNullProperties?.Remove("snoozed"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed _explicitNullValueSnoozed = default!;
 #endif
         /// <summary>Counts for active, non-dismissed issues that are not currently snoozed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed? Unsnoozed { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed? Unsnoozed { get => _explicitNullValueUnsnoozed; set { _explicitNullValueUnsnoozed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsnoozed"); else _explicitNullProperties?.Remove("unsnoozed"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed? _explicitNullValueUnsnoozed = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed Unsnoozed { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed Unsnoozed { get => _explicitNullValueUnsnoozed; set { _explicitNullValueUnsnoozed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsnoozed"); else _explicitNullProperties?.Remove("unsnoozed"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed _explicitNullValueUnsnoozed = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummary"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed>("snoozed", Snoozed);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed>("unsnoozed", Unsnoozed);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

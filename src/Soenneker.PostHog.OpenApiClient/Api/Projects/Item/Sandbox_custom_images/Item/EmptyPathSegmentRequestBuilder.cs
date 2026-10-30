@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sandbox_custom_image
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// API for custom sandbox base images, built on top of the VM sandbox base via an image-builder agent.Custom images only run on the Modal VM runtime, so every action is gated on the`tasks-modal-vm-sandbox` flag (org-enabled with `user_created` in its origin_products payload).
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sandbox_custom_image
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Rename or update the description of a custom image. Only mutable metadata (name, description) is editable; the build spec and status are managed by the build flow.
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sandbox_custom_image
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// API for custom sandbox base images, built on top of the VM sandbox base via an image-builder agent.Custom images only run on the Modal VM runtime, so every action is gated on the`tasks-modal-vm-sandbox` flag (org-enabled with `user_created` in its origin_products payload).

@@ -11,7 +11,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AutoresearchTrainingRun : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("iteration_budget") is { } nullNodeIterationBudget && nullNodeIterationBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationBudget = null;
+            if (parseNode.GetChildNode("pipeline") is { } nullNodePipeline && nullNodePipeline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pipeline = null;
+            if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
+            if (parseNode.GetChildNode("task_run_id") is { } nullNodeTaskRunId && nullNodeTaskRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskRunId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Model the training agent ran on. Null for older runs and runs with no task.</summary>
@@ -71,7 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Unique UUID of this training run.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Maximum iterations allowed for this run.</summary>
-        public int? IterationBudget { get; set; }
+        public int? IterationBudget { get => _explicitNullValueIterationBudget; set { _explicitNullValueIterationBudget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_budget"); else _explicitNullProperties?.Remove("iteration_budget"); } }
+        private int? _explicitNullValueIterationBudget = default!;
         /// <summary>Number of iterations completed.</summary>
         public int? IterationCount { get; private set; }
         /// <summary>Per-iteration breakdown — every recipe the agent tried this run, kept or discarded, with its model spec, holdout/train AUC, and one-line rationale. Ordered by iteration_number.</summary>
@@ -99,7 +111,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> NextSteps { get; private set; }
 #endif
         /// <summary>Pipeline this training run belongs to.</summary>
-        public Guid? Pipeline { get; set; }
+        public Guid? Pipeline { get => _explicitNullValuePipeline; set { _explicitNullValuePipeline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipeline"); else _explicitNullProperties?.Remove("pipeline"); } }
+        private Guid? _explicitNullValuePipeline = default!;
         /// <summary>One or two plain sentences on what this run learned, for people. Null if not written.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -121,9 +134,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary Summary { get; private set; }
 #endif
         /// <summary>Parent Task ID in the tasks sandbox. Null for stub runs.</summary>
-        public Guid? TaskId { get; set; }
+        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
+        private Guid? _explicitNullValueTaskId = default!;
         /// <summary>Task sandbox run ID. Null for stub/synchronous training runs.</summary>
-        public Guid? TaskRunId { get; set; }
+        public Guid? TaskRunId { get => _explicitNullValueTaskRunId; set { _explicitNullValueTaskRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_run_id"); else _explicitNullProperties?.Remove("task_run_id"); } }
+        private Guid? _explicitNullValueTaskRunId = default!;
         /// <summary>Relative URL to the underlying sandbox Task detail page. Null for stub/synchronous training runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -147,7 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -193,6 +208,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("pipeline", Pipeline);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteGuidValue("task_run_id", TaskRunId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CohortRealtimeReadiness : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("build") is { } nullNodeBuild && nullNodeBuild.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Build = null;
+            if (parseNode.GetChildNode("ready_at") is { } nullNodeReadyAt && nullNodeReadyAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyAt = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The build preparing the cohort. Null unless the state is `building` or `rebuilding`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild? Build { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild? Build { get => _explicitNullValueBuild; set { _explicitNullValueBuild = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build"); else _explicitNullProperties?.Remove("build"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild? _explicitNullValueBuild = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild Build { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild Build { get => _explicitNullValueBuild; set { _explicitNullValueBuild = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build"); else _explicitNullProperties?.Remove("build"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild _explicitNullValueBuild = default!;
 #endif
         /// <summary>When the cohort became targetable by feature flags. Null unless the state is `ready`.</summary>
-        public DateTimeOffset? ReadyAt { get; set; }
+        public DateTimeOffset? ReadyAt { get => _explicitNullValueReadyAt; set { _explicitNullValueReadyAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_at"); else _explicitNullProperties?.Remove("ready_at"); } }
+        private DateTimeOffset? _explicitNullValueReadyAt = default!;
         /// <summary>* `static` - Static* `person_properties` - Person properties* `daily` - Daily* `building` - Building* `rebuilding` - Rebuilding* `ready` - Ready* `needs_attention` - Needs attention</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState? _explicitNullValueState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortHistoryBuild>("build", Build);
             writer.WriteDateTimeOffsetValue("ready_at", ReadyAt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadinessState>("state", State);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

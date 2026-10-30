@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Events_retentio
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationEventsRetention>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationEventsRetention.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationEventsRetention>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationEventsRetention.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Sets how long every project without its own window keeps events. Events older than the window are deleted on the next monthly cleanup and can&apos;t be restored. Organization admins only.
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Events_retentio
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationEventsRetention>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationEventsRetention.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationEventsRetention>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationEventsRetention.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Returns the events retention window that every project without its own window uses, and the range an organization admin can set.

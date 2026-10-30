@@ -11,7 +11,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedTeamLogsConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("logs_distinct_id_attribute_keys") is { } nullNodeLogsDistinctIdAttributeKeys && nullNodeLogsDistinctIdAttributeKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogsDistinctIdAttributeKeys = null;
+            if (parseNode.GetChildNode("logs_pattern_message_keys") is { } nullNodeLogsPatternMessageKeys && nullNodeLogsPatternMessageKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogsPatternMessageKeys = null;
+            if (parseNode.GetChildNode("logs_session_id_attribute_keys") is { } nullNodeLogsSessionIdAttributeKeys && nullNodeLogsSessionIdAttributeKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogsSessionIdAttributeKeys = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Legacy single-key alias — always the first entry of `logs_distinct_id_attribute_keys`. Read-only; write the plural field instead.</summary>
@@ -25,26 +35,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Log attribute keys whose values should match a person&apos;s distinct_id — a log links to a person when any of these attributes equals one of their distinct IDs. Used by the person profile Logs tab and the `query-logs` MCP tool. Defaults to [&apos;posthogDistinctId&apos;] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the person identifier under different attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? LogsDistinctIdAttributeKeys { get; set; }
+        public List<string>? LogsDistinctIdAttributeKeys { get => _explicitNullValueLogsDistinctIdAttributeKeys; set { _explicitNullValueLogsDistinctIdAttributeKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_distinct_id_attribute_keys"); else _explicitNullProperties?.Remove("logs_distinct_id_attribute_keys"); } }
+        private List<string>? _explicitNullValueLogsDistinctIdAttributeKeys = default!;
 #nullable restore
 #else
-        public List<string> LogsDistinctIdAttributeKeys { get; set; }
+        public List<string> LogsDistinctIdAttributeKeys { get => _explicitNullValueLogsDistinctIdAttributeKeys; set { _explicitNullValueLogsDistinctIdAttributeKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_distinct_id_attribute_keys"); else _explicitNullProperties?.Remove("logs_distinct_id_attribute_keys"); } }
+        private List<string> _explicitNullValueLogsDistinctIdAttributeKeys = default!;
 #endif
         /// <summary>Ordered list of top-level JSON keys whose value is the message text that log patterns are derived from. Keys are matched literally at the top level of the log body; a dot in a key is part of the key name, not a path into nested objects. Selection checks keys in order; the first key whose value is a non-empty string wins. Defaults to [&apos;message&apos;, &apos;msg&apos;, &apos;event&apos;]. An empty list turns message extraction off, so JSON log bodies group by their key set instead. The stored log body is never changed by this setting.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? LogsPatternMessageKeys { get; set; }
+        public List<string>? LogsPatternMessageKeys { get => _explicitNullValueLogsPatternMessageKeys; set { _explicitNullValueLogsPatternMessageKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_pattern_message_keys"); else _explicitNullProperties?.Remove("logs_pattern_message_keys"); } }
+        private List<string>? _explicitNullValueLogsPatternMessageKeys = default!;
 #nullable restore
 #else
-        public List<string> LogsPatternMessageKeys { get; set; }
+        public List<string> LogsPatternMessageKeys { get => _explicitNullValueLogsPatternMessageKeys; set { _explicitNullValueLogsPatternMessageKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_pattern_message_keys"); else _explicitNullProperties?.Remove("logs_pattern_message_keys"); } }
+        private List<string> _explicitNullValueLogsPatternMessageKeys = default!;
 #endif
         /// <summary>Ordered list of log attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to [&apos;sessionId&apos;] — the convention documented at https://posthog.com/docs/logs/link-session-replay and the key the posthog-js / posthog-react-native SDKs auto-attach. Add keys only if your pipeline emits the session ID under different attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? LogsSessionIdAttributeKeys { get; set; }
+        public List<string>? LogsSessionIdAttributeKeys { get => _explicitNullValueLogsSessionIdAttributeKeys; set { _explicitNullValueLogsSessionIdAttributeKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_session_id_attribute_keys"); else _explicitNullProperties?.Remove("logs_session_id_attribute_keys"); } }
+        private List<string>? _explicitNullValueLogsSessionIdAttributeKeys = default!;
 #nullable restore
 #else
-        public List<string> LogsSessionIdAttributeKeys { get; set; }
+        public List<string> LogsSessionIdAttributeKeys { get => _explicitNullValueLogsSessionIdAttributeKeys; set { _explicitNullValueLogsSessionIdAttributeKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_session_id_attribute_keys"); else _explicitNullProperties?.Remove("logs_session_id_attribute_keys"); } }
+        private List<string> _explicitNullValueLogsSessionIdAttributeKeys = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsConfig"/> and sets the default values.
@@ -61,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamLogsConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,6 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("logs_distinct_id_attribute_keys", LogsDistinctIdAttributeKeys);
             writer.WriteCollectionOfPrimitiveValues<string>("logs_pattern_message_keys", LogsPatternMessageKeys);
             writer.WriteCollectionOfPrimitiveValues<string>("logs_session_id_attribute_keys", LogsSessionIdAttributeKeys);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

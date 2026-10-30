@@ -53,6 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "503", global::Soenneker.PostHog.OpenApiClient.Models.ReplayVisionError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

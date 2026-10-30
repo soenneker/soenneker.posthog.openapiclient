@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccountsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccountsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccountsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.IntegrationAccountsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List the accounts/properties a connected OAuth integration exposes, in the sharedIntegrationAccount shape. The logic lives in each source (via OAuthMixin.get_oauth_accounts);this endpoint just routes by source type, applies the optional search filter, and serializes.

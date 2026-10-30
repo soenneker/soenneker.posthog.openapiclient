@@ -12,63 +12,109 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OfflineHistoryPointSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("categories") is { } nullNodeCategories && nullNodeCategories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Categories = null;
+            if (parseNode.GetChildNode("distinct_case_count") is { } nullNodeDistinctCaseCount && nullNodeDistinctCaseCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctCaseCount = null;
+            if (parseNode.GetChildNode("distinct_trial_count") is { } nullNodeDistinctTrialCount && nullNodeDistinctTrialCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctTrialCount = null;
+            if (parseNode.GetChildNode("fail_count") is { } nullNodeFailCount && nullNodeFailCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailCount = null;
+            if (parseNode.GetChildNode("false_count") is { } nullNodeFalseCount && nullNodeFalseCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FalseCount = null;
+            if (parseNode.GetChildNode("items_with_case_key_count") is { } nullNodeItemsWithCaseKeyCount && nullNodeItemsWithCaseKeyCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItemsWithCaseKeyCount = null;
+            if (parseNode.GetChildNode("items_without_case_key_count") is { } nullNodeItemsWithoutCaseKeyCount && nullNodeItemsWithoutCaseKeyCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItemsWithoutCaseKeyCount = null;
+            if (parseNode.GetChildNode("mean") is { } nullNodeMean && nullNodeMean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mean = null;
+            if (parseNode.GetChildNode("missing_result_count") is { } nullNodeMissingResultCount && nullNodeMissingResultCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissingResultCount = null;
+            if (parseNode.GetChildNode("observed_item_count") is { } nullNodeObservedItemCount && nullNodeObservedItemCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObservedItemCount = null;
+            if (parseNode.GetChildNode("pass_count") is { } nullNodePassCount && nullNodePassCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassCount = null;
+            if (parseNode.GetChildNode("pass_rate") is { } nullNodePassRate && nullNodePassRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassRate = null;
+            if (parseNode.GetChildNode("result_count") is { } nullNodeResultCount && nullNodeResultCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultCount = null;
+            if (parseNode.GetChildNode("scorer") is { } nullNodeScorer && nullNodeScorer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scorer = null;
+            if (parseNode.GetChildNode("status_counts") is { } nullNodeStatusCounts && nullNodeStatusCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusCounts = null;
+            if (parseNode.GetChildNode("trial_item_count") is { } nullNodeTrialItemCount && nullNodeTrialItemCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrialItemCount = null;
+            if (parseNode.GetChildNode("true_count") is { } nullNodeTrueCount && nullNodeTrueCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrueCount = null;
+            if (parseNode.GetChildNode("true_rate") is { } nullNodeTrueRate && nullNodeTrueRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrueRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Pinned categorical distribution; multiselect rates may sum above one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary>? Categories { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary>? Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary>? _explicitNullValueCategories = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary> Categories { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary> Categories { get => _explicitNullValueCategories; set { _explicitNullValueCategories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categories"); else _explicitNullProperties?.Remove("categories"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineCategorySummary> _explicitNullValueCategories = default!;
 #endif
         /// <summary>Distinct non-null case keys in observed items.</summary>
-        public int? DistinctCaseCount { get; set; }
+        public int? DistinctCaseCount { get => _explicitNullValueDistinctCaseCount; set { _explicitNullValueDistinctCaseCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_case_count"); else _explicitNullProperties?.Remove("distinct_case_count"); } }
+        private int? _explicitNullValueDistinctCaseCount = default!;
         /// <summary>Distinct case/trial identities; trial-only items remain independent.</summary>
-        public int? DistinctTrialCount { get; set; }
+        public int? DistinctTrialCount { get => _explicitNullValueDistinctTrialCount; set { _explicitNullValueDistinctTrialCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_trial_count"); else _explicitNullProperties?.Remove("distinct_trial_count"); } }
+        private int? _explicitNullValueDistinctTrialCount = default!;
         /// <summary>Successful results failing the pinned rule; null for unconfigured numeric or categorical scorers.</summary>
-        public int? FailCount { get; set; }
+        public int? FailCount { get => _explicitNullValueFailCount; set { _explicitNullValueFailCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fail_count"); else _explicitNullProperties?.Remove("fail_count"); } }
+        private int? _explicitNullValueFailCount = default!;
         /// <summary>Successful boolean false results; null for other kinds.</summary>
-        public int? FalseCount { get; set; }
+        public int? FalseCount { get => _explicitNullValueFalseCount; set { _explicitNullValueFalseCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("false_count"); else _explicitNullProperties?.Remove("false_count"); } }
+        private int? _explicitNullValueFalseCount = default!;
         /// <summary>Observed items with case keys.</summary>
-        public int? ItemsWithCaseKeyCount { get; set; }
+        public int? ItemsWithCaseKeyCount { get => _explicitNullValueItemsWithCaseKeyCount; set { _explicitNullValueItemsWithCaseKeyCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items_with_case_key_count"); else _explicitNullProperties?.Remove("items_with_case_key_count"); } }
+        private int? _explicitNullValueItemsWithCaseKeyCount = default!;
         /// <summary>Observed items without case keys.</summary>
-        public int? ItemsWithoutCaseKeyCount { get; set; }
+        public int? ItemsWithoutCaseKeyCount { get => _explicitNullValueItemsWithoutCaseKeyCount; set { _explicitNullValueItemsWithoutCaseKeyCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items_without_case_key_count"); else _explicitNullProperties?.Remove("items_without_case_key_count"); } }
+        private int? _explicitNullValueItemsWithoutCaseKeyCount = default!;
         /// <summary>Numeric mean of successful scores only; null for other kinds or no successes.</summary>
-        public double? Mean { get; set; }
+        public double? Mean { get => _explicitNullValueMean; set { _explicitNullValueMean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean"); else _explicitNullProperties?.Remove("mean"); } }
+        private double? _explicitNullValueMean = default!;
         /// <summary>Observed items without a result for this version; not the number of all intended missing items.</summary>
-        public int? MissingResultCount { get; set; }
+        public int? MissingResultCount { get => _explicitNullValueMissingResultCount; set { _explicitNullValueMissingResultCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_result_count"); else _explicitNullProperties?.Remove("missing_result_count"); } }
+        private int? _explicitNullValueMissingResultCount = default!;
         /// <summary>All observed experiment items, independent of scorer selection or item pagination.</summary>
-        public int? ObservedItemCount { get; set; }
+        public int? ObservedItemCount { get => _explicitNullValueObservedItemCount; set { _explicitNullValueObservedItemCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observed_item_count"); else _explicitNullProperties?.Remove("observed_item_count"); } }
+        private int? _explicitNullValueObservedItemCount = default!;
         /// <summary>Successful results passing the pinned rule. Boolean scores default to true passing; null for unconfigured numeric or categorical scorers.</summary>
-        public int? PassCount { get; set; }
+        public int? PassCount { get => _explicitNullValuePassCount; set { _explicitNullValuePassCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_count"); else _explicitNullProperties?.Remove("pass_count"); } }
+        private int? _explicitNullValuePassCount = default!;
         /// <summary>Passing fraction among successful results; null without successful results or an applicable rule. Boolean scores default to true passing. Excludes errors, skipped, not-applicable, and missing results.</summary>
-        public double? PassRate { get; set; }
+        public double? PassRate { get => _explicitNullValuePassRate; set { _explicitNullValuePassRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_rate"); else _explicitNullProperties?.Remove("pass_rate"); } }
+        private double? _explicitNullValuePassRate = default!;
         /// <summary>Submitted results for this scorer version, across all statuses.</summary>
-        public int? ResultCount { get; set; }
+        public int? ResultCount { get => _explicitNullValueResultCount; set { _explicitNullValueResultCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_count"); else _explicitNullProperties?.Remove("result_count"); } }
+        private int? _explicitNullValueResultCount = default!;
         /// <summary>Exact scorer version summarized.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer? Scorer { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer? Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer? _explicitNullValueScorer = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer Scorer { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryScorer _explicitNullValueScorer = default!;
 #endif
         /// <summary>Counts for each submitted outcome.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts? StatusCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts? StatusCounts { get => _explicitNullValueStatusCounts; set { _explicitNullValueStatusCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_counts"); else _explicitNullProperties?.Remove("status_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts? _explicitNullValueStatusCounts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts StatusCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts StatusCounts { get => _explicitNullValueStatusCounts; set { _explicitNullValueStatusCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_counts"); else _explicitNullProperties?.Remove("status_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerSummaryStatusCounts _explicitNullValueStatusCounts = default!;
 #endif
         /// <summary>Observed items with trial identifiers.</summary>
-        public int? TrialItemCount { get; set; }
+        public int? TrialItemCount { get => _explicitNullValueTrialItemCount; set { _explicitNullValueTrialItemCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial_item_count"); else _explicitNullProperties?.Remove("trial_item_count"); } }
+        private int? _explicitNullValueTrialItemCount = default!;
         /// <summary>Successful boolean true results; null for other kinds.</summary>
-        public int? TrueCount { get; set; }
+        public int? TrueCount { get => _explicitNullValueTrueCount; set { _explicitNullValueTrueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_count"); else _explicitNullProperties?.Remove("true_count"); } }
+        private int? _explicitNullValueTrueCount = default!;
         /// <summary>Boolean true fraction among successes; null with no successes or for other kinds.</summary>
-        public double? TrueRate { get; set; }
+        public double? TrueRate { get => _explicitNullValueTrueRate; set { _explicitNullValueTrueRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_rate"); else _explicitNullProperties?.Remove("true_rate"); } }
+        private double? _explicitNullValueTrueRate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointSummary"/> and sets the default values.
         /// </summary>
@@ -84,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPointSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -139,6 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("trial_item_count", TrialItemCount);
             writer.WriteIntValue("true_count", TrueCount);
             writer.WriteDoubleValue("true_rate", TrueRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

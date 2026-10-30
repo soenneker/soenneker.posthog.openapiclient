@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Availability;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.S
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SourcesRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The availability property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Availability.AvailabilityRequestBuilder Availability
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.Availability.AvailabilityRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Sources.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {

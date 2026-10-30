@@ -11,45 +11,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MetricChartSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("changeDecreaseColor") is { } nullNodeChangeDecreaseColor && nullNodeChangeDecreaseColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangeDecreaseColor = null;
+            if (parseNode.GetChildNode("changeIncreaseColor") is { } nullNodeChangeIncreaseColor && nullNodeChangeIncreaseColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangeIncreaseColor = null;
+            if (parseNode.GetChildNode("colorByDirection") is { } nullNodeColorByDirection && nullNodeColorByDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColorByDirection = null;
+            if (parseNode.GetChildNode("lineDecreaseColor") is { } nullNodeLineDecreaseColor && nullNodeLineDecreaseColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LineDecreaseColor = null;
+            if (parseNode.GetChildNode("lineIncreaseColor") is { } nullNodeLineIncreaseColor && nullNodeLineIncreaseColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LineIncreaseColor = null;
+            if (parseNode.GetChildNode("showChange") is { } nullNodeShowChange && nullNodeShowChange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowChange = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+        }
+
         /// <summary>Change pill color when the series went down. Defaults to red.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChangeDecreaseColor { get; set; }
+        public string? ChangeDecreaseColor { get => _explicitNullValueChangeDecreaseColor; set { _explicitNullValueChangeDecreaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changeDecreaseColor"); else _explicitNullProperties?.Remove("changeDecreaseColor"); } }
+        private string? _explicitNullValueChangeDecreaseColor = default!;
 #nullable restore
 #else
-        public string ChangeDecreaseColor { get; set; }
+        public string ChangeDecreaseColor { get => _explicitNullValueChangeDecreaseColor; set { _explicitNullValueChangeDecreaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changeDecreaseColor"); else _explicitNullProperties?.Remove("changeDecreaseColor"); } }
+        private string _explicitNullValueChangeDecreaseColor = default!;
 #endif
         /// <summary>Change pill color when the series went up. Defaults to green.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChangeIncreaseColor { get; set; }
+        public string? ChangeIncreaseColor { get => _explicitNullValueChangeIncreaseColor; set { _explicitNullValueChangeIncreaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changeIncreaseColor"); else _explicitNullProperties?.Remove("changeIncreaseColor"); } }
+        private string? _explicitNullValueChangeIncreaseColor = default!;
 #nullable restore
 #else
-        public string ChangeIncreaseColor { get; set; }
+        public string ChangeIncreaseColor { get => _explicitNullValueChangeIncreaseColor; set { _explicitNullValueChangeIncreaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changeIncreaseColor"); else _explicitNullProperties?.Remove("changeIncreaseColor"); } }
+        private string _explicitNullValueChangeIncreaseColor = default!;
 #endif
         /// <summary>Color the sparkline by whether the series went up or down.</summary>
-        public bool? ColorByDirection { get; set; }
+        public bool? ColorByDirection { get => _explicitNullValueColorByDirection; set { _explicitNullValueColorByDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("colorByDirection"); else _explicitNullProperties?.Remove("colorByDirection"); } }
+        private bool? _explicitNullValueColorByDirection = default!;
         /// <summary>Sparkline color when the series went down. Defaults to red.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LineDecreaseColor { get; set; }
+        public string? LineDecreaseColor { get => _explicitNullValueLineDecreaseColor; set { _explicitNullValueLineDecreaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lineDecreaseColor"); else _explicitNullProperties?.Remove("lineDecreaseColor"); } }
+        private string? _explicitNullValueLineDecreaseColor = default!;
 #nullable restore
 #else
-        public string LineDecreaseColor { get; set; }
+        public string LineDecreaseColor { get => _explicitNullValueLineDecreaseColor; set { _explicitNullValueLineDecreaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lineDecreaseColor"); else _explicitNullProperties?.Remove("lineDecreaseColor"); } }
+        private string _explicitNullValueLineDecreaseColor = default!;
 #endif
         /// <summary>Sparkline color when the series went up. Defaults to green.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LineIncreaseColor { get; set; }
+        public string? LineIncreaseColor { get => _explicitNullValueLineIncreaseColor; set { _explicitNullValueLineIncreaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lineIncreaseColor"); else _explicitNullProperties?.Remove("lineIncreaseColor"); } }
+        private string? _explicitNullValueLineIncreaseColor = default!;
 #nullable restore
 #else
-        public string LineIncreaseColor { get; set; }
+        public string LineIncreaseColor { get => _explicitNullValueLineIncreaseColor; set { _explicitNullValueLineIncreaseColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lineIncreaseColor"); else _explicitNullProperties?.Remove("lineIncreaseColor"); } }
+        private string _explicitNullValueLineIncreaseColor = default!;
 #endif
         /// <summary>Show the change pill comparing the first point to the latest point.</summary>
-        public bool? ShowChange { get; set; }
+        public bool? ShowChange { get => _explicitNullValueShowChange; set { _explicitNullValueShowChange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showChange"); else _explicitNullProperties?.Remove("showChange"); } }
+        private bool? _explicitNullValueShowChange = default!;
         /// <summary>Which value the resting headline shows: the latest point, the total, or the average of the returned points.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.Summary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Summary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.Summary? _explicitNullValueSummary = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings"/> and sets the default values.
         /// </summary>
@@ -66,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MetricChartSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,7 +123,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("lineDecreaseColor", LineDecreaseColor);
             writer.WriteStringValue("lineIncreaseColor", LineIncreaseColor);
             writer.WriteBoolValue("showChange", ShowChange);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Summary>("summary", Summary);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Summary>("summary", Summary);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

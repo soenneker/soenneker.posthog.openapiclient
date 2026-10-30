@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.U
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Restore an archived feature flag to the default flag list.Sets `archived` to false and changes nothing else. The flag stays disabled; enable itwith a separate call. A flag whose release conditions target a deleted cohort isrefused: remove that condition first. An already-unarchived flag is returned unchanged.

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Repos.
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TolerationPileups>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TolerationPileups.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TolerationPileups>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TolerationPileups.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Snapshots that keep getting tolerated, counted across baselines, most manual tolerations first. A toleration accepts one exact rendering, so a snapshot that keeps needing them renders differently from run to run, and the fix belongs in the story. With no parameters this is the weekly debt digest&apos;s rule (3 or more tolerations by a person or agent in 30 days), except that quarantined snapshots are kept and marked with `is_quarantined`. The list is small and returns fast; start here to find flaky stories worth fixing, then read one snapshot&apos;s history with the per-snapshot tools.

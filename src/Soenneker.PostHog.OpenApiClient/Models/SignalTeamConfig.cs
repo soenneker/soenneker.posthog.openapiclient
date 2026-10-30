@@ -11,90 +11,149 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalTeamConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anomaly_scoring_enabled") is { } nullNodeAnomalyScoringEnabled && nullNodeAnomalyScoringEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyScoringEnabled = null;
+            if (parseNode.GetChildNode("autostart_base_branches") is { } nullNodeAutostartBaseBranches && nullNodeAutostartBaseBranches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutostartBaseBranches = null;
+            if (parseNode.GetChildNode("autostart_enabled") is { } nullNodeAutostartEnabled && nullNodeAutostartEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutostartEnabled = null;
+            if (parseNode.GetChildNode("default_autostart_priority") is { } nullNodeDefaultAutostartPriority && nullNodeDefaultAutostartPriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultAutostartPriority = null;
+            if (parseNode.GetChildNode("default_open_pull_request_ready") is { } nullNodeDefaultOpenPullRequestReady && nullNodeDefaultOpenPullRequestReady.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultOpenPullRequestReady = null;
+            if (parseNode.GetChildNode("default_slack_notification_channel") is { } nullNodeDefaultSlackNotificationChannel && nullNodeDefaultSlackNotificationChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultSlackNotificationChannel = null;
+            if (parseNode.GetChildNode("default_slack_notification_integration") is { } nullNodeDefaultSlackNotificationIntegration && nullNodeDefaultSlackNotificationIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultSlackNotificationIntegration = null;
+            if (parseNode.GetChildNode("github_issue_writeback_enabled") is { } nullNodeGithubIssueWritebackEnabled && nullNodeGithubIssueWritebackEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubIssueWritebackEnabled = null;
+            if (parseNode.GetChildNode("implementation_instructions") is { } nullNodeImplementationInstructions && nullNodeImplementationInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImplementationInstructions = null;
+            if (parseNode.GetChildNode("implementation_repositories") is { } nullNodeImplementationRepositories && nullNodeImplementationRepositories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImplementationRepositories = null;
+            if (parseNode.GetChildNode("issue_tracking_config") is { } nullNodeIssueTrackingConfig && nullNodeIssueTrackingConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssueTrackingConfig = null;
+            if (parseNode.GetChildNode("issue_tracking_integration") is { } nullNodeIssueTrackingIntegration && nullNodeIssueTrackingIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssueTrackingIntegration = null;
+            if (parseNode.GetChildNode("max_reports_per_day") is { } nullNodeMaxReportsPerDay && nullNodeMaxReportsPerDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxReportsPerDay = null;
+            if (parseNode.GetChildNode("pull_request_label") is { } nullNodePullRequestLabel && nullNodePullRequestLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PullRequestLabel = null;
+            if (parseNode.GetChildNode("pull_request_label_enabled") is { } nullNodePullRequestLabelEnabled && nullNodePullRequestLabelEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PullRequestLabelEnabled = null;
+            if (parseNode.GetChildNode("research_instructions") is { } nullNodeResearchInstructions && nullNodeResearchInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResearchInstructions = null;
+            if (parseNode.GetChildNode("scout_instructions") is { } nullNodeScoutInstructions && nullNodeScoutInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutInstructions = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether anomaly scoring covers this project, so anomaly_scoring_enabled has an effect. PostHog decides which projects anomaly scoring covers.</summary>
         public bool? AnomalyScoringAvailable { get; private set; }
         /// <summary>Whether anomaly scoring scores this project&apos;s active trends insights every hour and writes the results as $anomaly_score events, which are not billed. True by default. Set false to stop new scores; events written before stay. Turning it on does not enroll a project that anomaly_scoring_available reports as not covered.</summary>
-        public bool? AnomalyScoringEnabled { get; set; }
+        public bool? AnomalyScoringEnabled { get => _explicitNullValueAnomalyScoringEnabled; set { _explicitNullValueAnomalyScoringEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomaly_scoring_enabled"); else _explicitNullProperties?.Remove("anomaly_scoring_enabled"); } }
+        private bool? _explicitNullValueAnomalyScoringEnabled = default!;
         /// <summary>Per-repository base branch overrides for auto-started inbox PRs, keyed by &apos;organization/repository&apos;. The branch is what the auto-PR targets; omit a repo (or send {}) to keep targeting the repo default branch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty? AutostartBaseBranches { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty? AutostartBaseBranches { get => _explicitNullValueAutostartBaseBranches; set { _explicitNullValueAutostartBaseBranches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autostart_base_branches"); else _explicitNullProperties?.Remove("autostart_base_branches"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty? _explicitNullValueAutostartBaseBranches = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty AutostartBaseBranches { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty AutostartBaseBranches { get => _explicitNullValueAutostartBaseBranches; set { _explicitNullValueAutostartBaseBranches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autostart_base_branches"); else _explicitNullProperties?.Remove("autostart_base_branches"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigAutostartBaseBranchesProperty _explicitNullValueAutostartBaseBranches = default!;
 #endif
         /// <summary>Master switch for autonomous inbox PRs. Null (never set) leaves autostart on; set false to opt out, so actionable reports still generate and notify but the team never auto-starts an implementation task or opens a PR — reviewers open PRs manually.</summary>
-        public bool? AutostartEnabled { get; set; }
+        public bool? AutostartEnabled { get => _explicitNullValueAutostartEnabled; set { _explicitNullValueAutostartEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autostart_enabled"); else _explicitNullProperties?.Remove("autostart_enabled"); } }
+        private bool? _explicitNullValueAutostartEnabled = default!;
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Whether the team hit its daily report limit, pausing new report generation until local midnight. Always false when max_reports_per_day is null.</summary>
         public bool? DailyReportLimitReached { get; private set; }
         /// <summary>* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum? DefaultAutostartPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum? DefaultAutostartPriority { get => _explicitNullValueDefaultAutostartPriority; set { _explicitNullValueDefaultAutostartPriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_autostart_priority"); else _explicitNullProperties?.Remove("default_autostart_priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum? _explicitNullValueDefaultAutostartPriority = default!;
         /// <summary>Whether self-driving pull requests open ready for review instead of draft, so the full CI matrix starts when the pull request is created. False by default. A reviewer&apos;s own github_open_pull_request_ready overrides this for reports that suggest them as reviewer.</summary>
-        public bool? DefaultOpenPullRequestReady { get; set; }
+        public bool? DefaultOpenPullRequestReady { get => _explicitNullValueDefaultOpenPullRequestReady; set { _explicitNullValueDefaultOpenPullRequestReady = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_open_pull_request_ready"); else _explicitNullProperties?.Remove("default_open_pull_request_ready"); } }
+        private bool? _explicitNullValueDefaultOpenPullRequestReady = default!;
         /// <summary>Default Slack channel for this team&apos;s signal inbox notifications, in the same `channel_id|#channel-name` shape PostHog uses elsewhere (only the channel id is required). Null means no team-level default; per-user channels still apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultSlackNotificationChannel { get; set; }
+        public string? DefaultSlackNotificationChannel { get => _explicitNullValueDefaultSlackNotificationChannel; set { _explicitNullValueDefaultSlackNotificationChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_slack_notification_channel"); else _explicitNullProperties?.Remove("default_slack_notification_channel"); } }
+        private string? _explicitNullValueDefaultSlackNotificationChannel = default!;
 #nullable restore
 #else
-        public string DefaultSlackNotificationChannel { get; set; }
+        public string DefaultSlackNotificationChannel { get => _explicitNullValueDefaultSlackNotificationChannel; set { _explicitNullValueDefaultSlackNotificationChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_slack_notification_channel"); else _explicitNullProperties?.Remove("default_slack_notification_channel"); } }
+        private string _explicitNullValueDefaultSlackNotificationChannel = default!;
 #endif
+        /// <summary>Connected Slack integration that owns `default_slack_notification_channel`. Send it together with the channel. A channel saved without it is routed through the team&apos;s oldest Slack integration, and clearing the channel clears this too.</summary>
+        public int? DefaultSlackNotificationIntegration { get => _explicitNullValueDefaultSlackNotificationIntegration; set { _explicitNullValueDefaultSlackNotificationIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_slack_notification_integration"); else _explicitNullProperties?.Remove("default_slack_notification_integration"); } }
+        private int? _explicitNullValueDefaultSlackNotificationIntegration = default!;
         /// <summary>Whether self-driving comments back on a GitHub issue that raised a report, linking to the report so everybody watching the issue knows it is being researched. The comment is public on the issue thread and carries a link only, never report content. False by default. Needs a GitHub integration that can reach the issue&apos;s repository.</summary>
-        public bool? GithubIssueWritebackEnabled { get; set; }
+        public bool? GithubIssueWritebackEnabled { get => _explicitNullValueGithubIssueWritebackEnabled; set { _explicitNullValueGithubIssueWritebackEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_issue_writeback_enabled"); else _explicitNullProperties?.Remove("github_issue_writeback_enabled"); } }
+        private bool? _explicitNullValueGithubIssueWritebackEnabled = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Project-level instructions for agents implementing signal reports. Other agent roles do not receive them. Blank uses project instructions only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImplementationInstructions { get; set; }
+        public string? ImplementationInstructions { get => _explicitNullValueImplementationInstructions; set { _explicitNullValueImplementationInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("implementation_instructions"); else _explicitNullProperties?.Remove("implementation_instructions"); } }
+        private string? _explicitNullValueImplementationInstructions = default!;
 #nullable restore
 #else
-        public string ImplementationInstructions { get; set; }
+        public string ImplementationInstructions { get => _explicitNullValueImplementationInstructions; set { _explicitNullValueImplementationInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("implementation_instructions"); else _explicitNullProperties?.Remove("implementation_instructions"); } }
+        private string _explicitNullValueImplementationInstructions = default!;
+#endif
+        /// <summary>Extra GitHub repositories, as &apos;organization/repository&apos;, that self-driving implementation tasks can read and write within the connected GitHub App&apos;s permissions, for example an assets repository for PR screenshots. A task gets only the entries with the same owner as its selected repository. They are not cloned, and the PR still targets the selected repository. Each new entry must be reachable through one of the project&apos;s GitHub installations. Changes apply to tasks started afterwards. Empty by default.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ImplementationRepositories { get => _explicitNullValueImplementationRepositories; set { _explicitNullValueImplementationRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("implementation_repositories"); else _explicitNullProperties?.Remove("implementation_repositories"); } }
+        private List<string>? _explicitNullValueImplementationRepositories = default!;
+#nullable restore
+#else
+        public List<string> ImplementationRepositories { get => _explicitNullValueImplementationRepositories; set { _explicitNullValueImplementationRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("implementation_repositories"); else _explicitNullProperties?.Remove("implementation_repositories"); } }
+        private List<string> _explicitNullValueImplementationRepositories = default!;
 #endif
         /// <summary>Where in the tracker the issues land. Required keys depend on the integration kind: github -&gt; {repository}; linear -&gt; {team_id}; jira -&gt; {project_key}; gitlab needs none, because its integration is already bound to one project. An optional &apos;label&apos; is applied to created GitHub issues.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty? IssueTrackingConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty? IssueTrackingConfig { get => _explicitNullValueIssueTrackingConfig; set { _explicitNullValueIssueTrackingConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issue_tracking_config"); else _explicitNullProperties?.Remove("issue_tracking_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty? _explicitNullValueIssueTrackingConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty IssueTrackingConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty IssueTrackingConfig { get => _explicitNullValueIssueTrackingConfig; set { _explicitNullValueIssueTrackingConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issue_tracking_config"); else _explicitNullProperties?.Remove("issue_tracking_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty _explicitNullValueIssueTrackingConfig = default!;
 #endif
         /// <summary>Connected GitHub, GitLab, Linear, or Jira integration that self-driving opens a tracker issue in for each pull request it makes. Null turns tracker issues off, which is the default.</summary>
-        public int? IssueTrackingIntegration { get; set; }
+        public int? IssueTrackingIntegration { get => _explicitNullValueIssueTrackingIntegration; set { _explicitNullValueIssueTrackingIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issue_tracking_integration"); else _explicitNullProperties?.Remove("issue_tracking_integration"); } }
+        private int? _explicitNullValueIssueTrackingIntegration = default!;
         /// <summary>Daily cap on new reports surfacing to the inbox, counted per calendar day in the project&apos;s timezone. Once reached, signal ingestion, scout runs, and report research pause until local midnight. Null means unlimited.</summary>
-        public int? MaxReportsPerDay { get; set; }
+        public int? MaxReportsPerDay { get => _explicitNullValueMaxReportsPerDay; set { _explicitNullValueMaxReportsPerDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_reports_per_day"); else _explicitNullProperties?.Remove("max_reports_per_day"); } }
+        private int? _explicitNullValueMaxReportsPerDay = default!;
         /// <summary>The label name self-driving applies, at most 50 characters. Null or blank means &apos;self-driving&apos;. The label is created in the repository when it does not exist yet. Only used while pull_request_label_enabled is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PullRequestLabel { get; set; }
+        public string? PullRequestLabel { get => _explicitNullValuePullRequestLabel; set { _explicitNullValuePullRequestLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request_label"); else _explicitNullProperties?.Remove("pull_request_label"); } }
+        private string? _explicitNullValuePullRequestLabel = default!;
 #nullable restore
 #else
-        public string PullRequestLabel { get; set; }
+        public string PullRequestLabel { get => _explicitNullValuePullRequestLabel; set { _explicitNullValuePullRequestLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request_label"); else _explicitNullProperties?.Remove("pull_request_label"); } }
+        private string _explicitNullValuePullRequestLabel = default!;
 #endif
         /// <summary>Whether self-driving adds a label to every pull request it opens, so GitHub search, saved searches, and notification rules can separate them from other automation on the repository. False by default. Needs a GitHub integration that can reach the repository.</summary>
-        public bool? PullRequestLabelEnabled { get; set; }
+        public bool? PullRequestLabelEnabled { get => _explicitNullValuePullRequestLabelEnabled; set { _explicitNullValuePullRequestLabelEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request_label_enabled"); else _explicitNullProperties?.Remove("pull_request_label_enabled"); } }
+        private bool? _explicitNullValuePullRequestLabelEnabled = default!;
         /// <summary>How many reports first became visible in the inbox during the current project-timezone day. This is the count the daily report limit compares against.</summary>
         public int? ReportsGeneratedToday { get; private set; }
         /// <summary>Project-level instructions for the dedicated signal report research stage. Other agent roles do not receive them. Blank uses project instructions only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResearchInstructions { get; set; }
+        public string? ResearchInstructions { get => _explicitNullValueResearchInstructions; set { _explicitNullValueResearchInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("research_instructions"); else _explicitNullProperties?.Remove("research_instructions"); } }
+        private string? _explicitNullValueResearchInstructions = default!;
 #nullable restore
 #else
-        public string ResearchInstructions { get; set; }
+        public string ResearchInstructions { get => _explicitNullValueResearchInstructions; set { _explicitNullValueResearchInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("research_instructions"); else _explicitNullProperties?.Remove("research_instructions"); } }
+        private string _explicitNullValueResearchInstructions = default!;
 #endif
         /// <summary>Project-level instructions added to every scout run, alongside project instructions and the scout&apos;s own brief. Blank uses project instructions only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScoutInstructions { get; set; }
+        public string? ScoutInstructions { get => _explicitNullValueScoutInstructions; set { _explicitNullValueScoutInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_instructions"); else _explicitNullProperties?.Remove("scout_instructions"); } }
+        private string? _explicitNullValueScoutInstructions = default!;
 #nullable restore
 #else
-        public string ScoutInstructions { get; set; }
+        public string ScoutInstructions { get => _explicitNullValueScoutInstructions; set { _explicitNullValueScoutInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_instructions"); else _explicitNullProperties?.Remove("scout_instructions"); } }
+        private string _explicitNullValueScoutInstructions = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -113,7 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -132,9 +191,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "default_autostart_priority", n => { DefaultAutostartPriority = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum>(); } },
                 { "default_open_pull_request_ready", n => { DefaultOpenPullRequestReady = n.GetBoolValue(); } },
                 { "default_slack_notification_channel", n => { DefaultSlackNotificationChannel = n.GetStringValue(); } },
+                { "default_slack_notification_integration", n => { DefaultSlackNotificationIntegration = n.GetIntValue(); } },
                 { "github_issue_writeback_enabled", n => { GithubIssueWritebackEnabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "implementation_instructions", n => { ImplementationInstructions = n.GetStringValue(); } },
+                { "implementation_repositories", n => { ImplementationRepositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "issue_tracking_config", n => { IssueTrackingConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty.CreateFromDiscriminatorValue); } },
                 { "issue_tracking_integration", n => { IssueTrackingIntegration = n.GetIntValue(); } },
                 { "max_reports_per_day", n => { MaxReportsPerDay = n.GetIntValue(); } },
@@ -159,8 +220,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutonomyPriorityEnum>("default_autostart_priority", DefaultAutostartPriority);
             writer.WriteBoolValue("default_open_pull_request_ready", DefaultOpenPullRequestReady);
             writer.WriteStringValue("default_slack_notification_channel", DefaultSlackNotificationChannel);
+            writer.WriteIntValue("default_slack_notification_integration", DefaultSlackNotificationIntegration);
             writer.WriteBoolValue("github_issue_writeback_enabled", GithubIssueWritebackEnabled);
             writer.WriteStringValue("implementation_instructions", ImplementationInstructions);
+            writer.WriteCollectionOfPrimitiveValues<string>("implementation_repositories", ImplementationRepositories);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalTeamConfigIssueTrackingConfigProperty>("issue_tracking_config", IssueTrackingConfig);
             writer.WriteIntValue("issue_tracking_integration", IssueTrackingIntegration);
             writer.WriteIntValue("max_reports_per_day", MaxReportsPerDay);
@@ -168,6 +231,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("pull_request_label_enabled", PullRequestLabelEnabled);
             writer.WriteStringValue("research_instructions", ResearchInstructions);
             writer.WriteStringValue("scout_instructions", ScoutInstructions);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

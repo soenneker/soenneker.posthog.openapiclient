@@ -11,43 +11,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PipelineJobStatsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("breakdown") is { } nullNodeBreakdown && nullNodeBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breakdown = null;
+            if (parseNode.GetChildNode("cutoff_time") is { } nullNodeCutoffTime && nullNodeCutoffTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CutoffTime = null;
+            if (parseNode.GetChildNode("days") is { } nullNodeDays && nullNodeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Days = null;
+            if (parseNode.GetChildNode("external_data_jobs") is { } nullNodeExternalDataJobs && nullNodeExternalDataJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalDataJobs = null;
+            if (parseNode.GetChildNode("failed_jobs") is { } nullNodeFailedJobs && nullNodeFailedJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedJobs = null;
+            if (parseNode.GetChildNode("modeling_jobs") is { } nullNodeModelingJobs && nullNodeModelingJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelingJobs = null;
+            if (parseNode.GetChildNode("successful_jobs") is { } nullNodeSuccessfulJobs && nullNodeSuccessfulJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessfulJobs = null;
+            if (parseNode.GetChildNode("total_jobs") is { } nullNodeTotalJobs && nullNodeTotalJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalJobs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Runs per time bucket, keyed by ISO hour when days=1 and by ISO date otherwise. Buckets with no runs are absent rather than zero.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseBreakdownProperty? Breakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseBreakdownProperty? Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseBreakdownProperty? _explicitNullValueBreakdown = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseBreakdownProperty Breakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseBreakdownProperty Breakdown { get => _explicitNullValueBreakdown; set { _explicitNullValueBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown"); else _explicitNullProperties?.Remove("breakdown"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseBreakdownProperty _explicitNullValueBreakdown = default!;
 #endif
         /// <summary>Start of the window, in the project&apos;s timezone.</summary>
-        public DateTimeOffset? CutoffTime { get; set; }
+        public DateTimeOffset? CutoffTime { get => _explicitNullValueCutoffTime; set { _explicitNullValueCutoffTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cutoff_time"); else _explicitNullProperties?.Remove("cutoff_time"); } }
+        private DateTimeOffset? _explicitNullValueCutoffTime = default!;
         /// <summary>Window the counts cover, in days. One of 1, 7 or 30.</summary>
-        public int? Days { get; set; }
+        public int? Days { get => _explicitNullValueDays; set { _explicitNullValueDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days"); else _explicitNullProperties?.Remove("days"); } }
+        private int? _explicitNullValueDays = default!;
         /// <summary>Counts for warehouse source syncs alone.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseExternalDataJobs? ExternalDataJobs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseExternalDataJobs? ExternalDataJobs { get => _explicitNullValueExternalDataJobs; set { _explicitNullValueExternalDataJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_data_jobs"); else _explicitNullProperties?.Remove("external_data_jobs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseExternalDataJobs? _explicitNullValueExternalDataJobs = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseExternalDataJobs ExternalDataJobs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseExternalDataJobs ExternalDataJobs { get => _explicitNullValueExternalDataJobs; set { _explicitNullValueExternalDataJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_data_jobs"); else _explicitNullProperties?.Remove("external_data_jobs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseExternalDataJobs _explicitNullValueExternalDataJobs = default!;
 #endif
         /// <summary>Sync and materialization runs that failed.</summary>
-        public int? FailedJobs { get; set; }
+        public int? FailedJobs { get => _explicitNullValueFailedJobs; set { _explicitNullValueFailedJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_jobs"); else _explicitNullProperties?.Remove("failed_jobs"); } }
+        private int? _explicitNullValueFailedJobs = default!;
         /// <summary>Counts for materialized view runs alone.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseModelingJobs? ModelingJobs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseModelingJobs? ModelingJobs { get => _explicitNullValueModelingJobs; set { _explicitNullValueModelingJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modeling_jobs"); else _explicitNullProperties?.Remove("modeling_jobs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseModelingJobs? _explicitNullValueModelingJobs = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseModelingJobs ModelingJobs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseModelingJobs ModelingJobs { get => _explicitNullValueModelingJobs; set { _explicitNullValueModelingJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modeling_jobs"); else _explicitNullProperties?.Remove("modeling_jobs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseModelingJobs _explicitNullValueModelingJobs = default!;
 #endif
         /// <summary>Sync and materialization runs that completed.</summary>
-        public int? SuccessfulJobs { get; set; }
+        public int? SuccessfulJobs { get => _explicitNullValueSuccessfulJobs; set { _explicitNullValueSuccessfulJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("successful_jobs"); else _explicitNullProperties?.Remove("successful_jobs"); } }
+        private int? _explicitNullValueSuccessfulJobs = default!;
         /// <summary>Sync runs plus materialization runs in the window.</summary>
-        public int? TotalJobs { get; set; }
+        public int? TotalJobs { get => _explicitNullValueTotalJobs; set { _explicitNullValueTotalJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_jobs"); else _explicitNullProperties?.Remove("total_jobs"); } }
+        private int? _explicitNullValueTotalJobs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponse"/> and sets the default values.
         /// </summary>
@@ -63,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PipelineJobStatsResponseModelingJobs>("modeling_jobs", ModelingJobs);
             writer.WriteIntValue("successful_jobs", SuccessfulJobs);
             writer.WriteIntValue("total_jobs", TotalJobs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

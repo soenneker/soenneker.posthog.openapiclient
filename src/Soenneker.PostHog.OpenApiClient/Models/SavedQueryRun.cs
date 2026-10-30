@@ -12,15 +12,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SavedQueryRun : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("engine") is { } nullNodeEngine && nullNodeEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engine = null;
+            if (parseNode.GetChildNode("full_refresh") is { } nullNodeFullRefresh && nullNodeFullRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FullRefresh = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `upstream` - Upstream* `downstream` - Downstream</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunDirection? Direction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunDirection? _explicitNullValueDirection = default!;
         /// <summary>* `clickhouse` - ClickHouse* `trino` - Trino</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunEngine? Engine { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunEngine? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunEngine? _explicitNullValueEngine = default!;
         /// <summary>Rebuild the whole table instead of updating it incrementally. Has no effect on a view that is not incremental. This is how you reprocess history after changing what the query means without changing its text, or after upstream data was corrected.</summary>
-        public bool? FullRefresh { get; set; }
+        public bool? FullRefresh { get => _explicitNullValueFullRefresh; set { _explicitNullValueFullRefresh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full_refresh"); else _explicitNullProperties?.Remove("full_refresh"); } }
+        private bool? _explicitNullValueFullRefresh = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRun"/> and sets the default values.
         /// </summary>
@@ -37,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRun CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRun();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRun(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunDirection>("direction", Direction);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryRunEngine>("engine", Engine);
             writer.WriteBoolValue("full_refresh", FullRefresh);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

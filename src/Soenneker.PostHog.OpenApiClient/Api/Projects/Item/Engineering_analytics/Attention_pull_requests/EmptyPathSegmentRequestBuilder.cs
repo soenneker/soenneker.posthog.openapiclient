@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AttentionPullRequestList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AttentionPullRequestList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AttentionPullRequestList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AttentionPullRequestList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Open pull requests that need attention: failing CI, or stuck (open, non-draft, non-bot, older than 7 days), by the same rules as the ci_cards counts. Failing first, then newest, capped; `total` counts every match in the whole open backlog, however old. Cost and billable minutes can lag new CI by up to 5 minutes.

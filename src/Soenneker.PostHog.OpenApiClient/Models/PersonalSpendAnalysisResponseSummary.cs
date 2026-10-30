@@ -12,31 +12,55 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PersonalSpendAnalysisResponseSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billable_cost_usd") is { } nullNodeBillableCostUsd && nullNodeBillableCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillableCostUsd = null;
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("product") is { } nullNodeProduct && nullNodeProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Product = null;
+            if (parseNode.GetChildNode("scoped_cost_usd") is { } nullNodeScopedCostUsd && nullNodeScopedCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopedCostUsd = null;
+            if (parseNode.GetChildNode("scoped_event_count") is { } nullNodeScopedEventCount && nullNodeScopedEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopedEventCount = null;
+            if (parseNode.GetChildNode("total_cost_usd") is { } nullNodeTotalCostUsd && nullNodeTotalCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCostUsd = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Raw LLM cost in USD for products eligible for AI or Desktop credit billing, independent of the product filter and breakdown limit. Excludes credit markup and does not represent an invoiced amount.</summary>
-        public double? BillableCostUsd { get; set; }
+        public double? BillableCostUsd { get => _explicitNullValueBillableCostUsd; set { _explicitNullValueBillableCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_cost_usd"); else _explicitNullProperties?.Remove("billable_cost_usd"); } }
+        private double? _explicitNullValueBillableCostUsd = default!;
         /// <summary>Inclusive UTC start of the spend window resolved from the request.</summary>
-        public DateTimeOffset? DateFrom { get; set; }
+        public DateTimeOffset? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private DateTimeOffset? _explicitNullValueDateFrom = default!;
         /// <summary>Exclusive UTC end of the spend window resolved from the request.</summary>
-        public DateTimeOffset? DateTo { get; set; }
+        public DateTimeOffset? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private DateTimeOffset? _explicitNullValueDateTo = default!;
         /// <summary>Total $ai_generation + $ai_embedding events captured across every product.</summary>
-        public int? EventCount { get; set; }
+        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        private int? _explicitNullValueEventCount = default!;
         /// <summary>The `ai_product` filter applied to tool / model / trace breakdowns — echoes the request `product`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Product { get; set; }
+        public string? Product { get => _explicitNullValueProduct; set { _explicitNullValueProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product"); else _explicitNullProperties?.Remove("product"); } }
+        private string? _explicitNullValueProduct = default!;
 #nullable restore
 #else
-        public string Product { get; set; }
+        public string Product { get => _explicitNullValueProduct; set { _explicitNullValueProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product"); else _explicitNullProperties?.Remove("product"); } }
+        private string _explicitNullValueProduct = default!;
 #endif
         /// <summary>Total cost in USD for the product filter. Matches the cost summed across `by_tool` / `by_model` for the scoped slice.</summary>
-        public double? ScopedCostUsd { get; set; }
+        public double? ScopedCostUsd { get => _explicitNullValueScopedCostUsd; set { _explicitNullValueScopedCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scoped_cost_usd"); else _explicitNullProperties?.Remove("scoped_cost_usd"); } }
+        private double? _explicitNullValueScopedCostUsd = default!;
         /// <summary>Total $ai_generation + $ai_embedding events for the scoped slice.</summary>
-        public int? ScopedEventCount { get; set; }
+        public int? ScopedEventCount { get => _explicitNullValueScopedEventCount; set { _explicitNullValueScopedEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scoped_event_count"); else _explicitNullProperties?.Remove("scoped_event_count"); } }
+        private int? _explicitNullValueScopedEventCount = default!;
         /// <summary>Total LLM cost in USD across every `ai_product` for the user — independent of the `product` filter.</summary>
-        public double? TotalCostUsd { get; set; }
+        public double? TotalCostUsd { get => _explicitNullValueTotalCostUsd; set { _explicitNullValueTotalCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_cost_usd"); else _explicitNullProperties?.Remove("total_cost_usd"); } }
+        private double? _explicitNullValueTotalCostUsd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary"/> and sets the default values.
         /// </summary>
@@ -52,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponseSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("scoped_cost_usd", ScopedCostUsd);
             writer.WriteIntValue("scoped_event_count", ScopedEventCount);
             writer.WriteDoubleValue("total_cost_usd", TotalCostUsd);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

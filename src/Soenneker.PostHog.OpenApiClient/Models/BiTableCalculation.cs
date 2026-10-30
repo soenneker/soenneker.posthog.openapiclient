@@ -11,21 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BiTableCalculation : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("computeUsing") is { } nullNodeComputeUsing && nullNodeComputeUsing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputeUsing = null;
+            if (parseNode.GetChildNode("requireFullWindow") is { } nullNodeRequireFullWindow && nullNodeRequireFullWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireFullWindow = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("window") is { } nullNodeWindow && nullNodeWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Window = null;
+        }
+
         /// <summary>Dimension ID to traverse. Unset chooses the date dimension; &apos;table&apos; traverses all dimensions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ComputeUsing { get; set; }
+        public string? ComputeUsing { get => _explicitNullValueComputeUsing; set { _explicitNullValueComputeUsing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computeUsing"); else _explicitNullProperties?.Remove("computeUsing"); } }
+        private string? _explicitNullValueComputeUsing = default!;
 #nullable restore
 #else
-        public string ComputeUsing { get; set; }
+        public string ComputeUsing { get => _explicitNullValueComputeUsing; set { _explicitNullValueComputeUsing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computeUsing"); else _explicitNullProperties?.Remove("computeUsing"); } }
+        private string _explicitNullValueComputeUsing = default!;
 #endif
         /// <summary>Require a complete window of non-null values before displaying a moving average.</summary>
-        public bool? RequireFullWindow { get; set; }
+        public bool? RequireFullWindow { get => _explicitNullValueRequireFullWindow; set { _explicitNullValueRequireFullWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requireFullWindow"); else _explicitNullProperties?.Remove("requireFullWindow"); } }
+        private bool? _explicitNullValueRequireFullWindow = default!;
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculationType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculationType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculationType? _explicitNullValueType = default!;
         /// <summary>Number of points, including the current point, in a trailing moving average.</summary>
-        public int? Window { get; set; }
+        public int? Window { get => _explicitNullValueWindow; set { _explicitNullValueWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window"); else _explicitNullProperties?.Remove("window"); } }
+        private int? _explicitNullValueWindow = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -34,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,7 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("computeUsing", ComputeUsing);
             writer.WriteBoolValue("requireFullWindow", RequireFullWindow);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculationType>("type", Type);
-            writer.WriteIntValue("window", Window);
+            writer.WriteIntValue("window", Window);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -11,30 +11,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TraceReviewScoreWrite : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("boolean_value") is { } nullNodeBooleanValue && nullNodeBooleanValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BooleanValue = null;
+            if (parseNode.GetChildNode("categorical_values") is { } nullNodeCategoricalValues && nullNodeCategoricalValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoricalValues = null;
+            if (parseNode.GetChildNode("definition_id") is { } nullNodeDefinitionId && nullNodeDefinitionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionId = null;
+            if (parseNode.GetChildNode("definition_version_id") is { } nullNodeDefinitionVersionId && nullNodeDefinitionVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionVersionId = null;
+            if (parseNode.GetChildNode("numeric_value") is { } nullNodeNumericValue && nullNodeNumericValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumericValue = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Boolean value selected for this score.</summary>
-        public bool? BooleanValue { get; set; }
+        public bool? BooleanValue { get => _explicitNullValueBooleanValue; set { _explicitNullValueBooleanValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boolean_value"); else _explicitNullProperties?.Remove("boolean_value"); } }
+        private bool? _explicitNullValueBooleanValue = default!;
         /// <summary>Categorical option keys selected for this score.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CategoricalValues { get; set; }
+        public List<string>? CategoricalValues { get => _explicitNullValueCategoricalValues; set { _explicitNullValueCategoricalValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categorical_values"); else _explicitNullProperties?.Remove("categorical_values"); } }
+        private List<string>? _explicitNullValueCategoricalValues = default!;
 #nullable restore
 #else
-        public List<string> CategoricalValues { get; set; }
+        public List<string> CategoricalValues { get => _explicitNullValueCategoricalValues; set { _explicitNullValueCategoricalValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categorical_values"); else _explicitNullProperties?.Remove("categorical_values"); } }
+        private List<string> _explicitNullValueCategoricalValues = default!;
 #endif
         /// <summary>Stable scorer definition ID.</summary>
-        public Guid? DefinitionId { get; set; }
+        public Guid? DefinitionId { get => _explicitNullValueDefinitionId; set { _explicitNullValueDefinitionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_id"); else _explicitNullProperties?.Remove("definition_id"); } }
+        private Guid? _explicitNullValueDefinitionId = default!;
         /// <summary>Optional immutable scorer version ID. Defaults to the scorer&apos;s current version.</summary>
-        public Guid? DefinitionVersionId { get; set; }
+        public Guid? DefinitionVersionId { get => _explicitNullValueDefinitionVersionId; set { _explicitNullValueDefinitionVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_version_id"); else _explicitNullProperties?.Remove("definition_version_id"); } }
+        private Guid? _explicitNullValueDefinitionVersionId = default!;
         /// <summary>Numeric value selected for this score.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NumericValue { get; set; }
+        public string? NumericValue { get => _explicitNullValueNumericValue; set { _explicitNullValueNumericValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numeric_value"); else _explicitNullProperties?.Remove("numeric_value"); } }
+        private string? _explicitNullValueNumericValue = default!;
 #nullable restore
 #else
-        public string NumericValue { get; set; }
+        public string NumericValue { get => _explicitNullValueNumericValue; set { _explicitNullValueNumericValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numeric_value"); else _explicitNullProperties?.Remove("numeric_value"); } }
+        private string _explicitNullValueNumericValue = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScoreWrite"/> and sets the default values.
@@ -51,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScoreWrite CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScoreWrite();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TraceReviewScoreWrite(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("definition_id", DefinitionId);
             writer.WriteGuidValue("definition_version_id", DefinitionVersionId);
             writer.WriteStringValue("numeric_value", NumericValue);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

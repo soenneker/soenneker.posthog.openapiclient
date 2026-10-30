@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Signal_autonomy
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Per-user signal autonomy config (singleton keyed by user).GET    /api/users/&lt;id&gt;/signal_autonomy/ → current config (or 404)POST   /api/users/&lt;id&gt;/signal_autonomy/ → create or updateDELETE /api/users/&lt;id&gt;/signal_autonomy/ → remove (opt out)
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Signal_autonomy
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Per-user signal autonomy config (singleton keyed by user).GET    /api/users/&lt;id&gt;/signal_autonomy/ → current config (or 404)POST   /api/users/&lt;id&gt;/signal_autonomy/ → create or updateDELETE /api/users/&lt;id&gt;/signal_autonomy/ → remove (opt out)
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Signal_autonomy
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Per-user signal autonomy config (singleton keyed by user).GET    /api/users/&lt;id&gt;/signal_autonomy/ → current config (or 404)POST   /api/users/&lt;id&gt;/signal_autonomy/ → create or updateDELETE /api/users/&lt;id&gt;/signal_autonomy/ → remove (opt out)

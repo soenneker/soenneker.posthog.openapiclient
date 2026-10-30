@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item.Stats
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveyStatsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get survey response statistics for a specific survey.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)    exclude_archived: Optional boolean to exclude archived responses (default: false, includes archived)    include_per_question_stats: Optional boolean to include per-question response counts and distributionsReturns:    Survey statistics including event counts, unique respondents, and conversion rates

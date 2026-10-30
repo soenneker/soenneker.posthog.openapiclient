@@ -11,7 +11,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EventFilterConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("filter_tree") is { } nullNodeFilterTree && nullNodeFilterTree.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTree = null;
+            if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
+            if (parseNode.GetChildNode("test_cases") is { } nullNodeTestCases && nullNodeTestCases.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestCases = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
@@ -19,22 +29,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Boolean expression tree. Nodes: {&quot;type&quot;: &quot;and&quot;|&quot;or&quot;, &quot;children&quot;: [...]}, {&quot;type&quot;: &quot;not&quot;, &quot;child&quot;: {...}}, {&quot;type&quot;: &quot;condition&quot;, &quot;field&quot;: &quot;event_name&quot;|&quot;distinct_id&quot;, &quot;operator&quot;: &quot;exact&quot;|&quot;contains&quot;, &quot;value&quot;: &quot;&lt;string&gt;&quot;}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? FilterTree { get; set; }
+        public UntypedNode? FilterTree { get => _explicitNullValueFilterTree; set { _explicitNullValueFilterTree = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_tree"); else _explicitNullProperties?.Remove("filter_tree"); } }
+        private UntypedNode? _explicitNullValueFilterTree = default!;
 #nullable restore
 #else
-        public UntypedNode FilterTree { get; set; }
+        public UntypedNode FilterTree { get => _explicitNullValueFilterTree; set { _explicitNullValueFilterTree = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_tree"); else _explicitNullProperties?.Remove("filter_tree"); } }
+        private UntypedNode _explicitNullValueFilterTree = default!;
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>* `disabled` - Disabled* `dry_run` - Dry Run* `live` - Live</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventFilterModeEnum? Mode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventFilterModeEnum? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EventFilterModeEnum? _explicitNullValueMode = default!;
         /// <summary>Test events to validate the filter. Each: {&quot;event_name&quot;: &quot;...&quot;, &quot;distinct_id&quot;: &quot;...&quot;, &quot;expected_result&quot;: &quot;drop&quot;|&quot;ingest&quot;}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TestCases { get; set; }
+        public UntypedNode? TestCases { get => _explicitNullValueTestCases; set { _explicitNullValueTestCases = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_cases"); else _explicitNullProperties?.Remove("test_cases"); } }
+        private UntypedNode? _explicitNullValueTestCases = default!;
 #nullable restore
 #else
-        public UntypedNode TestCases { get; set; }
+        public UntypedNode TestCases { get => _explicitNullValueTestCases; set { _explicitNullValueTestCases = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_cases"); else _explicitNullProperties?.Remove("test_cases"); } }
+        private UntypedNode _explicitNullValueTestCases = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -53,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EventFilterConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("filter_tree", FilterTree);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventFilterModeEnum>("mode", Mode);
             writer.WriteObjectValue<UntypedNode>("test_cases", TestCases);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

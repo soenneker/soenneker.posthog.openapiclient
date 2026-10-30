@@ -12,46 +12,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TrainingRunHistoryEntry : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("best_holdout_score") is { } nullNodeBestHoldoutScore && nullNodeBestHoldoutScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestHoldoutScore = null;
+            if (parseNode.GetChildNode("completed_at") is { } nullNodeCompletedAt && nullNodeCompletedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedAt = null;
+            if (parseNode.GetChildNode("horizon_days") is { } nullNodeHorizonDays && nullNodeHorizonDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HorizonDays = null;
+            if (parseNode.GetChildNode("is_current_pipeline") is { } nullNodeIsCurrentPipeline && nullNodeIsCurrentPipeline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsCurrentPipeline = null;
+            if (parseNode.GetChildNode("iteration_count") is { } nullNodeIterationCount && nullNodeIterationCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationCount = null;
+            if (parseNode.GetChildNode("iterations") is { } nullNodeIterations && nullNodeIterations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Iterations = null;
+            if (parseNode.GetChildNode("pipeline_id") is { } nullNodePipelineId && nullNodePipelineId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PipelineId = null;
+            if (parseNode.GetChildNode("run_id") is { } nullNodeRunId && nullNodeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunId = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Best holdout AUC achieved across this run&apos;s iterations.</summary>
-        public double? BestHoldoutScore { get; set; }
+        public double? BestHoldoutScore { get => _explicitNullValueBestHoldoutScore; set { _explicitNullValueBestHoldoutScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_holdout_score"); else _explicitNullProperties?.Remove("best_holdout_score"); } }
+        private double? _explicitNullValueBestHoldoutScore = default!;
         /// <summary>When this run completed.</summary>
-        public DateTimeOffset? CompletedAt { get; set; }
+        public DateTimeOffset? CompletedAt { get => _explicitNullValueCompletedAt; set { _explicitNullValueCompletedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_at"); else _explicitNullProperties?.Remove("completed_at"); } }
+        private DateTimeOffset? _explicitNullValueCompletedAt = default!;
         /// <summary>Prediction horizon (days) of this run&apos;s pipeline.</summary>
-        public int? HorizonDays { get; set; }
+        public int? HorizonDays { get => _explicitNullValueHorizonDays; set { _explicitNullValueHorizonDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("horizon_days"); else _explicitNullProperties?.Remove("horizon_days"); } }
+        private int? _explicitNullValueHorizonDays = default!;
         /// <summary>True if this run is from the pipeline you are training; False if it is a same-target sibling pipeline on the team.</summary>
-        public bool? IsCurrentPipeline { get; set; }
+        public bool? IsCurrentPipeline { get => _explicitNullValueIsCurrentPipeline; set { _explicitNullValueIsCurrentPipeline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_current_pipeline"); else _explicitNullProperties?.Remove("is_current_pipeline"); } }
+        private bool? _explicitNullValueIsCurrentPipeline = default!;
         /// <summary>Number of iterations recorded in this run.</summary>
-        public int? IterationCount { get; set; }
+        public int? IterationCount { get => _explicitNullValueIterationCount; set { _explicitNullValueIterationCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_count"); else _explicitNullProperties?.Remove("iteration_count"); } }
+        private int? _explicitNullValueIterationCount = default!;
         /// <summary>The iteration trail: every recipe tried, kept or discarded, with rationale and score.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe>? Iterations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe>? Iterations { get => _explicitNullValueIterations; set { _explicitNullValueIterations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iterations"); else _explicitNullProperties?.Remove("iterations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe>? _explicitNullValueIterations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe> Iterations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe> Iterations { get => _explicitNullValueIterations; set { _explicitNullValueIterations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iterations"); else _explicitNullProperties?.Remove("iterations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe> _explicitNullValueIterations = default!;
 #endif
         /// <summary>UUID of the pipeline this run belongs to.</summary>
-        public Guid? PipelineId { get; set; }
+        public Guid? PipelineId { get => _explicitNullValuePipelineId; set { _explicitNullValuePipelineId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipeline_id"); else _explicitNullProperties?.Remove("pipeline_id"); } }
+        private Guid? _explicitNullValuePipelineId = default!;
         /// <summary>UUID of the completed training run.</summary>
-        public Guid? RunId { get; set; }
+        public Guid? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
+        private Guid? _explicitNullValueRunId = default!;
         /// <summary>Distilled tier-1 summary of this run — read this first to orient. Null for older runs without one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>Target event this run&apos;s pipeline predicts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEvent { get; set; }
+        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string? _explicitNullValueTargetEvent = default!;
 #nullable restore
 #else
-        public string TargetEvent { get; set; }
+        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string _explicitNullValueTargetEvent = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntry"/> and sets the default values.
@@ -68,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -107,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("run_id", RunId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary>("summary", Summary);
             writer.WriteStringValue("target_event", TargetEvent);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

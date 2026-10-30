@@ -12,32 +12,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingIssueDetailBreakdown : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("occurrences") is { } nullNodeOccurrences && nullNodeOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Occurrences = null;
+            if (parseNode.GetChildNode("range_limited") is { } nullNodeRangeLimited && nullNodeRangeLimited.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RangeLimited = null;
+            if (parseNode.GetChildNode("sample_session_ids") is { } nullNodeSampleSessionIds && nullNodeSampleSessionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleSessionIds = null;
+            if (parseNode.GetChildNode("top_values") is { } nullNodeTopValues && nullNodeTopValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopValues = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Start of the range that the breakdown covers.</summary>
-        public DateTimeOffset? DateFrom { get; set; }
+        public DateTimeOffset? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private DateTimeOffset? _explicitNullValueDateFrom = default!;
         /// <summary>End of the range that the breakdown covers.</summary>
-        public DateTimeOffset? DateTo { get; set; }
+        public DateTimeOffset? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private DateTimeOffset? _explicitNullValueDateTo = default!;
         /// <summary>Matching exception events in the breakdown range.</summary>
-        public int? Occurrences { get; set; }
+        public int? Occurrences { get => _explicitNullValueOccurrences; set { _explicitNullValueOccurrences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("occurrences"); else _explicitNullProperties?.Remove("occurrences"); } }
+        private int? _explicitNullValueOccurrences = default!;
         /// <summary>True when the requested range was longer than 30 days and the breakdown covers only the last 30.</summary>
-        public bool? RangeLimited { get; set; }
+        public bool? RangeLimited { get => _explicitNullValueRangeLimited; set { _explicitNullValueRangeLimited = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range_limited"); else _explicitNullProperties?.Remove("range_limited"); } }
+        private bool? _explicitNullValueRangeLimited = default!;
         /// <summary>Up to 5 $session_id values with the most matching events, for session recording lookups.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SampleSessionIds { get; set; }
+        public List<string>? SampleSessionIds { get => _explicitNullValueSampleSessionIds; set { _explicitNullValueSampleSessionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_session_ids"); else _explicitNullProperties?.Remove("sample_session_ids"); } }
+        private List<string>? _explicitNullValueSampleSessionIds = default!;
 #nullable restore
 #else
-        public List<string> SampleSessionIds { get; set; }
+        public List<string> SampleSessionIds { get => _explicitNullValueSampleSessionIds; set { _explicitNullValueSampleSessionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_session_ids"); else _explicitNullProperties?.Remove("sample_session_ids"); } }
+        private List<string> _explicitNullValueSampleSessionIds = default!;
 #endif
         /// <summary>Most common values for each dimension. A dimension with no values is left out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues? TopValues { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues? TopValues { get => _explicitNullValueTopValues; set { _explicitNullValueTopValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_values"); else _explicitNullProperties?.Remove("top_values"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues? _explicitNullValueTopValues = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues TopValues { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues TopValues { get => _explicitNullValueTopValues; set { _explicitNullValueTopValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_values"); else _explicitNullProperties?.Remove("top_values"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues _explicitNullValueTopValues = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown"/> and sets the default values.
@@ -54,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailBreakdown(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("range_limited", RangeLimited);
             writer.WriteCollectionOfPrimitiveValues<string>("sample_session_ids", SampleSessionIds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues>("top_values", TopValues);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

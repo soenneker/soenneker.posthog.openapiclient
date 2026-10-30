@@ -11,76 +11,111 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewFinding : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("body") is { } nullNodeBody && nullNodeBody.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Body = null;
+            if (parseNode.GetChildNode("effective_priority") is { } nullNodeEffectivePriority && nullNodeEffectivePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectivePriority = null;
+            if (parseNode.GetChildNode("file") is { } nullNodeFile && nullNodeFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) File = null;
+            if (parseNode.GetChildNode("lines") is { } nullNodeLines && nullNodeLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lines = null;
+            if (parseNode.GetChildNode("reviewer_priority") is { } nullNodeReviewerPriority && nullNodeReviewerPriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewerPriority = null;
+            if (parseNode.GetChildNode("source_perspective") is { } nullNodeSourcePerspective && nullNodeSourcePerspective.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcePerspective = null;
+            if (parseNode.GetChildNode("suggestion") is { } nullNodeSuggestion && nullNodeSuggestion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Suggestion = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("validator_category") is { } nullNodeValidatorCategory && nullNodeValidatorCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidatorCategory = null;
+            if (parseNode.GetChildNode("validator_note") is { } nullNodeValidatorNote && nullNodeValidatorNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidatorNote = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Description of the problem.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Body { get; set; }
+        public string? Body { get => _explicitNullValueBody; set { _explicitNullValueBody = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body"); else _explicitNullProperties?.Remove("body"); } }
+        private string? _explicitNullValueBody = default!;
 #nullable restore
 #else
-        public string Body { get; set; }
+        public string Body { get => _explicitNullValueBody; set { _explicitNullValueBody = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body"); else _explicitNullProperties?.Remove("body"); } }
+        private string _explicitNullValueBody = default!;
 #endif
         /// <summary>* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority? EffectivePriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority? EffectivePriority { get => _explicitNullValueEffectivePriority; set { _explicitNullValueEffectivePriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_priority"); else _explicitNullProperties?.Remove("effective_priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingEffectivePriority? _explicitNullValueEffectivePriority = default!;
         /// <summary>Repository-relative path of the affected file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? File { get; set; }
+        public string? File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
+        private string? _explicitNullValueFile = default!;
 #nullable restore
 #else
-        public string File { get; set; }
+        public string File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
+        private string _explicitNullValueFile = default!;
 #endif
         /// <summary>Affected line ranges within the file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange>? Lines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange>? Lines { get => _explicitNullValueLines; set { _explicitNullValueLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lines"); else _explicitNullProperties?.Remove("lines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange>? _explicitNullValueLines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange> Lines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange> Lines { get => _explicitNullValueLines; set { _explicitNullValueLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lines"); else _explicitNullProperties?.Remove("lines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange> _explicitNullValueLines = default!;
 #endif
         /// <summary>* `must_fix` - must_fix* `should_fix` - should_fix* `consider` - consider</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority? ReviewerPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority? ReviewerPriority { get => _explicitNullValueReviewerPriority; set { _explicitNullValueReviewerPriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_priority"); else _explicitNullProperties?.Remove("reviewer_priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingReviewerPriority? _explicitNullValueReviewerPriority = default!;
         /// <summary>The review skill that produced the finding (perspective or blind-spot sweep).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourcePerspective { get; set; }
+        public string? SourcePerspective { get => _explicitNullValueSourcePerspective; set { _explicitNullValueSourcePerspective = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_perspective"); else _explicitNullProperties?.Remove("source_perspective"); } }
+        private string? _explicitNullValueSourcePerspective = default!;
 #nullable restore
 #else
-        public string SourcePerspective { get; set; }
+        public string SourcePerspective { get => _explicitNullValueSourcePerspective; set { _explicitNullValueSourcePerspective = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_perspective"); else _explicitNullProperties?.Remove("source_perspective"); } }
+        private string _explicitNullValueSourcePerspective = default!;
 #endif
         /// <summary>The specific fix or improvement the reviewer proposes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Suggestion { get; set; }
+        public string? Suggestion { get => _explicitNullValueSuggestion; set { _explicitNullValueSuggestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion"); else _explicitNullProperties?.Remove("suggestion"); } }
+        private string? _explicitNullValueSuggestion = default!;
 #nullable restore
 #else
-        public string Suggestion { get; set; }
+        public string Suggestion { get => _explicitNullValueSuggestion; set { _explicitNullValueSuggestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion"); else _explicitNullProperties?.Remove("suggestion"); } }
+        private string _explicitNullValueSuggestion = default!;
 #endif
         /// <summary>One-line summary of the finding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>The validator&apos;s category for the finding; null when it didn&apos;t set one.* `bug` - bug* `security` - security* `performance` - performance* `code_quality` - code_quality* `best_practice` - best_practice* `documentation` - documentation* `testing` - testing* `accessibility` - accessibility* `compatibility` - compatibility</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingValidatorCategory? ValidatorCategory { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingValidatorCategory? ValidatorCategory { get => _explicitNullValueValidatorCategory; set { _explicitNullValueValidatorCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validator_category"); else _explicitNullProperties?.Remove("validator_category"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingValidatorCategory? _explicitNullValueValidatorCategory = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingValidatorCategory ValidatorCategory { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingValidatorCategory ValidatorCategory { get => _explicitNullValueValidatorCategory; set { _explicitNullValueValidatorCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validator_category"); else _explicitNullProperties?.Remove("validator_category"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingValidatorCategory _explicitNullValueValidatorCategory = default!;
 #endif
         /// <summary>The validator&apos;s argumentation for keeping or dismissing the finding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ValidatorNote { get; set; }
+        public string? ValidatorNote { get => _explicitNullValueValidatorNote; set { _explicitNullValueValidatorNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validator_note"); else _explicitNullProperties?.Remove("validator_note"); } }
+        private string? _explicitNullValueValidatorNote = default!;
 #nullable restore
 #else
-        public string ValidatorNote { get; set; }
+        public string ValidatorNote { get => _explicitNullValueValidatorNote; set { _explicitNullValueValidatorNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validator_note"); else _explicitNullProperties?.Remove("validator_note"); } }
+        private string _explicitNullValueValidatorNote = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding"/> and sets the default values.
@@ -97,7 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewFinding(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -136,6 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("title", Title);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingValidatorCategory>("validator_category", ValidatorCategory);
             writer.WriteStringValue("validator_note", ValidatorNote);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

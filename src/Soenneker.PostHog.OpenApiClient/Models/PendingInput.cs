@@ -12,31 +12,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PendingInput : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("asked_at") is { } nullNodeAskedAt && nullNodeAskedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AskedAt = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("prompts") is { } nullNodePrompts && nullNodePrompts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prompts = null;
+            if (parseNode.GetChildNode("question_count") is { } nullNodeQuestionCount && nullNodeQuestionCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionCount = null;
+            if (parseNode.GetChildNode("sensitive") is { } nullNodeSensitive && nullNodeSensitive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sensitive = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UTC timestamp when the wizard asked. Defaults to the session&apos;s update time when absent.</summary>
-        public DateTimeOffset? AskedAt { get; set; }
+        public DateTimeOffset? AskedAt { get => _explicitNullValueAskedAt; set { _explicitNullValueAskedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asked_at"); else _explicitNullProperties?.Remove("asked_at"); } }
+        private DateTimeOffset? _explicitNullValueAskedAt = default!;
         /// <summary>Identifier the wizard mints for this question. Changes when a new question is asked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The question text shown to the user. Always empty for sensitive questions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Prompts { get; set; }
+        public List<string>? Prompts { get => _explicitNullValuePrompts; set { _explicitNullValuePrompts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompts"); else _explicitNullProperties?.Remove("prompts"); } }
+        private List<string>? _explicitNullValuePrompts = default!;
 #nullable restore
 #else
-        public List<string> Prompts { get; set; }
+        public List<string> Prompts { get => _explicitNullValuePrompts; set { _explicitNullValuePrompts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompts"); else _explicitNullProperties?.Remove("prompts"); } }
+        private List<string> _explicitNullValuePrompts = default!;
 #endif
         /// <summary>How many questions this single ask covers.</summary>
-        public int? QuestionCount { get; set; }
+        public int? QuestionCount { get => _explicitNullValueQuestionCount; set { _explicitNullValueQuestionCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_count"); else _explicitNullProperties?.Remove("question_count"); } }
+        private int? _explicitNullValueQuestionCount = default!;
         /// <summary>Whether the answer is a secret. Sensitive questions never carry prompt text.</summary>
-        public bool? Sensitive { get; set; }
+        public bool? Sensitive { get => _explicitNullValueSensitive; set { _explicitNullValueSensitive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sensitive"); else _explicitNullProperties?.Remove("sensitive"); } }
+        private bool? _explicitNullValueSensitive = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PendingInput"/> and sets the default values.
         /// </summary>
@@ -53,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PendingInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PendingInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PendingInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("prompts", Prompts);
             writer.WriteIntValue("question_count", QuestionCount);
             writer.WriteBoolValue("sensitive", Sensitive);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

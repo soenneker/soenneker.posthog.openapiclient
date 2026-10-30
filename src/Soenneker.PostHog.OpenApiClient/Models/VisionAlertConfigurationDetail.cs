@@ -11,15 +11,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class VisionAlertConfigurationDetail : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("check_interval_minutes") is { } nullNodeCheckIntervalMinutes && nullNodeCheckIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckIntervalMinutes = null;
+            if (parseNode.GetChildNode("cooldown_minutes") is { } nullNodeCooldownMinutes && nullNodeCooldownMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CooldownMinutes = null;
+            if (parseNode.GetChildNode("datapoints_to_alarm") is { } nullNodeDatapointsToAlarm && nullNodeDatapointsToAlarm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatapointsToAlarm = null;
+            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("evaluation_periods") is { } nullNodeEvaluationPeriods && nullNodeEvaluationPeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationPeriods = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("scanner_id") is { } nullNodeScannerId && nullNodeScannerId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerId = null;
+            if (parseNode.GetChildNode("schedule_restriction") is { } nullNodeScheduleRestriction && nullNodeScheduleRestriction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScheduleRestriction = null;
+            if (parseNode.GetChildNode("selection") is { } nullNodeSelection && nullNodeSelection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selection = null;
+            if (parseNode.GetChildNode("snooze_until") is { } nullNodeSnoozeUntil && nullNodeSnoozeUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnoozeUntil = null;
+            if (parseNode.GetChildNode("threshold") is { } nullNodeThreshold && nullNodeThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Threshold = null;
+            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Metric alerts only: evaluation cadence in minutes, at least 15.</summary>
-        public int? CheckIntervalMinutes { get; set; }
+        public int? CheckIntervalMinutes { get => _explicitNullValueCheckIntervalMinutes; set { _explicitNullValueCheckIntervalMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_interval_minutes"); else _explicitNullProperties?.Remove("check_interval_minutes"); } }
+        private int? _explicitNullValueCheckIntervalMinutes = default!;
         /// <summary>Consecutive evaluation failures. Resets on success. Server-managed.</summary>
         public int? ConsecutiveFailures { get; private set; }
         /// <summary>Metric alerts only: minimum minutes between repeated notifications. 0 means no cooldown.</summary>
-        public int? CooldownMinutes { get; set; }
+        public int? CooldownMinutes { get => _explicitNullValueCooldownMinutes; set { _explicitNullValueCooldownMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cooldown_minutes"); else _explicitNullProperties?.Remove("cooldown_minutes"); } }
+        private int? _explicitNullValueCooldownMinutes = default!;
         /// <summary>When the alert was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>User who created the alert; null once that user is deleted.</summary>
@@ -31,7 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
 #endif
         /// <summary>Metric alerts only: how many periods must breach to fire (N in N-of-M).</summary>
-        public int? DatapointsToAlarm { get; set; }
+        public int? DatapointsToAlarm { get => _explicitNullValueDatapointsToAlarm; set { _explicitNullValueDatapointsToAlarm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datapoints_to_alarm"); else _explicitNullProperties?.Remove("datapoints_to_alarm"); } }
+        private int? _explicitNullValueDatapointsToAlarm = default!;
         /// <summary>This alert&apos;s notification destinations, one entry per destination, with credential-bearing URL parts removed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,61 +66,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertDestinationConfig> Destinations { get; private set; }
 #endif
         /// <summary>* `above` - At or above* `below` - At or below</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection? Direction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection? _explicitNullValueDirection = default!;
         /// <summary>Whether the alert is active. Disabling a metric alert resets its state to not_firing.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Metric alerts only: total check periods in the sliding evaluation window (M in N-of-M).</summary>
-        public int? EvaluationPeriods { get; set; }
+        public int? EvaluationPeriods { get => _explicitNullValueEvaluationPeriods; set { _explicitNullValueEvaluationPeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_periods"); else _explicitNullProperties?.Remove("evaluation_periods"); } }
+        private int? _explicitNullValueEvaluationPeriods = default!;
         /// <summary>When the alert was first enabled. Null means still a draft.</summary>
         public DateTimeOffset? FirstEnabledAt { get; private set; }
         /// <summary>Unique identifier for this alert.</summary>
         public Guid? Id { get; private set; }
         /// <summary>* `metric` - Metric* `match` - Match</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailKind? _explicitNullValueKind = default!;
         /// <summary>When the alert was last evaluated. Server-managed.</summary>
         public DateTimeOffset? LastCheckedAt { get; private set; }
         /// <summary>When the last notification was sent. Server-managed.</summary>
         public DateTimeOffset? LastNotifiedAt { get; private set; }
         /// <summary>* `count` - Count matching observations* `avg_score` - Average score</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric? Metric { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric? _explicitNullValueMetric = default!;
         /// <summary>Human-readable name for this alert. Defaults to &apos;Untitled alert&apos; on create when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>When the next evaluation is scheduled. Server-managed.</summary>
         public DateTimeOffset? NextCheckAt { get; private set; }
         /// <summary>Scanner whose observations this alert watches. Immutable after creation.</summary>
-        public Guid? ScannerId { get; set; }
+        public Guid? ScannerId { get => _explicitNullValueScannerId; set { _explicitNullValueScannerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_id"); else _explicitNullProperties?.Remove("scanner_id"); } }
+        private Guid? _explicitNullValueScannerId = default!;
         /// <summary>Blocked local time windows when the alert must not notify. Times use the project timezone. Null disables quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction _explicitNullValueScheduleRestriction = default!;
 #endif
         /// <summary>Which observations count. Empty matches every observation of the scanner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection? Selection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection? Selection { get => _explicitNullValueSelection; set { _explicitNullValueSelection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selection"); else _explicitNullProperties?.Remove("selection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection? _explicitNullValueSelection = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection Selection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection Selection { get => _explicitNullValueSelection; set { _explicitNullValueSelection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selection"); else _explicitNullProperties?.Remove("selection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection _explicitNullValueSelection = default!;
 #endif
         /// <summary>ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.</summary>
-        public DateTimeOffset? SnoozeUntil { get; set; }
+        public DateTimeOffset? SnoozeUntil { get => _explicitNullValueSnoozeUntil; set { _explicitNullValueSnoozeUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snooze_until"); else _explicitNullProperties?.Remove("snooze_until"); } }
+        private DateTimeOffset? _explicitNullValueSnoozeUntil = default!;
         /// <summary>* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailState? State { get; private set; }
         /// <summary>Metric alerts only: the threshold value. Required for metric alerts, must be omitted for match alerts.</summary>
-        public double? Threshold { get; set; }
+        public double? Threshold { get => _explicitNullValueThreshold; set { _explicitNullValueThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold"); else _explicitNullProperties?.Remove("threshold"); } }
+        private double? _explicitNullValueThreshold = default!;
         /// <summary>When the alert was last modified.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Metric alerts only: rolling window in days. Allowed values: [1, 3, 7, 14, 30].</summary>
-        public int? WindowDays { get; set; }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetail"/> and sets the default values.
         /// </summary>
@@ -113,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetail CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetail();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetail(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -173,6 +213,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("snooze_until", SnoozeUntil);
             writer.WriteDoubleValue("threshold", Threshold);
             writer.WriteIntValue("window_days", WindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

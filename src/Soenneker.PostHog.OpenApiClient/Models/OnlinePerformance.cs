@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OnlinePerformance : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("rows") is { } nullNodeRows && nullNodeRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rows = null;
+            if (parseNode.GetChildNode("segment_thresholds") is { } nullNodeSegmentThresholds && nullNodeSegmentThresholds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SegmentThresholds = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>One row per model per validated prediction date, newest date first. Empty until a prediction horizon has elapsed and online validation has run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow>? Rows { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow>? Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow>? _explicitNullValueRows = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow> Rows { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow> Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow> _explicitNullValueRows = default!;
 #endif
         /// <summary>The current cut points between the Likely, Possible and Unlikely segments, set by lift over the realized base rate. They do not depend on limit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds? SegmentThresholds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds? SegmentThresholds { get => _explicitNullValueSegmentThresholds; set { _explicitNullValueSegmentThresholds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segment_thresholds"); else _explicitNullProperties?.Remove("segment_thresholds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds? _explicitNullValueSegmentThresholds = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds SegmentThresholds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds SegmentThresholds { get => _explicitNullValueSegmentThresholds; set { _explicitNullValueSegmentThresholds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segment_thresholds"); else _explicitNullProperties?.Remove("segment_thresholds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds _explicitNullValueSegmentThresholds = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformance"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformance CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformance();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformance(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow>("rows", Rows);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds>("segment_thresholds", SegmentThresholds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,29 +11,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ChartSettingsDisplay : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("color") is { } nullNodeColor && nullNodeColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Color = null;
+            if (parseNode.GetChildNode("displayType") is { } nullNodeDisplayType && nullNodeDisplayType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayType = null;
+            if (parseNode.GetChildNode("excludeFromTotal") is { } nullNodeExcludeFromTotal && nullNodeExcludeFromTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeFromTotal = null;
+            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("trendLine") is { } nullNodeTrendLine && nullNodeTrendLine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrendLine = null;
+            if (parseNode.GetChildNode("valueLabels") is { } nullNodeValueLabels && nullNodeValueLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueLabels = null;
+            if (parseNode.GetChildNode("yAxisPosition") is { } nullNodeYAxisPosition && nullNodeYAxisPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxisPosition = null;
+        }
+
         /// <summary>The color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Color { get; set; }
+        public string? Color { get => _explicitNullValueColor; set { _explicitNullValueColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("color"); else _explicitNullProperties?.Remove("color"); } }
+        private string? _explicitNullValueColor = default!;
 #nullable restore
 #else
-        public string Color { get; set; }
+        public string Color { get => _explicitNullValueColor; set { _explicitNullValueColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("color"); else _explicitNullProperties?.Remove("color"); } }
+        private string _explicitNullValueColor = default!;
 #endif
         /// <summary>The displayType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DisplayType? DisplayType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DisplayType? DisplayType { get => _explicitNullValueDisplayType; set { _explicitNullValueDisplayType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayType"); else _explicitNullProperties?.Remove("displayType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DisplayType? _explicitNullValueDisplayType = default!;
+        /// <summary>Keep this series out of the tooltip&apos;s total row, e.g. a target line over stacked bars.</summary>
+        public bool? ExcludeFromTotal { get => _explicitNullValueExcludeFromTotal; set { _explicitNullValueExcludeFromTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeFromTotal"); else _explicitNullProperties?.Remove("excludeFromTotal"); } }
+        private bool? _explicitNullValueExcludeFromTotal = default!;
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get; set; }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>The trendLine property</summary>
-        public bool? TrendLine { get; set; }
+        public bool? TrendLine { get => _explicitNullValueTrendLine; set { _explicitNullValueTrendLine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trendLine"); else _explicitNullProperties?.Remove("trendLine"); } }
+        private bool? _explicitNullValueTrendLine = default!;
+        /// <summary>Overrides the chart&apos;s &quot;Show values on series&quot; for this series. Unset or &apos;auto&apos; follows the chart setting.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValueLabels? ValueLabels { get => _explicitNullValueValueLabels; set { _explicitNullValueValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valueLabels"); else _explicitNullProperties?.Remove("valueLabels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValueLabels? _explicitNullValueValueLabels = default!;
         /// <summary>The yAxisPosition property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition? YAxisPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition? YAxisPosition { get => _explicitNullValueYAxisPosition; set { _explicitNullValueYAxisPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxisPosition"); else _explicitNullProperties?.Remove("yAxisPosition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition? _explicitNullValueYAxisPosition = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -42,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,8 +81,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "color", n => { Color = n.GetStringValue(); } },
                 { "displayType", n => { DisplayType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DisplayType>(); } },
+                { "excludeFromTotal", n => { ExcludeFromTotal = n.GetBoolValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "trendLine", n => { TrendLine = n.GetBoolValue(); } },
+                { "valueLabels", n => { ValueLabels = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueLabels>(); } },
                 { "yAxisPosition", n => { YAxisPosition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition>(); } },
             };
         }
@@ -68,9 +97,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("color", Color);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DisplayType>("displayType", DisplayType);
+            writer.WriteBoolValue("excludeFromTotal", ExcludeFromTotal);
             writer.WriteStringValue("label", Label);
             writer.WriteBoolValue("trendLine", TrendLine);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition>("yAxisPosition", YAxisPosition);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ValueLabels>("valueLabels", ValueLabels);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.YAxisPosition>("yAxisPosition", YAxisPosition);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

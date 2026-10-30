@@ -12,17 +12,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NotebookWidgetCatalogEntryOpenApiConfigSchema : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("notebookShortId") is { } nullNodeNotebookShortId && nullNodeNotebookShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotebookShortId = null;
+            if (parseNode.GetChildNode("snapshotId") is { } nullNodeSnapshotId && nullNodeSnapshotId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnapshotId = null;
+        }
+
         /// <summary>Source notebook short ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NotebookShortId { get; set; }
+        public string? NotebookShortId { get => _explicitNullValueNotebookShortId; set { _explicitNullValueNotebookShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notebookShortId"); else _explicitNullProperties?.Remove("notebookShortId"); } }
+        private string? _explicitNullValueNotebookShortId = default!;
 #nullable restore
 #else
-        public string NotebookShortId { get; set; }
+        public string NotebookShortId { get => _explicitNullValueNotebookShortId; set { _explicitNullValueNotebookShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notebookShortId"); else _explicitNullProperties?.Remove("notebookShortId"); } }
+        private string _explicitNullValueNotebookShortId = default!;
 #endif
         /// <summary>Immutable notebook widget snapshot. Add one from a notebook widget&apos;s menu.</summary>
-        public Guid? SnapshotId { get; set; }
+        public Guid? SnapshotId { get => _explicitNullValueSnapshotId; set { _explicitNullValueSnapshotId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshotId"); else _explicitNullProperties?.Remove("snapshotId"); } }
+        private Guid? _explicitNullValueSnapshotId = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -31,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetCatalogEntryOpenApiConfigSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetCatalogEntryOpenApiConfigSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.NotebookWidgetCatalogEntryOpenApiConfigSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,7 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("notebookShortId", NotebookShortId);
-            writer.WriteGuidValue("snapshotId", SnapshotId);
+            writer.WriteGuidValue("snapshotId", SnapshotId);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

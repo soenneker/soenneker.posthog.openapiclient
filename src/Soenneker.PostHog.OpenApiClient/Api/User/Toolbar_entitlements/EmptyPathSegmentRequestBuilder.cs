@@ -52,6 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.User.Toolbar_entitlements
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.ToolbarEntitlementsError.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.PostHog.OpenApiClient.Models.ToolbarEntitlementsError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ToolbarEntitlements>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ToolbarEntitlements.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

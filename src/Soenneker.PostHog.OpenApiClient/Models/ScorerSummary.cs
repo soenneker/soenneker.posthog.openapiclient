@@ -11,23 +11,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ScorerSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("max") is { } nullNodeMax && nullNodeMax.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Max = null;
+            if (parseNode.GetChildNode("mean") is { } nullNodeMean && nullNodeMean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mean = null;
+            if (parseNode.GetChildNode("median") is { } nullNodeMedian && nullNodeMedian.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Median = null;
+            if (parseNode.GetChildNode("min") is { } nullNodeMin && nullNodeMin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Min = null;
+            if (parseNode.GetChildNode("p25") is { } nullNodeP25 && nullNodeP25.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P25 = null;
+            if (parseNode.GetChildNode("p75") is { } nullNodeP75 && nullNodeP75.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P75 = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of scored observations summarized.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>Maximum observed score.</summary>
-        public double? Max { get; set; }
+        public double? Max { get => _explicitNullValueMax; set { _explicitNullValueMax = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max"); else _explicitNullProperties?.Remove("max"); } }
+        private double? _explicitNullValueMax = default!;
         /// <summary>Mean score.</summary>
-        public double? Mean { get; set; }
+        public double? Mean { get => _explicitNullValueMean; set { _explicitNullValueMean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean"); else _explicitNullProperties?.Remove("mean"); } }
+        private double? _explicitNullValueMean = default!;
         /// <summary>Median score.</summary>
-        public double? Median { get; set; }
+        public double? Median { get => _explicitNullValueMedian; set { _explicitNullValueMedian = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median"); else _explicitNullProperties?.Remove("median"); } }
+        private double? _explicitNullValueMedian = default!;
         /// <summary>Minimum observed score.</summary>
-        public double? Min { get; set; }
+        public double? Min { get => _explicitNullValueMin; set { _explicitNullValueMin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min"); else _explicitNullProperties?.Remove("min"); } }
+        private double? _explicitNullValueMin = default!;
         /// <summary>25th-percentile score.</summary>
-        public double? P25 { get; set; }
+        public double? P25 { get => _explicitNullValueP25; set { _explicitNullValueP25 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p25"); else _explicitNullProperties?.Remove("p25"); } }
+        private double? _explicitNullValueP25 = default!;
         /// <summary>75th-percentile score.</summary>
-        public double? P75 { get; set; }
+        public double? P75 { get => _explicitNullValueP75; set { _explicitNullValueP75 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p75"); else _explicitNullProperties?.Remove("p75"); } }
+        private double? _explicitNullValueP75 = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary"/> and sets the default values.
         /// </summary>
@@ -43,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScorerSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("min", Min);
             writer.WriteDoubleValue("p25", P25);
             writer.WriteDoubleValue("p75", P75);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

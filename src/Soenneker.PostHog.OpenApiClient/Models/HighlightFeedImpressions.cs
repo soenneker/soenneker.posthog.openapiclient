@@ -12,18 +12,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HighlightFeedImpressions : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("feed_load_id") is { } nullNodeFeedLoadId && nullNodeFeedLoadId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeedLoadId = null;
+            if (parseNode.GetChildNode("observation_ids") is { } nullNodeObservationIds && nullNodeObservationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObservationIds = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The client&apos;s id for the feed load that showed these cards. One load counts each card once.</summary>
-        public Guid? FeedLoadId { get; set; }
+        public Guid? FeedLoadId { get => _explicitNullValueFeedLoadId; set { _explicitNullValueFeedLoadId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feed_load_id"); else _explicitNullProperties?.Remove("feed_load_id"); } }
+        private Guid? _explicitNullValueFeedLoadId = default!;
         /// <summary>Observations the calling user saw in the Highlights feed, at most 100. Ids the user cannot read are ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ObservationIds { get; set; }
+        public List<Guid?>? ObservationIds { get => _explicitNullValueObservationIds; set { _explicitNullValueObservationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation_ids"); else _explicitNullProperties?.Remove("observation_ids"); } }
+        private List<Guid?>? _explicitNullValueObservationIds = default!;
 #nullable restore
 #else
-        public List<Guid?> ObservationIds { get; set; }
+        public List<Guid?> ObservationIds { get => _explicitNullValueObservationIds; set { _explicitNullValueObservationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation_ids"); else _explicitNullProperties?.Remove("observation_ids"); } }
+        private List<Guid?> _explicitNullValueObservationIds = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedImpressions"/> and sets the default values.
@@ -40,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedImpressions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedImpressions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedImpressions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,6 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("feed_load_id", FeedLoadId);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("observation_ids", ObservationIds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

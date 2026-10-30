@@ -11,78 +11,125 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PullRequestListItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("author") is { } nullNodeAuthor && nullNodeAuthor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Author = null;
+            if (parseNode.GetChildNode("billable_minutes") is { } nullNodeBillableMinutes && nullNodeBillableMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillableMinutes = null;
+            if (parseNode.GetChildNode("ci") is { } nullNodeCi && nullNodeCi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ci = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("estimated_cost_usd") is { } nullNodeEstimatedCostUsd && nullNodeEstimatedCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCostUsd = null;
+            if (parseNode.GetChildNode("is_draft") is { } nullNodeIsDraft && nullNodeIsDraft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDraft = null;
+            if (parseNode.GetChildNode("labels") is { } nullNodeLabels && nullNodeLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Labels = null;
+            if (parseNode.GetChildNode("merged_at") is { } nullNodeMergedAt && nullNodeMergedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedAt = null;
+            if (parseNode.GetChildNode("number") is { } nullNodeNumber && nullNodeNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Number = null;
+            if (parseNode.GetChildNode("open_to_merge_seconds") is { } nullNodeOpenToMergeSeconds && nullNodeOpenToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenToMergeSeconds = null;
+            if (parseNode.GetChildNode("pushes") is { } nullNodePushes && nullNodePushes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pushes = null;
+            if (parseNode.GetChildNode("push_history") is { } nullNodePushHistory && nullNodePushHistory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PushHistory = null;
+            if (parseNode.GetChildNode("ready_to_merge_seconds") is { } nullNodeReadyToMergeSeconds && nullNodeReadyToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyToMergeSeconds = null;
+            if (parseNode.GetChildNode("repo") is { } nullNodeRepo && nullNodeRepo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repo = null;
+            if (parseNode.GetChildNode("rerun_cycles") is { } nullNodeRerunCycles && nullNodeRerunCycles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RerunCycles = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The pull request author.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemAuthor? Author { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemAuthor? Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemAuthor? _explicitNullValueAuthor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemAuthor Author { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemAuthor Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemAuthor _explicitNullValueAuthor = default!;
 #endif
         /// <summary>Billable (self-hosted) minutes summed over this PR&apos;s jobs. Null when the job source isn&apos;t synced.</summary>
-        public double? BillableMinutes { get; set; }
+        public double? BillableMinutes { get => _explicitNullValueBillableMinutes; set { _explicitNullValueBillableMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_minutes"); else _explicitNullProperties?.Remove("billable_minutes"); } }
+        private double? _explicitNullValueBillableMinutes = default!;
         /// <summary>CI status from the latest workflow runs on the head SHA.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi? Ci { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi? Ci { get => _explicitNullValueCi; set { _explicitNullValueCi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci"); else _explicitNullProperties?.Remove("ci"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi? _explicitNullValueCi = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi Ci { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi Ci { get => _explicitNullValueCi; set { _explicitNullValueCi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci"); else _explicitNullProperties?.Remove("ci"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi _explicitNullValueCi = default!;
 #endif
         /// <summary>When the pull request was opened.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Estimated CI cost in USD summed over this PR&apos;s jobs (billable runners only). Null when nothing was costable or the job-level source isn&apos;t synced.</summary>
-        public double? EstimatedCostUsd { get; set; }
+        public double? EstimatedCostUsd { get => _explicitNullValueEstimatedCostUsd; set { _explicitNullValueEstimatedCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_cost_usd"); else _explicitNullProperties?.Remove("estimated_cost_usd"); } }
+        private double? _explicitNullValueEstimatedCostUsd = default!;
         /// <summary>True if the pull request is a draft.</summary>
-        public bool? IsDraft { get; set; }
+        public bool? IsDraft { get => _explicitNullValueIsDraft; set { _explicitNullValueIsDraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_draft"); else _explicitNullProperties?.Remove("is_draft"); } }
+        private bool? _explicitNullValueIsDraft = default!;
         /// <summary>GitHub label names on the pull request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Labels { get; set; }
+        public List<string>? Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private List<string>? _explicitNullValueLabels = default!;
 #nullable restore
 #else
-        public List<string> Labels { get; set; }
+        public List<string> Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private List<string> _explicitNullValueLabels = default!;
 #endif
         /// <summary>When the pull request was merged, or null.</summary>
-        public DateTimeOffset? MergedAt { get; set; }
+        public DateTimeOffset? MergedAt { get => _explicitNullValueMergedAt; set { _explicitNullValueMergedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_at"); else _explicitNullProperties?.Remove("merged_at"); } }
+        private DateTimeOffset? _explicitNullValueMergedAt = default!;
         /// <summary>Pull request number within the repository.</summary>
-        public int? Number { get; set; }
+        public int? Number { get => _explicitNullValueNumber; set { _explicitNullValueNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number"); else _explicitNullProperties?.Remove("number"); } }
+        private int? _explicitNullValueNumber = default!;
         /// <summary>Coarse open-to-merge time in seconds (merged_at - created_at; fuses draft and ready-for-review time). Null until merged.</summary>
-        public int? OpenToMergeSeconds { get; set; }
+        public int? OpenToMergeSeconds { get => _explicitNullValueOpenToMergeSeconds; set { _explicitNullValueOpenToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge_seconds"); else _explicitNullProperties?.Remove("open_to_merge_seconds"); } }
+        private int? _explicitNullValueOpenToMergeSeconds = default!;
         /// <summary>CI triggers attributed to this PR: distinct head SHAs across its workflow runs. Fork-PR runs are unattributed.</summary>
-        public int? Pushes { get; set; }
+        public int? Pushes { get => _explicitNullValuePushes; set { _explicitNullValuePushes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pushes"); else _explicitNullProperties?.Remove("pushes"); } }
+        private int? _explicitNullValuePushes = default!;
         /// <summary>This PR&apos;s CI rounds oldest-first, capped to the most recent pushes - one sample per push for the push-history sparkline. `pushes` stays the uncapped count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PushCiSample>? PushHistory { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PushCiSample>? PushHistory { get => _explicitNullValuePushHistory; set { _explicitNullValuePushHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_history"); else _explicitNullProperties?.Remove("push_history"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PushCiSample>? _explicitNullValuePushHistory = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PushCiSample> PushHistory { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PushCiSample> PushHistory { get => _explicitNullValuePushHistory; set { _explicitNullValuePushHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_history"); else _explicitNullProperties?.Remove("push_history"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PushCiSample> _explicitNullValuePushHistory = default!;
 #endif
         /// <summary>True ready-to-merge cycle time in seconds: merged_at minus the last observed ready_for_review transition (only the last draft/ready switch counts), or minus created_at for a merged PR verifiably never drafted. Null when unmerged or not observed (the PR&apos;s life isn&apos;t fully inside the synced issue-event window) - null never means zero.</summary>
-        public int? ReadyToMergeSeconds { get; set; }
+        public int? ReadyToMergeSeconds { get => _explicitNullValueReadyToMergeSeconds; set { _explicitNullValueReadyToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_to_merge_seconds"); else _explicitNullProperties?.Remove("ready_to_merge_seconds"); } }
+        private int? _explicitNullValueReadyToMergeSeconds = default!;
         /// <summary>Repository the pull request belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo? Repo { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo? Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo? _explicitNullValueRepo = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo Repo { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemRepo _explicitNullValueRepo = default!;
 #endif
         /// <summary>Workflow runs attributed to this PR that were a 2nd+ attempt (a re-run).</summary>
-        public int? RerunCycles { get; set; }
+        public int? RerunCycles { get => _explicitNullValueRerunCycles; set { _explicitNullValueRerunCycles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerun_cycles"); else _explicitNullProperties?.Remove("rerun_cycles"); } }
+        private int? _explicitNullValueRerunCycles = default!;
         /// <summary>* `open` - Open* `closed` - Closed* `merged` - Merged</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState? _explicitNullValueState = default!;
         /// <summary>Pull request title.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItem"/> and sets the default values.
@@ -99,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -152,6 +199,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("rerun_cycles", RerunCycles);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemState>("state", State);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

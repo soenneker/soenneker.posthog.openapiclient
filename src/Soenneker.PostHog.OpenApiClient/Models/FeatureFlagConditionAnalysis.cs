@@ -11,42 +11,68 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FeatureFlagConditionAnalysis : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
+            if (parseNode.GetChildNode("index") is { } nullNodeIndex && nullNodeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Index = null;
+            if (parseNode.GetChildNode("matched") is { } nullNodeMatched && nullNodeMatched.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Matched = null;
+            if (parseNode.GetChildNode("properties") is { } nullNodeProperties && nullNodeProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Properties = null;
+            if (parseNode.GetChildNode("properties_matched") is { } nullNodePropertiesMatched && nullNodePropertiesMatched.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertiesMatched = null;
+            if (parseNode.GetChildNode("rollout_excluded") is { } nullNodeRolloutExcluded && nullNodeRolloutExcluded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RolloutExcluded = null;
+            if (parseNode.GetChildNode("rollout_percentage") is { } nullNodeRolloutPercentage && nullNodeRolloutPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RolloutPercentage = null;
+            if (parseNode.GetChildNode("variant") is { } nullNodeVariant && nullNodeVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variant = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Human-readable explanation of why this condition matched/didn&apos;t match</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Explanation { get; set; }
+        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        private string? _explicitNullValueExplanation = default!;
 #nullable restore
 #else
-        public string Explanation { get; set; }
+        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        private string _explicitNullValueExplanation = default!;
 #endif
         /// <summary>Index of this condition in the feature flag</summary>
-        public int? Index { get; set; }
+        public int? Index { get => _explicitNullValueIndex; set { _explicitNullValueIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index"); else _explicitNullProperties?.Remove("index"); } }
+        private int? _explicitNullValueIndex = default!;
         /// <summary>True when this condition was the one that determined the flag&apos;s outcome. Use this to find the winning condition — at most one condition per flag is True.</summary>
-        public bool? Matched { get; set; }
+        public bool? Matched { get => _explicitNullValueMatched; set { _explicitNullValueMatched = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched"); else _explicitNullProperties?.Remove("matched"); } }
+        private bool? _explicitNullValueMatched = default!;
         /// <summary>Analysis of each property in this condition</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis>? Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis>? _explicitNullValueProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis> Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionPropertyAnalysis> _explicitNullValueProperties = default!;
 #endif
         /// <summary>True when every property in this condition evaluated to true, regardless of whether this condition was the eventual winner.</summary>
-        public bool? PropertiesMatched { get; set; }
+        public bool? PropertiesMatched { get => _explicitNullValuePropertiesMatched; set { _explicitNullValuePropertiesMatched = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties_matched"); else _explicitNullProperties?.Remove("properties_matched"); } }
+        private bool? _explicitNullValuePropertiesMatched = default!;
         /// <summary>Whether this condition matched properties but was excluded due to rollout</summary>
-        public bool? RolloutExcluded { get; set; }
+        public bool? RolloutExcluded { get => _explicitNullValueRolloutExcluded; set { _explicitNullValueRolloutExcluded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollout_excluded"); else _explicitNullProperties?.Remove("rollout_excluded"); } }
+        private bool? _explicitNullValueRolloutExcluded = default!;
         /// <summary>Rollout percentage for this condition (0.0-100.0)</summary>
-        public double? RolloutPercentage { get; set; }
+        public double? RolloutPercentage { get => _explicitNullValueRolloutPercentage; set { _explicitNullValueRolloutPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollout_percentage"); else _explicitNullProperties?.Remove("rollout_percentage"); } }
+        private double? _explicitNullValueRolloutPercentage = default!;
         /// <summary>Variant associated with this condition. Empty or null when the condition has no variant override.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Variant { get; set; }
+        public string? Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
+        private string? _explicitNullValueVariant = default!;
 #nullable restore
 #else
-        public string Variant { get; set; }
+        public string Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
+        private string _explicitNullValueVariant = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis"/> and sets the default values.
@@ -63,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionAnalysis(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("rollout_excluded", RolloutExcluded);
             writer.WriteDoubleValue("rollout_percentage", RolloutPercentage);
             writer.WriteStringValue("variant", Variant);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

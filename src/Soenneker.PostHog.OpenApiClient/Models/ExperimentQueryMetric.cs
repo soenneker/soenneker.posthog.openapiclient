@@ -12,7 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentQueryMetric : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,21 +62,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentQueryMetric();
             if("funnel".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ExperimentFunnelMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric();
+                
             }
             else if("mean".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ExperimentMeanMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric();
+                
             }
             else if("ratio".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ExperimentRatioMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric();
+                
             }
             else if("retention".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ExperimentRetentionMetric = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("ExperimentMetric".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("metric_type") == null || (parseNode.GetChildNode("metric_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("mean".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("series") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("ExperimentMetric".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("metric_type") == null || (parseNode.GetChildNode("metric_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("funnel".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("denominator") != null && parseNode.GetChildNode("numerator") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("ExperimentMetric".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("metric_type") == null || (parseNode.GetChildNode("metric_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag3 && ("ratio".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("completion_event") != null && parseNode.GetChildNode("retention_window_end") != null && parseNode.GetChildNode("retention_window_start") != null && parseNode.GetChildNode("retention_window_unit") != null && (parseNode.GetChildNode("retention_window_unit")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag4 && ("second".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "minute".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "hour".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "day".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "week".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal) || "month".Equals(tag4.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("start_event") != null && parseNode.GetChildNode("start_handling") != null && (parseNode.GetChildNode("start_handling")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag7 && ("first_seen".Equals(tag7.GetValue(), global::System.StringComparison.Ordinal) || "last_seen".Equals(tag7.GetValue(), global::System.StringComparison.Ordinal))) && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag8 && ("ExperimentMetric".Equals(optionalTag8.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("metric_type") == null || (parseNode.GetChildNode("metric_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag9 && ("retention".Equals(optionalTag9.GetValue(), global::System.StringComparison.Ordinal))))))();
+            if (result.ExperimentFunnelMetric == null && result.ExperimentMeanMetric == null && result.ExperimentRatioMetric == null && result.ExperimentRetentionMetric == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.ExperimentMeanMetric = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric(), parseNode);
+            if (result.ExperimentFunnelMetric == null && result.ExperimentMeanMetric == null && result.ExperimentRatioMetric == null && result.ExperimentRetentionMetric == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.ExperimentFunnelMetric = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric(), parseNode);
+            if (result.ExperimentFunnelMetric == null && result.ExperimentMeanMetric == null && result.ExperimentRatioMetric == null && result.ExperimentRetentionMetric == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.ExperimentRatioMetric = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric(), parseNode);
+            if (result.ExperimentFunnelMetric == null && result.ExperimentMeanMetric == null && result.ExperimentRatioMetric == null && result.ExperimentRetentionMetric == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.ExperimentRetentionMetric = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric(), parseNode);
+            if (result.ExperimentFunnelMetric == null && result.ExperimentMeanMetric == null && result.ExperimentRatioMetric == null && result.ExperimentRetentionMetric == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -103,21 +119,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ExperimentFunnelMetric == null && ExperimentMeanMetric == null && ExperimentRatioMetric == null && ExperimentRetentionMetric == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ExperimentFunnelMetric != null && ExperimentMeanMetric == null && ExperimentRatioMetric == null && ExperimentRetentionMetric == null) { if (ExperimentFunnelMetric is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentFunnelMetric); return; }
+            if (ExperimentMeanMetric != null && ExperimentFunnelMetric == null && ExperimentRatioMetric == null && ExperimentRetentionMetric == null) { if (ExperimentMeanMetric is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentMeanMetric); return; }
+            if (ExperimentRatioMetric != null && ExperimentFunnelMetric == null && ExperimentMeanMetric == null && ExperimentRetentionMetric == null) { if (ExperimentRatioMetric is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentRatioMetric); return; }
+            if (ExperimentRetentionMetric != null && ExperimentFunnelMetric == null && ExperimentMeanMetric == null && ExperimentRatioMetric == null) { if (ExperimentRetentionMetric is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentRetentionMetric); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ExperimentFunnelMetric != null)
             {
+                if (ExperimentFunnelMetric is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFunnelMetric>(null, ExperimentFunnelMetric);
             }
             else if(ExperimentMeanMetric != null)
             {
+                if (ExperimentMeanMetric is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetric>(null, ExperimentMeanMetric);
             }
             else if(ExperimentRatioMetric != null)
             {
+                if (ExperimentRatioMetric is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetric>(null, ExperimentRatioMetric);
             }
             else if(ExperimentRetentionMetric != null)
             {
+                if (ExperimentRetentionMetric is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric>(null, ExperimentRetentionMetric);
             }
         }

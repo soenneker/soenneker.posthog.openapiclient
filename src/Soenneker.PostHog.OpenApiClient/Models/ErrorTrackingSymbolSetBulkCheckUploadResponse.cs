@@ -11,16 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingSymbolSetBulkCheckUploadResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chunk_ids_to_upload") is { } nullNodeChunkIdsToUpload && nullNodeChunkIdsToUpload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunkIdsToUpload = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Chunk IDs to send to `bulk_start_upload`: the symbol set is missing, its upload never completed, its content differs, or it still needs the release bound. The other chunks are already uploaded with identical content and were marked as still in use.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ChunkIdsToUpload { get; set; }
+        public List<string>? ChunkIdsToUpload { get => _explicitNullValueChunkIdsToUpload; set { _explicitNullValueChunkIdsToUpload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids_to_upload"); else _explicitNullProperties?.Remove("chunk_ids_to_upload"); } }
+        private List<string>? _explicitNullValueChunkIdsToUpload = default!;
 #nullable restore
 #else
-        public List<string> ChunkIdsToUpload { get; set; }
+        public List<string> ChunkIdsToUpload { get => _explicitNullValueChunkIdsToUpload; set { _explicitNullValueChunkIdsToUpload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids_to_upload"); else _explicitNullProperties?.Remove("chunk_ids_to_upload"); } }
+        private List<string> _explicitNullValueChunkIdsToUpload = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkCheckUploadResponse"/> and sets the default values.
@@ -37,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkCheckUploadResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkCheckUploadResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkCheckUploadResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("chunk_ids_to_upload", ChunkIdsToUpload);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

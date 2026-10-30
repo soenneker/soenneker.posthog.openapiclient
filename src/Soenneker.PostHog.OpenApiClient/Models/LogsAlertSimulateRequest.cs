@@ -11,39 +11,66 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsAlertSimulateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("check_interval_minutes") is { } nullNodeCheckIntervalMinutes && nullNodeCheckIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckIntervalMinutes = null;
+            if (parseNode.GetChildNode("cooldown_minutes") is { } nullNodeCooldownMinutes && nullNodeCooldownMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CooldownMinutes = null;
+            if (parseNode.GetChildNode("datapoints_to_alarm") is { } nullNodeDatapointsToAlarm && nullNodeDatapointsToAlarm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatapointsToAlarm = null;
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("evaluation_periods") is { } nullNodeEvaluationPeriods && nullNodeEvaluationPeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationPeriods = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("threshold_count") is { } nullNodeThresholdCount && nullNodeThresholdCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdCount = null;
+            if (parseNode.GetChildNode("threshold_operator") is { } nullNodeThresholdOperator && nullNodeThresholdOperator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdOperator = null;
+            if (parseNode.GetChildNode("window_minutes") is { } nullNodeWindowMinutes && nullNodeWindowMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowMinutes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How often the alert is evaluated, in minutes.</summary>
-        public int? CheckIntervalMinutes { get; set; }
+        public int? CheckIntervalMinutes { get => _explicitNullValueCheckIntervalMinutes; set { _explicitNullValueCheckIntervalMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_interval_minutes"); else _explicitNullProperties?.Remove("check_interval_minutes"); } }
+        private int? _explicitNullValueCheckIntervalMinutes = default!;
         /// <summary>Minimum minutes between notifications. A fire or resolve notification inside the cooldown is skipped. 0 means no minimum.</summary>
-        public int? CooldownMinutes { get; set; }
+        public int? CooldownMinutes { get => _explicitNullValueCooldownMinutes; set { _explicitNullValueCooldownMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cooldown_minutes"); else _explicitNullProperties?.Remove("cooldown_minutes"); } }
+        private int? _explicitNullValueCooldownMinutes = default!;
         /// <summary>How many periods must breach to fire (N in N-of-M).</summary>
-        public int? DatapointsToAlarm { get; set; }
+        public int? DatapointsToAlarm { get => _explicitNullValueDatapointsToAlarm; set { _explicitNullValueDatapointsToAlarm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datapoints_to_alarm"); else _explicitNullProperties?.Remove("datapoints_to_alarm"); } }
+        private int? _explicitNullValueDatapointsToAlarm = default!;
         /// <summary>Relative date string for how far back to simulate (e.g. &apos;-24h&apos;, &apos;-7d&apos;, &apos;-30d&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateFrom { get; set; }
+        public string? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private string? _explicitNullValueDateFrom = default!;
 #nullable restore
 #else
-        public string DateFrom { get; set; }
+        public string DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private string _explicitNullValueDateFrom = default!;
 #endif
         /// <summary>Total check periods in the N-of-M evaluation window (M).</summary>
-        public int? EvaluationPeriods { get; set; }
+        public int? EvaluationPeriods { get => _explicitNullValueEvaluationPeriods; set { _explicitNullValueEvaluationPeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_periods"); else _explicitNullProperties?.Remove("evaluation_periods"); } }
+        private int? _explicitNullValueEvaluationPeriods = default!;
         /// <summary>Filter criteria — same format as LogsAlertConfiguration.filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestFilters _explicitNullValueFilters = default!;
 #endif
         /// <summary>Threshold count to evaluate against.</summary>
-        public int? ThresholdCount { get; set; }
+        public int? ThresholdCount { get => _explicitNullValueThresholdCount; set { _explicitNullValueThresholdCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_count"); else _explicitNullProperties?.Remove("threshold_count"); } }
+        private int? _explicitNullValueThresholdCount = default!;
         /// <summary>* `above` - Above* `below` - Below</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator? ThresholdOperator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator? ThresholdOperator { get => _explicitNullValueThresholdOperator; set { _explicitNullValueThresholdOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_operator"); else _explicitNullProperties?.Remove("threshold_operator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator? _explicitNullValueThresholdOperator = default!;
         /// <summary>Window size in minutes — determines bucket interval.</summary>
-        public int? WindowMinutes { get; set; }
+        public int? WindowMinutes { get => _explicitNullValueWindowMinutes; set { _explicitNullValueWindowMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_minutes"); else _explicitNullProperties?.Remove("window_minutes"); } }
+        private int? _explicitNullValueWindowMinutes = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest"/> and sets the default values.
         /// </summary>
@@ -63,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -100,6 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("threshold_count", ThresholdCount);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertSimulateRequestThresholdOperator>("threshold_operator", ThresholdOperator);
             writer.WriteIntValue("window_minutes", WindowMinutes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

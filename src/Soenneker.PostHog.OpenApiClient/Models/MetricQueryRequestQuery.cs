@@ -12,92 +12,133 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MetricQueryRequestQuery : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregation") is { } nullNodeAggregation && nullNodeAggregation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Aggregation = null;
+            if (parseNode.GetChildNode("clauses") is { } nullNodeClauses && nullNodeClauses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clauses = null;
+            if (parseNode.GetChildNode("dateFrom") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("dateTo") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("formula") is { } nullNodeFormula && nullNodeFormula.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Formula = null;
+            if (parseNode.GetChildNode("groupBy") is { } nullNodeGroupBy && nullNodeGroupBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupBy = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("metricName") is { } nullNodeMetricName && nullNodeMetricName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricName = null;
+            if (parseNode.GetChildNode("metricType") is { } nullNodeMetricType && nullNodeMetricType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricType = null;
+            if (parseNode.GetChildNode("quantile") is { } nullNodeQuantile && nullNodeQuantile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantile = null;
+            if (parseNode.GetChildNode("rangeFunction") is { } nullNodeRangeFunction && nullNodeRangeFunction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RangeFunction = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `none` - none* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation? Aggregation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation? Aggregation { get => _explicitNullValueAggregation; set { _explicitNullValueAggregation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation"); else _explicitNullProperties?.Remove("aggregation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyAggregation? _explicitNullValueAggregation = default!;
         /// <summary>Full multi-clause form: each clause is an independent metric selection sharing the request&apos;s time grid (maximum 10). Mutually exclusive with &apos;metricName&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause>? Clauses { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause>? Clauses { get => _explicitNullValueClauses; set { _explicitNullValueClauses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clauses"); else _explicitNullProperties?.Remove("clauses"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause>? _explicitNullValueClauses = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause> Clauses { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause> Clauses { get => _explicitNullValueClauses; set { _explicitNullValueClauses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clauses"); else _explicitNullProperties?.Remove("clauses"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricClause> _explicitNullValueClauses = default!;
 #endif
         /// <summary>Lower bound (inclusive) for the query range. ISO 8601, or a relative offset back from now such as &apos;-1h&apos;, &apos;-7d&apos;, &apos;-2w&apos;, &apos;-1m&apos; (months). Defaults to 24 hours before dateTo.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateFrom { get; set; }
+        public string? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateFrom"); else _explicitNullProperties?.Remove("dateFrom"); } }
+        private string? _explicitNullValueDateFrom = default!;
 #nullable restore
 #else
-        public string DateFrom { get; set; }
+        public string DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateFrom"); else _explicitNullProperties?.Remove("dateFrom"); } }
+        private string _explicitNullValueDateFrom = default!;
 #endif
         /// <summary>Upper bound (exclusive) for the query range. ISO 8601 or a relative offset like dateFrom. Defaults to now if omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateTo { get; set; }
+        public string? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateTo"); else _explicitNullProperties?.Remove("dateTo"); } }
+        private string? _explicitNullValueDateTo = default!;
 #nullable restore
 #else
-        public string DateTo { get; set; }
+        public string DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateTo"); else _explicitNullProperties?.Remove("dateTo"); } }
+        private string _explicitNullValueDateTo = default!;
 #endif
         /// <summary>Label predicates ANDed together. Rows must satisfy every filter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>? Filters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter> Filters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter> Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter> _explicitNullValueFilters = default!;
 #endif
         /// <summary>Arithmetic over clause names evaluated server-side per grid point, e.g. &apos;(a - b) / a&apos;. Supports + - * / and parentheses; division by zero yields 0. When set, only the formula result series are returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Formula { get; set; }
+        public string? Formula { get => _explicitNullValueFormula; set { _explicitNullValueFormula = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("formula"); else _explicitNullProperties?.Remove("formula"); } }
+        private string? _explicitNullValueFormula = default!;
 #nullable restore
 #else
-        public string Formula { get; set; }
+        public string Formula { get => _explicitNullValueFormula; set { _explicitNullValueFormula = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("formula"); else _explicitNullProperties?.Remove("formula"); } }
+        private string _explicitNullValueFormula = default!;
 #endif
         /// <summary>Labels to split the result into separate series by. Series share one time grid and are capped at the 100 largest.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy>? GroupBy { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy>? GroupBy { get => _explicitNullValueGroupBy; set { _explicitNullValueGroupBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupBy"); else _explicitNullProperties?.Remove("groupBy"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy>? _explicitNullValueGroupBy = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy> GroupBy { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy> GroupBy { get => _explicitNullValueGroupBy; set { _explicitNullValueGroupBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groupBy"); else _explicitNullProperties?.Remove("groupBy"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricGroupBy> _explicitNullValueGroupBy = default!;
 #endif
         /// <summary>Bucket size for the shared time grid. Omit to auto-pick (~60 buckets across the range).* `second_15` - second_15* `second_30` - second_30* `minute` - minute* `minute_5` - minute_5* `minute_15` - minute_15* `minute_30` - minute_30* `hour` - hour* `hour_6` - hour_6* `day` - day* `week` - week</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval? _explicitNullValueInterval = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval _explicitNullValueInterval = default!;
 #endif
         /// <summary>Exact metric name to query (e.g. &apos;http.server.duration&apos;). Single-clause shorthand — mutually exclusive with &apos;clauses&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricName { get; set; }
+        public string? MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
+        private string? _explicitNullValueMetricName = default!;
 #nullable restore
 #else
-        public string MetricName { get; set; }
+        public string MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
+        private string _explicitNullValueMetricName = default!;
 #endif
         /// <summary>Constrain the query to one metric type. A name can exist as several types (e.g. a counter and a gauge); without this, rows of every type sharing the name are blended into one aggregate. Get the type from &apos;metric-names-list&apos;.* `gauge` - gauge* `sum` - sum* `histogram` - histogram* `exponential_histogram` - exponential_histogram* `summary` - summary</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType? MetricType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType? MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricType"); else _explicitNullProperties?.Remove("metricType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType? _explicitNullValueMetricType = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType MetricType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricType"); else _explicitNullProperties?.Remove("metricType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType _explicitNullValueMetricType = default!;
 #endif
         /// <summary>Quantile in (0, 1) for &apos;histogram_quantile&apos; (e.g. 0.95). Ignored for other aggregations.</summary>
-        public double? Quantile { get; set; }
+        public double? Quantile { get => _explicitNullValueQuantile; set { _explicitNullValueQuantile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantile"); else _explicitNullProperties?.Remove("quantile"); } }
+        private double? _explicitNullValueQuantile = default!;
         /// <summary>Counter-aware transform applied to each series before the aggregation: &apos;rate&apos; (per-second) or &apos;increase&apos;. Combine with &apos;none&apos; to get one rate line per series. Do not combine with the &apos;rate&apos; or &apos;increase&apos; aggregations.* `rate` - rate* `increase` - increase</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction? RangeFunction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction? RangeFunction { get => _explicitNullValueRangeFunction; set { _explicitNullValueRangeFunction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rangeFunction"); else _explicitNullProperties?.Remove("rangeFunction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction? _explicitNullValueRangeFunction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction RangeFunction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction RangeFunction { get => _explicitNullValueRangeFunction; set { _explicitNullValueRangeFunction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rangeFunction"); else _explicitNullProperties?.Remove("rangeFunction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction _explicitNullValueRangeFunction = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryRequestQuery"/> and sets the default values.
@@ -114,7 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryRequestQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryRequestQuery();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryRequestQuery(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -157,6 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyMetricType>("metricType", MetricType);
             writer.WriteDoubleValue("quantile", Quantile);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyRangeFunction>("rangeFunction", RangeFunction);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

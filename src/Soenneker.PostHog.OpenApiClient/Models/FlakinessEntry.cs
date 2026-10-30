@@ -11,107 +11,172 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FlakinessEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("avg_diff_percentage") is { } nullNodeAvgDiffPercentage && nullNodeAvgDiffPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgDiffPercentage = null;
+            if (parseNode.GetChildNode("baseline_age_days") is { } nullNodeBaselineAgeDays && nullNodeBaselineAgeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineAgeDays = null;
+            if (parseNode.GetChildNode("baseline_moved_day_index") is { } nullNodeBaselineMovedDayIndex && nullNodeBaselineMovedDayIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineMovedDayIndex = null;
+            if (parseNode.GetChildNode("browser") is { } nullNodeBrowser && nullNodeBrowser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Browser = null;
+            if (parseNode.GetChildNode("daily_hard_counts") is { } nullNodeDailyHardCounts && nullNodeDailyHardCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyHardCounts = null;
+            if (parseNode.GetChildNode("daily_soft_counts") is { } nullNodeDailySoftCounts && nullNodeDailySoftCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailySoftCounts = null;
+            if (parseNode.GetChildNode("flakiness_state") is { } nullNodeFlakinessState && nullNodeFlakinessState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlakinessState = null;
+            if (parseNode.GetChildNode("hard_count") is { } nullNodeHardCount && nullNodeHardCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HardCount = null;
+            if (parseNode.GetChildNode("hard_rate") is { } nullNodeHardRate && nullNodeHardRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HardRate = null;
+            if (parseNode.GetChildNode("headroom") is { } nullNodeHeadroom && nullNodeHeadroom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headroom = null;
+            if (parseNode.GetChildNode("height") is { } nullNodeHeight && nullNodeHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Height = null;
+            if (parseNode.GetChildNode("identifier") is { } nullNodeIdentifier && nullNodeIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Identifier = null;
+            if (parseNode.GetChildNode("is_quarantined") is { } nullNodeIsQuarantined && nullNodeIsQuarantined.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsQuarantined = null;
+            if (parseNode.GetChildNode("last_flaked_at") is { } nullNodeLastFlakedAt && nullNodeLastFlakedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastFlakedAt = null;
+            if (parseNode.GetChildNode("needs_decision") is { } nullNodeNeedsDecision && nullNodeNeedsDecision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsDecision = null;
+            if (parseNode.GetChildNode("owner_team") is { } nullNodeOwnerTeam && nullNodeOwnerTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerTeam = null;
+            if (parseNode.GetChildNode("quarantine") is { } nullNodeQuarantine && nullNodeQuarantine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quarantine = null;
+            if (parseNode.GetChildNode("run_type") is { } nullNodeRunType && nullNodeRunType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunType = null;
+            if (parseNode.GetChildNode("soft_count") is { } nullNodeSoftCount && nullNodeSoftCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SoftCount = null;
+            if (parseNode.GetChildNode("soft_rate") is { } nullNodeSoftRate && nullNodeSoftRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SoftRate = null;
+            if (parseNode.GetChildNode("thumbnail_hash") is { } nullNodeThumbnailHash && nullNodeThumbnailHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThumbnailHash = null;
+            if (parseNode.GetChildNode("variant_count") is { } nullNodeVariantCount && nullNodeVariantCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantCount = null;
+            if (parseNode.GetChildNode("width") is { } nullNodeWidth && nullNodeWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Width = null;
+            if (parseNode.GetChildNode("window_runs") is { } nullNodeWindowRuns && nullNodeWindowRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowRuns = null;
+            if (parseNode.GetChildNode("worst_soft_diff_percentage") is { } nullNodeWorstSoftDiffPercentage && nullNodeWorstSoftDiffPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorstSoftDiffPercentage = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mean fraction of pixels that differed across the live variants. Separates sub-pixel noise from a small but real rendering change.</summary>
-        public double? AvgDiffPercentage { get; set; }
+        public double? AvgDiffPercentage { get => _explicitNullValueAvgDiffPercentage; set { _explicitNullValueAvgDiffPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_diff_percentage"); else _explicitNullProperties?.Remove("avg_diff_percentage"); } }
+        private double? _explicitNullValueAvgDiffPercentage = default!;
         /// <summary>Days since the first default-branch run that compared against the current baseline, which is when that baseline took effect. Reads too new for a `broken` snapshot, which records a change against an unmoved baseline on every run.</summary>
-        public int? BaselineAgeDays { get; set; }
+        public int? BaselineAgeDays { get => _explicitNullValueBaselineAgeDays; set { _explicitNullValueBaselineAgeDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_age_days"); else _explicitNullProperties?.Remove("baseline_age_days"); } }
+        private int? _explicitNullValueBaselineAgeDays = default!;
         /// <summary>Index into the daily series where the baseline moved. Null when it moved before the window opened, which is the common case.</summary>
-        public int? BaselineMovedDayIndex { get; set; }
+        public int? BaselineMovedDayIndex { get => _explicitNullValueBaselineMovedDayIndex; set { _explicitNullValueBaselineMovedDayIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_moved_day_index"); else _explicitNullProperties?.Remove("baseline_moved_day_index"); } }
+        private int? _explicitNullValueBaselineMovedDayIndex = default!;
         /// <summary>The browser property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Browser { get; set; }
+        public string? Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
+        private string? _explicitNullValueBrowser = default!;
 #nullable restore
 #else
-        public string Browser { get; set; }
+        public string Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
+        private string _explicitNullValueBrowser = default!;
 #endif
         /// <summary>Gate-failing runs per day over the last 30 days, oldest first. Always that length, so a fixed time axis can be rendered.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? DailyHardCounts { get; set; }
+        public List<int?>? DailyHardCounts { get => _explicitNullValueDailyHardCounts; set { _explicitNullValueDailyHardCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_hard_counts"); else _explicitNullProperties?.Remove("daily_hard_counts"); } }
+        private List<int?>? _explicitNullValueDailyHardCounts = default!;
 #nullable restore
 #else
-        public List<int?> DailyHardCounts { get; set; }
+        public List<int?> DailyHardCounts { get => _explicitNullValueDailyHardCounts; set { _explicitNullValueDailyHardCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_hard_counts"); else _explicitNullProperties?.Remove("daily_hard_counts"); } }
+        private List<int?> _explicitNullValueDailyHardCounts = default!;
 #endif
         /// <summary>Absorbed runs per day over the same 30 days, oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? DailySoftCounts { get; set; }
+        public List<int?>? DailySoftCounts { get => _explicitNullValueDailySoftCounts; set { _explicitNullValueDailySoftCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_soft_counts"); else _explicitNullProperties?.Remove("daily_soft_counts"); } }
+        private List<int?>? _explicitNullValueDailySoftCounts = default!;
 #nullable restore
 #else
-        public List<int?> DailySoftCounts { get; set; }
+        public List<int?> DailySoftCounts { get => _explicitNullValueDailySoftCounts; set { _explicitNullValueDailySoftCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_soft_counts"); else _explicitNullProperties?.Remove("daily_soft_counts"); } }
+        private List<int?> _explicitNullValueDailySoftCounts = default!;
 #endif
         /// <summary>* `broken` - broken* `unstable` - unstable* `at_risk` - at_risk* `clean` - clean</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState? FlakinessState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState? FlakinessState { get => _explicitNullValueFlakinessState; set { _explicitNullValueFlakinessState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flakiness_state"); else _explicitNullProperties?.Remove("flakiness_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntryFlakinessState? _explicitNullValueFlakinessState = default!;
         /// <summary>Default-branch runs in the last 7 days where this snapshot failed the gate, so somebody could not merge until it was resolved. Counts every result that is not `unchanged`: a diff over a threshold, a baseline that was never committed or was dropped, and a baseline whose story no longer renders.</summary>
-        public int? HardCount { get; set; }
+        public int? HardCount { get => _explicitNullValueHardCount; set { _explicitNullValueHardCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hard_count"); else _explicitNullProperties?.Remove("hard_count"); } }
+        private int? _explicitNullValueHardCount = default!;
         /// <summary>`hard_count` over `window_runs`. The denominator counts every run of this run type, so a snapshot that only started rendering partway through the window reads lower than it is.</summary>
-        public double? HardRate { get; set; }
+        public double? HardRate { get => _explicitNullValueHardRate; set { _explicitNullValueHardRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hard_rate"); else _explicitNullProperties?.Remove("hard_rate"); } }
+        private double? _explicitNullValueHardRate = default!;
         /// <summary>Fraction of the 2.5% pixel threshold that `worst_soft_diff_percentage` leaves free. A snapshot is absorbed only while it stays under the threshold, so this is what says whether it will keep doing so: 1.0 means it rendered identically every time it was absorbed, 0.0 means it reached the line and only luck kept it on the passing side. Null when nothing was absorbed, which is not the same as full headroom.</summary>
-        public double? Headroom { get; set; }
+        public double? Headroom { get => _explicitNullValueHeadroom; set { _explicitNullValueHeadroom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headroom"); else _explicitNullProperties?.Remove("headroom"); } }
+        private double? _explicitNullValueHeadroom = default!;
         /// <summary>The height property</summary>
-        public int? Height { get; set; }
+        public int? Height { get => _explicitNullValueHeight; set { _explicitNullValueHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("height"); else _explicitNullProperties?.Remove("height"); } }
+        private int? _explicitNullValueHeight = default!;
         /// <summary>The identifier property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Identifier { get; set; }
+        public string? Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
+        private string? _explicitNullValueIdentifier = default!;
 #nullable restore
 #else
-        public string Identifier { get; set; }
+        public string Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
+        private string _explicitNullValueIdentifier = default!;
 #endif
         /// <summary>The is_quarantined property</summary>
-        public bool? IsQuarantined { get; set; }
+        public bool? IsQuarantined { get => _explicitNullValueIsQuarantined; set { _explicitNullValueIsQuarantined = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_quarantined"); else _explicitNullProperties?.Remove("is_quarantined"); } }
+        private bool? _explicitNullValueIsQuarantined = default!;
         /// <summary>Last default-branch run in the last 30 days that rendered this snapshot differently from its baseline, whether the gate failed or a toleration absorbed it. Reads over the full window rather than the rate span, so a snapshot that stopped failing still reports when it last did. Null when nothing happened at all.</summary>
-        public DateTimeOffset? LastFlakedAt { get; set; }
+        public DateTimeOffset? LastFlakedAt { get => _explicitNullValueLastFlakedAt; set { _explicitNullValueLastFlakedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_flaked_at"); else _explicitNullProperties?.Remove("last_flaked_at"); } }
+        private DateTimeOffset? _explicitNullValueLastFlakedAt = default!;
         /// <summary>True when an active quarantine has run out, is about to, or covers a snapshot that has stopped failing the gate. All three mean a human has to extend it or lift it.</summary>
-        public bool? NeedsDecision { get; set; }
+        public bool? NeedsDecision { get => _explicitNullValueNeedsDecision; set { _explicitNullValueNeedsDecision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_decision"); else _explicitNullProperties?.Remove("needs_decision"); } }
+        private bool? _explicitNullValueNeedsDecision = default!;
         /// <summary>Slug of the team that owns the file this snapshot&apos;s story lives in, from the repository&apos;s ownership files. `unowned` when no entry covers the file. Null when ownership is unknown: the snapshot is not a Storybook snapshot, the newest default-branch run sent no story index, the story is not in it, or the ownership files could not be read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OwnerTeam { get; set; }
+        public string? OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        private string? _explicitNullValueOwnerTeam = default!;
 #nullable restore
 #else
-        public string OwnerTeam { get; set; }
+        public string OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        private string _explicitNullValueOwnerTeam = default!;
 #endif
         /// <summary>Active quarantine details when `is_quarantined` is true. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? Quarantine { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? _explicitNullValueQuarantine = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary Quarantine { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary _explicitNullValueQuarantine = default!;
 #endif
         /// <summary>The run_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunType { get; set; }
+        public string? RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
+        private string? _explicitNullValueRunType = default!;
 #nullable restore
 #else
-        public string RunType { get; set; }
+        public string RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
+        private string _explicitNullValueRunType = default!;
 #endif
         /// <summary>Default-branch runs in the last 7 days where this snapshot rendered differently from its baseline and a toleration absorbed it, blocking nobody.</summary>
-        public int? SoftCount { get; set; }
+        public int? SoftCount { get => _explicitNullValueSoftCount; set { _explicitNullValueSoftCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("soft_count"); else _explicitNullProperties?.Remove("soft_count"); } }
+        private int? _explicitNullValueSoftCount = default!;
         /// <summary>`soft_count` over `window_runs`.</summary>
-        public double? SoftRate { get; set; }
+        public double? SoftRate { get => _explicitNullValueSoftRate; set { _explicitNullValueSoftRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("soft_rate"); else _explicitNullProperties?.Remove("soft_rate"); } }
+        private double? _explicitNullValueSoftRate = default!;
         /// <summary>The thumbnail_hash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThumbnailHash { get; set; }
+        public string? ThumbnailHash { get => _explicitNullValueThumbnailHash; set { _explicitNullValueThumbnailHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_hash"); else _explicitNullProperties?.Remove("thumbnail_hash"); } }
+        private string? _explicitNullValueThumbnailHash = default!;
 #nullable restore
 #else
-        public string ThumbnailHash { get; set; }
+        public string ThumbnailHash { get => _explicitNullValueThumbnailHash; set { _explicitNullValueThumbnailHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_hash"); else _explicitNullProperties?.Remove("thumbnail_hash"); } }
+        private string _explicitNullValueThumbnailHash = default!;
 #endif
         /// <summary>Distinct alternate hashes the classifier can still match for this snapshot&apos;s current baseline. Reads as how many different images this snapshot is currently allowed to produce. Resets when the baseline moves, because tolerations recorded against an old baseline hash can never match again.</summary>
-        public int? VariantCount { get; set; }
+        public int? VariantCount { get => _explicitNullValueVariantCount; set { _explicitNullValueVariantCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_count"); else _explicitNullProperties?.Remove("variant_count"); } }
+        private int? _explicitNullValueVariantCount = default!;
         /// <summary>The width property</summary>
-        public int? Width { get; set; }
+        public int? Width { get => _explicitNullValueWidth; set { _explicitNullValueWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("width"); else _explicitNullProperties?.Remove("width"); } }
+        private int? _explicitNullValueWidth = default!;
         /// <summary>Completed default-branch runs of this run type in the last 7 days. The rate denominator, so a reader can tell 2 failures out of 3 runs from 2 out of 300.</summary>
-        public int? WindowRuns { get; set; }
+        public int? WindowRuns { get => _explicitNullValueWindowRuns; set { _explicitNullValueWindowRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_runs"); else _explicitNullProperties?.Remove("window_runs"); } }
+        private int? _explicitNullValueWindowRuns = default!;
         /// <summary>Largest pixel diff any absorbed run in the last 30 days produced. Reads the full window rather than the rate span, because it asks for the worst case a snapshot can produce and more days are better evidence of that. Null when nothing was absorbed.</summary>
-        public double? WorstSoftDiffPercentage { get; set; }
+        public double? WorstSoftDiffPercentage { get => _explicitNullValueWorstSoftDiffPercentage; set { _explicitNullValueWorstSoftDiffPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("worst_soft_diff_percentage"); else _explicitNullProperties?.Remove("worst_soft_diff_percentage"); } }
+        private double? _explicitNullValueWorstSoftDiffPercentage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntry"/> and sets the default values.
         /// </summary>
@@ -127,7 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FlakinessEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -196,6 +261,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("width", Width);
             writer.WriteIntValue("window_runs", WindowRuns);
             writer.WriteDoubleValue("worst_soft_diff_percentage", WorstSoftDiffPercentage);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

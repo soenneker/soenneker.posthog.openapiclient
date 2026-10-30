@@ -11,67 +11,107 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsServiceAggregate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_rules") is { } nullNodeActiveRules && nullNodeActiveRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveRules = null;
+            if (parseNode.GetChildNode("baseline_log_count") is { } nullNodeBaselineLogCount && nullNodeBaselineLogCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineLogCount = null;
+            if (parseNode.GetChildNode("error_count") is { } nullNodeErrorCount && nullNodeErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCount = null;
+            if (parseNode.GetChildNode("error_rate") is { } nullNodeErrorRate && nullNodeErrorRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRate = null;
+            if (parseNode.GetChildNode("error_rate_delta_pp") is { } nullNodeErrorRateDeltaPp && nullNodeErrorRateDeltaPp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRateDeltaPp = null;
+            if (parseNode.GetChildNode("error_rate_pct") is { } nullNodeErrorRatePct && nullNodeErrorRatePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRatePct = null;
+            if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
+            if (parseNode.GetChildNode("log_count") is { } nullNodeLogCount && nullNodeLogCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogCount = null;
+            if (parseNode.GetChildNode("log_count_change_pct") is { } nullNodeLogCountChangePct && nullNodeLogCountChangePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogCountChangePct = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("service_name") is { } nullNodeServiceName && nullNodeServiceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceName = null;
+            if (parseNode.GetChildNode("severity_breakdown") is { } nullNodeSeverityBreakdown && nullNodeSeverityBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeverityBreakdown = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("volume_share_pct") is { } nullNodeVolumeSharePct && nullNodeVolumeSharePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VolumeSharePct = null;
+        }
+
         /// <summary>Enabled sampling rules whose scope includes this service.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule>? ActiveRules { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule>? ActiveRules { get => _explicitNullValueActiveRules; set { _explicitNullValueActiveRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_rules"); else _explicitNullProperties?.Remove("active_rules"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule>? _explicitNullValueActiveRules = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule> ActiveRules { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule> ActiveRules { get => _explicitNullValueActiveRules; set { _explicitNullValueActiveRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_rules"); else _explicitNullProperties?.Remove("active_rules"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceActiveRule> _explicitNullValueActiveRules = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Logs in the baseline. Null without one.</summary>
-        public int? BaselineLogCount { get; set; }
+        public int? BaselineLogCount { get => _explicitNullValueBaselineLogCount; set { _explicitNullValueBaselineLogCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_log_count"); else _explicitNullProperties?.Remove("baseline_log_count"); } }
+        private int? _explicitNullValueBaselineLogCount = default!;
         /// <summary>Count of logs at severity &quot;error&quot; or &quot;fatal&quot;.</summary>
-        public int? ErrorCount { get; set; }
+        public int? ErrorCount { get => _explicitNullValueErrorCount; set { _explicitNullValueErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_count"); else _explicitNullProperties?.Remove("error_count"); } }
+        private int? _explicitNullValueErrorCount = default!;
         /// <summary>Pre-computed error_count / log_count, rounded to 4 decimals. Useful for ranking noisy services.</summary>
-        public double? ErrorRate { get; set; }
+        public double? ErrorRate { get => _explicitNullValueErrorRate; set { _explicitNullValueErrorRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_rate"); else _explicitNullProperties?.Remove("error_rate"); } }
+        private double? _explicitNullValueErrorRate = default!;
         /// <summary>Error rate change against the baseline, in percentage points.</summary>
-        public double? ErrorRateDeltaPp { get; set; }
+        public double? ErrorRateDeltaPp { get => _explicitNullValueErrorRateDeltaPp; set { _explicitNullValueErrorRateDeltaPp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_rate_delta_pp"); else _explicitNullProperties?.Remove("error_rate_delta_pp"); } }
+        private double? _explicitNullValueErrorRateDeltaPp = default!;
         /// <summary>Error rate in percent, rounded to 1 decimal.</summary>
-        public double? ErrorRatePct { get; set; }
+        public double? ErrorRatePct { get => _explicitNullValueErrorRatePct; set { _explicitNullValueErrorRatePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_rate_pct"); else _explicitNullProperties?.Remove("error_rate_pct"); } }
+        private double? _explicitNullValueErrorRatePct = default!;
         /// <summary>Latest log time (UTC). From the rollup, and for silent services, the start of the last 5-minute bucket.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastSeen { get; set; }
+        public string? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private string? _explicitNullValueLastSeen = default!;
 #nullable restore
 #else
-        public string LastSeen { get; set; }
+        public string LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private string _explicitNullValueLastSeen = default!;
 #endif
         /// <summary>Total log entries from this service in the window.</summary>
-        public int? LogCount { get; set; }
+        public int? LogCount { get => _explicitNullValueLogCount; set { _explicitNullValueLogCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_count"); else _explicitNullProperties?.Remove("log_count"); } }
+        private int? _explicitNullValueLogCount = default!;
         /// <summary>Log volume change against the baseline, in percent.</summary>
-        public double? LogCountChangePct { get; set; }
+        public double? LogCountChangePct { get => _explicitNullValueLogCountChangePct; set { _explicitNullValueLogCountChangePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_count_change_pct"); else _explicitNullProperties?.Remove("log_count_change_pct"); } }
+        private double? _explicitNullValueLogCountChangePct = default!;
         /// <summary>Short reason for the status, e.g. &quot;error rate 0.4% → 3.1%&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Service name, or &quot;(no value)&quot; / &quot;(no service)&quot; placeholder for unset entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ServiceName { get; set; }
+        public string? ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string? _explicitNullValueServiceName = default!;
 #nullable restore
 #else
-        public string ServiceName { get; set; }
+        public string ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string _explicitNullValueServiceName = default!;
 #endif
         /// <summary>Counts by coarse severity bucket (debug, info, warn, error+fatal).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown? SeverityBreakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown? SeverityBreakdown { get => _explicitNullValueSeverityBreakdown; set { _explicitNullValueSeverityBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity_breakdown"); else _explicitNullProperties?.Remove("severity_breakdown"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown? _explicitNullValueSeverityBreakdown = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown SeverityBreakdown { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown SeverityBreakdown { get => _explicitNullValueSeverityBreakdown; set { _explicitNullValueSeverityBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity_breakdown"); else _explicitNullProperties?.Remove("severity_breakdown"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown _explicitNullValueSeverityBreakdown = default!;
 #endif
         /// <summary>* `ok` - OK* `degraded` - Error rate 5% or more* `regressed` - Error rate worse than the baseline* `improved` - Error rate better than the baseline* `recovered` - No longer degraded* `new` - No logs in the baseline* `silent` - Logs stopped</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateStatus? _explicitNullValueStatus = default!;
         /// <summary>Share of total log volume in the window for this service (0–100).</summary>
-        public double? VolumeSharePct { get; set; }
+        public double? VolumeSharePct { get => _explicitNullValueVolumeSharePct; set { _explicitNullValueVolumeSharePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("volume_share_pct"); else _explicitNullProperties?.Remove("volume_share_pct"); } }
+        private double? _explicitNullValueVolumeSharePct = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate"/> and sets the default values.
         /// </summary>
@@ -87,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -134,6 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateSeverityBreakdown>("severity_breakdown", SeverityBreakdown);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregateStatus>("status", Status);
             writer.WriteDoubleValue("volume_share_pct", VolumeSharePct);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

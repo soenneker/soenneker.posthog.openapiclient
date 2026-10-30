@@ -11,34 +11,80 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedSurveySerializerCreateUpdateOnlySchema : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("appearance") is { } nullNodeAppearance && nullNodeAppearance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Appearance = null;
+            if (parseNode.GetChildNode("archived") is { } nullNodeArchived && nullNodeArchived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Archived = null;
+            if (parseNode.GetChildNode("base_language") is { } nullNodeBaseLanguage && nullNodeBaseLanguage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseLanguage = null;
+            if (parseNode.GetChildNode("conditions") is { } nullNodeConditions && nullNodeConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conditions = null;
+            if (parseNode.GetChildNode("_create_in_folder") is { } nullNodeCreateInFolder && nullNodeCreateInFolder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreateInFolder = null;
+            if (parseNode.GetChildNode("current_iteration") is { } nullNodeCurrentIteration && nullNodeCurrentIteration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentIteration = null;
+            if (parseNode.GetChildNode("current_iteration_start_date") is { } nullNodeCurrentIterationStartDate && nullNodeCurrentIterationStartDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentIterationStartDate = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("enable_iframe_embedding") is { } nullNodeEnableIframeEmbedding && nullNodeEnableIframeEmbedding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnableIframeEmbedding = null;
+            if (parseNode.GetChildNode("enable_partial_responses") is { } nullNodeEnablePartialResponses && nullNodeEnablePartialResponses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnablePartialResponses = null;
+            if (parseNode.GetChildNode("end_date") is { } nullNodeEndDate && nullNodeEndDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndDate = null;
+            if (parseNode.GetChildNode("form_content") is { } nullNodeFormContent && nullNodeFormContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FormContent = null;
+            if (parseNode.GetChildNode("iteration_count") is { } nullNodeIterationCount && nullNodeIterationCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationCount = null;
+            if (parseNode.GetChildNode("iteration_frequency_days") is { } nullNodeIterationFrequencyDays && nullNodeIterationFrequencyDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationFrequencyDays = null;
+            if (parseNode.GetChildNode("iteration_start_dates") is { } nullNodeIterationStartDates && nullNodeIterationStartDates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationStartDates = null;
+            if (parseNode.GetChildNode("linked_flag_id") is { } nullNodeLinkedFlagId && nullNodeLinkedFlagId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinkedFlagId = null;
+            if (parseNode.GetChildNode("linked_insight_id") is { } nullNodeLinkedInsightId && nullNodeLinkedInsightId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinkedInsightId = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("questions") is { } nullNodeQuestions && nullNodeQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Questions = null;
+            if (parseNode.GetChildNode("remove_targeting_flag") is { } nullNodeRemoveTargetingFlag && nullNodeRemoveTargetingFlag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoveTargetingFlag = null;
+            if (parseNode.GetChildNode("response_sampling_daily_limits") is { } nullNodeResponseSamplingDailyLimits && nullNodeResponseSamplingDailyLimits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseSamplingDailyLimits = null;
+            if (parseNode.GetChildNode("response_sampling_interval") is { } nullNodeResponseSamplingInterval && nullNodeResponseSamplingInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseSamplingInterval = null;
+            if (parseNode.GetChildNode("response_sampling_interval_type") is { } nullNodeResponseSamplingIntervalType && nullNodeResponseSamplingIntervalType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseSamplingIntervalType = null;
+            if (parseNode.GetChildNode("response_sampling_limit") is { } nullNodeResponseSamplingLimit && nullNodeResponseSamplingLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseSamplingLimit = null;
+            if (parseNode.GetChildNode("response_sampling_start_date") is { } nullNodeResponseSamplingStartDate && nullNodeResponseSamplingStartDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseSamplingStartDate = null;
+            if (parseNode.GetChildNode("responses_limit") is { } nullNodeResponsesLimit && nullNodeResponsesLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponsesLimit = null;
+            if (parseNode.GetChildNode("schedule") is { } nullNodeSchedule && nullNodeSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Schedule = null;
+            if (parseNode.GetChildNode("start_date") is { } nullNodeStartDate && nullNodeStartDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartDate = null;
+            if (parseNode.GetChildNode("targeting_flag_filters") is { } nullNodeTargetingFlagFilters && nullNodeTargetingFlagFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetingFlagFilters = null;
+            if (parseNode.GetChildNode("targeting_flag_id") is { } nullNodeTargetingFlagId && nullNodeTargetingFlagId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetingFlagId = null;
+            if (parseNode.GetChildNode("translations") is { } nullNodeTranslations && nullNodeTranslations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Translations = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Survey appearance customization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema? Appearance { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema? Appearance { get => _explicitNullValueAppearance; set { _explicitNullValueAppearance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appearance"); else _explicitNullProperties?.Remove("appearance"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema? _explicitNullValueAppearance = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema Appearance { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema Appearance { get => _explicitNullValueAppearance; set { _explicitNullValueAppearance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appearance"); else _explicitNullProperties?.Remove("appearance"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema _explicitNullValueAppearance = default!;
 #endif
         /// <summary>Archive state for the survey.</summary>
-        public bool? Archived { get; set; }
+        public bool? Archived { get => _explicitNullValueArchived; set { _explicitNullValueArchived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archived"); else _explicitNullProperties?.Remove("archived"); } }
+        private bool? _explicitNullValueArchived = default!;
         /// <summary>BCP-47 language code (e.g. &apos;en&apos;, &apos;es&apos;, &apos;es-MX&apos;) describing the language of the survey&apos;s untranslated text. Defaults to &apos;en&apos;. Cannot also appear as a key in `translations`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaseLanguage { get; set; }
+        public string? BaseLanguage { get => _explicitNullValueBaseLanguage; set { _explicitNullValueBaseLanguage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_language"); else _explicitNullProperties?.Remove("base_language"); } }
+        private string? _explicitNullValueBaseLanguage = default!;
 #nullable restore
 #else
-        public string BaseLanguage { get; set; }
+        public string BaseLanguage { get => _explicitNullValueBaseLanguage; set { _explicitNullValueBaseLanguage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_language"); else _explicitNullProperties?.Remove("base_language"); } }
+        private string _explicitNullValueBaseLanguage = default!;
 #endif
         /// <summary>Display and targeting conditions for the survey.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema? Conditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema? Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema? _explicitNullValueConditions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema Conditions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema _explicitNullValueConditions = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -53,36 +99,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CreateInFolder { get; set; }
+        public string? CreateInFolder { get => _explicitNullValueCreateInFolder; set { _explicitNullValueCreateInFolder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_create_in_folder"); else _explicitNullProperties?.Remove("_create_in_folder"); } }
+        private string? _explicitNullValueCreateInFolder = default!;
 #nullable restore
 #else
-        public string CreateInFolder { get; set; }
+        public string CreateInFolder { get => _explicitNullValueCreateInFolder; set { _explicitNullValueCreateInFolder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_create_in_folder"); else _explicitNullProperties?.Remove("_create_in_folder"); } }
+        private string _explicitNullValueCreateInFolder = default!;
 #endif
         /// <summary>The current_iteration property</summary>
-        public int? CurrentIteration { get; set; }
+        public int? CurrentIteration { get => _explicitNullValueCurrentIteration; set { _explicitNullValueCurrentIteration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_iteration"); else _explicitNullProperties?.Remove("current_iteration"); } }
+        private int? _explicitNullValueCurrentIteration = default!;
         /// <summary>The current_iteration_start_date property</summary>
-        public DateTimeOffset? CurrentIterationStartDate { get; set; }
+        public DateTimeOffset? CurrentIterationStartDate { get => _explicitNullValueCurrentIterationStartDate; set { _explicitNullValueCurrentIterationStartDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_iteration_start_date"); else _explicitNullProperties?.Remove("current_iteration_start_date"); } }
+        private DateTimeOffset? _explicitNullValueCurrentIterationStartDate = default!;
         /// <summary>Survey description. Internal only: unlike the name and questions, it is never delivered to visitors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The enable_iframe_embedding property</summary>
-        public bool? EnableIframeEmbedding { get; set; }
+        public bool? EnableIframeEmbedding { get => _explicitNullValueEnableIframeEmbedding; set { _explicitNullValueEnableIframeEmbedding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_iframe_embedding"); else _explicitNullProperties?.Remove("enable_iframe_embedding"); } }
+        private bool? _explicitNullValueEnableIframeEmbedding = default!;
         /// <summary>When at least one question is answered, the response is stored (true). The response is stored when all questions are answered (false).</summary>
-        public bool? EnablePartialResponses { get; set; }
+        public bool? EnablePartialResponses { get => _explicitNullValueEnablePartialResponses; set { _explicitNullValueEnablePartialResponses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_partial_responses"); else _explicitNullProperties?.Remove("enable_partial_responses"); } }
+        private bool? _explicitNullValueEnablePartialResponses = default!;
         /// <summary>When the survey stopped being shown to users. Setting this will complete the survey.</summary>
-        public DateTimeOffset? EndDate { get; set; }
+        public DateTimeOffset? EndDate { get => _explicitNullValueEndDate; set { _explicitNullValueEndDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_date"); else _explicitNullProperties?.Remove("end_date"); } }
+        private DateTimeOffset? _explicitNullValueEndDate = default!;
         /// <summary>The form_content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? FormContent { get; set; }
+        public UntypedNode? FormContent { get => _explicitNullValueFormContent; set { _explicitNullValueFormContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("form_content"); else _explicitNullProperties?.Remove("form_content"); } }
+        private UntypedNode? _explicitNullValueFormContent = default!;
 #nullable restore
 #else
-        public UntypedNode FormContent { get; set; }
+        public UntypedNode FormContent { get => _explicitNullValueFormContent; set { _explicitNullValueFormContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("form_content"); else _explicitNullProperties?.Remove("form_content"); } }
+        private UntypedNode _explicitNullValueFormContent = default!;
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -95,16 +152,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaInternalTargetingFlag InternalTargetingFlag { get; private set; }
 #endif
         /// <summary>For a recurring schedule, this field specifies the number of times the survey should be shown to the user. Use 1 for &apos;once every X days&apos;, higher numbers for multiple repetitions. Works together with iteration_frequency_days to determine the overall survey schedule.</summary>
-        public int? IterationCount { get; set; }
+        public int? IterationCount { get => _explicitNullValueIterationCount; set { _explicitNullValueIterationCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_count"); else _explicitNullProperties?.Remove("iteration_count"); } }
+        private int? _explicitNullValueIterationCount = default!;
         /// <summary>For a recurring schedule, this field specifies the interval in days between each survey instance shown to the user, used alongside iteration_count for precise scheduling.</summary>
-        public int? IterationFrequencyDays { get; set; }
+        public int? IterationFrequencyDays { get => _explicitNullValueIterationFrequencyDays; set { _explicitNullValueIterationFrequencyDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_frequency_days"); else _explicitNullProperties?.Remove("iteration_frequency_days"); } }
+        private int? _explicitNullValueIterationFrequencyDays = default!;
         /// <summary>The iteration_start_dates property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<DateTimeOffset?>? IterationStartDates { get; set; }
+        public List<DateTimeOffset?>? IterationStartDates { get => _explicitNullValueIterationStartDates; set { _explicitNullValueIterationStartDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_start_dates"); else _explicitNullProperties?.Remove("iteration_start_dates"); } }
+        private List<DateTimeOffset?>? _explicitNullValueIterationStartDates = default!;
 #nullable restore
 #else
-        public List<DateTimeOffset?> IterationStartDates { get; set; }
+        public List<DateTimeOffset?> IterationStartDates { get => _explicitNullValueIterationStartDates; set { _explicitNullValueIterationStartDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_start_dates"); else _explicitNullProperties?.Remove("iteration_start_dates"); } }
+        private List<DateTimeOffset?> _explicitNullValueIterationStartDates = default!;
 #endif
         /// <summary>The linked_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -115,61 +176,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaLinkedFlag LinkedFlag { get; private set; }
 #endif
         /// <summary>The feature flag linked to this survey.</summary>
-        public int? LinkedFlagId { get; set; }
+        public int? LinkedFlagId { get => _explicitNullValueLinkedFlagId; set { _explicitNullValueLinkedFlagId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linked_flag_id"); else _explicitNullProperties?.Remove("linked_flag_id"); } }
+        private int? _explicitNullValueLinkedFlagId = default!;
         /// <summary>The linked_insight_id property</summary>
-        public int? LinkedInsightId { get; set; }
+        public int? LinkedInsightId { get => _explicitNullValueLinkedInsightId; set { _explicitNullValueLinkedInsightId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linked_insight_id"); else _explicitNullProperties?.Remove("linked_insight_id"); } }
+        private int? _explicitNullValueLinkedInsightId = default!;
         /// <summary>Survey name. Anyone can read it. In-app surveys send it to every visitor&apos;s browser alongside the questions and appearance text, and a hosted survey shows it on its public page. Keep customer names and other private details out of it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>        The `array` of questions included in the survey. Each question must conform to one of the defined question types: Basic, Link, Rating, or Multiple Choice.        Basic (open-ended question)        - `id`: The question ID        - `type`: `open`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `branching`: Branching logic for the question. See branching types below for details.        Link (a question with a link)        - `id`: The question ID        - `type`: `link`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `link`: The URL associated with the question.        - `branching`: Branching logic for the question. See branching types below for details.        Rating (a question with a rating scale)        - `id`: The question ID        - `type`: `rating`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `display`: Display style of the rating (`number` or `emoji`).        - `scale`: The scale of the rating (`number`).        - `lowerBoundLabel`: Label for the lower bound of the scale.        - `upperBoundLabel`: Label for the upper bound of the scale.        - `isNpsQuestion`: Whether the question is an NPS rating.        - `branching`: Branching logic for the question. See branching types below for details.        Multiple choice        - `id`: The question ID        - `type`: `single_choice` or `multiple_choice`        - `question`: The text of the question.        - `description`: Optional description of the question.        - `descriptionContentType`: Content type of the description (`html` or `text`).        - `optional`: Whether the question is optional (`boolean`).        - `buttonText`: Text displayed on the submit button.        - `choices`: An array of choices for the question.        - `shuffleOptions`: Whether to shuffle the order of the choices (`boolean`).        - `hasOpenChoice`: Whether the question allows an open-ended response (`boolean`).        - `branching`: Branching logic for the question. See branching types below for details.        Branching logic can be one of the following types:        Next question: Proceeds to the next question        ```json        {            &quot;type&quot;: &quot;next_question&quot;        }        ```        End: Ends the survey, optionally displaying a confirmation message.        ```json        {            &quot;type&quot;: &quot;end&quot;        }        ```        Response-based: Branches based on the response values. Available for the `rating` and `single_choice` question types.        ```json        {            &quot;type&quot;: &quot;response_based&quot;,            &quot;responseValues&quot;: {                &quot;responseKey&quot;: &quot;value&quot;            }        }        ```        Specific question: Proceeds to a specific question by index.        ```json        {            &quot;type&quot;: &quot;specific_question&quot;,            &quot;index&quot;: 2        }        ```        Translations: Each question can include inline translations.        - `translations`: Object mapping language codes to translated fields.        - Language codes: Canonical BCP-47-ish strings (e.g., &quot;es&quot;, &quot;es-MX&quot;, &quot;zh-CN&quot;). Aliases like &quot;english&quot; or &quot;default&quot; are rejected. The survey&apos;s `base_language` (default &quot;en&quot;) declares the language of the untranslated text and cannot also appear as a translation key.        - Translatable fields: `question`, `description`, `buttonText`, `choices`, `lowerBoundLabel`, `upperBoundLabel`, `link`        Example with translations:        ```json        {            &quot;id&quot;: &quot;uuid&quot;,            &quot;type&quot;: &quot;rating&quot;,            &quot;question&quot;: &quot;How satisfied are you?&quot;,            &quot;lowerBoundLabel&quot;: &quot;Not satisfied&quot;,            &quot;upperBoundLabel&quot;: &quot;Very satisfied&quot;,            &quot;translations&quot;: {                &quot;es&quot;: {                    &quot;question&quot;: &quot;¿Qué tan satisfecho estás?&quot;,                    &quot;lowerBoundLabel&quot;: &quot;No satisfecho&quot;,                    &quot;upperBoundLabel&quot;: &quot;Muy satisfecho&quot;                },                &quot;fr&quot;: {                    &quot;question&quot;: &quot;Dans quelle mesure êtes-vous satisfait?&quot;                }            }        }        ```        </summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema>? Questions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema>? Questions { get => _explicitNullValueQuestions; set { _explicitNullValueQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions"); else _explicitNullProperties?.Remove("questions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema>? _explicitNullValueQuestions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema> Questions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema> Questions { get => _explicitNullValueQuestions; set { _explicitNullValueQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions"); else _explicitNullProperties?.Remove("questions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema> _explicitNullValueQuestions = default!;
 #endif
         /// <summary>Set to true to completely remove all targeting filters from the survey, making it visible to all users (subject to other display conditions like URL matching).</summary>
-        public bool? RemoveTargetingFlag { get; set; }
+        public bool? RemoveTargetingFlag { get => _explicitNullValueRemoveTargetingFlag; set { _explicitNullValueRemoveTargetingFlag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_targeting_flag"); else _explicitNullProperties?.Remove("remove_targeting_flag"); } }
+        private bool? _explicitNullValueRemoveTargetingFlag = default!;
         /// <summary>The response_sampling_daily_limits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ResponseSamplingDailyLimits { get; set; }
+        public UntypedNode? ResponseSamplingDailyLimits { get => _explicitNullValueResponseSamplingDailyLimits; set { _explicitNullValueResponseSamplingDailyLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_sampling_daily_limits"); else _explicitNullProperties?.Remove("response_sampling_daily_limits"); } }
+        private UntypedNode? _explicitNullValueResponseSamplingDailyLimits = default!;
 #nullable restore
 #else
-        public UntypedNode ResponseSamplingDailyLimits { get; set; }
+        public UntypedNode ResponseSamplingDailyLimits { get => _explicitNullValueResponseSamplingDailyLimits; set { _explicitNullValueResponseSamplingDailyLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_sampling_daily_limits"); else _explicitNullProperties?.Remove("response_sampling_daily_limits"); } }
+        private UntypedNode _explicitNullValueResponseSamplingDailyLimits = default!;
 #endif
         /// <summary>The response_sampling_interval property</summary>
-        public int? ResponseSamplingInterval { get; set; }
+        public int? ResponseSamplingInterval { get => _explicitNullValueResponseSamplingInterval; set { _explicitNullValueResponseSamplingInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_sampling_interval"); else _explicitNullProperties?.Remove("response_sampling_interval"); } }
+        private int? _explicitNullValueResponseSamplingInterval = default!;
         /// <summary>The response_sampling_interval_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType? ResponseSamplingIntervalType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType? ResponseSamplingIntervalType { get => _explicitNullValueResponseSamplingIntervalType; set { _explicitNullValueResponseSamplingIntervalType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_sampling_interval_type"); else _explicitNullProperties?.Remove("response_sampling_interval_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType? _explicitNullValueResponseSamplingIntervalType = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType ResponseSamplingIntervalType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType ResponseSamplingIntervalType { get => _explicitNullValueResponseSamplingIntervalType; set { _explicitNullValueResponseSamplingIntervalType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_sampling_interval_type"); else _explicitNullProperties?.Remove("response_sampling_interval_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaResponseSamplingIntervalType _explicitNullValueResponseSamplingIntervalType = default!;
 #endif
         /// <summary>The response_sampling_limit property</summary>
-        public int? ResponseSamplingLimit { get; set; }
+        public int? ResponseSamplingLimit { get => _explicitNullValueResponseSamplingLimit; set { _explicitNullValueResponseSamplingLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_sampling_limit"); else _explicitNullProperties?.Remove("response_sampling_limit"); } }
+        private int? _explicitNullValueResponseSamplingLimit = default!;
         /// <summary>The response_sampling_start_date property</summary>
-        public DateTimeOffset? ResponseSamplingStartDate { get; set; }
+        public DateTimeOffset? ResponseSamplingStartDate { get => _explicitNullValueResponseSamplingStartDate; set { _explicitNullValueResponseSamplingStartDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response_sampling_start_date"); else _explicitNullProperties?.Remove("response_sampling_start_date"); } }
+        private DateTimeOffset? _explicitNullValueResponseSamplingStartDate = default!;
         /// <summary>The maximum number of responses before automatically stopping the survey.</summary>
-        public int? ResponsesLimit { get; set; }
+        public int? ResponsesLimit { get => _explicitNullValueResponsesLimit; set { _explicitNullValueResponsesLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responses_limit"); else _explicitNullProperties?.Remove("responses_limit"); } }
+        private int? _explicitNullValueResponsesLimit = default!;
         /// <summary>Survey scheduling behavior: &apos;once&apos; = show once per user (default), &apos;recurring&apos; = repeat based on iteration_count and iteration_frequency_days settings, &apos;always&apos; = show every time conditions are met (mainly for widget surveys)* `once` - once* `recurring` - recurring* `always` - always</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule? Schedule { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule? Schedule { get => _explicitNullValueSchedule; set { _explicitNullValueSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule"); else _explicitNullProperties?.Remove("schedule"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule? _explicitNullValueSchedule = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule Schedule { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule Schedule { get => _explicitNullValueSchedule; set { _explicitNullValueSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule"); else _explicitNullProperties?.Remove("schedule"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule _explicitNullValueSchedule = default!;
 #endif
         /// <summary>Setting this will launch the survey immediately. Don&apos;t add a start_date unless explicitly requested to do so.</summary>
-        public DateTimeOffset? StartDate { get; set; }
+        public DateTimeOffset? StartDate { get => _explicitNullValueStartDate; set { _explicitNullValueStartDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_date"); else _explicitNullProperties?.Remove("start_date"); } }
+        private DateTimeOffset? _explicitNullValueStartDate = default!;
         /// <summary>The targeting_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -181,23 +260,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Target specific users based on their properties. Example: {groups: [{properties: [{key: &apos;email&apos;, value: [&apos;@company.com&apos;], operator: &apos;icontains&apos;}], rollout_percentage: 100}]}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema? TargetingFlagFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema? TargetingFlagFilters { get => _explicitNullValueTargetingFlagFilters; set { _explicitNullValueTargetingFlagFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targeting_flag_filters"); else _explicitNullProperties?.Remove("targeting_flag_filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema? _explicitNullValueTargetingFlagFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema TargetingFlagFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema TargetingFlagFilters { get => _explicitNullValueTargetingFlagFilters; set { _explicitNullValueTargetingFlagFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targeting_flag_filters"); else _explicitNullProperties?.Remove("targeting_flag_filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema _explicitNullValueTargetingFlagFilters = default!;
 #endif
         /// <summary>An existing targeting flag to use for this survey.</summary>
-        public int? TargetingFlagId { get; set; }
+        public int? TargetingFlagId { get => _explicitNullValueTargetingFlagId; set { _explicitNullValueTargetingFlagId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targeting_flag_id"); else _explicitNullProperties?.Remove("targeting_flag_id"); } }
+        private int? _explicitNullValueTargetingFlagId = default!;
         /// <summary>The translations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Translations { get; set; }
+        public UntypedNode? Translations { get => _explicitNullValueTranslations; set { _explicitNullValueTranslations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("translations"); else _explicitNullProperties?.Remove("translations"); } }
+        private UntypedNode? _explicitNullValueTranslations = default!;
 #nullable restore
 #else
-        public UntypedNode Translations { get; set; }
+        public UntypedNode Translations { get => _explicitNullValueTranslations; set { _explicitNullValueTranslations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("translations"); else _explicitNullProperties?.Remove("translations"); } }
+        private UntypedNode _explicitNullValueTranslations = default!;
 #endif
         /// <summary>* `popover` - popover* `widget` - widget* `external_survey` - external survey* `api` - api</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchema"/> and sets the default values.
         /// </summary>
@@ -213,7 +298,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -302,6 +387,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("targeting_flag_id", TargetingFlagId);
             writer.WriteObjectValue<UntypedNode>("translations", Translations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

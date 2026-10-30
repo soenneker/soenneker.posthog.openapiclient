@@ -11,17 +11,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewStateCounts : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("clean") is { } nullNodeClean && nullNodeClean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clean = null;
+            if (parseNode.GetChildNode("needs_review") is { } nullNodeNeedsReview && nullNodeNeedsReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsReview = null;
+            if (parseNode.GetChildNode("processing") is { } nullNodeProcessing && nullNodeProcessing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Processing = null;
+            if (parseNode.GetChildNode("stale") is { } nullNodeStale && nullNodeStale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stale = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The clean property</summary>
-        public int? Clean { get; set; }
+        public int? Clean { get => _explicitNullValueClean; set { _explicitNullValueClean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clean"); else _explicitNullProperties?.Remove("clean"); } }
+        private int? _explicitNullValueClean = default!;
         /// <summary>The needs_review property</summary>
-        public int? NeedsReview { get; set; }
+        public int? NeedsReview { get => _explicitNullValueNeedsReview; set { _explicitNullValueNeedsReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_review"); else _explicitNullProperties?.Remove("needs_review"); } }
+        private int? _explicitNullValueNeedsReview = default!;
         /// <summary>The processing property</summary>
-        public int? Processing { get; set; }
+        public int? Processing { get => _explicitNullValueProcessing; set { _explicitNullValueProcessing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("processing"); else _explicitNullProperties?.Remove("processing"); } }
+        private int? _explicitNullValueProcessing = default!;
         /// <summary>The stale property</summary>
-        public int? Stale { get; set; }
+        public int? Stale { get => _explicitNullValueStale; set { _explicitNullValueStale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stale"); else _explicitNullProperties?.Remove("stale"); } }
+        private int? _explicitNullValueStale = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("needs_review", NeedsReview);
             writer.WriteIntValue("processing", Processing);
             writer.WriteIntValue("stale", Stale);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

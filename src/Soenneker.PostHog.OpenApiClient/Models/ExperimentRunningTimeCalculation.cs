@@ -11,21 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentRunningTimeCalculation : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("exposure_estimate_config") is { } nullNodeExposureEstimateConfig && nullNodeExposureEstimateConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposureEstimateConfig = null;
+            if (parseNode.GetChildNode("minimum_detectable_effect") is { } nullNodeMinimumDetectableEffect && nullNodeMinimumDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinimumDetectableEffect = null;
+            if (parseNode.GetChildNode("recommended_running_time") is { } nullNodeRecommendedRunningTime && nullNodeRecommendedRunningTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedRunningTime = null;
+            if (parseNode.GetChildNode("recommended_sample_size") is { } nullNodeRecommendedSampleSize && nullNodeRecommendedSampleSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedSampleSize = null;
+        }
+
         /// <summary>How the exposure estimate is configured: manual user-entered values or automatic from live experiment data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig? ExposureEstimateConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig? ExposureEstimateConfig { get => _explicitNullValueExposureEstimateConfig; set { _explicitNullValueExposureEstimateConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_estimate_config"); else _explicitNullProperties?.Remove("exposure_estimate_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig? _explicitNullValueExposureEstimateConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig ExposureEstimateConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig ExposureEstimateConfig { get => _explicitNullValueExposureEstimateConfig; set { _explicitNullValueExposureEstimateConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_estimate_config"); else _explicitNullProperties?.Remove("exposure_estimate_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig _explicitNullValueExposureEstimateConfig = default!;
 #endif
         /// <summary>Minimum detectable effect as a percentage. Lower values need more users but catch smaller changes.</summary>
-        public double? MinimumDetectableEffect { get; set; }
+        public double? MinimumDetectableEffect { get => _explicitNullValueMinimumDetectableEffect; set { _explicitNullValueMinimumDetectableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum_detectable_effect"); else _explicitNullProperties?.Remove("minimum_detectable_effect"); } }
+        private double? _explicitNullValueMinimumDetectableEffect = default!;
         /// <summary>Estimated number of days needed to reach the recommended sample size.</summary>
-        public double? RecommendedRunningTime { get; set; }
+        public double? RecommendedRunningTime { get => _explicitNullValueRecommendedRunningTime; set { _explicitNullValueRecommendedRunningTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_running_time"); else _explicitNullProperties?.Remove("recommended_running_time"); } }
+        private double? _explicitNullValueRecommendedRunningTime = default!;
         /// <summary>Recommended number of exposed users needed for statistical significance.</summary>
-        public double? RecommendedSampleSize { get; set; }
+        public double? RecommendedSampleSize { get => _explicitNullValueRecommendedSampleSize; set { _explicitNullValueRecommendedSampleSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_sample_size"); else _explicitNullProperties?.Remove("recommended_sample_size"); } }
+        private double? _explicitNullValueRecommendedSampleSize = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -34,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,7 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentExposureEstimateConfig>("exposure_estimate_config", ExposureEstimateConfig);
             writer.WriteDoubleValue("minimum_detectable_effect", MinimumDetectableEffect);
             writer.WriteDoubleValue("recommended_running_time", RecommendedRunningTime);
-            writer.WriteDoubleValue("recommended_sample_size", RecommendedSampleSize);
+            writer.WriteDoubleValue("recommended_sample_size", RecommendedSampleSize);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

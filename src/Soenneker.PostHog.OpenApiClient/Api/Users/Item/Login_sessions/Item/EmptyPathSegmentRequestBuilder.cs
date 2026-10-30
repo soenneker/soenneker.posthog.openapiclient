@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Login_sessions.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Revoke a single login session belonging to the current user. Self-only.Requires recent auth (TimeSensitiveActionPermission) so a stolen cookie can&apos;t weaponizerevocation, and is blocked while impersonating via ImpersonationBlockedPathsMiddleware.

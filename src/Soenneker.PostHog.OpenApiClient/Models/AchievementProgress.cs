@@ -11,30 +11,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AchievementProgress : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("current_stage") is { } nullNodeCurrentStage && nullNodeCurrentStage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentStage = null;
+            if (parseNode.GetChildNode("last_computed_at") is { } nullNodeLastComputedAt && nullNodeLastComputedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastComputedAt = null;
+            if (parseNode.GetChildNode("progress_value") is { } nullNodeProgressValue && nullNodeProgressValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProgressValue = null;
+            if (parseNode.GetChildNode("track_key") is { } nullNodeTrackKey && nullNodeTrackKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrackKey = null;
+            if (parseNode.GetChildNode("unlocked_at") is { } nullNodeUnlockedAt && nullNodeUnlockedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnlockedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Highest stage unlocked so far, 0-5.</summary>
-        public int? CurrentStage { get; set; }
+        public int? CurrentStage { get => _explicitNullValueCurrentStage; set { _explicitNullValueCurrentStage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_stage"); else _explicitNullProperties?.Remove("current_stage"); } }
+        private int? _explicitNullValueCurrentStage = default!;
         /// <summary>When the track was last recomputed, or null if it never has been.</summary>
-        public DateTimeOffset? LastComputedAt { get; set; }
+        public DateTimeOffset? LastComputedAt { get => _explicitNullValueLastComputedAt; set { _explicitNullValueLastComputedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_computed_at"); else _explicitNullProperties?.Remove("last_computed_at"); } }
+        private DateTimeOffset? _explicitNullValueLastComputedAt = default!;
         /// <summary>Most recently computed progress value for the track.</summary>
-        public int? ProgressValue { get; set; }
+        public int? ProgressValue { get => _explicitNullValueProgressValue; set { _explicitNullValueProgressValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress_value"); else _explicitNullProperties?.Remove("progress_value"); } }
+        private int? _explicitNullValueProgressValue = default!;
         /// <summary>Track this progress row belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrackKey { get; set; }
+        public string? TrackKey { get => _explicitNullValueTrackKey; set { _explicitNullValueTrackKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("track_key"); else _explicitNullProperties?.Remove("track_key"); } }
+        private string? _explicitNullValueTrackKey = default!;
 #nullable restore
 #else
-        public string TrackKey { get; set; }
+        public string TrackKey { get => _explicitNullValueTrackKey; set { _explicitNullValueTrackKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("track_key"); else _explicitNullProperties?.Remove("track_key"); } }
+        private string _explicitNullValueTrackKey = default!;
 #endif
         /// <summary>Map of unlocked stage number (as a string, &apos;1&apos;-&apos;5&apos;) to the ISO timestamp it was unlocked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgressUnlockedAtProperty? UnlockedAt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgressUnlockedAtProperty? UnlockedAt { get => _explicitNullValueUnlockedAt; set { _explicitNullValueUnlockedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unlocked_at"); else _explicitNullProperties?.Remove("unlocked_at"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgressUnlockedAtProperty? _explicitNullValueUnlockedAt = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgressUnlockedAtProperty UnlockedAt { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgressUnlockedAtProperty UnlockedAt { get => _explicitNullValueUnlockedAt; set { _explicitNullValueUnlockedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unlocked_at"); else _explicitNullProperties?.Remove("unlocked_at"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgressUnlockedAtProperty _explicitNullValueUnlockedAt = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress"/> and sets the default values.
@@ -51,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("progress_value", ProgressValue);
             writer.WriteStringValue("track_key", TrackKey);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgressUnlockedAtProperty>("unlocked_at", UnlockedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,126 +11,186 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EvaluationResult : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("attentionReasons") is { } nullNodeAttentionReasons && nullNodeAttentionReasons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttentionReasons = null;
+            if (parseNode.GetChildNode("bucketStatus") is { } nullNodeBucketStatus && nullNodeBucketStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketStatus = null;
+            if (parseNode.GetChildNode("change") is { } nullNodeChange && nullNodeChange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Change = null;
+            if (parseNode.GetChildNode("createdBy") is { } nullNodeCreatedBy && nullNodeCreatedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedBy = null;
+            if (parseNode.GetChildNode("directoryName") is { } nullNodeDirectoryName && nullNodeDirectoryName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DirectoryName = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("evaluationType") is { } nullNodeEvaluationType && nullNodeEvaluationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationType = null;
+            if (parseNode.GetChildNode("gradedCount") is { } nullNodeGradedCount && nullNodeGradedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradedCount = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("lastRunAt") is { } nullNodeLastRunAt && nullNodeLastRunAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRunAt = null;
+            if (parseNode.GetChildNode("lowEvidence") is { } nullNodeLowEvidence && nullNodeLowEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LowEvidence = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("notApplicableCount") is { } nullNodeNotApplicableCount && nullNodeNotApplicableCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotApplicableCount = null;
+            if (parseNode.GetChildNode("outputType") is { } nullNodeOutputType && nullNodeOutputType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputType = null;
+            if (parseNode.GetChildNode("previousGradedCount") is { } nullNodePreviousGradedCount && nullNodePreviousGradedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousGradedCount = null;
+            if (parseNode.GetChildNode("skippedCount") is { } nullNodeSkippedCount && nullNodeSkippedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkippedCount = null;
+            if (parseNode.GetChildNode("statusReason") is { } nullNodeStatusReason && nullNodeStatusReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusReason = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("trackedCategory") is { } nullNodeTrackedCategory && nullNodeTrackedCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrackedCategory = null;
+            if (parseNode.GetChildNode("trend") is { } nullNodeTrend && nullNodeTrend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trend = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The attentionReasons property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AttentionReasonsEnum?>? AttentionReasons { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AttentionReasonsEnum?>? AttentionReasons { get => _explicitNullValueAttentionReasons; set { _explicitNullValueAttentionReasons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attentionReasons"); else _explicitNullProperties?.Remove("attentionReasons"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AttentionReasonsEnum?>? _explicitNullValueAttentionReasons = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AttentionReasonsEnum?> AttentionReasons { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AttentionReasonsEnum?> AttentionReasons { get => _explicitNullValueAttentionReasons; set { _explicitNullValueAttentionReasons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attentionReasons"); else _explicitNullProperties?.Remove("attentionReasons"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AttentionReasonsEnum?> _explicitNullValueAttentionReasons = default!;
 #endif
         /// <summary>Each bucket against the previous period. A bucket with too few graded runs to judge is never a dip.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BucketStatusEnum?>? BucketStatus { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BucketStatusEnum?>? BucketStatus { get => _explicitNullValueBucketStatus; set { _explicitNullValueBucketStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucketStatus"); else _explicitNullProperties?.Remove("bucketStatus"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BucketStatusEnum?>? _explicitNullValueBucketStatus = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BucketStatusEnum?> BucketStatus { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BucketStatusEnum?> BucketStatus { get => _explicitNullValueBucketStatus; set { _explicitNullValueBucketStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucketStatus"); else _explicitNullProperties?.Remove("bucketStatus"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BucketStatusEnum?> _explicitNullValueBucketStatus = default!;
 #endif
         /// <summary>Change against the previous period, or null when not comparable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultChange? Change { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResultChange? Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResultChange? _explicitNullValueChange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultChange Change { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResultChange Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResultChange _explicitNullValueChange = default!;
 #endif
         /// <summary>The createdBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CreatedBy { get; set; }
+        public string? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdBy"); else _explicitNullProperties?.Remove("createdBy"); } }
+        private string? _explicitNullValueCreatedBy = default!;
 #nullable restore
 #else
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("createdBy"); else _explicitNullProperties?.Remove("createdBy"); } }
+        private string _explicitNullValueCreatedBy = default!;
 #endif
         /// <summary>The directoryName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DirectoryName { get; set; }
+        public string? DirectoryName { get => _explicitNullValueDirectoryName; set { _explicitNullValueDirectoryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("directoryName"); else _explicitNullProperties?.Remove("directoryName"); } }
+        private string? _explicitNullValueDirectoryName = default!;
 #nullable restore
 #else
-        public string DirectoryName { get; set; }
+        public string DirectoryName { get => _explicitNullValueDirectoryName; set { _explicitNullValueDirectoryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("directoryName"); else _explicitNullProperties?.Remove("directoryName"); } }
+        private string _explicitNullValueDirectoryName = default!;
 #endif
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>The evaluationType property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvaluationType { get; set; }
+        public string? EvaluationType { get => _explicitNullValueEvaluationType; set { _explicitNullValueEvaluationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluationType"); else _explicitNullProperties?.Remove("evaluationType"); } }
+        private string? _explicitNullValueEvaluationType = default!;
 #nullable restore
 #else
-        public string EvaluationType { get; set; }
+        public string EvaluationType { get => _explicitNullValueEvaluationType; set { _explicitNullValueEvaluationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluationType"); else _explicitNullProperties?.Remove("evaluationType"); } }
+        private string _explicitNullValueEvaluationType = default!;
 #endif
         /// <summary>The gradedCount property</summary>
-        public int? GradedCount { get; set; }
+        public int? GradedCount { get => _explicitNullValueGradedCount; set { _explicitNullValueGradedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedCount"); else _explicitNullProperties?.Remove("gradedCount"); } }
+        private int? _explicitNullValueGradedCount = default!;
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The latest graded run in the current or previous period.</summary>
-        public DateTimeOffset? LastRunAt { get; set; }
+        public DateTimeOffset? LastRunAt { get => _explicitNullValueLastRunAt; set { _explicitNullValueLastRunAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lastRunAt"); else _explicitNullProperties?.Remove("lastRunAt"); } }
+        private DateTimeOffset? _explicitNullValueLastRunAt = default!;
         /// <summary>The lowEvidence property</summary>
-        public bool? LowEvidence { get; set; }
+        public bool? LowEvidence { get => _explicitNullValueLowEvidence; set { _explicitNullValueLowEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lowEvidence"); else _explicitNullProperties?.Remove("lowEvidence"); } }
+        private bool? _explicitNullValueLowEvidence = default!;
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The notApplicableCount property</summary>
-        public int? NotApplicableCount { get; set; }
+        public int? NotApplicableCount { get => _explicitNullValueNotApplicableCount; set { _explicitNullValueNotApplicableCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notApplicableCount"); else _explicitNullProperties?.Remove("notApplicableCount"); } }
+        private int? _explicitNullValueNotApplicableCount = default!;
         /// <summary>The outputType property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OutputType { get; set; }
+        public string? OutputType { get => _explicitNullValueOutputType; set { _explicitNullValueOutputType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outputType"); else _explicitNullProperties?.Remove("outputType"); } }
+        private string? _explicitNullValueOutputType = default!;
 #nullable restore
 #else
-        public string OutputType { get; set; }
+        public string OutputType { get => _explicitNullValueOutputType; set { _explicitNullValueOutputType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outputType"); else _explicitNullProperties?.Remove("outputType"); } }
+        private string _explicitNullValueOutputType = default!;
 #endif
         /// <summary>Graded runs in the previous period, or null when none.</summary>
-        public int? PreviousGradedCount { get; set; }
+        public int? PreviousGradedCount { get => _explicitNullValuePreviousGradedCount; set { _explicitNullValuePreviousGradedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousGradedCount"); else _explicitNullProperties?.Remove("previousGradedCount"); } }
+        private int? _explicitNullValuePreviousGradedCount = default!;
         /// <summary>Runs skipped before scoring.</summary>
-        public int? SkippedCount { get; set; }
+        public int? SkippedCount { get => _explicitNullValueSkippedCount; set { _explicitNullValueSkippedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skippedCount"); else _explicitNullProperties?.Remove("skippedCount"); } }
+        private int? _explicitNullValueSkippedCount = default!;
         /// <summary>Why the evaluation stopped with an error, as an evaluation status reason, or null when it has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StatusReason { get; set; }
+        public string? StatusReason { get => _explicitNullValueStatusReason; set { _explicitNullValueStatusReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statusReason"); else _explicitNullProperties?.Remove("statusReason"); } }
+        private string? _explicitNullValueStatusReason = default!;
 #nullable restore
 #else
-        public string StatusReason { get; set; }
+        public string StatusReason { get => _explicitNullValueStatusReason; set { _explicitNullValueStatusReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statusReason"); else _explicitNullProperties?.Remove("statusReason"); } }
+        private string _explicitNullValueStatusReason = default!;
 #endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultSummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultSummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>Key of the category a categorical evaluation&apos;s trend follows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrackedCategory { get; set; }
+        public string? TrackedCategory { get => _explicitNullValueTrackedCategory; set { _explicitNullValueTrackedCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trackedCategory"); else _explicitNullProperties?.Remove("trackedCategory"); } }
+        private string? _explicitNullValueTrackedCategory = default!;
 #nullable restore
 #else
-        public string TrackedCategory { get; set; }
+        public string TrackedCategory { get => _explicitNullValueTrackedCategory; set { _explicitNullValueTrackedCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trackedCategory"); else _explicitNullProperties?.Remove("trackedCategory"); } }
+        private string _explicitNullValueTrackedCategory = default!;
 #endif
         /// <summary>The trend property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultTrend? Trend { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultTrend? Trend { get => _explicitNullValueTrend; set { _explicitNullValueTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trend"); else _explicitNullProperties?.Remove("trend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultTrend? _explicitNullValueTrend = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultTrend Trend { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultTrend Trend { get => _explicitNullValueTrend; set { _explicitNullValueTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trend"); else _explicitNullProperties?.Remove("trend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultTrend _explicitNullValueTrend = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult"/> and sets the default values.
@@ -147,7 +207,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -206,6 +266,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultSummary>("summary", Summary);
             writer.WriteStringValue("trackedCategory", TrackedCategory);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultTrend>("trend", Trend);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

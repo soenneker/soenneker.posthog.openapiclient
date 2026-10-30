@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Every author&apos;s friction over pull requests merged in the last 30 days, most first: red CI they did not cause, re-runs that failed again, CI waits, the wait for the first approval, merge-queue time and failed queue attempts, and rework. The score is a multiple of the typical author and never counts how much or how fast someone ships. Bots are excluded, and authors need at least 3 merged pull requests.

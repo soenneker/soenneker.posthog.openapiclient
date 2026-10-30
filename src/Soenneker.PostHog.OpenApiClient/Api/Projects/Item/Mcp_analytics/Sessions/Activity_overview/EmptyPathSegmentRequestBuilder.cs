@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_analytics.Sessio
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpActivityOverview>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpActivityOverview.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpActivityOverview>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpActivityOverview.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Aggregate counters, top tools, agent clients, and the most recent tool calls for the last 30 days, computed in one request. Powers the dashboard&apos;s activity view. Results are cached for up to 5 minutes, or 20 seconds when the caller has property restrictions. An empty result is never cached.

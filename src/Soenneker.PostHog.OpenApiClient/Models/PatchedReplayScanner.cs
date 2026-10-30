@@ -12,7 +12,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedReplayScanner : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("creation_method") is { } nullNodeCreationMethod && nullNodeCreationMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreationMethod = null;
+            if (parseNode.GetChildNode("credit_limit") is { } nullNodeCreditLimit && nullNodeCreditLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditLimit = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("emits_signals") is { } nullNodeEmitsSignals && nullNodeEmitsSignals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmitsSignals = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("experiment_targeting") is { } nullNodeExperimentTargeting && nullNodeExperimentTargeting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentTargeting = null;
+            if (parseNode.GetChildNode("free_only") is { } nullNodeFreeOnly && nullNodeFreeOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FreeOnly = null;
+            if (parseNode.GetChildNode("goal") is { } nullNodeGoal && nullNodeGoal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goal = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("provider") is { } nullNodeProvider && nullNodeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Provider = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("sampling_mode") is { } nullNodeSamplingMode && nullNodeSamplingMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingMode = null;
+            if (parseNode.GetChildNode("sampling_rate") is { } nullNodeSamplingRate && nullNodeSamplingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingRate = null;
+            if (parseNode.GetChildNode("scanner_config") is { } nullNodeScannerConfig && nullNodeScannerConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerConfig = null;
+            if (parseNode.GetChildNode("scanner_type") is { } nullNodeScannerType && nullNodeScannerType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerType = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
@@ -28,13 +52,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How the creator built this scanner: from an AI draft, from a template, or from scratch. Reported to product analytics at creation and not stored on the scanner. Independent of any experiment the creator is in, since a person offered the AI flow can still fill the form by hand. Only the app can answer this, so a request from anywhere else reports the calling surface instead of whatever it sends here. Ignored on update.* `ai` - AI draft* `template` - Template* `scratch` - From scratch</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod? CreationMethod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod? CreationMethod { get => _explicitNullValueCreationMethod; set { _explicitNullValueCreationMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creation_method"); else _explicitNullProperties?.Remove("creation_method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod? _explicitNullValueCreationMethod = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod CreationMethod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod CreationMethod { get => _explicitNullValueCreationMethod; set { _explicitNullValueCreationMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creation_method"); else _explicitNullProperties?.Remove("creation_method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod _explicitNullValueCreationMethod = default!;
 #endif
         /// <summary>Optional cap on this scanner&apos;s own credit spend per billing period. Null means no scanner-level cap. When reached, this scanner stops scanning until the period resets. It stays enabled and does not scan the sessions it skipped.</summary>
-        public int? CreditLimit { get; set; }
+        public int? CreditLimit { get => _explicitNullValueCreditLimit; set { _explicitNullValueCreditLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credit_limit"); else _explicitNullProperties?.Remove("credit_limit"); } }
+        private int? _explicitNullValueCreditLimit = default!;
         /// <summary>Credits one observation by this scanner costs (1 credit = $0.01), derived from `model`.</summary>
         public int? CreditsPerObservation { get; private set; }
         /// <summary>Credits billed for this scanner&apos;s observations created in the current billing period (1 credit = $0.01), each at the price frozen when it succeeded. Deleted observations still count.</summary>
@@ -48,15 +75,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Free-form description shown in the scanner management UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals.</summary>
-        public bool? EmitsSignals { get; set; }
+        public bool? EmitsSignals { get => _explicitNullValueEmitsSignals; set { _explicitNullValueEmitsSignals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emits_signals"); else _explicitNullProperties?.Remove("emits_signals"); } }
+        private bool? _explicitNullValueEmitsSignals = default!;
         /// <summary>When false, the reconciler removes the scanner&apos;s Temporal schedule. On-demand triggers still work.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>When `estimated_monthly_observations` was last computed. Null means the estimate is being recomputed after a config change or has never run, so the stored number may be stale.</summary>
         public DateTimeOffset? EstimatedAt { get; private set; }
         /// <summary>`estimated_monthly_observations` priced at `credits_per_observation`, capped at `credit_limit` when one is set. Null until the estimate is first computed.</summary>
@@ -66,20 +97,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The experiment this scanner&apos;s targeting watches, if any. Set null when the experiment targeting is removed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting? ExperimentTargeting { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting? ExperimentTargeting { get => _explicitNullValueExperimentTargeting; set { _explicitNullValueExperimentTargeting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_targeting"); else _explicitNullProperties?.Remove("experiment_targeting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting? _explicitNullValueExperimentTargeting = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting ExperimentTargeting { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting ExperimentTargeting { get => _explicitNullValueExperimentTargeting; set { _explicitNullValueExperimentTargeting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_targeting"); else _explicitNullProperties?.Remove("experiment_targeting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting _explicitNullValueExperimentTargeting = default!;
 #endif
         /// <summary>Run only while the organization has free credits left this billing period, so the scanner never adds spend.</summary>
-        public bool? FreeOnly { get; set; }
+        public bool? FreeOnly { get => _explicitNullValueFreeOnly; set { _explicitNullValueFreeOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("free_only"); else _explicitNullProperties?.Remove("free_only"); } }
+        private bool? _explicitNullValueFreeOnly = default!;
         /// <summary>The goal an AI draft was built from, in the creator&apos;s own words, so the scanner keeps what it was meant to find. Set on create only and ignored on update.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Goal { get; set; }
+        public string? Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
+        private string? _explicitNullValueGoal = default!;
 #nullable restore
 #else
-        public string Goal { get; set; }
+        public string Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
+        private string _explicitNullValueGoal = default!;
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -90,14 +126,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether this scanner has stopped because of its own credit limit, or, for a `free_only` scanner, because the organization has used its free credits. True when the budget left cannot cover one more observation, which is the same test the scanner&apos;s enforcement gates apply. Always false when no limit is set and `free_only` is false.</summary>
         public bool? LimitReached { get; private set; }
         /// <summary>* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerModel? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerModel? _explicitNullValueModel = default!;
         /// <summary>Human-readable scanner name. Unique within the team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Billed observations this scanner created in the current billing period, including deleted ones.</summary>
         public int? ObservationsThisMonth { get; private set; }
@@ -110,29 +149,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string PromptQuestion { get; private set; }
 #endif
         /// <summary>* `google` - Google</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerProvider? Provider { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerProvider? Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerProvider? _explicitNullValueProvider = default!;
         /// <summary>Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; set; }
+        public UntypedNode? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public UntypedNode Query { get; set; }
+        public UntypedNode Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode _explicitNullValueQuery = default!;
 #endif
         /// <summary>* `focused` - Focused* `balanced` - Balanced* `comprehensive` - Comprehensive</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerSamplingMode? SamplingMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerSamplingMode? SamplingMode { get => _explicitNullValueSamplingMode; set { _explicitNullValueSamplingMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_mode"); else _explicitNullProperties?.Remove("sampling_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerSamplingMode? _explicitNullValueSamplingMode = default!;
         /// <summary>0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision.</summary>
-        public double? SamplingRate { get; set; }
+        public double? SamplingRate { get => _explicitNullValueSamplingRate; set { _explicitNullValueSamplingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_rate"); else _explicitNullProperties?.Remove("sampling_rate"); } }
+        private double? _explicitNullValueSamplingRate = default!;
         /// <summary>Type-specific configuration. All scanner types require `prompt`; monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers add `scale`, summarizers add optional `length`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ScannerConfig { get; set; }
+        public UntypedNode? ScannerConfig { get => _explicitNullValueScannerConfig; set { _explicitNullValueScannerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_config"); else _explicitNullProperties?.Remove("scanner_config"); } }
+        private UntypedNode? _explicitNullValueScannerConfig = default!;
 #nullable restore
 #else
-        public UntypedNode ScannerConfig { get; set; }
+        public UntypedNode ScannerConfig { get => _explicitNullValueScannerConfig; set { _explicitNullValueScannerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_config"); else _explicitNullProperties?.Remove("scanner_config"); } }
+        private UntypedNode _explicitNullValueScannerConfig = default!;
 #endif
         /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerType? ScannerType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerType? ScannerType { get => _explicitNullValueScannerType; set { _explicitNullValueScannerType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_type"); else _explicitNullProperties?.Remove("scanner_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerType? _explicitNullValueScannerType = default!;
         /// <summary>Increments on every config-changing save. Observations snapshot this value.</summary>
         public int? ScannerVersion { get; private set; }
         /// <summary>How much the scheduled sweep is slowed to keep this scanner inside its daily ClickHouse read budget. 1 means it checks for new recordings on the normal schedule; N means it checks once every N schedule intervals. Expensive filters raise it.</summary>
@@ -140,10 +187,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Organizational tags for this scanner. Distinct from a classifier&apos;s categories in scanner_config. Tags cannot contain commas.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -170,7 +219,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScanner(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -243,6 +292,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("scanner_config", ScannerConfig);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerType>("scanner_type", ScannerType);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

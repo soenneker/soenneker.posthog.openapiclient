@@ -12,72 +12,103 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingIssueBreakdownTopValues : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("app_version") is { } nullNodeAppVersion && nullNodeAppVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppVersion = null;
+            if (parseNode.GetChildNode("browser") is { } nullNodeBrowser && nullNodeBrowser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Browser = null;
+            if (parseNode.GetChildNode("library") is { } nullNodeLibrary && nullNodeLibrary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Library = null;
+            if (parseNode.GetChildNode("library_version") is { } nullNodeLibraryVersion && nullNodeLibraryVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibraryVersion = null;
+            if (parseNode.GetChildNode("os") is { } nullNodeOs && nullNodeOs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Os = null;
+            if (parseNode.GetChildNode("path") is { } nullNodePath && nullNodePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Path = null;
+            if (parseNode.GetChildNode("screen") is { } nullNodeScreen && nullNodeScreen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Screen = null;
+            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Most common $app_version values, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? AppVersion { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? AppVersion { get => _explicitNullValueAppVersion; set { _explicitNullValueAppVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_version"); else _explicitNullProperties?.Remove("app_version"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? _explicitNullValueAppVersion = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> AppVersion { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> AppVersion { get => _explicitNullValueAppVersion; set { _explicitNullValueAppVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_version"); else _explicitNullProperties?.Remove("app_version"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> _explicitNullValueAppVersion = default!;
 #endif
         /// <summary>Most common $browser values, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Browser { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? _explicitNullValueBrowser = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Browser { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> _explicitNullValueBrowser = default!;
 #endif
         /// <summary>Most common $lib values, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Library { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Library { get => _explicitNullValueLibrary; set { _explicitNullValueLibrary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("library"); else _explicitNullProperties?.Remove("library"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? _explicitNullValueLibrary = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Library { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Library { get => _explicitNullValueLibrary; set { _explicitNullValueLibrary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("library"); else _explicitNullProperties?.Remove("library"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> _explicitNullValueLibrary = default!;
 #endif
         /// <summary>Most common $lib_version values, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? LibraryVersion { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? LibraryVersion { get => _explicitNullValueLibraryVersion; set { _explicitNullValueLibraryVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("library_version"); else _explicitNullProperties?.Remove("library_version"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? _explicitNullValueLibraryVersion = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> LibraryVersion { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> LibraryVersion { get => _explicitNullValueLibraryVersion; set { _explicitNullValueLibraryVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("library_version"); else _explicitNullProperties?.Remove("library_version"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> _explicitNullValueLibraryVersion = default!;
 #endif
         /// <summary>Most common $os values, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Os { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Os { get => _explicitNullValueOs; set { _explicitNullValueOs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("os"); else _explicitNullProperties?.Remove("os"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? _explicitNullValueOs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Os { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Os { get => _explicitNullValueOs; set { _explicitNullValueOs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("os"); else _explicitNullProperties?.Remove("os"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> _explicitNullValueOs = default!;
 #endif
         /// <summary>Most common $pathname values, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Path { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? _explicitNullValuePath = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Path { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> _explicitNullValuePath = default!;
 #endif
         /// <summary>Most common $screen_name values, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Screen { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Screen { get => _explicitNullValueScreen; set { _explicitNullValueScreen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("screen"); else _explicitNullProperties?.Remove("screen"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? _explicitNullValueScreen = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Screen { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Screen { get => _explicitNullValueScreen; set { _explicitNullValueScreen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("screen"); else _explicitNullProperties?.Remove("screen"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> _explicitNullValueScreen = default!;
 #endif
         /// <summary>Most common $current_url values, most frequent first. Returned only when events have no $pathname, as with backend SDKs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Url { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Url { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue> _explicitNullValueUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues"/> and sets the default values.
@@ -94,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueBreakdownTopValues(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,6 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>("path", Path);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>("screen", Screen);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingBreakdownValue>("url", Url);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

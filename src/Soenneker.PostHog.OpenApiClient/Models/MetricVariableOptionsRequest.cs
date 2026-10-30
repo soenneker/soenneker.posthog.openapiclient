@@ -11,58 +11,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MetricVariableOptionsRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("customValues") is { } nullNodeCustomValues && nullNodeCustomValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomValues = null;
+            if (parseNode.GetChildNode("dateFrom") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("dateTo") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("regex") is { } nullNodeRegex && nullNodeRegex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Regex = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("variables") is { } nullNodeVariables && nullNodeVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variables = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The options when `source` is `custom`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CustomValues { get; set; }
+        public List<string>? CustomValues { get => _explicitNullValueCustomValues; set { _explicitNullValueCustomValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customValues"); else _explicitNullProperties?.Remove("customValues"); } }
+        private List<string>? _explicitNullValueCustomValues = default!;
 #nullable restore
 #else
-        public List<string> CustomValues { get; set; }
+        public List<string> CustomValues { get => _explicitNullValueCustomValues; set { _explicitNullValueCustomValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customValues"); else _explicitNullProperties?.Remove("customValues"); } }
+        private List<string> _explicitNullValueCustomValues = default!;
 #endif
         /// <summary>Start of the window that options come from, as in a dashboard date filter: ISO 8601 or a relative date such as &apos;-7d&apos;. Defaults to 24 hours ago.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateFrom { get; set; }
+        public string? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateFrom"); else _explicitNullProperties?.Remove("dateFrom"); } }
+        private string? _explicitNullValueDateFrom = default!;
 #nullable restore
 #else
-        public string DateFrom { get; set; }
+        public string DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateFrom"); else _explicitNullProperties?.Remove("dateFrom"); } }
+        private string _explicitNullValueDateFrom = default!;
 #endif
         /// <summary>End of the window that options come from, in the same format as dateFrom. Defaults to now.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateTo { get; set; }
+        public string? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateTo"); else _explicitNullProperties?.Remove("dateTo"); } }
+        private string? _explicitNullValueDateTo = default!;
 #nullable restore
 #else
-        public string DateTo { get; set; }
+        public string DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateTo"); else _explicitNullProperties?.Remove("dateTo"); } }
+        private string _explicitNullValueDateTo = default!;
 #endif
         /// <summary>The options query when `source` is `promql` or `sql`. It can refer to other variables as `$name`. PromQL supports label_values(label), label_values(selector, label), label_names(), metrics(regex) and query_result(expr). SQL returns the options in its first column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get; set; }
+        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private string? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public string Query { get; set; }
+        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private string _explicitNullValueQuery = default!;
 #endif
         /// <summary>A regex that filters the options of a query, as `pattern` or `/pattern/flags`. With a capture group, each option is its first group. An invalid regex is rejected before any query runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Regex { get; set; }
+        public string? Regex { get => _explicitNullValueRegex; set { _explicitNullValueRegex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regex"); else _explicitNullProperties?.Remove("regex"); } }
+        private string? _explicitNullValueRegex = default!;
 #nullable restore
 #else
-        public string Regex { get; set; }
+        public string Regex { get => _explicitNullValueRegex; set { _explicitNullValueRegex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regex"); else _explicitNullProperties?.Remove("regex"); } }
+        private string _explicitNullValueRegex = default!;
 #endif
         /// <summary>* `custom` - custom* `promql` - promql* `sql` - sql* `textbox` - textbox</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableOptionsRequestSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableOptionsRequestSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableOptionsRequestSource? _explicitNullValueSource = default!;
         /// <summary>The current selection of the other dashboard variables that the query can refer to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableSelection>? Variables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableSelection>? Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableSelection>? _explicitNullValueVariables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableSelection> Variables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableSelection> Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableSelection> _explicitNullValueVariables = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableOptionsRequest"/> and sets the default values.
@@ -79,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableOptionsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableOptionsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableOptionsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("regex", Regex);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableOptionsRequestSource>("source", Source);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricVariableSelection>("variables", Variables);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

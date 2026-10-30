@@ -12,71 +12,115 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DetectorConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("detectors") is { } nullNodeDetectors && nullNodeDetectors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detectors = null;
+            if (parseNode.GetChildNode("instructions") is { } nullNodeInstructions && nullNodeInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instructions = null;
+            if (parseNode.GetChildNode("kernel") is { } nullNodeKernel && nullNodeKernel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kernel = null;
+            if (parseNode.GetChildNode("lower_bound") is { } nullNodeLowerBound && nullNodeLowerBound.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LowerBound = null;
+            if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
+            if (parseNode.GetChildNode("multiplier") is { } nullNodeMultiplier && nullNodeMultiplier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Multiplier = null;
+            if (parseNode.GetChildNode("n_bins") is { } nullNodeNBins && nullNodeNBins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NBins = null;
+            if (parseNode.GetChildNode("n_estimators") is { } nullNodeNEstimators && nullNodeNEstimators.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NEstimators = null;
+            if (parseNode.GetChildNode("n_neighbors") is { } nullNodeNNeighbors && nullNodeNNeighbors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NNeighbors = null;
+            if (parseNode.GetChildNode("nu") is { } nullNodeNu && nullNodeNu.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nu = null;
+            if (parseNode.GetChildNode("operator") is { } nullNodeOperator && nullNodeOperator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Operator = null;
+            if (parseNode.GetChildNode("preprocessing") is { } nullNodePreprocessing && nullNodePreprocessing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Preprocessing = null;
+            if (parseNode.GetChildNode("threshold") is { } nullNodeThreshold && nullNodeThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Threshold = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("upper_bound") is { } nullNodeUpperBound && nullNodeUpperBound.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpperBound = null;
+            if (parseNode.GetChildNode("window") is { } nullNodeWindow && nullNodeWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Window = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Sub-detector configurations (minimum 2)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem>? Detectors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem>? Detectors { get => _explicitNullValueDetectors; set { _explicitNullValueDetectors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detectors"); else _explicitNullProperties?.Remove("detectors"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem>? _explicitNullValueDetectors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem> Detectors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem> Detectors { get => _explicitNullValueDetectors; set { _explicitNullValueDetectors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detectors"); else _explicitNullProperties?.Remove("detectors"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem> _explicitNullValueDetectors = default!;
 #endif
         /// <summary>What counts as unusual or interesting for this metric, in your own words. Optional.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Instructions { get; set; }
+        public string? Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
+        private string? _explicitNullValueInstructions = default!;
 #nullable restore
 #else
-        public string Instructions { get; set; }
+        public string Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
+        private string _explicitNullValueInstructions = default!;
 #endif
         /// <summary>SVM kernel type (default: &quot;rbf&quot;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kernel { get; set; }
+        public string? Kernel { get => _explicitNullValueKernel; set { _explicitNullValueKernel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kernel"); else _explicitNullProperties?.Remove("kernel"); } }
+        private string? _explicitNullValueKernel = default!;
 #nullable restore
 #else
-        public string Kernel { get; set; }
+        public string Kernel { get => _explicitNullValueKernel; set { _explicitNullValueKernel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kernel"); else _explicitNullProperties?.Remove("kernel"); } }
+        private string _explicitNullValueKernel = default!;
 #endif
         /// <summary>Lower bound - values below this are anomalies</summary>
-        public double? LowerBound { get; set; }
+        public double? LowerBound { get => _explicitNullValueLowerBound; set { _explicitNullValueLowerBound = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lower_bound"); else _explicitNullProperties?.Remove("lower_bound"); } }
+        private double? _explicitNullValueLowerBound = default!;
         /// <summary>Distance method: &apos;largest&apos;, &apos;mean&apos;, &apos;median&apos; (default: &apos;largest&apos;)</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MethodObject? Method { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MethodObject? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MethodObject? _explicitNullValueMethod = default!;
         /// <summary>IQR multiplier for fence calculation (default: 1.5, use 3.0 for far outliers)</summary>
-        public double? Multiplier { get; set; }
+        public double? Multiplier { get => _explicitNullValueMultiplier; set { _explicitNullValueMultiplier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiplier"); else _explicitNullProperties?.Remove("multiplier"); } }
+        private double? _explicitNullValueMultiplier = default!;
         /// <summary>Number of histogram bins (default: 10)</summary>
-        public int? NBins { get; set; }
+        public int? NBins { get => _explicitNullValueNBins; set { _explicitNullValueNBins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_bins"); else _explicitNullProperties?.Remove("n_bins"); } }
+        private int? _explicitNullValueNBins = default!;
         /// <summary>Number of trees in the forest (default: 100)</summary>
-        public int? NEstimators { get; set; }
+        public int? NEstimators { get => _explicitNullValueNEstimators; set { _explicitNullValueNEstimators = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_estimators"); else _explicitNullProperties?.Remove("n_estimators"); } }
+        private int? _explicitNullValueNEstimators = default!;
         /// <summary>Number of neighbors to consider (default: 5)</summary>
-        public int? NNeighbors { get; set; }
+        public int? NNeighbors { get => _explicitNullValueNNeighbors; set { _explicitNullValueNNeighbors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_neighbors"); else _explicitNullProperties?.Remove("n_neighbors"); } }
+        private int? _explicitNullValueNNeighbors = default!;
         /// <summary>Upper bound on training errors fraction (default: 0.1)</summary>
-        public double? Nu { get; set; }
+        public double? Nu { get => _explicitNullValueNu; set { _explicitNullValueNu = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nu"); else _explicitNullProperties?.Remove("nu"); } }
+        private double? _explicitNullValueNu = default!;
         /// <summary>How to combine sub-detector results</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator? Operator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator? Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EnsembleOperator? _explicitNullValueOperator = default!;
         /// <summary>Preprocessing transforms applied before detection</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? Preprocessing { get => _explicitNullValuePreprocessing; set { _explicitNullValuePreprocessing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preprocessing"); else _explicitNullProperties?.Remove("preprocessing"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig? _explicitNullValuePreprocessing = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig Preprocessing { get => _explicitNullValuePreprocessing; set { _explicitNullValuePreprocessing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preprocessing"); else _explicitNullProperties?.Remove("preprocessing"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig _explicitNullValuePreprocessing = default!;
 #endif
         /// <summary>Anomaly probability threshold [0-1]. Points above this probability are flagged (default: 0.9)</summary>
-        public double? Threshold { get; set; }
+        public double? Threshold { get => _explicitNullValueThreshold; set { _explicitNullValueThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold"); else _explicitNullProperties?.Remove("threshold"); } }
+        private double? _explicitNullValueThreshold = default!;
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string? _explicitNullValueType = default!;
 #nullable restore
 #else
-        public string Type { get; set; }
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string _explicitNullValueType = default!;
 #endif
         /// <summary>Upper bound - values above this are anomalies</summary>
-        public double? UpperBound { get; set; }
+        public double? UpperBound { get => _explicitNullValueUpperBound; set { _explicitNullValueUpperBound = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upper_bound"); else _explicitNullProperties?.Remove("upper_bound"); } }
+        private double? _explicitNullValueUpperBound = default!;
         /// <summary>Rolling window size for calculating mean/std (default: 30)</summary>
-        public int? Window { get; set; }
+        public int? Window { get => _explicitNullValueWindow; set { _explicitNullValueWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window"); else _explicitNullProperties?.Remove("window"); } }
+        private int? _explicitNullValueWindow = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig"/> and sets the default values.
         /// </summary>
@@ -92,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -143,6 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("type", Type);
             writer.WriteDoubleValue("upper_bound", UpperBound);
             writer.WriteIntValue("window", Window);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

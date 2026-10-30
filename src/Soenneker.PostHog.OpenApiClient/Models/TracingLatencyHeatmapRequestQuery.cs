@@ -12,42 +12,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TracingLatencyHeatmapRequestQuery : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dateRange") is { } nullNodeDateRange && nullNodeDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateRange = null;
+            if (parseNode.GetChildNode("filterGroup") is { } nullNodeFilterGroup && nullNodeFilterGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterGroup = null;
+            if (parseNode.GetChildNode("rootSpans") is { } nullNodeRootSpans && nullNodeRootSpans.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RootSpans = null;
+            if (parseNode.GetChildNode("serviceNames") is { } nullNodeServiceNames && nullNodeServiceNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceNames = null;
+            if (parseNode.GetChildNode("statusCodes") is { } nullNodeStatusCodes && nullNodeStatusCodes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusCodes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Date range for the query. Defaults to last hour.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingDurationHistogramQueryBodyDateRange? DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingDurationHistogramQueryBodyDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracingDurationHistogramQueryBodyDateRange? _explicitNullValueDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingDurationHistogramQueryBodyDateRange DateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingDurationHistogramQueryBodyDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracingDurationHistogramQueryBodyDateRange _explicitNullValueDateRange = default!;
 #endif
         /// <summary>Property filters for the query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? FilterGroup { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? _explicitNullValueFilterGroup = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> _explicitNullValueFilterGroup = default!;
 #endif
         /// <summary>When true (default), bucket root-span durations only — a distribution of traces. When false, bucket every matching span — used with a span name filter for operation-scoped distributions.</summary>
-        public bool? RootSpans { get; set; }
+        public bool? RootSpans { get => _explicitNullValueRootSpans; set { _explicitNullValueRootSpans = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rootSpans"); else _explicitNullProperties?.Remove("rootSpans"); } }
+        private bool? _explicitNullValueRootSpans = default!;
         /// <summary>Filter by service names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ServiceNames { get; set; }
+        public List<string>? ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        private List<string>? _explicitNullValueServiceNames = default!;
 #nullable restore
 #else
-        public List<string> ServiceNames { get; set; }
+        public List<string> ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        private List<string> _explicitNullValueServiceNames = default!;
 #endif
         /// <summary>Filter by OTel span status codes (0 Unset, 1 OK, 2 Error) — not HTTP status codes. Use [2] to select error spans.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? StatusCodes { get; set; }
+        public List<int?>? StatusCodes { get => _explicitNullValueStatusCodes; set { _explicitNullValueStatusCodes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statusCodes"); else _explicitNullProperties?.Remove("statusCodes"); } }
+        private List<int?>? _explicitNullValueStatusCodes = default!;
 #nullable restore
 #else
-        public List<int?> StatusCodes { get; set; }
+        public List<int?> StatusCodes { get => _explicitNullValueStatusCodes; set { _explicitNullValueStatusCodes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statusCodes"); else _explicitNullProperties?.Remove("statusCodes"); } }
+        private List<int?> _explicitNullValueStatusCodes = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracingLatencyHeatmapRequestQuery"/> and sets the default values.
@@ -65,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TracingLatencyHeatmapRequestQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TracingLatencyHeatmapRequestQuery();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TracingLatencyHeatmapRequestQuery(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -94,6 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("rootSpans", RootSpans);
             writer.WriteCollectionOfPrimitiveValues<string>("serviceNames", ServiceNames);
             writer.WriteCollectionOfPrimitiveValues<int?>("statusCodes", StatusCodes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

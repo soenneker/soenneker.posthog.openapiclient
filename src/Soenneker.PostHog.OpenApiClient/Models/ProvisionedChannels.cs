@@ -12,21 +12,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProvisionedChannels : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("channels") is { } nullNodeChannels && nullNodeChannels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Channels = null;
+            if (parseNode.GetChildNode("general_created") is { } nullNodeGeneralCreated && nullNodeGeneralCreated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneralCreated = null;
+            if (parseNode.GetChildNode("personal_created") is { } nullNodePersonalCreated && nullNodePersonalCreated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonalCreated = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The full channel list after provisioning, same shape as the list endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto>? Channels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto>? Channels { get => _explicitNullValueChannels; set { _explicitNullValueChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("channels"); else _explicitNullProperties?.Remove("channels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto>? _explicitNullValueChannels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto> Channels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto> Channels { get => _explicitNullValueChannels; set { _explicitNullValueChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("channels"); else _explicitNullProperties?.Remove("channels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto> _explicitNullValueChannels = default!;
 #endif
         /// <summary>Whether this call created the team&apos;s shared #general channel. True only for the first user to provision it, so clients can branch first-user setup on it.</summary>
-        public bool? GeneralCreated { get; set; }
+        public bool? GeneralCreated { get => _explicitNullValueGeneralCreated; set { _explicitNullValueGeneralCreated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("general_created"); else _explicitNullProperties?.Remove("general_created"); } }
+        private bool? _explicitNullValueGeneralCreated = default!;
         /// <summary>Whether this call created the requester&apos;s personal #me channel.</summary>
-        public bool? PersonalCreated { get; set; }
+        public bool? PersonalCreated { get => _explicitNullValuePersonalCreated; set { _explicitNullValuePersonalCreated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personal_created"); else _explicitNullProperties?.Remove("personal_created"); } }
+        private bool? _explicitNullValuePersonalCreated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProvisionedChannels"/> and sets the default values.
         /// </summary>
@@ -42,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ProvisionedChannels CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ProvisionedChannels();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ProvisionedChannels(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDto>("channels", Channels);
             writer.WriteBoolValue("general_created", GeneralCreated);
             writer.WriteBoolValue("personal_created", PersonalCreated);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,29 +12,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TextReprRequestOptions : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("collapsed") is { } nullNodeCollapsed && nullNodeCollapsed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Collapsed = null;
+            if (parseNode.GetChildNode("include_hierarchy") is { } nullNodeIncludeHierarchy && nullNodeIncludeHierarchy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeHierarchy = null;
+            if (parseNode.GetChildNode("include_line_numbers") is { } nullNodeIncludeLineNumbers && nullNodeIncludeLineNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeLineNumbers = null;
+            if (parseNode.GetChildNode("include_markers") is { } nullNodeIncludeMarkers && nullNodeIncludeMarkers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeMarkers = null;
+            if (parseNode.GetChildNode("include_metadata") is { } nullNodeIncludeMetadata && nullNodeIncludeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeMetadata = null;
+            if (parseNode.GetChildNode("max_depth") is { } nullNodeMaxDepth && nullNodeMaxDepth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxDepth = null;
+            if (parseNode.GetChildNode("max_length") is { } nullNodeMaxLength && nullNodeMaxLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxLength = null;
+            if (parseNode.GetChildNode("tools_collapse_threshold") is { } nullNodeToolsCollapseThreshold && nullNodeToolsCollapseThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolsCollapseThreshold = null;
+            if (parseNode.GetChildNode("truncate_buffer") is { } nullNodeTruncateBuffer && nullNodeTruncateBuffer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TruncateBuffer = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Show summary vs full tree hierarchy for traces (default: false)</summary>
-        public bool? Collapsed { get; set; }
+        public bool? Collapsed { get => _explicitNullValueCollapsed; set { _explicitNullValueCollapsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collapsed"); else _explicitNullProperties?.Remove("collapsed"); } }
+        private bool? _explicitNullValueCollapsed = default!;
         /// <summary>Include hierarchy information (for traces)</summary>
-        public bool? IncludeHierarchy { get; set; }
+        public bool? IncludeHierarchy { get => _explicitNullValueIncludeHierarchy; set { _explicitNullValueIncludeHierarchy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_hierarchy"); else _explicitNullProperties?.Remove("include_hierarchy"); } }
+        private bool? _explicitNullValueIncludeHierarchy = default!;
         /// <summary>Prefix each line with line number (default: false)</summary>
-        public bool? IncludeLineNumbers { get; set; }
+        public bool? IncludeLineNumbers { get => _explicitNullValueIncludeLineNumbers; set { _explicitNullValueIncludeLineNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_line_numbers"); else _explicitNullProperties?.Remove("include_line_numbers"); } }
+        private bool? _explicitNullValueIncludeLineNumbers = default!;
         /// <summary>Use interactive markers for frontend vs plain text for backend/LLM (default: true)</summary>
-        public bool? IncludeMarkers { get; set; }
+        public bool? IncludeMarkers { get => _explicitNullValueIncludeMarkers; set { _explicitNullValueIncludeMarkers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_markers"); else _explicitNullProperties?.Remove("include_markers"); } }
+        private bool? _explicitNullValueIncludeMarkers = default!;
         /// <summary>Include metadata in response</summary>
-        public bool? IncludeMetadata { get; set; }
+        public bool? IncludeMetadata { get => _explicitNullValueIncludeMetadata; set { _explicitNullValueIncludeMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_metadata"); else _explicitNullProperties?.Remove("include_metadata"); } }
+        private bool? _explicitNullValueIncludeMetadata = default!;
         /// <summary>Maximum depth for hierarchical rendering</summary>
-        public int? MaxDepth { get; set; }
+        public int? MaxDepth { get => _explicitNullValueMaxDepth; set { _explicitNullValueMaxDepth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_depth"); else _explicitNullProperties?.Remove("max_depth"); } }
+        private int? _explicitNullValueMaxDepth = default!;
         /// <summary>Maximum length of generated text (default: 2000000)</summary>
-        public int? MaxLength { get; set; }
+        public int? MaxLength { get => _explicitNullValueMaxLength; set { _explicitNullValueMaxLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_length"); else _explicitNullProperties?.Remove("max_length"); } }
+        private int? _explicitNullValueMaxLength = default!;
         /// <summary>Number of tools before collapsing the list (default: 5)</summary>
-        public int? ToolsCollapseThreshold { get; set; }
+        public int? ToolsCollapseThreshold { get => _explicitNullValueToolsCollapseThreshold; set { _explicitNullValueToolsCollapseThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools_collapse_threshold"); else _explicitNullProperties?.Remove("tools_collapse_threshold"); } }
+        private int? _explicitNullValueToolsCollapseThreshold = default!;
         /// <summary>Characters to show at start/end when truncating (default: 1000)</summary>
-        public int? TruncateBuffer { get; set; }
+        public int? TruncateBuffer { get => _explicitNullValueTruncateBuffer; set { _explicitNullValueTruncateBuffer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncate_buffer"); else _explicitNullProperties?.Remove("truncate_buffer"); } }
+        private int? _explicitNullValueTruncateBuffer = default!;
         /// <summary>Use truncation for long content within events (default: true)</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequestOptions"/> and sets the default values.
         /// </summary>
@@ -50,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequestOptions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequestOptions();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TextReprRequestOptions(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("tools_collapse_threshold", ToolsCollapseThreshold);
             writer.WriteIntValue("truncate_buffer", TruncateBuffer);
             writer.WriteBoolValue("truncated", Truncated);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

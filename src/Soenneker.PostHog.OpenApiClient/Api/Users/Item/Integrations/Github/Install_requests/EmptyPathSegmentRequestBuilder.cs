@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Github.Ins
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestListResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestListResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestListResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GitHubInstallRequestListResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Return the requesting user&apos;s GitHub App install-approval requests, newest first.This is the durable server-side &quot;awaiting org owner approval&quot; state (see``posthog.models.user_integration.GitHubInstallRequest``), distinct from the in-flightconnect spinner, which never touches this table.

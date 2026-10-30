@@ -11,23 +11,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalScoutRunSummaryMetadataDerived : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("has_chart") is { } nullNodeHasChart && nullNodeHasChart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasChart = null;
+            if (parseNode.GetChildNode("has_edit_report") is { } nullNodeHasEditReport && nullNodeHasEditReport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEditReport = null;
+            if (parseNode.GetChildNode("has_emit_report") is { } nullNodeHasEmitReport && nullNodeHasEmitReport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEmitReport = null;
+            if (parseNode.GetChildNode("has_not_in_use_closeout") is { } nullNodeHasNotInUseCloseout && nullNodeHasNotInUseCloseout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasNotInUseCloseout = null;
+            if (parseNode.GetChildNode("has_self_improvement") is { } nullNodeHasSelfImprovement && nullNodeHasSelfImprovement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasSelfImprovement = null;
+            if (parseNode.GetChildNode("has_self_validation") is { } nullNodeHasSelfValidation && nullNodeHasSelfValidation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasSelfValidation = null;
+            if (parseNode.GetChildNode("has_structured_output") is { } nullNodeHasStructuredOutput && nullNodeHasStructuredOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasStructuredOutput = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The has_chart property</summary>
-        public bool? HasChart { get; set; }
+        public bool? HasChart { get => _explicitNullValueHasChart; set { _explicitNullValueHasChart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_chart"); else _explicitNullProperties?.Remove("has_chart"); } }
+        private bool? _explicitNullValueHasChart = default!;
         /// <summary>The has_edit_report property</summary>
-        public bool? HasEditReport { get; set; }
+        public bool? HasEditReport { get => _explicitNullValueHasEditReport; set { _explicitNullValueHasEditReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_edit_report"); else _explicitNullProperties?.Remove("has_edit_report"); } }
+        private bool? _explicitNullValueHasEditReport = default!;
         /// <summary>The has_emit_report property</summary>
-        public bool? HasEmitReport { get; set; }
+        public bool? HasEmitReport { get => _explicitNullValueHasEmitReport; set { _explicitNullValueHasEmitReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_emit_report"); else _explicitNullProperties?.Remove("has_emit_report"); } }
+        private bool? _explicitNullValueHasEmitReport = default!;
         /// <summary>The has_not_in_use_closeout property</summary>
-        public bool? HasNotInUseCloseout { get; set; }
+        public bool? HasNotInUseCloseout { get => _explicitNullValueHasNotInUseCloseout; set { _explicitNullValueHasNotInUseCloseout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_not_in_use_closeout"); else _explicitNullProperties?.Remove("has_not_in_use_closeout"); } }
+        private bool? _explicitNullValueHasNotInUseCloseout = default!;
         /// <summary>The has_self_improvement property</summary>
-        public bool? HasSelfImprovement { get; set; }
+        public bool? HasSelfImprovement { get => _explicitNullValueHasSelfImprovement; set { _explicitNullValueHasSelfImprovement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_self_improvement"); else _explicitNullProperties?.Remove("has_self_improvement"); } }
+        private bool? _explicitNullValueHasSelfImprovement = default!;
         /// <summary>The has_self_validation property</summary>
-        public bool? HasSelfValidation { get; set; }
+        public bool? HasSelfValidation { get => _explicitNullValueHasSelfValidation; set { _explicitNullValueHasSelfValidation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_self_validation"); else _explicitNullProperties?.Remove("has_self_validation"); } }
+        private bool? _explicitNullValueHasSelfValidation = default!;
         /// <summary>The has_structured_output property</summary>
-        public bool? HasStructuredOutput { get; set; }
+        public bool? HasStructuredOutput { get => _explicitNullValueHasStructuredOutput; set { _explicitNullValueHasStructuredOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_structured_output"); else _explicitNullProperties?.Remove("has_structured_output"); } }
+        private bool? _explicitNullValueHasStructuredOutput = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadataDerived"/> and sets the default values.
         /// </summary>
@@ -43,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadataDerived CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadataDerived();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutRunSummaryMetadataDerived(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("has_self_improvement", HasSelfImprovement);
             writer.WriteBoolValue("has_self_validation", HasSelfValidation);
             writer.WriteBoolValue("has_structured_output", HasStructuredOutput);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

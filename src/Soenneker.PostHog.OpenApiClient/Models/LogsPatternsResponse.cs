@@ -11,51 +11,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsPatternsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("fallback_reason") is { } nullNodeFallbackReason && nullNodeFallbackReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackReason = null;
+            if (parseNode.GetChildNode("pattern_coverage_pct") is { } nullNodePatternCoveragePct && nullNodePatternCoveragePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PatternCoveragePct = null;
+            if (parseNode.GetChildNode("patterns") is { } nullNodePatterns && nullNodePatterns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Patterns = null;
+            if (parseNode.GetChildNode("pattern_version") is { } nullNodePatternVersion && nullNodePatternVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PatternVersion = null;
+            if (parseNode.GetChildNode("remainder_count") is { } nullNodeRemainderCount && nullNodeRemainderCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemainderCount = null;
+            if (parseNode.GetChildNode("represented_count") is { } nullNodeRepresentedCount && nullNodeRepresentedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepresentedCount = null;
+            if (parseNode.GetChildNode("sample_coverage_pct") is { } nullNodeSampleCoveragePct && nullNodeSampleCoveragePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleCoveragePct = null;
+            if (parseNode.GetChildNode("sampled") is { } nullNodeSampled && nullNodeSampled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sampled = null;
+            if (parseNode.GetChildNode("scanned_count") is { } nullNodeScannedCount && nullNodeScannedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannedCount = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("sparkline_buckets") is { } nullNodeSparklineBuckets && nullNodeSparklineBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SparklineBuckets = null;
+            if (parseNode.GetChildNode("total_count") is { } nullNodeTotalCount && nullNodeTotalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Why body mining was used. Null for stored-pattern aggregation.* `flag_disabled` - flag_disabled* `insufficient_version_coverage` - insufficient_version_coverage* `empty_window` - empty_window* `comparison` - comparison</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason? FallbackReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason? FallbackReason { get => _explicitNullValueFallbackReason; set { _explicitNullValueFallbackReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_reason"); else _explicitNullProperties?.Remove("fallback_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason? _explicitNullValueFallbackReason = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason FallbackReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason FallbackReason { get => _explicitNullValueFallbackReason; set { _explicitNullValueFallbackReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_reason"); else _explicitNullProperties?.Remove("fallback_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseFallbackReason _explicitNullValueFallbackReason = default!;
 #endif
         /// <summary>Percentage of all matching rows with a nonempty pattern at the selected version. Null for body mining.</summary>
-        public double? PatternCoveragePct { get; set; }
+        public double? PatternCoveragePct { get => _explicitNullValuePatternCoveragePct; set { _explicitNullValuePatternCoveragePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pattern_coverage_pct"); else _explicitNullProperties?.Remove("pattern_coverage_pct"); } }
+        private double? _explicitNullValuePatternCoveragePct = default!;
         /// <summary>Pattern groups ordered by count. Stored-pattern counts are exact; body-mining counts describe the sample.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern>? Patterns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern>? Patterns { get => _explicitNullValuePatterns; set { _explicitNullValuePatterns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("patterns"); else _explicitNullProperties?.Remove("patterns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern>? _explicitNullValuePatterns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern> Patterns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern> Patterns { get => _explicitNullValuePatterns; set { _explicitNullValuePatterns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("patterns"); else _explicitNullProperties?.Remove("patterns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogPattern> _explicitNullValuePatterns = default!;
 #endif
         /// <summary>Stored pattern version used. Null for body mining.</summary>
-        public int? PatternVersion { get; set; }
+        public int? PatternVersion { get => _explicitNullValuePatternVersion; set { _explicitNullValuePatternVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pattern_version"); else _explicitNullProperties?.Remove("pattern_version"); } }
+        private int? _explicitNullValuePatternVersion = default!;
         /// <summary>Matching rows outside returned groups, including other versions, unstamped rows and the long tail. Null for body mining.</summary>
-        public int? RemainderCount { get; set; }
+        public int? RemainderCount { get => _explicitNullValueRemainderCount; set { _explicitNullValueRemainderCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remainder_count"); else _explicitNullProperties?.Remove("remainder_count"); } }
+        private int? _explicitNullValueRemainderCount = default!;
         /// <summary>Exact rows represented by the returned stored-pattern groups. Null for body mining.</summary>
-        public int? RepresentedCount { get; set; }
+        public int? RepresentedCount { get => _explicitNullValueRepresentedCount; set { _explicitNullValueRepresentedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("represented_count"); else _explicitNullProperties?.Remove("represented_count"); } }
+        private int? _explicitNullValueRepresentedCount = default!;
         /// <summary>Share of the window&apos;s log rows that were eligible for sampling (0–100). Below 100, the scan was bounded to evenly-spaced time slices across the window to keep the query within its execution budget; rows outside the slices could not appear in the sample.</summary>
-        public double? SampleCoveragePct { get; set; }
+        public double? SampleCoveragePct { get => _explicitNullValueSampleCoveragePct; set { _explicitNullValueSampleCoveragePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_coverage_pct"); else _explicitNullProperties?.Remove("sample_coverage_pct"); } }
+        private double? _explicitNullValueSampleCoveragePct = default!;
         /// <summary>True when the window held more rows than the sample cap, so patterns were mined from a deterministic, evenly-distributed sample rather than every matching row.</summary>
-        public bool? Sampled { get; set; }
+        public bool? Sampled { get => _explicitNullValueSampled; set { _explicitNullValueSampled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampled"); else _explicitNullProperties?.Remove("sampled"); } }
+        private bool? _explicitNullValueSampled = default!;
         /// <summary>Rows scanned: the sample size for body mining, or the full matching count for stored-pattern aggregation.</summary>
-        public int? ScannedCount { get; set; }
+        public int? ScannedCount { get => _explicitNullValueScannedCount; set { _explicitNullValueScannedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanned_count"); else _explicitNullProperties?.Remove("scanned_count"); } }
+        private int? _explicitNullValueScannedCount = default!;
         /// <summary>* `stored_patterns` - stored_patterns* `body_mining` - body_mining</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource? _explicitNullValueSource = default!;
         /// <summary>Time buckets that every pattern&apos;s `sparkline` aligns to. When the scan was bounded to time slices, the buckets are the slices themselves (evenly spaced, gaps between them were never eligible for sampling); otherwise they divide the window uniformly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket>? SparklineBuckets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket>? SparklineBuckets { get => _explicitNullValueSparklineBuckets; set { _explicitNullValueSparklineBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparkline_buckets"); else _explicitNullProperties?.Remove("sparkline_buckets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket>? _explicitNullValueSparklineBuckets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket> SparklineBuckets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket> SparklineBuckets { get => _explicitNullValueSparklineBuckets; set { _explicitNullValueSparklineBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparkline_buckets"); else _explicitNullProperties?.Remove("sparkline_buckets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket> _explicitNullValueSparklineBuckets = default!;
 #endif
         /// <summary>Total log rows matching the filters in the window, before sampling. Use with `scanned_count` to scale per-pattern counts when `sampled` is true.</summary>
-        public int? TotalCount { get; set; }
+        public int? TotalCount { get => _explicitNullValueTotalCount; set { _explicitNullValueTotalCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_count"); else _explicitNullProperties?.Remove("total_count"); } }
+        private int? _explicitNullValueTotalCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponse"/> and sets the default values.
         /// </summary>
@@ -71,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,6 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsResponseSource>("source", Source);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsSparklineBucket>("sparkline_buckets", SparklineBuckets);
             writer.WriteIntValue("total_count", TotalCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,31 +11,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MarketingAnalyticsRetentionSummaryRow : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("acquired") is { } nullNodeAcquired && nullNodeAcquired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Acquired = null;
+            if (parseNode.GetChildNode("breakdownValue") is { } nullNodeBreakdownValue && nullNodeBreakdownValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownValue = null;
+            if (parseNode.GetChildNode("eligible30d") is { } nullNodeEligible30d && nullNodeEligible30d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Eligible30d = null;
+            if (parseNode.GetChildNode("eligible7d") is { } nullNodeEligible7d && nullNodeEligible7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Eligible7d = null;
+            if (parseNode.GetChildNode("medianReturnDays") is { } nullNodeMedianReturnDays && nullNodeMedianReturnDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianReturnDays = null;
+            if (parseNode.GetChildNode("previous") is { } nullNodePrevious && nullNodePrevious.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Previous = null;
+            if (parseNode.GetChildNode("returned30d") is { } nullNodeReturned30d && nullNodeReturned30d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Returned30d = null;
+            if (parseNode.GetChildNode("returned7d") is { } nullNodeReturned7d && nullNodeReturned7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Returned7d = null;
+            if (parseNode.GetChildNode("returners") is { } nullNodeReturners && nullNodeReturners.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Returners = null;
+        }
+
         /// <summary>The acquired property</summary>
-        public int? Acquired { get; set; }
+        public int? Acquired { get => _explicitNullValueAcquired; set { _explicitNullValueAcquired = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acquired"); else _explicitNullProperties?.Remove("acquired"); } }
+        private int? _explicitNullValueAcquired = default!;
         /// <summary>The breakdownValue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownValue { get; set; }
+        public string? BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownValue"); else _explicitNullProperties?.Remove("breakdownValue"); } }
+        private string? _explicitNullValueBreakdownValue = default!;
 #nullable restore
 #else
-        public string BreakdownValue { get; set; }
+        public string BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownValue"); else _explicitNullProperties?.Remove("breakdownValue"); } }
+        private string _explicitNullValueBreakdownValue = default!;
 #endif
         /// <summary>The eligible30d property</summary>
-        public int? Eligible30d { get; set; }
+        public int? Eligible30d { get => _explicitNullValueEligible30d; set { _explicitNullValueEligible30d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eligible30d"); else _explicitNullProperties?.Remove("eligible30d"); } }
+        private int? _explicitNullValueEligible30d = default!;
         /// <summary>The eligible7d property</summary>
-        public int? Eligible7d { get; set; }
+        public int? Eligible7d { get => _explicitNullValueEligible7d; set { _explicitNullValueEligible7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eligible7d"); else _explicitNullProperties?.Remove("eligible7d"); } }
+        private int? _explicitNullValueEligible7d = default!;
         /// <summary>Estimated median calendar days from the first session to the first return on a later day, using the project&apos;s timezone. Includes observed returns within 30 days. Same-day visits do not count.</summary>
-        public double? MedianReturnDays { get; set; }
+        public double? MedianReturnDays { get => _explicitNullValueMedianReturnDays; set { _explicitNullValueMedianReturnDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianReturnDays"); else _explicitNullProperties?.Remove("medianReturnDays"); } }
+        private double? _explicitNullValueMedianReturnDays = default!;
         /// <summary>The previous property</summary>
-        public bool? Previous { get; set; }
+        public bool? Previous { get => _explicitNullValuePrevious; set { _explicitNullValuePrevious = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous"); else _explicitNullProperties?.Remove("previous"); } }
+        private bool? _explicitNullValuePrevious = default!;
         /// <summary>The returned30d property</summary>
-        public int? Returned30d { get; set; }
+        public int? Returned30d { get => _explicitNullValueReturned30d; set { _explicitNullValueReturned30d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returned30d"); else _explicitNullProperties?.Remove("returned30d"); } }
+        private int? _explicitNullValueReturned30d = default!;
         /// <summary>The returned7d property</summary>
-        public int? Returned7d { get; set; }
+        public int? Returned7d { get => _explicitNullValueReturned7d; set { _explicitNullValueReturned7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returned7d"); else _explicitNullProperties?.Remove("returned7d"); } }
+        private int? _explicitNullValueReturned7d = default!;
         /// <summary>People who returned on a later calendar day in the project&apos;s timezone within 30 days of their first session, including incomplete windows.</summary>
-        public int? Returners { get; set; }
+        public int? Returners { get => _explicitNullValueReturners; set { _explicitNullValueReturners = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returners"); else _explicitNullProperties?.Remove("returners"); } }
+        private int? _explicitNullValueReturners = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -44,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionSummaryRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,7 +106,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("previous", Previous);
             writer.WriteIntValue("returned30d", Returned30d);
             writer.WriteIntValue("returned7d", Returned7d);
-            writer.WriteIntValue("returners", Returners);
+            writer.WriteIntValue("returners", Returners);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

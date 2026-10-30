@@ -11,52 +11,78 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsServicesResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("next") is { } nullNodeNext && nullNodeNext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Next = null;
+            if (parseNode.GetChildNode("services") is { } nullNodeServices && nullNodeServices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Services = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("sparkline") is { } nullNodeSparkline && nullNodeSparkline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sparkline = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("total_services") is { } nullNodeTotalServices && nullNodeTotalServices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalServices = null;
+            if (parseNode.GetChildNode("window") is { } nullNodeWindow && nullNodeWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Window = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Prefilled follow-up calls for problem services.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep>? Next { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep>? Next { get => _explicitNullValueNext; set { _explicitNullValueNext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next"); else _explicitNullProperties?.Remove("next"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep>? _explicitNullValueNext = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep> Next { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep> Next { get => _explicitNullValueNext; set { _explicitNullValueNext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next"); else _explicitNullProperties?.Remove("next"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStep> _explicitNullValueNext = default!;
 #endif
         /// <summary>Per-service aggregates, ordered by log_count descending. Capped at 10000 services.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>? Services { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>? Services { get => _explicitNullValueServices; set { _explicitNullValueServices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("services"); else _explicitNullProperties?.Remove("services"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate>? _explicitNullValueServices = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate> Services { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate> Services { get => _explicitNullValueServices; set { _explicitNullValueServices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("services"); else _explicitNullProperties?.Remove("services"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServiceAggregate> _explicitNullValueServices = default!;
 #endif
         /// <summary>* `rollup` - Rollup* `rollup+raw` - Rollup Raw* `raw` - Raw</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSource? _explicitNullValueSource = default!;
         /// <summary>Time-bucketed counts broken down by service, for plotting volume over time. Covers only the top 25 services in this response; re-request with `serviceNames` to get sparklines for specific services.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>? Sparkline { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>? Sparkline { get => _explicitNullValueSparkline; set { _explicitNullValueSparkline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparkline"); else _explicitNullProperties?.Remove("sparkline"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket>? _explicitNullValueSparkline = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket> Sparkline { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket> Sparkline { get => _explicitNullValueSparkline; set { _explicitNullValueSparkline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sparkline"); else _explicitNullProperties?.Remove("sparkline"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesSparklineBucket> _explicitNullValueSparkline = default!;
 #endif
         /// <summary>Roll-up stats for the Services tab header.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>True distinct service count for the window and filters, unaffected by the 10000-service cap on `services`. Greater than the length of `services` when the response is truncated.</summary>
-        public int? TotalServices { get; set; }
+        public int? TotalServices { get => _explicitNullValueTotalServices; set { _explicitNullValueTotalServices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_services"); else _explicitNullProperties?.Remove("total_services"); } }
+        private int? _explicitNullValueTotalServices = default!;
         /// <summary>Absolute UTC bounds of the window and the baseline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow? Window { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow? Window { get => _explicitNullValueWindow; set { _explicitNullValueWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window"); else _explicitNullProperties?.Remove("window"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow? _explicitNullValueWindow = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow Window { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow Window { get => _explicitNullValueWindow; set { _explicitNullValueWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window"); else _explicitNullProperties?.Remove("window"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow _explicitNullValueWindow = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse"/> and sets the default values.
@@ -73,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary>("summary", Summary);
             writer.WriteIntValue("total_services", TotalServices);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseWindow>("window", Window);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

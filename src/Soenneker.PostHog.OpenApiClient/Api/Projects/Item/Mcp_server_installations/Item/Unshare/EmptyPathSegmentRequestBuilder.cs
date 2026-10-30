@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_server_installat
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallation>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallation.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallation>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServerInstallation.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// De-escalate a shared installation back to personal.Allowed for the credential owner OR a project admin (the reclaim pathfor shared credentials). The row always stays owned by the ORIGINALowner — an admin unsharing someone else&apos;s install must not capturetheir credential.

@@ -11,63 +11,94 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReportPage : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
+            if (parseNode.GetChildNode("impact_numbers") is { } nullNodeImpactNumbers && nullNodeImpactNumbers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImpactNumbers = null;
+            if (parseNode.GetChildNode("impact_sentence") is { } nullNodeImpactSentence && nullNodeImpactSentence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImpactSentence = null;
+            if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
+            if (parseNode.GetChildNode("lead") is { } nullNodeLead && nullNodeLead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lead = null;
+            if (parseNode.GetChildNode("named_pull_request") is { } nullNodeNamedPullRequest && nullNodeNamedPullRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NamedPullRequest = null;
+            if (parseNode.GetChildNode("proposal") is { } nullNodeProposal && nullNodeProposal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Proposal = null;
+            if (parseNode.GetChildNode("solution_names_pull_request") is { } nullNodeSolutionNamesPullRequest && nullNodeSolutionNamesPullRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SolutionNamesPullRequest = null;
+            if (parseNode.GetChildNode("source_count") is { } nullNodeSourceCount && nullNodeSourceCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The signals to show as evidence, at most 3, newest first, one per source first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalView>? Evidence { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalView>? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SignalView>? _explicitNullValueEvidence = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalView> Evidence { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalView> Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SignalView> _explicitNullValueEvidence = default!;
 #endif
         /// <summary>Numbers the signals size the problem with, such as distinct support tickets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumber>? ImpactNumbers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumber>? ImpactNumbers { get => _explicitNullValueImpactNumbers; set { _explicitNullValueImpactNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact_numbers"); else _explicitNullProperties?.Remove("impact_numbers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumber>? _explicitNullValueImpactNumbers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumber> ImpactNumbers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumber> ImpactNumbers { get => _explicitNullValueImpactNumbers; set { _explicitNullValueImpactNumbers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact_numbers"); else _explicitNullProperties?.Remove("impact_numbers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumber> _explicitNullValueImpactNumbers = default!;
 #endif
         /// <summary>The impact section cut to whole sentences, as markdown, when it states a measurement. Empty otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImpactSentence { get; set; }
+        public string? ImpactSentence { get => _explicitNullValueImpactSentence; set { _explicitNullValueImpactSentence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact_sentence"); else _explicitNullProperties?.Remove("impact_sentence"); } }
+        private string? _explicitNullValueImpactSentence = default!;
 #nullable restore
 #else
-        public string ImpactSentence { get; set; }
+        public string ImpactSentence { get => _explicitNullValueImpactSentence; set { _explicitNullValueImpactSentence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact_sentence"); else _explicitNullProperties?.Remove("impact_sentence"); } }
+        private string _explicitNullValueImpactSentence = default!;
 #endif
         /// <summary>When the newest session, ticket or alert behind the report happened.</summary>
-        public DateTimeOffset? LastSeen { get; set; }
+        public DateTimeOffset? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private DateTimeOffset? _explicitNullValueLastSeen = default!;
         /// <summary>The summary&apos;s opening paragraph, as markdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Lead { get; set; }
+        public string? Lead { get => _explicitNullValueLead; set { _explicitNullValueLead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead"); else _explicitNullProperties?.Remove("lead"); } }
+        private string? _explicitNullValueLead = default!;
 #nullable restore
 #else
-        public string Lead { get; set; }
+        public string Lead { get => _explicitNullValueLead; set { _explicitNullValueLead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead"); else _explicitNullProperties?.Remove("lead"); } }
+        private string _explicitNullValueLead = default!;
 #endif
         /// <summary>The pull request the proposal names, or else the summary, when it names exactly one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink? NamedPullRequest { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink? NamedPullRequest { get => _explicitNullValueNamedPullRequest; set { _explicitNullValueNamedPullRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("named_pull_request"); else _explicitNullProperties?.Remove("named_pull_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink? _explicitNullValueNamedPullRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink NamedPullRequest { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink NamedPullRequest { get => _explicitNullValueNamedPullRequest; set { _explicitNullValueNamedPullRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("named_pull_request"); else _explicitNullProperties?.Remove("named_pull_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink _explicitNullValueNamedPullRequest = default!;
 #endif
         /// <summary>The proposed fix cut to whole sentences, as markdown. Empty when the report proposes none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Proposal { get; set; }
+        public string? Proposal { get => _explicitNullValueProposal; set { _explicitNullValueProposal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposal"); else _explicitNullProperties?.Remove("proposal"); } }
+        private string? _explicitNullValueProposal = default!;
 #nullable restore
 #else
-        public string Proposal { get; set; }
+        public string Proposal { get => _explicitNullValueProposal; set { _explicitNullValueProposal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposal"); else _explicitNullProperties?.Remove("proposal"); } }
+        private string _explicitNullValueProposal = default!;
 #endif
         /// <summary>Whether the proposal names any pull request.</summary>
-        public bool? SolutionNamesPullRequest { get; set; }
+        public bool? SolutionNamesPullRequest { get => _explicitNullValueSolutionNamesPullRequest; set { _explicitNullValueSolutionNamesPullRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("solution_names_pull_request"); else _explicitNullProperties?.Remove("solution_names_pull_request"); } }
+        private bool? _explicitNullValueSolutionNamesPullRequest = default!;
         /// <summary>How many distinct source objects the report&apos;s newest 100 signals come from. The impact numbers and last seen use the same signals.</summary>
-        public int? SourceCount { get; set; }
+        public int? SourceCount { get => _explicitNullValueSourceCount; set { _explicitNullValueSourceCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_count"); else _explicitNullProperties?.Remove("source_count"); } }
+        private int? _explicitNullValueSourceCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReportPage"/> and sets the default values.
         /// </summary>
@@ -83,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReportPage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReportPage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReportPage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("proposal", Proposal);
             writer.WriteBoolValue("solution_names_pull_request", SolutionNamesPullRequest);
             writer.WriteIntValue("source_count", SourceCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

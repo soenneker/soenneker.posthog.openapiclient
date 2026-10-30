@@ -11,19 +11,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedWorkflowSendingRules : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("capture_workflows_engagement_events") is { } nullNodeCaptureWorkflowsEngagementEvents && nullNodeCaptureWorkflowsEngagementEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaptureWorkflowsEngagementEvents = null;
+            if (parseNode.GetChildNode("email_tracking_consent_mode") is { } nullNodeEmailTrackingConsentMode && nullNodeEmailTrackingConsentMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailTrackingConsentMode = null;
+            if (parseNode.GetChildNode("expected_project_id") is { } nullNodeExpectedProjectId && nullNodeExpectedProjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedProjectId = null;
+            if (parseNode.GetChildNode("marketing_frequency_cap_max_messages") is { } nullNodeMarketingFrequencyCapMaxMessages && nullNodeMarketingFrequencyCapMaxMessages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarketingFrequencyCapMaxMessages = null;
+            if (parseNode.GetChildNode("marketing_frequency_cap_window_days") is { } nullNodeMarketingFrequencyCapWindowDays && nullNodeMarketingFrequencyCapWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarketingFrequencyCapWindowDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Capture email sends, opens, clicks and bounces as PostHog events, so they can be used in insights and funnels. These events count toward the project&apos;s event usage.</summary>
-        public bool? CaptureWorkflowsEngagementEvents { get; set; }
+        public bool? CaptureWorkflowsEngagementEvents { get => _explicitNullValueCaptureWorkflowsEngagementEvents; set { _explicitNullValueCaptureWorkflowsEngagementEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capture_workflows_engagement_events"); else _explicitNullProperties?.Remove("capture_workflows_engagement_events"); } }
+        private bool? _explicitNullValueCaptureWorkflowsEngagementEvents = default!;
         /// <summary>* `off` - Off* `opt_out` - Opt Out* `opt_in` - Opt In</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWorkflowSendingRulesEmailTrackingConsentMode? EmailTrackingConsentMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWorkflowSendingRulesEmailTrackingConsentMode? EmailTrackingConsentMode { get => _explicitNullValueEmailTrackingConsentMode; set { _explicitNullValueEmailTrackingConsentMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_tracking_consent_mode"); else _explicitNullProperties?.Remove("email_tracking_consent_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedWorkflowSendingRulesEmailTrackingConsentMode? _explicitNullValueEmailTrackingConsentMode = default!;
         /// <summary>Optional. The project_id from the rules being changed. The update is rejected when it does not match the current project, so a change never lands in a project the user did not look at.</summary>
-        public int? ExpectedProjectId { get; set; }
+        public int? ExpectedProjectId { get => _explicitNullValueExpectedProjectId; set { _explicitNullValueExpectedProjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_project_id"); else _explicitNullProperties?.Remove("expected_project_id"); } }
+        private int? _explicitNullValueExpectedProjectId = default!;
         /// <summary>The most marketing messages one person gets in the window, across all workflows and broadcasts. Set it together with marketing_frequency_cap_window_days, or set both to null to turn the cap off. Transactional messages are never capped. The recommended cap is 1 message every 2 days.</summary>
-        public int? MarketingFrequencyCapMaxMessages { get; set; }
+        public int? MarketingFrequencyCapMaxMessages { get => _explicitNullValueMarketingFrequencyCapMaxMessages; set { _explicitNullValueMarketingFrequencyCapMaxMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketing_frequency_cap_max_messages"); else _explicitNullProperties?.Remove("marketing_frequency_cap_max_messages"); } }
+        private int? _explicitNullValueMarketingFrequencyCapMaxMessages = default!;
         /// <summary>The length of the rolling frequency cap window, in days. Set it together with marketing_frequency_cap_max_messages, or set both to null to turn the cap off.</summary>
-        public int? MarketingFrequencyCapWindowDays { get; set; }
+        public int? MarketingFrequencyCapWindowDays { get => _explicitNullValueMarketingFrequencyCapWindowDays; set { _explicitNullValueMarketingFrequencyCapWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketing_frequency_cap_window_days"); else _explicitNullProperties?.Remove("marketing_frequency_cap_window_days"); } }
+        private int? _explicitNullValueMarketingFrequencyCapWindowDays = default!;
         /// <summary>The project these sending rules belong to.</summary>
         public int? ProjectId { get; private set; }
         /// <summary>
@@ -41,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedWorkflowSendingRules CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedWorkflowSendingRules();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedWorkflowSendingRules(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("expected_project_id", ExpectedProjectId);
             writer.WriteIntValue("marketing_frequency_cap_max_messages", MarketingFrequencyCapMaxMessages);
             writer.WriteIntValue("marketing_frequency_cap_window_days", MarketingFrequencyCapWindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

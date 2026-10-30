@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Tr
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRun.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Finalize a training run. The backend selects the kept iteration with the highest holdout score, decides champion vs challenger via the promotion ladder, and persists the model. best_iteration_id is advisory: it breaks a tie at the top score and is otherwise logged and ignored. Agents cannot set the champion directly, because promotion is server-side.

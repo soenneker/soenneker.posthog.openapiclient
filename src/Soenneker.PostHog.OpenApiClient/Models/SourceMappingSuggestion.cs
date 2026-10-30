@@ -11,42 +11,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SourceMappingSuggestion : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("event_count_30d") is { } nullNodeEventCount30d && nullNodeEventCount30d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount30d = null;
+            if (parseNode.GetChildNode("raw_utm_source") is { } nullNodeRawUtmSource && nullNodeRawUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawUtmSource = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("suggested_target") is { } nullNodeSuggestedTarget && nullNodeSuggestedTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedTarget = null;
+            if (parseNode.GetChildNode("suggested_target_display_name") is { } nullNodeSuggestedTargetDisplayName && nullNodeSuggestedTargetDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedTargetDisplayName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Events carrying this raw utm_source in the window. Suggestions are ordered by it.</summary>
-        public int? EventCount30d { get; set; }
+        public int? EventCount30d { get => _explicitNullValueEventCount30d; set { _explicitNullValueEventCount30d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count_30d"); else _explicitNullProperties?.Remove("event_count_30d"); } }
+        private int? _explicitNullValueEventCount30d = default!;
         /// <summary>The raw utm_source value seen on events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawUtmSource { get; set; }
+        public string? RawUtmSource { get => _explicitNullValueRawUtmSource; set { _explicitNullValueRawUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_utm_source"); else _explicitNullProperties?.Remove("raw_utm_source"); } }
+        private string? _explicitNullValueRawUtmSource = default!;
 #nullable restore
 #else
-        public string RawUtmSource { get; set; }
+        public string RawUtmSource { get => _explicitNullValueRawUtmSource; set { _explicitNullValueRawUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_utm_source"); else _explicitNullProperties?.Remove("raw_utm_source"); } }
+        private string _explicitNullValueRawUtmSource = default!;
 #endif
         /// <summary>Why this mapping is suggested</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Integration key it maps to</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestedTarget { get; set; }
+        public string? SuggestedTarget { get => _explicitNullValueSuggestedTarget; set { _explicitNullValueSuggestedTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_target"); else _explicitNullProperties?.Remove("suggested_target"); } }
+        private string? _explicitNullValueSuggestedTarget = default!;
 #nullable restore
 #else
-        public string SuggestedTarget { get; set; }
+        public string SuggestedTarget { get => _explicitNullValueSuggestedTarget; set { _explicitNullValueSuggestedTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_target"); else _explicitNullProperties?.Remove("suggested_target"); } }
+        private string _explicitNullValueSuggestedTarget = default!;
 #endif
         /// <summary>Human-readable name of the suggested integration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestedTargetDisplayName { get; set; }
+        public string? SuggestedTargetDisplayName { get => _explicitNullValueSuggestedTargetDisplayName; set { _explicitNullValueSuggestedTargetDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_target_display_name"); else _explicitNullProperties?.Remove("suggested_target_display_name"); } }
+        private string? _explicitNullValueSuggestedTargetDisplayName = default!;
 #nullable restore
 #else
-        public string SuggestedTargetDisplayName { get; set; }
+        public string SuggestedTargetDisplayName { get => _explicitNullValueSuggestedTargetDisplayName; set { _explicitNullValueSuggestedTargetDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_target_display_name"); else _explicitNullProperties?.Remove("suggested_target_display_name"); } }
+        private string _explicitNullValueSuggestedTargetDisplayName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SourceMappingSuggestion"/> and sets the default values.
@@ -63,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SourceMappingSuggestion CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SourceMappingSuggestion();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SourceMappingSuggestion(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("suggested_target", SuggestedTarget);
             writer.WriteStringValue("suggested_target_display_name", SuggestedTargetDisplayName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

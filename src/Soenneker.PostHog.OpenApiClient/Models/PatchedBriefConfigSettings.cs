@@ -12,23 +12,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedBriefConfigSettings : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("confidence_threshold") is { } nullNodeConfidenceThreshold && nullNodeConfidenceThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfidenceThreshold = null;
+            if (parseNode.GetChildNode("fallback_dashboard_count") is { } nullNodeFallbackDashboardCount && nullNodeFallbackDashboardCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackDashboardCount = null;
+            if (parseNode.GetChildNode("max_anchor_insights") is { } nullNodeMaxAnchorInsights && nullNodeMaxAnchorInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxAnchorInsights = null;
+            if (parseNode.GetChildNode("max_annotations") is { } nullNodeMaxAnnotations && nullNodeMaxAnnotations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxAnnotations = null;
+            if (parseNode.GetChildNode("max_opportunities") is { } nullNodeMaxOpportunities && nullNodeMaxOpportunities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxOpportunities = null;
+            if (parseNode.GetChildNode("min_abs_change_pct") is { } nullNodeMinAbsChangePct && nullNodeMinAbsChangePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinAbsChangePct = null;
+            if (parseNode.GetChildNode("min_baseline_value") is { } nullNodeMinBaselineValue && nullNodeMinBaselineValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinBaselineValue = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Minimum confidence for a section or opportunity to survive the gate. Default 0.6.</summary>
-        public double? ConfidenceThreshold { get; set; }
+        public double? ConfidenceThreshold { get => _explicitNullValueConfidenceThreshold; set { _explicitNullValueConfidenceThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence_threshold"); else _explicitNullProperties?.Remove("confidence_threshold"); } }
+        private double? _explicitNullValueConfidenceThreshold = default!;
         /// <summary>How many recent dashboards to pull insights from when no anchors are set. Default 3.</summary>
-        public int? FallbackDashboardCount { get; set; }
+        public int? FallbackDashboardCount { get => _explicitNullValueFallbackDashboardCount; set { _explicitNullValueFallbackDashboardCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_dashboard_count"); else _explicitNullProperties?.Remove("fallback_dashboard_count"); } }
+        private int? _explicitNullValueFallbackDashboardCount = default!;
         /// <summary>Maximum anchor insights gathered per brief. Default 10.</summary>
-        public int? MaxAnchorInsights { get; set; }
+        public int? MaxAnchorInsights { get => _explicitNullValueMaxAnchorInsights; set { _explicitNullValueMaxAnchorInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_anchor_insights"); else _explicitNullProperties?.Remove("max_anchor_insights"); } }
+        private int? _explicitNullValueMaxAnchorInsights = default!;
         /// <summary>Maximum annotations gathered as context per brief. Default 20.</summary>
-        public int? MaxAnnotations { get; set; }
+        public int? MaxAnnotations { get => _explicitNullValueMaxAnnotations; set { _explicitNullValueMaxAnnotations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_annotations"); else _explicitNullProperties?.Remove("max_annotations"); } }
+        private int? _explicitNullValueMaxAnnotations = default!;
         /// <summary>Maximum opportunities kept per brief. Default 3.</summary>
-        public int? MaxOpportunities { get; set; }
+        public int? MaxOpportunities { get => _explicitNullValueMaxOpportunities; set { _explicitNullValueMaxOpportunities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_opportunities"); else _explicitNullProperties?.Remove("max_opportunities"); } }
+        private int? _explicitNullValueMaxOpportunities = default!;
         /// <summary>Minimum absolute percent change for a movement to count as significant. Default 20.</summary>
-        public double? MinAbsChangePct { get; set; }
+        public double? MinAbsChangePct { get => _explicitNullValueMinAbsChangePct; set { _explicitNullValueMinAbsChangePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_abs_change_pct"); else _explicitNullProperties?.Remove("min_abs_change_pct"); } }
+        private double? _explicitNullValueMinAbsChangePct = default!;
         /// <summary>Minimum per-sample baseline volume before a movement is considered. Default 10.</summary>
-        public double? MinBaselineValue { get; set; }
+        public double? MinBaselineValue { get => _explicitNullValueMinBaselineValue; set { _explicitNullValueMinBaselineValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_baseline_value"); else _explicitNullProperties?.Remove("min_baseline_value"); } }
+        private double? _explicitNullValueMinBaselineValue = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigSettings"/> and sets the default values.
         /// </summary>
@@ -44,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBriefConfigSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("max_opportunities", MaxOpportunities);
             writer.WriteDoubleValue("min_abs_change_pct", MinAbsChangePct);
             writer.WriteDoubleValue("min_baseline_value", MinBaselineValue);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

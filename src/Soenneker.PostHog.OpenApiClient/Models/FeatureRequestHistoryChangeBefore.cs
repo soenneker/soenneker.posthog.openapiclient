@@ -12,7 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureRequestHistoryChangeBefore : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="bool"/></summary>
         public bool? Boolean { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeMember1"/></summary>
@@ -75,29 +80,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBefore();
             if("FeatureRequestHistoryChangeBeforeOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.FeatureRequestHistoryChangeBeforeOneOf3 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf3();
+                
             }
             else if("FeatureRequestHistoryChangeBeforeOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.FeatureRequestHistoryChangeBeforeOneOf4 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf4();
+                
             }
             else if("FeatureRequestHistoryChangeBeforeOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.FeatureRequestHistoryChangeBeforeOneOf6 = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf6();
+                
             }
-            else if(parseNode.GetBoolValue() is bool booleanValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean && parseNode.GetBoolValue() is bool booleanValue)
             {
                 result.Boolean = booleanValue;
             }
-            else if(parseNode.GetStringValue() is string stringValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString && parseNode.GetStringValue() is string stringValue)
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf5Item>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf5Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf5Item> featureRequestHistoryChangeBeforeOneOf5ItemValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && global::System.Linq.Enumerable.All(((global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)).GetValue(), item => item is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf5Item>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf5Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf5Item> featureRequestHistoryChangeBeforeOneOf5ItemValue)
             {
                 result.FeatureRequestHistoryChangeBeforeOneOf5Item = featureRequestHistoryChangeBeforeOneOf5ItemValue;
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("issue_url") != null && parseNode.GetChildNode("repository") != null && parseNode.GetChildNode("issue_number") != null && parseNode.GetChildNode("issue_title") != null && parseNode.GetChildNode("issue_state") != null && (parseNode.GetChildNode("issue_state")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag6 && ("open".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "closed".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("sync_enabled") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("name") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("id") != null && parseNode.GetChildNode("account") != null && parseNode.GetChildNode("summary") != null && parseNode.GetChildNode("customer_quote") != null && parseNode.GetChildNode("source") != null && parseNode.GetChildNode("source_url") != null && parseNode.GetChildNode("requested_on") != null))();
+            if (result.Boolean == null && result.FeatureRequestHistoryChangeBeforeMember1 == null && result.FeatureRequestHistoryChangeBeforeOneOf3 == null && result.FeatureRequestHistoryChangeBeforeOneOf4 == null && result.FeatureRequestHistoryChangeBeforeOneOf5Item == null && result.FeatureRequestHistoryChangeBeforeOneOf6 == null && result.String == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.FeatureRequestHistoryChangeBeforeOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf3(), parseNode);
+            if (result.Boolean == null && result.FeatureRequestHistoryChangeBeforeMember1 == null && result.FeatureRequestHistoryChangeBeforeOneOf3 == null && result.FeatureRequestHistoryChangeBeforeOneOf4 == null && result.FeatureRequestHistoryChangeBeforeOneOf5Item == null && result.FeatureRequestHistoryChangeBeforeOneOf6 == null && result.String == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.FeatureRequestHistoryChangeBeforeOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf4(), parseNode);
+            if (result.Boolean == null && result.FeatureRequestHistoryChangeBeforeMember1 == null && result.FeatureRequestHistoryChangeBeforeOneOf3 == null && result.FeatureRequestHistoryChangeBeforeOneOf4 == null && result.FeatureRequestHistoryChangeBeforeOneOf5Item == null && result.FeatureRequestHistoryChangeBeforeOneOf6 == null && result.String == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.FeatureRequestHistoryChangeBeforeOneOf6 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf6(), parseNode);
+            if (result.Boolean == null && result.FeatureRequestHistoryChangeBeforeMember1 == null && result.FeatureRequestHistoryChangeBeforeOneOf3 == null && result.FeatureRequestHistoryChangeBeforeOneOf4 == null && result.FeatureRequestHistoryChangeBeforeOneOf5Item == null && result.FeatureRequestHistoryChangeBeforeOneOf6 == null && result.String == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,21 +143,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (Boolean == null && FeatureRequestHistoryChangeBeforeMember1 == null && FeatureRequestHistoryChangeBeforeOneOf3 == null && FeatureRequestHistoryChangeBeforeOneOf4 == null && FeatureRequestHistoryChangeBeforeOneOf5Item == null && FeatureRequestHistoryChangeBeforeOneOf6 == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (FeatureRequestHistoryChangeBeforeOneOf3 != null && Boolean == null && FeatureRequestHistoryChangeBeforeMember1 == null && FeatureRequestHistoryChangeBeforeOneOf4 == null && FeatureRequestHistoryChangeBeforeOneOf5Item == null && FeatureRequestHistoryChangeBeforeOneOf6 == null && String == null) { if (FeatureRequestHistoryChangeBeforeOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureRequestHistoryChangeBeforeOneOf3); return; }
+            if (FeatureRequestHistoryChangeBeforeOneOf4 != null && Boolean == null && FeatureRequestHistoryChangeBeforeMember1 == null && FeatureRequestHistoryChangeBeforeOneOf3 == null && FeatureRequestHistoryChangeBeforeOneOf5Item == null && FeatureRequestHistoryChangeBeforeOneOf6 == null && String == null) { if (FeatureRequestHistoryChangeBeforeOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureRequestHistoryChangeBeforeOneOf4); return; }
+            if (FeatureRequestHistoryChangeBeforeOneOf6 != null && Boolean == null && FeatureRequestHistoryChangeBeforeMember1 == null && FeatureRequestHistoryChangeBeforeOneOf3 == null && FeatureRequestHistoryChangeBeforeOneOf4 == null && FeatureRequestHistoryChangeBeforeOneOf5Item == null && String == null) { if (FeatureRequestHistoryChangeBeforeOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureRequestHistoryChangeBeforeOneOf6); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(FeatureRequestHistoryChangeBeforeMember1 != null)
             {
+                if (FeatureRequestHistoryChangeBeforeMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeMember1>(null, FeatureRequestHistoryChangeBeforeMember1);
             }
             else if(FeatureRequestHistoryChangeBeforeOneOf3 != null)
             {
+                if (FeatureRequestHistoryChangeBeforeOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf3>(null, FeatureRequestHistoryChangeBeforeOneOf3);
             }
             else if(FeatureRequestHistoryChangeBeforeOneOf4 != null)
             {
+                if (FeatureRequestHistoryChangeBeforeOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf4>(null, FeatureRequestHistoryChangeBeforeOneOf4);
             }
             else if(FeatureRequestHistoryChangeBeforeOneOf6 != null)
             {
+                if (FeatureRequestHistoryChangeBeforeOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestHistoryChangeBeforeOneOf6>(null, FeatureRequestHistoryChangeBeforeOneOf6);
             }
             else if(Boolean != null)

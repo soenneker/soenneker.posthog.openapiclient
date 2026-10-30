@@ -11,69 +11,117 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WarehouseSuggestion : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("asset_outcome") is { } nullNodeAssetOutcome && nullNodeAssetOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetOutcome = null;
+            if (parseNode.GetChildNode("assignee") is { } nullNodeAssignee && nullNodeAssignee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assignee = null;
+            if (parseNode.GetChildNode("can_act") is { } nullNodeCanAct && nullNodeCanAct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanAct = null;
+            if (parseNode.GetChildNode("created_asset") is { } nullNodeCreatedAsset && nullNodeCreatedAsset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAsset = null;
+            if (parseNode.GetChildNode("dismissal_note") is { } nullNodeDismissalNote && nullNodeDismissalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DismissalNote = null;
+            if (parseNode.GetChildNode("dismissal_reason") is { } nullNodeDismissalReason && nullNodeDismissalReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DismissalReason = null;
+            if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
+            if (parseNode.GetChildNode("evidence_window_end") is { } nullNodeEvidenceWindowEnd && nullNodeEvidenceWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceWindowEnd = null;
+            if (parseNode.GetChildNode("evidence_window_start") is { } nullNodeEvidenceWindowStart && nullNodeEvidenceWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceWindowStart = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("last_seen_at") is { } nullNodeLastSeenAt && nullNodeLastSeenAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeenAt = null;
+            if (parseNode.GetChildNode("payload_version") is { } nullNodePayloadVersion && nullNodePayloadVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadVersion = null;
+            if (parseNode.GetChildNode("realized_bytes_saved_per_month") is { } nullNodeRealizedBytesSavedPerMonth && nullNodeRealizedBytesSavedPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedBytesSavedPerMonth = null;
+            if (parseNode.GetChildNode("realized_seconds_saved_per_month") is { } nullNodeRealizedSecondsSavedPerMonth && nullNodeRealizedSecondsSavedPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedSecondsSavedPerMonth = null;
+            if (parseNode.GetChildNode("reviewed_at") is { } nullNodeReviewedAt && nullNodeReviewedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewedAt = null;
+            if (parseNode.GetChildNode("reviewed_by") is { } nullNodeReviewedBy && nullNodeReviewedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewedBy = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("subject_id") is { } nullNodeSubjectId && nullNodeSubjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectId = null;
+            if (parseNode.GetChildNode("subject_kind") is { } nullNodeSubjectKind && nullNodeSubjectKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectKind = null;
+            if (parseNode.GetChildNode("subject_schema_id") is { } nullNodeSubjectSchemaId && nullNodeSubjectSchemaId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectSchemaId = null;
+            if (parseNode.GetChildNode("subject_source_id") is { } nullNodeSubjectSourceId && nullNodeSubjectSourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectSourceId = null;
+            if (parseNode.GetChildNode("surfaced_at") is { } nullNodeSurfacedAt && nullNodeSurfacedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurfacedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>What happened to the asset an accepted suggestion created.* `live` - Live* `deleted` - Deleted* `unused` - Unused</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome? AssetOutcome { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome? AssetOutcome { get => _explicitNullValueAssetOutcome; set { _explicitNullValueAssetOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_outcome"); else _explicitNullProperties?.Remove("asset_outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome? _explicitNullValueAssetOutcome = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome AssetOutcome { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome AssetOutcome { get => _explicitNullValueAssetOutcome; set { _explicitNullValueAssetOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("asset_outcome"); else _explicitNullProperties?.Remove("asset_outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome _explicitNullValueAssetOutcome = default!;
 #endif
         /// <summary>Who should accept or dismiss this suggestion. When a view&apos;s suggestion is first shown, it goes to the person who created the view, if they can accept it. Null when nobody is assigned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? _explicitNullValueAssignee = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer Assignee { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer _explicitNullValueAssignee = default!;
 #endif
         /// <summary>Whether the caller has edit access to the subject and so may accept, dismiss or resume.</summary>
-        public bool? CanAct { get; set; }
+        public bool? CanAct { get => _explicitNullValueCanAct; set { _explicitNullValueCanAct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_act"); else _explicitNullProperties?.Remove("can_act"); } }
+        private bool? _explicitNullValueCanAct = default!;
         /// <summary>What accepting this suggestion created. Null until accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty? CreatedAsset { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty? CreatedAsset { get => _explicitNullValueCreatedAsset; set { _explicitNullValueCreatedAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_asset"); else _explicitNullProperties?.Remove("created_asset"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty? _explicitNullValueCreatedAsset = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty CreatedAsset { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty CreatedAsset { get => _explicitNullValueCreatedAsset; set { _explicitNullValueCreatedAsset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_asset"); else _explicitNullProperties?.Remove("created_asset"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty _explicitNullValueCreatedAsset = default!;
 #endif
         /// <summary>Free-text note left when dismissing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DismissalNote { get; set; }
+        public string? DismissalNote { get => _explicitNullValueDismissalNote; set { _explicitNullValueDismissalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissal_note"); else _explicitNullProperties?.Remove("dismissal_note"); } }
+        private string? _explicitNullValueDismissalNote = default!;
 #nullable restore
 #else
-        public string DismissalNote { get; set; }
+        public string DismissalNote { get => _explicitNullValueDismissalNote; set { _explicitNullValueDismissalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissal_note"); else _explicitNullProperties?.Remove("dismissal_note"); } }
+        private string _explicitNullValueDismissalNote = default!;
 #endif
         /// <summary>Why the suggestion was dismissed.* `not_useful` - Not useful* `not_now` - Not now* `other` - Other</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionDismissalReason? DismissalReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionDismissalReason? DismissalReason { get => _explicitNullValueDismissalReason; set { _explicitNullValueDismissalReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissal_reason"); else _explicitNullProperties?.Remove("dismissal_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionDismissalReason? _explicitNullValueDismissalReason = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionDismissalReason DismissalReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionDismissalReason DismissalReason { get => _explicitNullValueDismissalReason; set { _explicitNullValueDismissalReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissal_reason"); else _explicitNullProperties?.Remove("dismissal_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionDismissalReason _explicitNullValueDismissalReason = default!;
 #endif
         /// <summary>The read counts that led to this suggestion. A field is missing when the subject had no reads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed? Evidence { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed? _explicitNullValueEvidence = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed Evidence { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed _explicitNullValueEvidence = default!;
 #endif
         /// <summary>End of the usage window the evidence covers.</summary>
-        public DateTimeOffset? EvidenceWindowEnd { get; set; }
+        public DateTimeOffset? EvidenceWindowEnd { get => _explicitNullValueEvidenceWindowEnd; set { _explicitNullValueEvidenceWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_window_end"); else _explicitNullProperties?.Remove("evidence_window_end"); } }
+        private DateTimeOffset? _explicitNullValueEvidenceWindowEnd = default!;
         /// <summary>Start of the usage window the evidence covers.</summary>
-        public DateTimeOffset? EvidenceWindowStart { get; set; }
+        public DateTimeOffset? EvidenceWindowStart { get => _explicitNullValueEvidenceWindowStart; set { _explicitNullValueEvidenceWindowStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_window_start"); else _explicitNullProperties?.Remove("evidence_window_start"); } }
+        private DateTimeOffset? _explicitNullValueEvidenceWindowStart = default!;
         /// <summary>Suggestion identifier.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>* `certify` - Certify* `deprecate` - Deprecate* `materialize` - Materialize* `unmaterialize` - Unmaterialize</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionKind? _explicitNullValueKind = default!;
         /// <summary>When the daily job last found evidence for this suggestion.</summary>
-        public DateTimeOffset? LastSeenAt { get; set; }
+        public DateTimeOffset? LastSeenAt { get => _explicitNullValueLastSeenAt; set { _explicitNullValueLastSeenAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen_at"); else _explicitNullProperties?.Remove("last_seen_at"); } }
+        private DateTimeOffset? _explicitNullValueLastSeenAt = default!;
         /// <summary>What accepting this suggestion would create or change. Shape depends on kind.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,33 +131,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposed Payload { get; private set; }
 #endif
         /// <summary>Version of the payload shape for this kind.</summary>
-        public int? PayloadVersion { get; set; }
+        public int? PayloadVersion { get => _explicitNullValuePayloadVersion; set { _explicitNullValuePayloadVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_version"); else _explicitNullProperties?.Remove("payload_version"); } }
+        private int? _explicitNullValuePayloadVersion = default!;
         /// <summary>Bytes read that an accepted materialize or unmaterialize suggestion saved over the last 30 days, scaled to a month, measured the same way as realized_seconds_saved_per_month.</summary>
-        public double? RealizedBytesSavedPerMonth { get; set; }
+        public double? RealizedBytesSavedPerMonth { get => _explicitNullValueRealizedBytesSavedPerMonth; set { _explicitNullValueRealizedBytesSavedPerMonth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_bytes_saved_per_month"); else _explicitNullProperties?.Remove("realized_bytes_saved_per_month"); } }
+        private double? _explicitNullValueRealizedBytesSavedPerMonth = default!;
         /// <summary>Query time an accepted materialize or unmaterialize suggestion saved over the last 30 days, scaled to a month: what the view would cost without the change minus what it costs now. For materialize, people&apos;s reads cost what they cost per read before acceptance, at today&apos;s read volume, and the cost now is those reads plus refreshes. For unmaterialize, the cost without the change is its refreshes, and the cost now is every read. Negative when the change costs more than it saves. Null until 30 days have passed since acceptance, when a materialized view has no refresh in that time, and for other kinds.</summary>
-        public double? RealizedSecondsSavedPerMonth { get; set; }
+        public double? RealizedSecondsSavedPerMonth { get => _explicitNullValueRealizedSecondsSavedPerMonth; set { _explicitNullValueRealizedSecondsSavedPerMonth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_seconds_saved_per_month"); else _explicitNullProperties?.Remove("realized_seconds_saved_per_month"); } }
+        private double? _explicitNullValueRealizedSecondsSavedPerMonth = default!;
         /// <summary>When the suggestion was accepted or dismissed.</summary>
-        public DateTimeOffset? ReviewedAt { get; set; }
+        public DateTimeOffset? ReviewedAt { get => _explicitNullValueReviewedAt; set { _explicitNullValueReviewedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_at"); else _explicitNullProperties?.Remove("reviewed_at"); } }
+        private DateTimeOffset? _explicitNullValueReviewedAt = default!;
         /// <summary>Who accepted or dismissed this suggestion. Null while it is open.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? ReviewedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? _explicitNullValueReviewedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer ReviewedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer _explicitNullValueReviewedBy = default!;
 #endif
         /// <summary>* `proposed` - Proposed* `accepted` - Accepted* `dismissed` - Dismissed* `expired` - Expired* `auto_resolved` - Auto-resolved</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionStatusComposed? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionStatusComposed? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionStatusComposed? _explicitNullValueStatus = default!;
         /// <summary>Id of the view or table the suggestion is about.</summary>
-        public Guid? SubjectId { get; set; }
+        public Guid? SubjectId { get => _explicitNullValueSubjectId; set { _explicitNullValueSubjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_id"); else _explicitNullProperties?.Remove("subject_id"); } }
+        private Guid? _explicitNullValueSubjectId = default!;
         /// <summary>* `saved_query` - Saved query* `table` - Table</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionSubjectKind? SubjectKind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionSubjectKind? SubjectKind { get => _explicitNullValueSubjectKind; set { _explicitNullValueSubjectKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_kind"); else _explicitNullProperties?.Remove("subject_kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionSubjectKind? _explicitNullValueSubjectKind = default!;
         /// <summary>Source schema that syncs the subject table, for linking to its schema page. Null for views and for tables no source syncs.</summary>
-        public Guid? SubjectSchemaId { get; set; }
+        public Guid? SubjectSchemaId { get => _explicitNullValueSubjectSchemaId; set { _explicitNullValueSubjectSchemaId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_schema_id"); else _explicitNullProperties?.Remove("subject_schema_id"); } }
+        private Guid? _explicitNullValueSubjectSchemaId = default!;
         /// <summary>Warehouse source that syncs the subject table, for linking to its schema page. Null for views and for tables no source syncs.</summary>
-        public Guid? SubjectSourceId { get; set; }
+        public Guid? SubjectSourceId { get => _explicitNullValueSubjectSourceId; set { _explicitNullValueSubjectSourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_source_id"); else _explicitNullProperties?.Remove("subject_source_id"); } }
+        private Guid? _explicitNullValueSubjectSourceId = default!;
         /// <summary>When the suggestion was first shown. Null while it waits for a slot.</summary>
-        public DateTimeOffset? SurfacedAt { get; set; }
+        public DateTimeOffset? SurfacedAt { get => _explicitNullValueSurfacedAt; set { _explicitNullValueSurfacedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surfaced_at"); else _explicitNullProperties?.Remove("surfaced_at"); } }
+        private DateTimeOffset? _explicitNullValueSurfacedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestion"/> and sets the default values.
         /// </summary>
@@ -125,7 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestion CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestion();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestion(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -191,6 +251,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("subject_schema_id", SubjectSchemaId);
             writer.WriteGuidValue("subject_source_id", SubjectSourceId);
             writer.WriteDateTimeOffsetValue("surfaced_at", SurfacedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

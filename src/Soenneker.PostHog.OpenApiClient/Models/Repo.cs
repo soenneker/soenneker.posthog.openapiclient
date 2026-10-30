@@ -11,37 +11,62 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Repo : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_file_paths") is { } nullNodeBaselineFilePaths && nullNodeBaselineFilePaths.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineFilePaths = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("debt_digest_enabled") is { } nullNodeDebtDigestEnabled && nullNodeDebtDigestEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DebtDigestEnabled = null;
+            if (parseNode.GetChildNode("enable_pr_comments") is { } nullNodeEnablePrComments && nullNodeEnablePrComments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnablePrComments = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("repo_external_id") is { } nullNodeRepoExternalId && nullNodeRepoExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoExternalId = null;
+            if (parseNode.GetChildNode("repo_full_name") is { } nullNodeRepoFullName && nullNodeRepoFullName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoFullName = null;
+            if (parseNode.GetChildNode("team_id") is { } nullNodeTeamId && nullNodeTeamId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The baseline_file_paths property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty? BaselineFilePaths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty? BaselineFilePaths { get => _explicitNullValueBaselineFilePaths; set { _explicitNullValueBaselineFilePaths = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_file_paths"); else _explicitNullProperties?.Remove("baseline_file_paths"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty? _explicitNullValueBaselineFilePaths = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty BaselineFilePaths { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty BaselineFilePaths { get => _explicitNullValueBaselineFilePaths; set { _explicitNullValueBaselineFilePaths = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_file_paths"); else _explicitNullProperties?.Remove("baseline_file_paths"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RepoBaselineFilePathsProperty _explicitNullValueBaselineFilePaths = default!;
 #endif
         /// <summary>The created_at property</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>The debt_digest_enabled property</summary>
-        public bool? DebtDigestEnabled { get; set; }
+        public bool? DebtDigestEnabled { get => _explicitNullValueDebtDigestEnabled; set { _explicitNullValueDebtDigestEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("debt_digest_enabled"); else _explicitNullProperties?.Remove("debt_digest_enabled"); } }
+        private bool? _explicitNullValueDebtDigestEnabled = default!;
         /// <summary>The enable_pr_comments property</summary>
-        public bool? EnablePrComments { get; set; }
+        public bool? EnablePrComments { get => _explicitNullValueEnablePrComments; set { _explicitNullValueEnablePrComments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enable_pr_comments"); else _explicitNullProperties?.Remove("enable_pr_comments"); } }
+        private bool? _explicitNullValueEnablePrComments = default!;
         /// <summary>The id property</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>The repo_external_id property</summary>
-        public int? RepoExternalId { get; set; }
+        public int? RepoExternalId { get => _explicitNullValueRepoExternalId; set { _explicitNullValueRepoExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_external_id"); else _explicitNullProperties?.Remove("repo_external_id"); } }
+        private int? _explicitNullValueRepoExternalId = default!;
         /// <summary>The repo_full_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RepoFullName { get; set; }
+        public string? RepoFullName { get => _explicitNullValueRepoFullName; set { _explicitNullValueRepoFullName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_full_name"); else _explicitNullProperties?.Remove("repo_full_name"); } }
+        private string? _explicitNullValueRepoFullName = default!;
 #nullable restore
 #else
-        public string RepoFullName { get; set; }
+        public string RepoFullName { get => _explicitNullValueRepoFullName; set { _explicitNullValueRepoFullName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_full_name"); else _explicitNullProperties?.Remove("repo_full_name"); } }
+        private string _explicitNullValueRepoFullName = default!;
 #endif
         /// <summary>The team_id property</summary>
-        public int? TeamId { get; set; }
+        public int? TeamId { get => _explicitNullValueTeamId; set { _explicitNullValueTeamId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_id"); else _explicitNullProperties?.Remove("team_id"); } }
+        private int? _explicitNullValueTeamId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Repo"/> and sets the default values.
         /// </summary>
@@ -57,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.Repo CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.Repo();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.Repo(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("repo_external_id", RepoExternalId);
             writer.WriteStringValue("repo_full_name", RepoFullName);
             writer.WriteIntValue("team_id", TeamId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

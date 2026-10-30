@@ -11,47 +11,82 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PullRequestFrictionBreakdown : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ci_wait_seconds") is { } nullNodeCiWaitSeconds && nullNodeCiWaitSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CiWaitSeconds = null;
+            if (parseNode.GetChildNode("first_approval_wait_seconds") is { } nullNodeFirstApprovalWaitSeconds && nullNodeFirstApprovalWaitSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstApprovalWaitSeconds = null;
+            if (parseNode.GetChildNode("flake_red_count") is { } nullNodeFlakeRedCount && nullNodeFlakeRedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlakeRedCount = null;
+            if (parseNode.GetChildNode("futile_rerun_count") is { } nullNodeFutileRerunCount && nullNodeFutileRerunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FutileRerunCount = null;
+            if (parseNode.GetChildNode("groups") is { } nullNodeGroups && nullNodeGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groups = null;
+            if (parseNode.GetChildNode("kickout_count") is { } nullNodeKickoutCount && nullNodeKickoutCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KickoutCount = null;
+            if (parseNode.GetChildNode("master_red_count") is { } nullNodeMasterRedCount && nullNodeMasterRedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MasterRedCount = null;
+            if (parseNode.GetChildNode("own_red_count") is { } nullNodeOwnRedCount && nullNodeOwnRedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnRedCount = null;
+            if (parseNode.GetChildNode("push_count") is { } nullNodePushCount && nullNodePushCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PushCount = null;
+            if (parseNode.GetChildNode("pushes_after_approval") is { } nullNodePushesAfterApproval && nullNodePushesAfterApproval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PushesAfterApproval = null;
+            if (parseNode.GetChildNode("queue_seconds") is { } nullNodeQueueSeconds && nullNodeQueueSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueSeconds = null;
+            if (parseNode.GetChildNode("score") is { } nullNodeScore && nullNodeScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Score = null;
+            if (parseNode.GetChildNode("unknown_red_count") is { } nullNodeUnknownRedCount && nullNodeUnknownRedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnknownRedCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>CI running time of each push, oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? CiWaitSeconds { get; set; }
+        public List<double?>? CiWaitSeconds { get => _explicitNullValueCiWaitSeconds; set { _explicitNullValueCiWaitSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_wait_seconds"); else _explicitNullProperties?.Remove("ci_wait_seconds"); } }
+        private List<double?>? _explicitNullValueCiWaitSeconds = default!;
 #nullable restore
 #else
-        public List<double?> CiWaitSeconds { get; set; }
+        public List<double?> CiWaitSeconds { get => _explicitNullValueCiWaitSeconds; set { _explicitNullValueCiWaitSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_wait_seconds"); else _explicitNullProperties?.Remove("ci_wait_seconds"); } }
+        private List<double?> _explicitNullValueCiWaitSeconds = default!;
 #endif
         /// <summary>From ready for review to the first approval. Null when either is not observed.</summary>
-        public double? FirstApprovalWaitSeconds { get; set; }
+        public double? FirstApprovalWaitSeconds { get => _explicitNullValueFirstApprovalWaitSeconds; set { _explicitNullValueFirstApprovalWaitSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_approval_wait_seconds"); else _explicitNullProperties?.Remove("first_approval_wait_seconds"); } }
+        private double? _explicitNullValueFirstApprovalWaitSeconds = default!;
         /// <summary>Red stretches that a re-run of the same commit turned green.</summary>
-        public int? FlakeRedCount { get; set; }
+        public int? FlakeRedCount { get => _explicitNullValueFlakeRedCount; set { _explicitNullValueFlakeRedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flake_red_count"); else _explicitNullProperties?.Remove("flake_red_count"); } }
+        private int? _explicitNullValueFlakeRedCount = default!;
         /// <summary>Re-runs that failed again.</summary>
-        public int? FutileRerunCount { get; set; }
+        public int? FutileRerunCount { get => _explicitNullValueFutileRerunCount; set { _explicitNullValueFutileRerunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("futile_rerun_count"); else _explicitNullProperties?.Remove("futile_rerun_count"); } }
+        private int? _explicitNullValueFutileRerunCount = default!;
         /// <summary>The pull request&apos;s friction split by kind.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShare>? Groups { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShare>? Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShare>? _explicitNullValueGroups = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShare> Groups { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShare> Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FrictionGroupShare> _explicitNullValueGroups = default!;
 #endif
         /// <summary>Merge queue attempts where at least one workflow run failed. A failed check the queue does not require leaves the pull request in the queue, so this is an upper bound on the times the queue removed it. Null when the pull request never entered the merge queue.</summary>
-        public int? KickoutCount { get; set; }
+        public int? KickoutCount { get => _explicitNullValueKickoutCount; set { _explicitNullValueKickoutCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kickout_count"); else _explicitNullProperties?.Remove("kickout_count"); } }
+        private int? _explicitNullValueKickoutCount = default!;
         /// <summary>Red stretches where the same job failed on the default branch within 12 hours.</summary>
-        public int? MasterRedCount { get; set; }
+        public int? MasterRedCount { get => _explicitNullValueMasterRedCount; set { _explicitNullValueMasterRedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("master_red_count"); else _explicitNullProperties?.Remove("master_red_count"); } }
+        private int? _explicitNullValueMasterRedCount = default!;
         /// <summary>Red stretches that a later push fixed.</summary>
-        public int? OwnRedCount { get; set; }
+        public int? OwnRedCount { get => _explicitNullValueOwnRedCount; set { _explicitNullValueOwnRedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("own_red_count"); else _explicitNullProperties?.Remove("own_red_count"); } }
+        private int? _explicitNullValueOwnRedCount = default!;
         /// <summary>Pushes that triggered CI.</summary>
-        public int? PushCount { get; set; }
+        public int? PushCount { get => _explicitNullValuePushCount; set { _explicitNullValuePushCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_count"); else _explicitNullProperties?.Remove("push_count"); } }
+        private int? _explicitNullValuePushCount = default!;
         /// <summary>Pushes after the first approval. Null without an approval.</summary>
-        public int? PushesAfterApproval { get; set; }
+        public int? PushesAfterApproval { get => _explicitNullValuePushesAfterApproval; set { _explicitNullValuePushesAfterApproval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pushes_after_approval"); else _explicitNullProperties?.Remove("pushes_after_approval"); } }
+        private int? _explicitNullValuePushesAfterApproval = default!;
         /// <summary>Time in the merge queue. Null when the pull request never entered it.</summary>
-        public double? QueueSeconds { get; set; }
+        public double? QueueSeconds { get => _explicitNullValueQueueSeconds; set { _explicitNullValueQueueSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_seconds"); else _explicitNullProperties?.Remove("queue_seconds"); } }
+        private double? _explicitNullValueQueueSeconds = default!;
         /// <summary>Friction as a multiple of the typical pull request in the repository.</summary>
-        public double? Score { get; set; }
+        public double? Score { get => _explicitNullValueScore; set { _explicitNullValueScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score"); else _explicitNullProperties?.Remove("score"); } }
+        private double? _explicitNullValueScore = default!;
         /// <summary>Red stretches with no provable cause.</summary>
-        public int? UnknownRedCount { get; set; }
+        public int? UnknownRedCount { get => _explicitNullValueUnknownRedCount; set { _explicitNullValueUnknownRedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown_red_count"); else _explicitNullProperties?.Remove("unknown_red_count"); } }
+        private int? _explicitNullValueUnknownRedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown"/> and sets the default values.
         /// </summary>
@@ -67,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,6 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("queue_seconds", QueueSeconds);
             writer.WriteDoubleValue("score", Score);
             writer.WriteIntValue("unknown_red_count", UnknownRedCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

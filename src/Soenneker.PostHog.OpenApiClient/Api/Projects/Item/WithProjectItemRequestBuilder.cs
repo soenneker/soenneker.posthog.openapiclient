@@ -116,6 +116,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_supabase_auth_
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_suppressions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging_templates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics_alerts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebook_widgets;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Object_media_previews;
@@ -769,6 +770,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.MetricsRequestBuilder Metrics
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The metrics_alerts property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics_alerts.Metrics_alertsRequestBuilder Metrics_alerts
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Metrics_alerts.Metrics_alertsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The notebook_widgets property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebook_widgets.Notebook_widgetsRequestBuilder Notebook_widgets

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelines>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelines.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelines>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestTimelines.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Pull requests as timelines of what each waited on from ready for review to merge or now: review, CI, red checks by what turned them green, and the merge queue. Scope to one author or one GitHub team (open PRs plus PRs merged in the window, date_from default -30d), or to one pull request with pr_number and repo.

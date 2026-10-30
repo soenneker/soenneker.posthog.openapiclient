@@ -11,48 +11,80 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CdcStatus : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("lag_bytes") is { } nullNodeLagBytes && nullNodeLagBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LagBytes = null;
+            if (parseNode.GetChildNode("lag_critical_threshold_mb") is { } nullNodeLagCriticalThresholdMb && nullNodeLagCriticalThresholdMb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LagCriticalThresholdMb = null;
+            if (parseNode.GetChildNode("lag_warning_threshold_mb") is { } nullNodeLagWarningThresholdMb && nullNodeLagWarningThresholdMb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LagWarningThresholdMb = null;
+            if (parseNode.GetChildNode("management_mode") is { } nullNodeManagementMode && nullNodeManagementMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManagementMode = null;
+            if (parseNode.GetChildNode("publication_exists") is { } nullNodePublicationExists && nullNodePublicationExists.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublicationExists = null;
+            if (parseNode.GetChildNode("publication_name") is { } nullNodePublicationName && nullNodePublicationName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublicationName = null;
+            if (parseNode.GetChildNode("published_tables") is { } nullNodePublishedTables && nullNodePublishedTables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PublishedTables = null;
+            if (parseNode.GetChildNode("schedule_paused") is { } nullNodeSchedulePaused && nullNodeSchedulePaused.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchedulePaused = null;
+            if (parseNode.GetChildNode("slot_exists") is { } nullNodeSlotExists && nullNodeSlotExists.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlotExists = null;
+            if (parseNode.GetChildNode("slot_name") is { } nullNodeSlotName && nullNodeSlotName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlotName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether CDC is enabled on this source.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Current slot lag in bytes, when the source was reachable.</summary>
-        public int? LagBytes { get; set; }
+        public int? LagBytes { get => _explicitNullValueLagBytes; set { _explicitNullValueLagBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lag_bytes"); else _explicitNullProperties?.Remove("lag_bytes"); } }
+        private int? _explicitNullValueLagBytes = default!;
         /// <summary>Lag in MB above which the UI alerts.</summary>
-        public int? LagCriticalThresholdMb { get; set; }
+        public int? LagCriticalThresholdMb { get => _explicitNullValueLagCriticalThresholdMb; set { _explicitNullValueLagCriticalThresholdMb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lag_critical_threshold_mb"); else _explicitNullProperties?.Remove("lag_critical_threshold_mb"); } }
+        private int? _explicitNullValueLagCriticalThresholdMb = default!;
         /// <summary>Lag in MB above which the UI warns.</summary>
-        public int? LagWarningThresholdMb { get; set; }
+        public int? LagWarningThresholdMb { get => _explicitNullValueLagWarningThresholdMb; set { _explicitNullValueLagWarningThresholdMb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lag_warning_threshold_mb"); else _explicitNullProperties?.Remove("lag_warning_threshold_mb"); } }
+        private int? _explicitNullValueLagWarningThresholdMb = default!;
         /// <summary>* `posthog` - posthog* `self_managed` - self_managed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode? ManagementMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode? ManagementMode { get => _explicitNullValueManagementMode; set { _explicitNullValueManagementMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("management_mode"); else _explicitNullProperties?.Remove("management_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CdcStatusManagementMode? _explicitNullValueManagementMode = default!;
         /// <summary>Whether the publication exists on the source, when the source was reachable.</summary>
-        public bool? PublicationExists { get; set; }
+        public bool? PublicationExists { get => _explicitNullValuePublicationExists; set { _explicitNullValuePublicationExists = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publication_exists"); else _explicitNullProperties?.Remove("publication_exists"); } }
+        private bool? _explicitNullValuePublicationExists = default!;
         /// <summary>Publication PostHog reads changes from. Empty when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PublicationName { get; set; }
+        public string? PublicationName { get => _explicitNullValuePublicationName; set { _explicitNullValuePublicationName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publication_name"); else _explicitNullProperties?.Remove("publication_name"); } }
+        private string? _explicitNullValuePublicationName = default!;
 #nullable restore
 #else
-        public string PublicationName { get; set; }
+        public string PublicationName { get => _explicitNullValuePublicationName; set { _explicitNullValuePublicationName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publication_name"); else _explicitNullProperties?.Remove("publication_name"); } }
+        private string _explicitNullValuePublicationName = default!;
 #endif
         /// <summary>Tables in the publication, when the source was reachable and a publication exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PublishedTables { get; set; }
+        public List<string>? PublishedTables { get => _explicitNullValuePublishedTables; set { _explicitNullValuePublishedTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_tables"); else _explicitNullProperties?.Remove("published_tables"); } }
+        private List<string>? _explicitNullValuePublishedTables = default!;
 #nullable restore
 #else
-        public List<string> PublishedTables { get; set; }
+        public List<string> PublishedTables { get => _explicitNullValuePublishedTables; set { _explicitNullValuePublishedTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_tables"); else _explicitNullProperties?.Remove("published_tables"); } }
+        private List<string> _explicitNullValuePublishedTables = default!;
 #endif
         /// <summary>True when a non-retryable failure paused the extraction schedule; the UI then offers Resume instead of Repair. Degrades to false when the schedule lookup fails.</summary>
-        public bool? SchedulePaused { get; set; }
+        public bool? SchedulePaused { get => _explicitNullValueSchedulePaused; set { _explicitNullValueSchedulePaused = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_paused"); else _explicitNullProperties?.Remove("schedule_paused"); } }
+        private bool? _explicitNullValueSchedulePaused = default!;
         /// <summary>Whether the replication slot exists on the source, when the source was reachable.</summary>
-        public bool? SlotExists { get; set; }
+        public bool? SlotExists { get => _explicitNullValueSlotExists; set { _explicitNullValueSlotExists = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot_exists"); else _explicitNullProperties?.Remove("slot_exists"); } }
+        private bool? _explicitNullValueSlotExists = default!;
         /// <summary>Replication slot PostHog consumes from. Empty when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlotName { get; set; }
+        public string? SlotName { get => _explicitNullValueSlotName; set { _explicitNullValueSlotName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot_name"); else _explicitNullProperties?.Remove("slot_name"); } }
+        private string? _explicitNullValueSlotName = default!;
 #nullable restore
 #else
-        public string SlotName { get; set; }
+        public string SlotName { get => _explicitNullValueSlotName; set { _explicitNullValueSlotName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot_name"); else _explicitNullProperties?.Remove("slot_name"); } }
+        private string _explicitNullValueSlotName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CdcStatus"/> and sets the default values.
@@ -69,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CdcStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CdcStatus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CdcStatus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -110,6 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("schedule_paused", SchedulePaused);
             writer.WriteBoolValue("slot_exists", SlotExists);
             writer.WriteStringValue("slot_name", SlotName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

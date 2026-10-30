@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Billing.Usage.Team_options
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BillingTeamOptionsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BillingTeamOptionsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BillingTeamOptionsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BillingTeamOptionsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The project ids the project filter offers, loaded apart from the charts.Scoped the way the charts are: a member without billing access sees only the projectsthey can see.

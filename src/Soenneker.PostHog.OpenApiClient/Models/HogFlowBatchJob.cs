@@ -11,7 +11,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HogFlowBatchJob : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("hog_flow") is { } nullNodeHogFlow && nullNodeHogFlow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogFlow = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("variables") is { } nullNodeVariables && nullNodeVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variables = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the batch run was created.</summary>
@@ -33,20 +43,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public UntypedNode Filters { get; private set; }
 #endif
         /// <summary>ID of the workflow this batch run belongs to.</summary>
-        public Guid? HogFlow { get; set; }
+        public Guid? HogFlow { get => _explicitNullValueHogFlow; set { _explicitNullValueHogFlow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_flow"); else _explicitNullProperties?.Remove("hog_flow"); } }
+        private Guid? _explicitNullValueHogFlow = default!;
         /// <summary>ID of the batch run.</summary>
         public Guid? Id { get; private set; }
         /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus? _explicitNullValueStatus = default!;
         /// <summary>When the batch run was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Variable value overrides applied to this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Variables { get; set; }
+        public UntypedNode? Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private UntypedNode? _explicitNullValueVariables = default!;
 #nullable restore
 #else
-        public UntypedNode Variables { get; set; }
+        public UntypedNode Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private UntypedNode _explicitNullValueVariables = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJob"/> and sets the default values.
@@ -63,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJob CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJob();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJob(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("hog_flow", HogFlow);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus>("status", Status);
             writer.WriteObjectValue<UntypedNode>("variables", Variables);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

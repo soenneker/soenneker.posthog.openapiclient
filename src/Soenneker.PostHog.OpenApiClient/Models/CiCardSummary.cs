@@ -11,17 +11,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CiCardSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("failing_ci") is { } nullNodeFailingCi && nullNodeFailingCi.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailingCi = null;
+            if (parseNode.GetChildNode("open_prs") is { } nullNodeOpenPrs && nullNodeOpenPrs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenPrs = null;
+            if (parseNode.GetChildNode("repos") is { } nullNodeRepos && nullNodeRepos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repos = null;
+            if (parseNode.GetChildNode("stuck") is { } nullNodeStuck && nullNodeStuck.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stuck = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Open pull requests with at least one failing latest CI run. May lag until the workflow_run webhook settles late completions.</summary>
-        public int? FailingCi { get; set; }
+        public int? FailingCi { get => _explicitNullValueFailingCi; set { _explicitNullValueFailingCi = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_ci"); else _explicitNullProperties?.Remove("failing_ci"); } }
+        private int? _explicitNullValueFailingCi = default!;
         /// <summary>Count of open pull requests.</summary>
-        public int? OpenPrs { get; set; }
+        public int? OpenPrs { get => _explicitNullValueOpenPrs; set { _explicitNullValueOpenPrs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_prs"); else _explicitNullProperties?.Remove("open_prs"); } }
+        private int? _explicitNullValueOpenPrs = default!;
         /// <summary>Distinct repositories with at least one open pull request.</summary>
-        public int? Repos { get; set; }
+        public int? Repos { get => _explicitNullValueRepos; set { _explicitNullValueRepos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repos"); else _explicitNullProperties?.Remove("repos"); } }
+        private int? _explicitNullValueRepos = default!;
         /// <summary>Open, non-draft, non-bot pull requests older than 7 days.</summary>
-        public int? Stuck { get; set; }
+        public int? Stuck { get => _explicitNullValueStuck; set { _explicitNullValueStuck = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stuck"); else _explicitNullProperties?.Remove("stuck"); } }
+        private int? _explicitNullValueStuck = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CiCardSummary"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CiCardSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CiCardSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CiCardSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("open_prs", OpenPrs);
             writer.WriteIntValue("repos", Repos);
             writer.WriteIntValue("stuck", Stuck);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

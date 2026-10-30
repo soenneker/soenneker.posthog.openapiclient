@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.In_
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentInSessionExposure>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentInSessionExposure.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentInSessionExposure>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentInSessionExposure.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// How the recordings tab&apos;s in-session exposure scope reads on this experiment.Resolved through the same seam as the recordings query&apos;s `in_session` refusal, so thescope control disables exactly what a query would be refused for, and the copy can saywhen sessions are matched on the stamped flag property rather than on the exposure event.Postgres reads only, so it can serve the tab&apos;s mount path.

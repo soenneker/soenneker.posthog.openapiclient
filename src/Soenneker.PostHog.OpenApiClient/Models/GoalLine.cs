@@ -11,35 +11,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GoalLine : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("borderColor") is { } nullNodeBorderColor && nullNodeBorderColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BorderColor = null;
+            if (parseNode.GetChildNode("calculation") is { } nullNodeCalculation && nullNodeCalculation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Calculation = null;
+            if (parseNode.GetChildNode("displayIfCrossed") is { } nullNodeDisplayIfCrossed && nullNodeDisplayIfCrossed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayIfCrossed = null;
+            if (parseNode.GetChildNode("displayLabel") is { } nullNodeDisplayLabel && nullNodeDisplayLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayLabel = null;
+            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("position") is { } nullNodePosition && nullNodePosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Position = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+        }
+
         /// <summary>The borderColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BorderColor { get; set; }
+        public string? BorderColor { get => _explicitNullValueBorderColor; set { _explicitNullValueBorderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderColor"); else _explicitNullProperties?.Remove("borderColor"); } }
+        private string? _explicitNullValueBorderColor = default!;
 #nullable restore
 #else
-        public string BorderColor { get; set; }
+        public string BorderColor { get => _explicitNullValueBorderColor; set { _explicitNullValueBorderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderColor"); else _explicitNullProperties?.Remove("borderColor"); } }
+        private string _explicitNullValueBorderColor = default!;
 #endif
         /// <summary>Recalculate from returned chart marks. An absent calculation uses the fixed value.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.Calculation? Calculation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Calculation? Calculation { get => _explicitNullValueCalculation; set { _explicitNullValueCalculation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calculation"); else _explicitNullProperties?.Remove("calculation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.Calculation? _explicitNullValueCalculation = default!;
         /// <summary>The displayIfCrossed property</summary>
-        public bool? DisplayIfCrossed { get; set; }
+        public bool? DisplayIfCrossed { get => _explicitNullValueDisplayIfCrossed; set { _explicitNullValueDisplayIfCrossed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayIfCrossed"); else _explicitNullProperties?.Remove("displayIfCrossed"); } }
+        private bool? _explicitNullValueDisplayIfCrossed = default!;
         /// <summary>The displayLabel property</summary>
-        public bool? DisplayLabel { get; set; }
+        public bool? DisplayLabel { get => _explicitNullValueDisplayLabel; set { _explicitNullValueDisplayLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayLabel"); else _explicitNullProperties?.Remove("displayLabel"); } }
+        private bool? _explicitNullValueDisplayLabel = default!;
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get; set; }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>The position property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.Position? Position { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Position? Position { get => _explicitNullValuePosition; set { _explicitNullValuePosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position"); else _explicitNullProperties?.Remove("position"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.Position? _explicitNullValuePosition = default!;
         /// <summary>SQL chart calculations use the primary axis, across all series or separately per series.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.Scope? Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Scope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.Scope? _explicitNullValueScope = default!;
         /// <summary>The value property</summary>
-        public double? Value { get; set; }
+        public double? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private double? _explicitNullValueValue = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -48,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GoalLine CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GoalLine();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GoalLine(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,7 +107,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Position>("position", Position);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Scope>("scope", Scope);
-            writer.WriteDoubleValue("value", Value);
+            writer.WriteDoubleValue("value", Value);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

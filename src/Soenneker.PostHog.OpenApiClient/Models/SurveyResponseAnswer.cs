@@ -11,42 +11,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SurveyResponseAnswer : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("answer") is { } nullNodeAnswer && nullNodeAnswer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Answer = null;
+            if (parseNode.GetChildNode("question_id") is { } nullNodeQuestionId && nullNodeQuestionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionId = null;
+            if (parseNode.GetChildNode("question_index") is { } nullNodeQuestionIndex && nullNodeQuestionIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionIndex = null;
+            if (parseNode.GetChildNode("question_text") is { } nullNodeQuestionText && nullNodeQuestionText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionText = null;
+            if (parseNode.GetChildNode("question_type") is { } nullNodeQuestionType && nullNodeQuestionType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Resolved answer. String for open/rating/single_choice/link questions, list of strings for multiple_choice questions. Already decoded from the raw $survey_response_&lt;id&gt; property so callers don&apos;t need to parse it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Answer { get; set; }
+        public UntypedNode? Answer { get => _explicitNullValueAnswer; set { _explicitNullValueAnswer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answer"); else _explicitNullProperties?.Remove("answer"); } }
+        private UntypedNode? _explicitNullValueAnswer = default!;
 #nullable restore
 #else
-        public UntypedNode Answer { get; set; }
+        public UntypedNode Answer { get => _explicitNullValueAnswer; set { _explicitNullValueAnswer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("answer"); else _explicitNullProperties?.Remove("answer"); } }
+        private UntypedNode _explicitNullValueAnswer = default!;
 #endif
         /// <summary>UUID of the survey question this answer belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuestionId { get; set; }
+        public string? QuestionId { get => _explicitNullValueQuestionId; set { _explicitNullValueQuestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_id"); else _explicitNullProperties?.Remove("question_id"); } }
+        private string? _explicitNullValueQuestionId = default!;
 #nullable restore
 #else
-        public string QuestionId { get; set; }
+        public string QuestionId { get => _explicitNullValueQuestionId; set { _explicitNullValueQuestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_id"); else _explicitNullProperties?.Remove("question_id"); } }
+        private string _explicitNullValueQuestionId = default!;
 #endif
         /// <summary>Zero-based index of the question within the survey.</summary>
-        public int? QuestionIndex { get; set; }
+        public int? QuestionIndex { get => _explicitNullValueQuestionIndex; set { _explicitNullValueQuestionIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_index"); else _explicitNullProperties?.Remove("question_index"); } }
+        private int? _explicitNullValueQuestionIndex = default!;
         /// <summary>Untranslated question text as configured by the survey author.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuestionText { get; set; }
+        public string? QuestionText { get => _explicitNullValueQuestionText; set { _explicitNullValueQuestionText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_text"); else _explicitNullProperties?.Remove("question_text"); } }
+        private string? _explicitNullValueQuestionText = default!;
 #nullable restore
 #else
-        public string QuestionText { get; set; }
+        public string QuestionText { get => _explicitNullValueQuestionText; set { _explicitNullValueQuestionText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_text"); else _explicitNullProperties?.Remove("question_text"); } }
+        private string _explicitNullValueQuestionText = default!;
 #endif
         /// <summary>Question type: open, rating, single_choice, multiple_choice, or link. Determines the shape of the answer field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuestionType { get; set; }
+        public string? QuestionType { get => _explicitNullValueQuestionType; set { _explicitNullValueQuestionType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_type"); else _explicitNullProperties?.Remove("question_type"); } }
+        private string? _explicitNullValueQuestionType = default!;
 #nullable restore
 #else
-        public string QuestionType { get; set; }
+        public string QuestionType { get => _explicitNullValueQuestionType; set { _explicitNullValueQuestionType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_type"); else _explicitNullProperties?.Remove("question_type"); } }
+        private string _explicitNullValueQuestionType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswer"/> and sets the default values.
@@ -63,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswer CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswer();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseAnswer(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("question_index", QuestionIndex);
             writer.WriteStringValue("question_text", QuestionText);
             writer.WriteStringValue("question_type", QuestionType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

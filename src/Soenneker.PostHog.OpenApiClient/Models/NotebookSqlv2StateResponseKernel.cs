@@ -12,22 +12,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class NotebookSqlv2StateResponseKernel : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cpu_cores") is { } nullNodeCpuCores && nullNodeCpuCores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuCores = null;
+            if (parseNode.GetChildNode("idle_timeout_seconds") is { } nullNodeIdleTimeoutSeconds && nullNodeIdleTimeoutSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdleTimeoutSeconds = null;
+            if (parseNode.GetChildNode("memory_gb") is { } nullNodeMemoryGb && nullNodeMemoryGb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryGb = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>CPU cores the notebook&apos;s sandbox is configured with.</summary>
-        public double? CpuCores { get; set; }
+        public double? CpuCores { get => _explicitNullValueCpuCores; set { _explicitNullValueCpuCores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_cores"); else _explicitNullProperties?.Remove("cpu_cores"); } }
+        private double? _explicitNullValueCpuCores = default!;
         /// <summary>Maximum lifetime of the sandbox in seconds. It shuts down this long after it starts, even while in use.</summary>
-        public int? IdleTimeoutSeconds { get; set; }
+        public int? IdleTimeoutSeconds { get => _explicitNullValueIdleTimeoutSeconds; set { _explicitNullValueIdleTimeoutSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idle_timeout_seconds"); else _explicitNullProperties?.Remove("idle_timeout_seconds"); } }
+        private int? _explicitNullValueIdleTimeoutSeconds = default!;
         /// <summary>Memory in GB the notebook&apos;s sandbox is configured with.</summary>
-        public double? MemoryGb { get; set; }
+        public double? MemoryGb { get => _explicitNullValueMemoryGb; set { _explicitNullValueMemoryGb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_gb"); else _explicitNullProperties?.Remove("memory_gb"); } }
+        private double? _explicitNullValueMemoryGb = default!;
         /// <summary>Kernel runtime state: &apos;starting&apos;, &apos;running&apos;, &apos;stopped&apos;, &apos;timed_out&apos;, &apos;discarded&apos;, or &apos;error&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseKernel"/> and sets the default values.
@@ -44,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseKernel CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseKernel();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponseKernel(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("idle_timeout_seconds", IdleTimeoutSeconds);
             writer.WriteDoubleValue("memory_gb", MemoryGb);
             writer.WriteStringValue("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

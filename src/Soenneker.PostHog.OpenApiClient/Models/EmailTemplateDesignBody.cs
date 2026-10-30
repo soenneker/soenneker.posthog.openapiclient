@@ -11,48 +11,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EmailTemplateDesignBody : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("footers") is { } nullNodeFooters && nullNodeFooters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Footers = null;
+            if (parseNode.GetChildNode("headers") is { } nullNodeHeaders && nullNodeHeaders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headers = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("rows") is { } nullNodeRows && nullNodeRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rows = null;
+            if (parseNode.GetChildNode("values") is { } nullNodeValues && nullNodeValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Values = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The footers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyFootersItemProperty>? Footers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyFootersItemProperty>? Footers { get => _explicitNullValueFooters; set { _explicitNullValueFooters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("footers"); else _explicitNullProperties?.Remove("footers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyFootersItemProperty>? _explicitNullValueFooters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyFootersItemProperty> Footers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyFootersItemProperty> Footers { get => _explicitNullValueFooters; set { _explicitNullValueFooters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("footers"); else _explicitNullProperties?.Remove("footers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyFootersItemProperty> _explicitNullValueFooters = default!;
 #endif
         /// <summary>The headers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyHeadersItemProperty>? Headers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyHeadersItemProperty>? Headers { get => _explicitNullValueHeaders; set { _explicitNullValueHeaders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headers"); else _explicitNullProperties?.Remove("headers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyHeadersItemProperty>? _explicitNullValueHeaders = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyHeadersItemProperty> Headers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyHeadersItemProperty> Headers { get => _explicitNullValueHeaders; set { _explicitNullValueHeaders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headers"); else _explicitNullProperties?.Remove("headers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyHeadersItemProperty> _explicitNullValueHeaders = default!;
 #endif
         /// <summary>Any unique string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Rows of {id, cells, columns[{id, contents[{id, type, values}], values}], values}.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyRowsItemProperty>? Rows { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyRowsItemProperty>? Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyRowsItemProperty>? _explicitNullValueRows = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyRowsItemProperty> Rows { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyRowsItemProperty> Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyRowsItemProperty> _explicitNullValueRows = default!;
 #endif
         /// <summary>Body-level settings: backgroundColor, contentWidth (&apos;600px&apos;), fontFamily, textColor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyValuesProperty? Values { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyValuesProperty? Values { get => _explicitNullValueValues; set { _explicitNullValueValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values"); else _explicitNullProperties?.Remove("values"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyValuesProperty? _explicitNullValueValues = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyValuesProperty Values { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyValuesProperty Values { get => _explicitNullValueValues; set { _explicitNullValueValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values"); else _explicitNullProperties?.Remove("values"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyValuesProperty _explicitNullValueValues = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBody"/> and sets the default values.
@@ -69,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBody();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBody(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyRowsItemProperty>("rows", Rows);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplateDesignBodyValuesProperty>("values", Values);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

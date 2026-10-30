@@ -11,37 +11,62 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FirstReportState : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("checked_products") is { } nullNodeCheckedProducts && nullNodeCheckedProducts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedProducts = null;
+            if (parseNode.GetChildNode("missing_data") is { } nullNodeMissingData && nullNodeMissingData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissingData = null;
+            if (parseNode.GetChildNode("report_id") is { } nullNodeReportId && nullNodeReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportId = null;
+            if (parseNode.GetChildNode("scout_run_id") is { } nullNodeScoutRunId && nullNodeScoutRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutRunId = null;
+            if (parseNode.GetChildNode("started_at") is { } nullNodeStartedAt && nullNodeStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartedAt = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
+            if (parseNode.GetChildNode("task_run_id") is { } nullNodeTaskRunId && nullNodeTaskRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskRunId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Products checked during the investigation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CheckedProducts { get; set; }
+        public List<string>? CheckedProducts { get => _explicitNullValueCheckedProducts; set { _explicitNullValueCheckedProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_products"); else _explicitNullProperties?.Remove("checked_products"); } }
+        private List<string>? _explicitNullValueCheckedProducts = default!;
 #nullable restore
 #else
-        public List<string> CheckedProducts { get; set; }
+        public List<string> CheckedProducts { get => _explicitNullValueCheckedProducts; set { _explicitNullValueCheckedProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_products"); else _explicitNullProperties?.Remove("checked_products"); } }
+        private List<string> _explicitNullValueCheckedProducts = default!;
 #endif
         /// <summary>Data or history needed for a reliable finding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MissingData { get; set; }
+        public List<string>? MissingData { get => _explicitNullValueMissingData; set { _explicitNullValueMissingData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_data"); else _explicitNullProperties?.Remove("missing_data"); } }
+        private List<string>? _explicitNullValueMissingData = default!;
 #nullable restore
 #else
-        public List<string> MissingData { get; set; }
+        public List<string> MissingData { get => _explicitNullValueMissingData; set { _explicitNullValueMissingData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_data"); else _explicitNullProperties?.Remove("missing_data"); } }
+        private List<string> _explicitNullValueMissingData = default!;
 #endif
         /// <summary>The first useful report produced by the investigation.</summary>
-        public Guid? ReportId { get; set; }
+        public Guid? ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private Guid? _explicitNullValueReportId = default!;
         /// <summary>Scout run ID for inspecting the investigation through the scout API.</summary>
-        public Guid? ScoutRunId { get; set; }
+        public Guid? ScoutRunId { get => _explicitNullValueScoutRunId; set { _explicitNullValueScoutRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_run_id"); else _explicitNullProperties?.Remove("scout_run_id"); } }
+        private Guid? _explicitNullValueScoutRunId = default!;
         /// <summary>When the investigation&apos;s task run started.</summary>
-        public DateTimeOffset? StartedAt { get; set; }
+        public DateTimeOffset? StartedAt { get => _explicitNullValueStartedAt; set { _explicitNullValueStartedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started_at"); else _explicitNullProperties?.Remove("started_at"); } }
+        private DateTimeOffset? _explicitNullValueStartedAt = default!;
         /// <summary>* `pending` - Pending* `running` - Running* `no_data` - No data* `report_created` - Report created* `insufficient_data` - Insufficient data* `no_actionable_finding` - No actionable finding* `incomplete` - Incomplete</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportStateStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportStateStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FirstReportStateStatus? _explicitNullValueStatus = default!;
         /// <summary>Task ID for following the investigation&apos;s live activity.</summary>
-        public Guid? TaskId { get; set; }
+        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
+        private Guid? _explicitNullValueTaskId = default!;
         /// <summary>Task run ID for following the investigation&apos;s live activity.</summary>
-        public Guid? TaskRunId { get; set; }
+        public Guid? TaskRunId { get => _explicitNullValueTaskRunId; set { _explicitNullValueTaskRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_run_id"); else _explicitNullProperties?.Remove("task_run_id"); } }
+        private Guid? _explicitNullValueTaskRunId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState"/> and sets the default values.
         /// </summary>
@@ -57,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstReportStateStatus>("status", Status);
             writer.WriteGuidValue("task_id", TaskId);
             writer.WriteGuidValue("task_run_id", TaskRunId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

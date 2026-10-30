@@ -12,27 +12,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasLayoutPublishResponseLayout : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("grid") is { } nullNodeGrid && nullNodeGrid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Grid = null;
+            if (parseNode.GetChildNode("placements") is { } nullNodePlacements && nullNodePlacements.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Placements = null;
+            if (parseNode.GetChildNode("schemaVersion") is { } nullNodeSchemaVersion && nullNodeSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaVersion = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The grid placements are laid out on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid? Grid { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid? Grid { get => _explicitNullValueGrid; set { _explicitNullValueGrid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grid"); else _explicitNullProperties?.Remove("grid"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid? _explicitNullValueGrid = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid Grid { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid Grid { get => _explicitNullValueGrid; set { _explicitNullValueGrid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grid"); else _explicitNullProperties?.Remove("grid"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid _explicitNullValueGrid = default!;
 #endif
         /// <summary>The placed widgets, at most 24. Placements may not overlap or extend past the grid.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement>? Placements { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement>? Placements { get => _explicitNullValuePlacements; set { _explicitNullValuePlacements = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placements"); else _explicitNullProperties?.Remove("placements"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement>? _explicitNullValuePlacements = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement> Placements { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement> Placements { get => _explicitNullValuePlacements; set { _explicitNullValuePlacements = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placements"); else _explicitNullProperties?.Remove("placements"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement> _explicitNullValuePlacements = default!;
 #endif
         /// <summary>* `1` - 1</summary>
-        public int? SchemaVersion { get; set; }
+        public int? SchemaVersion { get => _explicitNullValueSchemaVersion; set { _explicitNullValueSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemaVersion"); else _explicitNullProperties?.Remove("schemaVersion"); } }
+        private int? _explicitNullValueSchemaVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPublishResponseLayout"/> and sets the default values.
         /// </summary>
@@ -48,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPublishResponseLayout CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPublishResponseLayout();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutPublishResponseLayout(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid>("grid", Grid);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPlacement>("placements", Placements);
             writer.WriteIntValue("schemaVersion", SchemaVersion);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

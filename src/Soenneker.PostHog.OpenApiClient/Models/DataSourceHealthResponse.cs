@@ -11,34 +11,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DataSourceHealthResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("has_any_data") is { } nullNodeHasAnyData && nullNodeHasAnyData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasAnyData = null;
+            if (parseNode.GetChildNode("integrations") is { } nullNodeIntegrations && nullNodeIntegrations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Integrations = null;
+            if (parseNode.GetChildNode("issues_summary") is { } nullNodeIssuesSummary && nullNodeIssuesSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssuesSummary = null;
+            if (parseNode.GetChildNode("overall_status") is { } nullNodeOverallStatus && nullNodeOverallStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OverallStatus = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True if any integration synced rows in the last 7 days</summary>
-        public bool? HasAnyData { get; set; }
+        public bool? HasAnyData { get => _explicitNullValueHasAnyData; set { _explicitNullValueHasAnyData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_any_data"); else _explicitNullProperties?.Remove("has_any_data"); } }
+        private bool? _explicitNullValueHasAnyData = default!;
         /// <summary>One health entry per native integration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry>? Integrations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry>? Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry>? _explicitNullValueIntegrations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry> Integrations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry> Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry> _explicitNullValueIntegrations = default!;
 #endif
         /// <summary>Short human-readable summary of detected issues</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IssuesSummary { get; set; }
+        public List<string>? IssuesSummary { get => _explicitNullValueIssuesSummary; set { _explicitNullValueIssuesSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issues_summary"); else _explicitNullProperties?.Remove("issues_summary"); } }
+        private List<string>? _explicitNullValueIssuesSummary = default!;
 #nullable restore
 #else
-        public List<string> IssuesSummary { get; set; }
+        public List<string> IssuesSummary { get => _explicitNullValueIssuesSummary; set { _explicitNullValueIssuesSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issues_summary"); else _explicitNullProperties?.Remove("issues_summary"); } }
+        private List<string> _explicitNullValueIssuesSummary = default!;
 #endif
         /// <summary>Overall: healthy/degraded/broken/no_sources</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OverallStatus { get; set; }
+        public string? OverallStatus { get => _explicitNullValueOverallStatus; set { _explicitNullValueOverallStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overall_status"); else _explicitNullProperties?.Remove("overall_status"); } }
+        private string? _explicitNullValueOverallStatus = default!;
 #nullable restore
 #else
-        public string OverallStatus { get; set; }
+        public string OverallStatus { get => _explicitNullValueOverallStatus; set { _explicitNullValueOverallStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overall_status"); else _explicitNullProperties?.Remove("overall_status"); } }
+        private string _explicitNullValueOverallStatus = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthResponse"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry>("integrations", Integrations);
             writer.WriteCollectionOfPrimitiveValues<string>("issues_summary", IssuesSummary);
             writer.WriteStringValue("overall_status", OverallStatus);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

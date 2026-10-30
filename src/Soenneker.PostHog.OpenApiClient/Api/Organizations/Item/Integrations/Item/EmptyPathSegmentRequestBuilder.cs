@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.It
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// ViewSet for organization-level integrations.Provides access to integrations that are scoped to the entire organization(vs. project-level integrations). Examples include Vercel, AWS Marketplace, etc.Creation is handled by the integration installation flows(e.g., Vercel marketplace installation). Users can disconnect integrationsvia the DELETE endpoint.
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.It
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationIntegration>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationIntegration.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationIntegration>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationIntegration.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// ViewSet for organization-level integrations.Provides access to integrations that are scoped to the entire organization(vs. project-level integrations). Examples include Vercel, AWS Marketplace, etc.Creation is handled by the integration installation flows(e.g., Vercel marketplace installation). Users can disconnect integrationsvia the DELETE endpoint.

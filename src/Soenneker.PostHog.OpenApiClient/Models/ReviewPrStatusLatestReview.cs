@@ -11,47 +11,77 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewPrStatusLatestReview : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("completed_at") is { } nullNodeCompletedAt && nullNodeCompletedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedAt = null;
+            if (parseNode.GetChildNode("consider_count") is { } nullNodeConsiderCount && nullNodeConsiderCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConsiderCount = null;
+            if (parseNode.GetChildNode("head_sha") is { } nullNodeHeadSha && nullNodeHeadSha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeadSha = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("must_fix_count") is { } nullNodeMustFixCount && nullNodeMustFixCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MustFixCount = null;
+            if (parseNode.GetChildNode("review_mode") is { } nullNodeReviewMode && nullNodeReviewMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewMode = null;
+            if (parseNode.GetChildNode("run_index") is { } nullNodeRunIndex && nullNodeRunIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIndex = null;
+            if (parseNode.GetChildNode("should_fix_count") is { } nullNodeShouldFixCount && nullNodeShouldFixCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShouldFixCount = null;
+            if (parseNode.GetChildNode("status_comment_url") is { } nullNodeStatusCommentUrl && nullNodeStatusCommentUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusCommentUrl = null;
+            if (parseNode.GetChildNode("turn_published") is { } nullNodeTurnPublished && nullNodeTurnPublished.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TurnPublished = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the turn completed.</summary>
-        public DateTimeOffset? CompletedAt { get; set; }
+        public DateTimeOffset? CompletedAt { get => _explicitNullValueCompletedAt; set { _explicitNullValueCompletedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_at"); else _explicitNullProperties?.Remove("completed_at"); } }
+        private DateTimeOffset? _explicitNullValueCompletedAt = default!;
         /// <summary>The turn&apos;s valid findings at consider priority.</summary>
-        public int? ConsiderCount { get; set; }
+        public int? ConsiderCount { get => _explicitNullValueConsiderCount; set { _explicitNullValueConsiderCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("consider_count"); else _explicitNullProperties?.Remove("consider_count"); } }
+        private int? _explicitNullValueConsiderCount = default!;
         /// <summary>The PR head commit the turn reviewed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HeadSha { get; set; }
+        public string? HeadSha { get => _explicitNullValueHeadSha; set { _explicitNullValueHeadSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("head_sha"); else _explicitNullProperties?.Remove("head_sha"); } }
+        private string? _explicitNullValueHeadSha = default!;
 #nullable restore
 #else
-        public string HeadSha { get; set; }
+        public string HeadSha { get => _explicitNullValueHeadSha; set { _explicitNullValueHeadSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("head_sha"); else _explicitNullProperties?.Remove("head_sha"); } }
+        private string _explicitNullValueHeadSha = default!;
 #endif
         /// <summary>The review&apos;s id, for `review-hog-reviews-get`.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>The turn&apos;s valid findings at must_fix priority.</summary>
-        public int? MustFixCount { get; set; }
+        public int? MustFixCount { get => _explicitNullValueMustFixCount; set { _explicitNullValueMustFixCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("must_fix_count"); else _explicitNullProperties?.Remove("must_fix_count"); } }
+        private int? _explicitNullValueMustFixCount = default!;
         /// <summary>What the turn ran: &apos;full&apos; (Deep) or &apos;flash&apos; (Standard). Null when the turn did not record it.* `full` - Deep* `flash` - Standard</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewReviewMode? ReviewMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewReviewMode? ReviewMode { get => _explicitNullValueReviewMode; set { _explicitNullValueReviewMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_mode"); else _explicitNullProperties?.Remove("review_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewReviewMode? _explicitNullValueReviewMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewReviewMode ReviewMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewReviewMode ReviewMode { get => _explicitNullValueReviewMode; set { _explicitNullValueReviewMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_mode"); else _explicitNullProperties?.Remove("review_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewReviewMode _explicitNullValueReviewMode = default!;
 #endif
         /// <summary>The turn&apos;s index, for `review-hog-reviews-get`.</summary>
-        public int? RunIndex { get; set; }
+        public int? RunIndex { get => _explicitNullValueRunIndex; set { _explicitNullValueRunIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_index"); else _explicitNullProperties?.Remove("run_index"); } }
+        private int? _explicitNullValueRunIndex = default!;
         /// <summary>The turn&apos;s valid findings at should_fix priority.</summary>
-        public int? ShouldFixCount { get; set; }
+        public int? ShouldFixCount { get => _explicitNullValueShouldFixCount; set { _explicitNullValueShouldFixCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("should_fix_count"); else _explicitNullProperties?.Remove("should_fix_count"); } }
+        private int? _explicitNullValueShouldFixCount = default!;
         /// <summary>Link to the review&apos;s status comment on the pull request; null when there is none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StatusCommentUrl { get; set; }
+        public string? StatusCommentUrl { get => _explicitNullValueStatusCommentUrl; set { _explicitNullValueStatusCommentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_comment_url"); else _explicitNullProperties?.Remove("status_comment_url"); } }
+        private string? _explicitNullValueStatusCommentUrl = default!;
 #nullable restore
 #else
-        public string StatusCommentUrl { get; set; }
+        public string StatusCommentUrl { get => _explicitNullValueStatusCommentUrl; set { _explicitNullValueStatusCommentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_comment_url"); else _explicitNullProperties?.Remove("status_comment_url"); } }
+        private string _explicitNullValueStatusCommentUrl = default!;
 #endif
         /// <summary>Whether the turn was published to GitHub.</summary>
-        public bool? TurnPublished { get; set; }
+        public bool? TurnPublished { get => _explicitNullValueTurnPublished; set { _explicitNullValueTurnPublished = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("turn_published"); else _explicitNullProperties?.Remove("turn_published"); } }
+        private bool? _explicitNullValueTurnPublished = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview"/> and sets the default values.
         /// </summary>
@@ -67,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("should_fix_count", ShouldFixCount);
             writer.WriteStringValue("status_comment_url", StatusCommentUrl);
             writer.WriteBoolValue("turn_published", TurnPublished);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

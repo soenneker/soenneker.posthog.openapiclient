@@ -12,21 +12,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ModelUsageOverview : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cpu_microseconds") is { } nullNodeCpuMicroseconds && nullNodeCpuMicroseconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuMicroseconds = null;
+            if (parseNode.GetChildNode("measured_runs") is { } nullNodeMeasuredRuns && nullNodeMeasuredRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeasuredRuns = null;
+            if (parseNode.GetChildNode("query_count") is { } nullNodeQueryCount && nullNodeQueryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryCount = null;
+            if (parseNode.GetChildNode("read_bytes") is { } nullNodeReadBytes && nullNodeReadBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadBytes = null;
+            if (parseNode.GetChildNode("read_rows") is { } nullNodeReadRows && nullNodeReadRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadRows = null;
+            if (parseNode.GetChildNode("runs") is { } nullNodeRuns && nullNodeRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Measured CPU microseconds. Null if unmeasured.</summary>
-        public int? CpuMicroseconds { get; set; }
+        public int? CpuMicroseconds { get => _explicitNullValueCpuMicroseconds; set { _explicitNullValueCpuMicroseconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_microseconds"); else _explicitNullProperties?.Remove("cpu_microseconds"); } }
+        private int? _explicitNullValueCpuMicroseconds = default!;
         /// <summary>Runs with recorded usage. Other runs have unknown cost.</summary>
-        public int? MeasuredRuns { get; set; }
+        public int? MeasuredRuns { get => _explicitNullValueMeasuredRuns; set { _explicitNullValueMeasuredRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("measured_runs"); else _explicitNullProperties?.Remove("measured_runs"); } }
+        private int? _explicitNullValueMeasuredRuns = default!;
         /// <summary>Measured ClickHouse query count. Null if unmeasured.</summary>
-        public int? QueryCount { get; set; }
+        public int? QueryCount { get => _explicitNullValueQueryCount; set { _explicitNullValueQueryCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_count"); else _explicitNullProperties?.Remove("query_count"); } }
+        private int? _explicitNullValueQueryCount = default!;
         /// <summary>Measured bytes read, including probes and retries. Null if unmeasured.</summary>
-        public int? ReadBytes { get; set; }
+        public int? ReadBytes { get => _explicitNullValueReadBytes; set { _explicitNullValueReadBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_bytes"); else _explicitNullProperties?.Remove("read_bytes"); } }
+        private int? _explicitNullValueReadBytes = default!;
         /// <summary>Measured rows read. Null if unmeasured.</summary>
-        public int? ReadRows { get; set; }
+        public int? ReadRows { get => _explicitNullValueReadRows; set { _explicitNullValueReadRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_rows"); else _explicitNullProperties?.Remove("read_rows"); } }
+        private int? _explicitNullValueReadRows = default!;
         /// <summary>Finished materialization runs, including failures and cancellations.</summary>
-        public int? Runs { get; set; }
+        public int? Runs { get => _explicitNullValueRuns; set { _explicitNullValueRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs"); else _explicitNullProperties?.Remove("runs"); } }
+        private int? _explicitNullValueRuns = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview"/> and sets the default values.
         /// </summary>
@@ -42,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("read_bytes", ReadBytes);
             writer.WriteIntValue("read_rows", ReadRows);
             writer.WriteIntValue("runs", Runs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

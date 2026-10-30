@@ -12,21 +12,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ManagedWarehouseTrinoMonitoringSnapshotResponseTotals : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("blocked") is { } nullNodeBlocked && nullNodeBlocked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Blocked = null;
+            if (parseNode.GetChildNode("in_flight") is { } nullNodeInFlight && nullNodeInFlight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InFlight = null;
+            if (parseNode.GetChildNode("longest_running_ms") is { } nullNodeLongestRunningMs && nullNodeLongestRunningMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LongestRunningMs = null;
+            if (parseNode.GetChildNode("physical_input_bytes") is { } nullNodePhysicalInputBytes && nullNodePhysicalInputBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PhysicalInputBytes = null;
+            if (parseNode.GetChildNode("queued") is { } nullNodeQueued && nullNodeQueued.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Queued = null;
+            if (parseNode.GetChildNode("running") is { } nullNodeRunning && nullNodeRunning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Running = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Running queries whose work is all waiting on data or metadata. A subset of running.</summary>
-        public int? Blocked { get; set; }
+        public int? Blocked { get => _explicitNullValueBlocked; set { _explicitNullValueBlocked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked"); else _explicitNullProperties?.Remove("blocked"); } }
+        private int? _explicitNullValueBlocked = default!;
         /// <summary>Queries submitted and not yet finished. Equals running plus queued.</summary>
-        public int? InFlight { get; set; }
+        public int? InFlight { get => _explicitNullValueInFlight; set { _explicitNullValueInFlight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("in_flight"); else _explicitNullProperties?.Remove("in_flight"); } }
+        private int? _explicitNullValueInFlight = default!;
         /// <summary>Elapsed milliseconds of the longest in-flight query, or zero when there is none.</summary>
-        public int? LongestRunningMs { get; set; }
+        public int? LongestRunningMs { get => _explicitNullValueLongestRunningMs; set { _explicitNullValueLongestRunningMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("longest_running_ms"); else _explicitNullProperties?.Remove("longest_running_ms"); } }
+        private int? _explicitNullValueLongestRunningMs = default!;
         /// <summary>Bytes read so far by all in-flight queries.</summary>
-        public int? PhysicalInputBytes { get; set; }
+        public int? PhysicalInputBytes { get => _explicitNullValuePhysicalInputBytes; set { _explicitNullValuePhysicalInputBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("physical_input_bytes"); else _explicitNullProperties?.Remove("physical_input_bytes"); } }
+        private int? _explicitNullValuePhysicalInputBytes = default!;
         /// <summary>Queries waiting for a running slot.</summary>
-        public int? Queued { get; set; }
+        public int? Queued { get => _explicitNullValueQueued; set { _explicitNullValueQueued = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queued"); else _explicitNullProperties?.Remove("queued"); } }
+        private int? _explicitNullValueQueued = default!;
         /// <summary>In-flight queries past the queue. This is the count the concurrency limit applies to.</summary>
-        public int? Running { get; set; }
+        public int? Running { get => _explicitNullValueRunning; set { _explicitNullValueRunning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("running"); else _explicitNullProperties?.Remove("running"); } }
+        private int? _explicitNullValueRunning = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals"/> and sets the default values.
         /// </summary>
@@ -42,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseTotals(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("physical_input_bytes", PhysicalInputBytes);
             writer.WriteIntValue("queued", Queued);
             writer.WriteIntValue("running", Running);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,17 +11,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalReportRefundSummaryResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("credited_credits") is { } nullNodeCreditedCredits && nullNodeCreditedCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditedCredits = null;
+            if (parseNode.GetChildNode("credited_refund_count") is { } nullNodeCreditedRefundCount && nullNodeCreditedRefundCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditedRefundCount = null;
+            if (parseNode.GetChildNode("period_billable_credits") is { } nullNodePeriodBillableCredits && nullNodePeriodBillableCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeriodBillableCredits = null;
+            if (parseNode.GetChildNode("quota_limited") is { } nullNodeQuotaLimited && nullNodeQuotaLimited.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaLimited = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total signals credits those refunds returned (1 credit = $0.01). Divide by the flat per-PR charge to get the number of PRs to subtract from billing usage.</summary>
-        public int? CreditedCredits { get; set; }
+        public int? CreditedCredits { get => _explicitNullValueCreditedCredits; set { _explicitNullValueCreditedCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credited_credits"); else _explicitNullProperties?.Remove("credited_credits"); } }
+        private int? _explicitNullValueCreditedCredits = default!;
         /// <summary>Number of credited-path refunds across the whole organization whose refunded PR run falls in the current billing period. Excluded-path refunds never reach billing usage, so they are deliberately absent.</summary>
-        public int? CreditedRefundCount { get; set; }
+        public int? CreditedRefundCount { get => _explicitNullValueCreditedRefundCount; set { _explicitNullValueCreditedRefundCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credited_refund_count"); else _explicitNullProperties?.Remove("credited_refund_count"); } }
+        private int? _explicitNullValueCreditedRefundCount = default!;
         /// <summary>The organization&apos;s live billable signals credits for the current billing period, computed by the same rules as the nightly usage report — including PRs created today that billing hasn&apos;t recorded yet, and already excluding refund-excluded and billing-exempt reports. Take the max of this and billing&apos;s recorded usage for a live PR count that reacts to new PRs and same-day refunds immediately.</summary>
-        public int? PeriodBillableCredits { get; set; }
+        public int? PeriodBillableCredits { get => _explicitNullValuePeriodBillableCredits; set { _explicitNullValuePeriodBillableCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_billable_credits"); else _explicitNullProperties?.Remove("period_billable_credits"); } }
+        private int? _explicitNullValuePeriodBillableCredits = default!;
         /// <summary>Whether autonomous PR generation is currently paused for this project because the organization is over its self-driving credits quota. Read from the quota limiter, so it reflects the same state the pipeline gates enforce.</summary>
-        public bool? QuotaLimited { get; set; }
+        public bool? QuotaLimited { get => _explicitNullValueQuotaLimited; set { _explicitNullValueQuotaLimited = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_limited"); else _explicitNullProperties?.Remove("quota_limited"); } }
+        private bool? _explicitNullValueQuotaLimited = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundSummaryResponse"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundSummaryResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundSummaryResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundSummaryResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("credited_refund_count", CreditedRefundCount);
             writer.WriteIntValue("period_billable_credits", PeriodBillableCredits);
             writer.WriteBoolValue("quota_limited", QuotaLimited);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

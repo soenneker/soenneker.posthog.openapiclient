@@ -12,372 +12,555 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectCreateRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("access_control") is { } nullNodeAccessControl && nullNodeAccessControl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessControl = null;
+            if (parseNode.GetChildNode("anonymize_ips") is { } nullNodeAnonymizeIps && nullNodeAnonymizeIps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnonymizeIps = null;
+            if (parseNode.GetChildNode("app_urls") is { } nullNodeAppUrls && nullNodeAppUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppUrls = null;
+            if (parseNode.GetChildNode("autocapture_exceptions_errors_to_ignore") is { } nullNodeAutocaptureExceptionsErrorsToIgnore && nullNodeAutocaptureExceptionsErrorsToIgnore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutocaptureExceptionsErrorsToIgnore = null;
+            if (parseNode.GetChildNode("autocapture_exceptions_opt_in") is { } nullNodeAutocaptureExceptionsOptIn && nullNodeAutocaptureExceptionsOptIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutocaptureExceptionsOptIn = null;
+            if (parseNode.GetChildNode("autocapture_opt_out") is { } nullNodeAutocaptureOptOut && nullNodeAutocaptureOptOut.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutocaptureOptOut = null;
+            if (parseNode.GetChildNode("autocapture_web_vitals_allowed_metrics") is { } nullNodeAutocaptureWebVitalsAllowedMetrics && nullNodeAutocaptureWebVitalsAllowedMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutocaptureWebVitalsAllowedMetrics = null;
+            if (parseNode.GetChildNode("autocapture_web_vitals_opt_in") is { } nullNodeAutocaptureWebVitalsOptIn && nullNodeAutocaptureWebVitalsOptIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutocaptureWebVitalsOptIn = null;
+            if (parseNode.GetChildNode("base_currency") is { } nullNodeBaseCurrency && nullNodeBaseCurrency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseCurrency = null;
+            if (parseNode.GetChildNode("business_model") is { } nullNodeBusinessModel && nullNodeBusinessModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BusinessModel = null;
+            if (parseNode.GetChildNode("capture_console_log_opt_in") is { } nullNodeCaptureConsoleLogOptIn && nullNodeCaptureConsoleLogOptIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaptureConsoleLogOptIn = null;
+            if (parseNode.GetChildNode("capture_dead_clicks") is { } nullNodeCaptureDeadClicks && nullNodeCaptureDeadClicks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaptureDeadClicks = null;
+            if (parseNode.GetChildNode("capture_performance_opt_in") is { } nullNodeCapturePerformanceOptIn && nullNodeCapturePerformanceOptIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CapturePerformanceOptIn = null;
+            if (parseNode.GetChildNode("completed_snippet_onboarding") is { } nullNodeCompletedSnippetOnboarding && nullNodeCompletedSnippetOnboarding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedSnippetOnboarding = null;
+            if (parseNode.GetChildNode("conversations_enabled") is { } nullNodeConversationsEnabled && nullNodeConversationsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversationsEnabled = null;
+            if (parseNode.GetChildNode("conversations_settings") is { } nullNodeConversationsSettings && nullNodeConversationsSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversationsSettings = null;
+            if (parseNode.GetChildNode("cookieless_server_hash_mode") is { } nullNodeCookielessServerHashMode && nullNodeCookielessServerHashMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CookielessServerHashMode = null;
+            if (parseNode.GetChildNode("customer_analytics_config") is { } nullNodeCustomerAnalyticsConfig && nullNodeCustomerAnalyticsConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomerAnalyticsConfig = null;
+            if (parseNode.GetChildNode("data_attributes") is { } nullNodeDataAttributes && nullNodeDataAttributes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataAttributes = null;
+            if (parseNode.GetChildNode("default_data_theme") is { } nullNodeDefaultDataTheme && nullNodeDefaultDataTheme.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultDataTheme = null;
+            if (parseNode.GetChildNode("default_evaluation_contexts_enabled") is { } nullNodeDefaultEvaluationContextsEnabled && nullNodeDefaultEvaluationContextsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultEvaluationContextsEnabled = null;
+            if (parseNode.GetChildNode("extra_settings") is { } nullNodeExtraSettings && nullNodeExtraSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExtraSettings = null;
+            if (parseNode.GetChildNode("feature_flag_confirmation_enabled") is { } nullNodeFeatureFlagConfirmationEnabled && nullNodeFeatureFlagConfirmationEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlagConfirmationEnabled = null;
+            if (parseNode.GetChildNode("feature_flag_confirmation_message") is { } nullNodeFeatureFlagConfirmationMessage && nullNodeFeatureFlagConfirmationMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlagConfirmationMessage = null;
+            if (parseNode.GetChildNode("feature_flag_policy_config") is { } nullNodeFeatureFlagPolicyConfig && nullNodeFeatureFlagPolicyConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlagPolicyConfig = null;
+            if (parseNode.GetChildNode("flags_persistence_default") is { } nullNodeFlagsPersistenceDefault && nullNodeFlagsPersistenceDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagsPersistenceDefault = null;
+            if (parseNode.GetChildNode("has_completed_onboarding_for") is { } nullNodeHasCompletedOnboardingFor && nullNodeHasCompletedOnboardingFor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasCompletedOnboardingFor = null;
+            if (parseNode.GetChildNode("heatmaps_opt_in") is { } nullNodeHeatmapsOptIn && nullNodeHeatmapsOptIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeatmapsOptIn = null;
+            if (parseNode.GetChildNode("human_friendly_comparison_periods") is { } nullNodeHumanFriendlyComparisonPeriods && nullNodeHumanFriendlyComparisonPeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HumanFriendlyComparisonPeriods = null;
+            if (parseNode.GetChildNode("inject_web_apps") is { } nullNodeInjectWebApps && nullNodeInjectWebApps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InjectWebApps = null;
+            if (parseNode.GetChildNode("is_demo") is { } nullNodeIsDemo && nullNodeIsDemo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDemo = null;
+            if (parseNode.GetChildNode("live_events_columns") is { } nullNodeLiveEventsColumns && nullNodeLiveEventsColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiveEventsColumns = null;
+            if (parseNode.GetChildNode("logs_settings") is { } nullNodeLogsSettings && nullNodeLogsSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogsSettings = null;
+            if (parseNode.GetChildNode("marketing_analytics_config") is { } nullNodeMarketingAnalyticsConfig && nullNodeMarketingAnalyticsConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarketingAnalyticsConfig = null;
+            if (parseNode.GetChildNode("modifiers") is { } nullNodeModifiers && nullNodeModifiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modifiers = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("onboarding_tasks") is { } nullNodeOnboardingTasks && nullNodeOnboardingTasks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnboardingTasks = null;
+            if (parseNode.GetChildNode("path_cleaning_filters") is { } nullNodePathCleaningFilters && nullNodePathCleaningFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PathCleaningFilters = null;
+            if (parseNode.GetChildNode("person_display_name_properties") is { } nullNodePersonDisplayNameProperties && nullNodePersonDisplayNameProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonDisplayNameProperties = null;
+            if (parseNode.GetChildNode("primary_dashboard") is { } nullNodePrimaryDashboard && nullNodePrimaryDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryDashboard = null;
+            if (parseNode.GetChildNode("proactive_tasks_enabled") is { } nullNodeProactiveTasksEnabled && nullNodeProactiveTasksEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProactiveTasksEnabled = null;
+            if (parseNode.GetChildNode("product_description") is { } nullNodeProductDescription && nullNodeProductDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductDescription = null;
+            if (parseNode.GetChildNode("receive_org_level_activity_logs") is { } nullNodeReceiveOrgLevelActivityLogs && nullNodeReceiveOrgLevelActivityLogs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReceiveOrgLevelActivityLogs = null;
+            if (parseNode.GetChildNode("recording_domains") is { } nullNodeRecordingDomains && nullNodeRecordingDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordingDomains = null;
+            if (parseNode.GetChildNode("require_evaluation_contexts") is { } nullNodeRequireEvaluationContexts && nullNodeRequireEvaluationContexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireEvaluationContexts = null;
+            if (parseNode.GetChildNode("revenue_analytics_config") is { } nullNodeRevenueAnalyticsConfig && nullNodeRevenueAnalyticsConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevenueAnalyticsConfig = null;
+            if (parseNode.GetChildNode("session_recording_event_trigger_config") is { } nullNodeSessionRecordingEventTriggerConfig && nullNodeSessionRecordingEventTriggerConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingEventTriggerConfig = null;
+            if (parseNode.GetChildNode("session_recording_linked_flag") is { } nullNodeSessionRecordingLinkedFlag && nullNodeSessionRecordingLinkedFlag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingLinkedFlag = null;
+            if (parseNode.GetChildNode("session_recording_masking_config") is { } nullNodeSessionRecordingMaskingConfig && nullNodeSessionRecordingMaskingConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingMaskingConfig = null;
+            if (parseNode.GetChildNode("session_recording_minimum_duration_milliseconds") is { } nullNodeSessionRecordingMinimumDurationMilliseconds && nullNodeSessionRecordingMinimumDurationMilliseconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingMinimumDurationMilliseconds = null;
+            if (parseNode.GetChildNode("session_recording_network_payload_capture_config") is { } nullNodeSessionRecordingNetworkPayloadCaptureConfig && nullNodeSessionRecordingNetworkPayloadCaptureConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingNetworkPayloadCaptureConfig = null;
+            if (parseNode.GetChildNode("session_recording_opt_in") is { } nullNodeSessionRecordingOptIn && nullNodeSessionRecordingOptIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingOptIn = null;
+            if (parseNode.GetChildNode("session_recording_retention_period") is { } nullNodeSessionRecordingRetentionPeriod && nullNodeSessionRecordingRetentionPeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingRetentionPeriod = null;
+            if (parseNode.GetChildNode("session_recording_sample_rate") is { } nullNodeSessionRecordingSampleRate && nullNodeSessionRecordingSampleRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingSampleRate = null;
+            if (parseNode.GetChildNode("session_recording_trigger_groups") is { } nullNodeSessionRecordingTriggerGroups && nullNodeSessionRecordingTriggerGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingTriggerGroups = null;
+            if (parseNode.GetChildNode("session_recording_trigger_match_type_config") is { } nullNodeSessionRecordingTriggerMatchTypeConfig && nullNodeSessionRecordingTriggerMatchTypeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingTriggerMatchTypeConfig = null;
+            if (parseNode.GetChildNode("session_recording_url_blocklist_config") is { } nullNodeSessionRecordingUrlBlocklistConfig && nullNodeSessionRecordingUrlBlocklistConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingUrlBlocklistConfig = null;
+            if (parseNode.GetChildNode("session_recording_url_trigger_config") is { } nullNodeSessionRecordingUrlTriggerConfig && nullNodeSessionRecordingUrlTriggerConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionRecordingUrlTriggerConfig = null;
+            if (parseNode.GetChildNode("session_replay_config") is { } nullNodeSessionReplayConfig && nullNodeSessionReplayConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionReplayConfig = null;
+            if (parseNode.GetChildNode("survey_config") is { } nullNodeSurveyConfig && nullNodeSurveyConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyConfig = null;
+            if (parseNode.GetChildNode("surveys_opt_in") is { } nullNodeSurveysOptIn && nullNodeSurveysOptIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveysOptIn = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("test_account_filters") is { } nullNodeTestAccountFilters && nullNodeTestAccountFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestAccountFilters = null;
+            if (parseNode.GetChildNode("test_account_filters_default_checked") is { } nullNodeTestAccountFiltersDefaultChecked && nullNodeTestAccountFiltersDefaultChecked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestAccountFiltersDefaultChecked = null;
+            if (parseNode.GetChildNode("timezone") is { } nullNodeTimezone && nullNodeTimezone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timezone = null;
+            if (parseNode.GetChildNode("web_analytics_pre_aggregated_tables_enabled") is { } nullNodeWebAnalyticsPreAggregatedTablesEnabled && nullNodeWebAnalyticsPreAggregatedTablesEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebAnalyticsPreAggregatedTablesEnabled = null;
+            if (parseNode.GetChildNode("week_start_day") is { } nullNodeWeekStartDay && nullNodeWeekStartDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeekStartDay = null;
+            if (parseNode.GetChildNode("workflows_config") is { } nullNodeWorkflowsConfig && nullNodeWorkflowsConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowsConfig = null;
+        }
+
         /// <summary>The access_control property</summary>
-        public bool? AccessControl { get; set; }
+        public bool? AccessControl { get => _explicitNullValueAccessControl; set { _explicitNullValueAccessControl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_control"); else _explicitNullProperties?.Remove("access_control"); } }
+        private bool? _explicitNullValueAccessControl = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, PostHog drops the IP address from every ingested event.</summary>
-        public bool? AnonymizeIps { get; set; }
+        public bool? AnonymizeIps { get => _explicitNullValueAnonymizeIps; set { _explicitNullValueAnonymizeIps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anonymize_ips"); else _explicitNullProperties?.Remove("anonymize_ips"); } }
+        private bool? _explicitNullValueAnonymizeIps = default!;
         /// <summary>The app_urls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AppUrls { get; set; }
+        public List<string>? AppUrls { get => _explicitNullValueAppUrls; set { _explicitNullValueAppUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_urls"); else _explicitNullProperties?.Remove("app_urls"); } }
+        private List<string>? _explicitNullValueAppUrls = default!;
 #nullable restore
 #else
-        public List<string> AppUrls { get; set; }
+        public List<string> AppUrls { get => _explicitNullValueAppUrls; set { _explicitNullValueAppUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_urls"); else _explicitNullProperties?.Remove("app_urls"); } }
+        private List<string> _explicitNullValueAppUrls = default!;
 #endif
         /// <summary>The autocapture_exceptions_errors_to_ignore property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? AutocaptureExceptionsErrorsToIgnore { get; set; }
+        public UntypedNode? AutocaptureExceptionsErrorsToIgnore { get => _explicitNullValueAutocaptureExceptionsErrorsToIgnore; set { _explicitNullValueAutocaptureExceptionsErrorsToIgnore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autocapture_exceptions_errors_to_ignore"); else _explicitNullProperties?.Remove("autocapture_exceptions_errors_to_ignore"); } }
+        private UntypedNode? _explicitNullValueAutocaptureExceptionsErrorsToIgnore = default!;
 #nullable restore
 #else
-        public UntypedNode AutocaptureExceptionsErrorsToIgnore { get; set; }
+        public UntypedNode AutocaptureExceptionsErrorsToIgnore { get => _explicitNullValueAutocaptureExceptionsErrorsToIgnore; set { _explicitNullValueAutocaptureExceptionsErrorsToIgnore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autocapture_exceptions_errors_to_ignore"); else _explicitNullProperties?.Remove("autocapture_exceptions_errors_to_ignore"); } }
+        private UntypedNode _explicitNullValueAutocaptureExceptionsErrorsToIgnore = default!;
 #endif
         /// <summary>Enables automatic capture of JavaScript exceptions via the SDK.</summary>
-        public bool? AutocaptureExceptionsOptIn { get; set; }
+        public bool? AutocaptureExceptionsOptIn { get => _explicitNullValueAutocaptureExceptionsOptIn; set { _explicitNullValueAutocaptureExceptionsOptIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autocapture_exceptions_opt_in"); else _explicitNullProperties?.Remove("autocapture_exceptions_opt_in"); } }
+        private bool? _explicitNullValueAutocaptureExceptionsOptIn = default!;
         /// <summary>Disables posthog-js autocapture (clicks, page views) when true.</summary>
-        public bool? AutocaptureOptOut { get; set; }
+        public bool? AutocaptureOptOut { get => _explicitNullValueAutocaptureOptOut; set { _explicitNullValueAutocaptureOptOut = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autocapture_opt_out"); else _explicitNullProperties?.Remove("autocapture_opt_out"); } }
+        private bool? _explicitNullValueAutocaptureOptOut = default!;
         /// <summary>The autocapture_web_vitals_allowed_metrics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? AutocaptureWebVitalsAllowedMetrics { get; set; }
+        public UntypedNode? AutocaptureWebVitalsAllowedMetrics { get => _explicitNullValueAutocaptureWebVitalsAllowedMetrics; set { _explicitNullValueAutocaptureWebVitalsAllowedMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autocapture_web_vitals_allowed_metrics"); else _explicitNullProperties?.Remove("autocapture_web_vitals_allowed_metrics"); } }
+        private UntypedNode? _explicitNullValueAutocaptureWebVitalsAllowedMetrics = default!;
 #nullable restore
 #else
-        public UntypedNode AutocaptureWebVitalsAllowedMetrics { get; set; }
+        public UntypedNode AutocaptureWebVitalsAllowedMetrics { get => _explicitNullValueAutocaptureWebVitalsAllowedMetrics; set { _explicitNullValueAutocaptureWebVitalsAllowedMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autocapture_web_vitals_allowed_metrics"); else _explicitNullProperties?.Remove("autocapture_web_vitals_allowed_metrics"); } }
+        private UntypedNode _explicitNullValueAutocaptureWebVitalsAllowedMetrics = default!;
 #endif
         /// <summary>Enables automatic capture of Core Web Vitals performance metrics.</summary>
-        public bool? AutocaptureWebVitalsOptIn { get; set; }
+        public bool? AutocaptureWebVitalsOptIn { get => _explicitNullValueAutocaptureWebVitalsOptIn; set { _explicitNullValueAutocaptureWebVitalsOptIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autocapture_web_vitals_opt_in"); else _explicitNullProperties?.Remove("autocapture_web_vitals_opt_in"); } }
+        private bool? _explicitNullValueAutocaptureWebVitalsOptIn = default!;
         /// <summary>* `AED` - AED* `AFN` - AFN* `ALL` - ALL* `AMD` - AMD* `ANG` - ANG* `AOA` - AOA* `ARS` - ARS* `AUD` - AUD* `AWG` - AWG* `AZN` - AZN* `BAM` - BAM* `BBD` - BBD* `BDT` - BDT* `BGN` - BGN* `BHD` - BHD* `BIF` - BIF* `BMD` - BMD* `BND` - BND* `BOB` - BOB* `BRL` - BRL* `BSD` - BSD* `BTC` - BTC* `BTN` - BTN* `BWP` - BWP* `BYN` - BYN* `BZD` - BZD* `CAD` - CAD* `CDF` - CDF* `CHF` - CHF* `CLP` - CLP* `CNY` - CNY* `COP` - COP* `CRC` - CRC* `CVE` - CVE* `CZK` - CZK* `DJF` - DJF* `DKK` - DKK* `DOP` - DOP* `DZD` - DZD* `EGP` - EGP* `ERN` - ERN* `ETB` - ETB* `EUR` - EUR* `FJD` - FJD* `GBP` - GBP* `GEL` - GEL* `GHS` - GHS* `GIP` - GIP* `GMD` - GMD* `GNF` - GNF* `GTQ` - GTQ* `GYD` - GYD* `HKD` - HKD* `HNL` - HNL* `HRK` - HRK* `HTG` - HTG* `HUF` - HUF* `IDR` - IDR* `ILS` - ILS* `INR` - INR* `IQD` - IQD* `IRR` - IRR* `ISK` - ISK* `JMD` - JMD* `JOD` - JOD* `JPY` - JPY* `KES` - KES* `KGS` - KGS* `KHR` - KHR* `KMF` - KMF* `KRW` - KRW* `KWD` - KWD* `KYD` - KYD* `KZT` - KZT* `LAK` - LAK* `LBP` - LBP* `LKR` - LKR* `LRD` - LRD* `LTL` - LTL* `LVL` - LVL* `LSL` - LSL* `LYD` - LYD* `MAD` - MAD* `MDL` - MDL* `MGA` - MGA* `MKD` - MKD* `MMK` - MMK* `MNT` - MNT* `MOP` - MOP* `MRU` - MRU* `MTL` - MTL* `MUR` - MUR* `MVR` - MVR* `MWK` - MWK* `MXN` - MXN* `MYR` - MYR* `MZN` - MZN* `NAD` - NAD* `NGN` - NGN* `NIO` - NIO* `NOK` - NOK* `NPR` - NPR* `NZD` - NZD* `OMR` - OMR* `PAB` - PAB* `PEN` - PEN* `PGK` - PGK* `PHP` - PHP* `PKR` - PKR* `PLN` - PLN* `PYG` - PYG* `QAR` - QAR* `RON` - RON* `RSD` - RSD* `RUB` - RUB* `RWF` - RWF* `SAR` - SAR* `SBD` - SBD* `SCR` - SCR* `SDG` - SDG* `SEK` - SEK* `SGD` - SGD* `SRD` - SRD* `SSP` - SSP* `STN` - STN* `SYP` - SYP* `SZL` - SZL* `THB` - THB* `TJS` - TJS* `TMT` - TMT* `TND` - TND* `TOP` - TOP* `TRY` - TRY* `TTD` - TTD* `TWD` - TWD* `TZS` - TZS* `UAH` - UAH* `UGX` - UGX* `USD` - USD* `UYU` - UYU* `UZS` - UZS* `VES` - VES* `VND` - VND* `VUV` - VUV* `WST` - WST* `XAF` - XAF* `XCD` - XCD* `XOF` - XOF* `XPF` - XPF* `YER` - YER* `ZAR` - ZAR* `ZMW` - ZMW</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum? BaseCurrency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum? BaseCurrency { get => _explicitNullValueBaseCurrency; set { _explicitNullValueBaseCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_currency"); else _explicitNullProperties?.Remove("base_currency"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaseCurrencyEnum? _explicitNullValueBaseCurrency = default!;
         /// <summary>Whether this project serves B2B or B2C customers. Used to optimize default UI layouts.* `b2b` - B2B* `b2c` - B2C* `other` - Other</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestBusinessModel? BusinessModel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestBusinessModel? BusinessModel { get => _explicitNullValueBusinessModel; set { _explicitNullValueBusinessModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("business_model"); else _explicitNullProperties?.Remove("business_model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestBusinessModel? _explicitNullValueBusinessModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestBusinessModel BusinessModel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestBusinessModel BusinessModel { get => _explicitNullValueBusinessModel; set { _explicitNullValueBusinessModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("business_model"); else _explicitNullProperties?.Remove("business_model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestBusinessModel _explicitNullValueBusinessModel = default!;
 #endif
         /// <summary>Enables capturing browser console logs alongside session replays.</summary>
-        public bool? CaptureConsoleLogOptIn { get; set; }
+        public bool? CaptureConsoleLogOptIn { get => _explicitNullValueCaptureConsoleLogOptIn; set { _explicitNullValueCaptureConsoleLogOptIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capture_console_log_opt_in"); else _explicitNullProperties?.Remove("capture_console_log_opt_in"); } }
+        private bool? _explicitNullValueCaptureConsoleLogOptIn = default!;
         /// <summary>Enables capturing clicks that had no effect (rage-click detection).</summary>
-        public bool? CaptureDeadClicks { get; set; }
+        public bool? CaptureDeadClicks { get => _explicitNullValueCaptureDeadClicks; set { _explicitNullValueCaptureDeadClicks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capture_dead_clicks"); else _explicitNullProperties?.Remove("capture_dead_clicks"); } }
+        private bool? _explicitNullValueCaptureDeadClicks = default!;
         /// <summary>Enables capturing performance timing and network requests.</summary>
-        public bool? CapturePerformanceOptIn { get; set; }
+        public bool? CapturePerformanceOptIn { get => _explicitNullValueCapturePerformanceOptIn; set { _explicitNullValueCapturePerformanceOptIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capture_performance_opt_in"); else _explicitNullProperties?.Remove("capture_performance_opt_in"); } }
+        private bool? _explicitNullValueCapturePerformanceOptIn = default!;
         /// <summary>The completed_snippet_onboarding property</summary>
-        public bool? CompletedSnippetOnboarding { get; set; }
+        public bool? CompletedSnippetOnboarding { get => _explicitNullValueCompletedSnippetOnboarding; set { _explicitNullValueCompletedSnippetOnboarding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_snippet_onboarding"); else _explicitNullProperties?.Remove("completed_snippet_onboarding"); } }
+        private bool? _explicitNullValueCompletedSnippetOnboarding = default!;
         /// <summary>Enables the customer conversations / live chat product for this project.</summary>
-        public bool? ConversationsEnabled { get; set; }
+        public bool? ConversationsEnabled { get => _explicitNullValueConversationsEnabled; set { _explicitNullValueConversationsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversations_enabled"); else _explicitNullProperties?.Remove("conversations_enabled"); } }
+        private bool? _explicitNullValueConversationsEnabled = default!;
         /// <summary>Settings for Conversations. Must be a JSON object or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestConversationsSettingsProperty? ConversationsSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestConversationsSettingsProperty? ConversationsSettings { get => _explicitNullValueConversationsSettings; set { _explicitNullValueConversationsSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversations_settings"); else _explicitNullProperties?.Remove("conversations_settings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestConversationsSettingsProperty? _explicitNullValueConversationsSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestConversationsSettingsProperty ConversationsSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestConversationsSettingsProperty ConversationsSettings { get => _explicitNullValueConversationsSettings; set { _explicitNullValueConversationsSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversations_settings"); else _explicitNullProperties?.Remove("conversations_settings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestConversationsSettingsProperty _explicitNullValueConversationsSettings = default!;
 #endif
         /// <summary>The cookieless_server_hash_mode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestCookielessServerHashMode? CookielessServerHashMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestCookielessServerHashMode? CookielessServerHashMode { get => _explicitNullValueCookielessServerHashMode; set { _explicitNullValueCookielessServerHashMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cookieless_server_hash_mode"); else _explicitNullProperties?.Remove("cookieless_server_hash_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestCookielessServerHashMode? _explicitNullValueCookielessServerHashMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestCookielessServerHashMode CookielessServerHashMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestCookielessServerHashMode CookielessServerHashMode { get => _explicitNullValueCookielessServerHashMode; set { _explicitNullValueCookielessServerHashMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cookieless_server_hash_mode"); else _explicitNullProperties?.Remove("cookieless_server_hash_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestCookielessServerHashMode _explicitNullValueCookielessServerHashMode = default!;
 #endif
         /// <summary>The customer_analytics_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig? CustomerAnalyticsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig? CustomerAnalyticsConfig { get => _explicitNullValueCustomerAnalyticsConfig; set { _explicitNullValueCustomerAnalyticsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customer_analytics_config"); else _explicitNullProperties?.Remove("customer_analytics_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig? _explicitNullValueCustomerAnalyticsConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig CustomerAnalyticsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig CustomerAnalyticsConfig { get => _explicitNullValueCustomerAnalyticsConfig; set { _explicitNullValueCustomerAnalyticsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customer_analytics_config"); else _explicitNullProperties?.Remove("customer_analytics_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsConfig _explicitNullValueCustomerAnalyticsConfig = default!;
 #endif
         /// <summary>Element attributes that posthog-js should capture as action identifiers (e.g. `[&apos;data-attr&apos;]`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? DataAttributes { get; set; }
+        public UntypedNode? DataAttributes { get => _explicitNullValueDataAttributes; set { _explicitNullValueDataAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_attributes"); else _explicitNullProperties?.Remove("data_attributes"); } }
+        private UntypedNode? _explicitNullValueDataAttributes = default!;
 #nullable restore
 #else
-        public UntypedNode DataAttributes { get; set; }
+        public UntypedNode DataAttributes { get => _explicitNullValueDataAttributes; set { _explicitNullValueDataAttributes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_attributes"); else _explicitNullProperties?.Remove("data_attributes"); } }
+        private UntypedNode _explicitNullValueDataAttributes = default!;
 #endif
         /// <summary>The default_data_theme property</summary>
-        public int? DefaultDataTheme { get; set; }
+        public int? DefaultDataTheme { get => _explicitNullValueDefaultDataTheme; set { _explicitNullValueDefaultDataTheme = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_data_theme"); else _explicitNullProperties?.Remove("default_data_theme"); } }
+        private int? _explicitNullValueDefaultDataTheme = default!;
         /// <summary>Whether to automatically apply default evaluation contexts to new feature flags</summary>
-        public bool? DefaultEvaluationContextsEnabled { get; set; }
+        public bool? DefaultEvaluationContextsEnabled { get => _explicitNullValueDefaultEvaluationContextsEnabled; set { _explicitNullValueDefaultEvaluationContextsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_evaluation_contexts_enabled"); else _explicitNullProperties?.Remove("default_evaluation_contexts_enabled"); } }
+        private bool? _explicitNullValueDefaultEvaluationContextsEnabled = default!;
         /// <summary>The extra_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ExtraSettings { get; set; }
+        public UntypedNode? ExtraSettings { get => _explicitNullValueExtraSettings; set { _explicitNullValueExtraSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extra_settings"); else _explicitNullProperties?.Remove("extra_settings"); } }
+        private UntypedNode? _explicitNullValueExtraSettings = default!;
 #nullable restore
 #else
-        public UntypedNode ExtraSettings { get; set; }
+        public UntypedNode ExtraSettings { get => _explicitNullValueExtraSettings; set { _explicitNullValueExtraSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("extra_settings"); else _explicitNullProperties?.Remove("extra_settings"); } }
+        private UntypedNode _explicitNullValueExtraSettings = default!;
 #endif
         /// <summary>The feature_flag_confirmation_enabled property</summary>
-        public bool? FeatureFlagConfirmationEnabled { get; set; }
+        public bool? FeatureFlagConfirmationEnabled { get => _explicitNullValueFeatureFlagConfirmationEnabled; set { _explicitNullValueFeatureFlagConfirmationEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_confirmation_enabled"); else _explicitNullProperties?.Remove("feature_flag_confirmation_enabled"); } }
+        private bool? _explicitNullValueFeatureFlagConfirmationEnabled = default!;
         /// <summary>The feature_flag_confirmation_message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeatureFlagConfirmationMessage { get; set; }
+        public string? FeatureFlagConfirmationMessage { get => _explicitNullValueFeatureFlagConfirmationMessage; set { _explicitNullValueFeatureFlagConfirmationMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_confirmation_message"); else _explicitNullProperties?.Remove("feature_flag_confirmation_message"); } }
+        private string? _explicitNullValueFeatureFlagConfirmationMessage = default!;
 #nullable restore
 #else
-        public string FeatureFlagConfirmationMessage { get; set; }
+        public string FeatureFlagConfirmationMessage { get => _explicitNullValueFeatureFlagConfirmationMessage; set { _explicitNullValueFeatureFlagConfirmationMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_confirmation_message"); else _explicitNullProperties?.Remove("feature_flag_confirmation_message"); } }
+        private string _explicitNullValueFeatureFlagConfirmationMessage = default!;
 #endif
         /// <summary>The feature_flag_policy_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig? FeatureFlagPolicyConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig? FeatureFlagPolicyConfig { get => _explicitNullValueFeatureFlagPolicyConfig; set { _explicitNullValueFeatureFlagPolicyConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_policy_config"); else _explicitNullProperties?.Remove("feature_flag_policy_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig? _explicitNullValueFeatureFlagPolicyConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig FeatureFlagPolicyConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig FeatureFlagPolicyConfig { get => _explicitNullValueFeatureFlagPolicyConfig; set { _explicitNullValueFeatureFlagPolicyConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_policy_config"); else _explicitNullProperties?.Remove("feature_flag_policy_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig _explicitNullValueFeatureFlagPolicyConfig = default!;
 #endif
         /// <summary>Default value for the `persist` option on newly created feature flags.</summary>
-        public bool? FlagsPersistenceDefault { get; set; }
+        public bool? FlagsPersistenceDefault { get => _explicitNullValueFlagsPersistenceDefault; set { _explicitNullValueFlagsPersistenceDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flags_persistence_default"); else _explicitNullProperties?.Remove("flags_persistence_default"); } }
+        private bool? _explicitNullValueFlagsPersistenceDefault = default!;
         /// <summary>The has_completed_onboarding_for property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? HasCompletedOnboardingFor { get; set; }
+        public UntypedNode? HasCompletedOnboardingFor { get => _explicitNullValueHasCompletedOnboardingFor; set { _explicitNullValueHasCompletedOnboardingFor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_completed_onboarding_for"); else _explicitNullProperties?.Remove("has_completed_onboarding_for"); } }
+        private UntypedNode? _explicitNullValueHasCompletedOnboardingFor = default!;
 #nullable restore
 #else
-        public UntypedNode HasCompletedOnboardingFor { get; set; }
+        public UntypedNode HasCompletedOnboardingFor { get => _explicitNullValueHasCompletedOnboardingFor; set { _explicitNullValueHasCompletedOnboardingFor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_completed_onboarding_for"); else _explicitNullProperties?.Remove("has_completed_onboarding_for"); } }
+        private UntypedNode _explicitNullValueHasCompletedOnboardingFor = default!;
 #endif
         /// <summary>Enables heatmap recording on pages that host posthog-js.</summary>
-        public bool? HeatmapsOptIn { get; set; }
+        public bool? HeatmapsOptIn { get => _explicitNullValueHeatmapsOptIn; set { _explicitNullValueHeatmapsOptIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("heatmaps_opt_in"); else _explicitNullProperties?.Remove("heatmaps_opt_in"); } }
+        private bool? _explicitNullValueHeatmapsOptIn = default!;
         /// <summary>The human_friendly_comparison_periods property</summary>
-        public bool? HumanFriendlyComparisonPeriods { get; set; }
+        public bool? HumanFriendlyComparisonPeriods { get => _explicitNullValueHumanFriendlyComparisonPeriods; set { _explicitNullValueHumanFriendlyComparisonPeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("human_friendly_comparison_periods"); else _explicitNullProperties?.Remove("human_friendly_comparison_periods"); } }
+        private bool? _explicitNullValueHumanFriendlyComparisonPeriods = default!;
         /// <summary>The inject_web_apps property</summary>
-        public bool? InjectWebApps { get; set; }
+        public bool? InjectWebApps { get => _explicitNullValueInjectWebApps; set { _explicitNullValueInjectWebApps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inject_web_apps"); else _explicitNullProperties?.Remove("inject_web_apps"); } }
+        private bool? _explicitNullValueInjectWebApps = default!;
         /// <summary>The is_demo property</summary>
-        public bool? IsDemo { get; set; }
+        public bool? IsDemo { get => _explicitNullValueIsDemo; set { _explicitNullValueIsDemo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_demo"); else _explicitNullProperties?.Remove("is_demo"); } }
+        private bool? _explicitNullValueIsDemo = default!;
         /// <summary>The live_events_columns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? LiveEventsColumns { get; set; }
+        public List<string>? LiveEventsColumns { get => _explicitNullValueLiveEventsColumns; set { _explicitNullValueLiveEventsColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("live_events_columns"); else _explicitNullProperties?.Remove("live_events_columns"); } }
+        private List<string>? _explicitNullValueLiveEventsColumns = default!;
 #nullable restore
 #else
-        public List<string> LiveEventsColumns { get; set; }
+        public List<string> LiveEventsColumns { get => _explicitNullValueLiveEventsColumns; set { _explicitNullValueLiveEventsColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("live_events_columns"); else _explicitNullProperties?.Remove("live_events_columns"); } }
+        private List<string> _explicitNullValueLiveEventsColumns = default!;
 #endif
         /// <summary>The logs_settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? LogsSettings { get; set; }
+        public UntypedNode? LogsSettings { get => _explicitNullValueLogsSettings; set { _explicitNullValueLogsSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_settings"); else _explicitNullProperties?.Remove("logs_settings"); } }
+        private UntypedNode? _explicitNullValueLogsSettings = default!;
 #nullable restore
 #else
-        public UntypedNode LogsSettings { get; set; }
+        public UntypedNode LogsSettings { get => _explicitNullValueLogsSettings; set { _explicitNullValueLogsSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_settings"); else _explicitNullProperties?.Remove("logs_settings"); } }
+        private UntypedNode _explicitNullValueLogsSettings = default!;
 #endif
         /// <summary>The marketing_analytics_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig? MarketingAnalyticsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig? MarketingAnalyticsConfig { get => _explicitNullValueMarketingAnalyticsConfig; set { _explicitNullValueMarketingAnalyticsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketing_analytics_config"); else _explicitNullProperties?.Remove("marketing_analytics_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig? _explicitNullValueMarketingAnalyticsConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig MarketingAnalyticsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig MarketingAnalyticsConfig { get => _explicitNullValueMarketingAnalyticsConfig; set { _explicitNullValueMarketingAnalyticsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketing_analytics_config"); else _explicitNullProperties?.Remove("marketing_analytics_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamMarketingAnalyticsConfig _explicitNullValueMarketingAnalyticsConfig = default!;
 #endif
         /// <summary>The modifiers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Modifiers { get; set; }
+        public UntypedNode? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private UntypedNode? _explicitNullValueModifiers = default!;
 #nullable restore
 #else
-        public UntypedNode Modifiers { get; set; }
+        public UntypedNode Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private UntypedNode _explicitNullValueModifiers = default!;
 #endif
         /// <summary>Project name. Must be unique within the organization (case-insensitive). If omitted on creation, a unique default name is generated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The onboarding_tasks property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? OnboardingTasks { get; set; }
+        public UntypedNode? OnboardingTasks { get => _explicitNullValueOnboardingTasks; set { _explicitNullValueOnboardingTasks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding_tasks"); else _explicitNullProperties?.Remove("onboarding_tasks"); } }
+        private UntypedNode? _explicitNullValueOnboardingTasks = default!;
 #nullable restore
 #else
-        public UntypedNode OnboardingTasks { get; set; }
+        public UntypedNode OnboardingTasks { get => _explicitNullValueOnboardingTasks; set { _explicitNullValueOnboardingTasks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("onboarding_tasks"); else _explicitNullProperties?.Remove("onboarding_tasks"); } }
+        private UntypedNode _explicitNullValueOnboardingTasks = default!;
 #endif
         /// <summary>Regex rewrite rules that collapse dynamic path segments (e.g. user IDs) before displaying URLs in paths.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? PathCleaningFilters { get; set; }
+        public UntypedNode? PathCleaningFilters { get => _explicitNullValuePathCleaningFilters; set { _explicitNullValuePathCleaningFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path_cleaning_filters"); else _explicitNullProperties?.Remove("path_cleaning_filters"); } }
+        private UntypedNode? _explicitNullValuePathCleaningFilters = default!;
 #nullable restore
 #else
-        public UntypedNode PathCleaningFilters { get; set; }
+        public UntypedNode PathCleaningFilters { get => _explicitNullValuePathCleaningFilters; set { _explicitNullValuePathCleaningFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path_cleaning_filters"); else _explicitNullProperties?.Remove("path_cleaning_filters"); } }
+        private UntypedNode _explicitNullValuePathCleaningFilters = default!;
 #endif
         /// <summary>Ordered list of person properties used to render a human-friendly display name in the UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PersonDisplayNameProperties { get; set; }
+        public List<string>? PersonDisplayNameProperties { get => _explicitNullValuePersonDisplayNameProperties; set { _explicitNullValuePersonDisplayNameProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_display_name_properties"); else _explicitNullProperties?.Remove("person_display_name_properties"); } }
+        private List<string>? _explicitNullValuePersonDisplayNameProperties = default!;
 #nullable restore
 #else
-        public List<string> PersonDisplayNameProperties { get; set; }
+        public List<string> PersonDisplayNameProperties { get => _explicitNullValuePersonDisplayNameProperties; set { _explicitNullValuePersonDisplayNameProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_display_name_properties"); else _explicitNullProperties?.Remove("person_display_name_properties"); } }
+        private List<string> _explicitNullValuePersonDisplayNameProperties = default!;
 #endif
         /// <summary>ID of the dashboard shown as the project&apos;s default landing dashboard.</summary>
-        public int? PrimaryDashboard { get; set; }
+        public int? PrimaryDashboard { get => _explicitNullValuePrimaryDashboard; set { _explicitNullValuePrimaryDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_dashboard"); else _explicitNullProperties?.Remove("primary_dashboard"); } }
+        private int? _explicitNullValuePrimaryDashboard = default!;
         /// <summary>The proactive_tasks_enabled property</summary>
-        public bool? ProactiveTasksEnabled { get; set; }
+        public bool? ProactiveTasksEnabled { get => _explicitNullValueProactiveTasksEnabled; set { _explicitNullValueProactiveTasksEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proactive_tasks_enabled"); else _explicitNullProperties?.Remove("proactive_tasks_enabled"); } }
+        private bool? _explicitNullValueProactiveTasksEnabled = default!;
         /// <summary>Short description of what the project is about. This is helpful to give our AI agents context about your project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProductDescription { get; set; }
+        public string? ProductDescription { get => _explicitNullValueProductDescription; set { _explicitNullValueProductDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_description"); else _explicitNullProperties?.Remove("product_description"); } }
+        private string? _explicitNullValueProductDescription = default!;
 #nullable restore
 #else
-        public string ProductDescription { get; set; }
+        public string ProductDescription { get => _explicitNullValueProductDescription; set { _explicitNullValueProductDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_description"); else _explicitNullProperties?.Remove("product_description"); } }
+        private string _explicitNullValueProductDescription = default!;
 #endif
         /// <summary>The receive_org_level_activity_logs property</summary>
-        public bool? ReceiveOrgLevelActivityLogs { get; set; }
+        public bool? ReceiveOrgLevelActivityLogs { get => _explicitNullValueReceiveOrgLevelActivityLogs; set { _explicitNullValueReceiveOrgLevelActivityLogs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("receive_org_level_activity_logs"); else _explicitNullProperties?.Remove("receive_org_level_activity_logs"); } }
+        private bool? _explicitNullValueReceiveOrgLevelActivityLogs = default!;
         /// <summary>Origins permitted to record session replays and heatmaps. Empty list allows all origins.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RecordingDomains { get; set; }
+        public List<string>? RecordingDomains { get => _explicitNullValueRecordingDomains; set { _explicitNullValueRecordingDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_domains"); else _explicitNullProperties?.Remove("recording_domains"); } }
+        private List<string>? _explicitNullValueRecordingDomains = default!;
 #nullable restore
 #else
-        public List<string> RecordingDomains { get; set; }
+        public List<string> RecordingDomains { get => _explicitNullValueRecordingDomains; set { _explicitNullValueRecordingDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_domains"); else _explicitNullProperties?.Remove("recording_domains"); } }
+        private List<string> _explicitNullValueRecordingDomains = default!;
 #endif
         /// <summary>Whether to require at least one evaluation context tag when creating new feature flags</summary>
-        public bool? RequireEvaluationContexts { get; set; }
+        public bool? RequireEvaluationContexts { get => _explicitNullValueRequireEvaluationContexts; set { _explicitNullValueRequireEvaluationContexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("require_evaluation_contexts"); else _explicitNullProperties?.Remove("require_evaluation_contexts"); } }
+        private bool? _explicitNullValueRequireEvaluationContexts = default!;
         /// <summary>The revenue_analytics_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig? RevenueAnalyticsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig? RevenueAnalyticsConfig { get => _explicitNullValueRevenueAnalyticsConfig; set { _explicitNullValueRevenueAnalyticsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revenue_analytics_config"); else _explicitNullProperties?.Remove("revenue_analytics_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig? _explicitNullValueRevenueAnalyticsConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig RevenueAnalyticsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig RevenueAnalyticsConfig { get => _explicitNullValueRevenueAnalyticsConfig; set { _explicitNullValueRevenueAnalyticsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revenue_analytics_config"); else _explicitNullProperties?.Remove("revenue_analytics_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamRevenueAnalyticsConfig _explicitNullValueRevenueAnalyticsConfig = default!;
 #endif
         /// <summary>The session_recording_event_trigger_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SessionRecordingEventTriggerConfig { get; set; }
+        public List<string>? SessionRecordingEventTriggerConfig { get => _explicitNullValueSessionRecordingEventTriggerConfig; set { _explicitNullValueSessionRecordingEventTriggerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_event_trigger_config"); else _explicitNullProperties?.Remove("session_recording_event_trigger_config"); } }
+        private List<string>? _explicitNullValueSessionRecordingEventTriggerConfig = default!;
 #nullable restore
 #else
-        public List<string> SessionRecordingEventTriggerConfig { get; set; }
+        public List<string> SessionRecordingEventTriggerConfig { get => _explicitNullValueSessionRecordingEventTriggerConfig; set { _explicitNullValueSessionRecordingEventTriggerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_event_trigger_config"); else _explicitNullProperties?.Remove("session_recording_event_trigger_config"); } }
+        private List<string> _explicitNullValueSessionRecordingEventTriggerConfig = default!;
 #endif
         /// <summary>The session_recording_linked_flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SessionRecordingLinkedFlag { get; set; }
+        public UntypedNode? SessionRecordingLinkedFlag { get => _explicitNullValueSessionRecordingLinkedFlag; set { _explicitNullValueSessionRecordingLinkedFlag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_linked_flag"); else _explicitNullProperties?.Remove("session_recording_linked_flag"); } }
+        private UntypedNode? _explicitNullValueSessionRecordingLinkedFlag = default!;
 #nullable restore
 #else
-        public UntypedNode SessionRecordingLinkedFlag { get; set; }
+        public UntypedNode SessionRecordingLinkedFlag { get => _explicitNullValueSessionRecordingLinkedFlag; set { _explicitNullValueSessionRecordingLinkedFlag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_linked_flag"); else _explicitNullProperties?.Remove("session_recording_linked_flag"); } }
+        private UntypedNode _explicitNullValueSessionRecordingLinkedFlag = default!;
 #endif
         /// <summary>The session_recording_masking_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SessionRecordingMaskingConfig { get; set; }
+        public UntypedNode? SessionRecordingMaskingConfig { get => _explicitNullValueSessionRecordingMaskingConfig; set { _explicitNullValueSessionRecordingMaskingConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_masking_config"); else _explicitNullProperties?.Remove("session_recording_masking_config"); } }
+        private UntypedNode? _explicitNullValueSessionRecordingMaskingConfig = default!;
 #nullable restore
 #else
-        public UntypedNode SessionRecordingMaskingConfig { get; set; }
+        public UntypedNode SessionRecordingMaskingConfig { get => _explicitNullValueSessionRecordingMaskingConfig; set { _explicitNullValueSessionRecordingMaskingConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_masking_config"); else _explicitNullProperties?.Remove("session_recording_masking_config"); } }
+        private UntypedNode _explicitNullValueSessionRecordingMaskingConfig = default!;
 #endif
         /// <summary>Skip saving sessions shorter than this many milliseconds.</summary>
-        public int? SessionRecordingMinimumDurationMilliseconds { get; set; }
+        public int? SessionRecordingMinimumDurationMilliseconds { get => _explicitNullValueSessionRecordingMinimumDurationMilliseconds; set { _explicitNullValueSessionRecordingMinimumDurationMilliseconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_minimum_duration_milliseconds"); else _explicitNullProperties?.Remove("session_recording_minimum_duration_milliseconds"); } }
+        private int? _explicitNullValueSessionRecordingMinimumDurationMilliseconds = default!;
         /// <summary>The session_recording_network_payload_capture_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SessionRecordingNetworkPayloadCaptureConfig { get; set; }
+        public UntypedNode? SessionRecordingNetworkPayloadCaptureConfig { get => _explicitNullValueSessionRecordingNetworkPayloadCaptureConfig; set { _explicitNullValueSessionRecordingNetworkPayloadCaptureConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_network_payload_capture_config"); else _explicitNullProperties?.Remove("session_recording_network_payload_capture_config"); } }
+        private UntypedNode? _explicitNullValueSessionRecordingNetworkPayloadCaptureConfig = default!;
 #nullable restore
 #else
-        public UntypedNode SessionRecordingNetworkPayloadCaptureConfig { get; set; }
+        public UntypedNode SessionRecordingNetworkPayloadCaptureConfig { get => _explicitNullValueSessionRecordingNetworkPayloadCaptureConfig; set { _explicitNullValueSessionRecordingNetworkPayloadCaptureConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_network_payload_capture_config"); else _explicitNullProperties?.Remove("session_recording_network_payload_capture_config"); } }
+        private UntypedNode _explicitNullValueSessionRecordingNetworkPayloadCaptureConfig = default!;
 #endif
         /// <summary>Enables session replay recording for this project.</summary>
-        public bool? SessionRecordingOptIn { get; set; }
+        public bool? SessionRecordingOptIn { get => _explicitNullValueSessionRecordingOptIn; set { _explicitNullValueSessionRecordingOptIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_opt_in"); else _explicitNullProperties?.Remove("session_recording_opt_in"); } }
+        private bool? _explicitNullValueSessionRecordingOptIn = default!;
         /// <summary>* `30d` - 30 Days* `90d` - 90 Days* `1y` - 1 Year* `5y` - 5 Years</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestSessionRecordingRetentionPeriod? SessionRecordingRetentionPeriod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestSessionRecordingRetentionPeriod? SessionRecordingRetentionPeriod { get => _explicitNullValueSessionRecordingRetentionPeriod; set { _explicitNullValueSessionRecordingRetentionPeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_retention_period"); else _explicitNullProperties?.Remove("session_recording_retention_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestSessionRecordingRetentionPeriod? _explicitNullValueSessionRecordingRetentionPeriod = default!;
         /// <summary>Fraction of sessions to record, as a decimal string between `0.00` and `1.00` (e.g. `0.1` = 10%).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionRecordingSampleRate { get; set; }
+        public string? SessionRecordingSampleRate { get => _explicitNullValueSessionRecordingSampleRate; set { _explicitNullValueSessionRecordingSampleRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_sample_rate"); else _explicitNullProperties?.Remove("session_recording_sample_rate"); } }
+        private string? _explicitNullValueSessionRecordingSampleRate = default!;
 #nullable restore
 #else
-        public string SessionRecordingSampleRate { get; set; }
+        public string SessionRecordingSampleRate { get => _explicitNullValueSessionRecordingSampleRate; set { _explicitNullValueSessionRecordingSampleRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_sample_rate"); else _explicitNullProperties?.Remove("session_recording_sample_rate"); } }
+        private string _explicitNullValueSessionRecordingSampleRate = default!;
 #endif
         /// <summary>V2 trigger groups configuration for session recording. If present, takes precedence over legacy trigger fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SessionRecordingTriggerGroups { get; set; }
+        public UntypedNode? SessionRecordingTriggerGroups { get => _explicitNullValueSessionRecordingTriggerGroups; set { _explicitNullValueSessionRecordingTriggerGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_trigger_groups"); else _explicitNullProperties?.Remove("session_recording_trigger_groups"); } }
+        private UntypedNode? _explicitNullValueSessionRecordingTriggerGroups = default!;
 #nullable restore
 #else
-        public UntypedNode SessionRecordingTriggerGroups { get; set; }
+        public UntypedNode SessionRecordingTriggerGroups { get => _explicitNullValueSessionRecordingTriggerGroups; set { _explicitNullValueSessionRecordingTriggerGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_trigger_groups"); else _explicitNullProperties?.Remove("session_recording_trigger_groups"); } }
+        private UntypedNode _explicitNullValueSessionRecordingTriggerGroups = default!;
 #endif
         /// <summary>The session_recording_trigger_match_type_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionRecordingTriggerMatchTypeConfig { get; set; }
+        public string? SessionRecordingTriggerMatchTypeConfig { get => _explicitNullValueSessionRecordingTriggerMatchTypeConfig; set { _explicitNullValueSessionRecordingTriggerMatchTypeConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_trigger_match_type_config"); else _explicitNullProperties?.Remove("session_recording_trigger_match_type_config"); } }
+        private string? _explicitNullValueSessionRecordingTriggerMatchTypeConfig = default!;
 #nullable restore
 #else
-        public string SessionRecordingTriggerMatchTypeConfig { get; set; }
+        public string SessionRecordingTriggerMatchTypeConfig { get => _explicitNullValueSessionRecordingTriggerMatchTypeConfig; set { _explicitNullValueSessionRecordingTriggerMatchTypeConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_trigger_match_type_config"); else _explicitNullProperties?.Remove("session_recording_trigger_match_type_config"); } }
+        private string _explicitNullValueSessionRecordingTriggerMatchTypeConfig = default!;
 #endif
         /// <summary>The session_recording_url_blocklist_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SessionRecordingUrlBlocklistConfig { get; set; }
+        public UntypedNode? SessionRecordingUrlBlocklistConfig { get => _explicitNullValueSessionRecordingUrlBlocklistConfig; set { _explicitNullValueSessionRecordingUrlBlocklistConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_url_blocklist_config"); else _explicitNullProperties?.Remove("session_recording_url_blocklist_config"); } }
+        private UntypedNode? _explicitNullValueSessionRecordingUrlBlocklistConfig = default!;
 #nullable restore
 #else
-        public UntypedNode SessionRecordingUrlBlocklistConfig { get; set; }
+        public UntypedNode SessionRecordingUrlBlocklistConfig { get => _explicitNullValueSessionRecordingUrlBlocklistConfig; set { _explicitNullValueSessionRecordingUrlBlocklistConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_url_blocklist_config"); else _explicitNullProperties?.Remove("session_recording_url_blocklist_config"); } }
+        private UntypedNode _explicitNullValueSessionRecordingUrlBlocklistConfig = default!;
 #endif
         /// <summary>The session_recording_url_trigger_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SessionRecordingUrlTriggerConfig { get; set; }
+        public UntypedNode? SessionRecordingUrlTriggerConfig { get => _explicitNullValueSessionRecordingUrlTriggerConfig; set { _explicitNullValueSessionRecordingUrlTriggerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_url_trigger_config"); else _explicitNullProperties?.Remove("session_recording_url_trigger_config"); } }
+        private UntypedNode? _explicitNullValueSessionRecordingUrlTriggerConfig = default!;
 #nullable restore
 #else
-        public UntypedNode SessionRecordingUrlTriggerConfig { get; set; }
+        public UntypedNode SessionRecordingUrlTriggerConfig { get => _explicitNullValueSessionRecordingUrlTriggerConfig; set { _explicitNullValueSessionRecordingUrlTriggerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_recording_url_trigger_config"); else _explicitNullProperties?.Remove("session_recording_url_trigger_config"); } }
+        private UntypedNode _explicitNullValueSessionRecordingUrlTriggerConfig = default!;
 #endif
         /// <summary>The session_replay_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SessionReplayConfig { get; set; }
+        public UntypedNode? SessionReplayConfig { get => _explicitNullValueSessionReplayConfig; set { _explicitNullValueSessionReplayConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_replay_config"); else _explicitNullProperties?.Remove("session_replay_config"); } }
+        private UntypedNode? _explicitNullValueSessionReplayConfig = default!;
 #nullable restore
 #else
-        public UntypedNode SessionReplayConfig { get; set; }
+        public UntypedNode SessionReplayConfig { get => _explicitNullValueSessionReplayConfig; set { _explicitNullValueSessionReplayConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_replay_config"); else _explicitNullProperties?.Remove("session_replay_config"); } }
+        private UntypedNode _explicitNullValueSessionReplayConfig = default!;
 #endif
         /// <summary>The survey_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SurveyConfig { get; set; }
+        public UntypedNode? SurveyConfig { get => _explicitNullValueSurveyConfig; set { _explicitNullValueSurveyConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_config"); else _explicitNullProperties?.Remove("survey_config"); } }
+        private UntypedNode? _explicitNullValueSurveyConfig = default!;
 #nullable restore
 #else
-        public UntypedNode SurveyConfig { get; set; }
+        public UntypedNode SurveyConfig { get => _explicitNullValueSurveyConfig; set { _explicitNullValueSurveyConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_config"); else _explicitNullProperties?.Remove("survey_config"); } }
+        private UntypedNode _explicitNullValueSurveyConfig = default!;
 #endif
         /// <summary>Enables displaying surveys via posthog-js on allowed origins.</summary>
-        public bool? SurveysOptIn { get; set; }
+        public bool? SurveysOptIn { get => _explicitNullValueSurveysOptIn; set { _explicitNullValueSurveysOptIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surveys_opt_in"); else _explicitNullProperties?.Remove("surveys_opt_in"); } }
+        private bool? _explicitNullValueSurveysOptIn = default!;
         /// <summary>Labels applied to this project. Names are trimmed and lowercased, and sending this field replaces the project&apos;s existing tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>Filter groups that identify internal/test traffic to be excluded from insights.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? TestAccountFilters { get; set; }
+        public UntypedNode? TestAccountFilters { get => _explicitNullValueTestAccountFilters; set { _explicitNullValueTestAccountFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_account_filters"); else _explicitNullProperties?.Remove("test_account_filters"); } }
+        private UntypedNode? _explicitNullValueTestAccountFilters = default!;
 #nullable restore
 #else
-        public UntypedNode TestAccountFilters { get; set; }
+        public UntypedNode TestAccountFilters { get => _explicitNullValueTestAccountFilters; set { _explicitNullValueTestAccountFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_account_filters"); else _explicitNullProperties?.Remove("test_account_filters"); } }
+        private UntypedNode _explicitNullValueTestAccountFilters = default!;
 #endif
         /// <summary>When true, new insights default to excluding internal/test users.</summary>
-        public bool? TestAccountFiltersDefaultChecked { get; set; }
+        public bool? TestAccountFiltersDefaultChecked { get => _explicitNullValueTestAccountFiltersDefaultChecked; set { _explicitNullValueTestAccountFiltersDefaultChecked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_account_filters_default_checked"); else _explicitNullProperties?.Remove("test_account_filters_default_checked"); } }
+        private bool? _explicitNullValueTestAccountFiltersDefaultChecked = default!;
         /// <summary>* `Africa/Abidjan` - Africa/Abidjan* `Africa/Accra` - Africa/Accra* `Africa/Addis_Ababa` - Africa/Addis_Ababa* `Africa/Algiers` - Africa/Algiers* `Africa/Asmara` - Africa/Asmara* `Africa/Asmera` - Africa/Asmera* `Africa/Bamako` - Africa/Bamako* `Africa/Bangui` - Africa/Bangui* `Africa/Banjul` - Africa/Banjul* `Africa/Bissau` - Africa/Bissau* `Africa/Blantyre` - Africa/Blantyre* `Africa/Brazzaville` - Africa/Brazzaville* `Africa/Bujumbura` - Africa/Bujumbura* `Africa/Cairo` - Africa/Cairo* `Africa/Casablanca` - Africa/Casablanca* `Africa/Ceuta` - Africa/Ceuta* `Africa/Conakry` - Africa/Conakry* `Africa/Dakar` - Africa/Dakar* `Africa/Dar_es_Salaam` - Africa/Dar_es_Salaam* `Africa/Djibouti` - Africa/Djibouti* `Africa/Douala` - Africa/Douala* `Africa/El_Aaiun` - Africa/El_Aaiun* `Africa/Freetown` - Africa/Freetown* `Africa/Gaborone` - Africa/Gaborone* `Africa/Harare` - Africa/Harare* `Africa/Johannesburg` - Africa/Johannesburg* `Africa/Juba` - Africa/Juba* `Africa/Kampala` - Africa/Kampala* `Africa/Khartoum` - Africa/Khartoum* `Africa/Kigali` - Africa/Kigali* `Africa/Kinshasa` - Africa/Kinshasa* `Africa/Lagos` - Africa/Lagos* `Africa/Libreville` - Africa/Libreville* `Africa/Lome` - Africa/Lome* `Africa/Luanda` - Africa/Luanda* `Africa/Lubumbashi` - Africa/Lubumbashi* `Africa/Lusaka` - Africa/Lusaka* `Africa/Malabo` - Africa/Malabo* `Africa/Maputo` - Africa/Maputo* `Africa/Maseru` - Africa/Maseru* `Africa/Mbabane` - Africa/Mbabane* `Africa/Mogadishu` - Africa/Mogadishu* `Africa/Monrovia` - Africa/Monrovia* `Africa/Nairobi` - Africa/Nairobi* `Africa/Ndjamena` - Africa/Ndjamena* `Africa/Niamey` - Africa/Niamey* `Africa/Nouakchott` - Africa/Nouakchott* `Africa/Ouagadougou` - Africa/Ouagadougou* `Africa/Porto-Novo` - Africa/Porto-Novo* `Africa/Sao_Tome` - Africa/Sao_Tome* `Africa/Timbuktu` - Africa/Timbuktu* `Africa/Tripoli` - Africa/Tripoli* `Africa/Tunis` - Africa/Tunis* `Africa/Windhoek` - Africa/Windhoek* `America/Adak` - America/Adak* `America/Anchorage` - America/Anchorage* `America/Anguilla` - America/Anguilla* `America/Antigua` - America/Antigua* `America/Araguaina` - America/Araguaina* `America/Argentina/Buenos_Aires` - America/Argentina/Buenos_Aires* `America/Argentina/Catamarca` - America/Argentina/Catamarca* `America/Argentina/ComodRivadavia` - America/Argentina/ComodRivadavia* `America/Argentina/Cordoba` - America/Argentina/Cordoba* `America/Argentina/Jujuy` - America/Argentina/Jujuy* `America/Argentina/La_Rioja` - America/Argentina/La_Rioja* `America/Argentina/Mendoza` - America/Argentina/Mendoza* `America/Argentina/Rio_Gallegos` - America/Argentina/Rio_Gallegos* `America/Argentina/Salta` - America/Argentina/Salta* `America/Argentina/San_Juan` - America/Argentina/San_Juan* `America/Argentina/San_Luis` - America/Argentina/San_Luis* `America/Argentina/Tucuman` - America/Argentina/Tucuman* `America/Argentina/Ushuaia` - America/Argentina/Ushuaia* `America/Aruba` - America/Aruba* `America/Asuncion` - America/Asuncion* `America/Atikokan` - America/Atikokan* `America/Atka` - America/Atka* `America/Bahia` - America/Bahia* `America/Bahia_Banderas` - America/Bahia_Banderas* `America/Barbados` - America/Barbados* `America/Belem` - America/Belem* `America/Belize` - America/Belize* `America/Blanc-Sablon` - America/Blanc-Sablon* `America/Boa_Vista` - America/Boa_Vista* `America/Bogota` - America/Bogota* `America/Boise` - America/Boise* `America/Buenos_Aires` - America/Buenos_Aires* `America/Cambridge_Bay` - America/Cambridge_Bay* `America/Campo_Grande` - America/Campo_Grande* `America/Cancun` - America/Cancun* `America/Caracas` - America/Caracas* `America/Catamarca` - America/Catamarca* `America/Cayenne` - America/Cayenne* `America/Cayman` - America/Cayman* `America/Chicago` - America/Chicago* `America/Chihuahua` - America/Chihuahua* `America/Ciudad_Juarez` - America/Ciudad_Juarez* `America/Coral_Harbour` - America/Coral_Harbour* `America/Cordoba` - America/Cordoba* `America/Costa_Rica` - America/Costa_Rica* `America/Creston` - America/Creston* `America/Cuiaba` - America/Cuiaba* `America/Curacao` - America/Curacao* `America/Danmarkshavn` - America/Danmarkshavn* `America/Dawson` - America/Dawson* `America/Dawson_Creek` - America/Dawson_Creek* `America/Denver` - America/Denver* `America/Detroit` - America/Detroit* `America/Dominica` - America/Dominica* `America/Edmonton` - America/Edmonton* `America/Eirunepe` - America/Eirunepe* `America/El_Salvador` - America/El_Salvador* `America/Ensenada` - America/Ensenada* `America/Fort_Nelson` - America/Fort_Nelson* `America/Fort_Wayne` - America/Fort_Wayne* `America/Fortaleza` - America/Fortaleza* `America/Glace_Bay` - America/Glace_Bay* `America/Godthab` - America/Godthab* `America/Goose_Bay` - America/Goose_Bay* `America/Grand_Turk` - America/Grand_Turk* `America/Grenada` - America/Grenada* `America/Guadeloupe` - America/Guadeloupe* `America/Guatemala` - America/Guatemala* `America/Guayaquil` - America/Guayaquil* `America/Guyana` - America/Guyana* `America/Halifax` - America/Halifax* `America/Havana` - America/Havana* `America/Hermosillo` - America/Hermosillo* `America/Indiana/Indianapolis` - America/Indiana/Indianapolis* `America/Indiana/Knox` - America/Indiana/Knox* `America/Indiana/Marengo` - America/Indiana/Marengo* `America/Indiana/Petersburg` - America/Indiana/Petersburg* `America/Indiana/Tell_City` - America/Indiana/Tell_City* `America/Indiana/Vevay` - America/Indiana/Vevay* `America/Indiana/Vincennes` - America/Indiana/Vincennes* `America/Indiana/Winamac` - America/Indiana/Winamac* `America/Indianapolis` - America/Indianapolis* `America/Inuvik` - America/Inuvik* `America/Iqaluit` - America/Iqaluit* `America/Jamaica` - America/Jamaica* `America/Jujuy` - America/Jujuy* `America/Juneau` - America/Juneau* `America/Kentucky/Louisville` - America/Kentucky/Louisville* `America/Kentucky/Monticello` - America/Kentucky/Monticello* `America/Knox_IN` - America/Knox_IN* `America/Kralendijk` - America/Kralendijk* `America/La_Paz` - America/La_Paz* `America/Lima` - America/Lima* `America/Los_Angeles` - America/Los_Angeles* `America/Louisville` - America/Louisville* `America/Lower_Princes` - America/Lower_Princes* `America/Maceio` - America/Maceio* `America/Managua` - America/Managua* `America/Manaus` - America/Manaus* `America/Marigot` - America/Marigot* `America/Martinique` - America/Martinique* `America/Matamoros` - America/Matamoros* `America/Mazatlan` - America/Mazatlan* `America/Mendoza` - America/Mendoza* `America/Menominee` - America/Menominee* `America/Merida` - America/Merida* `America/Metlakatla` - America/Metlakatla* `America/Mexico_City` - America/Mexico_City* `America/Miquelon` - America/Miquelon* `America/Moncton` - America/Moncton* `America/Monterrey` - America/Monterrey* `America/Montevideo` - America/Montevideo* `America/Montreal` - America/Montreal* `America/Montserrat` - America/Montserrat* `America/Nassau` - America/Nassau* `America/New_York` - America/New_York* `America/Nipigon` - America/Nipigon* `America/Nome` - America/Nome* `America/Noronha` - America/Noronha* `America/North_Dakota/Beulah` - America/North_Dakota/Beulah* `America/North_Dakota/Center` - America/North_Dakota/Center* `America/North_Dakota/New_Salem` - America/North_Dakota/New_Salem* `America/Nuuk` - America/Nuuk* `America/Ojinaga` - America/Ojinaga* `America/Panama` - America/Panama* `America/Pangnirtung` - America/Pangnirtung* `America/Paramaribo` - America/Paramaribo* `America/Phoenix` - America/Phoenix* `America/Port-au-Prince` - America/Port-au-Prince* `America/Port_of_Spain` - America/Port_of_Spain* `America/Porto_Acre` - America/Porto_Acre* `America/Porto_Velho` - America/Porto_Velho* `America/Puerto_Rico` - America/Puerto_Rico* `America/Punta_Arenas` - America/Punta_Arenas* `America/Rainy_River` - America/Rainy_River* `America/Rankin_Inlet` - America/Rankin_Inlet* `America/Recife` - America/Recife* `America/Regina` - America/Regina* `America/Resolute` - America/Resolute* `America/Rio_Branco` - America/Rio_Branco* `America/Rosario` - America/Rosario* `America/Santa_Isabel` - America/Santa_Isabel* `America/Santarem` - America/Santarem* `America/Santiago` - America/Santiago* `America/Santo_Domingo` - America/Santo_Domingo* `America/Sao_Paulo` - America/Sao_Paulo* `America/Scoresbysund` - America/Scoresbysund* `America/Shiprock` - America/Shiprock* `America/Sitka` - America/Sitka* `America/St_Barthelemy` - America/St_Barthelemy* `America/St_Johns` - America/St_Johns* `America/St_Kitts` - America/St_Kitts* `America/St_Lucia` - America/St_Lucia* `America/St_Thomas` - America/St_Thomas* `America/St_Vincent` - America/St_Vincent* `America/Swift_Current` - America/Swift_Current* `America/Tegucigalpa` - America/Tegucigalpa* `America/Thule` - America/Thule* `America/Thunder_Bay` - America/Thunder_Bay* `America/Tijuana` - America/Tijuana* `America/Toronto` - America/Toronto* `America/Tortola` - America/Tortola* `America/Vancouver` - America/Vancouver* `America/Virgin` - America/Virgin* `America/Whitehorse` - America/Whitehorse* `America/Winnipeg` - America/Winnipeg* `America/Yakutat` - America/Yakutat* `America/Yellowknife` - America/Yellowknife* `Antarctica/Casey` - Antarctica/Casey* `Antarctica/Davis` - Antarctica/Davis* `Antarctica/DumontDUrville` - Antarctica/DumontDUrville* `Antarctica/Macquarie` - Antarctica/Macquarie* `Antarctica/Mawson` - Antarctica/Mawson* `Antarctica/McMurdo` - Antarctica/McMurdo* `Antarctica/Palmer` - Antarctica/Palmer* `Antarctica/Rothera` - Antarctica/Rothera* `Antarctica/South_Pole` - Antarctica/South_Pole* `Antarctica/Syowa` - Antarctica/Syowa* `Antarctica/Troll` - Antarctica/Troll* `Antarctica/Vostok` - Antarctica/Vostok* `Arctic/Longyearbyen` - Arctic/Longyearbyen* `Asia/Aden` - Asia/Aden* `Asia/Almaty` - Asia/Almaty* `Asia/Amman` - Asia/Amman* `Asia/Anadyr` - Asia/Anadyr* `Asia/Aqtau` - Asia/Aqtau* `Asia/Aqtobe` - Asia/Aqtobe* `Asia/Ashgabat` - Asia/Ashgabat* `Asia/Ashkhabad` - Asia/Ashkhabad* `Asia/Atyrau` - Asia/Atyrau* `Asia/Baghdad` - Asia/Baghdad* `Asia/Bahrain` - Asia/Bahrain* `Asia/Baku` - Asia/Baku* `Asia/Bangkok` - Asia/Bangkok* `Asia/Barnaul` - Asia/Barnaul* `Asia/Beirut` - Asia/Beirut* `Asia/Bishkek` - Asia/Bishkek* `Asia/Brunei` - Asia/Brunei* `Asia/Calcutta` - Asia/Calcutta* `Asia/Chita` - Asia/Chita* `Asia/Choibalsan` - Asia/Choibalsan* `Asia/Chongqing` - Asia/Chongqing* `Asia/Chungking` - Asia/Chungking* `Asia/Colombo` - Asia/Colombo* `Asia/Dacca` - Asia/Dacca* `Asia/Damascus` - Asia/Damascus* `Asia/Dhaka` - Asia/Dhaka* `Asia/Dili` - Asia/Dili* `Asia/Dubai` - Asia/Dubai* `Asia/Dushanbe` - Asia/Dushanbe* `Asia/Famagusta` - Asia/Famagusta* `Asia/Gaza` - Asia/Gaza* `Asia/Harbin` - Asia/Harbin* `Asia/Hebron` - Asia/Hebron* `Asia/Ho_Chi_Minh` - Asia/Ho_Chi_Minh* `Asia/Hong_Kong` - Asia/Hong_Kong* `Asia/Hovd` - Asia/Hovd* `Asia/Irkutsk` - Asia/Irkutsk* `Asia/Istanbul` - Asia/Istanbul* `Asia/Jakarta` - Asia/Jakarta* `Asia/Jayapura` - Asia/Jayapura* `Asia/Jerusalem` - Asia/Jerusalem* `Asia/Kabul` - Asia/Kabul* `Asia/Kamchatka` - Asia/Kamchatka* `Asia/Karachi` - Asia/Karachi* `Asia/Kashgar` - Asia/Kashgar* `Asia/Kathmandu` - Asia/Kathmandu* `Asia/Katmandu` - Asia/Katmandu* `Asia/Khandyga` - Asia/Khandyga* `Asia/Kolkata` - Asia/Kolkata* `Asia/Krasnoyarsk` - Asia/Krasnoyarsk* `Asia/Kuala_Lumpur` - Asia/Kuala_Lumpur* `Asia/Kuching` - Asia/Kuching* `Asia/Kuwait` - Asia/Kuwait* `Asia/Macao` - Asia/Macao* `Asia/Macau` - Asia/Macau* `Asia/Magadan` - Asia/Magadan* `Asia/Makassar` - Asia/Makassar* `Asia/Manila` - Asia/Manila* `Asia/Muscat` - Asia/Muscat* `Asia/Nicosia` - Asia/Nicosia* `Asia/Novokuznetsk` - Asia/Novokuznetsk* `Asia/Novosibirsk` - Asia/Novosibirsk* `Asia/Omsk` - Asia/Omsk* `Asia/Oral` - Asia/Oral* `Asia/Phnom_Penh` - Asia/Phnom_Penh* `Asia/Pontianak` - Asia/Pontianak* `Asia/Pyongyang` - Asia/Pyongyang* `Asia/Qatar` - Asia/Qatar* `Asia/Qostanay` - Asia/Qostanay* `Asia/Qyzylorda` - Asia/Qyzylorda* `Asia/Rangoon` - Asia/Rangoon* `Asia/Riyadh` - Asia/Riyadh* `Asia/Saigon` - Asia/Saigon* `Asia/Sakhalin` - Asia/Sakhalin* `Asia/Samarkand` - Asia/Samarkand* `Asia/Seoul` - Asia/Seoul* `Asia/Shanghai` - Asia/Shanghai* `Asia/Singapore` - Asia/Singapore* `Asia/Srednekolymsk` - Asia/Srednekolymsk* `Asia/Taipei` - Asia/Taipei* `Asia/Tashkent` - Asia/Tashkent* `Asia/Tbilisi` - Asia/Tbilisi* `Asia/Tehran` - Asia/Tehran* `Asia/Tel_Aviv` - Asia/Tel_Aviv* `Asia/Thimbu` - Asia/Thimbu* `Asia/Thimphu` - Asia/Thimphu* `Asia/Tokyo` - Asia/Tokyo* `Asia/Tomsk` - Asia/Tomsk* `Asia/Ujung_Pandang` - Asia/Ujung_Pandang* `Asia/Ulaanbaatar` - Asia/Ulaanbaatar* `Asia/Ulan_Bator` - Asia/Ulan_Bator* `Asia/Urumqi` - Asia/Urumqi* `Asia/Ust-Nera` - Asia/Ust-Nera* `Asia/Vientiane` - Asia/Vientiane* `Asia/Vladivostok` - Asia/Vladivostok* `Asia/Yakutsk` - Asia/Yakutsk* `Asia/Yangon` - Asia/Yangon* `Asia/Yekaterinburg` - Asia/Yekaterinburg* `Asia/Yerevan` - Asia/Yerevan* `Atlantic/Azores` - Atlantic/Azores* `Atlantic/Bermuda` - Atlantic/Bermuda* `Atlantic/Canary` - Atlantic/Canary* `Atlantic/Cape_Verde` - Atlantic/Cape_Verde* `Atlantic/Faeroe` - Atlantic/Faeroe* `Atlantic/Faroe` - Atlantic/Faroe* `Atlantic/Jan_Mayen` - Atlantic/Jan_Mayen* `Atlantic/Madeira` - Atlantic/Madeira* `Atlantic/Reykjavik` - Atlantic/Reykjavik* `Atlantic/South_Georgia` - Atlantic/South_Georgia* `Atlantic/St_Helena` - Atlantic/St_Helena* `Atlantic/Stanley` - Atlantic/Stanley* `Australia/ACT` - Australia/ACT* `Australia/Adelaide` - Australia/Adelaide* `Australia/Brisbane` - Australia/Brisbane* `Australia/Broken_Hill` - Australia/Broken_Hill* `Australia/Canberra` - Australia/Canberra* `Australia/Currie` - Australia/Currie* `Australia/Darwin` - Australia/Darwin* `Australia/Eucla` - Australia/Eucla* `Australia/Hobart` - Australia/Hobart* `Australia/LHI` - Australia/LHI* `Australia/Lindeman` - Australia/Lindeman* `Australia/Lord_Howe` - Australia/Lord_Howe* `Australia/Melbourne` - Australia/Melbourne* `Australia/NSW` - Australia/NSW* `Australia/North` - Australia/North* `Australia/Perth` - Australia/Perth* `Australia/Queensland` - Australia/Queensland* `Australia/South` - Australia/South* `Australia/Sydney` - Australia/Sydney* `Australia/Tasmania` - Australia/Tasmania* `Australia/Victoria` - Australia/Victoria* `Australia/West` - Australia/West* `Australia/Yancowinna` - Australia/Yancowinna* `Brazil/Acre` - Brazil/Acre* `Brazil/DeNoronha` - Brazil/DeNoronha* `Brazil/East` - Brazil/East* `Brazil/West` - Brazil/West* `CET` - CET* `CST6CDT` - CST6CDT* `Canada/Atlantic` - Canada/Atlantic* `Canada/Central` - Canada/Central* `Canada/Eastern` - Canada/Eastern* `Canada/Mountain` - Canada/Mountain* `Canada/Newfoundland` - Canada/Newfoundland* `Canada/Pacific` - Canada/Pacific* `Canada/Saskatchewan` - Canada/Saskatchewan* `Canada/Yukon` - Canada/Yukon* `Chile/Continental` - Chile/Continental* `Chile/EasterIsland` - Chile/EasterIsland* `Cuba` - Cuba* `EET` - EET* `EST` - EST* `EST5EDT` - EST5EDT* `Egypt` - Egypt* `Eire` - Eire* `Etc/GMT` - Etc/GMT* `Etc/GMT+0` - Etc/GMT+0* `Etc/GMT+1` - Etc/GMT+1* `Etc/GMT+10` - Etc/GMT+10* `Etc/GMT+11` - Etc/GMT+11* `Etc/GMT+12` - Etc/GMT+12* `Etc/GMT+2` - Etc/GMT+2* `Etc/GMT+3` - Etc/GMT+3* `Etc/GMT+4` - Etc/GMT+4* `Etc/GMT+5` - Etc/GMT+5* `Etc/GMT+6` - Etc/GMT+6* `Etc/GMT+7` - Etc/GMT+7* `Etc/GMT+8` - Etc/GMT+8* `Etc/GMT+9` - Etc/GMT+9* `Etc/GMT-0` - Etc/GMT-0* `Etc/GMT-1` - Etc/GMT-1* `Etc/GMT-10` - Etc/GMT-10* `Etc/GMT-11` - Etc/GMT-11* `Etc/GMT-12` - Etc/GMT-12* `Etc/GMT-13` - Etc/GMT-13* `Etc/GMT-14` - Etc/GMT-14* `Etc/GMT-2` - Etc/GMT-2* `Etc/GMT-3` - Etc/GMT-3* `Etc/GMT-4` - Etc/GMT-4* `Etc/GMT-5` - Etc/GMT-5* `Etc/GMT-6` - Etc/GMT-6* `Etc/GMT-7` - Etc/GMT-7* `Etc/GMT-8` - Etc/GMT-8* `Etc/GMT-9` - Etc/GMT-9* `Etc/GMT0` - Etc/GMT0* `Etc/Greenwich` - Etc/Greenwich* `Etc/UCT` - Etc/UCT* `Etc/UTC` - Etc/UTC* `Etc/Universal` - Etc/Universal* `Etc/Zulu` - Etc/Zulu* `Europe/Amsterdam` - Europe/Amsterdam* `Europe/Andorra` - Europe/Andorra* `Europe/Astrakhan` - Europe/Astrakhan* `Europe/Athens` - Europe/Athens* `Europe/Belfast` - Europe/Belfast* `Europe/Belgrade` - Europe/Belgrade* `Europe/Berlin` - Europe/Berlin* `Europe/Bratislava` - Europe/Bratislava* `Europe/Brussels` - Europe/Brussels* `Europe/Bucharest` - Europe/Bucharest* `Europe/Budapest` - Europe/Budapest* `Europe/Busingen` - Europe/Busingen* `Europe/Chisinau` - Europe/Chisinau* `Europe/Copenhagen` - Europe/Copenhagen* `Europe/Dublin` - Europe/Dublin* `Europe/Gibraltar` - Europe/Gibraltar* `Europe/Guernsey` - Europe/Guernsey* `Europe/Helsinki` - Europe/Helsinki* `Europe/Isle_of_Man` - Europe/Isle_of_Man* `Europe/Istanbul` - Europe/Istanbul* `Europe/Jersey` - Europe/Jersey* `Europe/Kaliningrad` - Europe/Kaliningrad* `Europe/Kiev` - Europe/Kiev* `Europe/Kirov` - Europe/Kirov* `Europe/Kyiv` - Europe/Kyiv* `Europe/Lisbon` - Europe/Lisbon* `Europe/Ljubljana` - Europe/Ljubljana* `Europe/London` - Europe/London* `Europe/Luxembourg` - Europe/Luxembourg* `Europe/Madrid` - Europe/Madrid* `Europe/Malta` - Europe/Malta* `Europe/Mariehamn` - Europe/Mariehamn* `Europe/Minsk` - Europe/Minsk* `Europe/Monaco` - Europe/Monaco* `Europe/Moscow` - Europe/Moscow* `Europe/Nicosia` - Europe/Nicosia* `Europe/Oslo` - Europe/Oslo* `Europe/Paris` - Europe/Paris* `Europe/Podgorica` - Europe/Podgorica* `Europe/Prague` - Europe/Prague* `Europe/Riga` - Europe/Riga* `Europe/Rome` - Europe/Rome* `Europe/Samara` - Europe/Samara* `Europe/San_Marino` - Europe/San_Marino* `Europe/Sarajevo` - Europe/Sarajevo* `Europe/Saratov` - Europe/Saratov* `Europe/Simferopol` - Europe/Simferopol* `Europe/Skopje` - Europe/Skopje* `Europe/Sofia` - Europe/Sofia* `Europe/Stockholm` - Europe/Stockholm* `Europe/Tallinn` - Europe/Tallinn* `Europe/Tirane` - Europe/Tirane* `Europe/Tiraspol` - Europe/Tiraspol* `Europe/Ulyanovsk` - Europe/Ulyanovsk* `Europe/Uzhgorod` - Europe/Uzhgorod* `Europe/Vaduz` - Europe/Vaduz* `Europe/Vatican` - Europe/Vatican* `Europe/Vienna` - Europe/Vienna* `Europe/Vilnius` - Europe/Vilnius* `Europe/Volgograd` - Europe/Volgograd* `Europe/Warsaw` - Europe/Warsaw* `Europe/Zagreb` - Europe/Zagreb* `Europe/Zaporozhye` - Europe/Zaporozhye* `Europe/Zurich` - Europe/Zurich* `GB` - GB* `GB-Eire` - GB-Eire* `GMT` - GMT* `GMT+0` - GMT+0* `GMT-0` - GMT-0* `GMT0` - GMT0* `Greenwich` - Greenwich* `HST` - HST* `Hongkong` - Hongkong* `Iceland` - Iceland* `Indian/Antananarivo` - Indian/Antananarivo* `Indian/Chagos` - Indian/Chagos* `Indian/Christmas` - Indian/Christmas* `Indian/Cocos` - Indian/Cocos* `Indian/Comoro` - Indian/Comoro* `Indian/Kerguelen` - Indian/Kerguelen* `Indian/Mahe` - Indian/Mahe* `Indian/Maldives` - Indian/Maldives* `Indian/Mauritius` - Indian/Mauritius* `Indian/Mayotte` - Indian/Mayotte* `Indian/Reunion` - Indian/Reunion* `Iran` - Iran* `Israel` - Israel* `Jamaica` - Jamaica* `Japan` - Japan* `Kwajalein` - Kwajalein* `Libya` - Libya* `MET` - MET* `MST` - MST* `MST7MDT` - MST7MDT* `Mexico/BajaNorte` - Mexico/BajaNorte* `Mexico/BajaSur` - Mexico/BajaSur* `Mexico/General` - Mexico/General* `NZ` - NZ* `NZ-CHAT` - NZ-CHAT* `Navajo` - Navajo* `PRC` - PRC* `PST8PDT` - PST8PDT* `Pacific/Apia` - Pacific/Apia* `Pacific/Auckland` - Pacific/Auckland* `Pacific/Bougainville` - Pacific/Bougainville* `Pacific/Chatham` - Pacific/Chatham* `Pacific/Chuuk` - Pacific/Chuuk* `Pacific/Easter` - Pacific/Easter* `Pacific/Efate` - Pacific/Efate* `Pacific/Enderbury` - Pacific/Enderbury* `Pacific/Fakaofo` - Pacific/Fakaofo* `Pacific/Fiji` - Pacific/Fiji* `Pacific/Funafuti` - Pacific/Funafuti* `Pacific/Galapagos` - Pacific/Galapagos* `Pacific/Gambier` - Pacific/Gambier* `Pacific/Guadalcanal` - Pacific/Guadalcanal* `Pacific/Guam` - Pacific/Guam* `Pacific/Honolulu` - Pacific/Honolulu* `Pacific/Johnston` - Pacific/Johnston* `Pacific/Kanton` - Pacific/Kanton* `Pacific/Kiritimati` - Pacific/Kiritimati* `Pacific/Kosrae` - Pacific/Kosrae* `Pacific/Kwajalein` - Pacific/Kwajalein* `Pacific/Majuro` - Pacific/Majuro* `Pacific/Marquesas` - Pacific/Marquesas* `Pacific/Midway` - Pacific/Midway* `Pacific/Nauru` - Pacific/Nauru* `Pacific/Niue` - Pacific/Niue* `Pacific/Norfolk` - Pacific/Norfolk* `Pacific/Noumea` - Pacific/Noumea* `Pacific/Pago_Pago` - Pacific/Pago_Pago* `Pacific/Palau` - Pacific/Palau* `Pacific/Pitcairn` - Pacific/Pitcairn* `Pacific/Pohnpei` - Pacific/Pohnpei* `Pacific/Ponape` - Pacific/Ponape* `Pacific/Port_Moresby` - Pacific/Port_Moresby* `Pacific/Rarotonga` - Pacific/Rarotonga* `Pacific/Saipan` - Pacific/Saipan* `Pacific/Samoa` - Pacific/Samoa* `Pacific/Tahiti` - Pacific/Tahiti* `Pacific/Tarawa` - Pacific/Tarawa* `Pacific/Tongatapu` - Pacific/Tongatapu* `Pacific/Truk` - Pacific/Truk* `Pacific/Wake` - Pacific/Wake* `Pacific/Wallis` - Pacific/Wallis* `Pacific/Yap` - Pacific/Yap* `Poland` - Poland* `Portugal` - Portugal* `ROC` - ROC* `ROK` - ROK* `Singapore` - Singapore* `Turkey` - Turkey* `UCT` - UCT* `US/Alaska` - US/Alaska* `US/Aleutian` - US/Aleutian* `US/Arizona` - US/Arizona* `US/Central` - US/Central* `US/East-Indiana` - US/East-Indiana* `US/Eastern` - US/Eastern* `US/Hawaii` - US/Hawaii* `US/Indiana-Starke` - US/Indiana-Starke* `US/Michigan` - US/Michigan* `US/Mountain` - US/Mountain* `US/Pacific` - US/Pacific* `US/Samoa` - US/Samoa* `UTC` - UTC* `Universal` - Universal* `W-SU` - W-SU* `WET` - WET* `Zulu` - Zulu</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestTimezone? Timezone { get; set; }
+#nullable enable
+        public string? Timezone { get => _explicitNullValueTimezone; set { _explicitNullValueTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone"); else _explicitNullProperties?.Remove("timezone"); } }
+        private string? _explicitNullValueTimezone = default!;
+#nullable restore
         /// <summary>The web_analytics_pre_aggregated_tables_enabled property</summary>
-        public bool? WebAnalyticsPreAggregatedTablesEnabled { get; set; }
+        public bool? WebAnalyticsPreAggregatedTablesEnabled { get => _explicitNullValueWebAnalyticsPreAggregatedTablesEnabled; set { _explicitNullValueWebAnalyticsPreAggregatedTablesEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("web_analytics_pre_aggregated_tables_enabled"); else _explicitNullProperties?.Remove("web_analytics_pre_aggregated_tables_enabled"); } }
+        private bool? _explicitNullValueWebAnalyticsPreAggregatedTablesEnabled = default!;
         /// <summary>First day of the week for date range filters. 0 = Sunday, 1 = Monday.* `0` - Sunday* `1` - Monday</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay? WeekStartDay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay? WeekStartDay { get => _explicitNullValueWeekStartDay; set { _explicitNullValueWeekStartDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("week_start_day"); else _explicitNullProperties?.Remove("week_start_day"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay? _explicitNullValueWeekStartDay = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay WeekStartDay { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay WeekStartDay { get => _explicitNullValueWeekStartDay; set { _explicitNullValueWeekStartDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("week_start_day"); else _explicitNullProperties?.Remove("week_start_day"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay _explicitNullValueWeekStartDay = default!;
 #endif
         /// <summary>The workflows_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig? WorkflowsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig? WorkflowsConfig { get => _explicitNullValueWorkflowsConfig; set { _explicitNullValueWorkflowsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflows_config"); else _explicitNullProperties?.Remove("workflows_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig? _explicitNullValueWorkflowsConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig WorkflowsConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig WorkflowsConfig { get => _explicitNullValueWorkflowsConfig; set { _explicitNullValueWorkflowsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflows_config"); else _explicitNullProperties?.Remove("workflows_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig _explicitNullValueWorkflowsConfig = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequest"/> and sets the default values.
@@ -394,7 +577,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -468,7 +651,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "test_account_filters", n => { TestAccountFilters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "test_account_filters_default_checked", n => { TestAccountFiltersDefaultChecked = n.GetBoolValue(); } },
-                { "timezone", n => { Timezone = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestTimezone>(); } },
+                { "timezone", n => { Timezone = n.GetStringValue(); } },
                 { "web_analytics_pre_aggregated_tables_enabled", n => { WebAnalyticsPreAggregatedTablesEnabled = n.GetBoolValue(); } },
                 { "week_start_day", n => { WeekStartDay = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay.CreateFromDiscriminatorValue); } },
                 { "workflows_config", n => { WorkflowsConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig.CreateFromDiscriminatorValue); } },
@@ -545,10 +728,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteObjectValue<UntypedNode>("test_account_filters", TestAccountFilters);
             writer.WriteBoolValue("test_account_filters_default_checked", TestAccountFiltersDefaultChecked);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestTimezone>("timezone", Timezone);
+            writer.WriteStringValue("timezone", Timezone);
             writer.WriteBoolValue("web_analytics_pre_aggregated_tables_enabled", WebAnalyticsPreAggregatedTablesEnabled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectCreateRequestWeekStartDay>("week_start_day", WeekStartDay);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamWorkflowsConfig>("workflows_config", WorkflowsConfig);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

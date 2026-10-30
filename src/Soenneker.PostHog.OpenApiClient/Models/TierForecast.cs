@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TierForecast : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("projected_amount_usd") is { } nullNodeProjectedAmountUsd && nullNodeProjectedAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsd = null;
+            if (parseNode.GetChildNode("projected_usage") is { } nullNodeProjectedUsage && nullNodeProjectedUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedUsage = null;
+            if (parseNode.GetChildNode("up_to") is { } nullNodeUpTo && nullNodeUpTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpTo = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The projected_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedAmountUsd { get; set; }
+        public string? ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
+        private string? _explicitNullValueProjectedAmountUsd = default!;
 #nullable restore
 #else
-        public string ProjectedAmountUsd { get; set; }
+        public string ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
+        private string _explicitNullValueProjectedAmountUsd = default!;
 #endif
         /// <summary>The projected_usage property</summary>
-        public int? ProjectedUsage { get; set; }
+        public int? ProjectedUsage { get => _explicitNullValueProjectedUsage; set { _explicitNullValueProjectedUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_usage"); else _explicitNullProperties?.Remove("projected_usage"); } }
+        private int? _explicitNullValueProjectedUsage = default!;
         /// <summary>The up_to property</summary>
-        public int? UpTo { get; set; }
+        public int? UpTo { get => _explicitNullValueUpTo; set { _explicitNullValueUpTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("up_to"); else _explicitNullProperties?.Remove("up_to"); } }
+        private int? _explicitNullValueUpTo = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TierForecast"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TierForecast CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TierForecast();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TierForecast(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("projected_amount_usd", ProjectedAmountUsd);
             writer.WriteIntValue("projected_usage", ProjectedUsage);
             writer.WriteIntValue("up_to", UpTo);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

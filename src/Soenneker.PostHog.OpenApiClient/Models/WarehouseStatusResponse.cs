@@ -11,98 +11,145 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WarehouseStatusResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("connection") is { } nullNodeConnection && nullNodeConnection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connection = null;
+            if (parseNode.GetChildNode("failed_at") is { } nullNodeFailedAt && nullNodeFailedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedAt = null;
+            if (parseNode.GetChildNode("has_backfill") is { } nullNodeHasBackfill && nullNodeHasBackfill.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasBackfill = null;
+            if (parseNode.GetChildNode("identity_state") is { } nullNodeIdentityState && nullNodeIdentityState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdentityState = null;
+            if (parseNode.GetChildNode("metadata_store_state") is { } nullNodeMetadataStoreState && nullNodeMetadataStoreState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetadataStoreState = null;
+            if (parseNode.GetChildNode("org_id") is { } nullNodeOrgId && nullNodeOrgId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrgId = null;
+            if (parseNode.GetChildNode("ready_at") is { } nullNodeReadyAt && nullNodeReadyAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyAt = null;
+            if (parseNode.GetChildNode("s3_state") is { } nullNodeS3State && nullNodeS3State.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) S3State = null;
+            if (parseNode.GetChildNode("schema_name") is { } nullNodeSchemaName && nullNodeSchemaName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaName = null;
+            if (parseNode.GetChildNode("secrets_state") is { } nullNodeSecretsState && nullNodeSecretsState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecretsState = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("status_message") is { } nullNodeStatusMessage && nullNodeStatusMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusMessage = null;
+            if (parseNode.GetChildNode("table_suffix") is { } nullNodeTableSuffix && nullNodeTableSuffix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TableSuffix = null;
+            if (parseNode.GetChildNode("team_onboarded") is { } nullNodeTeamOnboarded && nullNodeTeamOnboarded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamOnboarded = null;
+            if (parseNode.GetChildNode("trino") is { } nullNodeTrino && nullNodeTrino.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trino = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Postgres connection target. Null for organizations on the Trino Data ops variant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection? Connection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection? Connection { get => _explicitNullValueConnection; set { _explicitNullValueConnection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection"); else _explicitNullProperties?.Remove("connection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection? _explicitNullValueConnection = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection Connection { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection Connection { get => _explicitNullValueConnection; set { _explicitNullValueConnection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection"); else _explicitNullProperties?.Remove("connection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection _explicitNullValueConnection = default!;
 #endif
         /// <summary>When provisioning failed</summary>
-        public DateTimeOffset? FailedAt { get; set; }
+        public DateTimeOffset? FailedAt { get => _explicitNullValueFailedAt; set { _explicitNullValueFailedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_at"); else _explicitNullProperties?.Remove("failed_at"); } }
+        private DateTimeOffset? _explicitNullValueFailedAt = default!;
         /// <summary>Whether this project already has a warehouse backfill configured. When true, its table name is fixed and the enable form should not be shown.</summary>
-        public bool? HasBackfill { get; set; }
+        public bool? HasBackfill { get => _explicitNullValueHasBackfill; set { _explicitNullValueHasBackfill = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_backfill"); else _explicitNullProperties?.Remove("has_backfill"); } }
+        private bool? _explicitNullValueHasBackfill = default!;
         /// <summary>Worker identity sub-resource provisioning state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdentityState { get; set; }
+        public string? IdentityState { get => _explicitNullValueIdentityState; set { _explicitNullValueIdentityState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identity_state"); else _explicitNullProperties?.Remove("identity_state"); } }
+        private string? _explicitNullValueIdentityState = default!;
 #nullable restore
 #else
-        public string IdentityState { get; set; }
+        public string IdentityState { get => _explicitNullValueIdentityState; set { _explicitNullValueIdentityState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identity_state"); else _explicitNullProperties?.Remove("identity_state"); } }
+        private string _explicitNullValueIdentityState = default!;
 #endif
         /// <summary>Metadata-store sub-resource provisioning state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetadataStoreState { get; set; }
+        public string? MetadataStoreState { get => _explicitNullValueMetadataStoreState; set { _explicitNullValueMetadataStoreState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata_store_state"); else _explicitNullProperties?.Remove("metadata_store_state"); } }
+        private string? _explicitNullValueMetadataStoreState = default!;
 #nullable restore
 #else
-        public string MetadataStoreState { get; set; }
+        public string MetadataStoreState { get => _explicitNullValueMetadataStoreState; set { _explicitNullValueMetadataStoreState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata_store_state"); else _explicitNullProperties?.Remove("metadata_store_state"); } }
+        private string _explicitNullValueMetadataStoreState = default!;
 #endif
         /// <summary>duckgres org identifier (the PostHog organization id)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrgId { get; set; }
+        public string? OrgId { get => _explicitNullValueOrgId; set { _explicitNullValueOrgId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("org_id"); else _explicitNullProperties?.Remove("org_id"); } }
+        private string? _explicitNullValueOrgId = default!;
 #nullable restore
 #else
-        public string OrgId { get; set; }
+        public string OrgId { get => _explicitNullValueOrgId; set { _explicitNullValueOrgId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("org_id"); else _explicitNullProperties?.Remove("org_id"); } }
+        private string _explicitNullValueOrgId = default!;
 #endif
         /// <summary>When the warehouse became ready</summary>
-        public DateTimeOffset? ReadyAt { get; set; }
+        public DateTimeOffset? ReadyAt { get => _explicitNullValueReadyAt; set { _explicitNullValueReadyAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_at"); else _explicitNullProperties?.Remove("ready_at"); } }
+        private DateTimeOffset? _explicitNullValueReadyAt = default!;
         /// <summary>Object-store sub-resource provisioning state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? S3State { get; set; }
+        public string? S3State { get => _explicitNullValueS3State; set { _explicitNullValueS3State = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_state"); else _explicitNullProperties?.Remove("s3_state"); } }
+        private string? _explicitNullValueS3State = default!;
 #nullable restore
 #else
-        public string S3State { get; set; }
+        public string S3State { get => _explicitNullValueS3State; set { _explicitNullValueS3State = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_state"); else _explicitNullProperties?.Remove("s3_state"); } }
+        private string _explicitNullValueS3State = default!;
 #endif
         /// <summary>Schema this project&apos;s data lands in. Null when the project is not onboarded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SchemaName { get; set; }
+        public string? SchemaName { get => _explicitNullValueSchemaName; set { _explicitNullValueSchemaName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_name"); else _explicitNullProperties?.Remove("schema_name"); } }
+        private string? _explicitNullValueSchemaName = default!;
 #nullable restore
 #else
-        public string SchemaName { get; set; }
+        public string SchemaName { get => _explicitNullValueSchemaName; set { _explicitNullValueSchemaName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_name"); else _explicitNullProperties?.Remove("schema_name"); } }
+        private string _explicitNullValueSchemaName = default!;
 #endif
         /// <summary>Credentials sub-resource provisioning state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SecretsState { get; set; }
+        public string? SecretsState { get => _explicitNullValueSecretsState; set { _explicitNullValueSecretsState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secrets_state"); else _explicitNullProperties?.Remove("secrets_state"); } }
+        private string? _explicitNullValueSecretsState = default!;
 #nullable restore
 #else
-        public string SecretsState { get; set; }
+        public string SecretsState { get => _explicitNullValueSecretsState; set { _explicitNullValueSecretsState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secrets_state"); else _explicitNullProperties?.Remove("secrets_state"); } }
+        private string _explicitNullValueSecretsState = default!;
 #endif
         /// <summary>* `pending` - pending* `provisioning` - provisioning* `ready` - ready* `failed` - failed* `deleting` - deleting* `deleted` - deleted</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseState? _explicitNullValueState = default!;
         /// <summary>Human-readable detail for the current state</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StatusMessage { get; set; }
+        public string? StatusMessage { get => _explicitNullValueStatusMessage; set { _explicitNullValueStatusMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_message"); else _explicitNullProperties?.Remove("status_message"); } }
+        private string? _explicitNullValueStatusMessage = default!;
 #nullable restore
 #else
-        public string StatusMessage { get; set; }
+        public string StatusMessage { get => _explicitNullValueStatusMessage; set { _explicitNullValueStatusMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_message"); else _explicitNullProperties?.Remove("status_message"); } }
+        private string _explicitNullValueStatusMessage = default!;
 #endif
         /// <summary>This project&apos;s per-environment table suffix (events_&lt;suffix&gt;). Null when the project still writes to the shared tables.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TableSuffix { get; set; }
+        public string? TableSuffix { get => _explicitNullValueTableSuffix; set { _explicitNullValueTableSuffix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_suffix"); else _explicitNullProperties?.Remove("table_suffix"); } }
+        private string? _explicitNullValueTableSuffix = default!;
 #nullable restore
 #else
-        public string TableSuffix { get; set; }
+        public string TableSuffix { get => _explicitNullValueTableSuffix; set { _explicitNullValueTableSuffix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_suffix"); else _explicitNullProperties?.Remove("table_suffix"); } }
+        private string _explicitNullValueTableSuffix = default!;
 #endif
         /// <summary>Whether this project is onboarded onto the managed warehouse. False when the warehouse exists but this project has not picked a schema yet — show the onboarding screen in that case.</summary>
-        public bool? TeamOnboarded { get; set; }
+        public bool? TeamOnboarded { get => _explicitNullValueTeamOnboarded; set { _explicitNullValueTeamOnboarded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_onboarded"); else _explicitNullProperties?.Remove("team_onboarded"); } }
+        private bool? _explicitNullValueTeamOnboarded = default!;
         /// <summary>Trino status for organizations on the Trino Data ops variant, once the warehouse is ready. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus? Trino { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus? Trino { get => _explicitNullValueTrino; set { _explicitNullValueTrino = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trino"); else _explicitNullProperties?.Remove("trino"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus? _explicitNullValueTrino = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus Trino { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus Trino { get => _explicitNullValueTrino; set { _explicitNullValueTrino = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trino"); else _explicitNullProperties?.Remove("trino"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus _explicitNullValueTrino = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponse"/> and sets the default values.
@@ -119,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -168,6 +215,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("table_suffix", TableSuffix);
             writer.WriteBoolValue("team_onboarded", TeamOnboarded);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus>("trino", Trino);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

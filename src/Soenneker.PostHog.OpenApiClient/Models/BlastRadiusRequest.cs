@@ -11,29 +11,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BlastRadiusRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dedupe_key") is { } nullNodeDedupeKey && nullNodeDedupeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DedupeKey = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("group_type_index") is { } nullNodeGroupTypeIndex && nullNodeGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupTypeIndex = null;
+            if (parseNode.GetChildNode("sends_email") is { } nullNodeSendsEmail && nullNodeSendsEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendsEmail = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When &apos;email&apos;, count unique email addresses instead of persons, matching how batch email sends deduplicate recipients.* `email` - email</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey? DedupeKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey? DedupeKey { get => _explicitNullValueDedupeKey; set { _explicitNullValueDedupeKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dedupe_key"); else _explicitNullProperties?.Remove("dedupe_key"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey? _explicitNullValueDedupeKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey DedupeKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey DedupeKey { get => _explicitNullValueDedupeKey; set { _explicitNullValueDedupeKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dedupe_key"); else _explicitNullProperties?.Remove("dedupe_key"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestDedupeKey _explicitNullValueDedupeKey = default!;
 #endif
         /// <summary>Property filters to apply</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty _explicitNullValueFilters = default!;
 #endif
         /// <summary>Group type index for group-based targeting</summary>
-        public int? GroupTypeIndex { get; set; }
+        public int? GroupTypeIndex { get => _explicitNullValueGroupTypeIndex; set { _explicitNullValueGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_type_index"); else _explicitNullProperties?.Remove("group_type_index"); } }
+        private int? _explicitNullValueGroupTypeIndex = default!;
         /// <summary>Whether the workflow contains an email step. The tiered audience limit only applies to email sends; SMS, push, and webhook batches keep the flat limit. Defaults to true.</summary>
-        public bool? SendsEmail { get; set; }
+        public bool? SendsEmail { get => _explicitNullValueSendsEmail; set { _explicitNullValueSendsEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sends_email"); else _explicitNullProperties?.Remove("sends_email"); } }
+        private bool? _explicitNullValueSendsEmail = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest"/> and sets the default values.
         /// </summary>
@@ -50,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRequestFiltersProperty>("filters", Filters);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteBoolValue("sends_email", SendsEmail);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

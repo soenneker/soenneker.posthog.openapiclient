@@ -12,11 +12,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogFunctionInvocationConfiguration : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_updated_at") is { } nullNodeBaseUpdatedAt && nullNodeBaseUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseUpdatedAt = null;
+            if (parseNode.GetChildNode("_create_in_folder") is { } nullNodeCreateInFolder && nullNodeCreateInFolder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreateInFolder = null;
+            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("execution_order") is { } nullNodeExecutionOrder && nullNodeExecutionOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExecutionOrder = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("hog") is { } nullNodeHog && nullNodeHog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hog = null;
+            if (parseNode.GetChildNode("icon_url") is { } nullNodeIconUrl && nullNodeIconUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IconUrl = null;
+            if (parseNode.GetChildNode("inputs") is { } nullNodeInputs && nullNodeInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inputs = null;
+            if (parseNode.GetChildNode("inputs_schema") is { } nullNodeInputsSchema && nullNodeInputsSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputsSchema = null;
+            if (parseNode.GetChildNode("mappings") is { } nullNodeMappings && nullNodeMappings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mappings = null;
+            if (parseNode.GetChildNode("masking") is { } nullNodeMasking && nullNodeMasking.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Masking = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("template_id") is { } nullNodeTemplateId && nullNodeTemplateId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateId = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optimistic concurrency: the updated_at (or draft_updated_at when editing a staged draft) you last read. If the stored side is newer, the write fails with 409 instead of overwriting the concurrent edit. Omit to overwrite unconditionally.</summary>
-        public DateTimeOffset? BaseUpdatedAt { get; set; }
+        public DateTimeOffset? BaseUpdatedAt { get => _explicitNullValueBaseUpdatedAt; set { _explicitNullValueBaseUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_updated_at"); else _explicitNullProperties?.Remove("base_updated_at"); } }
+        private DateTimeOffset? _explicitNullValueBaseUpdatedAt = default!;
         /// <summary>The batch_export_id property</summary>
         public Guid? BatchExportId { get; private set; }
         /// <summary>The bytecode property</summary>
@@ -40,20 +64,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The create_in_folder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CreateInFolder { get; set; }
+        public string? CreateInFolder { get => _explicitNullValueCreateInFolder; set { _explicitNullValueCreateInFolder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_create_in_folder"); else _explicitNullProperties?.Remove("_create_in_folder"); } }
+        private string? _explicitNullValueCreateInFolder = default!;
 #nullable restore
 #else
-        public string CreateInFolder { get; set; }
+        public string CreateInFolder { get => _explicitNullValueCreateInFolder; set { _explicitNullValueCreateInFolder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("_create_in_folder"); else _explicitNullProperties?.Remove("_create_in_folder"); } }
+        private string _explicitNullValueCreateInFolder = default!;
 #endif
         /// <summary>Soft-delete flag. Set to true to archive the function.</summary>
-        public bool? Deleted { get; set; }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        private bool? _explicitNullValueDeleted = default!;
         /// <summary>Human-readable description of what this function does.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Config staged for review but not live yet: a full snapshot of hog, inputs_schema, inputs, filters, mappings and masking. Null when nothing is staged. Publish or discard it to clear.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,74 +95,92 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When config was last staged for review, or null when nothing is staged.</summary>
         public DateTimeOffset? DraftUpdatedAt { get; private set; }
         /// <summary>Whether the function is active and processing events.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Execution priority for transformations. Lower values run first.</summary>
-        public int? ExecutionOrder { get; set; }
+        public int? ExecutionOrder { get => _explicitNullValueExecutionOrder; set { _explicitNullValueExecutionOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("execution_order"); else _explicitNullProperties?.Remove("execution_order"); } }
+        private int? _explicitNullValueExecutionOrder = default!;
         /// <summary>Event filters that control which events trigger this function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersComposed? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersComposed? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersComposed? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersComposed Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersComposed Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionFiltersComposed _explicitNullValueFilters = default!;
 #endif
         /// <summary>Source code. Hog language for most types; TypeScript for site_destination and site_app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hog { get; set; }
+        public string? Hog { get => _explicitNullValueHog; set { _explicitNullValueHog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog"); else _explicitNullProperties?.Remove("hog"); } }
+        private string? _explicitNullValueHog = default!;
 #nullable restore
 #else
-        public string Hog { get; set; }
+        public string Hog { get => _explicitNullValueHog; set { _explicitNullValueHog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog"); else _explicitNullProperties?.Remove("hog"); } }
+        private string _explicitNullValueHog = default!;
 #endif
         /// <summary>URL for the function&apos;s icon displayed in the UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IconUrl { get; set; }
+        public string? IconUrl { get => _explicitNullValueIconUrl; set { _explicitNullValueIconUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("icon_url"); else _explicitNullProperties?.Remove("icon_url"); } }
+        private string? _explicitNullValueIconUrl = default!;
 #nullable restore
 #else
-        public string IconUrl { get; set; }
+        public string IconUrl { get => _explicitNullValueIconUrl; set { _explicitNullValueIconUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("icon_url"); else _explicitNullProperties?.Remove("icon_url"); } }
+        private string _explicitNullValueIconUrl = default!;
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Values for each input defined in inputs_schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfigurationInputs? Inputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfigurationInputs? Inputs { get => _explicitNullValueInputs; set { _explicitNullValueInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputs"); else _explicitNullProperties?.Remove("inputs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfigurationInputs? _explicitNullValueInputs = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfigurationInputs Inputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfigurationInputs Inputs { get => _explicitNullValueInputs; set { _explicitNullValueInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputs"); else _explicitNullProperties?.Remove("inputs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfigurationInputs _explicitNullValueInputs = default!;
 #endif
         /// <summary>Schema defining the configurable input parameters for this function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>? InputsSchema { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>? InputsSchema { get => _explicitNullValueInputsSchema; set { _explicitNullValueInputsSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputs_schema"); else _explicitNullProperties?.Remove("inputs_schema"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>? _explicitNullValueInputsSchema = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem> InputsSchema { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem> InputsSchema { get => _explicitNullValueInputsSchema; set { _explicitNullValueInputsSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputs_schema"); else _explicitNullProperties?.Remove("inputs_schema"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem> _explicitNullValueInputsSchema = default!;
 #endif
         /// <summary>Event-to-destination field mappings. Only for destination and site_destination types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>? Mappings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>? Mappings { get => _explicitNullValueMappings; set { _explicitNullValueMappings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mappings"); else _explicitNullProperties?.Remove("mappings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>? _explicitNullValueMappings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Mappings> Mappings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Mappings> Mappings { get => _explicitNullValueMappings; set { _explicitNullValueMappings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mappings"); else _explicitNullProperties?.Remove("mappings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.Mappings> _explicitNullValueMappings = default!;
 #endif
         /// <summary>PII masking configuration with TTL, threshold, and hash expression.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking? Masking { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking? Masking { get => _explicitNullValueMasking; set { _explicitNullValueMasking = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masking"); else _explicitNullProperties?.Remove("masking"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking? _explicitNullValueMasking = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking Masking { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking Masking { get => _explicitNullValueMasking; set { _explicitNullValueMasking = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masking"); else _explicitNullProperties?.Remove("masking"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking _explicitNullValueMasking = default!;
 #endif
         /// <summary>Display name for the function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -162,10 +209,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>ID of the template to create this function from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TemplateId { get; set; }
+        public string? TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
+        private string? _explicitNullValueTemplateId = default!;
 #nullable restore
 #else
-        public string TemplateId { get; set; }
+        public string TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
+        private string _explicitNullValueTemplateId = default!;
 #endif
         /// <summary>The transpiled property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -178,10 +227,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, transformation, or transformation_log.* `destination` - Destination* `site_destination` - Site Destination* `internal_destination` - Internal Destination* `source_webhook` - Source Webhook* `warehouse_source_webhook` - Warehouse Source Webhook* `site_app` - Site App* `transformation` - Transformation* `transformation_log` - Transformation Log* `legacy_destination` - Legacy Destination</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType? _explicitNullValueType = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType _explicitNullValueType = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -202,7 +253,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionInvocationConfiguration(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -266,6 +317,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("template_id", TemplateId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

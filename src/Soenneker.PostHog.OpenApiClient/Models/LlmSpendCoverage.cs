@@ -11,17 +11,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LlmSpendCoverage : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("attributed_cost_usd") is { } nullNodeAttributedCostUsd && nullNodeAttributedCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributedCostUsd = null;
+            if (parseNode.GetChildNode("attributed_generations") is { } nullNodeAttributedGenerations && nullNodeAttributedGenerations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributedGenerations = null;
+            if (parseNode.GetChildNode("cost_usd") is { } nullNodeCostUsd && nullNodeCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostUsd = null;
+            if (parseNode.GetChildNode("generations") is { } nullNodeGenerations && nullNodeGenerations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Generations = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The part of cost_usd that the branch and session attribution credits to a pull request. A generation credited to several pull requests counts once.</summary>
-        public double? AttributedCostUsd { get; set; }
+        public double? AttributedCostUsd { get => _explicitNullValueAttributedCostUsd; set { _explicitNullValueAttributedCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributed_cost_usd"); else _explicitNullProperties?.Remove("attributed_cost_usd"); } }
+        private double? _explicitNullValueAttributedCostUsd = default!;
         /// <summary>Number of $ai_generation events in attributed_cost_usd.</summary>
-        public int? AttributedGenerations { get; set; }
+        public int? AttributedGenerations { get => _explicitNullValueAttributedGenerations; set { _explicitNullValueAttributedGenerations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attributed_generations"); else _explicitNullProperties?.Remove("attributed_generations"); } }
+        private int? _explicitNullValueAttributedGenerations = default!;
         /// <summary>Total cost in USD of the $ai_generation events stamped with this repository ($ai_git_repo) in the window. Generations with no repository stamp are not counted.</summary>
-        public double? CostUsd { get; set; }
+        public double? CostUsd { get => _explicitNullValueCostUsd; set { _explicitNullValueCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_usd"); else _explicitNullProperties?.Remove("cost_usd"); } }
+        private double? _explicitNullValueCostUsd = default!;
         /// <summary>Number of $ai_generation events in cost_usd.</summary>
-        public int? Generations { get; set; }
+        public int? Generations { get => _explicitNullValueGenerations; set { _explicitNullValueGenerations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generations"); else _explicitNullProperties?.Remove("generations"); } }
+        private int? _explicitNullValueGenerations = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSpendCoverage"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LlmSpendCoverage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LlmSpendCoverage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LlmSpendCoverage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("attributed_generations", AttributedGenerations);
             writer.WriteDoubleValue("cost_usd", CostUsd);
             writer.WriteIntValue("generations", Generations);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

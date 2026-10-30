@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskRunAnalysisActivityResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Store one activity record on a task-analysis run. Only the run&apos;s own task-bound sandbox agent may call it, and only on a task-analysis run. Activities arrive in log order and do not overlap. An exact repeat of a stored activity returns its index without storing it again. The activities list is server-owned: it is not writable through the run update endpoint.

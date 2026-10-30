@@ -11,29 +11,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentSetupSdkLib : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anonymous_share") is { } nullNodeAnonymousShare && nullNodeAnonymousShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnonymousShare = null;
+            if (parseNode.GetChildNode("calls") is { } nullNodeCalls && nullNodeCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Calls = null;
+            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("device_id_share") is { } nullNodeDeviceIdShare && nullNodeDeviceIdShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceIdShare = null;
+            if (parseNode.GetChildNode("distinct_ids") is { } nullNodeDistinctIds && nullNodeDistinctIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIds = null;
+            if (parseNode.GetChildNode("lib") is { } nullNodeLib && nullNodeLib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lib = null;
+            if (parseNode.GetChildNode("locally_evaluated_share") is { } nullNodeLocallyEvaluatedShare && nullNodeLocallyEvaluatedShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocallyEvaluatedShare = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Share of distinct ids that were anonymous, among those that report whether they are identified. Null when no call from this SDK reported it.</summary>
-        public double? AnonymousShare { get; set; }
+        public double? AnonymousShare { get => _explicitNullValueAnonymousShare; set { _explicitNullValueAnonymousShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anonymous_share"); else _explicitNullProperties?.Remove("anonymous_share"); } }
+        private double? _explicitNullValueAnonymousShare = default!;
         /// <summary>Multivariate flag calls this SDK sent in the window.</summary>
-        public int? Calls { get; set; }
+        public int? Calls { get => _explicitNullValueCalls; set { _explicitNullValueCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls"); else _explicitNullProperties?.Remove("calls"); } }
+        private int? _explicitNullValueCalls = default!;
         /// <summary>* `web` - Web* `mobile` - Mobile* `server` - Server* `other` - Other</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory? Category { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLibCategory? _explicitNullValueCategory = default!;
         /// <summary>Share of calls that carry a $device_id. 0 when this SDK never sends one, as server SDKs don&apos;t.</summary>
-        public double? DeviceIdShare { get; set; }
+        public double? DeviceIdShare { get => _explicitNullValueDeviceIdShare; set { _explicitNullValueDeviceIdShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_id_share"); else _explicitNullProperties?.Remove("device_id_share"); } }
+        private double? _explicitNullValueDeviceIdShare = default!;
         /// <summary>Distinct ids that sent those calls.</summary>
-        public int? DistinctIds { get; set; }
+        public int? DistinctIds { get => _explicitNullValueDistinctIds; set { _explicitNullValueDistinctIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids"); else _explicitNullProperties?.Remove("distinct_ids"); } }
+        private int? _explicitNullValueDistinctIds = default!;
         /// <summary>The $lib value of the SDK, for example &apos;web&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Lib { get; set; }
+        public string? Lib { get => _explicitNullValueLib; set { _explicitNullValueLib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lib"); else _explicitNullProperties?.Remove("lib"); } }
+        private string? _explicitNullValueLib = default!;
 #nullable restore
 #else
-        public string Lib { get; set; }
+        public string Lib { get => _explicitNullValueLib; set { _explicitNullValueLib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lib"); else _explicitNullProperties?.Remove("lib"); } }
+        private string _explicitNullValueLib = default!;
 #endif
         /// <summary>Share of calls evaluated locally in the SDK instead of by the flags service. Null when no call from this SDK reported it, as the web SDK doesn&apos;t.</summary>
-        public double? LocallyEvaluatedShare { get; set; }
+        public double? LocallyEvaluatedShare { get => _explicitNullValueLocallyEvaluatedShare; set { _explicitNullValueLocallyEvaluatedShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locally_evaluated_share"); else _explicitNullProperties?.Remove("locally_evaluated_share"); } }
+        private double? _explicitNullValueLocallyEvaluatedShare = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib"/> and sets the default values.
         /// </summary>
@@ -49,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("distinct_ids", DistinctIds);
             writer.WriteStringValue("lib", Lib);
             writer.WriteDoubleValue("locally_evaluated_share", LocallyEvaluatedShare);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

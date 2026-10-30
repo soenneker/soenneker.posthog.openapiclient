@@ -12,17 +12,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureFlagStatusResponseRollout : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("effectively_full_rollout") is { } nullNodeEffectivelyFullRollout && nullNodeEffectivelyFullRollout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectivelyFullRollout = null;
+            if (parseNode.GetChildNode("has_targeting_conditions") is { } nullNodeHasTargetingConditions && nullNodeHasTargetingConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasTargetingConditions = null;
+            if (parseNode.GetChildNode("is_multivariate") is { } nullNodeIsMultivariate && nullNodeIsMultivariate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsMultivariate = null;
+            if (parseNode.GetChildNode("max_rollout_percentage") is { } nullNodeMaxRolloutPercentage && nullNodeMaxRolloutPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRolloutPercentage = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True if the flag is effectively rolled out to everyone, independent of recent evaluation. For boolean flags this means at least one release condition targets 100% with no property filters, or there are no release conditions. For multivariate flags it means every release condition a user can reach, up to the first one at 100% with no property filters, serves the same variant. In a flag of either type that mixes person and group aggregation, only a person-level condition counts as that 100% condition. This is the signal for &apos;fully rolled out&apos; / GA, unlike `status`, which only reflects recent evaluation.</summary>
-        public bool? EffectivelyFullRollout { get; set; }
+        public bool? EffectivelyFullRollout { get => _explicitNullValueEffectivelyFullRollout; set { _explicitNullValueEffectivelyFullRollout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effectively_full_rollout"); else _explicitNullProperties?.Remove("effectively_full_rollout"); } }
+        private bool? _explicitNullValueEffectivelyFullRollout = default!;
         /// <summary>True if any release condition has property filters, i.e. the flag is conditionally targeted rather than a blanket rollout. This says nothing about which condition produced `max_rollout_percentage`: the two fields are computed independently over the whole condition list.</summary>
-        public bool? HasTargetingConditions { get; set; }
+        public bool? HasTargetingConditions { get => _explicitNullValueHasTargetingConditions; set { _explicitNullValueHasTargetingConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_targeting_conditions"); else _explicitNullProperties?.Remove("has_targeting_conditions"); } }
+        private bool? _explicitNullValueHasTargetingConditions = default!;
         /// <summary>True if the flag serves multiple variants (has a multivariate variant set).</summary>
-        public bool? IsMultivariate { get; set; }
+        public bool? IsMultivariate { get => _explicitNullValueIsMultivariate; set { _explicitNullValueIsMultivariate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_multivariate"); else _explicitNullProperties?.Remove("is_multivariate"); } }
+        private bool? _explicitNullValueIsMultivariate = default!;
         /// <summary>Highest rollout percentage (0-100) across the flag&apos;s release conditions, treating a missing percentage as 100. Null when the flag has no release conditions. The maximum can come from an untargeted condition even when `has_targeting_conditions` is true, so it cannot be attributed to a targeted condition or read as a share of a targeted segment.</summary>
-        public double? MaxRolloutPercentage { get; set; }
+        public double? MaxRolloutPercentage { get => _explicitNullValueMaxRolloutPercentage; set { _explicitNullValueMaxRolloutPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_rollout_percentage"); else _explicitNullProperties?.Remove("max_rollout_percentage"); } }
+        private double? _explicitNullValueMaxRolloutPercentage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagStatusResponseRollout(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("has_targeting_conditions", HasTargetingConditions);
             writer.WriteBoolValue("is_multivariate", IsMultivariate);
             writer.WriteDoubleValue("max_rollout_percentage", MaxRolloutPercentage);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,16 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class IntegrationFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("includeNonIntegrated") is { } nullNodeIncludeNonIntegrated && nullNodeIncludeNonIntegrated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeNonIntegrated = null;
+            if (parseNode.GetChildNode("integrationSourceIds") is { } nullNodeIntegrationSourceIds && nullNodeIntegrationSourceIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationSourceIds = null;
+        }
+
         /// <summary>Keep rows that no integration reports cost for, such as organic, email or an unmapped source. Defaults to true.</summary>
-        public bool? IncludeNonIntegrated { get; set; }
+        public bool? IncludeNonIntegrated { get => _explicitNullValueIncludeNonIntegrated; set { _explicitNullValueIncludeNonIntegrated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("includeNonIntegrated"); else _explicitNullProperties?.Remove("includeNonIntegrated"); } }
+        private bool? _explicitNullValueIncludeNonIntegrated = default!;
         /// <summary>Selected integration source IDs to filter by (e.g., table IDs or source map IDs)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IntegrationSourceIds { get; set; }
+        public List<string>? IntegrationSourceIds { get => _explicitNullValueIntegrationSourceIds; set { _explicitNullValueIntegrationSourceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrationSourceIds"); else _explicitNullProperties?.Remove("integrationSourceIds"); } }
+        private List<string>? _explicitNullValueIntegrationSourceIds = default!;
 #nullable restore
 #else
-        public List<string> IntegrationSourceIds { get; set; }
+        public List<string> IntegrationSourceIds { get => _explicitNullValueIntegrationSourceIds; set { _explicitNullValueIntegrationSourceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrationSourceIds"); else _explicitNullProperties?.Remove("integrationSourceIds"); } }
+        private List<string> _explicitNullValueIntegrationSourceIds = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -30,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.IntegrationFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,7 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("includeNonIntegrated", IncludeNonIntegrated);
-            writer.WriteCollectionOfPrimitiveValues<string>("integrationSourceIds", IntegrationSourceIds);
+            writer.WriteCollectionOfPrimitiveValues<string>("integrationSourceIds", IntegrationSourceIds);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

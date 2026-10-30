@@ -12,21 +12,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ManagedWarehouseMonitoringSnapshotResponseTotals : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_sessions") is { } nullNodeActiveSessions && nullNodeActiveSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveSessions = null;
+            if (parseNode.GetChildNode("allocated_cpu_cores") is { } nullNodeAllocatedCpuCores && nullNodeAllocatedCpuCores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllocatedCpuCores = null;
+            if (parseNode.GetChildNode("allocated_memory_bytes") is { } nullNodeAllocatedMemoryBytes && nullNodeAllocatedMemoryBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllocatedMemoryBytes = null;
+            if (parseNode.GetChildNode("queued_connections") is { } nullNodeQueuedConnections && nullNodeQueuedConnections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueuedConnections = null;
+            if (parseNode.GetChildNode("running_queries") is { } nullNodeRunningQueries && nullNodeRunningQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunningQueries = null;
+            if (parseNode.GetChildNode("workers") is { } nullNodeWorkers && nullNodeWorkers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workers = null;
+        }
+
         /// <summary>Number of active database sessions across the organization&apos;s control planes.</summary>
-        public int? ActiveSessions { get; set; }
+        public int? ActiveSessions { get => _explicitNullValueActiveSessions; set { _explicitNullValueActiveSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_sessions"); else _explicitNullProperties?.Remove("active_sessions"); } }
+        private int? _explicitNullValueActiveSessions = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total CPU cores allocated to current workers.</summary>
-        public double? AllocatedCpuCores { get; set; }
+        public double? AllocatedCpuCores { get => _explicitNullValueAllocatedCpuCores; set { _explicitNullValueAllocatedCpuCores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allocated_cpu_cores"); else _explicitNullProperties?.Remove("allocated_cpu_cores"); } }
+        private double? _explicitNullValueAllocatedCpuCores = default!;
         /// <summary>Total memory bytes allocated to current workers.</summary>
-        public int? AllocatedMemoryBytes { get; set; }
+        public int? AllocatedMemoryBytes { get => _explicitNullValueAllocatedMemoryBytes; set { _explicitNullValueAllocatedMemoryBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allocated_memory_bytes"); else _explicitNullProperties?.Remove("allocated_memory_bytes"); } }
+        private int? _explicitNullValueAllocatedMemoryBytes = default!;
         /// <summary>Number of connections waiting for worker capacity.</summary>
-        public int? QueuedConnections { get; set; }
+        public int? QueuedConnections { get => _explicitNullValueQueuedConnections; set { _explicitNullValueQueuedConnections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queued_connections"); else _explicitNullProperties?.Remove("queued_connections"); } }
+        private int? _explicitNullValueQueuedConnections = default!;
         /// <summary>Number of sessions currently executing a query.</summary>
-        public int? RunningQueries { get; set; }
+        public int? RunningQueries { get => _explicitNullValueRunningQueries; set { _explicitNullValueRunningQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("running_queries"); else _explicitNullProperties?.Remove("running_queries"); } }
+        private int? _explicitNullValueRunningQueries = default!;
         /// <summary>Number of current non-terminal workers.</summary>
-        public int? Workers { get; set; }
+        public int? Workers { get => _explicitNullValueWorkers; set { _explicitNullValueWorkers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workers"); else _explicitNullProperties?.Remove("workers"); } }
+        private int? _explicitNullValueWorkers = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseTotals"/> and sets the default values.
         /// </summary>
@@ -42,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseTotals CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseTotals();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseTotals(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("queued_connections", QueuedConnections);
             writer.WriteIntValue("running_queries", RunningQueries);
             writer.WriteIntValue("workers", Workers);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

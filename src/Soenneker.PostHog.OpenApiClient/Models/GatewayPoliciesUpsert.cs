@@ -11,23 +11,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GatewayPoliciesUpsert : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("policies") is { } nullNodePolicies && nullNodePolicies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Policies = null;
+            if (parseNode.GetChildNode("scope_service_account_id") is { } nullNodeScopeServiceAccountId && nullNodeScopeServiceAccountId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeServiceAccountId = null;
+            if (parseNode.GetChildNode("scope_type") is { } nullNodeScopeType && nullNodeScopeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeType = null;
+            if (parseNode.GetChildNode("scope_user_id") is { } nullNodeScopeUserId && nullNodeScopeUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeUserId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per-tool states to upsert for the scope. At most 1,000 entries per request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry>? Policies { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry>? Policies { get => _explicitNullValuePolicies; set { _explicitNullValuePolicies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policies"); else _explicitNullProperties?.Remove("policies"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry>? _explicitNullValuePolicies = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry> Policies { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry> Policies { get => _explicitNullValuePolicies; set { _explicitNullValuePolicies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policies"); else _explicitNullProperties?.Remove("policies"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ToolPolicyEntry> _explicitNullValuePolicies = default!;
 #endif
         /// <summary>Agent scope target. Required when scope_type is agent.</summary>
-        public Guid? ScopeServiceAccountId { get; set; }
+        public Guid? ScopeServiceAccountId { get => _explicitNullValueScopeServiceAccountId; set { _explicitNullValueScopeServiceAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_service_account_id"); else _explicitNullProperties?.Remove("scope_service_account_id"); } }
+        private Guid? _explicitNullValueScopeServiceAccountId = default!;
         /// <summary>* `team` - Team default* `member` - Member* `agent` - Agent</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType? ScopeType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType? ScopeType { get => _explicitNullValueScopeType; set { _explicitNullValueScopeType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_type"); else _explicitNullProperties?.Remove("scope_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType? _explicitNullValueScopeType = default!;
         /// <summary>Member scope target. Defaults to the requesting user.</summary>
-        public int? ScopeUserId { get; set; }
+        public int? ScopeUserId { get => _explicitNullValueScopeUserId; set { _explicitNullValueScopeUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_user_id"); else _explicitNullProperties?.Remove("scope_user_id"); } }
+        private int? _explicitNullValueScopeUserId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsert"/> and sets the default values.
         /// </summary>
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsert CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsert();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsert(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("scope_service_account_id", ScopeServiceAccountId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayPoliciesUpsertScopeType>("scope_type", ScopeType);
             writer.WriteIntValue("scope_user_id", ScopeUserId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

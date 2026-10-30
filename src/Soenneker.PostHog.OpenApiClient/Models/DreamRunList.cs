@@ -12,40 +12,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DreamRunList : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_run") is { } nullNodeActiveRun && nullNodeActiveRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveRun = null;
+            if (parseNode.GetChildNode("dreams") is { } nullNodeDreams && nullNodeDreams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dreams = null;
+            if (parseNode.GetChildNode("head_sha") is { } nullNodeHeadSha && nullNodeHeadSha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeadSha = null;
+            if (parseNode.GetChildNode("unpublished_run") is { } nullNodeUnpublishedRun && nullNodeUnpublishedRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnpublishedRun = null;
+        }
+
         /// <summary>The organization&apos;s active dreaming task, or null when no dream is running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun? ActiveRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun? ActiveRun { get => _explicitNullValueActiveRun; set { _explicitNullValueActiveRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_run"); else _explicitNullProperties?.Remove("active_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun? _explicitNullValueActiveRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun ActiveRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun ActiveRun { get => _explicitNullValueActiveRun; set { _explicitNullValueActiveRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_run"); else _explicitNullProperties?.Remove("active_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActiveDreamRun _explicitNullValueActiveRun = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Every landed dream run, newest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun>? Dreams { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun>? Dreams { get => _explicitNullValueDreams; set { _explicitNullValueDreams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dreams"); else _explicitNullProperties?.Remove("dreams"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun>? _explicitNullValueDreams = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun> Dreams { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun> Dreams { get => _explicitNullValueDreams; set { _explicitNullValueDreams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dreams"); else _explicitNullProperties?.Remove("dreams"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun> _explicitNullValueDreams = default!;
 #endif
         /// <summary>Commit sha of the wiki&apos;s current head.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HeadSha { get; set; }
+        public string? HeadSha { get => _explicitNullValueHeadSha; set { _explicitNullValueHeadSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("head_sha"); else _explicitNullProperties?.Remove("head_sha"); } }
+        private string? _explicitNullValueHeadSha = default!;
 #nullable restore
 #else
-        public string HeadSha { get; set; }
+        public string HeadSha { get => _explicitNullValueHeadSha; set { _explicitNullValueHeadSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("head_sha"); else _explicitNullProperties?.Remove("head_sha"); } }
+        private string _explicitNullValueHeadSha = default!;
 #endif
         /// <summary>The latest finished dream when no update was published after it started, or null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun? UnpublishedRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun? UnpublishedRun { get => _explicitNullValueUnpublishedRun; set { _explicitNullValueUnpublishedRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unpublished_run"); else _explicitNullProperties?.Remove("unpublished_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun? _explicitNullValueUnpublishedRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun UnpublishedRun { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun UnpublishedRun { get => _explicitNullValueUnpublishedRun; set { _explicitNullValueUnpublishedRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unpublished_run"); else _explicitNullProperties?.Remove("unpublished_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun _explicitNullValueUnpublishedRun = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DreamRunList"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DreamRunList CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DreamRunList();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DreamRunList(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DreamRun>("dreams", Dreams);
             writer.WriteStringValue("head_sha", HeadSha);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UnpublishedDreamRun>("unpublished_run", UnpublishedRun);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

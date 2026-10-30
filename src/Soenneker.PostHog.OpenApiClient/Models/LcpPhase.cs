@@ -12,27 +12,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LcpPhase : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("percent") is { } nullNodePercent && nullNodePercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Percent = null;
+            if (parseNode.GetChildNode("phase") is { } nullNodePhase && nullNodePhase.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Phase = null;
+            if (parseNode.GetChildNode("timing_ms") is { } nullNodeTimingMs && nullNodeTimingMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimingMs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>This subpart&apos;s share of the total LCP, e.g. &apos;62%&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Percent { get; set; }
+        public string? Percent { get => _explicitNullValuePercent; set { _explicitNullValuePercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percent"); else _explicitNullProperties?.Remove("percent"); } }
+        private string? _explicitNullValuePercent = default!;
 #nullable restore
 #else
-        public string Percent { get; set; }
+        public string Percent { get => _explicitNullValuePercent; set { _explicitNullValuePercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percent"); else _explicitNullProperties?.Remove("percent"); } }
+        private string _explicitNullValuePercent = default!;
 #endif
         /// <summary>Lighthouse&apos;s own label for this subpart of the LCP, e.g. &apos;Time to first byte&apos; or &apos;Element render delay&apos;. Passed through verbatim, so the exact wording follows the Lighthouse version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Phase { get; set; }
+        public string? Phase { get => _explicitNullValuePhase; set { _explicitNullValuePhase = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase"); else _explicitNullProperties?.Remove("phase"); } }
+        private string? _explicitNullValuePhase = default!;
 #nullable restore
 #else
-        public string Phase { get; set; }
+        public string Phase { get => _explicitNullValuePhase; set { _explicitNullValuePhase = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase"); else _explicitNullProperties?.Remove("phase"); } }
+        private string _explicitNullValuePhase = default!;
 #endif
         /// <summary>Milliseconds spent in this phase.</summary>
-        public double? TimingMs { get; set; }
+        public double? TimingMs { get => _explicitNullValueTimingMs; set { _explicitNullValueTimingMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timing_ms"); else _explicitNullProperties?.Remove("timing_ms"); } }
+        private double? _explicitNullValueTimingMs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase"/> and sets the default values.
         /// </summary>
@@ -48,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("percent", Percent);
             writer.WriteStringValue("phase", Phase);
             writer.WriteDoubleValue("timing_ms", TimingMs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

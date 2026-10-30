@@ -12,32 +12,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class McpDiscoverResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("candidates") is { } nullNodeCandidates && nullNodeCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Candidates = null;
+            if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
+            if (parseNode.GetChildNode("ranking_version") is { } nullNodeRankingVersion && nullNodeRankingVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RankingVersion = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Servers most likely to do the thing, best first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate>? Candidates { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate>? Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate>? _explicitNullValueCandidates = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate> Candidates { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate> Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate> _explicitNullValueCandidates = default!;
 #endif
         /// <summary>The intent the candidates were ranked against, echoed back.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Intent { get; set; }
+        public string? Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        private string? _explicitNullValueIntent = default!;
 #nullable restore
 #else
-        public string Intent { get; set; }
+        public string Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        private string _explicitNullValueIntent = default!;
 #endif
         /// <summary>Ranking version the candidates were ordered by.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RankingVersion { get; set; }
+        public string? RankingVersion { get => _explicitNullValueRankingVersion; set { _explicitNullValueRankingVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranking_version"); else _explicitNullProperties?.Remove("ranking_version"); } }
+        private string? _explicitNullValueRankingVersion = default!;
 #nullable restore
 #else
-        public string RankingVersion { get; set; }
+        public string RankingVersion { get => _explicitNullValueRankingVersion; set { _explicitNullValueRankingVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranking_version"); else _explicitNullProperties?.Remove("ranking_version"); } }
+        private string _explicitNullValueRankingVersion = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverResponse"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate>("candidates", Candidates);
             writer.WriteStringValue("intent", Intent);
             writer.WriteStringValue("ranking_version", RankingVersion);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

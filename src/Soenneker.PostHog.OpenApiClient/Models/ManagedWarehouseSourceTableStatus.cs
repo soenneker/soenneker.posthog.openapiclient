@@ -11,70 +11,109 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ManagedWarehouseSourceTableStatus : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("applied") is { } nullNodeApplied && nullNodeApplied.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Applied = null;
+            if (parseNode.GetChildNode("detail") is { } nullNodeDetail && nullNodeDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detail = null;
+            if (parseNode.GetChildNode("last_applied_at") is { } nullNodeLastAppliedAt && nullNodeLastAppliedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastAppliedAt = null;
+            if (parseNode.GetChildNode("last_synced_at") is { } nullNodeLastSyncedAt && nullNodeLastSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSyncedAt = null;
+            if (parseNode.GetChildNode("readiness_state") is { } nullNodeReadinessState && nullNodeReadinessState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadinessState = null;
+            if (parseNode.GetChildNode("schema_id") is { } nullNodeSchemaId && nullNodeSchemaId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaId = null;
+            if (parseNode.GetChildNode("source_id") is { } nullNodeSourceId && nullNodeSourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceId = null;
+            if (parseNode.GetChildNode("source_name") is { } nullNodeSourceName && nullNodeSourceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceName = null;
+            if (parseNode.GetChildNode("source_type") is { } nullNodeSourceType && nullNodeSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceType = null;
+            if (parseNode.GetChildNode("table_name") is { } nullNodeTableName && nullNodeTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TableName = null;
+            if (parseNode.GetChildNode("workflow_started_at") is { } nullNodeWorkflowStartedAt && nullNodeWorkflowStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowStartedAt = null;
+            if (parseNode.GetChildNode("workflow_status") is { } nullNodeWorkflowStatus && nullNodeWorkflowStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowStatus = null;
+            if (parseNode.GetChildNode("workflow_type") is { } nullNodeWorkflowType && nullNodeWorkflowType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether a copy or register workflow has applied this table to the warehouse.</summary>
-        public bool? Applied { get; set; }
+        public bool? Applied { get => _explicitNullValueApplied; set { _explicitNullValueApplied = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied"); else _explicitNullProperties?.Remove("applied"); } }
+        private bool? _explicitNullValueApplied = default!;
         /// <summary>Human-readable explanation of the table&apos;s readiness state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Detail { get; set; }
+        public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        private string? _explicitNullValueDetail = default!;
 #nullable restore
 #else
-        public string Detail { get; set; }
+        public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        private string _explicitNullValueDetail = default!;
 #endif
         /// <summary>When a copy or register workflow most recently applied this table, or null if no workflow completed.</summary>
-        public DateTimeOffset? LastAppliedAt { get; set; }
+        public DateTimeOffset? LastAppliedAt { get => _explicitNullValueLastAppliedAt; set { _explicitNullValueLastAppliedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_applied_at"); else _explicitNullProperties?.Remove("last_applied_at"); } }
+        private DateTimeOffset? _explicitNullValueLastAppliedAt = default!;
         /// <summary>When PostHog most recently completed the upstream source import.</summary>
-        public DateTimeOffset? LastSyncedAt { get; set; }
+        public DateTimeOffset? LastSyncedAt { get => _explicitNullValueLastSyncedAt; set { _explicitNullValueLastSyncedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_synced_at"); else _explicitNullProperties?.Remove("last_synced_at"); } }
+        private DateTimeOffset? _explicitNullValueLastSyncedAt = default!;
         /// <summary>* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState? ReadinessState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState? ReadinessState { get => _explicitNullValueReadinessState; set { _explicitNullValueReadinessState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readiness_state"); else _explicitNullProperties?.Remove("readiness_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusReadinessState? _explicitNullValueReadinessState = default!;
         /// <summary>Imported source schema identifier.</summary>
-        public Guid? SchemaId { get; set; }
+        public Guid? SchemaId { get => _explicitNullValueSchemaId; set { _explicitNullValueSchemaId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_id"); else _explicitNullProperties?.Remove("schema_id"); } }
+        private Guid? _explicitNullValueSchemaId = default!;
         /// <summary>Imported source connection identifier.</summary>
-        public Guid? SourceId { get; set; }
+        public Guid? SourceId { get => _explicitNullValueSourceId; set { _explicitNullValueSourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_id"); else _explicitNullProperties?.Remove("source_id"); } }
+        private Guid? _explicitNullValueSourceId = default!;
         /// <summary>Display name for the imported source connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceName { get; set; }
+        public string? SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_name"); else _explicitNullProperties?.Remove("source_name"); } }
+        private string? _explicitNullValueSourceName = default!;
 #nullable restore
 #else
-        public string SourceName { get; set; }
+        public string SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_name"); else _explicitNullProperties?.Remove("source_name"); } }
+        private string _explicitNullValueSourceName = default!;
 #endif
         /// <summary>Type of the imported source connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceType { get; set; }
+        public string? SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private string? _explicitNullValueSourceType = default!;
 #nullable restore
 #else
-        public string SourceType { get; set; }
+        public string SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private string _explicitNullValueSourceType = default!;
 #endif
         /// <summary>Imported table name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TableName { get; set; }
+        public string? TableName { get => _explicitNullValueTableName; set { _explicitNullValueTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_name"); else _explicitNullProperties?.Remove("table_name"); } }
+        private string? _explicitNullValueTableName = default!;
 #nullable restore
 #else
-        public string TableName { get; set; }
+        public string TableName { get => _explicitNullValueTableName; set { _explicitNullValueTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_name"); else _explicitNullProperties?.Remove("table_name"); } }
+        private string _explicitNullValueTableName = default!;
 #endif
         /// <summary>When the latest copy or register workflow started, or null if no workflow has run.</summary>
-        public DateTimeOffset? WorkflowStartedAt { get; set; }
+        public DateTimeOffset? WorkflowStartedAt { get => _explicitNullValueWorkflowStartedAt; set { _explicitNullValueWorkflowStartedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_started_at"); else _explicitNullProperties?.Remove("workflow_started_at"); } }
+        private DateTimeOffset? _explicitNullValueWorkflowStartedAt = default!;
         /// <summary>State of the latest copy or register workflow, or null if no workflow has run.* `running` - running* `completed` - completed* `failed` - failed* `skipped` - skipped* `stale` - stale</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowStatus? WorkflowStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowStatus? WorkflowStatus { get => _explicitNullValueWorkflowStatus; set { _explicitNullValueWorkflowStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_status"); else _explicitNullProperties?.Remove("workflow_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowStatus? _explicitNullValueWorkflowStatus = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowStatus WorkflowStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowStatus WorkflowStatus { get => _explicitNullValueWorkflowStatus; set { _explicitNullValueWorkflowStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_status"); else _explicitNullProperties?.Remove("workflow_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowStatus _explicitNullValueWorkflowStatus = default!;
 #endif
         /// <summary>Workflow applying the latest source import, or null if no workflow has run.* `copy` - copy* `register` - register</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowType? WorkflowType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowType? WorkflowType { get => _explicitNullValueWorkflowType; set { _explicitNullValueWorkflowType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_type"); else _explicitNullProperties?.Remove("workflow_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowType? _explicitNullValueWorkflowType = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowType WorkflowType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowType WorkflowType { get => _explicitNullValueWorkflowType; set { _explicitNullValueWorkflowType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_type"); else _explicitNullProperties?.Remove("workflow_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowType _explicitNullValueWorkflowType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatus"/> and sets the default values.
@@ -91,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -136,6 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("workflow_started_at", WorkflowStartedAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowStatus>("workflow_status", WorkflowStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseSourceTableStatusWorkflowType>("workflow_type", WorkflowType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

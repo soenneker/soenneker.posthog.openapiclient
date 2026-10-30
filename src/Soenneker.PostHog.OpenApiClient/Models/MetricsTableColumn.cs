@@ -11,35 +11,55 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MetricsTableColumn : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregation") is { } nullNodeAggregation && nullNodeAggregation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Aggregation = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("metricName") is { } nullNodeMetricName && nullNodeMetricName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricName = null;
+            if (parseNode.GetChildNode("quantile") is { } nullNodeQuantile && nullNodeQuantile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantile = null;
+        }
+
         /// <summary>How each time bucket of a row is computed. `rate` and `increase` read counters.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumnAggregation? Aggregation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumnAggregation? Aggregation { get => _explicitNullValueAggregation; set { _explicitNullValueAggregation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation"); else _explicitNullProperties?.Remove("aggregation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumnAggregation? _explicitNullValueAggregation = default!;
         /// <summary>Label filters for this column only, e.g. 5xx status codes for an errors column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableFilter>? Filters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableFilter>? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableFilter>? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableFilter> Filters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableFilter> Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableFilter> _explicitNullValueFilters = default!;
 #endif
         /// <summary>Column header, e.g. `Requests/s`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get; set; }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>Name of the metric this column reads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricName { get; set; }
+        public string? MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
+        private string? _explicitNullValueMetricName = default!;
 #nullable restore
 #else
-        public string MetricName { get; set; }
+        public string MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
+        private string _explicitNullValueMetricName = default!;
 #endif
         /// <summary>Required for `histogram_quantile`, e.g. 0.95 for p95.</summary>
-        public double? Quantile { get; set; }
+        public double? Quantile { get => _explicitNullValueQuantile; set { _explicitNullValueQuantile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantile"); else _explicitNullProperties?.Remove("quantile"); } }
+        private double? _explicitNullValueQuantile = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -48,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumn CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumn();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumn(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,7 +96,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableFilter>("filters", Filters);
             writer.WriteStringValue("label", Label);
             writer.WriteStringValue("metricName", MetricName);
-            writer.WriteDoubleValue("quantile", Quantile);
+            writer.WriteDoubleValue("quantile", Quantile);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

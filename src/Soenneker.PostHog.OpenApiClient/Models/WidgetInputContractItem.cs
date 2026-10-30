@@ -11,40 +11,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WidgetInputContractItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("schemaHash") is { } nullNodeSchemaHash && nullNodeSchemaHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaHash = null;
+            if (parseNode.GetChildNode("slot") is { } nullNodeSlot && nullNodeSlot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slot = null;
+            if (parseNode.GetChildNode("sourceName") is { } nullNodeSourceName && nullNodeSourceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Columns the notebook-local binding must produce after its optional Hog mapping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn>? Columns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn> Columns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn> _explicitNullValueColumns = default!;
 #endif
         /// <summary>Hash of the expected column schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SchemaHash { get; set; }
+        public string? SchemaHash { get => _explicitNullValueSchemaHash; set { _explicitNullValueSchemaHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemaHash"); else _explicitNullProperties?.Remove("schemaHash"); } }
+        private string? _explicitNullValueSchemaHash = default!;
 #nullable restore
 #else
-        public string SchemaHash { get; set; }
+        public string SchemaHash { get => _explicitNullValueSchemaHash; set { _explicitNullValueSchemaHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemaHash"); else _explicitNullProperties?.Remove("schemaHash"); } }
+        private string _explicitNullValueSchemaHash = default!;
 #endif
         /// <summary>Stable logical input name used by the reusable widget.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Slot { get; set; }
+        public string? Slot { get => _explicitNullValueSlot; set { _explicitNullValueSlot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot"); else _explicitNullProperties?.Remove("slot"); } }
+        private string? _explicitNullValueSlot = default!;
 #nullable restore
 #else
-        public string Slot { get; set; }
+        public string Slot { get => _explicitNullValueSlot; set { _explicitNullValueSlot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot"); else _explicitNullProperties?.Remove("slot"); } }
+        private string _explicitNullValueSlot = default!;
 #endif
         /// <summary>Original dataframe name when the widget was published.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceName { get; set; }
+        public string? SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceName"); else _explicitNullProperties?.Remove("sourceName"); } }
+        private string? _explicitNullValueSourceName = default!;
 #nullable restore
 #else
-        public string SourceName { get; set; }
+        public string SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceName"); else _explicitNullProperties?.Remove("sourceName"); } }
+        private string _explicitNullValueSourceName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem"/> and sets the default values.
@@ -61,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("schemaHash", SchemaHash);
             writer.WriteStringValue("slot", Slot);
             writer.WriteStringValue("sourceName", SourceName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

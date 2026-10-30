@@ -11,51 +11,80 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TrunkQuarantineDebt : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("available") is { } nullNodeAvailable && nullNodeAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Available = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("owners_resolved") is { } nullNodeOwnersResolved && nullNodeOwnersResolved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnersResolved = null;
+            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("teams") is { } nullNodeTeams && nullNodeTeams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Teams = null;
+            if (parseNode.GetChildNode("tests") is { } nullNodeTests && nullNodeTests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tests = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+            if (parseNode.GetChildNode("trunk_url") is { } nullNodeTrunkUrl && nullNodeTrunkUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrunkUrl = null;
+            if (parseNode.GetChildNode("ttl_days") is { } nullNodeTtlDays && nullNodeTtlDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TtlDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when no TrunkIo source has the QuarantinedTests endpoint synced; not an error.</summary>
-        public bool? Available { get; set; }
+        public bool? Available { get => _explicitNullValueAvailable; set { _explicitNullValueAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available"); else _explicitNullProperties?.Remove("available"); } }
+        private bool? _explicitNullValueAvailable = default!;
         /// <summary>Maximum tests returned, oldest quarantine first.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>False when the repository&apos;s ownership files could not be read, so every test reads as &apos;unowned&apos; for that reason rather than because no team claims it.</summary>
-        public bool? OwnersResolved { get; set; }
+        public bool? OwnersResolved { get => _explicitNullValueOwnersResolved; set { _explicitNullValueOwnersResolved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owners_resolved"); else _explicitNullProperties?.Remove("owners_resolved"); } }
+        private bool? _explicitNullValueOwnersResolved = default!;
         /// <summary>The &apos;owner/name&apos; repository the debt was read for; test file paths are relative to it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Repository { get; set; }
+        public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string? _explicitNullValueRepository = default!;
 #nullable restore
 #else
-        public string Repository { get; set; }
+        public string Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string _explicitNullValueRepository = default!;
 #endif
         /// <summary>Per-team rollup, most indebted first: overdue count, then test count, then oldest age.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt>? Teams { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt>? Teams { get => _explicitNullValueTeams; set { _explicitNullValueTeams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teams"); else _explicitNullProperties?.Remove("teams"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt>? _explicitNullValueTeams = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt> Teams { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt> Teams { get => _explicitNullValueTeams; set { _explicitNullValueTeams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teams"); else _explicitNullProperties?.Remove("teams"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt> _explicitNullValueTeams = default!;
 #endif
         /// <summary>Every currently quarantined test, oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest>? Tests { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest>? Tests { get => _explicitNullValueTests; set { _explicitNullValueTests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tests"); else _explicitNullProperties?.Remove("tests"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest>? _explicitNullValueTests = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest> Tests { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest> Tests { get => _explicitNullValueTests; set { _explicitNullValueTests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tests"); else _explicitNullProperties?.Remove("tests"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantinedTest> _explicitNullValueTests = default!;
 #endif
         /// <summary>True when more tests are quarantined than limit. The per-team counts then cover only the returned tests, so treat them as lower bounds.</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>The Trunk app&apos;s flaky-tests page for this repository; null when the connected source has no organization slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrunkUrl { get; set; }
+        public string? TrunkUrl { get => _explicitNullValueTrunkUrl; set { _explicitNullValueTrunkUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trunk_url"); else _explicitNullProperties?.Remove("trunk_url"); } }
+        private string? _explicitNullValueTrunkUrl = default!;
 #nullable restore
 #else
-        public string TrunkUrl { get; set; }
+        public string TrunkUrl { get => _explicitNullValueTrunkUrl; set { _explicitNullValueTrunkUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trunk_url"); else _explicitNullProperties?.Remove("trunk_url"); } }
+        private string _explicitNullValueTrunkUrl = default!;
 #endif
         /// <summary>Days a quarantine may stand before it counts as overdue.</summary>
-        public int? TtlDays { get; set; }
+        public int? TtlDays { get => _explicitNullValueTtlDays; set { _explicitNullValueTtlDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ttl_days"); else _explicitNullProperties?.Remove("ttl_days"); } }
+        private int? _explicitNullValueTtlDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineDebt"/> and sets the default values.
         /// </summary>
@@ -71,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineDebt CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineDebt();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineDebt(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("truncated", Truncated);
             writer.WriteStringValue("trunk_url", TrunkUrl);
             writer.WriteIntValue("ttl_days", TtlDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

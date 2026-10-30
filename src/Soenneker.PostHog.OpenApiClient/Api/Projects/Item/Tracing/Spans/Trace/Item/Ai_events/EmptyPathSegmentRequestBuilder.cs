@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tracing.Spans.Trace.
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceAiEventsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceAiEventsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceAiEventsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceAiEventsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List the LLM analytics events whose `$ai_trace_id` is this trace&apos;s id, so the waterfallcan show each model call inline with the spans.The spans and the AI events live on different ClickHouse clusters, so one query cannot jointhem; this returns the events half and the caller places them by time.

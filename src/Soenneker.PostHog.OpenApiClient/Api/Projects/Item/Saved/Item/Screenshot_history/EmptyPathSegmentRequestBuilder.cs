@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item.Screensho
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List the daily screenshot captures kept for a saved heatmap, newest first. Each capture is a render of the page on that day at one viewport width, so the clicks of a day or a range can be viewed over the background that matches it. Captures older than the retention window are deleted.

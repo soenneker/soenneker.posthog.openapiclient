@@ -11,90 +11,131 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HeatmapSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("gradient") is { } nullNodeGradient && nullNodeGradient.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gradient = null;
+            if (parseNode.GetChildNode("gradientPreset") is { } nullNodeGradientPreset && nullNodeGradientPreset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradientPreset = null;
+            if (parseNode.GetChildNode("gradientScaleMode") is { } nullNodeGradientScaleMode && nullNodeGradientScaleMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradientScaleMode = null;
+            if (parseNode.GetChildNode("nullLabel") is { } nullNodeNullLabel && nullNodeNullLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NullLabel = null;
+            if (parseNode.GetChildNode("nullValue") is { } nullNodeNullValue && nullNodeNullValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NullValue = null;
+            if (parseNode.GetChildNode("sortColumn") is { } nullNodeSortColumn && nullNodeSortColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SortColumn = null;
+            if (parseNode.GetChildNode("sortOrder") is { } nullNodeSortOrder && nullNodeSortOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SortOrder = null;
+            if (parseNode.GetChildNode("valueColumn") is { } nullNodeValueColumn && nullNodeValueColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueColumn = null;
+            if (parseNode.GetChildNode("xAxisColumn") is { } nullNodeXAxisColumn && nullNodeXAxisColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxisColumn = null;
+            if (parseNode.GetChildNode("xAxisLabel") is { } nullNodeXAxisLabel && nullNodeXAxisLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxisLabel = null;
+            if (parseNode.GetChildNode("yAxisColumn") is { } nullNodeYAxisColumn && nullNodeYAxisColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxisColumn = null;
+            if (parseNode.GetChildNode("yAxisLabel") is { } nullNodeYAxisLabel && nullNodeYAxisLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxisLabel = null;
+        }
+
         /// <summary>The gradient property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop>? Gradient { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop>? Gradient { get => _explicitNullValueGradient; set { _explicitNullValueGradient = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradient"); else _explicitNullProperties?.Remove("gradient"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop>? _explicitNullValueGradient = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop> Gradient { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop> Gradient { get => _explicitNullValueGradient; set { _explicitNullValueGradient = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradient"); else _explicitNullProperties?.Remove("gradient"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapGradientStop> _explicitNullValueGradient = default!;
 #endif
         /// <summary>The gradientPreset property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GradientPreset { get; set; }
+        public string? GradientPreset { get => _explicitNullValueGradientPreset; set { _explicitNullValueGradientPreset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradientPreset"); else _explicitNullProperties?.Remove("gradientPreset"); } }
+        private string? _explicitNullValueGradientPreset = default!;
 #nullable restore
 #else
-        public string GradientPreset { get; set; }
+        public string GradientPreset { get => _explicitNullValueGradientPreset; set { _explicitNullValueGradientPreset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradientPreset"); else _explicitNullProperties?.Remove("gradientPreset"); } }
+        private string _explicitNullValueGradientPreset = default!;
 #endif
         /// <summary>The gradientScaleMode property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleMode? GradientScaleMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleMode? GradientScaleMode { get => _explicitNullValueGradientScaleMode; set { _explicitNullValueGradientScaleMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradientScaleMode"); else _explicitNullProperties?.Remove("gradientScaleMode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GradientScaleMode? _explicitNullValueGradientScaleMode = default!;
         /// <summary>The nullLabel property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NullLabel { get; set; }
+        public string? NullLabel { get => _explicitNullValueNullLabel; set { _explicitNullValueNullLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nullLabel"); else _explicitNullProperties?.Remove("nullLabel"); } }
+        private string? _explicitNullValueNullLabel = default!;
 #nullable restore
 #else
-        public string NullLabel { get; set; }
+        public string NullLabel { get => _explicitNullValueNullLabel; set { _explicitNullValueNullLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nullLabel"); else _explicitNullProperties?.Remove("nullLabel"); } }
+        private string _explicitNullValueNullLabel = default!;
 #endif
         /// <summary>The nullValue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NullValue { get; set; }
+        public string? NullValue { get => _explicitNullValueNullValue; set { _explicitNullValueNullValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nullValue"); else _explicitNullProperties?.Remove("nullValue"); } }
+        private string? _explicitNullValueNullValue = default!;
 #nullable restore
 #else
-        public string NullValue { get; set; }
+        public string NullValue { get => _explicitNullValueNullValue; set { _explicitNullValueNullValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nullValue"); else _explicitNullProperties?.Remove("nullValue"); } }
+        private string _explicitNullValueNullValue = default!;
 #endif
         /// <summary>The sortColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SortColumn { get; set; }
+        public string? SortColumn { get => _explicitNullValueSortColumn; set { _explicitNullValueSortColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sortColumn"); else _explicitNullProperties?.Remove("sortColumn"); } }
+        private string? _explicitNullValueSortColumn = default!;
 #nullable restore
 #else
-        public string SortColumn { get; set; }
+        public string SortColumn { get => _explicitNullValueSortColumn; set { _explicitNullValueSortColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sortColumn"); else _explicitNullProperties?.Remove("sortColumn"); } }
+        private string _explicitNullValueSortColumn = default!;
 #endif
         /// <summary>The sortOrder property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrder? SortOrder { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrder? SortOrder { get => _explicitNullValueSortOrder; set { _explicitNullValueSortOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sortOrder"); else _explicitNullProperties?.Remove("sortOrder"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSortOrder? _explicitNullValueSortOrder = default!;
         /// <summary>The valueColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ValueColumn { get; set; }
+        public string? ValueColumn { get => _explicitNullValueValueColumn; set { _explicitNullValueValueColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valueColumn"); else _explicitNullProperties?.Remove("valueColumn"); } }
+        private string? _explicitNullValueValueColumn = default!;
 #nullable restore
 #else
-        public string ValueColumn { get; set; }
+        public string ValueColumn { get => _explicitNullValueValueColumn; set { _explicitNullValueValueColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("valueColumn"); else _explicitNullProperties?.Remove("valueColumn"); } }
+        private string _explicitNullValueValueColumn = default!;
 #endif
         /// <summary>The xAxisColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XAxisColumn { get; set; }
+        public string? XAxisColumn { get => _explicitNullValueXAxisColumn; set { _explicitNullValueXAxisColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisColumn"); else _explicitNullProperties?.Remove("xAxisColumn"); } }
+        private string? _explicitNullValueXAxisColumn = default!;
 #nullable restore
 #else
-        public string XAxisColumn { get; set; }
+        public string XAxisColumn { get => _explicitNullValueXAxisColumn; set { _explicitNullValueXAxisColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisColumn"); else _explicitNullProperties?.Remove("xAxisColumn"); } }
+        private string _explicitNullValueXAxisColumn = default!;
 #endif
         /// <summary>The xAxisLabel property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XAxisLabel { get; set; }
+        public string? XAxisLabel { get => _explicitNullValueXAxisLabel; set { _explicitNullValueXAxisLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisLabel"); else _explicitNullProperties?.Remove("xAxisLabel"); } }
+        private string? _explicitNullValueXAxisLabel = default!;
 #nullable restore
 #else
-        public string XAxisLabel { get; set; }
+        public string XAxisLabel { get => _explicitNullValueXAxisLabel; set { _explicitNullValueXAxisLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisLabel"); else _explicitNullProperties?.Remove("xAxisLabel"); } }
+        private string _explicitNullValueXAxisLabel = default!;
 #endif
         /// <summary>The yAxisColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? YAxisColumn { get; set; }
+        public string? YAxisColumn { get => _explicitNullValueYAxisColumn; set { _explicitNullValueYAxisColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxisColumn"); else _explicitNullProperties?.Remove("yAxisColumn"); } }
+        private string? _explicitNullValueYAxisColumn = default!;
 #nullable restore
 #else
-        public string YAxisColumn { get; set; }
+        public string YAxisColumn { get => _explicitNullValueYAxisColumn; set { _explicitNullValueYAxisColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxisColumn"); else _explicitNullProperties?.Remove("yAxisColumn"); } }
+        private string _explicitNullValueYAxisColumn = default!;
 #endif
         /// <summary>The yAxisLabel property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? YAxisLabel { get; set; }
+        public string? YAxisLabel { get => _explicitNullValueYAxisLabel; set { _explicitNullValueYAxisLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxisLabel"); else _explicitNullProperties?.Remove("yAxisLabel"); } }
+        private string? _explicitNullValueYAxisLabel = default!;
 #nullable restore
 #else
-        public string YAxisLabel { get; set; }
+        public string YAxisLabel { get => _explicitNullValueYAxisLabel; set { _explicitNullValueYAxisLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxisLabel"); else _explicitNullProperties?.Remove("yAxisLabel"); } }
+        private string _explicitNullValueYAxisLabel = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -104,7 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HeatmapSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -146,7 +187,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("xAxisColumn", XAxisColumn);
             writer.WriteStringValue("xAxisLabel", XAxisLabel);
             writer.WriteStringValue("yAxisColumn", YAxisColumn);
-            writer.WriteStringValue("yAxisLabel", YAxisLabel);
+            writer.WriteStringValue("yAxisLabel", YAxisLabel);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

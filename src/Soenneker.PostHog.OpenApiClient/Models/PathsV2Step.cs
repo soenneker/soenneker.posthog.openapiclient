@@ -11,21 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PathsV2Step : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dropOffCount") is { } nullNodeDropOffCount && nullNodeDropOffCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DropOffCount = null;
+            if (parseNode.GetChildNode("otherCount") is { } nullNodeOtherCount && nullNodeOtherCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OtherCount = null;
+            if (parseNode.GetChildNode("rows") is { } nullNodeRows && nullNodeRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rows = null;
+            if (parseNode.GetChildNode("stepIndex") is { } nullNodeStepIndex && nullNodeStepIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepIndex = null;
+        }
+
         /// <summary>Unique actors whose journey ends at this step.</summary>
-        public double? DropOffCount { get; set; }
+        public double? DropOffCount { get => _explicitNullValueDropOffCount; set { _explicitNullValueDropOffCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropOffCount"); else _explicitNullProperties?.Remove("dropOffCount"); } }
+        private double? _explicitNullValueDropOffCount = default!;
         /// <summary>Unique actors at this step whose path item is beyond the top rows.</summary>
-        public double? OtherCount { get; set; }
+        public double? OtherCount { get => _explicitNullValueOtherCount; set { _explicitNullValueOtherCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("otherCount"); else _explicitNullProperties?.Remove("otherCount"); } }
+        private double? _explicitNullValueOtherCount = default!;
         /// <summary>Top path items at this step, ordered by unique-actor count descending.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Row>? Rows { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Row>? Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Row>? _explicitNullValueRows = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Row> Rows { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Row> Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Row> _explicitNullValueRows = default!;
 #endif
         /// <summary>0-based step index (column) in the journey grid.</summary>
-        public int? StepIndex { get; set; }
+        public int? StepIndex { get => _explicitNullValueStepIndex; set { _explicitNullValueStepIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepIndex"); else _explicitNullProperties?.Remove("stepIndex"); } }
+        private int? _explicitNullValueStepIndex = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -34,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Step CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Step();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Step(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,7 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("dropOffCount", DropOffCount);
             writer.WriteDoubleValue("otherCount", OtherCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Row>("rows", Rows);
-            writer.WriteIntValue("stepIndex", StepIndex);
+            writer.WriteIntValue("stepIndex", StepIndex);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -11,38 +11,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UtmEvent : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("campaign_match") is { } nullNodeCampaignMatch && nullNodeCampaignMatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CampaignMatch = null;
+            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("matched_campaign") is { } nullNodeMatchedCampaign && nullNodeMatchedCampaign.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedCampaign = null;
+            if (parseNode.GetChildNode("source_match") is { } nullNodeSourceMatch && nullNodeSourceMatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceMatch = null;
+            if (parseNode.GetChildNode("utm_campaign") is { } nullNodeUtmCampaign && nullNodeUtmCampaign.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UtmCampaign = null;
+            if (parseNode.GetChildNode("utm_source") is { } nullNodeUtmSource && nullNodeUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UtmSource = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `none` - none* `auto` - auto* `mapped` - mapped</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch? CampaignMatch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch? CampaignMatch { get => _explicitNullValueCampaignMatch; set { _explicitNullValueCampaignMatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaign_match"); else _explicitNullProperties?.Remove("campaign_match"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UtmEventCampaignMatch? _explicitNullValueCampaignMatch = default!;
         /// <summary>Number of pageview events with this UTM combination</summary>
-        public int? EventCount { get; set; }
+        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        private int? _explicitNullValueEventCount = default!;
         /// <summary>Name of the matched campaign, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchedCampaign { get; set; }
+        public string? MatchedCampaign { get => _explicitNullValueMatchedCampaign; set { _explicitNullValueMatchedCampaign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_campaign"); else _explicitNullProperties?.Remove("matched_campaign"); } }
+        private string? _explicitNullValueMatchedCampaign = default!;
 #nullable restore
 #else
-        public string MatchedCampaign { get; set; }
+        public string MatchedCampaign { get => _explicitNullValueMatchedCampaign; set { _explicitNullValueMatchedCampaign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_campaign"); else _explicitNullProperties?.Remove("matched_campaign"); } }
+        private string _explicitNullValueMatchedCampaign = default!;
 #endif
         /// <summary>* `none` - none* `auto` - auto* `mapped` - mapped</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch? SourceMatch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch? SourceMatch { get => _explicitNullValueSourceMatch; set { _explicitNullValueSourceMatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_match"); else _explicitNullProperties?.Remove("source_match"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch? _explicitNullValueSourceMatch = default!;
         /// <summary>UTM campaign value from pageview events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UtmCampaign { get; set; }
+        public string? UtmCampaign { get => _explicitNullValueUtmCampaign; set { _explicitNullValueUtmCampaign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utm_campaign"); else _explicitNullProperties?.Remove("utm_campaign"); } }
+        private string? _explicitNullValueUtmCampaign = default!;
 #nullable restore
 #else
-        public string UtmCampaign { get; set; }
+        public string UtmCampaign { get => _explicitNullValueUtmCampaign; set { _explicitNullValueUtmCampaign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utm_campaign"); else _explicitNullProperties?.Remove("utm_campaign"); } }
+        private string _explicitNullValueUtmCampaign = default!;
 #endif
         /// <summary>UTM source value from pageview events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UtmSource { get; set; }
+        public string? UtmSource { get => _explicitNullValueUtmSource; set { _explicitNullValueUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utm_source"); else _explicitNullProperties?.Remove("utm_source"); } }
+        private string? _explicitNullValueUtmSource = default!;
 #nullable restore
 #else
-        public string UtmSource { get; set; }
+        public string UtmSource { get => _explicitNullValueUtmSource; set { _explicitNullValueUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("utm_source"); else _explicitNullProperties?.Remove("utm_source"); } }
+        private string _explicitNullValueUtmSource = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UtmEvent"/> and sets the default values.
@@ -59,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.UtmEvent CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.UtmEvent();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.UtmEvent(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,6 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmEventSourceMatch>("source_match", SourceMatch);
             writer.WriteStringValue("utm_campaign", UtmCampaign);
             writer.WriteStringValue("utm_source", UtmSource);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

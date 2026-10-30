@@ -11,27 +11,65 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedSignalSourceConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("config_remove") is { } nullNodeConfigRemove && nullNodeConfigRemove.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigRemove = null;
+            if (parseNode.GetChildNode("config_set") is { } nullNodeConfigSet && nullNodeConfigSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigSet = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("source_product") is { } nullNodeSourceProduct && nullNodeSourceProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceProduct = null;
+            if (parseNode.GetChildNode("source_type") is { } nullNodeSourceType && nullNodeSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team&apos;s preferences about this source&apos;s records in plain language: what matters, what to skip, what&apos;s out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate&apos;s default: instead of keeping every record the steering rules don&apos;t exclude, only records that clearly match the team&apos;s preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis. The Linear issue source (`source_product=linear`, `source_type=issue`) reads `linear_team_ids` (list of Linear team id strings, max 100): the warehouse still syncs the whole Linear workspace, but only issues from those teams become signals. Omit the key or pass an empty list to use every team. Get the ids from the Linear integration&apos;s teams endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty _explicitNullValueConfig = default!;
+#endif
+        /// <summary>Top-level config keys to remove atomically on update. Missing keys are ignored. Cannot overlap config_set or be combined with config.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ConfigRemove { get => _explicitNullValueConfigRemove; set { _explicitNullValueConfigRemove = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_remove"); else _explicitNullProperties?.Remove("config_remove"); } }
+        private List<string>? _explicitNullValueConfigRemove = default!;
+#nullable restore
+#else
+        public List<string> ConfigRemove { get => _explicitNullValueConfigRemove; set { _explicitNullValueConfigRemove = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_remove"); else _explicitNullProperties?.Remove("config_remove"); } }
+        private List<string> _explicitNullValueConfigRemove = default!;
+#endif
+        /// <summary>Top-level config keys to set atomically on update. Unspecified keys are preserved. Cannot be combined with config.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigSetProperty? ConfigSet { get => _explicitNullValueConfigSet; set { _explicitNullValueConfigSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_set"); else _explicitNullProperties?.Remove("config_set"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigSetProperty? _explicitNullValueConfigSet = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigSetProperty ConfigSet { get => _explicitNullValueConfigSet; set { _explicitNullValueConfigSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_set"); else _explicitNullProperties?.Remove("config_set"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigSetProperty _explicitNullValueConfigSet = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>* `session_replay` - Session replay* `llm_analytics` - LLM analytics* `github` - GitHub* `linear` - Linear* `jira` - Jira* `zendesk` - Zendesk* `conversations` - Conversations* `error_tracking` - Error tracking* `pganalyze` - pganalyze* `signals_scout` - Signals scout* `signals_check` - Report check* `logs` - Logs* `health_checks` - Health checks* `endpoints` - Endpoints* `replay_vision` - Replay Vision* `analytics` - Product analytics* `freshdesk` - Freshdesk* `freshservice` - Freshservice* `front` - Front* `gorgias` - Gorgias* `kustomer` - Kustomer* `dixa` - Dixa* `plain` - Plain* `gitlab` - GitLab* `gitea` - Gitea* `shortcut` - Shortcut* `sentry` - Sentry* `rollbar` - Rollbar* `bugsnag` - Bugsnag* `honeybadger` - Honeybadger* `raygun` - Raygun* `datadog` - Datadog* `snyk` - Snyk* `sonarqube` - SonarQube* `semgrep` - Semgrep* `rapid7_insightvm` - Rapid7 InsightVM* `featurebase` - Featurebase* `frill` - Frill* `aha` - Aha* `uservoice` - UserVoice* `productboard` - Productboard* `canny` - Canny* `asknicely` - AskNicely* `retently` - Retently* `appfigures` - Appfigures* `appfollow` - AppFollow* `judgeme_reviews` - Judge.me* `intercom` - Intercom* `hubspot` - HubSpot* `engineering_analytics` - Engineering analytics* `google_search_console` - Google Search Console* `pagerduty` - PagerDuty* `opsgenie` - Opsgenie* `incident_io` - incident.io* `firehydrant` - FireHydrant* `squadcast` - Squadcast* `servicenow` - ServiceNow* `solarwinds_service_desk` - SolarWinds Service Desk* `grafana_irm` - Grafana IRM* `xmatters` - xMatters* `betterstack` - Better Stack* `newrelic` - New Relic* `trigger_dev` - Trigger.dev* `checkly` - Checkly* `roark` - Roark* `monte_carlo` - Monte Carlo* `bigeye` - Bigeye* `aws_security_hub` - AWS Security Hub* `aws_guardduty` - AWS GuardDuty* `aws_inspector` - AWS Inspector* `microsoft_defender_cloud_apps` - Microsoft Defender for Cloud Apps* `clickup` - ClickUp* `wrike` - Wrike* `trello` - Trello* `bugherd` - BugHerd* `dynamics365` - Dynamics 365* `zoho_crm` - Zoho CRM* `planhat` - Planhat* `trustpilot` - Trustpilot* `okendo` - Okendo* `sleekplan` - Sleekplan* `bettermode` - Bettermode* `discourse` - Discourse* `mintlify` - Mintlify* `langsmith` - LangSmith* `sprig` - Sprig* `gainsight_px` - Gainsight PX* `dynatrace` - Dynatrace* `statuspage` - Statuspage* `cronitor` - Cronitor* `instatus` - Instatus* `asana` - Asana* `monday` - monday.com* `plane` - Plane* `azure_devops` - Azure DevOps* `helpscout` - Help Scout* `decagon` - Decagon* `vitally` - Vitally* `usersnap` - Usersnap* `typeform` - Typeform* `qualtrics` - Qualtrics* `surveymonkey` - SurveyMonkey* `formbricks` - Formbricks* `survicate` - Survicate* `surveysparrow` - SurveySparrow* `lacework` - Lacework* `orca_security` - Orca Security* `tenable_vulnerability_management` - Tenable Vulnerability Management* `google_play_console` - Google Play Console* `azure_application_insights` - Azure Application Insights* `appsignal` - AppSignal* `cursor` - Cursor</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceProductEnum? SourceProduct { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceProductEnum? SourceProduct { get => _explicitNullValueSourceProduct; set { _explicitNullValueSourceProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_product"); else _explicitNullProperties?.Remove("source_product"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceProductEnum? _explicitNullValueSourceProduct = default!;
         /// <summary>* `session_analysis_cluster` - Session analysis cluster* `evaluation_report` - Evaluation report* `issue` - Issue* `ticket` - Ticket* `issue_created` - Issue created* `issue_reopened` - Issue reopened* `issue_spiking` - Issue spiking* `cross_source_issue` - Cross source issue* `alert_state_change` - Alert state change* `health_issue` - Health issue* `endpoint_execution_failed` - Endpoint execution failed* `endpoint_breakdown_limit_exceeded` - Endpoint breakdown limit exceeded* `scanner_finding` - Scanner finding* `anomaly_investigation` - Anomaly investigation* `feedback` - Feedback* `review` - Review* `ci_flaky_check` - CI flaky check* `ci_broken_default_branch` - CI broken default branch* `ci_duration_regression` - CI duration regression* `search_opportunity` - Search opportunity* `incident` - Incident</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum? SourceType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum? SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum? _explicitNullValueSourceType = default!;
         /// <summary>Sync state of the warehouse import behind this source: `running`, `failed`, or `completed`. Null for a source that imports nothing from the warehouse, for an import that has never synced, and when the sync state could not be read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -57,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +106,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty.CreateFromDiscriminatorValue); } },
+                { "config_remove", n => { ConfigRemove = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "config_set", n => { ConfigSet = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigSetProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigSetProperty.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -85,9 +125,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigProperty>("config", Config);
+            writer.WriteCollectionOfPrimitiveValues<string>("config_remove", ConfigRemove);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalSourceConfigConfigSetProperty>("config_set", ConfigSet);
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceProductEnum>("source_product", SourceProduct);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalSourceConfigSourceTypeEnum>("source_type", SourceType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

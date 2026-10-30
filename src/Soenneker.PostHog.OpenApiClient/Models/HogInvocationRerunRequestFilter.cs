@@ -12,49 +12,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HogInvocationRerunRequestFilter : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("error_kind") is { } nullNodeErrorKind && nullNodeErrorKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorKind = null;
+            if (parseNode.GetChildNode("error_message_contains") is { } nullNodeErrorMessageContains && nullNodeErrorMessageContains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorMessageContains = null;
+            if (parseNode.GetChildNode("invocation_ids") is { } nullNodeInvocationIds && nullNodeInvocationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvocationIds = null;
+            if (parseNode.GetChildNode("max_attempts") is { } nullNodeMaxAttempts && nullNodeMaxAttempts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxAttempts = null;
+            if (parseNode.GetChildNode("max_count") is { } nullNodeMaxCount && nullNodeMaxCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxCount = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("window_end") is { } nullNodeWindowEnd && nullNodeWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowEnd = null;
+            if (parseNode.GetChildNode("window_start") is { } nullNodeWindowStart && nullNodeWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowStart = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Restrict to invocations whose error_kind matches one of these (e.g. &apos;http_5xx&apos;, &apos;timeout&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ErrorKind { get; set; }
+        public List<string>? ErrorKind { get => _explicitNullValueErrorKind; set { _explicitNullValueErrorKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_kind"); else _explicitNullProperties?.Remove("error_kind"); } }
+        private List<string>? _explicitNullValueErrorKind = default!;
 #nullable restore
 #else
-        public List<string> ErrorKind { get; set; }
+        public List<string> ErrorKind { get => _explicitNullValueErrorKind; set { _explicitNullValueErrorKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_kind"); else _explicitNullProperties?.Remove("error_kind"); } }
+        private List<string> _explicitNullValueErrorKind = default!;
 #endif
         /// <summary>Restrict to invocations whose error_message contains this substring (case-insensitive). Use to isolate one failure mode when error_kind is too coarse (most app-level errors share the &apos;hog_error&apos; kind).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ErrorMessageContains { get; set; }
+        public string? ErrorMessageContains { get => _explicitNullValueErrorMessageContains; set { _explicitNullValueErrorMessageContains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message_contains"); else _explicitNullProperties?.Remove("error_message_contains"); } }
+        private string? _explicitNullValueErrorMessageContains = default!;
 #nullable restore
 #else
-        public string ErrorMessageContains { get; set; }
+        public string ErrorMessageContains { get => _explicitNullValueErrorMessageContains; set { _explicitNullValueErrorMessageContains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_message_contains"); else _explicitNullProperties?.Remove("error_message_contains"); } }
+        private string _explicitNullValueErrorMessageContains = default!;
 #endif
         /// <summary>Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? InvocationIds { get; set; }
+        public List<string>? InvocationIds { get => _explicitNullValueInvocationIds; set { _explicitNullValueInvocationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocation_ids"); else _explicitNullProperties?.Remove("invocation_ids"); } }
+        private List<string>? _explicitNullValueInvocationIds = default!;
 #nullable restore
 #else
-        public List<string> InvocationIds { get; set; }
+        public List<string> InvocationIds { get => _explicitNullValueInvocationIds; set { _explicitNullValueInvocationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocation_ids"); else _explicitNullProperties?.Remove("invocation_ids"); } }
+        private List<string> _explicitNullValueInvocationIds = default!;
 #endif
         /// <summary>Skip invocations that have already been attempted this many times or more.</summary>
-        public int? MaxAttempts { get; set; }
+        public int? MaxAttempts { get => _explicitNullValueMaxAttempts; set { _explicitNullValueMaxAttempts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_attempts"); else _explicitNullProperties?.Remove("max_attempts"); } }
+        private int? _explicitNullValueMaxAttempts = default!;
         /// <summary>Maximum number of invocations to rerun in this request. Server-side cap is 10000.</summary>
-        public int? MaxCount { get; set; }
+        public int? MaxCount { get => _explicitNullValueMaxCount; set { _explicitNullValueMaxCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_count"); else _explicitNullProperties?.Remove("max_count"); } }
+        private int? _explicitNullValueMaxCount = default!;
         /// <summary>Restrict to invocations whose latest status is one of these. Defaults to [&apos;failed&apos;].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunFilterStatusEnum?>? Status { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunFilterStatusEnum?>? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunFilterStatusEnum?>? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunFilterStatusEnum?> Status { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunFilterStatusEnum?> Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunFilterStatusEnum?> _explicitNullValueStatus = default!;
 #endif
         /// <summary>Exclusive upper bound on `scheduled_at` (UTC).</summary>
-        public DateTimeOffset? WindowEnd { get; set; }
+        public DateTimeOffset? WindowEnd { get => _explicitNullValueWindowEnd; set { _explicitNullValueWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_end"); else _explicitNullProperties?.Remove("window_end"); } }
+        private DateTimeOffset? _explicitNullValueWindowEnd = default!;
         /// <summary>Inclusive lower bound on `scheduled_at` (UTC).</summary>
-        public DateTimeOffset? WindowStart { get; set; }
+        public DateTimeOffset? WindowStart { get => _explicitNullValueWindowStart; set { _explicitNullValueWindowStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_start"); else _explicitNullProperties?.Remove("window_start"); } }
+        private DateTimeOffset? _explicitNullValueWindowStart = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunRequestFilter"/> and sets the default values.
         /// </summary>
@@ -70,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunRequestFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunRequestFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunRequestFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -105,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunFilterStatusEnum>("status", Status);
             writer.WriteDateTimeOffsetValue("window_end", WindowEnd);
             writer.WriteDateTimeOffsetValue("window_start", WindowStart);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

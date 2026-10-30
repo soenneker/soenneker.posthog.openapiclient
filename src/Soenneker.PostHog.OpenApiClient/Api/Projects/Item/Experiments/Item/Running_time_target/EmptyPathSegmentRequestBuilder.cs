@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Run
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTarget>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTarget.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTarget>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTarget.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The target sample of the experiment&apos;s running time estimate, which the experiment page&apos;s header compareswith the exposures so far, and what the experiment can detect over time.In manual running time mode it is the saved target. Otherwise it is sized from the first primary metric&apos;scurrent result: the variance the analysis uses (with CUPED when the analysis applied it) and the flag&apos;straffic split, so that the comparison of each variant with the control reaches the minimum detectable effect.

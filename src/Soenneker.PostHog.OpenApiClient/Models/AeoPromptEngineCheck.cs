@@ -11,22 +11,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AeoPromptEngineCheck : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("checked_at") is { } nullNodeCheckedAt && nullNodeCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedAt = null;
+            if (parseNode.GetChildNode("check_failed") is { } nullNodeCheckFailed && nullNodeCheckFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckFailed = null;
+            if (parseNode.GetChildNode("cited") is { } nullNodeCited && nullNodeCited.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cited = null;
+            if (parseNode.GetChildNode("engine") is { } nullNodeEngine && nullNodeEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engine = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the check ran.</summary>
-        public DateTimeOffset? CheckedAt { get; set; }
+        public DateTimeOffset? CheckedAt { get => _explicitNullValueCheckedAt; set { _explicitNullValueCheckedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_at"); else _explicitNullProperties?.Remove("checked_at"); } }
+        private DateTimeOffset? _explicitNullValueCheckedAt = default!;
         /// <summary>The engine did not answer. When true, &apos;cited&apos; is false and says nothing about citations.</summary>
-        public bool? CheckFailed { get; set; }
+        public bool? CheckFailed { get => _explicitNullValueCheckFailed; set { _explicitNullValueCheckFailed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_failed"); else _explicitNullProperties?.Remove("check_failed"); } }
+        private bool? _explicitNullValueCheckFailed = default!;
         /// <summary>Whether the answer cited a URL on one of the target domains.</summary>
-        public bool? Cited { get; set; }
+        public bool? Cited { get => _explicitNullValueCited; set { _explicitNullValueCited = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cited"); else _explicitNullProperties?.Remove("cited"); } }
+        private bool? _explicitNullValueCited = default!;
         /// <summary>Answer engine that ran the prompt, for example &apos;claude-web-search&apos;, &apos;openai-web-search&apos; or &apos;exa-answer&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Engine { get; set; }
+        public string? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
+        private string? _explicitNullValueEngine = default!;
 #nullable restore
 #else
-        public string Engine { get; set; }
+        public string Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
+        private string _explicitNullValueEngine = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineCheck"/> and sets the default values.
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineCheck CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineCheck();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineCheck(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("check_failed", CheckFailed);
             writer.WriteBoolValue("cited", Cited);
             writer.WriteStringValue("engine", Engine);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

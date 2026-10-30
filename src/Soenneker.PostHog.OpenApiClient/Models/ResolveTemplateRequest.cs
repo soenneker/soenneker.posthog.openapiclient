@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ResolveTemplateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("horizon_days") is { } nullNodeHorizonDays && nullNodeHorizonDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HorizonDays = null;
+            if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
+            if (parseNode.GetChildNode("template_key") is { } nullNodeTemplateKey && nullNodeTemplateKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateKey = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Override the template&apos;s default prediction horizon in days.</summary>
-        public int? HorizonDays { get; set; }
+        public int? HorizonDays { get => _explicitNullValueHorizonDays; set { _explicitNullValueHorizonDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("horizon_days"); else _explicitNullProperties?.Remove("horizon_days"); } }
+        private int? _explicitNullValueHorizonDays = default!;
         /// <summary>Event name to use as the prediction target. Required for &apos;feature_adoption&apos; and &apos;repeat_key_behavior&apos;. Optional override for activity-based templates (&apos;likely_active_soon&apos;, &apos;at_risk_of_inactivity&apos;, &apos;return_after_first_use&apos;); omit to use the auto-resolved event. To predict an action, create the pipeline with target_definition after resolving.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEvent { get; set; }
+        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string? _explicitNullValueTargetEvent = default!;
 #nullable restore
 #else
-        public string TargetEvent { get; set; }
+        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string _explicitNullValueTargetEvent = default!;
 #endif
         /// <summary>* `likely_active_soon` - Likely Active Soon* `at_risk_of_inactivity` - At Risk Of Inactivity* `return_after_first_use` - Return After First Use* `feature_adoption` - Feature Adoption* `repeat_key_behavior` - Repeat Key Behavior</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey? TemplateKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey? TemplateKey { get => _explicitNullValueTemplateKey; set { _explicitNullValueTemplateKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_key"); else _explicitNullProperties?.Remove("template_key"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey? _explicitNullValueTemplateKey = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequest"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("horizon_days", HorizonDays);
             writer.WriteStringValue("target_event", TargetEvent);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolveTemplateRequestTemplateKey>("template_key", TemplateKey);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

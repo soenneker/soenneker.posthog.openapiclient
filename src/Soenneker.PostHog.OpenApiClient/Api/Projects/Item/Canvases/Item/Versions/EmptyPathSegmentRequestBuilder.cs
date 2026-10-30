@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Versio
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasVersionList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasVersionList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasVersionList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedCanvasVersionList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The canvas&apos;s published source-version history, newest first (metadata only).Drafts are excluded: they are staged versions that have never been thehead, so they are not part of the undo/revert timeline. Fetch a draft&apos;sfiles with `source?version_id=` to preview it before promoting.

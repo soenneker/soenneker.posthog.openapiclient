@@ -12,26 +12,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfileInventoryScoutFleet : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("disabled") is { } nullNodeDisabled && nullNodeDisabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disabled = null;
+            if (parseNode.GetChildNode("emitted_lookback_days") is { } nullNodeEmittedLookbackDays && nullNodeEmittedLookbackDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmittedLookbackDays = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Scouts that do not run, each carrying a `not_running_reason` — turned off, or left on with a skill that can&apos;t dispatch. Different from a surface no scout ever covered.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>? Disabled { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>? Disabled { get => _explicitNullValueDisabled; set { _explicitNullValueDisabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled"); else _explicitNullProperties?.Remove("disabled"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>? _explicitNullValueDisabled = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry> Disabled { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry> Disabled { get => _explicitNullValueDisabled; set { _explicitNullValueDisabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled"); else _explicitNullProperties?.Remove("disabled"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry> _explicitNullValueDisabled = default!;
 #endif
         /// <summary>The window `last_emitted_at` was resolved over, so a null reads as &apos;quiet&apos;, not &apos;never&apos;.</summary>
-        public int? EmittedLookbackDays { get; set; }
+        public int? EmittedLookbackDays { get => _explicitNullValueEmittedLookbackDays; set { _explicitNullValueEmittedLookbackDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emitted_lookback_days"); else _explicitNullProperties?.Remove("emitted_lookback_days"); } }
+        private int? _explicitNullValueEmittedLookbackDays = default!;
         /// <summary>Scouts that actually run on this team: enabled, with a live skill the coordinator dispatches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>? Enabled { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>? _explicitNullValueEnabled = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry> Enabled { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry> Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry> _explicitNullValueEnabled = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet"/> and sets the default values.
@@ -48,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>("disabled", Disabled);
             writer.WriteIntValue("emitted_lookback_days", EmittedLookbackDays);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry>("enabled", Enabled);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

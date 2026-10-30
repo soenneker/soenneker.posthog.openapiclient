@@ -11,87 +11,139 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentRetentionMetric : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("breakdownFilter") is { } nullNodeBreakdownFilter && nullNodeBreakdownFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownFilter = null;
+            if (parseNode.GetChildNode("completion_event") is { } nullNodeCompletionEvent && nullNodeCompletionEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletionEvent = null;
+            if (parseNode.GetChildNode("conversion_window") is { } nullNodeConversionWindow && nullNodeConversionWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionWindow = null;
+            if (parseNode.GetChildNode("conversion_window_unit") is { } nullNodeConversionWindowUnit && nullNodeConversionWindowUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionWindowUnit = null;
+            if (parseNode.GetChildNode("fingerprint") is { } nullNodeFingerprint && nullNodeFingerprint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fingerprint = null;
+            if (parseNode.GetChildNode("goal") is { } nullNodeGoal && nullNodeGoal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goal = null;
+            if (parseNode.GetChildNode("isSharedMetric") is { } nullNodeIsSharedMetric && nullNodeIsSharedMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsSharedMetric = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("metric_type") is { } nullNodeMetricType && nullNodeMetricType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricType = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("response") is { } nullNodeResponse && nullNodeResponse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Response = null;
+            if (parseNode.GetChildNode("retention_window_end") is { } nullNodeRetentionWindowEnd && nullNodeRetentionWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionWindowEnd = null;
+            if (parseNode.GetChildNode("retention_window_start") is { } nullNodeRetentionWindowStart && nullNodeRetentionWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionWindowStart = null;
+            if (parseNode.GetChildNode("retention_window_unit") is { } nullNodeRetentionWindowUnit && nullNodeRetentionWindowUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionWindowUnit = null;
+            if (parseNode.GetChildNode("sharedMetricId") is { } nullNodeSharedMetricId && nullNodeSharedMetricId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedMetricId = null;
+            if (parseNode.GetChildNode("start_event") is { } nullNodeStartEvent && nullNodeStartEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartEvent = null;
+            if (parseNode.GetChildNode("start_handling") is { } nullNodeStartHandling && nullNodeStartHandling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartHandling = null;
+            if (parseNode.GetChildNode("uuid") is { } nullNodeUuid && nullNodeUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uuid = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+        }
+
         /// <summary>The breakdownFilter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter? BreakdownFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter? BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownFilter"); else _explicitNullProperties?.Remove("breakdownFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter? _explicitNullValueBreakdownFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter BreakdownFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownFilter"); else _explicitNullProperties?.Remove("breakdownFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownFilter _explicitNullValueBreakdownFilter = default!;
 #endif
         /// <summary>The completion_event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent? CompletionEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent? CompletionEvent { get => _explicitNullValueCompletionEvent; set { _explicitNullValueCompletionEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_event"); else _explicitNullProperties?.Remove("completion_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent? _explicitNullValueCompletionEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent CompletionEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent CompletionEvent { get => _explicitNullValueCompletionEvent; set { _explicitNullValueCompletionEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_event"); else _explicitNullProperties?.Remove("completion_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent _explicitNullValueCompletionEvent = default!;
 #endif
         /// <summary>The conversion_window property</summary>
-        public int? ConversionWindow { get; set; }
+        public int? ConversionWindow { get => _explicitNullValueConversionWindow; set { _explicitNullValueConversionWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_window"); else _explicitNullProperties?.Remove("conversion_window"); } }
+        private int? _explicitNullValueConversionWindow = default!;
         /// <summary>The conversion_window_unit property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? ConversionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? ConversionWindowUnit { get => _explicitNullValueConversionWindowUnit; set { _explicitNullValueConversionWindowUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_window_unit"); else _explicitNullProperties?.Remove("conversion_window_unit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? _explicitNullValueConversionWindowUnit = default!;
         /// <summary>The fingerprint property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Fingerprint { get; set; }
+        public string? Fingerprint { get => _explicitNullValueFingerprint; set { _explicitNullValueFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprint"); else _explicitNullProperties?.Remove("fingerprint"); } }
+        private string? _explicitNullValueFingerprint = default!;
 #nullable restore
 #else
-        public string Fingerprint { get; set; }
+        public string Fingerprint { get => _explicitNullValueFingerprint; set { _explicitNullValueFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprint"); else _explicitNullProperties?.Remove("fingerprint"); } }
+        private string _explicitNullValueFingerprint = default!;
 #endif
         /// <summary>The goal property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal? Goal { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal? Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal? _explicitNullValueGoal = default!;
         /// <summary>The isSharedMetric property</summary>
-        public bool? IsSharedMetric { get; set; }
+        public bool? IsSharedMetric { get => _explicitNullValueIsSharedMetric; set { _explicitNullValueIsSharedMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isSharedMetric"); else _explicitNullProperties?.Remove("isSharedMetric"); } }
+        private bool? _explicitNullValueIsSharedMetric = default!;
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricKind? _explicitNullValueKind = default!;
         /// <summary>The metric_type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionMetricType? MetricType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionMetricType? MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionMetricType? _explicitNullValueMetricType = default!;
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty? Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty? _explicitNullValueResponse = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricResponseProperty _explicitNullValueResponse = default!;
 #endif
         /// <summary>The retention_window_end property</summary>
-        public int? RetentionWindowEnd { get; set; }
+        public int? RetentionWindowEnd { get => _explicitNullValueRetentionWindowEnd; set { _explicitNullValueRetentionWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_window_end"); else _explicitNullProperties?.Remove("retention_window_end"); } }
+        private int? _explicitNullValueRetentionWindowEnd = default!;
         /// <summary>The retention_window_start property</summary>
-        public int? RetentionWindowStart { get; set; }
+        public int? RetentionWindowStart { get => _explicitNullValueRetentionWindowStart; set { _explicitNullValueRetentionWindowStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_window_start"); else _explicitNullProperties?.Remove("retention_window_start"); } }
+        private int? _explicitNullValueRetentionWindowStart = default!;
         /// <summary>The retention_window_unit property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? RetentionWindowUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? RetentionWindowUnit { get => _explicitNullValueRetentionWindowUnit; set { _explicitNullValueRetentionWindowUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_window_unit"); else _explicitNullProperties?.Remove("retention_window_unit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? _explicitNullValueRetentionWindowUnit = default!;
         /// <summary>The sharedMetricId property</summary>
-        public double? SharedMetricId { get; set; }
+        public double? SharedMetricId { get => _explicitNullValueSharedMetricId; set { _explicitNullValueSharedMetricId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sharedMetricId"); else _explicitNullProperties?.Remove("sharedMetricId"); } }
+        private double? _explicitNullValueSharedMetricId = default!;
         /// <summary>The start_event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEvent? StartEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEvent? StartEvent { get => _explicitNullValueStartEvent; set { _explicitNullValueStartEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_event"); else _explicitNullProperties?.Remove("start_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEvent? _explicitNullValueStartEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEvent StartEvent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEvent StartEvent { get => _explicitNullValueStartEvent; set { _explicitNullValueStartEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_event"); else _explicitNullProperties?.Remove("start_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEvent _explicitNullValueStartEvent = default!;
 #endif
         /// <summary>The start_handling property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.StartHandling? StartHandling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StartHandling? StartHandling { get => _explicitNullValueStartHandling; set { _explicitNullValueStartHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_handling"); else _explicitNullProperties?.Remove("start_handling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.StartHandling? _explicitNullValueStartHandling = default!;
         /// <summary>The uuid property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Uuid { get; set; }
+        public string? Uuid { get => _explicitNullValueUuid; set { _explicitNullValueUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uuid"); else _explicitNullProperties?.Remove("uuid"); } }
+        private string? _explicitNullValueUuid = default!;
 #nullable restore
 #else
-        public string Uuid { get; set; }
+        public string Uuid { get => _explicitNullValueUuid; set { _explicitNullValueUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uuid"); else _explicitNullProperties?.Remove("uuid"); } }
+        private string _explicitNullValueUuid = default!;
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+        public double? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private double? _explicitNullValueVersion = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -100,7 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetric(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -156,7 +208,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEvent>("start_event", StartEvent);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StartHandling>("start_handling", StartHandling);
             writer.WriteStringValue("uuid", Uuid);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteDoubleValue("version", Version);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

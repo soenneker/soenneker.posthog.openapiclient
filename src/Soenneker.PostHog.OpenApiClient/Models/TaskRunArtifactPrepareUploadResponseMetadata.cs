@@ -12,31 +12,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunArtifactPrepareUploadResponseMetadata : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bundle_format") is { } nullNodeBundleFormat && nullNodeBundleFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BundleFormat = null;
+            if (parseNode.GetChildNode("content_sha256") is { } nullNodeContentSha256 && nullNodeContentSha256.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentSha256 = null;
+            if (parseNode.GetChildNode("schema_version") is { } nullNodeSchemaVersion && nullNodeSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaVersion = null;
+            if (parseNode.GetChildNode("skill_name") is { } nullNodeSkillName && nullNodeSkillName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillName = null;
+            if (parseNode.GetChildNode("skill_source") is { } nullNodeSkillSource && nullNodeSkillSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillSource = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `zip` - zip</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataBundleFormat? BundleFormat { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataBundleFormat? BundleFormat { get => _explicitNullValueBundleFormat; set { _explicitNullValueBundleFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bundle_format"); else _explicitNullProperties?.Remove("bundle_format"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataBundleFormat? _explicitNullValueBundleFormat = default!;
         /// <summary>SHA-256 hex digest of the uploaded skill bundle bytes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContentSha256 { get; set; }
+        public string? ContentSha256 { get => _explicitNullValueContentSha256; set { _explicitNullValueContentSha256 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_sha256"); else _explicitNullProperties?.Remove("content_sha256"); } }
+        private string? _explicitNullValueContentSha256 = default!;
 #nullable restore
 #else
-        public string ContentSha256 { get; set; }
+        public string ContentSha256 { get => _explicitNullValueContentSha256; set { _explicitNullValueContentSha256 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_sha256"); else _explicitNullProperties?.Remove("content_sha256"); } }
+        private string _explicitNullValueContentSha256 = default!;
 #endif
         /// <summary>Version of the local skill bundle metadata schema.</summary>
-        public int? SchemaVersion { get; set; }
+        public int? SchemaVersion { get => _explicitNullValueSchemaVersion; set { _explicitNullValueSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_version"); else _explicitNullProperties?.Remove("schema_version"); } }
+        private int? _explicitNullValueSchemaVersion = default!;
         /// <summary>Name of the local skill included in a skill_bundle artifact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SkillName { get; set; }
+        public string? SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
+        private string? _explicitNullValueSkillName = default!;
 #nullable restore
 #else
-        public string SkillName { get; set; }
+        public string SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
+        private string _explicitNullValueSkillName = default!;
 #endif
         /// <summary>* `user` - user* `repo` - repo* `marketplace` - marketplace* `codex` - codex</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource? SkillSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource? SkillSource { get => _explicitNullValueSkillSource; set { _explicitNullValueSkillSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_source"); else _explicitNullProperties?.Remove("skill_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource? _explicitNullValueSkillSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata"/> and sets the default values.
         /// </summary>
@@ -52,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactPrepareUploadResponseMetadata(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("schema_version", SchemaVersion);
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSkillBundleMetadataSkillSource>("skill_source", SkillSource);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

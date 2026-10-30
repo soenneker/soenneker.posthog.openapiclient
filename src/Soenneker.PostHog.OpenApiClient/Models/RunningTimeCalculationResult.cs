@@ -12,17 +12,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunningTimeCalculationResult : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_value") is { } nullNodeBaselineValue && nullNodeBaselineValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineValue = null;
+            if (parseNode.GetChildNode("recommended_running_time_days") is { } nullNodeRecommendedRunningTimeDays && nullNodeRecommendedRunningTimeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedRunningTimeDays = null;
+            if (parseNode.GetChildNode("recommended_sample_size") is { } nullNodeRecommendedSampleSize && nullNodeRecommendedSampleSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedSampleSize = null;
+            if (parseNode.GetChildNode("variance") is { } nullNodeVariance && nullNodeVariance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variance = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Baseline metric value used in the calculation (echoed or derived from stats).</summary>
-        public double? BaselineValue { get; set; }
+        public double? BaselineValue { get => _explicitNullValueBaselineValue; set { _explicitNullValueBaselineValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_value"); else _explicitNullProperties?.Remove("baseline_value"); } }
+        private double? _explicitNullValueBaselineValue = default!;
         /// <summary>Estimated days to reach the recommended sample size. Null when exposure_rate_per_day is omitted.</summary>
-        public int? RecommendedRunningTimeDays { get; set; }
+        public int? RecommendedRunningTimeDays { get => _explicitNullValueRecommendedRunningTimeDays; set { _explicitNullValueRecommendedRunningTimeDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_running_time_days"); else _explicitNullProperties?.Remove("recommended_running_time_days"); } }
+        private int? _explicitNullValueRecommendedRunningTimeDays = default!;
         /// <summary>Total recommended sample size across all variants. Null if inputs are insufficient.</summary>
-        public int? RecommendedSampleSize { get; set; }
+        public int? RecommendedSampleSize { get => _explicitNullValueRecommendedSampleSize; set { _explicitNullValueRecommendedSampleSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_sample_size"); else _explicitNullProperties?.Remove("recommended_sample_size"); } }
+        private int? _explicitNullValueRecommendedSampleSize = default!;
         /// <summary>Variance used in the calculation; null for funnel metrics (implicit in p(1-p)).</summary>
-        public double? Variance { get; set; }
+        public double? Variance { get => _explicitNullValueVariance; set { _explicitNullValueVariance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variance"); else _explicitNullProperties?.Remove("variance"); } }
+        private double? _explicitNullValueVariance = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationResult"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("recommended_running_time_days", RecommendedRunningTimeDays);
             writer.WriteIntValue("recommended_sample_size", RecommendedSampleSize);
             writer.WriteDoubleValue("variance", Variance);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

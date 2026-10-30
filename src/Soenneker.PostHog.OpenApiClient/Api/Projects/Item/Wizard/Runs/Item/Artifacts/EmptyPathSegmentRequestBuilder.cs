@@ -53,6 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs.Item.Art
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "404", global::Soenneker.PostHog.OpenApiClient.Models.WizardRunError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardRunArtifactList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardRunArtifactList.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

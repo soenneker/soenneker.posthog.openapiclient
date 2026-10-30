@@ -8,26 +8,31 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaggerUpdateTaggerConfig : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1? TaggerUpdateTaggerConfigMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf1? TaggerUpdateTaggerConfigOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1 TaggerUpdateTaggerConfigMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf1 TaggerUpdateTaggerConfigOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2? TaggerUpdateTaggerConfigMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf2? TaggerUpdateTaggerConfigOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2 TaggerUpdateTaggerConfigMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf2 TaggerUpdateTaggerConfigOneOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +44,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfig();
-            return result;
+            if("TaggerUpdateTaggerConfigOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("TaggerUpdateTaggerConfigOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("prompt") != null && parseNode.GetChildNode("tags") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null))();
+            if (result.TaggerUpdateTaggerConfigOneOf1 == null && result.TaggerUpdateTaggerConfigOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.TaggerUpdateTaggerConfigOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf1(), parseNode);
+            if (result.TaggerUpdateTaggerConfigOneOf1 == null && result.TaggerUpdateTaggerConfigOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.TaggerUpdateTaggerConfigOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf2(), parseNode);
+            if (result.TaggerUpdateTaggerConfigOneOf1 == null && result.TaggerUpdateTaggerConfigOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,13 +67,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(TaggerUpdateTaggerConfigMember1 != null)
+            if(TaggerUpdateTaggerConfigOneOf1 != null)
             {
-                return TaggerUpdateTaggerConfigMember1.GetFieldDeserializers();
+                return TaggerUpdateTaggerConfigOneOf1.GetFieldDeserializers();
             }
-            else if(TaggerUpdateTaggerConfigMember2 != null)
+            else if(TaggerUpdateTaggerConfigOneOf2 != null)
             {
-                return TaggerUpdateTaggerConfigMember2.GetFieldDeserializers();
+                return TaggerUpdateTaggerConfigOneOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -63,14 +83,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (TaggerUpdateTaggerConfigOneOf1 == null && TaggerUpdateTaggerConfigOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (TaggerUpdateTaggerConfigOneOf1 != null && TaggerUpdateTaggerConfigOneOf2 == null) { if (TaggerUpdateTaggerConfigOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TaggerUpdateTaggerConfigOneOf1); return; }
+            if (TaggerUpdateTaggerConfigOneOf2 != null && TaggerUpdateTaggerConfigOneOf1 == null) { if (TaggerUpdateTaggerConfigOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TaggerUpdateTaggerConfigOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(TaggerUpdateTaggerConfigMember1 != null)
+            if(TaggerUpdateTaggerConfigOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember1>(null, TaggerUpdateTaggerConfigMember1);
+                if (TaggerUpdateTaggerConfigOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf1>(null, TaggerUpdateTaggerConfigOneOf1);
             }
-            else if(TaggerUpdateTaggerConfigMember2 != null)
+            else if(TaggerUpdateTaggerConfigOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigMember2>(null, TaggerUpdateTaggerConfigMember2);
+                if (TaggerUpdateTaggerConfigOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerUpdateTaggerConfigOneOf2>(null, TaggerUpdateTaggerConfigOneOf2);
             }
         }
     }

@@ -12,61 +12,95 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QuarantineEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("added") is { } nullNodeAdded && nullNodeAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Added = null;
+            if (parseNode.GetChildNode("days_until_expiry") is { } nullNodeDaysUntilExpiry && nullNodeDaysUntilExpiry.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DaysUntilExpiry = null;
+            if (parseNode.GetChildNode("expires") is { } nullNodeExpires && nullNodeExpires.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Expires = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("issue") is { } nullNodeIssue && nullNodeIssue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Issue = null;
+            if (parseNode.GetChildNode("lifecycle") is { } nullNodeLifecycle && nullNodeLifecycle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lifecycle = null;
+            if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
+            if (parseNode.GetChildNode("owner") is { } nullNodeOwner && nullNodeOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Owner = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("runner") is { } nullNodeRunner && nullNodeRunner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runner = null;
+            if (parseNode.GetChildNode("selector_kind") is { } nullNodeSelectorKind && nullNodeSelectorKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectorKind = null;
+        }
+
         /// <summary>ISO date the entry was added.</summary>
-        public Date? Added { get; set; }
+        public Date? Added { get => _explicitNullValueAdded; set { _explicitNullValueAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("added"); else _explicitNullProperties?.Remove("added"); } }
+        private Date? _explicitNullValueAdded = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Days until the entry expires; negative once past expiry.</summary>
-        public int? DaysUntilExpiry { get; set; }
+        public int? DaysUntilExpiry { get => _explicitNullValueDaysUntilExpiry; set { _explicitNullValueDaysUntilExpiry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days_until_expiry"); else _explicitNullProperties?.Remove("days_until_expiry"); } }
+        private int? _explicitNullValueDaysUntilExpiry = default!;
         /// <summary>ISO date the quarantine expires; past it the test blocks CI normally again.</summary>
-        public Date? Expires { get; set; }
+        public Date? Expires { get => _explicitNullValueExpires; set { _explicitNullValueExpires = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires"); else _explicitNullProperties?.Remove("expires"); } }
+        private Date? _explicitNullValueExpires = default!;
         /// <summary>Test selector: an exact test id, a file, a directory, a class prefix, or &apos;product:&lt;dashed-name&gt;&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Tracking issue URL, or empty when none was filed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Issue { get; set; }
+        public string? Issue { get => _explicitNullValueIssue; set { _explicitNullValueIssue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issue"); else _explicitNullProperties?.Remove("issue"); } }
+        private string? _explicitNullValueIssue = default!;
 #nullable restore
 #else
-        public string Issue { get; set; }
+        public string Issue { get => _explicitNullValueIssue; set { _explicitNullValueIssue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issue"); else _explicitNullProperties?.Remove("issue"); } }
+        private string _explicitNullValueIssue = default!;
 #endif
         /// <summary>* `active` - Active* `expiring_soon` - Expiring Soon* `in_grace` - In Grace* `overdue` - Overdue</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle? Lifecycle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle? Lifecycle { get => _explicitNullValueLifecycle; set { _explicitNullValueLifecycle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lifecycle"); else _explicitNullProperties?.Remove("lifecycle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryLifecycle? _explicitNullValueLifecycle = default!;
         /// <summary>* `run` - Run* `skip` - Skip</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode? Mode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntryMode? _explicitNullValueMode = default!;
         /// <summary>GitHub team or user handle responsible for the fix.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Owner { get; set; }
+        public string? Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
+        private string? _explicitNullValueOwner = default!;
 #nullable restore
 #else
-        public string Owner { get; set; }
+        public string Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
+        private string _explicitNullValueOwner = default!;
 #endif
         /// <summary>Why the test was quarantined.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Test runner the selector targets, e.g. &apos;pytest&apos; or &apos;jest&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Runner { get; set; }
+        public string? Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
+        private string? _explicitNullValueRunner = default!;
 #nullable restore
 #else
-        public string Runner { get; set; }
+        public string Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
+        private string _explicitNullValueRunner = default!;
 #endif
         /// <summary>* `product` - Product* `file` - File* `directory` - Directory* `test` - Test</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind? SelectorKind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind? SelectorKind { get => _explicitNullValueSelectorKind; set { _explicitNullValueSelectorKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector_kind"); else _explicitNullProperties?.Remove("selector_kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind? _explicitNullValueSelectorKind = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntry"/> and sets the default values.
         /// </summary>
@@ -82,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -123,6 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("runner", Runner);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineEntrySelectorKind>("selector_kind", SelectorKind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

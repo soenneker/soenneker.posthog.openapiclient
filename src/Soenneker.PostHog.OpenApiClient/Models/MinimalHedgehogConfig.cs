@@ -11,21 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MinimalHedgehogConfig : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("accessories") is { } nullNodeAccessories && nullNodeAccessories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Accessories = null;
+            if (parseNode.GetChildNode("color") is { } nullNodeColor && nullNodeColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Color = null;
+            if (parseNode.GetChildNode("skin") is { } nullNodeSkin && nullNodeSkin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Skin = null;
+            if (parseNode.GetChildNode("use_as_profile") is { } nullNodeUseAsProfile && nullNodeUseAsProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseAsProfile = null;
+        }
+
         /// <summary>The accessories property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption?>? Accessories { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption?>? Accessories { get => _explicitNullValueAccessories; set { _explicitNullValueAccessories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accessories"); else _explicitNullProperties?.Remove("accessories"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption?>? _explicitNullValueAccessories = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption?> Accessories { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption?> Accessories { get => _explicitNullValueAccessories; set { _explicitNullValueAccessories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accessories"); else _explicitNullProperties?.Remove("accessories"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption?> _explicitNullValueAccessories = default!;
 #endif
         /// <summary>The color property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOption? Color { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOption? Color { get => _explicitNullValueColor; set { _explicitNullValueColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("color"); else _explicitNullProperties?.Remove("color"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOption? _explicitNullValueColor = default!;
         /// <summary>The skin property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOption? Skin { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOption? Skin { get => _explicitNullValueSkin; set { _explicitNullValueSkin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skin"); else _explicitNullProperties?.Remove("skin"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOption? _explicitNullValueSkin = default!;
         /// <summary>The use_as_profile property</summary>
-        public bool? UseAsProfile { get; set; }
+        public bool? UseAsProfile { get => _explicitNullValueUseAsProfile; set { _explicitNullValueUseAsProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_as_profile"); else _explicitNullProperties?.Remove("use_as_profile"); } }
+        private bool? _explicitNullValueUseAsProfile = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -34,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MinimalHedgehogConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MinimalHedgehogConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MinimalHedgehogConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,7 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorAccessoryOption>("accessories", Accessories);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorColorOption>("color", Color);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HedgehogActorSkinOption>("skin", Skin);
-            writer.WriteBoolValue("use_as_profile", UseAsProfile);
+            writer.WriteBoolValue("use_as_profile", UseAsProfile);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

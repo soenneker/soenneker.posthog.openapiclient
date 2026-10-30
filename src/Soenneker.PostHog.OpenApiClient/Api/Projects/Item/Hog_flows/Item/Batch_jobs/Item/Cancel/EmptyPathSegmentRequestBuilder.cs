@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Batch
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Stop a batch run: no more of its audience is enrolled, and every run of itstill in flight is canceled.Stopping is asynchronous: runs are flagged here, then terminated by theworkflow workers. Steps that already executed, like sent messages, are notundone. Already-finished batch runs are left untouched.

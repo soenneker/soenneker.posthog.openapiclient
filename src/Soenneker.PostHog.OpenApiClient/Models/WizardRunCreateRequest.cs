@@ -11,42 +11,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WizardRunCreateRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("environment") is { } nullNodeEnvironment && nullNodeEnvironment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Environment = null;
+            if (parseNode.GetChildNode("idempotency_key") is { } nullNodeIdempotencyKey && nullNodeIdempotencyKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdempotencyKey = null;
+            if (parseNode.GetChildNode("program_id") is { } nullNodeProgramId && nullNodeProgramId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProgramId = null;
+            if (parseNode.GetChildNode("wizard_version") is { } nullNodeWizardVersion && nullNodeWizardVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WizardVersion = null;
+            if (parseNode.GetChildNode("workspace") is { } nullNodeWorkspace && nullNodeWorkspace.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workspace = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `local` - local* `cloud` - cloud</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment? Environment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment? Environment { get => _explicitNullValueEnvironment; set { _explicitNullValueEnvironment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment"); else _explicitNullProperties?.Remove("environment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestEnvironment? _explicitNullValueEnvironment = default!;
         /// <summary>Unique key that makes cloud run creation safe to retry.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdempotencyKey { get; set; }
+        public string? IdempotencyKey { get => _explicitNullValueIdempotencyKey; set { _explicitNullValueIdempotencyKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idempotency_key"); else _explicitNullProperties?.Remove("idempotency_key"); } }
+        private string? _explicitNullValueIdempotencyKey = default!;
 #nullable restore
 #else
-        public string IdempotencyKey { get; set; }
+        public string IdempotencyKey { get => _explicitNullValueIdempotencyKey; set { _explicitNullValueIdempotencyKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idempotency_key"); else _explicitNullProperties?.Remove("idempotency_key"); } }
+        private string _explicitNullValueIdempotencyKey = default!;
 #endif
         /// <summary>Registry program to run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProgramId { get; set; }
+        public string? ProgramId { get => _explicitNullValueProgramId; set { _explicitNullValueProgramId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("program_id"); else _explicitNullProperties?.Remove("program_id"); } }
+        private string? _explicitNullValueProgramId = default!;
 #nullable restore
 #else
-        public string ProgramId { get; set; }
+        public string ProgramId { get => _explicitNullValueProgramId; set { _explicitNullValueProgramId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("program_id"); else _explicitNullProperties?.Remove("program_id"); } }
+        private string _explicitNullValueProgramId = default!;
 #endif
         /// <summary>Wizard package version to run. Defaults to the backend pin and accepts latest explicitly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WizardVersion { get; set; }
+        public string? WizardVersion { get => _explicitNullValueWizardVersion; set { _explicitNullValueWizardVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wizard_version"); else _explicitNullProperties?.Remove("wizard_version"); } }
+        private string? _explicitNullValueWizardVersion = default!;
 #nullable restore
 #else
-        public string WizardVersion { get; set; }
+        public string WizardVersion { get => _explicitNullValueWizardVersion; set { _explicitNullValueWizardVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wizard_version"); else _explicitNullProperties?.Remove("wizard_version"); } }
+        private string _explicitNullValueWizardVersion = default!;
 #endif
         /// <summary>Project that the setup agent works on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspace? Workspace { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspace? Workspace { get => _explicitNullValueWorkspace; set { _explicitNullValueWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace"); else _explicitNullProperties?.Remove("workspace"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspace? _explicitNullValueWorkspace = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspace Workspace { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspace Workspace { get => _explicitNullValueWorkspace; set { _explicitNullValueWorkspace = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace"); else _explicitNullProperties?.Remove("workspace"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspace _explicitNullValueWorkspace = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequest"/> and sets the default values.
@@ -63,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("program_id", ProgramId);
             writer.WriteStringValue("wizard_version", WizardVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspace>("workspace", Workspace);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

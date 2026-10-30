@@ -11,75 +11,113 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EvaluationReportMetrics : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("output_config") is { } nullNodeOutputConfig && nullNodeOutputConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputConfig = null;
+            if (parseNode.GetChildNode("output_type") is { } nullNodeOutputType && nullNodeOutputType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputType = null;
+            if (parseNode.GetChildNode("pass_rate") is { } nullNodePassRate && nullNodePassRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassRate = null;
+            if (parseNode.GetChildNode("period_end") is { } nullNodePeriodEnd && nullNodePeriodEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeriodEnd = null;
+            if (parseNode.GetChildNode("period_start") is { } nullNodePeriodStart && nullNodePeriodStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeriodStart = null;
+            if (parseNode.GetChildNode("previous_pass_rate") is { } nullNodePreviousPassRate && nullNodePreviousPassRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousPassRate = null;
+            if (parseNode.GetChildNode("previous_result_counts") is { } nullNodePreviousResultCounts && nullNodePreviousResultCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousResultCounts = null;
+            if (parseNode.GetChildNode("previous_result_rates") is { } nullNodePreviousResultRates && nullNodePreviousResultRates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousResultRates = null;
+            if (parseNode.GetChildNode("previous_total_runs") is { } nullNodePreviousTotalRuns && nullNodePreviousTotalRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousTotalRuns = null;
+            if (parseNode.GetChildNode("result_counts") is { } nullNodeResultCounts && nullNodeResultCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultCounts = null;
+            if (parseNode.GetChildNode("result_rates") is { } nullNodeResultRates && nullNodeResultRates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultRates = null;
+            if (parseNode.GetChildNode("total_runs") is { } nullNodeTotalRuns && nullNodeTotalRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRuns = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Output configuration and passing rule used for both report periods.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig? OutputConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig? OutputConfig { get => _explicitNullValueOutputConfig; set { _explicitNullValueOutputConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_config"); else _explicitNullProperties?.Remove("output_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig? _explicitNullValueOutputConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig OutputConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig OutputConfig { get => _explicitNullValueOutputConfig; set { _explicitNullValueOutputConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_config"); else _explicitNullProperties?.Remove("output_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputConfig _explicitNullValueOutputConfig = default!;
 #endif
         /// <summary>* `boolean` - Boolean (Pass/Fail)* `numeric` - Numeric* `categorical` - Categorical* `sentiment` - Sentiment</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType? OutputType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType? OutputType { get => _explicitNullValueOutputType; set { _explicitNullValueOutputType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_type"); else _explicitNullProperties?.Remove("output_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsOutputType? _explicitNullValueOutputType = default!;
         /// <summary>Pass percentage excluding N/A. With no applicable results, numeric and categorical reports return null; boolean reports return 0.</summary>
-        public double? PassRate { get; set; }
+        public double? PassRate { get => _explicitNullValuePassRate; set { _explicitNullValuePassRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pass_rate"); else _explicitNullProperties?.Remove("pass_rate"); } }
+        private double? _explicitNullValuePassRate = default!;
         /// <summary>ISO 8601 end of the evaluation window represented by these metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PeriodEnd { get; set; }
+        public string? PeriodEnd { get => _explicitNullValuePeriodEnd; set { _explicitNullValuePeriodEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_end"); else _explicitNullProperties?.Remove("period_end"); } }
+        private string? _explicitNullValuePeriodEnd = default!;
 #nullable restore
 #else
-        public string PeriodEnd { get; set; }
+        public string PeriodEnd { get => _explicitNullValuePeriodEnd; set { _explicitNullValuePeriodEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_end"); else _explicitNullProperties?.Remove("period_end"); } }
+        private string _explicitNullValuePeriodEnd = default!;
 #endif
         /// <summary>ISO 8601 start of the evaluation window represented by these metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PeriodStart { get; set; }
+        public string? PeriodStart { get => _explicitNullValuePeriodStart; set { _explicitNullValuePeriodStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_start"); else _explicitNullProperties?.Remove("period_start"); } }
+        private string? _explicitNullValuePeriodStart = default!;
 #nullable restore
 #else
-        public string PeriodStart { get; set; }
+        public string PeriodStart { get => _explicitNullValuePeriodStart; set { _explicitNullValuePeriodStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_start"); else _explicitNullProperties?.Remove("period_start"); } }
+        private string _explicitNullValuePeriodStart = default!;
 #endif
         /// <summary>Pass percentage for boolean, numeric, or categorical results in the previous period, or null when unavailable.</summary>
-        public double? PreviousPassRate { get; set; }
+        public double? PreviousPassRate { get => _explicitNullValuePreviousPassRate; set { _explicitNullValuePreviousPassRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_pass_rate"); else _explicitNullProperties?.Remove("previous_pass_rate"); } }
+        private double? _explicitNullValuePreviousPassRate = default!;
         /// <summary>Count by result label for the previous period, or null when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty? PreviousResultCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty? PreviousResultCounts { get => _explicitNullValuePreviousResultCounts; set { _explicitNullValuePreviousResultCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_result_counts"); else _explicitNullProperties?.Remove("previous_result_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty? _explicitNullValuePreviousResultCounts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty PreviousResultCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty PreviousResultCounts { get => _explicitNullValuePreviousResultCounts; set { _explicitNullValuePreviousResultCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_result_counts"); else _explicitNullProperties?.Remove("previous_result_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultCountsProperty _explicitNullValuePreviousResultCounts = default!;
 #endif
         /// <summary>Percentage by result label for the previous period, or null when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty? PreviousResultRates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty? PreviousResultRates { get => _explicitNullValuePreviousResultRates; set { _explicitNullValuePreviousResultRates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_result_rates"); else _explicitNullProperties?.Remove("previous_result_rates"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty? _explicitNullValuePreviousResultRates = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty PreviousResultRates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty PreviousResultRates { get => _explicitNullValuePreviousResultRates; set { _explicitNullValuePreviousResultRates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_result_rates"); else _explicitNullProperties?.Remove("previous_result_rates"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsPreviousResultRatesProperty _explicitNullValuePreviousResultRates = default!;
 #endif
         /// <summary>Number of evaluation results in the previous comparison period, or null when unavailable.</summary>
-        public int? PreviousTotalRuns { get; set; }
+        public int? PreviousTotalRuns { get => _explicitNullValuePreviousTotalRuns; set { _explicitNullValuePreviousTotalRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_total_runs"); else _explicitNullProperties?.Remove("previous_total_runs"); } }
+        private int? _explicitNullValuePreviousTotalRuns = default!;
         /// <summary>Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty? ResultCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty? ResultCounts { get => _explicitNullValueResultCounts; set { _explicitNullValueResultCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_counts"); else _explicitNullProperties?.Remove("result_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty? _explicitNullValueResultCounts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty ResultCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty ResultCounts { get => _explicitNullValueResultCounts; set { _explicitNullValueResultCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_counts"); else _explicitNullProperties?.Remove("result_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty _explicitNullValueResultCounts = default!;
 #endif
         /// <summary>Percentage by output-specific result label, from 0 to 100.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty? ResultRates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty? ResultRates { get => _explicitNullValueResultRates; set { _explicitNullValueResultRates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_rates"); else _explicitNullProperties?.Remove("result_rates"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty? _explicitNullValueResultRates = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty ResultRates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty ResultRates { get => _explicitNullValueResultRates; set { _explicitNullValueResultRates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_rates"); else _explicitNullProperties?.Remove("result_rates"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty _explicitNullValueResultRates = default!;
 #endif
         /// <summary>Number of evaluation results in the report period.</summary>
-        public int? TotalRuns { get; set; }
+        public int? TotalRuns { get => _explicitNullValueTotalRuns; set { _explicitNullValueTotalRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_runs"); else _explicitNullProperties?.Remove("total_runs"); } }
+        private int? _explicitNullValueTotalRuns = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics"/> and sets the default values.
         /// </summary>
@@ -95,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -138,6 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultCountsProperty>("result_counts", ResultCounts);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetricsResultRatesProperty>("result_rates", ResultRates);
             writer.WriteIntValue("total_runs", TotalRuns);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

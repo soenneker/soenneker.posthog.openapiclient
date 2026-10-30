@@ -12,7 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountsTableQueryColumnsItem : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,29 +78,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem();
             if("account_field".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AccountsTableAccountFieldColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn();
+                
             }
             else if("custom_property".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AccountsTableCustomPropertyColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn();
+                
             }
             else if("custom_property_history".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AccountsTableCustomPropertyHistoryColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyHistoryColumn();
+                
             }
             else if("note_count".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AccountsTableNoteCountColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn();
+                
             }
             else if("relationship".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AccountsTableRelationshipColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn();
+                
             }
             else if("tags".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.AccountsTableTagsColumn = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("field") != null && (parseNode.GetChildNode("field")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("name".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "external_id".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "created_at".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "updated_at".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "churned_at".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "ignored_at".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "stripe_customer_id".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "hubspot_deal_id".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "billing_id".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "sfdc_id".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "zendesk_id".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("account_field".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("definitionId") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("relationship".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("definitionId") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("custom_property".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("definitionId") != null && parseNode.GetChildNode("windowDays") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("custom_property_history".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            if (result.AccountsTableAccountFieldColumn == null && result.AccountsTableCustomPropertyColumn == null && result.AccountsTableCustomPropertyHistoryColumn == null && result.AccountsTableNoteCountColumn == null && result.AccountsTableRelationshipColumn == null && result.AccountsTableTagsColumn == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.AccountsTableAccountFieldColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn(), parseNode);
+            if (result.AccountsTableAccountFieldColumn == null && result.AccountsTableCustomPropertyColumn == null && result.AccountsTableCustomPropertyHistoryColumn == null && result.AccountsTableNoteCountColumn == null && result.AccountsTableRelationshipColumn == null && result.AccountsTableTagsColumn == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.AccountsTableRelationshipColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn(), parseNode);
+            if (result.AccountsTableAccountFieldColumn == null && result.AccountsTableCustomPropertyColumn == null && result.AccountsTableCustomPropertyHistoryColumn == null && result.AccountsTableNoteCountColumn == null && result.AccountsTableRelationshipColumn == null && result.AccountsTableTagsColumn == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.AccountsTableCustomPropertyColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn(), parseNode);
+            if (result.AccountsTableAccountFieldColumn == null && result.AccountsTableCustomPropertyColumn == null && result.AccountsTableCustomPropertyHistoryColumn == null && result.AccountsTableNoteCountColumn == null && result.AccountsTableRelationshipColumn == null && result.AccountsTableTagsColumn == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.AccountsTableCustomPropertyHistoryColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyHistoryColumn(), parseNode);
+            if (result.AccountsTableAccountFieldColumn == null && result.AccountsTableCustomPropertyColumn == null && result.AccountsTableCustomPropertyHistoryColumn == null && result.AccountsTableNoteCountColumn == null && result.AccountsTableRelationshipColumn == null && result.AccountsTableTagsColumn == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -135,29 +151,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (AccountsTableAccountFieldColumn == null && AccountsTableCustomPropertyColumn == null && AccountsTableCustomPropertyHistoryColumn == null && AccountsTableNoteCountColumn == null && AccountsTableRelationshipColumn == null && AccountsTableTagsColumn == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AccountsTableAccountFieldColumn != null && AccountsTableCustomPropertyColumn == null && AccountsTableCustomPropertyHistoryColumn == null && AccountsTableNoteCountColumn == null && AccountsTableRelationshipColumn == null && AccountsTableTagsColumn == null) { if (AccountsTableAccountFieldColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableAccountFieldColumn); return; }
+            if (AccountsTableCustomPropertyColumn != null && AccountsTableAccountFieldColumn == null && AccountsTableCustomPropertyHistoryColumn == null && AccountsTableNoteCountColumn == null && AccountsTableRelationshipColumn == null && AccountsTableTagsColumn == null) { if (AccountsTableCustomPropertyColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableCustomPropertyColumn); return; }
+            if (AccountsTableCustomPropertyHistoryColumn != null && AccountsTableAccountFieldColumn == null && AccountsTableCustomPropertyColumn == null && AccountsTableNoteCountColumn == null && AccountsTableRelationshipColumn == null && AccountsTableTagsColumn == null) { if (AccountsTableCustomPropertyHistoryColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableCustomPropertyHistoryColumn); return; }
+            if (AccountsTableNoteCountColumn != null && AccountsTableAccountFieldColumn == null && AccountsTableCustomPropertyColumn == null && AccountsTableCustomPropertyHistoryColumn == null && AccountsTableRelationshipColumn == null && AccountsTableTagsColumn == null) { if (AccountsTableNoteCountColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableNoteCountColumn); return; }
+            if (AccountsTableRelationshipColumn != null && AccountsTableAccountFieldColumn == null && AccountsTableCustomPropertyColumn == null && AccountsTableCustomPropertyHistoryColumn == null && AccountsTableNoteCountColumn == null && AccountsTableTagsColumn == null) { if (AccountsTableRelationshipColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableRelationshipColumn); return; }
+            if (AccountsTableTagsColumn != null && AccountsTableAccountFieldColumn == null && AccountsTableCustomPropertyColumn == null && AccountsTableCustomPropertyHistoryColumn == null && AccountsTableNoteCountColumn == null && AccountsTableRelationshipColumn == null) { if (AccountsTableTagsColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableTagsColumn); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(AccountsTableAccountFieldColumn != null)
             {
+                if (AccountsTableAccountFieldColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn>(null, AccountsTableAccountFieldColumn);
             }
             else if(AccountsTableCustomPropertyColumn != null)
             {
+                if (AccountsTableCustomPropertyColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn>(null, AccountsTableCustomPropertyColumn);
             }
             else if(AccountsTableCustomPropertyHistoryColumn != null)
             {
+                if (AccountsTableCustomPropertyHistoryColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyHistoryColumn>(null, AccountsTableCustomPropertyHistoryColumn);
             }
             else if(AccountsTableNoteCountColumn != null)
             {
+                if (AccountsTableNoteCountColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn>(null, AccountsTableNoteCountColumn);
             }
             else if(AccountsTableRelationshipColumn != null)
             {
+                if (AccountsTableRelationshipColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn>(null, AccountsTableRelationshipColumn);
             }
             else if(AccountsTableTagsColumn != null)
             {
+                if (AccountsTableTagsColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn>(null, AccountsTableTagsColumn);
             }
         }

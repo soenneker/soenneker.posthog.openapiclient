@@ -11,50 +11,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InboxOnboardingDraft : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("activation_mode") is { } nullNodeActivationMode && nullNodeActivationMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivationMode = null;
+            if (parseNode.GetChildNode("activation_scouts") is { } nullNodeActivationScouts && nullNodeActivationScouts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivationScouts = null;
+            if (parseNode.GetChildNode("automatic_implementation") is { } nullNodeAutomaticImplementation && nullNodeAutomaticImplementation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutomaticImplementation = null;
+            if (parseNode.GetChildNode("implementation_priority") is { } nullNodeImplementationPriority && nullNodeImplementationPriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImplementationPriority = null;
+            if (parseNode.GetChildNode("scanner_ids") is { } nullNodeScannerIds && nullNodeScannerIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerIds = null;
+            if (parseNode.GetChildNode("setup_mode") is { } nullNodeSetupMode && nullNodeSetupMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetupMode = null;
+            if (parseNode.GetChildNode("sources") is { } nullNodeSources && nullNodeSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sources = null;
+            if (parseNode.GetChildNode("step") is { } nullNodeStep && nullNodeStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Step = null;
+            if (parseNode.GetChildNode("suggestions") is { } nullNodeSuggestions && nullNodeSuggestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Suggestions = null;
+        }
+
         /// <summary>* `github_optional` - GitHub optional</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftActivationMode? ActivationMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftActivationMode? ActivationMode { get => _explicitNullValueActivationMode; set { _explicitNullValueActivationMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation_mode"); else _explicitNullProperties?.Remove("activation_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftActivationMode? _explicitNullValueActivationMode = default!;
         /// <summary>Scouts enabled by an unfinished activation, retained to undo later deselections.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ActivationScouts { get; set; }
+        public List<string>? ActivationScouts { get => _explicitNullValueActivationScouts; set { _explicitNullValueActivationScouts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation_scouts"); else _explicitNullProperties?.Remove("activation_scouts"); } }
+        private List<string>? _explicitNullValueActivationScouts = default!;
 #nullable restore
 #else
-        public List<string> ActivationScouts { get; set; }
+        public List<string> ActivationScouts { get => _explicitNullValueActivationScouts; set { _explicitNullValueActivationScouts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation_scouts"); else _explicitNullProperties?.Remove("activation_scouts"); } }
+        private List<string> _explicitNullValueActivationScouts = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Opt in to automatically creating pull requests.</summary>
-        public bool? AutomaticImplementation { get; set; }
+        public bool? AutomaticImplementation { get => _explicitNullValueAutomaticImplementation; set { _explicitNullValueAutomaticImplementation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automatic_implementation"); else _explicitNullProperties?.Remove("automatic_implementation"); } }
+        private bool? _explicitNullValueAutomaticImplementation = default!;
         /// <summary>* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftImplementationPriority? ImplementationPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftImplementationPriority? ImplementationPriority { get => _explicitNullValueImplementationPriority; set { _explicitNullValueImplementationPriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("implementation_priority"); else _explicitNullProperties?.Remove("implementation_priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftImplementationPriority? _explicitNullValueImplementationPriority = default!;
         /// <summary>Existing enabled scanners selected to emit signals.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ScannerIds { get; set; }
+        public List<Guid?>? ScannerIds { get => _explicitNullValueScannerIds; set { _explicitNullValueScannerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_ids"); else _explicitNullProperties?.Remove("scanner_ids"); } }
+        private List<Guid?>? _explicitNullValueScannerIds = default!;
 #nullable restore
 #else
-        public List<Guid?> ScannerIds { get; set; }
+        public List<Guid?> ScannerIds { get => _explicitNullValueScannerIds; set { _explicitNullValueScannerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_ids"); else _explicitNullProperties?.Remove("scanner_ids"); } }
+        private List<Guid?> _explicitNullValueScannerIds = default!;
 #endif
         /// <summary>* `quick` - Quick* `guided` - Guided</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftSetupMode? SetupMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftSetupMode? SetupMode { get => _explicitNullValueSetupMode; set { _explicitNullValueSetupMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("setup_mode"); else _explicitNullProperties?.Remove("setup_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftSetupMode? _explicitNullValueSetupMode = default!;
         /// <summary>Staged signal source choices.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource>? Sources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource>? Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource>? _explicitNullValueSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource> Sources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource> Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource> _explicitNullValueSources = default!;
 #endif
         /// <summary>* `signals` - Signals* `scouts` - Scouts* `github` - GitHub</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftStep? Step { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftStep? Step { get => _explicitNullValueStep; set { _explicitNullValueStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step"); else _explicitNullProperties?.Remove("step"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftStep? _explicitNullValueStep = default!;
         /// <summary>Selected scout suggestion drafts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem>? Suggestions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem>? Suggestions { get => _explicitNullValueSuggestions; set { _explicitNullValueSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestions"); else _explicitNullProperties?.Remove("suggestions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem>? _explicitNullValueSuggestions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem> Suggestions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem> Suggestions { get => _explicitNullValueSuggestions; set { _explicitNullValueSuggestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestions"); else _explicitNullProperties?.Remove("suggestions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem> _explicitNullValueSuggestions = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft"/> and sets the default values.
@@ -71,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingSource>("sources", Sources);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraftStep>("step", Step);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItem>("suggestions", Suggestions);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

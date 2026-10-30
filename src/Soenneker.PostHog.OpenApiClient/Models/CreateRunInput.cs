@@ -11,81 +11,120 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CreateRunInput : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_hashes") is { } nullNodeBaselineHashes && nullNodeBaselineHashes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineHashes = null;
+            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("commit_sha") is { } nullNodeCommitSha && nullNodeCommitSha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommitSha = null;
+            if (parseNode.GetChildNode("is_partial") is { } nullNodeIsPartial && nullNodeIsPartial.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPartial = null;
+            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("pr_number") is { } nullNodePrNumber && nullNodePrNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrNumber = null;
+            if (parseNode.GetChildNode("purpose") is { } nullNodePurpose && nullNodePurpose.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Purpose = null;
+            if (parseNode.GetChildNode("removed_identifiers") is { } nullNodeRemovedIdentifiers && nullNodeRemovedIdentifiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovedIdentifiers = null;
+            if (parseNode.GetChildNode("repo_id") is { } nullNodeRepoId && nullNodeRepoId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoId = null;
+            if (parseNode.GetChildNode("run_type") is { } nullNodeRunType && nullNodeRunType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunType = null;
+            if (parseNode.GetChildNode("snapshots") is { } nullNodeSnapshots && nullNodeSnapshots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snapshots = null;
+            if (parseNode.GetChildNode("unchanged_count") is { } nullNodeUnchangedCount && nullNodeUnchangedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnchangedCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The baseline_hashes property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty? BaselineHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty? BaselineHashes { get => _explicitNullValueBaselineHashes; set { _explicitNullValueBaselineHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_hashes"); else _explicitNullProperties?.Remove("baseline_hashes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty? _explicitNullValueBaselineHashes = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty BaselineHashes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty BaselineHashes { get => _explicitNullValueBaselineHashes; set { _explicitNullValueBaselineHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_hashes"); else _explicitNullProperties?.Remove("baseline_hashes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputBaselineHashesProperty _explicitNullValueBaselineHashes = default!;
 #endif
         /// <summary>The branch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get; set; }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get; set; }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>The commit_sha property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CommitSha { get; set; }
+        public string? CommitSha { get => _explicitNullValueCommitSha; set { _explicitNullValueCommitSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commit_sha"); else _explicitNullProperties?.Remove("commit_sha"); } }
+        private string? _explicitNullValueCommitSha = default!;
 #nullable restore
 #else
-        public string CommitSha { get; set; }
+        public string CommitSha { get => _explicitNullValueCommitSha; set { _explicitNullValueCommitSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commit_sha"); else _explicitNullProperties?.Remove("commit_sha"); } }
+        private string _explicitNullValueCommitSha = default!;
 #endif
         /// <summary>The is_partial property</summary>
-        public bool? IsPartial { get; set; }
+        public bool? IsPartial { get => _explicitNullValueIsPartial; set { _explicitNullValueIsPartial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_partial"); else _explicitNullProperties?.Remove("is_partial"); } }
+        private bool? _explicitNullValueIsPartial = default!;
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInputMetadataProperty _explicitNullValueMetadata = default!;
 #endif
         /// <summary>The pr_number property</summary>
-        public int? PrNumber { get; set; }
+        public int? PrNumber { get => _explicitNullValuePrNumber; set { _explicitNullValuePrNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_number"); else _explicitNullProperties?.Remove("pr_number"); } }
+        private int? _explicitNullValuePrNumber = default!;
         /// <summary>The purpose property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Purpose { get; set; }
+        public string? Purpose { get => _explicitNullValuePurpose; set { _explicitNullValuePurpose = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("purpose"); else _explicitNullProperties?.Remove("purpose"); } }
+        private string? _explicitNullValuePurpose = default!;
 #nullable restore
 #else
-        public string Purpose { get; set; }
+        public string Purpose { get => _explicitNullValuePurpose; set { _explicitNullValuePurpose = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("purpose"); else _explicitNullProperties?.Remove("purpose"); } }
+        private string _explicitNullValuePurpose = default!;
 #endif
         /// <summary>The removed_identifiers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RemovedIdentifiers { get; set; }
+        public List<string>? RemovedIdentifiers { get => _explicitNullValueRemovedIdentifiers; set { _explicitNullValueRemovedIdentifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removed_identifiers"); else _explicitNullProperties?.Remove("removed_identifiers"); } }
+        private List<string>? _explicitNullValueRemovedIdentifiers = default!;
 #nullable restore
 #else
-        public List<string> RemovedIdentifiers { get; set; }
+        public List<string> RemovedIdentifiers { get => _explicitNullValueRemovedIdentifiers; set { _explicitNullValueRemovedIdentifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removed_identifiers"); else _explicitNullProperties?.Remove("removed_identifiers"); } }
+        private List<string> _explicitNullValueRemovedIdentifiers = default!;
 #endif
         /// <summary>The repo_id property</summary>
-        public Guid? RepoId { get; set; }
+        public Guid? RepoId { get => _explicitNullValueRepoId; set { _explicitNullValueRepoId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_id"); else _explicitNullProperties?.Remove("repo_id"); } }
+        private Guid? _explicitNullValueRepoId = default!;
         /// <summary>The run_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunType { get; set; }
+        public string? RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
+        private string? _explicitNullValueRunType = default!;
 #nullable restore
 #else
-        public string RunType { get; set; }
+        public string RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
+        private string _explicitNullValueRunType = default!;
 #endif
         /// <summary>The snapshots property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>? Snapshots { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>? Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>? _explicitNullValueSnapshots = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem> Snapshots { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem> Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem> _explicitNullValueSnapshots = default!;
 #endif
         /// <summary>The unchanged_count property</summary>
-        public int? UnchangedCount { get; set; }
+        public int? UnchangedCount { get => _explicitNullValueUnchangedCount; set { _explicitNullValueUnchangedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unchanged_count"); else _explicitNullProperties?.Remove("unchanged_count"); } }
+        private int? _explicitNullValueUnchangedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput"/> and sets the default values.
         /// </summary>
@@ -101,7 +140,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CreateRunInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -144,6 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("run_type", RunType);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotManifestItem>("snapshots", Snapshots);
             writer.WriteIntValue("unchanged_count", UnchangedCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

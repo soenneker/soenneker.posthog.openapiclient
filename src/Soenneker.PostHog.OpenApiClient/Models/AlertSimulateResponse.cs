@@ -11,118 +11,170 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AlertSimulateResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anomaly_count") is { } nullNodeAnomalyCount && nullNodeAnomalyCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyCount = null;
+            if (parseNode.GetChildNode("breakdown_results") is { } nullNodeBreakdownResults && nullNodeBreakdownResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownResults = null;
+            if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
+            if (parseNode.GetChildNode("dates") is { } nullNodeDates && nullNodeDates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dates = null;
+            if (parseNode.GetChildNode("evaluated_interval_end") is { } nullNodeEvaluatedIntervalEnd && nullNodeEvaluatedIntervalEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluatedIntervalEnd = null;
+            if (parseNode.GetChildNode("evaluated_interval_start") is { } nullNodeEvaluatedIntervalStart && nullNodeEvaluatedIntervalStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluatedIntervalStart = null;
+            if (parseNode.GetChildNode("evaluated_interval_timezone") is { } nullNodeEvaluatedIntervalTimezone && nullNodeEvaluatedIntervalTimezone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluatedIntervalTimezone = null;
+            if (parseNode.GetChildNode("evaluation_delay_intervals") is { } nullNodeEvaluationDelayIntervals && nullNodeEvaluationDelayIntervals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationDelayIntervals = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("rationale") is { } nullNodeRationale && nullNodeRationale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rationale = null;
+            if (parseNode.GetChildNode("scores") is { } nullNodeScores && nullNodeScores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scores = null;
+            if (parseNode.GetChildNode("sub_detector_scores") is { } nullNodeSubDetectorScores && nullNodeSubDetectorScores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubDetectorScores = null;
+            if (parseNode.GetChildNode("total_points") is { } nullNodeTotalPoints && nullNodeTotalPoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalPoints = null;
+            if (parseNode.GetChildNode("triggered_dates") is { } nullNodeTriggeredDates && nullNodeTriggeredDates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggeredDates = null;
+            if (parseNode.GetChildNode("triggered_indices") is { } nullNodeTriggeredIndices && nullNodeTriggeredIndices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggeredIndices = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of anomalies detected.</summary>
-        public int? AnomalyCount { get; set; }
+        public int? AnomalyCount { get => _explicitNullValueAnomalyCount; set { _explicitNullValueAnomalyCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomaly_count"); else _explicitNullProperties?.Remove("anomaly_count"); } }
+        private int? _explicitNullValueAnomalyCount = default!;
         /// <summary>Per-breakdown-value simulation results. Present only when the insight has breakdowns (up to 25 values).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult>? BreakdownResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult>? BreakdownResults { get => _explicitNullValueBreakdownResults; set { _explicitNullValueBreakdownResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_results"); else _explicitNullProperties?.Remove("breakdown_results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult>? _explicitNullValueBreakdownResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult> BreakdownResults { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult> BreakdownResults { get => _explicitNullValueBreakdownResults; set { _explicitNullValueBreakdownResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_results"); else _explicitNullProperties?.Remove("breakdown_results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownSimulationResult> _explicitNullValueBreakdownResults = default!;
 #endif
         /// <summary>Data values for each point.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? Data { get; set; }
+        public List<double?>? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<double?>? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public List<double?> Data { get; set; }
+        public List<double?> Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private List<double?> _explicitNullValueData = default!;
 #endif
         /// <summary>Date labels for each point.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Dates { get; set; }
+        public List<string>? Dates { get => _explicitNullValueDates; set { _explicitNullValueDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dates"); else _explicitNullProperties?.Remove("dates"); } }
+        private List<string>? _explicitNullValueDates = default!;
 #nullable restore
 #else
-        public List<string> Dates { get; set; }
+        public List<string> Dates { get => _explicitNullValueDates; set { _explicitNullValueDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dates"); else _explicitNullProperties?.Remove("dates"); } }
+        private List<string> _explicitNullValueDates = default!;
 #endif
         /// <summary>Exclusive end of the latest eligible interval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvaluatedIntervalEnd { get; set; }
+        public string? EvaluatedIntervalEnd { get => _explicitNullValueEvaluatedIntervalEnd; set { _explicitNullValueEvaluatedIntervalEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_interval_end"); else _explicitNullProperties?.Remove("evaluated_interval_end"); } }
+        private string? _explicitNullValueEvaluatedIntervalEnd = default!;
 #nullable restore
 #else
-        public string EvaluatedIntervalEnd { get; set; }
+        public string EvaluatedIntervalEnd { get => _explicitNullValueEvaluatedIntervalEnd; set { _explicitNullValueEvaluatedIntervalEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_interval_end"); else _explicitNullProperties?.Remove("evaluated_interval_end"); } }
+        private string _explicitNullValueEvaluatedIntervalEnd = default!;
 #endif
         /// <summary>Start of the latest eligible interval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvaluatedIntervalStart { get; set; }
+        public string? EvaluatedIntervalStart { get => _explicitNullValueEvaluatedIntervalStart; set { _explicitNullValueEvaluatedIntervalStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_interval_start"); else _explicitNullProperties?.Remove("evaluated_interval_start"); } }
+        private string? _explicitNullValueEvaluatedIntervalStart = default!;
 #nullable restore
 #else
-        public string EvaluatedIntervalStart { get; set; }
+        public string EvaluatedIntervalStart { get => _explicitNullValueEvaluatedIntervalStart; set { _explicitNullValueEvaluatedIntervalStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_interval_start"); else _explicitNullProperties?.Remove("evaluated_interval_start"); } }
+        private string _explicitNullValueEvaluatedIntervalStart = default!;
 #endif
         /// <summary>Project timezone of the interval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvaluatedIntervalTimezone { get; set; }
+        public string? EvaluatedIntervalTimezone { get => _explicitNullValueEvaluatedIntervalTimezone; set { _explicitNullValueEvaluatedIntervalTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_interval_timezone"); else _explicitNullProperties?.Remove("evaluated_interval_timezone"); } }
+        private string? _explicitNullValueEvaluatedIntervalTimezone = default!;
 #nullable restore
 #else
-        public string EvaluatedIntervalTimezone { get; set; }
+        public string EvaluatedIntervalTimezone { get => _explicitNullValueEvaluatedIntervalTimezone; set { _explicitNullValueEvaluatedIntervalTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_interval_timezone"); else _explicitNullProperties?.Remove("evaluated_interval_timezone"); } }
+        private string _explicitNullValueEvaluatedIntervalTimezone = default!;
 #endif
         /// <summary>Completed intervals skipped.</summary>
-        public int? EvaluationDelayIntervals { get; set; }
+        public int? EvaluationDelayIntervals { get => _explicitNullValueEvaluationDelayIntervals; set { _explicitNullValueEvaluationDelayIntervals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_delay_intervals"); else _explicitNullProperties?.Remove("evaluation_delay_intervals"); } }
+        private int? _explicitNullValueEvaluationDelayIntervals = default!;
         /// <summary>Interval of the trends query (hour, day, week, month).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Interval { get; set; }
+        public string? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private string? _explicitNullValueInterval = default!;
 #nullable restore
 #else
-        public string Interval { get; set; }
+        public string Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private string _explicitNullValueInterval = default!;
 #endif
         /// <summary>AI detector only: the shape the model saw at the latest point, or &apos;none&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
         /// <summary>AI detector only: the model&apos;s reason for its verdict on the latest point.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Rationale { get; set; }
+        public string? Rationale { get => _explicitNullValueRationale; set { _explicitNullValueRationale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rationale"); else _explicitNullProperties?.Remove("rationale"); } }
+        private string? _explicitNullValueRationale = default!;
 #nullable restore
 #else
-        public string Rationale { get; set; }
+        public string Rationale { get => _explicitNullValueRationale; set { _explicitNullValueRationale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rationale"); else _explicitNullProperties?.Remove("rationale"); } }
+        private string _explicitNullValueRationale = default!;
 #endif
         /// <summary>Score for each point. Null can mean insufficient data or a valid unscored point. The AI detector has no score, so every point is null in an AI preview.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? Scores { get; set; }
+        public List<double?>? Scores { get => _explicitNullValueScores; set { _explicitNullValueScores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scores"); else _explicitNullProperties?.Remove("scores"); } }
+        private List<double?>? _explicitNullValueScores = default!;
 #nullable restore
 #else
-        public List<double?> Scores { get; set; }
+        public List<double?> Scores { get => _explicitNullValueScores; set { _explicitNullValueScores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scores"); else _explicitNullProperties?.Remove("scores"); } }
+        private List<double?> _explicitNullValueScores = default!;
 #endif
         /// <summary>Per-sub-detector scores for ensemble detectors. Each entry has &apos;type&apos; and &apos;scores&apos; fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>? SubDetectorScores { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>? SubDetectorScores { get => _explicitNullValueSubDetectorScores; set { _explicitNullValueSubDetectorScores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sub_detector_scores"); else _explicitNullProperties?.Remove("sub_detector_scores"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty>? _explicitNullValueSubDetectorScores = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty> SubDetectorScores { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty> SubDetectorScores { get => _explicitNullValueSubDetectorScores; set { _explicitNullValueSubDetectorScores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sub_detector_scores"); else _explicitNullProperties?.Remove("sub_detector_scores"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponseSubDetectorScoresItemProperty> _explicitNullValueSubDetectorScores = default!;
 #endif
         /// <summary>Total number of data points analyzed.</summary>
-        public int? TotalPoints { get; set; }
+        public int? TotalPoints { get => _explicitNullValueTotalPoints; set { _explicitNullValueTotalPoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_points"); else _explicitNullProperties?.Remove("total_points"); } }
+        private int? _explicitNullValueTotalPoints = default!;
         /// <summary>Dates of points flagged as anomalies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? TriggeredDates { get; set; }
+        public List<string>? TriggeredDates { get => _explicitNullValueTriggeredDates; set { _explicitNullValueTriggeredDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggered_dates"); else _explicitNullProperties?.Remove("triggered_dates"); } }
+        private List<string>? _explicitNullValueTriggeredDates = default!;
 #nullable restore
 #else
-        public List<string> TriggeredDates { get; set; }
+        public List<string> TriggeredDates { get => _explicitNullValueTriggeredDates; set { _explicitNullValueTriggeredDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggered_dates"); else _explicitNullProperties?.Remove("triggered_dates"); } }
+        private List<string> _explicitNullValueTriggeredDates = default!;
 #endif
         /// <summary>Indices of points flagged as anomalies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? TriggeredIndices { get; set; }
+        public List<int?>? TriggeredIndices { get => _explicitNullValueTriggeredIndices; set { _explicitNullValueTriggeredIndices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggered_indices"); else _explicitNullProperties?.Remove("triggered_indices"); } }
+        private List<int?>? _explicitNullValueTriggeredIndices = default!;
 #nullable restore
 #else
-        public List<int?> TriggeredIndices { get; set; }
+        public List<int?> TriggeredIndices { get => _explicitNullValueTriggeredIndices; set { _explicitNullValueTriggeredIndices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("triggered_indices"); else _explicitNullProperties?.Remove("triggered_indices"); } }
+        private List<int?> _explicitNullValueTriggeredIndices = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse"/> and sets the default values.
@@ -139,7 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AlertSimulateResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -190,6 +242,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("total_points", TotalPoints);
             writer.WriteCollectionOfPrimitiveValues<string>("triggered_dates", TriggeredDates);
             writer.WriteCollectionOfPrimitiveValues<int?>("triggered_indices", TriggeredIndices);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

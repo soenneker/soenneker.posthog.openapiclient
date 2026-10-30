@@ -11,19 +11,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingSettings : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ingestion_enabled") is { } nullNodeIngestionEnabled && nullNodeIngestionEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IngestionEnabled = null;
+            if (parseNode.GetChildNode("per_issue_rate_limit_bucket_size_minutes") is { } nullNodePerIssueRateLimitBucketSizeMinutes && nullNodePerIssueRateLimitBucketSizeMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerIssueRateLimitBucketSizeMinutes = null;
+            if (parseNode.GetChildNode("per_issue_rate_limit_value") is { } nullNodePerIssueRateLimitValue && nullNodePerIssueRateLimitValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerIssueRateLimitValue = null;
+            if (parseNode.GetChildNode("project_rate_limit_bucket_size_minutes") is { } nullNodeProjectRateLimitBucketSizeMinutes && nullNodeProjectRateLimitBucketSizeMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectRateLimitBucketSizeMinutes = null;
+            if (parseNode.GetChildNode("project_rate_limit_value") is { } nullNodeProjectRateLimitValue && nullNodeProjectRateLimitValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectRateLimitValue = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the project ingests exception events. When false, ingestion drops every $exception event for this project before it is stored or billed, and the events cannot be recovered.</summary>
-        public bool? IngestionEnabled { get; set; }
+        public bool? IngestionEnabled { get => _explicitNullValueIngestionEnabled; set { _explicitNullValueIngestionEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ingestion_enabled"); else _explicitNullProperties?.Remove("ingestion_enabled"); } }
+        private bool? _explicitNullValueIngestionEnabled = default!;
         /// <summary>Bucket window over which the per-issue rate limit applies, in minutes.</summary>
-        public int? PerIssueRateLimitBucketSizeMinutes { get; set; }
+        public int? PerIssueRateLimitBucketSizeMinutes { get => _explicitNullValuePerIssueRateLimitBucketSizeMinutes; set { _explicitNullValuePerIssueRateLimitBucketSizeMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("per_issue_rate_limit_bucket_size_minutes"); else _explicitNullProperties?.Remove("per_issue_rate_limit_bucket_size_minutes"); } }
+        private int? _explicitNullValuePerIssueRateLimitBucketSizeMinutes = default!;
         /// <summary>Maximum number of exception events ingested per bucket for each individual issue. Null removes the limit.</summary>
-        public int? PerIssueRateLimitValue { get; set; }
+        public int? PerIssueRateLimitValue { get => _explicitNullValuePerIssueRateLimitValue; set { _explicitNullValuePerIssueRateLimitValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("per_issue_rate_limit_value"); else _explicitNullProperties?.Remove("per_issue_rate_limit_value"); } }
+        private int? _explicitNullValuePerIssueRateLimitValue = default!;
         /// <summary>Bucket window over which the project-wide rate limit applies, in minutes.</summary>
-        public int? ProjectRateLimitBucketSizeMinutes { get; set; }
+        public int? ProjectRateLimitBucketSizeMinutes { get => _explicitNullValueProjectRateLimitBucketSizeMinutes; set { _explicitNullValueProjectRateLimitBucketSizeMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_rate_limit_bucket_size_minutes"); else _explicitNullProperties?.Remove("project_rate_limit_bucket_size_minutes"); } }
+        private int? _explicitNullValueProjectRateLimitBucketSizeMinutes = default!;
         /// <summary>Maximum number of exception events ingested per bucket for the entire project. Null removes the limit.</summary>
-        public int? ProjectRateLimitValue { get; set; }
+        public int? ProjectRateLimitValue { get => _explicitNullValueProjectRateLimitValue; set { _explicitNullValueProjectRateLimitValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_rate_limit_value"); else _explicitNullProperties?.Remove("project_rate_limit_value"); } }
+        private int? _explicitNullValueProjectRateLimitValue = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSettings"/> and sets the default values.
         /// </summary>
@@ -39,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("per_issue_rate_limit_value", PerIssueRateLimitValue);
             writer.WriteIntValue("project_rate_limit_bucket_size_minutes", ProjectRateLimitBucketSizeMinutes);
             writer.WriteIntValue("project_rate_limit_value", ProjectRateLimitValue);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

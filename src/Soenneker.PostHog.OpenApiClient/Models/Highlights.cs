@@ -12,41 +12,65 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Highlights : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("day") is { } nullNodeDay && nullNodeDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Day = null;
+            if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
+            if (parseNode.GetChildNode("items") is { } nullNodeItems && nullNodeItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Items = null;
+            if (parseNode.GetChildNode("pins") is { } nullNodePins && nullNodePins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pins = null;
+            if (parseNode.GetChildNode("pulse") is { } nullNodePulse && nullNodePulse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pulse = null;
+            if (parseNode.GetChildNode("refresh_at") is { } nullNodeRefreshAt && nullNodeRefreshAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshAt = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The day the highlights are for, in the project&apos;s timezone.</summary>
-        public Date? Day { get; set; }
+        public Date? Day { get => _explicitNullValueDay; set { _explicitNullValueDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("day"); else _explicitNullProperties?.Remove("day"); } }
+        private Date? _explicitNullValueDay = default!;
         /// <summary>When the content was computed. Null when no highlights were computed yet today.</summary>
-        public DateTimeOffset? GeneratedAt { get; set; }
+        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
+        private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
         /// <summary>Up to 6 items, the highest scores across sources, in display order: by `priority`, then by `score`, highest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem>? Items { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem>? Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem>? _explicitNullValueItems = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem> Items { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem> Items { get => _explicitNullValueItems; set { _explicitNullValueItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("items"); else _explicitNullProperties?.Remove("items"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem> _explicitNullValueItems = default!;
 #endif
         /// <summary>The numbers the person keeps, in their order, with the state of each one. Pinned numbers lead `pulse`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin>? Pins { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin>? Pins { get => _explicitNullValuePins; set { _explicitNullValuePins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pins"); else _explicitNullProperties?.Remove("pins"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin>? _explicitNullValuePins = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin> Pins { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin> Pins { get => _explicitNullValuePins; set { _explicitNullValuePins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pins"); else _explicitNullProperties?.Remove("pins"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin> _explicitNullValuePins = default!;
 #endif
         /// <summary>Key metrics of the project from its settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric>? Pulse { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric>? Pulse { get => _explicitNullValuePulse; set { _explicitNullValuePulse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pulse"); else _explicitNullProperties?.Remove("pulse"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric>? _explicitNullValuePulse = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric> Pulse { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric> Pulse { get => _explicitNullValuePulse; set { _explicitNullValuePulse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pulse"); else _explicitNullProperties?.Remove("pulse"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric> _explicitNullValuePulse = default!;
 #endif
         /// <summary>Midnight at the end of `day` in the project&apos;s timezone, when the next day&apos;s highlights start. Load them again then.</summary>
-        public DateTimeOffset? RefreshAt { get; set; }
+        public DateTimeOffset? RefreshAt { get => _explicitNullValueRefreshAt; set { _explicitNullValueRefreshAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_at"); else _explicitNullProperties?.Remove("refresh_at"); } }
+        private DateTimeOffset? _explicitNullValueRefreshAt = default!;
         /// <summary>* `computing` - Computing* `ready` - Ready* `failed` - Failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightsStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightsStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HighlightsStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Highlights"/> and sets the default values.
         /// </summary>
@@ -62,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.Highlights CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.Highlights();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.Highlights(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -95,6 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric>("pulse", Pulse);
             writer.WriteDateTimeOffsetValue("refresh_at", RefreshAt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightsStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

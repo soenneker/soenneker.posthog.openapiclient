@@ -8,201 +8,80 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Destination-specific configuration. Fields depend on `type`. Credentials for integration-backed destinations (Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift) are NOT stored here — they live in the linked Integration. Secret fields are stripped from responses.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf8"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BatchExportDestinationConfigComposed : IAdditionalDataHolder, IParsable
-    {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Name of the destination bucket.</summary>
+    public partial class BatchExportDestinationConfigComposed : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BucketName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf1? BatchExportDestinationConfigComposedOneOf1 { get; set; }
 #nullable restore
 #else
-        public string BucketName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf1 BatchExportDestinationConfigComposedOneOf1 { get; set; }
 #endif
-        /// <summary>Unity Catalog name.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Catalog { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf2? BatchExportDestinationConfigComposedOneOf2 { get; set; }
 #nullable restore
 #else
-        public string Catalog { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf2 BatchExportDestinationConfigComposedOneOf2 { get; set; }
 #endif
-        /// <summary>Optional compression codec applied to exported files. Valid codecs depend on file_format.* `brotli` - brotli* `gzip` - gzip* `lz4` - lz4* `snappy` - snappy* `zstd` - zstd</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression? Compression { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf3? BatchExportDestinationConfigComposedOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression Compression { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf3 BatchExportDestinationConfigComposedOneOf3 { get; set; }
 #endif
-        /// <summary>Azure Blob Storage container name.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContainerName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf4? BatchExportDestinationConfigComposedOneOf4 { get; set; }
 #nullable restore
 #else
-        public string ContainerName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf4 BatchExportDestinationConfigComposedOneOf4 { get; set; }
 #endif
-        /// <summary>S3 staging configuration, required when mode is &apos;COPY&apos;.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf5"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs? CopyInputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf5? BatchExportDestinationConfigComposedOneOf5 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs CopyInputs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf5 BatchExportDestinationConfigComposedOneOf5 { get; set; }
 #endif
-        /// <summary>PostgreSQL database name to connect to.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf6"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Database { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf6? BatchExportDestinationConfigComposedOneOf6 { get; set; }
 #nullable restore
 #else
-        public string Database { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf6 BatchExportDestinationConfigComposedOneOf6 { get; set; }
 #endif
-        /// <summary>BigQuery dataset ID to write to.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf7"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DatasetId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf7? BatchExportDestinationConfigComposedOneOf7 { get; set; }
 #nullable restore
 #else
-        public string DatasetId { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf7 BatchExportDestinationConfigComposedOneOf7 { get; set; }
 #endif
-        /// <summary>Optional S3 server-side encryption algorithm (e.g. &apos;AES256&apos; or &apos;aws:kms&apos;).</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf8"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Encryption { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf8? BatchExportDestinationConfigComposedOneOf8 { get; set; }
 #nullable restore
 #else
-        public string Encryption { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf8 BatchExportDestinationConfigComposedOneOf8 { get; set; }
 #endif
-        /// <summary>* `Parquet` - Parquet* `JSONLines` - JSONLines</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat? FileFormat { get; set; }
-        /// <summary>Legacy SSL option for direct credential configuration. Ignored when using a PostgreSQL integration.</summary>
-        public bool? HasSelfSignedCert { get; set; }
-        /// <summary>Redshift cluster or Serverless workgroup endpoint. Required when using an AWS Redshift integration; plain Redshift integrations store the host themselves.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Host { get; set; }
-#nullable restore
-#else
-        public string Host { get; set; }
-#endif
-        /// <summary>Databricks SQL warehouse HTTP path.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? HttpPath { get; set; }
-#nullable restore
-#else
-        public string HttpPath { get; set; }
-#endif
-        /// <summary>KMS key ID to use when encryption is &apos;aws:kms&apos;.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? KmsKeyId { get; set; }
-#nullable restore
-#else
-        public string KmsKeyId { get; set; }
-#endif
-        /// <summary>Whether Parquet files keep the compression codec in their extension, for example &apos;.parquet.zst&apos; rather than &apos;.parquet&apos;. Parquet records its codec inside the file, so new exports leave it out. An export that already wrote Parquet files before this setting existed keeps it, so that pipelines matching on the old names do not break. Has no effect on JSON Lines, which always carries the codec in its extension.</summary>
-        public bool? LegacyParquetExtension { get; set; }
-        /// <summary>If set, rolls to a new file once the current file exceeds this size in MB.</summary>
-        public int? MaxFileSizeMb { get; set; }
-        /// <summary>* `INSERT` - INSERT* `COPY` - COPY</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode? Mode { get; set; }
-        /// <summary>Port the Redshift server listens on.</summary>
-        public int? Port { get; set; }
-        /// <summary>Object key prefix applied to every exported file.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Prefix { get; set; }
-#nullable restore
-#else
-        public string Prefix { get; set; }
-#endif
-        /// <summary>* `varchar` - varchar* `super` - super</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigPropertiesDataType? PropertiesDataType { get; set; }
-        /// <summary>Region the bucket is in (e.g. &apos;us-east-1&apos;).</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Region { get; set; }
-#nullable restore
-#else
-        public string Region { get; set; }
-#endif
-        /// <summary>Optional Snowflake role to assume for the session.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Role { get; set; }
-#nullable restore
-#else
-        public string Role { get; set; }
-#endif
-        /// <summary>Schema (database) name inside the catalog.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Schema { get; set; }
-#nullable restore
-#else
-        public string Schema { get; set; }
-#endif
-        /// <summary>BigQuery table ID inside the dataset.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TableId { get; set; }
-#nullable restore
-#else
-        public string TableId { get; set; }
-#endif
-        /// <summary>Destination table name.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? TableName { get; set; }
-#nullable restore
-#else
-        public string TableName { get; set; }
-#endif
-        /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
-        /// <summary>Whether to let Databricks evolve the destination table schema automatically.</summary>
-        public bool? UseAutomaticSchemaEvolution { get; set; }
-        /// <summary>Whether to export &apos;properties&apos;, &apos;set&apos;, and &apos;set_once&apos; fields as the BigQuery JSON type rather than STRING. Cannot be changed after the export is created.</summary>
-        public bool? UseJsonType { get; set; }
-        /// <summary>Whether to use the Databricks VARIANT type for JSON-like columns.</summary>
-        public bool? UseVariantType { get; set; }
-        /// <summary>Use virtual-hosted-style addressing rather than path-style.</summary>
-        public bool? UseVirtualStyleAddressing { get; set; }
-        /// <summary>Snowflake compute warehouse to use.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Warehouse { get; set; }
-#nullable restore
-#else
-        public string Warehouse { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposed"/> and sets the default values.
-        /// </summary>
-        public BatchExportDestinationConfigComposed()
-        {
-            AdditionalData = new Dictionary<string, object>();
-            HasSelfSignedCert = false;
-            Port = 5439;
-            TableId = "events";
-            UseAutomaticSchemaEvolution = true;
-            UseJsonType = false;
-            UseVariantType = true;
-            UseVirtualStyleAddressing = false;
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -211,7 +90,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposed();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposed();
+            if("BatchExportDestinationConfigComposedOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportDestinationConfigComposedOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportDestinationConfigComposedOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportDestinationConfigComposedOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportDestinationConfigComposedOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportDestinationConfigComposedOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportDestinationConfigComposedOneOf7".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportDestinationConfigComposedOneOf8".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("catalog") != null && parseNode.GetChildNode("http_path") != null && parseNode.GetChildNode("schema") != null && parseNode.GetChildNode("table_name") != null && parseNode.GetChildNode("type") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("container_name") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("file_format") == null || (parseNode.GetChildNode("file_format")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("Parquet".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal) || "JSONLines".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("dataset_id") != null && parseNode.GetChildNode("type") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("database") != null && parseNode.GetChildNode("type") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("bucket_name") != null && parseNode.GetChildNode("prefix") != null && parseNode.GetChildNode("region") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("file_format") == null || (parseNode.GetChildNode("file_format")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag4 && ("Parquet".Equals(optionalTag4.GetValue(), global::System.StringComparison.Ordinal) || "JSONLines".Equals(optionalTag4.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("bucket_name") != null && parseNode.GetChildNode("prefix") != null && parseNode.GetChildNode("region") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("file_format") == null || (parseNode.GetChildNode("file_format")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag4 && ("Parquet".Equals(optionalTag4.GetValue(), global::System.StringComparison.Ordinal) || "JSONLines".Equals(optionalTag4.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch6 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("database") != null && parseNode.GetChildNode("schema") != null && parseNode.GetChildNode("warehouse") != null && parseNode.GetChildNode("type") != null))();
+            bool matchesUnionBranch7 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("database") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("properties_data_type") == null || (parseNode.GetChildNode("properties_data_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("varchar".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal) || "super".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("mode") == null || (parseNode.GetChildNode("mode")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag3 && ("INSERT".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal) || "COPY".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal))))))();
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportDestinationConfigComposedOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf1(), parseNode);
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportDestinationConfigComposedOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf2(), parseNode);
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportDestinationConfigComposedOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf3(), parseNode);
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportDestinationConfigComposedOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf4(), parseNode);
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportDestinationConfigComposedOneOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf5(), parseNode);
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportDestinationConfigComposedOneOf6 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf6(), parseNode);
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null && matchesUnionBranch6 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch7) result.BatchExportDestinationConfigComposedOneOf7 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf7(), parseNode);
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null && matchesUnionBranch7 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6) result.BatchExportDestinationConfigComposedOneOf8 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf8(), parseNode);
+            if (result.BatchExportDestinationConfigComposedOneOf1 == null && result.BatchExportDestinationConfigComposedOneOf2 == null && result.BatchExportDestinationConfigComposedOneOf3 == null && result.BatchExportDestinationConfigComposedOneOf4 == null && result.BatchExportDestinationConfigComposedOneOf5 == null && result.BatchExportDestinationConfigComposedOneOf6 == null && result.BatchExportDestinationConfigComposedOneOf7 == null && result.BatchExportDestinationConfigComposedOneOf8 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -219,39 +151,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(BatchExportDestinationConfigComposedOneOf1 != null)
             {
-                { "bucket_name", n => { BucketName = n.GetStringValue(); } },
-                { "catalog", n => { Catalog = n.GetStringValue(); } },
-                { "compression", n => { Compression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression>(global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression.CreateFromDiscriminatorValue); } },
-                { "container_name", n => { ContainerName = n.GetStringValue(); } },
-                { "copy_inputs", n => { CopyInputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs>(global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs.CreateFromDiscriminatorValue); } },
-                { "database", n => { Database = n.GetStringValue(); } },
-                { "dataset_id", n => { DatasetId = n.GetStringValue(); } },
-                { "encryption", n => { Encryption = n.GetStringValue(); } },
-                { "file_format", n => { FileFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat>(); } },
-                { "has_self_signed_cert", n => { HasSelfSignedCert = n.GetBoolValue(); } },
-                { "host", n => { Host = n.GetStringValue(); } },
-                { "http_path", n => { HttpPath = n.GetStringValue(); } },
-                { "kms_key_id", n => { KmsKeyId = n.GetStringValue(); } },
-                { "legacy_parquet_extension", n => { LegacyParquetExtension = n.GetBoolValue(); } },
-                { "max_file_size_mb", n => { MaxFileSizeMb = n.GetIntValue(); } },
-                { "mode", n => { Mode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode>(); } },
-                { "port", n => { Port = n.GetIntValue(); } },
-                { "prefix", n => { Prefix = n.GetStringValue(); } },
-                { "properties_data_type", n => { PropertiesDataType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigPropertiesDataType>(); } },
-                { "region", n => { Region = n.GetStringValue(); } },
-                { "role", n => { Role = n.GetStringValue(); } },
-                { "schema", n => { Schema = n.GetStringValue(); } },
-                { "table_id", n => { TableId = n.GetStringValue(); } },
-                { "table_name", n => { TableName = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-                { "use_automatic_schema_evolution", n => { UseAutomaticSchemaEvolution = n.GetBoolValue(); } },
-                { "use_json_type", n => { UseJsonType = n.GetBoolValue(); } },
-                { "use_variant_type", n => { UseVariantType = n.GetBoolValue(); } },
-                { "use_virtual_style_addressing", n => { UseVirtualStyleAddressing = n.GetBoolValue(); } },
-                { "warehouse", n => { Warehouse = n.GetStringValue(); } },
-            };
+                return BatchExportDestinationConfigComposedOneOf1.GetFieldDeserializers();
+            }
+            else if(BatchExportDestinationConfigComposedOneOf2 != null)
+            {
+                return BatchExportDestinationConfigComposedOneOf2.GetFieldDeserializers();
+            }
+            else if(BatchExportDestinationConfigComposedOneOf3 != null)
+            {
+                return BatchExportDestinationConfigComposedOneOf3.GetFieldDeserializers();
+            }
+            else if(BatchExportDestinationConfigComposedOneOf4 != null)
+            {
+                return BatchExportDestinationConfigComposedOneOf4.GetFieldDeserializers();
+            }
+            else if(BatchExportDestinationConfigComposedOneOf5 != null)
+            {
+                return BatchExportDestinationConfigComposedOneOf5.GetFieldDeserializers();
+            }
+            else if(BatchExportDestinationConfigComposedOneOf6 != null)
+            {
+                return BatchExportDestinationConfigComposedOneOf6.GetFieldDeserializers();
+            }
+            else if(BatchExportDestinationConfigComposedOneOf7 != null)
+            {
+                return BatchExportDestinationConfigComposedOneOf7.GetFieldDeserializers();
+            }
+            else if(BatchExportDestinationConfigComposedOneOf8 != null)
+            {
+                return BatchExportDestinationConfigComposedOneOf8.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -259,38 +191,58 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (BatchExportDestinationConfigComposedOneOf1 == null && BatchExportDestinationConfigComposedOneOf2 == null && BatchExportDestinationConfigComposedOneOf3 == null && BatchExportDestinationConfigComposedOneOf4 == null && BatchExportDestinationConfigComposedOneOf5 == null && BatchExportDestinationConfigComposedOneOf6 == null && BatchExportDestinationConfigComposedOneOf7 == null && BatchExportDestinationConfigComposedOneOf8 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (BatchExportDestinationConfigComposedOneOf1 != null && BatchExportDestinationConfigComposedOneOf2 == null && BatchExportDestinationConfigComposedOneOf3 == null && BatchExportDestinationConfigComposedOneOf4 == null && BatchExportDestinationConfigComposedOneOf5 == null && BatchExportDestinationConfigComposedOneOf6 == null && BatchExportDestinationConfigComposedOneOf7 == null && BatchExportDestinationConfigComposedOneOf8 == null) { if (BatchExportDestinationConfigComposedOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportDestinationConfigComposedOneOf1); return; }
+            if (BatchExportDestinationConfigComposedOneOf2 != null && BatchExportDestinationConfigComposedOneOf1 == null && BatchExportDestinationConfigComposedOneOf3 == null && BatchExportDestinationConfigComposedOneOf4 == null && BatchExportDestinationConfigComposedOneOf5 == null && BatchExportDestinationConfigComposedOneOf6 == null && BatchExportDestinationConfigComposedOneOf7 == null && BatchExportDestinationConfigComposedOneOf8 == null) { if (BatchExportDestinationConfigComposedOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportDestinationConfigComposedOneOf2); return; }
+            if (BatchExportDestinationConfigComposedOneOf3 != null && BatchExportDestinationConfigComposedOneOf1 == null && BatchExportDestinationConfigComposedOneOf2 == null && BatchExportDestinationConfigComposedOneOf4 == null && BatchExportDestinationConfigComposedOneOf5 == null && BatchExportDestinationConfigComposedOneOf6 == null && BatchExportDestinationConfigComposedOneOf7 == null && BatchExportDestinationConfigComposedOneOf8 == null) { if (BatchExportDestinationConfigComposedOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportDestinationConfigComposedOneOf3); return; }
+            if (BatchExportDestinationConfigComposedOneOf4 != null && BatchExportDestinationConfigComposedOneOf1 == null && BatchExportDestinationConfigComposedOneOf2 == null && BatchExportDestinationConfigComposedOneOf3 == null && BatchExportDestinationConfigComposedOneOf5 == null && BatchExportDestinationConfigComposedOneOf6 == null && BatchExportDestinationConfigComposedOneOf7 == null && BatchExportDestinationConfigComposedOneOf8 == null) { if (BatchExportDestinationConfigComposedOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportDestinationConfigComposedOneOf4); return; }
+            if (BatchExportDestinationConfigComposedOneOf5 != null && BatchExportDestinationConfigComposedOneOf1 == null && BatchExportDestinationConfigComposedOneOf2 == null && BatchExportDestinationConfigComposedOneOf3 == null && BatchExportDestinationConfigComposedOneOf4 == null && BatchExportDestinationConfigComposedOneOf6 == null && BatchExportDestinationConfigComposedOneOf7 == null && BatchExportDestinationConfigComposedOneOf8 == null) { if (BatchExportDestinationConfigComposedOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportDestinationConfigComposedOneOf5); return; }
+            if (BatchExportDestinationConfigComposedOneOf6 != null && BatchExportDestinationConfigComposedOneOf1 == null && BatchExportDestinationConfigComposedOneOf2 == null && BatchExportDestinationConfigComposedOneOf3 == null && BatchExportDestinationConfigComposedOneOf4 == null && BatchExportDestinationConfigComposedOneOf5 == null && BatchExportDestinationConfigComposedOneOf7 == null && BatchExportDestinationConfigComposedOneOf8 == null) { if (BatchExportDestinationConfigComposedOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportDestinationConfigComposedOneOf6); return; }
+            if (BatchExportDestinationConfigComposedOneOf7 != null && BatchExportDestinationConfigComposedOneOf1 == null && BatchExportDestinationConfigComposedOneOf2 == null && BatchExportDestinationConfigComposedOneOf3 == null && BatchExportDestinationConfigComposedOneOf4 == null && BatchExportDestinationConfigComposedOneOf5 == null && BatchExportDestinationConfigComposedOneOf6 == null && BatchExportDestinationConfigComposedOneOf8 == null) { if (BatchExportDestinationConfigComposedOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportDestinationConfigComposedOneOf7); return; }
+            if (BatchExportDestinationConfigComposedOneOf8 != null && BatchExportDestinationConfigComposedOneOf1 == null && BatchExportDestinationConfigComposedOneOf2 == null && BatchExportDestinationConfigComposedOneOf3 == null && BatchExportDestinationConfigComposedOneOf4 == null && BatchExportDestinationConfigComposedOneOf5 == null && BatchExportDestinationConfigComposedOneOf6 == null && BatchExportDestinationConfigComposedOneOf7 == null) { if (BatchExportDestinationConfigComposedOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportDestinationConfigComposedOneOf8); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("bucket_name", BucketName);
-            writer.WriteStringValue("catalog", Catalog);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression>("compression", Compression);
-            writer.WriteStringValue("container_name", ContainerName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigCopyInputs>("copy_inputs", CopyInputs);
-            writer.WriteStringValue("database", Database);
-            writer.WriteStringValue("dataset_id", DatasetId);
-            writer.WriteStringValue("encryption", Encryption);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat>("file_format", FileFormat);
-            writer.WriteBoolValue("has_self_signed_cert", HasSelfSignedCert);
-            writer.WriteStringValue("host", Host);
-            writer.WriteStringValue("http_path", HttpPath);
-            writer.WriteStringValue("kms_key_id", KmsKeyId);
-            writer.WriteBoolValue("legacy_parquet_extension", LegacyParquetExtension);
-            writer.WriteIntValue("max_file_size_mb", MaxFileSizeMb);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigMode>("mode", Mode);
-            writer.WriteIntValue("port", Port);
-            writer.WriteStringValue("prefix", Prefix);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RedshiftDestinationConfigPropertiesDataType>("properties_data_type", PropertiesDataType);
-            writer.WriteStringValue("region", Region);
-            writer.WriteStringValue("role", Role);
-            writer.WriteStringValue("schema", Schema);
-            writer.WriteStringValue("table_id", TableId);
-            writer.WriteStringValue("table_name", TableName);
-            writer.WriteStringValue("type", Type);
-            writer.WriteBoolValue("use_automatic_schema_evolution", UseAutomaticSchemaEvolution);
-            writer.WriteBoolValue("use_json_type", UseJsonType);
-            writer.WriteBoolValue("use_variant_type", UseVariantType);
-            writer.WriteBoolValue("use_virtual_style_addressing", UseVirtualStyleAddressing);
-            writer.WriteStringValue("warehouse", Warehouse);
-            writer.WriteAdditionalData(AdditionalData);
+            if(BatchExportDestinationConfigComposedOneOf1 != null)
+            {
+                if (BatchExportDestinationConfigComposedOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf1>(null, BatchExportDestinationConfigComposedOneOf1);
+            }
+            else if(BatchExportDestinationConfigComposedOneOf2 != null)
+            {
+                if (BatchExportDestinationConfigComposedOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf2>(null, BatchExportDestinationConfigComposedOneOf2);
+            }
+            else if(BatchExportDestinationConfigComposedOneOf3 != null)
+            {
+                if (BatchExportDestinationConfigComposedOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf3>(null, BatchExportDestinationConfigComposedOneOf3);
+            }
+            else if(BatchExportDestinationConfigComposedOneOf4 != null)
+            {
+                if (BatchExportDestinationConfigComposedOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf4>(null, BatchExportDestinationConfigComposedOneOf4);
+            }
+            else if(BatchExportDestinationConfigComposedOneOf5 != null)
+            {
+                if (BatchExportDestinationConfigComposedOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf5>(null, BatchExportDestinationConfigComposedOneOf5);
+            }
+            else if(BatchExportDestinationConfigComposedOneOf6 != null)
+            {
+                if (BatchExportDestinationConfigComposedOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf6>(null, BatchExportDestinationConfigComposedOneOf6);
+            }
+            else if(BatchExportDestinationConfigComposedOneOf7 != null)
+            {
+                if (BatchExportDestinationConfigComposedOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf7>(null, BatchExportDestinationConfigComposedOneOf7);
+            }
+            else if(BatchExportDestinationConfigComposedOneOf8 != null)
+            {
+                if (BatchExportDestinationConfigComposedOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportDestinationConfigComposedOneOf8>(null, BatchExportDestinationConfigComposedOneOf8);
+            }
         }
     }
 }

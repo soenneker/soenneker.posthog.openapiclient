@@ -11,103 +11,171 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FunnelsFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("annotationsScope") is { } nullNodeAnnotationsScope && nullNodeAnnotationsScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnnotationsScope = null;
+            if (parseNode.GetChildNode("binCount") is { } nullNodeBinCount && nullNodeBinCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BinCount = null;
+            if (parseNode.GetChildNode("breakdownAttributionType") is { } nullNodeBreakdownAttributionType && nullNodeBreakdownAttributionType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownAttributionType = null;
+            if (parseNode.GetChildNode("breakdownAttributionValue") is { } nullNodeBreakdownAttributionValue && nullNodeBreakdownAttributionValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownAttributionValue = null;
+            if (parseNode.GetChildNode("breakdownSorting") is { } nullNodeBreakdownSorting && nullNodeBreakdownSorting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownSorting = null;
+            if (parseNode.GetChildNode("chartStyle") is { } nullNodeChartStyle && nullNodeChartStyle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChartStyle = null;
+            if (parseNode.GetChildNode("customAggregationTarget") is { } nullNodeCustomAggregationTarget && nullNodeCustomAggregationTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomAggregationTarget = null;
+            if (parseNode.GetChildNode("exclusions") is { } nullNodeExclusions && nullNodeExclusions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Exclusions = null;
+            if (parseNode.GetChildNode("funnelAggregateByHogQL") is { } nullNodeFunnelAggregateByHogQL && nullNodeFunnelAggregateByHogQL.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelAggregateByHogQL = null;
+            if (parseNode.GetChildNode("funnelFromStep") is { } nullNodeFunnelFromStep && nullNodeFunnelFromStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelFromStep = null;
+            if (parseNode.GetChildNode("funnelOrderType") is { } nullNodeFunnelOrderType && nullNodeFunnelOrderType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelOrderType = null;
+            if (parseNode.GetChildNode("funnelStepReference") is { } nullNodeFunnelStepReference && nullNodeFunnelStepReference.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelStepReference = null;
+            if (parseNode.GetChildNode("funnelToStep") is { } nullNodeFunnelToStep && nullNodeFunnelToStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelToStep = null;
+            if (parseNode.GetChildNode("funnelVizType") is { } nullNodeFunnelVizType && nullNodeFunnelVizType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelVizType = null;
+            if (parseNode.GetChildNode("funnelWindowInterval") is { } nullNodeFunnelWindowInterval && nullNodeFunnelWindowInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelWindowInterval = null;
+            if (parseNode.GetChildNode("funnelWindowIntervalUnit") is { } nullNodeFunnelWindowIntervalUnit && nullNodeFunnelWindowIntervalUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelWindowIntervalUnit = null;
+            if (parseNode.GetChildNode("goalLines") is { } nullNodeGoalLines && nullNodeGoalLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoalLines = null;
+            if (parseNode.GetChildNode("hiddenLegendBreakdowns") is { } nullNodeHiddenLegendBreakdowns && nullNodeHiddenLegendBreakdowns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenLegendBreakdowns = null;
+            if (parseNode.GetChildNode("hideIncompleteConversionWindowPeriods") is { } nullNodeHideIncompleteConversionWindowPeriods && nullNodeHideIncompleteConversionWindowPeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideIncompleteConversionWindowPeriods = null;
+            if (parseNode.GetChildNode("layout") is { } nullNodeLayout && nullNodeLayout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Layout = null;
+            if (parseNode.GetChildNode("legendPosition") is { } nullNodeLegendPosition && nullNodeLegendPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegendPosition = null;
+            if (parseNode.GetChildNode("resultCustomizations") is { } nullNodeResultCustomizations && nullNodeResultCustomizations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultCustomizations = null;
+            if (parseNode.GetChildNode("showAnnotations") is { } nullNodeShowAnnotations && nullNodeShowAnnotations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowAnnotations = null;
+            if (parseNode.GetChildNode("showLegend") is { } nullNodeShowLegend && nullNodeShowLegend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLegend = null;
+            if (parseNode.GetChildNode("showTrendLines") is { } nullNodeShowTrendLines && nullNodeShowTrendLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTrendLines = null;
+            if (parseNode.GetChildNode("showValuesOnSeries") is { } nullNodeShowValuesOnSeries && nullNodeShowValuesOnSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowValuesOnSeries = null;
+            if (parseNode.GetChildNode("useUdf") is { } nullNodeUseUdf && nullNodeUseUdf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseUdf = null;
+        }
+
         /// <summary>Render only annotations with this scope. Only applies to historical-trends funnels.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? AnnotationsScope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? AnnotationsScope { get => _explicitNullValueAnnotationsScope; set { _explicitNullValueAnnotationsScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("annotationsScope"); else _explicitNullProperties?.Remove("annotationsScope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? _explicitNullValueAnnotationsScope = default!;
         /// <summary>The binCount property</summary>
-        public int? BinCount { get; set; }
+        public int? BinCount { get => _explicitNullValueBinCount; set { _explicitNullValueBinCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binCount"); else _explicitNullProperties?.Remove("binCount"); } }
+        private int? _explicitNullValueBinCount = default!;
         /// <summary>The breakdownAttributionType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionType? BreakdownAttributionType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionType? BreakdownAttributionType { get => _explicitNullValueBreakdownAttributionType; set { _explicitNullValueBreakdownAttributionType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownAttributionType"); else _explicitNullProperties?.Remove("breakdownAttributionType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownAttributionType? _explicitNullValueBreakdownAttributionType = default!;
         /// <summary>The breakdownAttributionValue property</summary>
-        public int? BreakdownAttributionValue { get; set; }
+        public int? BreakdownAttributionValue { get => _explicitNullValueBreakdownAttributionValue; set { _explicitNullValueBreakdownAttributionValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownAttributionValue"); else _explicitNullProperties?.Remove("breakdownAttributionValue"); } }
+        private int? _explicitNullValueBreakdownAttributionValue = default!;
         /// <summary>Breakdown table sorting. Format: &apos;column_key&apos; or &apos;-column_key&apos; (descending)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownSorting { get; set; }
+        public string? BreakdownSorting { get => _explicitNullValueBreakdownSorting; set { _explicitNullValueBreakdownSorting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownSorting"); else _explicitNullProperties?.Remove("breakdownSorting"); } }
+        private string? _explicitNullValueBreakdownSorting = default!;
 #nullable restore
 #else
-        public string BreakdownSorting { get; set; }
+        public string BreakdownSorting { get => _explicitNullValueBreakdownSorting; set { _explicitNullValueBreakdownSorting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownSorting"); else _explicitNullProperties?.Remove("breakdownSorting"); } }
+        private string _explicitNullValueBreakdownSorting = default!;
 #endif
         /// <summary>Chart rendering style overrides (line shape). Only applies to historical-trends funnels.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? _explicitNullValueChartStyle = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle _explicitNullValueChartStyle = default!;
 #endif
         /// <summary>For data warehouse based funnel insights when the aggregation target can&apos;t be mapped to persons or groups.</summary>
-        public bool? CustomAggregationTarget { get; set; }
+        public bool? CustomAggregationTarget { get => _explicitNullValueCustomAggregationTarget; set { _explicitNullValueCustomAggregationTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customAggregationTarget"); else _explicitNullProperties?.Remove("customAggregationTarget"); } }
+        private bool? _explicitNullValueCustomAggregationTarget = default!;
         /// <summary>The exclusions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem>? Exclusions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem>? Exclusions { get => _explicitNullValueExclusions; set { _explicitNullValueExclusions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusions"); else _explicitNullProperties?.Remove("exclusions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem>? _explicitNullValueExclusions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem> Exclusions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem> Exclusions { get => _explicitNullValueExclusions; set { _explicitNullValueExclusions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusions"); else _explicitNullProperties?.Remove("exclusions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem> _explicitNullValueExclusions = default!;
 #endif
         /// <summary>The funnelAggregateByHogQL property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FunnelAggregateByHogQL { get; set; }
+        public string? FunnelAggregateByHogQL { get => _explicitNullValueFunnelAggregateByHogQL; set { _explicitNullValueFunnelAggregateByHogQL = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelAggregateByHogQL"); else _explicitNullProperties?.Remove("funnelAggregateByHogQL"); } }
+        private string? _explicitNullValueFunnelAggregateByHogQL = default!;
 #nullable restore
 #else
-        public string FunnelAggregateByHogQL { get; set; }
+        public string FunnelAggregateByHogQL { get => _explicitNullValueFunnelAggregateByHogQL; set { _explicitNullValueFunnelAggregateByHogQL = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelAggregateByHogQL"); else _explicitNullProperties?.Remove("funnelAggregateByHogQL"); } }
+        private string _explicitNullValueFunnelAggregateByHogQL = default!;
 #endif
         /// <summary>The funnelFromStep property</summary>
-        public int? FunnelFromStep { get; set; }
+        public int? FunnelFromStep { get => _explicitNullValueFunnelFromStep; set { _explicitNullValueFunnelFromStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelFromStep"); else _explicitNullProperties?.Remove("funnelFromStep"); } }
+        private int? _explicitNullValueFunnelFromStep = default!;
         /// <summary>The funnelOrderType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue? FunnelOrderType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue? FunnelOrderType { get => _explicitNullValueFunnelOrderType; set { _explicitNullValueFunnelOrderType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelOrderType"); else _explicitNullProperties?.Remove("funnelOrderType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue? _explicitNullValueFunnelOrderType = default!;
         /// <summary>The funnelStepReference property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReference? FunnelStepReference { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReference? FunnelStepReference { get => _explicitNullValueFunnelStepReference; set { _explicitNullValueFunnelStepReference = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelStepReference"); else _explicitNullProperties?.Remove("funnelStepReference"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelStepReference? _explicitNullValueFunnelStepReference = default!;
         /// <summary>To select the range of steps for trends &amp; time to convert funnels, 0-indexed</summary>
-        public int? FunnelToStep { get; set; }
+        public int? FunnelToStep { get => _explicitNullValueFunnelToStep; set { _explicitNullValueFunnelToStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelToStep"); else _explicitNullProperties?.Remove("funnelToStep"); } }
+        private int? _explicitNullValueFunnelToStep = default!;
         /// <summary>The funnelVizType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizType? FunnelVizType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizType? FunnelVizType { get => _explicitNullValueFunnelVizType; set { _explicitNullValueFunnelVizType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelVizType"); else _explicitNullProperties?.Remove("funnelVizType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelVizType? _explicitNullValueFunnelVizType = default!;
         /// <summary>The funnelWindowInterval property</summary>
-        public int? FunnelWindowInterval { get; set; }
+        public int? FunnelWindowInterval { get => _explicitNullValueFunnelWindowInterval; set { _explicitNullValueFunnelWindowInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelWindowInterval"); else _explicitNullProperties?.Remove("funnelWindowInterval"); } }
+        private int? _explicitNullValueFunnelWindowInterval = default!;
         /// <summary>The funnelWindowIntervalUnit property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? FunnelWindowIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? FunnelWindowIntervalUnit { get => _explicitNullValueFunnelWindowIntervalUnit; set { _explicitNullValueFunnelWindowIntervalUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelWindowIntervalUnit"); else _explicitNullProperties?.Remove("funnelWindowIntervalUnit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? _explicitNullValueFunnelWindowIntervalUnit = default!;
         /// <summary>Goal Lines</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get => _explicitNullValueGoalLines; set { _explicitNullValueGoalLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goalLines"); else _explicitNullProperties?.Remove("goalLines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? _explicitNullValueGoalLines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get => _explicitNullValueGoalLines; set { _explicitNullValueGoalLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goalLines"); else _explicitNullProperties?.Remove("goalLines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> _explicitNullValueGoalLines = default!;
 #endif
         /// <summary>The hiddenLegendBreakdowns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? HiddenLegendBreakdowns { get; set; }
+        public List<string>? HiddenLegendBreakdowns { get => _explicitNullValueHiddenLegendBreakdowns; set { _explicitNullValueHiddenLegendBreakdowns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hiddenLegendBreakdowns"); else _explicitNullProperties?.Remove("hiddenLegendBreakdowns"); } }
+        private List<string>? _explicitNullValueHiddenLegendBreakdowns = default!;
 #nullable restore
 #else
-        public List<string> HiddenLegendBreakdowns { get; set; }
+        public List<string> HiddenLegendBreakdowns { get => _explicitNullValueHiddenLegendBreakdowns; set { _explicitNullValueHiddenLegendBreakdowns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hiddenLegendBreakdowns"); else _explicitNullProperties?.Remove("hiddenLegendBreakdowns"); } }
+        private List<string> _explicitNullValueHiddenLegendBreakdowns = default!;
 #endif
         /// <summary>Trends only: hide periods whose conversion window has not fully elapsed yet, so the recent tail of the trend isn&apos;t dragged down by entrants who still have time to convert.</summary>
-        public bool? HideIncompleteConversionWindowPeriods { get; set; }
+        public bool? HideIncompleteConversionWindowPeriods { get => _explicitNullValueHideIncompleteConversionWindowPeriods; set { _explicitNullValueHideIncompleteConversionWindowPeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hideIncompleteConversionWindowPeriods"); else _explicitNullProperties?.Remove("hideIncompleteConversionWindowPeriods"); } }
+        private bool? _explicitNullValueHideIncompleteConversionWindowPeriods = default!;
         /// <summary>The layout property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout? Layout { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout? Layout { get => _explicitNullValueLayout; set { _explicitNullValueLayout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout"); else _explicitNullProperties?.Remove("layout"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelLayout? _explicitNullValueLayout = default!;
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get => _explicitNullValueLegendPosition; set { _explicitNullValueLegendPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legendPosition"); else _explicitNullProperties?.Remove("legendPosition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? _explicitNullValueLegendPosition = default!;
         /// <summary>Customizations for the appearance of result datasets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty? ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty? ResultCustomizations { get => _explicitNullValueResultCustomizations; set { _explicitNullValueResultCustomizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resultCustomizations"); else _explicitNullProperties?.Remove("resultCustomizations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty? _explicitNullValueResultCustomizations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty ResultCustomizations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty ResultCustomizations { get => _explicitNullValueResultCustomizations; set { _explicitNullValueResultCustomizations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resultCustomizations"); else _explicitNullProperties?.Remove("resultCustomizations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterResultCustomizationsProperty _explicitNullValueResultCustomizations = default!;
 #endif
         /// <summary>Whether to render annotations on the chart. Only applies to historical-trends funnels.</summary>
-        public bool? ShowAnnotations { get; set; }
+        public bool? ShowAnnotations { get => _explicitNullValueShowAnnotations; set { _explicitNullValueShowAnnotations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showAnnotations"); else _explicitNullProperties?.Remove("showAnnotations"); } }
+        private bool? _explicitNullValueShowAnnotations = default!;
         /// <summary>Whether to show a legend describing the series. The legend only renders when the funnel has multiple series. Only applies to historical-trends funnels.</summary>
-        public bool? ShowLegend { get; set; }
+        public bool? ShowLegend { get => _explicitNullValueShowLegend; set { _explicitNullValueShowLegend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLegend"); else _explicitNullProperties?.Remove("showLegend"); } }
+        private bool? _explicitNullValueShowLegend = default!;
         /// <summary>Display linear regression trend lines on the chart (only for historical trends viz)</summary>
-        public bool? ShowTrendLines { get; set; }
+        public bool? ShowTrendLines { get => _explicitNullValueShowTrendLines; set { _explicitNullValueShowTrendLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTrendLines"); else _explicitNullProperties?.Remove("showTrendLines"); } }
+        private bool? _explicitNullValueShowTrendLines = default!;
         /// <summary>The showValuesOnSeries property</summary>
-        public bool? ShowValuesOnSeries { get; set; }
+        public bool? ShowValuesOnSeries { get => _explicitNullValueShowValuesOnSeries; set { _explicitNullValueShowValuesOnSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showValuesOnSeries"); else _explicitNullProperties?.Remove("showValuesOnSeries"); } }
+        private bool? _explicitNullValueShowValuesOnSeries = default!;
         /// <summary>The useUdf property</summary>
-        public bool? UseUdf { get; set; }
+        public bool? UseUdf { get => _explicitNullValueUseUdf; set { _explicitNullValueUseUdf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("useUdf"); else _explicitNullProperties?.Remove("useUdf"); } }
+        private bool? _explicitNullValueUseUdf = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter"/> and sets the default values.
         /// </summary>
@@ -127,7 +195,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -199,7 +267,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showLegend", ShowLegend);
             writer.WriteBoolValue("showTrendLines", ShowTrendLines);
             writer.WriteBoolValue("showValuesOnSeries", ShowValuesOnSeries);
-            writer.WriteBoolValue("useUdf", UseUdf);
+            writer.WriteBoolValue("useUdf", UseUdf);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

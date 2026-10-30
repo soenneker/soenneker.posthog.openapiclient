@@ -11,52 +11,78 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EmitReportResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("emitted") is { } nullNodeEmitted && nullNodeEmitted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emitted = null;
+            if (parseNode.GetChildNode("idempotent_replay") is { } nullNodeIdempotentReplay && nullNodeIdempotentReplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdempotentReplay = null;
+            if (parseNode.GetChildNode("remediation") is { } nullNodeRemediation && nullNodeRemediation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Remediation = null;
+            if (parseNode.GetChildNode("report_id") is { } nullNodeReportId && nullNodeReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportId = null;
+            if (parseNode.GetChildNode("report_status") is { } nullNodeReportStatus && nullNodeReportStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportStatus = null;
+            if (parseNode.GetChildNode("safety_explanation") is { } nullNodeSafetyExplanation && nullNodeSafetyExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SafetyExplanation = null;
+            if (parseNode.GetChildNode("skipped_reason") is { } nullNodeSkippedReason && nullNodeSkippedReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkippedReason = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True when the report actually surfaced in the inbox (READY or PENDING_INPUT).</summary>
-        public bool? Emitted { get; set; }
+        public bool? Emitted { get => _explicitNullValueEmitted; set { _explicitNullValueEmitted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emitted"); else _explicitNullProperties?.Remove("emitted"); } }
+        private bool? _explicitNullValueEmitted = default!;
         /// <summary>True when this call authored nothing because the emission had already landed — the fields above describe that first report. Expected on a retry; treat the report as filed and don&apos;t send it again.</summary>
-        public bool? IdempotentReplay { get; set; }
+        public bool? IdempotentReplay { get => _explicitNullValueIdempotentReplay; set { _explicitNullValueIdempotentReplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idempotent_replay"); else _explicitNullProperties?.Remove("idempotent_replay"); } }
+        private bool? _explicitNullValueIdempotentReplay = default!;
         /// <summary>One-line, actionable next step when `skipped_reason` is set and the block is fixable (e.g. an org admin must approve AI data processing). Null when the report was authored or the skip isn&apos;t something the scout can act on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Remediation { get; set; }
+        public string? Remediation { get => _explicitNullValueRemediation; set { _explicitNullValueRemediation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remediation"); else _explicitNullProperties?.Remove("remediation"); } }
+        private string? _explicitNullValueRemediation = default!;
 #nullable restore
 #else
-        public string Remediation { get; set; }
+        public string Remediation { get => _explicitNullValueRemediation; set { _explicitNullValueRemediation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remediation"); else _explicitNullProperties?.Remove("remediation"); } }
+        private string _explicitNullValueRemediation = default!;
 #endif
         /// <summary>The authored report&apos;s id (null only when a preflight gate skipped the call). Returned even when suppressed, so you can edit/dedup against it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportId { get; set; }
+        public string? ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private string? _explicitNullValueReportId = default!;
 #nullable restore
 #else
-        public string ReportId { get; set; }
+        public string ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private string _explicitNullValueReportId = default!;
 #endif
         /// <summary>Birth status: `ready` | `pending_input` | `suppressed`, or null when gate-skipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportStatus { get; set; }
+        public string? ReportStatus { get => _explicitNullValueReportStatus; set { _explicitNullValueReportStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_status"); else _explicitNullProperties?.Remove("report_status"); } }
+        private string? _explicitNullValueReportStatus = default!;
 #nullable restore
 #else
-        public string ReportStatus { get; set; }
+        public string ReportStatus { get => _explicitNullValueReportStatus; set { _explicitNullValueReportStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_status"); else _explicitNullProperties?.Remove("report_status"); } }
+        private string _explicitNullValueReportStatus = default!;
 #endif
         /// <summary>When the safety judge suppressed the report, why; null when safe.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SafetyExplanation { get; set; }
+        public string? SafetyExplanation { get => _explicitNullValueSafetyExplanation; set { _explicitNullValueSafetyExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safety_explanation"); else _explicitNullProperties?.Remove("safety_explanation"); } }
+        private string? _explicitNullValueSafetyExplanation = default!;
 #nullable restore
 #else
-        public string SafetyExplanation { get; set; }
+        public string SafetyExplanation { get => _explicitNullValueSafetyExplanation; set { _explicitNullValueSafetyExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("safety_explanation"); else _explicitNullProperties?.Remove("safety_explanation"); } }
+        private string _explicitNullValueSafetyExplanation = default!;
 #endif
         /// <summary>`scout_config_missing` | `scout_emit_disabled` | `ai_processing_not_approved` | `source_disabled` | null when not gate-skipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SkippedReason { get; set; }
+        public string? SkippedReason { get => _explicitNullValueSkippedReason; set { _explicitNullValueSkippedReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_reason"); else _explicitNullProperties?.Remove("skipped_reason"); } }
+        private string? _explicitNullValueSkippedReason = default!;
 #nullable restore
 #else
-        public string SkippedReason { get; set; }
+        public string SkippedReason { get => _explicitNullValueSkippedReason; set { _explicitNullValueSkippedReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_reason"); else _explicitNullProperties?.Remove("skipped_reason"); } }
+        private string _explicitNullValueSkippedReason = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitReportResponse"/> and sets the default values.
@@ -73,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EmitReportResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EmitReportResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EmitReportResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("report_status", ReportStatus);
             writer.WriteStringValue("safety_explanation", SafetyExplanation);
             writer.WriteStringValue("skipped_reason", SkippedReason);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,23 +11,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TrunkQuarantineTeamDebt : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("oldest_age_days") is { } nullNodeOldestAgeDays && nullNodeOldestAgeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OldestAgeDays = null;
+            if (parseNode.GetChildNode("overdue_count") is { } nullNodeOverdueCount && nullNodeOverdueCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OverdueCount = null;
+            if (parseNode.GetChildNode("owner_team") is { } nullNodeOwnerTeam && nullNodeOwnerTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerTeam = null;
+            if (parseNode.GetChildNode("test_count") is { } nullNodeTestCount && nullNodeTestCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Age in days of the team&apos;s oldest standing quarantine.</summary>
-        public int? OldestAgeDays { get; set; }
+        public int? OldestAgeDays { get => _explicitNullValueOldestAgeDays; set { _explicitNullValueOldestAgeDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oldest_age_days"); else _explicitNullProperties?.Remove("oldest_age_days"); } }
+        private int? _explicitNullValueOldestAgeDays = default!;
         /// <summary>Of those, tests quarantined longer than ttl_days.</summary>
-        public int? OverdueCount { get; set; }
+        public int? OverdueCount { get => _explicitNullValueOverdueCount; set { _explicitNullValueOverdueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overdue_count"); else _explicitNullProperties?.Remove("overdue_count"); } }
+        private int? _explicitNullValueOverdueCount = default!;
         /// <summary>Owning team slug, or &apos;unowned&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OwnerTeam { get; set; }
+        public string? OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        private string? _explicitNullValueOwnerTeam = default!;
 #nullable restore
 #else
-        public string OwnerTeam { get; set; }
+        public string OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        private string _explicitNullValueOwnerTeam = default!;
 #endif
         /// <summary>Tests this team owns that Trunk currently quarantines.</summary>
-        public int? TestCount { get; set; }
+        public int? TestCount { get => _explicitNullValueTestCount; set { _explicitNullValueTestCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_count"); else _explicitNullProperties?.Remove("test_count"); } }
+        private int? _explicitNullValueTestCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt"/> and sets the default values.
         /// </summary>
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TrunkQuarantineTeamDebt(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("overdue_count", OverdueCount);
             writer.WriteStringValue("owner_team", OwnerTeam);
             writer.WriteIntValue("test_count", TestCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,32 +11,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentHealthInputsConditionSetTraffic : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("calls") is { } nullNodeCalls && nullNodeCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Calls = null;
+            if (parseNode.GetChildNode("people_assigned_outside") is { } nullNodePeopleAssignedOutside && nullNodePeopleAssignedOutside.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeopleAssignedOutside = null;
+            if (parseNode.GetChildNode("people_by_set") is { } nullNodePeopleBySet && nullNodePeopleBySet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeopleBySet = null;
+            if (parseNode.GetChildNode("remotely_evaluated_calls") is { } nullNodeRemotelyEvaluatedCalls && nullNodeRemotelyEvaluatedCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemotelyEvaluatedCalls = null;
+            if (parseNode.GetChildNode("since") is { } nullNodeSince && nullNodeSince.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Since = null;
+            if (parseNode.GetChildNode("team_timezone") is { } nullNodeTeamTimezone && nullNodeTeamTimezone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamTimezone = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The flag&apos;s calls in the window, of any flag version.</summary>
-        public int? Calls { get; set; }
+        public int? Calls { get => _explicitNullValueCalls; set { _explicitNullValueCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calls"); else _explicitNullProperties?.Remove("calls"); } }
+        private int? _explicitNullValueCalls = default!;
         /// <summary>The people who got a variant from a call without a flag version that is no local evaluation in a server SDK, from an hour after the start of the window: a bootstrap or the caller&apos;s own assignment. With a 0% rollout, 10 or more of them turn `running_but_no_rollout` into `assigned_outside_flag_service`.</summary>
-        public int? PeopleAssignedOutside { get; set; }
+        public int? PeopleAssignedOutside { get => _explicitNullValuePeopleAssignedOutside; set { _explicitNullValuePeopleAssignedOutside = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people_assigned_outside"); else _explicitNullProperties?.Remove("people_assigned_outside"); } }
+        private int? _explicitNullValuePeopleAssignedOutside = default!;
         /// <summary>People by the release condition that served their latest call of the flag&apos;s version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetPeople>? PeopleBySet { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetPeople>? PeopleBySet { get => _explicitNullValuePeopleBySet; set { _explicitNullValuePeopleBySet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people_by_set"); else _explicitNullProperties?.Remove("people_by_set"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetPeople>? _explicitNullValuePeopleBySet = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetPeople> PeopleBySet { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetPeople> PeopleBySet { get => _explicitNullValuePeopleBySet; set { _explicitNullValuePeopleBySet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people_by_set"); else _explicitNullProperties?.Remove("people_by_set"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetPeople> _explicitNullValuePeopleBySet = default!;
 #endif
         /// <summary>The calls that the flag service evaluated. Only those name a condition set. Local evaluation in a server SDK and a bootstrapped value name none.</summary>
-        public int? RemotelyEvaluatedCalls { get; set; }
+        public int? RemotelyEvaluatedCalls { get => _explicitNullValueRemotelyEvaluatedCalls; set { _explicitNullValueRemotelyEvaluatedCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remotely_evaluated_calls"); else _explicitNullProperties?.Remove("remotely_evaluated_calls"); } }
+        private int? _explicitNullValueRemotelyEvaluatedCalls = default!;
         /// <summary>The start of the window: the latest of launch, the flag&apos;s last save and 7 days ago.</summary>
-        public DateTimeOffset? Since { get; set; }
+        public DateTimeOffset? Since { get => _explicitNullValueSince; set { _explicitNullValueSince = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("since"); else _explicitNullProperties?.Remove("since"); } }
+        private DateTimeOffset? _explicitNullValueSince = default!;
         /// <summary>The project&apos;s time zone, which the finding uses for times.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TeamTimezone { get; set; }
+        public string? TeamTimezone { get => _explicitNullValueTeamTimezone; set { _explicitNullValueTeamTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_timezone"); else _explicitNullProperties?.Remove("team_timezone"); } }
+        private string? _explicitNullValueTeamTimezone = default!;
 #nullable restore
 #else
-        public string TeamTimezone { get; set; }
+        public string TeamTimezone { get => _explicitNullValueTeamTimezone; set { _explicitNullValueTeamTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_timezone"); else _explicitNullProperties?.Remove("team_timezone"); } }
+        private string _explicitNullValueTeamTimezone = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic"/> and sets the default values.
@@ -53,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("remotely_evaluated_calls", RemotelyEvaluatedCalls);
             writer.WriteDateTimeOffsetValue("since", Since);
             writer.WriteStringValue("team_timezone", TeamTimezone);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

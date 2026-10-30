@@ -12,17 +12,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedDataQualityCheckScheduleUpdate : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("subject_type") is { } nullNodeSubjectType && nullNodeSubjectType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectType = null;
+            if (parseNode.GetChildNode("subject_uuid") is { } nullNodeSubjectUuid && nullNodeSubjectUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectUuid = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether checks run automatically on this schedule.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval? _explicitNullValueInterval = default!;
         /// <summary>* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType? SubjectType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType? SubjectType { get => _explicitNullValueSubjectType; set { _explicitNullValueSubjectType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_type"); else _explicitNullProperties?.Remove("subject_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType? _explicitNullValueSubjectType = default!;
         /// <summary>Id of the table, view, metric, or PostHog table.</summary>
-        public Guid? SubjectUuid { get; set; }
+        public Guid? SubjectUuid { get => _explicitNullValueSubjectUuid; set { _explicitNullValueSubjectUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_uuid"); else _explicitNullProperties?.Remove("subject_uuid"); } }
+        private Guid? _explicitNullValueSubjectUuid = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdate"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateInterval>("interval", Interval);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityCheckScheduleUpdateSubjectType>("subject_type", SubjectType);
             writer.WriteGuidValue("subject_uuid", SubjectUuid);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

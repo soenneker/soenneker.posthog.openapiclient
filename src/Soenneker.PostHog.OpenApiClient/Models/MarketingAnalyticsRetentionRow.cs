@@ -11,28 +11,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MarketingAnalyticsRetentionRow : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("breakdownValue") is { } nullNodeBreakdownValue && nullNodeBreakdownValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownValue = null;
+            if (parseNode.GetChildNode("cohortDate") is { } nullNodeCohortDate && nullNodeCohortDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CohortDate = null;
+            if (parseNode.GetChildNode("cohortIndex") is { } nullNodeCohortIndex && nullNodeCohortIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CohortIndex = null;
+            if (parseNode.GetChildNode("cohortSize") is { } nullNodeCohortSize && nullNodeCohortSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CohortSize = null;
+            if (parseNode.GetChildNode("values") is { } nullNodeValues && nullNodeValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Values = null;
+        }
+
         /// <summary>The breakdownValue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownValue { get; set; }
+        public string? BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownValue"); else _explicitNullProperties?.Remove("breakdownValue"); } }
+        private string? _explicitNullValueBreakdownValue = default!;
 #nullable restore
 #else
-        public string BreakdownValue { get; set; }
+        public string BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownValue"); else _explicitNullProperties?.Remove("breakdownValue"); } }
+        private string _explicitNullValueBreakdownValue = default!;
 #endif
         /// <summary>Start of the cohort&apos;s period, in the team&apos;s timezone.</summary>
-        public DateTimeOffset? CohortDate { get; set; }
+        public DateTimeOffset? CohortDate { get => _explicitNullValueCohortDate; set { _explicitNullValueCohortDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohortDate"); else _explicitNullProperties?.Remove("cohortDate"); } }
+        private DateTimeOffset? _explicitNullValueCohortDate = default!;
         /// <summary>0-based position of this cohort from the range start.</summary>
-        public int? CohortIndex { get; set; }
+        public int? CohortIndex { get => _explicitNullValueCohortIndex; set { _explicitNullValueCohortIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohortIndex"); else _explicitNullProperties?.Remove("cohortIndex"); } }
+        private int? _explicitNullValueCohortIndex = default!;
         /// <summary>Persons acquired in this period under this breakdown value. The denominator for every cell.</summary>
-        public int? CohortSize { get; set; }
+        public int? CohortSize { get => _explicitNullValueCohortSize; set { _explicitNullValueCohortSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohortSize"); else _explicitNullProperties?.Remove("cohortSize"); } }
+        private int? _explicitNullValueCohortSize = default!;
         /// <summary>One per column, index = periods since the cohort started. Always intervalCount long.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionCell>? Values { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionCell>? Values { get => _explicitNullValueValues; set { _explicitNullValueValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values"); else _explicitNullProperties?.Remove("values"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionCell>? _explicitNullValueValues = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionCell> Values { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionCell> Values { get => _explicitNullValueValues; set { _explicitNullValueValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("values"); else _explicitNullProperties?.Remove("values"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionCell> _explicitNullValueValues = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -42,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,7 +89,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("cohortDate", CohortDate);
             writer.WriteIntValue("cohortIndex", CohortIndex);
             writer.WriteIntValue("cohortSize", CohortSize);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionCell>("values", Values);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRetentionCell>("values", Values);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

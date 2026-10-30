@@ -11,74 +11,112 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DashboardImport : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dashboard_id") is { } nullNodeDashboardId && nullNodeDashboardId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardId = null;
+            if (parseNode.GetChildNode("dashboard_name") is { } nullNodeDashboardName && nullNodeDashboardName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardName = null;
+            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("layout_round") is { } nullNodeLayoutRound && nullNodeLayoutRound.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LayoutRound = null;
+            if (parseNode.GetChildNode("layout_rounds") is { } nullNodeLayoutRounds && nullNodeLayoutRounds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LayoutRounds = null;
+            if (parseNode.GetChildNode("panel_progress") is { } nullNodePanelProgress && nullNodePanelProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PanelProgress = null;
+            if (parseNode.GetChildNode("panels") is { } nullNodePanels && nullNodePanels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Panels = null;
+            if (parseNode.GetChildNode("phase") is { } nullNodePhase && nullNodePhase.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Phase = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Id of the new dashboard, when it exists.</summary>
-        public int? DashboardId { get; set; }
+        public int? DashboardId { get => _explicitNullValueDashboardId; set { _explicitNullValueDashboardId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_id"); else _explicitNullProperties?.Remove("dashboard_id"); } }
+        private int? _explicitNullValueDashboardId = default!;
         /// <summary>Name of the new dashboard.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DashboardName { get; set; }
+        public string? DashboardName { get => _explicitNullValueDashboardName; set { _explicitNullValueDashboardName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_name"); else _explicitNullProperties?.Remove("dashboard_name"); } }
+        private string? _explicitNullValueDashboardName = default!;
 #nullable restore
 #else
-        public string DashboardName { get; set; }
+        public string DashboardName { get => _explicitNullValueDashboardName; set { _explicitNullValueDashboardName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_name"); else _explicitNullProperties?.Remove("dashboard_name"); } }
+        private string _explicitNullValueDashboardName = default!;
 #endif
         /// <summary>Why the import failed, when it failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string _explicitNullValueError = default!;
 #endif
         /// <summary>Id to poll for the status. Null when the import finished in the request, with no agent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The comparison that runs, from 1, while the phase is &apos;checking_layout&apos;.</summary>
-        public int? LayoutRound { get; set; }
+        public int? LayoutRound { get => _explicitNullValueLayoutRound; set { _explicitNullValueLayoutRound = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout_round"); else _explicitNullProperties?.Remove("layout_round"); } }
+        private int? _explicitNullValueLayoutRound = default!;
         /// <summary>How many pictures of the dashboard the import compares with the screenshot, at most. Null when the import does not check the layout.</summary>
-        public int? LayoutRounds { get; set; }
+        public int? LayoutRounds { get => _explicitNullValueLayoutRounds; set { _explicitNullValueLayoutRounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout_rounds"); else _explicitNullProperties?.Remove("layout_rounds"); } }
+        private int? _explicitNullValueLayoutRounds = default!;
         /// <summary>Where each panel is, while the import runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanelProgress>? PanelProgress { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanelProgress>? PanelProgress { get => _explicitNullValuePanelProgress; set { _explicitNullValuePanelProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("panel_progress"); else _explicitNullProperties?.Remove("panel_progress"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanelProgress>? _explicitNullValuePanelProgress = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanelProgress> PanelProgress { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanelProgress> PanelProgress { get => _explicitNullValuePanelProgress; set { _explicitNullValuePanelProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("panel_progress"); else _explicitNullProperties?.Remove("panel_progress"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanelProgress> _explicitNullValuePanelProgress = default!;
 #endif
         /// <summary>The outcome for each panel, when the import ended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanel>? Panels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanel>? Panels { get => _explicitNullValuePanels; set { _explicitNullValuePanels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("panels"); else _explicitNullProperties?.Remove("panels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanel>? _explicitNullValuePanels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanel> Panels { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanel> Panels { get => _explicitNullValuePanels; set { _explicitNullValuePanels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("panels"); else _explicitNullProperties?.Remove("panels"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPanel> _explicitNullValuePanels = default!;
 #endif
         /// <summary>The step of an import that runs: &apos;starting&apos; the agent, &apos;matching&apos; panels, &apos;building&apos; the dashboard, or &apos;checking_layout&apos; against the screenshot.* `starting` - Starting* `matching` - Matching* `building` - Building* `checking_layout` - Checking Layout</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase? Phase { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase? Phase { get => _explicitNullValuePhase; set { _explicitNullValuePhase = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase"); else _explicitNullProperties?.Remove("phase"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase? _explicitNullValuePhase = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase Phase { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase Phase { get => _explicitNullValuePhase; set { _explicitNullValuePhase = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("phase"); else _explicitNullProperties?.Remove("phase"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase _explicitNullValuePhase = default!;
 #endif
         /// <summary>* `grafana` - Grafana* `screenshot` - Screenshot</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSource? _explicitNullValueSource = default!;
         /// <summary>* `running` - Running* `completed` - Completed* `failed` - Failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportStatus? _explicitNullValueStatus = default!;
         /// <summary>Panel counts, when the import ended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary? Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary Summary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardImport"/> and sets the default values.
@@ -95,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DashboardImport CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DashboardImport();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DashboardImport(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -138,6 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSource>("source", Source);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary>("summary", Summary);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

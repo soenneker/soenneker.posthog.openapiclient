@@ -11,16 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedErrorTrackingSuppressionRuleReorderRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("orders") is { } nullNodeOrders && nullNodeOrders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Orders = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mapping from suppression rule UUID to its new evaluation order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequestOrdersProperty? Orders { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequestOrdersProperty? Orders { get => _explicitNullValueOrders; set { _explicitNullValueOrders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orders"); else _explicitNullProperties?.Remove("orders"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequestOrdersProperty? _explicitNullValueOrders = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequestOrdersProperty Orders { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequestOrdersProperty Orders { get => _explicitNullValueOrders; set { _explicitNullValueOrders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orders"); else _explicitNullProperties?.Remove("orders"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequestOrdersProperty _explicitNullValueOrders = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequest"/> and sets the default values.
@@ -37,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,6 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedErrorTrackingSuppressionRuleReorderRequestOrdersProperty>("orders", Orders);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

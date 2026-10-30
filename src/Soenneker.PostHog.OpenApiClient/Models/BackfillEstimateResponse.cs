@@ -11,21 +11,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BackfillEstimateResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("credits_per_observation") is { } nullNodeCreditsPerObservation && nullNodeCreditsPerObservation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditsPerObservation = null;
+            if (parseNode.GetChildNode("credits_remaining") is { } nullNodeCreditsRemaining && nullNodeCreditsRemaining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditsRemaining = null;
+            if (parseNode.GetChildNode("total_credits") is { } nullNodeTotalCredits && nullNodeTotalCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCredits = null;
+            if (parseNode.GetChildNode("total_sessions") is { } nullNodeTotalSessions && nullNodeTotalSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalSessions = null;
+            if (parseNode.GetChildNode("window_end") is { } nullNodeWindowEnd && nullNodeWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowEnd = null;
+            if (parseNode.GetChildNode("window_start") is { } nullNodeWindowStart && nullNodeWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowStart = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per-observation credit price at the scanner&apos;s current model.</summary>
-        public int? CreditsPerObservation { get; set; }
+        public int? CreditsPerObservation { get => _explicitNullValueCreditsPerObservation; set { _explicitNullValueCreditsPerObservation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credits_per_observation"); else _explicitNullProperties?.Remove("credits_per_observation"); } }
+        private int? _explicitNullValueCreditsPerObservation = default!;
         /// <summary>Credits left in the org&apos;s monthly quota; null when the org is uncapped.</summary>
-        public int? CreditsRemaining { get; set; }
+        public int? CreditsRemaining { get => _explicitNullValueCreditsRemaining; set { _explicitNullValueCreditsRemaining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credits_remaining"); else _explicitNullProperties?.Remove("credits_remaining"); } }
+        private int? _explicitNullValueCreditsRemaining = default!;
         /// <summary>Cost ceiling in credits (1 credit = $0.01): total_sessions x credits_per_observation. Actual spend lands under it: sessions already tried, expired recordings, and failures are not billed.</summary>
-        public int? TotalCredits { get; set; }
+        public int? TotalCredits { get => _explicitNullValueTotalCredits; set { _explicitNullValueTotalCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_credits"); else _explicitNullProperties?.Remove("total_credits"); } }
+        private int? _explicitNullValueTotalCredits = default!;
         /// <summary>Upper bound on the sessions the backfill would scan, after sampling and quality filters and excluding sessions this scanner already reported an observation for.</summary>
-        public int? TotalSessions { get; set; }
+        public int? TotalSessions { get => _explicitNullValueTotalSessions; set { _explicitNullValueTotalSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_sessions"); else _explicitNullProperties?.Remove("total_sessions"); } }
+        private int? _explicitNullValueTotalSessions = default!;
         /// <summary>The window upper bound after clamping to now and, for an experiment scanner, to the experiment&apos;s end date.</summary>
-        public DateTimeOffset? WindowEnd { get; set; }
+        public DateTimeOffset? WindowEnd { get => _explicitNullValueWindowEnd; set { _explicitNullValueWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_end"); else _explicitNullProperties?.Remove("window_end"); } }
+        private DateTimeOffset? _explicitNullValueWindowEnd = default!;
         /// <summary>The window lower bound the estimate covered.</summary>
-        public DateTimeOffset? WindowStart { get; set; }
+        public DateTimeOffset? WindowStart { get => _explicitNullValueWindowStart; set { _explicitNullValueWindowStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_start"); else _explicitNullProperties?.Remove("window_start"); } }
+        private DateTimeOffset? _explicitNullValueWindowStart = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BackfillEstimateResponse"/> and sets the default values.
         /// </summary>
@@ -41,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BackfillEstimateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BackfillEstimateResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BackfillEstimateResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("total_sessions", TotalSessions);
             writer.WriteDateTimeOffsetValue("window_end", WindowEnd);
             writer.WriteDateTimeOffsetValue("window_start", WindowStart);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

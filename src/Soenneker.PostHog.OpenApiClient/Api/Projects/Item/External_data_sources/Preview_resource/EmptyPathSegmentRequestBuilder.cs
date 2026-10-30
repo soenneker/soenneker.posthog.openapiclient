@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SourcePreviewResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SourcePreviewResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SourcePreviewResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SourcePreviewResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Read a bounded sample of rows for one resource of a Custom REST source.Lets a manifest author verify `data_selector`, `primary_key`, and the incremental`cursor_path` against live data before creating the source. Only `source_type: &quot;Custom&quot;`is supported — other source types return 400. The read is bounded (single page perresource, capped row count, short timeouts, no redirects). Manifest, validation, and SSRFproblems return 400; a live fetch failure returns 200 with `error` set and empty `rows`.

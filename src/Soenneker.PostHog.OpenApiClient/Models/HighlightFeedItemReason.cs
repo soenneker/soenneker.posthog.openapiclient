@@ -12,17 +12,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HighlightFeedItemReason : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("affected_people") is { } nullNodeAffectedPeople && nullNodeAffectedPeople.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AffectedPeople = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("similar_count") is { } nullNodeSimilarCount && nullNodeSimilarCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SimilarCount = null;
+            if (parseNode.GetChildNode("watch_category") is { } nullNodeWatchCategory && nullNodeWatchCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WatchCategory = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Distinct people across the session&apos;s feed group in the window, for `embedding_pick`. A finding that reached more people ranks higher.</summary>
-        public int? AffectedPeople { get; set; }
+        public int? AffectedPeople { get => _explicitNullValueAffectedPeople; set { _explicitNullValueAffectedPeople = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("affected_people"); else _explicitNullProperties?.Remove("affected_people"); } }
+        private int? _explicitNullValueAffectedPeople = default!;
         /// <summary>* `embedding_pick` - Embedding Pick* `unviewed_recent` - Unviewed Recent* `recent` - Recent</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedReasonKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedReasonKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedReasonKind? _explicitNullValueKind = default!;
         /// <summary>Other sessions from the same scanner in the window that describe nearly the same thing, for `embedding_pick`. The feed shows one session per group.</summary>
-        public int? SimilarCount { get; set; }
+        public int? SimilarCount { get => _explicitNullValueSimilarCount; set { _explicitNullValueSimilarCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("similar_count"); else _explicitNullProperties?.Remove("similar_count"); } }
+        private int? _explicitNullValueSimilarCount = default!;
         /// <summary>* `failure` - Failure* `struggle` - Struggle* `revenue` - Revenue</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedReasonWatchCategory? WatchCategory { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedReasonWatchCategory? WatchCategory { get => _explicitNullValueWatchCategory; set { _explicitNullValueWatchCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watch_category"); else _explicitNullProperties?.Remove("watch_category"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedReasonWatchCategory? _explicitNullValueWatchCategory = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedItemReason"/> and sets the default values.
         /// </summary>
@@ -38,7 +53,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedItemReason CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedItemReason();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedItemReason(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -65,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedReasonKind>("kind", Kind);
             writer.WriteIntValue("similar_count", SimilarCount);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightFeedReasonWatchCategory>("watch_category", WatchCategory);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,13 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ScatterChartSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("showBestFit") is { } nullNodeShowBestFit && nullNodeShowBestFit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowBestFit = null;
+            if (parseNode.GetChildNode("xScale") is { } nullNodeXScale && nullNodeXScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XScale = null;
+            if (parseNode.GetChildNode("xStartAtZero") is { } nullNodeXStartAtZero && nullNodeXStartAtZero.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XStartAtZero = null;
+        }
+
         /// <summary>Whether to draw a least-squares fit line through each series&apos; points.</summary>
-        public bool? ShowBestFit { get; set; }
+        public bool? ShowBestFit { get => _explicitNullValueShowBestFit; set { _explicitNullValueShowBestFit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showBestFit"); else _explicitNullProperties?.Remove("showBestFit"); } }
+        private bool? _explicitNullValueShowBestFit = default!;
         /// <summary>X-axis scale. A `logarithmic` axis can&apos;t place a non-positive value, so those points are dropped.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.XScale? XScale { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.XScale? XScale { get => _explicitNullValueXScale; set { _explicitNullValueXScale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xScale"); else _explicitNullProperties?.Remove("xScale"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.XScale? _explicitNullValueXScale = default!;
         /// <summary>Whether the X axis should start at zero. Off by default, because pinning either axis of two independent measures to zero squashes the correlation into a corner.</summary>
-        public bool? XStartAtZero { get; set; }
+        public bool? XStartAtZero { get => _explicitNullValueXStartAtZero; set { _explicitNullValueXStartAtZero = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xStartAtZero"); else _explicitNullProperties?.Remove("xStartAtZero"); } }
+        private bool? _explicitNullValueXStartAtZero = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -26,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScatterChartSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("showBestFit", ShowBestFit);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.XScale>("xScale", XScale);
-            writer.WriteBoolValue("xStartAtZero", XStartAtZero);
+            writer.WriteBoolValue("xStartAtZero", XStartAtZero);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

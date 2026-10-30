@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Propo
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcome.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// What the change did: the target metric and its counter-metrics, before and after.Both sides are read from the per-version metric series, so &quot;before&quot; is the version thesuggestion was written against and &quot;after&quot; is the version it went live as. Each numbercarries its own `n`, and anything under the minimum sample is flagged rather than presentedas a result — a verdict off twenty sends is the loop&apos;s most embarrassing failure mode.Comparing two windows is not a controlled experiment; that is what the A/B step is for.

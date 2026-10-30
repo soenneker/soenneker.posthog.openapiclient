@@ -11,46 +11,71 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InboxOnboardingState : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("completed_at") is { } nullNodeCompletedAt && nullNodeCompletedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedAt = null;
+            if (parseNode.GetChildNode("draft") is { } nullNodeDraft && nullNodeDraft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Draft = null;
+            if (parseNode.GetChildNode("first_report") is { } nullNodeFirstReport && nullNodeFirstReport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstReport = null;
+            if (parseNode.GetChildNode("first_report_completion_notification") is { } nullNodeFirstReportCompletionNotification && nullNodeFirstReportCompletionNotification.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstReportCompletionNotification = null;
+            if (parseNode.GetChildNode("first_report_notification_email") is { } nullNodeFirstReportNotificationEmail && nullNodeFirstReportNotificationEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstReportNotificationEmail = null;
+            if (parseNode.GetChildNode("github_optional_available") is { } nullNodeGithubOptionalAvailable && nullNodeGithubOptionalAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubOptionalAvailable = null;
+            if (parseNode.GetChildNode("jobs") is { } nullNodeJobs && nullNodeJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Jobs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When verified setup completed.</summary>
-        public DateTimeOffset? CompletedAt { get; set; }
+        public DateTimeOffset? CompletedAt { get => _explicitNullValueCompletedAt; set { _explicitNullValueCompletedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_at"); else _explicitNullProperties?.Remove("completed_at"); } }
+        private DateTimeOffset? _explicitNullValueCompletedAt = default!;
         /// <summary>Saved setup choices, without activating them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft? Draft { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft? Draft { get => _explicitNullValueDraft; set { _explicitNullValueDraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft"); else _explicitNullProperties?.Remove("draft"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft? _explicitNullValueDraft = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft Draft { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft Draft { get => _explicitNullValueDraft; set { _explicitNullValueDraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft"); else _explicitNullProperties?.Remove("draft"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft _explicitNullValueDraft = default!;
 #endif
         /// <summary>First investigation outcome.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState? FirstReport { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState? FirstReport { get => _explicitNullValueFirstReport; set { _explicitNullValueFirstReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report"); else _explicitNullProperties?.Remove("first_report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState? _explicitNullValueFirstReport = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState FirstReport { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState FirstReport { get => _explicitNullValueFirstReport; set { _explicitNullValueFirstReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report"); else _explicitNullProperties?.Remove("first_report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState _explicitNullValueFirstReport = default!;
 #endif
         /// <summary>Whether the current user can receive an in-app notification when this investigation finishes.</summary>
-        public bool? FirstReportCompletionNotification { get; set; }
+        public bool? FirstReportCompletionNotification { get => _explicitNullValueFirstReportCompletionNotification; set { _explicitNullValueFirstReportCompletionNotification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report_completion_notification"); else _explicitNullProperties?.Remove("first_report_completion_notification"); } }
+        private bool? _explicitNullValueFirstReportCompletionNotification = default!;
         /// <summary>The current user&apos;s email when enrolled for a first-report notification.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstReportNotificationEmail { get; set; }
+        public string? FirstReportNotificationEmail { get => _explicitNullValueFirstReportNotificationEmail; set { _explicitNullValueFirstReportNotificationEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report_notification_email"); else _explicitNullProperties?.Remove("first_report_notification_email"); } }
+        private string? _explicitNullValueFirstReportNotificationEmail = default!;
 #nullable restore
 #else
-        public string FirstReportNotificationEmail { get; set; }
+        public string FirstReportNotificationEmail { get => _explicitNullValueFirstReportNotificationEmail; set { _explicitNullValueFirstReportNotificationEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report_notification_email"); else _explicitNullProperties?.Remove("first_report_notification_email"); } }
+        private string _explicitNullValueFirstReportNotificationEmail = default!;
 #endif
         /// <summary>Whether this project can activate Self-driving without connecting GitHub.</summary>
-        public bool? GithubOptionalAvailable { get; set; }
+        public bool? GithubOptionalAvailable { get => _explicitNullValueGithubOptionalAvailable; set { _explicitNullValueGithubOptionalAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_optional_available"); else _explicitNullProperties?.Remove("github_optional_available"); } }
+        private bool? _explicitNullValueGithubOptionalAvailable = default!;
         /// <summary>Background work started by quick activation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs? Jobs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs? Jobs { get => _explicitNullValueJobs; set { _explicitNullValueJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs"); else _explicitNullProperties?.Remove("jobs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs? _explicitNullValueJobs = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs Jobs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs Jobs { get => _explicitNullValueJobs; set { _explicitNullValueJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs"); else _explicitNullProperties?.Remove("jobs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs _explicitNullValueJobs = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingState"/> and sets the default values.
@@ -67,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingState CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingState();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingState(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -100,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("first_report_notification_email", FirstReportNotificationEmail);
             writer.WriteBoolValue("github_optional_available", GithubOptionalAvailable);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs>("jobs", Jobs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

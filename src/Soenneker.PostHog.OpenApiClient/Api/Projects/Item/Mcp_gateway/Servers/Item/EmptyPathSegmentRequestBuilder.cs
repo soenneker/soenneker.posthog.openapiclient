@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServer>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServer.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServer>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServer.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers.
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerUpdate.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.

@@ -11,7 +11,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ContentAutopilotProposalList : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
+            if (parseNode.GetChildNode("validation_report") is { } nullNodeValidationReport && nullNodeValidationReport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationReport = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
@@ -19,10 +28,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Performance evidence for this proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>? Evidence { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>? _explicitNullValueEvidence = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence> Evidence { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence> Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence> _explicitNullValueEvidence = default!;
 #endif
         /// <summary>Repository-relative export path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -69,10 +80,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocking and advisory validation results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport? ValidationReport { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport? ValidationReport { get => _explicitNullValueValidationReport; set { _explicitNullValueValidationReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_report"); else _explicitNullProperties?.Remove("validation_report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport? _explicitNullValueValidationReport = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport ValidationReport { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport ValidationReport { get => _explicitNullValueValidationReport; set { _explicitNullValueValidationReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_report"); else _explicitNullProperties?.Remove("validation_report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport _explicitNullValueValidationReport = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalList"/> and sets the default values.
@@ -89,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalList CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalList();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalList(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -122,6 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>("evidence", Evidence);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalListValidationReport>("validation_report", ValidationReport);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

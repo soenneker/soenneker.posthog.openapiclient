@@ -12,53 +12,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasSourceEditOperation : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("new_path") is { } nullNodeNewPath && nullNodeNewPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewPath = null;
+            if (parseNode.GetChildNode("new_string") is { } nullNodeNewString && nullNodeNewString.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewString = null;
+            if (parseNode.GetChildNode("old_string") is { } nullNodeOldString && nullNodeOldString.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OldString = null;
+            if (parseNode.GetChildNode("op") is { } nullNodeOp && nullNodeOp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Op = null;
+            if (parseNode.GetChildNode("path") is { } nullNodePath && nullNodePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Path = null;
+            if (parseNode.GetChildNode("replace_all") is { } nullNodeReplaceAll && nullNodeReplaceAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReplaceAll = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>For &apos;write&apos;: the file&apos;s complete new content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Content { get; set; }
+        public string? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private string? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public string Content { get; set; }
+        public string Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private string _explicitNullValueContent = default!;
 #endif
         /// <summary>For &apos;rename&apos;: the file&apos;s new project-relative path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewPath { get; set; }
+        public string? NewPath { get => _explicitNullValueNewPath; set { _explicitNullValueNewPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_path"); else _explicitNullProperties?.Remove("new_path"); } }
+        private string? _explicitNullValueNewPath = default!;
 #nullable restore
 #else
-        public string NewPath { get; set; }
+        public string NewPath { get => _explicitNullValueNewPath; set { _explicitNullValueNewPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_path"); else _explicitNullProperties?.Remove("new_path"); } }
+        private string _explicitNullValueNewPath = default!;
 #endif
         /// <summary>For &apos;str_replace&apos;: the text that replaces old_string. An empty string deletes old_string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewString { get; set; }
+        public string? NewString { get => _explicitNullValueNewString; set { _explicitNullValueNewString = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_string"); else _explicitNullProperties?.Remove("new_string"); } }
+        private string? _explicitNullValueNewString = default!;
 #nullable restore
 #else
-        public string NewString { get; set; }
+        public string NewString { get => _explicitNullValueNewString; set { _explicitNullValueNewString = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_string"); else _explicitNullProperties?.Remove("new_string"); } }
+        private string _explicitNullValueNewString = default!;
 #endif
         /// <summary>For &apos;str_replace&apos;: the exact text to replace, copied from the file with a few surrounding lines so it matches one place only. If whitespace differs slightly, a unique line-by-line match is still accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OldString { get; set; }
+        public string? OldString { get => _explicitNullValueOldString; set { _explicitNullValueOldString = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("old_string"); else _explicitNullProperties?.Remove("old_string"); } }
+        private string? _explicitNullValueOldString = default!;
 #nullable restore
 #else
-        public string OldString { get; set; }
+        public string OldString { get => _explicitNullValueOldString; set { _explicitNullValueOldString = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("old_string"); else _explicitNullProperties?.Remove("old_string"); } }
+        private string _explicitNullValueOldString = default!;
 #endif
         /// <summary>* `write` - Write* `delete` - Delete* `rename` - Rename* `str_replace` - Str Replace</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp? Op { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp? Op { get => _explicitNullValueOp; set { _explicitNullValueOp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("op"); else _explicitNullProperties?.Remove("op"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp? _explicitNullValueOp = default!;
         /// <summary>Project-relative path of the file to edit (e.g. &quot;src/canvas.tsx&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Path { get; set; }
+        public string? Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        private string? _explicitNullValuePath = default!;
 #nullable restore
 #else
-        public string Path { get; set; }
+        public string Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        private string _explicitNullValuePath = default!;
 #endif
         /// <summary>For &apos;str_replace&apos;: replace every exact match of old_string instead of requiring exactly one.</summary>
-        public bool? ReplaceAll { get; set; }
+        public bool? ReplaceAll { get => _explicitNullValueReplaceAll; set { _explicitNullValueReplaceAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replace_all"); else _explicitNullProperties?.Remove("replace_all"); } }
+        private bool? _explicitNullValueReplaceAll = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperation"/> and sets the default values.
         /// </summary>
@@ -75,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceEditOperationOp>("op", Op);
             writer.WriteStringValue("path", Path);
             writer.WriteBoolValue("replace_all", ReplaceAll);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,20 +12,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedWarehouseSourcePlatformAlertConfigurationEditSourceConfig : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("email_project_members") is { } nullNodeEmailProjectMembers && nullNodeEmailProjectMembers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailProjectMembers = null;
+            if (parseNode.GetChildNode("group_by") is { } nullNodeGroupBy && nullNodeGroupBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupBy = null;
+            if (parseNode.GetChildNode("include_billing_limits") is { } nullNodeIncludeBillingLimits && nullNodeIncludeBillingLimits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeBillingLimits = null;
+            if (parseNode.GetChildNode("source_ids") is { } nullNodeSourceIds && nullNodeSourceIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceIds = null;
+        }
+
         /// <summary>Whether project members who get data pipeline error emails also get an email when this alert fires or resolves.</summary>
-        public bool? EmailProjectMembers { get; set; }
+        public bool? EmailProjectMembers { get => _explicitNullValueEmailProjectMembers; set { _explicitNullValueEmailProjectMembers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_project_members"); else _explicitNullProperties?.Remove("email_project_members"); } }
+        private bool? _explicitNullValueEmailProjectMembers = default!;
         /// <summary>schema keeps one alert instance, and sends one message, per failing table. source keeps one per source, whatever number of its tables fail. The grouping must be by_result_labels with keys [schema_id] or [source_id] to match.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourceAlertConfigGroupBy? GroupBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourceAlertConfigGroupBy? GroupBy { get => _explicitNullValueGroupBy; set { _explicitNullValueGroupBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_by"); else _explicitNullProperties?.Remove("group_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourceAlertConfigGroupBy? _explicitNullValueGroupBy = default!;
         /// <summary>Whether a table that stops syncing at the project&apos;s billing limit also fires the alert.</summary>
-        public bool? IncludeBillingLimits { get; set; }
+        public bool? IncludeBillingLimits { get => _explicitNullValueIncludeBillingLimits; set { _explicitNullValueIncludeBillingLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_billing_limits"); else _explicitNullProperties?.Remove("include_billing_limits"); } }
+        private bool? _explicitNullValueIncludeBillingLimits = default!;
         /// <summary>Warehouse sources the alert watches. Empty watches every source in the project, including sources added later.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? SourceIds { get; set; }
+        public List<Guid?>? SourceIds { get => _explicitNullValueSourceIds; set { _explicitNullValueSourceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_ids"); else _explicitNullProperties?.Remove("source_ids"); } }
+        private List<Guid?>? _explicitNullValueSourceIds = default!;
 #nullable restore
 #else
-        public List<Guid?> SourceIds { get; set; }
+        public List<Guid?> SourceIds { get => _explicitNullValueSourceIds; set { _explicitNullValueSourceIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_ids"); else _explicitNullProperties?.Remove("source_ids"); } }
+        private List<Guid?> _explicitNullValueSourceIds = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEditSourceConfig"/> and sets the default values.
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEditSourceConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEditSourceConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEditSourceConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,7 +85,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("email_project_members", EmailProjectMembers);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSourceAlertConfigGroupBy>("group_by", GroupBy);
             writer.WriteBoolValue("include_billing_limits", IncludeBillingLimits);
-            writer.WriteCollectionOfPrimitiveValues<Guid?>("source_ids", SourceIds);
+            writer.WriteCollectionOfPrimitiveValues<Guid?>("source_ids", SourceIds);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

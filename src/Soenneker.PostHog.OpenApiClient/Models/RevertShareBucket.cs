@@ -11,17 +11,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RevertShareBucket : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bucket_start") is { } nullNodeBucketStart && nullNodeBucketStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketStart = null;
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("reverting_pr_count") is { } nullNodeRevertingPrCount && nullNodeRevertingPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevertingPrCount = null;
+            if (parseNode.GetChildNode("revert_share") is { } nullNodeRevertShare && nullNodeRevertShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevertShare = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bucket start, aligned to revert_share_series_granularity (top of hour, midnight, or Monday). Keyed on the revert&apos;s own merge time.</summary>
-        public DateTimeOffset? BucketStart { get; set; }
+        public DateTimeOffset? BucketStart { get => _explicitNullValueBucketStart; set { _explicitNullValueBucketStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_start"); else _explicitNullProperties?.Remove("bucket_start"); } }
+        private DateTimeOffset? _explicitNullValueBucketStart = default!;
         /// <summary>PRs merged in this bucket, all authors and bots included.</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>Of those, PRs whose title names a revert: GitHub&apos;s &apos;Revert &quot;...&quot;&apos; or a conventional-commit &apos;revert: ...&apos; / &apos;revert(scope): ...&apos; title.</summary>
-        public int? RevertingPrCount { get; set; }
+        public int? RevertingPrCount { get => _explicitNullValueRevertingPrCount; set { _explicitNullValueRevertingPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reverting_pr_count"); else _explicitNullProperties?.Remove("reverting_pr_count"); } }
+        private int? _explicitNullValueRevertingPrCount = default!;
         /// <summary>reverting_pr_count divided by merged_pr_count. Null when nothing merged in the bucket.</summary>
-        public double? RevertShare { get; set; }
+        public double? RevertShare { get => _explicitNullValueRevertShare; set { _explicitNullValueRevertShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revert_share"); else _explicitNullProperties?.Remove("revert_share"); } }
+        private double? _explicitNullValueRevertShare = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RevertShareBucket(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("merged_pr_count", MergedPrCount);
             writer.WriteIntValue("reverting_pr_count", RevertingPrCount);
             writer.WriteDoubleValue("revert_share", RevertShare);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

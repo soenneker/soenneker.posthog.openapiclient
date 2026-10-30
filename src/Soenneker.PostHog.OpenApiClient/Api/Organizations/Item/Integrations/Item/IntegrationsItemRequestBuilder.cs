@@ -16,6 +16,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.It
     public partial class IntegrationsItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The EmptyPathSegment property</summary>
+        [Obsolete("")]
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Integrations.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);

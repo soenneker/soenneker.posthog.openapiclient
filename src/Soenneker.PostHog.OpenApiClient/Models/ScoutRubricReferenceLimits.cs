@@ -11,16 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ScoutRubricReferenceLimits : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("omitted_files") is { } nullNodeOmittedFiles && nullNodeOmittedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OmittedFiles = null;
+            if (parseNode.GetChildNode("truncated_files") is { } nullNodeTruncatedFiles && nullNodeTruncatedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TruncatedFiles = null;
+        }
+
         /// <summary>The omitted_files property</summary>
-        public int? OmittedFiles { get; set; }
+        public int? OmittedFiles { get => _explicitNullValueOmittedFiles; set { _explicitNullValueOmittedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("omitted_files"); else _explicitNullProperties?.Remove("omitted_files"); } }
+        private int? _explicitNullValueOmittedFiles = default!;
         /// <summary>The truncated_files property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? TruncatedFiles { get; set; }
+        public List<string>? TruncatedFiles { get => _explicitNullValueTruncatedFiles; set { _explicitNullValueTruncatedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated_files"); else _explicitNullProperties?.Remove("truncated_files"); } }
+        private List<string>? _explicitNullValueTruncatedFiles = default!;
 #nullable restore
 #else
-        public List<string> TruncatedFiles { get; set; }
+        public List<string> TruncatedFiles { get => _explicitNullValueTruncatedFiles; set { _explicitNullValueTruncatedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated_files"); else _explicitNullProperties?.Remove("truncated_files"); } }
+        private List<string> _explicitNullValueTruncatedFiles = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -30,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceLimits CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceLimits();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceLimits(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,7 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("omitted_files", OmittedFiles);
-            writer.WriteCollectionOfPrimitiveValues<string>("truncated_files", TruncatedFiles);
+            writer.WriteCollectionOfPrimitiveValues<string>("truncated_files", TruncatedFiles);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

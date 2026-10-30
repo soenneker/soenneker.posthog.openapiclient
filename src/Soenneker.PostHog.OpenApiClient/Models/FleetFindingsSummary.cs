@@ -12,21 +12,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FleetFindingsSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("authored_report_count") is { } nullNodeAuthoredReportCount && nullNodeAuthoredReportCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthoredReportCount = null;
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("edited_report_count") is { } nullNodeEditedReportCount && nullNodeEditedReportCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EditedReportCount = null;
+            if (parseNode.GetChildNode("latest_at") is { } nullNodeLatestAt && nullNodeLatestAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestAt = null;
+            if (parseNode.GetChildNode("run_count") is { } nullNodeRunCount && nullNodeRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCount = null;
+            if (parseNode.GetChildNode("scout_count") is { } nullNodeScoutCount && nullNodeScoutCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of distinct inbox reports scouts authored via `emit_report`, deduped across runs, over the same most-recent-120-output-runs set as `count`, capped to the 50 most recently touched reports (the same slice the findings page lists).</summary>
-        public int? AuthoredReportCount { get; set; }
+        public int? AuthoredReportCount { get => _explicitNullValueAuthoredReportCount; set { _explicitNullValueAuthoredReportCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authored_report_count"); else _explicitNullProperties?.Remove("authored_report_count"); } }
+        private int? _explicitNullValueAuthoredReportCount = default!;
         /// <summary>Total findings the fleet emitted in the window — the sum of each run&apos;s `emitted_count`, over the most recent 120 runs that produced output.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>Number of distinct inbox reports scouts edited via `edit_report`, deduped across runs, over the same most-recent-120-output-runs set as `count`, capped to the 50 most recently touched reports (the same slice the findings page lists) and excluding reports also authored within that set (authoring supersedes an edit; a report whose authoring run falls outside the cap counts as edited).</summary>
-        public int? EditedReportCount { get; set; }
+        public int? EditedReportCount { get => _explicitNullValueEditedReportCount; set { _explicitNullValueEditedReportCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edited_report_count"); else _explicitNullProperties?.Remove("edited_report_count"); } }
+        private int? _explicitNullValueEditedReportCount = default!;
         /// <summary>ISO-8601 timestamp of the most recent output run (TaskRun completion, falling back to run creation), or null when nothing was produced in the window.</summary>
-        public DateTimeOffset? LatestAt { get; set; }
+        public DateTimeOffset? LatestAt { get => _explicitNullValueLatestAt; set { _explicitNullValueLatestAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_at"); else _explicitNullProperties?.Remove("latest_at"); } }
+        private DateTimeOffset? _explicitNullValueLatestAt = default!;
         /// <summary>Number of scout runs created in the window, whether or not they produced output. Unlike the report tallies it is not capped, so it is the fleet&apos;s activity over the same span the output counts describe.</summary>
-        public int? RunCount { get; set; }
+        public int? RunCount { get => _explicitNullValueRunCount; set { _explicitNullValueRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_count"); else _explicitNullProperties?.Remove("run_count"); } }
+        private int? _explicitNullValueRunCount = default!;
         /// <summary>Number of distinct scouts (skills) that produced output in the window — emitted a finding, or authored/edited an inbox report that survives the 50-report cap (a report-only scout whose touched reports all fell outside the cap is not counted, matching the findings page&apos;s scout filter).</summary>
-        public int? ScoutCount { get; set; }
+        public int? ScoutCount { get => _explicitNullValueScoutCount; set { _explicitNullValueScoutCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_count"); else _explicitNullProperties?.Remove("scout_count"); } }
+        private int? _explicitNullValueScoutCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FleetFindingsSummary"/> and sets the default values.
         /// </summary>
@@ -42,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FleetFindingsSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FleetFindingsSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FleetFindingsSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("latest_at", LatestAt);
             writer.WriteIntValue("run_count", RunCount);
             writer.WriteIntValue("scout_count", ScoutCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

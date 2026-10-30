@@ -8,34 +8,39 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf3"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ConversionGoalWriteResponseGoal : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1? ConversionGoalWriteResponseGoalMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf1? ConversionGoalWriteResponseGoalAnyOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1 ConversionGoalWriteResponseGoalMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf1 ConversionGoalWriteResponseGoalAnyOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2? ConversionGoalWriteResponseGoalMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf2? ConversionGoalWriteResponseGoalAnyOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2 ConversionGoalWriteResponseGoalMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf2 ConversionGoalWriteResponseGoalAnyOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3? ConversionGoalWriteResponseGoalMember3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf3? ConversionGoalWriteResponseGoalAnyOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3 ConversionGoalWriteResponseGoalMember3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf3 ConversionGoalWriteResponseGoalAnyOf3 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,10 +51,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal();
-            result.ConversionGoalWriteResponseGoalMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1();
-            result.ConversionGoalWriteResponseGoalMember2 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember2();
-            result.ConversionGoalWriteResponseGoalMember3 = new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember3();
-            return result;
+            
+            
+            
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("conversion_goal_id") != null && parseNode.GetChildNode("conversion_goal_name") != null && parseNode.GetChildNode("schema_map") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag3 && ("EventsNode".Equals(optionalTag3.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("conversion_goal_id") != null && parseNode.GetChildNode("conversion_goal_name") != null && parseNode.GetChildNode("id") != null && parseNode.GetChildNode("schema_map") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag4 && ("ActionsNode".Equals(optionalTag4.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("conversion_goal_id") != null && parseNode.GetChildNode("conversion_goal_name") != null && parseNode.GetChildNode("distinct_id_field") != null && parseNode.GetChildNode("id") != null && parseNode.GetChildNode("id_field") != null && parseNode.GetChildNode("schema_map") != null && parseNode.GetChildNode("table_name") != null && parseNode.GetChildNode("timestamp_field") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag8 && ("DataWarehouseNode".Equals(optionalTag8.GetValue(), global::System.StringComparison.Ordinal))))))();
+            if (result.ConversionGoalWriteResponseGoalAnyOf1 == null && result.ConversionGoalWriteResponseGoalAnyOf2 == null && result.ConversionGoalWriteResponseGoalAnyOf3 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.ConversionGoalWriteResponseGoalAnyOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf1(), parseNode);
+            if (result.ConversionGoalWriteResponseGoalAnyOf1 == null && result.ConversionGoalWriteResponseGoalAnyOf2 == null && result.ConversionGoalWriteResponseGoalAnyOf3 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2) result.ConversionGoalWriteResponseGoalAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf2(), parseNode);
+            if (result.ConversionGoalWriteResponseGoalAnyOf1 == null && result.ConversionGoalWriteResponseGoalAnyOf2 == null && result.ConversionGoalWriteResponseGoalAnyOf3 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1) result.ConversionGoalWriteResponseGoalAnyOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf3(), parseNode);
+            if (result.ConversionGoalWriteResponseGoalAnyOf1 == null && result.ConversionGoalWriteResponseGoalAnyOf2 == null && result.ConversionGoalWriteResponseGoalAnyOf3 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,9 +71,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(ConversionGoalWriteResponseGoalMember1 != null || ConversionGoalWriteResponseGoalMember2 != null || ConversionGoalWriteResponseGoalMember3 != null)
+            if(ConversionGoalWriteResponseGoalAnyOf1 != null || ConversionGoalWriteResponseGoalAnyOf2 != null || ConversionGoalWriteResponseGoalAnyOf3 != null)
             {
-                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ConversionGoalWriteResponseGoalMember1, ConversionGoalWriteResponseGoalMember2, ConversionGoalWriteResponseGoalMember3);
+                return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ConversionGoalWriteResponseGoalAnyOf1, ConversionGoalWriteResponseGoalAnyOf2, ConversionGoalWriteResponseGoalAnyOf3);
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -69,8 +83,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ConversionGoalWriteResponseGoalAnyOf1 == null && ConversionGoalWriteResponseGoalAnyOf2 == null && ConversionGoalWriteResponseGoalAnyOf3 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ConversionGoalWriteResponseGoalAnyOf1 != null && ConversionGoalWriteResponseGoalAnyOf2 == null && ConversionGoalWriteResponseGoalAnyOf3 == null) { if (ConversionGoalWriteResponseGoalAnyOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ConversionGoalWriteResponseGoalAnyOf1); return; }
+            if (ConversionGoalWriteResponseGoalAnyOf2 != null && ConversionGoalWriteResponseGoalAnyOf1 == null && ConversionGoalWriteResponseGoalAnyOf3 == null) { if (ConversionGoalWriteResponseGoalAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ConversionGoalWriteResponseGoalAnyOf2); return; }
+            if (ConversionGoalWriteResponseGoalAnyOf3 != null && ConversionGoalWriteResponseGoalAnyOf1 == null && ConversionGoalWriteResponseGoalAnyOf2 == null) { if (ConversionGoalWriteResponseGoalAnyOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ConversionGoalWriteResponseGoalAnyOf3); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalMember1>(null, ConversionGoalWriteResponseGoalMember1, ConversionGoalWriteResponseGoalMember2, ConversionGoalWriteResponseGoalMember3);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoalAnyOf1>(null, ConversionGoalWriteResponseGoalAnyOf1, ConversionGoalWriteResponseGoalAnyOf2, ConversionGoalWriteResponseGoalAnyOf3);
         }
     }
 }

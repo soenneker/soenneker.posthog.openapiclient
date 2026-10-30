@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Item.Che
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAeoPromptCheckList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAeoPromptCheckList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAeoPromptCheckList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedAeoPromptCheckList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lists every check of one prompt, newest first, one page at a time. Filter by engine or by prompt version. Each check has the engine&apos;s answer, the URLs it cited, the searches it ran and the prompt version it ran.

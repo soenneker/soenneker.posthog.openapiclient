@@ -12,21 +12,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TasksTaskDefaultsUpdate : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("auto_publish_cloud_runs") is { } nullNodeAutoPublishCloudRuns && nullNodeAutoPublishCloudRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoPublishCloudRuns = null;
+            if (parseNode.GetChildNode("default_cloud_target") is { } nullNodeDefaultCloudTarget && nullNodeDefaultCloudTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultCloudTarget = null;
+            if (parseNode.GetChildNode("start_in_plan_mode") is { } nullNodeStartInPlanMode && nullNodeStartInPlanMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartInPlanMode = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, a cloud run that changes code always opens a draft pull request. Null when you never set it.</summary>
-        public bool? AutoPublishCloudRuns { get; set; }
+        public bool? AutoPublishCloudRuns { get => _explicitNullValueAutoPublishCloudRuns; set { _explicitNullValueAutoPublishCloudRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_publish_cloud_runs"); else _explicitNullProperties?.Remove("auto_publish_cloud_runs"); } }
+        private bool? _explicitNullValueAutoPublishCloudRuns = default!;
         /// <summary>The cloud target new tasks start on, as `environment:&lt;sandbox environment id&gt;` or `image:&lt;custom image id&gt;`. Null means the default sandbox. Clients fall back to the default sandbox when the target no longer exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultCloudTarget { get; set; }
+        public string? DefaultCloudTarget { get => _explicitNullValueDefaultCloudTarget; set { _explicitNullValueDefaultCloudTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_cloud_target"); else _explicitNullProperties?.Remove("default_cloud_target"); } }
+        private string? _explicitNullValueDefaultCloudTarget = default!;
 #nullable restore
 #else
-        public string DefaultCloudTarget { get; set; }
+        public string DefaultCloudTarget { get => _explicitNullValueDefaultCloudTarget; set { _explicitNullValueDefaultCloudTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_cloud_target"); else _explicitNullProperties?.Remove("default_cloud_target"); } }
+        private string _explicitNullValueDefaultCloudTarget = default!;
 #endif
         /// <summary>When true, new tasks start in plan mode: the agent makes a plan and waits for approval. Null when you never set it.</summary>
-        public bool? StartInPlanMode { get; set; }
+        public bool? StartInPlanMode { get => _explicitNullValueStartInPlanMode; set { _explicitNullValueStartInPlanMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_in_plan_mode"); else _explicitNullProperties?.Remove("start_in_plan_mode"); } }
+        private bool? _explicitNullValueStartInPlanMode = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TasksTaskDefaultsUpdate"/> and sets the default values.
         /// </summary>
@@ -42,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TasksTaskDefaultsUpdate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TasksTaskDefaultsUpdate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TasksTaskDefaultsUpdate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -67,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("auto_publish_cloud_runs", AutoPublishCloudRuns);
             writer.WriteStringValue("default_cloud_target", DefaultCloudTarget);
             writer.WriteBoolValue("start_in_plan_mode", StartInPlanMode);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

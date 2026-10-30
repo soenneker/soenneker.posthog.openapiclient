@@ -11,39 +11,71 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WorkflowJobAggregate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billable_minutes") is { } nullNodeBillableMinutes && nullNodeBillableMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillableMinutes = null;
+            if (parseNode.GetChildNode("estimated_cost_usd") is { } nullNodeEstimatedCostUsd && nullNodeEstimatedCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCostUsd = null;
+            if (parseNode.GetChildNode("failure_rate") is { } nullNodeFailureRate && nullNodeFailureRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailureRate = null;
+            if (parseNode.GetChildNode("job_count") is { } nullNodeJobCount && nullNodeJobCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobCount = null;
+            if (parseNode.GetChildNode("job_name") is { } nullNodeJobName && nullNodeJobName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobName = null;
+            if (parseNode.GetChildNode("p50_seconds") is { } nullNodeP50Seconds && nullNodeP50Seconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50Seconds = null;
+            if (parseNode.GetChildNode("p95_seconds") is { } nullNodeP95Seconds && nullNodeP95Seconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95Seconds = null;
+            if (parseNode.GetChildNode("queue_p50_seconds") is { } nullNodeQueueP50Seconds && nullNodeQueueP50Seconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueP50Seconds = null;
+            if (parseNode.GetChildNode("retry_job_count") is { } nullNodeRetryJobCount && nullNodeRetryJobCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetryJobCount = null;
+            if (parseNode.GetChildNode("run_share") is { } nullNodeRunShare && nullNodeRunShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunShare = null;
+            if (parseNode.GetChildNode("runs_in") is { } nullNodeRunsIn && nullNodeRunsIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsIn = null;
+            if (parseNode.GetChildNode("shard_count") is { } nullNodeShardCount && nullNodeShardCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShardCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Billable (self-hosted) minutes across the group&apos;s instances; null when every instance ran on an unknown tier.</summary>
-        public double? BillableMinutes { get; set; }
+        public double? BillableMinutes { get => _explicitNullValueBillableMinutes; set { _explicitNullValueBillableMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_minutes"); else _explicitNullProperties?.Remove("billable_minutes"); } }
+        private double? _explicitNullValueBillableMinutes = default!;
         /// <summary>Estimated cost in USD via the runner-tier rate ladder; null when every instance ran on an unknown tier.</summary>
-        public double? EstimatedCostUsd { get; set; }
+        public double? EstimatedCostUsd { get => _explicitNullValueEstimatedCostUsd; set { _explicitNullValueEstimatedCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_cost_usd"); else _explicitNullProperties?.Remove("estimated_cost_usd"); } }
+        private double? _explicitNullValueEstimatedCostUsd = default!;
         /// <summary>Decisive failures over job instances with a pass-or-fail verdict (0-1). Skipped, cancelled, neutral, and action-required instances are excluded. Null if none reached a verdict.</summary>
-        public double? FailureRate { get; set; }
+        public double? FailureRate { get => _explicitNullValueFailureRate; set { _explicitNullValueFailureRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure_rate"); else _explicitNullProperties?.Remove("failure_rate"); } }
+        private double? _explicitNullValueFailureRate = default!;
         /// <summary>Job instances observed in the window (all shards, all attempts).</summary>
-        public int? JobCount { get; set; }
+        public int? JobCount { get => _explicitNullValueJobCount; set { _explicitNullValueJobCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_count"); else _explicitNullProperties?.Remove("job_count"); } }
+        private int? _explicitNullValueJobCount = default!;
         /// <summary>De-sharded job name: the matrix &apos;(G/N)&apos; suffix is stripped and unexpanded &apos;${{ matrix.* }}&apos; templates are collapsed, so shards of one matrix aggregate together.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JobName { get; set; }
+        public string? JobName { get => _explicitNullValueJobName; set { _explicitNullValueJobName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_name"); else _explicitNullProperties?.Remove("job_name"); } }
+        private string? _explicitNullValueJobName = default!;
 #nullable restore
 #else
-        public string JobName { get; set; }
+        public string JobName { get => _explicitNullValueJobName; set { _explicitNullValueJobName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_name"); else _explicitNullProperties?.Remove("job_name"); } }
+        private string _explicitNullValueJobName = default!;
 #endif
         /// <summary>Median duration of successful job instances, in seconds: cancelled and failed instances end early and would bias the percentile. Null if none succeeded.</summary>
-        public double? P50Seconds { get; set; }
+        public double? P50Seconds { get => _explicitNullValueP50Seconds; set { _explicitNullValueP50Seconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_seconds"); else _explicitNullProperties?.Remove("p50_seconds"); } }
+        private double? _explicitNullValueP50Seconds = default!;
         /// <summary>95th-percentile duration of successful job instances, in seconds: cancelled and failed instances end early and would bias the percentile. Null if none succeeded.</summary>
-        public double? P95Seconds { get; set; }
+        public double? P95Seconds { get => _explicitNullValueP95Seconds; set { _explicitNullValueP95Seconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_seconds"); else _explicitNullProperties?.Remove("p95_seconds"); } }
+        private double? _explicitNullValueP95Seconds = default!;
         /// <summary>Median queue wait (created to started) in seconds - where runner-capacity problems hide. Null when nothing started.</summary>
-        public double? QueueP50Seconds { get; set; }
+        public double? QueueP50Seconds { get => _explicitNullValueQueueP50Seconds; set { _explicitNullValueQueueP50Seconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_p50_seconds"); else _explicitNullProperties?.Remove("queue_p50_seconds"); } }
+        private double? _explicitNullValueQueueP50Seconds = default!;
         /// <summary>Job instances that ran on a 2nd+ run attempt - retry pressure.</summary>
-        public int? RetryJobCount { get; set; }
+        public int? RetryJobCount { get => _explicitNullValueRetryJobCount; set { _explicitNullValueRetryJobCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retry_job_count"); else _explicitNullProperties?.Remove("retry_job_count"); } }
+        private int? _explicitNullValueRetryJobCount = default!;
         /// <summary>runs_in divided by the workflow&apos;s total runs in the window; below 1.0 means the job is conditional and skips some runs. Null when the workflow had no runs.</summary>
-        public double? RunShare { get; set; }
+        public double? RunShare { get => _explicitNullValueRunShare; set { _explicitNullValueRunShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_share"); else _explicitNullProperties?.Remove("run_share"); } }
+        private double? _explicitNullValueRunShare = default!;
         /// <summary>Distinct workflow runs the job appeared in.</summary>
-        public int? RunsIn { get; set; }
+        public int? RunsIn { get => _explicitNullValueRunsIn; set { _explicitNullValueRunsIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_in"); else _explicitNullProperties?.Remove("runs_in"); } }
+        private int? _explicitNullValueRunsIn = default!;
         /// <summary>Distinct raw job names inside the group - the observed matrix width.</summary>
-        public int? ShardCount { get; set; }
+        public int? ShardCount { get => _explicitNullValueShardCount; set { _explicitNullValueShardCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shard_count"); else _explicitNullProperties?.Remove("shard_count"); } }
+        private int? _explicitNullValueShardCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobAggregate"/> and sets the default values.
         /// </summary>
@@ -59,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobAggregate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobAggregate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowJobAggregate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("run_share", RunShare);
             writer.WriteIntValue("runs_in", RunsIn);
             writer.WriteIntValue("shard_count", ShardCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

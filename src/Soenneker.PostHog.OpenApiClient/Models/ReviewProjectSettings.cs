@@ -11,17 +11,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewProjectSettings : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bot_prs") is { } nullNodeBotPrs && nullNodeBotPrs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BotPrs = null;
+            if (parseNode.GetChildNode("celebrate_clean_reviews") is { } nullNodeCelebrateCleanReviews && nullNodeCelebrateCleanReviews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CelebrateCleanReviews = null;
+            if (parseNode.GetChildNode("flash_for") is { } nullNodeFlashFor && nullNodeFlashFor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlashFor = null;
+            if (parseNode.GetChildNode("urgency_threshold") is { } nullNodeUrgencyThreshold && nullNodeUrgencyThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UrgencyThreshold = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `skip` - Not reviewed* `run` - Automatic Flash</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsBotPrs? BotPrs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsBotPrs? BotPrs { get => _explicitNullValueBotPrs; set { _explicitNullValueBotPrs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bot_prs"); else _explicitNullProperties?.Remove("bot_prs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsBotPrs? _explicitNullValueBotPrs = default!;
         /// <summary>Whether the requesting user is a project admin and can change these settings.</summary>
         public bool? CanEdit { get; private set; }
         /// <summary>Project default for the image in a Deep review that finds nothing to raise. On by default. A person&apos;s own value wins.</summary>
-        public bool? CelebrateCleanReviews { get; set; }
+        public bool? CelebrateCleanReviews { get => _explicitNullValueCelebrateCleanReviews; set { _explicitNullValueCelebrateCleanReviews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("celebrate_clean_reviews"); else _explicitNullProperties?.Remove("celebrate_clean_reviews"); } }
+        private bool? _explicitNullValueCelebrateCleanReviews = default!;
         /// <summary>* `everyone` - Automatic Flash for everyone* `listed` - Automatic Flash for these people* `off` - Automatic Flash opt-in only</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsFlashFor? FlashFor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsFlashFor? FlashFor { get => _explicitNullValueFlashFor; set { _explicitNullValueFlashFor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flash_for"); else _explicitNullProperties?.Remove("flash_for"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsFlashFor? _explicitNullValueFlashFor = default!;
         /// <summary>Every GitHub installation connected to this project, and which of its repositories this project reviews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,7 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson> People { get; private set; }
 #endif
         /// <summary>* `consider` - Consider (all)* `should_fix` - Should fix* `must_fix` - Must fix</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsUrgencyThreshold? UrgencyThreshold { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsUrgencyThreshold? UrgencyThreshold { get => _explicitNullValueUrgencyThreshold; set { _explicitNullValueUrgencyThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("urgency_threshold"); else _explicitNullProperties?.Remove("urgency_threshold"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsUrgencyThreshold? _explicitNullValueUrgencyThreshold = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettings"/> and sets the default values.
         /// </summary>
@@ -55,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("celebrate_clean_reviews", CelebrateCleanReviews);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsFlashFor>("flash_for", FlashFor);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectSettingsUrgencyThreshold>("urgency_threshold", UrgencyThreshold);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

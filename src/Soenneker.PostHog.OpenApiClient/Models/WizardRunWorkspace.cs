@@ -8,44 +8,32 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Project that the setup agent works on.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class WizardRunWorkspace : IAdditionalDataHolder, IParsable
-    {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Name of the project in the local folder.</summary>
+    public partial class WizardRunWorkspace : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf1? WizardRunWorkspaceOneOf1 { get; set; }
 #nullable restore
 #else
-        public string ProjectName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf1 WizardRunWorkspaceOneOf1 { get; set; }
 #endif
-        /// <summary>GitHub repository in owner/name format.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Repository { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf2? WizardRunWorkspaceOneOf2 { get; set; }
 #nullable restore
 #else
-        public string Repository { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf2 WizardRunWorkspaceOneOf2 { get; set; }
 #endif
-        /// <summary>The type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type { get; set; }
-#nullable restore
-#else
-        public string Type { get; set; }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspace"/> and sets the default values.
-        /// </summary>
-        public WizardRunWorkspace()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -54,7 +42,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspace CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspace();
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspace();
+            if("local_folder".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("git_repository".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("project_name") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("local_folder".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("repository") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("git_repository".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.WizardRunWorkspaceOneOf1 == null && result.WizardRunWorkspaceOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.WizardRunWorkspaceOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf1(), parseNode);
+            if (result.WizardRunWorkspaceOneOf1 == null && result.WizardRunWorkspaceOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.WizardRunWorkspaceOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf2(), parseNode);
+            if (result.WizardRunWorkspaceOneOf1 == null && result.WizardRunWorkspaceOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,12 +67,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(WizardRunWorkspaceOneOf1 != null)
             {
-                { "project_name", n => { ProjectName = n.GetStringValue(); } },
-                { "repository", n => { Repository = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-            };
+                return WizardRunWorkspaceOneOf1.GetFieldDeserializers();
+            }
+            else if(WizardRunWorkspaceOneOf2 != null)
+            {
+                return WizardRunWorkspaceOneOf2.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -75,11 +83,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (WizardRunWorkspaceOneOf1 == null && WizardRunWorkspaceOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (WizardRunWorkspaceOneOf1 != null && WizardRunWorkspaceOneOf2 == null) { if (WizardRunWorkspaceOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WizardRunWorkspaceOneOf1); return; }
+            if (WizardRunWorkspaceOneOf2 != null && WizardRunWorkspaceOneOf1 == null) { if (WizardRunWorkspaceOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WizardRunWorkspaceOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("project_name", ProjectName);
-            writer.WriteStringValue("repository", Repository);
-            writer.WriteStringValue("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
+            if(WizardRunWorkspaceOneOf1 != null)
+            {
+                if (WizardRunWorkspaceOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf1>(null, WizardRunWorkspaceOneOf1);
+            }
+            else if(WizardRunWorkspaceOneOf2 != null)
+            {
+                if (WizardRunWorkspaceOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardRunWorkspaceOneOf2>(null, WizardRunWorkspaceOneOf2);
+            }
         }
     }
 }

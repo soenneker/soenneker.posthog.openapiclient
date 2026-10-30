@@ -11,26 +11,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RawUnmatchedSample : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("raw_utm_source") is { } nullNodeRawUtmSource && nullNodeRawUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawUtmSource = null;
+            if (parseNode.GetChildNode("suggested_integration") is { } nullNodeSuggestedIntegration && nullNodeSuggestedIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedIntegration = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of events with this raw value in the window</summary>
-        public int? EventCount { get; set; }
+        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        private int? _explicitNullValueEventCount = default!;
         /// <summary>A raw utm_source value matching no integration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawUtmSource { get; set; }
+        public string? RawUtmSource { get => _explicitNullValueRawUtmSource; set { _explicitNullValueRawUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_utm_source"); else _explicitNullProperties?.Remove("raw_utm_source"); } }
+        private string? _explicitNullValueRawUtmSource = default!;
 #nullable restore
 #else
-        public string RawUtmSource { get; set; }
+        public string RawUtmSource { get => _explicitNullValueRawUtmSource; set { _explicitNullValueRawUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_utm_source"); else _explicitNullProperties?.Remove("raw_utm_source"); } }
+        private string _explicitNullValueRawUtmSource = default!;
 #endif
         /// <summary>Integration suggested by token match, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestedIntegration { get; set; }
+        public string? SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
+        private string? _explicitNullValueSuggestedIntegration = default!;
 #nullable restore
 #else
-        public string SuggestedIntegration { get; set; }
+        public string SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
+        private string _explicitNullValueSuggestedIntegration = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RawUnmatchedSample"/> and sets the default values.
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RawUnmatchedSample CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RawUnmatchedSample();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RawUnmatchedSample(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("event_count", EventCount);
             writer.WriteStringValue("raw_utm_source", RawUtmSource);
             writer.WriteStringValue("suggested_integration", SuggestedIntegration);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

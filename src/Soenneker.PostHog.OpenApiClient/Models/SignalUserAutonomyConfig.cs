@@ -11,42 +11,62 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalUserAutonomyConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("autostart_priority") is { } nullNodeAutostartPriority && nullNodeAutostartPriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutostartPriority = null;
+            if (parseNode.GetChildNode("github_assign_on_pull_request") is { } nullNodeGithubAssignOnPullRequest && nullNodeGithubAssignOnPullRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubAssignOnPullRequest = null;
+            if (parseNode.GetChildNode("github_open_pull_request_ready") is { } nullNodeGithubOpenPullRequestReady && nullNodeGithubOpenPullRequestReady.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubOpenPullRequestReady = null;
+            if (parseNode.GetChildNode("slack_notification_channel") is { } nullNodeSlackNotificationChannel && nullNodeSlackNotificationChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackNotificationChannel = null;
+            if (parseNode.GetChildNode("slack_notification_min_priority") is { } nullNodeSlackNotificationMinPriority && nullNodeSlackNotificationMinPriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackNotificationMinPriority = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The autostart_priority property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority? AutostartPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority? AutostartPriority { get => _explicitNullValueAutostartPriority; set { _explicitNullValueAutostartPriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autostart_priority"); else _explicitNullProperties?.Remove("autostart_priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority? _explicitNullValueAutostartPriority = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority AutostartPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority AutostartPriority { get => _explicitNullValueAutostartPriority; set { _explicitNullValueAutostartPriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autostart_priority"); else _explicitNullProperties?.Remove("autostart_priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigAutostartPriority _explicitNullValueAutostartPriority = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Whether to add this user as a GitHub assignee on implementation pull requests for reports that suggest them as reviewer. Off by default. Assignment is additive, so turning it off never removes an assignee from a pull request that already has one.</summary>
-        public bool? GithubAssignOnPullRequest { get; set; }
+        public bool? GithubAssignOnPullRequest { get => _explicitNullValueGithubAssignOnPullRequest; set { _explicitNullValueGithubAssignOnPullRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_assign_on_pull_request"); else _explicitNullProperties?.Remove("github_assign_on_pull_request"); } }
+        private bool? _explicitNullValueGithubAssignOnPullRequest = default!;
         /// <summary>Whether implementation pull requests for reports that suggest this user as reviewer open ready for review instead of draft, so the full CI matrix starts right away. Null follows the project&apos;s default_open_pull_request_ready. Applies only when the pull request is created; a pull request somebody converts back to draft stays draft.</summary>
-        public bool? GithubOpenPullRequestReady { get; set; }
+        public bool? GithubOpenPullRequestReady { get => _explicitNullValueGithubOpenPullRequestReady; set { _explicitNullValueGithubOpenPullRequestReady = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_open_pull_request_ready"); else _explicitNullProperties?.Remove("github_open_pull_request_ready"); } }
+        private bool? _explicitNullValueGithubOpenPullRequestReady = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Where the reviewer ping goes, in the same `id|name` shape PostHog uses elsewhere (only the id is required): a channel (`C0123ABC456|#alerts`), or a workspace member (`U0123ABC456|@sam`) who is sent a direct message. Null disables Slack notifications.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackNotificationChannel { get; set; }
+        public string? SlackNotificationChannel { get => _explicitNullValueSlackNotificationChannel; set { _explicitNullValueSlackNotificationChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_notification_channel"); else _explicitNullProperties?.Remove("slack_notification_channel"); } }
+        private string? _explicitNullValueSlackNotificationChannel = default!;
 #nullable restore
 #else
-        public string SlackNotificationChannel { get; set; }
+        public string SlackNotificationChannel { get => _explicitNullValueSlackNotificationChannel; set { _explicitNullValueSlackNotificationChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_notification_channel"); else _explicitNullProperties?.Remove("slack_notification_channel"); } }
+        private string _explicitNullValueSlackNotificationChannel = default!;
 #endif
         /// <summary>ID of the Slack Integration to deliver inbox-item notifications through, or null when notifications are disabled.</summary>
         public int? SlackNotificationIntegrationId { get; private set; }
         /// <summary>Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority. When set, reports without a priority judgment do not notify.* `P0` - P0* `P1` - P1* `P2` - P2* `P3` - P3* `P4` - P4</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority? SlackNotificationMinPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority? SlackNotificationMinPriority { get => _explicitNullValueSlackNotificationMinPriority; set { _explicitNullValueSlackNotificationMinPriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_notification_min_priority"); else _explicitNullProperties?.Remove("slack_notification_min_priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority? _explicitNullValueSlackNotificationMinPriority = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority SlackNotificationMinPriority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority SlackNotificationMinPriority { get => _explicitNullValueSlackNotificationMinPriority; set { _explicitNullValueSlackNotificationMinPriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_notification_min_priority"); else _explicitNullProperties?.Remove("slack_notification_min_priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority _explicitNullValueSlackNotificationMinPriority = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -73,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -107,6 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("github_open_pull_request_ready", GithubOpenPullRequestReady);
             writer.WriteStringValue("slack_notification_channel", SlackNotificationChannel);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalUserAutonomyConfigSlackNotificationMinPriority>("slack_notification_min_priority", SlackNotificationMinPriority);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

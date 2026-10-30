@@ -11,31 +11,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RecomputeResult : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ci_rerun_error") is { } nullNodeCiRerunError && nullNodeCiRerunError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CiRerunError = null;
+            if (parseNode.GetChildNode("ci_rerun_triggered") is { } nullNodeCiRerunTriggered && nullNodeCiRerunTriggered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CiRerunTriggered = null;
+            if (parseNode.GetChildNode("counts_changed") is { } nullNodeCountsChanged && nullNodeCountsChanged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountsChanged = null;
+            if (parseNode.GetChildNode("run") is { } nullNodeRun && nullNodeRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Run = null;
+            if (parseNode.GetChildNode("unresolved") is { } nullNodeUnresolved && nullNodeUnresolved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unresolved = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ci_rerun_error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CiRerunError { get; set; }
+        public string? CiRerunError { get => _explicitNullValueCiRerunError; set { _explicitNullValueCiRerunError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_rerun_error"); else _explicitNullProperties?.Remove("ci_rerun_error"); } }
+        private string? _explicitNullValueCiRerunError = default!;
 #nullable restore
 #else
-        public string CiRerunError { get; set; }
+        public string CiRerunError { get => _explicitNullValueCiRerunError; set { _explicitNullValueCiRerunError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_rerun_error"); else _explicitNullProperties?.Remove("ci_rerun_error"); } }
+        private string _explicitNullValueCiRerunError = default!;
 #endif
         /// <summary>The ci_rerun_triggered property</summary>
-        public bool? CiRerunTriggered { get; set; }
+        public bool? CiRerunTriggered { get => _explicitNullValueCiRerunTriggered; set { _explicitNullValueCiRerunTriggered = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_rerun_triggered"); else _explicitNullProperties?.Remove("ci_rerun_triggered"); } }
+        private bool? _explicitNullValueCiRerunTriggered = default!;
         /// <summary>The counts_changed property</summary>
-        public bool? CountsChanged { get; set; }
+        public bool? CountsChanged { get => _explicitNullValueCountsChanged; set { _explicitNullValueCountsChanged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("counts_changed"); else _explicitNullProperties?.Remove("counts_changed"); } }
+        private bool? _explicitNullValueCountsChanged = default!;
         /// <summary>The run property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Run? Run { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Run? Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.Run? _explicitNullValueRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Run Run { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Run Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.Run _explicitNullValueRun = default!;
 #endif
         /// <summary>The unresolved property</summary>
-        public int? Unresolved { get; set; }
+        public int? Unresolved { get => _explicitNullValueUnresolved; set { _explicitNullValueUnresolved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unresolved"); else _explicitNullProperties?.Remove("unresolved"); } }
+        private int? _explicitNullValueUnresolved = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecomputeResult"/> and sets the default values.
         /// </summary>
@@ -51,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RecomputeResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RecomputeResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RecomputeResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -80,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("counts_changed", CountsChanged);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Run>("run", Run);
             writer.WriteIntValue("unresolved", Unresolved);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

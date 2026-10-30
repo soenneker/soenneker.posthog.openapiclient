@@ -12,45 +12,68 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DatabricksDestinationConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("catalog") is { } nullNodeCatalog && nullNodeCatalog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Catalog = null;
+            if (parseNode.GetChildNode("http_path") is { } nullNodeHttpPath && nullNodeHttpPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HttpPath = null;
+            if (parseNode.GetChildNode("schema") is { } nullNodeSchema && nullNodeSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Schema = null;
+            if (parseNode.GetChildNode("table_name") is { } nullNodeTableName && nullNodeTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TableName = null;
+            if (parseNode.GetChildNode("use_automatic_schema_evolution") is { } nullNodeUseAutomaticSchemaEvolution && nullNodeUseAutomaticSchemaEvolution.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseAutomaticSchemaEvolution = null;
+            if (parseNode.GetChildNode("use_variant_type") is { } nullNodeUseVariantType && nullNodeUseVariantType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseVariantType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Unity Catalog name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Catalog { get; set; }
+        public string? Catalog { get => _explicitNullValueCatalog; set { _explicitNullValueCatalog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("catalog"); else _explicitNullProperties?.Remove("catalog"); } }
+        private string? _explicitNullValueCatalog = default!;
 #nullable restore
 #else
-        public string Catalog { get; set; }
+        public string Catalog { get => _explicitNullValueCatalog; set { _explicitNullValueCatalog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("catalog"); else _explicitNullProperties?.Remove("catalog"); } }
+        private string _explicitNullValueCatalog = default!;
 #endif
         /// <summary>Databricks SQL warehouse HTTP path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HttpPath { get; set; }
+        public string? HttpPath { get => _explicitNullValueHttpPath; set { _explicitNullValueHttpPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("http_path"); else _explicitNullProperties?.Remove("http_path"); } }
+        private string? _explicitNullValueHttpPath = default!;
 #nullable restore
 #else
-        public string HttpPath { get; set; }
+        public string HttpPath { get => _explicitNullValueHttpPath; set { _explicitNullValueHttpPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("http_path"); else _explicitNullProperties?.Remove("http_path"); } }
+        private string _explicitNullValueHttpPath = default!;
 #endif
         /// <summary>Schema (database) name inside the catalog.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Schema { get; set; }
+        public string? Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
+        private string? _explicitNullValueSchema = default!;
 #nullable restore
 #else
-        public string Schema { get; set; }
+        public string Schema { get => _explicitNullValueSchema; set { _explicitNullValueSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema"); else _explicitNullProperties?.Remove("schema"); } }
+        private string _explicitNullValueSchema = default!;
 #endif
         /// <summary>Destination table name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TableName { get; set; }
+        public string? TableName { get => _explicitNullValueTableName; set { _explicitNullValueTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_name"); else _explicitNullProperties?.Remove("table_name"); } }
+        private string? _explicitNullValueTableName = default!;
 #nullable restore
 #else
-        public string TableName { get; set; }
+        public string TableName { get => _explicitNullValueTableName; set { _explicitNullValueTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_name"); else _explicitNullProperties?.Remove("table_name"); } }
+        private string _explicitNullValueTableName = default!;
 #endif
         /// <summary>Whether to let Databricks evolve the destination table schema automatically.</summary>
-        public bool? UseAutomaticSchemaEvolution { get; set; }
+        public bool? UseAutomaticSchemaEvolution { get => _explicitNullValueUseAutomaticSchemaEvolution; set { _explicitNullValueUseAutomaticSchemaEvolution = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_automatic_schema_evolution"); else _explicitNullProperties?.Remove("use_automatic_schema_evolution"); } }
+        private bool? _explicitNullValueUseAutomaticSchemaEvolution = default!;
         /// <summary>Whether to use the Databricks VARIANT type for JSON-like columns.</summary>
-        public bool? UseVariantType { get; set; }
+        public bool? UseVariantType { get => _explicitNullValueUseVariantType; set { _explicitNullValueUseVariantType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_variant_type"); else _explicitNullProperties?.Remove("use_variant_type"); } }
+        private bool? _explicitNullValueUseVariantType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig"/> and sets the default values.
         /// </summary>
@@ -68,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -99,6 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("table_name", TableName);
             writer.WriteBoolValue("use_automatic_schema_evolution", UseAutomaticSchemaEvolution);
             writer.WriteBoolValue("use_variant_type", UseVariantType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

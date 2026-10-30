@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Invites.Delegat
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInvite.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create an onboarding delegation invite: an admin-level invite flagged as a setup delegation.Sends a single dedicated delegation email and records the inviting user as having delegated.

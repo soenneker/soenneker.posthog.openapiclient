@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_imports
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Turns Customer.io automations into draft workflows. Pass each automation as Customer.io&apos;s Journeys UI API returns it. Pass the templates its messages use, or leave them out when the project stored a Customer.io App API key, and PostHog reads them. Each result lists what the import changed or left out. Importing an automation again updates its draft, unless that workflow is no longer a draft. Set dry_run to preview without saving.

@@ -57,6 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Desktop_feedback
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackError.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DesktopFeedbackResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

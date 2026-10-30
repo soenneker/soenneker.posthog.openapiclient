@@ -11,7 +11,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PlatformAlertConfiguration : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Runtime state for each result group of this configuration.</summary>
@@ -116,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty SourceConfig { get; private set; }
 #endif
-        /// <summary>* `logs` - Logs* `insight` - Insight* `warehouse_source` - Warehouse source* `warehouse_destination` - Warehouse destination</summary>
+        /// <summary>* `logs` - Logs* `insight` - Insight* `warehouse_source` - Warehouse source* `warehouse_destination` - Warehouse destination* `metrics` - Metrics</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind? SourceKind { get; private set; }
         /// <summary>When the configuration was last changed.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -135,7 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfiguration CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfiguration();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfiguration(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -180,6 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

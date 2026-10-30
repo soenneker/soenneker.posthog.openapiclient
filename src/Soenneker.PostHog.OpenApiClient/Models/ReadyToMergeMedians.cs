@@ -11,21 +11,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReadyToMergeMedians : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("before_first_approval_share") is { } nullNodeBeforeFirstApprovalShare && nullNodeBeforeFirstApprovalShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeFirstApprovalShare = null;
+            if (parseNode.GetChildNode("first_approval_to_merge_seconds") is { } nullNodeFirstApprovalToMergeSeconds && nullNodeFirstApprovalToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstApprovalToMergeSeconds = null;
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("p90_ready_to_merge_seconds") is { } nullNodeP90ReadyToMergeSeconds && nullNodeP90ReadyToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P90ReadyToMergeSeconds = null;
+            if (parseNode.GetChildNode("ready_to_first_approval_seconds") is { } nullNodeReadyToFirstApprovalSeconds && nullNodeReadyToFirstApprovalSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyToFirstApprovalSeconds = null;
+            if (parseNode.GetChildNode("ready_to_merge_seconds") is { } nullNodeReadyToMergeSeconds && nullNodeReadyToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyToMergeSeconds = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Share (0 to 1) of all ready-to-merge hours spent before the first approval, summed over the pull requests, so long pull requests weigh more.</summary>
-        public double? BeforeFirstApprovalShare { get; set; }
+        public double? BeforeFirstApprovalShare { get => _explicitNullValueBeforeFirstApprovalShare; set { _explicitNullValueBeforeFirstApprovalShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_first_approval_share"); else _explicitNullProperties?.Remove("before_first_approval_share"); } }
+        private double? _explicitNullValueBeforeFirstApprovalShare = default!;
         /// <summary>Median seconds from the first approval to merge. The two approval medians do not add up to the ready-to-merge median.</summary>
-        public double? FirstApprovalToMergeSeconds { get; set; }
+        public double? FirstApprovalToMergeSeconds { get => _explicitNullValueFirstApprovalToMergeSeconds; set { _explicitNullValueFirstApprovalToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_approval_to_merge_seconds"); else _explicitNullProperties?.Remove("first_approval_to_merge_seconds"); } }
+        private double? _explicitNullValueFirstApprovalToMergeSeconds = default!;
         /// <summary>Pull requests merged in the window, bots and drafts excluded.</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>90th percentile of the ready-to-merge seconds.</summary>
-        public double? P90ReadyToMergeSeconds { get; set; }
+        public double? P90ReadyToMergeSeconds { get => _explicitNullValueP90ReadyToMergeSeconds; set { _explicitNullValueP90ReadyToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p90_ready_to_merge_seconds"); else _explicitNullProperties?.Remove("p90_ready_to_merge_seconds"); } }
+        private double? _explicitNullValueP90ReadyToMergeSeconds = default!;
         /// <summary>Median seconds from ready to the first approval, over the pull requests with an approval. Null when nothing was measured.</summary>
-        public double? ReadyToFirstApprovalSeconds { get; set; }
+        public double? ReadyToFirstApprovalSeconds { get => _explicitNullValueReadyToFirstApprovalSeconds; set { _explicitNullValueReadyToFirstApprovalSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_to_first_approval_seconds"); else _explicitNullProperties?.Remove("ready_to_first_approval_seconds"); } }
+        private double? _explicitNullValueReadyToFirstApprovalSeconds = default!;
         /// <summary>Median seconds from the last ready_for_review to merge. Null when nothing was measured.</summary>
-        public double? ReadyToMergeSeconds { get; set; }
+        public double? ReadyToMergeSeconds { get => _explicitNullValueReadyToMergeSeconds; set { _explicitNullValueReadyToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_to_merge_seconds"); else _explicitNullProperties?.Remove("ready_to_merge_seconds"); } }
+        private double? _explicitNullValueReadyToMergeSeconds = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians"/> and sets the default values.
         /// </summary>
@@ -41,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("p90_ready_to_merge_seconds", P90ReadyToMergeSeconds);
             writer.WriteDoubleValue("ready_to_first_approval_seconds", ReadyToFirstApprovalSeconds);
             writer.WriteDoubleValue("ready_to_merge_seconds", ReadyToMergeSeconds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

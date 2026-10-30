@@ -11,20 +11,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DataSuggestionBuildRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("retry") is { } nullNodeRetry && nullNodeRetry.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Retry = null;
+            if (parseNode.GetChildNode("save_draft") is { } nullNodeSaveDraft && nullNodeSaveDraft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SaveDraft = null;
+            if (parseNode.GetChildNode("suggestion_id") is { } nullNodeSuggestionId && nullNodeSuggestionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestionId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Start a new build when the last one failed. Leave it false when asking for a running build&apos;s status.</summary>
-        public bool? Retry { get; set; }
+        public bool? Retry { get => _explicitNullValueRetry; set { _explicitNullValueRetry = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retry"); else _explicitNullProperties?.Remove("retry"); } }
+        private bool? _explicitNullValueRetry = default!;
         /// <summary>Save the built draft in the project and return its workflow_id. Blank settings, like a webhook URL, stay blank and are listed in missing_inputs. Leave it false to get the workflow back without saving.</summary>
-        public bool? SaveDraft { get; set; }
+        public bool? SaveDraft { get => _explicitNullValueSaveDraft; set { _explicitNullValueSaveDraft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("save_draft"); else _explicitNullProperties?.Remove("save_draft"); } }
+        private bool? _explicitNullValueSaveDraft = default!;
         /// <summary>The id of a suggestion from the list endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestionId { get; set; }
+        public string? SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
+        private string? _explicitNullValueSuggestionId = default!;
 #nullable restore
 #else
-        public string SuggestionId { get; set; }
+        public string SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
+        private string _explicitNullValueSuggestionId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataSuggestionBuildRequest"/> and sets the default values.
@@ -43,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DataSuggestionBuildRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DataSuggestionBuildRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DataSuggestionBuildRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("retry", Retry);
             writer.WriteBoolValue("save_draft", SaveDraft);
             writer.WriteStringValue("suggestion_id", SuggestionId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

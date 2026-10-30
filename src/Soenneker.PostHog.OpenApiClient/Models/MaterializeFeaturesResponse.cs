@@ -12,66 +12,101 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MaterializeFeaturesResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("elapsed_s") is { } nullNodeElapsedS && nullNodeElapsedS.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ElapsedS = null;
+            if (parseNode.GetChildNode("feature_cols") is { } nullNodeFeatureCols && nullNodeFeatureCols.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureCols = null;
+            if (parseNode.GetChildNode("hints") is { } nullNodeHints && nullNodeHints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hints = null;
+            if (parseNode.GetChildNode("holdout_features_path") is { } nullNodeHoldoutFeaturesPath && nullNodeHoldoutFeaturesPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldoutFeaturesPath = null;
+            if (parseNode.GetChildNode("holdout_labels_path") is { } nullNodeHoldoutLabelsPath && nullNodeHoldoutLabelsPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldoutLabelsPath = null;
+            if (parseNode.GetChildNode("n_features") is { } nullNodeNFeatures && nullNodeNFeatures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NFeatures = null;
+            if (parseNode.GetChildNode("n_holdout") is { } nullNodeNHoldout && nullNodeNHoldout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NHoldout = null;
+            if (parseNode.GetChildNode("n_train") is { } nullNodeNTrain && nullNodeNTrain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NTrain = null;
+            if (parseNode.GetChildNode("rows_read") is { } nullNodeRowsRead && nullNodeRowsRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsRead = null;
+            if (parseNode.GetChildNode("train_features_path") is { } nullNodeTrainFeaturesPath && nullNodeTrainFeaturesPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainFeaturesPath = null;
+            if (parseNode.GetChildNode("train_labels_path") is { } nullNodeTrainLabelsPath && nullNodeTrainLabelsPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainLabelsPath = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Seconds the server spent on the queries that materialized the matrix. Scoring runs features_sql over the whole inference population on every cadence, so a slow query here is slow there too.</summary>
-        public double? ElapsedS { get; set; }
+        public double? ElapsedS { get => _explicitNullValueElapsedS; set { _explicitNullValueElapsedS = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elapsed_s"); else _explicitNullProperties?.Remove("elapsed_s"); } }
+        private double? _explicitNullValueElapsedS = default!;
         /// <summary>The numeric feature column names (excludes distinct_id, __label, __fold).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FeatureCols { get; set; }
+        public List<string>? FeatureCols { get => _explicitNullValueFeatureCols; set { _explicitNullValueFeatureCols = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_cols"); else _explicitNullProperties?.Remove("feature_cols"); } }
+        private List<string>? _explicitNullValueFeatureCols = default!;
 #nullable restore
 #else
-        public List<string> FeatureCols { get; set; }
+        public List<string> FeatureCols { get => _explicitNullValueFeatureCols; set { _explicitNullValueFeatureCols = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_cols"); else _explicitNullProperties?.Remove("feature_cols"); } }
+        private List<string> _explicitNullValueFeatureCols = default!;
 #endif
         /// <summary>Advice on the cost of features_sql. A hint does not block the materialization or the upload, but a champion whose features.sql cannot score today&apos;s population in time is not promoted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Hints { get; set; }
+        public List<string>? Hints { get => _explicitNullValueHints; set { _explicitNullValueHints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hints"); else _explicitNullProperties?.Remove("hints"); } }
+        private List<string>? _explicitNullValueHints = default!;
 #nullable restore
 #else
-        public List<string> Hints { get; set; }
+        public List<string> Hints { get => _explicitNullValueHints; set { _explicitNullValueHints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hints"); else _explicitNullProperties?.Remove("hints"); } }
+        private List<string> _explicitNullValueHints = default!;
 #endif
         /// <summary>Sandbox path to the holdout feature matrix parquet (same columns as train_features).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HoldoutFeaturesPath { get; set; }
+        public string? HoldoutFeaturesPath { get => _explicitNullValueHoldoutFeaturesPath; set { _explicitNullValueHoldoutFeaturesPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdout_features_path"); else _explicitNullProperties?.Remove("holdout_features_path"); } }
+        private string? _explicitNullValueHoldoutFeaturesPath = default!;
 #nullable restore
 #else
-        public string HoldoutFeaturesPath { get; set; }
+        public string HoldoutFeaturesPath { get => _explicitNullValueHoldoutFeaturesPath; set { _explicitNullValueHoldoutFeaturesPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdout_features_path"); else _explicitNullProperties?.Remove("holdout_features_path"); } }
+        private string _explicitNullValueHoldoutFeaturesPath = default!;
 #endif
         /// <summary>Sandbox path to the holdout labels parquet (distinct_id + __label).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HoldoutLabelsPath { get; set; }
+        public string? HoldoutLabelsPath { get => _explicitNullValueHoldoutLabelsPath; set { _explicitNullValueHoldoutLabelsPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdout_labels_path"); else _explicitNullProperties?.Remove("holdout_labels_path"); } }
+        private string? _explicitNullValueHoldoutLabelsPath = default!;
 #nullable restore
 #else
-        public string HoldoutLabelsPath { get; set; }
+        public string HoldoutLabelsPath { get => _explicitNullValueHoldoutLabelsPath; set { _explicitNullValueHoldoutLabelsPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdout_labels_path"); else _explicitNullProperties?.Remove("holdout_labels_path"); } }
+        private string _explicitNullValueHoldoutLabelsPath = default!;
 #endif
         /// <summary>Number of numeric feature columns produced by features_sql.</summary>
-        public int? NFeatures { get; set; }
+        public int? NFeatures { get => _explicitNullValueNFeatures; set { _explicitNullValueNFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_features"); else _explicitNullProperties?.Remove("n_features"); } }
+        private int? _explicitNullValueNFeatures = default!;
         /// <summary>Number of rows in the holdout split.</summary>
-        public int? NHoldout { get; set; }
+        public int? NHoldout { get => _explicitNullValueNHoldout; set { _explicitNullValueNHoldout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_holdout"); else _explicitNullProperties?.Remove("n_holdout"); } }
+        private int? _explicitNullValueNHoldout = default!;
         /// <summary>Number of rows in the training split.</summary>
-        public int? NTrain { get; set; }
+        public int? NTrain { get => _explicitNullValueNTrain; set { _explicitNullValueNTrain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_train"); else _explicitNullProperties?.Remove("n_train"); } }
+        private int? _explicitNullValueNTrain = default!;
         /// <summary>Rows ClickHouse read to materialize the matrix.</summary>
-        public int? RowsRead { get; set; }
+        public int? RowsRead { get => _explicitNullValueRowsRead; set { _explicitNullValueRowsRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_read"); else _explicitNullProperties?.Remove("rows_read"); } }
+        private int? _explicitNullValueRowsRead = default!;
         /// <summary>Sandbox path to the training feature matrix parquet (distinct_id + numeric feature columns).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrainFeaturesPath { get; set; }
+        public string? TrainFeaturesPath { get => _explicitNullValueTrainFeaturesPath; set { _explicitNullValueTrainFeaturesPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_features_path"); else _explicitNullProperties?.Remove("train_features_path"); } }
+        private string? _explicitNullValueTrainFeaturesPath = default!;
 #nullable restore
 #else
-        public string TrainFeaturesPath { get; set; }
+        public string TrainFeaturesPath { get => _explicitNullValueTrainFeaturesPath; set { _explicitNullValueTrainFeaturesPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_features_path"); else _explicitNullProperties?.Remove("train_features_path"); } }
+        private string _explicitNullValueTrainFeaturesPath = default!;
 #endif
         /// <summary>Sandbox path to the training labels parquet (distinct_id + __label).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrainLabelsPath { get; set; }
+        public string? TrainLabelsPath { get => _explicitNullValueTrainLabelsPath; set { _explicitNullValueTrainLabelsPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_labels_path"); else _explicitNullProperties?.Remove("train_labels_path"); } }
+        private string? _explicitNullValueTrainLabelsPath = default!;
 #nullable restore
 #else
-        public string TrainLabelsPath { get; set; }
+        public string TrainLabelsPath { get => _explicitNullValueTrainLabelsPath; set { _explicitNullValueTrainLabelsPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("train_labels_path"); else _explicitNullProperties?.Remove("train_labels_path"); } }
+        private string _explicitNullValueTrainLabelsPath = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MaterializeFeaturesResponse"/> and sets the default values.
@@ -88,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MaterializeFeaturesResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MaterializeFeaturesResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MaterializeFeaturesResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,6 +164,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("rows_read", RowsRead);
             writer.WriteStringValue("train_features_path", TrainFeaturesPath);
             writer.WriteStringValue("train_labels_path", TrainLabelsPath);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,26 +11,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LlmSkillFileRename : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_version") is { } nullNodeBaseVersion && nullNodeBaseVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseVersion = null;
+            if (parseNode.GetChildNode("new_path") is { } nullNodeNewPath && nullNodeNewPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewPath = null;
+            if (parseNode.GetChildNode("old_path") is { } nullNodeOldPath && nullNodeOldPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OldPath = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Latest version you are editing from. If provided, the request fails with 409 when another write has landed in the meantime.</summary>
-        public int? BaseVersion { get; set; }
+        public int? BaseVersion { get => _explicitNullValueBaseVersion; set { _explicitNullValueBaseVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_version"); else _explicitNullProperties?.Remove("base_version"); } }
+        private int? _explicitNullValueBaseVersion = default!;
         /// <summary>New file path. Must not already exist in the skill.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewPath { get; set; }
+        public string? NewPath { get => _explicitNullValueNewPath; set { _explicitNullValueNewPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_path"); else _explicitNullProperties?.Remove("new_path"); } }
+        private string? _explicitNullValueNewPath = default!;
 #nullable restore
 #else
-        public string NewPath { get; set; }
+        public string NewPath { get => _explicitNullValueNewPath; set { _explicitNullValueNewPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_path"); else _explicitNullProperties?.Remove("new_path"); } }
+        private string _explicitNullValueNewPath = default!;
 #endif
         /// <summary>Current file path to rename.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OldPath { get; set; }
+        public string? OldPath { get => _explicitNullValueOldPath; set { _explicitNullValueOldPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("old_path"); else _explicitNullProperties?.Remove("old_path"); } }
+        private string? _explicitNullValueOldPath = default!;
 #nullable restore
 #else
-        public string OldPath { get; set; }
+        public string OldPath { get => _explicitNullValueOldPath; set { _explicitNullValueOldPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("old_path"); else _explicitNullProperties?.Remove("old_path"); } }
+        private string _explicitNullValueOldPath = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileRename"/> and sets the default values.
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileRename CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileRename();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillFileRename(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("base_version", BaseVersion);
             writer.WriteStringValue("new_path", NewPath);
             writer.WriteStringValue("old_path", OldPath);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

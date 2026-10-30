@@ -11,280 +11,404 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SurveyAppearanceSchema : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowGoBack") is { } nullNodeAllowGoBack && nullNodeAllowGoBack.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowGoBack = null;
+            if (parseNode.GetChildNode("autoDisappear") is { } nullNodeAutoDisappear && nullNodeAutoDisappear.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoDisappear = null;
+            if (parseNode.GetChildNode("backButtonText") is { } nullNodeBackButtonText && nullNodeBackButtonText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BackButtonText = null;
+            if (parseNode.GetChildNode("backgroundColor") is { } nullNodeBackgroundColor && nullNodeBackgroundColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BackgroundColor = null;
+            if (parseNode.GetChildNode("borderColor") is { } nullNodeBorderColor && nullNodeBorderColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BorderColor = null;
+            if (parseNode.GetChildNode("borderRadius") is { } nullNodeBorderRadius && nullNodeBorderRadius.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BorderRadius = null;
+            if (parseNode.GetChildNode("boxPadding") is { } nullNodeBoxPadding && nullNodeBoxPadding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoxPadding = null;
+            if (parseNode.GetChildNode("boxShadow") is { } nullNodeBoxShadow && nullNodeBoxShadow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoxShadow = null;
+            if (parseNode.GetChildNode("descriptionTextColor") is { } nullNodeDescriptionTextColor && nullNodeDescriptionTextColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DescriptionTextColor = null;
+            if (parseNode.GetChildNode("disabledButtonOpacity") is { } nullNodeDisabledButtonOpacity && nullNodeDisabledButtonOpacity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisabledButtonOpacity = null;
+            if (parseNode.GetChildNode("displayIntroScreen") is { } nullNodeDisplayIntroScreen && nullNodeDisplayIntroScreen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayIntroScreen = null;
+            if (parseNode.GetChildNode("displayThankYouMessage") is { } nullNodeDisplayThankYouMessage && nullNodeDisplayThankYouMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayThankYouMessage = null;
+            if (parseNode.GetChildNode("fontFamily") is { } nullNodeFontFamily && nullNodeFontFamily.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FontFamily = null;
+            if (parseNode.GetChildNode("inputBackground") is { } nullNodeInputBackground && nullNodeInputBackground.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputBackground = null;
+            if (parseNode.GetChildNode("inputTextColor") is { } nullNodeInputTextColor && nullNodeInputTextColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTextColor = null;
+            if (parseNode.GetChildNode("introScreenButtonText") is { } nullNodeIntroScreenButtonText && nullNodeIntroScreenButtonText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntroScreenButtonText = null;
+            if (parseNode.GetChildNode("introScreenDescription") is { } nullNodeIntroScreenDescription && nullNodeIntroScreenDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntroScreenDescription = null;
+            if (parseNode.GetChildNode("introScreenDescriptionContentType") is { } nullNodeIntroScreenDescriptionContentType && nullNodeIntroScreenDescriptionContentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntroScreenDescriptionContentType = null;
+            if (parseNode.GetChildNode("introScreenHeader") is { } nullNodeIntroScreenHeader && nullNodeIntroScreenHeader.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntroScreenHeader = null;
+            if (parseNode.GetChildNode("maxWidth") is { } nullNodeMaxWidth && nullNodeMaxWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxWidth = null;
+            if (parseNode.GetChildNode("placeholder") is { } nullNodePlaceholder && nullNodePlaceholder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Placeholder = null;
+            if (parseNode.GetChildNode("position") is { } nullNodePosition && nullNodePosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Position = null;
+            if (parseNode.GetChildNode("ratingButtonActiveColor") is { } nullNodeRatingButtonActiveColor && nullNodeRatingButtonActiveColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RatingButtonActiveColor = null;
+            if (parseNode.GetChildNode("ratingButtonColor") is { } nullNodeRatingButtonColor && nullNodeRatingButtonColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RatingButtonColor = null;
+            if (parseNode.GetChildNode("ratingButtonHoverColor") is { } nullNodeRatingButtonHoverColor && nullNodeRatingButtonHoverColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RatingButtonHoverColor = null;
+            if (parseNode.GetChildNode("shuffleQuestions") is { } nullNodeShuffleQuestions && nullNodeShuffleQuestions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShuffleQuestions = null;
+            if (parseNode.GetChildNode("submitButtonColor") is { } nullNodeSubmitButtonColor && nullNodeSubmitButtonColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubmitButtonColor = null;
+            if (parseNode.GetChildNode("submitButtonText") is { } nullNodeSubmitButtonText && nullNodeSubmitButtonText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubmitButtonText = null;
+            if (parseNode.GetChildNode("submitButtonTextColor") is { } nullNodeSubmitButtonTextColor && nullNodeSubmitButtonTextColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubmitButtonTextColor = null;
+            if (parseNode.GetChildNode("surveyPopupDelaySeconds") is { } nullNodeSurveyPopupDelaySeconds && nullNodeSurveyPopupDelaySeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyPopupDelaySeconds = null;
+            if (parseNode.GetChildNode("tabPosition") is { } nullNodeTabPosition && nullNodeTabPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TabPosition = null;
+            if (parseNode.GetChildNode("textColor") is { } nullNodeTextColor && nullNodeTextColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextColor = null;
+            if (parseNode.GetChildNode("textSubtleColor") is { } nullNodeTextSubtleColor && nullNodeTextSubtleColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TextSubtleColor = null;
+            if (parseNode.GetChildNode("thankYouMessageCloseButtonText") is { } nullNodeThankYouMessageCloseButtonText && nullNodeThankYouMessageCloseButtonText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThankYouMessageCloseButtonText = null;
+            if (parseNode.GetChildNode("thankYouMessageDescription") is { } nullNodeThankYouMessageDescription && nullNodeThankYouMessageDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThankYouMessageDescription = null;
+            if (parseNode.GetChildNode("thankYouMessageDescriptionContentType") is { } nullNodeThankYouMessageDescriptionContentType && nullNodeThankYouMessageDescriptionContentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThankYouMessageDescriptionContentType = null;
+            if (parseNode.GetChildNode("thankYouMessageHeader") is { } nullNodeThankYouMessageHeader && nullNodeThankYouMessageHeader.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThankYouMessageHeader = null;
+            if (parseNode.GetChildNode("whiteLabel") is { } nullNodeWhiteLabel && nullNodeWhiteLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhiteLabel = null;
+            if (parseNode.GetChildNode("widgetColor") is { } nullNodeWidgetColor && nullNodeWidgetColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WidgetColor = null;
+            if (parseNode.GetChildNode("widgetLabel") is { } nullNodeWidgetLabel && nullNodeWidgetLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WidgetLabel = null;
+            if (parseNode.GetChildNode("widgetSelector") is { } nullNodeWidgetSelector && nullNodeWidgetSelector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WidgetSelector = null;
+            if (parseNode.GetChildNode("widgetType") is { } nullNodeWidgetType && nullNodeWidgetType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WidgetType = null;
+            if (parseNode.GetChildNode("zIndex") is { } nullNodeZIndex && nullNodeZIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ZIndex = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to show a &apos;Back&apos; button on web surveys after the first question, letting respondents return to a previously visited question. Defaults to false.</summary>
-        public bool? AllowGoBack { get; set; }
+        public bool? AllowGoBack { get => _explicitNullValueAllowGoBack; set { _explicitNullValueAllowGoBack = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowGoBack"); else _explicitNullProperties?.Remove("allowGoBack"); } }
+        private bool? _explicitNullValueAllowGoBack = default!;
         /// <summary>The autoDisappear property</summary>
-        public bool? AutoDisappear { get; set; }
+        public bool? AutoDisappear { get => _explicitNullValueAutoDisappear; set { _explicitNullValueAutoDisappear = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("autoDisappear"); else _explicitNullProperties?.Remove("autoDisappear"); } }
+        private bool? _explicitNullValueAutoDisappear = default!;
         /// <summary>Optional override for the back button label. Defaults to &apos;Back&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BackButtonText { get; set; }
+        public string? BackButtonText { get => _explicitNullValueBackButtonText; set { _explicitNullValueBackButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backButtonText"); else _explicitNullProperties?.Remove("backButtonText"); } }
+        private string? _explicitNullValueBackButtonText = default!;
 #nullable restore
 #else
-        public string BackButtonText { get; set; }
+        public string BackButtonText { get => _explicitNullValueBackButtonText; set { _explicitNullValueBackButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backButtonText"); else _explicitNullProperties?.Remove("backButtonText"); } }
+        private string _explicitNullValueBackButtonText = default!;
 #endif
         /// <summary>The backgroundColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BackgroundColor { get; set; }
+        public string? BackgroundColor { get => _explicitNullValueBackgroundColor; set { _explicitNullValueBackgroundColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backgroundColor"); else _explicitNullProperties?.Remove("backgroundColor"); } }
+        private string? _explicitNullValueBackgroundColor = default!;
 #nullable restore
 #else
-        public string BackgroundColor { get; set; }
+        public string BackgroundColor { get => _explicitNullValueBackgroundColor; set { _explicitNullValueBackgroundColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backgroundColor"); else _explicitNullProperties?.Remove("backgroundColor"); } }
+        private string _explicitNullValueBackgroundColor = default!;
 #endif
         /// <summary>The borderColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BorderColor { get; set; }
+        public string? BorderColor { get => _explicitNullValueBorderColor; set { _explicitNullValueBorderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderColor"); else _explicitNullProperties?.Remove("borderColor"); } }
+        private string? _explicitNullValueBorderColor = default!;
 #nullable restore
 #else
-        public string BorderColor { get; set; }
+        public string BorderColor { get => _explicitNullValueBorderColor; set { _explicitNullValueBorderColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderColor"); else _explicitNullProperties?.Remove("borderColor"); } }
+        private string _explicitNullValueBorderColor = default!;
 #endif
         /// <summary>CSS border-radius value of the survey box.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BorderRadius { get; set; }
+        public string? BorderRadius { get => _explicitNullValueBorderRadius; set { _explicitNullValueBorderRadius = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderRadius"); else _explicitNullProperties?.Remove("borderRadius"); } }
+        private string? _explicitNullValueBorderRadius = default!;
 #nullable restore
 #else
-        public string BorderRadius { get; set; }
+        public string BorderRadius { get => _explicitNullValueBorderRadius; set { _explicitNullValueBorderRadius = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("borderRadius"); else _explicitNullProperties?.Remove("borderRadius"); } }
+        private string _explicitNullValueBorderRadius = default!;
 #endif
         /// <summary>The boxPadding property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BoxPadding { get; set; }
+        public string? BoxPadding { get => _explicitNullValueBoxPadding; set { _explicitNullValueBoxPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boxPadding"); else _explicitNullProperties?.Remove("boxPadding"); } }
+        private string? _explicitNullValueBoxPadding = default!;
 #nullable restore
 #else
-        public string BoxPadding { get; set; }
+        public string BoxPadding { get => _explicitNullValueBoxPadding; set { _explicitNullValueBoxPadding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boxPadding"); else _explicitNullProperties?.Remove("boxPadding"); } }
+        private string _explicitNullValueBoxPadding = default!;
 #endif
         /// <summary>CSS box-shadow value of the survey box.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BoxShadow { get; set; }
+        public string? BoxShadow { get => _explicitNullValueBoxShadow; set { _explicitNullValueBoxShadow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boxShadow"); else _explicitNullProperties?.Remove("boxShadow"); } }
+        private string? _explicitNullValueBoxShadow = default!;
 #nullable restore
 #else
-        public string BoxShadow { get; set; }
+        public string BoxShadow { get => _explicitNullValueBoxShadow; set { _explicitNullValueBoxShadow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boxShadow"); else _explicitNullProperties?.Remove("boxShadow"); } }
+        private string _explicitNullValueBoxShadow = default!;
 #endif
         /// <summary>The descriptionTextColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DescriptionTextColor { get; set; }
+        public string? DescriptionTextColor { get => _explicitNullValueDescriptionTextColor; set { _explicitNullValueDescriptionTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("descriptionTextColor"); else _explicitNullProperties?.Remove("descriptionTextColor"); } }
+        private string? _explicitNullValueDescriptionTextColor = default!;
 #nullable restore
 #else
-        public string DescriptionTextColor { get; set; }
+        public string DescriptionTextColor { get => _explicitNullValueDescriptionTextColor; set { _explicitNullValueDescriptionTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("descriptionTextColor"); else _explicitNullProperties?.Remove("descriptionTextColor"); } }
+        private string _explicitNullValueDescriptionTextColor = default!;
 #endif
         /// <summary>The disabledButtonOpacity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisabledButtonOpacity { get; set; }
+        public string? DisabledButtonOpacity { get => _explicitNullValueDisabledButtonOpacity; set { _explicitNullValueDisabledButtonOpacity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabledButtonOpacity"); else _explicitNullProperties?.Remove("disabledButtonOpacity"); } }
+        private string? _explicitNullValueDisabledButtonOpacity = default!;
 #nullable restore
 #else
-        public string DisabledButtonOpacity { get; set; }
+        public string DisabledButtonOpacity { get => _explicitNullValueDisabledButtonOpacity; set { _explicitNullValueDisabledButtonOpacity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabledButtonOpacity"); else _explicitNullProperties?.Remove("disabledButtonOpacity"); } }
+        private string _explicitNullValueDisabledButtonOpacity = default!;
 #endif
         /// <summary>Whether to show an intro screen before the first question. The intro screen shows only when introScreenHeader or introScreenDescription is set.</summary>
-        public bool? DisplayIntroScreen { get; set; }
+        public bool? DisplayIntroScreen { get => _explicitNullValueDisplayIntroScreen; set { _explicitNullValueDisplayIntroScreen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayIntroScreen"); else _explicitNullProperties?.Remove("displayIntroScreen"); } }
+        private bool? _explicitNullValueDisplayIntroScreen = default!;
         /// <summary>The displayThankYouMessage property</summary>
-        public bool? DisplayThankYouMessage { get; set; }
+        public bool? DisplayThankYouMessage { get => _explicitNullValueDisplayThankYouMessage; set { _explicitNullValueDisplayThankYouMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayThankYouMessage"); else _explicitNullProperties?.Remove("displayThankYouMessage"); } }
+        private bool? _explicitNullValueDisplayThankYouMessage = default!;
         /// <summary>The fontFamily property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FontFamily { get; set; }
+        public string? FontFamily { get => _explicitNullValueFontFamily; set { _explicitNullValueFontFamily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fontFamily"); else _explicitNullProperties?.Remove("fontFamily"); } }
+        private string? _explicitNullValueFontFamily = default!;
 #nullable restore
 #else
-        public string FontFamily { get; set; }
+        public string FontFamily { get => _explicitNullValueFontFamily; set { _explicitNullValueFontFamily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fontFamily"); else _explicitNullProperties?.Remove("fontFamily"); } }
+        private string _explicitNullValueFontFamily = default!;
 #endif
         /// <summary>Background color of open text inputs and rating buttons.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputBackground { get; set; }
+        public string? InputBackground { get => _explicitNullValueInputBackground; set { _explicitNullValueInputBackground = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputBackground"); else _explicitNullProperties?.Remove("inputBackground"); } }
+        private string? _explicitNullValueInputBackground = default!;
 #nullable restore
 #else
-        public string InputBackground { get; set; }
+        public string InputBackground { get => _explicitNullValueInputBackground; set { _explicitNullValueInputBackground = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputBackground"); else _explicitNullProperties?.Remove("inputBackground"); } }
+        private string _explicitNullValueInputBackground = default!;
 #endif
         /// <summary>Text color of open text inputs and rating buttons. Calculated from inputBackground when not set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InputTextColor { get; set; }
+        public string? InputTextColor { get => _explicitNullValueInputTextColor; set { _explicitNullValueInputTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputTextColor"); else _explicitNullProperties?.Remove("inputTextColor"); } }
+        private string? _explicitNullValueInputTextColor = default!;
 #nullable restore
 #else
-        public string InputTextColor { get; set; }
+        public string InputTextColor { get => _explicitNullValueInputTextColor; set { _explicitNullValueInputTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inputTextColor"); else _explicitNullProperties?.Remove("inputTextColor"); } }
+        private string _explicitNullValueInputTextColor = default!;
 #endif
         /// <summary>Label of the button that closes the intro screen and starts the survey.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntroScreenButtonText { get; set; }
+        public string? IntroScreenButtonText { get => _explicitNullValueIntroScreenButtonText; set { _explicitNullValueIntroScreenButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("introScreenButtonText"); else _explicitNullProperties?.Remove("introScreenButtonText"); } }
+        private string? _explicitNullValueIntroScreenButtonText = default!;
 #nullable restore
 #else
-        public string IntroScreenButtonText { get; set; }
+        public string IntroScreenButtonText { get => _explicitNullValueIntroScreenButtonText; set { _explicitNullValueIntroScreenButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("introScreenButtonText"); else _explicitNullProperties?.Remove("introScreenButtonText"); } }
+        private string _explicitNullValueIntroScreenButtonText = default!;
 #endif
         /// <summary>Body text of the intro screen.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntroScreenDescription { get; set; }
+        public string? IntroScreenDescription { get => _explicitNullValueIntroScreenDescription; set { _explicitNullValueIntroScreenDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("introScreenDescription"); else _explicitNullProperties?.Remove("introScreenDescription"); } }
+        private string? _explicitNullValueIntroScreenDescription = default!;
 #nullable restore
 #else
-        public string IntroScreenDescription { get; set; }
+        public string IntroScreenDescription { get => _explicitNullValueIntroScreenDescription; set { _explicitNullValueIntroScreenDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("introScreenDescription"); else _explicitNullProperties?.Remove("introScreenDescription"); } }
+        private string _explicitNullValueIntroScreenDescription = default!;
 #endif
         /// <summary>* `html` - html* `text` - text</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaIntroScreenDescriptionContentType? IntroScreenDescriptionContentType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaIntroScreenDescriptionContentType? IntroScreenDescriptionContentType { get => _explicitNullValueIntroScreenDescriptionContentType; set { _explicitNullValueIntroScreenDescriptionContentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("introScreenDescriptionContentType"); else _explicitNullProperties?.Remove("introScreenDescriptionContentType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaIntroScreenDescriptionContentType? _explicitNullValueIntroScreenDescriptionContentType = default!;
         /// <summary>Heading of the intro screen.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntroScreenHeader { get; set; }
+        public string? IntroScreenHeader { get => _explicitNullValueIntroScreenHeader; set { _explicitNullValueIntroScreenHeader = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("introScreenHeader"); else _explicitNullProperties?.Remove("introScreenHeader"); } }
+        private string? _explicitNullValueIntroScreenHeader = default!;
 #nullable restore
 #else
-        public string IntroScreenHeader { get; set; }
+        public string IntroScreenHeader { get => _explicitNullValueIntroScreenHeader; set { _explicitNullValueIntroScreenHeader = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("introScreenHeader"); else _explicitNullProperties?.Remove("introScreenHeader"); } }
+        private string _explicitNullValueIntroScreenHeader = default!;
 #endif
         /// <summary>The maxWidth property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaxWidth { get; set; }
+        public string? MaxWidth { get => _explicitNullValueMaxWidth; set { _explicitNullValueMaxWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxWidth"); else _explicitNullProperties?.Remove("maxWidth"); } }
+        private string? _explicitNullValueMaxWidth = default!;
 #nullable restore
 #else
-        public string MaxWidth { get; set; }
+        public string MaxWidth { get => _explicitNullValueMaxWidth; set { _explicitNullValueMaxWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxWidth"); else _explicitNullProperties?.Remove("maxWidth"); } }
+        private string _explicitNullValueMaxWidth = default!;
 #endif
         /// <summary>The placeholder property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Placeholder { get; set; }
+        public string? Placeholder { get => _explicitNullValuePlaceholder; set { _explicitNullValuePlaceholder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placeholder"); else _explicitNullProperties?.Remove("placeholder"); } }
+        private string? _explicitNullValuePlaceholder = default!;
 #nullable restore
 #else
-        public string Placeholder { get; set; }
+        public string Placeholder { get => _explicitNullValuePlaceholder; set { _explicitNullValuePlaceholder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("placeholder"); else _explicitNullProperties?.Remove("placeholder"); } }
+        private string _explicitNullValuePlaceholder = default!;
 #endif
         /// <summary>* `top_left` - top_left* `top_center` - top_center* `top_right` - top_right* `middle_left` - middle_left* `middle_center` - middle_center* `middle_right` - middle_right* `left` - left* `center` - center* `right` - right* `next_to_trigger` - next_to_trigger</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaPosition? Position { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaPosition? Position { get => _explicitNullValuePosition; set { _explicitNullValuePosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position"); else _explicitNullProperties?.Remove("position"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaPosition? _explicitNullValuePosition = default!;
         /// <summary>The ratingButtonActiveColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RatingButtonActiveColor { get; set; }
+        public string? RatingButtonActiveColor { get => _explicitNullValueRatingButtonActiveColor; set { _explicitNullValueRatingButtonActiveColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratingButtonActiveColor"); else _explicitNullProperties?.Remove("ratingButtonActiveColor"); } }
+        private string? _explicitNullValueRatingButtonActiveColor = default!;
 #nullable restore
 #else
-        public string RatingButtonActiveColor { get; set; }
+        public string RatingButtonActiveColor { get => _explicitNullValueRatingButtonActiveColor; set { _explicitNullValueRatingButtonActiveColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratingButtonActiveColor"); else _explicitNullProperties?.Remove("ratingButtonActiveColor"); } }
+        private string _explicitNullValueRatingButtonActiveColor = default!;
 #endif
         /// <summary>The ratingButtonColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RatingButtonColor { get; set; }
+        public string? RatingButtonColor { get => _explicitNullValueRatingButtonColor; set { _explicitNullValueRatingButtonColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratingButtonColor"); else _explicitNullProperties?.Remove("ratingButtonColor"); } }
+        private string? _explicitNullValueRatingButtonColor = default!;
 #nullable restore
 #else
-        public string RatingButtonColor { get; set; }
+        public string RatingButtonColor { get => _explicitNullValueRatingButtonColor; set { _explicitNullValueRatingButtonColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratingButtonColor"); else _explicitNullProperties?.Remove("ratingButtonColor"); } }
+        private string _explicitNullValueRatingButtonColor = default!;
 #endif
         /// <summary>The ratingButtonHoverColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RatingButtonHoverColor { get; set; }
+        public string? RatingButtonHoverColor { get => _explicitNullValueRatingButtonHoverColor; set { _explicitNullValueRatingButtonHoverColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratingButtonHoverColor"); else _explicitNullProperties?.Remove("ratingButtonHoverColor"); } }
+        private string? _explicitNullValueRatingButtonHoverColor = default!;
 #nullable restore
 #else
-        public string RatingButtonHoverColor { get; set; }
+        public string RatingButtonHoverColor { get => _explicitNullValueRatingButtonHoverColor; set { _explicitNullValueRatingButtonHoverColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ratingButtonHoverColor"); else _explicitNullProperties?.Remove("ratingButtonHoverColor"); } }
+        private string _explicitNullValueRatingButtonHoverColor = default!;
 #endif
         /// <summary>The shuffleQuestions property</summary>
-        public bool? ShuffleQuestions { get; set; }
+        public bool? ShuffleQuestions { get => _explicitNullValueShuffleQuestions; set { _explicitNullValueShuffleQuestions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shuffleQuestions"); else _explicitNullProperties?.Remove("shuffleQuestions"); } }
+        private bool? _explicitNullValueShuffleQuestions = default!;
         /// <summary>The submitButtonColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SubmitButtonColor { get; set; }
+        public string? SubmitButtonColor { get => _explicitNullValueSubmitButtonColor; set { _explicitNullValueSubmitButtonColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("submitButtonColor"); else _explicitNullProperties?.Remove("submitButtonColor"); } }
+        private string? _explicitNullValueSubmitButtonColor = default!;
 #nullable restore
 #else
-        public string SubmitButtonColor { get; set; }
+        public string SubmitButtonColor { get => _explicitNullValueSubmitButtonColor; set { _explicitNullValueSubmitButtonColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("submitButtonColor"); else _explicitNullProperties?.Remove("submitButtonColor"); } }
+        private string _explicitNullValueSubmitButtonColor = default!;
 #endif
         /// <summary>The submitButtonText property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SubmitButtonText { get; set; }
+        public string? SubmitButtonText { get => _explicitNullValueSubmitButtonText; set { _explicitNullValueSubmitButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("submitButtonText"); else _explicitNullProperties?.Remove("submitButtonText"); } }
+        private string? _explicitNullValueSubmitButtonText = default!;
 #nullable restore
 #else
-        public string SubmitButtonText { get; set; }
+        public string SubmitButtonText { get => _explicitNullValueSubmitButtonText; set { _explicitNullValueSubmitButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("submitButtonText"); else _explicitNullProperties?.Remove("submitButtonText"); } }
+        private string _explicitNullValueSubmitButtonText = default!;
 #endif
         /// <summary>The submitButtonTextColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SubmitButtonTextColor { get; set; }
+        public string? SubmitButtonTextColor { get => _explicitNullValueSubmitButtonTextColor; set { _explicitNullValueSubmitButtonTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("submitButtonTextColor"); else _explicitNullProperties?.Remove("submitButtonTextColor"); } }
+        private string? _explicitNullValueSubmitButtonTextColor = default!;
 #nullable restore
 #else
-        public string SubmitButtonTextColor { get; set; }
+        public string SubmitButtonTextColor { get => _explicitNullValueSubmitButtonTextColor; set { _explicitNullValueSubmitButtonTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("submitButtonTextColor"); else _explicitNullProperties?.Remove("submitButtonTextColor"); } }
+        private string _explicitNullValueSubmitButtonTextColor = default!;
 #endif
         /// <summary>Seconds to wait before a popover survey appears. Null shows it without a delay.</summary>
-        public int? SurveyPopupDelaySeconds { get; set; }
+        public int? SurveyPopupDelaySeconds { get => _explicitNullValueSurveyPopupDelaySeconds; set { _explicitNullValueSurveyPopupDelaySeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surveyPopupDelaySeconds"); else _explicitNullProperties?.Remove("surveyPopupDelaySeconds"); } }
+        private int? _explicitNullValueSurveyPopupDelaySeconds = default!;
         /// <summary>* `top` - top* `left` - left* `right` - right* `bottom` - bottom</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaTabPosition? TabPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaTabPosition? TabPosition { get => _explicitNullValueTabPosition; set { _explicitNullValueTabPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tabPosition"); else _explicitNullProperties?.Remove("tabPosition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchemaTabPosition? _explicitNullValueTabPosition = default!;
         /// <summary>The textColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TextColor { get; set; }
+        public string? TextColor { get => _explicitNullValueTextColor; set { _explicitNullValueTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textColor"); else _explicitNullProperties?.Remove("textColor"); } }
+        private string? _explicitNullValueTextColor = default!;
 #nullable restore
 #else
-        public string TextColor { get; set; }
+        public string TextColor { get => _explicitNullValueTextColor; set { _explicitNullValueTextColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textColor"); else _explicitNullProperties?.Remove("textColor"); } }
+        private string _explicitNullValueTextColor = default!;
 #endif
         /// <summary>Color of secondary text, such as question descriptions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TextSubtleColor { get; set; }
+        public string? TextSubtleColor { get => _explicitNullValueTextSubtleColor; set { _explicitNullValueTextSubtleColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textSubtleColor"); else _explicitNullProperties?.Remove("textSubtleColor"); } }
+        private string? _explicitNullValueTextSubtleColor = default!;
 #nullable restore
 #else
-        public string TextSubtleColor { get; set; }
+        public string TextSubtleColor { get => _explicitNullValueTextSubtleColor; set { _explicitNullValueTextSubtleColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("textSubtleColor"); else _explicitNullProperties?.Remove("textSubtleColor"); } }
+        private string _explicitNullValueTextSubtleColor = default!;
 #endif
         /// <summary>The thankYouMessageCloseButtonText property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThankYouMessageCloseButtonText { get; set; }
+        public string? ThankYouMessageCloseButtonText { get => _explicitNullValueThankYouMessageCloseButtonText; set { _explicitNullValueThankYouMessageCloseButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thankYouMessageCloseButtonText"); else _explicitNullProperties?.Remove("thankYouMessageCloseButtonText"); } }
+        private string? _explicitNullValueThankYouMessageCloseButtonText = default!;
 #nullable restore
 #else
-        public string ThankYouMessageCloseButtonText { get; set; }
+        public string ThankYouMessageCloseButtonText { get => _explicitNullValueThankYouMessageCloseButtonText; set { _explicitNullValueThankYouMessageCloseButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thankYouMessageCloseButtonText"); else _explicitNullProperties?.Remove("thankYouMessageCloseButtonText"); } }
+        private string _explicitNullValueThankYouMessageCloseButtonText = default!;
 #endif
         /// <summary>The thankYouMessageDescription property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThankYouMessageDescription { get; set; }
+        public string? ThankYouMessageDescription { get => _explicitNullValueThankYouMessageDescription; set { _explicitNullValueThankYouMessageDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thankYouMessageDescription"); else _explicitNullProperties?.Remove("thankYouMessageDescription"); } }
+        private string? _explicitNullValueThankYouMessageDescription = default!;
 #nullable restore
 #else
-        public string ThankYouMessageDescription { get; set; }
+        public string ThankYouMessageDescription { get => _explicitNullValueThankYouMessageDescription; set { _explicitNullValueThankYouMessageDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thankYouMessageDescription"); else _explicitNullProperties?.Remove("thankYouMessageDescription"); } }
+        private string _explicitNullValueThankYouMessageDescription = default!;
 #endif
         /// <summary>* `html` - html* `text` - text</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum? ThankYouMessageDescriptionContentType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum? ThankYouMessageDescriptionContentType { get => _explicitNullValueThankYouMessageDescriptionContentType; set { _explicitNullValueThankYouMessageDescriptionContentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thankYouMessageDescriptionContentType"); else _explicitNullProperties?.Remove("thankYouMessageDescriptionContentType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DescriptionContentTypeEnum? _explicitNullValueThankYouMessageDescriptionContentType = default!;
         /// <summary>The thankYouMessageHeader property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThankYouMessageHeader { get; set; }
+        public string? ThankYouMessageHeader { get => _explicitNullValueThankYouMessageHeader; set { _explicitNullValueThankYouMessageHeader = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thankYouMessageHeader"); else _explicitNullProperties?.Remove("thankYouMessageHeader"); } }
+        private string? _explicitNullValueThankYouMessageHeader = default!;
 #nullable restore
 #else
-        public string ThankYouMessageHeader { get; set; }
+        public string ThankYouMessageHeader { get => _explicitNullValueThankYouMessageHeader; set { _explicitNullValueThankYouMessageHeader = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thankYouMessageHeader"); else _explicitNullProperties?.Remove("thankYouMessageHeader"); } }
+        private string _explicitNullValueThankYouMessageHeader = default!;
 #endif
         /// <summary>The whiteLabel property</summary>
-        public bool? WhiteLabel { get; set; }
+        public bool? WhiteLabel { get => _explicitNullValueWhiteLabel; set { _explicitNullValueWhiteLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("whiteLabel"); else _explicitNullProperties?.Remove("whiteLabel"); } }
+        private bool? _explicitNullValueWhiteLabel = default!;
         /// <summary>The widgetColor property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WidgetColor { get; set; }
+        public string? WidgetColor { get => _explicitNullValueWidgetColor; set { _explicitNullValueWidgetColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widgetColor"); else _explicitNullProperties?.Remove("widgetColor"); } }
+        private string? _explicitNullValueWidgetColor = default!;
 #nullable restore
 #else
-        public string WidgetColor { get; set; }
+        public string WidgetColor { get => _explicitNullValueWidgetColor; set { _explicitNullValueWidgetColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widgetColor"); else _explicitNullProperties?.Remove("widgetColor"); } }
+        private string _explicitNullValueWidgetColor = default!;
 #endif
         /// <summary>The widgetLabel property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WidgetLabel { get; set; }
+        public string? WidgetLabel { get => _explicitNullValueWidgetLabel; set { _explicitNullValueWidgetLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widgetLabel"); else _explicitNullProperties?.Remove("widgetLabel"); } }
+        private string? _explicitNullValueWidgetLabel = default!;
 #nullable restore
 #else
-        public string WidgetLabel { get; set; }
+        public string WidgetLabel { get => _explicitNullValueWidgetLabel; set { _explicitNullValueWidgetLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widgetLabel"); else _explicitNullProperties?.Remove("widgetLabel"); } }
+        private string _explicitNullValueWidgetLabel = default!;
 #endif
         /// <summary>The widgetSelector property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WidgetSelector { get; set; }
+        public string? WidgetSelector { get => _explicitNullValueWidgetSelector; set { _explicitNullValueWidgetSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widgetSelector"); else _explicitNullProperties?.Remove("widgetSelector"); } }
+        private string? _explicitNullValueWidgetSelector = default!;
 #nullable restore
 #else
-        public string WidgetSelector { get; set; }
+        public string WidgetSelector { get => _explicitNullValueWidgetSelector; set { _explicitNullValueWidgetSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widgetSelector"); else _explicitNullProperties?.Remove("widgetSelector"); } }
+        private string _explicitNullValueWidgetSelector = default!;
 #endif
         /// <summary>* `button` - button* `tab` - tab* `selector` - selector</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetTypeEnum? WidgetType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetTypeEnum? WidgetType { get => _explicitNullValueWidgetType; set { _explicitNullValueWidgetType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widgetType"); else _explicitNullProperties?.Remove("widgetType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetTypeEnum? _explicitNullValueWidgetType = default!;
         /// <summary>The zIndex property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ZIndex { get; set; }
+        public string? ZIndex { get => _explicitNullValueZIndex; set { _explicitNullValueZIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zIndex"); else _explicitNullProperties?.Remove("zIndex"); } }
+        private string? _explicitNullValueZIndex = default!;
 #nullable restore
 #else
-        public string ZIndex { get; set; }
+        public string ZIndex { get => _explicitNullValueZIndex; set { _explicitNullValueZIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("zIndex"); else _explicitNullProperties?.Remove("zIndex"); } }
+        private string _explicitNullValueZIndex = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema"/> and sets the default values.
@@ -301,7 +425,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -406,6 +530,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("widgetSelector", WidgetSelector);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetTypeEnum>("widgetType", WidgetType);
             writer.WriteStringValue("zIndex", ZIndex);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

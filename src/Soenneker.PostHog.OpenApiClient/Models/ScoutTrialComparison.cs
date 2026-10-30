@@ -11,48 +11,80 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ScoutTrialComparison : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("archived") is { } nullNodeArchived && nullNodeArchived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Archived = null;
+            if (parseNode.GetChildNode("baseline_variant_id") is { } nullNodeBaselineVariantId && nullNodeBaselineVariantId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineVariantId = null;
+            if (parseNode.GetChildNode("comparison_id") is { } nullNodeComparisonId && nullNodeComparisonId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComparisonId = null;
+            if (parseNode.GetChildNode("config_id") is { } nullNodeConfigId && nullNodeConfigId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigId = null;
+            if (parseNode.GetChildNode("context_id") is { } nullNodeContextId && nullNodeContextId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextId = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("evaluation") is { } nullNodeEvaluation && nullNodeEvaluation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evaluation = null;
+            if (parseNode.GetChildNode("rubric_revision") is { } nullNodeRubricRevision && nullNodeRubricRevision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RubricRevision = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("variants") is { } nullNodeVariants && nullNodeVariants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variants = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this finished trial is hidden from the default history.</summary>
-        public bool? Archived { get; set; }
+        public bool? Archived { get => _explicitNullValueArchived; set { _explicitNullValueArchived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archived"); else _explicitNullProperties?.Remove("archived"); } }
+        private bool? _explicitNullValueArchived = default!;
         /// <summary>Baseline variant identity.</summary>
-        public Guid? BaselineVariantId { get; set; }
+        public Guid? BaselineVariantId { get => _explicitNullValueBaselineVariantId; set { _explicitNullValueBaselineVariantId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_variant_id"); else _explicitNullProperties?.Remove("baseline_variant_id"); } }
+        private Guid? _explicitNullValueBaselineVariantId = default!;
         /// <summary>Comparison and automatic evaluation identity.</summary>
-        public Guid? ComparisonId { get; set; }
+        public Guid? ComparisonId { get => _explicitNullValueComparisonId; set { _explicitNullValueComparisonId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison_id"); else _explicitNullProperties?.Remove("comparison_id"); } }
+        private Guid? _explicitNullValueComparisonId = default!;
         /// <summary>Source scout configuration.</summary>
-        public Guid? ConfigId { get; set; }
+        public Guid? ConfigId { get => _explicitNullValueConfigId; set { _explicitNullValueConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_id"); else _explicitNullProperties?.Remove("config_id"); } }
+        private Guid? _explicitNullValueConfigId = default!;
         /// <summary>Frozen starting context shared by every run.</summary>
-        public Guid? ContextId { get; set; }
+        public Guid? ContextId { get => _explicitNullValueContextId; set { _explicitNullValueContextId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_id"); else _explicitNullProperties?.Remove("context_id"); } }
+        private Guid? _explicitNullValueContextId = default!;
         /// <summary>Time the comparison was saved.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Sanitized comparison error, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string _explicitNullValueError = default!;
 #endif
         /// <summary>Saved evaluation and report when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation? Evaluation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation? Evaluation { get => _explicitNullValueEvaluation; set { _explicitNullValueEvaluation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation"); else _explicitNullProperties?.Remove("evaluation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation? _explicitNullValueEvaluation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation Evaluation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation Evaluation { get => _explicitNullValueEvaluation; set { _explicitNullValueEvaluation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation"); else _explicitNullProperties?.Remove("evaluation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation _explicitNullValueEvaluation = default!;
 #endif
         /// <summary>Reviewed rubric revision frozen before the runs started.</summary>
-        public int? RubricRevision { get; set; }
+        public int? RubricRevision { get => _explicitNullValueRubricRevision; set { _explicitNullValueRubricRevision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rubric_revision"); else _explicitNullProperties?.Remove("rubric_revision"); } }
+        private int? _explicitNullValueRubricRevision = default!;
         /// <summary>* `not_started` - not_started* `starting` - starting* `running` - running* `judging` - judging* `completed` - completed* `failed` - failed* `unknown` - unknown</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonStatus? _explicitNullValueStatus = default!;
         /// <summary>Saved variant groups and runtime settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant>? Variants { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant>? Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant>? _explicitNullValueVariants = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant> Variants { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant> Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant> _explicitNullValueVariants = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparison"/> and sets the default values.
@@ -69,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparison CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparison();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparison(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -110,6 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("rubric_revision", RubricRevision);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant>("variants", Variants);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

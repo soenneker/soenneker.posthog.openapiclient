@@ -11,62 +11,95 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WebPageDirectorySiteTotals : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aiCrawlerNames") is { } nullNodeAiCrawlerNames && nullNodeAiCrawlerNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiCrawlerNames = null;
+            if (parseNode.GetChildNode("aiCrawlers") is { } nullNodeAiCrawlers && nullNodeAiCrawlers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiCrawlers = null;
+            if (parseNode.GetChildNode("aiCrawls") is { } nullNodeAiCrawls && nullNodeAiCrawls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiCrawls = null;
+            if (parseNode.GetChildNode("aiReferrals") is { } nullNodeAiReferrals && nullNodeAiReferrals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiReferrals = null;
+            if (parseNode.GetChildNode("bounceRate") is { } nullNodeBounceRate && nullNodeBounceRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BounceRate = null;
+            if (parseNode.GetChildNode("conversions") is { } nullNodeConversions && nullNodeConversions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conversions = null;
+            if (parseNode.GetChildNode("googleSearch") is { } nullNodeGoogleSearch && nullNodeGoogleSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoogleSearch = null;
+            if (parseNode.GetChildNode("serverLogs") is { } nullNodeServerLogs && nullNodeServerLogs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServerLogs = null;
+            if (parseNode.GetChildNode("timeOnPageP90") is { } nullNodeTimeOnPageP90 && nullNodeTimeOnPageP90.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeOnPageP90 = null;
+            if (parseNode.GetChildNode("visitors") is { } nullNodeVisitors && nullNodeVisitors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visitors = null;
+        }
+
         /// <summary>The aiCrawlerNames property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AiCrawlerNames { get; set; }
+        public List<string>? AiCrawlerNames { get => _explicitNullValueAiCrawlerNames; set { _explicitNullValueAiCrawlerNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawlerNames"); else _explicitNullProperties?.Remove("aiCrawlerNames"); } }
+        private List<string>? _explicitNullValueAiCrawlerNames = default!;
 #nullable restore
 #else
-        public List<string> AiCrawlerNames { get; set; }
+        public List<string> AiCrawlerNames { get => _explicitNullValueAiCrawlerNames; set { _explicitNullValueAiCrawlerNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawlerNames"); else _explicitNullProperties?.Remove("aiCrawlerNames"); } }
+        private List<string> _explicitNullValueAiCrawlerNames = default!;
 #endif
         /// <summary>The aiCrawlers property</summary>
-        public int? AiCrawlers { get; set; }
+        public int? AiCrawlers { get => _explicitNullValueAiCrawlers; set { _explicitNullValueAiCrawlers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawlers"); else _explicitNullProperties?.Remove("aiCrawlers"); } }
+        private int? _explicitNullValueAiCrawlers = default!;
         /// <summary>The aiCrawls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? AiCrawls { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? AiCrawls { get => _explicitNullValueAiCrawls; set { _explicitNullValueAiCrawls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawls"); else _explicitNullProperties?.Remove("aiCrawls"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueAiCrawls = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue AiCrawls { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue AiCrawls { get => _explicitNullValueAiCrawls; set { _explicitNullValueAiCrawls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawls"); else _explicitNullProperties?.Remove("aiCrawls"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueAiCrawls = default!;
 #endif
         /// <summary>The aiReferrals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? AiReferrals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? AiReferrals { get => _explicitNullValueAiReferrals; set { _explicitNullValueAiReferrals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiReferrals"); else _explicitNullProperties?.Remove("aiReferrals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueAiReferrals = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue AiReferrals { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue AiReferrals { get => _explicitNullValueAiReferrals; set { _explicitNullValueAiReferrals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiReferrals"); else _explicitNullProperties?.Remove("aiReferrals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueAiReferrals = default!;
 #endif
         /// <summary>The bounceRate property</summary>
-        public double? BounceRate { get; set; }
+        public double? BounceRate { get => _explicitNullValueBounceRate; set { _explicitNullValueBounceRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounceRate"); else _explicitNullProperties?.Remove("bounceRate"); } }
+        private double? _explicitNullValueBounceRate = default!;
         /// <summary>The conversions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? Conversions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? Conversions { get => _explicitNullValueConversions; set { _explicitNullValueConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversions"); else _explicitNullProperties?.Remove("conversions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueConversions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue Conversions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue Conversions { get => _explicitNullValueConversions; set { _explicitNullValueConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversions"); else _explicitNullProperties?.Remove("conversions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueConversions = default!;
 #endif
         /// <summary>The googleSearch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? GoogleSearch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? GoogleSearch { get => _explicitNullValueGoogleSearch; set { _explicitNullValueGoogleSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("googleSearch"); else _explicitNullProperties?.Remove("googleSearch"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueGoogleSearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue GoogleSearch { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue GoogleSearch { get => _explicitNullValueGoogleSearch; set { _explicitNullValueGoogleSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("googleSearch"); else _explicitNullProperties?.Remove("googleSearch"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueGoogleSearch = default!;
 #endif
         /// <summary>The serverLogs property</summary>
-        public int? ServerLogs { get; set; }
+        public int? ServerLogs { get => _explicitNullValueServerLogs; set { _explicitNullValueServerLogs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serverLogs"); else _explicitNullProperties?.Remove("serverLogs"); } }
+        private int? _explicitNullValueServerLogs = default!;
         /// <summary>The timeOnPageP90 property</summary>
-        public double? TimeOnPageP90 { get; set; }
+        public double? TimeOnPageP90 { get => _explicitNullValueTimeOnPageP90; set { _explicitNullValueTimeOnPageP90 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeOnPageP90"); else _explicitNullProperties?.Remove("timeOnPageP90"); } }
+        private double? _explicitNullValueTimeOnPageP90 = default!;
         /// <summary>The visitors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? Visitors { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueVisitors = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue Visitors { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueVisitors = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -76,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectorySiteTotals CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectorySiteTotals();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectorySiteTotals(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,7 +147,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>("googleSearch", GoogleSearch);
             writer.WriteIntValue("serverLogs", ServerLogs);
             writer.WriteDoubleValue("timeOnPageP90", TimeOnPageP90);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>("visitors", Visitors);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>("visitors", Visitors);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

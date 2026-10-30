@@ -11,54 +11,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TraceNeighborsQueryResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("newerTimestamp") is { } nullNodeNewerTimestamp && nullNodeNewerTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewerTimestamp = null;
+            if (parseNode.GetChildNode("newerTraceId") is { } nullNodeNewerTraceId && nullNodeNewerTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewerTraceId = null;
+            if (parseNode.GetChildNode("olderTimestamp") is { } nullNodeOlderTimestamp && nullNodeOlderTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OlderTimestamp = null;
+            if (parseNode.GetChildNode("olderTraceId") is { } nullNodeOlderTraceId && nullNodeOlderTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OlderTraceId = null;
+            if (parseNode.GetChildNode("timings") is { } nullNodeTimings && nullNodeTimings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timings = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>Timestamp of the newer trace</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewerTimestamp { get; set; }
+        public string? NewerTimestamp { get => _explicitNullValueNewerTimestamp; set { _explicitNullValueNewerTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("newerTimestamp"); else _explicitNullProperties?.Remove("newerTimestamp"); } }
+        private string? _explicitNullValueNewerTimestamp = default!;
 #nullable restore
 #else
-        public string NewerTimestamp { get; set; }
+        public string NewerTimestamp { get => _explicitNullValueNewerTimestamp; set { _explicitNullValueNewerTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("newerTimestamp"); else _explicitNullProperties?.Remove("newerTimestamp"); } }
+        private string _explicitNullValueNewerTimestamp = default!;
 #endif
         /// <summary>ID of the newer trace (chronologically after current)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewerTraceId { get; set; }
+        public string? NewerTraceId { get => _explicitNullValueNewerTraceId; set { _explicitNullValueNewerTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("newerTraceId"); else _explicitNullProperties?.Remove("newerTraceId"); } }
+        private string? _explicitNullValueNewerTraceId = default!;
 #nullable restore
 #else
-        public string NewerTraceId { get; set; }
+        public string NewerTraceId { get => _explicitNullValueNewerTraceId; set { _explicitNullValueNewerTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("newerTraceId"); else _explicitNullProperties?.Remove("newerTraceId"); } }
+        private string _explicitNullValueNewerTraceId = default!;
 #endif
         /// <summary>Timestamp of the older trace</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OlderTimestamp { get; set; }
+        public string? OlderTimestamp { get => _explicitNullValueOlderTimestamp; set { _explicitNullValueOlderTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("olderTimestamp"); else _explicitNullProperties?.Remove("olderTimestamp"); } }
+        private string? _explicitNullValueOlderTimestamp = default!;
 #nullable restore
 #else
-        public string OlderTimestamp { get; set; }
+        public string OlderTimestamp { get => _explicitNullValueOlderTimestamp; set { _explicitNullValueOlderTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("olderTimestamp"); else _explicitNullProperties?.Remove("olderTimestamp"); } }
+        private string _explicitNullValueOlderTimestamp = default!;
 #endif
         /// <summary>ID of the older trace (chronologically before current)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OlderTraceId { get; set; }
+        public string? OlderTraceId { get => _explicitNullValueOlderTraceId; set { _explicitNullValueOlderTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("olderTraceId"); else _explicitNullProperties?.Remove("olderTraceId"); } }
+        private string? _explicitNullValueOlderTraceId = default!;
 #nullable restore
 #else
-        public string OlderTraceId { get; set; }
+        public string OlderTraceId { get => _explicitNullValueOlderTraceId; set { _explicitNullValueOlderTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("olderTraceId"); else _explicitNullProperties?.Remove("olderTraceId"); } }
+        private string _explicitNullValueOlderTraceId = default!;
 #endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>? Timings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>? Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>? _explicitNullValueTimings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> Timings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> _explicitNullValueTimings = default!;
 #endif
         /// <summary>Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings for semantics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -68,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,7 +123,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("olderTimestamp", OlderTimestamp);
             writer.WriteStringValue("olderTraceId", OlderTraceId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSyncWarning>("warnings", Warnings);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

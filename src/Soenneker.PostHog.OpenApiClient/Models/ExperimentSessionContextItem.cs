@@ -12,58 +12,90 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentSessionContextItem : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("experiment_end_date") is { } nullNodeExperimentEndDate && nullNodeExperimentEndDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentEndDate = null;
+            if (parseNode.GetChildNode("experiment_id") is { } nullNodeExperimentId && nullNodeExperimentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentId = null;
+            if (parseNode.GetChildNode("experiment_name") is { } nullNodeExperimentName && nullNodeExperimentName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentName = null;
+            if (parseNode.GetChildNode("experiment_start_date") is { } nullNodeExperimentStartDate && nullNodeExperimentStartDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentStartDate = null;
+            if (parseNode.GetChildNode("first_exposure_timestamp") is { } nullNodeFirstExposureTimestamp && nullNodeFirstExposureTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstExposureTimestamp = null;
+            if (parseNode.GetChildNode("flag_key") is { } nullNodeFlagKey && nullNodeFlagKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagKey = null;
+            if (parseNode.GetChildNode("metrics_in_session") is { } nullNodeMetricsInSession && nullNodeMetricsInSession.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricsInSession = null;
+            if (parseNode.GetChildNode("multiple_variants") is { } nullNodeMultipleVariants && nullNodeMultipleVariants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultipleVariants = null;
+            if (parseNode.GetChildNode("variant") is { } nullNodeVariant && nullNodeVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variant = null;
+            if (parseNode.GetChildNode("variants_seen") is { } nullNodeVariantsSeen && nullNodeVariantsSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantsSeen = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the experiment ended. Null while the experiment is still running.</summary>
-        public DateTimeOffset? ExperimentEndDate { get; set; }
+        public DateTimeOffset? ExperimentEndDate { get => _explicitNullValueExperimentEndDate; set { _explicitNullValueExperimentEndDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_end_date"); else _explicitNullProperties?.Remove("experiment_end_date"); } }
+        private DateTimeOffset? _explicitNullValueExperimentEndDate = default!;
         /// <summary>ID of the experiment whose feature flag the session saw.</summary>
-        public int? ExperimentId { get; set; }
+        public int? ExperimentId { get => _explicitNullValueExperimentId; set { _explicitNullValueExperimentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_id"); else _explicitNullProperties?.Remove("experiment_id"); } }
+        private int? _explicitNullValueExperimentId = default!;
         /// <summary>Name of the experiment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExperimentName { get; set; }
+        public string? ExperimentName { get => _explicitNullValueExperimentName; set { _explicitNullValueExperimentName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_name"); else _explicitNullProperties?.Remove("experiment_name"); } }
+        private string? _explicitNullValueExperimentName = default!;
 #nullable restore
 #else
-        public string ExperimentName { get; set; }
+        public string ExperimentName { get => _explicitNullValueExperimentName; set { _explicitNullValueExperimentName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_name"); else _explicitNullProperties?.Remove("experiment_name"); } }
+        private string _explicitNullValueExperimentName = default!;
 #endif
         /// <summary>When the experiment was launched.</summary>
-        public DateTimeOffset? ExperimentStartDate { get; set; }
+        public DateTimeOffset? ExperimentStartDate { get => _explicitNullValueExperimentStartDate; set { _explicitNullValueExperimentStartDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_start_date"); else _explicitNullProperties?.Remove("experiment_start_date"); } }
+        private DateTimeOffset? _explicitNullValueExperimentStartDate = default!;
         /// <summary>Timestamp of the first event in the session matching the experiment&apos;s exposure criteria — the default exposure event ($feature_flag_called), or the configured custom event/action. Null when no event in the session matched the criteria; the variant is then known from flag evaluations or stamped $feature/&lt;key&gt; properties. Session-scoped: the experiment analysis counts exposure per person across the whole run window, so the person&apos;s counted first exposure may lie in an earlier session.</summary>
-        public DateTimeOffset? FirstExposureTimestamp { get; set; }
+        public DateTimeOffset? FirstExposureTimestamp { get => _explicitNullValueFirstExposureTimestamp; set { _explicitNullValueFirstExposureTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_exposure_timestamp"); else _explicitNullProperties?.Remove("first_exposure_timestamp"); } }
+        private DateTimeOffset? _explicitNullValueFirstExposureTimestamp = default!;
         /// <summary>Key of the experiment&apos;s feature flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FlagKey { get; set; }
+        public string? FlagKey { get => _explicitNullValueFlagKey; set { _explicitNullValueFlagKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_key"); else _explicitNullProperties?.Remove("flag_key"); } }
+        private string? _explicitNullValueFlagKey = default!;
 #nullable restore
 #else
-        public string FlagKey { get; set; }
+        public string FlagKey { get => _explicitNullValueFlagKey; set { _explicitNullValueFlagKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_key"); else _explicitNullProperties?.Remove("flag_key"); } }
+        private string _explicitNullValueFlagKey = default!;
 #endif
         /// <summary>This experiment&apos;s metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment&apos;s metric events fired during the session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit>? MetricsInSession { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit>? MetricsInSession { get => _explicitNullValueMetricsInSession; set { _explicitNullValueMetricsInSession = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics_in_session"); else _explicitNullProperties?.Remove("metrics_in_session"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit>? _explicitNullValueMetricsInSession = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit> MetricsInSession { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit> MetricsInSession { get => _explicitNullValueMetricsInSession; set { _explicitNullValueMetricsInSession = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics_in_session"); else _explicitNullProperties?.Remove("metrics_in_session"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricHit> _explicitNullValueMetricsInSession = default!;
 #endif
         /// <summary>True when the session saw more than one variant of this flag.</summary>
-        public bool? MultipleVariants { get; set; }
+        public bool? MultipleVariants { get => _explicitNullValueMultipleVariants; set { _explicitNullValueMultipleVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiple_variants"); else _explicitNullProperties?.Remove("multiple_variants"); } }
+        private bool? _explicitNullValueMultipleVariants = default!;
         /// <summary>Variant the session saw. Taken from the earliest event matching the experiment&apos;s exposure criteria when one exists, otherwise from the earliest flag evaluation in the session, otherwise from the $feature/&lt;key&gt; property stamped on the session&apos;s events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Variant { get; set; }
+        public string? Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
+        private string? _explicitNullValueVariant = default!;
 #nullable restore
 #else
-        public string Variant { get; set; }
+        public string Variant { get => _explicitNullValueVariant; set { _explicitNullValueVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant"); else _explicitNullProperties?.Remove("variant"); } }
+        private string _explicitNullValueVariant = default!;
 #endif
         /// <summary>All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag&apos;s defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? VariantsSeen { get; set; }
+        public List<string>? VariantsSeen { get => _explicitNullValueVariantsSeen; set { _explicitNullValueVariantsSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants_seen"); else _explicitNullProperties?.Remove("variants_seen"); } }
+        private List<string>? _explicitNullValueVariantsSeen = default!;
 #nullable restore
 #else
-        public List<string> VariantsSeen { get; set; }
+        public List<string> VariantsSeen { get => _explicitNullValueVariantsSeen; set { _explicitNullValueVariantsSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants_seen"); else _explicitNullProperties?.Remove("variants_seen"); } }
+        private List<string> _explicitNullValueVariantsSeen = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionContextItem"/> and sets the default values.
@@ -80,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionContextItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionContextItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionContextItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("multiple_variants", MultipleVariants);
             writer.WriteStringValue("variant", Variant);
             writer.WriteCollectionOfPrimitiveValues<string>("variants_seen", VariantsSeen);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

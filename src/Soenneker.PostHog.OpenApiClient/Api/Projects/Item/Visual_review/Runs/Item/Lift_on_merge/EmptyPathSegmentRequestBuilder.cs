@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.I
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntry>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntry.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntry>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntry.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Lift a quarantined snapshot&apos;s quarantine once this run&apos;s pull request merges. The lift applies only after a default-branch run that contains the merge renders the expected picture, and the baseline entry holds that same picture. Requesting a lift never approves a picture: approve a changed or new snapshot by identifier first. Requesting again from the same pull request replaces the pending request.

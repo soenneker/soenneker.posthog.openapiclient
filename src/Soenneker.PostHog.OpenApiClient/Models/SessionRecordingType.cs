@@ -11,146 +11,228 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SessionRecordingType : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_seconds") is { } nullNodeActiveSeconds && nullNodeActiveSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveSeconds = null;
+            if (parseNode.GetChildNode("activity_score") is { } nullNodeActivityScore && nullNodeActivityScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivityScore = null;
+            if (parseNode.GetChildNode("click_count") is { } nullNodeClickCount && nullNodeClickCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClickCount = null;
+            if (parseNode.GetChildNode("console_error_count") is { } nullNodeConsoleErrorCount && nullNodeConsoleErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConsoleErrorCount = null;
+            if (parseNode.GetChildNode("console_log_count") is { } nullNodeConsoleLogCount && nullNodeConsoleLogCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConsoleLogCount = null;
+            if (parseNode.GetChildNode("console_warn_count") is { } nullNodeConsoleWarnCount && nullNodeConsoleWarnCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConsoleWarnCount = null;
+            if (parseNode.GetChildNode("distinct_id") is { } nullNodeDistinctId && nullNodeDistinctId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctId = null;
+            if (parseNode.GetChildNode("email") is { } nullNodeEmail && nullNodeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Email = null;
+            if (parseNode.GetChildNode("end_time") is { } nullNodeEndTime && nullNodeEndTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndTime = null;
+            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("expiry_time") is { } nullNodeExpiryTime && nullNodeExpiryTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiryTime = null;
+            if (parseNode.GetChildNode("external_references") is { } nullNodeExternalReferences && nullNodeExternalReferences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalReferences = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("inactive_seconds") is { } nullNodeInactiveSeconds && nullNodeInactiveSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InactiveSeconds = null;
+            if (parseNode.GetChildNode("keypress_count") is { } nullNodeKeypressCount && nullNodeKeypressCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeypressCount = null;
+            if (parseNode.GetChildNode("matches_filters") is { } nullNodeMatchesFilters && nullNodeMatchesFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchesFilters = null;
+            if (parseNode.GetChildNode("matching_events") is { } nullNodeMatchingEvents && nullNodeMatchingEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchingEvents = null;
+            if (parseNode.GetChildNode("mouse_activity_count") is { } nullNodeMouseActivityCount && nullNodeMouseActivityCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MouseActivityCount = null;
+            if (parseNode.GetChildNode("ongoing") is { } nullNodeOngoing && nullNodeOngoing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ongoing = null;
+            if (parseNode.GetChildNode("person") is { } nullNodePerson && nullNodePerson.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Person = null;
+            if (parseNode.GetChildNode("recording_duration") is { } nullNodeRecordingDuration && nullNodeRecordingDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordingDuration = null;
+            if (parseNode.GetChildNode("recording_ttl") is { } nullNodeRecordingTtl && nullNodeRecordingTtl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordingTtl = null;
+            if (parseNode.GetChildNode("retention_period_days") is { } nullNodeRetentionPeriodDays && nullNodeRetentionPeriodDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionPeriodDays = null;
+            if (parseNode.GetChildNode("snapshot_library") is { } nullNodeSnapshotLibrary && nullNodeSnapshotLibrary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnapshotLibrary = null;
+            if (parseNode.GetChildNode("snapshot_source") is { } nullNodeSnapshotSource && nullNodeSnapshotSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnapshotSource = null;
+            if (parseNode.GetChildNode("start_time") is { } nullNodeStartTime && nullNodeStartTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartTime = null;
+            if (parseNode.GetChildNode("start_url") is { } nullNodeStartUrl && nullNodeStartUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartUrl = null;
+            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("total_size") is { } nullNodeTotalSize && nullNodeTotalSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalSize = null;
+            if (parseNode.GetChildNode("viewed") is { } nullNodeViewed && nullNodeViewed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Viewed = null;
+            if (parseNode.GetChildNode("viewers") is { } nullNodeViewers && nullNodeViewers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Viewers = null;
+        }
+
         /// <summary>The active_seconds property</summary>
-        public double? ActiveSeconds { get; set; }
+        public double? ActiveSeconds { get => _explicitNullValueActiveSeconds; set { _explicitNullValueActiveSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_seconds"); else _explicitNullProperties?.Remove("active_seconds"); } }
+        private double? _explicitNullValueActiveSeconds = default!;
         /// <summary>calculated on the backend so that we can sort by it, definition may change over time</summary>
-        public double? ActivityScore { get; set; }
+        public double? ActivityScore { get => _explicitNullValueActivityScore; set { _explicitNullValueActivityScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_score"); else _explicitNullProperties?.Remove("activity_score"); } }
+        private double? _explicitNullValueActivityScore = default!;
         /// <summary>The click_count property</summary>
-        public double? ClickCount { get; set; }
+        public double? ClickCount { get => _explicitNullValueClickCount; set { _explicitNullValueClickCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("click_count"); else _explicitNullProperties?.Remove("click_count"); } }
+        private double? _explicitNullValueClickCount = default!;
         /// <summary>The console_error_count property</summary>
-        public double? ConsoleErrorCount { get; set; }
+        public double? ConsoleErrorCount { get => _explicitNullValueConsoleErrorCount; set { _explicitNullValueConsoleErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("console_error_count"); else _explicitNullProperties?.Remove("console_error_count"); } }
+        private double? _explicitNullValueConsoleErrorCount = default!;
         /// <summary>The console_log_count property</summary>
-        public double? ConsoleLogCount { get; set; }
+        public double? ConsoleLogCount { get => _explicitNullValueConsoleLogCount; set { _explicitNullValueConsoleLogCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("console_log_count"); else _explicitNullProperties?.Remove("console_log_count"); } }
+        private double? _explicitNullValueConsoleLogCount = default!;
         /// <summary>The console_warn_count property</summary>
-        public double? ConsoleWarnCount { get; set; }
+        public double? ConsoleWarnCount { get => _explicitNullValueConsoleWarnCount; set { _explicitNullValueConsoleWarnCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("console_warn_count"); else _explicitNullProperties?.Remove("console_warn_count"); } }
+        private double? _explicitNullValueConsoleWarnCount = default!;
         /// <summary>The distinct_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DistinctId { get; set; }
+        public string? DistinctId { get => _explicitNullValueDistinctId; set { _explicitNullValueDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_id"); else _explicitNullProperties?.Remove("distinct_id"); } }
+        private string? _explicitNullValueDistinctId = default!;
 #nullable restore
 #else
-        public string DistinctId { get; set; }
+        public string DistinctId { get => _explicitNullValueDistinctId; set { _explicitNullValueDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_id"); else _explicitNullProperties?.Remove("distinct_id"); } }
+        private string _explicitNullValueDistinctId = default!;
 #endif
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Email { get; set; }
+        public string? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public string Email { get; set; }
+        public string Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private string _explicitNullValueEmail = default!;
 #endif
         /// <summary>When the recording ends in ISO format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndTime { get; set; }
+        public string? EndTime { get => _explicitNullValueEndTime; set { _explicitNullValueEndTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_time"); else _explicitNullProperties?.Remove("end_time"); } }
+        private string? _explicitNullValueEndTime = default!;
 #nullable restore
 #else
-        public string EndTime { get; set; }
+        public string EndTime { get => _explicitNullValueEndTime; set { _explicitNullValueEndTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_time"); else _explicitNullProperties?.Remove("end_time"); } }
+        private string _explicitNullValueEndTime = default!;
 #endif
         /// <summary>Number of captured rrweb events in the recording. Only present once metadata is loaded.</summary>
-        public double? EventCount { get; set; }
+        public double? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        private double? _explicitNullValueEventCount = default!;
         /// <summary>When the recording expires, in ISO format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpiryTime { get; set; }
+        public string? ExpiryTime { get => _explicitNullValueExpiryTime; set { _explicitNullValueExpiryTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expiry_time"); else _explicitNullProperties?.Remove("expiry_time"); } }
+        private string? _explicitNullValueExpiryTime = default!;
 #nullable restore
 #else
-        public string ExpiryTime { get; set; }
+        public string ExpiryTime { get => _explicitNullValueExpiryTime; set { _explicitNullValueExpiryTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expiry_time"); else _explicitNullProperties?.Remove("expiry_time"); } }
+        private string _explicitNullValueExpiryTime = default!;
 #endif
         /// <summary>External references to third party issues.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference>? ExternalReferences { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference>? ExternalReferences { get => _explicitNullValueExternalReferences; set { _explicitNullValueExternalReferences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_references"); else _explicitNullProperties?.Remove("external_references"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference>? _explicitNullValueExternalReferences = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference> ExternalReferences { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference> ExternalReferences { get => _explicitNullValueExternalReferences; set { _explicitNullValueExternalReferences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_references"); else _explicitNullProperties?.Remove("external_references"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingExternalReference> _explicitNullValueExternalReferences = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The inactive_seconds property</summary>
-        public double? InactiveSeconds { get; set; }
+        public double? InactiveSeconds { get => _explicitNullValueInactiveSeconds; set { _explicitNullValueInactiveSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inactive_seconds"); else _explicitNullProperties?.Remove("inactive_seconds"); } }
+        private double? _explicitNullValueInactiveSeconds = default!;
         /// <summary>The keypress_count property</summary>
-        public double? KeypressCount { get; set; }
+        public double? KeypressCount { get => _explicitNullValueKeypressCount; set { _explicitNullValueKeypressCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keypress_count"); else _explicitNullProperties?.Remove("keypress_count"); } }
+        private double? _explicitNullValueKeypressCount = default!;
         /// <summary>False when the recording was included in list results via a direct link despite not matching the filters.</summary>
-        public bool? MatchesFilters { get; set; }
+        public bool? MatchesFilters { get => _explicitNullValueMatchesFilters; set { _explicitNullValueMatchesFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matches_filters"); else _explicitNullProperties?.Remove("matches_filters"); } }
+        private bool? _explicitNullValueMatchesFilters = default!;
         /// <summary>List of matching events. *</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording>? MatchingEvents { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording>? MatchingEvents { get => _explicitNullValueMatchingEvents; set { _explicitNullValueMatchingEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matching_events"); else _explicitNullProperties?.Remove("matching_events"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording>? _explicitNullValueMatchingEvents = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording> MatchingEvents { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording> MatchingEvents { get => _explicitNullValueMatchingEvents; set { _explicitNullValueMatchingEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matching_events"); else _explicitNullProperties?.Remove("matching_events"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording> _explicitNullValueMatchingEvents = default!;
 #endif
         /// <summary>count of all mouse activity in the recording, not just clicks</summary>
-        public double? MouseActivityCount { get; set; }
+        public double? MouseActivityCount { get => _explicitNullValueMouseActivityCount; set { _explicitNullValueMouseActivityCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mouse_activity_count"); else _explicitNullProperties?.Remove("mouse_activity_count"); } }
+        private double? _explicitNullValueMouseActivityCount = default!;
         /// <summary>whether we have received data for this recording in the last 5 minutes (assumes the recording was loaded from ClickHouse)*</summary>
-        public bool? Ongoing { get; set; }
+        public bool? Ongoing { get => _explicitNullValueOngoing; set { _explicitNullValueOngoing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ongoing"); else _explicitNullProperties?.Remove("ongoing"); } }
+        private bool? _explicitNullValueOngoing = default!;
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonType? Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonType? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonType? _explicitNullValuePerson = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonType Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonType Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PersonType _explicitNullValuePerson = default!;
 #endif
         /// <summary>Length of recording in seconds.</summary>
-        public double? RecordingDuration { get; set; }
+        public double? RecordingDuration { get => _explicitNullValueRecordingDuration; set { _explicitNullValueRecordingDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_duration"); else _explicitNullProperties?.Remove("recording_duration"); } }
+        private double? _explicitNullValueRecordingDuration = default!;
         /// <summary>Number of whole days left until the recording expires.</summary>
-        public double? RecordingTtl { get; set; }
+        public double? RecordingTtl { get => _explicitNullValueRecordingTtl; set { _explicitNullValueRecordingTtl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_ttl"); else _explicitNullProperties?.Remove("recording_ttl"); } }
+        private double? _explicitNullValueRecordingTtl = default!;
         /// <summary>retention period for this recording</summary>
-        public double? RetentionPeriodDays { get; set; }
+        public double? RetentionPeriodDays { get => _explicitNullValueRetentionPeriodDays; set { _explicitNullValueRetentionPeriodDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_period_days"); else _explicitNullProperties?.Remove("retention_period_days"); } }
+        private double? _explicitNullValueRetentionPeriodDays = default!;
         /// <summary>The snapshot_library property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SnapshotLibrary { get; set; }
+        public string? SnapshotLibrary { get => _explicitNullValueSnapshotLibrary; set { _explicitNullValueSnapshotLibrary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshot_library"); else _explicitNullProperties?.Remove("snapshot_library"); } }
+        private string? _explicitNullValueSnapshotLibrary = default!;
 #nullable restore
 #else
-        public string SnapshotLibrary { get; set; }
+        public string SnapshotLibrary { get => _explicitNullValueSnapshotLibrary; set { _explicitNullValueSnapshotLibrary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshot_library"); else _explicitNullProperties?.Remove("snapshot_library"); } }
+        private string _explicitNullValueSnapshotLibrary = default!;
 #endif
         /// <summary>The snapshot_source property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotSource? SnapshotSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotSource? SnapshotSource { get => _explicitNullValueSnapshotSource; set { _explicitNullValueSnapshotSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshot_source"); else _explicitNullProperties?.Remove("snapshot_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotSource? _explicitNullValueSnapshotSource = default!;
         /// <summary>When the recording starts in ISO format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StartTime { get; set; }
+        public string? StartTime { get => _explicitNullValueStartTime; set { _explicitNullValueStartTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_time"); else _explicitNullProperties?.Remove("start_time"); } }
+        private string? _explicitNullValueStartTime = default!;
 #nullable restore
 #else
-        public string StartTime { get; set; }
+        public string StartTime { get => _explicitNullValueStartTime; set { _explicitNullValueStartTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_time"); else _explicitNullProperties?.Remove("start_time"); } }
+        private string _explicitNullValueStartTime = default!;
 #endif
         /// <summary>The start_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StartUrl { get; set; }
+        public string? StartUrl { get => _explicitNullValueStartUrl; set { _explicitNullValueStartUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_url"); else _explicitNullProperties?.Remove("start_url"); } }
+        private string? _explicitNullValueStartUrl = default!;
 #nullable restore
 #else
-        public string StartUrl { get; set; }
+        public string StartUrl { get => _explicitNullValueStartUrl; set { _explicitNullValueStartUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_url"); else _explicitNullProperties?.Remove("start_url"); } }
+        private string _explicitNullValueStartUrl = default!;
 #endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Summary { get; set; }
+        public string? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private string? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public string Summary { get; set; }
+        public string Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private string _explicitNullValueSummary = default!;
 #endif
         /// <summary>Total stored size of the recording&apos;s snapshot data in bytes. Only present once metadata is loaded.</summary>
-        public double? TotalSize { get; set; }
+        public double? TotalSize { get => _explicitNullValueTotalSize; set { _explicitNullValueTotalSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_size"); else _explicitNullProperties?.Remove("total_size"); } }
+        private double? _explicitNullValueTotalSize = default!;
         /// <summary>Whether this recording has been viewed by you already.</summary>
-        public bool? Viewed { get; set; }
+        public bool? Viewed { get => _explicitNullValueViewed; set { _explicitNullValueViewed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewed"); else _explicitNullProperties?.Remove("viewed"); } }
+        private bool? _explicitNullValueViewed = default!;
         /// <summary>user ids of other users who have viewed this recording</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Viewers { get; set; }
+        public List<string>? Viewers { get => _explicitNullValueViewers; set { _explicitNullValueViewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewers"); else _explicitNullProperties?.Remove("viewers"); } }
+        private List<string>? _explicitNullValueViewers = default!;
 #nullable restore
 #else
-        public List<string> Viewers { get; set; }
+        public List<string> Viewers { get => _explicitNullValueViewers; set { _explicitNullValueViewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("viewers"); else _explicitNullProperties?.Remove("viewers"); } }
+        private List<string> _explicitNullValueViewers = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -160,7 +242,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingType(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -240,7 +322,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("summary", Summary);
             writer.WriteDoubleValue("total_size", TotalSize);
             writer.WriteBoolValue("viewed", Viewed);
-            writer.WriteCollectionOfPrimitiveValues<string>("viewers", Viewers);
+            writer.WriteCollectionOfPrimitiveValues<string>("viewers", Viewers);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

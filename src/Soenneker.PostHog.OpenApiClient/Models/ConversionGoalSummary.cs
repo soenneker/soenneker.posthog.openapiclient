@@ -11,66 +11,106 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ConversionGoalSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("approximation_reason") is { } nullNodeApproximationReason && nullNodeApproximationReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApproximationReason = null;
+            if (parseNode.GetChildNode("conversion_goal_id") is { } nullNodeConversionGoalId && nullNodeConversionGoalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionGoalId = null;
+            if (parseNode.GetChildNode("events_without_utm_source") is { } nullNodeEventsWithoutUtmSource && nullNodeEventsWithoutUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsWithoutUtmSource = null;
+            if (parseNode.GetChildNode("events_with_unmatched_utm_source") is { } nullNodeEventsWithUnmatchedUtmSource && nullNodeEventsWithUnmatchedUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsWithUnmatchedUtmSource = null;
+            if (parseNode.GetChildNode("integrated_count") is { } nullNodeIntegratedCount && nullNodeIntegratedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegratedCount = null;
+            if (parseNode.GetChildNode("integrated_pct") is { } nullNodeIntegratedPct && nullNodeIntegratedPct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegratedPct = null;
+            if (parseNode.GetChildNode("is_approximate") is { } nullNodeIsApproximate && nullNodeIsApproximate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsApproximate = null;
+            if (parseNode.GetChildNode("is_misconfigured") is { } nullNodeIsMisconfigured && nullNodeIsMisconfigured.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsMisconfigured = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("last_30d_count") is { } nullNodeLast30dCount && nullNodeLast30dCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Last30dCount = null;
+            if (parseNode.GetChildNode("misconfig_reason") is { } nullNodeMisconfigReason && nullNodeMisconfigReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MisconfigReason = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("non_integrated_count") is { } nullNodeNonIntegratedCount && nullNodeNonIntegratedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NonIntegratedCount = null;
+            if (parseNode.GetChildNode("target_label") is { } nullNodeTargetLabel && nullNodeTargetLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetLabel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Explanation when is_approximate is true</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ApproximationReason { get; set; }
+        public string? ApproximationReason { get => _explicitNullValueApproximationReason; set { _explicitNullValueApproximationReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approximation_reason"); else _explicitNullProperties?.Remove("approximation_reason"); } }
+        private string? _explicitNullValueApproximationReason = default!;
 #nullable restore
 #else
-        public string ApproximationReason { get; set; }
+        public string ApproximationReason { get => _explicitNullValueApproximationReason; set { _explicitNullValueApproximationReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approximation_reason"); else _explicitNullProperties?.Remove("approximation_reason"); } }
+        private string _explicitNullValueApproximationReason = default!;
 #endif
         /// <summary>Id of the goal. Pass this to the explain, update and delete endpoints.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConversionGoalId { get; set; }
+        public string? ConversionGoalId { get => _explicitNullValueConversionGoalId; set { _explicitNullValueConversionGoalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goal_id"); else _explicitNullProperties?.Remove("conversion_goal_id"); } }
+        private string? _explicitNullValueConversionGoalId = default!;
 #nullable restore
 #else
-        public string ConversionGoalId { get; set; }
+        public string ConversionGoalId { get => _explicitNullValueConversionGoalId; set { _explicitNullValueConversionGoalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goal_id"); else _explicitNullProperties?.Remove("conversion_goal_id"); } }
+        private string _explicitNullValueConversionGoalId = default!;
 #endif
         /// <summary>Conversions with no utm_source at all (fix by tagging UTMs). Null for DataWarehouseNode goals.</summary>
-        public int? EventsWithoutUtmSource { get; set; }
+        public int? EventsWithoutUtmSource { get => _explicitNullValueEventsWithoutUtmSource; set { _explicitNullValueEventsWithoutUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_without_utm_source"); else _explicitNullProperties?.Remove("events_without_utm_source"); } }
+        private int? _explicitNullValueEventsWithoutUtmSource = default!;
         /// <summary>Conversions with a utm_source that matches no integration (fix with custom_source_mappings). Null for DataWarehouseNode goals.</summary>
-        public int? EventsWithUnmatchedUtmSource { get; set; }
+        public int? EventsWithUnmatchedUtmSource { get => _explicitNullValueEventsWithUnmatchedUtmSource; set { _explicitNullValueEventsWithUnmatchedUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_with_unmatched_utm_source"); else _explicitNullProperties?.Remove("events_with_unmatched_utm_source"); } }
+        private int? _explicitNullValueEventsWithUnmatchedUtmSource = default!;
         /// <summary>Conversions whose utm_source matches a known integration. Null for DataWarehouseNode goals.</summary>
-        public int? IntegratedCount { get; set; }
+        public int? IntegratedCount { get => _explicitNullValueIntegratedCount; set { _explicitNullValueIntegratedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrated_count"); else _explicitNullProperties?.Remove("integrated_count"); } }
+        private int? _explicitNullValueIntegratedCount = default!;
         /// <summary>Percentage of conversions that are integrated. Null for DataWarehouseNode goals.</summary>
-        public double? IntegratedPct { get; set; }
+        public double? IntegratedPct { get => _explicitNullValueIntegratedPct; set { _explicitNullValueIntegratedPct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrated_pct"); else _explicitNullProperties?.Remove("integrated_pct"); } }
+        private double? _explicitNullValueIntegratedPct = default!;
         /// <summary>True when this 30d count may differ from the dashboard&apos;s attribution-windowed number</summary>
-        public bool? IsApproximate { get; set; }
+        public bool? IsApproximate { get => _explicitNullValueIsApproximate; set { _explicitNullValueIsApproximate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_approximate"); else _explicitNullProperties?.Remove("is_approximate"); } }
+        private bool? _explicitNullValueIsApproximate = default!;
         /// <summary>Whether the goal could not be evaluated (e.g. deleted action)</summary>
-        public bool? IsMisconfigured { get; set; }
+        public bool? IsMisconfigured { get => _explicitNullValueIsMisconfigured; set { _explicitNullValueIsMisconfigured = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_misconfigured"); else _explicitNullProperties?.Remove("is_misconfigured"); } }
+        private bool? _explicitNullValueIsMisconfigured = default!;
         /// <summary>* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummaryKind? _explicitNullValueKind = default!;
         /// <summary>Count of matching conversion events in the last 30 days</summary>
-        public int? Last30dCount { get; set; }
+        public int? Last30dCount { get => _explicitNullValueLast30dCount; set { _explicitNullValueLast30dCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_30d_count"); else _explicitNullProperties?.Remove("last_30d_count"); } }
+        private int? _explicitNullValueLast30dCount = default!;
         /// <summary>Explanation when is_misconfigured is true</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MisconfigReason { get; set; }
+        public string? MisconfigReason { get => _explicitNullValueMisconfigReason; set { _explicitNullValueMisconfigReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("misconfig_reason"); else _explicitNullProperties?.Remove("misconfig_reason"); } }
+        private string? _explicitNullValueMisconfigReason = default!;
 #nullable restore
 #else
-        public string MisconfigReason { get; set; }
+        public string MisconfigReason { get => _explicitNullValueMisconfigReason; set { _explicitNullValueMisconfigReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("misconfig_reason"); else _explicitNullProperties?.Remove("misconfig_reason"); } }
+        private string _explicitNullValueMisconfigReason = default!;
 #endif
         /// <summary>Display name of the conversion goal</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Total non-integrated conversions (without + unmatched utm_source). Null for DataWarehouseNode goals.</summary>
-        public int? NonIntegratedCount { get; set; }
+        public int? NonIntegratedCount { get => _explicitNullValueNonIntegratedCount; set { _explicitNullValueNonIntegratedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("non_integrated_count"); else _explicitNullProperties?.Remove("non_integrated_count"); } }
+        private int? _explicitNullValueNonIntegratedCount = default!;
         /// <summary>Human-readable target the goal matches (event/action name or table)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetLabel { get; set; }
+        public string? TargetLabel { get => _explicitNullValueTargetLabel; set { _explicitNullValueTargetLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_label"); else _explicitNullProperties?.Remove("target_label"); } }
+        private string? _explicitNullValueTargetLabel = default!;
 #nullable restore
 #else
-        public string TargetLabel { get; set; }
+        public string TargetLabel { get => _explicitNullValueTargetLabel; set { _explicitNullValueTargetLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_label"); else _explicitNullProperties?.Remove("target_label"); } }
+        private string _explicitNullValueTargetLabel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary"/> and sets the default values.
@@ -87,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -134,6 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("non_integrated_count", NonIntegratedCount);
             writer.WriteStringValue("target_label", TargetLabel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

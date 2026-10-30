@@ -11,7 +11,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedSessionRecording : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("person") is { } nullNodePerson && nullNodePerson.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Person = null;
+        }
+
         /// <summary>The active_seconds property</summary>
         public int? ActiveSeconds { get; private set; }
         /// <summary>The activity_score property</summary>
@@ -69,10 +77,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson? Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson? _explicitNullValuePerson = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson Person { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson _explicitNullValuePerson = default!;
 #endif
         /// <summary>The recording_duration property</summary>
         public int? RecordingDuration { get; private set; }
@@ -133,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecording CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecording();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSessionRecording(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -181,6 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MinimalPerson>("person", Person);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

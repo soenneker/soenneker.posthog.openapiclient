@@ -11,137 +11,207 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DeliverySummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("before_first_approval_share") is { } nullNodeBeforeFirstApprovalShare && nullNodeBeforeFirstApprovalShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BeforeFirstApprovalShare = null;
+            if (parseNode.GetChildNode("billable_minutes_per_merged_pr") is { } nullNodeBillableMinutesPerMergedPr && nullNodeBillableMinutesPerMergedPr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillableMinutesPerMergedPr = null;
+            if (parseNode.GetChildNode("cost_per_merged_pr_usd") is { } nullNodeCostPerMergedPrUsd && nullNodeCostPerMergedPrUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostPerMergedPrUsd = null;
+            if (parseNode.GetChildNode("cost_per_push_usd") is { } nullNodeCostPerPushUsd && nullNodeCostPerPushUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostPerPushUsd = null;
+            if (parseNode.GetChildNode("draft_pr_count") is { } nullNodeDraftPrCount && nullNodeDraftPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftPrCount = null;
+            if (parseNode.GetChildNode("failed_merge_queue_share") is { } nullNodeFailedMergeQueueShare && nullNodeFailedMergeQueueShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedMergeQueueShare = null;
+            if (parseNode.GetChildNode("has_membership_data") is { } nullNodeHasMembershipData && nullNodeHasMembershipData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMembershipData = null;
+            if (parseNode.GetChildNode("jobs_available") is { } nullNodeJobsAvailable && nullNodeJobsAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobsAvailable = null;
+            if (parseNode.GetChildNode("lead_time") is { } nullNodeLeadTime && nullNodeLeadTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LeadTime = null;
+            if (parseNode.GetChildNode("median_first_approval_to_merge_seconds") is { } nullNodeMedianFirstApprovalToMergeSeconds && nullNodeMedianFirstApprovalToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianFirstApprovalToMergeSeconds = null;
+            if (parseNode.GetChildNode("median_ready_to_first_approval_seconds") is { } nullNodeMedianReadyToFirstApprovalSeconds && nullNodeMedianReadyToFirstApprovalSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianReadyToFirstApprovalSeconds = null;
+            if (parseNode.GetChildNode("median_ready_to_merge_seconds") is { } nullNodeMedianReadyToMergeSeconds && nullNodeMedianReadyToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianReadyToMergeSeconds = null;
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("merge_queue_attempts_per_merged_pr") is { } nullNodeMergeQueueAttemptsPerMergedPr && nullNodeMergeQueueAttemptsPerMergedPr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeQueueAttemptsPerMergedPr = null;
+            if (parseNode.GetChildNode("opened_pr_count") is { } nullNodeOpenedPrCount && nullNodeOpenedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenedPrCount = null;
+            if (parseNode.GetChildNode("open_pr_count") is { } nullNodeOpenPrCount && nullNodeOpenPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenPrCount = null;
+            if (parseNode.GetChildNode("p90_ready_to_merge_seconds") is { } nullNodeP90ReadyToMergeSeconds && nullNodeP90ReadyToMergeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P90ReadyToMergeSeconds = null;
+            if (parseNode.GetChildNode("push_count") is { } nullNodePushCount && nullNodePushCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PushCount = null;
+            if (parseNode.GetChildNode("pushes_after_approval_per_merged_pr") is { } nullNodePushesAfterApprovalPerMergedPr && nullNodePushesAfterApprovalPerMergedPr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PushesAfterApprovalPerMergedPr = null;
+            if (parseNode.GetChildNode("ready_data_available") is { } nullNodeReadyDataAvailable && nullNodeReadyDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyDataAvailable = null;
+            if (parseNode.GetChildNode("review_data_available") is { } nullNodeReviewDataAvailable && nullNodeReviewDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewDataAvailable = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("scope_kind") is { } nullNodeScopeKind && nullNodeScopeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeKind = null;
+            if (parseNode.GetChildNode("total_billable_minutes") is { } nullNodeTotalBillableMinutes && nullNodeTotalBillableMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalBillableMinutes = null;
+            if (parseNode.GetChildNode("total_cost_usd") is { } nullNodeTotalCostUsd && nullNodeTotalCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCostUsd = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Share (0 to 1) of all ready-to-merge hours spent before the first approval, summed over the PRs, so long PRs weigh more. The rest came after the approval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBeforeFirstApprovalShare? BeforeFirstApprovalShare { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBeforeFirstApprovalShare? BeforeFirstApprovalShare { get => _explicitNullValueBeforeFirstApprovalShare; set { _explicitNullValueBeforeFirstApprovalShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_first_approval_share"); else _explicitNullProperties?.Remove("before_first_approval_share"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBeforeFirstApprovalShare? _explicitNullValueBeforeFirstApprovalShare = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBeforeFirstApprovalShare BeforeFirstApprovalShare { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBeforeFirstApprovalShare BeforeFirstApprovalShare { get => _explicitNullValueBeforeFirstApprovalShare; set { _explicitNullValueBeforeFirstApprovalShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before_first_approval_share"); else _explicitNullProperties?.Remove("before_first_approval_share"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBeforeFirstApprovalShare _explicitNullValueBeforeFirstApprovalShare = default!;
 #endif
         /// <summary>Median billable runner minutes per merged PR, on the billed clock. Null when the jobs table isn&apos;t synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBillableMinutesPerMergedPr? BillableMinutesPerMergedPr { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBillableMinutesPerMergedPr? BillableMinutesPerMergedPr { get => _explicitNullValueBillableMinutesPerMergedPr; set { _explicitNullValueBillableMinutesPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_minutes_per_merged_pr"); else _explicitNullProperties?.Remove("billable_minutes_per_merged_pr"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBillableMinutesPerMergedPr? _explicitNullValueBillableMinutesPerMergedPr = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBillableMinutesPerMergedPr BillableMinutesPerMergedPr { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBillableMinutesPerMergedPr BillableMinutesPerMergedPr { get => _explicitNullValueBillableMinutesPerMergedPr; set { _explicitNullValueBillableMinutesPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_minutes_per_merged_pr"); else _explicitNullProperties?.Remove("billable_minutes_per_merged_pr"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryBillableMinutesPerMergedPr _explicitNullValueBillableMinutesPerMergedPr = default!;
 #endif
         /// <summary>Median estimated CI cost per merged PR, in USD, over every run linked to the PR (merge-queue gate runs included) that started up to 30 days before the window. Null when the jobs table isn&apos;t synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerMergedPrUsd? CostPerMergedPrUsd { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerMergedPrUsd? CostPerMergedPrUsd { get => _explicitNullValueCostPerMergedPrUsd; set { _explicitNullValueCostPerMergedPrUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_per_merged_pr_usd"); else _explicitNullProperties?.Remove("cost_per_merged_pr_usd"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerMergedPrUsd? _explicitNullValueCostPerMergedPrUsd = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerMergedPrUsd CostPerMergedPrUsd { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerMergedPrUsd CostPerMergedPrUsd { get => _explicitNullValueCostPerMergedPrUsd; set { _explicitNullValueCostPerMergedPrUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_per_merged_pr_usd"); else _explicitNullProperties?.Remove("cost_per_merged_pr_usd"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerMergedPrUsd _explicitNullValueCostPerMergedPrUsd = default!;
 #endif
         /// <summary>Total CI cost divided by total pushes over the merged PRs: the price of one iteration. A push is a distinct head commit that triggered CI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerPushUsd? CostPerPushUsd { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerPushUsd? CostPerPushUsd { get => _explicitNullValueCostPerPushUsd; set { _explicitNullValueCostPerPushUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_per_push_usd"); else _explicitNullProperties?.Remove("cost_per_push_usd"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerPushUsd? _explicitNullValueCostPerPushUsd = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerPushUsd CostPerPushUsd { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerPushUsd CostPerPushUsd { get => _explicitNullValueCostPerPushUsd; set { _explicitNullValueCostPerPushUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_per_push_usd"); else _explicitNullProperties?.Remove("cost_per_push_usd"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryCostPerPushUsd _explicitNullValueCostPerPushUsd = default!;
 #endif
         /// <summary>PRs in scope that are open drafts right now. Ignores the window.</summary>
-        public int? DraftPrCount { get; set; }
+        public int? DraftPrCount { get => _explicitNullValueDraftPrCount; set { _explicitNullValueDraftPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_pr_count"); else _explicitNullProperties?.Remove("draft_pr_count"); } }
+        private int? _explicitNullValueDraftPrCount = default!;
         /// <summary>Share (0 to 1) of queue-landed merged PRs with at least one failed gate attempt. A failure caused by another PR ahead in the queue also counts, because the queue history is not in the warehouse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryFailedMergeQueueShare? FailedMergeQueueShare { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryFailedMergeQueueShare? FailedMergeQueueShare { get => _explicitNullValueFailedMergeQueueShare; set { _explicitNullValueFailedMergeQueueShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_merge_queue_share"); else _explicitNullProperties?.Remove("failed_merge_queue_share"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryFailedMergeQueueShare? _explicitNullValueFailedMergeQueueShare = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryFailedMergeQueueShare FailedMergeQueueShare { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryFailedMergeQueueShare FailedMergeQueueShare { get => _explicitNullValueFailedMergeQueueShare; set { _explicitNullValueFailedMergeQueueShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_merge_queue_share"); else _explicitNullProperties?.Remove("failed_merge_queue_share"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryFailedMergeQueueShare _explicitNullValueFailedMergeQueueShare = default!;
 #endif
         /// <summary>True when the team membership table is synced. A github_team scope without it matches no pull requests, so every scope figure is empty rather than the whole repository.</summary>
-        public bool? HasMembershipData { get; set; }
+        public bool? HasMembershipData { get => _explicitNullValueHasMembershipData; set { _explicitNullValueHasMembershipData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_membership_data"); else _explicitNullProperties?.Remove("has_membership_data"); } }
+        private bool? _explicitNullValueHasMembershipData = default!;
         /// <summary>True when the workflow jobs table is synced, which cost needs.</summary>
-        public bool? JobsAvailable { get; set; }
+        public bool? JobsAvailable { get => _explicitNullValueJobsAvailable; set { _explicitNullValueJobsAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs_available"); else _explicitNullProperties?.Remove("jobs_available"); } }
+        private bool? _explicitNullValueJobsAvailable = default!;
         /// <summary>Lead time to deploy for the scope against the repository.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime? LeadTime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime? LeadTime { get => _explicitNullValueLeadTime; set { _explicitNullValueLeadTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_time"); else _explicitNullProperties?.Remove("lead_time"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime? _explicitNullValueLeadTime = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime LeadTime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime LeadTime { get => _explicitNullValueLeadTime; set { _explicitNullValueLeadTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lead_time"); else _explicitNullProperties?.Remove("lead_time"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime _explicitNullValueLeadTime = default!;
 #endif
         /// <summary>Median seconds from the first approval to merge. This median and the one before it do not add up to the ready-to-merge median.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianFirstApprovalToMergeSeconds? MedianFirstApprovalToMergeSeconds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianFirstApprovalToMergeSeconds? MedianFirstApprovalToMergeSeconds { get => _explicitNullValueMedianFirstApprovalToMergeSeconds; set { _explicitNullValueMedianFirstApprovalToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_first_approval_to_merge_seconds"); else _explicitNullProperties?.Remove("median_first_approval_to_merge_seconds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianFirstApprovalToMergeSeconds? _explicitNullValueMedianFirstApprovalToMergeSeconds = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianFirstApprovalToMergeSeconds MedianFirstApprovalToMergeSeconds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianFirstApprovalToMergeSeconds MedianFirstApprovalToMergeSeconds { get => _explicitNullValueMedianFirstApprovalToMergeSeconds; set { _explicitNullValueMedianFirstApprovalToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_first_approval_to_merge_seconds"); else _explicitNullProperties?.Remove("median_first_approval_to_merge_seconds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianFirstApprovalToMergeSeconds _explicitNullValueMedianFirstApprovalToMergeSeconds = default!;
 #endif
         /// <summary>Median seconds from ready to the first approval. An approval given while the PR was a draft counts as 0. PRs merged without an approval are left out. Null when reviews aren&apos;t synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToFirstApprovalSeconds? MedianReadyToFirstApprovalSeconds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToFirstApprovalSeconds? MedianReadyToFirstApprovalSeconds { get => _explicitNullValueMedianReadyToFirstApprovalSeconds; set { _explicitNullValueMedianReadyToFirstApprovalSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_ready_to_first_approval_seconds"); else _explicitNullProperties?.Remove("median_ready_to_first_approval_seconds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToFirstApprovalSeconds? _explicitNullValueMedianReadyToFirstApprovalSeconds = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToFirstApprovalSeconds MedianReadyToFirstApprovalSeconds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToFirstApprovalSeconds MedianReadyToFirstApprovalSeconds { get => _explicitNullValueMedianReadyToFirstApprovalSeconds; set { _explicitNullValueMedianReadyToFirstApprovalSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_ready_to_first_approval_seconds"); else _explicitNullProperties?.Remove("median_ready_to_first_approval_seconds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToFirstApprovalSeconds _explicitNullValueMedianReadyToFirstApprovalSeconds = default!;
 #endif
         /// <summary>Median seconds from the last ready_for_review to merge. Null when issue events aren&apos;t synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToMergeSeconds? MedianReadyToMergeSeconds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToMergeSeconds? MedianReadyToMergeSeconds { get => _explicitNullValueMedianReadyToMergeSeconds; set { _explicitNullValueMedianReadyToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_ready_to_merge_seconds"); else _explicitNullProperties?.Remove("median_ready_to_merge_seconds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToMergeSeconds? _explicitNullValueMedianReadyToMergeSeconds = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToMergeSeconds MedianReadyToMergeSeconds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToMergeSeconds MedianReadyToMergeSeconds { get => _explicitNullValueMedianReadyToMergeSeconds; set { _explicitNullValueMedianReadyToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_ready_to_merge_seconds"); else _explicitNullProperties?.Remove("median_ready_to_merge_seconds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMedianReadyToMergeSeconds _explicitNullValueMedianReadyToMergeSeconds = default!;
 #endif
         /// <summary>PRs in scope merged in the window (bots and drafts excluded): the population of every per-merged-PR figure.</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>Mean merge-queue gate attempts per merged PR that went through the queue. A bisection probe folds into its attempt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMergeQueueAttemptsPerMergedPr? MergeQueueAttemptsPerMergedPr { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMergeQueueAttemptsPerMergedPr? MergeQueueAttemptsPerMergedPr { get => _explicitNullValueMergeQueueAttemptsPerMergedPr; set { _explicitNullValueMergeQueueAttemptsPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_attempts_per_merged_pr"); else _explicitNullProperties?.Remove("merge_queue_attempts_per_merged_pr"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMergeQueueAttemptsPerMergedPr? _explicitNullValueMergeQueueAttemptsPerMergedPr = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMergeQueueAttemptsPerMergedPr MergeQueueAttemptsPerMergedPr { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMergeQueueAttemptsPerMergedPr MergeQueueAttemptsPerMergedPr { get => _explicitNullValueMergeQueueAttemptsPerMergedPr; set { _explicitNullValueMergeQueueAttemptsPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_queue_attempts_per_merged_pr"); else _explicitNullProperties?.Remove("merge_queue_attempts_per_merged_pr"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryMergeQueueAttemptsPerMergedPr _explicitNullValueMergeQueueAttemptsPerMergedPr = default!;
 #endif
         /// <summary>PRs in scope opened in the window, drafts included, bots excluded.</summary>
-        public int? OpenedPrCount { get; set; }
+        public int? OpenedPrCount { get => _explicitNullValueOpenedPrCount; set { _explicitNullValueOpenedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opened_pr_count"); else _explicitNullProperties?.Remove("opened_pr_count"); } }
+        private int? _explicitNullValueOpenedPrCount = default!;
         /// <summary>PRs in scope that are open and not drafts right now. Ignores the window.</summary>
-        public int? OpenPrCount { get; set; }
+        public int? OpenPrCount { get => _explicitNullValueOpenPrCount; set { _explicitNullValueOpenPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_pr_count"); else _explicitNullProperties?.Remove("open_pr_count"); } }
+        private int? _explicitNullValueOpenPrCount = default!;
         /// <summary>90th percentile of the ready-to-merge seconds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryP90ReadyToMergeSeconds? P90ReadyToMergeSeconds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryP90ReadyToMergeSeconds? P90ReadyToMergeSeconds { get => _explicitNullValueP90ReadyToMergeSeconds; set { _explicitNullValueP90ReadyToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p90_ready_to_merge_seconds"); else _explicitNullProperties?.Remove("p90_ready_to_merge_seconds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryP90ReadyToMergeSeconds? _explicitNullValueP90ReadyToMergeSeconds = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryP90ReadyToMergeSeconds P90ReadyToMergeSeconds { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryP90ReadyToMergeSeconds P90ReadyToMergeSeconds { get => _explicitNullValueP90ReadyToMergeSeconds; set { _explicitNullValueP90ReadyToMergeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p90_ready_to_merge_seconds"); else _explicitNullProperties?.Remove("p90_ready_to_merge_seconds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryP90ReadyToMergeSeconds _explicitNullValueP90ReadyToMergeSeconds = default!;
 #endif
         /// <summary>Pushes summed over the merged PRs in scope.</summary>
-        public int? PushCount { get; set; }
+        public int? PushCount { get => _explicitNullValuePushCount; set { _explicitNullValuePushCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("push_count"); else _explicitNullProperties?.Remove("push_count"); } }
+        private int? _explicitNullValuePushCount = default!;
         /// <summary>Mean pushes after the first approval per merged PR, over PRs with an approval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryPushesAfterApprovalPerMergedPr? PushesAfterApprovalPerMergedPr { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryPushesAfterApprovalPerMergedPr? PushesAfterApprovalPerMergedPr { get => _explicitNullValuePushesAfterApprovalPerMergedPr; set { _explicitNullValuePushesAfterApprovalPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pushes_after_approval_per_merged_pr"); else _explicitNullProperties?.Remove("pushes_after_approval_per_merged_pr"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryPushesAfterApprovalPerMergedPr? _explicitNullValuePushesAfterApprovalPerMergedPr = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryPushesAfterApprovalPerMergedPr PushesAfterApprovalPerMergedPr { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryPushesAfterApprovalPerMergedPr PushesAfterApprovalPerMergedPr { get => _explicitNullValuePushesAfterApprovalPerMergedPr; set { _explicitNullValuePushesAfterApprovalPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pushes_after_approval_per_merged_pr"); else _explicitNullProperties?.Remove("pushes_after_approval_per_merged_pr"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryPushesAfterApprovalPerMergedPr _explicitNullValuePushesAfterApprovalPerMergedPr = default!;
 #endif
         /// <summary>True when issue events are synced, which ready-to-merge time needs.</summary>
-        public bool? ReadyDataAvailable { get; set; }
+        public bool? ReadyDataAvailable { get => _explicitNullValueReadyDataAvailable; set { _explicitNullValueReadyDataAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_data_available"); else _explicitNullProperties?.Remove("ready_data_available"); } }
+        private bool? _explicitNullValueReadyDataAvailable = default!;
         /// <summary>True when the reviews table is synced, which the approval split needs.</summary>
-        public bool? ReviewDataAvailable { get; set; }
+        public bool? ReviewDataAvailable { get => _explicitNullValueReviewDataAvailable; set { _explicitNullValueReviewDataAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_data_available"); else _explicitNullProperties?.Remove("review_data_available"); } }
+        private bool? _explicitNullValueReviewDataAvailable = default!;
         /// <summary>The GitHub login or GitHub team slug the summary is for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Scope { get; set; }
+        public string? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private string? _explicitNullValueScope = default!;
 #nullable restore
 #else
-        public string Scope { get; set; }
+        public string Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private string _explicitNullValueScope = default!;
 #endif
         /// <summary>* `author` - Author* `github_team` - GitHub Team* `pull_request` - Pull Request</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind? ScopeKind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind? ScopeKind { get => _explicitNullValueScopeKind; set { _explicitNullValueScopeKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_kind"); else _explicitNullProperties?.Remove("scope_kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind? _explicitNullValueScopeKind = default!;
         /// <summary>Billable minutes summed over the merged PRs in scope. Null when the jobs table isn&apos;t synced.</summary>
-        public double? TotalBillableMinutes { get; set; }
+        public double? TotalBillableMinutes { get => _explicitNullValueTotalBillableMinutes; set { _explicitNullValueTotalBillableMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_billable_minutes"); else _explicitNullProperties?.Remove("total_billable_minutes"); } }
+        private double? _explicitNullValueTotalBillableMinutes = default!;
         /// <summary>Estimated CI cost summed over the merged PRs in scope. Null when nothing was costable.</summary>
-        public double? TotalCostUsd { get; set; }
+        public double? TotalCostUsd { get => _explicitNullValueTotalCostUsd; set { _explicitNullValueTotalCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_cost_usd"); else _explicitNullProperties?.Remove("total_cost_usd"); } }
+        private double? _explicitNullValueTotalCostUsd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummary"/> and sets the default values.
         /// </summary>
@@ -157,7 +227,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -226,6 +296,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryScopeKind>("scope_kind", ScopeKind);
             writer.WriteDoubleValue("total_billable_minutes", TotalBillableMinutes);
             writer.WriteDoubleValue("total_cost_usd", TotalCostUsd);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,60 +12,89 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutFleetEntry : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("emit") is { } nullNodeEmit && nullNodeEmit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emit = null;
+            if (parseNode.GetChildNode("last_emitted_at") is { } nullNodeLastEmittedAt && nullNodeLastEmittedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastEmittedAt = null;
+            if (parseNode.GetChildNode("last_run_at") is { } nullNodeLastRunAt && nullNodeLastRunAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRunAt = null;
+            if (parseNode.GetChildNode("not_running_reason") is { } nullNodeNotRunningReason && nullNodeNotRunningReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotRunningReason = null;
+            if (parseNode.GetChildNode("pause_reason") is { } nullNodePauseReason && nullNodePauseReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PauseReason = null;
+            if (parseNode.GetChildNode("run_cron_schedule") is { } nullNodeRunCronSchedule && nullNodeRunCronSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCronSchedule = null;
+            if (parseNode.GetChildNode("run_interval_minutes") is { } nullNodeRunIntervalMinutes && nullNodeRunIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIntervalMinutes = null;
+            if (parseNode.GetChildNode("skill_name") is { } nullNodeSkillName && nullNodeSkillName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this scout&apos;s findings actually reach the inbox. False means dry-run: it runs and logs but emits nothing, so its silence says nothing about the surface it watches.</summary>
-        public bool? Emit { get; set; }
+        public bool? Emit { get => _explicitNullValueEmit; set { _explicitNullValueEmit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit"); else _explicitNullProperties?.Remove("emit"); } }
+        private bool? _explicitNullValueEmit = default!;
         /// <summary>ISO-8601 timestamp this scout last produced output on either channel (a finding, or an authored/edited report), within `emitted_lookback_days`. Null means quiet for at least that window, not never.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastEmittedAt { get; set; }
+        public string? LastEmittedAt { get => _explicitNullValueLastEmittedAt; set { _explicitNullValueLastEmittedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_emitted_at"); else _explicitNullProperties?.Remove("last_emitted_at"); } }
+        private string? _explicitNullValueLastEmittedAt = default!;
 #nullable restore
 #else
-        public string LastEmittedAt { get; set; }
+        public string LastEmittedAt { get => _explicitNullValueLastEmittedAt; set { _explicitNullValueLastEmittedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_emitted_at"); else _explicitNullProperties?.Remove("last_emitted_at"); } }
+        private string _explicitNullValueLastEmittedAt = default!;
 #endif
         /// <summary>ISO-8601 timestamp the coordinator last dispatched this scout, or null if it has never run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastRunAt { get; set; }
+        public string? LastRunAt { get => _explicitNullValueLastRunAt; set { _explicitNullValueLastRunAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_at"); else _explicitNullProperties?.Remove("last_run_at"); } }
+        private string? _explicitNullValueLastRunAt = default!;
 #nullable restore
 #else
-        public string LastRunAt { get; set; }
+        public string LastRunAt { get => _explicitNullValueLastRunAt; set { _explicitNullValueLastRunAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_at"); else _explicitNullProperties?.Remove("last_run_at"); } }
+        private string _explicitNullValueLastRunAt = default!;
 #endif
         /// <summary>Why this scout is in the `disabled` bucket: `turned_off` (a person or seed posture set it off), `auto_paused` (the system paused it), or `skill_unavailable` (left on, but its skill was deleted, superseded, or withheld, so it never dispatches). Null for scouts that actually run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NotRunningReason { get; set; }
+        public string? NotRunningReason { get => _explicitNullValueNotRunningReason; set { _explicitNullValueNotRunningReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_running_reason"); else _explicitNullProperties?.Remove("not_running_reason"); } }
+        private string? _explicitNullValueNotRunningReason = default!;
 #nullable restore
 #else
-        public string NotRunningReason { get; set; }
+        public string NotRunningReason { get => _explicitNullValueNotRunningReason; set { _explicitNullValueNotRunningReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_running_reason"); else _explicitNullProperties?.Remove("not_running_reason"); } }
+        private string _explicitNullValueNotRunningReason = default!;
 #endif
         /// <summary>The cause behind an `auto_paused` entry: `no_output`, `ignored`, or `repeated_failures`. Null for every other entry.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PauseReason { get; set; }
+        public string? PauseReason { get => _explicitNullValuePauseReason; set { _explicitNullValuePauseReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pause_reason"); else _explicitNullProperties?.Remove("pause_reason"); } }
+        private string? _explicitNullValuePauseReason = default!;
 #nullable restore
 #else
-        public string PauseReason { get; set; }
+        public string PauseReason { get => _explicitNullValuePauseReason; set { _explicitNullValuePauseReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pause_reason"); else _explicitNullProperties?.Remove("pause_reason"); } }
+        private string _explicitNullValuePauseReason = default!;
 #endif
         /// <summary>Optional cron expression, evaluated in the project timezone. Takes precedence over the interval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunCronSchedule { get; set; }
+        public string? RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
+        private string? _explicitNullValueRunCronSchedule = default!;
 #nullable restore
 #else
-        public string RunCronSchedule { get; set; }
+        public string RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
+        private string _explicitNullValueRunCronSchedule = default!;
 #endif
         /// <summary>Minutes between runs when no cron schedule is set (default 1440, every 24 hours).</summary>
-        public int? RunIntervalMinutes { get; set; }
+        public int? RunIntervalMinutes { get => _explicitNullValueRunIntervalMinutes; set { _explicitNullValueRunIntervalMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_interval_minutes"); else _explicitNullProperties?.Remove("run_interval_minutes"); } }
+        private int? _explicitNullValueRunIntervalMinutes = default!;
         /// <summary>The skill this config schedules as a scout.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SkillName { get; set; }
+        public string? SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
+        private string? _explicitNullValueSkillName = default!;
 #nullable restore
 #else
-        public string SkillName { get; set; }
+        public string SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
+        private string _explicitNullValueSkillName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry"/> and sets the default values.
@@ -82,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoutFleetEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -117,6 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("run_cron_schedule", RunCronSchedule);
             writer.WriteIntValue("run_interval_minutes", RunIntervalMinutes);
             writer.WriteStringValue("skill_name", SkillName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

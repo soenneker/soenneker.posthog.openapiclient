@@ -11,19 +11,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BiPaneSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("fields") is { } nullNodeFields && nullNodeFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fields = null;
+            if (parseNode.GetChildNode("independentAxes") is { } nullNodeIndependentAxes && nullNodeIndependentAxes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IndependentAxes = null;
+            if (parseNode.GetChildNode("referenceLines") is { } nullNodeReferenceLines && nullNodeReferenceLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceLines = null;
+        }
+
         /// <summary>Ordered dimension IDs used to split returned groups into separate charts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Fields { get; set; }
+        public List<string>? Fields { get => _explicitNullValueFields; set { _explicitNullValueFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fields"); else _explicitNullProperties?.Remove("fields"); } }
+        private List<string>? _explicitNullValueFields = default!;
 #nullable restore
 #else
-        public List<string> Fields { get; set; }
+        public List<string> Fields { get => _explicitNullValueFields; set { _explicitNullValueFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fields"); else _explicitNullProperties?.Remove("fields"); } }
+        private List<string> _explicitNullValueFields = default!;
 #endif
         /// <summary>Use a separate value scale for each pane instead of a shared primary scale.</summary>
-        public bool? IndependentAxes { get; set; }
+        public bool? IndependentAxes { get => _explicitNullValueIndependentAxes; set { _explicitNullValueIndependentAxes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("independentAxes"); else _explicitNullProperties?.Remove("independentAxes"); } }
+        private bool? _explicitNullValueIndependentAxes = default!;
         /// <summary>Calculate reference lines from each pane or from all returned worksheet marks.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReferenceLines? ReferenceLines { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReferenceLines? ReferenceLines { get => _explicitNullValueReferenceLines; set { _explicitNullValueReferenceLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenceLines"); else _explicitNullProperties?.Remove("referenceLines"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReferenceLines? _explicitNullValueReferenceLines = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -32,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BiPaneSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BiPaneSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BiPaneSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,7 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("fields", Fields);
             writer.WriteBoolValue("independentAxes", IndependentAxes);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReferenceLines>("referenceLines", ReferenceLines);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReferenceLines>("referenceLines", ReferenceLines);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

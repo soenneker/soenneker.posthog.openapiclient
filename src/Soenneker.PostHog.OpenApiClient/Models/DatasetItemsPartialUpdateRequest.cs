@@ -11,32 +11,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DatasetItemsPartialUpdateRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_version") is { } nullNodeBaseVersion && nullNodeBaseVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseVersion = null;
+            if (parseNode.GetChildNode("expected_output") is { } nullNodeExpectedOutput && nullNodeExpectedOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedOutput = null;
+            if (parseNode.GetChildNode("input") is { } nullNodeInput && nullNodeInput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Input = null;
+            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+        }
+
         /// <summary>Current item version observed by the caller.</summary>
-        public int? BaseVersion { get; set; }
+        public int? BaseVersion { get => _explicitNullValueBaseVersion; set { _explicitNullValueBaseVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_version"); else _explicitNullProperties?.Remove("base_version"); } }
+        private int? _explicitNullValueBaseVersion = default!;
         /// <summary>Replacement expected output. Send null to clear it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutput? ExpectedOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutput? ExpectedOutput { get => _explicitNullValueExpectedOutput; set { _explicitNullValueExpectedOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_output"); else _explicitNullProperties?.Remove("expected_output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutput? _explicitNullValueExpectedOutput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutput ExpectedOutput { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutput ExpectedOutput { get => _explicitNullValueExpectedOutput; set { _explicitNullValueExpectedOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_output"); else _explicitNullProperties?.Remove("expected_output"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutput _explicitNullValueExpectedOutput = default!;
 #endif
         /// <summary>Replacement input. Omit to keep the current value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInput? Input { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInput? Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInput? _explicitNullValueInput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInput Input { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInput Input { get => _explicitNullValueInput; set { _explicitNullValueInput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input"); else _explicitNullProperties?.Remove("input"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInput _explicitNullValueInput = default!;
 #endif
         /// <summary>Replacement metadata object. Send an empty object to clear it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestMetadata? Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestMetadata? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestMetadata? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestMetadata Metadata { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestMetadata Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestMetadata _explicitNullValueMetadata = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -46,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,7 +90,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("base_version", BaseVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestExpectedOutput>("expected_output", ExpectedOutput);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestInput>("input", Input);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestMetadata>("metadata", Metadata);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetItemsPartialUpdateRequestMetadata>("metadata", Metadata);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Hea
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputs>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputs.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputs>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputs.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Staff only. The inputs that the health checks read for this reader, to debug why a finding shows or not:the context of the checks in `health`, the exposure query&apos;s answer that the exposure checks read, and factsabout the project from the setup context&apos;s providers (the team&apos;s experiment defaults and which SDKs callflags). The exposure answer comes from the cache. When it is missing or stale, a calculation starts in thebackground and `exposures.status` says so.

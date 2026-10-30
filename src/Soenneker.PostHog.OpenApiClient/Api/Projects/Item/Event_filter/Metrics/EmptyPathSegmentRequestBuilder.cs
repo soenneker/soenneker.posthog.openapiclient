@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Event_filter.Metrics
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AppMetricsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Single event filter per team.GET  /event_filter/ — returns the config (or null if not yet created)POST /event_filter/ — creates or updates the config (upsert)GET  /event_filter/metrics/ — time-series metricsGET  /event_filter/metrics/totals/ — aggregate totals

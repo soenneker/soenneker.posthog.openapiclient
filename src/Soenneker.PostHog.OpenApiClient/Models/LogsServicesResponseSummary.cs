@@ -12,23 +12,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsServicesResponseSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("status_counts") is { } nullNodeStatusCounts && nullNodeStatusCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusCounts = null;
+            if (parseNode.GetChildNode("top_services_count") is { } nullNodeTopServicesCount && nullNodeTopServicesCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopServicesCount = null;
+            if (parseNode.GetChildNode("top_services_volume_share_pct") is { } nullNodeTopServicesVolumeSharePct && nullNodeTopServicesVolumeSharePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopServicesVolumeSharePct = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Service rows per status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts? StatusCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts? StatusCounts { get => _explicitNullValueStatusCounts; set { _explicitNullValueStatusCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_counts"); else _explicitNullProperties?.Remove("status_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts? _explicitNullValueStatusCounts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts StatusCounts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts StatusCounts { get => _explicitNullValueStatusCounts; set { _explicitNullValueStatusCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_counts"); else _explicitNullProperties?.Remove("status_counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummaryStatusCounts _explicitNullValueStatusCounts = default!;
 #endif
         /// <summary>Number of top services included in the volume_share aggregate (up to 5).</summary>
-        public int? TopServicesCount { get; set; }
+        public int? TopServicesCount { get => _explicitNullValueTopServicesCount; set { _explicitNullValueTopServicesCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_services_count"); else _explicitNullProperties?.Remove("top_services_count"); } }
+        private int? _explicitNullValueTopServicesCount = default!;
         /// <summary>Combined volume share (percent) of the top services by log_count.</summary>
-        public double? TopServicesVolumeSharePct { get; set; }
+        public double? TopServicesVolumeSharePct { get => _explicitNullValueTopServicesVolumeSharePct; set { _explicitNullValueTopServicesVolumeSharePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_services_volume_share_pct"); else _explicitNullProperties?.Remove("top_services_volume_share_pct"); } }
+        private double? _explicitNullValueTopServicesVolumeSharePct = default!;
         /// <summary>True when more services matched than `services` holds.</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary"/> and sets the default values.
         /// </summary>
@@ -44,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsServicesResponseSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("top_services_count", TopServicesCount);
             writer.WriteDoubleValue("top_services_volume_share_pct", TopServicesVolumeSharePct);
             writer.WriteBoolValue("truncated", Truncated);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

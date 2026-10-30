@@ -11,27 +11,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QueryScanAnalysis : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assistant_prompt") is { } nullNodeAssistantPrompt && nullNodeAssistantPrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssistantPrompt = null;
+            if (parseNode.GetChildNode("findings") is { } nullNodeFindings && nullNodeFindings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Findings = null;
+            if (parseNode.GetChildNode("project_share") is { } nullNodeProjectShare && nullNodeProjectShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectShare = null;
+            if (parseNode.GetChildNode("range_share") is { } nullNodeRangeShare && nullNodeRangeShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RangeShare = null;
+        }
+
         /// <summary>The message the Fix with AI button sends to the assistant. Absent when no finding can be fixed in the query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssistantPrompt { get; set; }
+        public string? AssistantPrompt { get => _explicitNullValueAssistantPrompt; set { _explicitNullValueAssistantPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assistant_prompt"); else _explicitNullProperties?.Remove("assistant_prompt"); } }
+        private string? _explicitNullValueAssistantPrompt = default!;
 #nullable restore
 #else
-        public string AssistantPrompt { get; set; }
+        public string AssistantPrompt { get => _explicitNullValueAssistantPrompt; set { _explicitNullValueAssistantPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assistant_prompt"); else _explicitNullProperties?.Remove("assistant_prompt"); } }
+        private string _explicitNullValueAssistantPrompt = default!;
 #endif
         /// <summary>Every finding, fixable or not. Empty when the analysis found none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning>? Findings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning>? Findings { get => _explicitNullValueFindings; set { _explicitNullValueFindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("findings"); else _explicitNullProperties?.Remove("findings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning>? _explicitNullValueFindings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning> Findings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning> Findings { get => _explicitNullValueFindings; set { _explicitNullValueFindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("findings"); else _explicitNullProperties?.Remove("findings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning> _explicitNullValueFindings = default!;
 #endif
         /// <summary>How much of all the project&apos;s events the query read, 0 to 1.</summary>
-        public double? ProjectShare { get; set; }
+        public double? ProjectShare { get => _explicitNullValueProjectShare; set { _explicitNullValueProjectShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_share"); else _explicitNullProperties?.Remove("project_share"); } }
+        private double? _explicitNullValueProjectShare = default!;
         /// <summary>How much of the project&apos;s events in the query&apos;s date range the query read, 0 to 1.</summary>
-        public double? RangeShare { get; set; }
+        public double? RangeShare { get => _explicitNullValueRangeShare; set { _explicitNullValueRangeShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range_share"); else _explicitNullProperties?.Remove("range_share"); } }
+        private double? _explicitNullValueRangeShare = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -40,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,7 +83,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("assistant_prompt", AssistantPrompt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning>("findings", Findings);
             writer.WriteDoubleValue("project_share", ProjectShare);
-            writer.WriteDoubleValue("range_share", RangeShare);
+            writer.WriteDoubleValue("range_share", RangeShare);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

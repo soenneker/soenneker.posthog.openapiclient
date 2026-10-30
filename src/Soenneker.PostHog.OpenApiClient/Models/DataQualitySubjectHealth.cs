@@ -12,36 +12,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataQualitySubjectHealth : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("checks_failing") is { } nullNodeChecksFailing && nullNodeChecksFailing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChecksFailing = null;
+            if (parseNode.GetChildNode("checks_total") is { } nullNodeChecksTotal && nullNodeChecksTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChecksTotal = null;
+            if (parseNode.GetChildNode("health") is { } nullNodeHealth && nullNodeHealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Health = null;
+            if (parseNode.GetChildNode("subject_type") is { } nullNodeSubjectType && nullNodeSubjectType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectType = null;
+            if (parseNode.GetChildNode("subject_uuid") is { } nullNodeSubjectUuid && nullNodeSubjectUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectUuid = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many of those checks last reported a failure.</summary>
-        public int? ChecksFailing { get; set; }
+        public int? ChecksFailing { get => _explicitNullValueChecksFailing; set { _explicitNullValueChecksFailing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checks_failing"); else _explicitNullProperties?.Remove("checks_failing"); } }
+        private int? _explicitNullValueChecksFailing = default!;
         /// <summary>How many enabled, non-deleted checks cover this subject.</summary>
-        public int? ChecksTotal { get; set; }
+        public int? ChecksTotal { get => _explicitNullValueChecksTotal; set { _explicitNullValueChecksTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checks_total"); else _explicitNullProperties?.Remove("checks_total"); } }
+        private int? _explicitNullValueChecksTotal = default!;
         /// <summary>failing (an error-severity check failed), erroring (a check could not run), warn (only warn-severity failures), healthy, or unknown (nothing has run yet).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Health { get; set; }
+        public string? Health { get => _explicitNullValueHealth; set { _explicitNullValueHealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health"); else _explicitNullProperties?.Remove("health"); } }
+        private string? _explicitNullValueHealth = default!;
 #nullable restore
 #else
-        public string Health { get; set; }
+        public string Health { get => _explicitNullValueHealth; set { _explicitNullValueHealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health"); else _explicitNullProperties?.Remove("health"); } }
+        private string _explicitNullValueHealth = default!;
 #endif
         /// <summary>&apos;table&apos;, &apos;view&apos;, &apos;metric&apos;, or &apos;posthog_table&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SubjectType { get; set; }
+        public string? SubjectType { get => _explicitNullValueSubjectType; set { _explicitNullValueSubjectType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_type"); else _explicitNullProperties?.Remove("subject_type"); } }
+        private string? _explicitNullValueSubjectType = default!;
 #nullable restore
 #else
-        public string SubjectType { get; set; }
+        public string SubjectType { get => _explicitNullValueSubjectType; set { _explicitNullValueSubjectType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_type"); else _explicitNullProperties?.Remove("subject_type"); } }
+        private string _explicitNullValueSubjectType = default!;
 #endif
         /// <summary>Id of the table, view, metric, or PostHog table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SubjectUuid { get; set; }
+        public string? SubjectUuid { get => _explicitNullValueSubjectUuid; set { _explicitNullValueSubjectUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_uuid"); else _explicitNullProperties?.Remove("subject_uuid"); } }
+        private string? _explicitNullValueSubjectUuid = default!;
 #nullable restore
 #else
-        public string SubjectUuid { get; set; }
+        public string SubjectUuid { get => _explicitNullValueSubjectUuid; set { _explicitNullValueSubjectUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_uuid"); else _explicitNullProperties?.Remove("subject_uuid"); } }
+        private string _explicitNullValueSubjectUuid = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth"/> and sets the default values.
@@ -58,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DataQualitySubjectHealth(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("health", Health);
             writer.WriteStringValue("subject_type", SubjectType);
             writer.WriteStringValue("subject_uuid", SubjectUuid);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

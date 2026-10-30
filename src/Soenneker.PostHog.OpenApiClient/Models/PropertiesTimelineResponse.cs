@@ -11,28 +11,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PropertiesTimelineResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("crucial_property_keys") is { } nullNodeCrucialPropertyKeys && nullNodeCrucialPropertyKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CrucialPropertyKeys = null;
+            if (parseNode.GetChildNode("effective_date_from") is { } nullNodeEffectiveDateFrom && nullNodeEffectiveDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectiveDateFrom = null;
+            if (parseNode.GetChildNode("effective_date_to") is { } nullNodeEffectiveDateTo && nullNodeEffectiveDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectiveDateTo = null;
+            if (parseNode.GetChildNode("points") is { } nullNodePoints && nullNodePoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Points = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The key person properties: those the insight&apos;s query uses. Empty when it uses none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CrucialPropertyKeys { get; set; }
+        public List<string>? CrucialPropertyKeys { get => _explicitNullValueCrucialPropertyKeys; set { _explicitNullValueCrucialPropertyKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crucial_property_keys"); else _explicitNullProperties?.Remove("crucial_property_keys"); } }
+        private List<string>? _explicitNullValueCrucialPropertyKeys = default!;
 #nullable restore
 #else
-        public List<string> CrucialPropertyKeys { get; set; }
+        public List<string> CrucialPropertyKeys { get => _explicitNullValueCrucialPropertyKeys; set { _explicitNullValueCrucialPropertyKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("crucial_property_keys"); else _explicitNullProperties?.Remove("crucial_property_keys"); } }
+        private List<string> _explicitNullValueCrucialPropertyKeys = default!;
 #endif
         /// <summary>The start of the window, in the project&apos;s time zone.</summary>
-        public DateTimeOffset? EffectiveDateFrom { get; set; }
+        public DateTimeOffset? EffectiveDateFrom { get => _explicitNullValueEffectiveDateFrom; set { _explicitNullValueEffectiveDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_date_from"); else _explicitNullProperties?.Remove("effective_date_from"); } }
+        private DateTimeOffset? _explicitNullValueEffectiveDateFrom = default!;
         /// <summary>The end of the window, in the project&apos;s time zone.</summary>
-        public DateTimeOffset? EffectiveDateTo { get; set; }
+        public DateTimeOffset? EffectiveDateTo { get => _explicitNullValueEffectiveDateTo; set { _explicitNullValueEffectiveDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_date_to"); else _explicitNullProperties?.Remove("effective_date_to"); } }
+        private DateTimeOffset? _explicitNullValueEffectiveDateTo = default!;
         /// <summary>One point for each change of the key property values, oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelinePoint>? Points { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelinePoint>? Points { get => _explicitNullValuePoints; set { _explicitNullValuePoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("points"); else _explicitNullProperties?.Remove("points"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelinePoint>? _explicitNullValuePoints = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelinePoint> Points { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelinePoint> Points { get => _explicitNullValuePoints; set { _explicitNullValuePoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("points"); else _explicitNullProperties?.Remove("points"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelinePoint> _explicitNullValuePoints = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelineResponse"/> and sets the default values.
@@ -49,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelineResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelineResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelineResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("effective_date_from", EffectiveDateFrom);
             writer.WriteDateTimeOffsetValue("effective_date_to", EffectiveDateTo);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertiesTimelinePoint>("points", Points);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

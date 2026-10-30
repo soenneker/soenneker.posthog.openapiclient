@@ -11,26 +11,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ObservationSearchResult : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("distance") is { } nullNodeDistance && nullNodeDistance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Distance = null;
+            if (parseNode.GetChildNode("matched_content") is { } nullNodeMatchedContent && nullNodeMatchedContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedContent = null;
+            if (parseNode.GetChildNode("observation") is { } nullNodeObservation && nullNodeObservation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Observation = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cosine distance between the search text and the observation&apos;s closest embedding. Lower is a closer match. Only comparable to other results in the same response.</summary>
-        public double? Distance { get; set; }
+        public double? Distance { get => _explicitNullValueDistance; set { _explicitNullValueDistance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distance"); else _explicitNullProperties?.Remove("distance"); } }
+        private double? _explicitNullValueDistance = default!;
         /// <summary>Excerpt of the observation text that best matched the search, truncated. Empty for observations analyzed before excerpts were stored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchedContent { get; set; }
+        public string? MatchedContent { get => _explicitNullValueMatchedContent; set { _explicitNullValueMatchedContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_content"); else _explicitNullProperties?.Remove("matched_content"); } }
+        private string? _explicitNullValueMatchedContent = default!;
 #nullable restore
 #else
-        public string MatchedContent { get; set; }
+        public string MatchedContent { get => _explicitNullValueMatchedContent; set { _explicitNullValueMatchedContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_content"); else _explicitNullProperties?.Remove("matched_content"); } }
+        private string _explicitNullValueMatchedContent = default!;
 #endif
         /// <summary>The matching observation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation? Observation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation? Observation { get => _explicitNullValueObservation; set { _explicitNullValueObservation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation"); else _explicitNullProperties?.Remove("observation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation? _explicitNullValueObservation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation Observation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation Observation { get => _explicitNullValueObservation; set { _explicitNullValueObservation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation"); else _explicitNullProperties?.Remove("observation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation _explicitNullValueObservation = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResult"/> and sets the default values.
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("distance", Distance);
             writer.WriteStringValue("matched_content", MatchedContent);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation>("observation", Observation);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

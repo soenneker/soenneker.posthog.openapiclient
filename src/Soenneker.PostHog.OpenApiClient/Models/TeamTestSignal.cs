@@ -11,33 +11,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamTestSignal : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("last_seen_at") is { } nullNodeLastSeenAt && nullNodeLastSeenAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeenAt = null;
+            if (parseNode.GetChildNode("nodeid") is { } nullNodeNodeid && nullNodeNodeid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nodeid = null;
+            if (parseNode.GetChildNode("runner") is { } nullNodeRunner && nullNodeRunner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runner = null;
+            if (parseNode.GetChildNode("selector") is { } nullNodeSelector && nullNodeSelector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selector = null;
+            if (parseNode.GetChildNode("signal_count") is { } nullNodeSignalCount && nullNodeSignalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalCount = null;
+            if (parseNode.GetChildNode("signal_count_prior") is { } nullNodeSignalCountPrior && nullNodeSignalCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalCountPrior = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Most recent failure, recovery, or quarantined-failure run for this test, either window.</summary>
-        public DateTimeOffset? LastSeenAt { get; set; }
+        public DateTimeOffset? LastSeenAt { get => _explicitNullValueLastSeenAt; set { _explicitNullValueLastSeenAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen_at"); else _explicitNullProperties?.Remove("last_seen_at"); } }
+        private DateTimeOffset? _explicitNullValueLastSeenAt = default!;
         /// <summary>Runner-specific test identity (the CI span name), a stable grouping key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Nodeid { get; set; }
+        public string? Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
+        private string? _explicitNullValueNodeid = default!;
 #nullable restore
 #else
-        public string Nodeid { get; set; }
+        public string Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
+        private string _explicitNullValueNodeid = default!;
 #endif
         /// <summary>* `pytest` - Pytest* `jest` - Jest</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner? Runner { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner? Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner? _explicitNullValueRunner = default!;
         /// <summary>Runnable pytest or Jest selector; exact for newly emitted spans.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Selector { get; set; }
+        public string? Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        private string? _explicitNullValueSelector = default!;
 #nullable restore
 #else
-        public string Selector { get; set; }
+        public string Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        private string _explicitNullValueSelector = default!;
 #endif
         /// <summary>Runs in the current window where the test failed, errored, or a retry recovered it (quarantined failures excluded).</summary>
-        public int? SignalCount { get; set; }
+        public int? SignalCount { get => _explicitNullValueSignalCount; set { _explicitNullValueSignalCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_count"); else _explicitNullProperties?.Remove("signal_count"); } }
+        private int? _explicitNullValueSignalCount = default!;
         /// <summary>Same count over the equal-length window before date_from.</summary>
-        public int? SignalCountPrior { get; set; }
+        public int? SignalCountPrior { get => _explicitNullValueSignalCountPrior; set { _explicitNullValueSignalCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_count_prior"); else _explicitNullProperties?.Remove("signal_count_prior"); } }
+        private int? _explicitNullValueSignalCountPrior = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal"/> and sets the default values.
         /// </summary>
@@ -53,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("selector", Selector);
             writer.WriteIntValue("signal_count", SignalCount);
             writer.WriteIntValue("signal_count_prior", SignalCountPrior);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

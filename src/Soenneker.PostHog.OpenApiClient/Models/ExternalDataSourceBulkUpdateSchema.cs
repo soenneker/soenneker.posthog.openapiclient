@@ -12,84 +12,131 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExternalDataSourceBulkUpdateSchema : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("apply_sync_defaults") is { } nullNodeApplySyncDefaults && nullNodeApplySyncDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApplySyncDefaults = null;
+            if (parseNode.GetChildNode("cdc_table_mode") is { } nullNodeCdcTableMode && nullNodeCdcTableMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CdcTableMode = null;
+            if (parseNode.GetChildNode("enabled_columns") is { } nullNodeEnabledColumns && nullNodeEnabledColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnabledColumns = null;
+            if (parseNode.GetChildNode("full_refresh_interval_days") is { } nullNodeFullRefreshIntervalDays && nullNodeFullRefreshIntervalDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FullRefreshIntervalDays = null;
+            if (parseNode.GetChildNode("full_refresh_time_of_day") is { } nullNodeFullRefreshTimeOfDay && nullNodeFullRefreshTimeOfDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FullRefreshTimeOfDay = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("incremental_field") is { } nullNodeIncrementalField && nullNodeIncrementalField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalField = null;
+            if (parseNode.GetChildNode("incremental_field_type") is { } nullNodeIncrementalFieldType && nullNodeIncrementalFieldType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalFieldType = null;
+            if (parseNode.GetChildNode("primary_key_columns") is { } nullNodePrimaryKeyColumns && nullNodePrimaryKeyColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryKeyColumns = null;
+            if (parseNode.GetChildNode("row_filters") is { } nullNodeRowFilters && nullNodeRowFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowFilters = null;
+            if (parseNode.GetChildNode("should_sync") is { } nullNodeShouldSync && nullNodeShouldSync.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShouldSync = null;
+            if (parseNode.GetChildNode("sync_frequency") is { } nullNodeSyncFrequency && nullNodeSyncFrequency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SyncFrequency = null;
+            if (parseNode.GetChildNode("sync_time_of_day") is { } nullNodeSyncTimeOfDay && nullNodeSyncTimeOfDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SyncTimeOfDay = null;
+            if (parseNode.GetChildNode("sync_type") is { } nullNodeSyncType && nullNodeSyncType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SyncType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true and the schema has no sync method configured yet (and this update does not set one), discover the table on the source and fill in default sync settings: incremental sync with an auto-selected tracking column where supported, otherwise append, otherwise full refresh. Ignored for schemas that already have a sync method.</summary>
-        public bool? ApplySyncDefaults { get; set; }
+        public bool? ApplySyncDefaults { get => _explicitNullValueApplySyncDefaults; set { _explicitNullValueApplySyncDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("apply_sync_defaults"); else _explicitNullProperties?.Remove("apply_sync_defaults"); } }
+        private bool? _explicitNullValueApplySyncDefaults = default!;
         /// <summary>How CDC-backed tables should be exposed.* `consolidated` - consolidated* `cdc_only` - cdc_only* `both` - both</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode? CdcTableMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode? CdcTableMode { get => _explicitNullValueCdcTableMode; set { _explicitNullValueCdcTableMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cdc_table_mode"); else _explicitNullProperties?.Remove("cdc_table_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode? _explicitNullValueCdcTableMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode CdcTableMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode CdcTableMode { get => _explicitNullValueCdcTableMode; set { _explicitNullValueCdcTableMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cdc_table_mode"); else _explicitNullProperties?.Remove("cdc_table_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode _explicitNullValueCdcTableMode = default!;
 #endif
         /// <summary>Columns to sync. Null means sync all columns.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EnabledColumns { get; set; }
+        public List<string>? EnabledColumns { get => _explicitNullValueEnabledColumns; set { _explicitNullValueEnabledColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled_columns"); else _explicitNullProperties?.Remove("enabled_columns"); } }
+        private List<string>? _explicitNullValueEnabledColumns = default!;
 #nullable restore
 #else
-        public List<string> EnabledColumns { get; set; }
+        public List<string> EnabledColumns { get => _explicitNullValueEnabledColumns; set { _explicitNullValueEnabledColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled_columns"); else _explicitNullProperties?.Remove("enabled_columns"); } }
+        private List<string> _explicitNullValueEnabledColumns = default!;
 #endif
         /// <summary>Days between scheduled full refreshes, from 1 to 90, or null for none. A full refresh wipes the table and re-imports every row. Re-imported rows count toward usage, and workflows and destinations that run on new rows of the table run again for every row. Incremental, append, and xmin syncs only, and never shorter than the sync frequency.</summary>
-        public int? FullRefreshIntervalDays { get; set; }
+        public int? FullRefreshIntervalDays { get => _explicitNullValueFullRefreshIntervalDays; set { _explicitNullValueFullRefreshIntervalDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full_refresh_interval_days"); else _explicitNullProperties?.Remove("full_refresh_interval_days"); } }
+        private int? _explicitNullValueFullRefreshIntervalDays = default!;
         /// <summary>UTC time of day (HH:MM:SS) that scheduled full refreshes are due, for example outside working hours. The refresh runs on the first scheduled sync from up to an hour before this time, so on a table that syncs every few hours it can run hours later. Each interval counts from the slot of this time that the last refresh or save served, where a slot less than an hour away counts as served. Saving a new time restarts the clock, so the first refresh after a save can come up to a day before a full interval has passed. Null counts the interval from when it was saved or from the last full resync. Cleared when full_refresh_interval_days is null.</summary>
-        public Time? FullRefreshTimeOfDay { get; set; }
+#nullable enable
+        public string? FullRefreshTimeOfDay { get => _explicitNullValueFullRefreshTimeOfDay; set { _explicitNullValueFullRefreshTimeOfDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full_refresh_time_of_day"); else _explicitNullProperties?.Remove("full_refresh_time_of_day"); } }
+        private string? _explicitNullValueFullRefreshTimeOfDay = default!;
+#nullable restore
         /// <summary>Schema identifier to update.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Incremental cursor field for incremental or append syncs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IncrementalField { get; set; }
+        public string? IncrementalField { get => _explicitNullValueIncrementalField; set { _explicitNullValueIncrementalField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_field"); else _explicitNullProperties?.Remove("incremental_field"); } }
+        private string? _explicitNullValueIncrementalField = default!;
 #nullable restore
 #else
-        public string IncrementalField { get; set; }
+        public string IncrementalField { get => _explicitNullValueIncrementalField; set { _explicitNullValueIncrementalField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_field"); else _explicitNullProperties?.Remove("incremental_field"); } }
+        private string _explicitNullValueIncrementalField = default!;
 #endif
         /// <summary>Type of the incremental cursor field.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IncrementalFieldType { get; set; }
+        public string? IncrementalFieldType { get => _explicitNullValueIncrementalFieldType; set { _explicitNullValueIncrementalFieldType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_field_type"); else _explicitNullProperties?.Remove("incremental_field_type"); } }
+        private string? _explicitNullValueIncrementalFieldType = default!;
 #nullable restore
 #else
-        public string IncrementalFieldType { get; set; }
+        public string IncrementalFieldType { get => _explicitNullValueIncrementalFieldType; set { _explicitNullValueIncrementalFieldType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_field_type"); else _explicitNullProperties?.Remove("incremental_field_type"); } }
+        private string _explicitNullValueIncrementalFieldType = default!;
 #endif
         /// <summary>Column names for primary key deduplication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PrimaryKeyColumns { get; set; }
+        public List<string>? PrimaryKeyColumns { get => _explicitNullValuePrimaryKeyColumns; set { _explicitNullValuePrimaryKeyColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_key_columns"); else _explicitNullProperties?.Remove("primary_key_columns"); } }
+        private List<string>? _explicitNullValuePrimaryKeyColumns = default!;
 #nullable restore
 #else
-        public List<string> PrimaryKeyColumns { get; set; }
+        public List<string> PrimaryKeyColumns { get => _explicitNullValuePrimaryKeyColumns; set { _explicitNullValuePrimaryKeyColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_key_columns"); else _explicitNullProperties?.Remove("primary_key_columns"); } }
+        private List<string> _explicitNullValuePrimaryKeyColumns = default!;
 #endif
         /// <summary>Row-filter predicates ANDed onto the source query. Null/empty means sync all rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>? RowFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>? RowFilters { get => _explicitNullValueRowFilters; set { _explicitNullValueRowFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_filters"); else _explicitNullProperties?.Remove("row_filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>? _explicitNullValueRowFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem> RowFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem> RowFilters { get => _explicitNullValueRowFilters; set { _explicitNullValueRowFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_filters"); else _explicitNullProperties?.Remove("row_filters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem> _explicitNullValueRowFilters = default!;
 #endif
         /// <summary>Whether the schema should be queryable/synced.</summary>
-        public bool? ShouldSync { get; set; }
+        public bool? ShouldSync { get => _explicitNullValueShouldSync; set { _explicitNullValueShouldSync = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("should_sync"); else _explicitNullProperties?.Remove("should_sync"); } }
+        private bool? _explicitNullValueShouldSync = default!;
         /// <summary>Human-readable sync frequency value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SyncFrequency { get; set; }
+        public string? SyncFrequency { get => _explicitNullValueSyncFrequency; set { _explicitNullValueSyncFrequency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_frequency"); else _explicitNullProperties?.Remove("sync_frequency"); } }
+        private string? _explicitNullValueSyncFrequency = default!;
 #nullable restore
 #else
-        public string SyncFrequency { get; set; }
+        public string SyncFrequency { get => _explicitNullValueSyncFrequency; set { _explicitNullValueSyncFrequency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_frequency"); else _explicitNullProperties?.Remove("sync_frequency"); } }
+        private string _explicitNullValueSyncFrequency = default!;
 #endif
         /// <summary>UTC anchor time for scheduled syncs.</summary>
-        public Time? SyncTimeOfDay { get; set; }
+#nullable enable
+        public string? SyncTimeOfDay { get => _explicitNullValueSyncTimeOfDay; set { _explicitNullValueSyncTimeOfDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_time_of_day"); else _explicitNullProperties?.Remove("sync_time_of_day"); } }
+        private string? _explicitNullValueSyncTimeOfDay = default!;
+#nullable restore
         /// <summary>Requested sync mode for the schema (incremental, full_refresh, append, cdc, or xmin).* `full_refresh` - full_refresh* `incremental` - incremental* `append` - append* `webhook` - webhook* `cdc` - cdc* `xmin` - xmin</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType? SyncType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType? SyncType { get => _explicitNullValueSyncType; set { _explicitNullValueSyncType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_type"); else _explicitNullProperties?.Remove("sync_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType? _explicitNullValueSyncType = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType SyncType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType SyncType { get => _explicitNullValueSyncType; set { _explicitNullValueSyncType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_type"); else _explicitNullProperties?.Remove("sync_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType _explicitNullValueSyncType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema"/> and sets the default values.
@@ -106,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,7 +167,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode.CreateFromDiscriminatorValue); } },
                 { "enabled_columns", n => { EnabledColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "full_refresh_interval_days", n => { FullRefreshIntervalDays = n.GetIntValue(); } },
-                { "full_refresh_time_of_day", n => { FullRefreshTimeOfDay = n.GetTimeValue(); } },
+                { "full_refresh_time_of_day", n => { FullRefreshTimeOfDay = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
                 { "incremental_field_type", n => { IncrementalFieldType = n.GetStringValue(); } },
@@ -128,7 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "row_filters", n => { RowFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "should_sync", n => { ShouldSync = n.GetBoolValue(); } },
                 { "sync_frequency", n => { SyncFrequency = n.GetStringValue(); } },
-                { "sync_time_of_day", n => { SyncTimeOfDay = n.GetTimeValue(); } },
+                { "sync_time_of_day", n => { SyncTimeOfDay = n.GetStringValue(); } },
                 { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType.CreateFromDiscriminatorValue); } },
             };
         }
@@ -143,7 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaCdcTableMode>("cdc_table_mode", CdcTableMode);
             writer.WriteCollectionOfPrimitiveValues<string>("enabled_columns", EnabledColumns);
             writer.WriteIntValue("full_refresh_interval_days", FullRefreshIntervalDays);
-            writer.WriteTimeValue("full_refresh_time_of_day", FullRefreshTimeOfDay);
+            writer.WriteStringValue("full_refresh_time_of_day", FullRefreshTimeOfDay);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteStringValue("incremental_field_type", IncrementalFieldType);
@@ -151,8 +198,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>("row_filters", RowFilters);
             writer.WriteBoolValue("should_sync", ShouldSync);
             writer.WriteStringValue("sync_frequency", SyncFrequency);
-            writer.WriteTimeValue("sync_time_of_day", SyncTimeOfDay);
+            writer.WriteStringValue("sync_time_of_day", SyncTimeOfDay);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaSyncType>("sync_type", SyncType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

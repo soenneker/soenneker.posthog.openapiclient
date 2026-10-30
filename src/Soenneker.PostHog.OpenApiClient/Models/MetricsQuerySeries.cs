@@ -11,54 +11,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MetricsQuerySeries : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("clause") is { } nullNodeClause && nullNodeClause.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clause = null;
+            if (parseNode.GetChildNode("histogramBounds") is { } nullNodeHistogramBounds && nullNodeHistogramBounds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HistogramBounds = null;
+            if (parseNode.GetChildNode("labels") is { } nullNodeLabels && nullNodeLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Labels = null;
+            if (parseNode.GetChildNode("metricName") is { } nullNodeMetricName && nullNodeMetricName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricName = null;
+            if (parseNode.GetChildNode("points") is { } nullNodePoints && nullNodePoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Points = null;
+            if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
+        }
+
         /// <summary>Clause alias that produced this series (`formula` for the formula result)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Clause { get; set; }
+        public string? Clause { get => _explicitNullValueClause; set { _explicitNullValueClause = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clause"); else _explicitNullProperties?.Remove("clause"); } }
+        private string? _explicitNullValueClause = default!;
 #nullable restore
 #else
-        public string Clause { get; set; }
+        public string Clause { get => _explicitNullValueClause; set { _explicitNullValueClause = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clause"); else _explicitNullProperties?.Remove("clause"); } }
+        private string _explicitNullValueClause = default!;
 #endif
         /// <summary>Bucket upper edges a histogram quantile series was estimated from. The true quantile can be anywhere between two edges.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? HistogramBounds { get; set; }
+        public List<double?>? HistogramBounds { get => _explicitNullValueHistogramBounds; set { _explicitNullValueHistogramBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("histogramBounds"); else _explicitNullProperties?.Remove("histogramBounds"); } }
+        private List<double?>? _explicitNullValueHistogramBounds = default!;
 #nullable restore
 #else
-        public List<double?> HistogramBounds { get; set; }
+        public List<double?> HistogramBounds { get => _explicitNullValueHistogramBounds; set { _explicitNullValueHistogramBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("histogramBounds"); else _explicitNullProperties?.Remove("histogramBounds"); } }
+        private List<double?> _explicitNullValueHistogramBounds = default!;
 #endif
         /// <summary>Label values identifying this series; empty for an ungrouped query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty? Labels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty? Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty? _explicitNullValueLabels = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty Labels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty _explicitNullValueLabels = default!;
 #endif
         /// <summary>The metricName property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricName { get; set; }
+        public string? MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
+        private string? _explicitNullValueMetricName = default!;
 #nullable restore
 #else
-        public string MetricName { get; set; }
+        public string MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
+        private string _explicitNullValueMetricName = default!;
 #endif
         /// <summary>The points property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint>? Points { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint>? Points { get => _explicitNullValuePoints; set { _explicitNullValuePoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("points"); else _explicitNullProperties?.Remove("points"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint>? _explicitNullValuePoints = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint> Points { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint> Points { get => _explicitNullValuePoints; set { _explicitNullValuePoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("points"); else _explicitNullProperties?.Remove("points"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint> _explicitNullValuePoints = default!;
 #endif
         /// <summary>UCUM unit of the returned values, e.g. &quot;By&quot;, &quot;ms&quot;, &quot;1/s&quot;. It is the ingested unit, except that a count of series has no unit and a rate is per second. Empty when the values have no unit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Unit { get; set; }
+        public string? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private string? _explicitNullValueUnit = default!;
 #nullable restore
 #else
-        public string Unit { get; set; }
+        public string Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private string _explicitNullValueUnit = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -68,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeries CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeries();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeries(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,7 +123,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQuerySeriesLabelsProperty>("labels", Labels);
             writer.WriteStringValue("metricName", MetricName);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsQueryPoint>("points", Points);
-            writer.WriteStringValue("unit", Unit);
+            writer.WriteStringValue("unit", Unit);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

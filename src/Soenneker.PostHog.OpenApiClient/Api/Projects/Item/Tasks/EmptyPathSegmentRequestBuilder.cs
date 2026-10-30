@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedTaskListItemList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// API for managing tasks within a project. Tasks represent units of work to be performed by an agent.
@@ -79,6 +79,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
                 { "403", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
                 { "503", global::Soenneker.PostHog.OpenApiClient.Models.TaskRunErrorResponse.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateResponseDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TaskCreateResponseDto.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -162,7 +164,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks
             /// <summary>Filter by creator user ID</summary>
             [QueryParameter("created_by")]
             public int? CreatedBy { get; set; }
-            /// <summary>Exclude tasks with this origin product from the results* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import</summary>
+            /// <summary>Exclude tasks with this origin product from the results* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import* `knowledge_writer` - Knowledge Writer</summary>
             [QueryParameter("exclude_origin_product")]
             public global::Soenneker.PostHog.OpenApiClient.Models.TasksListExcludeOriginProductParameter? ExcludeOriginProduct { get; set; }
             /// <summary>Filter tasks to the runs spawned by this workflow&apos;s &apos;Create AI task&apos; action.</summary>

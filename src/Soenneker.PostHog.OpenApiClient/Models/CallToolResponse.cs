@@ -11,26 +11,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CallToolResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("is_error") is { } nullNodeIsError && nullNodeIsError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsError = null;
+            if (parseNode.GetChildNode("structured_content") is { } nullNodeStructuredContent && nullNodeStructuredContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StructuredContent = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>MCP content blocks the tool returned, in upstream order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty>? Content { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty>? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty>? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty> Content { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty> Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty> _explicitNullValueContent = default!;
 #endif
         /// <summary>True when the tool itself reported failure (for example bad arguments). The call reached the server; read `content` for the reason.</summary>
-        public bool? IsError { get; set; }
+        public bool? IsError { get => _explicitNullValueIsError; set { _explicitNullValueIsError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_error"); else _explicitNullProperties?.Remove("is_error"); } }
+        private bool? _explicitNullValueIsError = default!;
         /// <summary>Structured result the tool returned alongside `content`, when it provides one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty? StructuredContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty? StructuredContent { get => _explicitNullValueStructuredContent; set { _explicitNullValueStructuredContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("structured_content"); else _explicitNullProperties?.Remove("structured_content"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty? _explicitNullValueStructuredContent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty StructuredContent { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty StructuredContent { get => _explicitNullValueStructuredContent; set { _explicitNullValueStructuredContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("structured_content"); else _explicitNullProperties?.Remove("structured_content"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty _explicitNullValueStructuredContent = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponse"/> and sets the default values.
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseContentItemProperty>("content", Content);
             writer.WriteBoolValue("is_error", IsError);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CallToolResponseStructuredContentProperty>("structured_content", StructuredContent);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

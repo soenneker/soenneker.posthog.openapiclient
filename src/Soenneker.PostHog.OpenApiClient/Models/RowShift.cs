@@ -11,25 +11,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RowShift : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bands") is { } nullNodeBands && nullNodeBands.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bands = null;
+            if (parseNode.GetChildNode("deleted_rows") is { } nullNodeDeletedRows && nullNodeDeletedRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletedRows = null;
+            if (parseNode.GetChildNode("inserted_rows") is { } nullNodeInsertedRows && nullNodeInsertedRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsertedRows = null;
+            if (parseNode.GetChildNode("raw_diff_percentage") is { } nullNodeRawDiffPercentage && nullNodeRawDiffPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawDiffPercentage = null;
+            if (parseNode.GetChildNode("residual_percentage") is { } nullNodeResidualPercentage && nullNodeResidualPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResidualPercentage = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Where the shift happened, in current-image coordinates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBand>? Bands { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBand>? Bands { get => _explicitNullValueBands; set { _explicitNullValueBands = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bands"); else _explicitNullProperties?.Remove("bands"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBand>? _explicitNullValueBands = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBand> Bands { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBand> Bands { get => _explicitNullValueBands; set { _explicitNullValueBands = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bands"); else _explicitNullProperties?.Remove("bands"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ShiftBand> _explicitNullValueBands = default!;
 #endif
         /// <summary>Rows the current image lost.</summary>
-        public int? DeletedRows { get; set; }
+        public int? DeletedRows { get => _explicitNullValueDeletedRows; set { _explicitNullValueDeletedRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_rows"); else _explicitNullProperties?.Remove("deleted_rows"); } }
+        private int? _explicitNullValueDeletedRows = default!;
         /// <summary>Rows the current image gained.</summary>
-        public int? InsertedRows { get; set; }
+        public int? InsertedRows { get => _explicitNullValueInsertedRows; set { _explicitNullValueInsertedRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inserted_rows"); else _explicitNullProperties?.Remove("inserted_rows"); } }
+        private int? _explicitNullValueInsertedRows = default!;
         /// <summary>Percentage of pixels that differ without alignment, which is what the shift would have cost.</summary>
-        public double? RawDiffPercentage { get; set; }
+        public double? RawDiffPercentage { get => _explicitNullValueRawDiffPercentage; set { _explicitNullValueRawDiffPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_diff_percentage"); else _explicitNullProperties?.Remove("raw_diff_percentage"); } }
+        private double? _explicitNullValueRawDiffPercentage = default!;
         /// <summary>Percentage of pixels that differ inside the rows present in both images, 0 to 100. Excludes the shift itself. The stored diff_percentage adds the area of the rows the shift added or removed, and that combined number is what the pixel threshold judges.</summary>
-        public double? ResidualPercentage { get; set; }
+        public double? ResidualPercentage { get => _explicitNullValueResidualPercentage; set { _explicitNullValueResidualPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("residual_percentage"); else _explicitNullProperties?.Remove("residual_percentage"); } }
+        private double? _explicitNullValueResidualPercentage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RowShift"/> and sets the default values.
         /// </summary>
@@ -45,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RowShift CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RowShift();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RowShift(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("inserted_rows", InsertedRows);
             writer.WriteDoubleValue("raw_diff_percentage", RawDiffPercentage);
             writer.WriteDoubleValue("residual_percentage", ResidualPercentage);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

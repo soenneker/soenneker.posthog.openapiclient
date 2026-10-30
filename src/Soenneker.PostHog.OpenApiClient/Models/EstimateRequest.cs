@@ -12,41 +12,65 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EstimateRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("experiment") is { } nullNodeExperiment && nullNodeExperiment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Experiment = null;
+            if (parseNode.GetChildNode("experiment_targeting") is { } nullNodeExperimentTargeting && nullNodeExperimentTargeting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentTargeting = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("sampling_mode") is { } nullNodeSamplingMode && nullNodeSamplingMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingMode = null;
+            if (parseNode.GetChildNode("sampling_rate") is { } nullNodeSamplingRate && nullNodeSamplingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingRate = null;
+            if (parseNode.GetChildNode("scanner_id") is { } nullNodeScannerId && nullNodeScannerId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>For an experiment scanner: the `experiment_id` and `variants` it will keep in its config, merged into the query as its exposure filter so the estimate counts only exposed sessions. Not combined with `experiment_targeting`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope? Experiment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope? Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope? _explicitNullValueExperiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope Experiment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope _explicitNullValueExperiment = default!;
 #endif
         /// <summary>Proposed experiment targeting, merged into the query as its exposure filter the same way a saved scanner derives it. The estimate then runs as the requesting user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting? ExperimentTargeting { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting? ExperimentTargeting { get => _explicitNullValueExperimentTargeting; set { _explicitNullValueExperimentTargeting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_targeting"); else _explicitNullProperties?.Remove("experiment_targeting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting? _explicitNullValueExperimentTargeting = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting ExperimentTargeting { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting ExperimentTargeting { get => _explicitNullValueExperimentTargeting; set { _explicitNullValueExperimentTargeting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_targeting"); else _explicitNullProperties?.Remove("experiment_targeting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting _explicitNullValueExperimentTargeting = default!;
 #endif
         /// <summary>* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel? _explicitNullValueModel = default!;
         /// <summary>Proposed `RecordingsQuery` for the candidate filter. `date_from`/`date_to` are ignored — the estimate scans a recent window (`window_days` in the response) and scales it to 30 days. Omit to estimate against all recordings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; set; }
+        public UntypedNode? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public UntypedNode Query { get; set; }
+        public UntypedNode Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode _explicitNullValueQuery = default!;
 #endif
         /// <summary>* `focused` - Focused* `balanced` - Balanced* `comprehensive` - Comprehensive</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode? SamplingMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode? SamplingMode { get => _explicitNullValueSamplingMode; set { _explicitNullValueSamplingMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_mode"); else _explicitNullProperties?.Remove("sampling_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode? _explicitNullValueSamplingMode = default!;
         /// <summary>0..1 downsample applied to matched sessions. Defaults to 1.0 (no downsampling).</summary>
-        public double? SamplingRate { get; set; }
+        public double? SamplingRate { get => _explicitNullValueSamplingRate; set { _explicitNullValueSamplingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_rate"); else _explicitNullProperties?.Remove("sampling_rate"); } }
+        private double? _explicitNullValueSamplingRate = default!;
         /// <summary>The scanner being edited, excluded from `other_enabled_scanners_monthly_credits` so its stored estimate isn&apos;t double-counted in the forecast. Omit (or null) when estimating a brand-new scanner.</summary>
-        public Guid? ScannerId { get; set; }
+        public Guid? ScannerId { get => _explicitNullValueScannerId; set { _explicitNullValueScannerId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_id"); else _explicitNullProperties?.Remove("scanner_id"); } }
+        private Guid? _explicitNullValueScannerId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest"/> and sets the default values.
         /// </summary>
@@ -63,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestSamplingMode>("sampling_mode", SamplingMode);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
             writer.WriteGuidValue("scanner_id", ScannerId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

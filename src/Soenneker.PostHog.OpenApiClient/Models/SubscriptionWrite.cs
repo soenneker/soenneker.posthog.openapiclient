@@ -12,16 +12,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SubscriptionWrite : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ai_prompt_config") is { } nullNodeAiPromptConfig && nullNodeAiPromptConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiPromptConfig = null;
+            if (parseNode.GetChildNode("bysetpos") is { } nullNodeBysetpos && nullNodeBysetpos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bysetpos = null;
+            if (parseNode.GetChildNode("byweekday") is { } nullNodeByweekday && nullNodeByweekday.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Byweekday = null;
+            if (parseNode.GetChildNode("contexts") is { } nullNodeContexts && nullNodeContexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Contexts = null;
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("dashboard") is { } nullNodeDashboard && nullNodeDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dashboard = null;
+            if (parseNode.GetChildNode("dashboard_export_insights") is { } nullNodeDashboardExportInsights && nullNodeDashboardExportInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardExportInsights = null;
+            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("delivery_config") is { } nullNodeDeliveryConfig && nullNodeDeliveryConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeliveryConfig = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("frequency") is { } nullNodeFrequency && nullNodeFrequency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Frequency = null;
+            if (parseNode.GetChildNode("insight") is { } nullNodeInsight && nullNodeInsight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Insight = null;
+            if (parseNode.GetChildNode("integration_id") is { } nullNodeIntegrationId && nullNodeIntegrationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationId = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("invite_message") is { } nullNodeInviteMessage && nullNodeInviteMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InviteMessage = null;
+            if (parseNode.GetChildNode("prompt") is { } nullNodePrompt && nullNodePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prompt = null;
+            if (parseNode.GetChildNode("send_test_now") is { } nullNodeSendTestNow && nullNodeSendTestNow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendTestNow = null;
+            if (parseNode.GetChildNode("start_date") is { } nullNodeStartDate && nullNodeStartDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartDate = null;
+            if (parseNode.GetChildNode("summary_enabled") is { } nullNodeSummaryEnabled && nullNodeSummaryEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryEnabled = null;
+            if (parseNode.GetChildNode("summary_prompt_guide") is { } nullNodeSummaryPromptGuide && nullNodeSummaryPromptGuide.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryPromptGuide = null;
+            if (parseNode.GetChildNode("target_type") is { } nullNodeTargetType && nullNodeTargetType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetType = null;
+            if (parseNode.GetChildNode("target_value") is { } nullNodeTargetValue && nullNodeTargetValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetValue = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("until_date") is { } nullNodeUntilDate && nullNodeUntilDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UntilDate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Configuration for AI report subscriptions (analysis window, future knobs). Only valid when resource_type is &apos;ai_prompt&apos;. Replaced wholesale on writes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteAiPromptConfig? AiPromptConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteAiPromptConfig? AiPromptConfig { get => _explicitNullValueAiPromptConfig; set { _explicitNullValueAiPromptConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_prompt_config"); else _explicitNullProperties?.Remove("ai_prompt_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteAiPromptConfig? _explicitNullValueAiPromptConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteAiPromptConfig AiPromptConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteAiPromptConfig AiPromptConfig { get => _explicitNullValueAiPromptConfig; set { _explicitNullValueAiPromptConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_prompt_config"); else _explicitNullProperties?.Remove("ai_prompt_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteAiPromptConfig _explicitNullValueAiPromptConfig = default!;
 #endif
         /// <summary>Query plan reuse state for AI prompt subscriptions: frozen, not_frozen, or planner_updated. Null for other subscription types.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,25 +65,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteAiQueryPlanStatus AiQueryPlanStatus { get; private set; }
 #endif
         /// <summary>Position within byweekday set for monthly frequency (e.g. 1 for first, -1 for last).</summary>
-        public int? Bysetpos { get; set; }
+        public int? Bysetpos { get => _explicitNullValueBysetpos; set { _explicitNullValueBysetpos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bysetpos"); else _explicitNullProperties?.Remove("bysetpos"); } }
+        private int? _explicitNullValueBysetpos = default!;
         /// <summary>Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteByweekdayItem?>? Byweekday { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteByweekdayItem?>? Byweekday { get => _explicitNullValueByweekday; set { _explicitNullValueByweekday = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byweekday"); else _explicitNullProperties?.Remove("byweekday"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteByweekdayItem?>? _explicitNullValueByweekday = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteByweekdayItem?> Byweekday { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteByweekdayItem?> Byweekday { get => _explicitNullValueByweekday; set { _explicitNullValueByweekday = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("byweekday"); else _explicitNullProperties?.Remove("byweekday"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteByweekdayItem?> _explicitNullValueByweekday = default!;
 #endif
         /// <summary>Complete dashboard and insight context for an AI report. Omit on PATCH to preserve, pass an empty list to clear, or pass up to 3 items to replace all contexts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteContextsItem>? Contexts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteContextsItem>? Contexts { get => _explicitNullValueContexts; set { _explicitNullValueContexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contexts"); else _explicitNullProperties?.Remove("contexts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteContextsItem>? _explicitNullValueContexts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteContextsItem> Contexts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteContextsItem> Contexts { get => _explicitNullValueContexts; set { _explicitNullValueContexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contexts"); else _explicitNullProperties?.Remove("contexts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteContextsItem> _explicitNullValueContexts = default!;
 #endif
         /// <summary>Total number of deliveries before the subscription stops. Null for unlimited.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
@@ -62,33 +101,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Dashboard ID to subscribe to (mutually exclusive with insight on create).</summary>
-        public int? Dashboard { get; set; }
+        public int? Dashboard { get => _explicitNullValueDashboard; set { _explicitNullValueDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard"); else _explicitNullProperties?.Remove("dashboard"); } }
+        private int? _explicitNullValueDashboard = default!;
         /// <summary>List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 20.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? DashboardExportInsights { get; set; }
+        public List<int?>? DashboardExportInsights { get => _explicitNullValueDashboardExportInsights; set { _explicitNullValueDashboardExportInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_export_insights"); else _explicitNullProperties?.Remove("dashboard_export_insights"); } }
+        private List<int?>? _explicitNullValueDashboardExportInsights = default!;
 #nullable restore
 #else
-        public List<int?> DashboardExportInsights { get; set; }
+        public List<int?> DashboardExportInsights { get => _explicitNullValueDashboardExportInsights; set { _explicitNullValueDashboardExportInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_export_insights"); else _explicitNullProperties?.Remove("dashboard_export_insights"); } }
+        private List<int?> _explicitNullValueDashboardExportInsights = default!;
 #endif
         /// <summary>Set to true to soft-delete. Subscriptions cannot be hard-deleted.</summary>
-        public bool? Deleted { get; set; }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        private bool? _explicitNullValueDeleted = default!;
         /// <summary>Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option&apos;s own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteDeliveryConfig? DeliveryConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteDeliveryConfig? DeliveryConfig { get => _explicitNullValueDeliveryConfig; set { _explicitNullValueDeliveryConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delivery_config"); else _explicitNullProperties?.Remove("delivery_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteDeliveryConfig? _explicitNullValueDeliveryConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteDeliveryConfig DeliveryConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteDeliveryConfig DeliveryConfig { get => _explicitNullValueDeliveryConfig; set { _explicitNullValueDeliveryConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delivery_config"); else _explicitNullProperties?.Remove("delivery_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteDeliveryConfig _explicitNullValueDeliveryConfig = default!;
 #endif
         /// <summary>Whether the subscription is active. Set to false to pause delivery without deleting. Auto-set to false when the delivery integration becomes invalid.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>* `daily` - Daily* `weekly` - Weekly* `monthly` - Monthly* `yearly` - Yearly</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteFrequency? Frequency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteFrequency? Frequency { get => _explicitNullValueFrequency; set { _explicitNullValueFrequency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frequency"); else _explicitNullProperties?.Remove("frequency"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteFrequency? _explicitNullValueFrequency = default!;
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>Insight ID to subscribe to (mutually exclusive with dashboard on create).</summary>
-        public int? Insight { get; set; }
+        public int? Insight { get => _explicitNullValueInsight; set { _explicitNullValueInsight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight"); else _explicitNullProperties?.Remove("insight"); } }
+        private int? _explicitNullValueInsight = default!;
         /// <summary>The insight_short_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,26 +146,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string InsightShortId { get; private set; }
 #endif
         /// <summary>ID of a connected Slack integration. Required when target_type is slack.</summary>
-        public int? IntegrationId { get; set; }
+        public int? IntegrationId { get => _explicitNullValueIntegrationId; set { _explicitNullValueIntegrationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_id"); else _explicitNullProperties?.Remove("integration_id"); } }
+        private int? _explicitNullValueIntegrationId = default!;
         /// <summary>Interval multiplier (e.g. 2 with weekly frequency means every 2 weeks). Required on create; must be 1 or greater.</summary>
-        public int? Interval { get; set; }
+        public int? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private int? _explicitNullValueInterval = default!;
         /// <summary>Optional message included in the invitation email when adding new recipients.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InviteMessage { get; set; }
+        public string? InviteMessage { get => _explicitNullValueInviteMessage; set { _explicitNullValueInviteMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invite_message"); else _explicitNullProperties?.Remove("invite_message"); } }
+        private string? _explicitNullValueInviteMessage = default!;
 #nullable restore
 #else
-        public string InviteMessage { get; set; }
+        public string InviteMessage { get => _explicitNullValueInviteMessage; set { _explicitNullValueInviteMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invite_message"); else _explicitNullProperties?.Remove("invite_message"); } }
+        private string _explicitNullValueInviteMessage = default!;
 #endif
         /// <summary>The next_delivery_date property</summary>
         public DateTimeOffset? NextDeliveryDate { get; private set; }
         /// <summary>Free-text prompt that drives the AI-generated report. Required when resource_type is &apos;ai_prompt&apos;. Max 4000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public string? Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string? _explicitNullValuePrompt = default!;
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public string Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string _explicitNullValuePrompt = default!;
 #endif
         /// <summary>The resource_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -130,9 +184,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>* `insight` - Insight* `dashboard` - Dashboard* `ai_prompt` - AI prompt</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteResourceType? ResourceType { get; private set; }
         /// <summary>Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected.</summary>
-        public bool? SendTestNow { get; set; }
+        public bool? SendTestNow { get => _explicitNullValueSendTestNow; set { _explicitNullValueSendTestNow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_test_now"); else _explicitNullProperties?.Remove("send_test_now"); } }
+        private bool? _explicitNullValueSendTestNow = default!;
         /// <summary>When to start delivering (ISO 8601 datetime). The date anchors the recurrence and may be in the past. Deliveries run on half-hour cycles at :00 and :30. Other minute values are accepted for backward compatibility, but delivery happens during the next cycle instead of at that exact minute.</summary>
-        public DateTimeOffset? StartDate { get; set; }
+        public DateTimeOffset? StartDate { get => _explicitNullValueStartDate; set { _explicitNullValueStartDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_date"); else _explicitNullProperties?.Remove("start_date"); } }
+        private DateTimeOffset? _explicitNullValueStartDate = default!;
         /// <summary>Human-readable schedule summary, e.g. &apos;sent daily&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -142,35 +198,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Summary { get; private set; }
 #endif
         /// <summary>Whether to attach an AI-generated summary to each delivery (insight and dashboard subscriptions only). Requires the organization to have approved AI data processing, and is subject to the org&apos;s active-summary cap and AI credit budget; otherwise the write is rejected. Not applicable to prompt subscriptions, which are themselves AI-generated.</summary>
-        public bool? SummaryEnabled { get; set; }
+        public bool? SummaryEnabled { get => _explicitNullValueSummaryEnabled; set { _explicitNullValueSummaryEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_enabled"); else _explicitNullProperties?.Remove("summary_enabled"); } }
+        private bool? _explicitNullValueSummaryEnabled = default!;
         /// <summary>Optional free-text guidance (max 500 chars) steering the AI summary, e.g. which metrics to emphasize. Only settable when AI summary context is enabled for the organization; clearing it (empty string) is always allowed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SummaryPromptGuide { get; set; }
+        public string? SummaryPromptGuide { get => _explicitNullValueSummaryPromptGuide; set { _explicitNullValueSummaryPromptGuide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_prompt_guide"); else _explicitNullProperties?.Remove("summary_prompt_guide"); } }
+        private string? _explicitNullValueSummaryPromptGuide = default!;
 #nullable restore
 #else
-        public string SummaryPromptGuide { get; set; }
+        public string SummaryPromptGuide { get => _explicitNullValueSummaryPromptGuide; set { _explicitNullValueSummaryPromptGuide = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_prompt_guide"); else _explicitNullProperties?.Remove("summary_prompt_guide"); } }
+        private string _explicitNullValueSummaryPromptGuide = default!;
 #endif
         /// <summary>* `email` - Email* `slack` - Slack* `teams` - Microsoft Teams</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteTargetType? TargetType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteTargetType? TargetType { get => _explicitNullValueTargetType; set { _explicitNullValueTargetType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_type"); else _explicitNullProperties?.Remove("target_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWriteTargetType? _explicitNullValueTargetType = default!;
         /// <summary>Recipient(s): comma-separated email addresses for email, Slack channel name/ID for slack, or a Microsoft Teams webhook URL for teams. A Teams webhook URL is only ever returned as its host, because the URL authorizes a post to the channel by itself. On update, omit the field to keep the stored URL, or send a full URL to replace it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetValue { get; set; }
+        public string? TargetValue { get => _explicitNullValueTargetValue; set { _explicitNullValueTargetValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_value"); else _explicitNullProperties?.Remove("target_value"); } }
+        private string? _explicitNullValueTargetValue = default!;
 #nullable restore
 #else
-        public string TargetValue { get; set; }
+        public string TargetValue { get => _explicitNullValueTargetValue; set { _explicitNullValueTargetValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_value"); else _explicitNullProperties?.Remove("target_value"); } }
+        private string _explicitNullValueTargetValue = default!;
 #endif
         /// <summary>Human-readable name for this subscription.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>When to stop delivering (ISO 8601 datetime). Null for indefinite.</summary>
-        public DateTimeOffset? UntilDate { get; set; }
+        public DateTimeOffset? UntilDate { get => _explicitNullValueUntilDate; set { _explicitNullValueUntilDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("until_date"); else _explicitNullProperties?.Remove("until_date"); } }
+        private DateTimeOffset? _explicitNullValueUntilDate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWrite"/> and sets the default values.
         /// </summary>
@@ -186,7 +251,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWrite CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWrite();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SubscriptionWrite(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -262,6 +327,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("target_value", TargetValue);
             writer.WriteStringValue("title", Title);
             writer.WriteDateTimeOffsetValue("until_date", UntilDate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

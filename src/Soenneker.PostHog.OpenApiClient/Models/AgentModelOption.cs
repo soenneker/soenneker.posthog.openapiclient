@@ -11,48 +11,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AgentModelOption : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cost_multiplier") is { } nullNodeCostMultiplier && nullNodeCostMultiplier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostMultiplier = null;
+            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("runtime_adapter") is { } nullNodeRuntimeAdapter && nullNodeRuntimeAdapter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuntimeAdapter = null;
+            if (parseNode.GetChildNode("supported_efforts") is { } nullNodeSupportedEfforts && nullNodeSupportedEfforts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedEfforts = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Token price relative to Claude Sonnet 5, e.g. &apos;2×&apos;. Null when no rate is known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CostMultiplier { get; set; }
+        public string? CostMultiplier { get => _explicitNullValueCostMultiplier; set { _explicitNullValueCostMultiplier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_multiplier"); else _explicitNullProperties?.Remove("cost_multiplier"); } }
+        private string? _explicitNullValueCostMultiplier = default!;
 #nullable restore
 #else
-        public string CostMultiplier { get; set; }
+        public string CostMultiplier { get => _explicitNullValueCostMultiplier; set { _explicitNullValueCostMultiplier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_multiplier"); else _explicitNullProperties?.Remove("cost_multiplier"); } }
+        private string _explicitNullValueCostMultiplier = default!;
 #endif
         /// <summary>Display name, e.g. &apos;Claude Sonnet 5.5&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get; set; }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>Model id to pass as agent_model, e.g. &apos;claude-sonnet-5-5&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Runtime that drives the model: &apos;claude&apos; or &apos;codex&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RuntimeAdapter { get; set; }
+        public string? RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        private string? _explicitNullValueRuntimeAdapter = default!;
 #nullable restore
 #else
-        public string RuntimeAdapter { get; set; }
+        public string RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        private string _explicitNullValueRuntimeAdapter = default!;
 #endif
         /// <summary>Reasoning efforts this model supports. Empty when it has no effort setting.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AgentReasoningEffortOption>? SupportedEfforts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AgentReasoningEffortOption>? SupportedEfforts { get => _explicitNullValueSupportedEfforts; set { _explicitNullValueSupportedEfforts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_efforts"); else _explicitNullProperties?.Remove("supported_efforts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AgentReasoningEffortOption>? _explicitNullValueSupportedEfforts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AgentReasoningEffortOption> SupportedEfforts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AgentReasoningEffortOption> SupportedEfforts { get => _explicitNullValueSupportedEfforts; set { _explicitNullValueSupportedEfforts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_efforts"); else _explicitNullProperties?.Remove("supported_efforts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AgentReasoningEffortOption> _explicitNullValueSupportedEfforts = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption"/> and sets the default values.
@@ -69,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("model", Model);
             writer.WriteStringValue("runtime_adapter", RuntimeAdapter);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AgentReasoningEffortOption>("supported_efforts", SupportedEfforts);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

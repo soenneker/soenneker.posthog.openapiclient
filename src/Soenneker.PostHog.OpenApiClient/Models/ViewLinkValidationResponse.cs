@@ -11,49 +11,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ViewLinkValidationResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("hogql") is { } nullNodeHogql && nullNodeHogql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hogql = null;
+            if (parseNode.GetChildNode("is_valid") is { } nullNodeIsValid && nullNodeIsValid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsValid = null;
+            if (parseNode.GetChildNode("matched_rows") is { } nullNodeMatchedRows && nullNodeMatchedRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedRows = null;
+            if (parseNode.GetChildNode("match_rate") is { } nullNodeMatchRate && nullNodeMatchRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchRate = null;
+            if (parseNode.GetChildNode("msg") is { } nullNodeMsg && nullNodeMsg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Msg = null;
+            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("total_rows") is { } nullNodeTotalRows && nullNodeTotalRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRows = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Column names for each row in results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Columns { get; set; }
+        public List<string>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<string> Columns { get; set; }
+        public List<string> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string> _explicitNullValueColumns = default!;
 #endif
         /// <summary>The HogQL statement used to validate the join.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hogql { get; set; }
+        public string? Hogql { get => _explicitNullValueHogql; set { _explicitNullValueHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql"); else _explicitNullProperties?.Remove("hogql"); } }
+        private string? _explicitNullValueHogql = default!;
 #nullable restore
 #else
-        public string Hogql { get; set; }
+        public string Hogql { get => _explicitNullValueHogql; set { _explicitNullValueHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql"); else _explicitNullProperties?.Remove("hogql"); } }
+        private string _explicitNullValueHogql = default!;
 #endif
         /// <summary>Whether the join compiled and returned rows when executed against a sample of the source table.</summary>
-        public bool? IsValid { get; set; }
+        public bool? IsValid { get => _explicitNullValueIsValid; set { _explicitNullValueIsValid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_valid"); else _explicitNullProperties?.Remove("is_valid"); } }
+        private bool? _explicitNullValueIsValid = default!;
         /// <summary>Number of sampled source rows with at least one match in the joining table. Null when the match-rate query failed.</summary>
-        public int? MatchedRows { get; set; }
+        public int? MatchedRows { get => _explicitNullValueMatchedRows; set { _explicitNullValueMatchedRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_rows"); else _explicitNullProperties?.Remove("matched_rows"); } }
+        private int? _explicitNullValueMatchedRows = default!;
         /// <summary>matched_rows divided by total_rows, between 0 and 1. Null when the match-rate query failed or no rows were sampled.</summary>
-        public double? MatchRate { get; set; }
+        public double? MatchRate { get => _explicitNullValueMatchRate; set { _explicitNullValueMatchRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("match_rate"); else _explicitNullProperties?.Remove("match_rate"); } }
+        private double? _explicitNullValueMatchRate = default!;
         /// <summary>Warning about the validation result, for example when the sampled join returned no rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Msg { get; set; }
+        public string? Msg { get => _explicitNullValueMsg; set { _explicitNullValueMsg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("msg"); else _explicitNullProperties?.Remove("msg"); } }
+        private string? _explicitNullValueMsg = default!;
 #nullable restore
 #else
-        public string Msg { get; set; }
+        public string Msg { get => _explicitNullValueMsg; set { _explicitNullValueMsg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("msg"); else _explicitNullProperties?.Remove("msg"); } }
+        private string _explicitNullValueMsg = default!;
 #endif
         /// <summary>Distinct source and joining key pairs from the joined result, at most 5.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UntypedNode>? Results { get; set; }
+        public List<UntypedNode>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<UntypedNode>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<UntypedNode> Results { get; set; }
+        public List<UntypedNode> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<UntypedNode> _explicitNullValueResults = default!;
 #endif
         /// <summary>Number of sampled source rows checked for a join match, at most 10000. Null when the match-rate query failed.</summary>
-        public int? TotalRows { get; set; }
+        public int? TotalRows { get => _explicitNullValueTotalRows; set { _explicitNullValueTotalRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_rows"); else _explicitNullProperties?.Remove("total_rows"); } }
+        private int? _explicitNullValueTotalRows = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidationResponse"/> and sets the default values.
         /// </summary>
@@ -69,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidationResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidationResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidationResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "match_rate", n => { MatchRate = n.GetDoubleValue(); } },
                 { "matched_rows", n => { MatchedRows = n.GetIntValue(); } },
                 { "msg", n => { Msg = n.GetStringValue(); } },
-                { "results", n => { Results = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
+                { "results", n => { Results = n.GetCollectionOfObjectValues<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total_rows", n => { TotalRows = n.GetIntValue(); } },
             };
         }
@@ -104,6 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("msg", Msg);
             writer.WriteCollectionOfPrimitiveValues<UntypedNode>("results", Results);
             writer.WriteIntValue("total_rows", TotalRows);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

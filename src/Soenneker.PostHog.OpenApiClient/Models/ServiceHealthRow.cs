@@ -11,55 +11,93 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ServiceHealthRow : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_requests") is { } nullNodeBaselineRequests && nullNodeBaselineRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineRequests = null;
+            if (parseNode.GetChildNode("error_count") is { } nullNodeErrorCount && nullNodeErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCount = null;
+            if (parseNode.GetChildNode("error_rate_delta_pp") is { } nullNodeErrorRateDeltaPp && nullNodeErrorRateDeltaPp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRateDeltaPp = null;
+            if (parseNode.GetChildNode("error_rate_pct") is { } nullNodeErrorRatePct && nullNodeErrorRatePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRatePct = null;
+            if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
+            if (parseNode.GetChildNode("p50_ms") is { } nullNodeP50Ms && nullNodeP50Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50Ms = null;
+            if (parseNode.GetChildNode("p95_change_pct") is { } nullNodeP95ChangePct && nullNodeP95ChangePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95ChangePct = null;
+            if (parseNode.GetChildNode("p95_ms") is { } nullNodeP95Ms && nullNodeP95Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95Ms = null;
+            if (parseNode.GetChildNode("p99_ms") is { } nullNodeP99Ms && nullNodeP99Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P99Ms = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("requests") is { } nullNodeRequests && nullNodeRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Requests = null;
+            if (parseNode.GetChildNode("service") is { } nullNodeService && nullNodeService.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Service = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("throughput_per_min") is { } nullNodeThroughputPerMin && nullNodeThroughputPerMin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThroughputPerMin = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Baseline requests. Null without one.</summary>
-        public int? BaselineRequests { get; set; }
+        public int? BaselineRequests { get => _explicitNullValueBaselineRequests; set { _explicitNullValueBaselineRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_requests"); else _explicitNullProperties?.Remove("baseline_requests"); } }
+        private int? _explicitNullValueBaselineRequests = default!;
         /// <summary>Requests with OTel status Error.</summary>
-        public int? ErrorCount { get; set; }
+        public int? ErrorCount { get => _explicitNullValueErrorCount; set { _explicitNullValueErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_count"); else _explicitNullProperties?.Remove("error_count"); } }
+        private int? _explicitNullValueErrorCount = default!;
         /// <summary>Change from the baseline, points.</summary>
-        public double? ErrorRateDeltaPp { get; set; }
+        public double? ErrorRateDeltaPp { get => _explicitNullValueErrorRateDeltaPp; set { _explicitNullValueErrorRateDeltaPp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_rate_delta_pp"); else _explicitNullProperties?.Remove("error_rate_delta_pp"); } }
+        private double? _explicitNullValueErrorRateDeltaPp = default!;
         /// <summary>Error share of requests, percent.</summary>
-        public double? ErrorRatePct { get; set; }
+        public double? ErrorRatePct { get => _explicitNullValueErrorRatePct; set { _explicitNullValueErrorRatePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_rate_pct"); else _explicitNullProperties?.Remove("error_rate_pct"); } }
+        private double? _explicitNullValueErrorRatePct = default!;
         /// <summary>Last span, ISO 8601 UTC.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastSeen { get; set; }
+        public string? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private string? _explicitNullValueLastSeen = default!;
 #nullable restore
 #else
-        public string LastSeen { get; set; }
+        public string LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        private string _explicitNullValueLastSeen = default!;
 #endif
         /// <summary>Median duration, ms.</summary>
-        public double? P50Ms { get; set; }
+        public double? P50Ms { get => _explicitNullValueP50Ms; set { _explicitNullValueP50Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_ms"); else _explicitNullProperties?.Remove("p50_ms"); } }
+        private double? _explicitNullValueP50Ms = default!;
         /// <summary>p95 change from the baseline, percent.</summary>
-        public double? P95ChangePct { get; set; }
+        public double? P95ChangePct { get => _explicitNullValueP95ChangePct; set { _explicitNullValueP95ChangePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_change_pct"); else _explicitNullProperties?.Remove("p95_change_pct"); } }
+        private double? _explicitNullValueP95ChangePct = default!;
         /// <summary>95th percentile duration, ms.</summary>
-        public double? P95Ms { get; set; }
+        public double? P95Ms { get => _explicitNullValueP95Ms; set { _explicitNullValueP95Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_ms"); else _explicitNullProperties?.Remove("p95_ms"); } }
+        private double? _explicitNullValueP95Ms = default!;
         /// <summary>99th percentile duration, ms.</summary>
-        public double? P99Ms { get; set; }
+        public double? P99Ms { get => _explicitNullValueP99Ms; set { _explicitNullValueP99Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p99_ms"); else _explicitNullProperties?.Remove("p99_ms"); } }
+        private double? _explicitNullValueP99Ms = default!;
         /// <summary>Why the service has this status. Empty for ok.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Spans in the window, in the chosen spanScope.</summary>
-        public int? Requests { get; set; }
+        public int? Requests { get => _explicitNullValueRequests; set { _explicitNullValueRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requests"); else _explicitNullProperties?.Remove("requests"); } }
+        private int? _explicitNullValueRequests = default!;
         /// <summary>Service name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Service { get; set; }
+        public string? Service { get => _explicitNullValueService; set { _explicitNullValueService = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service"); else _explicitNullProperties?.Remove("service"); } }
+        private string? _explicitNullValueService = default!;
 #nullable restore
 #else
-        public string Service { get; set; }
+        public string Service { get => _explicitNullValueService; set { _explicitNullValueService = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service"); else _explicitNullProperties?.Remove("service"); } }
+        private string _explicitNullValueService = default!;
 #endif
         /// <summary>* `silent` - Silent* `regressed` - Regressed* `degraded` - Degraded* `new` - New* `recovered` - Recovered* `improved` - Improved* `ok` - Ok</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthRowStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthRowStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthRowStatus? _explicitNullValueStatus = default!;
         /// <summary>Requests per minute.</summary>
-        public double? ThroughputPerMin { get; set; }
+        public double? ThroughputPerMin { get => _explicitNullValueThroughputPerMin; set { _explicitNullValueThroughputPerMin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("throughput_per_min"); else _explicitNullProperties?.Remove("throughput_per_min"); } }
+        private double? _explicitNullValueThroughputPerMin = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthRow"/> and sets the default values.
         /// </summary>
@@ -75,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -122,6 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("service", Service);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthRowStatus>("status", Status);
             writer.WriteDoubleValue("throughput_per_min", ThroughputPerMin);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

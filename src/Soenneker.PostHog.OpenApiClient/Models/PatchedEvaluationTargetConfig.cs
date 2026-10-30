@@ -12,15 +12,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedEvaluationTargetConfig : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("max_age_seconds") is { } nullNodeMaxAgeSeconds && nullNodeMaxAgeSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxAgeSeconds = null;
+            if (parseNode.GetChildNode("quiet_period_seconds") is { } nullNodeQuietPeriodSeconds && nullNodeQuietPeriodSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuietPeriodSeconds = null;
+            if (parseNode.GetChildNode("strategy") is { } nullNodeStrategy && nullNodeStrategy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Strategy = null;
+            if (parseNode.GetChildNode("window_seconds") is { } nullNodeWindowSeconds && nullNodeWindowSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowSeconds = null;
+        }
+
         /// <summary>inactivity only. Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for &apos;trace&apos;, 60–604800 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
-        public int? MaxAgeSeconds { get; set; }
+        public int? MaxAgeSeconds { get => _explicitNullValueMaxAgeSeconds; set { _explicitNullValueMaxAgeSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_age_seconds"); else _explicitNullProperties?.Remove("max_age_seconds"); } }
+        private int? _explicitNullValueMaxAgeSeconds = default!;
         /// <summary>inactivity only. Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for &apos;trace&apos;, 10–86400 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
-        public int? QuietPeriodSeconds { get; set; }
+        public int? QuietPeriodSeconds { get => _explicitNullValueQuietPeriodSeconds; set { _explicitNullValueQuietPeriodSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quiet_period_seconds"); else _explicitNullProperties?.Remove("quiet_period_seconds"); } }
+        private int? _explicitNullValueQuietPeriodSeconds = default!;
         /// <summary>&apos;fixed_window&apos; waits a fixed window after the first matching generation, then evaluates. &apos;inactivity&apos; evaluates once the unit has had no new activity for the quiet period. Omit it to use the target&apos;s default: &apos;fixed_window&apos; for &apos;trace&apos;, &apos;inactivity&apos; for &apos;session&apos;.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigStrategy? Strategy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigStrategy? Strategy { get => _explicitNullValueStrategy; set { _explicitNullValueStrategy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("strategy"); else _explicitNullProperties?.Remove("strategy"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigStrategy? _explicitNullValueStrategy = default!;
         /// <summary>fixed_window only. Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for &apos;trace&apos;, 10–604800 for &apos;session&apos;. The default also depends on `target`; see the field-level help_text.</summary>
-        public int? WindowSeconds { get; set; }
+        public int? WindowSeconds { get => _explicitNullValueWindowSeconds; set { _explicitNullValueWindowSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_seconds"); else _explicitNullProperties?.Remove("window_seconds"); } }
+        private int? _explicitNullValueWindowSeconds = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -29,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,7 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("max_age_seconds", MaxAgeSeconds);
             writer.WriteIntValue("quiet_period_seconds", QuietPeriodSeconds);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationTargetConfigStrategy>("strategy", Strategy);
-            writer.WriteIntValue("window_seconds", WindowSeconds);
+            writer.WriteIntValue("window_seconds", WindowSeconds);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

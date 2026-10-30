@@ -11,52 +11,78 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RecordWizardScanRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("complete") is { } nullNodeComplete && nullNodeComplete.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Complete = null;
+            if (parseNode.GetChildNode("program") is { } nullNodeProgram && nullNodeProgram.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Program = null;
+            if (parseNode.GetChildNode("scanned_at") is { } nullNodeScannedAt && nullNodeScannedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannedAt = null;
+            if (parseNode.GetChildNode("session_id") is { } nullNodeSessionId && nullNodeSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionId = null;
+            if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
+            if (parseNode.GetChildNode("wizard_version") is { } nullNodeWizardVersion && nullNodeWizardVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WizardVersion = null;
+            if (parseNode.GetChildNode("workspace_fingerprint") is { } nullNodeWorkspaceFingerprint && nullNodeWorkspaceFingerprint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkspaceFingerprint = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the scan could not read the whole workspace. Tools it did not find are then kept.</summary>
-        public bool? Complete { get; set; }
+        public bool? Complete { get => _explicitNullValueComplete; set { _explicitNullValueComplete = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("complete"); else _explicitNullProperties?.Remove("complete"); } }
+        private bool? _explicitNullValueComplete = default!;
         /// <summary>The wizard program that scanned, such as `posthog-integration` or `warehouse-source`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Program { get; set; }
+        public string? Program { get => _explicitNullValueProgram; set { _explicitNullValueProgram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("program"); else _explicitNullProperties?.Remove("program"); } }
+        private string? _explicitNullValueProgram = default!;
 #nullable restore
 #else
-        public string Program { get; set; }
+        public string Program { get => _explicitNullValueProgram; set { _explicitNullValueProgram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("program"); else _explicitNullProperties?.Remove("program"); } }
+        private string _explicitNullValueProgram = default!;
 #endif
         /// <summary>When the wizard scanned the codebase.</summary>
-        public DateTimeOffset? ScannedAt { get; set; }
+        public DateTimeOffset? ScannedAt { get => _explicitNullValueScannedAt; set { _explicitNullValueScannedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanned_at"); else _explicitNullProperties?.Remove("scanned_at"); } }
+        private DateTimeOffset? _explicitNullValueScannedAt = default!;
         /// <summary>The wizard run that made the scan.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionId { get; set; }
+        public string? SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private string? _explicitNullValueSessionId = default!;
 #nullable restore
 #else
-        public string SessionId { get; set; }
+        public string SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private string _explicitNullValueSessionId = default!;
 #endif
         /// <summary>Every tool the scan found. An empty list is a scan that found nothing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WizardScanTool>? Tools { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WizardScanTool>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.WizardScanTool>? _explicitNullValueTools = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WizardScanTool> Tools { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WizardScanTool> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.WizardScanTool> _explicitNullValueTools = default!;
 #endif
         /// <summary>Version of the wizard that made the scan.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WizardVersion { get; set; }
+        public string? WizardVersion { get => _explicitNullValueWizardVersion; set { _explicitNullValueWizardVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wizard_version"); else _explicitNullProperties?.Remove("wizard_version"); } }
+        private string? _explicitNullValueWizardVersion = default!;
 #nullable restore
 #else
-        public string WizardVersion { get; set; }
+        public string WizardVersion { get => _explicitNullValueWizardVersion; set { _explicitNullValueWizardVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wizard_version"); else _explicitNullProperties?.Remove("wizard_version"); } }
+        private string _explicitNullValueWizardVersion = default!;
 #endif
         /// <summary>sha256 hex digest that identifies the scanned repository without naming it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkspaceFingerprint { get; set; }
+        public string? WorkspaceFingerprint { get => _explicitNullValueWorkspaceFingerprint; set { _explicitNullValueWorkspaceFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace_fingerprint"); else _explicitNullProperties?.Remove("workspace_fingerprint"); } }
+        private string? _explicitNullValueWorkspaceFingerprint = default!;
 #nullable restore
 #else
-        public string WorkspaceFingerprint { get; set; }
+        public string WorkspaceFingerprint { get => _explicitNullValueWorkspaceFingerprint; set { _explicitNullValueWorkspaceFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workspace_fingerprint"); else _explicitNullProperties?.Remove("workspace_fingerprint"); } }
+        private string _explicitNullValueWorkspaceFingerprint = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordWizardScanRequest"/> and sets the default values.
@@ -74,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RecordWizardScanRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RecordWizardScanRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RecordWizardScanRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -107,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WizardScanTool>("tools", Tools);
             writer.WriteStringValue("wizard_version", WizardVersion);
             writer.WriteStringValue("workspace_fingerprint", WorkspaceFingerprint);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

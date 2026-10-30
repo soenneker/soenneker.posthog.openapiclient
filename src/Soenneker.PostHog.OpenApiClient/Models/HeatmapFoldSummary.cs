@@ -11,17 +11,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HeatmapFoldSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("below_fold_count") is { } nullNodeBelowFoldCount && nullNodeBelowFoldCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BelowFoldCount = null;
+            if (parseNode.GetChildNode("median_viewport_height") is { } nullNodeMedianViewportHeight && nullNodeMedianViewportHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianViewportHeight = null;
+            if (parseNode.GetChildNode("pct_below_fold") is { } nullNodePctBelowFold && nullNodePctBelowFold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PctBelowFold = null;
+            if (parseNode.GetChildNode("total_count") is { } nullNodeTotalCount && nullNodeTotalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many of those interactions happened below the user&apos;s initial viewport — i.e. they had to scroll to reach them.</summary>
-        public int? BelowFoldCount { get; set; }
+        public int? BelowFoldCount { get => _explicitNullValueBelowFoldCount; set { _explicitNullValueBelowFoldCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("below_fold_count"); else _explicitNullProperties?.Remove("below_fold_count"); } }
+        private int? _explicitNullValueBelowFoldCount = default!;
         /// <summary>Median viewport height in CSS pixels across the matched interactions — the typical fold line to recommend against. Null when there are no interactions.</summary>
-        public int? MedianViewportHeight { get; set; }
+        public int? MedianViewportHeight { get => _explicitNullValueMedianViewportHeight; set { _explicitNullValueMedianViewportHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_viewport_height"); else _explicitNullProperties?.Remove("median_viewport_height"); } }
+        private int? _explicitNullValueMedianViewportHeight = default!;
         /// <summary>Percentage of non-fixed interactions that were below the initial viewport (0-100). A high value means engaged content sits off the first screen and is a candidate to move up.</summary>
-        public double? PctBelowFold { get; set; }
+        public double? PctBelowFold { get => _explicitNullValuePctBelowFold; set { _explicitNullValuePctBelowFold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pct_below_fold"); else _explicitNullProperties?.Remove("pct_below_fold"); } }
+        private double? _explicitNullValuePctBelowFold = default!;
         /// <summary>Number of non-fixed interactions of this type on the page in the window (the population the above/below-the-fold split applies to; fixed-position elements are excluded since they&apos;re always on screen).</summary>
-        public int? TotalCount { get; set; }
+        public int? TotalCount { get => _explicitNullValueTotalCount; set { _explicitNullValueTotalCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_count"); else _explicitNullProperties?.Remove("total_count"); } }
+        private int? _explicitNullValueTotalCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("median_viewport_height", MedianViewportHeight);
             writer.WriteDoubleValue("pct_below_fold", PctBelowFold);
             writer.WriteIntValue("total_count", TotalCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

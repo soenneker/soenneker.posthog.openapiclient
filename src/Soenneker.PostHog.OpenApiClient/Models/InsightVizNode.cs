@@ -11,50 +11,91 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InsightVizNode : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("embedded") is { } nullNodeEmbedded && nullNodeEmbedded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embedded = null;
+            if (parseNode.GetChildNode("full") is { } nullNodeFull && nullNodeFull.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Full = null;
+            if (parseNode.GetChildNode("hidePersonsModal") is { } nullNodeHidePersonsModal && nullNodeHidePersonsModal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HidePersonsModal = null;
+            if (parseNode.GetChildNode("hideTooltipOnScroll") is { } nullNodeHideTooltipOnScroll && nullNodeHideTooltipOnScroll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideTooltipOnScroll = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("showCorrelationTable") is { } nullNodeShowCorrelationTable && nullNodeShowCorrelationTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowCorrelationTable = null;
+            if (parseNode.GetChildNode("showFilters") is { } nullNodeShowFilters && nullNodeShowFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowFilters = null;
+            if (parseNode.GetChildNode("showHeader") is { } nullNodeShowHeader && nullNodeShowHeader.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowHeader = null;
+            if (parseNode.GetChildNode("showLastComputation") is { } nullNodeShowLastComputation && nullNodeShowLastComputation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLastComputation = null;
+            if (parseNode.GetChildNode("showLastComputationRefresh") is { } nullNodeShowLastComputationRefresh && nullNodeShowLastComputationRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLastComputationRefresh = null;
+            if (parseNode.GetChildNode("showResults") is { } nullNodeShowResults && nullNodeShowResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowResults = null;
+            if (parseNode.GetChildNode("showTable") is { } nullNodeShowTable && nullNodeShowTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTable = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("suppressSessionAnalysisWarning") is { } nullNodeSuppressSessionAnalysisWarning && nullNodeSuppressSessionAnalysisWarning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuppressSessionAnalysisWarning = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("vizSpecificOptions") is { } nullNodeVizSpecificOptions && nullNodeVizSpecificOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VizSpecificOptions = null;
+        }
+
         /// <summary>Query is embedded inside another bordered component</summary>
-        public bool? Embedded { get; set; }
+        public bool? Embedded { get => _explicitNullValueEmbedded; set { _explicitNullValueEmbedded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedded"); else _explicitNullProperties?.Remove("embedded"); } }
+        private bool? _explicitNullValueEmbedded = default!;
         /// <summary>Show with most visual options enabled. Used in insight scene.</summary>
-        public bool? Full { get; set; }
+        public bool? Full { get => _explicitNullValueFull; set { _explicitNullValueFull = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full"); else _explicitNullProperties?.Remove("full"); } }
+        private bool? _explicitNullValueFull = default!;
         /// <summary>The hidePersonsModal property</summary>
-        public bool? HidePersonsModal { get; set; }
+        public bool? HidePersonsModal { get => _explicitNullValueHidePersonsModal; set { _explicitNullValueHidePersonsModal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidePersonsModal"); else _explicitNullProperties?.Remove("hidePersonsModal"); } }
+        private bool? _explicitNullValueHidePersonsModal = default!;
         /// <summary>The hideTooltipOnScroll property</summary>
-        public bool? HideTooltipOnScroll { get; set; }
+        public bool? HideTooltipOnScroll { get => _explicitNullValueHideTooltipOnScroll; set { _explicitNullValueHideTooltipOnScroll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hideTooltipOnScroll"); else _explicitNullProperties?.Remove("hideTooltipOnScroll"); } }
+        private bool? _explicitNullValueHideTooltipOnScroll = default!;
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeKind? _explicitNullValueKind = default!;
         /// <summary>The showCorrelationTable property</summary>
-        public bool? ShowCorrelationTable { get; set; }
+        public bool? ShowCorrelationTable { get => _explicitNullValueShowCorrelationTable; set { _explicitNullValueShowCorrelationTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showCorrelationTable"); else _explicitNullProperties?.Remove("showCorrelationTable"); } }
+        private bool? _explicitNullValueShowCorrelationTable = default!;
         /// <summary>The showFilters property</summary>
-        public bool? ShowFilters { get; set; }
+        public bool? ShowFilters { get => _explicitNullValueShowFilters; set { _explicitNullValueShowFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showFilters"); else _explicitNullProperties?.Remove("showFilters"); } }
+        private bool? _explicitNullValueShowFilters = default!;
         /// <summary>The showHeader property</summary>
-        public bool? ShowHeader { get; set; }
+        public bool? ShowHeader { get => _explicitNullValueShowHeader; set { _explicitNullValueShowHeader = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showHeader"); else _explicitNullProperties?.Remove("showHeader"); } }
+        private bool? _explicitNullValueShowHeader = default!;
         /// <summary>The showLastComputation property</summary>
-        public bool? ShowLastComputation { get; set; }
+        public bool? ShowLastComputation { get => _explicitNullValueShowLastComputation; set { _explicitNullValueShowLastComputation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLastComputation"); else _explicitNullProperties?.Remove("showLastComputation"); } }
+        private bool? _explicitNullValueShowLastComputation = default!;
         /// <summary>The showLastComputationRefresh property</summary>
-        public bool? ShowLastComputationRefresh { get; set; }
+        public bool? ShowLastComputationRefresh { get => _explicitNullValueShowLastComputationRefresh; set { _explicitNullValueShowLastComputationRefresh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLastComputationRefresh"); else _explicitNullProperties?.Remove("showLastComputationRefresh"); } }
+        private bool? _explicitNullValueShowLastComputationRefresh = default!;
         /// <summary>The showResults property</summary>
-        public bool? ShowResults { get; set; }
+        public bool? ShowResults { get => _explicitNullValueShowResults; set { _explicitNullValueShowResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showResults"); else _explicitNullProperties?.Remove("showResults"); } }
+        private bool? _explicitNullValueShowResults = default!;
         /// <summary>The showTable property</summary>
-        public bool? ShowTable { get; set; }
+        public bool? ShowTable { get => _explicitNullValueShowTable; set { _explicitNullValueShowTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTable"); else _explicitNullProperties?.Remove("showTable"); } }
+        private bool? _explicitNullValueShowTable = default!;
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource _explicitNullValueSource = default!;
 #endif
         /// <summary>The suppressSessionAnalysisWarning property</summary>
-        public bool? SuppressSessionAnalysisWarning { get; set; }
+        public bool? SuppressSessionAnalysisWarning { get => _explicitNullValueSuppressSessionAnalysisWarning; set { _explicitNullValueSuppressSessionAnalysisWarning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suppressSessionAnalysisWarning"); else _explicitNullProperties?.Remove("suppressSessionAnalysisWarning"); } }
+        private bool? _explicitNullValueSuppressSessionAnalysisWarning = default!;
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+        public double? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private double? _explicitNullValueVersion = default!;
         /// <summary>The vizSpecificOptions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? VizSpecificOptions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? VizSpecificOptions { get => _explicitNullValueVizSpecificOptions; set { _explicitNullValueVizSpecificOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vizSpecificOptions"); else _explicitNullProperties?.Remove("vizSpecificOptions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? _explicitNullValueVizSpecificOptions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions VizSpecificOptions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions VizSpecificOptions { get => _explicitNullValueVizSpecificOptions; set { _explicitNullValueVizSpecificOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vizSpecificOptions"); else _explicitNullProperties?.Remove("vizSpecificOptions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions _explicitNullValueVizSpecificOptions = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -64,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNode(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,7 +155,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource>("source", Source);
             writer.WriteBoolValue("suppressSessionAnalysisWarning", SuppressSessionAnalysisWarning);
             writer.WriteDoubleValue("version", Version);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions>("vizSpecificOptions", VizSpecificOptions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions>("vizSpecificOptions", VizSpecificOptions);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

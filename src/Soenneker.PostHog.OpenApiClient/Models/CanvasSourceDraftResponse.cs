@@ -12,40 +12,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasSourceDraftResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("build") is { } nullNodeBuild && nullNodeBuild.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Build = null;
+            if (parseNode.GetChildNode("capability_widening") is { } nullNodeCapabilityWidening && nullNodeCapabilityWidening.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CapabilityWidening = null;
+            if (parseNode.GetChildNode("diagnostics") is { } nullNodeDiagnostics && nullNodeDiagnostics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Diagnostics = null;
+            if (parseNode.GetChildNode("version_id") is { } nullNodeVersionId && nullNodeVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The queued draft build; poll `builds` until it is terminal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseBuild? Build { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseBuild? Build { get => _explicitNullValueBuild; set { _explicitNullValueBuild = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build"); else _explicitNullProperties?.Remove("build"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseBuild? _explicitNullValueBuild = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseBuild Build { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseBuild Build { get => _explicitNullValueBuild; set { _explicitNullValueBuild = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build"); else _explicitNullProperties?.Remove("build"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseBuild _explicitNullValueBuild = default!;
 #endif
         /// <summary>What the draft&apos;s declared capabilities grant beyond the current head&apos;s. Review before promoting.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening? CapabilityWidening { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening? CapabilityWidening { get => _explicitNullValueCapabilityWidening; set { _explicitNullValueCapabilityWidening = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capability_widening"); else _explicitNullProperties?.Remove("capability_widening"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening? _explicitNullValueCapabilityWidening = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening CapabilityWidening { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening CapabilityWidening { get => _explicitNullValueCapabilityWidening; set { _explicitNullValueCapabilityWidening = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capability_widening"); else _explicitNullProperties?.Remove("capability_widening"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening _explicitNullValueCapabilityWidening = default!;
 #endif
         /// <summary>Advisory (warning-severity) diagnostics recorded for the drafted project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? Diagnostics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? Diagnostics { get => _explicitNullValueDiagnostics; set { _explicitNullValueDiagnostics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnostics"); else _explicitNullProperties?.Remove("diagnostics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? _explicitNullValueDiagnostics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> Diagnostics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> Diagnostics { get => _explicitNullValueDiagnostics; set { _explicitNullValueDiagnostics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnostics"); else _explicitNullProperties?.Remove("diagnostics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> _explicitNullValueDiagnostics = default!;
 #endif
         /// <summary>Id of the draft source version this request created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VersionId { get; set; }
+        public string? VersionId { get => _explicitNullValueVersionId; set { _explicitNullValueVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_id"); else _explicitNullProperties?.Remove("version_id"); } }
+        private string? _explicitNullValueVersionId = default!;
 #nullable restore
 #else
-        public string VersionId { get; set; }
+        public string VersionId { get => _explicitNullValueVersionId; set { _explicitNullValueVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_id"); else _explicitNullProperties?.Remove("version_id"); } }
+        private string _explicitNullValueVersionId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponse"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening>("capability_widening", CapabilityWidening);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>("diagnostics", Diagnostics);
             writer.WriteStringValue("version_id", VersionId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

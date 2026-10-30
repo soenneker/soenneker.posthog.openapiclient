@@ -11,123 +11,199 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DoraOverview : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("deploy_data_available") is { } nullNodeDeployDataAvailable && nullNodeDeployDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeployDataAvailable = null;
+            if (parseNode.GetChildNode("deployed_pr_count") is { } nullNodeDeployedPrCount && nullNodeDeployedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeployedPrCount = null;
+            if (parseNode.GetChildNode("deployed_pr_count_prev") is { } nullNodeDeployedPrCountPrev && nullNodeDeployedPrCountPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeployedPrCountPrev = null;
+            if (parseNode.GetChildNode("deployment_count") is { } nullNodeDeploymentCount && nullNodeDeploymentCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentCount = null;
+            if (parseNode.GetChildNode("deployment_count_prev") is { } nullNodeDeploymentCountPrev && nullNodeDeploymentCountPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentCountPrev = null;
+            if (parseNode.GetChildNode("deployment_frequency_series") is { } nullNodeDeploymentFrequencySeries && nullNodeDeploymentFrequencySeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentFrequencySeries = null;
+            if (parseNode.GetChildNode("deployments_per_day") is { } nullNodeDeploymentsPerDay && nullNodeDeploymentsPerDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentsPerDay = null;
+            if (parseNode.GetChildNode("deployments_per_day_prev") is { } nullNodeDeploymentsPerDayPrev && nullNodeDeploymentsPerDayPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentsPerDayPrev = null;
+            if (parseNode.GetChildNode("environments") is { } nullNodeEnvironments && nullNodeEnvironments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Environments = null;
+            if (parseNode.GetChildNode("environment_scope") is { } nullNodeEnvironmentScope && nullNodeEnvironmentScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnvironmentScope = null;
+            if (parseNode.GetChildNode("failed_deployment_count") is { } nullNodeFailedDeploymentCount && nullNodeFailedDeploymentCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDeploymentCount = null;
+            if (parseNode.GetChildNode("failed_deployment_count_prev") is { } nullNodeFailedDeploymentCountPrev && nullNodeFailedDeploymentCountPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDeploymentCountPrev = null;
+            if (parseNode.GetChildNode("failed_deployment_share") is { } nullNodeFailedDeploymentShare && nullNodeFailedDeploymentShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDeploymentShare = null;
+            if (parseNode.GetChildNode("failed_deployment_share_prev") is { } nullNodeFailedDeploymentSharePrev && nullNodeFailedDeploymentSharePrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDeploymentSharePrev = null;
+            if (parseNode.GetChildNode("github_teams") is { } nullNodeGithubTeams && nullNodeGithubTeams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubTeams = null;
+            if (parseNode.GetChildNode("has_membership_data") is { } nullNodeHasMembershipData && nullNodeHasMembershipData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMembershipData = null;
+            if (parseNode.GetChildNode("latest_deploy_status_at") is { } nullNodeLatestDeployStatusAt && nullNodeLatestDeployStatusAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestDeployStatusAt = null;
+            if (parseNode.GetChildNode("median_failed_deploy_to_next_success_seconds") is { } nullNodeMedianFailedDeployToNextSuccessSeconds && nullNodeMedianFailedDeployToNextSuccessSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianFailedDeployToNextSuccessSeconds = null;
+            if (parseNode.GetChildNode("median_failed_deploy_to_next_success_seconds_prev") is { } nullNodeMedianFailedDeployToNextSuccessSecondsPrev && nullNodeMedianFailedDeployToNextSuccessSecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianFailedDeployToNextSuccessSecondsPrev = null;
+            if (parseNode.GetChildNode("median_merge_to_deploy_seconds") is { } nullNodeMedianMergeToDeploySeconds && nullNodeMedianMergeToDeploySeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianMergeToDeploySeconds = null;
+            if (parseNode.GetChildNode("median_merge_to_deploy_seconds_prev") is { } nullNodeMedianMergeToDeploySecondsPrev && nullNodeMedianMergeToDeploySecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianMergeToDeploySecondsPrev = null;
+            if (parseNode.GetChildNode("median_open_to_deploy_seconds") is { } nullNodeMedianOpenToDeploySeconds && nullNodeMedianOpenToDeploySeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianOpenToDeploySeconds = null;
+            if (parseNode.GetChildNode("median_open_to_deploy_seconds_prev") is { } nullNodeMedianOpenToDeploySecondsPrev && nullNodeMedianOpenToDeploySecondsPrev.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianOpenToDeploySecondsPrev = null;
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("merge_to_deploy_series") is { } nullNodeMergeToDeploySeries && nullNodeMergeToDeploySeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeToDeploySeries = null;
+            if (parseNode.GetChildNode("open_to_deploy_series") is { } nullNodeOpenToDeploySeries && nullNodeOpenToDeploySeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenToDeploySeries = null;
+            if (parseNode.GetChildNode("open_to_merge_series") is { } nullNodeOpenToMergeSeries && nullNodeOpenToMergeSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenToMergeSeries = null;
+            if (parseNode.GetChildNode("selected_environments") is { } nullNodeSelectedEnvironments && nullNodeSelectedEnvironments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectedEnvironments = null;
+            if (parseNode.GetChildNode("series_granularity") is { } nullNodeSeriesGranularity && nullNodeSeriesGranularity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesGranularity = null;
+            if (parseNode.GetChildNode("unattributed_merged_pr_share") is { } nullNodeUnattributedMergedPrShare && nullNodeUnattributedMergedPrShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnattributedMergedPrShare = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the deployments/deployment_statuses tables aren&apos;t synced for the selected repo; every other field is then empty or null, never a fake zero.</summary>
-        public bool? DeployDataAvailable { get; set; }
+        public bool? DeployDataAvailable { get => _explicitNullValueDeployDataAvailable; set { _explicitNullValueDeployDataAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deploy_data_available"); else _explicitNullProperties?.Remove("deploy_data_available"); } }
+        private bool? _explicitNullValueDeployDataAvailable = default!;
         /// <summary>PRs first deployed in the window: the population behind the merge-to-deploy median and box plot.</summary>
-        public int? DeployedPrCount { get; set; }
+        public int? DeployedPrCount { get => _explicitNullValueDeployedPrCount; set { _explicitNullValueDeployedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployed_pr_count"); else _explicitNullProperties?.Remove("deployed_pr_count"); } }
+        private int? _explicitNullValueDeployedPrCount = default!;
         /// <summary>Previous-window twin of deployed_pr_count.</summary>
-        public int? DeployedPrCountPrev { get; set; }
+        public int? DeployedPrCountPrev { get => _explicitNullValueDeployedPrCountPrev; set { _explicitNullValueDeployedPrCountPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployed_pr_count_prev"); else _explicitNullProperties?.Remove("deployed_pr_count_prev"); } }
+        private int? _explicitNullValueDeployedPrCountPrev = default!;
         /// <summary>Deployments whose first success status landed in the window, within the environment scope.</summary>
-        public int? DeploymentCount { get; set; }
+        public int? DeploymentCount { get => _explicitNullValueDeploymentCount; set { _explicitNullValueDeploymentCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_count"); else _explicitNullProperties?.Remove("deployment_count"); } }
+        private int? _explicitNullValueDeploymentCount = default!;
         /// <summary>Same count over the equal-length window before date_from.</summary>
-        public int? DeploymentCountPrev { get; set; }
+        public int? DeploymentCountPrev { get => _explicitNullValueDeploymentCountPrev; set { _explicitNullValueDeploymentCountPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_count_prev"); else _explicitNullProperties?.Remove("deployment_count_prev"); } }
+        private int? _explicitNullValueDeploymentCountPrev = default!;
         /// <summary>Successful deployments per bucket across the window, oldest first, zero-filled, bucketed by series_granularity. Empty when the deploy tables aren&apos;t synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DeploymentFrequencyBucket>? DeploymentFrequencySeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DeploymentFrequencyBucket>? DeploymentFrequencySeries { get => _explicitNullValueDeploymentFrequencySeries; set { _explicitNullValueDeploymentFrequencySeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_frequency_series"); else _explicitNullProperties?.Remove("deployment_frequency_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DeploymentFrequencyBucket>? _explicitNullValueDeploymentFrequencySeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DeploymentFrequencyBucket> DeploymentFrequencySeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DeploymentFrequencyBucket> DeploymentFrequencySeries { get => _explicitNullValueDeploymentFrequencySeries; set { _explicitNullValueDeploymentFrequencySeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_frequency_series"); else _explicitNullProperties?.Remove("deployment_frequency_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DeploymentFrequencyBucket> _explicitNullValueDeploymentFrequencySeries = default!;
 #endif
         /// <summary>deployment_count normalized by the window length in days. Null only when the deploy tables aren&apos;t synced.</summary>
-        public double? DeploymentsPerDay { get; set; }
+        public double? DeploymentsPerDay { get => _explicitNullValueDeploymentsPerDay; set { _explicitNullValueDeploymentsPerDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployments_per_day"); else _explicitNullProperties?.Remove("deployments_per_day"); } }
+        private double? _explicitNullValueDeploymentsPerDay = default!;
         /// <summary>Previous-window twin of deployments_per_day. Null only when the deploy tables aren&apos;t synced.</summary>
-        public double? DeploymentsPerDayPrev { get; set; }
+        public double? DeploymentsPerDayPrev { get => _explicitNullValueDeploymentsPerDayPrev; set { _explicitNullValueDeploymentsPerDayPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployments_per_day_prev"); else _explicitNullProperties?.Remove("deployments_per_day_prev"); } }
+        private double? _explicitNullValueDeploymentsPerDayPrev = default!;
         /// <summary>Distinct persistent environments from the metric scan window or the 30 days before its end, whichever starts earlier, most-deployed first. Transient environments are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Environments { get; set; }
+        public List<string>? Environments { get => _explicitNullValueEnvironments; set { _explicitNullValueEnvironments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environments"); else _explicitNullProperties?.Remove("environments"); } }
+        private List<string>? _explicitNullValueEnvironments = default!;
 #nullable restore
 #else
-        public List<string> Environments { get; set; }
+        public List<string> Environments { get => _explicitNullValueEnvironments; set { _explicitNullValueEnvironments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environments"); else _explicitNullProperties?.Remove("environments"); } }
+        private List<string> _explicitNullValueEnvironments = default!;
 #endif
         /// <summary>Display label for the selected environments, comma-separated, &apos;persistent&apos; when no persistent environments were discovered. Use selected_environments for exact names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EnvironmentScope { get; set; }
+        public string? EnvironmentScope { get => _explicitNullValueEnvironmentScope; set { _explicitNullValueEnvironmentScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment_scope"); else _explicitNullProperties?.Remove("environment_scope"); } }
+        private string? _explicitNullValueEnvironmentScope = default!;
 #nullable restore
 #else
-        public string EnvironmentScope { get; set; }
+        public string EnvironmentScope { get => _explicitNullValueEnvironmentScope; set { _explicitNullValueEnvironmentScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment_scope"); else _explicitNullProperties?.Remove("environment_scope"); } }
+        private string _explicitNullValueEnvironmentScope = default!;
 #endif
         /// <summary>Deployments with at least one failure/error status, keyed on the first failure time.</summary>
-        public int? FailedDeploymentCount { get; set; }
+        public int? FailedDeploymentCount { get => _explicitNullValueFailedDeploymentCount; set { _explicitNullValueFailedDeploymentCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_deployment_count"); else _explicitNullProperties?.Remove("failed_deployment_count"); } }
+        private int? _explicitNullValueFailedDeploymentCount = default!;
         /// <summary>Previous-window twin of failed_deployment_count.</summary>
-        public int? FailedDeploymentCountPrev { get; set; }
+        public int? FailedDeploymentCountPrev { get => _explicitNullValueFailedDeploymentCountPrev; set { _explicitNullValueFailedDeploymentCountPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_deployment_count_prev"); else _explicitNullProperties?.Remove("failed_deployment_count_prev"); } }
+        private int? _explicitNullValueFailedDeploymentCountPrev = default!;
         /// <summary>Failed deployments over deployments that reached any outcome (success or failure). A change-failure proxy: no incident data is linked, so a deploy that succeeded but broke production is not counted. Null when nothing reached an outcome.</summary>
-        public double? FailedDeploymentShare { get; set; }
+        public double? FailedDeploymentShare { get => _explicitNullValueFailedDeploymentShare; set { _explicitNullValueFailedDeploymentShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_deployment_share"); else _explicitNullProperties?.Remove("failed_deployment_share"); } }
+        private double? _explicitNullValueFailedDeploymentShare = default!;
         /// <summary>Previous-window twin of failed_deployment_share.</summary>
-        public double? FailedDeploymentSharePrev { get; set; }
+        public double? FailedDeploymentSharePrev { get => _explicitNullValueFailedDeploymentSharePrev; set { _explicitNullValueFailedDeploymentSharePrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_deployment_share_prev"); else _explicitNullProperties?.Remove("failed_deployment_share_prev"); } }
+        private double? _explicitNullValueFailedDeploymentSharePrev = default!;
         /// <summary>Distinct GitHub team slugs from the membership snapshot, sorted: the team picker&apos;s options. Empty when membership isn&apos;t synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? GithubTeams { get; set; }
+        public List<string>? GithubTeams { get => _explicitNullValueGithubTeams; set { _explicitNullValueGithubTeams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_teams"); else _explicitNullProperties?.Remove("github_teams"); } }
+        private List<string>? _explicitNullValueGithubTeams = default!;
 #nullable restore
 #else
-        public List<string> GithubTeams { get; set; }
+        public List<string> GithubTeams { get => _explicitNullValueGithubTeams; set { _explicitNullValueGithubTeams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_teams"); else _explicitNullProperties?.Remove("github_teams"); } }
+        private List<string> _explicitNullValueGithubTeams = default!;
 #endif
         /// <summary>True when the optional team-membership snapshot is synced. When false, a github_team filter cannot be honored and the merge-to-deploy figures go empty rather than silently unfiltered.</summary>
-        public bool? HasMembershipData { get; set; }
+        public bool? HasMembershipData { get => _explicitNullValueHasMembershipData; set { _explicitNullValueHasMembershipData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_membership_data"); else _explicitNullProperties?.Remove("has_membership_data"); } }
+        private bool? _explicitNullValueHasMembershipData = default!;
         /// <summary>The newest deployment status row synced, any environment: how fresh the deploy data is. Windows ending after this instant undercount. Null when the deploy tables are empty.</summary>
-        public DateTimeOffset? LatestDeployStatusAt { get; set; }
+        public DateTimeOffset? LatestDeployStatusAt { get => _explicitNullValueLatestDeployStatusAt; set { _explicitNullValueLatestDeployStatusAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_deploy_status_at"); else _explicitNullProperties?.Remove("latest_deploy_status_at"); } }
+        private DateTimeOffset? _explicitNullValueLatestDeployStatusAt = default!;
         /// <summary>Median seconds from a deployment&apos;s first failure status to the next successful deployment in the same environment. A time-to-restore proxy: recovery by anything other than a deploy is invisible, and failures not yet recovered are excluded. Null when no failed deploy recovered in the window.</summary>
-        public double? MedianFailedDeployToNextSuccessSeconds { get; set; }
+        public double? MedianFailedDeployToNextSuccessSeconds { get => _explicitNullValueMedianFailedDeployToNextSuccessSeconds; set { _explicitNullValueMedianFailedDeployToNextSuccessSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_failed_deploy_to_next_success_seconds"); else _explicitNullProperties?.Remove("median_failed_deploy_to_next_success_seconds"); } }
+        private double? _explicitNullValueMedianFailedDeployToNextSuccessSeconds = default!;
         /// <summary>Previous-window twin of median_failed_deploy_to_next_success_seconds.</summary>
-        public double? MedianFailedDeployToNextSuccessSecondsPrev { get; set; }
+        public double? MedianFailedDeployToNextSuccessSecondsPrev { get => _explicitNullValueMedianFailedDeployToNextSuccessSecondsPrev; set { _explicitNullValueMedianFailedDeployToNextSuccessSecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_failed_deploy_to_next_success_seconds_prev"); else _explicitNullProperties?.Remove("median_failed_deploy_to_next_success_seconds_prev"); } }
+        private double? _explicitNullValueMedianFailedDeployToNextSuccessSecondsPrev = default!;
         /// <summary>Median seconds from a PR&apos;s merge to the first successful deployment containing it (bots/drafts excluded; narrowed by github_team when given). Containment is resolved through the deploy&apos;s head commit, not the deploy&apos;s success time. Keyed on deploy time. This is merge-to-deploy, not full commit-to-deploy DORA lead time. Null when nothing deployed in the window.</summary>
-        public double? MedianMergeToDeploySeconds { get; set; }
+        public double? MedianMergeToDeploySeconds { get => _explicitNullValueMedianMergeToDeploySeconds; set { _explicitNullValueMedianMergeToDeploySeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_merge_to_deploy_seconds"); else _explicitNullProperties?.Remove("median_merge_to_deploy_seconds"); } }
+        private double? _explicitNullValueMedianMergeToDeploySeconds = default!;
         /// <summary>Previous-window twin of median_merge_to_deploy_seconds.</summary>
-        public double? MedianMergeToDeploySecondsPrev { get; set; }
+        public double? MedianMergeToDeploySecondsPrev { get => _explicitNullValueMedianMergeToDeploySecondsPrev; set { _explicitNullValueMedianMergeToDeploySecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_merge_to_deploy_seconds_prev"); else _explicitNullProperties?.Remove("median_merge_to_deploy_seconds_prev"); } }
+        private double? _explicitNullValueMedianMergeToDeploySecondsPrev = default!;
         /// <summary>Median seconds from a PR&apos;s open to the first successful deployment containing it: the full open-to-deploy lead time over the same deployed-PR population as median_merge_to_deploy_seconds. Null when nothing deployed in the window.</summary>
-        public double? MedianOpenToDeploySeconds { get; set; }
+        public double? MedianOpenToDeploySeconds { get => _explicitNullValueMedianOpenToDeploySeconds; set { _explicitNullValueMedianOpenToDeploySeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_open_to_deploy_seconds"); else _explicitNullProperties?.Remove("median_open_to_deploy_seconds"); } }
+        private double? _explicitNullValueMedianOpenToDeploySeconds = default!;
         /// <summary>Previous-window twin of median_open_to_deploy_seconds.</summary>
-        public double? MedianOpenToDeploySecondsPrev { get; set; }
+        public double? MedianOpenToDeploySecondsPrev { get => _explicitNullValueMedianOpenToDeploySecondsPrev; set { _explicitNullValueMedianOpenToDeploySecondsPrev = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_open_to_deploy_seconds_prev"); else _explicitNullProperties?.Remove("median_open_to_deploy_seconds_prev"); } }
+        private double? _explicitNullValueMedianOpenToDeploySecondsPrev = default!;
         /// <summary>PRs merged in the window (bots and drafts excluded; narrowed by github_team when given): the denominator behind unattributed_merged_pr_share.</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>Merge-to-deploy distribution per bucket across the window, oldest first: the box-plot series (min/p5/p25/p50/mean/p75/p95/max seconds per bucket). Empty when the deploy tables aren&apos;t synced, or when github_team was passed without membership data synced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? MergeToDeploySeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? MergeToDeploySeries { get => _explicitNullValueMergeToDeploySeries; set { _explicitNullValueMergeToDeploySeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_to_deploy_series"); else _explicitNullProperties?.Remove("merge_to_deploy_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? _explicitNullValueMergeToDeploySeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> MergeToDeploySeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> MergeToDeploySeries { get => _explicitNullValueMergeToDeploySeries; set { _explicitNullValueMergeToDeploySeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_to_deploy_series"); else _explicitNullProperties?.Remove("merge_to_deploy_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> _explicitNullValueMergeToDeploySeries = default!;
 #endif
         /// <summary>Open-to-deploy distribution over the same deployed PRs and buckets: the full open to first-successful-deploy span the two stages above compose into. Empty in the same cases as merge_to_deploy_series.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? OpenToDeploySeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? OpenToDeploySeries { get => _explicitNullValueOpenToDeploySeries; set { _explicitNullValueOpenToDeploySeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_deploy_series"); else _explicitNullProperties?.Remove("open_to_deploy_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? _explicitNullValueOpenToDeploySeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> OpenToDeploySeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> OpenToDeploySeries { get => _explicitNullValueOpenToDeploySeries; set { _explicitNullValueOpenToDeploySeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_deploy_series"); else _explicitNullProperties?.Remove("open_to_deploy_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> _explicitNullValueOpenToDeploySeries = default!;
 #endif
         /// <summary>Open-to-merge distribution over the SAME deployed PRs and buckets as merge_to_deploy_series, so the two stages compare bucket by bucket. Not the all-merged-PRs cycle time. Empty in the same cases as merge_to_deploy_series.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? OpenToMergeSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? OpenToMergeSeries { get => _explicitNullValueOpenToMergeSeries; set { _explicitNullValueOpenToMergeSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge_series"); else _explicitNullProperties?.Remove("open_to_merge_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket>? _explicitNullValueOpenToMergeSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> OpenToMergeSeries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> OpenToMergeSeries { get => _explicitNullValueOpenToMergeSeries; set { _explicitNullValueOpenToMergeSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge_series"); else _explicitNullProperties?.Remove("open_to_merge_series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LeadTimeBucket> _explicitNullValueOpenToMergeSeries = default!;
 #endif
         /// <summary>Exact environment names used for these metrics. Defaults to all persistent environments marked production or named prod/production (including regional suffixes), falling back to the busiest persistent environment. Explicit filters are trimmed and deduplicated. DRF rejects blank or unknown names; real transient names are allowed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SelectedEnvironments { get; set; }
+        public List<string>? SelectedEnvironments { get => _explicitNullValueSelectedEnvironments; set { _explicitNullValueSelectedEnvironments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selected_environments"); else _explicitNullProperties?.Remove("selected_environments"); } }
+        private List<string>? _explicitNullValueSelectedEnvironments = default!;
 #nullable restore
 #else
-        public List<string> SelectedEnvironments { get; set; }
+        public List<string> SelectedEnvironments { get => _explicitNullValueSelectedEnvironments; set { _explicitNullValueSelectedEnvironments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selected_environments"); else _explicitNullProperties?.Remove("selected_environments"); } }
+        private List<string> _explicitNullValueSelectedEnvironments = default!;
 #endif
         /// <summary>Bucket width of every series: the granularity param when given, else chosen to fit the window: &apos;hour&apos;, &apos;day&apos;, or &apos;week&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesGranularity { get; set; }
+        public string? SeriesGranularity { get => _explicitNullValueSeriesGranularity; set { _explicitNullValueSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_granularity"); else _explicitNullProperties?.Remove("series_granularity"); } }
+        private string? _explicitNullValueSeriesGranularity = default!;
 #nullable restore
 #else
-        public string SeriesGranularity { get; set; }
+        public string SeriesGranularity { get => _explicitNullValueSeriesGranularity; set { _explicitNullValueSeriesGranularity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_granularity"); else _explicitNullProperties?.Remove("series_granularity"); } }
+        private string _explicitNullValueSeriesGranularity = default!;
 #endif
         /// <summary>Share of merged_pr_count no successful in-scope deployment attributed: recent merges still waiting for their deploy, plus merges whose deploy the scope or scan bounds miss. Null when nothing merged in the window.</summary>
-        public double? UnattributedMergedPrShare { get; set; }
+        public double? UnattributedMergedPrShare { get => _explicitNullValueUnattributedMergedPrShare; set { _explicitNullValueUnattributedMergedPrShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unattributed_merged_pr_share"); else _explicitNullProperties?.Remove("unattributed_merged_pr_share"); } }
+        private double? _explicitNullValueUnattributedMergedPrShare = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview"/> and sets the default values.
         /// </summary>
@@ -143,7 +219,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -222,6 +298,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("selected_environments", SelectedEnvironments);
             writer.WriteStringValue("series_granularity", SeriesGranularity);
             writer.WriteDoubleValue("unattributed_merged_pr_share", UnattributedMergedPrShare);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

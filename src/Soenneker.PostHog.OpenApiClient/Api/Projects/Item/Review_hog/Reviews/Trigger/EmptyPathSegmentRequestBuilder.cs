@@ -59,6 +59,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews.T
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerError.CreateFromDiscriminatorValue },
                 { "403", global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerError.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

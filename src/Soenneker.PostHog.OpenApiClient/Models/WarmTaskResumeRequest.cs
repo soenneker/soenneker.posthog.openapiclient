@@ -12,25 +12,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WarmTaskResumeRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("initial_permission_mode") is { } nullNodeInitialPermissionMode && nullNodeInitialPermissionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InitialPermissionMode = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("reasoning_effort") is { } nullNodeReasoningEffort && nullNodeReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningEffort = null;
+            if (parseNode.GetChildNode("resume_from_run_id") is { } nullNodeResumeFromRunId && nullNodeResumeFromRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResumeFromRunId = null;
+            if (parseNode.GetChildNode("runtime_adapter") is { } nullNodeRuntimeAdapter && nullNodeRuntimeAdapter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuntimeAdapter = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode? InitialPermissionMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode? InitialPermissionMode { get => _explicitNullValueInitialPermissionMode; set { _explicitNullValueInitialPermissionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_permission_mode"); else _explicitNullProperties?.Remove("initial_permission_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode? _explicitNullValueInitialPermissionMode = default!;
         /// <summary>LLM model to start before the next message is submitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort? ReasoningEffort { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort? _explicitNullValueReasoningEffort = default!;
         /// <summary>ID of the task&apos;s latest terminal run whose snapshot and conversation should be resumed.</summary>
-        public Guid? ResumeFromRunId { get; set; }
+        public Guid? ResumeFromRunId { get => _explicitNullValueResumeFromRunId; set { _explicitNullValueResumeFromRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_run_id"); else _explicitNullProperties?.Remove("resume_from_run_id"); } }
+        private Guid? _explicitNullValueResumeFromRunId = default!;
         /// <summary>* `claude` - claude* `codex` - codex</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter? RuntimeAdapter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter? RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter? _explicitNullValueRuntimeAdapter = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequest"/> and sets the default values.
         /// </summary>
@@ -46,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort>("reasoning_effort", ReasoningEffort);
             writer.WriteGuidValue("resume_from_run_id", ResumeFromRunId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

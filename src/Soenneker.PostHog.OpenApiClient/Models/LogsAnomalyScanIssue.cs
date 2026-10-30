@@ -11,37 +11,62 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsAnomalyScanIssue : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anomalous_bucket_times") is { } nullNodeAnomalousBucketTimes && nullNodeAnomalousBucketTimes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalousBucketTimes = null;
+            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("last_anomalous_at") is { } nullNodeLastAnomalousAt && nullNodeLastAnomalousAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastAnomalousAt = null;
+            if (parseNode.GetChildNode("opened_at") is { } nullNodeOpenedAt && nullNodeOpenedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenedAt = null;
+            if (parseNode.GetChildNode("resolved_at") is { } nullNodeResolvedAt && nullNodeResolvedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedAt = null;
+            if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Every anomalous bucket attributed to this issue, oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<DateTimeOffset?>? AnomalousBucketTimes { get; set; }
+        public List<DateTimeOffset?>? AnomalousBucketTimes { get => _explicitNullValueAnomalousBucketTimes; set { _explicitNullValueAnomalousBucketTimes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomalous_bucket_times"); else _explicitNullProperties?.Remove("anomalous_bucket_times"); } }
+        private List<DateTimeOffset?>? _explicitNullValueAnomalousBucketTimes = default!;
 #nullable restore
 #else
-        public List<DateTimeOffset?> AnomalousBucketTimes { get; set; }
+        public List<DateTimeOffset?> AnomalousBucketTimes { get => _explicitNullValueAnomalousBucketTimes; set { _explicitNullValueAnomalousBucketTimes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomalous_bucket_times"); else _explicitNullProperties?.Remove("anomalous_bucket_times"); } }
+        private List<DateTimeOffset?> _explicitNullValueAnomalousBucketTimes = default!;
 #endif
         /// <summary>* `up` - up* `down` - down</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection? Direction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueDirection? _explicitNullValueDirection = default!;
         /// <summary>* `spike` - spike* `drop` - drop* `silence` - silence</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueKind? _explicitNullValueKind = default!;
         /// <summary>Most recent anomalous bucket attributed to this issue.</summary>
-        public DateTimeOffset? LastAnomalousAt { get; set; }
+        public DateTimeOffset? LastAnomalousAt { get => _explicitNullValueLastAnomalousAt; set { _explicitNullValueLastAnomalousAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_anomalous_at"); else _explicitNullProperties?.Remove("last_anomalous_at"); } }
+        private DateTimeOffset? _explicitNullValueLastAnomalousAt = default!;
         /// <summary>Bucket where the issue first opened.</summary>
-        public DateTimeOffset? OpenedAt { get; set; }
+        public DateTimeOffset? OpenedAt { get => _explicitNullValueOpenedAt; set { _explicitNullValueOpenedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opened_at"); else _explicitNullProperties?.Remove("opened_at"); } }
+        private DateTimeOffset? _explicitNullValueOpenedAt = default!;
         /// <summary>Bucket where the issue resolved, or null if it was still open at the end of the window.</summary>
-        public DateTimeOffset? ResolvedAt { get; set; }
+        public DateTimeOffset? ResolvedAt { get => _explicitNullValueResolvedAt; set { _explicitNullValueResolvedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_at"); else _explicitNullProperties?.Remove("resolved_at"); } }
+        private DateTimeOffset? _explicitNullValueResolvedAt = default!;
         /// <summary>Severity of the spiking series. Null for down issues, which are tracked per service.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Severity { get; set; }
+        public string? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private string? _explicitNullValueSeverity = default!;
 #nullable restore
 #else
-        public string Severity { get; set; }
+        public string Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private string _explicitNullValueSeverity = default!;
 #endif
         /// <summary>* `pending` - pending* `active` - active* `resolved` - resolved</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState? _explicitNullValueState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue"/> and sets the default values.
         /// </summary>
@@ -57,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("resolved_at", ResolvedAt);
             writer.WriteStringValue("severity", Severity);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssueState>("state", State);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.E
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationContextSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EvaluationContextSuggestionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationContextSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EvaluationContextSuggestionResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Hide an evaluation context name from the flag editor&apos;s suggestion list, or restore it.POST hides the name; DELETE restores it. The underlying context row and any flags alreadyusing it are never modified — this only controls what gets suggested.
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Projects.Item.E
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationContextSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EvaluationContextSuggestionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationContextSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EvaluationContextSuggestionResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Hide an evaluation context name from the flag editor&apos;s suggestion list, or restore it.POST hides the name; DELETE restores it. The underlying context row and any flags alreadyusing it are never modified — this only controls what gets suggested.

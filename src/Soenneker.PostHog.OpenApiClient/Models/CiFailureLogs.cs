@@ -11,33 +11,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CiFailureLogs : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("jobs") is { } nullNodeJobs && nullNodeJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Jobs = null;
+            if (parseNode.GetChildNode("logs_available") is { } nullNodeLogsAvailable && nullNodeLogsAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogsAvailable = null;
+            if (parseNode.GetChildNode("pr_number") is { } nullNodePrNumber && nullNodePrNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrNumber = null;
+            if (parseNode.GetChildNode("repo") is { } nullNodeRepo && nullNodeRepo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repo = null;
+            if (parseNode.GetChildNode("runs_attributed") is { } nullNodeRunsAttributed && nullNodeRunsAttributed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsAttributed = null;
+            if (parseNode.GetChildNode("truncated") is { } nullNodeTruncated && nullNodeTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Truncated = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Failed CI jobs with their thinned failure logs, grouped by job.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog>? Jobs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog>? Jobs { get => _explicitNullValueJobs; set { _explicitNullValueJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs"); else _explicitNullProperties?.Remove("jobs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog>? _explicitNullValueJobs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog> Jobs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog> Jobs { get => _explicitNullValueJobs; set { _explicitNullValueJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs"); else _explicitNullProperties?.Remove("jobs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CiJobFailureLog> _explicitNullValueJobs = default!;
 #endif
         /// <summary>False when no failure logs were found: CI hasn&apos;t failed, the logs aged out of the short Logs retention, or a fork PR carries no run association to resolve.</summary>
-        public bool? LogsAvailable { get; set; }
+        public bool? LogsAvailable { get => _explicitNullValueLogsAvailable; set { _explicitNullValueLogsAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logs_available"); else _explicitNullProperties?.Remove("logs_available"); } }
+        private bool? _explicitNullValueLogsAvailable = default!;
         /// <summary>Pull request number the failure logs are for.</summary>
-        public int? PrNumber { get; set; }
+        public int? PrNumber { get => _explicitNullValuePrNumber; set { _explicitNullValuePrNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_number"); else _explicitNullProperties?.Remove("pr_number"); } }
+        private int? _explicitNullValuePrNumber = default!;
         /// <summary>Repository the pull request belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogsRepo? Repo { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogsRepo? Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogsRepo? _explicitNullValueRepo = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogsRepo Repo { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogsRepo Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogsRepo _explicitNullValueRepo = default!;
 #endif
         /// <summary>Workflow runs attributed to the PR (across all its pushes) that were searched for logs.</summary>
-        public int? RunsAttributed { get; set; }
+        public int? RunsAttributed { get => _explicitNullValueRunsAttributed; set { _explicitNullValueRunsAttributed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_attributed"); else _explicitNullProperties?.Remove("runs_attributed"); } }
+        private int? _explicitNullValueRunsAttributed = default!;
         /// <summary>True when the overall line cap across all jobs was hit.</summary>
-        public bool? Truncated { get; set; }
+        public bool? Truncated { get => _explicitNullValueTruncated; set { _explicitNullValueTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated"); else _explicitNullProperties?.Remove("truncated"); } }
+        private bool? _explicitNullValueTruncated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogs"/> and sets the default values.
         /// </summary>
@@ -53,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogs CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogs();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogs(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CiFailureLogsRepo>("repo", Repo);
             writer.WriteIntValue("runs_attributed", RunsAttributed);
             writer.WriteBoolValue("truncated", Truncated);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

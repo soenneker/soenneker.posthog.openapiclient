@@ -9,6 +9,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_set_test_a
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Bulk_update_tags;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Cancel;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Data_checks;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Explain;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Generate_metadata;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.My_last_viewed;
@@ -65,6 +66,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The explain property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Explain.ExplainRequestBuilder Explain
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Explain.ExplainRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The generate_metadata property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Generate_metadata.Generate_metadataRequestBuilder Generate_metadata

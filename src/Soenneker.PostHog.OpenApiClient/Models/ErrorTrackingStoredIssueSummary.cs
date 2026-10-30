@@ -11,60 +11,89 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingStoredIssueSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("checked_at") is { } nullNodeCheckedAt && nullNodeCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedAt = null;
+            if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
+            if (parseNode.GetChildNode("likely_cause") is { } nullNodeLikelyCause && nullNodeLikelyCause.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LikelyCause = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("suggested_next_step") is { } nullNodeSuggestedNextStep && nullNodeSuggestedNextStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedNextStep = null;
+            if (parseNode.GetChildNode("what_happened") is { } nullNodeWhatHappened && nullNodeWhatHappened.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhatHappened = null;
+            if (parseNode.GetChildNode("who_is_affected") is { } nullNodeWhoIsAffected && nullNodeWhoIsAffected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhoIsAffected = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Broad source of the issue, or null when the category model did not answer.* `own_code` - Own Code* `third_party` - Third Party* `network` - Network* `bots` - Bots* `expected` - Expected* `unclear` - Unclear</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory? Category { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory? _explicitNullValueCategory = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory Category { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory _explicitNullValueCategory = default!;
 #endif
         /// <summary>When generation last wrote the summary or confirmed it unchanged. The regenerate interval runs from it.</summary>
-        public DateTimeOffset? CheckedAt { get; set; }
+        public DateTimeOffset? CheckedAt { get => _explicitNullValueCheckedAt; set { _explicitNullValueCheckedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_at"); else _explicitNullProperties?.Remove("checked_at"); } }
+        private DateTimeOffset? _explicitNullValueCheckedAt = default!;
         /// <summary>When the summary was written.</summary>
-        public DateTimeOffset? GeneratedAt { get; set; }
+        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
+        private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
         /// <summary>The model&apos;s hypothesis about the cause. Not a confirmed finding. Can be empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LikelyCause { get; set; }
+        public string? LikelyCause { get => _explicitNullValueLikelyCause; set { _explicitNullValueLikelyCause = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_cause"); else _explicitNullProperties?.Remove("likely_cause"); } }
+        private string? _explicitNullValueLikelyCause = default!;
 #nullable restore
 #else
-        public string LikelyCause { get; set; }
+        public string LikelyCause { get => _explicitNullValueLikelyCause; set { _explicitNullValueLikelyCause = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_cause"); else _explicitNullProperties?.Remove("likely_cause"); } }
+        private string _explicitNullValueLikelyCause = default!;
 #endif
         /// <summary>Model that wrote the summary.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>One concrete step to investigate or fix the issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestedNextStep { get; set; }
+        public string? SuggestedNextStep { get => _explicitNullValueSuggestedNextStep; set { _explicitNullValueSuggestedNextStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_step"); else _explicitNullProperties?.Remove("suggested_next_step"); } }
+        private string? _explicitNullValueSuggestedNextStep = default!;
 #nullable restore
 #else
-        public string SuggestedNextStep { get; set; }
+        public string SuggestedNextStep { get => _explicitNullValueSuggestedNextStep; set { _explicitNullValueSuggestedNextStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_step"); else _explicitNullProperties?.Remove("suggested_next_step"); } }
+        private string _explicitNullValueSuggestedNextStep = default!;
 #endif
         /// <summary>What the exception is and where it happens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WhatHappened { get; set; }
+        public string? WhatHappened { get => _explicitNullValueWhatHappened; set { _explicitNullValueWhatHappened = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("what_happened"); else _explicitNullProperties?.Remove("what_happened"); } }
+        private string? _explicitNullValueWhatHappened = default!;
 #nullable restore
 #else
-        public string WhatHappened { get; set; }
+        public string WhatHappened { get => _explicitNullValueWhatHappened; set { _explicitNullValueWhatHappened = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("what_happened"); else _explicitNullProperties?.Remove("what_happened"); } }
+        private string _explicitNullValueWhatHappened = default!;
 #endif
         /// <summary>Which users, sessions or environments see the issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WhoIsAffected { get; set; }
+        public string? WhoIsAffected { get => _explicitNullValueWhoIsAffected; set { _explicitNullValueWhoIsAffected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("who_is_affected"); else _explicitNullProperties?.Remove("who_is_affected"); } }
+        private string? _explicitNullValueWhoIsAffected = default!;
 #nullable restore
 #else
-        public string WhoIsAffected { get; set; }
+        public string WhoIsAffected { get => _explicitNullValueWhoIsAffected; set { _explicitNullValueWhoIsAffected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("who_is_affected"); else _explicitNullProperties?.Remove("who_is_affected"); } }
+        private string _explicitNullValueWhoIsAffected = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummary"/> and sets the default values.
@@ -81,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,6 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("suggested_next_step", SuggestedNextStep);
             writer.WriteStringValue("what_happened", WhatHappened);
             writer.WriteStringValue("who_is_affected", WhoIsAffected);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

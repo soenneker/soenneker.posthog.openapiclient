@@ -12,53 +12,84 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BulkDeleteRequestFilters : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("archived") is { } nullNodeArchived && nullNodeArchived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Archived = null;
+            if (parseNode.GetChildNode("created_by_id") is { } nullNodeCreatedById && nullNodeCreatedById.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedById = null;
+            if (parseNode.GetChildNode("evaluation_runtime") is { } nullNodeEvaluationRuntime && nullNodeEvaluationRuntime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationRuntime = null;
+            if (parseNode.GetChildNode("excluded_properties") is { } nullNodeExcludedProperties && nullNodeExcludedProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedProperties = null;
+            if (parseNode.GetChildNode("excluded_tags") is { } nullNodeExcludedTags && nullNodeExcludedTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedTags = null;
+            if (parseNode.GetChildNode("has_evaluation_contexts") is { } nullNodeHasEvaluationContexts && nullNodeHasEvaluationContexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEvaluationContexts = null;
+            if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>* `true` - true* `false` - false* `STALE` - STALE</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive? Active { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersActive? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Filter by archived state. When omitted, archived flags are excluded.</summary>
-        public bool? Archived { get; set; }
+        public bool? Archived { get => _explicitNullValueArchived; set { _explicitNullValueArchived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archived"); else _explicitNullProperties?.Remove("archived"); } }
+        private bool? _explicitNullValueArchived = default!;
         /// <summary>Filter to flags created by a specific user ID.</summary>
-        public int? CreatedById { get; set; }
+        public int? CreatedById { get => _explicitNullValueCreatedById; set { _explicitNullValueCreatedById = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by_id"); else _explicitNullProperties?.Remove("created_by_id"); } }
+        private int? _explicitNullValueCreatedById = default!;
         /// <summary>* `server` - Server* `client` - Client* `all` - All</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime? EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime? EvaluationRuntime { get => _explicitNullValueEvaluationRuntime; set { _explicitNullValueEvaluationRuntime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_runtime"); else _explicitNullProperties?.Remove("evaluation_runtime"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersEvaluationRuntime? _explicitNullValueEvaluationRuntime = default!;
         /// <summary>JSON-encoded property filter to exclude. Same shape as the list endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExcludedProperties { get; set; }
+        public string? ExcludedProperties { get => _explicitNullValueExcludedProperties; set { _explicitNullValueExcludedProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_properties"); else _explicitNullProperties?.Remove("excluded_properties"); } }
+        private string? _explicitNullValueExcludedProperties = default!;
 #nullable restore
 #else
-        public string ExcludedProperties { get; set; }
+        public string ExcludedProperties { get => _explicitNullValueExcludedProperties; set { _explicitNullValueExcludedProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_properties"); else _explicitNullProperties?.Remove("excluded_properties"); } }
+        private string _explicitNullValueExcludedProperties = default!;
 #endif
         /// <summary>Tag names to exclude. Flags carrying any of these tags are filtered out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludedTags { get; set; }
+        public List<string>? ExcludedTags { get => _explicitNullValueExcludedTags; set { _explicitNullValueExcludedTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_tags"); else _explicitNullProperties?.Remove("excluded_tags"); } }
+        private List<string>? _explicitNullValueExcludedTags = default!;
 #nullable restore
 #else
-        public List<string> ExcludedTags { get; set; }
+        public List<string> ExcludedTags { get => _explicitNullValueExcludedTags; set { _explicitNullValueExcludedTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_tags"); else _explicitNullProperties?.Remove("excluded_tags"); } }
+        private List<string> _explicitNullValueExcludedTags = default!;
 #endif
         /// <summary>When true, only matches flags with at least one evaluation context.</summary>
-        public bool? HasEvaluationContexts { get; set; }
+        public bool? HasEvaluationContexts { get => _explicitNullValueHasEvaluationContexts; set { _explicitNullValueHasEvaluationContexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_evaluation_contexts"); else _explicitNullProperties?.Remove("has_evaluation_contexts"); } }
+        private bool? _explicitNullValueHasEvaluationContexts = default!;
         /// <summary>Search by feature flag key or name (case-insensitive). Spaces, underscores, and hyphens count as the same separator.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Search { get; set; }
+        public string? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        private string? _explicitNullValueSearch = default!;
 #nullable restore
 #else
-        public string Search { get; set; }
+        public string Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        private string _explicitNullValueSearch = default!;
 #endif
         /// <summary>Tag names to filter by. Flags carrying at least one of these tags match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>* `boolean` - boolean* `multivariant` - multivariant* `experiment` - experiment* `remote_config` - remote_config</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteRequestFilters"/> and sets the default values.
         /// </summary>
@@ -74,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteRequestFilters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteRequestFilters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteRequestFilters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -113,6 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("search", Search);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteFiltersType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

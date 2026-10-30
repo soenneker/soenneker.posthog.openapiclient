@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_c
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusesResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusesResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PullRequestCiStatusesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Resolve the coarse CI rollup of the pull requests several reports opened, so a list of reports can show which pull requests are red without opening each report. One GitHub call covers the whole batch, and the answers are cached briefly and shared across callers. A report is left out when it has no open implementation pull request, and also when GitHub could not answer for it (no integration reaches the repository, a rate limit, an upstream failure), so a caller shows no CI state for it rather than an error. For the individual checks behind the rollup, use `pr_checks`.

@@ -11,13 +11,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HeatmapCaptureSettings : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("capture_mode") is { } nullNodeCaptureMode && nullNodeCaptureMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaptureMode = null;
+            if (parseNode.GetChildNode("url_allowlist") is { } nullNodeUrlAllowlist && nullNodeUrlAllowlist.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UrlAllowlist = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether this organization&apos;s plan may capture heatmaps on every page.</summary>
         public bool? CanCaptureAllUrls { get; private set; }
         /// <summary>* `all` - All URLs* `url_allowlist` - Only listed URLs</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode? CaptureMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode? CaptureMode { get => _explicitNullValueCaptureMode; set { _explicitNullValueCaptureMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capture_mode"); else _explicitNullProperties?.Remove("capture_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode? _explicitNullValueCaptureMode = default!;
         /// <summary>How many URLs this plan may capture, or null when the plan captures all pages.</summary>
         public int? CaptureUrlLimit { get; private set; }
         /// <summary>Whether this installation enforces the URL allow-list for heatmap capture.</summary>
@@ -25,10 +35,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Full http(s) URLs that may send heatmap data. Use * to match any characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? UrlAllowlist { get; set; }
+        public List<string>? UrlAllowlist { get => _explicitNullValueUrlAllowlist; set { _explicitNullValueUrlAllowlist = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url_allowlist"); else _explicitNullProperties?.Remove("url_allowlist"); } }
+        private List<string>? _explicitNullValueUrlAllowlist = default!;
 #nullable restore
 #else
-        public List<string> UrlAllowlist { get; set; }
+        public List<string> UrlAllowlist { get => _explicitNullValueUrlAllowlist; set { _explicitNullValueUrlAllowlist = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url_allowlist"); else _explicitNullProperties?.Remove("url_allowlist"); } }
+        private List<string> _explicitNullValueUrlAllowlist = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettings"/> and sets the default values.
@@ -45,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -71,6 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureSettingsCaptureMode>("capture_mode", CaptureMode);
             writer.WriteCollectionOfPrimitiveValues<string>("url_allowlist", UrlAllowlist);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

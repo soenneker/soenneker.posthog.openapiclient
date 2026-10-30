@@ -11,30 +11,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentBreakdownResult : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline") is { } nullNodeBaseline && nullNodeBaseline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Baseline = null;
+            if (parseNode.GetChildNode("breakdown_value") is { } nullNodeBreakdownValue && nullNodeBreakdownValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownValue = null;
+            if (parseNode.GetChildNode("variants") is { } nullNodeVariants && nullNodeVariants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variants = null;
+        }
+
         /// <summary>Control variant stats for this breakdown</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated? Baseline { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated? Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated? _explicitNullValueBaseline = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated Baseline { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated _explicitNullValueBaseline = default!;
 #endif
         /// <summary>The breakdown values as an array (e.g., [&quot;MacOS&quot;, &quot;Chrome&quot;] for multi-breakdown, [&quot;Chrome&quot;] for single) Although `BreakdownKeyType` could be an array, we only use the array form for the breakdown_value. The way `BreakdownKeyType` is defined is problematic. It should be treated as a primitive and allow for the types using it to define if it&apos;s and array or an optional value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BreakdownValue { get; set; }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_value"); else _explicitNullProperties?.Remove("breakdown_value"); } }
+        private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueBreakdownValue = default!;
 #nullable restore
 #else
-        public List<string> BreakdownValue { get; set; }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_value"); else _explicitNullProperties?.Remove("breakdown_value"); } }
+        private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueBreakdownValue = default!;
 #endif
         /// <summary>Test variant results with statistical comparisons for this breakdown</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants? Variants { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants? Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants? _explicitNullValueVariants = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants Variants { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants _explicitNullValueVariants = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -44,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "baseline", n => { Baseline = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated.CreateFromDiscriminatorValue); } },
-                { "breakdown_value", n => { BreakdownValue = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "breakdown_value", n => { BreakdownValue = n.GetCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "variants", n => { Variants = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants.CreateFromDiscriminatorValue); } },
             };
         }
@@ -67,8 +83,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentStatsBaseValidated>("baseline", Baseline);
-            writer.WriteCollectionOfPrimitiveValues<string>("breakdown_value", BreakdownValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants>("variants", Variants);
+            writer.WriteCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("breakdown_value", BreakdownValue);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBreakdownResultVariants>("variants", Variants);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

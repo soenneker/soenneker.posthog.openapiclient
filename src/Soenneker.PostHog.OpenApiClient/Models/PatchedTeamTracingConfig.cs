@@ -11,28 +11,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedTeamTracingConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("retention_days") is { } nullNodeRetentionDays && nullNodeRetentionDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionDays = null;
+            if (parseNode.GetChildNode("tracing_distinct_id_attribute_keys") is { } nullNodeTracingDistinctIdAttributeKeys && nullNodeTracingDistinctIdAttributeKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TracingDistinctIdAttributeKeys = null;
+            if (parseNode.GetChildNode("tracing_session_id_attribute_keys") is { } nullNodeTracingSessionIdAttributeKeys && nullNodeTracingSessionIdAttributeKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TracingSessionIdAttributeKeys = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How long spans are kept before they are deleted, in days. Applied at ingest, so a change only affects spans received after it. Can be changed at most once per 24 hours. Span retention rules override this period for the spans they match.</summary>
-        public int? RetentionDays { get; set; }
+        public int? RetentionDays { get => _explicitNullValueRetentionDays; set { _explicitNullValueRetentionDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_days"); else _explicitNullProperties?.Remove("retention_days"); } }
+        private int? _explicitNullValueRetentionDays = default!;
         /// <summary>The retention_last_updated property</summary>
         public DateTimeOffset? RetentionLastUpdated { get; private set; }
         /// <summary>Span or resource attribute keys whose values should match a person&apos;s distinct_id — a span links to a person when any of these attributes holds one of their distinct IDs. Defaults to [&apos;posthogDistinctId&apos;], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the person identifier under different attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? TracingDistinctIdAttributeKeys { get; set; }
+        public List<string>? TracingDistinctIdAttributeKeys { get => _explicitNullValueTracingDistinctIdAttributeKeys; set { _explicitNullValueTracingDistinctIdAttributeKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracing_distinct_id_attribute_keys"); else _explicitNullProperties?.Remove("tracing_distinct_id_attribute_keys"); } }
+        private List<string>? _explicitNullValueTracingDistinctIdAttributeKeys = default!;
 #nullable restore
 #else
-        public List<string> TracingDistinctIdAttributeKeys { get; set; }
+        public List<string> TracingDistinctIdAttributeKeys { get => _explicitNullValueTracingDistinctIdAttributeKeys; set { _explicitNullValueTracingDistinctIdAttributeKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracing_distinct_id_attribute_keys"); else _explicitNullProperties?.Remove("tracing_distinct_id_attribute_keys"); } }
+        private List<string> _explicitNullValueTracingDistinctIdAttributeKeys = default!;
 #endif
         /// <summary>Ordered list of span or resource attribute keys whose values hold the PostHog session ID. Detection checks keys in order, then falls back to common session ID attribute conventions; the first key with a value wins. Defaults to [&apos;sessionId&apos;], the key the posthog-js / posthog-react-native SDKs attach to the OTel signals they emit. Add keys only if your pipeline emits the session ID under different attributes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? TracingSessionIdAttributeKeys { get; set; }
+        public List<string>? TracingSessionIdAttributeKeys { get => _explicitNullValueTracingSessionIdAttributeKeys; set { _explicitNullValueTracingSessionIdAttributeKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracing_session_id_attribute_keys"); else _explicitNullProperties?.Remove("tracing_session_id_attribute_keys"); } }
+        private List<string>? _explicitNullValueTracingSessionIdAttributeKeys = default!;
 #nullable restore
 #else
-        public List<string> TracingSessionIdAttributeKeys { get; set; }
+        public List<string> TracingSessionIdAttributeKeys { get => _explicitNullValueTracingSessionIdAttributeKeys; set { _explicitNullValueTracingSessionIdAttributeKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracing_session_id_attribute_keys"); else _explicitNullProperties?.Remove("tracing_session_id_attribute_keys"); } }
+        private List<string> _explicitNullValueTracingSessionIdAttributeKeys = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTracingConfig"/> and sets the default values.
@@ -49,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTracingConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTracingConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedTeamTracingConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,6 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("retention_days", RetentionDays);
             writer.WriteCollectionOfPrimitiveValues<string>("tracing_distinct_id_attribute_keys", TracingDistinctIdAttributeKeys);
             writer.WriteCollectionOfPrimitiveValues<string>("tracing_session_id_attribute_keys", TracingSessionIdAttributeKeys);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

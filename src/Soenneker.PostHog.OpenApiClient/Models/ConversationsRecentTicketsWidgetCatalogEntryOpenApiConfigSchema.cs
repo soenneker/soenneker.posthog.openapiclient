@@ -12,45 +12,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ConversationsRecentTicketsWidgetCatalogEntryOpenApiConfigSchema : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assignees") is { } nullNodeAssignees && nullNodeAssignees.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assignees = null;
+            if (parseNode.GetChildNode("channel") is { } nullNodeChannel && nullNodeChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Channel = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("priorities") is { } nullNodePriorities && nullNodePriorities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priorities = null;
+            if (parseNode.GetChildNode("savedViewId") is { } nullNodeSavedViewId && nullNodeSavedViewId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavedViewId = null;
+            if (parseNode.GetChildNode("search") is { } nullNodeSearch && nullNodeSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Search = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Only show tickets assigned to these users or roles. &apos;me&apos; means the requesting user and &apos;unassigned&apos; means tickets without an assignment. Empty shows all assignees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Assignees { get; set; }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? Assignees { get => _explicitNullValueAssignees; set { _explicitNullValueAssignees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignees"); else _explicitNullProperties?.Remove("assignees"); } }
+        private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>? _explicitNullValueAssignees = default!;
 #nullable restore
 #else
-        public List<string> Assignees { get; set; }
+        public List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> Assignees { get => _explicitNullValueAssignees; set { _explicitNullValueAssignees = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignees"); else _explicitNullProperties?.Remove("assignees"); } }
+        private List<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode> _explicitNullValueAssignees = default!;
 #endif
         /// <summary>Ticket channel filter.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel? Channel { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel? Channel { get => _explicitNullValueChannel; set { _explicitNullValueChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("channel"); else _explicitNullProperties?.Remove("channel"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel? _explicitNullValueChannel = default!;
         /// <summary>Maximum number of tickets to return.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>Only show tickets with these priorities. Empty shows all priorities.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem?>? Priorities { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem?>? Priorities { get => _explicitNullValuePriorities; set { _explicitNullValuePriorities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priorities"); else _explicitNullProperties?.Remove("priorities"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem?>? _explicitNullValuePriorities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem?> Priorities { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem?> Priorities { get => _explicitNullValuePriorities; set { _explicitNullValuePriorities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priorities"); else _explicitNullProperties?.Remove("priorities"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem?> _explicitNullValuePriorities = default!;
 #endif
         /// <summary>short_id of a saved Support view to use as the source. When set, the saved view owns the ticket filters; the widget still sorts by most recently updated and applies its limit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SavedViewId { get; set; }
+        public string? SavedViewId { get => _explicitNullValueSavedViewId; set { _explicitNullValueSavedViewId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("savedViewId"); else _explicitNullProperties?.Remove("savedViewId"); } }
+        private string? _explicitNullValueSavedViewId = default!;
 #nullable restore
 #else
-        public string SavedViewId { get; set; }
+        public string SavedViewId { get => _explicitNullValueSavedViewId; set { _explicitNullValueSavedViewId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("savedViewId"); else _explicitNullProperties?.Remove("savedViewId"); } }
+        private string _explicitNullValueSavedViewId = default!;
 #endif
         /// <summary>Search requester name or email, ticket subject, message text, or ticket number.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Search { get; set; }
+        public string? Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        private string? _explicitNullValueSearch = default!;
 #nullable restore
 #else
-        public string Search { get; set; }
+        public string Search { get => _explicitNullValueSearch; set { _explicitNullValueSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search"); else _explicitNullProperties?.Remove("search"); } }
+        private string _explicitNullValueSearch = default!;
 #endif
         /// <summary>Ticket status filter.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApiConfigSchema"/> and sets the default values.
         /// </summary>
@@ -66,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApiConfigSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApiConfigSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetCatalogEntryOpenApiConfigSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assignees", n => { Assignees = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "assignees", n => { Assignees = n.GetCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "channel", n => { Channel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "priorities", n => { Priorities = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem>()?.AsList(); } },
@@ -92,13 +117,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<string>("assignees", Assignees);
+            writer.WriteCollectionOfObjectValues<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("assignees", Assignees);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigChannel>("channel", Channel);
             writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigPrioritiesItem>("priorities", Priorities);
             writer.WriteStringValue("savedViewId", SavedViewId);
             writer.WriteStringValue("search", Search);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigStatus>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationsRecentTicketsWidgetConfigStatus>("status", Status);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

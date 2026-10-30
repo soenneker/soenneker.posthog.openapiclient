@@ -11,22 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DatabaseSchemaQueryResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("joins") is { } nullNodeJoins && nullNodeJoins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Joins = null;
+            if (parseNode.GetChildNode("tables") is { } nullNodeTables && nullNodeTables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tables = null;
+        }
+
         /// <summary>The joins property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink>? Joins { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink>? Joins { get => _explicitNullValueJoins; set { _explicitNullValueJoins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joins"); else _explicitNullProperties?.Remove("joins"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink>? _explicitNullValueJoins = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink> Joins { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink> Joins { get => _explicitNullValueJoins; set { _explicitNullValueJoins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joins"); else _explicitNullProperties?.Remove("joins"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink> _explicitNullValueJoins = default!;
 #endif
         /// <summary>The tables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponseTablesProperty? Tables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponseTablesProperty? Tables { get => _explicitNullValueTables; set { _explicitNullValueTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tables"); else _explicitNullProperties?.Remove("tables"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponseTablesProperty? _explicitNullValueTables = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponseTablesProperty Tables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponseTablesProperty Tables { get => _explicitNullValueTables; set { _explicitNullValueTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tables"); else _explicitNullProperties?.Remove("tables"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponseTablesProperty _explicitNullValueTables = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -36,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,7 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseViewLink>("joins", Joins);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponseTablesProperty>("tables", Tables);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabaseSchemaQueryResponseTablesProperty>("tables", Tables);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

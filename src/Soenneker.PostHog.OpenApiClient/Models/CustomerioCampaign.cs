@@ -11,32 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CustomerioCampaign : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("campaign") is { } nullNodeCampaign && nullNodeCampaign.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Campaign = null;
+            if (parseNode.GetChildNode("templates") is { } nullNodeTemplates && nullNodeTemplates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Templates = null;
+        }
+
         /// <summary>The top-level `actions` array from the same response, every step of the automation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignActionsItemProperty>? Actions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignActionsItemProperty>? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignActionsItemProperty>? _explicitNullValueActions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignActionsItemProperty> Actions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignActionsItemProperty> Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignActionsItemProperty> _explicitNullValueActions = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The `campaign` object from Customer.io&apos;s `GET /v1/environments/{environment_id}/campaigns/{campaign_id}` (Journeys UI API, what the Customer.io CLI and MCP read). Must include `id`, `type`, `edges` and the trigger fields.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignCampaignProperty? Campaign { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignCampaignProperty? Campaign { get => _explicitNullValueCampaign; set { _explicitNullValueCampaign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaign"); else _explicitNullProperties?.Remove("campaign"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignCampaignProperty? _explicitNullValueCampaign = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignCampaignProperty Campaign { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignCampaignProperty Campaign { get => _explicitNullValueCampaign; set { _explicitNullValueCampaign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaign"); else _explicitNullProperties?.Remove("campaign"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignCampaignProperty _explicitNullValueCampaign = default!;
 #endif
         /// <summary>The message templates the actions point at, from `GET /v1/environments/{environment_id}/templates/{template_id}`: a list of template objects, or an object keyed by template id. Leave them out when the project stored a Customer.io App API key: PostHog then reads the content from Customer.io itself. Without either, messages import with empty content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Templates { get; set; }
+        public UntypedNode? Templates { get => _explicitNullValueTemplates; set { _explicitNullValueTemplates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("templates"); else _explicitNullProperties?.Remove("templates"); } }
+        private UntypedNode? _explicitNullValueTemplates = default!;
 #nullable restore
 #else
-        public UntypedNode Templates { get; set; }
+        public UntypedNode Templates { get => _explicitNullValueTemplates; set { _explicitNullValueTemplates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("templates"); else _explicitNullProperties?.Remove("templates"); } }
+        private UntypedNode _explicitNullValueTemplates = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignActionsItemProperty>("actions", Actions);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaignCampaignProperty>("campaign", Campaign);
             writer.WriteObjectValue<UntypedNode>("templates", Templates);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

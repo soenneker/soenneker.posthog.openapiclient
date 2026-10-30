@@ -11,35 +11,55 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DateRange : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("daysOfWeek") is { } nullNodeDaysOfWeek && nullNodeDaysOfWeek.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DaysOfWeek = null;
+            if (parseNode.GetChildNode("excludeIncompletePeriods") is { } nullNodeExcludeIncompletePeriods && nullNodeExcludeIncompletePeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeIncompletePeriods = null;
+            if (parseNode.GetChildNode("explicitDate") is { } nullNodeExplicitDate && nullNodeExplicitDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExplicitDate = null;
+        }
+
         /// <summary>Start of the date range. Accepts ISO 8601 timestamps (e.g., 2024-01-15T00:00:00Z) or relative formats: -7d (7 days ago), -2w (2 weeks ago), -1m (1 month ago),-1h (1 hour ago), -1mStart (start of last month), -1yStart (start of last year).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateFrom { get; set; }
+        public string? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private string? _explicitNullValueDateFrom = default!;
 #nullable restore
 #else
-        public string DateFrom { get; set; }
+        public string DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private string _explicitNullValueDateFrom = default!;
 #endif
         /// <summary>End of the date range. Same format as date_from. Omit or null for &quot;now&quot;. A calendar day without a time (2024-01-15) is inclusive: it rounds to the last moment of that day in the project timezone, unless explicitDate is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateTo { get; set; }
+        public string? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private string? _explicitNullValueDateTo = default!;
 #nullable restore
 #else
-        public string DateTo { get; set; }
+        public string DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private string _explicitNullValueDateTo = default!;
 #endif
         /// <summary>Restrict the query to events occurring on these ISO days of week (1=Monday to 7=Sunday), evaluated in the project timezone. Omit or empty for all days. Only applied by insight queries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? DaysOfWeek { get; set; }
+        public List<double?>? DaysOfWeek { get => _explicitNullValueDaysOfWeek; set { _explicitNullValueDaysOfWeek = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daysOfWeek"); else _explicitNullProperties?.Remove("daysOfWeek"); } }
+        private List<double?>? _explicitNullValueDaysOfWeek = default!;
 #nullable restore
 #else
-        public List<double?> DaysOfWeek { get; set; }
+        public List<double?> DaysOfWeek { get => _explicitNullValueDaysOfWeek; set { _explicitNullValueDaysOfWeek = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daysOfWeek"); else _explicitNullProperties?.Remove("daysOfWeek"); } }
+        private List<double?> _explicitNullValueDaysOfWeek = default!;
 #endif
         /// <summary>Exclude the current, still-collecting period by clipping date_to to the end of the last complete interval (evaluated in the project timezone). No-op when the range contains no complete interval. Only applied by insight queries.</summary>
-        public bool? ExcludeIncompletePeriods { get; set; }
+        public bool? ExcludeIncompletePeriods { get => _explicitNullValueExcludeIncompletePeriods; set { _explicitNullValueExcludeIncompletePeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeIncompletePeriods"); else _explicitNullProperties?.Remove("excludeIncompletePeriods"); } }
+        private bool? _explicitNullValueExcludeIncompletePeriods = default!;
         /// <summary>Whether the date_from and date_to should be used verbatim. Disables rounding to the start and end of period.</summary>
-        public bool? ExplicitDate { get; set; }
+        public bool? ExplicitDate { get => _explicitNullValueExplicitDate; set { _explicitNullValueExplicitDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explicitDate"); else _explicitNullProperties?.Remove("explicitDate"); } }
+        private bool? _explicitNullValueExplicitDate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DateRange"/> and sets the default values.
         /// </summary>
@@ -56,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DateRange CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DateRange();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DateRange(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,7 +104,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("date_to", DateTo);
             writer.WriteCollectionOfPrimitiveValues<double?>("daysOfWeek", DaysOfWeek);
             writer.WriteBoolValue("excludeIncompletePeriods", ExcludeIncompletePeriods);
-            writer.WriteBoolValue("explicitDate", ExplicitDate);
+            writer.WriteBoolValue("explicitDate", ExplicitDate);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

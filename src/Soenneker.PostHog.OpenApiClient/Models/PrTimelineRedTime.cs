@@ -11,13 +11,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PrTimelineRedTime : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("seconds_per_merged_pr") is { } nullNodeSecondsPerMergedPr && nullNodeSecondsPerMergedPr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondsPerMergedPr = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `draft` - Draft* `waiting_for_review` - Waiting For Review* `changes_requested` - Changes Requested* `approved_not_enqueued` - Approved Not Enqueued* `review_state_unknown` - Review State Unknown* `ci_running` - CI Running* `red_passed_on_rerun` - Red Passed On Rerun* `red_master_broken` - Red Master Broken* `red_fixed_by_push` - Red Fixed By Push* `red_not_provable` - Red Not Provable* `merge_queue` - Merge Queue* `out_of_merge_queue` - Out Of Merge Queue</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind? _explicitNullValueKind = default!;
         /// <summary>Average seconds per merged pull request attributed to this cause.</summary>
-        public double? SecondsPerMergedPr { get; set; }
+        public double? SecondsPerMergedPr { get => _explicitNullValueSecondsPerMergedPr; set { _explicitNullValueSecondsPerMergedPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seconds_per_merged_pr"); else _explicitNullProperties?.Remove("seconds_per_merged_pr"); } }
+        private double? _explicitNullValueSecondsPerMergedPr = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime"/> and sets the default values.
         /// </summary>
@@ -33,7 +44,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTime(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,6 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PrTimelineRedTimeKind>("kind", Kind);
             writer.WriteDoubleValue("seconds_per_merged_pr", SecondsPerMergedPr);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

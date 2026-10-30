@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Validat
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Validate a proposed pipeline&apos;s target event and population before creating it. Returns volume estimates, base rate, and any warnings. Creation does not enforce the result: &apos;horizon_exceeds_lookback&apos; and an &apos;error&apos; &apos;population_too_large&apos; mean a run would fail, and the other &apos;error&apos; codes mean the data is too thin for a reliable model. Call this before autoresearch-create.

@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.BulkUpdateStatusResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update the status of multiple tickets in a single request.Only tickets belonging to the current team are affected; other-team UUIDsare silently ignored. Tickets the caller lacks editor-level access to (deniedor view-only via object-level access control) are silently skipped too, thesame way single-ticket updates enforce object-level access via get_object().Tickets already in the requested status are skipped.

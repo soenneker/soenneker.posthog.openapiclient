@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews.I
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetail>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetail.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetail>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetail.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// One completed code review on this project, with one turn&apos;s validated findings, the findings the validator dismissed (and why), and the review body published to GitHub. The latest completed turn by default; `run_index` reads an older one. `in_progress`, `progress`, and the resolution fields describe the report now, whatever the turn. Project-wide, so reviews listed under `scope=everyone` can be opened too.

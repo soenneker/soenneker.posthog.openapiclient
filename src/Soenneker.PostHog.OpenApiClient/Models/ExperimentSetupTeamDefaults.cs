@@ -11,53 +11,89 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentSetupTeamDefaults : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("confidence_level") is { } nullNodeConfidenceLevel && nullNodeConfidenceLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfidenceLevel = null;
+            if (parseNode.GetChildNode("cuped_enabled") is { } nullNodeCupedEnabled && nullNodeCupedEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CupedEnabled = null;
+            if (parseNode.GetChildNode("default_exposure_event") is { } nullNodeDefaultExposureEvent && nullNodeDefaultExposureEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultExposureEvent = null;
+            if (parseNode.GetChildNode("flags_persistence_default") is { } nullNodeFlagsPersistenceDefault && nullNodeFlagsPersistenceDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagsPersistenceDefault = null;
+            if (parseNode.GetChildNode("minimum_detectable_effect") is { } nullNodeMinimumDetectableEffect && nullNodeMinimumDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinimumDetectableEffect = null;
+            if (parseNode.GetChildNode("new_experiments_filter_test_accounts") is { } nullNodeNewExperimentsFilterTestAccounts && nullNodeNewExperimentsFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewExperimentsFilterTestAccounts = null;
+            if (parseNode.GetChildNode("only_count_matured_users") is { } nullNodeOnlyCountMaturedUsers && nullNodeOnlyCountMaturedUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OnlyCountMaturedUsers = null;
+            if (parseNode.GetChildNode("product_default_confidence_level") is { } nullNodeProductDefaultConfidenceLevel && nullNodeProductDefaultConfidenceLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductDefaultConfidenceLevel = null;
+            if (parseNode.GetChildNode("product_default_minimum_detectable_effect") is { } nullNodeProductDefaultMinimumDetectableEffect && nullNodeProductDefaultMinimumDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductDefaultMinimumDetectableEffect = null;
+            if (parseNode.GetChildNode("product_default_stats_method") is { } nullNodeProductDefaultStatsMethod && nullNodeProductDefaultStatsMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductDefaultStatsMethod = null;
+            if (parseNode.GetChildNode("sequential_testing_enabled") is { } nullNodeSequentialTestingEnabled && nullNodeSequentialTestingEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SequentialTestingEnabled = null;
+            if (parseNode.GetChildNode("stats_method") is { } nullNodeStatsMethod && nullNodeStatsMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatsMethod = null;
+            if (parseNode.GetChildNode("test_account_filter_count") is { } nullNodeTestAccountFilterCount && nullNodeTestAccountFilterCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestAccountFilterCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Default confidence level for new experiments, for example 0.95. Null when unset.</summary>
-        public double? ConfidenceLevel { get; set; }
+        public double? ConfidenceLevel { get => _explicitNullValueConfidenceLevel; set { _explicitNullValueConfidenceLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence_level"); else _explicitNullProperties?.Remove("confidence_level"); } }
+        private double? _explicitNullValueConfidenceLevel = default!;
         /// <summary>Default for CUPED variance reduction on new experiments.</summary>
-        public bool? CupedEnabled { get; set; }
+        public bool? CupedEnabled { get => _explicitNullValueCupedEnabled; set { _explicitNullValueCupedEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cuped_enabled"); else _explicitNullProperties?.Remove("cuped_enabled"); } }
+        private bool? _explicitNullValueCupedEnabled = default!;
         /// <summary>The exposure event a new experiment launched now counts by default: &apos;$experiment_exposure&apos; or &apos;$feature_flag_called&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultExposureEvent { get; set; }
+        public string? DefaultExposureEvent { get => _explicitNullValueDefaultExposureEvent; set { _explicitNullValueDefaultExposureEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_exposure_event"); else _explicitNullProperties?.Remove("default_exposure_event"); } }
+        private string? _explicitNullValueDefaultExposureEvent = default!;
 #nullable restore
 #else
-        public string DefaultExposureEvent { get; set; }
+        public string DefaultExposureEvent { get => _explicitNullValueDefaultExposureEvent; set { _explicitNullValueDefaultExposureEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_exposure_event"); else _explicitNullProperties?.Remove("default_exposure_event"); } }
+        private string _explicitNullValueDefaultExposureEvent = default!;
 #endif
         /// <summary>Default for persisting flag values across authentication steps on new flags. It becomes the flag&apos;s ensure_experience_continuity.</summary>
-        public bool? FlagsPersistenceDefault { get; set; }
+        public bool? FlagsPersistenceDefault { get => _explicitNullValueFlagsPersistenceDefault; set { _explicitNullValueFlagsPersistenceDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flags_persistence_default"); else _explicitNullProperties?.Remove("flags_persistence_default"); } }
+        private bool? _explicitNullValueFlagsPersistenceDefault = default!;
         /// <summary>The team&apos;s default minimum detectable effect, as a percentage. Null when the team has not set one; product_default_minimum_detectable_effect applies then.</summary>
-        public int? MinimumDetectableEffect { get; set; }
+        public int? MinimumDetectableEffect { get => _explicitNullValueMinimumDetectableEffect; set { _explicitNullValueMinimumDetectableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum_detectable_effect"); else _explicitNullProperties?.Remove("minimum_detectable_effect"); } }
+        private int? _explicitNullValueMinimumDetectableEffect = default!;
         /// <summary>A new experiment filters test accounts this way unless its own exposure criteria say otherwise. It does not follow the project&apos;s insight default.</summary>
-        public bool? NewExperimentsFilterTestAccounts { get; set; }
+        public bool? NewExperimentsFilterTestAccounts { get => _explicitNullValueNewExperimentsFilterTestAccounts; set { _explicitNullValueNewExperimentsFilterTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("new_experiments_filter_test_accounts"); else _explicitNullProperties?.Remove("new_experiments_filter_test_accounts"); } }
+        private bool? _explicitNullValueNewExperimentsFilterTestAccounts = default!;
         /// <summary>Default for counting only users whose metric window has fully passed.</summary>
-        public bool? OnlyCountMaturedUsers { get; set; }
+        public bool? OnlyCountMaturedUsers { get => _explicitNullValueOnlyCountMaturedUsers; set { _explicitNullValueOnlyCountMaturedUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("only_count_matured_users"); else _explicitNullProperties?.Remove("only_count_matured_users"); } }
+        private bool? _explicitNullValueOnlyCountMaturedUsers = default!;
         /// <summary>The confidence level that applies when the team has no default. Both methods use the same one.</summary>
-        public double? ProductDefaultConfidenceLevel { get; set; }
+        public double? ProductDefaultConfidenceLevel { get => _explicitNullValueProductDefaultConfidenceLevel; set { _explicitNullValueProductDefaultConfidenceLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_default_confidence_level"); else _explicitNullProperties?.Remove("product_default_confidence_level"); } }
+        private double? _explicitNullValueProductDefaultConfidenceLevel = default!;
         /// <summary>The minimum detectable effect, as a percentage, that applies when the team has no default.</summary>
-        public int? ProductDefaultMinimumDetectableEffect { get; set; }
+        public int? ProductDefaultMinimumDetectableEffect { get => _explicitNullValueProductDefaultMinimumDetectableEffect; set { _explicitNullValueProductDefaultMinimumDetectableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_default_minimum_detectable_effect"); else _explicitNullProperties?.Remove("product_default_minimum_detectable_effect"); } }
+        private int? _explicitNullValueProductDefaultMinimumDetectableEffect = default!;
         /// <summary>The statistical method that applies when the team has no default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProductDefaultStatsMethod { get; set; }
+        public string? ProductDefaultStatsMethod { get => _explicitNullValueProductDefaultStatsMethod; set { _explicitNullValueProductDefaultStatsMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_default_stats_method"); else _explicitNullProperties?.Remove("product_default_stats_method"); } }
+        private string? _explicitNullValueProductDefaultStatsMethod = default!;
 #nullable restore
 #else
-        public string ProductDefaultStatsMethod { get; set; }
+        public string ProductDefaultStatsMethod { get => _explicitNullValueProductDefaultStatsMethod; set { _explicitNullValueProductDefaultStatsMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_default_stats_method"); else _explicitNullProperties?.Remove("product_default_stats_method"); } }
+        private string _explicitNullValueProductDefaultStatsMethod = default!;
 #endif
         /// <summary>Default for sequential testing. Applies only to the frequentist method.</summary>
-        public bool? SequentialTestingEnabled { get; set; }
+        public bool? SequentialTestingEnabled { get => _explicitNullValueSequentialTestingEnabled; set { _explicitNullValueSequentialTestingEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sequential_testing_enabled"); else _explicitNullProperties?.Remove("sequential_testing_enabled"); } }
+        private bool? _explicitNullValueSequentialTestingEnabled = default!;
         /// <summary>Default statistical method for new experiments: &apos;bayesian&apos; or &apos;frequentist&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StatsMethod { get; set; }
+        public string? StatsMethod { get => _explicitNullValueStatsMethod; set { _explicitNullValueStatsMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stats_method"); else _explicitNullProperties?.Remove("stats_method"); } }
+        private string? _explicitNullValueStatsMethod = default!;
 #nullable restore
 #else
-        public string StatsMethod { get; set; }
+        public string StatsMethod { get => _explicitNullValueStatsMethod; set { _explicitNullValueStatsMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stats_method"); else _explicitNullProperties?.Remove("stats_method"); } }
+        private string _explicitNullValueStatsMethod = default!;
 #endif
         /// <summary>How many filters the team uses to identify internal and test users.</summary>
-        public int? TestAccountFilterCount { get; set; }
+        public int? TestAccountFilterCount { get => _explicitNullValueTestAccountFilterCount; set { _explicitNullValueTestAccountFilterCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_account_filter_count"); else _explicitNullProperties?.Remove("test_account_filter_count"); } }
+        private int? _explicitNullValueTestAccountFilterCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults"/> and sets the default values.
         /// </summary>
@@ -73,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,6 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("sequential_testing_enabled", SequentialTestingEnabled);
             writer.WriteStringValue("stats_method", StatsMethod);
             writer.WriteIntValue("test_account_filter_count", TestAccountFilterCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

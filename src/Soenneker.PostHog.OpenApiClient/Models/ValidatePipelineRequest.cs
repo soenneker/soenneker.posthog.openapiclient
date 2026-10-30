@@ -11,44 +11,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ValidatePipelineRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("horizon_days") is { } nullNodeHorizonDays && nullNodeHorizonDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HorizonDays = null;
+            if (parseNode.GetChildNode("inference_population") is { } nullNodeInferencePopulation && nullNodeInferencePopulation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferencePopulation = null;
+            if (parseNode.GetChildNode("target_definition") is { } nullNodeTargetDefinition && nullNodeTargetDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetDefinition = null;
+            if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
+            if (parseNode.GetChildNode("training_lookback_days") is { } nullNodeTrainingLookbackDays && nullNodeTrainingLookbackDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainingLookbackDays = null;
+            if (parseNode.GetChildNode("training_population") is { } nullNodeTrainingPopulation && nullNodeTrainingPopulation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainingPopulation = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Predict whether the target event occurs within this many days.</summary>
-        public int? HorizonDays { get; set; }
+        public int? HorizonDays { get => _explicitNullValueHorizonDays; set { _explicitNullValueHorizonDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("horizon_days"); else _explicitNullProperties?.Remove("horizon_days"); } }
+        private int? _explicitNullValueHorizonDays = default!;
         /// <summary>Population filter for daily scoring. When omitted or empty, the training population is counted, as creation stores it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestInferencePopulationProperty? InferencePopulation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestInferencePopulationProperty? InferencePopulation { get => _explicitNullValueInferencePopulation; set { _explicitNullValueInferencePopulation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_population"); else _explicitNullProperties?.Remove("inference_population"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestInferencePopulationProperty? _explicitNullValueInferencePopulation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestInferencePopulationProperty InferencePopulation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestInferencePopulationProperty InferencePopulation { get => _explicitNullValueInferencePopulation; set { _explicitNullValueInferencePopulation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_population"); else _explicitNullProperties?.Remove("inference_population"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestInferencePopulationProperty _explicitNullValueInferencePopulation = default!;
 #endif
         /// <summary>Optional target definition. Pass {&quot;type&quot;: &quot;action&quot;, &quot;action_id&quot;: N} to predict a PostHog action (multi-step / property / autocapture matcher) instead of a single event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTargetDefinition? TargetDefinition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTargetDefinition? TargetDefinition { get => _explicitNullValueTargetDefinition; set { _explicitNullValueTargetDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_definition"); else _explicitNullProperties?.Remove("target_definition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTargetDefinition? _explicitNullValueTargetDefinition = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTargetDefinition TargetDefinition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTargetDefinition TargetDefinition { get => _explicitNullValueTargetDefinition; set { _explicitNullValueTargetDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_definition"); else _explicitNullProperties?.Remove("target_definition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTargetDefinition _explicitNullValueTargetDefinition = default!;
 #endif
         /// <summary>Event name to predict, e.g. &apos;$pageview&apos;. Must exist in the team&apos;s event schema. Omit when predicting an action target (pass target_definition instead).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEvent { get; set; }
+        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string? _explicitNullValueTargetEvent = default!;
 #nullable restore
 #else
-        public string TargetEvent { get; set; }
+        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string _explicitNullValueTargetEvent = default!;
 #endif
         /// <summary>How far back to look for training examples. Default: 180.</summary>
-        public int? TrainingLookbackDays { get; set; }
+        public int? TrainingLookbackDays { get => _explicitNullValueTrainingLookbackDays; set { _explicitNullValueTrainingLookbackDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_lookback_days"); else _explicitNullProperties?.Remove("training_lookback_days"); } }
+        private int? _explicitNullValueTrainingLookbackDays = default!;
         /// <summary>Population filter for training examples. Use {} for all identified users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTrainingPopulationProperty? TrainingPopulation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTrainingPopulationProperty? TrainingPopulation { get => _explicitNullValueTrainingPopulation; set { _explicitNullValueTrainingPopulation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_population"); else _explicitNullProperties?.Remove("training_population"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTrainingPopulationProperty? _explicitNullValueTrainingPopulation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTrainingPopulationProperty TrainingPopulation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTrainingPopulationProperty TrainingPopulation { get => _explicitNullValueTrainingPopulation; set { _explicitNullValueTrainingPopulation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_population"); else _explicitNullProperties?.Remove("training_population"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTrainingPopulationProperty _explicitNullValueTrainingPopulation = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequest"/> and sets the default values.
@@ -67,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("target_event", TargetEvent);
             writer.WriteIntValue("training_lookback_days", TrainingLookbackDays);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineRequestTrainingPopulationProperty>("training_population", TrainingPopulation);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

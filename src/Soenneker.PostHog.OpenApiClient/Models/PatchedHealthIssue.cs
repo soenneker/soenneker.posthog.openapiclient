@@ -11,13 +11,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedHealthIssue : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dismissed") is { } nullNodeDismissed && nullNodeDismissed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dismissed = null;
+            if (parseNode.GetChildNode("snoozed_until") is { } nullNodeSnoozedUntil && nullNodeSnoozedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnoozedUntil = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the issue was first detected (ISO 8601).</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Whether a user has dismissed this issue from the Health UI. Dismissed issues stay in the list but are hidden by default.</summary>
-        public bool? Dismissed { get; set; }
+        public bool? Dismissed { get => _explicitNullValueDismissed; set { _explicitNullValueDismissed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissed"); else _explicitNullProperties?.Remove("dismissed"); } }
+        private bool? _explicitNullValueDismissed = default!;
         /// <summary>Unique identifier for the health issue.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Which health check produced this issue (e.g. &apos;sdk_outdated&apos;, &apos;external_data_failure&apos;, &apos;no_live_events&apos;, &apos;ingestion_warnings&apos;). Stable string key — use it to filter issues by category.</summary>
@@ -43,10 +53,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When the issue&apos;s snooze ends, or null if it isn&apos;t snoozed. A snoozed issue still appears in every list; it just stops counting towards the health badge in the navigation. Write a relative duration such as &apos;7d&apos; to snooze, capped at 90 days, or null to end the snooze. Unlike `dismissed`, this expires on its own.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SnoozedUntil { get; set; }
+        public string? SnoozedUntil { get => _explicitNullValueSnoozedUntil; set { _explicitNullValueSnoozedUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snoozed_until"); else _explicitNullProperties?.Remove("snoozed_until"); } }
+        private string? _explicitNullValueSnoozedUntil = default!;
 #nullable restore
 #else
-        public string SnoozedUntil { get; set; }
+        public string SnoozedUntil { get => _explicitNullValueSnoozedUntil; set { _explicitNullValueSnoozedUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snoozed_until"); else _explicitNullProperties?.Remove("snoozed_until"); } }
+        private string _explicitNullValueSnoozedUntil = default!;
 #endif
         /// <summary>* `active` - Active* `resolved` - Resolved</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedHealthIssueStatus? Status { get; private set; }
@@ -67,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedHealthIssue CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedHealthIssue();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedHealthIssue(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("dismissed", Dismissed);
             writer.WriteStringValue("snoozed_until", SnoozedUntil);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

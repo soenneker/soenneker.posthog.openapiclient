@@ -8,38 +8,80 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Destination configuration. Required integration_id is enforced per destination type.
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf8"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BatchExportRequestDestination : IAdditionalDataHolder, IParsable
-    {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Typed configuration for a Databricks batch-export destination.Credentials live in the linked Integration, not in this config. Mirrors`DatabricksBatchExportInputs` in `products/batch_exports/backend/service.py`.</summary>
+    public partial class BatchExportRequestDestination : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf1? BatchExportRequestDestinationOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf1 BatchExportRequestDestinationOneOf1 { get; set; }
 #endif
-        /// <summary>ID of a databricks-kind Integration. Use the integrations-list MCP tool to find one.</summary>
-        public int? IntegrationId { get; set; }
-        /// <summary>The type property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf2? BatchExportRequestDestinationOneOf2 { get; set; }
 #nullable restore
 #else
-        public string Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf2 BatchExportRequestDestinationOneOf2 { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestination"/> and sets the default values.
-        /// </summary>
-        public BatchExportRequestDestination()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf3"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf3? BatchExportRequestDestinationOneOf3 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf3 BatchExportRequestDestinationOneOf3 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf4"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf4? BatchExportRequestDestinationOneOf4 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf4 BatchExportRequestDestinationOneOf4 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf5"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf5? BatchExportRequestDestinationOneOf5 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf5 BatchExportRequestDestinationOneOf5 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf6"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf6? BatchExportRequestDestinationOneOf6 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf6 BatchExportRequestDestinationOneOf6 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf7"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf7? BatchExportRequestDestinationOneOf7 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf7 BatchExportRequestDestinationOneOf7 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf8"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf8? BatchExportRequestDestinationOneOf8 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf8 BatchExportRequestDestinationOneOf8 { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -48,7 +90,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestination CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestination();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestination();
+            if("BatchExportRequestDestinationOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportRequestDestinationOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportRequestDestinationOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportRequestDestinationOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportRequestDestinationOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportRequestDestinationOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportRequestDestinationOneOf7".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BatchExportRequestDestinationOneOf8".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("config") != null && parseNode.GetChildNode("integration_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("Databricks".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("config") != null && parseNode.GetChildNode("integration_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("AzureBlob".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("config") != null && parseNode.GetChildNode("integration_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("BigQuery".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("config") != null && parseNode.GetChildNode("integration_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("Postgres".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("config") != null && parseNode.GetChildNode("integration_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("AwsS3".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("config") != null && parseNode.GetChildNode("integration_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("S3Compatible".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch6 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("config") != null && parseNode.GetChildNode("integration_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("Snowflake".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch7 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("config") != null && parseNode.GetChildNode("integration_id") != null && parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag3 && ("Redshift".Equals(tag3.GetValue(), global::System.StringComparison.Ordinal)))))();
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportRequestDestinationOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf1(), parseNode);
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportRequestDestinationOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf2(), parseNode);
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportRequestDestinationOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf3(), parseNode);
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportRequestDestinationOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf4(), parseNode);
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch5 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportRequestDestinationOneOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf5(), parseNode);
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null && matchesUnionBranch5 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch6 && !matchesUnionBranch7) result.BatchExportRequestDestinationOneOf6 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf6(), parseNode);
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null && matchesUnionBranch6 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch7) result.BatchExportRequestDestinationOneOf7 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf7(), parseNode);
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null && matchesUnionBranch7 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4 && !matchesUnionBranch5 && !matchesUnionBranch6) result.BatchExportRequestDestinationOneOf8 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf8(), parseNode);
+            if (result.BatchExportRequestDestinationOneOf1 == null && result.BatchExportRequestDestinationOneOf2 == null && result.BatchExportRequestDestinationOneOf3 == null && result.BatchExportRequestDestinationOneOf4 == null && result.BatchExportRequestDestinationOneOf5 == null && result.BatchExportRequestDestinationOneOf6 == null && result.BatchExportRequestDestinationOneOf7 == null && result.BatchExportRequestDestinationOneOf8 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,12 +151,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if(BatchExportRequestDestinationOneOf1 != null)
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig.CreateFromDiscriminatorValue); } },
-                { "integration_id", n => { IntegrationId = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
-            };
+                return BatchExportRequestDestinationOneOf1.GetFieldDeserializers();
+            }
+            else if(BatchExportRequestDestinationOneOf2 != null)
+            {
+                return BatchExportRequestDestinationOneOf2.GetFieldDeserializers();
+            }
+            else if(BatchExportRequestDestinationOneOf3 != null)
+            {
+                return BatchExportRequestDestinationOneOf3.GetFieldDeserializers();
+            }
+            else if(BatchExportRequestDestinationOneOf4 != null)
+            {
+                return BatchExportRequestDestinationOneOf4.GetFieldDeserializers();
+            }
+            else if(BatchExportRequestDestinationOneOf5 != null)
+            {
+                return BatchExportRequestDestinationOneOf5.GetFieldDeserializers();
+            }
+            else if(BatchExportRequestDestinationOneOf6 != null)
+            {
+                return BatchExportRequestDestinationOneOf6.GetFieldDeserializers();
+            }
+            else if(BatchExportRequestDestinationOneOf7 != null)
+            {
+                return BatchExportRequestDestinationOneOf7.GetFieldDeserializers();
+            }
+            else if(BatchExportRequestDestinationOneOf8 != null)
+            {
+                return BatchExportRequestDestinationOneOf8.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -69,11 +191,58 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (BatchExportRequestDestinationOneOf1 == null && BatchExportRequestDestinationOneOf2 == null && BatchExportRequestDestinationOneOf3 == null && BatchExportRequestDestinationOneOf4 == null && BatchExportRequestDestinationOneOf5 == null && BatchExportRequestDestinationOneOf6 == null && BatchExportRequestDestinationOneOf7 == null && BatchExportRequestDestinationOneOf8 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (BatchExportRequestDestinationOneOf1 != null && BatchExportRequestDestinationOneOf2 == null && BatchExportRequestDestinationOneOf3 == null && BatchExportRequestDestinationOneOf4 == null && BatchExportRequestDestinationOneOf5 == null && BatchExportRequestDestinationOneOf6 == null && BatchExportRequestDestinationOneOf7 == null && BatchExportRequestDestinationOneOf8 == null) { if (BatchExportRequestDestinationOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportRequestDestinationOneOf1); return; }
+            if (BatchExportRequestDestinationOneOf2 != null && BatchExportRequestDestinationOneOf1 == null && BatchExportRequestDestinationOneOf3 == null && BatchExportRequestDestinationOneOf4 == null && BatchExportRequestDestinationOneOf5 == null && BatchExportRequestDestinationOneOf6 == null && BatchExportRequestDestinationOneOf7 == null && BatchExportRequestDestinationOneOf8 == null) { if (BatchExportRequestDestinationOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportRequestDestinationOneOf2); return; }
+            if (BatchExportRequestDestinationOneOf3 != null && BatchExportRequestDestinationOneOf1 == null && BatchExportRequestDestinationOneOf2 == null && BatchExportRequestDestinationOneOf4 == null && BatchExportRequestDestinationOneOf5 == null && BatchExportRequestDestinationOneOf6 == null && BatchExportRequestDestinationOneOf7 == null && BatchExportRequestDestinationOneOf8 == null) { if (BatchExportRequestDestinationOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportRequestDestinationOneOf3); return; }
+            if (BatchExportRequestDestinationOneOf4 != null && BatchExportRequestDestinationOneOf1 == null && BatchExportRequestDestinationOneOf2 == null && BatchExportRequestDestinationOneOf3 == null && BatchExportRequestDestinationOneOf5 == null && BatchExportRequestDestinationOneOf6 == null && BatchExportRequestDestinationOneOf7 == null && BatchExportRequestDestinationOneOf8 == null) { if (BatchExportRequestDestinationOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportRequestDestinationOneOf4); return; }
+            if (BatchExportRequestDestinationOneOf5 != null && BatchExportRequestDestinationOneOf1 == null && BatchExportRequestDestinationOneOf2 == null && BatchExportRequestDestinationOneOf3 == null && BatchExportRequestDestinationOneOf4 == null && BatchExportRequestDestinationOneOf6 == null && BatchExportRequestDestinationOneOf7 == null && BatchExportRequestDestinationOneOf8 == null) { if (BatchExportRequestDestinationOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportRequestDestinationOneOf5); return; }
+            if (BatchExportRequestDestinationOneOf6 != null && BatchExportRequestDestinationOneOf1 == null && BatchExportRequestDestinationOneOf2 == null && BatchExportRequestDestinationOneOf3 == null && BatchExportRequestDestinationOneOf4 == null && BatchExportRequestDestinationOneOf5 == null && BatchExportRequestDestinationOneOf7 == null && BatchExportRequestDestinationOneOf8 == null) { if (BatchExportRequestDestinationOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportRequestDestinationOneOf6); return; }
+            if (BatchExportRequestDestinationOneOf7 != null && BatchExportRequestDestinationOneOf1 == null && BatchExportRequestDestinationOneOf2 == null && BatchExportRequestDestinationOneOf3 == null && BatchExportRequestDestinationOneOf4 == null && BatchExportRequestDestinationOneOf5 == null && BatchExportRequestDestinationOneOf6 == null && BatchExportRequestDestinationOneOf8 == null) { if (BatchExportRequestDestinationOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportRequestDestinationOneOf7); return; }
+            if (BatchExportRequestDestinationOneOf8 != null && BatchExportRequestDestinationOneOf1 == null && BatchExportRequestDestinationOneOf2 == null && BatchExportRequestDestinationOneOf3 == null && BatchExportRequestDestinationOneOf4 == null && BatchExportRequestDestinationOneOf5 == null && BatchExportRequestDestinationOneOf6 == null && BatchExportRequestDestinationOneOf7 == null) { if (BatchExportRequestDestinationOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, BatchExportRequestDestinationOneOf8); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatabricksDestinationConfig>("config", Config);
-            writer.WriteIntValue("integration_id", IntegrationId);
-            writer.WriteStringValue("type", Type);
-            writer.WriteAdditionalData(AdditionalData);
+            if(BatchExportRequestDestinationOneOf1 != null)
+            {
+                if (BatchExportRequestDestinationOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf1>(null, BatchExportRequestDestinationOneOf1);
+            }
+            else if(BatchExportRequestDestinationOneOf2 != null)
+            {
+                if (BatchExportRequestDestinationOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf2>(null, BatchExportRequestDestinationOneOf2);
+            }
+            else if(BatchExportRequestDestinationOneOf3 != null)
+            {
+                if (BatchExportRequestDestinationOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf3>(null, BatchExportRequestDestinationOneOf3);
+            }
+            else if(BatchExportRequestDestinationOneOf4 != null)
+            {
+                if (BatchExportRequestDestinationOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf4>(null, BatchExportRequestDestinationOneOf4);
+            }
+            else if(BatchExportRequestDestinationOneOf5 != null)
+            {
+                if (BatchExportRequestDestinationOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf5>(null, BatchExportRequestDestinationOneOf5);
+            }
+            else if(BatchExportRequestDestinationOneOf6 != null)
+            {
+                if (BatchExportRequestDestinationOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf6>(null, BatchExportRequestDestinationOneOf6);
+            }
+            else if(BatchExportRequestDestinationOneOf7 != null)
+            {
+                if (BatchExportRequestDestinationOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf7>(null, BatchExportRequestDestinationOneOf7);
+            }
+            else if(BatchExportRequestDestinationOneOf8 != null)
+            {
+                if (BatchExportRequestDestinationOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRequestDestinationOneOf8>(null, BatchExportRequestDestinationOneOf8);
+            }
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Events
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedClickhouseEventList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedClickhouseEventList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedClickhouseEventList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedClickhouseEventList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         ///         This endpoint allows you to list and filter events.        It is effectively deprecated and is kept only for backwards compatibility.        If you ever ask about it you will be advised to not use it...        If you want to ad-hoc list or aggregate events, use the Query endpoint instead.        If you want to export all events or many pages of events you should use our CDP/Batch Exports products instead.        

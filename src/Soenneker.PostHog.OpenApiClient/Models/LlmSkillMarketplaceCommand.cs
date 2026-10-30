@@ -11,96 +11,141 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LlmSkillMarketplaceCommand : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("codex_command") is { } nullNodeCodexCommand && nullNodeCodexCommand.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodexCommand = null;
+            if (parseNode.GetChildNode("codex_command_template") is { } nullNodeCodexCommandTemplate && nullNodeCodexCommandTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodexCommandTemplate = null;
+            if (parseNode.GetChildNode("command") is { } nullNodeCommand && nullNodeCommand.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Command = null;
+            if (parseNode.GetChildNode("command_template") is { } nullNodeCommandTemplate && nullNodeCommandTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommandTemplate = null;
+            if (parseNode.GetChildNode("connected") is { } nullNodeConnected && nullNodeConnected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connected = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("last_rolled_at") is { } nullNodeLastRolledAt && nullNodeLastRolledAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRolledAt = null;
+            if (parseNode.GetChildNode("marketplace_name") is { } nullNodeMarketplaceName && nullNodeMarketplaceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarketplaceName = null;
+            if (parseNode.GetChildNode("mask_value") is { } nullNodeMaskValue && nullNodeMaskValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskValue = null;
+            if (parseNode.GetChildNode("plugin_name") is { } nullNodePluginName && nullNodePluginName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PluginName = null;
+            if (parseNode.GetChildNode("repo_url") is { } nullNodeRepoUrl && nullNodeRepoUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoUrl = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("token") is { } nullNodeToken && nullNodeToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Token = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>OpenAI Codex: two-line `codex plugin marketplace add` + `codex plugin add` command with the live token embedded. Returned only when a token was just issued (status created/rotated); null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CodexCommand { get; set; }
+        public string? CodexCommand { get => _explicitNullValueCodexCommand; set { _explicitNullValueCodexCommand = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("codex_command"); else _explicitNullProperties?.Remove("codex_command"); } }
+        private string? _explicitNullValueCodexCommand = default!;
 #nullable restore
 #else
-        public string CodexCommand { get; set; }
+        public string CodexCommand { get => _explicitNullValueCodexCommand; set { _explicitNullValueCodexCommand = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("codex_command"); else _explicitNullProperties?.Remove("codex_command"); } }
+        private string _explicitNullValueCodexCommand = default!;
 #endif
         /// <summary>Codex install command with a YOUR_PHS_TOKEN placeholder instead of a live token; always present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CodexCommandTemplate { get; set; }
+        public string? CodexCommandTemplate { get => _explicitNullValueCodexCommandTemplate; set { _explicitNullValueCodexCommandTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("codex_command_template"); else _explicitNullProperties?.Remove("codex_command_template"); } }
+        private string? _explicitNullValueCodexCommandTemplate = default!;
 #nullable restore
 #else
-        public string CodexCommandTemplate { get; set; }
+        public string CodexCommandTemplate { get => _explicitNullValueCodexCommandTemplate; set { _explicitNullValueCodexCommandTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("codex_command_template"); else _explicitNullProperties?.Remove("codex_command_template"); } }
+        private string _explicitNullValueCodexCommandTemplate = default!;
 #endif
         /// <summary>Claude Code: ready-to-paste `/plugin marketplace add` command with the live token embedded. Returned only when a token was just issued (status created/rotated); null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Command { get; set; }
+        public string? Command { get => _explicitNullValueCommand; set { _explicitNullValueCommand = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("command"); else _explicitNullProperties?.Remove("command"); } }
+        private string? _explicitNullValueCommand = default!;
 #nullable restore
 #else
-        public string Command { get; set; }
+        public string Command { get => _explicitNullValueCommand; set { _explicitNullValueCommand = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("command"); else _explicitNullProperties?.Remove("command"); } }
+        private string _explicitNullValueCommand = default!;
 #endif
         /// <summary>Claude Code install command with a YOUR_PHS_TOKEN placeholder instead of a live token; always present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CommandTemplate { get; set; }
+        public string? CommandTemplate { get => _explicitNullValueCommandTemplate; set { _explicitNullValueCommandTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("command_template"); else _explicitNullProperties?.Remove("command_template"); } }
+        private string? _explicitNullValueCommandTemplate = default!;
 #nullable restore
 #else
-        public string CommandTemplate { get; set; }
+        public string CommandTemplate { get => _explicitNullValueCommandTemplate; set { _explicitNullValueCommandTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("command_template"); else _explicitNullProperties?.Remove("command_template"); } }
+        private string _explicitNullValueCommandTemplate = default!;
 #endif
         /// <summary>Whether this user already has a marketplace credential for the team&apos;s skill store.</summary>
-        public bool? Connected { get; set; }
+        public bool? Connected { get => _explicitNullValueConnected; set { _explicitNullValueConnected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected"); else _explicitNullProperties?.Remove("connected"); } }
+        private bool? _explicitNullValueConnected = default!;
         /// <summary>When the credential was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Label of this user&apos;s marketplace credential (a scoped Personal API Key).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get; set; }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get; set; }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>When the credential was last rotated.</summary>
-        public DateTimeOffset? LastRolledAt { get; set; }
+        public DateTimeOffset? LastRolledAt { get => _explicitNullValueLastRolledAt; set { _explicitNullValueLastRolledAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_rolled_at"); else _explicitNullProperties?.Remove("last_rolled_at"); } }
+        private DateTimeOffset? _explicitNullValueLastRolledAt = default!;
         /// <summary>The marketplace name, used by the Codex install command.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MarketplaceName { get; set; }
+        public string? MarketplaceName { get => _explicitNullValueMarketplaceName; set { _explicitNullValueMarketplaceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketplace_name"); else _explicitNullProperties?.Remove("marketplace_name"); } }
+        private string? _explicitNullValueMarketplaceName = default!;
 #nullable restore
 #else
-        public string MarketplaceName { get; set; }
+        public string MarketplaceName { get => _explicitNullValueMarketplaceName; set { _explicitNullValueMarketplaceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketplace_name"); else _explicitNullProperties?.Remove("marketplace_name"); } }
+        private string _explicitNullValueMarketplaceName = default!;
 #endif
         /// <summary>Masked preview of the existing credential (e.g. phx_...abcd).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaskValue { get; set; }
+        public string? MaskValue { get => _explicitNullValueMaskValue; set { _explicitNullValueMaskValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mask_value"); else _explicitNullProperties?.Remove("mask_value"); } }
+        private string? _explicitNullValueMaskValue = default!;
 #nullable restore
 #else
-        public string MaskValue { get; set; }
+        public string MaskValue { get => _explicitNullValueMaskValue; set { _explicitNullValueMaskValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mask_value"); else _explicitNullProperties?.Remove("mask_value"); } }
+        private string _explicitNullValueMaskValue = default!;
 #endif
         /// <summary>The plugin name the command installs (Claude Code and Codex).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PluginName { get; set; }
+        public string? PluginName { get => _explicitNullValuePluginName; set { _explicitNullValuePluginName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plugin_name"); else _explicitNullProperties?.Remove("plugin_name"); } }
+        private string? _explicitNullValuePluginName = default!;
 #nullable restore
 #else
-        public string PluginName { get; set; }
+        public string PluginName { get => _explicitNullValuePluginName; set { _explicitNullValuePluginName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plugin_name"); else _explicitNullProperties?.Remove("plugin_name"); } }
+        private string _explicitNullValuePluginName = default!;
 #endif
         /// <summary>The marketplace git repository URL, with no credential embedded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RepoUrl { get; set; }
+        public string? RepoUrl { get => _explicitNullValueRepoUrl; set { _explicitNullValueRepoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_url"); else _explicitNullProperties?.Remove("repo_url"); } }
+        private string? _explicitNullValueRepoUrl = default!;
 #nullable restore
 #else
-        public string RepoUrl { get; set; }
+        public string RepoUrl { get => _explicitNullValueRepoUrl; set { _explicitNullValueRepoUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_url"); else _explicitNullProperties?.Remove("repo_url"); } }
+        private string _explicitNullValueRepoUrl = default!;
 #endif
         /// <summary>* `absent` - absent* `exists` - exists* `created` - created* `rotated` - rotated</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommandStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommandStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommandStatus? _explicitNullValueStatus = default!;
         /// <summary>The raw read-only `phx_` credential. Returned once, only when minted or rotated; it cannot be retrieved again afterwards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Token { get; set; }
+        public string? Token { get => _explicitNullValueToken; set { _explicitNullValueToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token"); else _explicitNullProperties?.Remove("token"); } }
+        private string? _explicitNullValueToken = default!;
 #nullable restore
 #else
-        public string Token { get; set; }
+        public string Token { get => _explicitNullValueToken; set { _explicitNullValueToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token"); else _explicitNullProperties?.Remove("token"); } }
+        private string _explicitNullValueToken = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommand"/> and sets the default values.
@@ -117,7 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommand CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommand();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommand(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -164,6 +209,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("repo_url", RepoUrl);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceCommandStatus>("status", Status);
             writer.WriteStringValue("token", Token);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

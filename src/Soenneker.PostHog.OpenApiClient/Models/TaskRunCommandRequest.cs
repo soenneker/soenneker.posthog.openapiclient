@@ -12,28 +12,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunCommandRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("jsonrpc") is { } nullNodeJsonrpc && nullNodeJsonrpc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Jsonrpc = null;
+            if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
+            if (parseNode.GetChildNode("params") is { } nullNodeParams && nullNodeParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Params = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional JSON-RPC request ID (string or number)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Id { get; set; }
+        public UntypedNode? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private UntypedNode? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public UntypedNode Id { get; set; }
+        public UntypedNode Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private UntypedNode _explicitNullValueId = default!;
 #endif
         /// <summary>* `2.0` - 2.0</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc? Jsonrpc { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc? Jsonrpc { get => _explicitNullValueJsonrpc; set { _explicitNullValueJsonrpc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jsonrpc"); else _explicitNullProperties?.Remove("jsonrpc"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc? _explicitNullValueJsonrpc = default!;
         /// <summary>* `user_message` - user_message* `cancel` - cancel* `close` - close* `permission_response` - permission_response* `set_config_option` - set_config_option* `mcp_response` - mcp_response* `credential_response` - credential_response* `pi/rpc` - pi/rpc* `queue_get` - queue_get* `queue_clear` - queue_clear* `side_question` - side_question</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod? Method { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod? _explicitNullValueMethod = default!;
         /// <summary>Parameters for the command</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty? Params { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty? Params { get => _explicitNullValueParams; set { _explicitNullValueParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("params"); else _explicitNullProperties?.Remove("params"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty? _explicitNullValueParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty Params { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty Params { get => _explicitNullValueParams; set { _explicitNullValueParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("params"); else _explicitNullProperties?.Remove("params"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty _explicitNullValueParams = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequest"/> and sets the default values.
@@ -50,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -77,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestJsonrpc>("jsonrpc", Jsonrpc);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestMethod>("method", Method);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunCommandRequestParamsProperty>("params", Params);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

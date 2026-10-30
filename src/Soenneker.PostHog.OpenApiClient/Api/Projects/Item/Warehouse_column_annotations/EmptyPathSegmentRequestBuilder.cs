@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_column_ann
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseColumnAnnotationList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseColumnAnnotationList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseColumnAnnotationList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseColumnAnnotationList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.List can be filtered to one table with `?table_id=&lt;uuid&gt;`. Any create or update is treated as auser edit (`is_user_edited=True`), which protects the row from being overwritten by automaticenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation.
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_column_ann
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseColumnAnnotation>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WarehouseColumnAnnotation.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseColumnAnnotation>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WarehouseColumnAnnotation.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Read and edit semantic descriptions of warehouse tables and columns surfaced to the AI agent.List can be filtered to one table with `?table_id=&lt;uuid&gt;`. Any create or update is treated as auser edit (`is_user_edited=True`), which protects the row from being overwritten by automaticenrichment. Create upserts on `(table, column_name)`; the table cannot be changed after creation.

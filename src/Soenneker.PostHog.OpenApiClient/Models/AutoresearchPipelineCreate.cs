@@ -11,105 +11,158 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AutoresearchPipelineCreate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_model") is { } nullNodeAgentModel && nullNodeAgentModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentModel = null;
+            if (parseNode.GetChildNode("agent_reasoning_effort") is { } nullNodeAgentReasoningEffort && nullNodeAgentReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentReasoningEffort = null;
+            if (parseNode.GetChildNode("cadence_days") is { } nullNodeCadenceDays && nullNodeCadenceDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CadenceDays = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("horizon_days") is { } nullNodeHorizonDays && nullNodeHorizonDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HorizonDays = null;
+            if (parseNode.GetChildNode("inference_population") is { } nullNodeInferencePopulation && nullNodeInferencePopulation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferencePopulation = null;
+            if (parseNode.GetChildNode("iteration_budget") is { } nullNodeIterationBudget && nullNodeIterationBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationBudget = null;
+            if (parseNode.GetChildNode("iterations_per_run") is { } nullNodeIterationsPerRun && nullNodeIterationsPerRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationsPerRun = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("output_person_property") is { } nullNodeOutputPersonProperty && nullNodeOutputPersonProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputPersonProperty = null;
+            if (parseNode.GetChildNode("plateau_iterations") is { } nullNodePlateauIterations && nullNodePlateauIterations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PlateauIterations = null;
+            if (parseNode.GetChildNode("research_interval_days") is { } nullNodeResearchIntervalDays && nullNodeResearchIntervalDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResearchIntervalDays = null;
+            if (parseNode.GetChildNode("success_auc") is { } nullNodeSuccessAuc && nullNodeSuccessAuc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessAuc = null;
+            if (parseNode.GetChildNode("target_definition") is { } nullNodeTargetDefinition && nullNodeTargetDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetDefinition = null;
+            if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
+            if (parseNode.GetChildNode("training_lookback_days") is { } nullNodeTrainingLookbackDays && nullNodeTrainingLookbackDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainingLookbackDays = null;
+            if (parseNode.GetChildNode("training_population") is { } nullNodeTrainingPopulation && nullNodeTrainingPopulation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainingPopulation = null;
+            if (parseNode.GetChildNode("write_person_property") is { } nullNodeWritePersonProperty && nullNodeWritePersonProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WritePersonProperty = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Model the training agent runs on, a model id from the PostHog Tasks catalogue such as &apos;claude-opus-5-5&apos;, &apos;claude-sonnet-5-5&apos; or &apos;gpt-6.1-sol&apos;. Null or omitted uses the autoresearch default, Claude Opus 5.5. A larger model costs more per training run. Scheduled runs and Train now use it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentModel { get; set; }
+        public string? AgentModel { get => _explicitNullValueAgentModel; set { _explicitNullValueAgentModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_model"); else _explicitNullProperties?.Remove("agent_model"); } }
+        private string? _explicitNullValueAgentModel = default!;
 #nullable restore
 #else
-        public string AgentModel { get; set; }
+        public string AgentModel { get => _explicitNullValueAgentModel; set { _explicitNullValueAgentModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_model"); else _explicitNullProperties?.Remove("agent_model"); } }
+        private string _explicitNullValueAgentModel = default!;
 #endif
         /// <summary>Reasoning effort for the training agent, such as &apos;low&apos;, &apos;medium&apos; or &apos;high&apos;. It must be one the model supports, and without agent_model it is checked against the default model. Null or omitted uses the autoresearch default, medium. Higher effort costs more per training run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentReasoningEffort { get; set; }
+        public string? AgentReasoningEffort { get => _explicitNullValueAgentReasoningEffort; set { _explicitNullValueAgentReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_reasoning_effort"); else _explicitNullProperties?.Remove("agent_reasoning_effort"); } }
+        private string? _explicitNullValueAgentReasoningEffort = default!;
 #nullable restore
 #else
-        public string AgentReasoningEffort { get; set; }
+        public string AgentReasoningEffort { get => _explicitNullValueAgentReasoningEffort; set { _explicitNullValueAgentReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_reasoning_effort"); else _explicitNullProperties?.Remove("agent_reasoning_effort"); } }
+        private string _explicitNullValueAgentReasoningEffort = default!;
 #endif
         /// <summary>Re-score the inference population every N days (1-365). Default: 1.</summary>
-        public int? CadenceDays { get; set; }
+        public int? CadenceDays { get => _explicitNullValueCadenceDays; set { _explicitNullValueCadenceDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cadence_days"); else _explicitNullProperties?.Remove("cadence_days"); } }
+        private int? _explicitNullValueCadenceDays = default!;
         /// <summary>Optional free-text description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Prediction horizon in days (1-365). The model predicts whether the target event occurs within this window.</summary>
-        public int? HorizonDays { get; set; }
+        public int? HorizonDays { get => _explicitNullValueHorizonDays; set { _explicitNullValueHorizonDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("horizon_days"); else _explicitNullProperties?.Remove("horizon_days"); } }
+        private int? _explicitNullValueHorizonDays = default!;
         /// <summary>Inference population filter. Defaults to training_population if not set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateInferencePopulationProperty? InferencePopulation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateInferencePopulationProperty? InferencePopulation { get => _explicitNullValueInferencePopulation; set { _explicitNullValueInferencePopulation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_population"); else _explicitNullProperties?.Remove("inference_population"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateInferencePopulationProperty? _explicitNullValueInferencePopulation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateInferencePopulationProperty InferencePopulation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateInferencePopulationProperty InferencePopulation { get => _explicitNullValueInferencePopulation; set { _explicitNullValueInferencePopulation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_population"); else _explicitNullProperties?.Remove("inference_population"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateInferencePopulationProperty _explicitNullValueInferencePopulation = default!;
 #endif
         /// <summary>Deprecated: scheduled training no longer reads it. Use iterations_per_run.</summary>
-        public int? IterationBudget { get; set; }
+        public int? IterationBudget { get => _explicitNullValueIterationBudget; set { _explicitNullValueIterationBudget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_budget"); else _explicitNullProperties?.Remove("iteration_budget"); } }
+        private int? _explicitNullValueIterationBudget = default!;
         /// <summary>Experiments the agent may try in each training run (1-50). Each experiment costs agent time and queries, so a higher value costs more per run. Scheduled runs and Train now use it. Default: 5.</summary>
-        public int? IterationsPerRun { get; set; }
+        public int? IterationsPerRun { get => _explicitNullValueIterationsPerRun; set { _explicitNullValueIterationsPerRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iterations_per_run"); else _explicitNullProperties?.Remove("iterations_per_run"); } }
+        private int? _explicitNullValueIterationsPerRun = default!;
         /// <summary>Display name for the pipeline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Person property name for the prediction score, e.g. &apos;predicted_p_pageview&apos;. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog&apos;s own properties); must be unique among this project&apos;s non-archived pipelines.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OutputPersonProperty { get; set; }
+        public string? OutputPersonProperty { get => _explicitNullValueOutputPersonProperty; set { _explicitNullValueOutputPersonProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_person_property"); else _explicitNullProperties?.Remove("output_person_property"); } }
+        private string? _explicitNullValueOutputPersonProperty = default!;
 #nullable restore
 #else
-        public string OutputPersonProperty { get; set; }
+        public string OutputPersonProperty { get => _explicitNullValueOutputPersonProperty; set { _explicitNullValueOutputPersonProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_person_property"); else _explicitNullProperties?.Remove("output_person_property"); } }
+        private string _explicitNullValueOutputPersonProperty = default!;
 #endif
         /// <summary>Stop training if no improvement in this many consecutive iterations (at least 1). Default: 10.</summary>
-        public int? PlateauIterations { get; set; }
+        public int? PlateauIterations { get => _explicitNullValuePlateauIterations; set { _explicitNullValuePlateauIterations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("plateau_iterations"); else _explicitNullProperties?.Remove("plateau_iterations"); } }
+        private int? _explicitNullValuePlateauIterations = default!;
         /// <summary>Days between scheduled research runs once the first burst of daily runs ends: 7, 14, 30, 60 or 90. Null means only when asked: no scheduled research, so the only training cost comes from runs you start and from rescue runs for a model that cannot score. A shorter interval costs more. Default: 7.* `7` - 7* `14` - 14* `30` - 30* `60` - 60* `90` - 90</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateResearchIntervalDays? ResearchIntervalDays { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateResearchIntervalDays? ResearchIntervalDays { get => _explicitNullValueResearchIntervalDays; set { _explicitNullValueResearchIntervalDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("research_interval_days"); else _explicitNullProperties?.Remove("research_interval_days"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateResearchIntervalDays? _explicitNullValueResearchIntervalDays = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateResearchIntervalDays ResearchIntervalDays { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateResearchIntervalDays ResearchIntervalDays { get => _explicitNullValueResearchIntervalDays; set { _explicitNullValueResearchIntervalDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("research_interval_days"); else _explicitNullProperties?.Remove("research_interval_days"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateResearchIntervalDays _explicitNullValueResearchIntervalDays = default!;
 #endif
         /// <summary>Target AUC threshold (0-1). Training stops early if reached. Default: 0.75.</summary>
-        public double? SuccessAuc { get; set; }
+        public double? SuccessAuc { get => _explicitNullValueSuccessAuc; set { _explicitNullValueSuccessAuc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_auc"); else _explicitNullProperties?.Remove("success_auc"); } }
+        private double? _explicitNullValueSuccessAuc = default!;
         /// <summary>Omit (or pass {&quot;type&quot;: &quot;event&quot;}) to predict target_event; pass {&quot;type&quot;: &quot;action&quot;, &quot;action_id&quot;: N} to predict a PostHog action. No other shapes are accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinition? TargetDefinition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinition? TargetDefinition { get => _explicitNullValueTargetDefinition; set { _explicitNullValueTargetDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_definition"); else _explicitNullProperties?.Remove("target_definition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinition? _explicitNullValueTargetDefinition = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinition TargetDefinition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinition TargetDefinition { get => _explicitNullValueTargetDefinition; set { _explicitNullValueTargetDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_definition"); else _explicitNullProperties?.Remove("target_definition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTargetDefinition _explicitNullValueTargetDefinition = default!;
 #endif
         /// <summary>PostHog event name to predict, e.g. &apos;$pageview&apos; or &apos;signed_up&apos;. Omit when predicting an action target (pass target_definition instead).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEvent { get; set; }
+        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string? _explicitNullValueTargetEvent = default!;
 #nullable restore
 #else
-        public string TargetEvent { get; set; }
+        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string _explicitNullValueTargetEvent = default!;
 #endif
         /// <summary>How far back to look for training examples (7-730 days). Larger windows give more data but may include stale behavior. Default: 180.</summary>
-        public int? TrainingLookbackDays { get; set; }
+        public int? TrainingLookbackDays { get => _explicitNullValueTrainingLookbackDays; set { _explicitNullValueTrainingLookbackDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_lookback_days"); else _explicitNullProperties?.Remove("training_lookback_days"); } }
+        private int? _explicitNullValueTrainingLookbackDays = default!;
         /// <summary>Training population filter. Use {} for all identified users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTrainingPopulationProperty? TrainingPopulation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTrainingPopulationProperty? TrainingPopulation { get => _explicitNullValueTrainingPopulation; set { _explicitNullValueTrainingPopulation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_population"); else _explicitNullProperties?.Remove("training_population"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTrainingPopulationProperty? _explicitNullValueTrainingPopulation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTrainingPopulationProperty TrainingPopulation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTrainingPopulationProperty TrainingPopulation { get => _explicitNullValueTrainingPopulation; set { _explicitNullValueTrainingPopulation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("training_population"); else _explicitNullProperties?.Remove("training_population"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTrainingPopulationProperty _explicitNullValueTrainingPopulation = default!;
 #endif
         /// <summary>Write the champion&apos;s score to output_person_property on each scored person at every live scoring run. Default: false. Needed to target people by score in feature flags, cohorts, workflows and insights. Prediction events, validation and segments work without it. Turning it off, or archiving or deleting the pipeline while it is on, removes the property from the people it scored.</summary>
-        public bool? WritePersonProperty { get; set; }
+        public bool? WritePersonProperty { get => _explicitNullValueWritePersonProperty; set { _explicitNullValueWritePersonProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_person_property"); else _explicitNullProperties?.Remove("write_person_property"); } }
+        private bool? _explicitNullValueWritePersonProperty = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreate"/> and sets the default values.
         /// </summary>
@@ -125,7 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -180,6 +233,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("training_lookback_days", TrainingLookbackDays);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreateTrainingPopulationProperty>("training_population", TrainingPopulation);
             writer.WriteBoolValue("write_person_property", WritePersonProperty);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

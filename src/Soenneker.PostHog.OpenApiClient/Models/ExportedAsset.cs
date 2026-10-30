@@ -12,13 +12,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExportedAsset : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dashboard") is { } nullNodeDashboard && nullNodeDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dashboard = null;
+            if (parseNode.GetChildNode("export_context") is { } nullNodeExportContext && nullNodeExportContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportContext = null;
+            if (parseNode.GetChildNode("insight") is { } nullNodeInsight && nullNodeInsight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Insight = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The dashboard property</summary>
-        public int? Dashboard { get; set; }
+        public int? Dashboard { get => _explicitNullValueDashboard; set { _explicitNullValueDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard"); else _explicitNullProperties?.Remove("dashboard"); } }
+        private int? _explicitNullValueDashboard = default!;
         /// <summary>The exception property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -32,10 +43,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The export_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ExportContext { get; set; }
+        public UntypedNode? ExportContext { get => _explicitNullValueExportContext; set { _explicitNullValueExportContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_context"); else _explicitNullProperties?.Remove("export_context"); } }
+        private UntypedNode? _explicitNullValueExportContext = default!;
 #nullable restore
 #else
-        public UntypedNode ExportContext { get; set; }
+        public UntypedNode ExportContext { get => _explicitNullValueExportContext; set { _explicitNullValueExportContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_context"); else _explicitNullProperties?.Remove("export_context"); } }
+        private UntypedNode _explicitNullValueExportContext = default!;
 #endif
         /// <summary>* `image/png` - image/png* `application/pdf` - application/pdf* `text/csv` - text/csv* `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet* `video/webm` - video/webm* `video/mp4` - video/mp4* `image/gif` - image/gif* `application/json` - application/json* `application/x-ndjson` - application/x-ndjson</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetExportFormat? ExportFormat { get; private set; }
@@ -52,7 +65,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The insight property</summary>
-        public int? Insight { get; set; }
+        public int? Insight { get => _explicitNullValueInsight; set { _explicitNullValueInsight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight"); else _explicitNullProperties?.Remove("insight"); } }
+        private int? _explicitNullValueInsight = default!;
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExportedAsset(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -109,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("dashboard", Dashboard);
             writer.WriteObjectValue<UntypedNode>("export_context", ExportContext);
             writer.WriteIntValue("insight", Insight);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

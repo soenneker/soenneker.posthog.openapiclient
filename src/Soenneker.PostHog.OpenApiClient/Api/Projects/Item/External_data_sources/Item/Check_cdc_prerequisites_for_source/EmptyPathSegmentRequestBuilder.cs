@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Validate CDC prerequisites for an existing source using its stored credentials.The detail=False ``check_cdc_prerequisites`` action is for the creation wizard,where the client still holds the raw connection config (incl. password) in theform. On the Configuration page the source already exists and secret fields arestripped from API responses — so the client can&apos;t supply them. This reads thestored (encrypted) credentials from the DB via the adapter instead.Body params: ``cdc_management_mode`` (``&quot;posthog&quot;`` | ``&quot;self_managed&quot;``),``cdc_slot_name`` (optional), ``cdc_publication_name`` (optional).

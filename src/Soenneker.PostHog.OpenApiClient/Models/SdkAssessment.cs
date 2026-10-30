@@ -11,69 +11,106 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SdkAssessment : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("banners") is { } nullNodeBanners && nullNodeBanners.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Banners = null;
+            if (parseNode.GetChildNode("is_old") is { } nullNodeIsOld && nullNodeIsOld.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOld = null;
+            if (parseNode.GetChildNode("is_outdated") is { } nullNodeIsOutdated && nullNodeIsOutdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOutdated = null;
+            if (parseNode.GetChildNode("latest_version") is { } nullNodeLatestVersion && nullNodeLatestVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestVersion = null;
+            if (parseNode.GetChildNode("lib") is { } nullNodeLib && nullNodeLib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lib = null;
+            if (parseNode.GetChildNode("migration_required") is { } nullNodeMigrationRequired && nullNodeMigrationRequired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MigrationRequired = null;
+            if (parseNode.GetChildNode("needs_updating") is { } nullNodeNeedsUpdating && nullNodeNeedsUpdating.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsUpdating = null;
+            if (parseNode.GetChildNode("outdated_traffic_alerts") is { } nullNodeOutdatedTrafficAlerts && nullNodeOutdatedTrafficAlerts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutdatedTrafficAlerts = null;
+            if (parseNode.GetChildNode("readable_name") is { } nullNodeReadableName && nullNodeReadableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadableName = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("releases") is { } nullNodeReleases && nullNodeReleases.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Releases = null;
+            if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Top-level alert sentences matching the SDK Health UI&apos;s &apos;Time for an update!&apos; banner — one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Banners { get; set; }
+        public List<string>? Banners { get => _explicitNullValueBanners; set { _explicitNullValueBanners = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("banners"); else _explicitNullProperties?.Remove("banners"); } }
+        private List<string>? _explicitNullValueBanners = default!;
 #nullable restore
 #else
-        public List<string> Banners { get; set; }
+        public List<string> Banners { get => _explicitNullValueBanners; set { _explicitNullValueBanners = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("banners"); else _explicitNullProperties?.Remove("banners"); } }
+        private List<string> _explicitNullValueBanners = default!;
 #endif
         /// <summary>True if the primary in-use version is flagged as old by age alone.</summary>
-        public bool? IsOld { get; set; }
+        public bool? IsOld { get => _explicitNullValueIsOld; set { _explicitNullValueIsOld = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_old"); else _explicitNullProperties?.Remove("is_old"); } }
+        private bool? _explicitNullValueIsOld = default!;
         /// <summary>True if the primary in-use version is flagged as outdated.</summary>
-        public bool? IsOutdated { get; set; }
+        public bool? IsOutdated { get => _explicitNullValueIsOutdated; set { _explicitNullValueIsOutdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_outdated"); else _explicitNullProperties?.Remove("is_outdated"); } }
+        private bool? _explicitNullValueIsOutdated = default!;
         /// <summary>Most recent published version of this SDK.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LatestVersion { get; set; }
+        public string? LatestVersion { get => _explicitNullValueLatestVersion; set { _explicitNullValueLatestVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_version"); else _explicitNullProperties?.Remove("latest_version"); } }
+        private string? _explicitNullValueLatestVersion = default!;
 #nullable restore
 #else
-        public string LatestVersion { get; set; }
+        public string LatestVersion { get => _explicitNullValueLatestVersion; set { _explicitNullValueLatestVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_version"); else _explicitNullProperties?.Remove("latest_version"); } }
+        private string _explicitNullValueLatestVersion = default!;
 #endif
         /// <summary>* `web` - web* `posthog-ios` - posthog-ios* `posthog-android` - posthog-android* `posthog-java` - posthog-java* `posthog-server` - posthog-server* `posthog-node` - posthog-node* `posthog-python` - posthog-python* `posthog-php` - posthog-php* `posthog-ruby` - posthog-ruby* `posthog-go` - posthog-go* `posthog-flutter` - posthog-flutter* `posthog-react-native` - posthog-react-native* `posthog-kmp` - posthog-kmp* `posthog-dotnet` - posthog-dotnet* `posthog-elixir` - posthog-elixir* `posthog-unity` - posthog-unity* `posthog-node-mcp` - posthog-node-mcp* `posthog-python-mcp` - posthog-python-mcp* `posthog-edge` - posthog-edge* `posthog-convex` - posthog-convex* `posthog-rails` - posthog-rails* `posthog-aspnetcore` - posthog-aspnetcore* `posthog-rs` - posthog-rs* `posthog-rs-mcp` - posthog-rs-mcp* `posthog-godot` - posthog-godot* `posthog-unreal` - posthog-unreal* `posthog-go-mcp` - posthog-go-mcp* `posthog-ruby-mcp` - posthog-ruby-mcp* `js` - js</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib? Lib { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib? Lib { get => _explicitNullValueLib; set { _explicitNullValueLib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lib"); else _explicitNullProperties?.Remove("lib"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentLib? _explicitNullValueLib = default!;
         /// <summary>True when this SDK must be replaced by a supported successor rather than upgraded in place.</summary>
-        public bool? MigrationRequired { get; set; }
+        public bool? MigrationRequired { get => _explicitNullValueMigrationRequired; set { _explicitNullValueMigrationRequired = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("migration_required"); else _explicitNullProperties?.Remove("migration_required"); } }
+        private bool? _explicitNullValueMigrationRequired = default!;
         /// <summary>True if this SDK needs attention (is_outdated OR is_old).</summary>
-        public bool? NeedsUpdating { get; set; }
+        public bool? NeedsUpdating { get => _explicitNullValueNeedsUpdating; set { _explicitNullValueNeedsUpdating = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_updating"); else _explicitNullProperties?.Remove("needs_updating"); } }
+        private bool? _explicitNullValueNeedsUpdating = default!;
         /// <summary>Outdated versions that handle a significant share of traffic (above the threshold). Not populated for mobile SDKs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert>? OutdatedTrafficAlerts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert>? OutdatedTrafficAlerts { get => _explicitNullValueOutdatedTrafficAlerts; set { _explicitNullValueOutdatedTrafficAlerts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outdated_traffic_alerts"); else _explicitNullProperties?.Remove("outdated_traffic_alerts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert>? _explicitNullValueOutdatedTrafficAlerts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert> OutdatedTrafficAlerts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert> OutdatedTrafficAlerts { get => _explicitNullValueOutdatedTrafficAlerts; set { _explicitNullValueOutdatedTrafficAlerts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outdated_traffic_alerts"); else _explicitNullProperties?.Remove("outdated_traffic_alerts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OutdatedTrafficAlert> _explicitNullValueOutdatedTrafficAlerts = default!;
 #endif
         /// <summary>Human-readable SDK name matching the SDK Health UI (e.g. &apos;Python&apos;, &apos;Node.js&apos;, &apos;Web&apos;, &apos;iOS&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReadableName { get; set; }
+        public string? ReadableName { get => _explicitNullValueReadableName; set { _explicitNullValueReadableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readable_name"); else _explicitNullProperties?.Remove("readable_name"); } }
+        private string? _explicitNullValueReadableName = default!;
 #nullable restore
 #else
-        public string ReadableName { get; set; }
+        public string ReadableName { get => _explicitNullValueReadableName; set { _explicitNullValueReadableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readable_name"); else _explicitNullProperties?.Remove("readable_name"); } }
+        private string _explicitNullValueReadableName = default!;
 #endif
         /// <summary>Per-SDK programmatic summary (used for ranking/filtering). For user-facing copy, prefer releases[].status_reason (badge tooltip) and banners (top-level alert text) — those match the UI exactly.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Per-version assessment for all versions seen in the last 7 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment>? Releases { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment>? Releases { get => _explicitNullValueReleases; set { _explicitNullValueReleases = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("releases"); else _explicitNullProperties?.Remove("releases"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment>? _explicitNullValueReleases = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment> Releases { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment> Releases { get => _explicitNullValueReleases; set { _explicitNullValueReleases = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("releases"); else _explicitNullProperties?.Remove("releases"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment> _explicitNullValueReleases = default!;
 #endif
         /// <summary>* `none` - none* `warning` - warning* `danger` - danger</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity? Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity? _explicitNullValueSeverity = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment"/> and sets the default values.
         /// </summary>
@@ -89,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -132,6 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("reason", Reason);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SdkReleaseAssessment>("releases", Releases);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessmentSeverity>("severity", Severity);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

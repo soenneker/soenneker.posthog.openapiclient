@@ -12,64 +12,107 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentSessionEventDeltaResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cards") is { } nullNodeCards && nullNodeCards.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cards = null;
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("dropped_duplicate_cards") is { } nullNodeDroppedDuplicateCards && nullNodeDroppedDuplicateCards.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedDuplicateCards = null;
+            if (parseNode.GetChildNode("empty_reason") is { } nullNodeEmptyReason && nullNodeEmptyReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmptyReason = null;
+            if (parseNode.GetChildNode("events_truncated") is { } nullNodeEventsTruncated && nullNodeEventsTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsTruncated = null;
+            if (parseNode.GetChildNode("filter_test_accounts") is { } nullNodeFilterTestAccounts && nullNodeFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTestAccounts = null;
+            if (parseNode.GetChildNode("max_card_recordings") is { } nullNodeMaxCardRecordings && nullNodeMaxCardRecordings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxCardRecordings = null;
+            if (parseNode.GetChildNode("metric_events") is { } nullNodeMetricEvents && nullNodeMetricEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricEvents = null;
+            if (parseNode.GetChildNode("min_variant_persons") is { } nullNodeMinVariantPersons && nullNodeMinVariantPersons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinVariantPersons = null;
+            if (parseNode.GetChildNode("multiple_variant_handling") is { } nullNodeMultipleVariantHandling && nullNodeMultipleVariantHandling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultipleVariantHandling = null;
+            if (parseNode.GetChildNode("multiple_variant_persons") is { } nullNodeMultipleVariantPersons && nullNodeMultipleVariantPersons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultipleVariantPersons = null;
+            if (parseNode.GetChildNode("sessions_truncated") is { } nullNodeSessionsTruncated && nullNodeSessionsTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionsTruncated = null;
+            if (parseNode.GetChildNode("too_early") is { } nullNodeTooEarly && nullNodeTooEarly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TooEarly = null;
+            if (parseNode.GetChildNode("used_exposure_fallback") is { } nullNodeUsedExposureFallback && nullNodeUsedExposureFallback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedExposureFallback = null;
+            if (parseNode.GetChildNode("variants") is { } nullNodeVariants && nullNodeVariants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variants = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The shelf, strongest comparison first, then the variant&apos;s own rendering, then metric shortcuts. Events the variants can&apos;t be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Empty also takes the metric shortcuts with it: a shelf of shortcuts and no finding restates what the experiment&apos;s results already answer while reading as a finding, so it is withheld. Read empty_reason and say what it reports instead of presenting an empty shelf. Group by kind before presenting: a &apos;variant_only&apos; card outranks every real difference by construction, and reading the shelf in order would report it as the headline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard>? Cards { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard>? Cards { get => _explicitNullValueCards; set { _explicitNullValueCards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cards"); else _explicitNullProperties?.Remove("cards"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard>? _explicitNullValueCards = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard> Cards { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard> Cards { get => _explicitNullValueCards; set { _explicitNullValueCards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cards"); else _explicitNullProperties?.Remove("cards"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchCard> _explicitNullValueCards = default!;
 #endif
         /// <summary>When the earliest compared person was first exposed. The comparison takes the most recently exposed people, newest first, until it has as many as one comparison covers or their first sessions span 14 days of events, so on a busy experiment this is hours rather than days before date_to, and on an experiment that stopped enrolling it can be long before the experiment&apos;s end. Display this, not the experiment&apos;s own dates. Equal to date_to when nobody has been exposed yet.</summary>
-        public DateTimeOffset? DateFrom { get; set; }
+        public DateTimeOffset? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private DateTimeOffset? _explicitNullValueDateFrom = default!;
         /// <summary>One minute past the newest compared person&apos;s first exposure. Nobody first exposed between date_from and date_to was passed over, so the pair is a stretch of enrollment rather than a hull around scattered people. It bounds who was selected, not who was read: variants[].persons counts only those who then had a session. While an experiment runs this sits about an hour before now, because the newest hour of enrollment is held back until those people&apos;s first sessions have finished rather than read half-way through. Sessions reach past it, up to 24 hours after each person&apos;s own exposure, so this is not the end of the events that were read.</summary>
-        public DateTimeOffset? DateTo { get; set; }
+        public DateTimeOffset? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private DateTimeOffset? _explicitNullValueDateTo = default!;
         /// <summary>How many cards were removed because their recordings were already another card&apos;s on the same shelf. Nothing was lost: the recordings are all reachable through the cards that stayed.</summary>
-        public int? DroppedDuplicateCards { get; set; }
+        public int? DroppedDuplicateCards { get => _explicitNullValueDroppedDuplicateCards; set { _explicitNullValueDroppedDuplicateCards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_duplicate_cards"); else _explicitNullProperties?.Remove("dropped_duplicate_cards"); } }
+        private int? _explicitNullValueDroppedDuplicateCards = default!;
         /// <summary>Why cards is empty, and null whenever cards is not empty. Report which of the four happened rather than reporting an empty shelf, because they ask different things of the reader. &apos;too_early&apos;: fewer than two variants have min_variant_persons exposed people, so nothing was compared yet. The answer can still change unless sessions_truncated is true, in which case only the people exposed between date_from and date_to were compared and more time helps only if more people are exposed within a stretch that long; a rollout split that changed during the run lands here too, and the experiment&apos;s exposure chart is where that shows. &apos;no_separation&apos;: the variants were compared and no event told them apart, which is a result rather than a failure. &apos;no_recordings&apos;: events did tell the variants apart, but no recording behind them can be opened, so the project&apos;s session replay sampling and retention are what decide whether this surface can ever show anything. &apos;no_session_linked_exposures&apos;: the people exposed between date_from and date_to had no session we can see since being exposed, looking up to 24 hours after each exposure, so there was nothing to compare. Two things reach this state, and they ask for different answers: no browser or mobile SDK is capturing events, because sessions exist nowhere else, or the exposed people have not come back. While the experiment runs the read stops at the time of the request, so people exposed less than a day ago are judged on less than a day and can still return. Check which one before telling anyone to check back, because more exposures captured the same way yield more of the same. Never fill an empty shelf with the experiment&apos;s metrics: shortcut cards to those metrics&apos; events are withheld here for exactly that reason.* `too_early` - too_early* `no_separation` - no_separation* `no_recordings` - no_recordings* `no_session_linked_exposures` - no_session_linked_exposures</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason? EmptyReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason? EmptyReason { get => _explicitNullValueEmptyReason; set { _explicitNullValueEmptyReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("empty_reason"); else _explicitNullProperties?.Remove("empty_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason? _explicitNullValueEmptyReason = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason EmptyReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason EmptyReason { get => _explicitNullValueEmptyReason; set { _explicitNullValueEmptyReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("empty_reason"); else _explicitNullProperties?.Remove("empty_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseEmptyReason _explicitNullValueEmptyReason = default!;
 #endif
         /// <summary>True when the project has more distinct event names in the window than one comparison can rank, so some were never considered.</summary>
-        public bool? EventsTruncated { get; set; }
+        public bool? EventsTruncated { get => _explicitNullValueEventsTruncated; set { _explicitNullValueEventsTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_truncated"); else _explicitNullProperties?.Remove("events_truncated"); } }
+        private bool? _explicitNullValueEventsTruncated = default!;
         /// <summary>Whether the project&apos;s test-account filters were applied, following the experiment&apos;s exposure criteria, the same rule the experiment&apos;s recordings list uses.</summary>
-        public bool? FilterTestAccounts { get; set; }
+        public bool? FilterTestAccounts { get => _explicitNullValueFilterTestAccounts; set { _explicitNullValueFilterTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_test_accounts"); else _explicitNullProperties?.Remove("filter_test_accounts"); } }
+        private bool? _explicitNullValueFilterTestAccounts = default!;
         /// <summary>The most recordings one card can carry. A card whose recording_count equals this hit the ceiling, so report it as &apos;at least this many&apos; rather than as a count.</summary>
-        public int? MaxCardRecordings { get; set; }
+        public int? MaxCardRecordings { get => _explicitNullValueMaxCardRecordings; set { _explicitNullValueMaxCardRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_card_recordings"); else _explicitNullProperties?.Remove("max_card_recordings"); } }
+        private int? _explicitNullValueMaxCardRecordings = default!;
         /// <summary>The events the experiment&apos;s own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment&apos;s results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MetricEvents { get; set; }
+        public List<string>? MetricEvents { get => _explicitNullValueMetricEvents; set { _explicitNullValueMetricEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_events"); else _explicitNullProperties?.Remove("metric_events"); } }
+        private List<string>? _explicitNullValueMetricEvents = default!;
 #nullable restore
 #else
-        public List<string> MetricEvents { get; set; }
+        public List<string> MetricEvents { get => _explicitNullValueMetricEvents; set { _explicitNullValueMetricEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_events"); else _explicitNullProperties?.Remove("metric_events"); } }
+        private List<string> _explicitNullValueMetricEvents = default!;
 #endif
         /// <summary>How many exposed people a variant needs before it can be compared at all. Below it a variant&apos;s cards would be noise whatever the evidence bar allows.</summary>
-        public int? MinVariantPersons { get; set; }
+        public int? MinVariantPersons { get => _explicitNullValueMinVariantPersons; set { _explicitNullValueMinVariantPersons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_variant_persons"); else _explicitNullProperties?.Remove("min_variant_persons"); } }
+        private int? _explicitNullValueMinVariantPersons = default!;
         /// <summary>* `exclude` - exclude* `first_seen` - first_seen</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling? MultipleVariantHandling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling? MultipleVariantHandling { get => _explicitNullValueMultipleVariantHandling; set { _explicitNullValueMultipleVariantHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiple_variant_handling"); else _explicitNullProperties?.Remove("multiple_variant_handling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponseMultipleVariantHandling? _explicitNullValueMultipleVariantHandling = default!;
         /// <summary>People who saw more than one variant and were left out of every card. Always 0 when the experiment attributes such users to the variant they saw first.</summary>
-        public int? MultipleVariantPersons { get; set; }
+        public int? MultipleVariantPersons { get => _explicitNullValueMultipleVariantPersons; set { _explicitNullValueMultipleVariantPersons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiple_variant_persons"); else _explicitNullProperties?.Remove("multiple_variant_persons"); } }
+        private int? _explicitNullValueMultipleVariantPersons = default!;
         /// <summary>True when more people were exposed than one comparison covers, so the most recently exposed were used and people exposed before date_from were left out. Every variant is still covered over the same stretch of enrollment. Named for the session ceiling it used to report; the name is kept for existing readers.</summary>
-        public bool? SessionsTruncated { get; set; }
+        public bool? SessionsTruncated { get => _explicitNullValueSessionsTruncated; set { _explicitNullValueSessionsTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions_truncated"); else _explicitNullProperties?.Remove("sessions_truncated"); } }
+        private bool? _explicitNullValueSessionsTruncated = default!;
         /// <summary>True when fewer than two variants have min_variant_persons exposed people, so no comparison exists and cards is empty. Show the variants&apos; counts alongside it: an empty shelf presented without them would read as &apos;the variants behaved identically&apos;. Read empty_reason and sessions_truncated before telling anyone to check back: this is also true when the variants are empty because the people exposed have no sessions we can see, which empty_reason reports as &apos;no_session_linked_exposures&apos; and which more time fixes only while those people were exposed less than a day ago. And when sessions_truncated is true, only people exposed between date_from and date_to were compared, so more time helps only if more people are exposed within a stretch that long.</summary>
-        public bool? TooEarly { get; set; }
+        public bool? TooEarly { get => _explicitNullValueTooEarly; set { _explicitNullValueTooEarly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("too_early"); else _explicitNullProperties?.Remove("too_early"); } }
+        private bool? _explicitNullValueTooEarly = default!;
         /// <summary>Always false. The compared population is the exposed population the experiment&apos;s results count, matched to sessions by person, so no stamped-property fallback exists any more. The field stays for compatibility with existing readers.</summary>
-        public bool? UsedExposureFallback { get; set; }
+        public bool? UsedExposureFallback { get => _explicitNullValueUsedExposureFallback; set { _explicitNullValueUsedExposureFallback = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_exposure_fallback"); else _explicitNullProperties?.Remove("used_exposure_fallback"); } }
+        private bool? _explicitNullValueUsedExposureFallback = default!;
         /// <summary>Every variant the analysis compares, with its population, in the flag&apos;s variant order. A variant the experiment excludes never appears here, because the analysis does not count it either, so read a missing key as excluded rather than as zero people.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant>? Variants { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant>? Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant>? _explicitNullValueVariants = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant> Variants { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant> Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant> _explicitNullValueVariants = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponse"/> and sets the default values.
@@ -86,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionEventDeltaResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -137,6 +180,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("too_early", TooEarly);
             writer.WriteBoolValue("used_exposure_fallback", UsedExposureFallback);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWatchVariant>("variants", Variants);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

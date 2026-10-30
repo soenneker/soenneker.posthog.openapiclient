@@ -12,25 +12,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutCost : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("priced_run_count") is { } nullNodePricedRunCount && nullNodePricedRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PricedRunCount = null;
+            if (parseNode.GetChildNode("reports_touched") is { } nullNodeReportsTouched && nullNodeReportsTouched.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportsTouched = null;
+            if (parseNode.GetChildNode("run_count") is { } nullNodeRunCount && nullNodeRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCount = null;
+            if (parseNode.GetChildNode("skill_name") is { } nullNodeSkillName && nullNodeSkillName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillName = null;
+            if (parseNode.GetChildNode("spend_usd") is { } nullNodeSpendUsd && nullNodeSpendUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpendUsd = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Runs of the scout that had spend attributed. Lower than `run_count` where a run failed before its first model call, or its generations haven&apos;t landed yet. Divide `spend_usd` by this, not by `run_count`, for cost per run.</summary>
-        public int? PricedRunCount { get; set; }
+        public int? PricedRunCount { get => _explicitNullValuePricedRunCount; set { _explicitNullValuePricedRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priced_run_count"); else _explicitNullProperties?.Remove("priced_run_count"); } }
+        private int? _explicitNullValuePricedRunCount = default!;
         /// <summary>Distinct inbox reports the scout filed or added to in the window. A report it authored in one run and edited in three counts once. Zero means the scout produced no reports, so cost per report has no value rather than a value of zero.</summary>
-        public int? ReportsTouched { get; set; }
+        public int? ReportsTouched { get => _explicitNullValueReportsTouched; set { _explicitNullValueReportsTouched = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reports_touched"); else _explicitNullProperties?.Remove("reports_touched"); } }
+        private int? _explicitNullValueReportsTouched = default!;
         /// <summary>Runs the scout started in the window.</summary>
-        public int? RunCount { get; set; }
+        public int? RunCount { get => _explicitNullValueRunCount; set { _explicitNullValueRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_count"); else _explicitNullProperties?.Remove("run_count"); } }
+        private int? _explicitNullValueRunCount = default!;
         /// <summary>Full skill name of the scout, e.g. `signals-scout-error-tracking`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SkillName { get; set; }
+        public string? SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
+        private string? _explicitNullValueSkillName = default!;
 #nullable restore
 #else
-        public string SkillName { get; set; }
+        public string SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
+        private string _explicitNullValueSkillName = default!;
 #endif
         /// <summary>Model spend attributed to the scout&apos;s runs in the window, in US dollars. Zero when none of its runs had spend attributed, which `priced_run_count` tells apart from a scout that really spent nothing.</summary>
-        public double? SpendUsd { get; set; }
+        public double? SpendUsd { get => _explicitNullValueSpendUsd; set { _explicitNullValueSpendUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spend_usd"); else _explicitNullProperties?.Remove("spend_usd"); } }
+        private double? _explicitNullValueSpendUsd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutCost"/> and sets the default values.
         /// </summary>
@@ -46,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoutCost CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoutCost();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoutCost(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("run_count", RunCount);
             writer.WriteStringValue("skill_name", SkillName);
             writer.WriteDoubleValue("spend_usd", SpendUsd);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

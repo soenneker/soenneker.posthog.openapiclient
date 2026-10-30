@@ -12,33 +12,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmitEligibility : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ai_processing_approved") is { } nullNodeAiProcessingApproved && nullNodeAiProcessingApproved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiProcessingApproved = null;
+            if (parseNode.GetChildNode("blocking_reason") is { } nullNodeBlockingReason && nullNodeBlockingReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockingReason = null;
+            if (parseNode.GetChildNode("can_emit") is { } nullNodeCanEmit && nullNodeCanEmit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanEmit = null;
+            if (parseNode.GetChildNode("remediation") is { } nullNodeRemediation && nullNodeRemediation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Remediation = null;
+            if (parseNode.GetChildNode("scout_emit_enabled") is { } nullNodeScoutEmitEnabled && nullNodeScoutEmitEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutEmitEnabled = null;
+            if (parseNode.GetChildNode("source_enabled") is { } nullNodeSourceEnabled && nullNodeSourceEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceEnabled = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the organization has approved AI data processing (an org-level gate on all scout emits).</summary>
-        public bool? AiProcessingApproved { get; set; }
+        public bool? AiProcessingApproved { get => _explicitNullValueAiProcessingApproved; set { _explicitNullValueAiProcessingApproved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_processing_approved"); else _explicitNullProperties?.Remove("ai_processing_approved"); } }
+        private bool? _explicitNullValueAiProcessingApproved = default!;
         /// <summary>Which gate blocks the write: `scout_emit_disabled`, `scout_config_missing`, `ai_processing_not_approved`, or `source_disabled`. Null when `can_emit` is True. Matches the `skipped_reason` `emit-report` returns for the same block.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BlockingReason { get; set; }
+        public string? BlockingReason { get => _explicitNullValueBlockingReason; set { _explicitNullValueBlockingReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocking_reason"); else _explicitNullProperties?.Remove("blocking_reason"); } }
+        private string? _explicitNullValueBlockingReason = default!;
 #nullable restore
 #else
-        public string BlockingReason { get; set; }
+        public string BlockingReason { get => _explicitNullValueBlockingReason; set { _explicitNullValueBlockingReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocking_reason"); else _explicitNullProperties?.Remove("blocking_reason"); } }
+        private string _explicitNullValueBlockingReason = default!;
 #endif
         /// <summary>True only when every gate passes, so this scout&apos;s findings and reports (both channels) actually reach the inbox. When False, every write is dropped or refused — quick-close instead of doing throwaway investigation. Read this one value: it accounts for the calling scout&apos;s own dry-run posture as well as the team-wide gates, and it is the same gate `emit-report` and `edit-report` apply at write time.</summary>
-        public bool? CanEmit { get; set; }
+        public bool? CanEmit { get => _explicitNullValueCanEmit; set { _explicitNullValueCanEmit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_emit"); else _explicitNullProperties?.Remove("can_emit"); } }
+        private bool? _explicitNullValueCanEmit = default!;
         /// <summary>One-line next step to unblock writes when `can_emit` is False; null when writes can flow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Remediation { get; set; }
+        public string? Remediation { get => _explicitNullValueRemediation; set { _explicitNullValueRemediation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remediation"); else _explicitNullProperties?.Remove("remediation"); } }
+        private string? _explicitNullValueRemediation = default!;
 #nullable restore
 #else
-        public string Remediation { get; set; }
+        public string Remediation { get => _explicitNullValueRemediation; set { _explicitNullValueRemediation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remediation"); else _explicitNullProperties?.Remove("remediation"); } }
+        private string _explicitNullValueRemediation = default!;
 #endif
         /// <summary>Whether the calling scout&apos;s own config can write, as opposed to running in dry-run (`emit=false`), where it investigates but everything it writes is discarded. Null when the read is not from a scout run, so no single scout&apos;s config applies.</summary>
-        public bool? ScoutEmitEnabled { get; set; }
+        public bool? ScoutEmitEnabled { get => _explicitNullValueScoutEmitEnabled; set { _explicitNullValueScoutEmitEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_emit_enabled"); else _explicitNullProperties?.Remove("scout_emit_enabled"); } }
+        private bool? _explicitNullValueScoutEmitEnabled = default!;
         /// <summary>Whether the `signals_scout` signal source is enabled for this team.</summary>
-        public bool? SourceEnabled { get; set; }
+        public bool? SourceEnabled { get => _explicitNullValueSourceEnabled; set { _explicitNullValueSourceEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_enabled"); else _explicitNullProperties?.Remove("source_enabled"); } }
+        private bool? _explicitNullValueSourceEnabled = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility"/> and sets the default values.
         /// </summary>
@@ -54,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("remediation", Remediation);
             writer.WriteBoolValue("scout_emit_enabled", ScoutEmitEnabled);
             writer.WriteBoolValue("source_enabled", SourceEnabled);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

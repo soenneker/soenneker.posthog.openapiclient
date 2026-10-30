@@ -57,6 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Edit
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceInvalid.CreateFromDiscriminatorValue },
                 { "409", global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishConflict.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -15,6 +15,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Desktop_beta_te
     public partial class Desktop_beta_termsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The EmptyPathSegment property</summary>
+        [Obsolete("")]
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Desktop_beta_terms.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Desktop_beta_terms.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);

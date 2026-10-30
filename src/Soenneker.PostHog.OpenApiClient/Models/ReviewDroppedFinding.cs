@@ -11,78 +11,115 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewDroppedFinding : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("body") is { } nullNodeBody && nullNodeBody.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Body = null;
+            if (parseNode.GetChildNode("comment_url") is { } nullNodeCommentUrl && nullNodeCommentUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommentUrl = null;
+            if (parseNode.GetChildNode("disposition") is { } nullNodeDisposition && nullNodeDisposition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disposition = null;
+            if (parseNode.GetChildNode("duplicate_of") is { } nullNodeDuplicateOf && nullNodeDuplicateOf.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DuplicateOf = null;
+            if (parseNode.GetChildNode("file") is { } nullNodeFile && nullNodeFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) File = null;
+            if (parseNode.GetChildNode("lines") is { } nullNodeLines && nullNodeLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lines = null;
+            if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
+            if (parseNode.GetChildNode("rank") is { } nullNodeRank && nullNodeRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rank = null;
+            if (parseNode.GetChildNode("source_perspective") is { } nullNodeSourcePerspective && nullNodeSourcePerspective.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcePerspective = null;
+            if (parseNode.GetChildNode("suggestion") is { } nullNodeSuggestion && nullNodeSuggestion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Suggestion = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Description of the problem.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Body { get; set; }
+        public string? Body { get => _explicitNullValueBody; set { _explicitNullValueBody = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body"); else _explicitNullProperties?.Remove("body"); } }
+        private string? _explicitNullValueBody = default!;
 #nullable restore
 #else
-        public string Body { get; set; }
+        public string Body { get => _explicitNullValueBody; set { _explicitNullValueBody = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("body"); else _explicitNullProperties?.Remove("body"); } }
+        private string _explicitNullValueBody = default!;
 #endif
         /// <summary>Link to the PR comment the finding repeats, when `duplicate_of` names one and the PR URL is known. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CommentUrl { get; set; }
+        public string? CommentUrl { get => _explicitNullValueCommentUrl; set { _explicitNullValueCommentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_url"); else _explicitNullProperties?.Remove("comment_url"); } }
+        private string? _explicitNullValueCommentUrl = default!;
 #nullable restore
 #else
-        public string CommentUrl { get; set; }
+        public string CommentUrl { get => _explicitNullValueCommentUrl; set { _explicitNullValueCommentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comment_url"); else _explicitNullProperties?.Remove("comment_url"); } }
+        private string _explicitNullValueCommentUrl = default!;
 #endif
         /// <summary>* `old_code` - On unchanged code* `dedup_prior` - Repeat of an earlier review* `dedup_comment` - Already in a PR comment* `dedup_anchor` - Same spot as another finding* `dedup_sibling` - Repeat of a finding* `cap` - Over the limit* `budget` - Over the pull request limit</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFindingDisposition? Disposition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFindingDisposition? Disposition { get => _explicitNullValueDisposition; set { _explicitNullValueDisposition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disposition"); else _explicitNullProperties?.Remove("disposition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFindingDisposition? _explicitNullValueDisposition = default!;
         /// <summary>For a dedup drop, what it repeats: an issue key, or `comment:&lt;id&gt;` for a PR comment. Null for other dispositions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DuplicateOf { get; set; }
+        public string? DuplicateOf { get => _explicitNullValueDuplicateOf; set { _explicitNullValueDuplicateOf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duplicate_of"); else _explicitNullProperties?.Remove("duplicate_of"); } }
+        private string? _explicitNullValueDuplicateOf = default!;
 #nullable restore
 #else
-        public string DuplicateOf { get; set; }
+        public string DuplicateOf { get => _explicitNullValueDuplicateOf; set { _explicitNullValueDuplicateOf = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duplicate_of"); else _explicitNullProperties?.Remove("duplicate_of"); } }
+        private string _explicitNullValueDuplicateOf = default!;
 #endif
         /// <summary>Repository-relative path of the affected file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? File { get; set; }
+        public string? File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
+        private string? _explicitNullValueFile = default!;
 #nullable restore
 #else
-        public string File { get; set; }
+        public string File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
+        private string _explicitNullValueFile = default!;
 #endif
         /// <summary>Affected line ranges within the file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange>? Lines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange>? Lines { get => _explicitNullValueLines; set { _explicitNullValueLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lines"); else _explicitNullProperties?.Remove("lines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange>? _explicitNullValueLines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange> Lines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange> Lines { get => _explicitNullValueLines; set { _explicitNullValueLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lines"); else _explicitNullProperties?.Remove("lines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewFindingLineRange> _explicitNullValueLines = default!;
 #endif
         /// <summary>* `must_fix` - Must fix* `should_fix` - Should fix* `consider` - Consider</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFindingPriority? Priority { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFindingPriority? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFindingPriority? _explicitNullValuePriority = default!;
         /// <summary>For a `cap` drop, the finding&apos;s 1-based position in the turn&apos;s ranked findings. Null otherwise.</summary>
-        public int? Rank { get; set; }
+        public int? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
+        private int? _explicitNullValueRank = default!;
         /// <summary>The session that raised the finding: the main review or a lens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourcePerspective { get; set; }
+        public string? SourcePerspective { get => _explicitNullValueSourcePerspective; set { _explicitNullValueSourcePerspective = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_perspective"); else _explicitNullProperties?.Remove("source_perspective"); } }
+        private string? _explicitNullValueSourcePerspective = default!;
 #nullable restore
 #else
-        public string SourcePerspective { get; set; }
+        public string SourcePerspective { get => _explicitNullValueSourcePerspective; set { _explicitNullValueSourcePerspective = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_perspective"); else _explicitNullProperties?.Remove("source_perspective"); } }
+        private string _explicitNullValueSourcePerspective = default!;
 #endif
         /// <summary>The specific fix the reviewer proposes. Usually empty: a single-agent finding ends its body with the fix direction instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Suggestion { get; set; }
+        public string? Suggestion { get => _explicitNullValueSuggestion; set { _explicitNullValueSuggestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion"); else _explicitNullProperties?.Remove("suggestion"); } }
+        private string? _explicitNullValueSuggestion = default!;
 #nullable restore
 #else
-        public string Suggestion { get; set; }
+        public string Suggestion { get => _explicitNullValueSuggestion; set { _explicitNullValueSuggestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion"); else _explicitNullProperties?.Remove("suggestion"); } }
+        private string _explicitNullValueSuggestion = default!;
 #endif
         /// <summary>One-line summary of the finding.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding"/> and sets the default values.
@@ -99,7 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewDroppedFinding(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -140,6 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("source_perspective", SourcePerspective);
             writer.WriteStringValue("suggestion", Suggestion);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

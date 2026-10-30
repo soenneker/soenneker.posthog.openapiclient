@@ -12,100 +12,159 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunBootstrapCreateRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("auto_publish") is { } nullNodeAutoPublish && nullNodeAutoPublish.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoPublish = null;
+            if (parseNode.GetChildNode("benjamin_enabled") is { } nullNodeBenjaminEnabled && nullNodeBenjaminEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BenjaminEnabled = null;
+            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("claude_model_access") is { } nullNodeClaudeModelAccess && nullNodeClaudeModelAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaudeModelAccess = null;
+            if (parseNode.GetChildNode("codex_model_access") is { } nullNodeCodexModelAccess && nullNodeCodexModelAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodexModelAccess = null;
+            if (parseNode.GetChildNode("context_window") is { } nullNodeContextWindow && nullNodeContextWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextWindow = null;
+            if (parseNode.GetChildNode("custom_image_id") is { } nullNodeCustomImageId && nullNodeCustomImageId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomImageId = null;
+            if (parseNode.GetChildNode("environment") is { } nullNodeEnvironment && nullNodeEnvironment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Environment = null;
+            if (parseNode.GetChildNode("fast_mode") is { } nullNodeFastMode && nullNodeFastMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FastMode = null;
+            if (parseNode.GetChildNode("github_user_token") is { } nullNodeGithubUserToken && nullNodeGithubUserToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubUserToken = null;
+            if (parseNode.GetChildNode("imported_mcp_servers") is { } nullNodeImportedMcpServers && nullNodeImportedMcpServers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportedMcpServers = null;
+            if (parseNode.GetChildNode("initial_permission_mode") is { } nullNodeInitialPermissionMode && nullNodeInitialPermissionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InitialPermissionMode = null;
+            if (parseNode.GetChildNode("mode") is { } nullNodeMode && nullNodeMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Mode = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("pr_authorship_mode") is { } nullNodePrAuthorshipMode && nullNodePrAuthorshipMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrAuthorshipMode = null;
+            if (parseNode.GetChildNode("reasoning_effort") is { } nullNodeReasoningEffort && nullNodeReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningEffort = null;
+            if (parseNode.GetChildNode("relayed_mcp_servers") is { } nullNodeRelayedMcpServers && nullNodeRelayedMcpServers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RelayedMcpServers = null;
+            if (parseNode.GetChildNode("rtk_enabled") is { } nullNodeRtkEnabled && nullNodeRtkEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RtkEnabled = null;
+            if (parseNode.GetChildNode("run_source") is { } nullNodeRunSource && nullNodeRunSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunSource = null;
+            if (parseNode.GetChildNode("runtime_adapter") is { } nullNodeRuntimeAdapter && nullNodeRuntimeAdapter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuntimeAdapter = null;
+            if (parseNode.GetChildNode("sandbox_environment_id") is { } nullNodeSandboxEnvironmentId && nullNodeSandboxEnvironmentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SandboxEnvironmentId = null;
+            if (parseNode.GetChildNode("signal_report_id") is { } nullNodeSignalReportId && nullNodeSignalReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalReportId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, the cloud run agent pushes its work and opens a draft pull request on completion without waiting for an explicit ask.</summary>
-        public bool? AutoPublish { get; set; }
+        public bool? AutoPublish { get => _explicitNullValueAutoPublish; set { _explicitNullValueAutoPublish = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_publish"); else _explicitNullProperties?.Remove("auto_publish"); } }
+        private bool? _explicitNullValueAutoPublish = default!;
         /// <summary>Whether the Benjamin-Plus token-efficiency instruction applies to this run. Omitted or null lets the server decide from the feature flag; true or false pins the choice for this run.</summary>
-        public bool? BenjaminEnabled { get; set; }
+        public bool? BenjaminEnabled { get => _explicitNullValueBenjaminEnabled; set { _explicitNullValueBenjaminEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("benjamin_enabled"); else _explicitNullProperties?.Remove("benjamin_enabled"); } }
+        private bool? _explicitNullValueBenjaminEnabled = default!;
         /// <summary>Git branch to checkout in the sandbox</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get; set; }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get; set; }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>How the Claude runtime pays for model use. &apos;own-subscription&apos; makes the sandbox request a Claude token from whoever started the run; Desktop relays it interactively and an API key caller relays it unattended. The token is sent in flight and never stored on PostHog servers. Only PostHog Desktop and API keys can select &apos;own-subscription&apos;; other callers get a 400. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.* `posthog-gateway` - posthog-gateway* `own-subscription` - own-subscription</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess? ClaudeModelAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess? ClaudeModelAccess { get => _explicitNullValueClaudeModelAccess; set { _explicitNullValueClaudeModelAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claude_model_access"); else _explicitNullProperties?.Remove("claude_model_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess? _explicitNullValueClaudeModelAccess = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess ClaudeModelAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess ClaudeModelAccess { get => _explicitNullValueClaudeModelAccess; set { _explicitNullValueClaudeModelAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claude_model_access"); else _explicitNullProperties?.Remove("claude_model_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestClaudeModelAccess _explicitNullValueClaudeModelAccess = default!;
 #endif
         /// <summary>How the Codex runtime pays for model use. &apos;own-subscription&apos; makes the sandbox fetch a ChatGPT access token from the PostHog API, refreshed from the ChatGPT account the run owner connected in Desktop settings. If omitted or null, resumed runs keep their billing choice and new runs use the PostHog gateway.* `posthog-gateway` - posthog-gateway* `own-subscription` - own-subscription</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess? CodexModelAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess? CodexModelAccess { get => _explicitNullValueCodexModelAccess; set { _explicitNullValueCodexModelAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("codex_model_access"); else _explicitNullProperties?.Remove("codex_model_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess? _explicitNullValueCodexModelAccess = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess CodexModelAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess CodexModelAccess { get => _explicitNullValueCodexModelAccess; set { _explicitNullValueCodexModelAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("codex_model_access"); else _explicitNullProperties?.Remove("codex_model_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestCodexModelAccess _explicitNullValueCodexModelAccess = default!;
 #endif
         /// <summary>* `200k` - 200k* `1m` - 1m</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestContextWindow? ContextWindow { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestContextWindow? ContextWindow { get => _explicitNullValueContextWindow; set { _explicitNullValueContextWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_window"); else _explicitNullProperties?.Remove("context_window"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestContextWindow? _explicitNullValueContextWindow = default!;
         /// <summary>Optional custom base image for this cloud run&apos;s sandbox (Modal VM runtime only); takes precedence over the environment&apos;s image.</summary>
-        public Guid? CustomImageId { get; set; }
+        public Guid? CustomImageId { get => _explicitNullValueCustomImageId; set { _explicitNullValueCustomImageId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_image_id"); else _explicitNullProperties?.Remove("custom_image_id"); } }
+        private Guid? _explicitNullValueCustomImageId = default!;
         /// <summary>* `local` - local* `cloud` - cloud</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestEnvironment? Environment { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestEnvironment? Environment { get => _explicitNullValueEnvironment; set { _explicitNullValueEnvironment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment"); else _explicitNullProperties?.Remove("environment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestEnvironment? _explicitNullValueEnvironment = default!;
         /// <summary>Enable fast mode for models that support it.</summary>
-        public bool? FastMode { get; set; }
+        public bool? FastMode { get => _explicitNullValueFastMode; set { _explicitNullValueFastMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fast_mode"); else _explicitNullProperties?.Remove("fast_mode"); } }
+        private bool? _explicitNullValueFastMode = default!;
         /// <summary>Ephemeral GitHub user token from PostHog Desktop for user-authored cloud pull requests.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubUserToken { get; set; }
+        public string? GithubUserToken { get => _explicitNullValueGithubUserToken; set { _explicitNullValueGithubUserToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_user_token"); else _explicitNullProperties?.Remove("github_user_token"); } }
+        private string? _explicitNullValueGithubUserToken = default!;
 #nullable restore
 #else
-        public string GithubUserToken { get; set; }
+        public string GithubUserToken { get => _explicitNullValueGithubUserToken; set { _explicitNullValueGithubUserToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_user_token"); else _explicitNullProperties?.Remove("github_user_token"); } }
+        private string _explicitNullValueGithubUserToken = default!;
 #endif
         /// <summary>Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer>? ImportedMcpServers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer>? ImportedMcpServers { get => _explicitNullValueImportedMcpServers; set { _explicitNullValueImportedMcpServers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imported_mcp_servers"); else _explicitNullProperties?.Remove("imported_mcp_servers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer>? _explicitNullValueImportedMcpServers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer> ImportedMcpServers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer> ImportedMcpServers { get => _explicitNullValueImportedMcpServers; set { _explicitNullValueImportedMcpServers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imported_mcp_servers"); else _explicitNullProperties?.Remove("imported_mcp_servers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ImportedMcpServer> _explicitNullValueImportedMcpServers = default!;
 #endif
         /// <summary>* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestInitialPermissionMode? InitialPermissionMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestInitialPermissionMode? InitialPermissionMode { get => _explicitNullValueInitialPermissionMode; set { _explicitNullValueInitialPermissionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_permission_mode"); else _explicitNullProperties?.Remove("initial_permission_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestInitialPermissionMode? _explicitNullValueInitialPermissionMode = default!;
         /// <summary>* `interactive` - interactive* `background` - background</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestMode? Mode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestMode? Mode { get => _explicitNullValueMode; set { _explicitNullValueMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mode"); else _explicitNullProperties?.Remove("mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestMode? _explicitNullValueMode = default!;
         /// <summary>LLM model identifier to run in the selected runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>* `user` - user* `bot` - bot</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestPrAuthorshipMode? PrAuthorshipMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestPrAuthorshipMode? PrAuthorshipMode { get => _explicitNullValuePrAuthorshipMode; set { _explicitNullValuePrAuthorshipMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_authorship_mode"); else _explicitNullProperties?.Remove("pr_authorship_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestPrAuthorshipMode? _explicitNullValuePrAuthorshipMode = default!;
         /// <summary>* `off` - off* `minimal` - minimal* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestReasoningEffort? ReasoningEffort { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestReasoningEffort? _explicitNullValueReasoningEffort = default!;
         /// <summary>Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer>? RelayedMcpServers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer>? RelayedMcpServers { get => _explicitNullValueRelayedMcpServers; set { _explicitNullValueRelayedMcpServers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relayed_mcp_servers"); else _explicitNullProperties?.Remove("relayed_mcp_servers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer>? _explicitNullValueRelayedMcpServers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer> RelayedMcpServers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer> RelayedMcpServers { get => _explicitNullValueRelayedMcpServers; set { _explicitNullValueRelayedMcpServers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relayed_mcp_servers"); else _explicitNullProperties?.Remove("relayed_mcp_servers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RelayedMcpServer> _explicitNullValueRelayedMcpServers = default!;
 #endif
         /// <summary>Whether rtk command-output compression is enabled for this run. Omitted or null follows the server-side default (enabled); false opts this run out.</summary>
-        public bool? RtkEnabled { get; set; }
+        public bool? RtkEnabled { get => _explicitNullValueRtkEnabled; set { _explicitNullValueRtkEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rtk_enabled"); else _explicitNullProperties?.Remove("rtk_enabled"); } }
+        private bool? _explicitNullValueRtkEnabled = default!;
         /// <summary>* `manual` - manual* `signal_report` - signal_report</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestRunSource? RunSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestRunSource? RunSource { get => _explicitNullValueRunSource; set { _explicitNullValueRunSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_source"); else _explicitNullProperties?.Remove("run_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestRunSource? _explicitNullValueRunSource = default!;
         /// <summary>* `claude` - claude* `codex` - codex</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestRuntimeAdapter? RuntimeAdapter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestRuntimeAdapter? RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestRuntimeAdapter? _explicitNullValueRuntimeAdapter = default!;
         /// <summary>Optional sandbox environment to apply for this cloud run.</summary>
-        public Guid? SandboxEnvironmentId { get; set; }
+        public Guid? SandboxEnvironmentId { get => _explicitNullValueSandboxEnvironmentId; set { _explicitNullValueSandboxEnvironmentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox_environment_id"); else _explicitNullProperties?.Remove("sandbox_environment_id"); } }
+        private Guid? _explicitNullValueSandboxEnvironmentId = default!;
         /// <summary>Optional signal report identifier when this run was started from Inbox.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SignalReportId { get; set; }
+        public string? SignalReportId { get => _explicitNullValueSignalReportId; set { _explicitNullValueSignalReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_report_id"); else _explicitNullProperties?.Remove("signal_report_id"); } }
+        private string? _explicitNullValueSignalReportId = default!;
 #nullable restore
 #else
-        public string SignalReportId { get; set; }
+        public string SignalReportId { get => _explicitNullValueSignalReportId; set { _explicitNullValueSignalReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_report_id"); else _explicitNullProperties?.Remove("signal_report_id"); } }
+        private string _explicitNullValueSignalReportId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequest"/> and sets the default values.
@@ -122,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -185,6 +244,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunBootstrapCreateRequestRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteGuidValue("sandbox_environment_id", SandboxEnvironmentId);
             writer.WriteStringValue("signal_report_id", SignalReportId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

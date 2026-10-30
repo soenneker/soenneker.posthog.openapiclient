@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Bulk
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkStateResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Transition many reports to a new state in one call.Each id is processed independently: a report whose transition isn&apos;t allowed from itscurrent status is reported as `skipped` (a 409 on the single-report endpoint) and therest still go through. Returns one result per requested id (in request order, afterde-duplication) plus per-outcome counts. The whole call is 200 even on partial failure —inspect `results` / the counts to see what happened.

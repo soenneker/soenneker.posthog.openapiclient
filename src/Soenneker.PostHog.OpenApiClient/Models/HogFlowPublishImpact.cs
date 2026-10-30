@@ -11,34 +11,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HogFlowPublishImpact : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("deleted_steps") is { } nullNodeDeletedSteps && nullNodeDeletedSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletedSteps = null;
+            if (parseNode.GetChildNode("empty_variables") is { } nullNodeEmptyVariables && nullNodeEmptyVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmptyVariables = null;
+            if (parseNode.GetChildNode("position_unknown") is { } nullNodePositionUnknown && nullNodePositionUnknown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PositionUnknown = null;
+            if (parseNode.GetChildNode("schedule_conflicts") is { } nullNodeScheduleConflicts && nullNodeScheduleConflicts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScheduleConflicts = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per deleted step: how many runs are parked there and where they go. Empty for content-only edits.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStep>? DeletedSteps { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStep>? DeletedSteps { get => _explicitNullValueDeletedSteps; set { _explicitNullValueDeletedSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_steps"); else _explicitNullProperties?.Remove("deleted_steps"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStep>? _explicitNullValueDeletedSteps = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStep> DeletedSteps { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStep> DeletedSteps { get => _explicitNullValueDeletedSteps; set { _explicitNullValueDeletedSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_steps"); else _explicitNullProperties?.Remove("deleted_steps"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactDeletedStep> _explicitNullValueDeletedSteps = default!;
 #endif
         /// <summary>Variables that render empty for runs predating their producer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable>? EmptyVariables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable>? EmptyVariables { get => _explicitNullValueEmptyVariables; set { _explicitNullValueEmptyVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("empty_variables"); else _explicitNullProperties?.Remove("empty_variables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable>? _explicitNullValueEmptyVariables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable> EmptyVariables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable> EmptyVariables { get => _explicitNullValueEmptyVariables; set { _explicitNullValueEmptyVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("empty_variables"); else _explicitNullProperties?.Remove("empty_variables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable> _explicitNullValueEmptyVariables = default!;
 #endif
         /// <summary>In-flight runs whose current step is unknown. Null when the count is unavailable.</summary>
-        public int? PositionUnknown { get; set; }
+        public int? PositionUnknown { get => _explicitNullValuePositionUnknown; set { _explicitNullValuePositionUnknown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position_unknown"); else _explicitNullProperties?.Remove("position_unknown"); } }
+        private int? _explicitNullValuePositionUnknown = default!;
         /// <summary>Schedules overriding variables the draft removes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactScheduleConflict>? ScheduleConflicts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactScheduleConflict>? ScheduleConflicts { get => _explicitNullValueScheduleConflicts; set { _explicitNullValueScheduleConflicts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_conflicts"); else _explicitNullProperties?.Remove("schedule_conflicts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactScheduleConflict>? _explicitNullValueScheduleConflicts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactScheduleConflict> ScheduleConflicts { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactScheduleConflict> ScheduleConflicts { get => _explicitNullValueScheduleConflicts; set { _explicitNullValueScheduleConflicts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_conflicts"); else _explicitNullProperties?.Remove("schedule_conflicts"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactScheduleConflict> _explicitNullValueScheduleConflicts = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable>("empty_variables", EmptyVariables);
             writer.WriteIntValue("position_unknown", PositionUnknown);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactScheduleConflict>("schedule_conflicts", ScheduleConflicts);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

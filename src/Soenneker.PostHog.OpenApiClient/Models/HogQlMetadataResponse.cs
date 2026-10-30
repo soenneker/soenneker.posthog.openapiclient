@@ -11,74 +11,109 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HogQlMetadataResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ch_table_names") is { } nullNodeChTableNames && nullNodeChTableNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChTableNames = null;
+            if (parseNode.GetChildNode("errors") is { } nullNodeErrors && nullNodeErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Errors = null;
+            if (parseNode.GetChildNode("index_usage") is { } nullNodeIndexUsage && nullNodeIndexUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IndexUsage = null;
+            if (parseNode.GetChildNode("isUsingIndices") is { } nullNodeIsUsingIndices && nullNodeIsUsingIndices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsUsingIndices = null;
+            if (parseNode.GetChildNode("isValid") is { } nullNodeIsValid && nullNodeIsValid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsValid = null;
+            if (parseNode.GetChildNode("notices") is { } nullNodeNotices && nullNodeNotices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notices = null;
+            if (parseNode.GetChildNode("output_columns") is { } nullNodeOutputColumns && nullNodeOutputColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputColumns = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("table_names") is { } nullNodeTableNames && nullNodeTableNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TableNames = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>The ch_table_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ChTableNames { get; set; }
+        public List<string>? ChTableNames { get => _explicitNullValueChTableNames; set { _explicitNullValueChTableNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ch_table_names"); else _explicitNullProperties?.Remove("ch_table_names"); } }
+        private List<string>? _explicitNullValueChTableNames = default!;
 #nullable restore
 #else
-        public List<string> ChTableNames { get; set; }
+        public List<string> ChTableNames { get => _explicitNullValueChTableNames; set { _explicitNullValueChTableNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ch_table_names"); else _explicitNullProperties?.Remove("ch_table_names"); } }
+        private List<string> _explicitNullValueChTableNames = default!;
 #endif
         /// <summary>The errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? Errors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? _explicitNullValueErrors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> Errors { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> _explicitNullValueErrors = default!;
 #endif
         /// <summary>One entry per property filter, in query order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage>? IndexUsage { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage>? IndexUsage { get => _explicitNullValueIndexUsage; set { _explicitNullValueIndexUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_usage"); else _explicitNullProperties?.Remove("index_usage"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage>? _explicitNullValueIndexUsage = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage> IndexUsage { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage> IndexUsage { get => _explicitNullValueIndexUsage; set { _explicitNullValueIndexUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index_usage"); else _explicitNullProperties?.Remove("index_usage"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsage> _explicitNullValueIndexUsage = default!;
 #endif
         /// <summary>The isUsingIndices property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage? IsUsingIndices { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage? IsUsingIndices { get => _explicitNullValueIsUsingIndices; set { _explicitNullValueIsUsingIndices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isUsingIndices"); else _explicitNullProperties?.Remove("isUsingIndices"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryIndexUsage? _explicitNullValueIsUsingIndices = default!;
         /// <summary>The isValid property</summary>
-        public bool? IsValid { get; set; }
+        public bool? IsValid { get => _explicitNullValueIsValid; set { _explicitNullValueIsValid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isValid"); else _explicitNullProperties?.Remove("isValid"); } }
+        private bool? _explicitNullValueIsValid = default!;
         /// <summary>The notices property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? Notices { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? Notices { get => _explicitNullValueNotices; set { _explicitNullValueNotices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notices"); else _explicitNullProperties?.Remove("notices"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? _explicitNullValueNotices = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> Notices { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> Notices { get => _explicitNullValueNotices; set { _explicitNullValueNotices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notices"); else _explicitNullProperties?.Remove("notices"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> _explicitNullValueNotices = default!;
 #endif
         /// <summary>Best-effort output schema, without executing the query. Only included when includeOutputTypes is requested and inference succeeds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn>? OutputColumns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn>? OutputColumns { get => _explicitNullValueOutputColumns; set { _explicitNullValueOutputColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_columns"); else _explicitNullProperties?.Remove("output_columns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn>? _explicitNullValueOutputColumns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn> OutputColumns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn> OutputColumns { get => _explicitNullValueOutputColumns; set { _explicitNullValueOutputColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_columns"); else _explicitNullProperties?.Remove("output_columns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn> _explicitNullValueOutputColumns = default!;
 #endif
         /// <summary>The query property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Query { get; set; }
+        public string? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private string? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public string Query { get; set; }
+        public string Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private string _explicitNullValueQuery = default!;
 #endif
         /// <summary>The table_names property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? TableNames { get; set; }
+        public List<string>? TableNames { get => _explicitNullValueTableNames; set { _explicitNullValueTableNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_names"); else _explicitNullProperties?.Remove("table_names"); } }
+        private List<string>? _explicitNullValueTableNames = default!;
 #nullable restore
 #else
-        public List<string> TableNames { get; set; }
+        public List<string> TableNames { get => _explicitNullValueTableNames; set { _explicitNullValueTableNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("table_names"); else _explicitNullProperties?.Remove("table_names"); } }
+        private List<string> _explicitNullValueTableNames = default!;
 #endif
         /// <summary>The warnings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -88,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -126,7 +161,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlMetadataColumn>("output_columns", OutputColumns);
             writer.WriteStringValue("query", Query);
             writer.WriteCollectionOfPrimitiveValues<string>("table_names", TableNames);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>("warnings", Warnings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogQlNotice>("warnings", Warnings);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

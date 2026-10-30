@@ -11,30 +11,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InsightPlatformAlertCondition : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("comparison") is { } nullNodeComparison && nullNodeComparison.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Comparison = null;
+            if (parseNode.GetChildNode("detector") is { } nullNodeDetector && nullNodeDetector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detector = null;
+            if (parseNode.GetChildNode("threshold") is { } nullNodeThreshold && nullNodeThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Threshold = null;
+        }
+
         /// <summary>How the value is compared: as it is, or as an increase or decrease from the previous interval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition? Comparison { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition? Comparison { get => _explicitNullValueComparison; set { _explicitNullValueComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison"); else _explicitNullProperties?.Remove("comparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition? _explicitNullValueComparison = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition Comparison { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition Comparison { get => _explicitNullValueComparison; set { _explicitNullValueComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison"); else _explicitNullProperties?.Remove("comparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition _explicitNullValueComparison = default!;
 #endif
         /// <summary>The anomaly detector the alert uses in place of its threshold, or null for a threshold alert. It can&apos;t change through this API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty? Detector { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty? Detector { get => _explicitNullValueDetector; set { _explicitNullValueDetector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detector"); else _explicitNullProperties?.Remove("detector"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty? _explicitNullValueDetector = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty Detector { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty Detector { get => _explicitNullValueDetector; set { _explicitNullValueDetector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detector"); else _explicitNullProperties?.Remove("detector"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty _explicitNullValueDetector = default!;
 #endif
         /// <summary>The bounds the insight&apos;s value is checked against, absolute or as a percentage change.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold? Threshold { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold? Threshold { get => _explicitNullValueThreshold; set { _explicitNullValueThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold"); else _explicitNullProperties?.Remove("threshold"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold? _explicitNullValueThreshold = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold Threshold { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold Threshold { get => _explicitNullValueThreshold; set { _explicitNullValueThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold"); else _explicitNullProperties?.Remove("threshold"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold _explicitNullValueThreshold = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -44,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertCondition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertCondition();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertCondition(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,7 +84,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition>("comparison", Comparison);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConditionDetectorProperty>("detector", Detector);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold>("threshold", Threshold);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThreshold>("threshold", Threshold);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

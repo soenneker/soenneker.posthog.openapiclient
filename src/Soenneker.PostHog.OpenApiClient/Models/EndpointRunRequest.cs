@@ -11,41 +11,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EndpointRunRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("client_query_id") is { } nullNodeClientQueryId && nullNodeClientQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientQueryId = null;
+            if (parseNode.GetChildNode("debug") is { } nullNodeDebug && nullNodeDebug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Debug = null;
+            if (parseNode.GetChildNode("filters_override") is { } nullNodeFiltersOverride && nullNodeFiltersOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FiltersOverride = null;
+            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("offset") is { } nullNodeOffset && nullNodeOffset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Offset = null;
+            if (parseNode.GetChildNode("refresh") is { } nullNodeRefresh && nullNodeRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Refresh = null;
+            if (parseNode.GetChildNode("variables") is { } nullNodeVariables && nullNodeVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variables = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+        }
+
         /// <summary>Client provided query ID. Can be used to retrieve the status or cancel the query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientQueryId { get; set; }
+        public string? ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
+        private string? _explicitNullValueClientQueryId = default!;
 #nullable restore
 #else
-        public string ClientQueryId { get; set; }
+        public string ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
+        private string _explicitNullValueClientQueryId = default!;
 #endif
         /// <summary>Whether to include debug information (such as the executed HogQL) in the response.</summary>
-        public bool? Debug { get; set; }
+        public bool? Debug { get => _explicitNullValueDebug; set { _explicitNullValueDebug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("debug"); else _explicitNullProperties?.Remove("debug"); } }
+        private bool? _explicitNullValueDebug = default!;
         /// <summary>The filters_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? FiltersOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? _explicitNullValueFiltersOverride = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter _explicitNullValueFiltersOverride = default!;
 #endif
         /// <summary>Maximum number of results to return. If not provided, returns all results.</summary>
-        public int? Limit { get; set; }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        private int? _explicitNullValueLimit = default!;
         /// <summary>Number of results to skip. Must be used together with limit. Only supported for HogQL endpoints.</summary>
-        public int? Offset { get; set; }
+        public int? Offset { get => _explicitNullValueOffset; set { _explicitNullValueOffset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("offset"); else _explicitNullProperties?.Remove("offset"); } }
+        private int? _explicitNullValueOffset = default!;
         /// <summary>The refresh property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshMode? Refresh { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshMode? Refresh { get => _explicitNullValueRefresh; set { _explicitNullValueRefresh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh"); else _explicitNullProperties?.Remove("refresh"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshMode? _explicitNullValueRefresh = default!;
         /// <summary>Variables to parameterize the endpoint query. The key is the variable name and the value is the variable value.For HogQL endpoints:   Keys must match a variable `code_name` defined in the query (referenced as `{variables.code_name}`).   Example: `{&quot;event_name&quot;: &quot;$pageview&quot;}`For non-materialized insight endpoints (e.g. TrendsQuery):   - `date_from` and `date_to` are built-in variables that filter the date range.     Example: `{&quot;date_from&quot;: &quot;2024-01-01&quot;, &quot;date_to&quot;: &quot;2024-01-31&quot;}`For materialized insight endpoints:   - Use the breakdown property name as the key to filter by breakdown value.     Example: `{&quot;$browser&quot;: &quot;Chrome&quot;}`   - `date_from`/`date_to` are not supported on materialized insight endpoints.Unknown variable names will return a 400 error.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariablesProperty? Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariablesProperty? Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariablesProperty? _explicitNullValueVariables = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariablesProperty Variables { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariablesProperty Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariablesProperty _explicitNullValueVariables = default!;
 #endif
         /// <summary>Specific endpoint version to execute. If not provided, the latest version is used.</summary>
-        public int? Version { get; set; }
+        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private int? _explicitNullValueVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest"/> and sets the default values.
         /// </summary>
@@ -61,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -95,7 +121,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("offset", Offset);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRefreshMode>("refresh", Refresh);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EndpointRunRequestVariablesProperty>("variables", Variables);
-            writer.WriteIntValue("version", Version);
+            writer.WriteIntValue("version", Version);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

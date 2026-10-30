@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Marketing_analytics.
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SetupPlanResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Rank everything wrong with a team&apos;s marketing analytics setup into concrete suggestions, each carrying the evidence behind it and — where one exists — an `apply` operation to pass straight to apply_setup_ops, plus a `readiness` block saying which capabilities (cost, ROAS, cost per customer, retention by channel) are unlocked and which suggestion is blocking each. Prefer this over `diagnose` when the question is &apos;what should I fix next&apos;: diagnose explains what is wrong, setup_plan says what to do about it in a form you can act on. Read-only.

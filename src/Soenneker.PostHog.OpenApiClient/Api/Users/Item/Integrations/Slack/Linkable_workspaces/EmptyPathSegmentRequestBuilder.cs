@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Integrations.Slack.Link
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserSlackLinkableWorkspaceListResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserSlackLinkableWorkspaceListResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserSlackLinkableWorkspaceListResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserSlackLinkableWorkspaceListResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Return Slack workspaces in the user&apos;s organizations that they havenot yet linked. The settings UI uses this list to decide whether toshow a &quot;Link my Slack account&quot; button (non-empty list) and what tooffer in the picker when several are connectable.

@@ -11,43 +11,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class VariantReadout : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("analysis_observations") is { } nullNodeAnalysisObservations && nullNodeAnalysisObservations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnalysisObservations = null;
+            if (parseNode.GetChildNode("digest") is { } nullNodeDigest && nullNodeDigest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Digest = null;
+            if (parseNode.GetChildNode("distinct_people") is { } nullNodeDistinctPeople && nullNodeDistinctPeople.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctPeople = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("latest_observations") is { } nullNodeLatestObservations && nullNodeLatestObservations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestObservations = null;
+            if (parseNode.GetChildNode("median_session_duration_s") is { } nullNodeMedianSessionDurationS && nullNodeMedianSessionDurationS.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianSessionDurationS = null;
+            if (parseNode.GetChildNode("observations") is { } nullNodeObservations && nullNodeObservations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Observations = null;
+            if (parseNode.GetChildNode("sampling_rate") is { } nullNodeSamplingRate && nullNodeSamplingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Summaries of this variant the analysis read: the denominator of its digest and difference counts. Null without a current analysis.</summary>
-        public int? AnalysisObservations { get; set; }
+        public int? AnalysisObservations { get => _explicitNullValueAnalysisObservations; set { _explicitNullValueAnalysisObservations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis_observations"); else _explicitNullProperties?.Remove("analysis_observations"); } }
+        private int? _explicitNullValueAnalysisObservations = default!;
         /// <summary>This variant&apos;s most notable themes from the variant analysis. Null without a current analysis.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine>? Digest { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine>? Digest { get => _explicitNullValueDigest; set { _explicitNullValueDigest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("digest"); else _explicitNullProperties?.Remove("digest"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine>? _explicitNullValueDigest = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine> Digest { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine> Digest { get => _explicitNullValueDigest; set { _explicitNullValueDigest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("digest"); else _explicitNullProperties?.Remove("digest"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine> _explicitNullValueDigest = default!;
 #endif
         /// <summary>Distinct people (by distinct id) behind those observations.</summary>
-        public int? DistinctPeople { get; set; }
+        public int? DistinctPeople { get => _explicitNullValueDistinctPeople; set { _explicitNullValueDistinctPeople = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_people"); else _explicitNullProperties?.Remove("distinct_people"); } }
+        private int? _explicitNullValueDistinctPeople = default!;
         /// <summary>The variant key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get; set; }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string _explicitNullValueKey = default!;
 #endif
         /// <summary>This variant&apos;s most recent observations, newest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation>? LatestObservations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation>? LatestObservations { get => _explicitNullValueLatestObservations; set { _explicitNullValueLatestObservations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_observations"); else _explicitNullProperties?.Remove("latest_observations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation>? _explicitNullValueLatestObservations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation> LatestObservations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation> LatestObservations { get => _explicitNullValueLatestObservations; set { _explicitNullValueLatestObservations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_observations"); else _explicitNullProperties?.Remove("latest_observations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservation> _explicitNullValueLatestObservations = default!;
 #endif
         /// <summary>Median scanned session length in seconds; null with no observations.</summary>
-        public double? MedianSessionDurationS { get; set; }
+        public double? MedianSessionDurationS { get => _explicitNullValueMedianSessionDurationS; set { _explicitNullValueMedianSessionDurationS = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_session_duration_s"); else _explicitNullProperties?.Remove("median_session_duration_s"); } }
+        private double? _explicitNullValueMedianSessionDurationS = default!;
         /// <summary>Succeeded observations attributed to this variant.</summary>
-        public int? Observations { get; set; }
+        public int? Observations { get => _explicitNullValueObservations; set { _explicitNullValueObservations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observations"); else _explicitNullProperties?.Remove("observations"); } }
+        private int? _explicitNullValueObservations = default!;
         /// <summary>The 0..1 rate this variant was sampled at when its latest observation was dispatched. Read even counts against it: balanced sampling gives a small variant a higher rate.</summary>
-        public double? SamplingRate { get; set; }
+        public double? SamplingRate { get => _explicitNullValueSamplingRate; set { _explicitNullValueSamplingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_rate"); else _explicitNullProperties?.Remove("sampling_rate"); } }
+        private double? _explicitNullValueSamplingRate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VariantReadout"/> and sets the default values.
         /// </summary>
@@ -63,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.VariantReadout CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.VariantReadout();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.VariantReadout(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("median_session_duration_s", MedianSessionDurationS);
             writer.WriteIntValue("observations", Observations);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

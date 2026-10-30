@@ -11,25 +11,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SdkHealthReport : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("health") is { } nullNodeHealth && nullNodeHealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Health = null;
+            if (parseNode.GetChildNode("needs_updating_count") is { } nullNodeNeedsUpdatingCount && nullNodeNeedsUpdatingCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsUpdatingCount = null;
+            if (parseNode.GetChildNode("overall_health") is { } nullNodeOverallHealth && nullNodeOverallHealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OverallHealth = null;
+            if (parseNode.GetChildNode("sdks") is { } nullNodeSdks && nullNodeSdks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sdks = null;
+            if (parseNode.GetChildNode("team_sdk_count") is { } nullNodeTeamSdkCount && nullNodeTeamSdkCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamSdkCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `success` - success* `warning` - warning* `danger` - danger</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth? Health { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth? Health { get => _explicitNullValueHealth; set { _explicitNullValueHealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health"); else _explicitNullProperties?.Remove("health"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth? _explicitNullValueHealth = default!;
         /// <summary>Number of SDKs that need updating.</summary>
-        public int? NeedsUpdatingCount { get; set; }
+        public int? NeedsUpdatingCount { get => _explicitNullValueNeedsUpdatingCount; set { _explicitNullValueNeedsUpdatingCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_updating_count"); else _explicitNullProperties?.Remove("needs_updating_count"); } }
+        private int? _explicitNullValueNeedsUpdatingCount = default!;
         /// <summary>* `healthy` - healthy* `needs_attention` - needs_attention</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth? OverallHealth { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth? OverallHealth { get => _explicitNullValueOverallHealth; set { _explicitNullValueOverallHealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overall_health"); else _explicitNullProperties?.Remove("overall_health"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth? _explicitNullValueOverallHealth = default!;
         /// <summary>Per-SDK health assessments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>? Sdks { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>? Sdks { get => _explicitNullValueSdks; set { _explicitNullValueSdks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdks"); else _explicitNullProperties?.Remove("sdks"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>? _explicitNullValueSdks = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment> Sdks { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment> Sdks { get => _explicitNullValueSdks; set { _explicitNullValueSdks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdks"); else _explicitNullProperties?.Remove("sdks"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment> _explicitNullValueSdks = default!;
 #endif
         /// <summary>Number of distinct PostHog SDKs the project is actively using.</summary>
-        public int? TeamSdkCount { get; set; }
+        public int? TeamSdkCount { get => _explicitNullValueTeamSdkCount; set { _explicitNullValueTeamSdkCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_sdk_count"); else _explicitNullProperties?.Remove("team_sdk_count"); } }
+        private int? _explicitNullValueTeamSdkCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReport"/> and sets the default values.
         /// </summary>
@@ -45,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReport CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReport();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReport(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth>("overall_health", OverallHealth);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>("sdks", Sdks);
             writer.WriteIntValue("team_sdk_count", TeamSdkCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -8,42 +8,55 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightPlatformAlertConfigurationEdit"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf5"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedPlatformAlertConfigurationEdit : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightPlatformAlertConfigurationEdit"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightPlatformAlertConfigurationEdit? PatchedInsightPlatformAlertConfigurationEdit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf1? PatchedPlatformAlertConfigurationEditOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightPlatformAlertConfigurationEdit PatchedInsightPlatformAlertConfigurationEdit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf1 PatchedPlatformAlertConfigurationEditOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit? PatchedLogsPlatformAlertConfigurationEdit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf2? PatchedPlatformAlertConfigurationEditOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit PatchedLogsPlatformAlertConfigurationEdit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf2 PatchedPlatformAlertConfigurationEditOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit? PatchedWarehouseDestinationPlatformAlertConfigurationEdit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf3? PatchedPlatformAlertConfigurationEditOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit PatchedWarehouseDestinationPlatformAlertConfigurationEdit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf3 PatchedPlatformAlertConfigurationEditOneOf3 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit? PatchedWarehouseSourcePlatformAlertConfigurationEdit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf4? PatchedPlatformAlertConfigurationEditOneOf4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit PatchedWarehouseSourcePlatformAlertConfigurationEdit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf4 PatchedPlatformAlertConfigurationEditOneOf4 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf5"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf5? PatchedPlatformAlertConfigurationEditOneOf5 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf5 PatchedPlatformAlertConfigurationEditOneOf5 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -53,25 +66,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEdit CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("source_kind")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEdit();
-            if("insight".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("PatchedPlatformAlertConfigurationEditOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PatchedInsightPlatformAlertConfigurationEdit = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightPlatformAlertConfigurationEdit();
+                
             }
-            else if("logs".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PatchedPlatformAlertConfigurationEditOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PatchedLogsPlatformAlertConfigurationEdit = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit();
+                
             }
-            else if("warehouse_destination".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PatchedPlatformAlertConfigurationEditOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PatchedWarehouseDestinationPlatformAlertConfigurationEdit = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit();
+                
             }
-            else if("warehouse_source".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("PatchedPlatformAlertConfigurationEditOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PatchedWarehouseSourcePlatformAlertConfigurationEdit = new global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit();
+                
             }
-            return result;
+            else if("PatchedPlatformAlertConfigurationEditOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source_kind") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source_kind") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source_kind") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source_kind") != null))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source_kind") != null))();
+            if (result.PatchedPlatformAlertConfigurationEditOneOf1 == null && result.PatchedPlatformAlertConfigurationEditOneOf2 == null && result.PatchedPlatformAlertConfigurationEditOneOf3 == null && result.PatchedPlatformAlertConfigurationEditOneOf4 == null && result.PatchedPlatformAlertConfigurationEditOneOf5 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.PatchedPlatformAlertConfigurationEditOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf1(), parseNode);
+            if (result.PatchedPlatformAlertConfigurationEditOneOf1 == null && result.PatchedPlatformAlertConfigurationEditOneOf2 == null && result.PatchedPlatformAlertConfigurationEditOneOf3 == null && result.PatchedPlatformAlertConfigurationEditOneOf4 == null && result.PatchedPlatformAlertConfigurationEditOneOf5 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.PatchedPlatformAlertConfigurationEditOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf2(), parseNode);
+            if (result.PatchedPlatformAlertConfigurationEditOneOf1 == null && result.PatchedPlatformAlertConfigurationEditOneOf2 == null && result.PatchedPlatformAlertConfigurationEditOneOf3 == null && result.PatchedPlatformAlertConfigurationEditOneOf4 == null && result.PatchedPlatformAlertConfigurationEditOneOf5 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4) result.PatchedPlatformAlertConfigurationEditOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf3(), parseNode);
+            if (result.PatchedPlatformAlertConfigurationEditOneOf1 == null && result.PatchedPlatformAlertConfigurationEditOneOf2 == null && result.PatchedPlatformAlertConfigurationEditOneOf3 == null && result.PatchedPlatformAlertConfigurationEditOneOf4 == null && result.PatchedPlatformAlertConfigurationEditOneOf5 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4) result.PatchedPlatformAlertConfigurationEditOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf4(), parseNode);
+            if (result.PatchedPlatformAlertConfigurationEditOneOf1 == null && result.PatchedPlatformAlertConfigurationEditOneOf2 == null && result.PatchedPlatformAlertConfigurationEditOneOf3 == null && result.PatchedPlatformAlertConfigurationEditOneOf4 == null && result.PatchedPlatformAlertConfigurationEditOneOf5 == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.PatchedPlatformAlertConfigurationEditOneOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf5(), parseNode);
+            if (result.PatchedPlatformAlertConfigurationEditOneOf1 == null && result.PatchedPlatformAlertConfigurationEditOneOf2 == null && result.PatchedPlatformAlertConfigurationEditOneOf3 == null && result.PatchedPlatformAlertConfigurationEditOneOf4 == null && result.PatchedPlatformAlertConfigurationEditOneOf5 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,21 +109,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(PatchedInsightPlatformAlertConfigurationEdit != null)
+            if(PatchedPlatformAlertConfigurationEditOneOf1 != null)
             {
-                return PatchedInsightPlatformAlertConfigurationEdit.GetFieldDeserializers();
+                return PatchedPlatformAlertConfigurationEditOneOf1.GetFieldDeserializers();
             }
-            else if(PatchedLogsPlatformAlertConfigurationEdit != null)
+            else if(PatchedPlatformAlertConfigurationEditOneOf2 != null)
             {
-                return PatchedLogsPlatformAlertConfigurationEdit.GetFieldDeserializers();
+                return PatchedPlatformAlertConfigurationEditOneOf2.GetFieldDeserializers();
             }
-            else if(PatchedWarehouseDestinationPlatformAlertConfigurationEdit != null)
+            else if(PatchedPlatformAlertConfigurationEditOneOf3 != null)
             {
-                return PatchedWarehouseDestinationPlatformAlertConfigurationEdit.GetFieldDeserializers();
+                return PatchedPlatformAlertConfigurationEditOneOf3.GetFieldDeserializers();
             }
-            else if(PatchedWarehouseSourcePlatformAlertConfigurationEdit != null)
+            else if(PatchedPlatformAlertConfigurationEditOneOf4 != null)
             {
-                return PatchedWarehouseSourcePlatformAlertConfigurationEdit.GetFieldDeserializers();
+                return PatchedPlatformAlertConfigurationEditOneOf4.GetFieldDeserializers();
+            }
+            else if(PatchedPlatformAlertConfigurationEditOneOf5 != null)
+            {
+                return PatchedPlatformAlertConfigurationEditOneOf5.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -103,22 +137,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (PatchedPlatformAlertConfigurationEditOneOf1 == null && PatchedPlatformAlertConfigurationEditOneOf2 == null && PatchedPlatformAlertConfigurationEditOneOf3 == null && PatchedPlatformAlertConfigurationEditOneOf4 == null && PatchedPlatformAlertConfigurationEditOneOf5 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (PatchedPlatformAlertConfigurationEditOneOf1 != null && PatchedPlatformAlertConfigurationEditOneOf2 == null && PatchedPlatformAlertConfigurationEditOneOf3 == null && PatchedPlatformAlertConfigurationEditOneOf4 == null && PatchedPlatformAlertConfigurationEditOneOf5 == null) { if (PatchedPlatformAlertConfigurationEditOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PatchedPlatformAlertConfigurationEditOneOf1); return; }
+            if (PatchedPlatformAlertConfigurationEditOneOf2 != null && PatchedPlatformAlertConfigurationEditOneOf1 == null && PatchedPlatformAlertConfigurationEditOneOf3 == null && PatchedPlatformAlertConfigurationEditOneOf4 == null && PatchedPlatformAlertConfigurationEditOneOf5 == null) { if (PatchedPlatformAlertConfigurationEditOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PatchedPlatformAlertConfigurationEditOneOf2); return; }
+            if (PatchedPlatformAlertConfigurationEditOneOf3 != null && PatchedPlatformAlertConfigurationEditOneOf1 == null && PatchedPlatformAlertConfigurationEditOneOf2 == null && PatchedPlatformAlertConfigurationEditOneOf4 == null && PatchedPlatformAlertConfigurationEditOneOf5 == null) { if (PatchedPlatformAlertConfigurationEditOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PatchedPlatformAlertConfigurationEditOneOf3); return; }
+            if (PatchedPlatformAlertConfigurationEditOneOf4 != null && PatchedPlatformAlertConfigurationEditOneOf1 == null && PatchedPlatformAlertConfigurationEditOneOf2 == null && PatchedPlatformAlertConfigurationEditOneOf3 == null && PatchedPlatformAlertConfigurationEditOneOf5 == null) { if (PatchedPlatformAlertConfigurationEditOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PatchedPlatformAlertConfigurationEditOneOf4); return; }
+            if (PatchedPlatformAlertConfigurationEditOneOf5 != null && PatchedPlatformAlertConfigurationEditOneOf1 == null && PatchedPlatformAlertConfigurationEditOneOf2 == null && PatchedPlatformAlertConfigurationEditOneOf3 == null && PatchedPlatformAlertConfigurationEditOneOf4 == null) { if (PatchedPlatformAlertConfigurationEditOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PatchedPlatformAlertConfigurationEditOneOf5); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(PatchedInsightPlatformAlertConfigurationEdit != null)
+            if(PatchedPlatformAlertConfigurationEditOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedInsightPlatformAlertConfigurationEdit>(null, PatchedInsightPlatformAlertConfigurationEdit);
+                if (PatchedPlatformAlertConfigurationEditOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf1>(null, PatchedPlatformAlertConfigurationEditOneOf1);
             }
-            else if(PatchedLogsPlatformAlertConfigurationEdit != null)
+            else if(PatchedPlatformAlertConfigurationEditOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsPlatformAlertConfigurationEdit>(null, PatchedLogsPlatformAlertConfigurationEdit);
+                if (PatchedPlatformAlertConfigurationEditOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf2>(null, PatchedPlatformAlertConfigurationEditOneOf2);
             }
-            else if(PatchedWarehouseDestinationPlatformAlertConfigurationEdit != null)
+            else if(PatchedPlatformAlertConfigurationEditOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEdit>(null, PatchedWarehouseDestinationPlatformAlertConfigurationEdit);
+                if (PatchedPlatformAlertConfigurationEditOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf3>(null, PatchedPlatformAlertConfigurationEditOneOf3);
             }
-            else if(PatchedWarehouseSourcePlatformAlertConfigurationEdit != null)
+            else if(PatchedPlatformAlertConfigurationEditOneOf4 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseSourcePlatformAlertConfigurationEdit>(null, PatchedWarehouseSourcePlatformAlertConfigurationEdit);
+                if (PatchedPlatformAlertConfigurationEditOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf4>(null, PatchedPlatformAlertConfigurationEditOneOf4);
+            }
+            else if(PatchedPlatformAlertConfigurationEditOneOf5 != null)
+            {
+                if (PatchedPlatformAlertConfigurationEditOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPlatformAlertConfigurationEditOneOf5>(null, PatchedPlatformAlertConfigurationEditOneOf5);
             }
         }
     }

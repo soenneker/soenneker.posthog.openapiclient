@@ -11,54 +11,89 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PathsV2Filter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anchor") is { } nullNodeAnchor && nullNodeAnchor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Anchor = null;
+            if (parseNode.GetChildNode("applyTeamPathCleaning") is { } nullNodeApplyTeamPathCleaning && nullNodeApplyTeamPathCleaning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApplyTeamPathCleaning = null;
+            if (parseNode.GetChildNode("collapseRepeats") is { } nullNodeCollapseRepeats && nullNodeCollapseRepeats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CollapseRepeats = null;
+            if (parseNode.GetChildNode("conversionWindowInterval") is { } nullNodeConversionWindowInterval && nullNodeConversionWindowInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionWindowInterval = null;
+            if (parseNode.GetChildNode("conversionWindowIntervalUnit") is { } nullNodeConversionWindowIntervalUnit && nullNodeConversionWindowIntervalUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionWindowIntervalUnit = null;
+            if (parseNode.GetChildNode("excludedItems") is { } nullNodeExcludedItems && nullNodeExcludedItems.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedItems = null;
+            if (parseNode.GetChildNode("gapInterval") is { } nullNodeGapInterval && nullNodeGapInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GapInterval = null;
+            if (parseNode.GetChildNode("gapIntervalUnit") is { } nullNodeGapIntervalUnit && nullNodeGapIntervalUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GapIntervalUnit = null;
+            if (parseNode.GetChildNode("localPathCleaningFilters") is { } nullNodeLocalPathCleaningFilters && nullNodeLocalPathCleaningFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LocalPathCleaningFilters = null;
+            if (parseNode.GetChildNode("maxRowsPerStep") is { } nullNodeMaxRowsPerStep && nullNodeMaxRowsPerStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRowsPerStep = null;
+            if (parseNode.GetChildNode("maxSteps") is { } nullNodeMaxSteps && nullNodeMaxSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSteps = null;
+            if (parseNode.GetChildNode("stepSources") is { } nullNodeStepSources && nullNodeStepSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepSources = null;
+        }
+
         /// <summary>Anchor selecting anchored mode. When set, each actor contributes exactly one sequence bounded by the conversion window, so every displayed segment equals a plain funnel. Absent selects open mode, which splits an actor&apos;s events into journeys on the inactivity gap instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Anchor? Anchor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Anchor? Anchor { get => _explicitNullValueAnchor; set { _explicitNullValueAnchor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anchor"); else _explicitNullProperties?.Remove("anchor"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Anchor? _explicitNullValueAnchor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Anchor Anchor { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Anchor Anchor { get => _explicitNullValueAnchor; set { _explicitNullValueAnchor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anchor"); else _explicitNullProperties?.Remove("anchor"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Anchor _explicitNullValueAnchor = default!;
 #endif
         /// <summary>Apply the team&apos;s path cleaning rules to naming property values before they become path items.</summary>
-        public bool? ApplyTeamPathCleaning { get; set; }
+        public bool? ApplyTeamPathCleaning { get => _explicitNullValueApplyTeamPathCleaning; set { _explicitNullValueApplyTeamPathCleaning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applyTeamPathCleaning"); else _explicitNullProperties?.Remove("applyTeamPathCleaning"); } }
+        private bool? _explicitNullValueApplyTeamPathCleaning = default!;
         /// <summary>Merge immediate repeats of the same path item within a journey.</summary>
-        public bool? CollapseRepeats { get; set; }
+        public bool? CollapseRepeats { get => _explicitNullValueCollapseRepeats; set { _explicitNullValueCollapseRepeats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("collapseRepeats"); else _explicitNullProperties?.Remove("collapseRepeats"); } }
+        private bool? _explicitNullValueCollapseRepeats = default!;
         /// <summary>Anchored mode&apos;s single conversion window W, anchored at the anchor and reused verbatim as the emitted funnel&apos;s window. Bounds per unit are validated server-side against CONVERSION_WINDOW_INTERVAL_BOUNDS, the same funnel conversion window bounds as the gap.</summary>
-        public int? ConversionWindowInterval { get; set; }
+        public int? ConversionWindowInterval { get => _explicitNullValueConversionWindowInterval; set { _explicitNullValueConversionWindowInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversionWindowInterval"); else _explicitNullProperties?.Remove("conversionWindowInterval"); } }
+        private int? _explicitNullValueConversionWindowInterval = default!;
         /// <summary>The conversionWindowIntervalUnit property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? ConversionWindowIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? ConversionWindowIntervalUnit { get => _explicitNullValueConversionWindowIntervalUnit; set { _explicitNullValueConversionWindowIntervalUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversionWindowIntervalUnit"); else _explicitNullProperties?.Remove("conversionWindowIntervalUnit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? _explicitNullValueConversionWindowIntervalUnit = default!;
         /// <summary>Path items dropped from the item universe: events deriving to one of these items are ignored as if their event were not a step source, on both the paths side and the &quot;view as funnel&quot; side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>? ExcludedItems { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>? ExcludedItems { get => _explicitNullValueExcludedItems; set { _explicitNullValueExcludedItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludedItems"); else _explicitNullProperties?.Remove("excludedItems"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>? _explicitNullValueExcludedItems = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item> ExcludedItems { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item> ExcludedItems { get => _explicitNullValueExcludedItems; set { _explicitNullValueExcludedItems = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludedItems"); else _explicitNullProperties?.Remove("excludedItems"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item> _explicitNullValueExcludedItems = default!;
 #endif
         /// <summary>Inactivity gap that splits an actor&apos;s events into journeys. Bounds per unit are validated server-side against CONVERSION_WINDOW_INTERVAL_BOUNDS, the funnel conversion window bounds.</summary>
-        public int? GapInterval { get; set; }
+        public int? GapInterval { get => _explicitNullValueGapInterval; set { _explicitNullValueGapInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gapInterval"); else _explicitNullProperties?.Remove("gapInterval"); } }
+        private int? _explicitNullValueGapInterval = default!;
         /// <summary>The gapIntervalUnit property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? GapIntervalUnit { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? GapIntervalUnit { get => _explicitNullValueGapIntervalUnit; set { _explicitNullValueGapIntervalUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gapIntervalUnit"); else _explicitNullProperties?.Remove("gapIntervalUnit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit? _explicitNullValueGapIntervalUnit = default!;
         /// <summary>Path cleaning rules for this insight only, applied after the team&apos;s rules.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>? LocalPathCleaningFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>? LocalPathCleaningFilters { get => _explicitNullValueLocalPathCleaningFilters; set { _explicitNullValueLocalPathCleaningFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("localPathCleaningFilters"); else _explicitNullProperties?.Remove("localPathCleaningFilters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>? _explicitNullValueLocalPathCleaningFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter> LocalPathCleaningFilters { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter> LocalPathCleaningFilters { get => _explicitNullValueLocalPathCleaningFilters; set { _explicitNullValueLocalPathCleaningFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("localPathCleaningFilters"); else _explicitNullProperties?.Remove("localPathCleaningFilters"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter> _explicitNullValueLocalPathCleaningFilters = default!;
 #endif
         /// <summary>Number of path item rows per step; items beyond this go into the &quot;other&quot; row.</summary>
-        public int? MaxRowsPerStep { get; set; }
+        public int? MaxRowsPerStep { get => _explicitNullValueMaxRowsPerStep; set { _explicitNullValueMaxRowsPerStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxRowsPerStep"); else _explicitNullProperties?.Remove("maxRowsPerStep"); } }
+        private int? _explicitNullValueMaxRowsPerStep = default!;
         /// <summary>Number of journey steps (columns) shown.</summary>
-        public int? MaxSteps { get; set; }
+        public int? MaxSteps { get => _explicitNullValueMaxSteps; set { _explicitNullValueMaxSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxSteps"); else _explicitNullProperties?.Remove("maxSteps"); } }
+        private int? _explicitNullValueMaxSteps = default!;
         /// <summary>Step sources defining which events can become path items. Defaults to the pageviews preset: `$pageview` named by `$pathname`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource>? StepSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource>? StepSources { get => _explicitNullValueStepSources; set { _explicitNullValueStepSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepSources"); else _explicitNullProperties?.Remove("stepSources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource>? _explicitNullValueStepSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource> StepSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource> StepSources { get => _explicitNullValueStepSources; set { _explicitNullValueStepSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepSources"); else _explicitNullProperties?.Remove("stepSources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource> _explicitNullValueStepSources = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Filter"/> and sets the default values.
@@ -80,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Filter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Filter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Filter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -122,7 +157,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathCleaningFilter>("localPathCleaningFilters", LocalPathCleaningFilters);
             writer.WriteIntValue("maxRowsPerStep", MaxRowsPerStep);
             writer.WriteIntValue("maxSteps", MaxSteps);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource>("stepSources", StepSources);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2StepSource>("stepSources", StepSources);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

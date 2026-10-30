@@ -7049,6 +7049,13 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: pagination
+        schema:
+          type: string
+          enum:
+          - none
+        description: Return all definitions in one response when set to none.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - account_relationship_definitions
@@ -11113,6 +11120,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/UploadReceipt'
           description: ''
+        '402':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfflineEvaluationError'
+          description: ''
         '400':
           content:
             application/json:
@@ -11491,11 +11504,134 @@ paths:
           description: Too many queries are running for the project or organization.
       x-product:
       - ai_observability
+  /api/projects/{project_id}/ai_observability/traces/{id}/exports/:
+    post:
+      operationId: ai_observability_traces_exports_create
+      description: Starts writing the trace and every node, inputs and outputs included,
+        to a JSON file. Poll the export until it completes, then download it.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: The trace id, sent as the unpadded base64url encoding of its
+          UTF-8 bytes.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - ai_observability
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TraceExportCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TraceExportCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TraceExportCreate'
+      security:
+      - PersonalAPIKeyAuth:
+        - llm_analytics:read
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TraceExport'
+          description: ''
+        '400':
+          description: The timestamp hint or the encoded trace id is malformed.
+        '429':
+          description: Too many exports were requested.
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/traces/{id}/exports/{export_id}/:
+    get:
+      operationId: ai_observability_traces_exports_retrieve
+      description: The state of one of your exports of this trace.
+      parameters:
+      - in: path
+        name: export_id
+        schema:
+          type: integer
+        description: The export id the create call returned.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: The trace id, sent as the unpadded base64url encoding of its
+          UTF-8 bytes.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TraceExport'
+          description: ''
+        '400':
+          description: The encoded trace id is malformed.
+        '404':
+          description: You have no export with this id for this trace.
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/traces/{id}/exports/{export_id}/content/:
+    get:
+      operationId: ai_observability_traces_exports_content_retrieve
+      description: Downloads a completed export as a JSON file.
+      parameters:
+      - in: path
+        name: export_id
+        schema:
+          type: integer
+        description: The export id the create call returned.
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: The trace id, sent as the unpadded base64url encoding of its
+          UTF-8 bytes.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TraceExportFile'
+          description: ''
+        '400':
+          description: The encoded trace id is malformed.
+        '404':
+          description: You have no export with this id for this trace.
+        '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TraceExportError'
+          description: The export is still being written, or failed.
+      x-product:
+      - ai_observability
   /api/projects/{project_id}/ai_observability/traces/{id}/feedback/:
     get:
       operationId: ai_observability_traces_feedback_retrieve
-      description: 'End-user feedback on a trace: the scores and the comments its
-        feedback events carry, each with the step it targets.'
+      description: 'End-user feedback on a trace: scores and comments from its feedback
+        events, survey responses linked to it, and surveys shown but not answered.'
       parameters:
       - in: path
         name: id
@@ -11574,6 +11710,49 @@ paths:
           description: The timestamp hint or an encoded id is malformed.
         '404':
           description: No node with this id in the trace.
+        '429':
+          description: Too many queries are running for the project or organization.
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/traces/{id}/pull_request/:
+    get:
+      operationId: ai_observability_traces_pull_request_retrieve
+      description: The pull request the trace's git branch belongs to, from engineering
+        analytics.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: The trace id, sent as the unpadded base64url encoding of its
+          UTF-8 bytes.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: timestamp_hint
+        schema:
+          type: string
+          format: date-time
+        description: When the trace happened, as carried by links into it. Lets a
+          trace older than the AI events retention load from the shared events table.
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - llm_analytics:read
+        - engineering_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TracePullRequestLookup'
+          description: ''
+        '400':
+          description: The timestamp hint or the encoded trace id is malformed.
+        '403':
+          description: The engineering-analytics feature flag is off for the project,
+            or the API key lacks a scope.
         '429':
           description: Too many queries are running for the project or organization.
       x-product:
@@ -16623,6 +16802,28 @@ paths:
           description: ''
       x-product:
       - business_knowledge
+  /api/projects/{project_id}/business_knowledge/sources/availability/:
+    get:
+      operationId: business_knowledge_sources_availability_retrieve
+      description: Whether the project has any source and whether this environment
+        has any selected GitHub repository.
+      summary: Check whether business knowledge has content
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnowledgeAvailability'
+          description: ''
+      x-product:
+      - business_knowledge
   /api/projects/{project_id}/calendar_sync/:
     get:
       operationId: calendar_sync_list
@@ -21015,6 +21216,13 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: pagination
+        schema:
+          type: string
+          enum:
+          - none
+        description: Return all definitions in one response when set to none.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - custom_property_definitions
@@ -37474,7 +37682,7 @@ paths:
         for exposure criteria that name an event without property filters. When the split changed
         after launch and the criteria have filters or an action, or an API key lacks `query:read`,
         it returns an info finding with the subcode `not_checked` and the cause in
-        `evidence.reason`. A caller who can't view the linked flag's history (viewer access to the
+        `reason`. A caller who can't view the linked flag's history (viewer access to the
         flag and, with an API key, `activity_log:read`) gets that finding for every running
         experiment, because the changes are not read.
 
@@ -37539,7 +37747,7 @@ paths:
         the flag's calls that name the matched condition, not the experiment's exposure criteria:
         info up to 5%, warning above, and no finding under 1% when at least half of the calls
         that returned a variant name a condition. The finding is info when the share is unknown,
-        and `evidence.reason` says why: `not_measured` (for example an API key without
+        and `reason` says why: `not_measured` (for example an API key without
         `query:read`, or a caller denied a flag call property), `too_few_people` (under 100), or
         `evaluated_outside_flag_service` (most calls come from local evaluation, a bootstrap or
         the caller's own assignment). A pin to a variant with 0% in the split adds an info,
@@ -50304,6 +50512,49 @@ paths:
           description: The result of every check.
       x-product:
       - product_analytics
+  /api/projects/{project_id}/insights/explain/:
+    post:
+      operationId: insights_explain_create
+      description: 'Classify what most likely caused each moment on a chart. The caller
+        sends chapters of facts that it computed from the chart''s data, and gets
+        back one cause from a fixed list for each chapter, with a confidence. The
+        numbers stay with the caller: this endpoint runs no query and reads no insight.
+        Without a decision model on the instance, the list is empty. The organization
+        must approve AI data processing.'
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - csv
+          - json
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - insights
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsightExplainRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - insight:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightExplain'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/InsightExplain'
+          description: The explanation of the chart.
+        '503':
+          description: The decision model failed or timed out.
+      x-product:
+      - product_analytics
   /api/projects/{project_id}/insights/generate_metadata/:
     post:
       operationId: insights_generate_metadata_create
@@ -62507,6 +62758,109 @@ paths:
           description: ''
       x-product:
       - metrics
+  /api/projects/{project_id}/metrics_alerts/{id}/destinations/:
+    get:
+      operationId: metrics_alerts_destinations_list
+      description: List the notification destinations of a metrics alert.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - metrics_alerts
+      security:
+      - PersonalAPIKeyAuth:
+        - alert:read
+        - metrics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MetricsAlertDestination'
+          description: ''
+      x-product:
+      - metrics
+    post:
+      operationId: metrics_alerts_destinations_create
+      description: Add a notification destination to a metrics alert. It hears the
+        transitions in `event_kinds`. A PagerDuty destination opens an incident when
+        the alert fires and resolves it when the alert resolves.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - metrics_alerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricsAlertCreateDestination'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MetricsAlertCreateDestination'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MetricsAlertCreateDestination'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - alert:write
+        - metrics:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetricsAlertDestination'
+          description: ''
+        '400':
+          description: The destination settings are invalid.
+      x-product:
+      - metrics
+  /api/projects/{project_id}/metrics_alerts/{id}/destinations/delete/:
+    post:
+      operationId: metrics_alerts_destinations_delete_create
+      description: Delete notification destinations of a metrics alert.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - metrics_alerts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetricsAlertDeleteDestination'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MetricsAlertDeleteDestination'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MetricsAlertDeleteDestination'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - alert:write
+        - metrics:write
+      responses:
+        '204':
+          description: The destinations are deleted. An ID of another alert is ignored.
+      x-product:
+      - metrics
   /api/projects/{project_id}/notebook_widgets/:
     get:
       operationId: reusable_widgets_list
@@ -69405,6 +69759,7 @@ paths:
           - space_setup
           - business_knowledge
           - metrics_import
+          - knowledge_writer
           type: string
           minLength: 1
         description: |-
@@ -69436,6 +69791,7 @@ paths:
           * `space_setup` - Space Setup
           * `business_knowledge` - Business Knowledge
           * `metrics_import` - Metrics Import
+          * `knowledge_writer` - Knowledge Writer
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - sandbox-custom-images
@@ -72168,8 +72524,8 @@ paths:
           - mine
         description: '''me'' returns reports claimed by exactly the requesting actor:
           the user, the internal task, or the MCP agent. ''mine'' returns every report
-          the requesting user answers for: their own claims, claims by MCP agents
-          acting for them, and claims by internal tasks they started.'
+          the requesting user claimed: their own claims and claims by MCP agents acting
+          for them. Internal task claims are not included.'
       - in: query
         name: channel_id
         schema:
@@ -74189,6 +74545,44 @@ paths:
           description: ''
       x-product:
       - signals
+  /api/projects/{project_id}/signals/reports/bulk_claim/:
+    post:
+      operationId: signals_reports_bulk_claim
+      description: 'Claim many reports for the current user, internal task, or external
+        agent in one call. Each id is claimed independently, and the call is 200 even
+        when some claims are refused: inspect `results` and the counts. Use the single-report
+        claim endpoint to release a claim or to add pull requests.'
+      summary: Claim many signal reports
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignalReportBulkClaimRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignalReportBulkClaimRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignalReportBulkClaimRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - task:write
+      - PersonalAPIKeyAuth:
+        - task:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalReportBulkClaimResponse'
+          description: ''
+      x-product:
+      - signals
   /api/projects/{project_id}/signals/reports/pr_ci_statuses/:
     get:
       operationId: signals_reports_pr_ci_statuses
@@ -74398,8 +74792,8 @@ paths:
           - mine
         description: '''me'' returns reports claimed by exactly the requesting actor:
           the user, the internal task, or the MCP agent. ''mine'' returns every report
-          the requesting user answers for: their own claims, claims by MCP agents
-          acting for them, and claims by internal tasks they started.'
+          the requesting user claimed: their own claims and claims by MCP agents acting
+          for them. Internal task claims are not included.'
       - in: query
         name: channel_id
         schema:
@@ -81546,6 +81940,7 @@ paths:
           - space_setup
           - business_knowledge
           - metrics_import
+          - knowledge_writer
           type: string
           minLength: 1
         description: |-
@@ -81577,6 +81972,7 @@ paths:
           * `space_setup` - Space Setup
           * `business_knowledge` - Business Knowledge
           * `metrics_import` - Metrics Import
+          * `knowledge_writer` - Knowledge Writer
       - in: query
         name: hog_flow_id
         schema:
@@ -81694,6 +82090,7 @@ paths:
             - experiments
             - hogdesk
             - image_builder
+            - knowledge_writer
             - loop
             - mcp_analytics
             - onboarding
@@ -81721,6 +82118,7 @@ paths:
               * `experiments` - experiments
               * `hogdesk` - hogdesk
               * `image_builder` - image_builder
+              * `knowledge_writer` - knowledge_writer
               * `loop` - loop
               * `mcp_analytics` - mcp_analytics
               * `onboarding` - onboarding
@@ -92309,10 +92707,7 @@ paths:
       - warehouse_sources
     post:
       operationId: warehouse_alerts_destinations_create
-      description: Add a notification destination to a warehouse alert. One HogFunction
-        is created per alert event kind (firing, resolved). A PagerDuty destination
-        gets the incident opened and incident closed kinds instead, so each incident
-        it opens is resolved.
+      description: Add a notification destination to a warehouse alert.
       parameters:
       - in: path
         name: id
@@ -92343,7 +92738,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/WarehouseAlertDestinationCreated'
+                $ref: '#/components/schemas/WarehouseAlertDestination'
           description: ''
         '400':
           description: The destination settings are invalid.
@@ -92352,8 +92747,7 @@ paths:
   /api/projects/{project_id}/warehouse_alerts/{id}/destinations/delete/:
     post:
       operationId: warehouse_alerts_destinations_delete_create
-      description: Delete one notification destination of a warehouse alert, all its
-        HogFunctions together.
+      description: Delete notification destinations of a warehouse alert.
       parameters:
       - in: path
         name: id
@@ -92381,9 +92775,9 @@ paths:
         - external_data_source:write
       responses:
         '204':
-          description: The destination's HogFunctions are deleted.
+          description: The destinations are deleted.
         '400':
-          description: An ID does not belong to this alert, or names part of a destination.
+          description: An ID does not belong to this alert.
       x-product:
       - warehouse_sources
   /api/projects/{project_id}/warehouse_column_annotations/:
@@ -93296,6 +93690,17 @@ paths:
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - warehouse_saved_queries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavedQueryResumeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SavedQueryResumeRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SavedQueryResumeRequest'
       security:
       - PersonalAPIKeyAuth:
         - warehouse_view:write
@@ -93906,6 +94311,13 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
+      - in: query
+        name: pending_source
+        schema:
+          type: boolean
+          default: false
+        description: Only return self-managed tables that a managed source will import
+          on its first sync.
       - $ref: '#/components/parameters/ProjectIdPath'
       - name: search
         required: false
@@ -102283,6 +102695,69 @@ components:
       - definitionId
       title: AccountsTableCustomPropertyColumn
       type: object
+    AccountsTableCustomPropertyDefinition:
+      additionalProperties: false
+      properties:
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Description
+        display_type:
+          $ref: '#/components/schemas/AccountsTableCustomPropertyDisplayType'
+        has_workflow_reference:
+          title: Has Workflow Reference
+          type: boolean
+        id:
+          title: Id
+          type: string
+        is_big_number:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Is Big Number
+        is_canonical:
+          title: Is Canonical
+          type: boolean
+        name:
+          title: Name
+          type: string
+        options:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableCustomPropertyOption'
+            type: array
+          - type: 'null'
+          default: null
+          title: Options
+        source:
+          anyOf:
+          - $ref: '#/components/schemas/AccountsTableCustomPropertySource'
+          - type: 'null'
+          default: null
+      required:
+      - display_type
+      - has_workflow_reference
+      - id
+      - is_canonical
+      - name
+      title: AccountsTableCustomPropertyDefinition
+      type: object
+    AccountsTableCustomPropertyDisplayType:
+      enum:
+      - text
+      - link
+      - number
+      - currency
+      - percent
+      - date
+      - datetime
+      - boolean
+      - select
+      title: AccountsTableCustomPropertyDisplayType
+      type: string
     AccountsTableCustomPropertyFilter:
       additionalProperties: false
       properties:
@@ -102370,6 +102845,36 @@ components:
       - is_date_after
       title: AccountsTableCustomPropertyOperator
       type: string
+    AccountsTableCustomPropertyOption:
+      additionalProperties: false
+      properties:
+        color:
+          title: Color
+          type: string
+        id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Id
+        label:
+          title: Label
+          type: string
+      required:
+      - color
+      - label
+      title: AccountsTableCustomPropertyOption
+      type: object
+    AccountsTableCustomPropertySource:
+      additionalProperties: false
+      properties:
+        id:
+          title: Id
+          type: string
+      required:
+      - id
+      title: AccountsTableCustomPropertySource
+      type: object
     AccountsTableNoteCountColumn:
       additionalProperties: false
       properties:
@@ -102439,6 +102944,14 @@ components:
           description: Filters are combined with AND. Values within tag and assignment
             filters use OR.
           title: Filters
+        ignoreMissingDefinitions:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Omit missing definitions and custom-property filters incompatible
+            with their current types.
+          title: Ignoremissingdefinitions
         includeChurned:
           anyOf:
           - type: boolean
@@ -102505,6 +103018,12 @@ components:
           - $ref: '#/components/schemas/QueryLogTags'
           - type: 'null'
           default: null
+        useDefaultColumns:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Usedefaultcolumns
         version:
           anyOf:
           - type: number
@@ -102575,6 +103094,28 @@ components:
     AccountsTableQueryResponse:
       additionalProperties: false
       properties:
+        columns:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/AccountsTableAccountFieldColumn'
+              - $ref: '#/components/schemas/AccountsTableTagsColumn'
+              - $ref: '#/components/schemas/AccountsTableNoteCountColumn'
+              - $ref: '#/components/schemas/AccountsTableRelationshipColumn'
+              - $ref: '#/components/schemas/AccountsTableCustomPropertyColumn'
+              - $ref: '#/components/schemas/AccountsTableCustomPropertyHistoryColumn'
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        customPropertyDefinitions:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableCustomPropertyDefinition'
+            type: array
+          - type: 'null'
+          default: null
+          title: Custompropertydefinitions
         error:
           anyOf:
           - type: string
@@ -102628,6 +103169,14 @@ components:
           default: null
           description: Query status indicates whether next to the provided data, a
             query is still running.
+        relationshipDefinitions:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableRelationshipDefinition'
+            type: array
+          - type: 'null'
+          default: null
+          title: Relationshipdefinitions
         resolved_compare_date_range:
           anyOf:
           - $ref: '#/components/schemas/ResolvedDateRangeResponse'
@@ -102705,6 +103254,36 @@ components:
       required:
       - definitionId
       title: AccountsTableRelationshipColumn
+      type: object
+    AccountsTableRelationshipDefinition:
+      additionalProperties: false
+      properties:
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Description
+        id:
+          title: Id
+          type: string
+        is_controlled:
+          title: Is Controlled
+          type: boolean
+        is_single_holder:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Is Single Holder
+        name:
+          title: Name
+          type: string
+      required:
+      - id
+      - is_controlled
+      - name
+      title: AccountsTableRelationshipDefinition
       type: object
     AccountsTableRelationshipFilter:
       additionalProperties: false
@@ -105080,6 +105659,21 @@ components:
         error_count:
           title: Error Count
           type: integer
+        health_reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Short reason for `health_status`, such as `error rate 0.2%
+            → 4.1%`. Empty when the status is `ok`.
+          title: Health Reason
+        health_status:
+          anyOf:
+          - $ref: '#/components/schemas/SpanHealthStatus'
+          - type: 'null'
+          default: null
+          description: Set only when the query asked for `includeHealth`. Same statuses
+            as the service health check.
         name:
           title: Name
           type: string
@@ -111849,8 +112443,8 @@ components:
           readOnly: true
         team_id:
           type: integer
-          description: The team this belongs to.
           readOnly: true
+          description: The team this belongs to.
         name:
           type: string
           description: A human-readable name for this BatchExport.
@@ -120789,6 +121383,22 @@ components:
       - column
       title: ChartAxis
       type: object
+    ChartCauseEnum:
+      enum:
+      - outside_traffic
+      - usage
+      - one_person
+      - tracking
+      - weekly_pattern
+      - unclear
+      type: string
+      description: |-
+        * `outside_traffic` - Outside traffic
+        * `usage` - Usage
+        * `one_person` - One person
+        * `tracking` - Tracking
+        * `weekly_pattern` - Weekly pattern
+        * `unclear` - Unclear
     ChartDisplayType:
       enum:
       - Auto
@@ -121035,6 +121645,14 @@ components:
           - $ref: '#/components/schemas/DisplayType'
           - type: 'null'
           default: null
+        excludeFromTotal:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Keep this series out of the tooltip's total row, e.g. a target
+            line over stacked bars.
+          title: Excludefromtotal
         label:
           anyOf:
           - type: string
@@ -121047,6 +121665,13 @@ components:
           - type: 'null'
           default: null
           title: Trendline
+        valueLabels:
+          anyOf:
+          - $ref: '#/components/schemas/ValueLabels'
+          - type: 'null'
+          default: null
+          description: Overrides the chart's "Show values on series" for this series.
+            Unset or 'auto' follows the chart setting.
         yAxisPosition:
           anyOf:
           - $ref: '#/components/schemas/YAxisPosition'
@@ -136204,6 +136829,7 @@ components:
             * `WooPayments` - WooPayments
             * `Soniox` - Soniox
             * `Nango` - Nango
+            * `Fathom` - Fathom
       required:
       - source_type
     DatabaseSchemaSchema:
@@ -136714,7 +137340,7 @@ components:
           description: Export ID used to check status and download the file.
         status:
           allOf:
-          - $ref: '#/components/schemas/DatasetExportReadStatusEnum'
+          - $ref: '#/components/schemas/ExportStatusEnum'
           readOnly: true
           description: 'Current export state: pending, complete, or failed.'
         dataset_revision:
@@ -136749,12 +137375,6 @@ components:
       - filename
       - id
       - status
-    DatasetExportReadStatusEnum:
-      enum:
-      - pending
-      - complete
-      - failed
-      type: string
     DatasetItemArchive:
       type: object
       properties:
@@ -139903,6 +140523,7 @@ components:
             * `WooPayments` - WooPayments
             * `Soniox` - Soniox
             * `Nango` - Nango
+            * `Fathom` - Fathom
         label:
           type: string
           readOnly: true
@@ -143336,8 +143957,9 @@ components:
           description: Whether the endpoint can be executed via the API.
         data_freshness_seconds:
           type: integer
-          description: 'How fresh the data is, in seconds. One of: 900, 1800, 3600,
-            21600, 43200, 86400, 604800.'
+          description: Effective data freshness, in seconds. Materialized endpoints
+            use the node's refresh target, which can differ from the standard freshness
+            choices. Other endpoints use the cache duration.
         endpoint_path:
           type: string
           description: Relative API path to execute this endpoint (e.g. /api/projects/{team_id}/endpoints/{name}/run).
@@ -143566,8 +144188,9 @@ components:
           description: Whether the endpoint can be executed via the API.
         data_freshness_seconds:
           type: integer
-          description: 'How fresh the data is, in seconds. One of: 900, 1800, 3600,
-            21600, 43200, 86400, 604800.'
+          description: Effective data freshness, in seconds. Materialized endpoints
+            use the node's refresh target, which can differ from the standard freshness
+            choices. Other endpoints use the cache duration.
         endpoint_path:
           type: string
           description: Relative API path to execute this endpoint (e.g. /api/projects/{team_id}/endpoints/{name}/run).
@@ -149627,6 +150250,22 @@ components:
                 - decision
                 description: Judge method. Omit to keep the saved method; null restores
                   automatic routing.
+              include_media:
+                type: boolean
+                description: Set to false to judge text only.
+              reasoning_level:
+                type:
+                - string
+                - 'null'
+                enum:
+                - minimal
+                - low
+                - medium
+                - high
+                description: How much the judge model reasons before it answers. Only
+                  Anthropic and OpenAI reasoning models with the 'llm' judge method
+                  support it. Omit to keep the saved level; null uses the model's
+                  default.
             additionalProperties: false
           - type: object
             title: Hog config
@@ -151202,7 +151841,8 @@ components:
           type: array
         totals:
           $ref: '#/components/schemas/OverviewTotals'
-          description: Totals over the enabled evaluations.
+          description: Totals over every evaluation's results in the period, paused
+            ones included.
         passRateOverview:
           $ref: '#/components/schemas/PassRateOverview'
       required:
@@ -154514,6 +155154,13 @@ components:
             ratio test. The keys depend on the code.
           title: Evidence
           type: object
+        reason:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: A stable qualifier below the subcode, for example where a sample
+            ratio mismatch is located. Null when the finding names none.
+          title: Reason
         severity:
           $ref: '#/components/schemas/ExperimentExposureHealthFindingSeverity'
           description: 'How much the problem affects the results: critical, warning,
@@ -154535,6 +155182,7 @@ components:
       - detail
       - diagnostic_ref
       - evidence
+      - reason
       - severity
       - subcode
       - title
@@ -155215,6 +155863,14 @@ components:
           description: The case within the code, when a code covers several, for example
             'running_but_no_rollout' within 'flag_off_while_running'. Null when the
             code has one case.
+        reason:
+          type:
+          - string
+          - 'null'
+          description: 'A stable qualifier below the subcode: where a sample ratio
+            mismatch is located (''library'', ''page''), what leaves nobody exposed
+            (''test_account_filter''), or why a check could not read what it needs
+            (''no_history_access''). Null when the finding names none.'
         severity:
           allOf:
           - $ref: '#/components/schemas/ExperimentHealthFindingSeverityEnum'
@@ -155260,6 +155916,7 @@ components:
       - detail
       - diagnostic_ref
       - evidence
+      - reason
       - severity
       - subcode
       - title
@@ -160213,6 +160870,12 @@ components:
       required:
       - timestamp
       - uuid
+    ExportStatusEnum:
+      enum:
+      - pending
+      - complete
+      - failed
+      type: string
     ExportedAsset:
       type: object
       description: Standard ExportedAsset serializer that doesn't return content.
@@ -160654,6 +161317,12 @@ components:
           - string
           - 'null'
           readOnly: true
+        pending_self_managed_table:
+          type: boolean
+          readOnly: true
+          description: Whether this schema is linked to an existing self-managed table
+            that its first sync will import. Until then the table keeps reading the
+            original bucket.
         sync_type:
           description: |-
             Sync strategy: incremental, full_refresh, append, cdc, or xmin.
@@ -160861,6 +161530,14 @@ components:
           readOnly: true
           description: Whether exact source-side column metadata is available for
             safe source-query projection.
+        history_table_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Name of the history table that keeps every version of each
+            row, or `null` when the table keeps no history. A history table created
+            before `_history` names existed keeps its `_cdc` name.
         source:
           type:
           - object
@@ -160922,6 +161599,7 @@ components:
       - api_version_deprecation
       - available_columns
       - description
+      - history_table_name
       - id
       - incremental
       - incremental_sync_blocked
@@ -160930,6 +161608,7 @@ components:
       - latest_error
       - name
       - next_full_refresh_at
+      - pending_self_managed_table
       - row_filter_columns
       - source
       - source_column_metadata_available
@@ -162582,6 +163261,7 @@ components:
             * `WooPayments` - WooPayments
             * `Soniox` - Soniox
             * `Nango` - Nango
+            * `Fathom` - Fathom
         access_method:
           allOf:
           - $ref: '#/components/schemas/ExternalDataSourceAccessMethodEnum'
@@ -164040,6 +164720,7 @@ components:
             * `WooPayments` - WooPayments
             * `Soniox` - Soniox
             * `Nango` - Nango
+            * `Fathom` - Fathom
         payload:
           type: object
           additionalProperties: true
@@ -165768,6 +166449,7 @@ components:
       - WooPayments
       - Soniox
       - Nango
+      - Fathom
       type: string
       description: |-
         * `Ashby` - Ashby
@@ -167183,6 +167865,7 @@ components:
         * `WooPayments` - WooPayments
         * `Soniox` - Soniox
         * `Nango` - Nango
+        * `Fathom` - Fathom
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -173677,6 +174360,20 @@ components:
       - created_at
       title: GiteaIssueSignalExtra
       type: object
+    GithubIssueDependencyRef:
+      additionalProperties: false
+      properties:
+        repository:
+          title: Repository
+          type: string
+        number:
+          title: Number
+          type: integer
+      required:
+      - repository
+      - number
+      title: GithubIssueDependencyRef
+      type: object
     GithubIssueSignalExtra:
       additionalProperties: false
       properties:
@@ -173715,6 +174412,12 @@ components:
           - type: 'null'
           default: null
           title: Author Association
+        depends_on_issues:
+          default: []
+          items:
+            $ref: '#/components/schemas/GithubIssueDependencyRef'
+          title: Depends On Issues
+          type: array
       required:
       - html_url
       - number
@@ -177050,19 +177753,22 @@ components:
             <bool> (default true) - when false, no open pixel is injected, links are
             not rewritten, and the send skips ESP-level open/click tracking, so opens
             and clicks are not recorded for that step (delivery/bounce/unsubscribe
-            still are). Dictionary input values are template strings too — write booleans/numbers
-            as single-expression templates (''{true}'', ''{42}''), which evaluate
-            to the typed value. delay: waits a fixed span or until a per-person/-event
-            date — set EXACTLY ONE of delay_duration or delay_until. {delay_duration:
-            ''<number><unit>''} where unit is s|m|h|d, at most 365d, 24h, 60m or 60s.
-            Fractions OK (''1.5d''=36h). A larger value is rejected. delay_until:
-            {expression: ''<SQL>'', offset?: ''<±number><unit>''} waits until the
-            date expression evaluates to (an ISO string, unix seconds, or a date value
-            all resolve to the same instant); offset is a signed duration shifting
-            it (''-1d'' a day before, ''2h'' two hours after). expression is compiled
-            server-side, so any bytecode sent with it is discarded. A person property
-            is person.properties.<key>; an event property is properties.<key>, as
-            the ''event.'' prefix resolves to nothing and aborts the run. Optional
+            still are). function_push also accepts sensitive?: <bool> (default false)
+            - when true, the notification is still sent but PostHog keeps no copy
+            of its title, subtitle, body or image, and the run keeps no variables,
+            so it can''t be rerun. Dictionary input values are template strings too
+            — write booleans/numbers as single-expression templates (''{true}'', ''{42}''),
+            which evaluate to the typed value. delay: waits a fixed span or until
+            a per-person/-event date — set EXACTLY ONE of delay_duration or delay_until.
+            {delay_duration: ''<number><unit>''} where unit is s|m|h|d, at most 365d,
+            24h, 60m or 60s. Fractions OK (''1.5d''=36h). A larger value is rejected.
+            delay_until: {expression: ''<SQL>'', offset?: ''<±number><unit>''} waits
+            until the date expression evaluates to (an ISO string, unix seconds, or
+            a date value all resolve to the same instant); offset is a signed duration
+            shifting it (''-1d'' a day before, ''2h'' two hours after). expression
+            is compiled server-side, so any bytecode sent with it is discarded. A
+            person property is person.properties.<key>; an event property is properties.<key>,
+            as the ''event.'' prefix resolves to nothing and aborts the run. Optional
             timezone (IANA name), use_person_timezone (read $geoip_time_zone) and
             fallback_timezone decide which zone a date with no offset of its own is
             read in; a date that states an offset, and unix seconds, ignore them.
@@ -182348,6 +183054,25 @@ components:
               type: string
               format: date-time
           readOnly: true
+          description: The period that this insight's query covered, with both ends
+            resolved to timestamps. Null when the insight has no result yet or its
+            query type does not report the range.
+        resolved_compare_date_range:
+          type:
+          - object
+          - 'null'
+          properties:
+            date_from:
+              type: string
+              format: date-time
+            date_to:
+              type: string
+              format: date-time
+          readOnly: true
+          description: The earlier period that this insight's query compared against,
+            with both ends resolved to timestamps. Null when comparison is off, when
+            the insight has no result yet, or when its query type does not report
+            the range.
         action_names:
           type:
           - object
@@ -182421,6 +183146,7 @@ components:
       - next_allowed_client_refresh
       - query_scan
       - query_status
+      - resolved_compare_date_range
       - resolved_date_range
       - result
       - search_match_type
@@ -183155,6 +183881,101 @@ components:
         * `no_events` - No events to check
         * `unsupported` - This kind of insight cannot be checked
         * `inconclusive` - No check could run
+    InsightExplain:
+      type: object
+      properties:
+        chapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/InsightExplainChapter'
+          description: The likely cause of each chapter the model answered, in the
+            order they were sent.
+      required:
+      - chapters
+    InsightExplainChapter:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identifier of the chapter, as it was sent.
+        cause:
+          allOf:
+          - $ref: '#/components/schemas/ChartCauseEnum'
+          description: |-
+            What most likely caused the chapter: outside traffic, a real change in usage, one person or a test account, a tracking change, the usual weekly pattern, or unclear when no cause fits the facts.
+
+            * `outside_traffic` - Outside traffic
+            * `usage` - Usage
+            * `one_person` - One person
+            * `tracking` - Tracking
+            * `weekly_pattern` - Weekly pattern
+            * `unclear` - Unclear
+        confidence:
+          type: number
+          format: double
+          description: How sure the model is of the cause, from 0 to 1.
+      required:
+      - cause
+      - confidence
+      - id
+    InsightExplainChapterFacts:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identifier of the chapter. The response returns the chapter
+            under the same one.
+          maxLength: 64
+        title:
+          type: string
+          description: What the chapter is about, for example 'A peak on October 2'.
+          maxLength: 200
+        summary:
+          type: string
+          description: The computed facts of the chapter in one or two sentences,
+            with their numbers and dates.
+          maxLength: 600
+        evidence:
+          type: array
+          items:
+            type: string
+            maxLength: 600
+          description: Findings about the cause of the chapter, one sentence each.
+            Empty when nothing was found. At most 6.
+          maxItems: 6
+      required:
+      - id
+      - summary
+      - title
+    InsightExplainRequest:
+      type: object
+      properties:
+        series_label:
+          type: string
+          description: Name of the series that the explanation follows.
+          maxLength: 200
+        insight_name:
+          type: string
+          default: ''
+          description: Name of the insight. Blank for an insight that has no name
+            yet.
+          maxLength: 400
+        overview:
+          type: string
+          default: ''
+          description: The computed facts of the whole chart, such as its typical
+            level, its range and how it ends.
+          maxLength: 600
+        chapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/InsightExplainChapterFacts'
+          description: The chapters of the explanation in reading order. At most 8.
+            Empty when nothing stands out on the chart.
+          maxItems: 8
+      required:
+      - chapters
+      - series_label
     InsightFilterOverrideContext:
       properties:
         dashboard:
@@ -185243,6 +186064,21 @@ components:
       - ExperimentExposureNode
       title: Kind3
       type: string
+    KnowledgeAvailability:
+      type: object
+      properties:
+        has_sources:
+          type: boolean
+          readOnly: true
+          description: True when the project has at least one business knowledge source.
+        has_repositories:
+          type: boolean
+          readOnly: true
+          description: True when this environment has at least one GitHub repository
+            selected.
+      required:
+      - has_repositories
+      - has_sources
     KnowledgeDocumentWindow:
       type: object
       description: |-
@@ -203343,6 +204179,175 @@ components:
           type: string
       title: MetricsAlertConfig
       type: object
+    MetricsAlertCreateDestination:
+      type: object
+      properties:
+        type:
+          allOf:
+          - $ref: '#/components/schemas/MetricsAlertDestinationTypeEnum'
+          description: |-
+            Notification destination type.
+
+            * `slack` - Slack
+            * `webhook` - Webhook
+            * `teams` - Microsoft Teams
+            * `discord` - Discord
+            * `pagerduty` - PagerDuty
+        slack_workspace_id:
+          type: integer
+          description: Integration ID for the Slack workspace. Required when type=slack.
+        slack_channel_id:
+          type: string
+          description: Slack channel ID. Required when type=slack.
+        slack_channel_name:
+          type: string
+          description: Human-readable channel name for display.
+        webhook_url:
+          type: string
+          format: uri
+          description: HTTPS endpoint to post to. Required for webhook, teams and
+            discord.
+        pagerduty_routing_key:
+          type: string
+          description: Integration key of a PagerDuty Events API v2 integration. Required
+            when type=pagerduty.
+        pagerduty_severity:
+          allOf:
+          - $ref: '#/components/schemas/PagerDutySeverityEnum'
+          default: critical
+          description: |-
+            Severity PagerDuty records on the incident. Used when type=pagerduty.
+
+            * `critical` - critical
+            * `error` - error
+            * `warning` - warning
+            * `info` - info
+        pagerduty_region:
+          allOf:
+          - $ref: '#/components/schemas/PagerDutyRegionEnum'
+          default: us
+          description: |-
+            PagerDuty service region of the account. Used when type=pagerduty.
+
+            * `us` - us
+            * `eu` - eu
+        event_kinds:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricsAlertDestinationEventKindEnum'
+          description: The alert transitions to send about. Defaults to every kind,
+            or to firing and resolved for PagerDuty, which then hears each incident's
+            trigger and resolve.
+          minItems: 1
+      required:
+      - type
+    MetricsAlertDeleteDestination:
+      type: object
+      properties:
+        destination_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: IDs of the destinations to delete, as the list endpoint returns
+            them.
+          maxItems: 100
+          minItems: 1
+      required:
+      - destination_ids
+    MetricsAlertDestination:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID of the destination. Send it to the delete endpoint to remove
+            it.
+        type:
+          allOf:
+          - $ref: '#/components/schemas/MetricsAlertDestinationTypeEnum'
+          description: |-
+            Notification destination type.
+
+            * `slack` - Slack
+            * `webhook` - Webhook
+            * `teams` - Microsoft Teams
+            * `discord` - Discord
+            * `pagerduty` - PagerDuty
+        enabled:
+          type: boolean
+          description: Whether the destination is sent to.
+        event_kinds:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricsAlertDestinationEventKindEnum'
+          description: The alert transitions the destination hears about. A PagerDuty
+            destination hears the incident trigger and resolve of every firing.
+        slack_workspace_id:
+          type: integer
+          description: Integration ID of the Slack workspace. Set when type=slack.
+        slack_channel_id:
+          type: string
+          description: Slack channel ID. Set when type=slack.
+        slack_channel_name:
+          type: string
+          description: Human-readable Slack channel name. Set when type=slack.
+        webhook_url:
+          type: string
+          description: Webhook endpoint reduced to scheme and host. The path, query
+            and userinfo carry the secret.
+        pagerduty_routing_key:
+          type: string
+          description: PagerDuty integration key reduced to its last four characters.
+        pagerduty_severity:
+          allOf:
+          - $ref: '#/components/schemas/PagerDutySeverityEnum'
+          description: |-
+            Severity of the PagerDuty incident.
+
+            * `critical` - critical
+            * `error` - error
+            * `warning` - warning
+            * `info` - info
+        pagerduty_region:
+          allOf:
+          - $ref: '#/components/schemas/PagerDutyRegionEnum'
+          description: |-
+            PagerDuty service region the events go to.
+
+            * `us` - us
+            * `eu` - eu
+      required:
+      - enabled
+      - event_kinds
+      - id
+      - type
+    MetricsAlertDestinationEventKindEnum:
+      enum:
+      - firing
+      - resolved
+      - errored
+      - broken
+      type: string
+      description: |-
+        * `firing` - firing
+        * `resolved` - resolved
+        * `errored` - errored
+        * `broken` - broken
+    MetricsAlertDestinationTypeEnum:
+      enum:
+      - slack
+      - webhook
+      - teams
+      - discord
+      - pagerduty
+      type: string
+      description: |-
+        * `slack` - Slack
+        * `webhook` - Webhook
+        * `teams` - Microsoft Teams
+        * `discord` - Discord
+        * `pagerduty` - PagerDuty
     MetricsAttributeScope:
       enum:
       - resource
@@ -203771,6 +204776,213 @@ components:
       - summary
       title: MetricsOtelType
       type: string
+    MetricsPlatformAlertCondition:
+      additionalProperties: false
+      properties:
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/MetricsPlatformAlertConditionKindEnum'
+          default: threshold
+          description: threshold compares each series' latest value with `threshold`.
+            present fires for every series the query returns, for a query that already
+            filters to the series in breach.
+          title: Kind
+        operator:
+          anyOf:
+          - enum:
+            - gt
+            - gte
+            - lt
+            - lte
+            - eq
+            - ne
+            type: string
+          - type: 'null'
+          default: null
+          description: How a series' value compares with `threshold`. Required for
+            a threshold.
+          title: Operator
+        threshold:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: The value a series is compared with. Required for a threshold.
+          title: Threshold
+      title: MetricsPlatformAlertCondition
+      type: object
+    MetricsPlatformAlertConditionKindEnum:
+      enum:
+      - threshold
+      - present
+      type: string
+    MetricsPlatformAlertConfig:
+      additionalProperties: false
+      properties:
+        query:
+          description: A PromQL expression over this project's metrics. Each series
+            it returns is one group. For a threshold condition, leave the comparison
+            out of the expression.
+          maxLength: 10000
+          minLength: 1
+          title: Query
+          type: string
+        condition:
+          $ref: '#/components/schemas/MetricsPlatformAlertCondition'
+          description: When a series is in breach.
+      required:
+      - query
+      - condition
+      title: MetricsPlatformAlertConfig
+      type: object
+    MetricsPlatformAlertConfigurationCreate:
+      type: object
+      description: The settings of a new alert. Every one but source_config has a
+        default, which is stored.
+      properties:
+        source_kind:
+          type: string
+          description: Product whose data the alert evaluates. It cannot change after
+            the create.
+        name:
+          type: string
+          default: Untitled alert
+          description: Human-readable name of the alert. Defaults to 'Untitled alert'.
+          maxLength: 255
+        enabled:
+          type: boolean
+          default: true
+          description: Whether the alert is evaluated on schedule. Defaults to true.
+        source_config:
+          allOf:
+          - $ref: '#/components/schemas/MetricsPlatformAlertConfig'
+          description: Settings for a metrics alert. The bound the alert is evaluated
+            against is under condition.
+        grouping:
+          allOf:
+          - $ref: '#/components/schemas/Grouping'
+          description: How the alert splits its results into instances. Defaults to
+            mode single.
+        schedule_restriction:
+          oneOf:
+          - $ref: '#/components/schemas/AlertScheduleRestriction'
+          - type: 'null'
+          description: Blocked local time windows (HH:MM in the project timezone)
+            when the alert does not notify. Null means no quiet hours. Defaults to
+            null.
+        evaluation_periods:
+          type: integer
+          maximum: 10
+          minimum: 1
+          default: 1
+          description: Number of recent checks considered when deciding to fire. Defaults
+            to 1.
+        datapoints_to_alarm:
+          type: integer
+          maximum: 10
+          minimum: 1
+          default: 1
+          description: Number of breaching checks within evaluation_periods required
+            to fire. Cannot exceed evaluation_periods. Defaults to 1.
+        cooldown_minutes:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          default: 0
+          description: Minimum minutes between notifications for the same alert. Defaults
+            to 0.
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Labels that say who owns the alert and how urgent it is, such
+            as {"team": "checkout", "severity": "critical"}. Names use letters, digits
+            and underscores. alertname and names that start with posthog_ are reserved.
+            Values cannot use templates.'
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Context for whoever responds, such as {"runbook_url": "https://..."}.
+            Values can use {{ $labels.<name> }} for a grouping key or label of the
+            alert, and {{ $value }}. An annotation whose name ends in _url must start
+            with https://.'
+      required:
+      - source_config
+      - source_kind
+    MetricsPlatformAlertConfigurationEdit:
+      type: object
+      description: The settings an edit can change. Each source kind subclasses it
+        with a typed `source_config`.
+      properties:
+        source_kind:
+          type: string
+          description: Product whose data the alert evaluates. It cannot change, so
+            it must match the stored value.
+        name:
+          type: string
+          description: Human-readable name of the alert.
+          maxLength: 255
+        enabled:
+          type: boolean
+          description: Whether the alert is evaluated on schedule.
+        source_config:
+          allOf:
+          - $ref: '#/components/schemas/MetricsPlatformAlertConfig'
+          description: Settings for a metrics alert. The bound the alert is evaluated
+            against is under condition.
+        grouping:
+          allOf:
+          - $ref: '#/components/schemas/Grouping'
+          description: How the alert splits its results into instances.
+        schedule_restriction:
+          oneOf:
+          - $ref: '#/components/schemas/AlertScheduleRestriction'
+          - type: 'null'
+          description: Blocked local time windows (HH:MM in the project timezone)
+            when the alert does not notify. Null means no quiet hours.
+        evaluation_periods:
+          type: integer
+          maximum: 10
+          minimum: 1
+          description: Number of recent checks considered when deciding to fire.
+        datapoints_to_alarm:
+          type: integer
+          maximum: 10
+          minimum: 1
+          description: Number of breaching checks within evaluation_periods required
+            to fire. Cannot exceed evaluation_periods.
+        cooldown_minutes:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Minimum minutes between notifications for the same alert.
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Labels that say who owns the alert and how urgent it is, such
+            as {"team": "checkout", "severity": "critical"}. Names use letters, digits
+            and underscores. alertname and names that start with posthog_ are reserved.
+            Values cannot use templates.'
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Context for whoever responds, such as {"runbook_url": "https://..."}.
+            Values can use {{ $labels.<name> }} for a grouping key or label of the
+            alert, and {{ $value }}. An annotation whose name ends in _url must start
+            with https://.'
+      required:
+      - cooldown_minutes
+      - datapoints_to_alarm
+      - enabled
+      - evaluation_periods
+      - grouping
+      - name
+      - schedule_restriction
+      - source_config
+      - source_kind
     MetricsQuery:
       additionalProperties: false
       properties:
@@ -208046,7 +209258,8 @@ components:
           - string
           - 'null'
           format: date-time
-          description: Payload retention deadline; cleanup is not yet enabled.
+          description: Payload expires 30 days after first acceptance; deletion runs
+            hourly.
         results:
           type: array
           items:
@@ -208134,7 +209347,8 @@ components:
           - string
           - 'null'
           format: date-time
-          description: Payload retention deadline; cleanup is not yet enabled.
+          description: Payload expires 30 days after first acceptance; deletion runs
+            hourly.
         scorer_version_id:
           type: string
           format: uuid
@@ -208295,7 +209509,8 @@ components:
           - string
           - 'null'
           format: date-time
-          description: Payload retention deadline; cleanup is not yet enabled.
+          description: Payload expires 30 days after first acceptance; deletion runs
+            hourly.
         scorer:
           allOf:
           - $ref: '#/components/schemas/OfflineScorerVersionRead'
@@ -217121,7 +218336,8 @@ components:
     PassRateOverview:
       properties:
         entries:
-          description: Enabled pass rate evaluations, lowest rate first.
+          description: Pass rate evaluations with results in the period, paused ones
+            included, lowest rate first.
           items:
             $ref: '#/components/schemas/PassRateOverviewEntry'
           title: Entries
@@ -220560,6 +221776,22 @@ components:
                 - decision
                 description: Judge method. Omit to keep the saved method; null restores
                   automatic routing.
+              include_media:
+                type: boolean
+                description: Set to false to judge text only.
+              reasoning_level:
+                type:
+                - string
+                - 'null'
+                enum:
+                - minimal
+                - low
+                - medium
+                - high
+                description: How much the judge model reasons before it answers. Only
+                  Anthropic and OpenAI reasoning models with the 'llm' judge method
+                  support it. Omit to keep the saved level; null uses the model's
+                  default.
             additionalProperties: false
           - type: object
             title: Hog config
@@ -221605,6 +222837,12 @@ components:
           - string
           - 'null'
           readOnly: true
+        pending_self_managed_table:
+          type: boolean
+          readOnly: true
+          description: Whether this schema is linked to an existing self-managed table
+            that its first sync will import. Until then the table keeps reading the
+            original bucket.
         sync_type:
           description: |-
             Sync strategy: incremental, full_refresh, append, cdc, or xmin.
@@ -221812,6 +223050,14 @@ components:
           readOnly: true
           description: Whether exact source-side column metadata is available for
             safe source-query projection.
+        history_table_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Name of the history table that keeps every version of each
+            row, or `null` when the table keeps no history. A history table created
+            before `_history` names existed keeps its `_cdc` name.
         source:
           type:
           - object
@@ -223357,6 +224603,25 @@ components:
               type: string
               format: date-time
           readOnly: true
+          description: The period that this insight's query covered, with both ends
+            resolved to timestamps. Null when the insight has no result yet or its
+            query type does not report the range.
+        resolved_compare_date_range:
+          type:
+          - object
+          - 'null'
+          properties:
+            date_from:
+              type: string
+              format: date-time
+            date_to:
+              type: string
+              format: date-time
+          readOnly: true
+          description: The earlier period that this insight's query compared against,
+            with both ends resolved to timestamps. Null when comparison is off, when
+            the insight has no result yet, or when its query type does not report
+            the range.
         action_names:
           type:
           - object
@@ -224560,6 +225825,69 @@ components:
           description: Unpublished edits to a transactional template's content. Sends
             keep using `content`. Saving `content` publishes it and clears the draft.
             Set null to discard the draft.
+    PatchedMetricsPlatformAlertConfigurationEdit:
+      type: object
+      description: The settings an edit can change. Each source kind subclasses it
+        with a typed `source_config`.
+      properties:
+        source_kind:
+          type: string
+          description: Product whose data the alert evaluates. It cannot change, so
+            it must match the stored value.
+        name:
+          type: string
+          description: Human-readable name of the alert.
+          maxLength: 255
+        enabled:
+          type: boolean
+          description: Whether the alert is evaluated on schedule.
+        source_config:
+          allOf:
+          - $ref: '#/components/schemas/MetricsPlatformAlertConfig'
+          description: Settings for a metrics alert. The bound the alert is evaluated
+            against is under condition.
+        grouping:
+          allOf:
+          - $ref: '#/components/schemas/Grouping'
+          description: How the alert splits its results into instances.
+        schedule_restriction:
+          oneOf:
+          - $ref: '#/components/schemas/AlertScheduleRestriction'
+          - type: 'null'
+          description: Blocked local time windows (HH:MM in the project timezone)
+            when the alert does not notify. Null means no quiet hours.
+        evaluation_periods:
+          type: integer
+          maximum: 10
+          minimum: 1
+          description: Number of recent checks considered when deciding to fire.
+        datapoints_to_alarm:
+          type: integer
+          maximum: 10
+          minimum: 1
+          description: Number of breaching checks within evaluation_periods required
+            to fire. Cannot exceed evaluation_periods.
+        cooldown_minutes:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          description: Minimum minutes between notifications for the same alert.
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Labels that say who owns the alert and how urgent it is, such
+            as {"team": "checkout", "severity": "critical"}. Names use letters, digits
+            and underscores. alertname and names that start with posthog_ are reserved.
+            Values cannot use templates.'
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+          description: 'Context for whoever responds, such as {"runbook_url": "https://..."}.
+            Values can use {{ $labels.<name> }} for a grouping key or label of the
+            alert, and {{ $value }}. An annotation whose name ends in _url must start
+            with https://.'
     PatchedMoveTileRequest:
       type: object
       properties:
@@ -225210,6 +226538,7 @@ components:
       oneOf:
       - $ref: '#/components/schemas/PatchedInsightPlatformAlertConfigurationEdit'
       - $ref: '#/components/schemas/PatchedLogsPlatformAlertConfigurationEdit'
+      - $ref: '#/components/schemas/PatchedMetricsPlatformAlertConfigurationEdit'
       - $ref: '#/components/schemas/PatchedWarehouseDestinationPlatformAlertConfigurationEdit'
       - $ref: '#/components/schemas/PatchedWarehouseSourcePlatformAlertConfigurationEdit'
       discriminator:
@@ -225217,6 +226546,7 @@ components:
         mapping:
           insight: '#/components/schemas/PatchedInsightPlatformAlertConfigurationEdit'
           logs: '#/components/schemas/PatchedLogsPlatformAlertConfigurationEdit'
+          metrics: '#/components/schemas/PatchedMetricsPlatformAlertConfigurationEdit'
           warehouse_destination: '#/components/schemas/PatchedWarehouseDestinationPlatformAlertConfigurationEdit'
           warehouse_source: '#/components/schemas/PatchedWarehouseSourcePlatformAlertConfigurationEdit'
     PatchedProductIntroSeen:
@@ -227769,6 +229099,19 @@ components:
             issues from those teams become signals. Omit the key or pass an empty
             list to use every team. Get the ids from the Linear integration''s teams
             endpoint.'
+        config_set:
+          type: object
+          additionalProperties: true
+          description: Top-level config keys to set atomically on update. Unspecified
+            keys are preserved. Cannot be combined with config.
+          writeOnly: true
+        config_remove:
+          type: array
+          items:
+            type: string
+          writeOnly: true
+          description: Top-level config keys to remove atomically on update. Missing
+            keys are ignored. Cannot overlap config_set or be combined with config.
         created_at:
           type: string
           format: date-time
@@ -228469,6 +229812,14 @@ components:
           - 'null'
           additionalProperties: true
           readOnly: true
+        pending_source_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: The managed source that will import this self-managed table
+            on its first sync, if one is linked.
         options:
           type: object
           additionalProperties: true
@@ -228654,6 +230005,7 @@ components:
             * `space_setup` - Space Setup
             * `business_knowledge` - Business Knowledge
             * `metrics_import` - Metrics Import
+            * `knowledge_writer` - Knowledge Writer
         repository:
           type:
           - string
@@ -232643,6 +233995,7 @@ components:
             * `insight` - Insight
             * `warehouse_source` - Warehouse source
             * `warehouse_destination` - Warehouse destination
+            * `metrics` - Metrics
         source_config:
           type: object
           additionalProperties: true
@@ -232820,18 +234173,21 @@ components:
     PlatformAlertConfigurationCreate:
       oneOf:
       - $ref: '#/components/schemas/LogsPlatformAlertConfigurationCreate'
+      - $ref: '#/components/schemas/MetricsPlatformAlertConfigurationCreate'
       - $ref: '#/components/schemas/WarehouseDestinationPlatformAlertConfigurationCreate'
       - $ref: '#/components/schemas/WarehouseSourcePlatformAlertConfigurationCreate'
       discriminator:
         propertyName: source_kind
         mapping:
           logs: '#/components/schemas/LogsPlatformAlertConfigurationCreate'
+          metrics: '#/components/schemas/MetricsPlatformAlertConfigurationCreate'
           warehouse_destination: '#/components/schemas/WarehouseDestinationPlatformAlertConfigurationCreate'
           warehouse_source: '#/components/schemas/WarehouseSourcePlatformAlertConfigurationCreate'
     PlatformAlertConfigurationEdit:
       oneOf:
       - $ref: '#/components/schemas/InsightPlatformAlertConfigurationEdit'
       - $ref: '#/components/schemas/LogsPlatformAlertConfigurationEdit'
+      - $ref: '#/components/schemas/MetricsPlatformAlertConfigurationEdit'
       - $ref: '#/components/schemas/WarehouseDestinationPlatformAlertConfigurationEdit'
       - $ref: '#/components/schemas/WarehouseSourcePlatformAlertConfigurationEdit'
       discriminator:
@@ -232839,6 +234195,7 @@ components:
         mapping:
           insight: '#/components/schemas/InsightPlatformAlertConfigurationEdit'
           logs: '#/components/schemas/LogsPlatformAlertConfigurationEdit'
+          metrics: '#/components/schemas/MetricsPlatformAlertConfigurationEdit'
           warehouse_destination: '#/components/schemas/WarehouseDestinationPlatformAlertConfigurationEdit'
           warehouse_source: '#/components/schemas/WarehouseSourcePlatformAlertConfigurationEdit'
     PlatformAlertConfigurationSourceKindEnum:
@@ -232847,12 +234204,14 @@ components:
       - insight
       - warehouse_source
       - warehouse_destination
+      - metrics
       type: string
       description: |-
         * `logs` - Logs
         * `insight` - Insight
         * `warehouse_source` - Warehouse source
         * `warehouse_destination` - Warehouse destination
+        * `metrics` - Metrics
     PlatformAlertGroupSnooze:
       type: object
       properties:
@@ -247132,6 +248491,28 @@ components:
     QueryResponseAlternative59:
       additionalProperties: false
       properties:
+        columns:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/AccountsTableAccountFieldColumn'
+              - $ref: '#/components/schemas/AccountsTableTagsColumn'
+              - $ref: '#/components/schemas/AccountsTableNoteCountColumn'
+              - $ref: '#/components/schemas/AccountsTableRelationshipColumn'
+              - $ref: '#/components/schemas/AccountsTableCustomPropertyColumn'
+              - $ref: '#/components/schemas/AccountsTableCustomPropertyHistoryColumn'
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        customPropertyDefinitions:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableCustomPropertyDefinition'
+            type: array
+          - type: 'null'
+          default: null
+          title: Custompropertydefinitions
         error:
           anyOf:
           - type: string
@@ -247185,6 +248566,14 @@ components:
           default: null
           description: Query status indicates whether next to the provided data, a
             query is still running.
+        relationshipDefinitions:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableRelationshipDefinition'
+            type: array
+          - type: 'null'
+          default: null
+          title: Relationshipdefinitions
         resolved_compare_date_range:
           anyOf:
           - $ref: '#/components/schemas/ResolvedDateRangeResponse'
@@ -249973,6 +251362,28 @@ components:
     QueryResponseAlternative89:
       additionalProperties: false
       properties:
+        columns:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/AccountsTableAccountFieldColumn'
+              - $ref: '#/components/schemas/AccountsTableTagsColumn'
+              - $ref: '#/components/schemas/AccountsTableNoteCountColumn'
+              - $ref: '#/components/schemas/AccountsTableRelationshipColumn'
+              - $ref: '#/components/schemas/AccountsTableCustomPropertyColumn'
+              - $ref: '#/components/schemas/AccountsTableCustomPropertyHistoryColumn'
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        customPropertyDefinitions:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableCustomPropertyDefinition'
+            type: array
+          - type: 'null'
+          default: null
+          title: Custompropertydefinitions
         error:
           anyOf:
           - type: string
@@ -250026,6 +251437,14 @@ components:
           default: null
           description: Query status indicates whether next to the provided data, a
             query is still running.
+        relationshipDefinitions:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableRelationshipDefinition'
+            type: array
+          - type: 'null'
+          default: null
+          title: Relationshipdefinitions
         resolved_compare_date_range:
           anyOf:
           - $ref: '#/components/schemas/ResolvedDateRangeResponse'
@@ -257041,6 +258460,16 @@ components:
           format: date-time
           title: Date To
           type: string
+        read_from:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          default: null
+          description: The earliest timestamp the query reads, when only its first
+            interval depends on rows from before date_from. Lifecycle sets it to the
+            start of the interval before the range.
+          title: Read From
       required:
       - date_from
       - date_to
@@ -258697,6 +260126,28 @@ components:
     Response20:
       additionalProperties: false
       properties:
+        columns:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/AccountsTableAccountFieldColumn'
+              - $ref: '#/components/schemas/AccountsTableTagsColumn'
+              - $ref: '#/components/schemas/AccountsTableNoteCountColumn'
+              - $ref: '#/components/schemas/AccountsTableRelationshipColumn'
+              - $ref: '#/components/schemas/AccountsTableCustomPropertyColumn'
+              - $ref: '#/components/schemas/AccountsTableCustomPropertyHistoryColumn'
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        customPropertyDefinitions:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableCustomPropertyDefinition'
+            type: array
+          - type: 'null'
+          default: null
+          title: Custompropertydefinitions
         error:
           anyOf:
           - type: string
@@ -258750,6 +260201,14 @@ components:
           default: null
           description: Query status indicates whether next to the provided data, a
             query is still running.
+        relationshipDefinitions:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/AccountsTableRelationshipDefinition'
+            type: array
+          - type: 'null'
+          default: null
+          title: Relationshipdefinitions
         resolved_compare_date_range:
           anyOf:
           - $ref: '#/components/schemas/ResolvedDateRangeResponse'
@@ -265873,6 +267332,18 @@ components:
           description: False when the query's materialization was not suspended.
       required:
       - resumed
+    SavedQueryResumeRequest:
+      type: object
+      description: Body of the `resume` action.
+      properties:
+        engine:
+          allOf:
+          - $ref: '#/components/schemas/MaterializationEngineEnum'
+          description: |-
+            Resume only this engine's materialization: 'clickhouse' or 'trino' (the managed warehouse). Omit it to resume every engine the query is suspended on.
+
+            * `clickhouse` - ClickHouse
+            * `trino` - Trino
     SavedQueryResumeSchedulesRequest:
       type: object
       description: Body of the `resume_schedules` action.
@@ -266668,6 +268139,7 @@ components:
       - Numeric
       - Boolean
       - Object
+      - Array
       type: string
       description: |-
         * `DateTime` - DateTime
@@ -266675,6 +268147,7 @@ components:
         * `Numeric` - Numeric
         * `Boolean` - Boolean
         * `Object` - Object
+        * `Array` - Array
     Scope:
       enum:
       - all
@@ -273805,6 +275278,71 @@ components:
         * `posthog_health_check` - PostHog health check
         * `posthog_onboarding` - PostHog onboarding
         * `posthog_system` - PostHog system
+    SignalReportBulkClaimRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Report ids to claim for the caller in one call (1–100). Duplicates
+            are de-duplicated. Each id is claimed independently, so a report that
+            cannot be claimed does not block the rest.
+          maxItems: 100
+          minItems: 1
+        takeover_agent_claims:
+          type: boolean
+          default: false
+          description: Take over a report that an agent or an internal task holds.
+            A report that a person holds directly is never taken over and comes back
+            as a conflict.
+      required:
+      - ids
+    SignalReportBulkClaimResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignalReportBulkClaimResult'
+          description: One result per requested id, in request order (after de-duplication).
+        claimed_count:
+          type: integer
+          description: Number of reports the caller now holds.
+        conflict_count:
+          type: integer
+          description: Number of reports whose claim was refused.
+        not_found_count:
+          type: integer
+          description: Number of requested ids not visible to the caller.
+      required:
+      - claimed_count
+      - conflict_count
+      - not_found_count
+      - results
+    SignalReportBulkClaimResult:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The report id this result refers to.
+        outcome:
+          type: string
+          description: 'One of: claimed, conflict, not_found. claimed: the caller
+            holds the claim, including when it already did. conflict: the claim was
+            refused, because someone else holds the report or its status does not
+            allow a claim (a 409 on the single-report endpoint). not_found: no report
+            with this id is visible to you.'
+        detail:
+          type:
+          - string
+          - 'null'
+          description: Human-readable explanation for a conflict or not_found outcome.
+      required:
+      - id
+      - outcome
     SignalReportBulkStateRequest:
       type: object
       properties:
@@ -277407,6 +278945,19 @@ components:
             issues from those teams become signals. Omit the key or pass an empty
             list to use every team. Get the ids from the Linear integration''s teams
             endpoint.'
+        config_set:
+          type: object
+          additionalProperties: true
+          description: Top-level config keys to set atomically on update. Unspecified
+            keys are preserved. Cannot be combined with config.
+          writeOnly: true
+        config_remove:
+          type: array
+          items:
+            type: string
+          writeOnly: true
+          description: Top-level config keys to remove atomically on update. Missing
+            keys are ignored. Cannot overlap config_set or be combined with config.
         created_at:
           type: string
           format: date-time
@@ -278049,6 +279600,14 @@ components:
             the channel id is required). Null means no team-level default; per-user
             channels still apply.
           maxLength: 255
+        default_slack_notification_integration:
+          type:
+          - integer
+          - 'null'
+          description: Connected Slack integration that owns `default_slack_notification_channel`.
+            Send it together with the channel. A channel saved without it is routed
+            through the team's oldest Slack integration, and clearing the channel
+            clears this too.
         autostart_base_branches:
           type: object
           description: Per-repository base branch overrides for auto-started inbox
@@ -278134,6 +279693,19 @@ components:
             when it does not exist yet. Only used while pull_request_label_enabled
             is true.
           maxLength: 50
+        implementation_repositories:
+          type: array
+          items:
+            type: string
+            maxLength: 255
+          description: Extra GitHub repositories, as 'organization/repository', that
+            self-driving implementation tasks can read and write within the connected
+            GitHub App's permissions, for example an assets repository for PR screenshots.
+            A task gets only the entries with the same owner as its selected repository.
+            They are not cloned, and the PR still targets the selected repository.
+            Each new entry must be reachable through one of the project's GitHub installations.
+            Changes apply to tasks started afterwards. Empty by default.
+          maxItems: 20
         anomaly_scoring_enabled:
           type: boolean
           description: Whether anomaly scoring scores this project's active trends
@@ -281113,6 +282685,7 @@ components:
             * `WooPayments` - WooPayments
             * `Soniox` - Soniox
             * `Nango` - Nango
+            * `Fathom` - Fathom
         payload:
           type: object
           additionalProperties: true
@@ -283225,6 +284798,7 @@ components:
             * `WooPayments` - WooPayments
             * `Soniox` - Soniox
             * `Nango` - Nango
+            * `Fathom` - Fathom
         payload:
           type: object
           additionalProperties: true
@@ -284715,6 +286289,7 @@ components:
             * `WooPayments` - WooPayments
             * `Soniox` - Soniox
             * `Nango` - Nango
+            * `Fathom` - Fathom
         payload:
           type: object
           additionalProperties: true
@@ -284966,6 +286541,17 @@ components:
           format: uuid
       required:
       - task_id
+    SpanHealthStatus:
+      enum:
+      - silent
+      - regressed
+      - degraded
+      - new
+      - recovered
+      - improved
+      - ok
+      title: SpanHealthStatus
+      type: string
     SpanPropertyFilter:
       additionalProperties: false
       properties:
@@ -287492,6 +289078,11 @@ components:
           type: boolean
           description: True when the scout owner guardrail added the entry rather
             than commit authorship.
+        is_default_owner:
+          type: boolean
+          description: True when no evidence selected anyone and the report fell back
+            to the project's default owner. The entry routes the report, but it is
+            not ownership evidence.
         source_skill:
           type:
           - string
@@ -287515,6 +289106,7 @@ components:
       - explanation
       - github_login
       - github_name
+      - is_default_owner
       - is_skill_owner
       - reason
       - relevant_commits
@@ -289071,6 +290663,12 @@ components:
       - limit
       - offset
       - results
+    SurveyResponsesStatusEnum:
+      enum:
+      - ok
+      - failed
+      - not_permitted
+      type: string
     SurveyResultsWidgetCatalogEntryOpenApi:
       type: object
       properties:
@@ -290161,6 +291759,14 @@ components:
           - 'null'
           additionalProperties: true
           readOnly: true
+        pending_source_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: The managed source that will import this self-managed table
+            on its first sync, if one is linked.
         options:
           type: object
           additionalProperties: true
@@ -290184,6 +291790,7 @@ components:
       - hogql_name
       - id
       - name
+      - pending_source_id
       - url_pattern
       - user_access_level
     TableSettings:
@@ -291127,6 +292734,7 @@ components:
             * `space_setup` - Space Setup
             * `business_knowledge` - Business Knowledge
             * `metrics_import` - Metrics Import
+            * `knowledge_writer` - Knowledge Writer
         repository:
           type:
           - string
@@ -291698,6 +293306,7 @@ components:
       - experiments
       - hogdesk
       - image_builder
+      - knowledge_writer
       - loop
       - mcp_analytics
       - onboarding
@@ -291725,6 +293334,7 @@ components:
         * `experiments` - experiments
         * `hogdesk` - hogdesk
         * `image_builder` - image_builder
+        * `knowledge_writer` - knowledge_writer
         * `loop` - loop
         * `mcp_analytics` - mcp_analytics
         * `onboarding` - onboarding
@@ -291814,6 +293424,7 @@ components:
       - space_setup
       - business_knowledge
       - metrics_import
+      - knowledge_writer
       type: string
       description: |-
         * `onboarding` - Onboarding
@@ -291842,6 +293453,7 @@ components:
         * `space_setup` - Space Setup
         * `business_knowledge` - Business Knowledge
         * `metrics_import` - Metrics Import
+        * `knowledge_writer` - Knowledge Writer
     TaskPinRequest:
       type: object
       properties:
@@ -294466,6 +296078,7 @@ components:
             * `space_setup` - Space Setup
             * `business_knowledge` - Business Knowledge
             * `metrics_import` - Metrics Import
+            * `knowledge_writer` - Knowledge Writer
         repository:
           type:
           - string
@@ -299303,6 +300916,26 @@ components:
       - git
       title: Trace
       type: object
+    TraceChoiceAnswer:
+      properties:
+        kind:
+          const: choice
+          title: Kind
+          type: string
+        question:
+          title: Question
+          type: string
+        choices:
+          items:
+            type: string
+          title: Choices
+          type: array
+      required:
+      - kind
+      - question
+      - choices
+      title: TraceChoiceAnswer
+      type: object
     TraceCluster:
       properties:
         runId:
@@ -299477,6 +301110,88 @@ components:
       - nodes
       title: TraceEvaluationSummary
       type: object
+    TraceExport:
+      properties:
+        id:
+          description: The export id, used to read its status and download the file.
+          title: Id
+          type: integer
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ExportStatusEnum'
+          description: Whether the file is still being written, ready, or failed.
+          title: Status
+        filename:
+          description: The name the downloaded JSON file gets.
+          title: Filename
+          type: string
+        createdAt:
+          description: When the export was requested.
+          format: date-time
+          title: Createdat
+          type: string
+        expiresAfter:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          description: When the file is deleted.
+          title: Expiresafter
+        exception:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Why the export failed, null unless status is failed.
+          title: Exception
+      required:
+      - id
+      - status
+      - filename
+      - createdAt
+      - expiresAfter
+      - exception
+      title: TraceExport
+      type: object
+    TraceExportCreate:
+      type: object
+      properties:
+        timestamp_hint:
+          type: string
+          format: date-time
+          description: When the trace happened, as carried by links into it. Lets
+            a trace older than the AI events retention load from the shared events
+            table.
+    TraceExportError:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Why the file cannot be downloaded yet.
+      required:
+      - detail
+    TraceExportFile:
+      properties:
+        trace:
+          $ref: '#/components/schemas/Trace'
+          description: The trace as the trace endpoint returns it.
+        truncated:
+          description: True when the trace has more events than an export reads. The
+            file then holds the earliest events only, and leaves out the later steps.
+          title: Truncated
+          type: boolean
+        nodes:
+          description: 'Every node with its event properties as ingested, inputs and
+            outputs included: the root first, then the tree in pre-order.'
+          items:
+            $ref: '#/components/schemas/TraceNodeDetail'
+          title: Nodes
+          type: array
+      required:
+      - trace
+      - truncated
+      - nodes
+      title: TraceExportFile
+      type: object
     TraceFeedback:
       properties:
         scores:
@@ -299488,14 +301203,36 @@ components:
         responses:
           description: What users said, oldest first.
           items:
-            $ref: '#/components/schemas/TraceFeedbackText'
+            discriminator:
+              mapping:
+                survey: '#/components/schemas/TraceSurveyResponse'
+                text: '#/components/schemas/TraceFeedbackText'
+              propertyName: kind
+            oneOf:
+            - $ref: '#/components/schemas/TraceFeedbackText'
+            - $ref: '#/components/schemas/TraceSurveyResponse'
           title: Responses
           type: array
+        unanswered:
+          description: Surveys shown with the trace and not answered, oldest first.
+          items:
+            $ref: '#/components/schemas/TraceUnansweredSurvey'
+          title: Unanswered
+          type: array
+        surveyResponsesStatus:
+          allOf:
+          - $ref: '#/components/schemas/SurveyResponsesStatusEnum'
+          description: ok when survey responses are included, failed when the survey
+            read failed, not_permitted when the token lacks the survey:read and query:read
+            scopes.
+          title: Surveyresponsesstatus
         summary:
           $ref: '#/components/schemas/TraceFeedbackSummary'
       required:
       - scores
       - responses
+      - unanswered
+      - surveyResponsesStatus
       - summary
       title: TraceFeedback
       type: object
@@ -299537,8 +301274,18 @@ components:
           description: Scores plus responses.
           title: Total
           type: integer
+        thumbsUp:
+          description: Thumbs up answers to 2-point survey rating questions.
+          title: Thumbsup
+          type: integer
+        thumbsDown:
+          description: Thumbs down answers to 2-point survey rating questions.
+          title: Thumbsdown
+          type: integer
       required:
       - total
+      - thumbsUp
+      - thumbsDown
       title: TraceFeedbackSummary
       type: object
     TraceFeedbackText:
@@ -299978,6 +301725,46 @@ components:
       - label
       title: TracePerson
       type: object
+    TracePullRequest:
+      properties:
+        repoOwner:
+          description: The owner of the pull request's repository.
+          title: Repoowner
+          type: string
+        repoName:
+          description: The name of the pull request's repository.
+          title: Reponame
+          type: string
+        number:
+          description: The pull request number.
+          title: Number
+          type: integer
+        title:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: The pull request title, or null when the synced data has none.
+          title: Title
+      required:
+      - repoOwner
+      - repoName
+      - number
+      - title
+      title: TracePullRequest
+      type: object
+    TracePullRequestLookup:
+      properties:
+        pullRequest:
+          anyOf:
+          - $ref: '#/components/schemas/TracePullRequest'
+          - type: 'null'
+          description: The pull request the trace's git branch belongs to, ranked
+            by engineering analytics, or null when the trace has no branch, the project
+            has no GitHub source, or no pull request matches.
+      required:
+      - pullRequest
+      title: TracePullRequestLookup
+      type: object
     TraceQuery:
       additionalProperties: false
       properties:
@@ -300177,6 +301964,42 @@ components:
       required:
       - results
       title: TraceQueryResponse
+      type: object
+    TraceRatingAnswer:
+      properties:
+        kind:
+          const: rating
+          title: Kind
+          type: string
+        question:
+          title: Question
+          type: string
+        value:
+          title: Value
+          type: string
+        scale:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Scale
+        lowerLabel:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Lowerlabel
+        upperLabel:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Upperlabel
+      required:
+      - kind
+      - question
+      - value
+      - scale
+      - lowerLabel
+      - upperLabel
+      title: TraceRatingAnswer
       type: object
     TraceReview:
       type: object
@@ -300454,6 +302277,24 @@ components:
           - $ref: '#/components/schemas/PropertyGroupFilter'
           - type: 'null'
           default: null
+        groupByEndpoint:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Group HTTP server spans by `METHOD route` in place of the span
+            name. Spans without a route keep their name. Spans that are not HTTP server
+            spans are left out.
+          title: Groupbyendpoint
+        includeHealth:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Classify each row against the comparison window, or the previous
+            period when `compareFilter` is off. Fills `health_status` and `health_reason`.
+            Runs a second window query.
+          title: Includehealth
         includeImpact:
           anyOf:
           - type: boolean
@@ -301325,6 +303166,119 @@ components:
       - ready
       - failed
       type: string
+    TraceSurvey:
+      properties:
+        id:
+          title: Id
+          type: string
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: Null when the survey no longer exists.
+          title: Name
+      required:
+      - id
+      - name
+      title: TraceSurvey
+      type: object
+    TraceSurveyResponse:
+      properties:
+        kind:
+          const: survey
+          title: Kind
+          type: string
+        id:
+          title: Id
+          type: string
+        nodeId:
+          description: 'The tree node the response targets: the trace id, as a survey
+            response covers the whole trace.'
+          title: Nodeid
+          type: string
+        timestamp:
+          format: date-time
+          title: Timestamp
+          type: string
+        survey:
+          $ref: '#/components/schemas/TraceSurvey'
+        answers:
+          items:
+            discriminator:
+              mapping:
+                choice: '#/components/schemas/TraceChoiceAnswer'
+                rating: '#/components/schemas/TraceRatingAnswer'
+                text: '#/components/schemas/TraceTextAnswer'
+                thumbs: '#/components/schemas/TraceThumbsAnswer'
+              propertyName: kind
+            oneOf:
+            - $ref: '#/components/schemas/TraceThumbsAnswer'
+            - $ref: '#/components/schemas/TraceRatingAnswer'
+            - $ref: '#/components/schemas/TraceChoiceAnswer'
+            - $ref: '#/components/schemas/TraceTextAnswer'
+          title: Answers
+          type: array
+        complete:
+          description: False when the user left the survey before its end.
+          title: Complete
+          type: boolean
+        unavailable:
+          anyOf:
+          - enum:
+            - survey_not_found
+            - no_questions
+            type: string
+          - type: 'null'
+          description: 'Why the answers cannot be shown: the survey was deleted, or
+            it has no questions.'
+          title: Unavailable
+      required:
+      - kind
+      - id
+      - nodeId
+      - timestamp
+      - survey
+      - answers
+      - complete
+      - unavailable
+      title: TraceSurveyResponse
+      type: object
+    TraceTextAnswer:
+      properties:
+        kind:
+          const: text
+          title: Kind
+          type: string
+        question:
+          title: Question
+          type: string
+        text:
+          title: Text
+          type: string
+      required:
+      - kind
+      - question
+      - text
+      title: TraceTextAnswer
+      type: object
+    TraceThumbsAnswer:
+      properties:
+        kind:
+          const: thumbs
+          title: Kind
+          type: string
+        question:
+          title: Question
+          type: string
+        up:
+          title: Up
+          type: boolean
+      required:
+      - kind
+      - question
+      - up
+      title: TraceThumbsAnswer
+      type: object
     TraceTimelineRow:
       properties:
         id:
@@ -301360,6 +303314,20 @@ components:
       - durationMs
       - hasError
       title: TraceTimelineRow
+      type: object
+    TraceUnansweredSurvey:
+      properties:
+        survey:
+          $ref: '#/components/schemas/TraceSurvey'
+        timestamp:
+          description: When the survey was first shown.
+          format: date-time
+          title: Timestamp
+          type: string
+      required:
+      - survey
+      - timestamp
+      title: TraceUnansweredSurvey
       type: object
     TracesQuery:
       additionalProperties: false
@@ -305962,6 +307930,13 @@ components:
       - center
       title: ValueLabelPosition
       type: string
+    ValueLabels:
+      enum:
+      - auto
+      - show
+      - hide
+      title: ValueLabels
+      type: string
     VariantAnalysisDifference:
       type: object
       properties:
@@ -307284,6 +309259,17 @@ components:
             * `teams` - teams
             * `discord` - discord
             * `pagerduty` - pagerduty
+        event_kinds:
+          type: array
+          items:
+            $ref: '#/components/schemas/WarehouseAlertEventKindChoicesEnum'
+          default:
+          - firing
+          - resolved
+          description: Which transitions send a message. A PagerDuty destination opens
+            an incident when the alert fires and resolves it when the alert resolves,
+            whatever this lists. Defaults to every kind.
+          minItems: 1
         slack_workspace_id:
           type: integer
           description: Integration ID for the Slack workspace. Required when type=slack.
@@ -307327,28 +309313,25 @@ components:
     WarehouseAlertDeleteDestination:
       type: object
       properties:
-        hog_function_ids:
+        destination_ids:
           type: array
           items:
             type: string
             format: uuid
-          description: HogFunction IDs of one destination, as the list endpoint returns
-            them. They are deleted together.
-          maxItems: 100
+          description: IDs of the alert's destinations to delete, as the list endpoint
+            returns them.
+          maxItems: 5
           minItems: 1
       required:
-      - hog_function_ids
+      - destination_ids
     WarehouseAlertDestination:
       type: object
       properties:
-        hog_function_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          description: HogFunction IDs that make up this destination, one per alert
-            event kind it handles. Send them all to the delete endpoint to remove
-            the destination.
+        id:
+          type: string
+          format: uuid
+          description: Destination ID. Send it to the delete endpoint to remove the
+            destination.
         type:
           allOf:
           - $ref: '#/components/schemas/WarehouseAlertDestinationTypeEnum'
@@ -307362,8 +309345,14 @@ components:
             * `pagerduty` - pagerduty
         enabled:
           type: boolean
-          description: Whether every HogFunction of the destination is enabled, so
-            it notifies for every event kind.
+          description: Whether the destination is sent to.
+        event_kinds:
+          type: array
+          items:
+            $ref: '#/components/schemas/WarehouseAlertEventKindChoicesEnum'
+          description: Which transitions send a message. A PagerDuty destination opens
+            an incident when the alert fires and resolves it when the alert resolves,
+            whatever this lists.
         slack_workspace_id:
           type: integer
           description: Integration ID of the Slack workspace. Set when type=slack.
@@ -307400,20 +309389,9 @@ components:
             * `eu` - eu
       required:
       - enabled
-      - hog_function_ids
+      - event_kinds
+      - id
       - type
-    WarehouseAlertDestinationCreated:
-      type: object
-      properties:
-        hog_function_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-          description: HogFunction IDs created for the destination, one per event
-            kind.
-      required:
-      - hog_function_ids
     WarehouseAlertDestinationTypeEnum:
       enum:
       - slack
@@ -307428,6 +309406,14 @@ components:
         * `teams` - teams
         * `discord` - discord
         * `pagerduty` - pagerduty
+    WarehouseAlertEventKindChoicesEnum:
+      enum:
+      - firing
+      - resolved
+      type: string
+      description: |-
+        * `firing` - firing
+        * `resolved` - resolved
     WarehouseAlertGroupByEnum:
       enum:
       - schema
@@ -315082,7 +317068,8 @@ components:
           additionalProperties:
             type: string
           description: Customer.io snippet name to its content, inlined where a message
-            uses `{% snippet "name" %}`.
+            uses `{{ snippets.name }}`. When PostHog reads the message content with
+            a stored Customer.io App API key, it reads the snippets too.
         segment_cohorts:
           type: object
           additionalProperties:
@@ -316497,10 +318484,32 @@ components:
           description: How many of this group's spans carry a person distinct ID under
             the team's configured or conventional attribute keys. Null unless the
             query set `includeImpact`.
+        health_status:
+          description: |-
+            How this group compares with its baseline: regressed (error rate or p95 jumped), degraded (high error rate), new (no spans in the baseline), recovered, improved, or ok. Null unless the query set `includeHealth`.
+
+            * `silent` - Silent
+            * `regressed` - Regressed
+            * `degraded` - Degraded
+            * `new` - New
+            * `recovered` - Recovered
+            * `improved` - Improved
+            * `ok` - Ok
+          oneOf:
+          - $ref: '#/components/schemas/ServiceHealthStatusEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        health_reason:
+          type:
+          - string
+          - 'null'
+          description: Short reason for `health_status`, such as `error rate 0.2%
+            → 4.1%`. Empty when the status is ok.
       required:
       - avg_duration_nano
       - count
       - error_count
+      - health_reason
+      - health_status
       - name
       - p50_duration_nano
       - p95_duration_nano
@@ -321079,6 +323088,20 @@ components:
           description: Also return the sessions and people behind each operation.
             Off by default because it reads the span and resource attribute maps,
             which the rest of the aggregation never touches.
+        groupByEndpoint:
+          type: boolean
+          default: false
+          description: Group HTTP server spans by `METHOD route` (from `http.route`)
+            in place of the span name, so raw paths like `/users/1` and `/users/2`
+            fold into one row. Spans without a route keep their span name. Spans that
+            are not HTTP server spans are left out.
+        includeHealth:
+          type: boolean
+          default: false
+          description: Also return `health_status` and `health_reason` per row, comparing
+            each row with the same row in the comparison window, or in the previous
+            period when `compareFilter` is off. Uses the same statuses and thresholds
+            as the service health check. Costs a second window query.
     _TracingAggregationRequest:
       type: object
       properties:
@@ -323056,6 +325079,7 @@ tags:
 - name: messaging_suppressions
 - name: messaging_templates
 - name: metrics
+- name: metrics_alerts
 - name: notebook_widgets
 - name: notebooks
 - name: oauth_applications
@@ -323283,6 +325307,7 @@ x-tagGroups:
   - messaging_suppressions
   - messaging_templates
   - metrics
+  - metrics_alerts
   - notebook_widgets
   - notebooks
   - oauth_applications

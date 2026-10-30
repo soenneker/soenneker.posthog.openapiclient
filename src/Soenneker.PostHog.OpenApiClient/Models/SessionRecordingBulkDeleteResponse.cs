@@ -11,23 +11,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SessionRecordingBulkDeleteResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("deleted_count") is { } nullNodeDeletedCount && nullNodeDeletedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeletedCount = null;
+            if (parseNode.GetChildNode("failed_ids") is { } nullNodeFailedIds && nullNodeFailedIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedIds = null;
+            if (parseNode.GetChildNode("success") is { } nullNodeSuccess && nullNodeSuccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Success = null;
+            if (parseNode.GetChildNode("total_requested") is { } nullNodeTotalRequested && nullNodeTotalRequested.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRequested = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of recordings that were deleted.</summary>
-        public int? DeletedCount { get; set; }
+        public int? DeletedCount { get => _explicitNullValueDeletedCount; set { _explicitNullValueDeletedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted_count"); else _explicitNullProperties?.Remove("deleted_count"); } }
+        private int? _explicitNullValueDeletedCount = default!;
         /// <summary>Session IDs that were found but could not be deleted. These can be retried.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FailedIds { get; set; }
+        public List<string>? FailedIds { get => _explicitNullValueFailedIds; set { _explicitNullValueFailedIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_ids"); else _explicitNullProperties?.Remove("failed_ids"); } }
+        private List<string>? _explicitNullValueFailedIds = default!;
 #nullable restore
 #else
-        public List<string> FailedIds { get; set; }
+        public List<string> FailedIds { get => _explicitNullValueFailedIds; set { _explicitNullValueFailedIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_ids"); else _explicitNullProperties?.Remove("failed_ids"); } }
+        private List<string> _explicitNullValueFailedIds = default!;
 #endif
         /// <summary>True when no deletion attempt failed. IDs that were not found, or that the caller lacks edit access to, are skipped rather than failed — compare deleted_count to total_requested to detect skips.</summary>
-        public bool? Success { get; set; }
+        public bool? Success { get => _explicitNullValueSuccess; set { _explicitNullValueSuccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success"); else _explicitNullProperties?.Remove("success"); } }
+        private bool? _explicitNullValueSuccess = default!;
         /// <summary>Number of session recording IDs in the request.</summary>
-        public int? TotalRequested { get; set; }
+        public int? TotalRequested { get => _explicitNullValueTotalRequested; set { _explicitNullValueTotalRequested = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_requested"); else _explicitNullProperties?.Remove("total_requested"); } }
+        private int? _explicitNullValueTotalRequested = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingBulkDeleteResponse"/> and sets the default values.
         /// </summary>
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingBulkDeleteResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingBulkDeleteResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingBulkDeleteResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("failed_ids", FailedIds);
             writer.WriteBoolValue("success", Success);
             writer.WriteIntValue("total_requested", TotalRequested);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,63 +12,94 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AeoPromptStats : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("brand_names") is { } nullNodeBrandNames && nullNodeBrandNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandNames = null;
+            if (parseNode.GetChildNode("consensus") is { } nullNodeConsensus && nullNodeConsensus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Consensus = null;
+            if (parseNode.GetChildNode("daily") is { } nullNodeDaily && nullNodeDaily.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Daily = null;
+            if (parseNode.GetChildNode("daily_from") is { } nullNodeDailyFrom && nullNodeDailyFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyFrom = null;
+            if (parseNode.GetChildNode("daily_to") is { } nullNodeDailyTo && nullNodeDailyTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyTo = null;
+            if (parseNode.GetChildNode("engines") is { } nullNodeEngines && nullNodeEngines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engines = null;
+            if (parseNode.GetChildNode("sentiment") is { } nullNodeSentiment && nullNodeSentiment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sentiment = null;
+            if (parseNode.GetChildNode("top_words") is { } nullNodeTopWords && nullNodeTopWords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopWords = null;
+            if (parseNode.GetChildNode("total_checks") is { } nullNodeTotalChecks && nullNodeTotalChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalChecks = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Lower-cased brand names, derived from the project&apos;s target domains. An answer that contains one of them as a word counts as a mention.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BrandNames { get; set; }
+        public List<string>? BrandNames { get => _explicitNullValueBrandNames; set { _explicitNullValueBrandNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_names"); else _explicitNullProperties?.Remove("brand_names"); } }
+        private List<string>? _explicitNullValueBrandNames = default!;
 #nullable restore
 #else
-        public List<string> BrandNames { get; set; }
+        public List<string> BrandNames { get => _explicitNullValueBrandNames; set { _explicitNullValueBrandNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_names"); else _explicitNullProperties?.Remove("brand_names"); } }
+        private List<string> _explicitNullValueBrandNames = default!;
 #endif
         /// <summary>One row per engine and per domain for the 10 most cited domains of the last 30 days: how many of the engine&apos;s answers cited the domain. Shows which sources the engines agree on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare>? Consensus { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare>? Consensus { get => _explicitNullValueConsensus; set { _explicitNullValueConsensus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("consensus"); else _explicitNullProperties?.Remove("consensus"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare>? _explicitNullValueConsensus = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare> Consensus { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare> Consensus { get => _explicitNullValueConsensus; set { _explicitNullValueConsensus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("consensus"); else _explicitNullProperties?.Remove("consensus"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineDomainShare> _explicitNullValueConsensus = default!;
 #endif
         /// <summary>Counts per day and engine from &apos;daily_from&apos; to &apos;daily_to&apos; (30 days). Days and engines without a check are left out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats>? Daily { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats>? Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats>? _explicitNullValueDaily = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats> Daily { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats> Daily { get => _explicitNullValueDaily; set { _explicitNullValueDaily = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily"); else _explicitNullProperties?.Remove("daily"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptDailyEngineStats> _explicitNullValueDaily = default!;
 #endif
         /// <summary>First day of the daily series, in the project&apos;s timezone.</summary>
-        public Date? DailyFrom { get; set; }
+        public Date? DailyFrom { get => _explicitNullValueDailyFrom; set { _explicitNullValueDailyFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_from"); else _explicitNullProperties?.Remove("daily_from"); } }
+        private Date? _explicitNullValueDailyFrom = default!;
         /// <summary>Last day of the daily series (today), in the project&apos;s timezone.</summary>
-        public Date? DailyTo { get; set; }
+        public Date? DailyTo { get => _explicitNullValueDailyTo; set { _explicitNullValueDailyTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_to"); else _explicitNullProperties?.Remove("daily_to"); } }
+        private Date? _explicitNullValueDailyTo = default!;
         /// <summary>Totals per answer engine over the prompt&apos;s whole history.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats>? Engines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats>? Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats>? _explicitNullValueEngines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats> Engines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats> Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineStats> _explicitNullValueEngines = default!;
 #endif
         /// <summary>Brand sentiment of the answers in the last 30 days, one row per engine. Only the sentences that name the brand are scored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment>? Sentiment { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment>? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment>? _explicitNullValueSentiment = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment> Sentiment { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment> Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment> _explicitNullValueSentiment = default!;
 #endif
         /// <summary>Most used words across the web searches the engines ran in the last 30 days, at most 20. Only engines that report their searches contribute.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord>? TopWords { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord>? TopWords { get => _explicitNullValueTopWords; set { _explicitNullValueTopWords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_words"); else _explicitNullProperties?.Remove("top_words"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord>? _explicitNullValueTopWords = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord> TopWords { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord> TopWords { get => _explicitNullValueTopWords; set { _explicitNullValueTopWords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_words"); else _explicitNullProperties?.Remove("top_words"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord> _explicitNullValueTopWords = default!;
 #endif
         /// <summary>Checks of the prompt across all engines, failed ones included.</summary>
-        public int? TotalChecks { get; set; }
+        public int? TotalChecks { get => _explicitNullValueTotalChecks; set { _explicitNullValueTotalChecks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_checks"); else _explicitNullProperties?.Remove("total_checks"); } }
+        private int? _explicitNullValueTotalChecks = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptStats"/> and sets the default values.
         /// </summary>
@@ -84,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -121,6 +152,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment>("sentiment", Sentiment);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptSearchWord>("top_words", TopWords);
             writer.WriteIntValue("total_checks", TotalChecks);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

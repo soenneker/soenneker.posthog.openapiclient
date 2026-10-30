@@ -11,35 +11,58 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TracingImpactResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("sessions") is { } nullNodeSessions && nullNodeSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sessions = null;
+            if (parseNode.GetChildNode("spansWithDistinctId") is { } nullNodeSpansWithDistinctId && nullNodeSpansWithDistinctId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpansWithDistinctId = null;
+            if (parseNode.GetChildNode("spansWithSessionId") is { } nullNodeSpansWithSessionId && nullNodeSpansWithSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpansWithSessionId = null;
+            if (parseNode.GetChildNode("topSessions") is { } nullNodeTopSessions && nullNodeTopSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopSessions = null;
+            if (parseNode.GetChildNode("topUsers") is { } nullNodeTopUsers && nullNodeTopUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopUsers = null;
+            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Estimated number of unique session IDs across the matching spans (HyperLogLog, about 1-2% error).</summary>
-        public int? Sessions { get; set; }
+        public int? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
+        private int? _explicitNullValueSessions = default!;
         /// <summary>How many of the matching spans carry a person distinct ID under the team&apos;s configured or conventional attribute keys.</summary>
-        public int? SpansWithDistinctId { get; set; }
+        public int? SpansWithDistinctId { get => _explicitNullValueSpansWithDistinctId; set { _explicitNullValueSpansWithDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spansWithDistinctId"); else _explicitNullProperties?.Remove("spansWithDistinctId"); } }
+        private int? _explicitNullValueSpansWithDistinctId = default!;
         /// <summary>How many of the matching spans carry a session ID under the team&apos;s configured or conventional attribute keys.</summary>
-        public int? SpansWithSessionId { get; set; }
+        public int? SpansWithSessionId { get => _explicitNullValueSpansWithSessionId; set { _explicitNullValueSpansWithSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spansWithSessionId"); else _explicitNullProperties?.Remove("spansWithSessionId"); } }
+        private int? _explicitNullValueSpansWithSessionId = default!;
         /// <summary>Top session IDs on the matching spans, ordered by span count descending (topK, at most 5).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue>? TopSessions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue>? TopSessions { get => _explicitNullValueTopSessions; set { _explicitNullValueTopSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topSessions"); else _explicitNullProperties?.Remove("topSessions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue>? _explicitNullValueTopSessions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue> TopSessions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue> TopSessions { get => _explicitNullValueTopSessions; set { _explicitNullValueTopSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topSessions"); else _explicitNullProperties?.Remove("topSessions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue> _explicitNullValueTopSessions = default!;
 #endif
         /// <summary>Top person distinct IDs on the matching spans, ordered by span count descending (topK, at most 5).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue>? TopUsers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue>? TopUsers { get => _explicitNullValueTopUsers; set { _explicitNullValueTopUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topUsers"); else _explicitNullProperties?.Remove("topUsers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue>? _explicitNullValueTopUsers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue> TopUsers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue> TopUsers { get => _explicitNullValueTopUsers; set { _explicitNullValueTopUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topUsers"); else _explicitNullProperties?.Remove("topUsers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue> _explicitNullValueTopUsers = default!;
 #endif
         /// <summary>Number of spans matching the filters.</summary>
-        public int? Total { get; set; }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        private int? _explicitNullValueTotal = default!;
         /// <summary>Estimated number of unique distinct IDs across the matching spans (HyperLogLog, about 1-2% error).</summary>
-        public int? Users { get; set; }
+        public int? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        private int? _explicitNullValueUsers = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactResponse"/> and sets the default values.
         /// </summary>
@@ -55,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TracingImpactTopValue>("topUsers", TopUsers);
             writer.WriteIntValue("total", Total);
             writer.WriteIntValue("users", Users);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

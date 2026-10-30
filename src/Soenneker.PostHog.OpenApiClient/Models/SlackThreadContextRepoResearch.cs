@@ -12,72 +12,103 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SlackThreadContextRepoResearch : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("log_url") is { } nullNodeLogUrl && nullNodeLogUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogUrl = null;
+            if (parseNode.GetChildNode("run_id") is { } nullNodeRunId && nullNodeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunId = null;
+            if (parseNode.GetChildNode("sandbox_url") is { } nullNodeSandboxUrl && nullNodeSandboxUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SandboxUrl = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
+            if (parseNode.GetChildNode("task_processing_workflow_id") is { } nullNodeTaskProcessingWorkflowId && nullNodeTaskProcessingWorkflowId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskProcessingWorkflowId = null;
+            if (parseNode.GetChildNode("task_processing_workflow_url") is { } nullNodeTaskProcessingWorkflowUrl && nullNodeTaskProcessingWorkflowUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskProcessingWorkflowUrl = null;
+            if (parseNode.GetChildNode("task_view_url") is { } nullNodeTaskViewUrl && nullNodeTaskViewUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskViewUrl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Presigned S3 URL for the research run&apos;s JSONL log transcript (valid ~1 hour).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LogUrl { get; set; }
+        public string? LogUrl { get => _explicitNullValueLogUrl; set { _explicitNullValueLogUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_url"); else _explicitNullProperties?.Remove("log_url"); } }
+        private string? _explicitNullValueLogUrl = default!;
 #nullable restore
 #else
-        public string LogUrl { get; set; }
+        public string LogUrl { get => _explicitNullValueLogUrl; set { _explicitNullValueLogUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("log_url"); else _explicitNullProperties?.Remove("log_url"); } }
+        private string _explicitNullValueLogUrl = default!;
 #endif
         /// <summary>UUID of the internal repo-research TaskRun.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunId { get; set; }
+        public string? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
+        private string? _explicitNullValueRunId = default!;
 #nullable restore
 #else
-        public string RunId { get; set; }
+        public string RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
+        private string _explicitNullValueRunId = default!;
 #endif
         /// <summary>Live sandbox tunnel URL for the research run, when one was attached.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SandboxUrl { get; set; }
+        public string? SandboxUrl { get => _explicitNullValueSandboxUrl; set { _explicitNullValueSandboxUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox_url"); else _explicitNullProperties?.Remove("sandbox_url"); } }
+        private string? _explicitNullValueSandboxUrl = default!;
 #nullable restore
 #else
-        public string SandboxUrl { get; set; }
+        public string SandboxUrl { get => _explicitNullValueSandboxUrl; set { _explicitNullValueSandboxUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox_url"); else _explicitNullProperties?.Remove("sandbox_url"); } }
+        private string _explicitNullValueSandboxUrl = default!;
 #endif
         /// <summary>Research run status, or null if the run row could not be loaded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>UUID of the internal repo-research Task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TaskId { get; set; }
+        public string? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
+        private string? _explicitNullValueTaskId = default!;
 #nullable restore
 #else
-        public string TaskId { get; set; }
+        public string TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
+        private string _explicitNullValueTaskId = default!;
 #endif
         /// <summary>Temporal workflow id for the research sandbox run (`task-processing-&lt;task_id&gt;-&lt;run_id&gt;`, or a caller-prefixed variant).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TaskProcessingWorkflowId { get; set; }
+        public string? TaskProcessingWorkflowId { get => _explicitNullValueTaskProcessingWorkflowId; set { _explicitNullValueTaskProcessingWorkflowId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_processing_workflow_id"); else _explicitNullProperties?.Remove("task_processing_workflow_id"); } }
+        private string? _explicitNullValueTaskProcessingWorkflowId = default!;
 #nullable restore
 #else
-        public string TaskProcessingWorkflowId { get; set; }
+        public string TaskProcessingWorkflowId { get => _explicitNullValueTaskProcessingWorkflowId; set { _explicitNullValueTaskProcessingWorkflowId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_processing_workflow_id"); else _explicitNullProperties?.Remove("task_processing_workflow_id"); } }
+        private string _explicitNullValueTaskProcessingWorkflowId = default!;
 #endif
         /// <summary>Full Temporal Web UI URL for the research workflow; null when `TEMPORAL_UI_HOST` is unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TaskProcessingWorkflowUrl { get; set; }
+        public string? TaskProcessingWorkflowUrl { get => _explicitNullValueTaskProcessingWorkflowUrl; set { _explicitNullValueTaskProcessingWorkflowUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_processing_workflow_url"); else _explicitNullProperties?.Remove("task_processing_workflow_url"); } }
+        private string? _explicitNullValueTaskProcessingWorkflowUrl = default!;
 #nullable restore
 #else
-        public string TaskProcessingWorkflowUrl { get; set; }
+        public string TaskProcessingWorkflowUrl { get => _explicitNullValueTaskProcessingWorkflowUrl; set { _explicitNullValueTaskProcessingWorkflowUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_processing_workflow_url"); else _explicitNullProperties?.Remove("task_processing_workflow_url"); } }
+        private string _explicitNullValueTaskProcessingWorkflowUrl = default!;
 #endif
         /// <summary>Absolute URL to the research task detail page (carries `?ph_debug=true`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TaskViewUrl { get; set; }
+        public string? TaskViewUrl { get => _explicitNullValueTaskViewUrl; set { _explicitNullValueTaskViewUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_view_url"); else _explicitNullProperties?.Remove("task_view_url"); } }
+        private string? _explicitNullValueTaskViewUrl = default!;
 #nullable restore
 #else
-        public string TaskViewUrl { get; set; }
+        public string TaskViewUrl { get => _explicitNullValueTaskViewUrl; set { _explicitNullValueTaskViewUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_view_url"); else _explicitNullProperties?.Remove("task_view_url"); } }
+        private string _explicitNullValueTaskViewUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch"/> and sets the default values.
@@ -94,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,6 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("task_processing_workflow_id", TaskProcessingWorkflowId);
             writer.WriteStringValue("task_processing_workflow_url", TaskProcessingWorkflowUrl);
             writer.WriteStringValue("task_view_url", TaskViewUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

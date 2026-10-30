@@ -12,222 +12,358 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InsightDataChecksRequestQuery : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowSorting") is { } nullNodeAllowSorting && nullNodeAllowSorting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSorting = null;
+            if (parseNode.GetChildNode("chartSettings") is { } nullNodeChartSettings && nullNodeChartSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChartSettings = null;
+            if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
+            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("context") is { } nullNodeContext && nullNodeContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context = null;
+            if (parseNode.GetChildNode("contextKey") is { } nullNodeContextKey && nullNodeContextKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextKey = null;
+            if (parseNode.GetChildNode("defaultColumns") is { } nullNodeDefaultColumns && nullNodeDefaultColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultColumns = null;
+            if (parseNode.GetChildNode("display") is { } nullNodeDisplay && nullNodeDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Display = null;
+            if (parseNode.GetChildNode("embedded") is { } nullNodeEmbedded && nullNodeEmbedded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embedded = null;
+            if (parseNode.GetChildNode("expandable") is { } nullNodeExpandable && nullNodeExpandable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Expandable = null;
+            if (parseNode.GetChildNode("full") is { } nullNodeFull && nullNodeFull.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Full = null;
+            if (parseNode.GetChildNode("hiddenColumns") is { } nullNodeHiddenColumns && nullNodeHiddenColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenColumns = null;
+            if (parseNode.GetChildNode("hidePersonsModal") is { } nullNodeHidePersonsModal && nullNodeHidePersonsModal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HidePersonsModal = null;
+            if (parseNode.GetChildNode("hideTooltipOnScroll") is { } nullNodeHideTooltipOnScroll && nullNodeHideTooltipOnScroll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideTooltipOnScroll = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("modifiers") is { } nullNodeModifiers && nullNodeModifiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modifiers = null;
+            if (parseNode.GetChildNode("pinnedColumns") is { } nullNodePinnedColumns && nullNodePinnedColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedColumns = null;
+            if (parseNode.GetChildNode("propertiesViaUrl") is { } nullNodePropertiesViaUrl && nullNodePropertiesViaUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertiesViaUrl = null;
+            if (parseNode.GetChildNode("response") is { } nullNodeResponse && nullNodeResponse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Response = null;
+            if (parseNode.GetChildNode("showAbsoluteTime") is { } nullNodeShowAbsoluteTime && nullNodeShowAbsoluteTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowAbsoluteTime = null;
+            if (parseNode.GetChildNode("showActions") is { } nullNodeShowActions && nullNodeShowActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowActions = null;
+            if (parseNode.GetChildNode("showColumnConfigurator") is { } nullNodeShowColumnConfigurator && nullNodeShowColumnConfigurator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowColumnConfigurator = null;
+            if (parseNode.GetChildNode("showCorrelationTable") is { } nullNodeShowCorrelationTable && nullNodeShowCorrelationTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowCorrelationTable = null;
+            if (parseNode.GetChildNode("showCount") is { } nullNodeShowCount && nullNodeShowCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowCount = null;
+            if (parseNode.GetChildNode("showDateRange") is { } nullNodeShowDateRange && nullNodeShowDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowDateRange = null;
+            if (parseNode.GetChildNode("showElapsedTime") is { } nullNodeShowElapsedTime && nullNodeShowElapsedTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowElapsedTime = null;
+            if (parseNode.GetChildNode("showEventFilter") is { } nullNodeShowEventFilter && nullNodeShowEventFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowEventFilter = null;
+            if (parseNode.GetChildNode("showEventsFilter") is { } nullNodeShowEventsFilter && nullNodeShowEventsFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowEventsFilter = null;
+            if (parseNode.GetChildNode("showExport") is { } nullNodeShowExport && nullNodeShowExport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowExport = null;
+            if (parseNode.GetChildNode("showFilters") is { } nullNodeShowFilters && nullNodeShowFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowFilters = null;
+            if (parseNode.GetChildNode("showHeader") is { } nullNodeShowHeader && nullNodeShowHeader.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowHeader = null;
+            if (parseNode.GetChildNode("showHogQLEditor") is { } nullNodeShowHogQLEditor && nullNodeShowHogQLEditor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowHogQLEditor = null;
+            if (parseNode.GetChildNode("showLastComputation") is { } nullNodeShowLastComputation && nullNodeShowLastComputation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLastComputation = null;
+            if (parseNode.GetChildNode("showLastComputationRefresh") is { } nullNodeShowLastComputationRefresh && nullNodeShowLastComputationRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLastComputationRefresh = null;
+            if (parseNode.GetChildNode("showOpenEditorButton") is { } nullNodeShowOpenEditorButton && nullNodeShowOpenEditorButton.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowOpenEditorButton = null;
+            if (parseNode.GetChildNode("showPersistentColumnConfigurator") is { } nullNodeShowPersistentColumnConfigurator && nullNodeShowPersistentColumnConfigurator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowPersistentColumnConfigurator = null;
+            if (parseNode.GetChildNode("showPropertyFilter") is { } nullNodeShowPropertyFilter && nullNodeShowPropertyFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowPropertyFilter = null;
+            if (parseNode.GetChildNode("showRecordingColumn") is { } nullNodeShowRecordingColumn && nullNodeShowRecordingColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowRecordingColumn = null;
+            if (parseNode.GetChildNode("showReload") is { } nullNodeShowReload && nullNodeShowReload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowReload = null;
+            if (parseNode.GetChildNode("showResults") is { } nullNodeShowResults && nullNodeShowResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowResults = null;
+            if (parseNode.GetChildNode("showResultsTable") is { } nullNodeShowResultsTable && nullNodeShowResultsTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowResultsTable = null;
+            if (parseNode.GetChildNode("showSavedFilters") is { } nullNodeShowSavedFilters && nullNodeShowSavedFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowSavedFilters = null;
+            if (parseNode.GetChildNode("showSavedQueries") is { } nullNodeShowSavedQueries && nullNodeShowSavedQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowSavedQueries = null;
+            if (parseNode.GetChildNode("showSearch") is { } nullNodeShowSearch && nullNodeShowSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowSearch = null;
+            if (parseNode.GetChildNode("showSourceQueryOptions") is { } nullNodeShowSourceQueryOptions && nullNodeShowSourceQueryOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowSourceQueryOptions = null;
+            if (parseNode.GetChildNode("showTable") is { } nullNodeShowTable && nullNodeShowTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTable = null;
+            if (parseNode.GetChildNode("showTableViews") is { } nullNodeShowTableViews && nullNodeShowTableViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTableViews = null;
+            if (parseNode.GetChildNode("showTestAccountFilters") is { } nullNodeShowTestAccountFilters && nullNodeShowTestAccountFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTestAccountFilters = null;
+            if (parseNode.GetChildNode("showTimings") is { } nullNodeShowTimings && nullNodeShowTimings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTimings = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("suppressSessionAnalysisWarning") is { } nullNodeSuppressSessionAnalysisWarning && nullNodeSuppressSessionAnalysisWarning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuppressSessionAnalysisWarning = null;
+            if (parseNode.GetChildNode("tableSettings") is { } nullNodeTableSettings && nullNodeTableSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TableSettings = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("vizSpecificOptions") is { } nullNodeVizSpecificOptions && nullNodeVizSpecificOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VizSpecificOptions = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Can the user click on column headers to sort the table? (default: true)</summary>
-        public bool? AllowSorting { get; set; }
+        public bool? AllowSorting { get => _explicitNullValueAllowSorting; set { _explicitNullValueAllowSorting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowSorting"); else _explicitNullProperties?.Remove("allowSorting"); } }
+        private bool? _explicitNullValueAllowSorting = default!;
         /// <summary>The chartSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings? ChartSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings? ChartSettings { get => _explicitNullValueChartSettings; set { _explicitNullValueChartSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartSettings"); else _explicitNullProperties?.Remove("chartSettings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings? _explicitNullValueChartSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings ChartSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings ChartSettings { get => _explicitNullValueChartSettings; set { _explicitNullValueChartSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartSettings"); else _explicitNullProperties?.Remove("chartSettings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings _explicitNullValueChartSettings = default!;
 #endif
         /// <summary>The code property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get; set; }
+        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private string? _explicitNullValueCode = default!;
 #nullable restore
 #else
-        public string Code { get; set; }
+        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private string _explicitNullValueCode = default!;
 #endif
         /// <summary>Columns shown in the table, unless the `source` provides them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Columns { get; set; }
+        public List<string>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<string> Columns { get; set; }
+        public List<string> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<string> _explicitNullValueColumns = default!;
 #endif
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiConfig? Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiConfig? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiConfig? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiConfig Config { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiConfig Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiConfig _explicitNullValueConfig = default!;
 #endif
         /// <summary>Context for the table, used by components like ColumnConfigurator</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext? Context { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext? Context { get => _explicitNullValueContext; set { _explicitNullValueContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context"); else _explicitNullProperties?.Remove("context"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext? _explicitNullValueContext = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext Context { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext Context { get => _explicitNullValueContext; set { _explicitNullValueContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context"); else _explicitNullProperties?.Remove("context"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext _explicitNullValueContext = default!;
 #endif
         /// <summary>Context key for universal column configuration (e.g., &quot;survey:123&quot;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContextKey { get; set; }
+        public string? ContextKey { get => _explicitNullValueContextKey; set { _explicitNullValueContextKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextKey"); else _explicitNullProperties?.Remove("contextKey"); } }
+        private string? _explicitNullValueContextKey = default!;
 #nullable restore
 #else
-        public string ContextKey { get; set; }
+        public string ContextKey { get => _explicitNullValueContextKey; set { _explicitNullValueContextKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextKey"); else _explicitNullProperties?.Remove("contextKey"); } }
+        private string _explicitNullValueContextKey = default!;
 #endif
         /// <summary>Default columns to use when resetting column configuration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DefaultColumns { get; set; }
+        public List<string>? DefaultColumns { get => _explicitNullValueDefaultColumns; set { _explicitNullValueDefaultColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defaultColumns"); else _explicitNullProperties?.Remove("defaultColumns"); } }
+        private List<string>? _explicitNullValueDefaultColumns = default!;
 #nullable restore
 #else
-        public List<string> DefaultColumns { get; set; }
+        public List<string> DefaultColumns { get => _explicitNullValueDefaultColumns; set { _explicitNullValueDefaultColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defaultColumns"); else _explicitNullProperties?.Remove("defaultColumns"); } }
+        private List<string> _explicitNullValueDefaultColumns = default!;
 #endif
         /// <summary>The display property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? _explicitNullValueDisplay = default!;
         /// <summary>Query is embedded inside another bordered component</summary>
-        public bool? Embedded { get; set; }
+        public bool? Embedded { get => _explicitNullValueEmbedded; set { _explicitNullValueEmbedded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedded"); else _explicitNullProperties?.Remove("embedded"); } }
+        private bool? _explicitNullValueEmbedded = default!;
         /// <summary>Can expand row to show raw event data (default: true)</summary>
-        public bool? Expandable { get; set; }
+        public bool? Expandable { get => _explicitNullValueExpandable; set { _explicitNullValueExpandable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expandable"); else _explicitNullProperties?.Remove("expandable"); } }
+        private bool? _explicitNullValueExpandable = default!;
         /// <summary>Show with most visual options enabled. Used in insight scene.</summary>
-        public bool? Full { get; set; }
+        public bool? Full { get => _explicitNullValueFull; set { _explicitNullValueFull = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full"); else _explicitNullProperties?.Remove("full"); } }
+        private bool? _explicitNullValueFull = default!;
         /// <summary>Columns that aren&apos;t shown in the table, even if in columns or returned data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? HiddenColumns { get; set; }
+        public List<string>? HiddenColumns { get => _explicitNullValueHiddenColumns; set { _explicitNullValueHiddenColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hiddenColumns"); else _explicitNullProperties?.Remove("hiddenColumns"); } }
+        private List<string>? _explicitNullValueHiddenColumns = default!;
 #nullable restore
 #else
-        public List<string> HiddenColumns { get; set; }
+        public List<string> HiddenColumns { get => _explicitNullValueHiddenColumns; set { _explicitNullValueHiddenColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hiddenColumns"); else _explicitNullProperties?.Remove("hiddenColumns"); } }
+        private List<string> _explicitNullValueHiddenColumns = default!;
 #endif
         /// <summary>The hidePersonsModal property</summary>
-        public bool? HidePersonsModal { get; set; }
+        public bool? HidePersonsModal { get => _explicitNullValueHidePersonsModal; set { _explicitNullValueHidePersonsModal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidePersonsModal"); else _explicitNullProperties?.Remove("hidePersonsModal"); } }
+        private bool? _explicitNullValueHidePersonsModal = default!;
         /// <summary>The hideTooltipOnScroll property</summary>
-        public bool? HideTooltipOnScroll { get; set; }
+        public bool? HideTooltipOnScroll { get => _explicitNullValueHideTooltipOnScroll; set { _explicitNullValueHideTooltipOnScroll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hideTooltipOnScroll"); else _explicitNullProperties?.Remove("hideTooltipOnScroll"); } }
+        private bool? _explicitNullValueHideTooltipOnScroll = default!;
         /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? _explicitNullValueModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers _explicitNullValueModifiers = default!;
 #endif
         /// <summary>Columns that are sticky when scrolling horizontally</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PinnedColumns { get; set; }
+        public List<string>? PinnedColumns { get => _explicitNullValuePinnedColumns; set { _explicitNullValuePinnedColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinnedColumns"); else _explicitNullProperties?.Remove("pinnedColumns"); } }
+        private List<string>? _explicitNullValuePinnedColumns = default!;
 #nullable restore
 #else
-        public List<string> PinnedColumns { get; set; }
+        public List<string> PinnedColumns { get => _explicitNullValuePinnedColumns; set { _explicitNullValuePinnedColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinnedColumns"); else _explicitNullProperties?.Remove("pinnedColumns"); } }
+        private List<string> _explicitNullValuePinnedColumns = default!;
 #endif
         /// <summary>Link properties via the URL (default: false)</summary>
-        public bool? PropertiesViaUrl { get; set; }
+        public bool? PropertiesViaUrl { get => _explicitNullValuePropertiesViaUrl; set { _explicitNullValuePropertiesViaUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("propertiesViaUrl"); else _explicitNullProperties?.Remove("propertiesViaUrl"); } }
+        private bool? _explicitNullValuePropertiesViaUrl = default!;
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse? Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse? _explicitNullValueResponse = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeResponse _explicitNullValueResponse = default!;
 #endif
         /// <summary>Render date-time columns (timestamp, created_at, last_seen, last_seen_at, session_start, session_end) as absolute date+time instead of relative (&quot;X ago&quot;). The toggle is exposed in the column header menu only on EventsQuery / ActorsQuery sources.</summary>
-        public bool? ShowAbsoluteTime { get; set; }
+        public bool? ShowAbsoluteTime { get => _explicitNullValueShowAbsoluteTime; set { _explicitNullValueShowAbsoluteTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showAbsoluteTime"); else _explicitNullProperties?.Remove("showAbsoluteTime"); } }
+        private bool? _explicitNullValueShowAbsoluteTime = default!;
         /// <summary>Show the kebab menu at the end of the row</summary>
-        public bool? ShowActions { get; set; }
+        public bool? ShowActions { get => _explicitNullValueShowActions; set { _explicitNullValueShowActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showActions"); else _explicitNullProperties?.Remove("showActions"); } }
+        private bool? _explicitNullValueShowActions = default!;
         /// <summary>Show a button to configure the table&apos;s columns if possible</summary>
-        public bool? ShowColumnConfigurator { get; set; }
+        public bool? ShowColumnConfigurator { get => _explicitNullValueShowColumnConfigurator; set { _explicitNullValueShowColumnConfigurator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showColumnConfigurator"); else _explicitNullProperties?.Remove("showColumnConfigurator"); } }
+        private bool? _explicitNullValueShowColumnConfigurator = default!;
         /// <summary>The showCorrelationTable property</summary>
-        public bool? ShowCorrelationTable { get; set; }
+        public bool? ShowCorrelationTable { get => _explicitNullValueShowCorrelationTable; set { _explicitNullValueShowCorrelationTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showCorrelationTable"); else _explicitNullProperties?.Remove("showCorrelationTable"); } }
+        private bool? _explicitNullValueShowCorrelationTable = default!;
         /// <summary>Show count of total and filtered results</summary>
-        public bool? ShowCount { get; set; }
+        public bool? ShowCount { get => _explicitNullValueShowCount; set { _explicitNullValueShowCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showCount"); else _explicitNullProperties?.Remove("showCount"); } }
+        private bool? _explicitNullValueShowCount = default!;
         /// <summary>Show date range selector</summary>
-        public bool? ShowDateRange { get; set; }
+        public bool? ShowDateRange { get => _explicitNullValueShowDateRange; set { _explicitNullValueShowDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showDateRange"); else _explicitNullProperties?.Remove("showDateRange"); } }
+        private bool? _explicitNullValueShowDateRange = default!;
         /// <summary>Show the time it takes to run a query</summary>
-        public bool? ShowElapsedTime { get; set; }
+        public bool? ShowElapsedTime { get => _explicitNullValueShowElapsedTime; set { _explicitNullValueShowElapsedTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showElapsedTime"); else _explicitNullProperties?.Remove("showElapsedTime"); } }
+        private bool? _explicitNullValueShowElapsedTime = default!;
         /// <summary>Include an event filter above the table (EventsNode only)</summary>
-        public bool? ShowEventFilter { get; set; }
+        public bool? ShowEventFilter { get => _explicitNullValueShowEventFilter; set { _explicitNullValueShowEventFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showEventFilter"); else _explicitNullProperties?.Remove("showEventFilter"); } }
+        private bool? _explicitNullValueShowEventFilter = default!;
         /// <summary>Include an events filter above the table to filter by multiple events (EventsQuery only)</summary>
-        public bool? ShowEventsFilter { get; set; }
+        public bool? ShowEventsFilter { get => _explicitNullValueShowEventsFilter; set { _explicitNullValueShowEventsFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showEventsFilter"); else _explicitNullProperties?.Remove("showEventsFilter"); } }
+        private bool? _explicitNullValueShowEventsFilter = default!;
         /// <summary>Show the export button</summary>
-        public bool? ShowExport { get; set; }
+        public bool? ShowExport { get => _explicitNullValueShowExport; set { _explicitNullValueShowExport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showExport"); else _explicitNullProperties?.Remove("showExport"); } }
+        private bool? _explicitNullValueShowExport = default!;
         /// <summary>The showFilters property</summary>
-        public bool? ShowFilters { get; set; }
+        public bool? ShowFilters { get => _explicitNullValueShowFilters; set { _explicitNullValueShowFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showFilters"); else _explicitNullProperties?.Remove("showFilters"); } }
+        private bool? _explicitNullValueShowFilters = default!;
         /// <summary>The showHeader property</summary>
-        public bool? ShowHeader { get; set; }
+        public bool? ShowHeader { get => _explicitNullValueShowHeader; set { _explicitNullValueShowHeader = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showHeader"); else _explicitNullProperties?.Remove("showHeader"); } }
+        private bool? _explicitNullValueShowHeader = default!;
         /// <summary>Include a HogQL query editor above HogQL tables</summary>
-        public bool? ShowHogQLEditor { get; set; }
+        public bool? ShowHogQLEditor { get => _explicitNullValueShowHogQLEditor; set { _explicitNullValueShowHogQLEditor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showHogQLEditor"); else _explicitNullProperties?.Remove("showHogQLEditor"); } }
+        private bool? _explicitNullValueShowHogQLEditor = default!;
         /// <summary>The showLastComputation property</summary>
-        public bool? ShowLastComputation { get; set; }
+        public bool? ShowLastComputation { get => _explicitNullValueShowLastComputation; set { _explicitNullValueShowLastComputation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLastComputation"); else _explicitNullProperties?.Remove("showLastComputation"); } }
+        private bool? _explicitNullValueShowLastComputation = default!;
         /// <summary>The showLastComputationRefresh property</summary>
-        public bool? ShowLastComputationRefresh { get; set; }
+        public bool? ShowLastComputationRefresh { get => _explicitNullValueShowLastComputationRefresh; set { _explicitNullValueShowLastComputationRefresh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLastComputationRefresh"); else _explicitNullProperties?.Remove("showLastComputationRefresh"); } }
+        private bool? _explicitNullValueShowLastComputationRefresh = default!;
         /// <summary>Show a button to open the current query as a new insight. (default: true)</summary>
-        public bool? ShowOpenEditorButton { get; set; }
+        public bool? ShowOpenEditorButton { get => _explicitNullValueShowOpenEditorButton; set { _explicitNullValueShowOpenEditorButton = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showOpenEditorButton"); else _explicitNullProperties?.Remove("showOpenEditorButton"); } }
+        private bool? _explicitNullValueShowOpenEditorButton = default!;
         /// <summary>Show a button to configure and persist the table&apos;s default columns if possible</summary>
-        public bool? ShowPersistentColumnConfigurator { get; set; }
+        public bool? ShowPersistentColumnConfigurator { get => _explicitNullValueShowPersistentColumnConfigurator; set { _explicitNullValueShowPersistentColumnConfigurator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showPersistentColumnConfigurator"); else _explicitNullProperties?.Remove("showPersistentColumnConfigurator"); } }
+        private bool? _explicitNullValueShowPersistentColumnConfigurator = default!;
         /// <summary>Include a property filter above the table</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter? ShowPropertyFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter? ShowPropertyFilter { get => _explicitNullValueShowPropertyFilter; set { _explicitNullValueShowPropertyFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showPropertyFilter"); else _explicitNullProperties?.Remove("showPropertyFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter? _explicitNullValueShowPropertyFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter ShowPropertyFilter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter ShowPropertyFilter { get => _explicitNullValueShowPropertyFilter; set { _explicitNullValueShowPropertyFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showPropertyFilter"); else _explicitNullProperties?.Remove("showPropertyFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter _explicitNullValueShowPropertyFilter = default!;
 #endif
         /// <summary>Show a recording column for events with session recordings</summary>
-        public bool? ShowRecordingColumn { get; set; }
+        public bool? ShowRecordingColumn { get => _explicitNullValueShowRecordingColumn; set { _explicitNullValueShowRecordingColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showRecordingColumn"); else _explicitNullProperties?.Remove("showRecordingColumn"); } }
+        private bool? _explicitNullValueShowRecordingColumn = default!;
         /// <summary>Show a reload button</summary>
-        public bool? ShowReload { get; set; }
+        public bool? ShowReload { get => _explicitNullValueShowReload; set { _explicitNullValueShowReload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showReload"); else _explicitNullProperties?.Remove("showReload"); } }
+        private bool? _explicitNullValueShowReload = default!;
         /// <summary>The showResults property</summary>
-        public bool? ShowResults { get; set; }
+        public bool? ShowResults { get => _explicitNullValueShowResults; set { _explicitNullValueShowResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showResults"); else _explicitNullProperties?.Remove("showResults"); } }
+        private bool? _explicitNullValueShowResults = default!;
         /// <summary>Show a results table</summary>
-        public bool? ShowResultsTable { get; set; }
+        public bool? ShowResultsTable { get => _explicitNullValueShowResultsTable; set { _explicitNullValueShowResultsTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showResultsTable"); else _explicitNullProperties?.Remove("showResultsTable"); } }
+        private bool? _explicitNullValueShowResultsTable = default!;
         /// <summary>Show saved filters feature for this table (requires uniqueKey)</summary>
-        public bool? ShowSavedFilters { get; set; }
+        public bool? ShowSavedFilters { get => _explicitNullValueShowSavedFilters; set { _explicitNullValueShowSavedFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showSavedFilters"); else _explicitNullProperties?.Remove("showSavedFilters"); } }
+        private bool? _explicitNullValueShowSavedFilters = default!;
         /// <summary>Shows a list of saved queries</summary>
-        public bool? ShowSavedQueries { get; set; }
+        public bool? ShowSavedQueries { get => _explicitNullValueShowSavedQueries; set { _explicitNullValueShowSavedQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showSavedQueries"); else _explicitNullProperties?.Remove("showSavedQueries"); } }
+        private bool? _explicitNullValueShowSavedQueries = default!;
         /// <summary>Include a free text search field (PersonsNode only)</summary>
-        public bool? ShowSearch { get; set; }
+        public bool? ShowSearch { get => _explicitNullValueShowSearch; set { _explicitNullValueShowSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showSearch"); else _explicitNullProperties?.Remove("showSearch"); } }
+        private bool? _explicitNullValueShowSearch = default!;
         /// <summary>Show actors query options and back to source</summary>
-        public bool? ShowSourceQueryOptions { get; set; }
+        public bool? ShowSourceQueryOptions { get => _explicitNullValueShowSourceQueryOptions; set { _explicitNullValueShowSourceQueryOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showSourceQueryOptions"); else _explicitNullProperties?.Remove("showSourceQueryOptions"); } }
+        private bool? _explicitNullValueShowSourceQueryOptions = default!;
         /// <summary>The showTable property</summary>
-        public bool? ShowTable { get; set; }
+        public bool? ShowTable { get => _explicitNullValueShowTable; set { _explicitNullValueShowTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTable"); else _explicitNullProperties?.Remove("showTable"); } }
+        private bool? _explicitNullValueShowTable = default!;
         /// <summary>Show table views feature for this table (requires uniqueKey)</summary>
-        public bool? ShowTableViews { get; set; }
+        public bool? ShowTableViews { get => _explicitNullValueShowTableViews; set { _explicitNullValueShowTableViews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTableViews"); else _explicitNullProperties?.Remove("showTableViews"); } }
+        private bool? _explicitNullValueShowTableViews = default!;
         /// <summary>Show filter to exclude test accounts</summary>
-        public bool? ShowTestAccountFilters { get; set; }
+        public bool? ShowTestAccountFilters { get => _explicitNullValueShowTestAccountFilters; set { _explicitNullValueShowTestAccountFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTestAccountFilters"); else _explicitNullProperties?.Remove("showTestAccountFilters"); } }
+        private bool? _explicitNullValueShowTestAccountFilters = default!;
         /// <summary>Show a detailed query timing breakdown</summary>
-        public bool? ShowTimings { get; set; }
+        public bool? ShowTimings { get => _explicitNullValueShowTimings; set { _explicitNullValueShowTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTimings"); else _explicitNullProperties?.Remove("showTimings"); } }
+        private bool? _explicitNullValueShowTimings = default!;
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource _explicitNullValueSource = default!;
 #endif
         /// <summary>The suppressSessionAnalysisWarning property</summary>
-        public bool? SuppressSessionAnalysisWarning { get; set; }
+        public bool? SuppressSessionAnalysisWarning { get => _explicitNullValueSuppressSessionAnalysisWarning; set { _explicitNullValueSuppressSessionAnalysisWarning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suppressSessionAnalysisWarning"); else _explicitNullProperties?.Remove("suppressSessionAnalysisWarning"); } }
+        private bool? _explicitNullValueSuppressSessionAnalysisWarning = default!;
         /// <summary>The tableSettings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettings? TableSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettings? TableSettings { get => _explicitNullValueTableSettings; set { _explicitNullValueTableSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tableSettings"); else _explicitNullProperties?.Remove("tableSettings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TableSettings? _explicitNullValueTableSettings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettings TableSettings { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettings TableSettings { get => _explicitNullValueTableSettings; set { _explicitNullValueTableSettings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tableSettings"); else _explicitNullProperties?.Remove("tableSettings"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TableSettings _explicitNullValueTableSettings = default!;
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags _explicitNullValueTags = default!;
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+        public double? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private double? _explicitNullValueVersion = default!;
         /// <summary>The vizSpecificOptions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? VizSpecificOptions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? VizSpecificOptions { get => _explicitNullValueVizSpecificOptions; set { _explicitNullValueVizSpecificOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vizSpecificOptions"); else _explicitNullProperties?.Remove("vizSpecificOptions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? _explicitNullValueVizSpecificOptions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions VizSpecificOptions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions VizSpecificOptions { get => _explicitNullValueVizSpecificOptions; set { _explicitNullValueVizSpecificOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vizSpecificOptions"); else _explicitNullProperties?.Remove("vizSpecificOptions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions _explicitNullValueVizSpecificOptions = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery"/> and sets the default values.
@@ -244,7 +380,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -375,6 +511,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions>("vizSpecificOptions", VizSpecificOptions);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

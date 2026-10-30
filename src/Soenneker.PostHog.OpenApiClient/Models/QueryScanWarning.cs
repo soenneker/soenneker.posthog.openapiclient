@@ -11,46 +11,73 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QueryScanWarning : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actionable") is { } nullNodeActionable && nullNodeActionable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actionable = null;
+            if (parseNode.GetChildNode("by_design") is { } nullNodeByDesign && nullNodeByDesign.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByDesign = null;
+            if (parseNode.GetChildNode("cause") is { } nullNodeCause && nullNodeCause.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cause = null;
+            if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
+            if (parseNode.GetChildNode("fix") is { } nullNodeFix && nullNodeFix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fix = null;
+            if (parseNode.GetChildNode("fix_location") is { } nullNodeFixLocation && nullNodeFixLocation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FixLocation = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+        }
+
         /// <summary>Whether the person can change the query so it reads less and still answers the same question. Surfaces show the full advice and &quot;Fix with AI&quot; only when a finding is actionable.</summary>
-        public bool? Actionable { get; set; }
+        public bool? Actionable { get => _explicitNullValueActionable; set { _explicitNullValueActionable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actionable"); else _explicitNullProperties?.Remove("actionable"); } }
+        private bool? _explicitNullValueActionable = default!;
         /// <summary>True when the query reads this much on purpose, so reading less would change the answer. Absent means no.</summary>
-        public bool? ByDesign { get; set; }
+        public bool? ByDesign { get => _explicitNullValueByDesign; set { _explicitNullValueByDesign = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_design"); else _explicitNullProperties?.Remove("by_design"); } }
+        private bool? _explicitNullValueByDesign = default!;
         /// <summary>A label for what in the query text kept the read wide, such as `in_or`. Only analytics and the assistant read it, and the labels can change.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cause { get; set; }
+        public string? Cause { get => _explicitNullValueCause; set { _explicitNullValueCause = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cause"); else _explicitNullProperties?.Remove("cause"); } }
+        private string? _explicitNullValueCause = default!;
 #nullable restore
 #else
-        public string Cause { get; set; }
+        public string Cause { get => _explicitNullValueCause; set { _explicitNullValueCause = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cause"); else _explicitNullProperties?.Remove("cause"); } }
+        private string _explicitNullValueCause = default!;
 #endif
         /// <summary>The one fact the finding rests on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Evidence { get; set; }
+        public string? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private string? _explicitNullValueEvidence = default!;
 #nullable restore
 #else
-        public string Evidence { get; set; }
+        public string Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private string _explicitNullValueEvidence = default!;
 #endif
         /// <summary>What &quot;Fix with AI&quot; and the assistant are told to do.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Fix { get; set; }
+        public string? Fix { get => _explicitNullValueFix; set { _explicitNullValueFix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fix"); else _explicitNullProperties?.Remove("fix"); } }
+        private string? _explicitNullValueFix = default!;
 #nullable restore
 #else
-        public string Fix { get; set; }
+        public string Fix { get => _explicitNullValueFix; set { _explicitNullValueFix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fix"); else _explicitNullProperties?.Remove("fix"); } }
+        private string _explicitNullValueFix = default!;
 #endif
         /// <summary>Where the change goes. Absent means the query itself.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocation? FixLocation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocation? FixLocation { get => _explicitNullValueFixLocation; set { _explicitNullValueFixLocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fix_location"); else _explicitNullProperties?.Remove("fix_location"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocation? _explicitNullValueFixLocation = default!;
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind? _explicitNullValueKind = default!;
         /// <summary>Shown to the person: what happened and what to do.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -60,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.QueryScanWarning(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -94,7 +121,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("fix", Fix);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFixLocation>("fix_location", FixLocation);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanFindingKind>("kind", Kind);
-            writer.WriteStringValue("message", Message);
+            writer.WriteStringValue("message", Message);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

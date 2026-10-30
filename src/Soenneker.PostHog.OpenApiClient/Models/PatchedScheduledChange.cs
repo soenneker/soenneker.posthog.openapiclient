@@ -11,7 +11,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PatchedScheduledChange : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cron_expression") is { } nullNodeCronExpression && nullNodeCronExpression.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CronExpression = null;
+            if (parseNode.GetChildNode("end_date") is { } nullNodeEndDate && nullNodeEndDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndDate = null;
+            if (parseNode.GetChildNode("is_recurring") is { } nullNodeIsRecurring && nullNodeIsRecurring.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsRecurring = null;
+            if (parseNode.GetChildNode("model_name") is { } nullNodeModelName && nullNodeModelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelName = null;
+            if (parseNode.GetChildNode("payload") is { } nullNodePayload && nullNodePayload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Payload = null;
+            if (parseNode.GetChildNode("record_id") is { } nullNodeRecordId && nullNodeRecordId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordId = null;
+            if (parseNode.GetChildNode("recurrence_interval") is { } nullNodeRecurrenceInterval && nullNodeRecurrenceInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecurrenceInterval = null;
+            if (parseNode.GetChildNode("scheduled_at") is { } nullNodeScheduledAt && nullNodeScheduledAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScheduledAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Summary of the approval change request gating this scheduled change. Null when no approval policy applies. The change only applies at its scheduled time if the request is approved by then.</summary>
@@ -35,13 +50,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The cron_expression property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CronExpression { get; set; }
+        public string? CronExpression { get => _explicitNullValueCronExpression; set { _explicitNullValueCronExpression = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cron_expression"); else _explicitNullProperties?.Remove("cron_expression"); } }
+        private string? _explicitNullValueCronExpression = default!;
 #nullable restore
 #else
-        public string CronExpression { get; set; }
+        public string CronExpression { get => _explicitNullValueCronExpression; set { _explicitNullValueCronExpression = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cron_expression"); else _explicitNullProperties?.Remove("cron_expression"); } }
+        private string _explicitNullValueCronExpression = default!;
 #endif
         /// <summary>Optional ISO 8601 datetime after which a recurring schedule stops executing.</summary>
-        public DateTimeOffset? EndDate { get; set; }
+        public DateTimeOffset? EndDate { get => _explicitNullValueEndDate; set { _explicitNullValueEndDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end_date"); else _explicitNullProperties?.Remove("end_date"); } }
+        private DateTimeOffset? _explicitNullValueEndDate = default!;
         /// <summary>The executed_at property</summary>
         public DateTimeOffset? ExecutedAt { get; private set; }
         /// <summary>Return the safely formatted failure reason instead of raw data.</summary>
@@ -55,37 +73,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>Whether this schedule repeats. Only the &apos;update_status&apos; operation supports recurring schedules.</summary>
-        public bool? IsRecurring { get; set; }
+        public bool? IsRecurring { get => _explicitNullValueIsRecurring; set { _explicitNullValueIsRecurring = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_recurring"); else _explicitNullProperties?.Remove("is_recurring"); } }
+        private bool? _explicitNullValueIsRecurring = default!;
         /// <summary>The last_executed_at property</summary>
         public DateTimeOffset? LastExecutedAt { get; private set; }
         /// <summary>* `FeatureFlag` - feature flag</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeModelName? ModelName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeModelName? ModelName { get => _explicitNullValueModelName; set { _explicitNullValueModelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_name"); else _explicitNullProperties?.Remove("model_name"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeModelName? _explicitNullValueModelName = default!;
         /// <summary>The change to apply. Must include an &apos;operation&apos; key and a &apos;value&apos; key. Supported operations: &apos;update_status&apos; (value: true/false to enable/disable the flag), &apos;add_release_condition&apos; (value: object with &apos;groups&apos;, &apos;payloads&apos;, and &apos;multivariate&apos; keys), &apos;update_variants&apos; (value: object with &apos;variants&apos; and &apos;payloads&apos; keys).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Payload { get; set; }
+        public UntypedNode? Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
+        private UntypedNode? _explicitNullValuePayload = default!;
 #nullable restore
 #else
-        public UntypedNode Payload { get; set; }
+        public UntypedNode Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
+        private UntypedNode _explicitNullValuePayload = default!;
 #endif
         /// <summary>The ID of the record to modify (e.g. the feature flag ID).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RecordId { get; set; }
+        public string? RecordId { get => _explicitNullValueRecordId; set { _explicitNullValueRecordId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("record_id"); else _explicitNullProperties?.Remove("record_id"); } }
+        private string? _explicitNullValueRecordId = default!;
 #nullable restore
 #else
-        public string RecordId { get; set; }
+        public string RecordId { get => _explicitNullValueRecordId; set { _explicitNullValueRecordId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("record_id"); else _explicitNullProperties?.Remove("record_id"); } }
+        private string _explicitNullValueRecordId = default!;
 #endif
         /// <summary>How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly.* `daily` - daily* `weekly` - weekly* `monthly` - monthly* `yearly` - yearly</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeRecurrenceInterval? RecurrenceInterval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeRecurrenceInterval? RecurrenceInterval { get => _explicitNullValueRecurrenceInterval; set { _explicitNullValueRecurrenceInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recurrence_interval"); else _explicitNullProperties?.Remove("recurrence_interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeRecurrenceInterval? _explicitNullValueRecurrenceInterval = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeRecurrenceInterval RecurrenceInterval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeRecurrenceInterval RecurrenceInterval { get => _explicitNullValueRecurrenceInterval; set { _explicitNullValueRecurrenceInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recurrence_interval"); else _explicitNullProperties?.Remove("recurrence_interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeRecurrenceInterval _explicitNullValueRecurrenceInterval = default!;
 #endif
         /// <summary>ISO 8601 datetime when the change should be applied (e.g. &apos;2025-06-01T14:00:00Z&apos;).</summary>
-        public DateTimeOffset? ScheduledAt { get; set; }
+        public DateTimeOffset? ScheduledAt { get => _explicitNullValueScheduledAt; set { _explicitNullValueScheduledAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scheduled_at"); else _explicitNullProperties?.Remove("scheduled_at"); } }
+        private DateTimeOffset? _explicitNullValueScheduledAt = default!;
         /// <summary>The team_id property</summary>
         public int? TeamId { get; private set; }
         /// <summary>The timezone property</summary>
@@ -114,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChange CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChange();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChange(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -159,6 +186,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("record_id", RecordId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedScheduledChangeRecurrenceInterval>("recurrence_interval", RecurrenceInterval);
             writer.WriteDateTimeOffsetValue("scheduled_at", ScheduledAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

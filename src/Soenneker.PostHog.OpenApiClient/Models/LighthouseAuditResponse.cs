@@ -12,84 +12,122 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LighthouseAuditResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("audits_remaining") is { } nullNodeAuditsRemaining && nullNodeAuditsRemaining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuditsRemaining = null;
+            if (parseNode.GetChildNode("final_url") is { } nullNodeFinalUrl && nullNodeFinalUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinalUrl = null;
+            if (parseNode.GetChildNode("form_factor") is { } nullNodeFormFactor && nullNodeFormFactor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FormFactor = null;
+            if (parseNode.GetChildNode("lcp_checks_failed") is { } nullNodeLcpChecksFailed && nullNodeLcpChecksFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LcpChecksFailed = null;
+            if (parseNode.GetChildNode("lcp_element") is { } nullNodeLcpElement && nullNodeLcpElement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LcpElement = null;
+            if (parseNode.GetChildNode("lcp_phases") is { } nullNodeLcpPhases && nullNodeLcpPhases.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LcpPhases = null;
+            if (parseNode.GetChildNode("lighthouse_version") is { } nullNodeLighthouseVersion && nullNodeLighthouseVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LighthouseVersion = null;
+            if (parseNode.GetChildNode("metrics") is { } nullNodeMetrics && nullNodeMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metrics = null;
+            if (parseNode.GetChildNode("opportunities") is { } nullNodeOpportunities && nullNodeOpportunities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Opportunities = null;
+            if (parseNode.GetChildNode("performance_score") is { } nullNodePerformanceScore && nullNodePerformanceScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerformanceScore = null;
+            if (parseNode.GetChildNode("requested_url") is { } nullNodeRequestedUrl && nullNodeRequestedUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedUrl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many audits this run may still spend. Each run gets 5.</summary>
-        public int? AuditsRemaining { get; set; }
+        public int? AuditsRemaining { get => _explicitNullValueAuditsRemaining; set { _explicitNullValueAuditsRemaining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audits_remaining"); else _explicitNullProperties?.Remove("audits_remaining"); } }
+        private int? _explicitNullValueAuditsRemaining = default!;
         /// <summary>Where the browser ended up after redirects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FinalUrl { get; set; }
+        public string? FinalUrl { get => _explicitNullValueFinalUrl; set { _explicitNullValueFinalUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("final_url"); else _explicitNullProperties?.Remove("final_url"); } }
+        private string? _explicitNullValueFinalUrl = default!;
 #nullable restore
 #else
-        public string FinalUrl { get; set; }
+        public string FinalUrl { get => _explicitNullValueFinalUrl; set { _explicitNullValueFinalUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("final_url"); else _explicitNullProperties?.Remove("final_url"); } }
+        private string _explicitNullValueFinalUrl = default!;
 #endif
         /// <summary>The device profile the audit emulated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FormFactor { get; set; }
+        public string? FormFactor { get => _explicitNullValueFormFactor; set { _explicitNullValueFormFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("form_factor"); else _explicitNullProperties?.Remove("form_factor"); } }
+        private string? _explicitNullValueFormFactor = default!;
 #nullable restore
 #else
-        public string FormFactor { get; set; }
+        public string FormFactor { get => _explicitNullValueFormFactor; set { _explicitNullValueFormFactor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("form_factor"); else _explicitNullProperties?.Remove("form_factor"); } }
+        private string _explicitNullValueFormFactor = default!;
 #endif
         /// <summary>LCP-specific checks this page failed, such as an unprioritized or lazy-loaded hero image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>? LcpChecksFailed { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>? LcpChecksFailed { get => _explicitNullValueLcpChecksFailed; set { _explicitNullValueLcpChecksFailed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_checks_failed"); else _explicitNullProperties?.Remove("lcp_checks_failed"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>? _explicitNullValueLcpChecksFailed = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity> LcpChecksFailed { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity> LcpChecksFailed { get => _explicitNullValueLcpChecksFailed; set { _explicitNullValueLcpChecksFailed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_checks_failed"); else _explicitNullProperties?.Remove("lcp_checks_failed"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity> _explicitNullValueLcpChecksFailed = default!;
 #endif
         /// <summary>The element the browser chose as the LCP, or null when Lighthouse could not name one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LcpElement? LcpElement { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LcpElement? LcpElement { get => _explicitNullValueLcpElement; set { _explicitNullValueLcpElement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_element"); else _explicitNullProperties?.Remove("lcp_element"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LcpElement? _explicitNullValueLcpElement = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LcpElement LcpElement { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LcpElement LcpElement { get => _explicitNullValueLcpElement; set { _explicitNullValueLcpElement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_element"); else _explicitNullProperties?.Remove("lcp_element"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LcpElement _explicitNullValueLcpElement = default!;
 #endif
         /// <summary>Where the LCP time went, phase by phase. Empty when the report omits the breakdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase>? LcpPhases { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase>? LcpPhases { get => _explicitNullValueLcpPhases; set { _explicitNullValueLcpPhases = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_phases"); else _explicitNullProperties?.Remove("lcp_phases"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase>? _explicitNullValueLcpPhases = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase> LcpPhases { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase> LcpPhases { get => _explicitNullValueLcpPhases; set { _explicitNullValueLcpPhases = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_phases"); else _explicitNullProperties?.Remove("lcp_phases"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase> _explicitNullValueLcpPhases = default!;
 #endif
         /// <summary>The Lighthouse version that produced this report. Audit ids move between major versions, so cite it when an expected field came back empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LighthouseVersion { get; set; }
+        public string? LighthouseVersion { get => _explicitNullValueLighthouseVersion; set { _explicitNullValueLighthouseVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lighthouse_version"); else _explicitNullProperties?.Remove("lighthouse_version"); } }
+        private string? _explicitNullValueLighthouseVersion = default!;
 #nullable restore
 #else
-        public string LighthouseVersion { get; set; }
+        public string LighthouseVersion { get => _explicitNullValueLighthouseVersion; set { _explicitNullValueLighthouseVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lighthouse_version"); else _explicitNullProperties?.Remove("lighthouse_version"); } }
+        private string _explicitNullValueLighthouseVersion = default!;
 #endif
         /// <summary>Lab metrics from this run: `lcp_ms`, `fcp_ms`, `cls`, `tbt_ms`, `speed_index_ms`, `tti_ms`. One throttled cold load, not a p75 over real users — use it to explain a field finding, never to replace one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty? Metrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty? _explicitNullValueMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty Metrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty _explicitNullValueMetrics = default!;
 #endif
         /// <summary>Ranked savings estimates across the whole page, largest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>? Opportunities { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>? Opportunities { get => _explicitNullValueOpportunities; set { _explicitNullValueOpportunities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opportunities"); else _explicitNullProperties?.Remove("opportunities"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>? _explicitNullValueOpportunities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity> Opportunities { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity> Opportunities { get => _explicitNullValueOpportunities; set { _explicitNullValueOpportunities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opportunities"); else _explicitNullProperties?.Remove("opportunities"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity> _explicitNullValueOpportunities = default!;
 #endif
         /// <summary>Lighthouse performance score out of 100 for this run.</summary>
-        public int? PerformanceScore { get; set; }
+        public int? PerformanceScore { get => _explicitNullValuePerformanceScore; set { _explicitNullValuePerformanceScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("performance_score"); else _explicitNullProperties?.Remove("performance_score"); } }
+        private int? _explicitNullValuePerformanceScore = default!;
         /// <summary>The url that was audited.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequestedUrl { get; set; }
+        public string? RequestedUrl { get => _explicitNullValueRequestedUrl; set { _explicitNullValueRequestedUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_url"); else _explicitNullProperties?.Remove("requested_url"); } }
+        private string? _explicitNullValueRequestedUrl = default!;
 #nullable restore
 #else
-        public string RequestedUrl { get; set; }
+        public string RequestedUrl { get => _explicitNullValueRequestedUrl; set { _explicitNullValueRequestedUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_url"); else _explicitNullProperties?.Remove("requested_url"); } }
+        private string _explicitNullValueRequestedUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponse"/> and sets the default values.
@@ -106,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -147,6 +185,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>("opportunities", Opportunities);
             writer.WriteIntValue("performance_score", PerformanceScore);
             writer.WriteStringValue("requested_url", RequestedUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

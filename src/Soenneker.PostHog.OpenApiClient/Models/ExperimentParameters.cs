@@ -11,16 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentParameters : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("minimum_detectable_effect") is { } nullNodeMinimumDetectableEffect && nullNodeMinimumDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinimumDetectableEffect = null;
+            if (parseNode.GetChildNode("variant_notes") is { } nullNodeVariantNotes && nullNodeVariantNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantNotes = null;
+        }
+
         /// <summary>Minimum detectable effect as a percentage. Lower values need more users but catch smaller changes. Suggest 20–30% for most experiments.</summary>
-        public double? MinimumDetectableEffect { get; set; }
+        public double? MinimumDetectableEffect { get => _explicitNullValueMinimumDetectableEffect; set { _explicitNullValueMinimumDetectableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum_detectable_effect"); else _explicitNullProperties?.Remove("minimum_detectable_effect"); } }
+        private double? _explicitNullValueMinimumDetectableEffect = default!;
         /// <summary>Free-text notes per variant, keyed by variant key. Use to document what each variant does or its reroute URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty? VariantNotes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty? VariantNotes { get => _explicitNullValueVariantNotes; set { _explicitNullValueVariantNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_notes"); else _explicitNullProperties?.Remove("variant_notes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty? _explicitNullValueVariantNotes = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty VariantNotes { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty VariantNotes { get => _explicitNullValueVariantNotes; set { _explicitNullValueVariantNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_notes"); else _explicitNullProperties?.Remove("variant_notes"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty _explicitNullValueVariantNotes = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -30,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,7 +64,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("minimum_detectable_effect", MinimumDetectableEffect);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty>("variant_notes", VariantNotes);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParametersVariantNotesProperty>("variant_notes", VariantNotes);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

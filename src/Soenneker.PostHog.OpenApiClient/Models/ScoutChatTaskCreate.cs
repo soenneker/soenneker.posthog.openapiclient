@@ -11,26 +11,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ScoutChatTaskCreate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chat_type") is { } nullNodeChatType && nullNodeChatType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatType = null;
+            if (parseNode.GetChildNode("suggestion_id") is { } nullNodeSuggestionId && nullNodeSuggestionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestionId = null;
+            if (parseNode.GetChildNode("user_prompt") is { } nullNodeUserPrompt && nullNodeUserPrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserPrompt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `author_scout` - author_scout* `fleet_overview` - fleet_overview* `recent_signals` - recent_signals</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType? ChatType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType? ChatType { get => _explicitNullValueChatType; set { _explicitNullValueChatType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_type"); else _explicitNullProperties?.Remove("chat_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType? _explicitNullValueChatType = default!;
         /// <summary>Optional id of a suggestion from this project&apos;s scout suggestion batch. The chat then opens on that draft instead of scanning from scratch. `author_scout` only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestionId { get; set; }
+        public string? SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
+        private string? _explicitNullValueSuggestionId = default!;
 #nullable restore
 #else
-        public string SuggestionId { get; set; }
+        public string SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
+        private string _explicitNullValueSuggestionId = default!;
 #endif
         /// <summary>Optional description, in the user&apos;s own words, of what the new scout should watch. The chat then opens on this request instead of asking from scratch. `author_scout` only, and not together with `suggestion_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserPrompt { get; set; }
+        public string? UserPrompt { get => _explicitNullValueUserPrompt; set { _explicitNullValueUserPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_prompt"); else _explicitNullProperties?.Remove("user_prompt"); } }
+        private string? _explicitNullValueUserPrompt = default!;
 #nullable restore
 #else
-        public string UserPrompt { get; set; }
+        public string UserPrompt { get => _explicitNullValueUserPrompt; set { _explicitNullValueUserPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_prompt"); else _explicitNullProperties?.Remove("user_prompt"); } }
+        private string _explicitNullValueUserPrompt = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreate"/> and sets the default values.
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>("chat_type", ChatType);
             writer.WriteStringValue("suggestion_id", SuggestionId);
             writer.WriteStringValue("user_prompt", UserPrompt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

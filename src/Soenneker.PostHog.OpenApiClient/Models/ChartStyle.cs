@@ -11,11 +11,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ChartStyle : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("curve") is { } nullNodeCurve && nullNodeCurve.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Curve = null;
+            if (parseNode.GetChildNode("seriesColorMode") is { } nullNodeSeriesColorMode && nullNodeSeriesColorMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesColorMode = null;
+        }
+
         /// <summary>Line interpolation: straight segments or a smoothed curve through the points.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.Curve? Curve { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.Curve? Curve { get => _explicitNullValueCurve; set { _explicitNullValueCurve = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("curve"); else _explicitNullProperties?.Remove("curve"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.Curve? _explicitNullValueCurve = default!;
         /// <summary>How series are told apart: one color per series, or one color at stepped opacities.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorMode? SeriesColorMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorMode? SeriesColorMode { get => _explicitNullValueSeriesColorMode; set { _explicitNullValueSeriesColorMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seriesColorMode"); else _explicitNullProperties?.Remove("seriesColorMode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorMode? _explicitNullValueSeriesColorMode = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -24,7 +35,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -46,7 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Curve>("curve", Curve);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorMode>("seriesColorMode", SeriesColorMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SeriesColorMode>("seriesColorMode", SeriesColorMode);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

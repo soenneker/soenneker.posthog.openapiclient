@@ -11,44 +11,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class DashboardPatchTileOpenApi : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("badge") is { } nullNodeBadge && nullNodeBadge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Badge = null;
+            if (parseNode.GetChildNode("group_key") is { } nullNodeGroupKey && nullNodeGroupKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupKey = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("layouts") is { } nullNodeLayouts && nullNodeLayouts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Layouts = null;
+            if (parseNode.GetChildNode("show_description") is { } nullNodeShowDescription && nullNodeShowDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowDescription = null;
+            if (parseNode.GetChildNode("widget") is { } nullNodeWidget && nullNodeWidget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Widget = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Badge on the tile. winner shows a crown in the top left corner, for example to mark the best tile in a group. cheeky-hog shows a hedgehog when a person hovers over the tile. Null removes the badge. More than one tile in a group can have the winner badge.* `winner` - Winner* `cheeky-hog` - Cheeky hog</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge? Badge { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge? Badge { get => _explicitNullValueBadge; set { _explicitNullValueBadge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("badge"); else _explicitNullProperties?.Remove("badge"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge? _explicitNullValueBadge = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge Badge { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge Badge { get => _explicitNullValueBadge; set { _explicitNullValueBadge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("badge"); else _explicitNullProperties?.Remove("badge"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiBadge _explicitNullValueBadge = default!;
 #endif
         /// <summary>Key that puts this tile in a group with the other tiles that have the same key on this dashboard. Set the group&apos;s title and style in the dashboard&apos;s groups. Null or an empty string removes the tile from its group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupKey { get; set; }
+        public string? GroupKey { get => _explicitNullValueGroupKey; set { _explicitNullValueGroupKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_key"); else _explicitNullProperties?.Remove("group_key"); } }
+        private string? _explicitNullValueGroupKey = default!;
 #nullable restore
 #else
-        public string GroupKey { get; set; }
+        public string GroupKey { get => _explicitNullValueGroupKey; set { _explicitNullValueGroupKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_key"); else _explicitNullProperties?.Remove("group_key"); } }
+        private string _explicitNullValueGroupKey = default!;
 #endif
         /// <summary>Dashboard tile ID to update.</summary>
-        public int? Id { get; set; }
+        public int? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private int? _explicitNullValueId = default!;
         /// <summary>Grid position and size per breakpoint. Works for every tile type, including insight tiles. A write replaces the tile&apos;s whole layout, so send a complete sm box rather than the one value you want to change. Boxes are stored as sent and overlaps are not resolved, so send sm boxes that do not overlap, and include every tile you move in the same request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts? Layouts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts? Layouts { get => _explicitNullValueLayouts; set { _explicitNullValueLayouts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layouts"); else _explicitNullProperties?.Remove("layouts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts? _explicitNullValueLayouts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts Layouts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts Layouts { get => _explicitNullValueLayouts; set { _explicitNullValueLayouts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layouts"); else _explicitNullProperties?.Remove("layouts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts _explicitNullValueLayouts = default!;
 #endif
         /// <summary>Whether to show the tile&apos;s description underneath its title on the dashboard. Works for every tile type. The description itself is unaffected and still comes from the tile&apos;s insight, text, or widget content — this only toggles whether it renders on the dashboard.</summary>
-        public bool? ShowDescription { get; set; }
+        public bool? ShowDescription { get => _explicitNullValueShowDescription; set { _explicitNullValueShowDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("show_description"); else _explicitNullProperties?.Remove("show_description"); } }
+        private bool? _explicitNullValueShowDescription = default!;
         /// <summary>Nested widget row updates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget? Widget { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget? Widget { get => _explicitNullValueWidget; set { _explicitNullValueWidget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget"); else _explicitNullProperties?.Remove("widget"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget? _explicitNullValueWidget = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget Widget { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget Widget { get => _explicitNullValueWidget; set { _explicitNullValueWidget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget"); else _explicitNullProperties?.Remove("widget"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget _explicitNullValueWidget = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi"/> and sets the default values.
@@ -65,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiLayouts>("layouts", Layouts);
             writer.WriteBoolValue("show_description", ShowDescription);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApiWidget>("widget", Widget);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

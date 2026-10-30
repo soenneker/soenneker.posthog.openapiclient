@@ -11,17 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class EvaluationEvaluationConfigLlmJudgeConfig : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("include_media") is { } nullNodeIncludeMedia && nullNodeIncludeMedia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeMedia = null;
+            if (parseNode.GetChildNode("judge_method") is { } nullNodeJudgeMethod && nullNodeJudgeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JudgeMethod = null;
+            if (parseNode.GetChildNode("prompt") is { } nullNodePrompt && nullNodePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prompt = null;
+            if (parseNode.GetChildNode("reasoning_level") is { } nullNodeReasoningLevel && nullNodeReasoningLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningLevel = null;
+        }
+
+        /// <summary>Set to false to judge text only.</summary>
+        public bool? IncludeMedia { get => _explicitNullValueIncludeMedia; set { _explicitNullValueIncludeMedia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("include_media"); else _explicitNullProperties?.Remove("include_media"); } }
+        private bool? _explicitNullValueIncludeMedia = default!;
         /// <summary>Judge method. Omit to keep the saved method; null restores automatic routing.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigJudgeMethod? JudgeMethod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigJudgeMethod? JudgeMethod { get => _explicitNullValueJudgeMethod; set { _explicitNullValueJudgeMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("judge_method"); else _explicitNullProperties?.Remove("judge_method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigJudgeMethod? _explicitNullValueJudgeMethod = default!;
         /// <summary>Evaluation criteria for the LLM judge. Describe what makes a good vs bad response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public string? Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string? _explicitNullValuePrompt = default!;
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public string Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string _explicitNullValuePrompt = default!;
 #endif
+        /// <summary>How much the judge model reasons before it answers. Only Anthropic and OpenAI reasoning models with the &apos;llm&apos; judge method support it. Omit to keep the saved level; null uses the model&apos;s default.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigReasoningLevel? ReasoningLevel { get => _explicitNullValueReasoningLevel; set { _explicitNullValueReasoningLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_level"); else _explicitNullProperties?.Remove("reasoning_level"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigReasoningLevel? _explicitNullValueReasoningLevel = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -30,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -40,8 +60,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "include_media", n => { IncludeMedia = n.GetBoolValue(); } },
                 { "judge_method", n => { JudgeMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigJudgeMethod>(); } },
                 { "prompt", n => { Prompt = n.GetStringValue(); } },
+                { "reasoning_level", n => { ReasoningLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigReasoningLevel>(); } },
             };
         }
         /// <summary>
@@ -51,8 +73,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("include_media", IncludeMedia);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigJudgeMethod>("judge_method", JudgeMethod);
             writer.WriteStringValue("prompt", Prompt);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfigReasoningLevel>("reasoning_level", ReasoningLevel);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

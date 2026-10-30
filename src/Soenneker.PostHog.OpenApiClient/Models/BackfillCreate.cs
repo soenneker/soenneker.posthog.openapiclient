@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BackfillCreate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("max_total_credits") is { } nullNodeMaxTotalCredits && nullNodeMaxTotalCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTotalCredits = null;
+            if (parseNode.GetChildNode("window_end") is { } nullNodeWindowEnd && nullNodeWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowEnd = null;
+            if (parseNode.GetChildNode("window_start") is { } nullNodeWindowStart && nullNodeWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowStart = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The most this backfill may cost, in credits (1 credit = $0.01): pass the `total_credits` from the estimate the person agreed to. The create is rejected if the window now costs more.</summary>
-        public int? MaxTotalCredits { get; set; }
+        public int? MaxTotalCredits { get => _explicitNullValueMaxTotalCredits; set { _explicitNullValueMaxTotalCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_total_credits"); else _explicitNullProperties?.Remove("max_total_credits"); } }
+        private int? _explicitNullValueMaxTotalCredits = default!;
         /// <summary>Exclusive upper bound of the window; clamped server-side to now, and for an experiment scanner to the experiment&apos;s end date.</summary>
-        public DateTimeOffset? WindowEnd { get; set; }
+        public DateTimeOffset? WindowEnd { get => _explicitNullValueWindowEnd; set { _explicitNullValueWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_end"); else _explicitNullProperties?.Remove("window_end"); } }
+        private DateTimeOffset? _explicitNullValueWindowEnd = default!;
         /// <summary>Inclusive lower bound of the historical window to scan.</summary>
-        public DateTimeOffset? WindowStart { get; set; }
+        public DateTimeOffset? WindowStart { get => _explicitNullValueWindowStart; set { _explicitNullValueWindowStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_start"); else _explicitNullProperties?.Remove("window_start"); } }
+        private DateTimeOffset? _explicitNullValueWindowStart = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BackfillCreate"/> and sets the default values.
         /// </summary>
@@ -35,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BackfillCreate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BackfillCreate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BackfillCreate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("max_total_credits", MaxTotalCredits);
             writer.WriteDateTimeOffsetValue("window_end", WindowEnd);
             writer.WriteDateTimeOffsetValue("window_start", WindowStart);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,13 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Retention : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("hideLineGraph") is { } nullNodeHideLineGraph && nullNodeHideLineGraph.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideLineGraph = null;
+            if (parseNode.GetChildNode("hideSizeColumn") is { } nullNodeHideSizeColumn && nullNodeHideSizeColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideSizeColumn = null;
+            if (parseNode.GetChildNode("useSmallLayout") is { } nullNodeUseSmallLayout && nullNodeUseSmallLayout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseSmallLayout = null;
+        }
+
         /// <summary>The hideLineGraph property</summary>
-        public bool? HideLineGraph { get; set; }
+        public bool? HideLineGraph { get => _explicitNullValueHideLineGraph; set { _explicitNullValueHideLineGraph = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hideLineGraph"); else _explicitNullProperties?.Remove("hideLineGraph"); } }
+        private bool? _explicitNullValueHideLineGraph = default!;
         /// <summary>The hideSizeColumn property</summary>
-        public bool? HideSizeColumn { get; set; }
+        public bool? HideSizeColumn { get => _explicitNullValueHideSizeColumn; set { _explicitNullValueHideSizeColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hideSizeColumn"); else _explicitNullProperties?.Remove("hideSizeColumn"); } }
+        private bool? _explicitNullValueHideSizeColumn = default!;
         /// <summary>The useSmallLayout property</summary>
-        public bool? UseSmallLayout { get; set; }
+        public bool? UseSmallLayout { get => _explicitNullValueUseSmallLayout; set { _explicitNullValueUseSmallLayout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("useSmallLayout"); else _explicitNullProperties?.Remove("useSmallLayout"); } }
+        private bool? _explicitNullValueUseSmallLayout = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -26,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.Retention CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.Retention();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.Retention(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("hideLineGraph", HideLineGraph);
             writer.WriteBoolValue("hideSizeColumn", HideSizeColumn);
-            writer.WriteBoolValue("useSmallLayout", UseSmallLayout);
+            writer.WriteBoolValue("useSmallLayout", UseSmallLayout);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

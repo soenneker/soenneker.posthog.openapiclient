@@ -11,144 +11,209 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingReleasesQueryResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("buckets") is { } nullNodeBuckets && nullNodeBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Buckets = null;
+            if (parseNode.GetChildNode("bucket_seconds") is { } nullNodeBucketSeconds && nullNodeBucketSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketSeconds = null;
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("hogql") is { } nullNodeHogql && nullNodeHogql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Hogql = null;
+            if (parseNode.GetChildNode("modifiers") is { } nullNodeModifiers && nullNodeModifiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modifiers = null;
+            if (parseNode.GetChildNode("namespaces") is { } nullNodeNamespaces && nullNodeNamespaces.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Namespaces = null;
+            if (parseNode.GetChildNode("other") is { } nullNodeOther && nullNodeOther.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Other = null;
+            if (parseNode.GetChildNode("other_release_count") is { } nullNodeOtherReleaseCount && nullNodeOtherReleaseCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OtherReleaseCount = null;
+            if (parseNode.GetChildNode("query_status") is { } nullNodeQueryStatus && nullNodeQueryStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryStatus = null;
+            if (parseNode.GetChildNode("release_count") is { } nullNodeReleaseCount && nullNodeReleaseCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseCount = null;
+            if (parseNode.GetChildNode("release_count_truncated") is { } nullNodeReleaseCountTruncated && nullNodeReleaseCountTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseCountTruncated = null;
+            if (parseNode.GetChildNode("resolved_compare_date_range") is { } nullNodeResolvedCompareDateRange && nullNodeResolvedCompareDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedCompareDateRange = null;
+            if (parseNode.GetChildNode("resolved_date_range") is { } nullNodeResolvedDateRange && nullNodeResolvedDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedDateRange = null;
+            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("timings") is { } nullNodeTimings && nullNodeTimings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timings = null;
+            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("unattributed") is { } nullNodeUnattributed && nullNodeUnattributed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unattributed = null;
+            if (parseNode.GetChildNode("used_data_warehouse_sources") is { } nullNodeUsedDataWarehouseSources && nullNodeUsedDataWarehouseSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsedDataWarehouseSources = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>ISO start of each bucket. The first one can start before `date_from`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Buckets { get; set; }
+        public List<string>? Buckets { get => _explicitNullValueBuckets; set { _explicitNullValueBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buckets"); else _explicitNullProperties?.Remove("buckets"); } }
+        private List<string>? _explicitNullValueBuckets = default!;
 #nullable restore
 #else
-        public List<string> Buckets { get; set; }
+        public List<string> Buckets { get => _explicitNullValueBuckets; set { _explicitNullValueBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buckets"); else _explicitNullProperties?.Remove("buckets"); } }
+        private List<string> _explicitNullValueBuckets = default!;
 #endif
         /// <summary>The bucket_seconds property</summary>
-        public int? BucketSeconds { get; set; }
+        public int? BucketSeconds { get => _explicitNullValueBucketSeconds; set { _explicitNullValueBucketSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_seconds"); else _explicitNullProperties?.Remove("bucket_seconds"); } }
+        private int? _explicitNullValueBucketSeconds = default!;
         /// <summary>The date_from property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateFrom { get; set; }
+        public string? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private string? _explicitNullValueDateFrom = default!;
 #nullable restore
 #else
-        public string DateFrom { get; set; }
+        public string DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private string _explicitNullValueDateFrom = default!;
 #endif
         /// <summary>The date_to property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DateTo { get; set; }
+        public string? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private string? _explicitNullValueDateTo = default!;
 #nullable restore
 #else
-        public string DateTo { get; set; }
+        public string DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private string _explicitNullValueDateTo = default!;
 #endif
         /// <summary>Query error. Returned only if &apos;explain&apos; or `modifiers.debug` is true. Throws an error otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string _explicitNullValueError = default!;
 #endif
         /// <summary>Generated HogQL query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Hogql { get; set; }
+        public string? Hogql { get => _explicitNullValueHogql; set { _explicitNullValueHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql"); else _explicitNullProperties?.Remove("hogql"); } }
+        private string? _explicitNullValueHogql = default!;
 #nullable restore
 #else
-        public string Hogql { get; set; }
+        public string Hogql { get => _explicitNullValueHogql; set { _explicitNullValueHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql"); else _explicitNullProperties?.Remove("hogql"); } }
+        private string _explicitNullValueHogql = default!;
 #endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? _explicitNullValueModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers _explicitNullValueModifiers = default!;
 #endif
         /// <summary>Every app namespace in the range, regardless of `appNamespace`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Namespaces { get; set; }
+        public List<string>? Namespaces { get => _explicitNullValueNamespaces; set { _explicitNullValueNamespaces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("namespaces"); else _explicitNullProperties?.Remove("namespaces"); } }
+        private List<string>? _explicitNullValueNamespaces = default!;
 #nullable restore
 #else
-        public List<string> Namespaces { get; set; }
+        public List<string> Namespaces { get => _explicitNullValueNamespaces; set { _explicitNullValueNamespaces = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("namespaces"); else _explicitNullProperties?.Remove("namespaces"); } }
+        private List<string> _explicitNullValueNamespaces = default!;
 #endif
         /// <summary>Releases past `maxReleases`, summed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries? Other { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries? Other { get => _explicitNullValueOther; set { _explicitNullValueOther = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("other"); else _explicitNullProperties?.Remove("other"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries? _explicitNullValueOther = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries Other { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries Other { get => _explicitNullValueOther; set { _explicitNullValueOther = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("other"); else _explicitNullProperties?.Remove("other"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries _explicitNullValueOther = default!;
 #endif
         /// <summary>The other_release_count property</summary>
-        public int? OtherReleaseCount { get; set; }
+        public int? OtherReleaseCount { get => _explicitNullValueOtherReleaseCount; set { _explicitNullValueOtherReleaseCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("other_release_count"); else _explicitNullProperties?.Remove("other_release_count"); } }
+        private int? _explicitNullValueOtherReleaseCount = default!;
         /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus? QueryStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus? QueryStatus { get => _explicitNullValueQueryStatus; set { _explicitNullValueQueryStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_status"); else _explicitNullProperties?.Remove("query_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus? _explicitNullValueQueryStatus = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus QueryStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus QueryStatus { get => _explicitNullValueQueryStatus; set { _explicitNullValueQueryStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_status"); else _explicitNullProperties?.Remove("query_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus _explicitNullValueQueryStatus = default!;
 #endif
         /// <summary>Distinct releases in the range for the selected app, before folding.</summary>
-        public int? ReleaseCount { get; set; }
+        public int? ReleaseCount { get => _explicitNullValueReleaseCount; set { _explicitNullValueReleaseCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_count"); else _explicitNullProperties?.Remove("release_count"); } }
+        private int? _explicitNullValueReleaseCount = default!;
         /// <summary>Set when the query hit its row cap, so `release_count`, `other` and `total` are lower bounds.</summary>
-        public bool? ReleaseCountTruncated { get; set; }
+        public bool? ReleaseCountTruncated { get => _explicitNullValueReleaseCountTruncated; set { _explicitNullValueReleaseCountTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_count_truncated"); else _explicitNullProperties?.Remove("release_count_truncated"); } }
+        private bool? _explicitNullValueReleaseCountTruncated = default!;
         /// <summary>The resolved previous/comparison period date range, when comparing against another period</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? ResolvedCompareDateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? ResolvedCompareDateRange { get => _explicitNullValueResolvedCompareDateRange; set { _explicitNullValueResolvedCompareDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_compare_date_range"); else _explicitNullProperties?.Remove("resolved_compare_date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? _explicitNullValueResolvedCompareDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse ResolvedCompareDateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse ResolvedCompareDateRange { get => _explicitNullValueResolvedCompareDateRange; set { _explicitNullValueResolvedCompareDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_compare_date_range"); else _explicitNullProperties?.Remove("resolved_compare_date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse _explicitNullValueResolvedCompareDateRange = default!;
 #endif
         /// <summary>The date range used for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? ResolvedDateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? ResolvedDateRange { get => _explicitNullValueResolvedDateRange; set { _explicitNullValueResolvedDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_date_range"); else _explicitNullProperties?.Remove("resolved_date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? _explicitNullValueResolvedDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse ResolvedDateRange { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse ResolvedDateRange { get => _explicitNullValueResolvedDateRange; set { _explicitNullValueResolvedDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_date_range"); else _explicitNullProperties?.Remove("resolved_date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse _explicitNullValueResolvedDateRange = default!;
 #endif
         /// <summary>The releases returned on their own, in the requested order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueRelease>? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueRelease>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueRelease>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueRelease> Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueRelease> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueRelease> _explicitNullValueResults = default!;
 #endif
         /// <summary>Measured timings for different parts of the query generation process</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>? Timings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>? Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>? _explicitNullValueTimings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> Timings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> Timings { get => _explicitNullValueTimings; set { _explicitNullValueTimings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timings"); else _explicitNullProperties?.Remove("timings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming> _explicitNullValueTimings = default!;
 #endif
         /// <summary>The total property</summary>
-        public int? Total { get; set; }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        private int? _explicitNullValueTotal = default!;
         /// <summary>Exceptions without an app namespace or version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries? Unattributed { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries? Unattributed { get => _explicitNullValueUnattributed; set { _explicitNullValueUnattributed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unattributed"); else _explicitNullProperties?.Remove("unattributed"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries? _explicitNullValueUnattributed = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries Unattributed { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries Unattributed { get => _explicitNullValueUnattributed; set { _explicitNullValueUnattributed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unattributed"); else _explicitNullProperties?.Remove("unattributed"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries _explicitNullValueUnattributed = default!;
 #endif
         /// <summary>Connector-synced data warehouse sources referenced by this query, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>? UsedDataWarehouseSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>? UsedDataWarehouseSources { get => _explicitNullValueUsedDataWarehouseSources; set { _explicitNullValueUsedDataWarehouseSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_data_warehouse_sources"); else _explicitNullProperties?.Remove("used_data_warehouse_sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>? _explicitNullValueUsedDataWarehouseSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage> UsedDataWarehouseSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage> UsedDataWarehouseSources { get => _explicitNullValueUsedDataWarehouseSources; set { _explicitNullValueUsedDataWarehouseSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("used_data_warehouse_sources"); else _explicitNullProperties?.Remove("used_data_warehouse_sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage> _explicitNullValueUsedDataWarehouseSources = default!;
 #endif
         /// <summary>Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response — so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can&apos;t access.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponseWarningsItem>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponseWarningsItem>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponseWarningsItem>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponseWarningsItem> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponseWarningsItem> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponseWarningsItem> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -158,7 +223,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -218,7 +283,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("total", Total);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleaseSeries>("unattributed", Unattributed);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>("used_data_warehouse_sources", UsedDataWarehouseSources);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponseWarningsItem>("warnings", Warnings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingReleasesQueryResponseWarningsItem>("warnings", Warnings);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

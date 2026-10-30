@@ -56,6 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Widge
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.WidgetError.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.PostHog.OpenApiClient.Models.WidgetError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             await RequestAdapter.SendNoContentAsync(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }

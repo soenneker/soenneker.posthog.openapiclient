@@ -11,38 +11,62 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TerminalAiRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("max_tokens") is { } nullNodeMaxTokens && nullNodeMaxTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTokens = null;
+            if (parseNode.GetChildNode("messages") is { } nullNodeMessages && nullNodeMessages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Messages = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("stream") is { } nullNodeStream && nullNodeStream.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stream = null;
+            if (parseNode.GetChildNode("system") is { } nullNodeSystem && nullNodeSystem.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) System = null;
+            if (parseNode.GetChildNode("temperature") is { } nullNodeTemperature && nullNodeTemperature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Temperature = null;
+            if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
+        }
+
         /// <summary>Maximum output tokens for this generation.</summary>
-        public int? MaxTokens { get; set; }
+        public int? MaxTokens { get => _explicitNullValueMaxTokens; set { _explicitNullValueMaxTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_tokens"); else _explicitNullProperties?.Remove("max_tokens"); } }
+        private int? _explicitNullValueMaxTokens = default!;
         /// <summary>Conversation and tool results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessage>? Messages { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessage>? Messages { get => _explicitNullValueMessages; set { _explicitNullValueMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages"); else _explicitNullProperties?.Remove("messages"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessage>? _explicitNullValueMessages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessage> Messages { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessage> Messages { get => _explicitNullValueMessages; set { _explicitNullValueMessages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("messages"); else _explicitNullProperties?.Remove("messages"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiMessage> _explicitNullValueMessages = default!;
 #endif
         /// <summary>The model property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiModel? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiModel? _explicitNullValueModel = default!;
         /// <summary>Always stream the model response.</summary>
-        public bool? Stream { get; set; }
+        public bool? Stream { get => _explicitNullValueStream; set { _explicitNullValueStream = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stream"); else _explicitNullProperties?.Remove("stream"); } }
+        private bool? _explicitNullValueStream = default!;
         /// <summary>Agent instructions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequestSystem? System { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequestSystem? System { get => _explicitNullValueSystem; set { _explicitNullValueSystem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system"); else _explicitNullProperties?.Remove("system"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequestSystem? _explicitNullValueSystem = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequestSystem System { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequestSystem System { get => _explicitNullValueSystem; set { _explicitNullValueSystem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("system"); else _explicitNullProperties?.Remove("system"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequestSystem _explicitNullValueSystem = default!;
 #endif
         /// <summary>Sampling temperature.</summary>
-        public double? Temperature { get; set; }
+        public double? Temperature { get => _explicitNullValueTemperature; set { _explicitNullValueTemperature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("temperature"); else _explicitNullProperties?.Remove("temperature"); } }
+        private double? _explicitNullValueTemperature = default!;
         /// <summary>Tools executed by pi.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiTool>? Tools { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiTool>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiTool>? _explicitNullValueTools = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiTool> Tools { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiTool> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiTool> _explicitNullValueTools = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequest"/> and sets the default values.
@@ -59,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -91,7 +115,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("stream", Stream);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiRequestSystem>("system", System);
             writer.WriteDoubleValue("temperature", Temperature);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiTool>("tools", Tools);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TerminalAiTool>("tools", Tools);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

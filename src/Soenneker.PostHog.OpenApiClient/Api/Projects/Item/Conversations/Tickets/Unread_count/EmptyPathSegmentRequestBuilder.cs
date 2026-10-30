@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TicketUnreadCountResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get total unread ticket count for the team.Returns the sum of unread_team_count for all non-resolved tickets visible to thecaller. The team-wide Redis cache (30s TTL, invalidated on changes) is only used forcallers without object-level ticket restrictions, since it holds one unscoped totalper team - serving it to a restricted member would leak counts for tickets they can&apos;tsee.

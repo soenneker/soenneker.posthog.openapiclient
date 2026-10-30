@@ -11,50 +11,74 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsAnomalyScanSeries : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("buckets") is { } nullNodeBuckets && nullNodeBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Buckets = null;
+            if (parseNode.GetChildNode("history_start") is { } nullNodeHistoryStart && nullNodeHistoryStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HistoryStart = null;
+            if (parseNode.GetChildNode("limited_by") is { } nullNodeLimitedBy && nullNodeLimitedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitedBy = null;
+            if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
+            if (parseNode.GetChildNode("stage") is { } nullNodeStage && nullNodeStage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stage = null;
+            if (parseNode.GetChildNode("tier") is { } nullNodeTier && nullNodeTier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tier = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per bucket observed counts and expected bands across the evaluation window, for evidence charts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket>? Buckets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket>? Buckets { get => _explicitNullValueBuckets; set { _explicitNullValueBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buckets"); else _explicitNullProperties?.Remove("buckets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket>? _explicitNullValueBuckets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket> Buckets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket> Buckets { get => _explicitNullValueBuckets; set { _explicitNullValueBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buckets"); else _explicitNullProperties?.Remove("buckets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket> _explicitNullValueBuckets = default!;
 #endif
         /// <summary>Earliest bucket with data inside the fetched lookback.</summary>
-        public DateTimeOffset? HistoryStart { get; set; }
+        public DateTimeOffset? HistoryStart { get => _explicitNullValueHistoryStart; set { _explicitNullValueHistoryStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("history_start"); else _explicitNullProperties?.Remove("history_start"); } }
+        private DateTimeOffset? _explicitNullValueHistoryStart = default!;
         /// <summary>What limited this series&apos; baseline maturity, or null for a full baseline. series_history: data starts inside the lookback, because the series is young or a per-stream retention rule trimmed it (indistinguishable from the data). byte_budget and team_retention mirror the scan level constraints.* `series_history` - series_history* `team_retention` - team_retention* `byte_budget` - byte_budget</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesLimitedBy? LimitedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesLimitedBy? LimitedBy { get => _explicitNullValueLimitedBy; set { _explicitNullValueLimitedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limited_by"); else _explicitNullProperties?.Remove("limited_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesLimitedBy? _explicitNullValueLimitedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesLimitedBy LimitedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesLimitedBy LimitedBy { get => _explicitNullValueLimitedBy; set { _explicitNullValueLimitedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limited_by"); else _explicitNullProperties?.Remove("limited_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesLimitedBy _explicitNullValueLimitedBy = default!;
 #endif
         /// <summary>Severity level of this log series (for example info, warn, error).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Severity { get; set; }
+        public string? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private string? _explicitNullValueSeverity = default!;
 #nullable restore
 #else
-        public string Severity { get; set; }
+        public string Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private string _explicitNullValueSeverity = default!;
 #endif
         /// <summary>Baseline stage reached by the end of the evaluation window. Null if no bucket was scored.* `insufficient` - insufficient* `cold_start` - cold_start* `developing` - developing* `mature` - mature</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesStage? Stage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesStage? Stage { get => _explicitNullValueStage; set { _explicitNullValueStage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stage"); else _explicitNullProperties?.Remove("stage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesStage? _explicitNullValueStage = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesStage Stage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesStage Stage { get => _explicitNullValueStage; set { _explicitNullValueStage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stage"); else _explicitNullProperties?.Remove("stage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesStage _explicitNullValueStage = default!;
 #endif
         /// <summary>Traffic tier at the end of the window, from a (0.5 or more records per second) down to d (below the detection floor of roughly 1 record per minute).* `a` - a* `b` - b* `c` - c* `d` - d</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesTier? Tier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesTier? Tier { get => _explicitNullValueTier; set { _explicitNullValueTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier"); else _explicitNullProperties?.Remove("tier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesTier? _explicitNullValueTier = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesTier Tier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesTier Tier { get => _explicitNullValueTier; set { _explicitNullValueTier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier"); else _explicitNullProperties?.Remove("tier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesTier _explicitNullValueTier = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries"/> and sets the default values.
@@ -71,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("severity", Severity);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesStage>("stage", Stage);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeriesTier>("tier", Tier);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

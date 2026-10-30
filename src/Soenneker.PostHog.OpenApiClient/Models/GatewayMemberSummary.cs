@@ -12,34 +12,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GatewayMemberSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("connected_server_ids") is { } nullNodeConnectedServerIds && nullNodeConnectedServerIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectedServerIds = null;
+            if (parseNode.GetChildNode("is_org_admin") is { } nullNodeIsOrgAdmin && nullNodeIsOrgAdmin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOrgAdmin = null;
+            if (parseNode.GetChildNode("revoked_server_ids") is { } nullNodeRevokedServerIds && nullNodeRevokedServerIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevokedServerIds = null;
+            if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Gateway servers the member has a personal connection to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ConnectedServerIds { get; set; }
+        public List<Guid?>? ConnectedServerIds { get => _explicitNullValueConnectedServerIds; set { _explicitNullValueConnectedServerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_server_ids"); else _explicitNullProperties?.Remove("connected_server_ids"); } }
+        private List<Guid?>? _explicitNullValueConnectedServerIds = default!;
 #nullable restore
 #else
-        public List<Guid?> ConnectedServerIds { get; set; }
+        public List<Guid?> ConnectedServerIds { get => _explicitNullValueConnectedServerIds; set { _explicitNullValueConnectedServerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_server_ids"); else _explicitNullProperties?.Remove("connected_server_ids"); } }
+        private List<Guid?> _explicitNullValueConnectedServerIds = default!;
 #endif
         /// <summary>Whether the member is an organization admin or owner.</summary>
-        public bool? IsOrgAdmin { get; set; }
+        public bool? IsOrgAdmin { get => _explicitNullValueIsOrgAdmin; set { _explicitNullValueIsOrgAdmin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_org_admin"); else _explicitNullProperties?.Remove("is_org_admin"); } }
+        private bool? _explicitNullValueIsOrgAdmin = default!;
         /// <summary>Gateway servers an admin turned off for this member.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? RevokedServerIds { get; set; }
+        public List<Guid?>? RevokedServerIds { get => _explicitNullValueRevokedServerIds; set { _explicitNullValueRevokedServerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revoked_server_ids"); else _explicitNullProperties?.Remove("revoked_server_ids"); } }
+        private List<Guid?>? _explicitNullValueRevokedServerIds = default!;
 #nullable restore
 #else
-        public List<Guid?> RevokedServerIds { get; set; }
+        public List<Guid?> RevokedServerIds { get => _explicitNullValueRevokedServerIds; set { _explicitNullValueRevokedServerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revoked_server_ids"); else _explicitNullProperties?.Remove("revoked_server_ids"); } }
+        private List<Guid?> _explicitNullValueRevokedServerIds = default!;
 #endif
         /// <summary>The member.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummaryUser? User { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummaryUser? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummaryUser? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummaryUser User { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummaryUser User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummaryUser _explicitNullValueUser = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummary"/> and sets the default values.
@@ -56,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_org_admin", IsOrgAdmin);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("revoked_server_ids", RevokedServerIds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayMemberSummaryUser>("user", User);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

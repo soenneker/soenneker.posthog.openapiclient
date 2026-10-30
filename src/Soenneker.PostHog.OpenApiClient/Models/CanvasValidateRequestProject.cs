@@ -12,67 +12,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasValidateRequestProject : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assets") is { } nullNodeAssets && nullNodeAssets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assets = null;
+            if (parseNode.GetChildNode("canvasSdkVersion") is { } nullNodeCanvasSdkVersion && nullNodeCanvasSdkVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanvasSdkVersion = null;
+            if (parseNode.GetChildNode("capabilities") is { } nullNodeCapabilities && nullNodeCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Capabilities = null;
+            if (parseNode.GetChildNode("component") is { } nullNodeComponent && nullNodeComponent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Component = null;
+            if (parseNode.GetChildNode("dependencies") is { } nullNodeDependencies && nullNodeDependencies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dependencies = null;
+            if (parseNode.GetChildNode("entryHtml") is { } nullNodeEntryHtml && nullNodeEntryHtml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryHtml = null;
+            if (parseNode.GetChildNode("files") is { } nullNodeFiles && nullNodeFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Files = null;
+            if (parseNode.GetChildNode("schemaVersion") is { } nullNodeSchemaVersion && nullNodeSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaVersion = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional base64-encoded binary assets keyed by safe project-relative paths.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectAssets? Assets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectAssets? Assets { get => _explicitNullValueAssets; set { _explicitNullValueAssets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assets"); else _explicitNullProperties?.Remove("assets"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectAssets? _explicitNullValueAssets = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectAssets Assets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectAssets Assets { get => _explicitNullValueAssets; set { _explicitNullValueAssets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assets"); else _explicitNullProperties?.Remove("assets"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectAssets _explicitNullValueAssets = default!;
 #endif
         /// <summary>Version of the host-injected `ph` canvas SDK the project targets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CanvasSdkVersion { get; set; }
+        public string? CanvasSdkVersion { get => _explicitNullValueCanvasSdkVersion; set { _explicitNullValueCanvasSdkVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canvasSdkVersion"); else _explicitNullProperties?.Remove("canvasSdkVersion"); } }
+        private string? _explicitNullValueCanvasSdkVersion = default!;
 #nullable restore
 #else
-        public string CanvasSdkVersion { get; set; }
+        public string CanvasSdkVersion { get => _explicitNullValueCanvasSdkVersion; set { _explicitNullValueCanvasSdkVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canvasSdkVersion"); else _explicitNullProperties?.Remove("canvasSdkVersion"); } }
+        private string _explicitNullValueCanvasSdkVersion = default!;
 #endif
         /// <summary>Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL — the host enforces these at runtime and validation rejects undeclared `ph` calls. Network origins must be exact HTTPS origins. Data fetched by canvas code can be sent to those origins.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities? Capabilities { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities? Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities? _explicitNullValueCapabilities = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities Capabilities { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectCapabilities _explicitNullValueCapabilities = default!;
 #endif
         /// <summary>Placement contract, required for (and only allowed on) component-kind canvases: the grid size the component takes and the JSON Schema of its per-placement config.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent? Component { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent? Component { get => _explicitNullValueComponent; set { _explicitNullValueComponent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("component"); else _explicitNullProperties?.Remove("component"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent? _explicitNullValueComponent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent Component { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent Component { get => _explicitNullValueComponent; set { _explicitNullValueComponent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("component"); else _explicitNullProperties?.Remove("component"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProjectComponent _explicitNullValueComponent = default!;
 #endif
         /// <summary>Exact-version dependencies, restricted to the platform-supported set at its pinned versions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectDependencies? Dependencies { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectDependencies? Dependencies { get => _explicitNullValueDependencies; set { _explicitNullValueDependencies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependencies"); else _explicitNullProperties?.Remove("dependencies"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectDependencies? _explicitNullValueDependencies = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectDependencies Dependencies { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectDependencies Dependencies { get => _explicitNullValueDependencies; set { _explicitNullValueDependencies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependencies"); else _explicitNullProperties?.Remove("dependencies"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectDependencies _explicitNullValueDependencies = default!;
 #endif
         /// <summary>The project&apos;s entry HTML file. Currently always &quot;index.html&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EntryHtml { get; set; }
+        public string? EntryHtml { get => _explicitNullValueEntryHtml; set { _explicitNullValueEntryHtml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entryHtml"); else _explicitNullProperties?.Remove("entryHtml"); } }
+        private string? _explicitNullValueEntryHtml = default!;
 #nullable restore
 #else
-        public string EntryHtml { get; set; }
+        public string EntryHtml { get => _explicitNullValueEntryHtml; set { _explicitNullValueEntryHtml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entryHtml"); else _explicitNullProperties?.Remove("entryHtml"); } }
+        private string _explicitNullValueEntryHtml = default!;
 #endif
         /// <summary>Project files keyed by relative path (forward slashes, no &apos;..&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectFiles? Files { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectFiles? Files { get => _explicitNullValueFiles; set { _explicitNullValueFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("files"); else _explicitNullProperties?.Remove("files"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectFiles? _explicitNullValueFiles = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectFiles Files { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectFiles Files { get => _explicitNullValueFiles; set { _explicitNullValueFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("files"); else _explicitNullProperties?.Remove("files"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectFiles _explicitNullValueFiles = default!;
 #endif
         /// <summary>Source-project schema version. Currently always 1.</summary>
-        public int? SchemaVersion { get; set; }
+        public int? SchemaVersion { get => _explicitNullValueSchemaVersion; set { _explicitNullValueSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemaVersion"); else _explicitNullProperties?.Remove("schemaVersion"); } }
+        private int? _explicitNullValueSchemaVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProject"/> and sets the default values.
         /// </summary>
@@ -88,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProject CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProject();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProject(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -123,6 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("entryHtml", EntryHtml);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasValidateRequestProjectFiles>("files", Files);
             writer.WriteIntValue("schemaVersion", SchemaVersion);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

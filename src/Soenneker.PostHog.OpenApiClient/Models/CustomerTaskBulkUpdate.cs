@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CustomerTaskBulkUpdate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("task_ids") is { } nullNodeTaskIds && nullNodeTaskIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskIds = null;
+            if (parseNode.GetChildNode("updates") is { } nullNodeUpdates && nullNodeUpdates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Updates = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UUIDs of up to 100 tasks to update together.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? TaskIds { get; set; }
+        public List<Guid?>? TaskIds { get => _explicitNullValueTaskIds; set { _explicitNullValueTaskIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_ids"); else _explicitNullProperties?.Remove("task_ids"); } }
+        private List<Guid?>? _explicitNullValueTaskIds = default!;
 #nullable restore
 #else
-        public List<Guid?> TaskIds { get; set; }
+        public List<Guid?> TaskIds { get => _explicitNullValueTaskIds; set { _explicitNullValueTaskIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_ids"); else _explicitNullProperties?.Remove("task_ids"); } }
+        private List<Guid?> _explicitNullValueTaskIds = default!;
 #endif
         /// <summary>Changes to apply to every selected task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates? Updates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates? Updates { get => _explicitNullValueUpdates; set { _explicitNullValueUpdates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updates"); else _explicitNullProperties?.Remove("updates"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates? _explicitNullValueUpdates = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates Updates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates Updates { get => _explicitNullValueUpdates; set { _explicitNullValueUpdates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updates"); else _explicitNullProperties?.Remove("updates"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates _explicitNullValueUpdates = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdate"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<Guid?>("task_ids", TaskIds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates>("updates", Updates);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

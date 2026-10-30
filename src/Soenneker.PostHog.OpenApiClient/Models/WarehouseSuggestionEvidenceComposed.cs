@@ -12,28 +12,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WarehouseSuggestionEvidenceComposed : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("background_requests") is { } nullNodeBackgroundRequests && nullNodeBackgroundRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BackgroundRequests = null;
+            if (parseNode.GetChildNode("days_with_data") is { } nullNodeDaysWithData && nullNodeDaysWithData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DaysWithData = null;
+            if (parseNode.GetChildNode("human_days") is { } nullNodeHumanDays && nullNodeHumanDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HumanDays = null;
+            if (parseNode.GetChildNode("human_requests") is { } nullNodeHumanRequests && nullNodeHumanRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HumanRequests = null;
+            if (parseNode.GetChildNode("human_users") is { } nullNodeHumanUsers && nullNodeHumanUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HumanUsers = null;
+            if (parseNode.GetChildNode("last_read_at") is { } nullNodeLastReadAt && nullNodeLastReadAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastReadAt = null;
+            if (parseNode.GetChildNode("requests_by_surface") is { } nullNodeRequestsBySurface && nullNodeRequestsBySurface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestsBySurface = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Queries PostHog ran on its own that read the subject, such as cache warming and alerts.</summary>
-        public int? BackgroundRequests { get; set; }
+        public int? BackgroundRequests { get => _explicitNullValueBackgroundRequests; set { _explicitNullValueBackgroundRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("background_requests"); else _explicitNullProperties?.Remove("background_requests"); } }
+        private int? _explicitNullValueBackgroundRequests = default!;
         /// <summary>Days of the 30-day usage window that PostHog has read history for. It counts days with reads in any project, so it shows how much history exists, not how active this project is.</summary>
-        public int? DaysWithData { get; set; }
+        public int? DaysWithData { get => _explicitNullValueDaysWithData; set { _explicitNullValueDaysWithData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days_with_data"); else _explicitNullProperties?.Remove("days_with_data"); } }
+        private int? _explicitNullValueDaysWithData = default!;
         /// <summary>Days on which people read the subject.</summary>
-        public int? HumanDays { get; set; }
+        public int? HumanDays { get => _explicitNullValueHumanDays; set { _explicitNullValueHumanDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("human_days"); else _explicitNullProperties?.Remove("human_days"); } }
+        private int? _explicitNullValueHumanDays = default!;
         /// <summary>Queries people ran that read the subject in the usage window.</summary>
-        public int? HumanRequests { get; set; }
+        public int? HumanRequests { get => _explicitNullValueHumanRequests; set { _explicitNullValueHumanRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("human_requests"); else _explicitNullProperties?.Remove("human_requests"); } }
+        private int? _explicitNullValueHumanRequests = default!;
         /// <summary>Distinct people who ran those queries.</summary>
-        public int? HumanUsers { get; set; }
+        public int? HumanUsers { get => _explicitNullValueHumanUsers; set { _explicitNullValueHumanUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("human_users"); else _explicitNullProperties?.Remove("human_users"); } }
+        private int? _explicitNullValueHumanUsers = default!;
         /// <summary>When any query last read the subject, including queries PostHog ran on its own.</summary>
-        public DateTimeOffset? LastReadAt { get; set; }
+        public DateTimeOffset? LastReadAt { get => _explicitNullValueLastReadAt; set { _explicitNullValueLastReadAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_read_at"); else _explicitNullProperties?.Remove("last_read_at"); } }
+        private DateTimeOffset? _explicitNullValueLastReadAt = default!;
         /// <summary>Queries people ran per place they ran them, such as sql_editor, dashboard, insight or mcp.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposedRequestsBySurface? RequestsBySurface { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposedRequestsBySurface? RequestsBySurface { get => _explicitNullValueRequestsBySurface; set { _explicitNullValueRequestsBySurface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requests_by_surface"); else _explicitNullProperties?.Remove("requests_by_surface"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposedRequestsBySurface? _explicitNullValueRequestsBySurface = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposedRequestsBySurface RequestsBySurface { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposedRequestsBySurface RequestsBySurface { get => _explicitNullValueRequestsBySurface; set { _explicitNullValueRequestsBySurface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requests_by_surface"); else _explicitNullProperties?.Remove("requests_by_surface"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposedRequestsBySurface _explicitNullValueRequestsBySurface = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed"/> and sets the default values.
@@ -50,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposed(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -83,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("human_users", HumanUsers);
             writer.WriteDateTimeOffsetValue("last_read_at", LastReadAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionEvidenceComposedRequestsBySurface>("requests_by_surface", RequestsBySurface);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

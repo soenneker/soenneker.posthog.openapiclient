@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Wizard.Tool_catalog
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WizardToolCatalog>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WizardToolCatalog.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WizardToolCatalog>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WizardToolCatalog.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Every tool the wizard can detect in a codebase, with the signals that identify it.

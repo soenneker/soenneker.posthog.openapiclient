@@ -11,24 +11,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ToolBreakdownRow : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("avg_input_tokens") is { } nullNodeAvgInputTokens && nullNodeAvgInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgInputTokens = null;
+            if (parseNode.GetChildNode("cost_usd") is { } nullNodeCostUsd && nullNodeCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostUsd = null;
+            if (parseNode.GetChildNode("generation_count") is { } nullNodeGenerationCount && nullNodeGenerationCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationCount = null;
+            if (parseNode.GetChildNode("share_of_scoped") is { } nullNodeShareOfScoped && nullNodeShareOfScoped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShareOfScoped = null;
+            if (parseNode.GetChildNode("tool") is { } nullNodeTool && nullNodeTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tool = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average `$ai_input_tokens` across these generations — high values signal context bloat per call.</summary>
-        public double? AvgInputTokens { get; set; }
+        public double? AvgInputTokens { get => _explicitNullValueAvgInputTokens; set { _explicitNullValueAvgInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_input_tokens"); else _explicitNullProperties?.Remove("avg_input_tokens"); } }
+        private double? _explicitNullValueAvgInputTokens = default!;
         /// <summary>Sum of `$ai_total_cost_usd` for generations whose tool list includes this tool. Multi-tool generations contribute their full cost to every tool they invoked, so this sum can exceed `summary.scoped_cost_usd`. Prefer `share_of_scoped` for headline percentages — it&apos;s computed per row and doesn&apos;t require the totals to reconcile.</summary>
-        public double? CostUsd { get; set; }
+        public double? CostUsd { get => _explicitNullValueCostUsd; set { _explicitNullValueCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_usd"); else _explicitNullProperties?.Remove("cost_usd"); } }
+        private double? _explicitNullValueCostUsd = default!;
         /// <summary>Number of $ai_generation events whose tool list includes this tool.</summary>
-        public int? GenerationCount { get; set; }
+        public int? GenerationCount { get => _explicitNullValueGenerationCount; set { _explicitNullValueGenerationCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_count"); else _explicitNullProperties?.Remove("generation_count"); } }
+        private int? _explicitNullValueGenerationCount = default!;
         /// <summary>This tool&apos;s share of `summary.scoped_cost_usd`, expressed as a float in `[0, 1]`. Independent per row, so co-occurring tools can each show a substantial share — the headline number to present (e.g. `&apos;Bash drove 47% of your spend&apos;`).</summary>
-        public double? ShareOfScoped { get; set; }
+        public double? ShareOfScoped { get => _explicitNullValueShareOfScoped; set { _explicitNullValueShareOfScoped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("share_of_scoped"); else _explicitNullProperties?.Remove("share_of_scoped"); } }
+        private double? _explicitNullValueShareOfScoped = default!;
         /// <summary>Individual tool name from `$ai_tools_called` (split on `,` since multi-tool generations store a comma-separated list). Null = pure text response with no tool call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tool { get; set; }
+        public string? Tool { get => _explicitNullValueTool; set { _explicitNullValueTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool"); else _explicitNullProperties?.Remove("tool"); } }
+        private string? _explicitNullValueTool = default!;
 #nullable restore
 #else
-        public string Tool { get; set; }
+        public string Tool { get => _explicitNullValueTool; set { _explicitNullValueTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool"); else _explicitNullProperties?.Remove("tool"); } }
+        private string _explicitNullValueTool = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ToolBreakdownRow"/> and sets the default values.
@@ -45,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ToolBreakdownRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ToolBreakdownRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ToolBreakdownRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("generation_count", GenerationCount);
             writer.WriteDoubleValue("share_of_scoped", ShareOfScoped);
             writer.WriteStringValue("tool", Tool);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

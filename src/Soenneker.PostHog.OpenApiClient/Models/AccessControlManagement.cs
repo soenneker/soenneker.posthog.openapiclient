@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccessControlManagement : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("has_terraform_account") is { } nullNodeHasTerraformAccount && nullNodeHasTerraformAccount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasTerraformAccount = null;
+            if (parseNode.GetChildNode("managed") is { } nullNodeManaged && nullNodeManaged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Managed = null;
+            if (parseNode.GetChildNode("terraform_last_applied_at") is { } nullNodeTerraformLastAppliedAt && nullNodeTerraformLastAppliedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TerraformLastAppliedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether Terraform wrote access rules to this project at least once. Until then, an enabled lock refuses all writes.</summary>
-        public bool? HasTerraformAccount { get; set; }
+        public bool? HasTerraformAccount { get => _explicitNullValueHasTerraformAccount; set { _explicitNullValueHasTerraformAccount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_terraform_account"); else _explicitNullProperties?.Remove("has_terraform_account"); } }
+        private bool? _explicitNullValueHasTerraformAccount = default!;
         /// <summary>Whether Terraform manages this project&apos;s access rules. While true, only the account behind Terraform&apos;s API key may change them.</summary>
-        public bool? Managed { get; set; }
+        public bool? Managed { get => _explicitNullValueManaged; set { _explicitNullValueManaged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("managed"); else _explicitNullProperties?.Remove("managed"); } }
+        private bool? _explicitNullValueManaged = default!;
         /// <summary>When Terraform last wrote an access rule in this project, or null.</summary>
-        public DateTimeOffset? TerraformLastAppliedAt { get; set; }
+        public DateTimeOffset? TerraformLastAppliedAt { get => _explicitNullValueTerraformLastAppliedAt; set { _explicitNullValueTerraformLastAppliedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("terraform_last_applied_at"); else _explicitNullProperties?.Remove("terraform_last_applied_at"); } }
+        private DateTimeOffset? _explicitNullValueTerraformLastAppliedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccessControlManagement"/> and sets the default values.
         /// </summary>
@@ -35,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccessControlManagement CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlManagement();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlManagement(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("has_terraform_account", HasTerraformAccount);
             writer.WriteBoolValue("managed", Managed);
             writer.WriteDateTimeOffsetValue("terraform_last_applied_at", TerraformLastAppliedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

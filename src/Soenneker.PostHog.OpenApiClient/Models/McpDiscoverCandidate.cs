@@ -12,90 +12,134 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class McpDiscoverCandidate : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("auth_method") is { } nullNodeAuthMethod && nullNodeAuthMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthMethod = null;
+            if (parseNode.GetChildNode("combined_score") is { } nullNodeCombinedScore && nullNodeCombinedScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CombinedScore = null;
+            if (parseNode.GetChildNode("connect") is { } nullNodeConnect && nullNodeConnect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connect = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("liveness") is { } nullNodeLiveness && nullNodeLiveness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Liveness = null;
+            if (parseNode.GetChildNode("matched_tools") is { } nullNodeMatchedTools && nullNodeMatchedTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedTools = null;
+            if (parseNode.GetChildNode("measured") is { } nullNodeMeasured && nullNodeMeasured.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Measured = null;
+            if (parseNode.GetChildNode("rank") is { } nullNodeRank && nullNodeRank.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rank = null;
+            if (parseNode.GetChildNode("registry_name") is { } nullNodeRegistryName && nullNodeRegistryName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegistryName = null;
+            if (parseNode.GetChildNode("relevance") is { } nullNodeRelevance && nullNodeRelevance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Relevance = null;
+            if (parseNode.GetChildNode("score") is { } nullNodeScore && nullNodeScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Score = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("why") is { } nullNodeWhy && nullNodeWhy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Why = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Detected auth method (none, oauth, api_key, unknown).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuthMethod { get; set; }
+        public string? AuthMethod { get => _explicitNullValueAuthMethod; set { _explicitNullValueAuthMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_method"); else _explicitNullProperties?.Remove("auth_method"); } }
+        private string? _explicitNullValueAuthMethod = default!;
 #nullable restore
 #else
-        public string AuthMethod { get; set; }
+        public string AuthMethod { get => _explicitNullValueAuthMethod; set { _explicitNullValueAuthMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auth_method"); else _explicitNullProperties?.Remove("auth_method"); } }
+        private string _explicitNullValueAuthMethod = default!;
 #endif
         /// <summary>The value candidates are ordered by: relevance and score combined, weighted toward relevance. Null in two cases. When the intent held no words worth matching on, ordering falls back to `score`. When the ranking version has no completed run, `score` is 0 for every candidate and ordering falls back to `relevance`.</summary>
-        public double? CombinedScore { get; set; }
+        public double? CombinedScore { get => _explicitNullValueCombinedScore; set { _explicitNullValueCombinedScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combined_score"); else _explicitNullProperties?.Remove("combined_score"); } }
+        private double? _explicitNullValueCombinedScore = default!;
         /// <summary>Connection instructions, most-automated method first, steps typed by actor so the agent runs its own steps and narrates the human ones.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty? Connect { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty? Connect { get => _explicitNullValueConnect; set { _explicitNullValueConnect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect"); else _explicitNullProperties?.Remove("connect"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty? _explicitNullValueConnect = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty Connect { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty Connect { get => _explicitNullValueConnect; set { _explicitNullValueConnect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect"); else _explicitNullProperties?.Remove("connect"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateConnectProperty _explicitNullValueConnect = default!;
 #endif
         /// <summary>What the server does.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Registry server id, for the detail endpoint.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Probed liveness state (alive_open, alive_auth, dead, ...).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Liveness { get; set; }
+        public string? Liveness { get => _explicitNullValueLiveness; set { _explicitNullValueLiveness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liveness"); else _explicitNullProperties?.Remove("liveness"); } }
+        private string? _explicitNullValueLiveness = default!;
 #nullable restore
 #else
-        public string Liveness { get; set; }
+        public string Liveness { get => _explicitNullValueLiveness; set { _explicitNullValueLiveness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("liveness"); else _explicitNullProperties?.Remove("liveness"); } }
+        private string _explicitNullValueLiveness = default!;
 #endif
         /// <summary>Tools that matched the intent: [{name, description, source}]. Empty when only the server description matched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMatchedToolsItem>? MatchedTools { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMatchedToolsItem>? MatchedTools { get => _explicitNullValueMatchedTools; set { _explicitNullValueMatchedTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_tools"); else _explicitNullProperties?.Remove("matched_tools"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMatchedToolsItem>? _explicitNullValueMatchedTools = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMatchedToolsItem> MatchedTools { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMatchedToolsItem> MatchedTools { get => _explicitNullValueMatchedTools; set { _explicitNullValueMatchedTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_tools"); else _explicitNullProperties?.Remove("matched_tools"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMatchedToolsItem> _explicitNullValueMatchedTools = default!;
 #endif
         /// <summary>Real MCP Analytics aggregates when the server is measured, otherwise null: calls, sessions, error_rate_pct, intent_coverage_pct, harness_count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty? Measured { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty? Measured { get => _explicitNullValueMeasured; set { _explicitNullValueMeasured = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("measured"); else _explicitNullProperties?.Remove("measured"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty? _explicitNullValueMeasured = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty Measured { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty Measured { get => _explicitNullValueMeasured; set { _explicitNullValueMeasured = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("measured"); else _explicitNullProperties?.Remove("measured"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateMeasuredProperty _explicitNullValueMeasured = default!;
 #endif
         /// <summary>1-based position under the ranking version used.</summary>
-        public int? Rank { get; set; }
+        public int? Rank { get => _explicitNullValueRank; set { _explicitNullValueRank = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rank"); else _explicitNullProperties?.Remove("rank"); } }
+        private int? _explicitNullValueRank = default!;
         /// <summary>Official registry name, empty for measured-only servers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RegistryName { get; set; }
+        public string? RegistryName { get => _explicitNullValueRegistryName; set { _explicitNullValueRegistryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("registry_name"); else _explicitNullProperties?.Remove("registry_name"); } }
+        private string? _explicitNullValueRegistryName = default!;
 #nullable restore
 #else
-        public string RegistryName { get; set; }
+        public string RegistryName { get => _explicitNullValueRegistryName; set { _explicitNullValueRegistryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("registry_name"); else _explicitNullProperties?.Remove("registry_name"); } }
+        private string _explicitNullValueRegistryName = default!;
 #endif
         /// <summary>How well the server&apos;s own text answered `intent`, in [0, 1]. Null when the intent held no words worth matching on.</summary>
-        public double? Relevance { get; set; }
+        public double? Relevance { get => _explicitNullValueRelevance; set { _explicitNullValueRelevance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relevance"); else _explicitNullProperties?.Remove("relevance"); } }
+        private double? _explicitNullValueRelevance = default!;
         /// <summary>The server&apos;s own standing in [0, 1] under the ranking version used: liveness x trust, independent of the query.</summary>
-        public double? Score { get; set; }
+        public double? Score { get => _explicitNullValueScore; set { _explicitNullValueScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("score"); else _explicitNullProperties?.Remove("score"); } }
+        private double? _explicitNullValueScore = default!;
         /// <summary>Human-readable server name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>Score breakdown so an agent can explain its choice: fit, liveness, trust, and whether real usage signal contributed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty? Why { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty? Why { get => _explicitNullValueWhy; set { _explicitNullValueWhy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("why"); else _explicitNullProperties?.Remove("why"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty? _explicitNullValueWhy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty Why { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty Why { get => _explicitNullValueWhy; set { _explicitNullValueWhy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("why"); else _explicitNullProperties?.Remove("why"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty _explicitNullValueWhy = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate"/> and sets the default values.
@@ -112,7 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -159,6 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("score", Score);
             writer.WriteStringValue("title", Title);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpDiscoverCandidateWhyProperty>("why", Why);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

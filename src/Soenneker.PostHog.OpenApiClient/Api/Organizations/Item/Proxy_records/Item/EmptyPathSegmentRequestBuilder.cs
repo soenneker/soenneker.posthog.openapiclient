@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get details of a specific reverse proxy by ID. Returns the full configuration including domain, CNAME target, and current provisioning status.
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Set or clear the HTTPS redirect for requests to the managed proxy domain root.
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ProxyRecord.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a reverse proxy. For proxies in &apos;waiting&apos;, &apos;erroring&apos;, or &apos;timed_out&apos; status, the record is deleted immediately. For active proxies, a deletion workflow is started to clean up the provisioned infrastructure.

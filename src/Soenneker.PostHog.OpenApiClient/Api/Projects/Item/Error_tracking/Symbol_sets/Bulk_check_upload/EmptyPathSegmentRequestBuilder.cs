@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Symbo
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkCheckUploadResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkCheckUploadResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkCheckUploadResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkCheckUploadResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Report which of the given symbol sets still need `bulk_start_upload`. Symbol sets already uploaded with identical content are omitted and marked as still in use.

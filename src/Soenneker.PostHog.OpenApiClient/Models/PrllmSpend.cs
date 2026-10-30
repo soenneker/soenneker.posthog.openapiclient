@@ -11,23 +11,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PrllmSpend : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cache_creation_input_tokens") is { } nullNodeCacheCreationInputTokens && nullNodeCacheCreationInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheCreationInputTokens = null;
+            if (parseNode.GetChildNode("cache_read_input_tokens") is { } nullNodeCacheReadInputTokens && nullNodeCacheReadInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheReadInputTokens = null;
+            if (parseNode.GetChildNode("cost_usd") is { } nullNodeCostUsd && nullNodeCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostUsd = null;
+            if (parseNode.GetChildNode("generations") is { } nullNodeGenerations && nullNodeGenerations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Generations = null;
+            if (parseNode.GetChildNode("input_tokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
+            if (parseNode.GetChildNode("output_tokens") is { } nullNodeOutputTokens && nullNodeOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokens = null;
+            if (parseNode.GetChildNode("peak_context_tokens") is { } nullNodePeakContextTokens && nullNodePeakContextTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeakContextTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total prompt tokens written to the provider&apos;s prompt cache across the attributed generations ($ai_cache_creation_input_tokens). Not included in input_tokens.</summary>
-        public int? CacheCreationInputTokens { get; set; }
+        public int? CacheCreationInputTokens { get => _explicitNullValueCacheCreationInputTokens; set { _explicitNullValueCacheCreationInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation_input_tokens"); else _explicitNullProperties?.Remove("cache_creation_input_tokens"); } }
+        private int? _explicitNullValueCacheCreationInputTokens = default!;
         /// <summary>Total prompt tokens read from the provider&apos;s prompt cache across the attributed generations ($ai_cache_read_input_tokens). Not included in input_tokens.</summary>
-        public int? CacheReadInputTokens { get; set; }
+        public int? CacheReadInputTokens { get => _explicitNullValueCacheReadInputTokens; set { _explicitNullValueCacheReadInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_read_input_tokens"); else _explicitNullProperties?.Remove("cache_read_input_tokens"); } }
+        private int? _explicitNullValueCacheReadInputTokens = default!;
         /// <summary>Total agent LLM token cost in USD attributed to this PR (sum of $ai_total_cost_usd over the matched $ai_generation events).</summary>
-        public double? CostUsd { get; set; }
+        public double? CostUsd { get => _explicitNullValueCostUsd; set { _explicitNullValueCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_usd"); else _explicitNullProperties?.Remove("cost_usd"); } }
+        private double? _explicitNullValueCostUsd = default!;
         /// <summary>Number of $ai_generation events attributed to this PR by git branch ($ai_git_branch).</summary>
-        public int? Generations { get; set; }
+        public int? Generations { get => _explicitNullValueGenerations; set { _explicitNullValueGenerations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generations"); else _explicitNullProperties?.Remove("generations"); } }
+        private int? _explicitNullValueGenerations = default!;
         /// <summary>Total input (prompt) tokens across the attributed generations.</summary>
-        public int? InputTokens { get; set; }
+        public int? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
+        private int? _explicitNullValueInputTokens = default!;
         /// <summary>Total output (completion) tokens across the attributed generations.</summary>
-        public int? OutputTokens { get; set; }
+        public int? OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens"); else _explicitNullProperties?.Remove("output_tokens"); } }
+        private int? _explicitNullValueOutputTokens = default!;
         /// <summary>Largest prompt any single attributed generation sent: input plus cache read plus cache write tokens.</summary>
-        public int? PeakContextTokens { get; set; }
+        public int? PeakContextTokens { get => _explicitNullValuePeakContextTokens; set { _explicitNullValuePeakContextTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("peak_context_tokens"); else _explicitNullProperties?.Remove("peak_context_tokens"); } }
+        private int? _explicitNullValuePeakContextTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend"/> and sets the default values.
         /// </summary>
@@ -43,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteIntValue("output_tokens", OutputTokens);
             writer.WriteIntValue("peak_context_tokens", PeakContextTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

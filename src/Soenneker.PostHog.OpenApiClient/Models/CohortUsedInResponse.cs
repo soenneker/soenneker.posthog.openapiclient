@@ -11,48 +11,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CohortUsedInResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cohorts") is { } nullNodeCohorts && nullNodeCohorts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cohorts = null;
+            if (parseNode.GetChildNode("feature_flags") is { } nullNodeFeatureFlags && nullNodeFeatureFlags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlags = null;
+            if (parseNode.GetChildNode("insights") is { } nullNodeInsights && nullNodeInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Insights = null;
+            if (parseNode.GetChildNode("test_account_filters") is { } nullNodeTestAccountFilters && nullNodeTestAccountFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestAccountFilters = null;
+            if (parseNode.GetChildNode("workflows") is { } nullNodeWorkflows && nullNodeWorkflows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workflows = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Other cohorts that include this cohort as a criterion, with truncation metadata</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts? Cohorts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts? Cohorts { get => _explicitNullValueCohorts; set { _explicitNullValueCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohorts"); else _explicitNullProperties?.Remove("cohorts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts? _explicitNullValueCohorts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts Cohorts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts Cohorts { get => _explicitNullValueCohorts; set { _explicitNullValueCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohorts"); else _explicitNullProperties?.Remove("cohorts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseCohorts _explicitNullValueCohorts = default!;
 #endif
         /// <summary>Feature flags (active and inactive, excluding soft-deleted) that reference this cohort in their targeting conditions, with truncation metadata</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags? FeatureFlags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags? FeatureFlags { get => _explicitNullValueFeatureFlags; set { _explicitNullValueFeatureFlags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flags"); else _explicitNullProperties?.Remove("feature_flags"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags? _explicitNullValueFeatureFlags = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags FeatureFlags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags FeatureFlags { get => _explicitNullValueFeatureFlags; set { _explicitNullValueFeatureFlags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flags"); else _explicitNullProperties?.Remove("feature_flags"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseFeatureFlags _explicitNullValueFeatureFlags = default!;
 #endif
         /// <summary>Insights referencing this cohort with truncation metadata</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights? Insights { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights? Insights { get => _explicitNullValueInsights; set { _explicitNullValueInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights"); else _explicitNullProperties?.Remove("insights"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights? _explicitNullValueInsights = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights Insights { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights Insights { get => _explicitNullValueInsights; set { _explicitNullValueInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights"); else _explicitNullProperties?.Remove("insights"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights _explicitNullValueInsights = default!;
 #endif
         /// <summary>Environments across the project that use this cohort in &apos;Filter out internal and test users&apos;, with truncation metadata</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters? TestAccountFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters? TestAccountFilters { get => _explicitNullValueTestAccountFilters; set { _explicitNullValueTestAccountFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_account_filters"); else _explicitNullProperties?.Remove("test_account_filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters? _explicitNullValueTestAccountFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters TestAccountFilters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters TestAccountFilters { get => _explicitNullValueTestAccountFilters; set { _explicitNullValueTestAccountFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_account_filters"); else _explicitNullProperties?.Remove("test_account_filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters _explicitNullValueTestAccountFilters = default!;
 #endif
         /// <summary>Active workflows that trigger on this cohort or branch on its membership. While any exist, the cohort cannot be deleted or edited in a way that stops it updating in real time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows? Workflows { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows? Workflows { get => _explicitNullValueWorkflows; set { _explicitNullValueWorkflows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflows"); else _explicitNullProperties?.Remove("workflows"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows? _explicitNullValueWorkflows = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows Workflows { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows Workflows { get => _explicitNullValueWorkflows; set { _explicitNullValueWorkflows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflows"); else _explicitNullProperties?.Remove("workflows"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows _explicitNullValueWorkflows = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponse"/> and sets the default values.
@@ -69,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseInsights>("insights", Insights);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseTestAccountFilters>("test_account_filters", TestAccountFilters);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortUsedInResponseWorkflows>("workflows", Workflows);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

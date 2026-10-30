@@ -11,85 +11,128 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GoalExplanation : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("by_event") is { } nullNodeByEvent && nullNodeByEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByEvent = null;
+            if (parseNode.GetChildNode("by_matched_integration") is { } nullNodeByMatchedIntegration && nullNodeByMatchedIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByMatchedIntegration = null;
+            if (parseNode.GetChildNode("by_utm_source") is { } nullNodeByUtmSource && nullNodeByUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByUtmSource = null;
+            if (parseNode.GetChildNode("conversion_goal_id") is { } nullNodeConversionGoalId && nullNodeConversionGoalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionGoalId = null;
+            if (parseNode.GetChildNode("events_without_utm_source") is { } nullNodeEventsWithoutUtmSource && nullNodeEventsWithoutUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsWithoutUtmSource = null;
+            if (parseNode.GetChildNode("events_with_unmatched_utm_source") is { } nullNodeEventsWithUnmatchedUtmSource && nullNodeEventsWithUnmatchedUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsWithUnmatchedUtmSource = null;
+            if (parseNode.GetChildNode("goal_name") is { } nullNodeGoalName && nullNodeGoalName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoalName = null;
+            if (parseNode.GetChildNode("integrated_count") is { } nullNodeIntegratedCount && nullNodeIntegratedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegratedCount = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("non_integrated_count") is { } nullNodeNonIntegratedCount && nullNodeNonIntegratedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NonIntegratedCount = null;
+            if (parseNode.GetChildNode("notes") is { } nullNodeNotes && nullNodeNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Notes = null;
+            if (parseNode.GetChildNode("period") is { } nullNodePeriod && nullNodePeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Period = null;
+            if (parseNode.GetChildNode("samples") is { } nullNodeSamples && nullNodeSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Samples = null;
+            if (parseNode.GetChildNode("total_count") is { } nullNodeTotalCount && nullNodeTotalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>List of [event_name, count] pairs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UntypedNode>? ByEvent { get; set; }
+        public List<UntypedNode>? ByEvent { get => _explicitNullValueByEvent; set { _explicitNullValueByEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_event"); else _explicitNullProperties?.Remove("by_event"); } }
+        private List<UntypedNode>? _explicitNullValueByEvent = default!;
 #nullable restore
 #else
-        public List<UntypedNode> ByEvent { get; set; }
+        public List<UntypedNode> ByEvent { get => _explicitNullValueByEvent; set { _explicitNullValueByEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_event"); else _explicitNullProperties?.Remove("by_event"); } }
+        private List<UntypedNode> _explicitNullValueByEvent = default!;
 #endif
         /// <summary>List of [integration, count] pairs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UntypedNode>? ByMatchedIntegration { get; set; }
+        public List<UntypedNode>? ByMatchedIntegration { get => _explicitNullValueByMatchedIntegration; set { _explicitNullValueByMatchedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_matched_integration"); else _explicitNullProperties?.Remove("by_matched_integration"); } }
+        private List<UntypedNode>? _explicitNullValueByMatchedIntegration = default!;
 #nullable restore
 #else
-        public List<UntypedNode> ByMatchedIntegration { get; set; }
+        public List<UntypedNode> ByMatchedIntegration { get => _explicitNullValueByMatchedIntegration; set { _explicitNullValueByMatchedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_matched_integration"); else _explicitNullProperties?.Remove("by_matched_integration"); } }
+        private List<UntypedNode> _explicitNullValueByMatchedIntegration = default!;
 #endif
         /// <summary>List of [utm_source, count] pairs</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<UntypedNode>? ByUtmSource { get; set; }
+        public List<UntypedNode>? ByUtmSource { get => _explicitNullValueByUtmSource; set { _explicitNullValueByUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_utm_source"); else _explicitNullProperties?.Remove("by_utm_source"); } }
+        private List<UntypedNode>? _explicitNullValueByUtmSource = default!;
 #nullable restore
 #else
-        public List<UntypedNode> ByUtmSource { get; set; }
+        public List<UntypedNode> ByUtmSource { get => _explicitNullValueByUtmSource; set { _explicitNullValueByUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_utm_source"); else _explicitNullProperties?.Remove("by_utm_source"); } }
+        private List<UntypedNode> _explicitNullValueByUtmSource = default!;
 #endif
         /// <summary>conversion_goal_id of the explained goal</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConversionGoalId { get; set; }
+        public string? ConversionGoalId { get => _explicitNullValueConversionGoalId; set { _explicitNullValueConversionGoalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goal_id"); else _explicitNullProperties?.Remove("conversion_goal_id"); } }
+        private string? _explicitNullValueConversionGoalId = default!;
 #nullable restore
 #else
-        public string ConversionGoalId { get; set; }
+        public string ConversionGoalId { get => _explicitNullValueConversionGoalId; set { _explicitNullValueConversionGoalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goal_id"); else _explicitNullProperties?.Remove("conversion_goal_id"); } }
+        private string _explicitNullValueConversionGoalId = default!;
 #endif
         /// <summary>Events with no utm_source at all. Null for DataWarehouseNode.</summary>
-        public int? EventsWithoutUtmSource { get; set; }
+        public int? EventsWithoutUtmSource { get => _explicitNullValueEventsWithoutUtmSource; set { _explicitNullValueEventsWithoutUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_without_utm_source"); else _explicitNullProperties?.Remove("events_without_utm_source"); } }
+        private int? _explicitNullValueEventsWithoutUtmSource = default!;
         /// <summary>Events with a utm_source matching no integration. Null for DataWarehouseNode.</summary>
-        public int? EventsWithUnmatchedUtmSource { get; set; }
+        public int? EventsWithUnmatchedUtmSource { get => _explicitNullValueEventsWithUnmatchedUtmSource; set { _explicitNullValueEventsWithUnmatchedUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_with_unmatched_utm_source"); else _explicitNullProperties?.Remove("events_with_unmatched_utm_source"); } }
+        private int? _explicitNullValueEventsWithUnmatchedUtmSource = default!;
         /// <summary>Display name of the conversion goal</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GoalName { get; set; }
+        public string? GoalName { get => _explicitNullValueGoalName; set { _explicitNullValueGoalName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal_name"); else _explicitNullProperties?.Remove("goal_name"); } }
+        private string? _explicitNullValueGoalName = default!;
 #nullable restore
 #else
-        public string GoalName { get; set; }
+        public string GoalName { get => _explicitNullValueGoalName; set { _explicitNullValueGoalName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal_name"); else _explicitNullProperties?.Remove("goal_name"); } }
+        private string _explicitNullValueGoalName = default!;
 #endif
         /// <summary>Events whose utm_source matched a known integration. Null for DataWarehouseNode.</summary>
-        public int? IntegratedCount { get; set; }
+        public int? IntegratedCount { get => _explicitNullValueIntegratedCount; set { _explicitNullValueIntegratedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrated_count"); else _explicitNullProperties?.Remove("integrated_count"); } }
+        private int? _explicitNullValueIntegratedCount = default!;
         /// <summary>* `EventsNode` - EventsNode* `ActionsNode` - ActionsNode* `DataWarehouseNode` - DataWarehouseNode</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationKind? _explicitNullValueKind = default!;
         /// <summary>Total non-integrated events (without + unmatched). Null for DataWarehouseNode.</summary>
-        public int? NonIntegratedCount { get; set; }
+        public int? NonIntegratedCount { get => _explicitNullValueNonIntegratedCount; set { _explicitNullValueNonIntegratedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("non_integrated_count"); else _explicitNullProperties?.Remove("non_integrated_count"); } }
+        private int? _explicitNullValueNonIntegratedCount = default!;
         /// <summary>Caveats about the breakdown (sampling, attribution, etc.)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Notes { get; set; }
+        public List<string>? Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
+        private List<string>? _explicitNullValueNotes = default!;
 #nullable restore
 #else
-        public List<string> Notes { get; set; }
+        public List<string> Notes { get => _explicitNullValueNotes; set { _explicitNullValueNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("notes"); else _explicitNullProperties?.Remove("notes"); } }
+        private List<string> _explicitNullValueNotes = default!;
 #endif
         /// <summary>The period the breakdown was computed over</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed? Period { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed? Period { get => _explicitNullValuePeriod; set { _explicitNullValuePeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period"); else _explicitNullProperties?.Remove("period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed? _explicitNullValuePeriod = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed Period { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed Period { get => _explicitNullValuePeriod; set { _explicitNullValuePeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period"); else _explicitNullProperties?.Remove("period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed _explicitNullValuePeriod = default!;
 #endif
         /// <summary>A small sample of matching events</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalEventSample>? Samples { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalEventSample>? Samples { get => _explicitNullValueSamples; set { _explicitNullValueSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("samples"); else _explicitNullProperties?.Remove("samples"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalEventSample>? _explicitNullValueSamples = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalEventSample> Samples { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalEventSample> Samples { get => _explicitNullValueSamples; set { _explicitNullValueSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("samples"); else _explicitNullProperties?.Remove("samples"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalEventSample> _explicitNullValueSamples = default!;
 #endif
         /// <summary>Total matching conversion events in the period</summary>
-        public int? TotalCount { get; set; }
+        public int? TotalCount { get => _explicitNullValueTotalCount; set { _explicitNullValueTotalCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_count"); else _explicitNullProperties?.Remove("total_count"); } }
+        private int? _explicitNullValueTotalCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanation"/> and sets the default values.
         /// </summary>
@@ -105,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -115,9 +158,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "by_event", n => { ByEvent = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
-                { "by_matched_integration", n => { ByMatchedIntegration = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
-                { "by_utm_source", n => { ByUtmSource = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
+                { "by_event", n => { ByEvent = n.GetCollectionOfObjectValues<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "by_matched_integration", n => { ByMatchedIntegration = n.GetCollectionOfObjectValues<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "by_utm_source", n => { ByUtmSource = n.GetCollectionOfObjectValues<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "conversion_goal_id", n => { ConversionGoalId = n.GetStringValue(); } },
                 { "events_with_unmatched_utm_source", n => { EventsWithUnmatchedUtmSource = n.GetIntValue(); } },
                 { "events_without_utm_source", n => { EventsWithoutUtmSource = n.GetIntValue(); } },
@@ -152,6 +195,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GoalExplanationPeriodComposed>("period", Period);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GoalEventSample>("samples", Samples);
             writer.WriteIntValue("total_count", TotalCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

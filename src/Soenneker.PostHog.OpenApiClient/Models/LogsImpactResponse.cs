@@ -11,51 +11,80 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsImpactResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("logsWithDistinctId") is { } nullNodeLogsWithDistinctId && nullNodeLogsWithDistinctId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogsWithDistinctId = null;
+            if (parseNode.GetChildNode("logsWithSessionId") is { } nullNodeLogsWithSessionId && nullNodeLogsWithSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogsWithSessionId = null;
+            if (parseNode.GetChildNode("personGroupKey") is { } nullNodePersonGroupKey && nullNodePersonGroupKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonGroupKey = null;
+            if (parseNode.GetChildNode("sessionGroupKey") is { } nullNodeSessionGroupKey && nullNodeSessionGroupKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionGroupKey = null;
+            if (parseNode.GetChildNode("sessions") is { } nullNodeSessions && nullNodeSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sessions = null;
+            if (parseNode.GetChildNode("topSessions") is { } nullNodeTopSessions && nullNodeTopSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopSessions = null;
+            if (parseNode.GetChildNode("topUsers") is { } nullNodeTopUsers && nullNodeTopUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopUsers = null;
+            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many of the matching logs carry a person distinct ID under the team&apos;s configured or conventional attribute keys.</summary>
-        public int? LogsWithDistinctId { get; set; }
+        public int? LogsWithDistinctId { get => _explicitNullValueLogsWithDistinctId; set { _explicitNullValueLogsWithDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logsWithDistinctId"); else _explicitNullProperties?.Remove("logsWithDistinctId"); } }
+        private int? _explicitNullValueLogsWithDistinctId = default!;
         /// <summary>How many of the matching logs carry a session ID under the team&apos;s configured or conventional attribute keys.</summary>
-        public int? LogsWithSessionId { get; set; }
+        public int? LogsWithSessionId { get => _explicitNullValueLogsWithSessionId; set { _explicitNullValueLogsWithSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logsWithSessionId"); else _explicitNullProperties?.Remove("logsWithSessionId"); } }
+        private int? _explicitNullValueLogsWithSessionId = default!;
         /// <summary>The dimension that carries the person distinct ID on most matching logs. Group by this dimension to drill into the users behind the counts. Null when no matching log carries a distinct ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? PersonGroupKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? PersonGroupKey { get => _explicitNullValuePersonGroupKey; set { _explicitNullValuePersonGroupKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personGroupKey"); else _explicitNullProperties?.Remove("personGroupKey"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? _explicitNullValuePersonGroupKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey PersonGroupKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey PersonGroupKey { get => _explicitNullValuePersonGroupKey; set { _explicitNullValuePersonGroupKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personGroupKey"); else _explicitNullProperties?.Remove("personGroupKey"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey _explicitNullValuePersonGroupKey = default!;
 #endif
         /// <summary>The dimension that carries the session ID on most matching logs. Group by this dimension to drill into the sessions behind the counts. Null when no matching log carries a session ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? SessionGroupKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? SessionGroupKey { get => _explicitNullValueSessionGroupKey; set { _explicitNullValueSessionGroupKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionGroupKey"); else _explicitNullProperties?.Remove("sessionGroupKey"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? _explicitNullValueSessionGroupKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey SessionGroupKey { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey SessionGroupKey { get => _explicitNullValueSessionGroupKey; set { _explicitNullValueSessionGroupKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionGroupKey"); else _explicitNullProperties?.Remove("sessionGroupKey"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey _explicitNullValueSessionGroupKey = default!;
 #endif
         /// <summary>Estimated number of unique session IDs across the matching logs (HyperLogLog, about 1-2% error).</summary>
-        public int? Sessions { get; set; }
+        public int? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
+        private int? _explicitNullValueSessions = default!;
         /// <summary>Top session IDs on the matching logs, ordered by log count descending (topK, at most 5).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>? TopSessions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>? TopSessions { get => _explicitNullValueTopSessions; set { _explicitNullValueTopSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topSessions"); else _explicitNullProperties?.Remove("topSessions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>? _explicitNullValueTopSessions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue> TopSessions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue> TopSessions { get => _explicitNullValueTopSessions; set { _explicitNullValueTopSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topSessions"); else _explicitNullProperties?.Remove("topSessions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue> _explicitNullValueTopSessions = default!;
 #endif
         /// <summary>Top person distinct IDs on the matching logs, ordered by log count descending (topK, at most 5).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>? TopUsers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>? TopUsers { get => _explicitNullValueTopUsers; set { _explicitNullValueTopUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topUsers"); else _explicitNullProperties?.Remove("topUsers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>? _explicitNullValueTopUsers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue> TopUsers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue> TopUsers { get => _explicitNullValueTopUsers; set { _explicitNullValueTopUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topUsers"); else _explicitNullProperties?.Remove("topUsers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue> _explicitNullValueTopUsers = default!;
 #endif
         /// <summary>Number of log entries matching the filters.</summary>
-        public int? Total { get; set; }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        private int? _explicitNullValueTotal = default!;
         /// <summary>Estimated number of unique distinct IDs across the matching logs (HyperLogLog, about 1-2% error).</summary>
-        public int? Users { get; set; }
+        public int? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        private int? _explicitNullValueUsers = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponse"/> and sets the default values.
         /// </summary>
@@ -71,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>("topUsers", TopUsers);
             writer.WriteIntValue("total", Total);
             writer.WriteIntValue("users", Users);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

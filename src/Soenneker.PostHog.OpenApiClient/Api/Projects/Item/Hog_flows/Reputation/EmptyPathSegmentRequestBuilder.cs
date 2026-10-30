@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Reputation
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TeamEmailReputationResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Bounce/complaint rates for this project&apos;s workflow email over the last 30 days, computed onthe fly from app metrics (a project-wide aggregate plus per-workflow rows, worst first,capped), together with the authoritative AWS SES tenant verdict — sending status and openreputation findings. Our rates are the per-workflow diagnosis; AWS judges and enforces.

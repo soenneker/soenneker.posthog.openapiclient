@@ -11,34 +11,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InboxSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("participation_complete") is { } nullNodeParticipationComplete && nullNodeParticipationComplete.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParticipationComplete = null;
+            if (parseNode.GetChildNode("people") is { } nullNodePeople && nullNodePeople.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) People = null;
+            if (parseNode.GetChildNode("people_count") is { } nullNodePeopleCount && nullNodePeopleCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeopleCount = null;
+            if (parseNode.GetChildNode("period_end") is { } nullNodePeriodEnd && nullNodePeriodEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeriodEnd = null;
+            if (parseNode.GetChildNode("period_start") is { } nullNodePeriodStart && nullNodePeriodStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeriodStart = null;
+            if (parseNode.GetChildNode("pull_requests") is { } nullNodePullRequests && nullNodePullRequests.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PullRequests = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Distinct verified Self-driving implementation PRs merged in the period.</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>Whether every counted PR has a complete participant snapshot.</summary>
-        public bool? ParticipationComplete { get; set; }
+        public bool? ParticipationComplete { get => _explicitNullValueParticipationComplete; set { _explicitNullValueParticipationComplete = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("participation_complete"); else _explicitNullProperties?.Remove("participation_complete"); } }
+        private bool? _explicitNullValueParticipationComplete = default!;
         /// <summary>Distinct human approvers and mergers, or null while participation is incomplete.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPerson>? People { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPerson>? People { get => _explicitNullValuePeople; set { _explicitNullValuePeople = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people"); else _explicitNullProperties?.Remove("people"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPerson>? _explicitNullValuePeople = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPerson> People { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPerson> People { get => _explicitNullValuePeople; set { _explicitNullValuePeople = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people"); else _explicitNullProperties?.Remove("people"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPerson> _explicitNullValuePeople = default!;
 #endif
         /// <summary>Distinct human approvers and mergers, or null while incomplete.</summary>
-        public int? PeopleCount { get; set; }
+        public int? PeopleCount { get => _explicitNullValuePeopleCount; set { _explicitNullValuePeopleCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people_count"); else _explicitNullProperties?.Remove("people_count"); } }
+        private int? _explicitNullValuePeopleCount = default!;
         /// <summary>Exclusive end of the rolling seven-day period.</summary>
-        public DateTimeOffset? PeriodEnd { get; set; }
+        public DateTimeOffset? PeriodEnd { get => _explicitNullValuePeriodEnd; set { _explicitNullValuePeriodEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_end"); else _explicitNullProperties?.Remove("period_end"); } }
+        private DateTimeOffset? _explicitNullValuePeriodEnd = default!;
         /// <summary>Inclusive start of the rolling seven-day period.</summary>
-        public DateTimeOffset? PeriodStart { get; set; }
+        public DateTimeOffset? PeriodStart { get => _explicitNullValuePeriodStart; set { _explicitNullValuePeriodStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_start"); else _explicitNullProperties?.Remove("period_start"); } }
+        private DateTimeOffset? _explicitNullValuePeriodStart = default!;
         /// <summary>Verified Self-driving implementation PRs merged in the period.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPullRequest>? PullRequests { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPullRequest>? PullRequests { get => _explicitNullValuePullRequests; set { _explicitNullValuePullRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_requests"); else _explicitNullProperties?.Remove("pull_requests"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPullRequest>? _explicitNullValuePullRequests = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPullRequest> PullRequests { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPullRequest> PullRequests { get => _explicitNullValuePullRequests; set { _explicitNullValuePullRequests = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_requests"); else _explicitNullProperties?.Remove("pull_requests"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPullRequest> _explicitNullValuePullRequests = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InboxSummary"/> and sets the default values.
@@ -55,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InboxSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InboxSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InboxSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("period_end", PeriodEnd);
             writer.WriteDateTimeOffsetValue("period_start", PeriodStart);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InboxSummaryPullRequest>("pull_requests", PullRequests);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

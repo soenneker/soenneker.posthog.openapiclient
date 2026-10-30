@@ -12,24 +12,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunningTimeOutlook : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("days_since_launch") is { } nullNodeDaysSinceLaunch && nullNodeDaysSinceLaunch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DaysSinceLaunch = null;
+            if (parseNode.GetChildNode("detectable_effect_now") is { } nullNodeDetectableEffectNow && nullNodeDetectableEffectNow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DetectableEffectNow = null;
+            if (parseNode.GetChildNode("exposures_per_day") is { } nullNodeExposuresPerDay && nullNodeExposuresPerDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposuresPerDay = null;
+            if (parseNode.GetChildNode("reachable_effect") is { } nullNodeReachableEffect && nullNodeReachableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReachableEffect = null;
+            if (parseNode.GetChildNode("upcoming_checkpoints") is { } nullNodeUpcomingCheckpoints && nullNodeUpcomingCheckpoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpcomingCheckpoints = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Days since the experiment launched, with fractions.</summary>
-        public double? DaysSinceLaunch { get; set; }
+        public double? DaysSinceLaunch { get => _explicitNullValueDaysSinceLaunch; set { _explicitNullValueDaysSinceLaunch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days_since_launch"); else _explicitNullProperties?.Remove("days_since_launch"); } }
+        private double? _explicitNullValueDaysSinceLaunch = default!;
         /// <summary>The smallest relative change, as a percentage, that the exposures so far can detect.</summary>
-        public double? DetectableEffectNow { get; set; }
+        public double? DetectableEffectNow { get => _explicitNullValueDetectableEffectNow; set { _explicitNullValueDetectableEffectNow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detectable_effect_now"); else _explicitNullProperties?.Remove("detectable_effect_now"); } }
+        private double? _explicitNullValueDetectableEffectNow = default!;
         /// <summary>Exposures that count toward the target, per day from launch to the end of the window the current results cover.</summary>
-        public double? ExposuresPerDay { get; set; }
+        public double? ExposuresPerDay { get => _explicitNullValueExposuresPerDay; set { _explicitNullValueExposuresPerDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposures_per_day"); else _explicitNullProperties?.Remove("exposures_per_day"); } }
+        private double? _explicitNullValueExposuresPerDay = default!;
         /// <summary>The smallest relative change, as a percentage, that the experiment can detect within four weeks from today. A target for a smaller change is out of reach.</summary>
-        public double? ReachableEffect { get; set; }
+        public double? ReachableEffect { get => _explicitNullValueReachableEffect; set { _explicitNullValueReachableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reachable_effect"); else _explicitNullProperties?.Remove("reachable_effect"); } }
+        private double? _explicitNullValueReachableEffect = default!;
         /// <summary>Up to three week marks after today, out of weeks 1, 2, 4, 6, 8, 12, 16, 26 and 52, with the change each can detect at the exposure rate so far.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint>? UpcomingCheckpoints { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint>? UpcomingCheckpoints { get => _explicitNullValueUpcomingCheckpoints; set { _explicitNullValueUpcomingCheckpoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upcoming_checkpoints"); else _explicitNullProperties?.Remove("upcoming_checkpoints"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint>? _explicitNullValueUpcomingCheckpoints = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint> UpcomingCheckpoints { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint> UpcomingCheckpoints { get => _explicitNullValueUpcomingCheckpoints; set { _explicitNullValueUpcomingCheckpoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upcoming_checkpoints"); else _explicitNullProperties?.Remove("upcoming_checkpoints"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint> _explicitNullValueUpcomingCheckpoints = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook"/> and sets the default values.
@@ -46,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("exposures_per_day", ExposuresPerDay);
             writer.WriteDoubleValue("reachable_effect", ReachableEffect);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint>("upcoming_checkpoints", UpcomingCheckpoints);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,31 +11,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BucketBreakdownRow : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bucket_start") is { } nullNodeBucketStart && nullNodeBucketStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketStart = null;
+            if (parseNode.GetChildNode("cache_creation_cost_usd") is { } nullNodeCacheCreationCostUsd && nullNodeCacheCreationCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheCreationCostUsd = null;
+            if (parseNode.GetChildNode("cache_creation_input_tokens") is { } nullNodeCacheCreationInputTokens && nullNodeCacheCreationInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheCreationInputTokens = null;
+            if (parseNode.GetChildNode("cache_read_cost_usd") is { } nullNodeCacheReadCostUsd && nullNodeCacheReadCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheReadCostUsd = null;
+            if (parseNode.GetChildNode("cache_read_input_tokens") is { } nullNodeCacheReadInputTokens && nullNodeCacheReadInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CacheReadInputTokens = null;
+            if (parseNode.GetChildNode("cost_usd") is { } nullNodeCostUsd && nullNodeCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostUsd = null;
+            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("input_cost_usd") is { } nullNodeInputCostUsd && nullNodeInputCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputCostUsd = null;
+            if (parseNode.GetChildNode("input_tokens") is { } nullNodeInputTokens && nullNodeInputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputTokens = null;
+            if (parseNode.GetChildNode("output_cost_usd") is { } nullNodeOutputCostUsd && nullNodeOutputCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputCostUsd = null;
+            if (parseNode.GetChildNode("output_tokens") is { } nullNodeOutputTokens && nullNodeOutputTokens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputTokens = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>UTC start of the time bucket the events fall in (`toStartOfInterval(timestamp, ...)`).</summary>
-        public DateTimeOffset? BucketStart { get; set; }
+        public DateTimeOffset? BucketStart { get => _explicitNullValueBucketStart; set { _explicitNullValueBucketStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_start"); else _explicitNullProperties?.Remove("bucket_start"); } }
+        private DateTimeOffset? _explicitNullValueBucketStart = default!;
         /// <summary>Cost of prompt-cache writes in USD (sum of `$ai_cache_creation_cost_usd`). A spike here with near-zero cache reads is the signature of a cold session being revived: the full conversation context is re-written to the cache at the cache-write rate instead of being read back cheaply.</summary>
-        public double? CacheCreationCostUsd { get; set; }
+        public double? CacheCreationCostUsd { get => _explicitNullValueCacheCreationCostUsd; set { _explicitNullValueCacheCreationCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation_cost_usd"); else _explicitNullProperties?.Remove("cache_creation_cost_usd"); } }
+        private double? _explicitNullValueCacheCreationCostUsd = default!;
         /// <summary>Sum of `$ai_cache_creation_input_tokens` (prompt tokens written to cache) in this bucket.</summary>
-        public int? CacheCreationInputTokens { get; set; }
+        public int? CacheCreationInputTokens { get => _explicitNullValueCacheCreationInputTokens; set { _explicitNullValueCacheCreationInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_creation_input_tokens"); else _explicitNullProperties?.Remove("cache_creation_input_tokens"); } }
+        private int? _explicitNullValueCacheCreationInputTokens = default!;
         /// <summary>Cost of prompt-cache reads in USD (sum of `$ai_cache_read_cost_usd`).</summary>
-        public double? CacheReadCostUsd { get; set; }
+        public double? CacheReadCostUsd { get => _explicitNullValueCacheReadCostUsd; set { _explicitNullValueCacheReadCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_read_cost_usd"); else _explicitNullProperties?.Remove("cache_read_cost_usd"); } }
+        private double? _explicitNullValueCacheReadCostUsd = default!;
         /// <summary>Sum of `$ai_cache_read_input_tokens` (prompt tokens served from cache) in this bucket.</summary>
-        public int? CacheReadInputTokens { get; set; }
+        public int? CacheReadInputTokens { get => _explicitNullValueCacheReadInputTokens; set { _explicitNullValueCacheReadInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cache_read_input_tokens"); else _explicitNullProperties?.Remove("cache_read_input_tokens"); } }
+        private int? _explicitNullValueCacheReadInputTokens = default!;
         /// <summary>Total cost in USD in this bucket (sum of `$ai_total_cost_usd`). Authoritative: the component columns below can sum to less than this when the cost breakdown was unavailable for some events; render any remainder as uncategorized rather than assuming the components reconcile.</summary>
-        public double? CostUsd { get; set; }
+        public double? CostUsd { get => _explicitNullValueCostUsd; set { _explicitNullValueCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_usd"); else _explicitNullProperties?.Remove("cost_usd"); } }
+        private double? _explicitNullValueCostUsd = default!;
         /// <summary>Number of $ai_generation + $ai_embedding events in this bucket for the scoped product.</summary>
-        public int? EventCount { get; set; }
+        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        private int? _explicitNullValueEventCount = default!;
         /// <summary>Cost of uncached (full-price) input tokens in USD, derived per event as `$ai_input_cost_usd` minus the cache read/write costs (the stored input cost includes them), clamped at zero. The four component columns are disjoint: they sum to `cost_usd` when the full breakdown is present, so they can be stacked without double counting cache costs.</summary>
-        public double? InputCostUsd { get; set; }
+        public double? InputCostUsd { get => _explicitNullValueInputCostUsd; set { _explicitNullValueInputCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_cost_usd"); else _explicitNullProperties?.Remove("input_cost_usd"); } }
+        private double? _explicitNullValueInputCostUsd = default!;
         /// <summary>Sum of `$ai_input_tokens` in this bucket. Whether cached tokens are included follows the provider&apos;s reporting (`$ai_cache_reporting_exclusive`): Anthropic-style events exclude them, OpenAI-style events include them, so don&apos;t stack this with the cache token sums.</summary>
-        public int? InputTokens { get; set; }
+        public int? InputTokens { get => _explicitNullValueInputTokens; set { _explicitNullValueInputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_tokens"); else _explicitNullProperties?.Remove("input_tokens"); } }
+        private int? _explicitNullValueInputTokens = default!;
         /// <summary>Cost of output tokens in USD (sum of `$ai_output_cost_usd`).</summary>
-        public double? OutputCostUsd { get; set; }
+        public double? OutputCostUsd { get => _explicitNullValueOutputCostUsd; set { _explicitNullValueOutputCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_cost_usd"); else _explicitNullProperties?.Remove("output_cost_usd"); } }
+        private double? _explicitNullValueOutputCostUsd = default!;
         /// <summary>Sum of `$ai_output_tokens` in this bucket.</summary>
-        public int? OutputTokens { get; set; }
+        public int? OutputTokens { get => _explicitNullValueOutputTokens; set { _explicitNullValueOutputTokens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_tokens"); else _explicitNullProperties?.Remove("output_tokens"); } }
+        private int? _explicitNullValueOutputTokens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BucketBreakdownRow"/> and sets the default values.
         /// </summary>
@@ -51,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BucketBreakdownRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BucketBreakdownRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BucketBreakdownRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("input_tokens", InputTokens);
             writer.WriteDoubleValue("output_cost_usd", OutputCostUsd);
             writer.WriteIntValue("output_tokens", OutputTokens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

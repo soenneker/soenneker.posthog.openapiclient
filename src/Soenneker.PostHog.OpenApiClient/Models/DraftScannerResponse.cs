@@ -12,75 +12,113 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DraftScannerResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("credit_limit") is { } nullNodeCreditLimit && nullNodeCreditLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditLimit = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("estimated_monthly_observations") is { } nullNodeEstimatedMonthlyObservations && nullNodeEstimatedMonthlyObservations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedMonthlyObservations = null;
+            if (parseNode.GetChildNode("free_only") is { } nullNodeFreeOnly && nullNodeFreeOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FreeOnly = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("rationale") is { } nullNodeRationale && nullNodeRationale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rationale = null;
+            if (parseNode.GetChildNode("sampling_mode") is { } nullNodeSamplingMode && nullNodeSamplingMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingMode = null;
+            if (parseNode.GetChildNode("sampling_rate") is { } nullNodeSamplingRate && nullNodeSamplingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingRate = null;
+            if (parseNode.GetChildNode("scanner_config") is { } nullNodeScannerConfig && nullNodeScannerConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerConfig = null;
+            if (parseNode.GetChildNode("scanner_type") is { } nullNodeScannerType && nullNodeScannerType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The monthly credit cap, set to `monthly_credit_budget` so a mis-estimate stops the scanner at the credits the user agreed to. Null for a free-only draft.</summary>
-        public int? CreditLimit { get; set; }
+        public int? CreditLimit { get => _explicitNullValueCreditLimit; set { _explicitNullValueCreditLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credit_limit"); else _explicitNullProperties?.Remove("credit_limit"); } }
+        private int? _explicitNullValueCreditLimit = default!;
         /// <summary>Drafted one-sentence description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Recordings a month the drafted scanner is projected to watch under the solved dials. Its credit cost lands at or under `monthly_credit_budget`, except when the budget is below what the minimum sampling rate can reach, where this is the floor and exceeds the budget. Null whenever `sampling_mode` is.</summary>
-        public int? EstimatedMonthlyObservations { get; set; }
+        public int? EstimatedMonthlyObservations { get => _explicitNullValueEstimatedMonthlyObservations; set { _explicitNullValueEstimatedMonthlyObservations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_monthly_observations"); else _explicitNullProperties?.Remove("estimated_monthly_observations"); } }
+        private int? _explicitNullValueEstimatedMonthlyObservations = default!;
         /// <summary>Whether the draft runs only on the organization&apos;s free monthly credits. Pass it on to create.</summary>
-        public bool? FreeOnly { get; set; }
+        public bool? FreeOnly { get => _explicitNullValueFreeOnly; set { _explicitNullValueFreeOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("free_only"); else _explicitNullProperties?.Remove("free_only"); } }
+        private bool? _explicitNullValueFreeOnly = default!;
         /// <summary>The observation model the draft chose for the goal, by how much judgment it needs.* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel _explicitNullValueModel = default!;
 #endif
         /// <summary>Drafted scanner name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>`RecordingsQuery` narrowing which sessions get scanned; null when the draft targets every session.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; set; }
+        public UntypedNode? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public UntypedNode Query { get; set; }
+        public UntypedNode Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode _explicitNullValueQuery = default!;
 #endif
         /// <summary>Why the draft picked this scanner type and configuration, addressed to the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Rationale { get; set; }
+        public string? Rationale { get => _explicitNullValueRationale; set { _explicitNullValueRationale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rationale"); else _explicitNullProperties?.Remove("rationale"); } }
+        private string? _explicitNullValueRationale = default!;
 #nullable restore
 #else
-        public string Rationale { get; set; }
+        public string Rationale { get => _explicitNullValueRationale; set { _explicitNullValueRationale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rationale"); else _explicitNullProperties?.Remove("rationale"); } }
+        private string _explicitNullValueRationale = default!;
 #endif
         /// <summary>The quality pre-filter the draft chose for the goal. Null when the costing estimate failed, in which case the wizard keeps its defaults.* `focused` - Focused* `balanced` - Balanced* `comprehensive` - Comprehensive</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode? SamplingMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode? SamplingMode { get => _explicitNullValueSamplingMode; set { _explicitNullValueSamplingMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_mode"); else _explicitNullProperties?.Remove("sampling_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode? _explicitNullValueSamplingMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode SamplingMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode SamplingMode { get => _explicitNullValueSamplingMode; set { _explicitNullValueSamplingMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_mode"); else _explicitNullProperties?.Remove("sampling_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode _explicitNullValueSamplingMode = default!;
 #endif
         /// <summary>The random sampling rate solved from `monthly_credit_budget`, 0..1. 1.0 when the budget covers every matching recording. Floored at the minimum rate, so a budget below that floor keeps the minimum. Null whenever `sampling_mode` is.</summary>
-        public double? SamplingRate { get; set; }
+        public double? SamplingRate { get => _explicitNullValueSamplingRate; set { _explicitNullValueSamplingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_rate"); else _explicitNullProperties?.Remove("sampling_rate"); } }
+        private double? _explicitNullValueSamplingRate = default!;
         /// <summary>Type-specific config for the drafted `scanner_type`; always includes `prompt`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ScannerConfig { get; set; }
+        public UntypedNode? ScannerConfig { get => _explicitNullValueScannerConfig; set { _explicitNullValueScannerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_config"); else _explicitNullProperties?.Remove("scanner_config"); } }
+        private UntypedNode? _explicitNullValueScannerConfig = default!;
 #nullable restore
 #else
-        public UntypedNode ScannerConfig { get; set; }
+        public UntypedNode ScannerConfig { get => _explicitNullValueScannerConfig; set { _explicitNullValueScannerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_config"); else _explicitNullProperties?.Remove("scanner_config"); } }
+        private UntypedNode _explicitNullValueScannerConfig = default!;
 #endif
         /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerType? ScannerType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerType? ScannerType { get => _explicitNullValueScannerType; set { _explicitNullValueScannerType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_type"); else _explicitNullProperties?.Remove("scanner_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerType? _explicitNullValueScannerType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponse"/> and sets the default values.
         /// </summary>
@@ -96,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -139,6 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
             writer.WriteObjectValue<UntypedNode>("scanner_config", ScannerConfig);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseScannerType>("scanner_type", ScannerType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

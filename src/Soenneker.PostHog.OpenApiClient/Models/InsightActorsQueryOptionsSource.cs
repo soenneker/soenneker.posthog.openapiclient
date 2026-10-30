@@ -12,7 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InsightActorsQueryOptionsSource : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -62,12 +67,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQueryOptionsSource();
-            result.ExperimentActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery();
-            result.FunnelsActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery();
-            result.InsightActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery();
-            result.PathsV2ActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ActorsQuery();
-            result.StickinessActorsQuery = new global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery();
-            return result;
+            
+            
+            
+            
+            
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("InsightActorsQuery".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("FunnelsActorsQuery".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("StickinessActorsQuery".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("ExperimentActorsQuery".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("element") != null && parseNode.GetChildNode("source") != null && (parseNode.GetChildNode("kind") == null || (parseNode.GetChildNode("kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("PathsV2ActorsQuery".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            if (result.ExperimentActorsQuery == null && result.FunnelsActorsQuery == null && result.InsightActorsQuery == null && result.PathsV2ActorsQuery == null && result.StickinessActorsQuery == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.InsightActorsQuery = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuery(), parseNode);
+            if (result.ExperimentActorsQuery == null && result.FunnelsActorsQuery == null && result.InsightActorsQuery == null && result.PathsV2ActorsQuery == null && result.StickinessActorsQuery == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3 && !matchesUnionBranch4) result.FunnelsActorsQuery = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsActorsQuery(), parseNode);
+            if (result.ExperimentActorsQuery == null && result.FunnelsActorsQuery == null && result.InsightActorsQuery == null && result.PathsV2ActorsQuery == null && result.StickinessActorsQuery == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3 && !matchesUnionBranch4) result.StickinessActorsQuery = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.StickinessActorsQuery(), parseNode);
+            if (result.ExperimentActorsQuery == null && result.FunnelsActorsQuery == null && result.InsightActorsQuery == null && result.PathsV2ActorsQuery == null && result.StickinessActorsQuery == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch4) result.ExperimentActorsQuery = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery(), parseNode);
+            if (result.ExperimentActorsQuery == null && result.FunnelsActorsQuery == null && result.InsightActorsQuery == null && result.PathsV2ActorsQuery == null && result.StickinessActorsQuery == null && matchesUnionBranch4 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.PathsV2ActorsQuery = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ActorsQuery(), parseNode);
+            if (result.ExperimentActorsQuery == null && result.FunnelsActorsQuery == null && result.InsightActorsQuery == null && result.PathsV2ActorsQuery == null && result.StickinessActorsQuery == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,6 +105,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ExperimentActorsQuery == null && FunnelsActorsQuery == null && InsightActorsQuery == null && PathsV2ActorsQuery == null && StickinessActorsQuery == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ExperimentActorsQuery != null && FunnelsActorsQuery == null && InsightActorsQuery == null && PathsV2ActorsQuery == null && StickinessActorsQuery == null) { if (ExperimentActorsQuery is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentActorsQuery); return; }
+            if (FunnelsActorsQuery != null && ExperimentActorsQuery == null && InsightActorsQuery == null && PathsV2ActorsQuery == null && StickinessActorsQuery == null) { if (FunnelsActorsQuery is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FunnelsActorsQuery); return; }
+            if (InsightActorsQuery != null && ExperimentActorsQuery == null && FunnelsActorsQuery == null && PathsV2ActorsQuery == null && StickinessActorsQuery == null) { if (InsightActorsQuery is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuery); return; }
+            if (PathsV2ActorsQuery != null && ExperimentActorsQuery == null && FunnelsActorsQuery == null && InsightActorsQuery == null && StickinessActorsQuery == null) { if (PathsV2ActorsQuery is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PathsV2ActorsQuery); return; }
+            if (StickinessActorsQuery != null && ExperimentActorsQuery == null && FunnelsActorsQuery == null && InsightActorsQuery == null && PathsV2ActorsQuery == null) { if (StickinessActorsQuery is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, StickinessActorsQuery); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentActorsQuery>(null, ExperimentActorsQuery, FunnelsActorsQuery, InsightActorsQuery, PathsV2ActorsQuery, StickinessActorsQuery);
         }

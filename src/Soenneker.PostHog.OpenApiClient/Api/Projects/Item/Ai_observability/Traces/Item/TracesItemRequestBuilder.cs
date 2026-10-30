@@ -4,8 +4,10 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Clusters;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Evaluations;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Exports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Feedback;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Nodes;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Pull_request;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Search;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Summary;
 using System.Collections.Generic;
@@ -35,6 +37,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Evaluations.EvaluationsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The exports property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Exports.ExportsRequestBuilder Exports
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Exports.ExportsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The feedback property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Feedback.FeedbackRequestBuilder Feedback
         {
@@ -44,6 +51,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Nodes.NodesRequestBuilder Nodes
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Nodes.NodesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pull_request property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Pull_request.Pull_requestRequestBuilder Pull_request
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Pull_request.Pull_requestRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The search property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Search.SearchRequestBuilder Search

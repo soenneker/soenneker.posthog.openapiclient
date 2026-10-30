@@ -11,45 +11,73 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PrCostSummary : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billable_minutes") is { } nullNodeBillableMinutes && nullNodeBillableMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillableMinutes = null;
+            if (parseNode.GetChildNode("by_run") is { } nullNodeByRun && nullNodeByRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByRun = null;
+            if (parseNode.GetChildNode("by_workflow") is { } nullNodeByWorkflow && nullNodeByWorkflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByWorkflow = null;
+            if (parseNode.GetChildNode("costed_jobs") is { } nullNodeCostedJobs && nullNodeCostedJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostedJobs = null;
+            if (parseNode.GetChildNode("estimated_cost_usd") is { } nullNodeEstimatedCostUsd && nullNodeEstimatedCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCostUsd = null;
+            if (parseNode.GetChildNode("excluded_jobs") is { } nullNodeExcludedJobs && nullNodeExcludedJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedJobs = null;
+            if (parseNode.GetChildNode("jobs_available") is { } nullNodeJobsAvailable && nullNodeJobsAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobsAvailable = null;
+            if (parseNode.GetChildNode("llm_spend") is { } nullNodeLlmSpend && nullNodeLlmSpend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LlmSpend = null;
+            if (parseNode.GetChildNode("unsettled_jobs") is { } nullNodeUnsettledJobs && nullNodeUnsettledJobs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnsettledJobs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Billable CI minutes: each costed (self-hosted) job&apos;s elapsed time, summed. Parallel jobs add up, so this is compute time spent, not wall-clock run duration.</summary>
-        public double? BillableMinutes { get; set; }
+        public double? BillableMinutes { get => _explicitNullValueBillableMinutes; set { _explicitNullValueBillableMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billable_minutes"); else _explicitNullProperties?.Remove("billable_minutes"); } }
+        private double? _explicitNullValueBillableMinutes = default!;
         /// <summary>Same spend broken down per workflow run, keyed by (run_id, run_attempt).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RunCost>? ByRun { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RunCost>? ByRun { get => _explicitNullValueByRun; set { _explicitNullValueByRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_run"); else _explicitNullProperties?.Remove("by_run"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RunCost>? _explicitNullValueByRun = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RunCost> ByRun { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RunCost> ByRun { get => _explicitNullValueByRun; set { _explicitNullValueByRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_run"); else _explicitNullProperties?.Remove("by_run"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RunCost> _explicitNullValueByRun = default!;
 #endif
         /// <summary>Same spend broken down per workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost>? ByWorkflow { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost>? ByWorkflow { get => _explicitNullValueByWorkflow; set { _explicitNullValueByWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_workflow"); else _explicitNullProperties?.Remove("by_workflow"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost>? _explicitNullValueByWorkflow = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost> ByWorkflow { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost> ByWorkflow { get => _explicitNullValueByWorkflow; set { _explicitNullValueByWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_workflow"); else _explicitNullProperties?.Remove("by_workflow"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowCost> _explicitNullValueByWorkflow = default!;
 #endif
         /// <summary>Jobs counted in the estimate (billable Linux runner, finished).</summary>
-        public int? CostedJobs { get; set; }
+        public int? CostedJobs { get => _explicitNullValueCostedJobs; set { _explicitNullValueCostedJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("costed_jobs"); else _explicitNullProperties?.Remove("costed_jobs"); } }
+        private int? _explicitNullValueCostedJobs = default!;
         /// <summary>Estimated dollar cost (sum of per-job estimates: elapsed x tier multiplier x reference rate). Null when no job was costable.</summary>
-        public double? EstimatedCostUsd { get; set; }
+        public double? EstimatedCostUsd { get => _explicitNullValueEstimatedCostUsd; set { _explicitNullValueEstimatedCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_cost_usd"); else _explicitNullProperties?.Remove("estimated_cost_usd"); } }
+        private double? _explicitNullValueEstimatedCostUsd = default!;
         /// <summary>Jobs on provider-hosted (GitHub-hosted, free) or non-Linux runners: outside the estimate.</summary>
-        public int? ExcludedJobs { get; set; }
+        public int? ExcludedJobs { get => _explicitNullValueExcludedJobs; set { _explicitNullValueExcludedJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_jobs"); else _explicitNullProperties?.Remove("excluded_jobs"); } }
+        private int? _explicitNullValueExcludedJobs = default!;
         /// <summary>False when the job-level source (github_workflow_jobs) isn&apos;t synced: every figure is then zero/null and the cost cards should be hidden.</summary>
-        public bool? JobsAvailable { get; set; }
+        public bool? JobsAvailable { get => _explicitNullValueJobsAvailable; set { _explicitNullValueJobsAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs_available"); else _explicitNullProperties?.Remove("jobs_available"); } }
+        private bool? _explicitNullValueJobsAvailable = default!;
         /// <summary>Agent LLM token spend attributed to this PR by git branch ($ai_git_branch), or null when no generation matched: independent of the CI cost figures, so it can be present even when jobs_available is false. The UI hides the row when null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? LlmSpend { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? _explicitNullValueLlmSpend = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend LlmSpend { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend _explicitNullValueLlmSpend = default!;
 #endif
         /// <summary>Billable Linux jobs still queued/running (no elapsed): excluded from the estimate.</summary>
-        public int? UnsettledJobs { get; set; }
+        public int? UnsettledJobs { get => _explicitNullValueUnsettledJobs; set { _explicitNullValueUnsettledJobs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsettled_jobs"); else _explicitNullProperties?.Remove("unsettled_jobs"); } }
+        private int? _explicitNullValueUnsettledJobs = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummary"/> and sets the default values.
         /// </summary>
@@ -65,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("jobs_available", JobsAvailable);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend>("llm_spend", LlmSpend);
             writer.WriteIntValue("unsettled_jobs", UnsettledJobs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

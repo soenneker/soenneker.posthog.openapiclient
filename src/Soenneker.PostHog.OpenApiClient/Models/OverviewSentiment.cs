@@ -11,21 +11,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OverviewSentiment : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("evaluationId") is { } nullNodeEvaluationId && nullNodeEvaluationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationId = null;
+            if (parseNode.GetChildNode("negativeShare") is { } nullNodeNegativeShare && nullNodeNegativeShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NegativeShare = null;
+            if (parseNode.GetChildNode("previousShare") is { } nullNodePreviousShare && nullNodePreviousShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousShare = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The evaluationId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvaluationId { get; set; }
+        public string? EvaluationId { get => _explicitNullValueEvaluationId; set { _explicitNullValueEvaluationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluationId"); else _explicitNullProperties?.Remove("evaluationId"); } }
+        private string? _explicitNullValueEvaluationId = default!;
 #nullable restore
 #else
-        public string EvaluationId { get; set; }
+        public string EvaluationId { get => _explicitNullValueEvaluationId; set { _explicitNullValueEvaluationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluationId"); else _explicitNullProperties?.Remove("evaluationId"); } }
+        private string _explicitNullValueEvaluationId = default!;
 #endif
         /// <summary>The negativeShare property</summary>
-        public double? NegativeShare { get; set; }
+        public double? NegativeShare { get => _explicitNullValueNegativeShare; set { _explicitNullValueNegativeShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negativeShare"); else _explicitNullProperties?.Remove("negativeShare"); } }
+        private double? _explicitNullValueNegativeShare = default!;
         /// <summary>The previousShare property</summary>
-        public double? PreviousShare { get; set; }
+        public double? PreviousShare { get => _explicitNullValuePreviousShare; set { _explicitNullValuePreviousShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousShare"); else _explicitNullProperties?.Remove("previousShare"); } }
+        private double? _explicitNullValuePreviousShare = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment"/> and sets the default values.
         /// </summary>
@@ -41,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,6 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("evaluationId", EvaluationId);
             writer.WriteDoubleValue("negativeShare", NegativeShare);
             writer.WriteDoubleValue("previousShare", PreviousShare);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

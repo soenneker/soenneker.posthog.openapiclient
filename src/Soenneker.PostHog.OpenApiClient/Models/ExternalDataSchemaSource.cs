@@ -12,62 +12,93 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExternalDataSchemaSource : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("access_method") is { } nullNodeAccessMethod && nullNodeAccessMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessMethod = null;
+            if (parseNode.GetChildNode("api_version") is { } nullNodeApiVersion && nullNodeApiVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiVersion = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("requires_exact_column_metadata") is { } nullNodeRequiresExactColumnMetadata && nullNodeRequiresExactColumnMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiresExactColumnMetadata = null;
+            if (parseNode.GetChildNode("source_type") is { } nullNodeSourceType && nullNodeSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceType = null;
+            if (parseNode.GetChildNode("supported_api_versions") is { } nullNodeSupportedApiVersions && nullNodeSupportedApiVersions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportedApiVersions = null;
+            if (parseNode.GetChildNode("supports_column_selection") is { } nullNodeSupportsColumnSelection && nullNodeSupportsColumnSelection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsColumnSelection = null;
+            if (parseNode.GetChildNode("supports_row_filters") is { } nullNodeSupportsRowFilters && nullNodeSupportsRowFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupportsRowFilters = null;
+            if (parseNode.GetChildNode("user_access_level") is { } nullNodeUserAccessLevel && nullNodeUserAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserAccessLevel = null;
+        }
+
         /// <summary>The access_method property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccessMethod { get; set; }
+        public string? AccessMethod { get => _explicitNullValueAccessMethod; set { _explicitNullValueAccessMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_method"); else _explicitNullProperties?.Remove("access_method"); } }
+        private string? _explicitNullValueAccessMethod = default!;
 #nullable restore
 #else
-        public string AccessMethod { get; set; }
+        public string AccessMethod { get => _explicitNullValueAccessMethod; set { _explicitNullValueAccessMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_method"); else _explicitNullProperties?.Remove("access_method"); } }
+        private string _explicitNullValueAccessMethod = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The api_version property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ApiVersion { get; set; }
+        public string? ApiVersion { get => _explicitNullValueApiVersion; set { _explicitNullValueApiVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_version"); else _explicitNullProperties?.Remove("api_version"); } }
+        private string? _explicitNullValueApiVersion = default!;
 #nullable restore
 #else
-        public string ApiVersion { get; set; }
+        public string ApiVersion { get => _explicitNullValueApiVersion; set { _explicitNullValueApiVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_version"); else _explicitNullProperties?.Remove("api_version"); } }
+        private string _explicitNullValueApiVersion = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>The requires_exact_column_metadata property</summary>
-        public bool? RequiresExactColumnMetadata { get; set; }
+        public bool? RequiresExactColumnMetadata { get => _explicitNullValueRequiresExactColumnMetadata; set { _explicitNullValueRequiresExactColumnMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requires_exact_column_metadata"); else _explicitNullProperties?.Remove("requires_exact_column_metadata"); } }
+        private bool? _explicitNullValueRequiresExactColumnMetadata = default!;
         /// <summary>The source_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceType { get; set; }
+        public string? SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private string? _explicitNullValueSourceType = default!;
 #nullable restore
 #else
-        public string SourceType { get; set; }
+        public string SourceType { get => _explicitNullValueSourceType; set { _explicitNullValueSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_type"); else _explicitNullProperties?.Remove("source_type"); } }
+        private string _explicitNullValueSourceType = default!;
 #endif
         /// <summary>The supported_api_versions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SupportedApiVersions { get; set; }
+        public List<string>? SupportedApiVersions { get => _explicitNullValueSupportedApiVersions; set { _explicitNullValueSupportedApiVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_api_versions"); else _explicitNullProperties?.Remove("supported_api_versions"); } }
+        private List<string>? _explicitNullValueSupportedApiVersions = default!;
 #nullable restore
 #else
-        public List<string> SupportedApiVersions { get; set; }
+        public List<string> SupportedApiVersions { get => _explicitNullValueSupportedApiVersions; set { _explicitNullValueSupportedApiVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported_api_versions"); else _explicitNullProperties?.Remove("supported_api_versions"); } }
+        private List<string> _explicitNullValueSupportedApiVersions = default!;
 #endif
         /// <summary>The supports_column_selection property</summary>
-        public bool? SupportsColumnSelection { get; set; }
+        public bool? SupportsColumnSelection { get => _explicitNullValueSupportsColumnSelection; set { _explicitNullValueSupportsColumnSelection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_column_selection"); else _explicitNullProperties?.Remove("supports_column_selection"); } }
+        private bool? _explicitNullValueSupportsColumnSelection = default!;
         /// <summary>The supports_row_filters property</summary>
-        public bool? SupportsRowFilters { get; set; }
+        public bool? SupportsRowFilters { get => _explicitNullValueSupportsRowFilters; set { _explicitNullValueSupportsRowFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supports_row_filters"); else _explicitNullProperties?.Remove("supports_row_filters"); } }
+        private bool? _explicitNullValueSupportsRowFilters = default!;
         /// <summary>The user_access_level property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserAccessLevel { get; set; }
+        public string? UserAccessLevel { get => _explicitNullValueUserAccessLevel; set { _explicitNullValueUserAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_access_level"); else _explicitNullProperties?.Remove("user_access_level"); } }
+        private string? _explicitNullValueUserAccessLevel = default!;
 #nullable restore
 #else
-        public string UserAccessLevel { get; set; }
+        public string UserAccessLevel { get => _explicitNullValueUserAccessLevel; set { _explicitNullValueUserAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_access_level"); else _explicitNullProperties?.Remove("user_access_level"); } }
+        private string _explicitNullValueUserAccessLevel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSource"/> and sets the default values.
@@ -84,7 +115,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSource();
+            // Preserve a nullable root response.
+            if (parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) return null!;
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSource(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -121,6 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("supports_column_selection", SupportsColumnSelection);
             writer.WriteBoolValue("supports_row_filters", SupportsRowFilters);
             writer.WriteStringValue("user_access_level", UserAccessLevel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

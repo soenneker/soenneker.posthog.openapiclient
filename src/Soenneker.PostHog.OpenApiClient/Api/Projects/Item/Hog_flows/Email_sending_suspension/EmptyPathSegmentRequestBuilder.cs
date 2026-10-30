@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Email_send
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingSuspensionStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingSuspensionStatus.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingSuspensionStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EmailSendingSuspensionStatus.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Cheap read for the scene-wide suspension banner: single-row `TeamWorkflowsConfig` lookupwith no reputation computation. Every project member sees this — a suspension stopseveryone&apos;s email, so hiding it would leave silent send failures unexplained.

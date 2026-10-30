@@ -11,76 +11,116 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OfflineItemRead : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("accepted_at") is { } nullNodeAcceptedAt && nullNodeAcceptedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcceptedAt = null;
+            if (parseNode.GetChildNode("application_trace_id") is { } nullNodeApplicationTraceId && nullNodeApplicationTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApplicationTraceId = null;
+            if (parseNode.GetChildNode("case_key") is { } nullNodeCaseKey && nullNodeCaseKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaseKey = null;
+            if (parseNode.GetChildNode("dataset_item_identifier") is { } nullNodeDatasetItemIdentifier && nullNodeDatasetItemIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetItemIdentifier = null;
+            if (parseNode.GetChildNode("dataset_item_version_id") is { } nullNodeDatasetItemVersionId && nullNodeDatasetItemVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetItemVersionId = null;
+            if (parseNode.GetChildNode("dataset_item_version_identifier") is { } nullNodeDatasetItemVersionIdentifier && nullNodeDatasetItemVersionIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatasetItemVersionIdentifier = null;
+            if (parseNode.GetChildNode("experiment_id") is { } nullNodeExperimentId && nullNodeExperimentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentId = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("model_version") is { } nullNodeModelVersion && nullNodeModelVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelVersion = null;
+            if (parseNode.GetChildNode("payload_expires_at") is { } nullNodePayloadExpiresAt && nullNodePayloadExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadExpiresAt = null;
+            if (parseNode.GetChildNode("payload_state") is { } nullNodePayloadState && nullNodePayloadState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadState = null;
+            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("trial") is { } nullNodeTrial && nullNodeTrial.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trial = null;
+        }
+
         /// <summary>Original server acceptance time.</summary>
-        public DateTimeOffset? AcceptedAt { get; set; }
+        public DateTimeOffset? AcceptedAt { get => _explicitNullValueAcceptedAt; set { _explicitNullValueAcceptedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accepted_at"); else _explicitNullProperties?.Remove("accepted_at"); } }
+        private DateTimeOffset? _explicitNullValueAcceptedAt = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional application trace navigation reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ApplicationTraceId { get; set; }
+        public string? ApplicationTraceId { get => _explicitNullValueApplicationTraceId; set { _explicitNullValueApplicationTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application_trace_id"); else _explicitNullProperties?.Remove("application_trace_id"); } }
+        private string? _explicitNullValueApplicationTraceId = default!;
 #nullable restore
 #else
-        public string ApplicationTraceId { get; set; }
+        public string ApplicationTraceId { get => _explicitNullValueApplicationTraceId; set { _explicitNullValueApplicationTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("application_trace_id"); else _explicitNullProperties?.Remove("application_trace_id"); } }
+        private string _explicitNullValueApplicationTraceId = default!;
 #endif
         /// <summary>Optional stable case identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CaseKey { get; set; }
+        public string? CaseKey { get => _explicitNullValueCaseKey; set { _explicitNullValueCaseKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("case_key"); else _explicitNullProperties?.Remove("case_key"); } }
+        private string? _explicitNullValueCaseKey = default!;
 #nullable restore
 #else
-        public string CaseKey { get; set; }
+        public string CaseKey { get => _explicitNullValueCaseKey; set { _explicitNullValueCaseKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("case_key"); else _explicitNullProperties?.Remove("case_key"); } }
+        private string _explicitNullValueCaseKey = default!;
 #endif
         /// <summary>Durable dataset item identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DatasetItemIdentifier { get; set; }
+        public string? DatasetItemIdentifier { get => _explicitNullValueDatasetItemIdentifier; set { _explicitNullValueDatasetItemIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_item_identifier"); else _explicitNullProperties?.Remove("dataset_item_identifier"); } }
+        private string? _explicitNullValueDatasetItemIdentifier = default!;
 #nullable restore
 #else
-        public string DatasetItemIdentifier { get; set; }
+        public string DatasetItemIdentifier { get => _explicitNullValueDatasetItemIdentifier; set { _explicitNullValueDatasetItemIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_item_identifier"); else _explicitNullProperties?.Remove("dataset_item_identifier"); } }
+        private string _explicitNullValueDatasetItemIdentifier = default!;
 #endif
         /// <summary>Optional hosted item-version navigation reference.</summary>
-        public Guid? DatasetItemVersionId { get; set; }
+        public Guid? DatasetItemVersionId { get => _explicitNullValueDatasetItemVersionId; set { _explicitNullValueDatasetItemVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_item_version_id"); else _explicitNullProperties?.Remove("dataset_item_version_id"); } }
+        private Guid? _explicitNullValueDatasetItemVersionId = default!;
         /// <summary>Durable dataset item-version identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DatasetItemVersionIdentifier { get; set; }
+        public string? DatasetItemVersionIdentifier { get => _explicitNullValueDatasetItemVersionIdentifier; set { _explicitNullValueDatasetItemVersionIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_item_version_identifier"); else _explicitNullProperties?.Remove("dataset_item_version_identifier"); } }
+        private string? _explicitNullValueDatasetItemVersionIdentifier = default!;
 #nullable restore
 #else
-        public string DatasetItemVersionIdentifier { get; set; }
+        public string DatasetItemVersionIdentifier { get => _explicitNullValueDatasetItemVersionIdentifier; set { _explicitNullValueDatasetItemVersionIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset_item_version_identifier"); else _explicitNullProperties?.Remove("dataset_item_version_identifier"); } }
+        private string _explicitNullValueDatasetItemVersionIdentifier = default!;
 #endif
         /// <summary>Owning experiment UUID.</summary>
-        public Guid? ExperimentId { get; set; }
+        public Guid? ExperimentId { get => _explicitNullValueExperimentId; set { _explicitNullValueExperimentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_id"); else _explicitNullProperties?.Remove("experiment_id"); } }
+        private Guid? _explicitNullValueExperimentId = default!;
         /// <summary>Stable item UUID.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Model used for the item, falling back to the experiment&apos;s model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelVersion { get; set; }
+        public string? ModelVersion { get => _explicitNullValueModelVersion; set { _explicitNullValueModelVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_version"); else _explicitNullProperties?.Remove("model_version"); } }
+        private string? _explicitNullValueModelVersion = default!;
 #nullable restore
 #else
-        public string ModelVersion { get; set; }
+        public string ModelVersion { get => _explicitNullValueModelVersion; set { _explicitNullValueModelVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_version"); else _explicitNullProperties?.Remove("model_version"); } }
+        private string _explicitNullValueModelVersion = default!;
 #endif
-        /// <summary>Payload retention deadline; cleanup is not yet enabled.</summary>
-        public DateTimeOffset? PayloadExpiresAt { get; set; }
+        /// <summary>Payload expires 30 days after first acceptance; deletion runs hourly.</summary>
+        public DateTimeOffset? PayloadExpiresAt { get => _explicitNullValuePayloadExpiresAt; set { _explicitNullValuePayloadExpiresAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_expires_at"); else _explicitNullProperties?.Remove("payload_expires_at"); } }
+        private DateTimeOffset? _explicitNullValuePayloadExpiresAt = default!;
         /// <summary>* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState? PayloadState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState? PayloadState { get => _explicitNullValuePayloadState; set { _explicitNullValuePayloadState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_state"); else _explicitNullProperties?.Remove("payload_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState? _explicitNullValuePayloadState = default!;
         /// <summary>Cells for explicitly selected scorer versions; empty when none selected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell> Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell> _explicitNullValueResults = default!;
 #endif
         /// <summary>Optional trial identifier within a case.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Trial { get; set; }
+        public string? Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
+        private string? _explicitNullValueTrial = default!;
 #nullable restore
 #else
-        public string Trial { get; set; }
+        public string Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
+        private string _explicitNullValueTrial = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemRead"/> and sets the default values.
@@ -97,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemRead CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemRead();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemRead(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -142,6 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemReadPayloadState>("payload_state", PayloadState);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>("results", Results);
             writer.WriteStringValue("trial", Trial);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

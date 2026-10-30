@@ -11,28 +11,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentHealthInputsExposureTotals : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("hours_since_launch") is { } nullNodeHoursSinceLaunch && nullNodeHoursSinceLaunch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoursSinceLaunch = null;
+            if (parseNode.GetChildNode("multiple_variant_handling") is { } nullNodeMultipleVariantHandling && nullNodeMultipleVariantHandling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultipleVariantHandling = null;
+            if (parseNode.GetChildNode("sample_ratio_mismatch_p_value") is { } nullNodeSampleRatioMismatchPValue && nullNodeSampleRatioMismatchPValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleRatioMismatchPValue = null;
+            if (parseNode.GetChildNode("total_exposures") is { } nullNodeTotalExposures && nullNodeTotalExposures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalExposures = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Hours from launch to the computation of the answer, as the checks read them.</summary>
-        public double? HoursSinceLaunch { get; set; }
+        public double? HoursSinceLaunch { get => _explicitNullValueHoursSinceLaunch; set { _explicitNullValueHoursSinceLaunch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hours_since_launch"); else _explicitNullProperties?.Remove("hours_since_launch"); } }
+        private double? _explicitNullValueHoursSinceLaunch = default!;
         /// <summary>How the analysis treats people in several variants: &apos;exclude&apos; or &apos;first_seen&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MultipleVariantHandling { get; set; }
+        public string? MultipleVariantHandling { get => _explicitNullValueMultipleVariantHandling; set { _explicitNullValueMultipleVariantHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiple_variant_handling"); else _explicitNullProperties?.Remove("multiple_variant_handling"); } }
+        private string? _explicitNullValueMultipleVariantHandling = default!;
 #nullable restore
 #else
-        public string MultipleVariantHandling { get; set; }
+        public string MultipleVariantHandling { get => _explicitNullValueMultipleVariantHandling; set { _explicitNullValueMultipleVariantHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiple_variant_handling"); else _explicitNullProperties?.Remove("multiple_variant_handling"); } }
+        private string _explicitNullValueMultipleVariantHandling = default!;
 #endif
         /// <summary>The p-value of the sample ratio test. Null when there was too little data.</summary>
-        public double? SampleRatioMismatchPValue { get; set; }
+        public double? SampleRatioMismatchPValue { get => _explicitNullValueSampleRatioMismatchPValue; set { _explicitNullValueSampleRatioMismatchPValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_ratio_mismatch_p_value"); else _explicitNullProperties?.Remove("sample_ratio_mismatch_p_value"); } }
+        private double? _explicitNullValueSampleRatioMismatchPValue = default!;
         /// <summary>Exposed people by variant. &apos;$multiple&apos; counts the people exposed to more than one variant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotalsTotalExposuresProperty? TotalExposures { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotalsTotalExposuresProperty? TotalExposures { get => _explicitNullValueTotalExposures; set { _explicitNullValueTotalExposures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_exposures"); else _explicitNullProperties?.Remove("total_exposures"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotalsTotalExposuresProperty? _explicitNullValueTotalExposures = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotalsTotalExposuresProperty TotalExposures { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotalsTotalExposuresProperty TotalExposures { get => _explicitNullValueTotalExposures; set { _explicitNullValueTotalExposures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_exposures"); else _explicitNullProperties?.Remove("total_exposures"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotalsTotalExposuresProperty _explicitNullValueTotalExposures = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals"/> and sets the default values.
@@ -49,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("multiple_variant_handling", MultipleVariantHandling);
             writer.WriteDoubleValue("sample_ratio_mismatch_p_value", SampleRatioMismatchPValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotalsTotalExposuresProperty>("total_exposures", TotalExposures);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

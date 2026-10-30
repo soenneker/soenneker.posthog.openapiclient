@@ -12,49 +12,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ModelUsage : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
+            if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+            if (parseNode.GetChildNode("overview") is { } nullNodeOverview && nullNodeOverview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Overview = null;
+            if (parseNode.GetChildNode("status_breakdown") is { } nullNodeStatusBreakdown && nullNodeStatusBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusBreakdown = null;
+            if (parseNode.GetChildNode("trends") is { } nullNodeTrends && nullNodeTrends.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Trends = null;
+            if (parseNode.GetChildNode("usage_updated_at") is { } nullNodeUsageUpdatedAt && nullNodeUsageUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageUpdatedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total number of models in the breakdown.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>Inclusive UTC start date.</summary>
-        public Date? DateFrom { get; set; }
+        public Date? DateFrom { get => _explicitNullValueDateFrom; set { _explicitNullValueDateFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_from"); else _explicitNullProperties?.Remove("date_from"); } }
+        private Date? _explicitNullValueDateFrom = default!;
         /// <summary>Exclusive UTC end date. Today&apos;s incomplete usage is excluded.</summary>
-        public Date? DateTo { get; set; }
+        public Date? DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
+        private Date? _explicitNullValueDateTo = default!;
         /// <summary>Model breakdown in the requested sort order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow>? Models { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow>? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow> Models { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow> _explicitNullValueModels = default!;
 #endif
         /// <summary>Totals over the whole date range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview? Overview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview? Overview { get => _explicitNullValueOverview; set { _explicitNullValueOverview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overview"); else _explicitNullProperties?.Remove("overview"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview? _explicitNullValueOverview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview Overview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview Overview { get => _explicitNullValueOverview; set { _explicitNullValueOverview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overview"); else _explicitNullProperties?.Remove("overview"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageOverview _explicitNullValueOverview = default!;
 #endif
         /// <summary>Latest run status for each model and engine in the selected complete-day range.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown>? StatusBreakdown { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown>? StatusBreakdown { get => _explicitNullValueStatusBreakdown; set { _explicitNullValueStatusBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_breakdown"); else _explicitNullProperties?.Remove("status_breakdown"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown>? _explicitNullValueStatusBreakdown = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown> StatusBreakdown { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown> StatusBreakdown { get => _explicitNullValueStatusBreakdown; set { _explicitNullValueStatusBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_breakdown"); else _explicitNullProperties?.Remove("status_breakdown"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown> _explicitNullValueStatusBreakdown = default!;
 #endif
         /// <summary>Daily usage, attributed to when each run finished.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay>? Trends { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay>? Trends { get => _explicitNullValueTrends; set { _explicitNullValueTrends = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trends"); else _explicitNullProperties?.Remove("trends"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay>? _explicitNullValueTrends = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay> Trends { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay> Trends { get => _explicitNullValueTrends; set { _explicitNullValueTrends = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trends"); else _explicitNullProperties?.Remove("trends"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay> _explicitNullValueTrends = default!;
 #endif
         /// <summary>Latest usage collection timestamp in this range.</summary>
-        public DateTimeOffset? UsageUpdatedAt { get; set; }
+        public DateTimeOffset? UsageUpdatedAt { get => _explicitNullValueUsageUpdatedAt; set { _explicitNullValueUsageUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_updated_at"); else _explicitNullProperties?.Remove("usage_updated_at"); } }
+        private DateTimeOffset? _explicitNullValueUsageUpdatedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelUsage"/> and sets the default values.
         /// </summary>
@@ -70,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ModelUsage CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ModelUsage();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ModelUsage(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -105,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ModelStatusBreakdown>("status_breakdown", StatusBreakdown);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageDay>("trends", Trends);
             writer.WriteDateTimeOffsetValue("usage_updated_at", UsageUpdatedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

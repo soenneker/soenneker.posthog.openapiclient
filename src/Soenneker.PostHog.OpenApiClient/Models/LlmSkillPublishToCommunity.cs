@@ -11,52 +11,78 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LlmSkillPublishToCommunity : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("author_handle") is { } nullNodeAuthorHandle && nullNodeAuthorHandle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthorHandle = null;
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("expected_category") is { } nullNodeExpectedCategory && nullNodeExpectedCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedCategory = null;
+            if (parseNode.GetChildNode("expected_skill_id") is { } nullNodeExpectedSkillId && nullNodeExpectedSkillId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedSkillId = null;
+            if (parseNode.GetChildNode("expected_version") is { } nullNodeExpectedVersion && nullNodeExpectedVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedVersion = null;
+            if (parseNode.GetChildNode("scout_config") is { } nullNodeScoutConfig && nullNodeScoutConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutConfig = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The publisher&apos;s GitHub username, used for public attribution on the listing and PR. Optional, and self-reported: it is not verified against the publisher&apos;s PostHog account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle? AuthorHandle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle? AuthorHandle { get => _explicitNullValueAuthorHandle; set { _explicitNullValueAuthorHandle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author_handle"); else _explicitNullProperties?.Remove("author_handle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle? _explicitNullValueAuthorHandle = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle AuthorHandle { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle AuthorHandle { get => _explicitNullValueAuthorHandle; set { _explicitNullValueAuthorHandle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author_handle"); else _explicitNullProperties?.Remove("author_handle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityAuthorHandle _explicitNullValueAuthorHandle = default!;
 #endif
         /// <summary>Human-friendly display name for the community listing. Defaults to a title-cased skill slug. Must be a single line: it is used as the pull request title and commit message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName? DisplayName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName DisplayName { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityDisplayName _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Category of the skill the publisher reviewed. Registering a skill as a scout changes its category without raising its version, so the version alone would let a skill reviewed as an ordinary one publish as a scout. The request returns 409 if the category changed. Omit it to skip that check.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpectedCategory { get; set; }
+        public string? ExpectedCategory { get => _explicitNullValueExpectedCategory; set { _explicitNullValueExpectedCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_category"); else _explicitNullProperties?.Remove("expected_category"); } }
+        private string? _explicitNullValueExpectedCategory = default!;
 #nullable restore
 #else
-        public string ExpectedCategory { get; set; }
+        public string ExpectedCategory { get => _explicitNullValueExpectedCategory; set { _explicitNullValueExpectedCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_category"); else _explicitNullProperties?.Remove("expected_category"); } }
+        private string _explicitNullValueExpectedCategory = default!;
 #endif
         /// <summary>Immutable ID of the skill version that the publisher reviewed.</summary>
-        public Guid? ExpectedSkillId { get; set; }
+        public Guid? ExpectedSkillId { get => _explicitNullValueExpectedSkillId; set { _explicitNullValueExpectedSkillId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_skill_id"); else _explicitNullProperties?.Remove("expected_skill_id"); } }
+        private Guid? _explicitNullValueExpectedSkillId = default!;
         /// <summary>Skill version that the publisher reviewed. The request returns 409 if the latest version changed.</summary>
-        public int? ExpectedVersion { get; set; }
+        public int? ExpectedVersion { get => _explicitNullValueExpectedVersion; set { _explicitNullValueExpectedVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_version"); else _explicitNullProperties?.Remove("expected_version"); } }
+        private int? _explicitNullValueExpectedVersion = default!;
         /// <summary>Schedule, emit posture and tags to publish alongside a scout, so it arrives in another project with its cadence intact. Rejected for a skill that is not a scout.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig? ScoutConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig? ScoutConfig { get => _explicitNullValueScoutConfig; set { _explicitNullValueScoutConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_config"); else _explicitNullProperties?.Remove("scout_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig? _explicitNullValueScoutConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig ScoutConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig ScoutConfig { get => _explicitNullValueScoutConfig; set { _explicitNullValueScoutConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_config"); else _explicitNullProperties?.Remove("scout_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig _explicitNullValueScoutConfig = default!;
 #endif
         /// <summary>Tags used for filtering and discovery in the marketplace, e.g. [&apos;web-analytics&apos;, &apos;triage&apos;].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunity"/> and sets the default values.
@@ -73,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunity();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunity(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,6 +132,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("expected_version", ExpectedVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillPublishToCommunityScoutConfig>("scout_config", ScoutConfig);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

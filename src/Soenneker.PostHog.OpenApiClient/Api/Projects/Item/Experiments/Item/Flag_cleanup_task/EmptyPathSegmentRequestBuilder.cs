@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Item.Fla
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Status of the flag-cleanup Desktop task opened for this experiment.When an experiment was ended or shipped with open_cleanup_pr=true, a Desktop taskremoves the experiment&apos;s feature-flag code and opens a draft pull request. Thisreturns that task&apos;s latest run status and the PR URL once one is opened. Polluntil is_terminal is true. Returns 404 when no cleanup task was opened.

@@ -11,29 +11,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class NotebookKernelConfigResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cpu_cores") is { } nullNodeCpuCores && nullNodeCpuCores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuCores = null;
+            if (parseNode.GetChildNode("hourly_price") is { } nullNodeHourlyPrice && nullNodeHourlyPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HourlyPrice = null;
+            if (parseNode.GetChildNode("idle_timeout_seconds") is { } nullNodeIdleTimeoutSeconds && nullNodeIdleTimeoutSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdleTimeoutSeconds = null;
+            if (parseNode.GetChildNode("memory_gb") is { } nullNodeMemoryGb && nullNodeMemoryGb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryGb = null;
+            if (parseNode.GetChildNode("preset_key") is { } nullNodePresetKey && nullNodePresetKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PresetKey = null;
+            if (parseNode.GetChildNode("restarted") is { } nullNodeRestarted && nullNodeRestarted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Restarted = null;
+            if (parseNode.GetChildNode("restart_required") is { } nullNodeRestartRequired && nullNodeRestartRequired.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RestartRequired = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Configured CPU cores; null means the default applies.</summary>
-        public double? CpuCores { get; set; }
+        public double? CpuCores { get => _explicitNullValueCpuCores; set { _explicitNullValueCpuCores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_cores"); else _explicitNullProperties?.Remove("cpu_cores"); } }
+        private double? _explicitNullValueCpuCores = default!;
         /// <summary>What this sandbox shape costs per hour in USD while it is alive, at this region&apos;s rates. It tracks the running sandbox while a kernel is live, otherwise the configured shape. After a failed resize this stays the running sandbox&apos;s rate, not the size that failed to apply.</summary>
-        public double? HourlyPrice { get; set; }
+        public double? HourlyPrice { get => _explicitNullValueHourlyPrice; set { _explicitNullValueHourlyPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hourly_price"); else _explicitNullProperties?.Remove("hourly_price"); } }
+        private double? _explicitNullValueHourlyPrice = default!;
         /// <summary>Configured maximum sandbox lifetime in seconds; null means the default.</summary>
-        public int? IdleTimeoutSeconds { get; set; }
+        public int? IdleTimeoutSeconds { get => _explicitNullValueIdleTimeoutSeconds; set { _explicitNullValueIdleTimeoutSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idle_timeout_seconds"); else _explicitNullProperties?.Remove("idle_timeout_seconds"); } }
+        private int? _explicitNullValueIdleTimeoutSeconds = default!;
         /// <summary>Configured memory in GB; null means the default applies.</summary>
-        public double? MemoryGb { get; set; }
+        public double? MemoryGb { get => _explicitNullValueMemoryGb; set { _explicitNullValueMemoryGb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_gb"); else _explicitNullProperties?.Remove("memory_gb"); } }
+        private double? _explicitNullValueMemoryGb = default!;
         /// <summary>Compute preset the configured shape matches, or null when it was tuned by hand.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PresetKey { get; set; }
+        public string? PresetKey { get => _explicitNullValuePresetKey; set { _explicitNullValuePresetKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preset_key"); else _explicitNullProperties?.Remove("preset_key"); } }
+        private string? _explicitNullValuePresetKey = default!;
 #nullable restore
 #else
-        public string PresetKey { get; set; }
+        public string PresetKey { get => _explicitNullValuePresetKey; set { _explicitNullValuePresetKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preset_key"); else _explicitNullProperties?.Remove("preset_key"); } }
+        private string _explicitNullValuePresetKey = default!;
 #endif
         /// <summary>True when this call restarted a live kernel to apply a new size. Restarting discards every materialized dataframe, so cells that referenced one must run again.</summary>
-        public bool? Restarted { get; set; }
+        public bool? Restarted { get => _explicitNullValueRestarted; set { _explicitNullValueRestarted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restarted"); else _explicitNullProperties?.Remove("restarted"); } }
+        private bool? _explicitNullValueRestarted = default!;
         /// <summary>True when a kernel is live and this call did not restart it, so the running sandbox may not match the saved config. A resize restarts the kernel and reports False on success, or True if that restart fails. An idle-timeout change and a no-op on a live kernel also report True.</summary>
-        public bool? RestartRequired { get; set; }
+        public bool? RestartRequired { get => _explicitNullValueRestartRequired; set { _explicitNullValueRestartRequired = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restart_required"); else _explicitNullProperties?.Remove("restart_required"); } }
+        private bool? _explicitNullValueRestartRequired = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfigResponse"/> and sets the default values.
         /// </summary>
@@ -49,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfigResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfigResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelConfigResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("preset_key", PresetKey);
             writer.WriteBoolValue("restarted", Restarted);
             writer.WriteBoolValue("restart_required", RestartRequired);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

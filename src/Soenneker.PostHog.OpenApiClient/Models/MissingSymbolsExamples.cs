@@ -11,22 +11,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MissingSymbolsExamples : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("exceptions_loaded") is { } nullNodeExceptionsLoaded && nullNodeExceptionsLoaded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExceptionsLoaded = null;
+            if (parseNode.GetChildNode("lookback_hours") is { } nullNodeLookbackHours && nullNodeLookbackHours.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackHours = null;
+            if (parseNode.GetChildNode("platform") is { } nullNodePlatform && nullNodePlatform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Platform = null;
+            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the exception lookup failed, so `issues` and `example_exception` are unknown, not empty.</summary>
-        public bool? ExceptionsLoaded { get; set; }
+        public bool? ExceptionsLoaded { get => _explicitNullValueExceptionsLoaded; set { _explicitNullValueExceptionsLoaded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exceptions_loaded"); else _explicitNullProperties?.Remove("exceptions_loaded"); } }
+        private bool? _explicitNullValueExceptionsLoaded = default!;
         /// <summary>How many hours of recent stack frames the examples cover.</summary>
-        public int? LookbackHours { get; set; }
+        public int? LookbackHours { get => _explicitNullValueLookbackHours; set { _explicitNullValueLookbackHours = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_hours"); else _explicitNullProperties?.Remove("lookback_hours"); } }
+        private int? _explicitNullValueLookbackHours = default!;
         /// <summary>* `javascript` - JavaScript* `java` - Android* `native` - iOS and native</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform? Platform { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform? Platform { get => _explicitNullValuePlatform; set { _explicitNullValuePlatform = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("platform"); else _explicitNullProperties?.Remove("platform"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform? _explicitNullValuePlatform = default!;
         /// <summary>The files and builds with the most frames missing symbols, most frames first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample>? Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample> Results { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample> _explicitNullValueResults = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamples"/> and sets the default values.
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamples CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamples();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamples(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("lookback_hours", LookbackHours);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform>("platform", Platform);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample>("results", Results);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

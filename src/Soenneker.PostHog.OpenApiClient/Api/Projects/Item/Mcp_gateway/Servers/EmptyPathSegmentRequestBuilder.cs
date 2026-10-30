@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Servers
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedMcpGatewayServerList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedMcpGatewayServerList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedMcpGatewayServerList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedMcpGatewayServerList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The team&apos;s gateway server registry. The registry is sparse: rows appearthrough the install/share/OAuth-start flows in views.py, or when an admintoggles an untouched catalog template here (`set_template_enabled`).Servers with no row follow the team config&apos;s `default_servers_enabled`.

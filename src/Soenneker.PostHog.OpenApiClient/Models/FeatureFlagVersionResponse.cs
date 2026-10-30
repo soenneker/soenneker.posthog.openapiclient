@@ -12,34 +12,62 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FeatureFlagVersionResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active") is { } nullNodeActive && nullNodeActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Active = null;
+            if (parseNode.GetChildNode("bucketing_identifier") is { } nullNodeBucketingIdentifier && nullNodeBucketingIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketingIdentifier = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("ensure_experience_continuity") is { } nullNodeEnsureExperienceContinuity && nullNodeEnsureExperienceContinuity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnsureExperienceContinuity = null;
+            if (parseNode.GetChildNode("evaluation_runtime") is { } nullNodeEvaluationRuntime && nullNodeEvaluationRuntime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationRuntime = null;
+            if (parseNode.GetChildNode("has_encrypted_payloads") is { } nullNodeHasEncryptedPayloads && nullNodeHasEncryptedPayloads.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEncryptedPayloads = null;
+            if (parseNode.GetChildNode("has_enriched_analytics") is { } nullNodeHasEnrichedAnalytics && nullNodeHasEnrichedAnalytics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEnrichedAnalytics = null;
+            if (parseNode.GetChildNode("is_remote_configuration") is { } nullNodeIsRemoteConfiguration && nullNodeIsRemoteConfiguration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsRemoteConfiguration = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("last_called_at") is { } nullNodeLastCalledAt && nullNodeLastCalledAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastCalledAt = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+        }
+
         /// <summary>The active property</summary>
-        public bool? Active { get; set; }
+        public bool? Active { get => _explicitNullValueActive; set { _explicitNullValueActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active"); else _explicitNullProperties?.Remove("active"); } }
+        private bool? _explicitNullValueActive = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifier used for bucketing users into rollout and variants* `distinct_id` - User ID (default)* `device_id` - Device ID</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseBucketingIdentifier? BucketingIdentifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseBucketingIdentifier? BucketingIdentifier { get => _explicitNullValueBucketingIdentifier; set { _explicitNullValueBucketingIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucketing_identifier"); else _explicitNullProperties?.Remove("bucketing_identifier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseBucketingIdentifier? _explicitNullValueBucketingIdentifier = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseBucketingIdentifier BucketingIdentifier { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseBucketingIdentifier BucketingIdentifier { get => _explicitNullValueBucketingIdentifier; set { _explicitNullValueBucketingIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucketing_identifier"); else _explicitNullProperties?.Remove("bucketing_identifier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseBucketingIdentifier _explicitNullValueBucketingIdentifier = default!;
 #endif
         /// <summary>The created_at property</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>The created_by property</summary>
         public int? CreatedBy { get; private set; }
         /// <summary>The deleted property</summary>
-        public bool? Deleted { get; set; }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        private bool? _explicitNullValueDeleted = default!;
         /// <summary>The ensure_experience_continuity property</summary>
-        public bool? EnsureExperienceContinuity { get; set; }
+        public bool? EnsureExperienceContinuity { get => _explicitNullValueEnsureExperienceContinuity; set { _explicitNullValueEnsureExperienceContinuity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ensure_experience_continuity"); else _explicitNullProperties?.Remove("ensure_experience_continuity"); } }
+        private bool? _explicitNullValueEnsureExperienceContinuity = default!;
         /// <summary>Specifies where this feature flag should be evaluated* `server` - Server* `client` - Client* `all` - All</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseEvaluationRuntime? EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseEvaluationRuntime? EvaluationRuntime { get => _explicitNullValueEvaluationRuntime; set { _explicitNullValueEvaluationRuntime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_runtime"); else _explicitNullProperties?.Remove("evaluation_runtime"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseEvaluationRuntime? _explicitNullValueEvaluationRuntime = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseEvaluationRuntime EvaluationRuntime { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseEvaluationRuntime EvaluationRuntime { get => _explicitNullValueEvaluationRuntime; set { _explicitNullValueEvaluationRuntime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_runtime"); else _explicitNullProperties?.Remove("evaluation_runtime"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseEvaluationRuntime _explicitNullValueEvaluationRuntime = default!;
 #endif
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,37 +78,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponseFiltersProperty Filters { get; private set; }
 #endif
         /// <summary>The has_encrypted_payloads property</summary>
-        public bool? HasEncryptedPayloads { get; set; }
+        public bool? HasEncryptedPayloads { get => _explicitNullValueHasEncryptedPayloads; set { _explicitNullValueHasEncryptedPayloads = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_encrypted_payloads"); else _explicitNullProperties?.Remove("has_encrypted_payloads"); } }
+        private bool? _explicitNullValueHasEncryptedPayloads = default!;
         /// <summary>The has_enriched_analytics property</summary>
-        public bool? HasEnrichedAnalytics { get; set; }
+        public bool? HasEnrichedAnalytics { get => _explicitNullValueHasEnrichedAnalytics; set { _explicitNullValueHasEnrichedAnalytics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_enriched_analytics"); else _explicitNullProperties?.Remove("has_enriched_analytics"); } }
+        private bool? _explicitNullValueHasEnrichedAnalytics = default!;
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>False for the current version; true for reconstructed historical versions.</summary>
         public bool? IsHistorical { get; private set; }
         /// <summary>The is_remote_configuration property</summary>
-        public bool? IsRemoteConfiguration { get; set; }
+        public bool? IsRemoteConfiguration { get => _explicitNullValueIsRemoteConfiguration; set { _explicitNullValueIsRemoteConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_remote_configuration"); else _explicitNullProperties?.Remove("is_remote_configuration"); } }
+        private bool? _explicitNullValueIsRemoteConfiguration = default!;
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get; set; }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string _explicitNullValueKey = default!;
 #endif
         /// <summary>Last time this feature flag was called (from $feature_flag_called events)</summary>
-        public DateTimeOffset? LastCalledAt { get; set; }
+        public DateTimeOffset? LastCalledAt { get => _explicitNullValueLastCalledAt; set { _explicitNullValueLastCalledAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_called_at"); else _explicitNullProperties?.Remove("last_called_at"); } }
+        private DateTimeOffset? _explicitNullValueLastCalledAt = default!;
         /// <summary>User from the activity log entry that produced this version.</summary>
         public int? ModifiedBy { get; private set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The version property</summary>
-        public int? Version { get; set; }
+        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private int? _explicitNullValueVersion = default!;
         /// <summary>The version_timestamp property</summary>
         public DateTimeOffset? VersionTimestamp { get; private set; }
         /// <summary>
@@ -98,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagVersionResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -149,6 +186,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_called_at", LastCalledAt);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("version", Version);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

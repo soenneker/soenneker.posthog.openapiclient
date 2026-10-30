@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Experiments.Setup_co
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Facts about this project that decide how to configure a new experiment.Returns the team&apos;s experiment defaults, which SDKs call feature flags, traffic on a targetsurface, the baseline of a candidate metric, how recent experiments were set up, and themost reused shared metrics. Each section has its own status, so a slow or failed readleaves the others valid. POST because the inputs describe a plan rather than a resource;the endpoint only reads.

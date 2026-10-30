@@ -11,23 +11,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsNaturalLanguageQueryResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("candidates") is { } nullNodeCandidates && nullNodeCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Candidates = null;
+            if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
+            if (parseNode.GetChildNode("dropped_count") is { } nullNodeDroppedCount && nullNodeDroppedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedCount = null;
+            if (parseNode.GetChildNode("ranked_by") is { } nullNodeRankedBy && nullNodeRankedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RankedBy = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Readings of the request, best first. Can be empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate>? Candidates { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate>? Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate>? _explicitNullValueCandidates = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate> Candidates { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate> Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate> _explicitNullValueCandidates = default!;
 #endif
         /// <summary>The first candidate&apos;s probability from the decision model. Null when it did not rank them.</summary>
-        public double? Confidence { get; set; }
+        public double? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
+        private double? _explicitNullValueConfidence = default!;
         /// <summary>Proposed readings dropped because they named a service or attribute key the project lacks.</summary>
-        public int? DroppedCount { get; set; }
+        public int? DroppedCount { get => _explicitNullValueDroppedCount; set { _explicitNullValueDroppedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_count"); else _explicitNullProperties?.Remove("dropped_count"); } }
+        private int? _explicitNullValueDroppedCount = default!;
         /// <summary>* `decision_model` - Decision Model* `proposal_order` - Proposal Order</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy? RankedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy? RankedBy { get => _explicitNullValueRankedBy; set { _explicitNullValueRankedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranked_by"); else _explicitNullProperties?.Remove("ranked_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy? _explicitNullValueRankedBy = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponse"/> and sets the default values.
         /// </summary>
@@ -43,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("confidence", Confidence);
             writer.WriteIntValue("dropped_count", DroppedCount);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy>("ranked_by", RankedBy);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

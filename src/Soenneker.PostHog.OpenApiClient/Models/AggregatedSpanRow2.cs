@@ -11,49 +11,108 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AggregatedSpanRow2 : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("avg_duration_nano") is { } nullNodeAvgDurationNano && nullNodeAvgDurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgDurationNano = null;
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("error_count") is { } nullNodeErrorCount && nullNodeErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCount = null;
+            if (parseNode.GetChildNode("health_reason") is { } nullNodeHealthReason && nullNodeHealthReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HealthReason = null;
+            if (parseNode.GetChildNode("health_status") is { } nullNodeHealthStatus && nullNodeHealthStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HealthStatus = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("p50_duration_nano") is { } nullNodeP50DurationNano && nullNodeP50DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P50DurationNano = null;
+            if (parseNode.GetChildNode("p95_duration_nano") is { } nullNodeP95DurationNano && nullNodeP95DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95DurationNano = null;
+            if (parseNode.GetChildNode("p999_duration_nano") is { } nullNodeP999DurationNano && nullNodeP999DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P999DurationNano = null;
+            if (parseNode.GetChildNode("p99_duration_nano") is { } nullNodeP99DurationNano && nullNodeP99DurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P99DurationNano = null;
+            if (parseNode.GetChildNode("service_name") is { } nullNodeServiceName && nullNodeServiceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceName = null;
+            if (parseNode.GetChildNode("sessions") is { } nullNodeSessions && nullNodeSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sessions = null;
+            if (parseNode.GetChildNode("spans_with_distinct_id") is { } nullNodeSpansWithDistinctId && nullNodeSpansWithDistinctId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpansWithDistinctId = null;
+            if (parseNode.GetChildNode("spans_with_session_id") is { } nullNodeSpansWithSessionId && nullNodeSpansWithSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpansWithSessionId = null;
+            if (parseNode.GetChildNode("total_duration_nano") is { } nullNodeTotalDurationNano && nullNodeTotalDurationNano.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalDurationNano = null;
+            if (parseNode.GetChildNode("users") is { } nullNodeUsers && nullNodeUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Users = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average span duration in nanoseconds.</summary>
-        public double? AvgDurationNano { get; set; }
+        public double? AvgDurationNano { get => _explicitNullValueAvgDurationNano; set { _explicitNullValueAvgDurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_duration_nano"); else _explicitNullProperties?.Remove("avg_duration_nano"); } }
+        private double? _explicitNullValueAvgDurationNano = default!;
         /// <summary>Number of spans matched in this group.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>Spans with OTel status code Error (status_code = 2).</summary>
-        public int? ErrorCount { get; set; }
+        public int? ErrorCount { get => _explicitNullValueErrorCount; set { _explicitNullValueErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_count"); else _explicitNullProperties?.Remove("error_count"); } }
+        private int? _explicitNullValueErrorCount = default!;
+        /// <summary>Short reason for `health_status`, such as `error rate 0.2% → 4.1%`. Empty when the status is ok.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? HealthReason { get => _explicitNullValueHealthReason; set { _explicitNullValueHealthReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_reason"); else _explicitNullProperties?.Remove("health_reason"); } }
+        private string? _explicitNullValueHealthReason = default!;
+#nullable restore
+#else
+        public string HealthReason { get => _explicitNullValueHealthReason; set { _explicitNullValueHealthReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_reason"); else _explicitNullProperties?.Remove("health_reason"); } }
+        private string _explicitNullValueHealthReason = default!;
+#endif
+        /// <summary>How this group compares with its baseline: regressed (error rate or p95 jumped), degraded (high error rate), new (no spans in the baseline), recovered, improved, or ok. Null unless the query set `includeHealth`.* `silent` - Silent* `regressed` - Regressed* `degraded` - Degraded* `new` - New* `recovered` - Recovered* `improved` - Improved* `ok` - Ok</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2HealthStatus? HealthStatus { get => _explicitNullValueHealthStatus; set { _explicitNullValueHealthStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_status"); else _explicitNullProperties?.Remove("health_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2HealthStatus? _explicitNullValueHealthStatus = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2HealthStatus HealthStatus { get => _explicitNullValueHealthStatus; set { _explicitNullValueHealthStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health_status"); else _explicitNullProperties?.Remove("health_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2HealthStatus _explicitNullValueHealthStatus = default!;
+#endif
         /// <summary>Span name (operation) for this group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Median span duration in nanoseconds.</summary>
-        public double? P50DurationNano { get; set; }
+        public double? P50DurationNano { get => _explicitNullValueP50DurationNano; set { _explicitNullValueP50DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p50_duration_nano"); else _explicitNullProperties?.Remove("p50_duration_nano"); } }
+        private double? _explicitNullValueP50DurationNano = default!;
         /// <summary>95th percentile span duration in nanoseconds.</summary>
-        public double? P95DurationNano { get; set; }
+        public double? P95DurationNano { get => _explicitNullValueP95DurationNano; set { _explicitNullValueP95DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_duration_nano"); else _explicitNullProperties?.Remove("p95_duration_nano"); } }
+        private double? _explicitNullValueP95DurationNano = default!;
         /// <summary>99.9th percentile span duration in nanoseconds.</summary>
-        public double? P999DurationNano { get; set; }
+        public double? P999DurationNano { get => _explicitNullValueP999DurationNano; set { _explicitNullValueP999DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p999_duration_nano"); else _explicitNullProperties?.Remove("p999_duration_nano"); } }
+        private double? _explicitNullValueP999DurationNano = default!;
         /// <summary>99th percentile span duration in nanoseconds.</summary>
-        public double? P99DurationNano { get; set; }
+        public double? P99DurationNano { get => _explicitNullValueP99DurationNano; set { _explicitNullValueP99DurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p99_duration_nano"); else _explicitNullProperties?.Remove("p99_duration_nano"); } }
+        private double? _explicitNullValueP99DurationNano = default!;
         /// <summary>Service that emitted the spans in this group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ServiceName { get; set; }
+        public string? ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string? _explicitNullValueServiceName = default!;
 #nullable restore
 #else
-        public string ServiceName { get; set; }
+        public string ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        private string _explicitNullValueServiceName = default!;
 #endif
         /// <summary>Estimated unique session IDs across this group&apos;s spans (HyperLogLog, about 1-2% error). Null unless the query set `includeImpact`.</summary>
-        public int? Sessions { get; set; }
+        public int? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
+        private int? _explicitNullValueSessions = default!;
         /// <summary>How many of this group&apos;s spans carry a person distinct ID under the team&apos;s configured or conventional attribute keys. Null unless the query set `includeImpact`.</summary>
-        public int? SpansWithDistinctId { get; set; }
+        public int? SpansWithDistinctId { get => _explicitNullValueSpansWithDistinctId; set { _explicitNullValueSpansWithDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spans_with_distinct_id"); else _explicitNullProperties?.Remove("spans_with_distinct_id"); } }
+        private int? _explicitNullValueSpansWithDistinctId = default!;
         /// <summary>How many of this group&apos;s spans carry a session ID under the team&apos;s configured or conventional attribute keys. Null unless the query set `includeImpact`.</summary>
-        public int? SpansWithSessionId { get; set; }
+        public int? SpansWithSessionId { get => _explicitNullValueSpansWithSessionId; set { _explicitNullValueSpansWithSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spans_with_session_id"); else _explicitNullProperties?.Remove("spans_with_session_id"); } }
+        private int? _explicitNullValueSpansWithSessionId = default!;
         /// <summary>Sum of span durations in nanoseconds.</summary>
-        public double? TotalDurationNano { get; set; }
+        public double? TotalDurationNano { get => _explicitNullValueTotalDurationNano; set { _explicitNullValueTotalDurationNano = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_duration_nano"); else _explicitNullProperties?.Remove("total_duration_nano"); } }
+        private double? _explicitNullValueTotalDurationNano = default!;
         /// <summary>Estimated unique person distinct IDs across this group&apos;s spans (HyperLogLog, about 1-2% error). Null unless the query set `includeImpact`.</summary>
-        public int? Users { get; set; }
+        public int? Users { get => _explicitNullValueUsers; set { _explicitNullValueUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("users"); else _explicitNullProperties?.Remove("users"); } }
+        private int? _explicitNullValueUsers = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2"/> and sets the default values.
         /// </summary>
@@ -69,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +141,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "avg_duration_nano", n => { AvgDurationNano = n.GetDoubleValue(); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "error_count", n => { ErrorCount = n.GetIntValue(); } },
+                { "health_reason", n => { HealthReason = n.GetStringValue(); } },
+                { "health_status", n => { HealthStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2HealthStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2HealthStatus.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "p50_duration_nano", n => { P50DurationNano = n.GetDoubleValue(); } },
                 { "p95_duration_nano", n => { P95DurationNano = n.GetDoubleValue(); } },
@@ -105,6 +166,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("avg_duration_nano", AvgDurationNano);
             writer.WriteIntValue("count", Count);
             writer.WriteIntValue("error_count", ErrorCount);
+            writer.WriteStringValue("health_reason", HealthReason);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregatedSpanRow2HealthStatus>("health_status", HealthStatus);
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("p50_duration_nano", P50DurationNano);
             writer.WriteDoubleValue("p95_duration_nano", P95DurationNano);
@@ -116,6 +179,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("spans_with_session_id", SpansWithSessionId);
             writer.WriteDoubleValue("total_duration_nano", TotalDurationNano);
             writer.WriteIntValue("users", Users);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

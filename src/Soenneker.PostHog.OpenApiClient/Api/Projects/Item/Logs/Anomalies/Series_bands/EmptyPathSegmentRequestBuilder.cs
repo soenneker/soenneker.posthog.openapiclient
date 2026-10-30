@@ -57,6 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Logs.Anomalies.Serie
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandsError.CreateFromDiscriminatorValue },
                 { "422", global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandsError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LogsSeriesBandsResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

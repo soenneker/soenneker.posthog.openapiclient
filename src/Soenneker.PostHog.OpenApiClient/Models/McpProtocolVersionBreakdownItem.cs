@@ -11,19 +11,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class McpProtocolVersionBreakdownItem : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("is_current") is { } nullNodeIsCurrent && nullNodeIsCurrent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsCurrent = null;
+            if (parseNode.GetChildNode("protocol_version") is { } nullNodeProtocolVersion && nullNodeProtocolVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProtocolVersion = null;
+            if (parseNode.GetChildNode("total_calls") is { } nullNodeTotalCalls && nullNodeTotalCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCalls = null;
+        }
+
         /// <summary>On the stateless 2026-07-28 revision or later, or the rolling draft.</summary>
-        public bool? IsCurrent { get; set; }
+        public bool? IsCurrent { get => _explicitNullValueIsCurrent; set { _explicitNullValueIsCurrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_current"); else _explicitNullProperties?.Remove("is_current"); } }
+        private bool? _explicitNullValueIsCurrent = default!;
         /// <summary>The protocol_version property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProtocolVersion { get; set; }
+        public string? ProtocolVersion { get => _explicitNullValueProtocolVersion; set { _explicitNullValueProtocolVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("protocol_version"); else _explicitNullProperties?.Remove("protocol_version"); } }
+        private string? _explicitNullValueProtocolVersion = default!;
 #nullable restore
 #else
-        public string ProtocolVersion { get; set; }
+        public string ProtocolVersion { get => _explicitNullValueProtocolVersion; set { _explicitNullValueProtocolVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("protocol_version"); else _explicitNullProperties?.Remove("protocol_version"); } }
+        private string _explicitNullValueProtocolVersion = default!;
 #endif
         /// <summary>The total_calls property</summary>
-        public int? TotalCalls { get; set; }
+        public int? TotalCalls { get => _explicitNullValueTotalCalls; set { _explicitNullValueTotalCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_calls"); else _explicitNullProperties?.Remove("total_calls"); } }
+        private int? _explicitNullValueTotalCalls = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -32,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.McpProtocolVersionBreakdownItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.McpProtocolVersionBreakdownItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.McpProtocolVersionBreakdownItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,7 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("is_current", IsCurrent);
             writer.WriteStringValue("protocol_version", ProtocolVersion);
-            writer.WriteIntValue("total_calls", TotalCalls);
+            writer.WriteIntValue("total_calls", TotalCalls);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

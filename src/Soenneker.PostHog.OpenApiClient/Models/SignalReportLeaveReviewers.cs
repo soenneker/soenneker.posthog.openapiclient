@@ -11,19 +11,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalReportLeaveReviewers : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("removal_note") is { } nullNodeRemovalNote && nullNodeRemovalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovalNote = null;
+            if (parseNode.GetChildNode("removal_reason") is { } nullNodeRemovalReason && nullNodeRemovalReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovalReason = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The user&apos;s own words for why, such as &quot;I&apos;m not on the payments team any more&quot;. Scouts read it when they route later reports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RemovalNote { get; set; }
+        public string? RemovalNote { get => _explicitNullValueRemovalNote; set { _explicitNullValueRemovalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_note"); else _explicitNullProperties?.Remove("removal_note"); } }
+        private string? _explicitNullValueRemovalNote = default!;
 #nullable restore
 #else
-        public string RemovalNote { get; set; }
+        public string RemovalNote { get => _explicitNullValueRemovalNote; set { _explicitNullValueRemovalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_note"); else _explicitNullProperties?.Remove("removal_note"); } }
+        private string _explicitNullValueRemovalNote = default!;
 #endif
         /// <summary>* `wrong_area` - Not their area* `already_covered` - Someone else is on it* `unavailable` - No bandwidth* `other` - Other</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportLeaveReviewersRemovalReason? RemovalReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportLeaveReviewersRemovalReason? RemovalReason { get => _explicitNullValueRemovalReason; set { _explicitNullValueRemovalReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_reason"); else _explicitNullProperties?.Remove("removal_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportLeaveReviewersRemovalReason? _explicitNullValueRemovalReason = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportLeaveReviewers"/> and sets the default values.
         /// </summary>
@@ -39,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportLeaveReviewers CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportLeaveReviewers();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportLeaveReviewers(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("removal_note", RemovalNote);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportLeaveReviewersRemovalReason>("removal_reason", RemovalReason);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

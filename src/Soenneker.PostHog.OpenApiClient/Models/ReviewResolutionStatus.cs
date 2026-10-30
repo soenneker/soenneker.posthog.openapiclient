@@ -11,19 +11,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewResolutionStatus : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("done") is { } nullNodeDone && nullNodeDone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Done = null;
+            if (parseNode.GetChildNode("fixed") is { } nullNodeFixed && nullNodeFixed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fixed = null;
+            if (parseNode.GetChildNode("needs_attention") is { } nullNodeNeedsAttention && nullNodeNeedsAttention.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsAttention = null;
+            if (parseNode.GetChildNode("resolution_status") is { } nullNodeResolutionStatus && nullNodeResolutionStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolutionStatus = null;
+            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Queued threads settled so far this run.</summary>
-        public int? Done { get; set; }
+        public int? Done { get => _explicitNullValueDone; set { _explicitNullValueDone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("done"); else _explicitNullProperties?.Remove("done"); } }
+        private int? _explicitNullValueDone = default!;
         /// <summary>Settled threads that were fixed with a commit to the branch.</summary>
-        public int? Fixed { get; set; }
+        public int? Fixed { get => _explicitNullValueFixed; set { _explicitNullValueFixed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fixed"); else _explicitNullProperties?.Remove("fixed"); } }
+        private int? _explicitNullValueFixed = default!;
         /// <summary>Settled threads left for the author: judged worth doing but not safe to fix unattended.</summary>
-        public int? NeedsAttention { get; set; }
+        public int? NeedsAttention { get => _explicitNullValueNeedsAttention; set { _explicitNullValueNeedsAttention = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_attention"); else _explicitNullProperties?.Remove("needs_attention"); } }
+        private int? _explicitNullValueNeedsAttention = default!;
         /// <summary>* `resolving` - resolving* `stopped` - stopped</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus? ResolutionStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus? ResolutionStatus { get => _explicitNullValueResolutionStatus; set { _explicitNullValueResolutionStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolution_status"); else _explicitNullProperties?.Remove("resolution_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus? _explicitNullValueResolutionStatus = default!;
         /// <summary>Threads queued for this run.</summary>
-        public int? Total { get; set; }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus"/> and sets the default values.
         /// </summary>
@@ -39,7 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("needs_attention", NeedsAttention);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatusResolutionStatus>("resolution_status", ResolutionStatus);
             writer.WriteIntValue("total", Total);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

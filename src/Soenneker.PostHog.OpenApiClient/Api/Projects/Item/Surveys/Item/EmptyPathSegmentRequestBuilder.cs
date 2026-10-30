@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Survey>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Survey.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.Survey>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.Survey.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveySerializerCreateUpdateOnly.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gatedecorator on serializer methods and converts them into the same responses the viewset pathproduces (see decorators._result_to_response), so both paths share one contract.

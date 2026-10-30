@@ -11,13 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentMetricOutlierHandling : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ignore_zeros") is { } nullNodeIgnoreZeros && nullNodeIgnoreZeros.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IgnoreZeros = null;
+            if (parseNode.GetChildNode("lower_bound_percentile") is { } nullNodeLowerBoundPercentile && nullNodeLowerBoundPercentile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LowerBoundPercentile = null;
+            if (parseNode.GetChildNode("upper_bound_percentile") is { } nullNodeUpperBoundPercentile && nullNodeUpperBoundPercentile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpperBoundPercentile = null;
+        }
+
         /// <summary>The ignore_zeros property</summary>
-        public bool? IgnoreZeros { get; set; }
+        public bool? IgnoreZeros { get => _explicitNullValueIgnoreZeros; set { _explicitNullValueIgnoreZeros = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ignore_zeros"); else _explicitNullProperties?.Remove("ignore_zeros"); } }
+        private bool? _explicitNullValueIgnoreZeros = default!;
         /// <summary>Winsorization lower percentile bound, as a fraction in [0, 1] (e.g. 0.01 for the 1st percentile).</summary>
-        public double? LowerBoundPercentile { get; set; }
+        public double? LowerBoundPercentile { get => _explicitNullValueLowerBoundPercentile; set { _explicitNullValueLowerBoundPercentile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lower_bound_percentile"); else _explicitNullProperties?.Remove("lower_bound_percentile"); } }
+        private double? _explicitNullValueLowerBoundPercentile = default!;
         /// <summary>Winsorization upper percentile bound, as a fraction in [0, 1] (e.g. 0.99 for the 99th percentile).</summary>
-        public double? UpperBoundPercentile { get; set; }
+        public double? UpperBoundPercentile { get => _explicitNullValueUpperBoundPercentile; set { _explicitNullValueUpperBoundPercentile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upper_bound_percentile"); else _explicitNullProperties?.Remove("upper_bound_percentile"); } }
+        private double? _explicitNullValueUpperBoundPercentile = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -26,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("ignore_zeros", IgnoreZeros);
             writer.WriteDoubleValue("lower_bound_percentile", LowerBoundPercentile);
-            writer.WriteDoubleValue("upper_bound_percentile", UpperBoundPercentile);
+            writer.WriteDoubleValue("upper_bound_percentile", UpperBoundPercentile);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

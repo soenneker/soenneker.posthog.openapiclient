@@ -11,61 +11,90 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WorkflowImportRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("campaigns") is { } nullNodeCampaigns && nullNodeCampaigns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Campaigns = null;
+            if (parseNode.GetChildNode("dry_run") is { } nullNodeDryRun && nullNodeDryRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DryRun = null;
+            if (parseNode.GetChildNode("layouts") is { } nullNodeLayouts && nullNodeLayouts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Layouts = null;
+            if (parseNode.GetChildNode("segment_cohorts") is { } nullNodeSegmentCohorts && nullNodeSegmentCohorts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SegmentCohorts = null;
+            if (parseNode.GetChildNode("segments") is { } nullNodeSegments && nullNodeSegments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Segments = null;
+            if (parseNode.GetChildNode("sender_identities") is { } nullNodeSenderIdentities && nullNodeSenderIdentities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SenderIdentities = null;
+            if (parseNode.GetChildNode("snippets") is { } nullNodeSnippets && nullNodeSnippets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snippets = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The automations to import, at most 50. People are never read from these objects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign>? Campaigns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign>? Campaigns { get => _explicitNullValueCampaigns; set { _explicitNullValueCampaigns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaigns"); else _explicitNullProperties?.Remove("campaigns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign>? _explicitNullValueCampaigns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign> Campaigns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign> Campaigns { get => _explicitNullValueCampaigns; set { _explicitNullValueCampaigns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("campaigns"); else _explicitNullProperties?.Remove("campaigns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioCampaign> _explicitNullValueCampaigns = default!;
 #endif
         /// <summary>When true, translate and check the automations but save nothing, to preview the import.</summary>
-        public bool? DryRun { get; set; }
+        public bool? DryRun { get => _explicitNullValueDryRun; set { _explicitNullValueDryRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dry_run"); else _explicitNullProperties?.Remove("dry_run"); } }
+        private bool? _explicitNullValueDryRun = default!;
         /// <summary>Customer.io layout id to the layout&apos;s `body`, from `GET /v1/environments/{environment_id}/layouts/{layout_id}`. An email whose template names a `layout_id` is wrapped in that layout at `{{ content }}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestLayoutsProperty? Layouts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestLayoutsProperty? Layouts { get => _explicitNullValueLayouts; set { _explicitNullValueLayouts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layouts"); else _explicitNullProperties?.Remove("layouts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestLayoutsProperty? _explicitNullValueLayouts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestLayoutsProperty Layouts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestLayoutsProperty Layouts { get => _explicitNullValueLayouts; set { _explicitNullValueLayouts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layouts"); else _explicitNullProperties?.Remove("layouts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestLayoutsProperty _explicitNullValueLayouts = default!;
 #endif
         /// <summary>Customer.io segment id to the PostHog cohort that replaces it. Segment triggers and segment conditions with no cohort here are left for the team to set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSegmentCohortsProperty? SegmentCohorts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSegmentCohortsProperty? SegmentCohorts { get => _explicitNullValueSegmentCohorts; set { _explicitNullValueSegmentCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segment_cohorts"); else _explicitNullProperties?.Remove("segment_cohorts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSegmentCohortsProperty? _explicitNullValueSegmentCohorts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSegmentCohortsProperty SegmentCohorts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSegmentCohortsProperty SegmentCohorts { get => _explicitNullValueSegmentCohorts; set { _explicitNullValueSegmentCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segment_cohorts"); else _explicitNullProperties?.Remove("segment_cohorts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSegmentCohortsProperty _explicitNullValueSegmentCohorts = default!;
 #endif
         /// <summary>Customer.io segment ids, names and types, without members, so the notes can name each segment and flag static ones.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSegment>? Segments { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSegment>? Segments { get => _explicitNullValueSegments; set { _explicitNullValueSegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segments"); else _explicitNullProperties?.Remove("segments"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSegment>? _explicitNullValueSegments = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSegment> Segments { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSegment> Segments { get => _explicitNullValueSegments; set { _explicitNullValueSegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segments"); else _explicitNullProperties?.Remove("segments"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSegment> _explicitNullValueSegments = default!;
 #endif
         /// <summary>Customer.io sender identities, from `GET /v1/environments/{environment_id}/identities?type=email`. Each email gets the PostHog sender with the same address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSenderIdentity>? SenderIdentities { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSenderIdentity>? SenderIdentities { get => _explicitNullValueSenderIdentities; set { _explicitNullValueSenderIdentities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sender_identities"); else _explicitNullProperties?.Remove("sender_identities"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSenderIdentity>? _explicitNullValueSenderIdentities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSenderIdentity> SenderIdentities { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSenderIdentity> SenderIdentities { get => _explicitNullValueSenderIdentities; set { _explicitNullValueSenderIdentities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sender_identities"); else _explicitNullProperties?.Remove("sender_identities"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSenderIdentity> _explicitNullValueSenderIdentities = default!;
 #endif
-        /// <summary>Customer.io snippet name to its content, inlined where a message uses `{% snippet &quot;name&quot; %}`.</summary>
+        /// <summary>Customer.io snippet name to its content, inlined where a message uses `{{ snippets.name }}`. When PostHog reads the message content with a stored Customer.io App API key, it reads the snippets too.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSnippetsProperty? Snippets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSnippetsProperty? Snippets { get => _explicitNullValueSnippets; set { _explicitNullValueSnippets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snippets"); else _explicitNullProperties?.Remove("snippets"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSnippetsProperty? _explicitNullValueSnippets = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSnippetsProperty Snippets { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSnippetsProperty Snippets { get => _explicitNullValueSnippets; set { _explicitNullValueSnippets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snippets"); else _explicitNullProperties?.Remove("snippets"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSnippetsProperty _explicitNullValueSnippets = default!;
 #endif
         /// <summary>* `customerio` - Customer.io</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSource? _explicitNullValueSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequest"/> and sets the default values.
         /// </summary>
@@ -82,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -117,6 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomerioSenderIdentity>("sender_identities", SenderIdentities);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSnippetsProperty>("snippets", Snippets);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowImportRequestSource>("source", Source);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

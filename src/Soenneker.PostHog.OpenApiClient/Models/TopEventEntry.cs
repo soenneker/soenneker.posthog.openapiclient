@@ -12,43 +12,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TopEventEntry : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("distinct_users") is { } nullNodeDistinctUsers && nullNodeDistinctUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctUsers = null;
+            if (parseNode.GetChildNode("event") is { } nullNodeEvent && nullNodeEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Event = null;
+            if (parseNode.GetChildNode("first_seen_in_window") is { } nullNodeFirstSeenInWindow && nullNodeFirstSeenInWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstSeenInWindow = null;
+            if (parseNode.GetChildNode("last_seen_in_window") is { } nullNodeLastSeenInWindow && nullNodeLastSeenInWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeenInWindow = null;
+            if (parseNode.GetChildNode("recent_24h_count") is { } nullNodeRecent24hCount && nullNodeRecent24hCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recent24hCount = null;
+            if (parseNode.GetChildNode("recent_24h_users") is { } nullNodeRecent24hUsers && nullNodeRecent24hUsers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recent24hUsers = null;
+            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of occurrences within the last `window_days` (windowed, not lifetime).</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>`uniq(person_id)` over the window — reach. Distinguishes a high-count event firing on one power user from one firing on many users.</summary>
-        public int? DistinctUsers { get; set; }
+        public int? DistinctUsers { get => _explicitNullValueDistinctUsers; set { _explicitNullValueDistinctUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_users"); else _explicitNullProperties?.Remove("distinct_users"); } }
+        private int? _explicitNullValueDistinctUsers = default!;
         /// <summary>Event name as captured.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Event { get; set; }
+        public string? Event { get => _explicitNullValueEvent; set { _explicitNullValueEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event"); else _explicitNullProperties?.Remove("event"); } }
+        private string? _explicitNullValueEvent = default!;
 #nullable restore
 #else
-        public string Event { get; set; }
+        public string Event { get => _explicitNullValueEvent; set { _explicitNullValueEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event"); else _explicitNullProperties?.Remove("event"); } }
+        private string _explicitNullValueEvent = default!;
 #endif
         /// <summary>ISO-8601 timestamp of the earliest occurrence within the `window_days` window. Compare to the window start to spot new event types: close to `now` ⇒ likely new or recently bursting; close to the window edge ⇒ has been around at least that long (the window can&apos;t tell you when the event *truly* first appeared).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstSeenInWindow { get; set; }
+        public string? FirstSeenInWindow { get => _explicitNullValueFirstSeenInWindow; set { _explicitNullValueFirstSeenInWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen_in_window"); else _explicitNullProperties?.Remove("first_seen_in_window"); } }
+        private string? _explicitNullValueFirstSeenInWindow = default!;
 #nullable restore
 #else
-        public string FirstSeenInWindow { get; set; }
+        public string FirstSeenInWindow { get => _explicitNullValueFirstSeenInWindow; set { _explicitNullValueFirstSeenInWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen_in_window"); else _explicitNullProperties?.Remove("first_seen_in_window"); } }
+        private string _explicitNullValueFirstSeenInWindow = default!;
 #endif
         /// <summary>ISO-8601 timestamp of the most recent occurrence within the `window_days` window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastSeenInWindow { get; set; }
+        public string? LastSeenInWindow { get => _explicitNullValueLastSeenInWindow; set { _explicitNullValueLastSeenInWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen_in_window"); else _explicitNullProperties?.Remove("last_seen_in_window"); } }
+        private string? _explicitNullValueLastSeenInWindow = default!;
 #nullable restore
 #else
-        public string LastSeenInWindow { get; set; }
+        public string LastSeenInWindow { get => _explicitNullValueLastSeenInWindow; set { _explicitNullValueLastSeenInWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen_in_window"); else _explicitNullProperties?.Remove("last_seen_in_window"); } }
+        private string _explicitNullValueLastSeenInWindow = default!;
 #endif
         /// <summary>Count in just the last 24 hours. Compare to `count / window_days` to spot bursts: a ratio well above `1 / window_days` means the event is concentrated in the last day.</summary>
-        public int? Recent24hCount { get; set; }
+        public int? Recent24hCount { get => _explicitNullValueRecent24hCount; set { _explicitNullValueRecent24hCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_24h_count"); else _explicitNullProperties?.Remove("recent_24h_count"); } }
+        private int? _explicitNullValueRecent24hCount = default!;
         /// <summary>`uniq(person_id)` over just the last 24 hours. A burst across many users is qualitatively different from one user in a loop.</summary>
-        public int? Recent24hUsers { get; set; }
+        public int? Recent24hUsers { get => _explicitNullValueRecent24hUsers; set { _explicitNullValueRecent24hUsers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_24h_users"); else _explicitNullProperties?.Remove("recent_24h_users"); } }
+        private int? _explicitNullValueRecent24hUsers = default!;
         /// <summary>Rolling lookback window (in days) that every count and timestamp on this row is measured over — these are windowed figures, NOT lifetime totals. A capture gap can collapse a real, high-volume project&apos;s in-window counts to near-zero, so a thin `count` here does not by itself mean the project is low-volume: rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before closing out a surface as unused.</summary>
-        public int? WindowDays { get; set; }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry"/> and sets the default values.
         /// </summary>
@@ -64,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -99,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("recent_24h_count", Recent24hCount);
             writer.WriteIntValue("recent_24h_users", Recent24hUsers);
             writer.WriteIntValue("window_days", WindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

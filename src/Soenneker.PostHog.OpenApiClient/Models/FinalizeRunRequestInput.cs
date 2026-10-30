@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FinalizeRunRequestInput : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("add_images_to_comment_on_pr") is { } nullNodeAddImagesToCommentOnPr && nullNodeAddImagesToCommentOnPr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AddImagesToCommentOnPr = null;
+            if (parseNode.GetChildNode("approve_all") is { } nullNodeApproveAll && nullNodeApproveAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApproveAll = null;
+            if (parseNode.GetChildNode("commit_to_github") is { } nullNodeCommitToGithub && nullNodeCommitToGithub.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CommitToGithub = null;
+        }
+
         /// <summary>Whether to embed the before/after snapshot images in the post-approval PR comment. The comment itself is posted when the repo has PR comments enabled and `commit_to_github` is true: it updates the run&apos;s review prompt when the run has one, and posts a new comment when it does not. This flag only controls the images. Defaults false — the comment stays a text summary unless the reviewer opts in to attach the snapshots.</summary>
-        public bool? AddImagesToCommentOnPr { get; set; }
+        public bool? AddImagesToCommentOnPr { get => _explicitNullValueAddImagesToCommentOnPr; set { _explicitNullValueAddImagesToCommentOnPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add_images_to_comment_on_pr"); else _explicitNullProperties?.Remove("add_images_to_comment_on_pr"); } }
+        private bool? _explicitNullValueAddImagesToCommentOnPr = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Approve every still-pending changed and new snapshot before finalizing (tolerated snapshots are left untouched). Leave false to finalize a run you&apos;ve already reviewed — finalizing fails if any changed/new snapshot is still unreviewed.</summary>
-        public bool? ApproveAll { get; set; }
+        public bool? ApproveAll { get => _explicitNullValueApproveAll; set { _explicitNullValueApproveAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approve_all"); else _explicitNullProperties?.Remove("approve_all"); } }
+        private bool? _explicitNullValueApproveAll = default!;
         /// <summary>Whether the server commits the approved baseline to the PR branch and greens the gate (the normal path — leave true). Set false only for tooling that commits the baseline itself: the server skips the commit and returns the signed YAML in `baseline_content` instead. With false, the gate is NOT greened, `metadata.baseline_commit_sha` is absent, and no post-approval PR comment is posted.</summary>
-        public bool? CommitToGithub { get; set; }
+        public bool? CommitToGithub { get => _explicitNullValueCommitToGithub; set { _explicitNullValueCommitToGithub = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("commit_to_github"); else _explicitNullProperties?.Remove("commit_to_github"); } }
+        private bool? _explicitNullValueCommitToGithub = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FinalizeRunRequestInput"/> and sets the default values.
         /// </summary>
@@ -38,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FinalizeRunRequestInput CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FinalizeRunRequestInput();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FinalizeRunRequestInput(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("add_images_to_comment_on_pr", AddImagesToCommentOnPr);
             writer.WriteBoolValue("approve_all", ApproveAll);
             writer.WriteBoolValue("commit_to_github", CommitToGithub);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

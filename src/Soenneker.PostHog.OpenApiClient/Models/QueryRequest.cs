@@ -11,52 +11,80 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QueryRequest : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("async") is { } nullNodeAsync && nullNodeAsync.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Async = null;
+            if (parseNode.GetChildNode("client_query_id") is { } nullNodeClientQueryId && nullNodeClientQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientQueryId = null;
+            if (parseNode.GetChildNode("filters_override") is { } nullNodeFiltersOverride && nullNodeFiltersOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FiltersOverride = null;
+            if (parseNode.GetChildNode("limit_context") is { } nullNodeLimitContext && nullNodeLimitContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitContext = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("refresh") is { } nullNodeRefresh && nullNodeRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Refresh = null;
+            if (parseNode.GetChildNode("variables_override") is { } nullNodeVariablesOverride && nullNodeVariablesOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariablesOverride = null;
+        }
+
         /// <summary>The async property</summary>
-        public bool? Async { get; set; }
+        public bool? Async { get => _explicitNullValueAsync; set { _explicitNullValueAsync = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("async"); else _explicitNullProperties?.Remove("async"); } }
+        private bool? _explicitNullValueAsync = default!;
         /// <summary>Client provided query ID. Can be used to retrieve the status or cancel the query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientQueryId { get; set; }
+        public string? ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
+        private string? _explicitNullValueClientQueryId = default!;
 #nullable restore
 #else
-        public string ClientQueryId { get; set; }
+        public string ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
+        private string _explicitNullValueClientQueryId = default!;
 #endif
         /// <summary>The filters_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? FiltersOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? _explicitNullValueFiltersOverride = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter _explicitNullValueFiltersOverride = default!;
 #endif
         /// <summary>Limit context for the query. Only &apos;posthog_ai&apos; is allowed as a client-provided value.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get => _explicitNullValueLimitContext; set { _explicitNullValueLimitContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_context"); else _explicitNullProperties?.Remove("limit_context"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? _explicitNullValueLimitContext = default!;
         /// <summary>Name given to a query. It&apos;s used to identify the query in the UI. Up to 128 characters for a name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Submit a JSON string representing a query for PostHog data analysis, for example a HogQL query.Example payload:```{&quot;query&quot;: {&quot;kind&quot;: &quot;HogQLQuery&quot;, &quot;query&quot;: &quot;select * from events limit 100&quot;}}```For more details on HogQL queries, see the [PostHog HogQL documentation](/docs/hogql#api-access).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery? Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery Query { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery _explicitNullValueQuery = default!;
 #endif
         /// <summary>Whether results should be calculated sync or async, and how much to rely on the cache:- `&apos;blocking&apos;` - calculate synchronously (returning only when the query is done), UNLESS there are very fresh results in the cache- `&apos;async&apos;` - kick off background calculation (returning immediately with a query status), UNLESS there are very fresh results in the cache- `&apos;lazy_async&apos;` - kick off background calculation, UNLESS there are somewhat fresh results in the cache- `&apos;force_blocking&apos;` - calculate synchronously, even if fresh results are already cached- `&apos;force_async&apos;` - kick off background calculation, even if fresh results are already cached- `&apos;force_cache&apos;` - return cached data or a cache miss; always completes immediately as it never calculates Background calculation can be tracked using the `query_status` response field.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? Refresh { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? Refresh { get => _explicitNullValueRefresh; set { _explicitNullValueRefresh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh"); else _explicitNullProperties?.Remove("refresh"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? _explicitNullValueRefresh = default!;
         /// <summary>The variables_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty? VariablesOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty? VariablesOverride { get => _explicitNullValueVariablesOverride; set { _explicitNullValueVariablesOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables_override"); else _explicitNullProperties?.Remove("variables_override"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty? _explicitNullValueVariablesOverride = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty VariablesOverride { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty VariablesOverride { get => _explicitNullValueVariablesOverride; set { _explicitNullValueVariablesOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables_override"); else _explicitNullProperties?.Remove("variables_override"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty _explicitNullValueVariablesOverride = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -66,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.QueryRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -100,7 +128,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestQuery>("query", Query);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>("refresh", Refresh);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty>("variables_override", VariablesOverride);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryRequestVariablesOverrideProperty>("variables_override", VariablesOverride);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

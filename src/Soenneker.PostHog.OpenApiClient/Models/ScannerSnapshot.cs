@@ -12,54 +12,82 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScannerSnapshot : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("emits_signals") is { } nullNodeEmitsSignals && nullNodeEmitsSignals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmitsSignals = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("provider") is { } nullNodeProvider && nullNodeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Provider = null;
+            if (parseNode.GetChildNode("scanner_config") is { } nullNodeScannerConfig && nullNodeScannerConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerConfig = null;
+            if (parseNode.GetChildNode("scanner_type") is { } nullNodeScannerType && nullNodeScannerType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerType = null;
+            if (parseNode.GetChildNode("scanner_version") is { } nullNodeScannerVersion && nullNodeScannerVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerVersion = null;
+            if (parseNode.GetChildNode("variant_sampling_rates") is { } nullNodeVariantSamplingRates && nullNodeVariantSamplingRates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantSamplingRates = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the observation was run with Signal emission enabled.</summary>
-        public bool? EmitsSignals { get; set; }
+        public bool? EmitsSignals { get => _explicitNullValueEmitsSignals; set { _explicitNullValueEmitsSignals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emits_signals"); else _explicitNullProperties?.Remove("emits_signals"); } }
+        private bool? _explicitNullValueEmitsSignals = default!;
         /// <summary>Concrete model that ran the observation; historical rows may carry since-retired model ids.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Scanner name at run time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Concrete provider that ran the observation; historical rows may carry since-retired providers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Provider { get; set; }
+        public string? Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        private string? _explicitNullValueProvider = default!;
 #nullable restore
 #else
-        public string Provider { get; set; }
+        public string Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        private string _explicitNullValueProvider = default!;
 #endif
         /// <summary>Scanner-type-specific configuration at run time (prompt, tags, scale, etc.).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ScannerConfig { get; set; }
+        public UntypedNode? ScannerConfig { get => _explicitNullValueScannerConfig; set { _explicitNullValueScannerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_config"); else _explicitNullProperties?.Remove("scanner_config"); } }
+        private UntypedNode? _explicitNullValueScannerConfig = default!;
 #nullable restore
 #else
-        public UntypedNode ScannerConfig { get; set; }
+        public UntypedNode ScannerConfig { get => _explicitNullValueScannerConfig; set { _explicitNullValueScannerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_config"); else _explicitNullProperties?.Remove("scanner_config"); } }
+        private UntypedNode _explicitNullValueScannerConfig = default!;
 #endif
         /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType? ScannerType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType? ScannerType { get => _explicitNullValueScannerType; set { _explicitNullValueScannerType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_type"); else _explicitNullProperties?.Remove("scanner_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType? _explicitNullValueScannerType = default!;
         /// <summary>The `ReplayScanner.scanner_version` value at the moment the workflow ran.</summary>
-        public int? ScannerVersion { get; set; }
+        public int? ScannerVersion { get => _explicitNullValueScannerVersion; set { _explicitNullValueScannerVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_version"); else _explicitNullProperties?.Remove("scanner_version"); } }
+        private int? _explicitNullValueScannerVersion = default!;
         /// <summary>Experiment scanners with balanced sampling: the 0..1 rate each watched variant was sampled at by the tick that dispatched this scan. Null otherwise, so even per-variant counts can be read against the rates that produced them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty? VariantSamplingRates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty? VariantSamplingRates { get => _explicitNullValueVariantSamplingRates; set { _explicitNullValueVariantSamplingRates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_sampling_rates"); else _explicitNullProperties?.Remove("variant_sampling_rates"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty? _explicitNullValueVariantSamplingRates = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty VariantSamplingRates { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty VariantSamplingRates { get => _explicitNullValueVariantSamplingRates; set { _explicitNullValueVariantSamplingRates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_sampling_rates"); else _explicitNullProperties?.Remove("variant_sampling_rates"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty _explicitNullValueVariantSamplingRates = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot"/> and sets the default values.
@@ -76,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -111,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotScannerType>("scanner_type", ScannerType);
             writer.WriteIntValue("scanner_version", ScannerVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshotVariantSamplingRatesProperty>("variant_sampling_rates", VariantSamplingRates);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

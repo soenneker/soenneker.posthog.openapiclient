@@ -11,26 +11,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class IdentityProviderConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("config_scope") is { } nullNodeConfigScope && nullNodeConfigScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigScope = null;
+            if (parseNode.GetChildNode("domain_scope") is { } nullNodeDomainScope && nullNodeDomainScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DomainScope = null;
+            if (parseNode.GetChildNode("id_jag_allowed_clients") is { } nullNodeIdJagAllowedClients && nullNodeIdJagAllowedClients.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdJagAllowedClients = null;
+            if (parseNode.GetChildNode("id_jag_issuer_url") is { } nullNodeIdJagIssuerUrl && nullNodeIdJagIssuerUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdJagIssuerUrl = null;
+            if (parseNode.GetChildNode("id_jag_jwks_url") is { } nullNodeIdJagJwksUrl && nullNodeIdJagJwksUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdJagJwksUrl = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("oidc_client_id") is { } nullNodeOidcClientId && nullNodeOidcClientId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OidcClientId = null;
+            if (parseNode.GetChildNode("oidc_client_secret") is { } nullNodeOidcClientSecret && nullNodeOidcClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OidcClientSecret = null;
+            if (parseNode.GetChildNode("oidc_issuer_url") is { } nullNodeOidcIssuerUrl && nullNodeOidcIssuerUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OidcIssuerUrl = null;
+            if (parseNode.GetChildNode("organization_domain_ids") is { } nullNodeOrganizationDomainIds && nullNodeOrganizationDomainIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationDomainIds = null;
+            if (parseNode.GetChildNode("saml_acs_url") is { } nullNodeSamlAcsUrl && nullNodeSamlAcsUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamlAcsUrl = null;
+            if (parseNode.GetChildNode("saml_entity_id") is { } nullNodeSamlEntityId && nullNodeSamlEntityId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamlEntityId = null;
+            if (parseNode.GetChildNode("saml_x509_cert") is { } nullNodeSamlX509Cert && nullNodeSamlX509Cert.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamlX509Cert = null;
+            if (parseNode.GetChildNode("scim_enabled") is { } nullNodeScimEnabled && nullNodeScimEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScimEnabled = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Feature configured by this identity provider configuration.* `saml` - Saml* `oidc` - Oidc* `scim` - Scim* `xaa` - Xaa</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope? ConfigScope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope? ConfigScope { get => _explicitNullValueConfigScope; set { _explicitNullValueConfigScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_scope"); else _explicitNullProperties?.Remove("config_scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope? _explicitNullValueConfigScope = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope ConfigScope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope ConfigScope { get => _explicitNullValueConfigScope; set { _explicitNullValueConfigScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_scope"); else _explicitNullProperties?.Remove("config_scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigConfigScope _explicitNullValueConfigScope = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>Domains this configuration applies to. An unset value behaves like selected domains.* `all` - All* `selected` - Selected</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope? DomainScope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope? DomainScope { get => _explicitNullValueDomainScope; set { _explicitNullValueDomainScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain_scope"); else _explicitNullProperties?.Remove("domain_scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope? _explicitNullValueDomainScope = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope DomainScope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope DomainScope { get => _explicitNullValueDomainScope; set { _explicitNullValueDomainScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain_scope"); else _explicitNullProperties?.Remove("domain_scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigDomainScope _explicitNullValueDomainScope = default!;
 #endif
         /// <summary>Whether ID-JAG (XAA) is configured on this config.</summary>
         public bool? HasIdJag { get; private set; }
@@ -47,82 +72,102 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Allowed ID-JAG client IDs. Empty list allows any client_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? IdJagAllowedClients { get; set; }
+        public List<string>? IdJagAllowedClients { get => _explicitNullValueIdJagAllowedClients; set { _explicitNullValueIdJagAllowedClients = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_jag_allowed_clients"); else _explicitNullProperties?.Remove("id_jag_allowed_clients"); } }
+        private List<string>? _explicitNullValueIdJagAllowedClients = default!;
 #nullable restore
 #else
-        public List<string> IdJagAllowedClients { get; set; }
+        public List<string> IdJagAllowedClients { get => _explicitNullValueIdJagAllowedClients; set { _explicitNullValueIdJagAllowedClients = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_jag_allowed_clients"); else _explicitNullProperties?.Remove("id_jag_allowed_clients"); } }
+        private List<string> _explicitNullValueIdJagAllowedClients = default!;
 #endif
         /// <summary>Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdJagIssuerUrl { get; set; }
+        public string? IdJagIssuerUrl { get => _explicitNullValueIdJagIssuerUrl; set { _explicitNullValueIdJagIssuerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_jag_issuer_url"); else _explicitNullProperties?.Remove("id_jag_issuer_url"); } }
+        private string? _explicitNullValueIdJagIssuerUrl = default!;
 #nullable restore
 #else
-        public string IdJagIssuerUrl { get; set; }
+        public string IdJagIssuerUrl { get => _explicitNullValueIdJagIssuerUrl; set { _explicitNullValueIdJagIssuerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_jag_issuer_url"); else _explicitNullProperties?.Remove("id_jag_issuer_url"); } }
+        private string _explicitNullValueIdJagIssuerUrl = default!;
 #endif
         /// <summary>Override JWKS URL. Defaults to OIDC discovery on the issuer URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IdJagJwksUrl { get; set; }
+        public string? IdJagJwksUrl { get => _explicitNullValueIdJagJwksUrl; set { _explicitNullValueIdJagJwksUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_jag_jwks_url"); else _explicitNullProperties?.Remove("id_jag_jwks_url"); } }
+        private string? _explicitNullValueIdJagJwksUrl = default!;
 #nullable restore
 #else
-        public string IdJagJwksUrl { get; set; }
+        public string IdJagJwksUrl { get => _explicitNullValueIdJagJwksUrl; set { _explicitNullValueIdJagJwksUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_jag_jwks_url"); else _explicitNullProperties?.Remove("id_jag_jwks_url"); } }
+        private string _explicitNullValueIdJagJwksUrl = default!;
 #endif
         /// <summary>Display name for this IdP configuration (e.g. &apos;Okta production&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Client ID of the organization&apos;s OIDC application.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OidcClientId { get; set; }
+        public string? OidcClientId { get => _explicitNullValueOidcClientId; set { _explicitNullValueOidcClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oidc_client_id"); else _explicitNullProperties?.Remove("oidc_client_id"); } }
+        private string? _explicitNullValueOidcClientId = default!;
 #nullable restore
 #else
-        public string OidcClientId { get; set; }
+        public string OidcClientId { get => _explicitNullValueOidcClientId; set { _explicitNullValueOidcClientId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oidc_client_id"); else _explicitNullProperties?.Remove("oidc_client_id"); } }
+        private string _explicitNullValueOidcClientId = default!;
 #endif
         /// <summary>OIDC client secret. Omit to keep the saved secret. Set to an empty string to remove it. Never returned in responses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OidcClientSecret { get; set; }
+        public string? OidcClientSecret { get => _explicitNullValueOidcClientSecret; set { _explicitNullValueOidcClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oidc_client_secret"); else _explicitNullProperties?.Remove("oidc_client_secret"); } }
+        private string? _explicitNullValueOidcClientSecret = default!;
 #nullable restore
 #else
-        public string OidcClientSecret { get; set; }
+        public string OidcClientSecret { get => _explicitNullValueOidcClientSecret; set { _explicitNullValueOidcClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oidc_client_secret"); else _explicitNullProperties?.Remove("oidc_client_secret"); } }
+        private string _explicitNullValueOidcClientSecret = default!;
 #endif
         /// <summary>HTTPS issuer URL. Must exactly match the issuer in the OIDC discovery document.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigOidcIssuerUrl? OidcIssuerUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigOidcIssuerUrl? OidcIssuerUrl { get => _explicitNullValueOidcIssuerUrl; set { _explicitNullValueOidcIssuerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oidc_issuer_url"); else _explicitNullProperties?.Remove("oidc_issuer_url"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigOidcIssuerUrl? _explicitNullValueOidcIssuerUrl = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigOidcIssuerUrl OidcIssuerUrl { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigOidcIssuerUrl OidcIssuerUrl { get => _explicitNullValueOidcIssuerUrl; set { _explicitNullValueOidcIssuerUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oidc_issuer_url"); else _explicitNullProperties?.Remove("oidc_issuer_url"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfigOidcIssuerUrl _explicitNullValueOidcIssuerUrl = default!;
 #endif
         /// <summary>Organization domain IDs that this identity provider configuration applies to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? OrganizationDomainIds { get; set; }
+        public List<Guid?>? OrganizationDomainIds { get => _explicitNullValueOrganizationDomainIds; set { _explicitNullValueOrganizationDomainIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_domain_ids"); else _explicitNullProperties?.Remove("organization_domain_ids"); } }
+        private List<Guid?>? _explicitNullValueOrganizationDomainIds = default!;
 #nullable restore
 #else
-        public List<Guid?> OrganizationDomainIds { get; set; }
+        public List<Guid?> OrganizationDomainIds { get => _explicitNullValueOrganizationDomainIds; set { _explicitNullValueOrganizationDomainIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_domain_ids"); else _explicitNullProperties?.Remove("organization_domain_ids"); } }
+        private List<Guid?> _explicitNullValueOrganizationDomainIds = default!;
 #endif
         /// <summary>SAML single sign-on (ACS) URL the IdP redirects to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SamlAcsUrl { get; set; }
+        public string? SamlAcsUrl { get => _explicitNullValueSamlAcsUrl; set { _explicitNullValueSamlAcsUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_acs_url"); else _explicitNullProperties?.Remove("saml_acs_url"); } }
+        private string? _explicitNullValueSamlAcsUrl = default!;
 #nullable restore
 #else
-        public string SamlAcsUrl { get; set; }
+        public string SamlAcsUrl { get => _explicitNullValueSamlAcsUrl; set { _explicitNullValueSamlAcsUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_acs_url"); else _explicitNullProperties?.Remove("saml_acs_url"); } }
+        private string _explicitNullValueSamlAcsUrl = default!;
 #endif
         /// <summary>SAML IdP entity ID (issuer).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SamlEntityId { get; set; }
+        public string? SamlEntityId { get => _explicitNullValueSamlEntityId; set { _explicitNullValueSamlEntityId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_entity_id"); else _explicitNullProperties?.Remove("saml_entity_id"); } }
+        private string? _explicitNullValueSamlEntityId = default!;
 #nullable restore
 #else
-        public string SamlEntityId { get; set; }
+        public string SamlEntityId { get => _explicitNullValueSamlEntityId; set { _explicitNullValueSamlEntityId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_entity_id"); else _explicitNullProperties?.Remove("saml_entity_id"); } }
+        private string _explicitNullValueSamlEntityId = default!;
 #endif
         /// <summary>Stable UUID sent as SAML RelayState to route authentication responses to this IdP configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -135,10 +180,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>SAML IdP X.509 signing certificate (PEM).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SamlX509Cert { get; set; }
+        public string? SamlX509Cert { get => _explicitNullValueSamlX509Cert; set { _explicitNullValueSamlX509Cert = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_x509_cert"); else _explicitNullProperties?.Remove("saml_x509_cert"); } }
+        private string? _explicitNullValueSamlX509Cert = default!;
 #nullable restore
 #else
-        public string SamlX509Cert { get; set; }
+        public string SamlX509Cert { get => _explicitNullValueSamlX509Cert; set { _explicitNullValueSamlX509Cert = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saml_x509_cert"); else _explicitNullProperties?.Remove("saml_x509_cert"); } }
+        private string _explicitNullValueSamlX509Cert = default!;
 #endif
         /// <summary>SCIM base URL for this identity provider configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -157,7 +204,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string ScimBearerToken { get; private set; }
 #endif
         /// <summary>Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token.</summary>
-        public bool? ScimEnabled { get; set; }
+        public bool? ScimEnabled { get => _explicitNullValueScimEnabled; set { _explicitNullValueScimEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scim_enabled"); else _explicitNullProperties?.Remove("scim_enabled"); } }
+        private bool? _explicitNullValueScimEnabled = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -175,7 +223,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.IdentityProviderConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -233,6 +281,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("saml_entity_id", SamlEntityId);
             writer.WriteStringValue("saml_x509_cert", SamlX509Cert);
             writer.WriteBoolValue("scim_enabled", ScimEnabled);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

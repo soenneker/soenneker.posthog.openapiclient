@@ -11,21 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MarketingAnalyticsAttributionPathRow : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("conversions") is { } nullNodeConversions && nullNodeConversions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conversions = null;
+            if (parseNode.GetChildNode("conversionValue") is { } nullNodeConversionValue && nullNodeConversionValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionValue = null;
+            if (parseNode.GetChildNode("path") is { } nullNodePath && nullNodePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Path = null;
+            if (parseNode.GetChildNode("pathTruncated") is { } nullNodePathTruncated && nullNodePathTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PathTruncated = null;
+        }
+
         /// <summary>Conversions whose in-window touchpoints form exactly this path.</summary>
-        public int? Conversions { get; set; }
+        public int? Conversions { get => _explicitNullValueConversions; set { _explicitNullValueConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversions"); else _explicitNullProperties?.Remove("conversions"); } }
+        private int? _explicitNullValueConversions = default!;
         /// <summary>Null unless the goal is revenue-bearing.</summary>
-        public double? ConversionValue { get; set; }
+        public double? ConversionValue { get => _explicitNullValueConversionValue; set { _explicitNullValueConversionValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversionValue"); else _explicitNullProperties?.Remove("conversionValue"); } }
+        private double? _explicitNullValueConversionValue = default!;
         /// <summary>Breakdown values in touch order, oldest first. Consecutive repeats are preserved — collapsing them to &quot;×N&quot; is a display concern. Truncated to the most recent steps when the journey is longer than the grouping cap.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Path { get; set; }
+        public List<string>? Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        private List<string>? _explicitNullValuePath = default!;
 #nullable restore
 #else
-        public List<string> Path { get; set; }
+        public List<string> Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        private List<string> _explicitNullValuePath = default!;
 #endif
         /// <summary>True when at least one grouped conversion had more touchpoints than the path shows.</summary>
-        public bool? PathTruncated { get; set; }
+        public bool? PathTruncated { get => _explicitNullValuePathTruncated; set { _explicitNullValuePathTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pathTruncated"); else _explicitNullProperties?.Remove("pathTruncated"); } }
+        private bool? _explicitNullValuePathTruncated = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -34,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionPathRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,7 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("conversions", Conversions);
             writer.WriteDoubleValue("conversionValue", ConversionValue);
             writer.WriteCollectionOfPrimitiveValues<string>("path", Path);
-            writer.WriteBoolValue("pathTruncated", PathTruncated);
+            writer.WriteBoolValue("pathTruncated", PathTruncated);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

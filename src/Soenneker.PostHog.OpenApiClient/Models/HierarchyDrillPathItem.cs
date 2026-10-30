@@ -11,38 +11,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HierarchyDrillPathItem : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("filterIds") is { } nullNodeFilterIds && nullNodeFilterIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterIds = null;
+            if (parseNode.GetChildNode("hierarchyId") is { } nullNodeHierarchyId && nullNodeHierarchyId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HierarchyId = null;
+            if (parseNode.GetChildNode("nextField") is { } nullNodeNextField && nullNodeNextField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextField = null;
+            if (parseNode.GetChildNode("previousField") is { } nullNodePreviousField && nullNodePreviousField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousField = null;
+        }
+
         /// <summary>The filterIds property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FilterIds { get; set; }
+        public List<string>? FilterIds { get => _explicitNullValueFilterIds; set { _explicitNullValueFilterIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterIds"); else _explicitNullProperties?.Remove("filterIds"); } }
+        private List<string>? _explicitNullValueFilterIds = default!;
 #nullable restore
 #else
-        public List<string> FilterIds { get; set; }
+        public List<string> FilterIds { get => _explicitNullValueFilterIds; set { _explicitNullValueFilterIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterIds"); else _explicitNullProperties?.Remove("filterIds"); } }
+        private List<string> _explicitNullValueFilterIds = default!;
 #endif
         /// <summary>The hierarchyId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HierarchyId { get; set; }
+        public string? HierarchyId { get => _explicitNullValueHierarchyId; set { _explicitNullValueHierarchyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hierarchyId"); else _explicitNullProperties?.Remove("hierarchyId"); } }
+        private string? _explicitNullValueHierarchyId = default!;
 #nullable restore
 #else
-        public string HierarchyId { get; set; }
+        public string HierarchyId { get => _explicitNullValueHierarchyId; set { _explicitNullValueHierarchyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hierarchyId"); else _explicitNullProperties?.Remove("hierarchyId"); } }
+        private string _explicitNullValueHierarchyId = default!;
 #endif
         /// <summary>The nextField property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiField? NextField { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiField? NextField { get => _explicitNullValueNextField; set { _explicitNullValueNextField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextField"); else _explicitNullProperties?.Remove("nextField"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiField? _explicitNullValueNextField = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiField NextField { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiField NextField { get => _explicitNullValueNextField; set { _explicitNullValueNextField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nextField"); else _explicitNullProperties?.Remove("nextField"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiField _explicitNullValueNextField = default!;
 #endif
         /// <summary>The previousField property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiField? PreviousField { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiField? PreviousField { get => _explicitNullValuePreviousField; set { _explicitNullValuePreviousField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousField"); else _explicitNullProperties?.Remove("previousField"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiField? _explicitNullValuePreviousField = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiField PreviousField { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiField PreviousField { get => _explicitNullValuePreviousField; set { _explicitNullValuePreviousField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousField"); else _explicitNullProperties?.Remove("previousField"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiField _explicitNullValuePreviousField = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -52,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HierarchyDrillPathItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HierarchyDrillPathItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HierarchyDrillPathItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,7 +97,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("filterIds", FilterIds);
             writer.WriteStringValue("hierarchyId", HierarchyId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiField>("nextField", NextField);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiField>("previousField", PreviousField);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiField>("previousField", PreviousField);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

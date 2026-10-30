@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Builds
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Read the canvas&apos;s build lifecycle: live pointers plus recent builds.A publish queues a build; poll this until it is ready (the live pointeradvances) or failed (fix the error diagnostics and publish again — thelast good build stays live). Send the response&apos;s ETag back asIf-None-Match to make the poll revalidate without a body.

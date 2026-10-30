@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Canvases.Item.Layout
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutWithComponentsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Read a grid canvas&apos;s layout document and its `current_version_id`.Always call this before editing: pass the returned version id as`expected_current_version_id` on publish/patch so concurrent edits arenot overwritten. A grid canvas with no versions yet returns thedefault empty layout with a null version id.

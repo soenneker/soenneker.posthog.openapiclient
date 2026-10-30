@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DoraOverview.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// DORA-style deploy metrics over the GitHub deployments + deployment_statuses warehouse pair, each headline with its previous-window twin: deployment frequency, merge-to-deploy lead time (with a per-bucket box-plot series), and honest proxies for change failure rate and time to restore (deploy-status based: no incident data is linked). deploy_data_available is false when the deploy tables aren&apos;t synced.

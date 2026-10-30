@@ -11,38 +11,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HogFlowPublishResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("confirm_token") is { } nullNodeConfirmToken && nullNodeConfirmToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfirmToken = null;
+            if (parseNode.GetChildNode("draft_updated_at") is { } nullNodeDraftUpdatedAt && nullNodeDraftUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftUpdatedAt = null;
+            if (parseNode.GetChildNode("impact") is { } nullNodeImpact && nullNodeImpact.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Impact = null;
+            if (parseNode.GetChildNode("in_flight_runs") is { } nullNodeInFlightRuns && nullNodeInFlightRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InFlightRuns = null;
+            if (parseNode.GetChildNode("published") is { } nullNodePublished && nullNodePublished.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Published = null;
+            if (parseNode.GetChildNode("workflow") is { } nullNodeWorkflow && nullNodeWorkflow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Workflow = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Echo this back with confirm=true to publish the previewed draft. Only set on previews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConfirmToken { get; set; }
+        public string? ConfirmToken { get => _explicitNullValueConfirmToken; set { _explicitNullValueConfirmToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirm_token"); else _explicitNullProperties?.Remove("confirm_token"); } }
+        private string? _explicitNullValueConfirmToken = default!;
 #nullable restore
 #else
-        public string ConfirmToken { get; set; }
+        public string ConfirmToken { get => _explicitNullValueConfirmToken; set { _explicitNullValueConfirmToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirm_token"); else _explicitNullProperties?.Remove("confirm_token"); } }
+        private string _explicitNullValueConfirmToken = default!;
 #endif
         /// <summary>The staged draft&apos;s timestamp, for reference; publishing is confirmed via confirm_token.</summary>
-        public DateTimeOffset? DraftUpdatedAt { get; set; }
+        public DateTimeOffset? DraftUpdatedAt { get => _explicitNullValueDraftUpdatedAt; set { _explicitNullValueDraftUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_updated_at"); else _explicitNullProperties?.Remove("draft_updated_at"); } }
+        private DateTimeOffset? _explicitNullValueDraftUpdatedAt = default!;
         /// <summary>What publishing does to people in-flight. Only set on previews; counts are approximate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact? Impact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact? Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact? _explicitNullValueImpact = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact Impact { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact _explicitNullValueImpact = default!;
 #endif
         /// <summary>Runs currently in flight (parked on waits/delays or executing) that will follow the new config once published. Null when the count is unavailable.</summary>
-        public int? InFlightRuns { get; set; }
+        public int? InFlightRuns { get => _explicitNullValueInFlightRuns; set { _explicitNullValueInFlightRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("in_flight_runs"); else _explicitNullProperties?.Remove("in_flight_runs"); } }
+        private int? _explicitNullValueInFlightRuns = default!;
         /// <summary>Whether the draft was applied to the live workflow.</summary>
-        public bool? Published { get; set; }
+        public bool? Published { get => _explicitNullValuePublished; set { _explicitNullValuePublished = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published"); else _explicitNullProperties?.Remove("published"); } }
+        private bool? _explicitNullValuePublished = default!;
         /// <summary>The workflow after publishing (only set when published=true).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlow? Workflow { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlow? Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlow? _explicitNullValueWorkflow = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlow Workflow { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlow Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlow _explicitNullValueWorkflow = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponse"/> and sets the default values.
@@ -59,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,6 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("in_flight_runs", InFlightRuns);
             writer.WriteBoolValue("published", Published);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow>("workflow", Workflow);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

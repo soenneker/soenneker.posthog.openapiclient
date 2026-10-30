@@ -11,32 +11,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AcceptWarehouseSuggestion : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("incremental_key") is { } nullNodeIncrementalKey && nullNodeIncrementalKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalKey = null;
+            if (parseNode.GetChildNode("keep_materialized") is { } nullNodeKeepMaterialized && nullNodeKeepMaterialized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeepMaterialized = null;
+            if (parseNode.GetChildNode("lookback_seconds") is { } nullNodeLookbackSeconds && nullNodeLookbackSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackSeconds = null;
+            if (parseNode.GetChildNode("refresh_interval_seconds") is { } nullNodeRefreshIntervalSeconds && nullNodeRefreshIntervalSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshIntervalSeconds = null;
+            if (parseNode.GetChildNode("refresh_mode") is { } nullNodeRefreshMode && nullNodeRefreshMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshMode = null;
+            if (parseNode.GetChildNode("unique_key") is { } nullNodeUniqueKey && nullNodeUniqueKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueKey = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Materialize only, incremental refresh only: an output column whose value only grows as rows arrive, such as a date, a datetime or an increasing number, instead of the proposed one. view-check-incremental lists the columns that qualify. Omit to keep the proposed key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IncrementalKey { get; set; }
+        public string? IncrementalKey { get => _explicitNullValueIncrementalKey; set { _explicitNullValueIncrementalKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_key"); else _explicitNullProperties?.Remove("incremental_key"); } }
+        private string? _explicitNullValueIncrementalKey = default!;
 #nullable restore
 #else
-        public string IncrementalKey { get; set; }
+        public string IncrementalKey { get => _explicitNullValueIncrementalKey; set { _explicitNullValueIncrementalKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_key"); else _explicitNullProperties?.Remove("incremental_key"); } }
+        private string _explicitNullValueIncrementalKey = default!;
 #endif
         /// <summary>Deprecate only: true to keep a materialized view refreshing after it is deprecated. By default, accepting a deprecate suggestion also stops the view&apos;s refreshes and deletes its stored table, unless other views or syncs depend on it.</summary>
-        public bool? KeepMaterialized { get; set; }
+        public bool? KeepMaterialized { get => _explicitNullValueKeepMaterialized; set { _explicitNullValueKeepMaterialized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("keep_materialized"); else _explicitNullProperties?.Remove("keep_materialized"); } }
+        private bool? _explicitNullValueKeepMaterialized = default!;
         /// <summary>Materialize only, incremental refresh only: how far before the last refresh&apos;s highest incremental_key value each refresh reads again, in seconds, so late rows are picked up. Omit to keep the proposed lookback.</summary>
-        public int? LookbackSeconds { get; set; }
+        public int? LookbackSeconds { get => _explicitNullValueLookbackSeconds; set { _explicitNullValueLookbackSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_seconds"); else _explicitNullProperties?.Remove("lookback_seconds"); } }
+        private int? _explicitNullValueLookbackSeconds = default!;
         /// <summary>Materialize only: refresh interval to use instead of the proposed one, in seconds. Omit to keep the proposed interval.</summary>
-        public int? RefreshIntervalSeconds { get; set; }
+        public int? RefreshIntervalSeconds { get => _explicitNullValueRefreshIntervalSeconds; set { _explicitNullValueRefreshIntervalSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_interval_seconds"); else _explicitNullProperties?.Remove("refresh_interval_seconds"); } }
+        private int? _explicitNullValueRefreshIntervalSeconds = default!;
         /// <summary>* `full` - Full* `incremental` - Incremental</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AcceptWarehouseSuggestionRefreshMode? RefreshMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AcceptWarehouseSuggestionRefreshMode? RefreshMode { get => _explicitNullValueRefreshMode; set { _explicitNullValueRefreshMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_mode"); else _explicitNullProperties?.Remove("refresh_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AcceptWarehouseSuggestionRefreshMode? _explicitNullValueRefreshMode = default!;
         /// <summary>Materialize only, incremental refresh only: output columns that identify a row, instead of the proposed ones. Must include every GROUP BY column. Omit to keep the proposed key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? UniqueKey { get; set; }
+        public List<string>? UniqueKey { get => _explicitNullValueUniqueKey; set { _explicitNullValueUniqueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key"); else _explicitNullProperties?.Remove("unique_key"); } }
+        private List<string>? _explicitNullValueUniqueKey = default!;
 #nullable restore
 #else
-        public List<string> UniqueKey { get; set; }
+        public List<string> UniqueKey { get => _explicitNullValueUniqueKey; set { _explicitNullValueUniqueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key"); else _explicitNullProperties?.Remove("unique_key"); } }
+        private List<string> _explicitNullValueUniqueKey = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AcceptWarehouseSuggestion"/> and sets the default values.
@@ -53,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AcceptWarehouseSuggestion CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AcceptWarehouseSuggestion();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AcceptWarehouseSuggestion(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("refresh_interval_seconds", RefreshIntervalSeconds);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AcceptWarehouseSuggestionRefreshMode>("refresh_mode", RefreshMode);
             writer.WriteCollectionOfPrimitiveValues<string>("unique_key", UniqueKey);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

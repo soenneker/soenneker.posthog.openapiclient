@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_path_c
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPathCleaningSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ApplyPathCleaningSuggestionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPathCleaningSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ApplyPathCleaningSuggestionResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Merges the suggestion&apos;s rules into the team&apos;s path_cleaning_filters (never overwrites existing rules) and resolves the underlying health issue. Requires project admin, matching the team API&apos;s gate on path_cleaning_filters.

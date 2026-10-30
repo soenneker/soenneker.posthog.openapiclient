@@ -12,27 +12,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OnlinePerformanceSegmentThresholds : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_rate") is { } nullNodeBaseRate && nullNodeBaseRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseRate = null;
+            if (parseNode.GetChildNode("base_rate_dates") is { } nullNodeBaseRateDates && nullNodeBaseRateDates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseRateDates = null;
+            if (parseNode.GetChildNode("base_rate_source") is { } nullNodeBaseRateSource && nullNodeBaseRateSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseRateSource = null;
+            if (parseNode.GetChildNode("champion_base_rate") is { } nullNodeChampionBaseRate && nullNodeChampionBaseRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChampionBaseRate = null;
+            if (parseNode.GetChildNode("champion_mean_p_y") is { } nullNodeChampionMeanPY && nullNodeChampionMeanPY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChampionMeanPY = null;
+            if (parseNode.GetChildNode("likely_lift") is { } nullNodeLikelyLift && nullNodeLikelyLift.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LikelyLift = null;
+            if (parseNode.GetChildNode("likely_threshold") is { } nullNodeLikelyThreshold && nullNodeLikelyThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LikelyThreshold = null;
+            if (parseNode.GetChildNode("possible_threshold") is { } nullNodePossibleThreshold && nullNodePossibleThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PossibleThreshold = null;
+            if (parseNode.GetChildNode("scores_miscalibrated") is { } nullNodeScoresMiscalibrated && nullNodeScoresMiscalibrated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoresMiscalibrated = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The base rate the cut points use. When base_rate_source is realized, the fraction of the champion&apos;s scored users who did the target event, pooled over the newest checked dates. When base_rate_source is training, the fraction of the champion&apos;s training population that did it. Null when base_rate_source is fixed.</summary>
-        public double? BaseRate { get; set; }
+        public double? BaseRate { get => _explicitNullValueBaseRate; set { _explicitNullValueBaseRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_rate"); else _explicitNullProperties?.Remove("base_rate"); } }
+        private double? _explicitNullValueBaseRate = default!;
         /// <summary>Number of checked prediction dates the base rate pools.</summary>
-        public int? BaseRateDates { get; set; }
+        public int? BaseRateDates { get => _explicitNullValueBaseRateDates; set { _explicitNullValueBaseRateDates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_rate_dates"); else _explicitNullProperties?.Remove("base_rate_dates"); } }
+        private int? _explicitNullValueBaseRateDates = default!;
         /// <summary>* `realized` - Realized* `training` - Training* `fixed` - Fixed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PredictionSegmentThresholdsBaseRateSource? BaseRateSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PredictionSegmentThresholdsBaseRateSource? BaseRateSource { get => _explicitNullValueBaseRateSource; set { _explicitNullValueBaseRateSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_rate_source"); else _explicitNullProperties?.Remove("base_rate_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PredictionSegmentThresholdsBaseRateSource? _explicitNullValueBaseRateSource = default!;
         /// <summary>The real rate of the target event over the same dates as champion_mean_p_y.</summary>
-        public double? ChampionBaseRate { get; set; }
+        public double? ChampionBaseRate { get => _explicitNullValueChampionBaseRate; set { _explicitNullValueChampionBaseRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("champion_base_rate"); else _explicitNullProperties?.Remove("champion_base_rate"); } }
+        private double? _explicitNullValueChampionBaseRate = default!;
         /// <summary>The current champion&apos;s mean predicted probability over the checked dates it scored as champion. Null until those dates hold enough positives.</summary>
-        public double? ChampionMeanPY { get; set; }
+        public double? ChampionMeanPY { get => _explicitNullValueChampionMeanPY; set { _explicitNullValueChampionMeanPY = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("champion_mean_p_y"); else _explicitNullProperties?.Remove("champion_mean_p_y"); } }
+        private double? _explicitNullValueChampionMeanPY = default!;
         /// <summary>How many times the base rate a score must reach to be in the Likely segment.</summary>
-        public double? LikelyLift { get; set; }
+        public double? LikelyLift { get => _explicitNullValueLikelyLift; set { _explicitNullValueLikelyLift = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_lift"); else _explicitNullProperties?.Remove("likely_lift"); } }
+        private double? _explicitNullValueLikelyLift = default!;
         /// <summary>Users with a score at or above this probability are in the Likely segment: likely_lift times the base rate, capped halfway between the base rate and 1. A fixed cut point when base_rate_source is fixed.</summary>
-        public double? LikelyThreshold { get; set; }
+        public double? LikelyThreshold { get => _explicitNullValueLikelyThreshold; set { _explicitNullValueLikelyThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_threshold"); else _explicitNullProperties?.Remove("likely_threshold"); } }
+        private double? _explicitNullValueLikelyThreshold = default!;
         /// <summary>Users with a score at or above this probability and below likely_threshold are in the Possible segment, and users below it are Unlikely. Equal to base_rate, or a fixed cut point when base_rate_source is fixed.</summary>
-        public double? PossibleThreshold { get; set; }
+        public double? PossibleThreshold { get => _explicitNullValuePossibleThreshold; set { _explicitNullValuePossibleThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("possible_threshold"); else _explicitNullProperties?.Remove("possible_threshold"); } }
+        private double? _explicitNullValuePossibleThreshold = default!;
         /// <summary>True when champion_mean_p_y is far above or below champion_base_rate. The scores are then not probabilities (for example after class weighting in train.py), so a score of likely_lift times the base rate does not mean the user is that many times as likely to convert.</summary>
-        public bool? ScoresMiscalibrated { get; set; }
+        public bool? ScoresMiscalibrated { get => _explicitNullValueScoresMiscalibrated; set { _explicitNullValueScoresMiscalibrated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scores_miscalibrated"); else _explicitNullProperties?.Remove("scores_miscalibrated"); } }
+        private bool? _explicitNullValueScoresMiscalibrated = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds"/> and sets the default values.
         /// </summary>
@@ -48,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("likely_threshold", LikelyThreshold);
             writer.WriteDoubleValue("possible_threshold", PossibleThreshold);
             writer.WriteBoolValue("scores_miscalibrated", ScoresMiscalibrated);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

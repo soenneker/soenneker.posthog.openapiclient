@@ -11,27 +11,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentApiExposureCriteria : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("activation_config") is { } nullNodeActivationConfig && nullNodeActivationConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivationConfig = null;
+            if (parseNode.GetChildNode("exposure_config") is { } nullNodeExposureConfig && nullNodeExposureConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposureConfig = null;
+            if (parseNode.GetChildNode("filterTestAccounts") is { } nullNodeFilterTestAccounts && nullNodeFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTestAccounts = null;
+            if (parseNode.GetChildNode("multiple_variant_handling") is { } nullNodeMultipleVariantHandling && nullNodeMultipleVariantHandling.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultipleVariantHandling = null;
+        }
+
         /// <summary>Additional event (or action) an entity must emit at/after their first default exposure event before they count as exposed; exposure time becomes this event&apos;s timestamp. Only valid with the default exposure event, not a custom `exposure_config`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig? ActivationConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig? ActivationConfig { get => _explicitNullValueActivationConfig; set { _explicitNullValueActivationConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation_config"); else _explicitNullProperties?.Remove("activation_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig? _explicitNullValueActivationConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig ActivationConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig ActivationConfig { get => _explicitNullValueActivationConfig; set { _explicitNullValueActivationConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation_config"); else _explicitNullProperties?.Remove("activation_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig _explicitNullValueActivationConfig = default!;
 #endif
         /// <summary>The exposure_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig? ExposureConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig? ExposureConfig { get => _explicitNullValueExposureConfig; set { _explicitNullValueExposureConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_config"); else _explicitNullProperties?.Remove("exposure_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig? _explicitNullValueExposureConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig ExposureConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig ExposureConfig { get => _explicitNullValueExposureConfig; set { _explicitNullValueExposureConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_config"); else _explicitNullProperties?.Remove("exposure_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig _explicitNullValueExposureConfig = default!;
 #endif
         /// <summary>The filterTestAccounts property</summary>
-        public bool? FilterTestAccounts { get; set; }
+        public bool? FilterTestAccounts { get => _explicitNullValueFilterTestAccounts; set { _explicitNullValueFilterTestAccounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterTestAccounts"); else _explicitNullProperties?.Remove("filterTestAccounts"); } }
+        private bool? _explicitNullValueFilterTestAccounts = default!;
         /// <summary>How to handle entities exposed to multiple variants. &apos;exclude&apos; (default) drops them from the analysis; &apos;first_seen&apos; assigns them to the variant from their earliest exposure.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling? MultipleVariantHandling { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling? MultipleVariantHandling { get => _explicitNullValueMultipleVariantHandling; set { _explicitNullValueMultipleVariantHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multiple_variant_handling"); else _explicitNullProperties?.Remove("multiple_variant_handling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling? _explicitNullValueMultipleVariantHandling = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -40,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureCriteria(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,7 +83,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig>("activation_config", ActivationConfig);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiExposureConfig>("exposure_config", ExposureConfig);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

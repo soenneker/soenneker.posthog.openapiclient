@@ -11,109 +11,163 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FunnelExclusionActionsNode : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("custom_name") is { } nullNodeCustomName && nullNodeCustomName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomName = null;
+            if (parseNode.GetChildNode("fixedProperties") is { } nullNodeFixedProperties && nullNodeFixedProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FixedProperties = null;
+            if (parseNode.GetChildNode("funnelFromStep") is { } nullNodeFunnelFromStep && nullNodeFunnelFromStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelFromStep = null;
+            if (parseNode.GetChildNode("funnelToStep") is { } nullNodeFunnelToStep && nullNodeFunnelToStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelToStep = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("math") is { } nullNodeMath && nullNodeMath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Math = null;
+            if (parseNode.GetChildNode("math_group_type_index") is { } nullNodeMathGroupTypeIndex && nullNodeMathGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathGroupTypeIndex = null;
+            if (parseNode.GetChildNode("math_hogql") is { } nullNodeMathHogql && nullNodeMathHogql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathHogql = null;
+            if (parseNode.GetChildNode("math_multiplier") is { } nullNodeMathMultiplier && nullNodeMathMultiplier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathMultiplier = null;
+            if (parseNode.GetChildNode("math_property") is { } nullNodeMathProperty && nullNodeMathProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathProperty = null;
+            if (parseNode.GetChildNode("math_property_revenue_currency") is { } nullNodeMathPropertyRevenueCurrency && nullNodeMathPropertyRevenueCurrency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathPropertyRevenueCurrency = null;
+            if (parseNode.GetChildNode("math_property_type") is { } nullNodeMathPropertyType && nullNodeMathPropertyType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathPropertyType = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("optionalInFunnel") is { } nullNodeOptionalInFunnel && nullNodeOptionalInFunnel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OptionalInFunnel = null;
+            if (parseNode.GetChildNode("properties") is { } nullNodeProperties && nullNodeProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Properties = null;
+            if (parseNode.GetChildNode("response") is { } nullNodeResponse && nullNodeResponse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Response = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+        }
+
         /// <summary>The custom_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomName { get; set; }
+        public string? CustomName { get => _explicitNullValueCustomName; set { _explicitNullValueCustomName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_name"); else _explicitNullProperties?.Remove("custom_name"); } }
+        private string? _explicitNullValueCustomName = default!;
 #nullable restore
 #else
-        public string CustomName { get; set; }
+        public string CustomName { get => _explicitNullValueCustomName; set { _explicitNullValueCustomName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_name"); else _explicitNullProperties?.Remove("custom_name"); } }
+        private string _explicitNullValueCustomName = default!;
 #endif
         /// <summary>Fixed properties in the query, can&apos;t be edited in the interface (e.g. scoping down by person)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeFixedPropertiesItem>? FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeFixedPropertiesItem>? FixedProperties { get => _explicitNullValueFixedProperties; set { _explicitNullValueFixedProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fixedProperties"); else _explicitNullProperties?.Remove("fixedProperties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeFixedPropertiesItem>? _explicitNullValueFixedProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeFixedPropertiesItem> FixedProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeFixedPropertiesItem> FixedProperties { get => _explicitNullValueFixedProperties; set { _explicitNullValueFixedProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fixedProperties"); else _explicitNullProperties?.Remove("fixedProperties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeFixedPropertiesItem> _explicitNullValueFixedProperties = default!;
 #endif
         /// <summary>The funnelFromStep property</summary>
-        public int? FunnelFromStep { get; set; }
+        public int? FunnelFromStep { get => _explicitNullValueFunnelFromStep; set { _explicitNullValueFunnelFromStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelFromStep"); else _explicitNullProperties?.Remove("funnelFromStep"); } }
+        private int? _explicitNullValueFunnelFromStep = default!;
         /// <summary>The funnelToStep property</summary>
-        public int? FunnelToStep { get; set; }
+        public int? FunnelToStep { get => _explicitNullValueFunnelToStep; set { _explicitNullValueFunnelToStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelToStep"); else _explicitNullProperties?.Remove("funnelToStep"); } }
+        private int? _explicitNullValueFunnelToStep = default!;
         /// <summary>The id property</summary>
-        public int? Id { get; set; }
+        public int? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private int? _explicitNullValueId = default!;
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeKind? _explicitNullValueKind = default!;
         /// <summary>The math property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMath? Math { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMath? Math { get => _explicitNullValueMath; set { _explicitNullValueMath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math"); else _explicitNullProperties?.Remove("math"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMath? _explicitNullValueMath = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMath Math { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMath Math { get => _explicitNullValueMath; set { _explicitNullValueMath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math"); else _explicitNullProperties?.Remove("math"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMath _explicitNullValueMath = default!;
 #endif
         /// <summary>The math_group_type_index property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMathGroupTypeIndex? MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMathGroupTypeIndex? MathGroupTypeIndex { get => _explicitNullValueMathGroupTypeIndex; set { _explicitNullValueMathGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_group_type_index"); else _explicitNullProperties?.Remove("math_group_type_index"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMathGroupTypeIndex? _explicitNullValueMathGroupTypeIndex = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMathGroupTypeIndex MathGroupTypeIndex { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMathGroupTypeIndex MathGroupTypeIndex { get => _explicitNullValueMathGroupTypeIndex; set { _explicitNullValueMathGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_group_type_index"); else _explicitNullProperties?.Remove("math_group_type_index"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeMathGroupTypeIndex _explicitNullValueMathGroupTypeIndex = default!;
 #endif
         /// <summary>The math_hogql property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MathHogql { get; set; }
+        public string? MathHogql { get => _explicitNullValueMathHogql; set { _explicitNullValueMathHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_hogql"); else _explicitNullProperties?.Remove("math_hogql"); } }
+        private string? _explicitNullValueMathHogql = default!;
 #nullable restore
 #else
-        public string MathHogql { get; set; }
+        public string MathHogql { get => _explicitNullValueMathHogql; set { _explicitNullValueMathHogql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_hogql"); else _explicitNullProperties?.Remove("math_hogql"); } }
+        private string _explicitNullValueMathHogql = default!;
 #endif
         /// <summary>The math_multiplier property</summary>
-        public double? MathMultiplier { get; set; }
+        public double? MathMultiplier { get => _explicitNullValueMathMultiplier; set { _explicitNullValueMathMultiplier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_multiplier"); else _explicitNullProperties?.Remove("math_multiplier"); } }
+        private double? _explicitNullValueMathMultiplier = default!;
         /// <summary>The math_property property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MathProperty { get; set; }
+        public string? MathProperty { get => _explicitNullValueMathProperty; set { _explicitNullValueMathProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property"); else _explicitNullProperties?.Remove("math_property"); } }
+        private string? _explicitNullValueMathProperty = default!;
 #nullable restore
 #else
-        public string MathProperty { get; set; }
+        public string MathProperty { get => _explicitNullValueMathProperty; set { _explicitNullValueMathProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property"); else _explicitNullProperties?.Remove("math_property"); } }
+        private string _explicitNullValueMathProperty = default!;
 #endif
         /// <summary>The math_property_revenue_currency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig? MathPropertyRevenueCurrency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig? MathPropertyRevenueCurrency { get => _explicitNullValueMathPropertyRevenueCurrency; set { _explicitNullValueMathPropertyRevenueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property_revenue_currency"); else _explicitNullProperties?.Remove("math_property_revenue_currency"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig? _explicitNullValueMathPropertyRevenueCurrency = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig MathPropertyRevenueCurrency { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig MathPropertyRevenueCurrency { get => _explicitNullValueMathPropertyRevenueCurrency; set { _explicitNullValueMathPropertyRevenueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property_revenue_currency"); else _explicitNullProperties?.Remove("math_property_revenue_currency"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig _explicitNullValueMathPropertyRevenueCurrency = default!;
 #endif
         /// <summary>The math_property_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MathPropertyType { get; set; }
+        public string? MathPropertyType { get => _explicitNullValueMathPropertyType; set { _explicitNullValueMathPropertyType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property_type"); else _explicitNullProperties?.Remove("math_property_type"); } }
+        private string? _explicitNullValueMathPropertyType = default!;
 #nullable restore
 #else
-        public string MathPropertyType { get; set; }
+        public string MathPropertyType { get => _explicitNullValueMathPropertyType; set { _explicitNullValueMathPropertyType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property_type"); else _explicitNullProperties?.Remove("math_property_type"); } }
+        private string _explicitNullValueMathPropertyType = default!;
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>The optionalInFunnel property</summary>
-        public bool? OptionalInFunnel { get; set; }
+        public bool? OptionalInFunnel { get => _explicitNullValueOptionalInFunnel; set { _explicitNullValueOptionalInFunnel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optionalInFunnel"); else _explicitNullProperties?.Remove("optionalInFunnel"); } }
+        private bool? _explicitNullValueOptionalInFunnel = default!;
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodePropertiesItem>? Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodePropertiesItem>? Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodePropertiesItem>? _explicitNullValueProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodePropertiesItem> Properties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodePropertiesItem> Properties { get => _explicitNullValueProperties; set { _explicitNullValueProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("properties"); else _explicitNullProperties?.Remove("properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodePropertiesItem> _explicitNullValueProperties = default!;
 #endif
         /// <summary>The response property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeResponseProperty? Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeResponseProperty? Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeResponseProperty? _explicitNullValueResponse = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeResponseProperty Response { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeResponseProperty Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeResponseProperty _explicitNullValueResponse = default!;
 #endif
         /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get; set; }
+        public double? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private double? _explicitNullValueVersion = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -122,7 +176,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNode(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -176,7 +230,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodePropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelExclusionActionsNodeResponseProperty>("response", Response);
-            writer.WriteDoubleValue("version", Version);
+            writer.WriteDoubleValue("version", Version);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

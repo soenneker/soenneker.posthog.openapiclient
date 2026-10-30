@@ -11,54 +11,84 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MetricsDisplaySettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("goalLines") is { } nullNodeGoalLines && nullNodeGoalLines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GoalLines = null;
+            if (parseNode.GetChildNode("legendCalcs") is { } nullNodeLegendCalcs && nullNodeLegendCalcs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegendCalcs = null;
+            if (parseNode.GetChildNode("nullMode") is { } nullNodeNullMode && nullNodeNullMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NullMode = null;
+            if (parseNode.GetChildNode("reduce") is { } nullNodeReduce && nullNodeReduce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reduce = null;
+            if (parseNode.GetChildNode("statSummary") is { } nullNodeStatSummary && nullNodeStatSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatSummary = null;
+            if (parseNode.GetChildNode("thresholds") is { } nullNodeThresholds && nullNodeThresholds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Thresholds = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
+            if (parseNode.GetChildNode("yAxis") is { } nullNodeYAxis && nullNodeYAxis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxis = null;
+        }
+
         /// <summary>The goalLines property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? GoalLines { get => _explicitNullValueGoalLines; set { _explicitNullValueGoalLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goalLines"); else _explicitNullProperties?.Remove("goalLines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine>? _explicitNullValueGoalLines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> GoalLines { get => _explicitNullValueGoalLines; set { _explicitNullValueGoalLines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goalLines"); else _explicitNullProperties?.Remove("goalLines"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GoalLine> _explicitNullValueGoalLines = default!;
 #endif
         /// <summary>Time-series panels only: which reducers the legend table shows. Empty means no legend calcs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer?>? LegendCalcs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer?>? LegendCalcs { get => _explicitNullValueLegendCalcs; set { _explicitNullValueLegendCalcs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legendCalcs"); else _explicitNullProperties?.Remove("legendCalcs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer?>? _explicitNullValueLegendCalcs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer?> LegendCalcs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer?> LegendCalcs { get => _explicitNullValueLegendCalcs; set { _explicitNullValueLegendCalcs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legendCalcs"); else _explicitNullProperties?.Remove("legendCalcs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer?> _explicitNullValueLegendCalcs = default!;
 #endif
         /// <summary>How a null bucket renders on a time-series chart.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsNullMode? NullMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsNullMode? NullMode { get => _explicitNullValueNullMode; set { _explicitNullValueNullMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nullMode"); else _explicitNullProperties?.Remove("nullMode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsNullMode? _explicitNullValueNullMode = default!;
         /// <summary>How scalar panels and legend calcs collapse a series to one number.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer? Reduce { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer? Reduce { get => _explicitNullValueReduce; set { _explicitNullValueReduce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reduce"); else _explicitNullProperties?.Remove("reduce"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsReducer? _explicitNullValueReduce = default!;
         /// <summary>`stat` display only: which summary the headline value shows.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsStatSummary? StatSummary { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsStatSummary? StatSummary { get => _explicitNullValueStatSummary; set { _explicitNullValueStatSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statSummary"); else _explicitNullProperties?.Remove("statSummary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsStatSummary? _explicitNullValueStatSummary = default!;
         /// <summary>Color bands for the scalar panels. Sorted by `value` at read time, so entry order does not matter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold>? Thresholds { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold>? Thresholds { get => _explicitNullValueThresholds; set { _explicitNullValueThresholds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thresholds"); else _explicitNullProperties?.Remove("thresholds"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold>? _explicitNullValueThresholds = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold> Thresholds { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold> Thresholds { get => _explicitNullValueThresholds; set { _explicitNullValueThresholds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thresholds"); else _explicitNullProperties?.Remove("thresholds"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold> _explicitNullValueThresholds = default!;
 #endif
         /// <summary>The type property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplayType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplayType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplayType? _explicitNullValueType = default!;
         /// <summary>UCUM unit string as OTel writes it, e.g. &quot;By&quot;, &quot;ms&quot;, &quot;%&quot;. Defaults from the response unit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Unit { get; set; }
+        public string? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private string? _explicitNullValueUnit = default!;
 #nullable restore
 #else
-        public string Unit { get; set; }
+        public string Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private string _explicitNullValueUnit = default!;
 #endif
         /// <summary>The yAxis property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings? YAxis { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings? YAxis { get => _explicitNullValueYAxis; set { _explicitNullValueYAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxis"); else _explicitNullProperties?.Remove("yAxis"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings? _explicitNullValueYAxis = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings YAxis { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings YAxis { get => _explicitNullValueYAxis; set { _explicitNullValueYAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yAxis"); else _explicitNullProperties?.Remove("yAxis"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings _explicitNullValueYAxis = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -68,7 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplaySettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplaySettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplaySettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,7 +134,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsThreshold>("thresholds", Thresholds);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsDisplayType>("type", Type);
             writer.WriteStringValue("unit", Unit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings>("yAxis", YAxis);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings>("yAxis", YAxis);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -11,77 +11,117 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewRepositoryOverviewEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("exception") is { } nullNodeException && nullNodeException.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Exception = null;
+            if (parseNode.GetChildNode("full_name") is { } nullNodeFullName && nullNodeFullName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FullName = null;
+            if (parseNode.GetChildNode("github_repo_id") is { } nullNodeGithubRepoId && nullNodeGithubRepoId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubRepoId = null;
+            if (parseNode.GetChildNode("inherited_result") is { } nullNodeInheritedResult && nullNodeInheritedResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InheritedResult = null;
+            if (parseNode.GetChildNode("in_project") is { } nullNodeInProject && nullNodeInProject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InProject = null;
+            if (parseNode.GetChildNode("my_choice") is { } nullNodeMyChoice && nullNodeMyChoice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MyChoice = null;
+            if (parseNode.GetChildNode("my_choice_id") is { } nullNodeMyChoiceId && nullNodeMyChoiceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MyChoiceId = null;
+            if (parseNode.GetChildNode("my_result") is { } nullNodeMyResult && nullNodeMyResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MyResult = null;
+            if (parseNode.GetChildNode("owner") is { } nullNodeOwner && nullNodeOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Owner = null;
+            if (parseNode.GetChildNode("owner_project") is { } nullNodeOwnerProject && nullNodeOwnerProject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerProject = null;
+            if (parseNode.GetChildNode("repository_id") is { } nullNodeRepositoryId && nullNodeRepositoryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepositoryId = null;
+            if (parseNode.GetChildNode("repository_result") is { } nullNodeRepositoryResult && nullNodeRepositoryResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepositoryResult = null;
+            if (parseNode.GetChildNode("selected") is { } nullNodeSelected && nullNodeSelected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selected = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>This project&apos;s repository exception. Null when the repository follows the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException? Exception { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException? Exception { get => _explicitNullValueException; set { _explicitNullValueException = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exception"); else _explicitNullProperties?.Remove("exception"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException? _explicitNullValueException = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException Exception { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException Exception { get => _explicitNullValueException; set { _explicitNullValueException = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exception"); else _explicitNullProperties?.Remove("exception"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException _explicitNullValueException = default!;
 #endif
         /// <summary>GitHub repository in &apos;owner/name&apos; form.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FullName { get; set; }
+        public string? FullName { get => _explicitNullValueFullName; set { _explicitNullValueFullName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full_name"); else _explicitNullProperties?.Remove("full_name"); } }
+        private string? _explicitNullValueFullName = default!;
 #nullable restore
 #else
-        public string FullName { get; set; }
+        public string FullName { get => _explicitNullValueFullName; set { _explicitNullValueFullName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full_name"); else _explicitNullProperties?.Remove("full_name"); } }
+        private string _explicitNullValueFullName = default!;
 #endif
         /// <summary>GitHub&apos;s repository id.</summary>
-        public int? GithubRepoId { get; set; }
+        public int? GithubRepoId { get => _explicitNullValueGithubRepoId; set { _explicitNullValueGithubRepoId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_repo_id"); else _explicitNullProperties?.Remove("github_repo_id"); } }
+        private int? _explicitNullValueGithubRepoId = default!;
         /// <summary>What the requesting user&apos;s own pull requests would get here without their choice for this repository. Equals my_result when there is no choice.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryInheritedResult? InheritedResult { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryInheritedResult? InheritedResult { get => _explicitNullValueInheritedResult; set { _explicitNullValueInheritedResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_result"); else _explicitNullProperties?.Remove("inherited_result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryInheritedResult? _explicitNullValueInheritedResult = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryInheritedResult InheritedResult { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryInheritedResult InheritedResult { get => _explicitNullValueInheritedResult; set { _explicitNullValueInheritedResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_result"); else _explicitNullProperties?.Remove("inherited_result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryInheritedResult _explicitNullValueInheritedResult = default!;
 #endif
         /// <summary>Whether this project reviews the repository.</summary>
-        public bool? InProject { get; set; }
+        public bool? InProject { get => _explicitNullValueInProject; set { _explicitNullValueInProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("in_project"); else _explicitNullProperties?.Remove("in_project"); } }
+        private bool? _explicitNullValueInProject = default!;
         /// <summary>The requesting user&apos;s own choice for this repository: &apos;flash&apos;, &apos;off&apos;, or null.* `flash` - Flash* `off` - Off</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyChoice? MyChoice { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyChoice? MyChoice { get => _explicitNullValueMyChoice; set { _explicitNullValueMyChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_choice"); else _explicitNullProperties?.Remove("my_choice"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyChoice? _explicitNullValueMyChoice = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyChoice MyChoice { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyChoice MyChoice { get => _explicitNullValueMyChoice; set { _explicitNullValueMyChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_choice"); else _explicitNullProperties?.Remove("my_choice"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyChoice _explicitNullValueMyChoice = default!;
 #endif
         /// <summary>Id of that choice, to clear it.</summary>
-        public Guid? MyChoiceId { get; set; }
+        public Guid? MyChoiceId { get => _explicitNullValueMyChoiceId; set { _explicitNullValueMyChoiceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_choice_id"); else _explicitNullProperties?.Remove("my_choice_id"); } }
+        private Guid? _explicitNullValueMyChoiceId = default!;
         /// <summary>What the requesting user&apos;s own pull requests get here, and the rule that decided it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult? MyResult { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult? MyResult { get => _explicitNullValueMyResult; set { _explicitNullValueMyResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_result"); else _explicitNullProperties?.Remove("my_result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult? _explicitNullValueMyResult = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult MyResult { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult MyResult { get => _explicitNullValueMyResult; set { _explicitNullValueMyResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_result"); else _explicitNullProperties?.Remove("my_result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult _explicitNullValueMyResult = default!;
 #endif
         /// <summary>* `this_project` - This project* `other_project` - Another project* `none` - No project</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwner? Owner { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwner? Owner { get => _explicitNullValueOwner; set { _explicitNullValueOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner"); else _explicitNullProperties?.Remove("owner"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwner? _explicitNullValueOwner = default!;
         /// <summary>The other project that reviews the repository, when owner is &apos;other_project&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? OwnerProject { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? OwnerProject { get => _explicitNullValueOwnerProject; set { _explicitNullValueOwnerProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_project"); else _explicitNullProperties?.Remove("owner_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? _explicitNullValueOwnerProject = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef OwnerProject { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef OwnerProject { get => _explicitNullValueOwnerProject; set { _explicitNullValueOwnerProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_project"); else _explicitNullProperties?.Remove("owner_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef _explicitNullValueOwnerProject = default!;
 #endif
         /// <summary>Id of this project&apos;s repository entry, for the people list endpoints.</summary>
-        public Guid? RepositoryId { get; set; }
+        public Guid? RepositoryId { get => _explicitNullValueRepositoryId; set { _explicitNullValueRepositoryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_id"); else _explicitNullProperties?.Remove("repository_id"); } }
+        private Guid? _explicitNullValueRepositoryId = default!;
         /// <summary>What the requesting user&apos;s own pull requests would get here from the repository exception or the project rule alone, without their default and their choice for this repository.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult? RepositoryResult { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult? RepositoryResult { get => _explicitNullValueRepositoryResult; set { _explicitNullValueRepositoryResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_result"); else _explicitNullProperties?.Remove("repository_result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult? _explicitNullValueRepositoryResult = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult RepositoryResult { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult RepositoryResult { get => _explicitNullValueRepositoryResult; set { _explicitNullValueRepositoryResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_result"); else _explicitNullProperties?.Remove("repository_result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult _explicitNullValueRepositoryResult = default!;
 #endif
         /// <summary>Whether this project selected the repository explicitly.</summary>
-        public bool? Selected { get; set; }
+        public bool? Selected { get => _explicitNullValueSelected; set { _explicitNullValueSelected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selected"); else _explicitNullProperties?.Remove("selected"); } }
+        private bool? _explicitNullValueSelected = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry"/> and sets the default values.
         /// </summary>
@@ -97,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -142,6 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("repository_id", RepositoryId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult>("repository_result", RepositoryResult);
             writer.WriteBoolValue("selected", Selected);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

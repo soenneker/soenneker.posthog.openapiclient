@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews.P
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveStats>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveStats.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveStats>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveStats.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// How many findings each review skill (perspective or blind-spot sweep) raised across the recent completed reviews in scope — the requesting user&apos;s by default, every review on this project with `scope=everyone`, the user&apos;s own last Deep reviews with `scope=own_deep` — and how many of those the validator kept vs dismissed.

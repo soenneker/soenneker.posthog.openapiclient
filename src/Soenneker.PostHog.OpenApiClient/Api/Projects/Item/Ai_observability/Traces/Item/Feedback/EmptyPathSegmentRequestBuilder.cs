@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
         {
         }
         /// <summary>
-        /// End-user feedback on a trace: the scores and the comments its feedback events carry, each with the step it targets.
+        /// End-user feedback on a trace: scores and comments from its feedback events, survey responses linked to it, and surveys shown but not answered.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedback"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -49,10 +49,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedback>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedback.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedback>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedback.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// End-user feedback on a trace: the scores and the comments its feedback events carry, each with the step it targets.
+        /// End-user feedback on a trace: scores and comments from its feedback events, survey responses linked to it, and surveys shown but not answered.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Feedback.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// End-user feedback on a trace: the scores and the comments its feedback events carry, each with the step it targets.
+        /// End-user feedback on a trace: scores and comments from its feedback events, survey responses linked to it, and surveys shown but not answered.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 

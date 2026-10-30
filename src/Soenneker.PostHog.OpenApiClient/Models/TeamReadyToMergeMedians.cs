@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamReadyToMergeMedians : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("github_team") is { } nullNodeGithubTeam && nullNodeGithubTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubTeam = null;
+            if (parseNode.GetChildNode("medians") is { } nullNodeMedians && nullNodeMedians.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Medians = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The GitHub team slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubTeam { get; set; }
+        public string? GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        private string? _explicitNullValueGithubTeam = default!;
 #nullable restore
 #else
-        public string GithubTeam { get; set; }
+        public string GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        private string _explicitNullValueGithubTeam = default!;
 #endif
         /// <summary>Over the pull requests by the team&apos;s members, the same population as a github_team scope, without the pr_number pull request. Null when fewer than three other authors contribute a ready time, because the author could read a teammate&apos;s value back from the median. The approval medians are null on the same terms for approvals.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians? Medians { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians? Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians? _explicitNullValueMedians = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians Medians { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians _explicitNullValueMedians = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("github_team", GithubTeam);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians>("medians", Medians);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,25 +11,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentHealthInputsMetricCompiles : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("exposure_query_fails") is { } nullNodeExposureQueryFails && nullNodeExposureQueryFails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposureQueryFails = null;
+            if (parseNode.GetChildNode("failures") is { } nullNodeFailures && nullNodeFailures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Failures = null;
+            if (parseNode.GetChildNode("metric_count") is { } nullNodeMetricCount && nullNodeMetricCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricCount = null;
+            if (parseNode.GetChildNode("no_access_count") is { } nullNodeNoAccessCount && nullNodeNoAccessCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoAccessCount = null;
+            if (parseNode.GetChildNode("unknown_count") is { } nullNodeUnknownCount && nullNodeUnknownCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnknownCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the exposure query alone doesn&apos;t compile. Every metric then fails for that reason, so no failure is listed.</summary>
-        public bool? ExposureQueryFails { get; set; }
+        public bool? ExposureQueryFails { get => _explicitNullValueExposureQueryFails; set { _explicitNullValueExposureQueryFails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_query_fails"); else _explicitNullProperties?.Remove("exposure_query_fails"); } }
+        private bool? _explicitNullValueExposureQueryFails = default!;
         /// <summary>The metrics whose query doesn&apos;t compile, with the compiler&apos;s message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompileFailure>? Failures { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompileFailure>? Failures { get => _explicitNullValueFailures; set { _explicitNullValueFailures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failures"); else _explicitNullProperties?.Remove("failures"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompileFailure>? _explicitNullValueFailures = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompileFailure> Failures { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompileFailure> Failures { get => _explicitNullValueFailures; set { _explicitNullValueFailures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failures"); else _explicitNullProperties?.Remove("failures"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompileFailure> _explicitNullValueFailures = default!;
 #endif
         /// <summary>The metrics that the experiment calculates, one per uuid.</summary>
-        public int? MetricCount { get; set; }
+        public int? MetricCount { get => _explicitNullValueMetricCount; set { _explicitNullValueMetricCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_count"); else _explicitNullProperties?.Remove("metric_count"); } }
+        private int? _explicitNullValueMetricCount = default!;
         /// <summary>The metrics that read a warehouse table or view that the reader may not query, so they aren&apos;t checked.</summary>
-        public int? NoAccessCount { get; set; }
+        public int? NoAccessCount { get => _explicitNullValueNoAccessCount; set { _explicitNullValueNoAccessCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_access_count"); else _explicitNullProperties?.Remove("no_access_count"); } }
+        private int? _explicitNullValueNoAccessCount = default!;
         /// <summary>The metrics whose compile raised an error that names no problem of the metric, such as a defect.</summary>
-        public int? UnknownCount { get; set; }
+        public int? UnknownCount { get => _explicitNullValueUnknownCount; set { _explicitNullValueUnknownCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown_count"); else _explicitNullProperties?.Remove("unknown_count"); } }
+        private int? _explicitNullValueUnknownCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles"/> and sets the default values.
         /// </summary>
@@ -45,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("metric_count", MetricCount);
             writer.WriteIntValue("no_access_count", NoAccessCount);
             writer.WriteIntValue("unknown_count", UnknownCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

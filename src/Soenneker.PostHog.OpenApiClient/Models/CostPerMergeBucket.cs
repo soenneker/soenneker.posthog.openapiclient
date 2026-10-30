@@ -11,17 +11,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CostPerMergeBucket : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bucket_start") is { } nullNodeBucketStart && nullNodeBucketStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketStart = null;
+            if (parseNode.GetChildNode("cost_per_merge_usd") is { } nullNodeCostPerMergeUsd && nullNodeCostPerMergeUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CostPerMergeUsd = null;
+            if (parseNode.GetChildNode("estimated_cost_usd") is { } nullNodeEstimatedCostUsd && nullNodeEstimatedCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCostUsd = null;
+            if (parseNode.GetChildNode("merges") is { } nullNodeMerges && nullNodeMerges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Merges = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bucket start, aligned to cost_series_granularity (top of hour, midnight, or Monday).</summary>
-        public DateTimeOffset? BucketStart { get; set; }
+        public DateTimeOffset? BucketStart { get => _explicitNullValueBucketStart; set { _explicitNullValueBucketStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_start"); else _explicitNullProperties?.Remove("bucket_start"); } }
+        private DateTimeOffset? _explicitNullValueBucketStart = default!;
         /// <summary>Rolling ratio: trailing-window CI cost divided by trailing-window merges (24 h / 7 d / 4 w to match the granularity). Null when the trailing window had no merges or no costable cost.</summary>
-        public double? CostPerMergeUsd { get; set; }
+        public double? CostPerMergeUsd { get => _explicitNullValueCostPerMergeUsd; set { _explicitNullValueCostPerMergeUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost_per_merge_usd"); else _explicitNullProperties?.Remove("cost_per_merge_usd"); } }
+        private double? _explicitNullValueCostPerMergeUsd = default!;
         /// <summary>Estimated Depot CI cost (USD) of all runs started in this bucket. Null when nothing was costable (no billable self-hosted Linux jobs) or the job source isn&apos;t synced.</summary>
-        public double? EstimatedCostUsd { get; set; }
+        public double? EstimatedCostUsd { get => _explicitNullValueEstimatedCostUsd; set { _explicitNullValueEstimatedCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_cost_usd"); else _explicitNullProperties?.Remove("estimated_cost_usd"); } }
+        private double? _explicitNullValueEstimatedCostUsd = default!;
         /// <summary>PRs merged in this bucket (all authors, bots included).</summary>
-        public int? Merges { get; set; }
+        public int? Merges { get => _explicitNullValueMerges; set { _explicitNullValueMerges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merges"); else _explicitNullProperties?.Remove("merges"); } }
+        private int? _explicitNullValueMerges = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CostPerMergeBucket(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("cost_per_merge_usd", CostPerMergeUsd);
             writer.WriteDoubleValue("estimated_cost_usd", EstimatedCostUsd);
             writer.WriteIntValue("merges", Merges);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

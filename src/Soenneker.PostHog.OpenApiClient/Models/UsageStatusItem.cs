@@ -11,37 +11,62 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UsageStatusItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("approaching_limit") is { } nullNodeApproachingLimit && nullNodeApproachingLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApproachingLimit = null;
+            if (parseNode.GetChildNode("has_exceeded_limit") is { } nullNodeHasExceededLimit && nullNodeHasExceededLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasExceededLimit = null;
+            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("quota_limited_until") is { } nullNodeQuotaLimitedUntil && nullNodeQuotaLimitedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaLimitedUntil = null;
+            if (parseNode.GetChildNode("quota_limiting_suspended_until") is { } nullNodeQuotaLimitingSuspendedUntil && nullNodeQuotaLimitingSuspendedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaLimitingSuspendedUntil = null;
+            if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
+            if (parseNode.GetChildNode("usage_limit") is { } nullNodeUsageLimit && nullNodeUsageLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageLimit = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The approaching_limit property</summary>
-        public bool? ApproachingLimit { get; set; }
+        public bool? ApproachingLimit { get => _explicitNullValueApproachingLimit; set { _explicitNullValueApproachingLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approaching_limit"); else _explicitNullProperties?.Remove("approaching_limit"); } }
+        private bool? _explicitNullValueApproachingLimit = default!;
         /// <summary>The has_exceeded_limit property</summary>
-        public bool? HasExceededLimit { get; set; }
+        public bool? HasExceededLimit { get => _explicitNullValueHasExceededLimit; set { _explicitNullValueHasExceededLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_exceeded_limit"); else _explicitNullProperties?.Remove("has_exceeded_limit"); } }
+        private bool? _explicitNullValueHasExceededLimit = default!;
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get; set; }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get; set; }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string _explicitNullValueKey = default!;
 #endif
         /// <summary>* `product` - Product* `addon` - Addon</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? _explicitNullValueKind = default!;
         /// <summary>The quota_limited_until property</summary>
-        public DateTimeOffset? QuotaLimitedUntil { get; set; }
+        public DateTimeOffset? QuotaLimitedUntil { get => _explicitNullValueQuotaLimitedUntil; set { _explicitNullValueQuotaLimitedUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_limited_until"); else _explicitNullProperties?.Remove("quota_limited_until"); } }
+        private DateTimeOffset? _explicitNullValueQuotaLimitedUntil = default!;
         /// <summary>The quota_limiting_suspended_until property</summary>
-        public DateTimeOffset? QuotaLimitingSuspendedUntil { get; set; }
+        public DateTimeOffset? QuotaLimitingSuspendedUntil { get => _explicitNullValueQuotaLimitingSuspendedUntil; set { _explicitNullValueQuotaLimitingSuspendedUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_limiting_suspended_until"); else _explicitNullProperties?.Remove("quota_limiting_suspended_until"); } }
+        private DateTimeOffset? _explicitNullValueQuotaLimitingSuspendedUntil = default!;
         /// <summary>The usage_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsageKey { get; set; }
+        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        private string? _explicitNullValueUsageKey = default!;
 #nullable restore
 #else
-        public string UsageKey { get; set; }
+        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        private string _explicitNullValueUsageKey = default!;
 #endif
         /// <summary>The usage_limit property</summary>
-        public int? UsageLimit { get; set; }
+        public int? UsageLimit { get => _explicitNullValueUsageLimit; set { _explicitNullValueUsageLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_limit"); else _explicitNullProperties?.Remove("usage_limit"); } }
+        private int? _explicitNullValueUsageLimit = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UsageStatusItem"/> and sets the default values.
         /// </summary>
@@ -57,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.UsageStatusItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.UsageStatusItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.UsageStatusItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("quota_limiting_suspended_until", QuotaLimitingSuspendedUntil);
             writer.WriteStringValue("usage_key", UsageKey);
             writer.WriteIntValue("usage_limit", UsageLimit);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

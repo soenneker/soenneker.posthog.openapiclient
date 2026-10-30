@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Surveys.Stats
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SurveyGlobalStatsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get aggregated response statistics across all surveys.Args:    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)Returns:    Aggregated statistics across all surveys including total counts and rates

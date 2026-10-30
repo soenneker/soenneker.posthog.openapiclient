@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CalibrationBin : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("mean_p_y") is { } nullNodeMeanPY && nullNodeMeanPY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeanPY = null;
+            if (parseNode.GetChildNode("n") is { } nullNodeN && nullNodeN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) N = null;
+            if (parseNode.GetChildNode("positive_rate") is { } nullNodePositiveRate && nullNodePositiveRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PositiveRate = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mean predicted probability of the users in this bin.</summary>
-        public double? MeanPY { get; set; }
+        public double? MeanPY { get => _explicitNullValueMeanPY; set { _explicitNullValueMeanPY = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean_p_y"); else _explicitNullProperties?.Remove("mean_p_y"); } }
+        private double? _explicitNullValueMeanPY = default!;
         /// <summary>Number of scored users in this bin.</summary>
-        public int? N { get; set; }
+        public int? N { get => _explicitNullValueN; set { _explicitNullValueN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n"); else _explicitNullProperties?.Remove("n"); } }
+        private int? _explicitNullValueN = default!;
         /// <summary>Fraction of the users in this bin who did the target event within the horizon.</summary>
-        public double? PositiveRate { get; set; }
+        public double? PositiveRate { get => _explicitNullValuePositiveRate; set { _explicitNullValuePositiveRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positive_rate"); else _explicitNullProperties?.Remove("positive_rate"); } }
+        private double? _explicitNullValuePositiveRate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin"/> and sets the default values.
         /// </summary>
@@ -35,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("mean_p_y", MeanPY);
             writer.WriteIntValue("n", N);
             writer.WriteDoubleValue("positive_rate", PositiveRate);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

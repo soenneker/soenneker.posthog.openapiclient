@@ -11,29 +11,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentSetupOutcome : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("analyzed_exposures") is { } nullNodeAnalyzedExposures && nullNodeAnalyzedExposures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnalyzedExposures = null;
+            if (parseNode.GetChildNode("any_variant_significant") is { } nullNodeAnyVariantSignificant && nullNodeAnyVariantSignificant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnyVariantSignificant = null;
+            if (parseNode.GetChildNode("control_baseline_value") is { } nullNodeControlBaselineValue && nullNodeControlBaselineValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ControlBaselineValue = null;
+            if (parseNode.GetChildNode("metric_samples") is { } nullNodeMetricSamples && nullNodeMetricSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricSamples = null;
+            if (parseNode.GetChildNode("metric_type") is { } nullNodeMetricType && nullNodeMetricType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricType = null;
+            if (parseNode.GetChildNode("result_completed_at") is { } nullNodeResultCompletedAt && nullNodeResultCompletedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultCompletedAt = null;
+            if (parseNode.GetChildNode("result_data_through") is { } nullNodeResultDataThrough && nullNodeResultDataThrough.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResultDataThrough = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>metric_samples, but only where the metric type makes it the analyzed population: &apos;funnel&apos; and &apos;mean&apos;. Users seen in several variants are left out under the default handling, so it can be lower than exposures. Null for &apos;retention&apos;, whose samples are the units that did the start event, and for &apos;ratio&apos;, whose samples are not exposures either. Also null when the result stores no sample counts, which is not the same as analyzing nobody.</summary>
-        public int? AnalyzedExposures { get; set; }
+        public int? AnalyzedExposures { get => _explicitNullValueAnalyzedExposures; set { _explicitNullValueAnalyzedExposures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analyzed_exposures"); else _explicitNullProperties?.Remove("analyzed_exposures"); } }
+        private int? _explicitNullValueAnalyzedExposures = default!;
         /// <summary>Whether any variant was significant on that metric in that result.</summary>
-        public bool? AnyVariantSignificant { get; set; }
+        public bool? AnyVariantSignificant { get => _explicitNullValueAnyVariantSignificant; set { _explicitNullValueAnyVariantSignificant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("any_variant_significant"); else _explicitNullProperties?.Remove("any_variant_significant"); } }
+        private bool? _explicitNullValueAnyVariantSignificant = default!;
         /// <summary>What control measured: a conversion rate for &apos;funnel&apos;, an average per unit for &apos;mean&apos;. Compare it with the rate on the surface itself to see whether the exposure was diluted by users who never reached the surface. Null for other metric types and when control analyzed no units.</summary>
-        public double? ControlBaselineValue { get; set; }
+        public double? ControlBaselineValue { get => _explicitNullValueControlBaselineValue; set { _explicitNullValueControlBaselineValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("control_baseline_value"); else _explicitNullProperties?.Remove("control_baseline_value"); } }
+        private double? _explicitNullValueControlBaselineValue = default!;
         /// <summary>Units the result counted across all variants. What a unit is depends on metric_type, so read analyzed_exposures where you need exposures. Null when the result stores no sample counts.</summary>
-        public int? MetricSamples { get; set; }
+        public int? MetricSamples { get => _explicitNullValueMetricSamples; set { _explicitNullValueMetricSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_samples"); else _explicitNullProperties?.Remove("metric_samples"); } }
+        private int? _explicitNullValueMetricSamples = default!;
         /// <summary>metric_type of the metric this outcome describes: &apos;funnel&apos;, &apos;mean&apos;, &apos;ratio&apos; or &apos;retention&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricType { get; set; }
+        public string? MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
+        private string? _explicitNullValueMetricType = default!;
 #nullable restore
 #else
-        public string MetricType { get; set; }
+        public string MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
+        private string _explicitNullValueMetricType = default!;
 #endif
         /// <summary>When that result was computed.</summary>
-        public DateTimeOffset? ResultCompletedAt { get; set; }
+        public DateTimeOffset? ResultCompletedAt { get => _explicitNullValueResultCompletedAt; set { _explicitNullValueResultCompletedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_completed_at"); else _explicitNullProperties?.Remove("result_completed_at"); } }
+        private DateTimeOffset? _explicitNullValueResultCompletedAt = default!;
         /// <summary>The last moment the result covers. A backfill writes an older day with a recent completed_at, so this says how current the numbers are.</summary>
-        public DateTimeOffset? ResultDataThrough { get; set; }
+        public DateTimeOffset? ResultDataThrough { get => _explicitNullValueResultDataThrough; set { _explicitNullValueResultDataThrough = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_data_through"); else _explicitNullProperties?.Remove("result_data_through"); } }
+        private DateTimeOffset? _explicitNullValueResultDataThrough = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome"/> and sets the default values.
         /// </summary>
@@ -49,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("metric_type", MetricType);
             writer.WriteDateTimeOffsetValue("result_completed_at", ResultCompletedAt);
             writer.WriteDateTimeOffsetValue("result_data_through", ResultDataThrough);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

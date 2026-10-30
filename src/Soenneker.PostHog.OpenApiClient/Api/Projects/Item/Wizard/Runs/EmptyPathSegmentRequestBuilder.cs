@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardRunList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardRunList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWizardRunList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a local or cloud Wizard run for a project workspace.
@@ -79,6 +79,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Wizard.Runs
                 { "403", global::Soenneker.PostHog.OpenApiClient.Models.WizardRunError.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.PostHog.OpenApiClient.Models.WizardRunError.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.WizardRunError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.WizardRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.WizardRun.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

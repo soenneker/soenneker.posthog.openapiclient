@@ -11,15 +11,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CohortConditionTypeFlags : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("behavioral") is { } nullNodeBehavioral && nullNodeBehavioral.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Behavioral = null;
+            if (parseNode.GetChildNode("cohorts") is { } nullNodeCohorts && nullNodeCohorts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cohorts = null;
+            if (parseNode.GetChildNode("lifecycle") is { } nullNodeLifecycle && nullNodeLifecycle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lifecycle = null;
+            if (parseNode.GetChildNode("person_properties") is { } nullNodePersonProperties && nullNodePersonProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonProperties = null;
+        }
+
         /// <summary>The filters include a behavioral condition that is not lifecycle-style (e.g. performed_event, performed_event_multiple, performed_event_sequence, or their negations).</summary>
-        public bool? Behavioral { get; set; }
+        public bool? Behavioral { get => _explicitNullValueBehavioral; set { _explicitNullValueBehavioral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("behavioral"); else _explicitNullProperties?.Remove("behavioral"); } }
+        private bool? _explicitNullValueBehavioral = default!;
         /// <summary>The filters include a nested reference to another cohort.</summary>
-        public bool? Cohorts { get; set; }
+        public bool? Cohorts { get => _explicitNullValueCohorts; set { _explicitNullValueCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohorts"); else _explicitNullProperties?.Remove("cohorts"); } }
+        private bool? _explicitNullValueCohorts = default!;
         /// <summary>The filters include a lifecycle-style behavioral condition (first-seen/regularly/stopped/restarted performing an event).</summary>
-        public bool? Lifecycle { get; set; }
+        public bool? Lifecycle { get => _explicitNullValueLifecycle; set { _explicitNullValueLifecycle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lifecycle"); else _explicitNullProperties?.Remove("lifecycle"); } }
+        private bool? _explicitNullValueLifecycle = default!;
         /// <summary>The filters include a person property or person_metadata condition.</summary>
-        public bool? PersonProperties { get; set; }
+        public bool? PersonProperties { get => _explicitNullValuePersonProperties; set { _explicitNullValuePersonProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_properties"); else _explicitNullProperties?.Remove("person_properties"); } }
+        private bool? _explicitNullValuePersonProperties = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -28,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionTypeFlags CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionTypeFlags();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionTypeFlags(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,7 +69,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("behavioral", Behavioral);
             writer.WriteBoolValue("cohorts", Cohorts);
             writer.WriteBoolValue("lifecycle", Lifecycle);
-            writer.WriteBoolValue("person_properties", PersonProperties);
+            writer.WriteBoolValue("person_properties", PersonProperties);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -12,46 +12,71 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DeliverySummaryLeadTime : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("deploy_data_available") is { } nullNodeDeployDataAvailable && nullNodeDeployDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeployDataAvailable = null;
+            if (parseNode.GetChildNode("deployed_merged_pr_count") is { } nullNodeDeployedMergedPrCount && nullNodeDeployedMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeployedMergedPrCount = null;
+            if (parseNode.GetChildNode("environment_scope") is { } nullNodeEnvironmentScope && nullNodeEnvironmentScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnvironmentScope = null;
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("merge_to_deploy") is { } nullNodeMergeToDeploy && nullNodeMergeToDeploy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergeToDeploy = null;
+            if (parseNode.GetChildNode("open_to_deploy") is { } nullNodeOpenToDeploy && nullNodeOpenToDeploy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenToDeploy = null;
+            if (parseNode.GetChildNode("open_to_merge") is { } nullNodeOpenToMerge && nullNodeOpenToMerge.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenToMerge = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the deployments and deployment statuses tables aren&apos;t synced. The distributions are then empty.</summary>
-        public bool? DeployDataAvailable { get; set; }
+        public bool? DeployDataAvailable { get => _explicitNullValueDeployDataAvailable; set { _explicitNullValueDeployDataAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deploy_data_available"); else _explicitNullProperties?.Remove("deploy_data_available"); } }
+        private bool? _explicitNullValueDeployDataAvailable = default!;
         /// <summary>Of merged_pr_count, the PRs whose first successful in-scope deployment was observed by the window end. The rest are still waiting for a deploy or fall outside the scan.</summary>
-        public int? DeployedMergedPrCount { get; set; }
+        public int? DeployedMergedPrCount { get => _explicitNullValueDeployedMergedPrCount; set { _explicitNullValueDeployedMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployed_merged_pr_count"); else _explicitNullProperties?.Remove("deployed_merged_pr_count"); } }
+        private int? _explicitNullValueDeployedMergedPrCount = default!;
         /// <summary>The deploy environments lead time was scoped to: production by default. Empty when deploy data is not available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EnvironmentScope { get; set; }
+        public string? EnvironmentScope { get => _explicitNullValueEnvironmentScope; set { _explicitNullValueEnvironmentScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment_scope"); else _explicitNullProperties?.Remove("environment_scope"); } }
+        private string? _explicitNullValueEnvironmentScope = default!;
 #nullable restore
 #else
-        public string EnvironmentScope { get; set; }
+        public string EnvironmentScope { get => _explicitNullValueEnvironmentScope; set { _explicitNullValueEnvironmentScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment_scope"); else _explicitNullProperties?.Remove("environment_scope"); } }
+        private string _explicitNullValueEnvironmentScope = default!;
 #endif
         /// <summary>PRs in scope merged in the window (bots and drafts excluded).</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>Merge to deploy over the same deployed PRs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeMergeToDeploy? MergeToDeploy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeMergeToDeploy? MergeToDeploy { get => _explicitNullValueMergeToDeploy; set { _explicitNullValueMergeToDeploy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_to_deploy"); else _explicitNullProperties?.Remove("merge_to_deploy"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeMergeToDeploy? _explicitNullValueMergeToDeploy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeMergeToDeploy MergeToDeploy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeMergeToDeploy MergeToDeploy { get => _explicitNullValueMergeToDeploy; set { _explicitNullValueMergeToDeploy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merge_to_deploy"); else _explicitNullProperties?.Remove("merge_to_deploy"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeMergeToDeploy _explicitNullValueMergeToDeploy = default!;
 #endif
         /// <summary>Open to the first successful deploy containing the merge, over PRs deployed in the window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToDeploy? OpenToDeploy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToDeploy? OpenToDeploy { get => _explicitNullValueOpenToDeploy; set { _explicitNullValueOpenToDeploy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_deploy"); else _explicitNullProperties?.Remove("open_to_deploy"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToDeploy? _explicitNullValueOpenToDeploy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToDeploy OpenToDeploy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToDeploy OpenToDeploy { get => _explicitNullValueOpenToDeploy; set { _explicitNullValueOpenToDeploy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_deploy"); else _explicitNullProperties?.Remove("open_to_deploy"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToDeploy _explicitNullValueOpenToDeploy = default!;
 #endif
         /// <summary>Open to merge over the same deployed PRs, so it composes with merge_to_deploy. Includes draft time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToMerge? OpenToMerge { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToMerge? OpenToMerge { get => _explicitNullValueOpenToMerge; set { _explicitNullValueOpenToMerge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge"); else _explicitNullProperties?.Remove("open_to_merge"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToMerge? _explicitNullValueOpenToMerge = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToMerge OpenToMerge { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToMerge OpenToMerge { get => _explicitNullValueOpenToMerge; set { _explicitNullValueOpenToMerge = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_to_merge"); else _explicitNullProperties?.Remove("open_to_merge"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToMerge _explicitNullValueOpenToMerge = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime"/> and sets the default values.
@@ -68,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummaryLeadTime(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeMergeToDeploy>("merge_to_deploy", MergeToDeploy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToDeploy>("open_to_deploy", OpenToDeploy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryLeadTimeOpenToMerge>("open_to_merge", OpenToMerge);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

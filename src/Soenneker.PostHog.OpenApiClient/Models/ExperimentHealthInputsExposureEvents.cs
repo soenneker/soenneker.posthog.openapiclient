@@ -11,40 +11,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentHealthInputsExposureEvents : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("activation") is { } nullNodeActivation && nullNodeActivation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Activation = null;
+            if (parseNode.GetChildNode("custom_event") is { } nullNodeCustomEvent && nullNodeCustomEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomEvent = null;
+            if (parseNode.GetChildNode("required_flag_key") is { } nullNodeRequiredFlagKey && nullNodeRequiredFlagKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiredFlagKey = null;
+            if (parseNode.GetChildNode("variant_property") is { } nullNodeVariantProperty && nullNodeVariantProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantProperty = null;
+        }
+
         /// <summary>The event, or the action&apos;s name, that has to follow a user&apos;s flag call before the user counts. Null without an activation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Activation { get; set; }
+        public string? Activation { get => _explicitNullValueActivation; set { _explicitNullValueActivation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation"); else _explicitNullProperties?.Remove("activation"); } }
+        private string? _explicitNullValueActivation = default!;
 #nullable restore
 #else
-        public string Activation { get; set; }
+        public string Activation { get => _explicitNullValueActivation; set { _explicitNullValueActivation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation"); else _explicitNullProperties?.Remove("activation"); } }
+        private string _explicitNullValueActivation = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The event the exposure criteria count in place of the flag calls. Null for flag calls or an action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomEvent { get; set; }
+        public string? CustomEvent { get => _explicitNullValueCustomEvent; set { _explicitNullValueCustomEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_event"); else _explicitNullProperties?.Remove("custom_event"); } }
+        private string? _explicitNullValueCustomEvent = default!;
 #nullable restore
 #else
-        public string CustomEvent { get; set; }
+        public string CustomEvent { get => _explicitNullValueCustomEvent; set { _explicitNullValueCustomEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_event"); else _explicitNullProperties?.Remove("custom_event"); } }
+        private string _explicitNullValueCustomEvent = default!;
 #endif
         /// <summary>The flag key the exposure query requires on the flag call events. Null for a custom event or an action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequiredFlagKey { get; set; }
+        public string? RequiredFlagKey { get => _explicitNullValueRequiredFlagKey; set { _explicitNullValueRequiredFlagKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_flag_key"); else _explicitNullProperties?.Remove("required_flag_key"); } }
+        private string? _explicitNullValueRequiredFlagKey = default!;
 #nullable restore
 #else
-        public string RequiredFlagKey { get; set; }
+        public string RequiredFlagKey { get => _explicitNullValueRequiredFlagKey; set { _explicitNullValueRequiredFlagKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_flag_key"); else _explicitNullProperties?.Remove("required_flag_key"); } }
+        private string _explicitNullValueRequiredFlagKey = default!;
 #endif
         /// <summary>The event property that holds the variant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VariantProperty { get; set; }
+        public string? VariantProperty { get => _explicitNullValueVariantProperty; set { _explicitNullValueVariantProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_property"); else _explicitNullProperties?.Remove("variant_property"); } }
+        private string? _explicitNullValueVariantProperty = default!;
 #nullable restore
 #else
-        public string VariantProperty { get; set; }
+        public string VariantProperty { get => _explicitNullValueVariantProperty; set { _explicitNullValueVariantProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_property"); else _explicitNullProperties?.Remove("variant_property"); } }
+        private string _explicitNullValueVariantProperty = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents"/> and sets the default values.
@@ -61,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("custom_event", CustomEvent);
             writer.WriteStringValue("required_flag_key", RequiredFlagKey);
             writer.WriteStringValue("variant_property", VariantProperty);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

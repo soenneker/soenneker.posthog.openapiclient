@@ -12,72 +12,103 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SurveyResponseRowExtra : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("browser") is { } nullNodeBrowser && nullNodeBrowser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Browser = null;
+            if (parseNode.GetChildNode("current_url") is { } nullNodeCurrentUrl && nullNodeCurrentUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentUrl = null;
+            if (parseNode.GetChildNode("device_type") is { } nullNodeDeviceType && nullNodeDeviceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceType = null;
+            if (parseNode.GetChildNode("geoip_city_name") is { } nullNodeGeoipCityName && nullNodeGeoipCityName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeoipCityName = null;
+            if (parseNode.GetChildNode("geoip_country_code") is { } nullNodeGeoipCountryCode && nullNodeGeoipCountryCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeoipCountryCode = null;
+            if (parseNode.GetChildNode("geoip_country_name") is { } nullNodeGeoipCountryName && nullNodeGeoipCountryName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeoipCountryName = null;
+            if (parseNode.GetChildNode("iteration") is { } nullNodeIteration && nullNodeIteration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Iteration = null;
+            if (parseNode.GetChildNode("os") is { } nullNodeOs && nullNodeOs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Os = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>$browser at the time the response was sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Browser { get; set; }
+        public string? Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
+        private string? _explicitNullValueBrowser = default!;
 #nullable restore
 #else
-        public string Browser { get; set; }
+        public string Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
+        private string _explicitNullValueBrowser = default!;
 #endif
         /// <summary>$current_url where the survey was submitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentUrl { get; set; }
+        public string? CurrentUrl { get => _explicitNullValueCurrentUrl; set { _explicitNullValueCurrentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_url"); else _explicitNullProperties?.Remove("current_url"); } }
+        private string? _explicitNullValueCurrentUrl = default!;
 #nullable restore
 #else
-        public string CurrentUrl { get; set; }
+        public string CurrentUrl { get => _explicitNullValueCurrentUrl; set { _explicitNullValueCurrentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_url"); else _explicitNullProperties?.Remove("current_url"); } }
+        private string _explicitNullValueCurrentUrl = default!;
 #endif
         /// <summary>$device_type at the time the response was sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DeviceType { get; set; }
+        public string? DeviceType { get => _explicitNullValueDeviceType; set { _explicitNullValueDeviceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_type"); else _explicitNullProperties?.Remove("device_type"); } }
+        private string? _explicitNullValueDeviceType = default!;
 #nullable restore
 #else
-        public string DeviceType { get; set; }
+        public string DeviceType { get => _explicitNullValueDeviceType; set { _explicitNullValueDeviceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_type"); else _explicitNullProperties?.Remove("device_type"); } }
+        private string _explicitNullValueDeviceType = default!;
 #endif
         /// <summary>$geoip_city_name at submission time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GeoipCityName { get; set; }
+        public string? GeoipCityName { get => _explicitNullValueGeoipCityName; set { _explicitNullValueGeoipCityName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("geoip_city_name"); else _explicitNullProperties?.Remove("geoip_city_name"); } }
+        private string? _explicitNullValueGeoipCityName = default!;
 #nullable restore
 #else
-        public string GeoipCityName { get; set; }
+        public string GeoipCityName { get => _explicitNullValueGeoipCityName; set { _explicitNullValueGeoipCityName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("geoip_city_name"); else _explicitNullProperties?.Remove("geoip_city_name"); } }
+        private string _explicitNullValueGeoipCityName = default!;
 #endif
         /// <summary>$geoip_country_code at submission time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GeoipCountryCode { get; set; }
+        public string? GeoipCountryCode { get => _explicitNullValueGeoipCountryCode; set { _explicitNullValueGeoipCountryCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("geoip_country_code"); else _explicitNullProperties?.Remove("geoip_country_code"); } }
+        private string? _explicitNullValueGeoipCountryCode = default!;
 #nullable restore
 #else
-        public string GeoipCountryCode { get; set; }
+        public string GeoipCountryCode { get => _explicitNullValueGeoipCountryCode; set { _explicitNullValueGeoipCountryCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("geoip_country_code"); else _explicitNullProperties?.Remove("geoip_country_code"); } }
+        private string _explicitNullValueGeoipCountryCode = default!;
 #endif
         /// <summary>$geoip_country_name at submission time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GeoipCountryName { get; set; }
+        public string? GeoipCountryName { get => _explicitNullValueGeoipCountryName; set { _explicitNullValueGeoipCountryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("geoip_country_name"); else _explicitNullProperties?.Remove("geoip_country_name"); } }
+        private string? _explicitNullValueGeoipCountryName = default!;
 #nullable restore
 #else
-        public string GeoipCountryName { get; set; }
+        public string GeoipCountryName { get => _explicitNullValueGeoipCountryName; set { _explicitNullValueGeoipCountryName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("geoip_country_name"); else _explicitNullProperties?.Remove("geoip_country_name"); } }
+        private string _explicitNullValueGeoipCountryName = default!;
 #endif
         /// <summary>Survey iteration number when the response was sent. Only set for recurring surveys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Iteration { get; set; }
+        public string? Iteration { get => _explicitNullValueIteration; set { _explicitNullValueIteration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration"); else _explicitNullProperties?.Remove("iteration"); } }
+        private string? _explicitNullValueIteration = default!;
 #nullable restore
 #else
-        public string Iteration { get; set; }
+        public string Iteration { get => _explicitNullValueIteration; set { _explicitNullValueIteration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration"); else _explicitNullProperties?.Remove("iteration"); } }
+        private string _explicitNullValueIteration = default!;
 #endif
         /// <summary>$os (operating system) at the time the response was sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Os { get; set; }
+        public string? Os { get => _explicitNullValueOs; set { _explicitNullValueOs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("os"); else _explicitNullProperties?.Remove("os"); } }
+        private string? _explicitNullValueOs = default!;
 #nullable restore
 #else
-        public string Os { get; set; }
+        public string Os { get => _explicitNullValueOs; set { _explicitNullValueOs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("os"); else _explicitNullProperties?.Remove("os"); } }
+        private string _explicitNullValueOs = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseRowExtra"/> and sets the default values.
@@ -94,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseRowExtra CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseRowExtra();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseRowExtra(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -129,6 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("geoip_country_name", GeoipCountryName);
             writer.WriteStringValue("iteration", Iteration);
             writer.WriteStringValue("os", Os);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

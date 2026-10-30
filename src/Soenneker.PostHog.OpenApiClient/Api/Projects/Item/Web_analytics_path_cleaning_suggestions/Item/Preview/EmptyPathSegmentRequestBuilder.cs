@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_path_c
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PreviewPathCleaningSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PreviewPathCleaningSuggestionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PreviewPathCleaningSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PreviewPathCleaningSuggestionResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Applies the suggestion&apos;s rules (in order) to a fresh sample of the team&apos;s top paths and returns before/after pairs for the paths that would change. Computed on demand; path samples are never stored. Nothing is modified.

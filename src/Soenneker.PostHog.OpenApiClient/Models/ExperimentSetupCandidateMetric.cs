@@ -11,73 +11,114 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentSetupCandidateMetric : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("computed_at") is { } nullNodeComputedAt && nullNodeComputedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputedAt = null;
+            if (parseNode.GetChildNode("conversion_rate") is { } nullNodeConversionRate && nullNodeConversionRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionRate = null;
+            if (parseNode.GetChildNode("event_volume") is { } nullNodeEventVolume && nullNodeEventVolume.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventVolume = null;
+            if (parseNode.GetChildNode("funnel_baseline_stats") is { } nullNodeFunnelBaselineStats && nullNodeFunnelBaselineStats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelBaselineStats = null;
+            if (parseNode.GetChildNode("mean_count_baseline_stats") is { } nullNodeMeanCountBaselineStats && nullNodeMeanCountBaselineStats.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeanCountBaselineStats = null;
+            if (parseNode.GetChildNode("metric_properties") is { } nullNodeMetricProperties && nullNodeMetricProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricProperties = null;
+            if (parseNode.GetChildNode("note") is { } nullNodeNote && nullNodeNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Note = null;
+            if (parseNode.GetChildNode("persons_converted") is { } nullNodePersonsConverted && nullNodePersonsConverted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonsConverted = null;
+            if (parseNode.GetChildNode("persons_reached") is { } nullNodePersonsReached && nullNodePersonsReached.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonsReached = null;
+            if (parseNode.GetChildNode("source_event") is { } nullNodeSourceEvent && nullNodeSourceEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceEvent = null;
+            if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
+            if (parseNode.GetChildNode("test_accounts_filtered") is { } nullNodeTestAccountsFiltered && nullNodeTestAccountsFiltered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestAccountsFiltered = null;
+            if (parseNode.GetChildNode("unique_persons") is { } nullNodeUniquePersons && nullNodeUniquePersons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniquePersons = null;
+            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the numbers were computed. They are cached for an hour.</summary>
-        public DateTimeOffset? ComputedAt { get; set; }
+        public DateTimeOffset? ComputedAt { get => _explicitNullValueComputedAt; set { _explicitNullValueComputedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed_at"); else _explicitNullProperties?.Remove("computed_at"); } }
+        private DateTimeOffset? _explicitNullValueComputedAt = default!;
         /// <summary>persons_converted divided by persons_reached. Null without target_event.</summary>
-        public double? ConversionRate { get; set; }
+        public double? ConversionRate { get => _explicitNullValueConversionRate; set { _explicitNullValueConversionRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_rate"); else _explicitNullProperties?.Remove("conversion_rate"); } }
+        private double? _explicitNullValueConversionRate = default!;
         /// <summary>Metric events in the window, with metric_properties applied. 0 means the event did not occur under those filters, so check the event name before you trust a conversion_rate of 0.</summary>
-        public int? EventVolume { get; set; }
+        public int? EventVolume { get => _explicitNullValueEventVolume; set { _explicitNullValueEventVolume = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_volume"); else _explicitNullProperties?.Remove("event_volume"); } }
+        private int? _explicitNullValueEventVolume = default!;
         /// <summary>Pass as baseline_stats to experiment-calculate-running-time with metric_type &apos;funnel&apos;. Null without target_event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline? FunnelBaselineStats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline? FunnelBaselineStats { get => _explicitNullValueFunnelBaselineStats; set { _explicitNullValueFunnelBaselineStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnel_baseline_stats"); else _explicitNullProperties?.Remove("funnel_baseline_stats"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline? _explicitNullValueFunnelBaselineStats = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline FunnelBaselineStats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline FunnelBaselineStats { get => _explicitNullValueFunnelBaselineStats; set { _explicitNullValueFunnelBaselineStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnel_baseline_stats"); else _explicitNullProperties?.Remove("funnel_baseline_stats"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline _explicitNullValueFunnelBaselineStats = default!;
 #endif
         /// <summary>Pass as baseline_stats to experiment-calculate-running-time with metric_type &apos;mean_count&apos;. It counts metric events in the whole window, not only after the first target event, so it can overstate the baseline. Null without target_event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline? MeanCountBaselineStats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline? MeanCountBaselineStats { get => _explicitNullValueMeanCountBaselineStats; set { _explicitNullValueMeanCountBaselineStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean_count_baseline_stats"); else _explicitNullProperties?.Remove("mean_count_baseline_stats"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline? _explicitNullValueMeanCountBaselineStats = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline MeanCountBaselineStats { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline MeanCountBaselineStats { get => _explicitNullValueMeanCountBaselineStats; set { _explicitNullValueMeanCountBaselineStats = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean_count_baseline_stats"); else _explicitNullProperties?.Remove("mean_count_baseline_stats"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupMeanCountBaseline _explicitNullValueMeanCountBaselineStats = default!;
 #endif
         /// <summary>Event or person property filters that narrow which events are counted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? MetricProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? MetricProperties { get => _explicitNullValueMetricProperties; set { _explicitNullValueMetricProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_properties"); else _explicitNullProperties?.Remove("metric_properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? _explicitNullValueMetricProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> MetricProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> MetricProperties { get => _explicitNullValueMetricProperties; set { _explicitNullValueMetricProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_properties"); else _explicitNullProperties?.Remove("metric_properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> _explicitNullValueMetricProperties = default!;
 #endif
         /// <summary>What the mean count baseline counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Note { get; set; }
+        public string? Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
+        private string? _explicitNullValueNote = default!;
 #nullable restore
 #else
-        public string Note { get; set; }
+        public string Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
+        private string _explicitNullValueNote = default!;
 #endif
         /// <summary>Persons who sent the metric event at or after their first target event. Null without target_event.</summary>
-        public int? PersonsConverted { get; set; }
+        public int? PersonsConverted { get => _explicitNullValuePersonsConverted; set { _explicitNullValuePersonsConverted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("persons_converted"); else _explicitNullProperties?.Remove("persons_converted"); } }
+        private int? _explicitNullValuePersonsConverted = default!;
         /// <summary>Persons who sent the target event. Null without target_event.</summary>
-        public int? PersonsReached { get; set; }
+        public int? PersonsReached { get => _explicitNullValuePersonsReached; set { _explicitNullValuePersonsReached = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("persons_reached"); else _explicitNullProperties?.Remove("persons_reached"); } }
+        private int? _explicitNullValuePersonsReached = default!;
         /// <summary>The metric event that was counted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceEvent { get; set; }
+        public string? SourceEvent { get => _explicitNullValueSourceEvent; set { _explicitNullValueSourceEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_event"); else _explicitNullProperties?.Remove("source_event"); } }
+        private string? _explicitNullValueSourceEvent = default!;
 #nullable restore
 #else
-        public string SourceEvent { get; set; }
+        public string SourceEvent { get => _explicitNullValueSourceEvent; set { _explicitNullValueSourceEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_event"); else _explicitNullProperties?.Remove("source_event"); } }
+        private string _explicitNullValueSourceEvent = default!;
 #endif
         /// <summary>The target event the baseline starts from, or null when none was passed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEvent { get; set; }
+        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string? _explicitNullValueTargetEvent = default!;
 #nullable restore
 #else
-        public string TargetEvent { get; set; }
+        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        private string _explicitNullValueTargetEvent = default!;
 #endif
         /// <summary>Whether test accounts were left out. It follows the default a new experiment gets, so the baseline matches the population that experiment analyzes. False when the project defines no test-account filters.</summary>
-        public bool? TestAccountsFiltered { get; set; }
+        public bool? TestAccountsFiltered { get => _explicitNullValueTestAccountsFiltered; set { _explicitNullValueTestAccountsFiltered = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_accounts_filtered"); else _explicitNullProperties?.Remove("test_accounts_filtered"); } }
+        private bool? _explicitNullValueTestAccountsFiltered = default!;
         /// <summary>Persons who sent the metric event, with metric_properties applied.</summary>
-        public int? UniquePersons { get; set; }
+        public int? UniquePersons { get => _explicitNullValueUniquePersons; set { _explicitNullValueUniquePersons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_persons"); else _explicitNullProperties?.Remove("unique_persons"); } }
+        private int? _explicitNullValueUniquePersons = default!;
         /// <summary>Days of events read, ending now.</summary>
-        public int? WindowDays { get; set; }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupCandidateMetric"/> and sets the default values.
         /// </summary>
@@ -93,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupCandidateMetric CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupCandidateMetric();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupCandidateMetric(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -140,6 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("test_accounts_filtered", TestAccountsFiltered);
             writer.WriteIntValue("unique_persons", UniquePersons);
             writer.WriteIntValue("window_days", WindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

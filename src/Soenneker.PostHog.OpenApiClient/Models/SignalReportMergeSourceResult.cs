@@ -11,17 +11,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalReportMergeSourceResult : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("artefacts_moved") is { } nullNodeArtefactsMoved && nullNodeArtefactsMoved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtefactsMoved = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("released_claim") is { } nullNodeReleasedClaim && nullNodeReleasedClaim.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleasedClaim = null;
+            if (parseNode.GetChildNode("signals_moved") is { } nullNodeSignalsMoved && nullNodeSignalsMoved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalsMoved = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many work-log artefacts moved to the survivor (notes, findings, pull requests, task runs, code references, commits, checks).</summary>
-        public int? ArtefactsMoved { get; set; }
+        public int? ArtefactsMoved { get => _explicitNullValueArtefactsMoved; set { _explicitNullValueArtefactsMoved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefacts_moved"); else _explicitNullProperties?.Remove("artefacts_moved"); } }
+        private int? _explicitNullValueArtefactsMoved = default!;
         /// <summary>The source report that was folded into the survivor.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Whether an active work claim held by another actor was released before the move.</summary>
-        public bool? ReleasedClaim { get; set; }
+        public bool? ReleasedClaim { get => _explicitNullValueReleasedClaim; set { _explicitNullValueReleasedClaim = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("released_claim"); else _explicitNullProperties?.Remove("released_claim"); } }
+        private bool? _explicitNullValueReleasedClaim = default!;
         /// <summary>How many signals the survivor took on from this source. The signals themselves are re-pointed asynchronously; the survivor&apos;s counters already include them.</summary>
-        public int? SignalsMoved { get; set; }
+        public int? SignalsMoved { get => _explicitNullValueSignalsMoved; set { _explicitNullValueSignalsMoved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals_moved"); else _explicitNullProperties?.Remove("signals_moved"); } }
+        private int? _explicitNullValueSignalsMoved = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportMergeSourceResult"/> and sets the default values.
         /// </summary>
@@ -37,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportMergeSourceResult CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportMergeSourceResult();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportMergeSourceResult(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,6 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("released_claim", ReleasedClaim);
             writer.WriteIntValue("signals_moved", SignalsMoved);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,37 +11,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HogFunctionPublishResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("changed_fields") is { } nullNodeChangedFields && nullNodeChangedFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangedFields = null;
+            if (parseNode.GetChildNode("confirm_token") is { } nullNodeConfirmToken && nullNodeConfirmToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfirmToken = null;
+            if (parseNode.GetChildNode("draft_updated_at") is { } nullNodeDraftUpdatedAt && nullNodeDraftUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftUpdatedAt = null;
+            if (parseNode.GetChildNode("function") is { } nullNodeFunction && nullNodeFunction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Function = null;
+            if (parseNode.GetChildNode("published") is { } nullNodePublished && nullNodePublished.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Published = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Config fields publishing would change (hog, inputs_schema, inputs, filters, mappings, masking). Only set on previews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ChangedFields { get; set; }
+        public List<string>? ChangedFields { get => _explicitNullValueChangedFields; set { _explicitNullValueChangedFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changed_fields"); else _explicitNullProperties?.Remove("changed_fields"); } }
+        private List<string>? _explicitNullValueChangedFields = default!;
 #nullable restore
 #else
-        public List<string> ChangedFields { get; set; }
+        public List<string> ChangedFields { get => _explicitNullValueChangedFields; set { _explicitNullValueChangedFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changed_fields"); else _explicitNullProperties?.Remove("changed_fields"); } }
+        private List<string> _explicitNullValueChangedFields = default!;
 #endif
         /// <summary>Echo this back with confirm=true to publish the previewed draft. Only set on previews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConfirmToken { get; set; }
+        public string? ConfirmToken { get => _explicitNullValueConfirmToken; set { _explicitNullValueConfirmToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirm_token"); else _explicitNullProperties?.Remove("confirm_token"); } }
+        private string? _explicitNullValueConfirmToken = default!;
 #nullable restore
 #else
-        public string ConfirmToken { get; set; }
+        public string ConfirmToken { get => _explicitNullValueConfirmToken; set { _explicitNullValueConfirmToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirm_token"); else _explicitNullProperties?.Remove("confirm_token"); } }
+        private string _explicitNullValueConfirmToken = default!;
 #endif
         /// <summary>The staged draft&apos;s timestamp, for reference; publishing is confirmed via confirm_token.</summary>
-        public DateTimeOffset? DraftUpdatedAt { get; set; }
+        public DateTimeOffset? DraftUpdatedAt { get => _explicitNullValueDraftUpdatedAt; set { _explicitNullValueDraftUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_updated_at"); else _explicitNullProperties?.Remove("draft_updated_at"); } }
+        private DateTimeOffset? _explicitNullValueDraftUpdatedAt = default!;
         /// <summary>The function after publishing (only set when published=true).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction? Function { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction? Function { get => _explicitNullValueFunction; set { _explicitNullValueFunction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function"); else _explicitNullProperties?.Remove("function"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunction? _explicitNullValueFunction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction Function { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction Function { get => _explicitNullValueFunction; set { _explicitNullValueFunction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function"); else _explicitNullProperties?.Remove("function"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunction _explicitNullValueFunction = default!;
 #endif
         /// <summary>Whether the draft was applied to the live function.</summary>
-        public bool? Published { get; set; }
+        public bool? Published { get => _explicitNullValuePublished; set { _explicitNullValuePublished = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published"); else _explicitNullProperties?.Remove("published"); } }
+        private bool? _explicitNullValuePublished = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponse"/> and sets the default values.
         /// </summary>
@@ -57,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("draft_updated_at", DraftUpdatedAt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunction>("function", Function);
             writer.WriteBoolValue("published", Published);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Checks attached to a signal report: read, approve, replace metrics, and cancel.There is no create here. A check is authored by a scout run or by the research pipeline, boththrough `report_check_authoring.create_check`. An `agent` check puts its author&apos;s prose in frontof a privileged scout run, and `task:write` does not authorize that, so no caller-facingendpoint accepts one. Anyone who can read the report can read its checks, and a person canstill stop one.There is no in-place update: a check is a claim about the future, and editing its thresholdafter a result would make the recorded verdict unreadable. Replacing an open metric checkcancels the old row and creates a new one in one transaction.
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheck.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Stop a check that is still open — active, or pending its report resolving. Its recorded results stay on the report.

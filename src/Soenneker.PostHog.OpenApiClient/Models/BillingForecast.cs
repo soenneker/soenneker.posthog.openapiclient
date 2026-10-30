@@ -11,58 +11,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BillingForecast : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billing_period") is { } nullNodeBillingPeriod && nullNodeBillingPeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingPeriod = null;
+            if (parseNode.GetChildNode("computed_at") is { } nullNodeComputedAt && nullNodeComputedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputedAt = null;
+            if (parseNode.GetChildNode("products") is { } nullNodeProducts && nullNodeProducts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Products = null;
+            if (parseNode.GetChildNode("projected_total_amount_usd") is { } nullNodeProjectedTotalAmountUsd && nullNodeProjectedTotalAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedTotalAmountUsd = null;
+            if (parseNode.GetChildNode("projected_total_amount_usd_after_discount") is { } nullNodeProjectedTotalAmountUsdAfterDiscount && nullNodeProjectedTotalAmountUsdAfterDiscount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedTotalAmountUsdAfterDiscount = null;
+            if (parseNode.GetChildNode("projected_total_amount_usd_with_limit") is { } nullNodeProjectedTotalAmountUsdWithLimit && nullNodeProjectedTotalAmountUsdWithLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedTotalAmountUsdWithLimit = null;
+            if (parseNode.GetChildNode("projected_total_amount_usd_with_limit_after_discount") is { } nullNodeProjectedTotalAmountUsdWithLimitAfterDiscount && nullNodeProjectedTotalAmountUsdWithLimitAfterDiscount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedTotalAmountUsdWithLimitAfterDiscount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The billing_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? BillingPeriod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? _explicitNullValueBillingPeriod = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod BillingPeriod { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod _explicitNullValueBillingPeriod = default!;
 #endif
         /// <summary>The computed_at property</summary>
-        public DateTimeOffset? ComputedAt { get; set; }
+        public DateTimeOffset? ComputedAt { get => _explicitNullValueComputedAt; set { _explicitNullValueComputedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed_at"); else _explicitNullProperties?.Remove("computed_at"); } }
+        private DateTimeOffset? _explicitNullValueComputedAt = default!;
         /// <summary>The products property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast>? Products { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast>? Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast>? _explicitNullValueProducts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast> Products { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast> Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast> _explicitNullValueProducts = default!;
 #endif
         /// <summary>The projected_total_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedTotalAmountUsd { get; set; }
+        public string? ProjectedTotalAmountUsd { get => _explicitNullValueProjectedTotalAmountUsd; set { _explicitNullValueProjectedTotalAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_total_amount_usd"); else _explicitNullProperties?.Remove("projected_total_amount_usd"); } }
+        private string? _explicitNullValueProjectedTotalAmountUsd = default!;
 #nullable restore
 #else
-        public string ProjectedTotalAmountUsd { get; set; }
+        public string ProjectedTotalAmountUsd { get => _explicitNullValueProjectedTotalAmountUsd; set { _explicitNullValueProjectedTotalAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_total_amount_usd"); else _explicitNullProperties?.Remove("projected_total_amount_usd"); } }
+        private string _explicitNullValueProjectedTotalAmountUsd = default!;
 #endif
         /// <summary>The projected_total_amount_usd_after_discount property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedTotalAmountUsdAfterDiscount { get; set; }
+        public string? ProjectedTotalAmountUsdAfterDiscount { get => _explicitNullValueProjectedTotalAmountUsdAfterDiscount; set { _explicitNullValueProjectedTotalAmountUsdAfterDiscount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_total_amount_usd_after_discount"); else _explicitNullProperties?.Remove("projected_total_amount_usd_after_discount"); } }
+        private string? _explicitNullValueProjectedTotalAmountUsdAfterDiscount = default!;
 #nullable restore
 #else
-        public string ProjectedTotalAmountUsdAfterDiscount { get; set; }
+        public string ProjectedTotalAmountUsdAfterDiscount { get => _explicitNullValueProjectedTotalAmountUsdAfterDiscount; set { _explicitNullValueProjectedTotalAmountUsdAfterDiscount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_total_amount_usd_after_discount"); else _explicitNullProperties?.Remove("projected_total_amount_usd_after_discount"); } }
+        private string _explicitNullValueProjectedTotalAmountUsdAfterDiscount = default!;
 #endif
         /// <summary>The projected_total_amount_usd_with_limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedTotalAmountUsdWithLimit { get; set; }
+        public string? ProjectedTotalAmountUsdWithLimit { get => _explicitNullValueProjectedTotalAmountUsdWithLimit; set { _explicitNullValueProjectedTotalAmountUsdWithLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_total_amount_usd_with_limit"); else _explicitNullProperties?.Remove("projected_total_amount_usd_with_limit"); } }
+        private string? _explicitNullValueProjectedTotalAmountUsdWithLimit = default!;
 #nullable restore
 #else
-        public string ProjectedTotalAmountUsdWithLimit { get; set; }
+        public string ProjectedTotalAmountUsdWithLimit { get => _explicitNullValueProjectedTotalAmountUsdWithLimit; set { _explicitNullValueProjectedTotalAmountUsdWithLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_total_amount_usd_with_limit"); else _explicitNullProperties?.Remove("projected_total_amount_usd_with_limit"); } }
+        private string _explicitNullValueProjectedTotalAmountUsdWithLimit = default!;
 #endif
         /// <summary>The projected_total_amount_usd_with_limit_after_discount property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedTotalAmountUsdWithLimitAfterDiscount { get; set; }
+        public string? ProjectedTotalAmountUsdWithLimitAfterDiscount { get => _explicitNullValueProjectedTotalAmountUsdWithLimitAfterDiscount; set { _explicitNullValueProjectedTotalAmountUsdWithLimitAfterDiscount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_total_amount_usd_with_limit_after_discount"); else _explicitNullProperties?.Remove("projected_total_amount_usd_with_limit_after_discount"); } }
+        private string? _explicitNullValueProjectedTotalAmountUsdWithLimitAfterDiscount = default!;
 #nullable restore
 #else
-        public string ProjectedTotalAmountUsdWithLimitAfterDiscount { get; set; }
+        public string ProjectedTotalAmountUsdWithLimitAfterDiscount { get => _explicitNullValueProjectedTotalAmountUsdWithLimitAfterDiscount; set { _explicitNullValueProjectedTotalAmountUsdWithLimitAfterDiscount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_total_amount_usd_with_limit_after_discount"); else _explicitNullProperties?.Remove("projected_total_amount_usd_with_limit_after_discount"); } }
+        private string _explicitNullValueProjectedTotalAmountUsdWithLimitAfterDiscount = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BillingForecast"/> and sets the default values.
@@ -79,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BillingForecast CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BillingForecast();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BillingForecast(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("projected_total_amount_usd_after_discount", ProjectedTotalAmountUsdAfterDiscount);
             writer.WriteStringValue("projected_total_amount_usd_with_limit", ProjectedTotalAmountUsdWithLimit);
             writer.WriteStringValue("projected_total_amount_usd_with_limit_after_discount", ProjectedTotalAmountUsdWithLimitAfterDiscount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

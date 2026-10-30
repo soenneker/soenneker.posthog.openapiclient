@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummary>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummary.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummary>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DeliverySummary.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delivery and CI friction for one author or one GitHub team over a window (date_from default -30d), each figure next to the same figure over the whole repository: CI spend per merged PR, ready to merged split at the first approval, pushes after approval, merge-queue attempts, and lead time to deploy. Bots and drafts are excluded. Figures whose optional source isn&apos;t synced are null and flagged.

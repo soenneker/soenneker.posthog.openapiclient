@@ -11,58 +11,85 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MaterializationPreviewResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregates") is { } nullNodeAggregates && nullNodeAggregates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Aggregates = null;
+            if (parseNode.GetChildNode("can_materialize") is { } nullNodeCanMaterialize && nullNodeCanMaterialize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanMaterialize = null;
+            if (parseNode.GetChildNode("display_execution_query") is { } nullNodeDisplayExecutionQuery && nullNodeDisplayExecutionQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayExecutionQuery = null;
+            if (parseNode.GetChildNode("execution_query") is { } nullNodeExecutionQuery && nullNodeExecutionQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExecutionQuery = null;
+            if (parseNode.GetChildNode("range_pairs") is { } nullNodeRangePairs && nullNodeRangePairs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RangePairs = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("transformed_query") is { } nullNodeTransformedQuery && nullNodeTransformedQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TransformedQuery = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Aggregate expressions and how to re-aggregate them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewAggregate>? Aggregates { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewAggregate>? Aggregates { get => _explicitNullValueAggregates; set { _explicitNullValueAggregates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregates"); else _explicitNullProperties?.Remove("aggregates"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewAggregate>? _explicitNullValueAggregates = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewAggregate> Aggregates { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewAggregate> Aggregates { get => _explicitNullValueAggregates; set { _explicitNullValueAggregates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregates"); else _explicitNullProperties?.Remove("aggregates"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewAggregate> _explicitNullValueAggregates = default!;
 #endif
         /// <summary>Whether the endpoint query can be materialized.</summary>
-        public bool? CanMaterialize { get; set; }
+        public bool? CanMaterialize { get => _explicitNullValueCanMaterialize; set { _explicitNullValueCanMaterialize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_materialize"); else _explicitNullProperties?.Remove("can_materialize"); } }
+        private bool? _explicitNullValueCanMaterialize = default!;
         /// <summary>Execution query formatted for display.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayExecutionQuery { get; set; }
+        public string? DisplayExecutionQuery { get => _explicitNullValueDisplayExecutionQuery; set { _explicitNullValueDisplayExecutionQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_execution_query"); else _explicitNullProperties?.Remove("display_execution_query"); } }
+        private string? _explicitNullValueDisplayExecutionQuery = default!;
 #nullable restore
 #else
-        public string DisplayExecutionQuery { get; set; }
+        public string DisplayExecutionQuery { get => _explicitNullValueDisplayExecutionQuery; set { _explicitNullValueDisplayExecutionQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_execution_query"); else _explicitNullProperties?.Remove("display_execution_query"); } }
+        private string _explicitNullValueDisplayExecutionQuery = default!;
 #endif
         /// <summary>Query that would run against the materialized table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExecutionQuery { get; set; }
+        public string? ExecutionQuery { get => _explicitNullValueExecutionQuery; set { _explicitNullValueExecutionQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("execution_query"); else _explicitNullProperties?.Remove("execution_query"); } }
+        private string? _explicitNullValueExecutionQuery = default!;
 #nullable restore
 #else
-        public string ExecutionQuery { get; set; }
+        public string ExecutionQuery { get => _explicitNullValueExecutionQuery; set { _explicitNullValueExecutionQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("execution_query"); else _explicitNullProperties?.Remove("execution_query"); } }
+        private string _explicitNullValueExecutionQuery = default!;
 #endif
         /// <summary>Bucketed columns and the variables that filter on them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRangePair>? RangePairs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRangePair>? RangePairs { get => _explicitNullValueRangePairs; set { _explicitNullValueRangePairs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range_pairs"); else _explicitNullProperties?.Remove("range_pairs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRangePair>? _explicitNullValueRangePairs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRangePair> RangePairs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRangePair> RangePairs { get => _explicitNullValueRangePairs; set { _explicitNullValueRangePairs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("range_pairs"); else _explicitNullProperties?.Remove("range_pairs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRangePair> _explicitNullValueRangePairs = default!;
 #endif
         /// <summary>Why the query cannot be materialized, or null when it can.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get; set; }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get; set; }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Query rewritten for materialization, when one could be produced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TransformedQuery { get; set; }
+        public string? TransformedQuery { get => _explicitNullValueTransformedQuery; set { _explicitNullValueTransformedQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transformed_query"); else _explicitNullProperties?.Remove("transformed_query"); } }
+        private string? _explicitNullValueTransformedQuery = default!;
 #nullable restore
 #else
-        public string TransformedQuery { get; set; }
+        public string TransformedQuery { get => _explicitNullValueTransformedQuery; set { _explicitNullValueTransformedQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transformed_query"); else _explicitNullProperties?.Remove("transformed_query"); } }
+        private string _explicitNullValueTransformedQuery = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewResponse"/> and sets the default values.
@@ -79,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRangePair>("range_pairs", RangePairs);
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("transformed_query", TransformedQuery);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

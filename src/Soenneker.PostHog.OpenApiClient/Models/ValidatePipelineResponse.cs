@@ -11,38 +11,65 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ValidatePipelineResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("base_rate") is { } nullNodeBaseRate && nullNodeBaseRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseRate = null;
+            if (parseNode.GetChildNode("can_proceed") is { } nullNodeCanProceed && nullNodeCanProceed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanProceed = null;
+            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("estimated_training_rows") is { } nullNodeEstimatedTrainingRows && nullNodeEstimatedTrainingRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedTrainingRows = null;
+            if (parseNode.GetChildNode("inference_population_size") is { } nullNodeInferencePopulationSize && nullNodeInferencePopulationSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InferencePopulationSize = null;
+            if (parseNode.GetChildNode("negative_count") is { } nullNodeNegativeCount && nullNodeNegativeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NegativeCount = null;
+            if (parseNode.GetChildNode("positive_count") is { } nullNodePositiveCount && nullNodePositiveCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PositiveCount = null;
+            if (parseNode.GetChildNode("requires_acknowledgement") is { } nullNodeRequiresAcknowledgement && nullNodeRequiresAcknowledgement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiresAcknowledgement = null;
+            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Fraction of the training population that performed the target event.</summary>
-        public double? BaseRate { get; set; }
+        public double? BaseRate { get => _explicitNullValueBaseRate; set { _explicitNullValueBaseRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_rate"); else _explicitNullProperties?.Remove("base_rate"); } }
+        private double? _explicitNullValueBaseRate = default!;
         /// <summary>False when any warning has severity &apos;error&apos;. Creation does not enforce it, but a definition with an &apos;error&apos; &apos;population_too_large&apos; or &apos;horizon_exceeds_lookback&apos; cannot train.</summary>
-        public bool? CanProceed { get; set; }
+        public bool? CanProceed { get => _explicitNullValueCanProceed; set { _explicitNullValueCanProceed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_proceed"); else _explicitNullProperties?.Remove("can_proceed"); } }
+        private bool? _explicitNullValueCanProceed = default!;
         /// <summary>Why validation did not run, or null when it did. A query error in the definition itself is passed through; any other failure is a generic message and the detail is logged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get; set; }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get; set; }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        private string _explicitNullValueError = default!;
 #endif
         /// <summary>Estimated number of user-level training rows based on the population and lookback window.</summary>
-        public int? EstimatedTrainingRows { get; set; }
+        public int? EstimatedTrainingRows { get => _explicitNullValueEstimatedTrainingRows; set { _explicitNullValueEstimatedTrainingRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_training_rows"); else _explicitNullProperties?.Remove("estimated_training_rows"); } }
+        private int? _explicitNullValueEstimatedTrainingRows = default!;
         /// <summary>Estimated number of users in the inference (daily scoring) population.</summary>
-        public int? InferencePopulationSize { get; set; }
+        public int? InferencePopulationSize { get => _explicitNullValueInferencePopulationSize; set { _explicitNullValueInferencePopulationSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inference_population_size"); else _explicitNullProperties?.Remove("inference_population_size"); } }
+        private int? _explicitNullValueInferencePopulationSize = default!;
         /// <summary>Estimated number of negative examples.</summary>
-        public int? NegativeCount { get; set; }
+        public int? NegativeCount { get => _explicitNullValueNegativeCount; set { _explicitNullValueNegativeCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negative_count"); else _explicitNullProperties?.Remove("negative_count"); } }
+        private int? _explicitNullValueNegativeCount = default!;
         /// <summary>Estimated number of positive examples (users who performed the target event).</summary>
-        public int? PositiveCount { get; set; }
+        public int? PositiveCount { get => _explicitNullValuePositiveCount; set { _explicitNullValuePositiveCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positive_count"); else _explicitNullProperties?.Remove("positive_count"); } }
+        private int? _explicitNullValuePositiveCount = default!;
         /// <summary>True if there are non-blocking warnings the user should acknowledge before proceeding.</summary>
-        public bool? RequiresAcknowledgement { get; set; }
+        public bool? RequiresAcknowledgement { get => _explicitNullValueRequiresAcknowledgement; set { _explicitNullValueRequiresAcknowledgement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requires_acknowledgement"); else _explicitNullProperties?.Remove("requires_acknowledgement"); } }
+        private bool? _explicitNullValueRequiresAcknowledgement = default!;
         /// <summary>List of validation warnings. Check &apos;severity&apos; and &apos;code&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarning>? Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarning>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarning>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarning> Warnings { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarning> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarning> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse"/> and sets the default values.
@@ -59,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ValidatePipelineResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("positive_count", PositiveCount);
             writer.WriteBoolValue("requires_acknowledgement", RequiresAcknowledgement);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ValidationWarning>("warnings", Warnings);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

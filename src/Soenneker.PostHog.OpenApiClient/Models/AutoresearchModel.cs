@@ -12,61 +12,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AutoresearchModel : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_description") is { } nullNodeAgentDescription && nullNodeAgentDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentDescription = null;
+            if (parseNode.GetChildNode("archived_at") is { } nullNodeArchivedAt && nullNodeArchivedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArchivedAt = null;
+            if (parseNode.GetChildNode("calibration_error") is { } nullNodeCalibrationError && nullNodeCalibrationError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CalibrationError = null;
+            if (parseNode.GetChildNode("holdout_score") is { } nullNodeHoldoutScore && nullNodeHoldoutScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldoutScore = null;
+            if (parseNode.GetChildNode("is_preliminary") is { } nullNodeIsPreliminary && nullNodeIsPreliminary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPreliminary = null;
+            if (parseNode.GetChildNode("metrics") is { } nullNodeMetrics && nullNodeMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metrics = null;
+            if (parseNode.GetChildNode("model_explanation") is { } nullNodeModelExplanation && nullNodeModelExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelExplanation = null;
+            if (parseNode.GetChildNode("model_recipe") is { } nullNodeModelRecipe && nullNodeModelRecipe.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelRecipe = null;
+            if (parseNode.GetChildNode("pipeline") is { } nullNodePipeline && nullNodePipeline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pipeline = null;
+            if (parseNode.GetChildNode("promoted_at") is { } nullNodePromotedAt && nullNodePromotedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromotedAt = null;
+            if (parseNode.GetChildNode("realized_score") is { } nullNodeRealizedScore && nullNodeRealizedScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealizedScore = null;
+            if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
+            if (parseNode.GetChildNode("trained_on_end") is { } nullNodeTrainedOnEnd && nullNodeTrainedOnEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainedOnEnd = null;
+            if (parseNode.GetChildNode("trained_on_start") is { } nullNodeTrainedOnStart && nullNodeTrainedOnStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrainedOnStart = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The agent&apos;s own plain-English description of what this recipe does and why it was chosen.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentDescription { get; set; }
+        public string? AgentDescription { get => _explicitNullValueAgentDescription; set { _explicitNullValueAgentDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_description"); else _explicitNullProperties?.Remove("agent_description"); } }
+        private string? _explicitNullValueAgentDescription = default!;
 #nullable restore
 #else
-        public string AgentDescription { get; set; }
+        public string AgentDescription { get => _explicitNullValueAgentDescription; set { _explicitNullValueAgentDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_description"); else _explicitNullProperties?.Remove("agent_description"); } }
+        private string _explicitNullValueAgentDescription = default!;
 #endif
         /// <summary>Timestamp when this model was archived (superseded or retired).</summary>
-        public DateTimeOffset? ArchivedAt { get; set; }
+        public DateTimeOffset? ArchivedAt { get => _explicitNullValueArchivedAt; set { _explicitNullValueArchivedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archived_at"); else _explicitNullProperties?.Remove("archived_at"); } }
+        private DateTimeOffset? _explicitNullValueArchivedAt = default!;
         /// <summary>Expected calibration error (ECE). Lower is better; well-calibrated models have ECE &lt; 0.05.</summary>
-        public double? CalibrationError { get; set; }
+        public double? CalibrationError { get => _explicitNullValueCalibrationError; set { _explicitNullValueCalibrationError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("calibration_error"); else _explicitNullProperties?.Remove("calibration_error"); } }
+        private double? _explicitNullValueCalibrationError = default!;
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>AUC on the held-out test split at training time. Preliminary signal before online labels mature.</summary>
-        public double? HoldoutScore { get; set; }
+        public double? HoldoutScore { get => _explicitNullValueHoldoutScore; set { _explicitNullValueHoldoutScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdout_score"); else _explicitNullProperties?.Remove("holdout_score"); } }
+        private double? _explicitNullValueHoldoutScore = default!;
         /// <summary>Unique UUID of this model version.</summary>
         public Guid? Id { get; private set; }
         /// <summary>True if this model is in the pipeline&apos;s shadow set: the champion, the previous champion, and up to 3 recent fitted challengers with distinct recipes.</summary>
         public bool? InShadowSet { get; private set; }
         /// <summary>True if this model has not yet been validated against realized online outcomes.</summary>
-        public bool? IsPreliminary { get; set; }
+        public bool? IsPreliminary { get => _explicitNullValueIsPreliminary; set { _explicitNullValueIsPreliminary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_preliminary"); else _explicitNullProperties?.Remove("is_preliminary"); } }
+        private bool? _explicitNullValueIsPreliminary = default!;
         /// <summary>Extended metrics bundle. Holds the holdout AUC from training, and under &apos;realized&apos; the newest validated date&apos;s online metrics: realized AUC, Brier score, calibration error and bins, lift@k, average precision, confusion counts at top 10%, top 20% and Likely, base rate, and row counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty? Metrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty? _explicitNullValueMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty Metrics { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelMetricsProperty _explicitNullValueMetrics = default!;
 #endif
         /// <summary>Global feature importance and directionality. Used to explain top drivers on the model card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation? ModelExplanation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation? ModelExplanation { get => _explicitNullValueModelExplanation; set { _explicitNullValueModelExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_explanation"); else _explicitNullProperties?.Remove("model_explanation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation? _explicitNullValueModelExplanation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation ModelExplanation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation ModelExplanation { get => _explicitNullValueModelExplanation; set { _explicitNullValueModelExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_explanation"); else _explicitNullProperties?.Remove("model_explanation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelExplanation _explicitNullValueModelExplanation = default!;
 #endif
         /// <summary>Portable recipe artifact. Feature SQL, transforms, model class, params, and metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty? ModelRecipe { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty? ModelRecipe { get => _explicitNullValueModelRecipe; set { _explicitNullValueModelRecipe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_recipe"); else _explicitNullProperties?.Remove("model_recipe"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty? _explicitNullValueModelRecipe = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty ModelRecipe { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty ModelRecipe { get => _explicitNullValueModelRecipe; set { _explicitNullValueModelRecipe = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_recipe"); else _explicitNullProperties?.Remove("model_recipe"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelModelRecipeProperty _explicitNullValueModelRecipe = default!;
 #endif
         /// <summary>Pipeline this model belongs to.</summary>
-        public Guid? Pipeline { get; set; }
+        public Guid? Pipeline { get => _explicitNullValuePipeline; set { _explicitNullValuePipeline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipeline"); else _explicitNullProperties?.Remove("pipeline"); } }
+        private Guid? _explicitNullValuePipeline = default!;
         /// <summary>Timestamp when this model was promoted to champion.</summary>
-        public DateTimeOffset? PromotedAt { get; set; }
+        public DateTimeOffset? PromotedAt { get => _explicitNullValuePromotedAt; set { _explicitNullValuePromotedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("promoted_at"); else _explicitNullProperties?.Remove("promoted_at"); } }
+        private DateTimeOffset? _explicitNullValuePromotedAt = default!;
         /// <summary>Online AUC computed from actual realized outcomes. Authoritative once enough labels have matured.</summary>
-        public double? RealizedScore { get; set; }
+        public double? RealizedScore { get => _explicitNullValueRealizedScore; set { _explicitNullValueRealizedScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realized_score"); else _explicitNullProperties?.Remove("realized_score"); } }
+        private double? _explicitNullValueRealizedScore = default!;
         /// <summary>SHA-256 of the serialized recipe. Used to deduplicate identical recipes across runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,13 +112,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string RecipeHash { get; private set; }
 #endif
         /// <summary>* `champion` - Champion* `challenger` - Challenger* `archived` - Archived</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole? Role { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole? _explicitNullValueRole = default!;
         /// <summary>Training run that produced this model. Read that run&apos;s artifact bundle to reuse the champion&apos;s train.py and features.sql as a starting point. Null for legacy models.</summary>
         public Guid? SourceTrainingRun { get; private set; }
         /// <summary>End of the training data window (exclusive).</summary>
-        public Date? TrainedOnEnd { get; set; }
+        public Date? TrainedOnEnd { get => _explicitNullValueTrainedOnEnd; set { _explicitNullValueTrainedOnEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trained_on_end"); else _explicitNullProperties?.Remove("trained_on_end"); } }
+        private Date? _explicitNullValueTrainedOnEnd = default!;
         /// <summary>Start of the training data window (inclusive).</summary>
-        public Date? TrainedOnStart { get; set; }
+        public Date? TrainedOnStart { get => _explicitNullValueTrainedOnStart; set { _explicitNullValueTrainedOnStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trained_on_start"); else _explicitNullProperties?.Remove("trained_on_start"); } }
+        private Date? _explicitNullValueTrainedOnStart = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>
@@ -100,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModel CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModel();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModel(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -153,6 +192,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchModelRole>("role", Role);
             writer.WriteDateValue("trained_on_end", TrainedOnEnd);
             writer.WriteDateValue("trained_on_start", TrainedOnStart);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

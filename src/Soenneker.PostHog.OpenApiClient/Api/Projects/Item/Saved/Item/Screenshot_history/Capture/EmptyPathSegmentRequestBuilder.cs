@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Saved.Item.Screensho
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryCaptureResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryCaptureResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryCaptureResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryCaptureResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Render and keep a capture of the page now, instead of waiting for the daily run, for example right after a deploy. The render runs in the background; poll the history list for the new capture. A capture requested on a day that already has one replaces that day&apos;s image.

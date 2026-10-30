@@ -12,19 +12,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutMetadataLimits : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("max_enabled_scouts") is { } nullNodeMaxEnabledScouts && nullNodeMaxEnabledScouts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxEnabledScouts = null;
+            if (parseNode.GetChildNode("max_runs_per_day") is { } nullNodeMaxRunsPerDay && nullNodeMaxRunsPerDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRunsPerDay = null;
+            if (parseNode.GetChildNode("max_runs_per_tick") is { } nullNodeMaxRunsPerTick && nullNodeMaxRunsPerTick.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRunsPerTick = null;
+            if (parseNode.GetChildNode("runs_remaining_today") is { } nullNodeRunsRemainingToday && nullNodeRunsRemainingToday.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsRemainingToday = null;
+            if (parseNode.GetChildNode("runs_today") is { } nullNodeRunsToday && nullNodeRunsToday.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsToday = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Most scouts the project can have switched on at once. Enabling another past this is rejected.</summary>
-        public int? MaxEnabledScouts { get; set; }
+        public int? MaxEnabledScouts { get => _explicitNullValueMaxEnabledScouts; set { _explicitNullValueMaxEnabledScouts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_enabled_scouts"); else _explicitNullProperties?.Remove("max_enabled_scouts"); } }
+        private int? _explicitNullValueMaxEnabledScouts = default!;
         /// <summary>Most scout runs the team can start per rolling 24 hours, or null when uncapped.</summary>
-        public int? MaxRunsPerDay { get; set; }
+        public int? MaxRunsPerDay { get => _explicitNullValueMaxRunsPerDay; set { _explicitNullValueMaxRunsPerDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_runs_per_day"); else _explicitNullProperties?.Remove("max_runs_per_day"); } }
+        private int? _explicitNullValueMaxRunsPerDay = default!;
         /// <summary>Most scout runs the team can start in a single 30-minute coordinator tick.</summary>
-        public int? MaxRunsPerTick { get; set; }
+        public int? MaxRunsPerTick { get => _explicitNullValueMaxRunsPerTick; set { _explicitNullValueMaxRunsPerTick = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_runs_per_tick"); else _explicitNullProperties?.Remove("max_runs_per_tick"); } }
+        private int? _explicitNullValueMaxRunsPerTick = default!;
         /// <summary>Runs still allowed in the trailing 24h window (max_runs_per_day − runs_today), or null when uncapped.</summary>
-        public int? RunsRemainingToday { get; set; }
+        public int? RunsRemainingToday { get => _explicitNullValueRunsRemainingToday; set { _explicitNullValueRunsRemainingToday = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_remaining_today"); else _explicitNullProperties?.Remove("runs_remaining_today"); } }
+        private int? _explicitNullValueRunsRemainingToday = default!;
         /// <summary>Scout runs the team has started in the trailing 24 hours.</summary>
-        public int? RunsToday { get; set; }
+        public int? RunsToday { get => _explicitNullValueRunsToday; set { _explicitNullValueRunsToday = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_today"); else _explicitNullProperties?.Remove("runs_today"); } }
+        private int? _explicitNullValueRunsToday = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits"/> and sets the default values.
         /// </summary>
@@ -40,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("max_runs_per_tick", MaxRunsPerTick);
             writer.WriteIntValue("runs_remaining_today", RunsRemainingToday);
             writer.WriteIntValue("runs_today", RunsToday);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,42 +11,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UserSlackLinkableWorkspaceItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("posthog_organization_name") is { } nullNodePosthogOrganizationName && nullNodePosthogOrganizationName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PosthogOrganizationName = null;
+            if (parseNode.GetChildNode("posthog_team_id") is { } nullNodePosthogTeamId && nullNodePosthogTeamId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PosthogTeamId = null;
+            if (parseNode.GetChildNode("posthog_team_name") is { } nullNodePosthogTeamName && nullNodePosthogTeamName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PosthogTeamName = null;
+            if (parseNode.GetChildNode("slack_team_id") is { } nullNodeSlackTeamId && nullNodeSlackTeamId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackTeamId = null;
+            if (parseNode.GetChildNode("slack_team_name") is { } nullNodeSlackTeamName && nullNodeSlackTeamName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackTeamName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>PostHog organization name owning the team, for picker disambiguation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PosthogOrganizationName { get; set; }
+        public string? PosthogOrganizationName { get => _explicitNullValuePosthogOrganizationName; set { _explicitNullValuePosthogOrganizationName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_organization_name"); else _explicitNullProperties?.Remove("posthog_organization_name"); } }
+        private string? _explicitNullValuePosthogOrganizationName = default!;
 #nullable restore
 #else
-        public string PosthogOrganizationName { get; set; }
+        public string PosthogOrganizationName { get => _explicitNullValuePosthogOrganizationName; set { _explicitNullValuePosthogOrganizationName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_organization_name"); else _explicitNullProperties?.Remove("posthog_organization_name"); } }
+        private string _explicitNullValuePosthogOrganizationName = default!;
 #endif
         /// <summary>PostHog team/project id owning the Slack workspace install.</summary>
-        public int? PosthogTeamId { get; set; }
+        public int? PosthogTeamId { get => _explicitNullValuePosthogTeamId; set { _explicitNullValuePosthogTeamId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_team_id"); else _explicitNullProperties?.Remove("posthog_team_id"); } }
+        private int? _explicitNullValuePosthogTeamId = default!;
         /// <summary>PostHog team/project name, for display in a picker.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PosthogTeamName { get; set; }
+        public string? PosthogTeamName { get => _explicitNullValuePosthogTeamName; set { _explicitNullValuePosthogTeamName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_team_name"); else _explicitNullProperties?.Remove("posthog_team_name"); } }
+        private string? _explicitNullValuePosthogTeamName = default!;
 #nullable restore
 #else
-        public string PosthogTeamName { get; set; }
+        public string PosthogTeamName { get => _explicitNullValuePosthogTeamName; set { _explicitNullValuePosthogTeamName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_team_name"); else _explicitNullProperties?.Remove("posthog_team_name"); } }
+        private string _explicitNullValuePosthogTeamName = default!;
 #endif
         /// <summary>Slack workspace (team) id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackTeamId { get; set; }
+        public string? SlackTeamId { get => _explicitNullValueSlackTeamId; set { _explicitNullValueSlackTeamId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_team_id"); else _explicitNullProperties?.Remove("slack_team_id"); } }
+        private string? _explicitNullValueSlackTeamId = default!;
 #nullable restore
 #else
-        public string SlackTeamId { get; set; }
+        public string SlackTeamId { get => _explicitNullValueSlackTeamId; set { _explicitNullValueSlackTeamId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_team_id"); else _explicitNullProperties?.Remove("slack_team_id"); } }
+        private string _explicitNullValueSlackTeamId = default!;
 #endif
         /// <summary>Slack workspace display name as known by PostHog.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackTeamName { get; set; }
+        public string? SlackTeamName { get => _explicitNullValueSlackTeamName; set { _explicitNullValueSlackTeamName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_team_name"); else _explicitNullProperties?.Remove("slack_team_name"); } }
+        private string? _explicitNullValueSlackTeamName = default!;
 #nullable restore
 #else
-        public string SlackTeamName { get; set; }
+        public string SlackTeamName { get => _explicitNullValueSlackTeamName; set { _explicitNullValueSlackTeamName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_team_name"); else _explicitNullProperties?.Remove("slack_team_name"); } }
+        private string _explicitNullValueSlackTeamName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserSlackLinkableWorkspaceItem"/> and sets the default values.
@@ -63,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.UserSlackLinkableWorkspaceItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.UserSlackLinkableWorkspaceItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.UserSlackLinkableWorkspaceItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("posthog_team_name", PosthogTeamName);
             writer.WriteStringValue("slack_team_id", SlackTeamId);
             writer.WriteStringValue("slack_team_name", SlackTeamName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,75 +12,113 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WarmTaskRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("custom_image_id") is { } nullNodeCustomImageId && nullNodeCustomImageId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomImageId = null;
+            if (parseNode.GetChildNode("github_integration") is { } nullNodeGithubIntegration && nullNodeGithubIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubIntegration = null;
+            if (parseNode.GetChildNode("initial_permission_mode") is { } nullNodeInitialPermissionMode && nullNodeInitialPermissionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InitialPermissionMode = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("origin_product") is { } nullNodeOriginProduct && nullNodeOriginProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OriginProduct = null;
+            if (parseNode.GetChildNode("reasoning_effort") is { } nullNodeReasoningEffort && nullNodeReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningEffort = null;
+            if (parseNode.GetChildNode("repositories") is { } nullNodeRepositories && nullNodeRepositories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repositories = null;
+            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("runtime_adapter") is { } nullNodeRuntimeAdapter && nullNodeRuntimeAdapter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuntimeAdapter = null;
+            if (parseNode.GetChildNode("sandbox_environment_id") is { } nullNodeSandboxEnvironmentId && nullNodeSandboxEnvironmentId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SandboxEnvironmentId = null;
+            if (parseNode.GetChildNode("signal_report") is { } nullNodeSignalReport && nullNodeSignalReport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalReport = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Branch to check out in the warm sandbox. Defaults to the repository&apos;s default branch when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Branch { get; set; }
+        public string? Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string? _explicitNullValueBranch = default!;
 #nullable restore
 #else
-        public string Branch { get; set; }
+        public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
+        private string _explicitNullValueBranch = default!;
 #endif
         /// <summary>Optional custom base image to provision before the task is submitted; takes precedence over the environment&apos;s image.</summary>
-        public Guid? CustomImageId { get; set; }
+        public Guid? CustomImageId { get => _explicitNullValueCustomImageId; set { _explicitNullValueCustomImageId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_image_id"); else _explicitNullProperties?.Remove("custom_image_id"); } }
+        private Guid? _explicitNullValueCustomImageId = default!;
         /// <summary>Primary key of the team&apos;s GitHub integration. Required when a repository is selected (it is what the sandbox clones with). Accepted without a repository too: the warm Run then boots with that integration&apos;s GitHub credentials, matching a repo-less create that carries it.</summary>
-        public int? GithubIntegration { get; set; }
+        public int? GithubIntegration { get => _explicitNullValueGithubIntegration; set { _explicitNullValueGithubIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_integration"); else _explicitNullProperties?.Remove("github_integration"); } }
+        private int? _explicitNullValueGithubIntegration = default!;
         /// <summary>Permission mode to boot the agent session on. Read at session construction, so it cannot be changed once the sandbox is warm — a submit selecting a different mode falls through to a cold Run. Omit to take the runtime&apos;s default.* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode? InitialPermissionMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode? InitialPermissionMode { get => _explicitNullValueInitialPermissionMode; set { _explicitNullValueInitialPermissionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_permission_mode"); else _explicitNullProperties?.Remove("initial_permission_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode? _explicitNullValueInitialPermissionMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode InitialPermissionMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode InitialPermissionMode { get => _explicitNullValueInitialPermissionMode; set { _explicitNullValueInitialPermissionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_permission_mode"); else _explicitNullProperties?.Remove("initial_permission_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestInitialPermissionMode _explicitNullValueInitialPermissionMode = default!;
 #endif
         /// <summary>LLM model identifier to warm the sandbox on. A submit selecting a different model won&apos;t reuse this warm Run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>* `user_created` - user_created* `posthog_ai` - posthog_ai* `signal_report` - signal_report</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct? OriginProduct { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct? OriginProduct { get => _explicitNullValueOriginProduct; set { _explicitNullValueOriginProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origin_product"); else _explicitNullProperties?.Remove("origin_product"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestOriginProduct? _explicitNullValueOriginProduct = default!;
         /// <summary>Reasoning effort to warm the sandbox on for models that expose an effort control.* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort? ReasoningEffort { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort? _explicitNullValueReasoningEffort = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort ReasoningEffort { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestReasoningEffort _explicitNullValueReasoningEffort = default!;
 #endif
         /// <summary>GitHub repositories to clone into the warm sandbox, each in `organization/repo` format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Repositories { get; set; }
+        public List<string>? Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
+        private List<string>? _explicitNullValueRepositories = default!;
 #nullable restore
 #else
-        public List<string> Repositories { get; set; }
+        public List<string> Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
+        private List<string> _explicitNullValueRepositories = default!;
 #endif
         /// <summary>Optional GitHub repository to clone, in `organization/repo` format (e.g. `posthog/posthog`).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Repository { get; set; }
+        public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string? _explicitNullValueRepository = default!;
 #nullable restore
 #else
-        public string Repository { get; set; }
+        public string Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string _explicitNullValueRepository = default!;
 #endif
         /// <summary>Agent runtime adapter to warm the sandbox on (&apos;claude&apos; or &apos;codex&apos;). The warm Run starts the agent on this runtime so a matching submit reuses it; a submit selecting a different runtime falls through to a cold Run instead of reusing a mismatched warm session.* `claude` - claude* `codex` - codex</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter? RuntimeAdapter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter? RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter? _explicitNullValueRuntimeAdapter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter RuntimeAdapter { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter _explicitNullValueRuntimeAdapter = default!;
 #endif
         /// <summary>Optional sandbox environment to provision before the task is submitted.</summary>
-        public Guid? SandboxEnvironmentId { get; set; }
+        public Guid? SandboxEnvironmentId { get => _explicitNullValueSandboxEnvironmentId; set { _explicitNullValueSandboxEnvironmentId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox_environment_id"); else _explicitNullProperties?.Remove("sandbox_environment_id"); } }
+        private Guid? _explicitNullValueSandboxEnvironmentId = default!;
         /// <summary>Inbox report the warm discussion is about. Required with origin_product `signal_report`, where the warm Run boots repo-less and the submit that creates the report&apos;s discussion task activates it.</summary>
-        public Guid? SignalReport { get; set; }
+        public Guid? SignalReport { get => _explicitNullValueSignalReport; set { _explicitNullValueSignalReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_report"); else _explicitNullProperties?.Remove("signal_report"); } }
+        private Guid? _explicitNullValueSignalReport = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequest"/> and sets the default values.
         /// </summary>
@@ -96,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -139,6 +177,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskRequestRuntimeAdapter>("runtime_adapter", RuntimeAdapter);
             writer.WriteGuidValue("sandbox_environment_id", SandboxEnvironmentId);
             writer.WriteGuidValue("signal_report", SignalReport);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -12,31 +12,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateObservationRequestInline : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("built_in") is { } nullNodeBuiltIn && nullNodeBuiltIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuiltIn = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("prompt") is { } nullNodePrompt && nullNodePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prompt = null;
+            if (parseNode.GetChildNode("scanner_config") is { } nullNodeScannerConfig && nullNodeScannerConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerConfig = null;
+            if (parseNode.GetChildNode("scanner_type") is { } nullNodeScannerType && nullNodeScannerType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `summarize_recording` - Summarize recording</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigBuiltIn? BuiltIn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigBuiltIn? BuiltIn { get => _explicitNullValueBuiltIn; set { _explicitNullValueBuiltIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("built_in"); else _explicitNullProperties?.Remove("built_in"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigBuiltIn? _explicitNullValueBuiltIn = default!;
         /// <summary>* `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite* `gemini-3-flash-preview` - Gemini 3 Flash* `gemini-3.8-flash` - Gemini 3.8 Flash</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigModel? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigModel? _explicitNullValueModel = default!;
         /// <summary>What to look for in these sessions, in plain language. The same instruction a saved scanner carries. Required unless `built_in` is set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prompt { get; set; }
+        public string? Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string? _explicitNullValuePrompt = default!;
 #nullable restore
 #else
-        public string Prompt { get; set; }
+        public string Prompt { get => _explicitNullValuePrompt; set { _explicitNullValuePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt"); else _explicitNullProperties?.Remove("prompt"); } }
+        private string _explicitNullValuePrompt = default!;
 #endif
         /// <summary>Type-specific configuration beyond the prompt: `tags` for a classifier, `scale` for a scorer, optional `length` for a summarizer. Omit it for a monitor. `prompt` belongs in the `prompt` field and is rejected here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ScannerConfig { get; set; }
+        public UntypedNode? ScannerConfig { get => _explicitNullValueScannerConfig; set { _explicitNullValueScannerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_config"); else _explicitNullProperties?.Remove("scanner_config"); } }
+        private UntypedNode? _explicitNullValueScannerConfig = default!;
 #nullable restore
 #else
-        public UntypedNode ScannerConfig { get; set; }
+        public UntypedNode ScannerConfig { get => _explicitNullValueScannerConfig; set { _explicitNullValueScannerConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_config"); else _explicitNullProperties?.Remove("scanner_config"); } }
+        private UntypedNode _explicitNullValueScannerConfig = default!;
 #endif
         /// <summary>* `monitor` - Monitor* `classifier` - Classifier* `scorer` - Scorer* `summarizer` - Summarizer* `experiment` - Experiment</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigScannerType? ScannerType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigScannerType? ScannerType { get => _explicitNullValueScannerType; set { _explicitNullValueScannerType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_type"); else _explicitNullProperties?.Remove("scanner_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigScannerType? _explicitNullValueScannerType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateObservationRequestInline"/> and sets the default values.
         /// </summary>
@@ -52,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CreateObservationRequestInline CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CreateObservationRequestInline();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CreateObservationRequestInline(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("prompt", Prompt);
             writer.WriteObjectValue<UntypedNode>("scanner_config", ScannerConfig);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InlineScanConfigScannerType>("scanner_type", ScannerType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

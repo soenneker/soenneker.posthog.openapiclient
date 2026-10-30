@@ -12,7 +12,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class IntegrationConfig : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `oauth` - OAuth* `token` - Token* `credentials` - Credentials</summary>
@@ -20,10 +29,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Config { get; set; }
+        public UntypedNode? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private UntypedNode? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public UntypedNode Config { get; set; }
+        public UntypedNode Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        private UntypedNode _explicitNullValueConfig = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -66,7 +77,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfigInstallationStatus InstallationStatus { get; private set; }
 #endif
         /// <summary>* `anthropic` - Anthropic* `apple-ads` - Apple Ads* `apns` - Apple Push* `aws-redshift` - Aws Redshift* `aws-s3` - Aws S3* `azure-blob` - Azure Blob* `bing-ads` - Bing Ads* `clickup` - Clickup* `customerio-app` - Customerio App* `customerio-track` - Customerio Track* `customerio-webhook` - Customerio Webhook* `databricks` - Databricks* `email` - Email* `firebase` - Firebase* `github` - Github* `gitlab` - Gitlab* `google-ads` - Google Ads* `google-analytics` - Google Analytics* `google-calendar` - Google Calendar* `google-cloud-service-account` - Google Cloud Service Account* `google-cloud-storage` - Google Cloud Storage* `google-pubsub` - Google Pubsub* `google-search-console` - Google Search Console* `google-sheets` - Google Sheets* `helpscout` - Helpscout* `hubspot` - Hubspot* `instagram` - Instagram* `intercom` - Intercom* `jira` - Jira* `linear` - Linear* `linkedin-ads` - Linkedin Ads* `meta-ads` - Meta Ads* `pardot` - Pardot* `pinterest-ads` - Pinterest Ads* `postgresql` - Postgresql* `posthog` - Posthog* `reddit-ads` - Reddit Ads* `twitter-ads` - Twitter Ads* `resend` - Resend* `s3-compatible` - S3 Compatible* `salesforce` - Salesforce* `slack` - Slack* `slack-posthog-code` - Slack Posthog Code* `snapchat` - Snapchat* `snowflake` - Snowflake* `stripe` - Stripe* `tiktok-ads` - Tiktok Ads* `twilio` - Twilio* `vercel` - Vercel* `youtube-analytics` - Youtube Analytics</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationKindEnum? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IntegrationKindEnum? _explicitNullValueKind = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig"/> and sets the default values.
         /// </summary>
@@ -82,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<UntypedNode>("config", Config);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationKindEnum>("kind", Kind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

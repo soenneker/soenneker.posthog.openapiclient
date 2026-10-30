@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// When the stored CI data of a repository was last synced from its source: one time for workflow runs and one for workflow jobs. Every stored row is at least that fresh, so use these times, not the time of the request, to say how current a CI answer is. Each time is when the last completed sync started. For a repository that also syncs Depot CI, it is the older of the GitHub and the Depot CI time.

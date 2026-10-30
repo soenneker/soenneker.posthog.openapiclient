@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_r
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken).ConfigureAwait(false);
+            await RequestAdapter.SendNoContentAsync(requestInfo, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `/posthog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_r
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `/posthog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
@@ -86,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_r
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `/posthog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Repo_routing_r
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RepoRoutingRule.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Team routing rules that steer agent repo selection (`RepoRoutingRule`).The same rows the Slack `/posthog rules` commands manage; the repo selection agentreads them ordered by priority when picking a repository for a task. Rules whoserepository is not connected to the project are ignored at selection time, so astale rule is inert rather than harmful — which is why writes here don&apos;t check theconnected-repository list (the UI constrains the picker to connected repos anyway).

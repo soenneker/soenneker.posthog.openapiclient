@@ -11,33 +11,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TableSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("conditionalFormatting") is { } nullNodeConditionalFormatting && nullNodeConditionalFormatting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionalFormatting = null;
+            if (parseNode.GetChildNode("pinnedColumns") is { } nullNodePinnedColumns && nullNodePinnedColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedColumns = null;
+            if (parseNode.GetChildNode("transpose") is { } nullNodeTranspose && nullNodeTranspose.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Transpose = null;
+        }
+
         /// <summary>The columns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>? Columns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis> Columns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis> _explicitNullValueColumns = default!;
 #endif
         /// <summary>The conditionalFormatting property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule>? ConditionalFormatting { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule>? ConditionalFormatting { get => _explicitNullValueConditionalFormatting; set { _explicitNullValueConditionalFormatting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditionalFormatting"); else _explicitNullProperties?.Remove("conditionalFormatting"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule>? _explicitNullValueConditionalFormatting = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule> ConditionalFormatting { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule> ConditionalFormatting { get => _explicitNullValueConditionalFormatting; set { _explicitNullValueConditionalFormatting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditionalFormatting"); else _explicitNullProperties?.Remove("conditionalFormatting"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule> _explicitNullValueConditionalFormatting = default!;
 #endif
         /// <summary>The pinnedColumns property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PinnedColumns { get; set; }
+        public List<string>? PinnedColumns { get => _explicitNullValuePinnedColumns; set { _explicitNullValuePinnedColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinnedColumns"); else _explicitNullProperties?.Remove("pinnedColumns"); } }
+        private List<string>? _explicitNullValuePinnedColumns = default!;
 #nullable restore
 #else
-        public List<string> PinnedColumns { get; set; }
+        public List<string> PinnedColumns { get => _explicitNullValuePinnedColumns; set { _explicitNullValuePinnedColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinnedColumns"); else _explicitNullProperties?.Remove("pinnedColumns"); } }
+        private List<string> _explicitNullValuePinnedColumns = default!;
 #endif
         /// <summary>The transpose property</summary>
-        public bool? Transpose { get; set; }
+        public bool? Transpose { get => _explicitNullValueTranspose; set { _explicitNullValueTranspose = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("transpose"); else _explicitNullProperties?.Remove("transpose"); } }
+        private bool? _explicitNullValueTranspose = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -46,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TableSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TableSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TableSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,7 +90,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ChartAxis>("columns", Columns);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ConditionalFormattingRule>("conditionalFormatting", ConditionalFormatting);
             writer.WriteCollectionOfPrimitiveValues<string>("pinnedColumns", PinnedColumns);
-            writer.WriteBoolValue("transpose", Transpose);
+            writer.WriteBoolValue("transpose", Transpose);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

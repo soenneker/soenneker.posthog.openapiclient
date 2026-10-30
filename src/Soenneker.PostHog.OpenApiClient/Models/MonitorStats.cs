@@ -11,15 +11,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MonitorStats : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("inconclusive_total") is { } nullNodeInconclusiveTotal && nullNodeInconclusiveTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InconclusiveTotal = null;
+            if (parseNode.GetChildNode("no_total") is { } nullNodeNoTotal && nullNodeNoTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoTotal = null;
+            if (parseNode.GetChildNode("yes_total") is { } nullNodeYesTotal && nullNodeYesTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YesTotal = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Succeeded observations whose verdict was `inconclusive`.</summary>
-        public int? InconclusiveTotal { get; set; }
+        public int? InconclusiveTotal { get => _explicitNullValueInconclusiveTotal; set { _explicitNullValueInconclusiveTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inconclusive_total"); else _explicitNullProperties?.Remove("inconclusive_total"); } }
+        private int? _explicitNullValueInconclusiveTotal = default!;
         /// <summary>Succeeded observations whose verdict was `no`.</summary>
-        public int? NoTotal { get; set; }
+        public int? NoTotal { get => _explicitNullValueNoTotal; set { _explicitNullValueNoTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_total"); else _explicitNullProperties?.Remove("no_total"); } }
+        private int? _explicitNullValueNoTotal = default!;
         /// <summary>Succeeded observations whose verdict was `yes`.</summary>
-        public int? YesTotal { get; set; }
+        public int? YesTotal { get => _explicitNullValueYesTotal; set { _explicitNullValueYesTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yes_total"); else _explicitNullProperties?.Remove("yes_total"); } }
+        private int? _explicitNullValueYesTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats"/> and sets the default values.
         /// </summary>
@@ -35,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("inconclusive_total", InconclusiveTotal);
             writer.WriteIntValue("no_total", NoTotal);
             writer.WriteIntValue("yes_total", YesTotal);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

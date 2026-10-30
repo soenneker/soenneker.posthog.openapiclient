@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Tasks.Item.Runs.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.StreamReadTokenResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.StreamReadTokenResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.StreamReadTokenResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.StreamReadTokenResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Generate a run-scoped JWT that authorizes reading this task run&apos;s live event stream via the agent-proxy. A run that keeps only a short live tail in Redis is routed to the proxy only when the client sets resync=true, meaning it rebuilds from the durable run log when the proxy reports a trimmed cursor.

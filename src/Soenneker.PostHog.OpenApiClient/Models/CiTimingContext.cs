@@ -11,49 +11,81 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class CiTimingContext : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("average_seconds") is { } nullNodeAverageSeconds && nullNodeAverageSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageSeconds = null;
+            if (parseNode.GetChildNode("default_branch") is { } nullNodeDefaultBranch && nullNodeDefaultBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultBranch = null;
+            if (parseNode.GetChildNode("identity") is { } nullNodeIdentity && nullNodeIdentity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Identity = null;
+            if (parseNode.GetChildNode("jobs_synced_at") is { } nullNodeJobsSyncedAt && nullNodeJobsSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobsSyncedAt = null;
+            if (parseNode.GetChildNode("recent") is { } nullNodeRecent && nullNodeRecent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recent = null;
+            if (parseNode.GetChildNode("runs_scanned") is { } nullNodeRunsScanned && nullNodeRunsScanned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsScanned = null;
+            if (parseNode.GetChildNode("runs_synced_at") is { } nullNodeRunsSyncedAt && nullNodeRunsSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsSyncedAt = null;
+            if (parseNode.GetChildNode("sample_count") is { } nullNodeSampleCount && nullNodeSampleCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleCount = null;
+            if (parseNode.GetChildNode("sampled") is { } nullNodeSampled && nullNodeSampled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sampled = null;
+            if (parseNode.GetChildNode("unavailable_reason") is { } nullNodeUnavailableReason && nullNodeUnavailableReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnavailableReason = null;
+            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mean duration of the successful samples, in seconds. Null when there are none. A run counts only when it ran the same jobs on the same runners, so a null means no comparable run.</summary>
-        public double? AverageSeconds { get; set; }
+        public double? AverageSeconds { get => _explicitNullValueAverageSeconds; set { _explicitNullValueAverageSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_seconds"); else _explicitNullProperties?.Remove("average_seconds"); } }
+        private double? _explicitNullValueAverageSeconds = default!;
         /// <summary>The repository&apos;s default branch, which the samples ran on. Null when unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultBranch { get; set; }
+        public string? DefaultBranch { get => _explicitNullValueDefaultBranch; set { _explicitNullValueDefaultBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_branch"); else _explicitNullProperties?.Remove("default_branch"); } }
+        private string? _explicitNullValueDefaultBranch = default!;
 #nullable restore
 #else
-        public string DefaultBranch { get; set; }
+        public string DefaultBranch { get => _explicitNullValueDefaultBranch; set { _explicitNullValueDefaultBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_branch"); else _explicitNullProperties?.Remove("default_branch"); } }
+        private string _explicitNullValueDefaultBranch = default!;
 #endif
         /// <summary>* `workflow_id` - Workflow id* `workflow_name` - Workflow name</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextIdentity? Identity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextIdentity? Identity { get => _explicitNullValueIdentity; set { _explicitNullValueIdentity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identity"); else _explicitNullProperties?.Remove("identity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextIdentity? _explicitNullValueIdentity = default!;
         /// <summary>When the last completed sync of the stored workflow jobs started. Null when unknown.</summary>
-        public DateTimeOffset? JobsSyncedAt { get; set; }
+        public DateTimeOffset? JobsSyncedAt { get => _explicitNullValueJobsSyncedAt; set { _explicitNullValueJobsSyncedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs_synced_at"); else _explicitNullProperties?.Remove("jobs_synced_at"); } }
+        private DateTimeOffset? _explicitNullValueJobsSyncedAt = default!;
         /// <summary>The newest matched samples of any status, newest first. At most three.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSample>? Recent { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSample>? Recent { get => _explicitNullValueRecent; set { _explicitNullValueRecent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent"); else _explicitNullProperties?.Remove("recent"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSample>? _explicitNullValueRecent = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSample> Recent { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSample> Recent { get => _explicitNullValueRecent; set { _explicitNullValueRecent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent"); else _explicitNullProperties?.Remove("recent"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSample> _explicitNullValueRecent = default!;
 #endif
         /// <summary>How many default-branch runs of the workflow were checked for a match.</summary>
-        public int? RunsScanned { get; set; }
+        public int? RunsScanned { get => _explicitNullValueRunsScanned; set { _explicitNullValueRunsScanned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_scanned"); else _explicitNullProperties?.Remove("runs_scanned"); } }
+        private int? _explicitNullValueRunsScanned = default!;
         /// <summary>When the last completed sync of the stored workflow runs started. Null when unknown.</summary>
-        public DateTimeOffset? RunsSyncedAt { get; set; }
+        public DateTimeOffset? RunsSyncedAt { get => _explicitNullValueRunsSyncedAt; set { _explicitNullValueRunsSyncedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_synced_at"); else _explicitNullProperties?.Remove("runs_synced_at"); } }
+        private DateTimeOffset? _explicitNullValueRunsSyncedAt = default!;
         /// <summary>How many checked runs matched the selection and succeeded.</summary>
-        public int? SampleCount { get; set; }
+        public int? SampleCount { get => _explicitNullValueSampleCount; set { _explicitNullValueSampleCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_count"); else _explicitNullProperties?.Remove("sample_count"); } }
+        private int? _explicitNullValueSampleCount = default!;
         /// <summary>True when the window held more eligible runs than were checked, so the figures cover the newest runs only.</summary>
-        public bool? Sampled { get; set; }
+        public bool? Sampled { get => _explicitNullValueSampled; set { _explicitNullValueSampled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampled"); else _explicitNullProperties?.Remove("sampled"); } }
+        private bool? _explicitNullValueSampled = default!;
         /// <summary>Why no comparison was made: &apos;default_branch_unknown&apos; (no synced pull request names the repository&apos;s default branch), &apos;jobs_not_synced&apos;, or &apos;not_executed&apos; (every selected job was skipped, so there is no duration to compare). Null when the comparison ran, even if it found no samples.* `default_branch_unknown` - Default branch unknown* `jobs_not_synced` - Jobs not synced* `not_executed` - Not executed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextUnavailableReason? UnavailableReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextUnavailableReason? UnavailableReason { get => _explicitNullValueUnavailableReason; set { _explicitNullValueUnavailableReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_reason"); else _explicitNullProperties?.Remove("unavailable_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextUnavailableReason? _explicitNullValueUnavailableReason = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextUnavailableReason UnavailableReason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextUnavailableReason UnavailableReason { get => _explicitNullValueUnavailableReason; set { _explicitNullValueUnavailableReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unavailable_reason"); else _explicitNullProperties?.Remove("unavailable_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextUnavailableReason _explicitNullValueUnavailableReason = default!;
 #endif
         /// <summary>How many days back the comparison looks.</summary>
-        public int? WindowDays { get; set; }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContext"/> and sets the default values.
         /// </summary>
@@ -69,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContext CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContext();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContext(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -110,6 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("sampled", Sampled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingContextUnavailableReason>("unavailable_reason", UnavailableReason);
             writer.WriteIntValue("window_days", WindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

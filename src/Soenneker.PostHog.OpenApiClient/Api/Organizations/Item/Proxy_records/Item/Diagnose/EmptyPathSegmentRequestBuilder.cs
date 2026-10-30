@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Proxy_records.I
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReport.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Run a deep diagnostic on a reverse proxy. Inspects DNS CNAME alignment, the certificate provider&apos;s hostname state, CAA records walked up the customer&apos;s DNS tree, HTTP-01 challenge reachability, a live event probe, and certificate expiry. Returns a structured report with each check&apos;s status and concrete remediation steps (e.g. exact DNS records to add). Use this to debug why a proxy is stuck or erroring.

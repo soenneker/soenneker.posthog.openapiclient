@@ -11,84 +11,127 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SurveyRatingQuestionSchema : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("branching") is { } nullNodeBranching && nullNodeBranching.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branching = null;
+            if (parseNode.GetChildNode("buttonText") is { } nullNodeButtonText && nullNodeButtonText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonText = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("descriptionContentType") is { } nullNodeDescriptionContentType && nullNodeDescriptionContentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DescriptionContentType = null;
+            if (parseNode.GetChildNode("display") is { } nullNodeDisplay && nullNodeDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Display = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("isNpsQuestion") is { } nullNodeIsNpsQuestion && nullNodeIsNpsQuestion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsNpsQuestion = null;
+            if (parseNode.GetChildNode("lowerBoundLabel") is { } nullNodeLowerBoundLabel && nullNodeLowerBoundLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LowerBoundLabel = null;
+            if (parseNode.GetChildNode("optional") is { } nullNodeOptional && nullNodeOptional.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Optional = null;
+            if (parseNode.GetChildNode("question") is { } nullNodeQuestion && nullNodeQuestion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Question = null;
+            if (parseNode.GetChildNode("scale") is { } nullNodeScale && nullNodeScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scale = null;
+            if (parseNode.GetChildNode("translations") is { } nullNodeTranslations && nullNodeTranslations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Translations = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("upperBoundLabel") is { } nullNodeUpperBoundLabel && nullNodeUpperBoundLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpperBoundLabel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The branching property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema? Branching { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema? Branching { get => _explicitNullValueBranching; set { _explicitNullValueBranching = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branching"); else _explicitNullProperties?.Remove("branching"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema? _explicitNullValueBranching = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema Branching { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema Branching { get => _explicitNullValueBranching; set { _explicitNullValueBranching = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branching"); else _explicitNullProperties?.Remove("branching"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema _explicitNullValueBranching = default!;
 #endif
         /// <summary>Custom button label.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ButtonText { get; set; }
+        public string? ButtonText { get => _explicitNullValueButtonText; set { _explicitNullValueButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonText"); else _explicitNullProperties?.Remove("buttonText"); } }
+        private string? _explicitNullValueButtonText = default!;
 #nullable restore
 #else
-        public string ButtonText { get; set; }
+        public string ButtonText { get => _explicitNullValueButtonText; set { _explicitNullValueButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonText"); else _explicitNullProperties?.Remove("buttonText"); } }
+        private string _explicitNullValueButtonText = default!;
 #endif
         /// <summary>Optional helper text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>* `html` - html* `text` - text</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType? DescriptionContentType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType? DescriptionContentType { get => _explicitNullValueDescriptionContentType; set { _explicitNullValueDescriptionContentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("descriptionContentType"); else _explicitNullProperties?.Remove("descriptionContentType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDescriptionContentType? _explicitNullValueDescriptionContentType = default!;
         /// <summary>* `number` - number* `emoji` - emoji</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay? Display { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaDisplay? _explicitNullValueDisplay = default!;
         /// <summary>Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_&lt;id&gt;) stay attached; omit it for new questions and the server generates one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Whether a rating question with a scale of 10 shows NPS scoring. A missing value counts as true.</summary>
-        public bool? IsNpsQuestion { get; set; }
+        public bool? IsNpsQuestion { get => _explicitNullValueIsNpsQuestion; set { _explicitNullValueIsNpsQuestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("isNpsQuestion"); else _explicitNullProperties?.Remove("isNpsQuestion"); } }
+        private bool? _explicitNullValueIsNpsQuestion = default!;
         /// <summary>Label for the lowest rating (e.g., &apos;Very Poor&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LowerBoundLabel { get; set; }
+        public string? LowerBoundLabel { get => _explicitNullValueLowerBoundLabel; set { _explicitNullValueLowerBoundLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lowerBoundLabel"); else _explicitNullProperties?.Remove("lowerBoundLabel"); } }
+        private string? _explicitNullValueLowerBoundLabel = default!;
 #nullable restore
 #else
-        public string LowerBoundLabel { get; set; }
+        public string LowerBoundLabel { get => _explicitNullValueLowerBoundLabel; set { _explicitNullValueLowerBoundLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lowerBoundLabel"); else _explicitNullProperties?.Remove("lowerBoundLabel"); } }
+        private string _explicitNullValueLowerBoundLabel = default!;
 #endif
         /// <summary>Whether respondents may skip this question.</summary>
-        public bool? Optional { get; set; }
+        public bool? Optional { get => _explicitNullValueOptional; set { _explicitNullValueOptional = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optional"); else _explicitNullProperties?.Remove("optional"); } }
+        private bool? _explicitNullValueOptional = default!;
         /// <summary>Question text shown to respondents.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Question { get; set; }
+        public string? Question { get => _explicitNullValueQuestion; set { _explicitNullValueQuestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question"); else _explicitNullProperties?.Remove("question"); } }
+        private string? _explicitNullValueQuestion = default!;
 #nullable restore
 #else
-        public string Question { get; set; }
+        public string Question { get => _explicitNullValueQuestion; set { _explicitNullValueQuestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question"); else _explicitNullProperties?.Remove("question"); } }
+        private string _explicitNullValueQuestion = default!;
 #endif
         /// <summary>Rating scale can be one of 3, 5, or 7</summary>
-        public int? Scale { get; set; }
+        public int? Scale { get => _explicitNullValueScale; set { _explicitNullValueScale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scale"); else _explicitNullProperties?.Remove("scale"); } }
+        private int? _explicitNullValueScale = default!;
         /// <summary>Inline translations keyed by language code (for example &apos;es&apos; or &apos;pt-BR&apos;). Send back the current value when editing other question fields, or the translations are lost.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty? Translations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty? Translations { get => _explicitNullValueTranslations; set { _explicitNullValueTranslations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("translations"); else _explicitNullProperties?.Remove("translations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty? _explicitNullValueTranslations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty Translations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty Translations { get => _explicitNullValueTranslations; set { _explicitNullValueTranslations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("translations"); else _explicitNullProperties?.Remove("translations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty _explicitNullValueTranslations = default!;
 #endif
         /// <summary>* `rating` - rating</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTypeEnum? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTypeEnum? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTypeEnum? _explicitNullValueType = default!;
         /// <summary>Label for the highest rating (e.g., &apos;Excellent&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UpperBoundLabel { get; set; }
+        public string? UpperBoundLabel { get => _explicitNullValueUpperBoundLabel; set { _explicitNullValueUpperBoundLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upperBoundLabel"); else _explicitNullProperties?.Remove("upperBoundLabel"); } }
+        private string? _explicitNullValueUpperBoundLabel = default!;
 #nullable restore
 #else
-        public string UpperBoundLabel { get; set; }
+        public string UpperBoundLabel { get => _explicitNullValueUpperBoundLabel; set { _explicitNullValueUpperBoundLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upperBoundLabel"); else _explicitNullProperties?.Remove("upperBoundLabel"); } }
+        private string _explicitNullValueUpperBoundLabel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema"/> and sets the default values.
@@ -105,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -152,6 +195,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTranslationsProperty>("translations", Translations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchemaTypeEnum>("type", Type);
             writer.WriteStringValue("upperBoundLabel", UpperBoundLabel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

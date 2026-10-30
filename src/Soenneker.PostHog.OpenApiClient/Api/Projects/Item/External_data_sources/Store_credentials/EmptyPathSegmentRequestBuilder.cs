@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_source
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SourceCredential>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SourceCredential.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SourceCredential>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SourceCredential.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Validate and store credentials for a data warehouse source without creating the source.Backs the source connect page: the user enters credentials directly in PostHog, they arechecked against a live connection, then stashed encrypted in a temporary store. The returnedcredential id can be passed to `setup` as {&apos;credential_id&apos;: &lt;id&gt;} to create the source — sosecrets never travel through an agent conversation. The stash is single-use: it is deletedas soon as `setup` consumes it, and expires after 24 hours if never consumed.

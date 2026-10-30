@@ -11,46 +11,76 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AttributionHealthEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("events_matched_last_7d") is { } nullNodeEventsMatchedLast7d && nullNodeEventsMatchedLast7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsMatchedLast7d = null;
+            if (parseNode.GetChildNode("events_matched_paid_last_7d") is { } nullNodeEventsMatchedPaidLast7d && nullNodeEventsMatchedPaidLast7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsMatchedPaidLast7d = null;
+            if (parseNode.GetChildNode("events_matched_tagged_medium_last_7d") is { } nullNodeEventsMatchedTaggedMediumLast7d && nullNodeEventsMatchedTaggedMediumLast7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsMatchedTaggedMediumLast7d = null;
+            if (parseNode.GetChildNode("events_unmatched_likely_yours_last_7d") is { } nullNodeEventsUnmatchedLikelyYoursLast7d && nullNodeEventsUnmatchedLikelyYoursLast7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsUnmatchedLikelyYoursLast7d = null;
+            if (parseNode.GetChildNode("events_with_utm_last_7d") is { } nullNodeEventsWithUtmLast7d && nullNodeEventsWithUtmLast7d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsWithUtmLast7d = null;
+            if (parseNode.GetChildNode("integration_key") is { } nullNodeIntegrationKey && nullNodeIntegrationKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationKey = null;
+            if (parseNode.GetChildNode("last_event_with_matching_utm_at") is { } nullNodeLastEventWithMatchingUtmAt && nullNodeLastEventWithMatchingUtmAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastEventWithMatchingUtmAt = null;
+            if (parseNode.GetChildNode("matched_pct") is { } nullNodeMatchedPct && nullNodeMatchedPct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedPct = null;
+            if (parseNode.GetChildNode("sample_unmatched_utm_sources") is { } nullNodeSampleUnmatchedUtmSources && nullNodeSampleUnmatchedUtmSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SampleUnmatchedUtmSources = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Human-readable integration name</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Events whose utm_source matched this integration</summary>
-        public int? EventsMatchedLast7d { get; set; }
+        public int? EventsMatchedLast7d { get => _explicitNullValueEventsMatchedLast7d; set { _explicitNullValueEventsMatchedLast7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_matched_last_7d"); else _explicitNullProperties?.Remove("events_matched_last_7d"); } }
+        private int? _explicitNullValueEventsMatchedLast7d = default!;
         /// <summary>Of the matched events, how many show paid evidence for this integration: a cost-bearing utm_medium (cpc, cpm, cpv, cpa, ppc, retargeting, or anything starting with &apos;paid&apos;) or one of this integration&apos;s own ad click parameters in the event properties or the current URL (for example gclid for Google Ads or msclkid for Microsoft Ads). Pinterest clicks with pp=1 never count. Campaign names, fbclid, and epik alone do not count.</summary>
-        public int? EventsMatchedPaidLast7d { get; set; }
+        public int? EventsMatchedPaidLast7d { get => _explicitNullValueEventsMatchedPaidLast7d; set { _explicitNullValueEventsMatchedPaidLast7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_matched_paid_last_7d"); else _explicitNullProperties?.Remove("events_matched_paid_last_7d"); } }
+        private int? _explicitNullValueEventsMatchedPaidLast7d = default!;
         /// <summary>Matched events carrying any utm_medium in the lookback window. Zero means no matched event carried a medium, including when no events matched. Missing paid signals do not prove organic traffic.</summary>
-        public int? EventsMatchedTaggedMediumLast7d { get; set; }
+        public int? EventsMatchedTaggedMediumLast7d { get => _explicitNullValueEventsMatchedTaggedMediumLast7d; set { _explicitNullValueEventsMatchedTaggedMediumLast7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_matched_tagged_medium_last_7d"); else _explicitNullProperties?.Remove("events_matched_tagged_medium_last_7d"); } }
+        private int? _explicitNullValueEventsMatchedTaggedMediumLast7d = default!;
         /// <summary>Events that look like this integration&apos;s but don&apos;t match exactly</summary>
-        public int? EventsUnmatchedLikelyYoursLast7d { get; set; }
+        public int? EventsUnmatchedLikelyYoursLast7d { get => _explicitNullValueEventsUnmatchedLikelyYoursLast7d; set { _explicitNullValueEventsUnmatchedLikelyYoursLast7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_unmatched_likely_yours_last_7d"); else _explicitNullProperties?.Remove("events_unmatched_likely_yours_last_7d"); } }
+        private int? _explicitNullValueEventsUnmatchedLikelyYoursLast7d = default!;
         /// <summary>Total events with any utm_source in the window</summary>
-        public int? EventsWithUtmLast7d { get; set; }
+        public int? EventsWithUtmLast7d { get => _explicitNullValueEventsWithUtmLast7d; set { _explicitNullValueEventsWithUtmLast7d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_with_utm_last_7d"); else _explicitNullProperties?.Remove("events_with_utm_last_7d"); } }
+        private int? _explicitNullValueEventsWithUtmLast7d = default!;
         /// <summary>Integration key (e.g. &apos;google&apos;, &apos;meta&apos;)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntegrationKey { get; set; }
+        public string? IntegrationKey { get => _explicitNullValueIntegrationKey; set { _explicitNullValueIntegrationKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_key"); else _explicitNullProperties?.Remove("integration_key"); } }
+        private string? _explicitNullValueIntegrationKey = default!;
 #nullable restore
 #else
-        public string IntegrationKey { get; set; }
+        public string IntegrationKey { get => _explicitNullValueIntegrationKey; set { _explicitNullValueIntegrationKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_key"); else _explicitNullProperties?.Remove("integration_key"); } }
+        private string _explicitNullValueIntegrationKey = default!;
 #endif
         /// <summary>Timestamp of the most recent matched event</summary>
-        public DateTimeOffset? LastEventWithMatchingUtmAt { get; set; }
+        public DateTimeOffset? LastEventWithMatchingUtmAt { get => _explicitNullValueLastEventWithMatchingUtmAt; set { _explicitNullValueLastEventWithMatchingUtmAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_event_with_matching_utm_at"); else _explicitNullProperties?.Remove("last_event_with_matching_utm_at"); } }
+        private DateTimeOffset? _explicitNullValueLastEventWithMatchingUtmAt = default!;
         /// <summary>Percentage of UTM events matched to this integration</summary>
-        public double? MatchedPct { get; set; }
+        public double? MatchedPct { get => _explicitNullValueMatchedPct; set { _explicitNullValueMatchedPct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_pct"); else _explicitNullProperties?.Remove("matched_pct"); } }
+        private double? _explicitNullValueMatchedPct = default!;
         /// <summary>Sample of likely-yours unmatched utm_source values</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UnmatchedUtmSample>? SampleUnmatchedUtmSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UnmatchedUtmSample>? SampleUnmatchedUtmSources { get => _explicitNullValueSampleUnmatchedUtmSources; set { _explicitNullValueSampleUnmatchedUtmSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_unmatched_utm_sources"); else _explicitNullProperties?.Remove("sample_unmatched_utm_sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.UnmatchedUtmSample>? _explicitNullValueSampleUnmatchedUtmSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UnmatchedUtmSample> SampleUnmatchedUtmSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UnmatchedUtmSample> SampleUnmatchedUtmSources { get => _explicitNullValueSampleUnmatchedUtmSources; set { _explicitNullValueSampleUnmatchedUtmSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sample_unmatched_utm_sources"); else _explicitNullProperties?.Remove("sample_unmatched_utm_sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.UnmatchedUtmSample> _explicitNullValueSampleUnmatchedUtmSources = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry"/> and sets the default values.
@@ -67,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_event_with_matching_utm_at", LastEventWithMatchingUtmAt);
             writer.WriteDoubleValue("matched_pct", MatchedPct);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UnmatchedUtmSample>("sample_unmatched_utm_sources", SampleUnmatchedUtmSources);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

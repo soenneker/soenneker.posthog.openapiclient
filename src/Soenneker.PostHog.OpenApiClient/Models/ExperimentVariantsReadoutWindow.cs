@@ -12,15 +12,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentVariantsReadoutWindow : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("first_observation_at") is { } nullNodeFirstObservationAt && nullNodeFirstObservationAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstObservationAt = null;
+            if (parseNode.GetChildNode("last_observation_at") is { } nullNodeLastObservationAt && nullNodeLastObservationAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastObservationAt = null;
+            if (parseNode.GetChildNode("total_observations") is { } nullNodeTotalObservations && nullNodeTotalObservations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalObservations = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the earliest of those observations completed.</summary>
-        public DateTimeOffset? FirstObservationAt { get; set; }
+        public DateTimeOffset? FirstObservationAt { get => _explicitNullValueFirstObservationAt; set { _explicitNullValueFirstObservationAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_observation_at"); else _explicitNullProperties?.Remove("first_observation_at"); } }
+        private DateTimeOffset? _explicitNullValueFirstObservationAt = default!;
         /// <summary>When the latest of those observations completed.</summary>
-        public DateTimeOffset? LastObservationAt { get; set; }
+        public DateTimeOffset? LastObservationAt { get => _explicitNullValueLastObservationAt; set { _explicitNullValueLastObservationAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_observation_at"); else _explicitNullProperties?.Remove("last_observation_at"); } }
+        private DateTimeOffset? _explicitNullValueLastObservationAt = default!;
         /// <summary>Succeeded observations of this scanner, attributed to a variant or not.</summary>
-        public int? TotalObservations { get; set; }
+        public int? TotalObservations { get => _explicitNullValueTotalObservations; set { _explicitNullValueTotalObservations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_observations"); else _explicitNullProperties?.Remove("total_observations"); } }
+        private int? _explicitNullValueTotalObservations = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutWindow"/> and sets the default values.
         /// </summary>
@@ -36,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutWindow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutWindow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutWindow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("first_observation_at", FirstObservationAt);
             writer.WriteDateTimeOffsetValue("last_observation_at", LastObservationAt);
             writer.WriteIntValue("total_observations", TotalObservations);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

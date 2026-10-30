@@ -11,15 +11,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountTrackRulePreview : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("config_version") is { } nullNodeConfigVersion && nullNodeConfigVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigVersion = null;
+            if (parseNode.GetChildNode("eligible_active") is { } nullNodeEligibleActive && nullNodeEligibleActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EligibleActive = null;
+            if (parseNode.GetChildNode("ignored") is { } nullNodeIgnored && nullNodeIgnored.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ignored = null;
+            if (parseNode.GetChildNode("newly_ignored") is { } nullNodeNewlyIgnored && nullNodeNewlyIgnored.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NewlyIgnored = null;
+            if (parseNode.GetChildNode("restored") is { } nullNodeRestored && nullNodeRestored.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Restored = null;
+            if (parseNode.GetChildNode("skipped_churned") is { } nullNodeSkippedChurned && nullNodeSkippedChurned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkippedChurned = null;
+            if (parseNode.GetChildNode("tracked") is { } nullNodeTracked && nullNodeTracked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tracked = null;
+            if (parseNode.GetChildNode("validation_errors") is { } nullNodeValidationErrors && nullNodeValidationErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationErrors = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The config_version property</summary>
-        public int? ConfigVersion { get; set; }
+        public int? ConfigVersion { get => _explicitNullValueConfigVersion; set { _explicitNullValueConfigVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_version"); else _explicitNullProperties?.Remove("config_version"); } }
+        private int? _explicitNullValueConfigVersion = default!;
         /// <summary>The eligible_active property</summary>
-        public int? EligibleActive { get; set; }
+        public int? EligibleActive { get => _explicitNullValueEligibleActive; set { _explicitNullValueEligibleActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eligible_active"); else _explicitNullProperties?.Remove("eligible_active"); } }
+        private int? _explicitNullValueEligibleActive = default!;
         /// <summary>The ignored property</summary>
-        public int? Ignored { get; set; }
+        public int? Ignored { get => _explicitNullValueIgnored; set { _explicitNullValueIgnored = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ignored"); else _explicitNullProperties?.Remove("ignored"); } }
+        private int? _explicitNullValueIgnored = default!;
         /// <summary>The ignored_samples property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -29,13 +47,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRuleSample> IgnoredSamples { get; private set; }
 #endif
         /// <summary>The newly_ignored property</summary>
-        public int? NewlyIgnored { get; set; }
+        public int? NewlyIgnored { get => _explicitNullValueNewlyIgnored; set { _explicitNullValueNewlyIgnored = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("newly_ignored"); else _explicitNullProperties?.Remove("newly_ignored"); } }
+        private int? _explicitNullValueNewlyIgnored = default!;
         /// <summary>The restored property</summary>
-        public int? Restored { get; set; }
+        public int? Restored { get => _explicitNullValueRestored; set { _explicitNullValueRestored = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restored"); else _explicitNullProperties?.Remove("restored"); } }
+        private int? _explicitNullValueRestored = default!;
         /// <summary>The skipped_churned property</summary>
-        public int? SkippedChurned { get; set; }
+        public int? SkippedChurned { get => _explicitNullValueSkippedChurned; set { _explicitNullValueSkippedChurned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_churned"); else _explicitNullProperties?.Remove("skipped_churned"); } }
+        private int? _explicitNullValueSkippedChurned = default!;
         /// <summary>The tracked property</summary>
-        public int? Tracked { get; set; }
+        public int? Tracked { get => _explicitNullValueTracked; set { _explicitNullValueTracked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracked"); else _explicitNullProperties?.Remove("tracked"); } }
+        private int? _explicitNullValueTracked = default!;
         /// <summary>The tracked_samples property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,10 +69,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The validation_errors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ValidationErrors { get; set; }
+        public List<string>? ValidationErrors { get => _explicitNullValueValidationErrors; set { _explicitNullValueValidationErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_errors"); else _explicitNullProperties?.Remove("validation_errors"); } }
+        private List<string>? _explicitNullValueValidationErrors = default!;
 #nullable restore
 #else
-        public List<string> ValidationErrors { get; set; }
+        public List<string> ValidationErrors { get => _explicitNullValueValidationErrors; set { _explicitNullValueValidationErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_errors"); else _explicitNullProperties?.Remove("validation_errors"); } }
+        private List<string> _explicitNullValueValidationErrors = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRulePreview"/> and sets the default values.
@@ -67,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRulePreview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRulePreview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountTrackRulePreview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,6 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("skipped_churned", SkippedChurned);
             writer.WriteIntValue("tracked", Tracked);
             writer.WriteCollectionOfPrimitiveValues<string>("validation_errors", ValidationErrors);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

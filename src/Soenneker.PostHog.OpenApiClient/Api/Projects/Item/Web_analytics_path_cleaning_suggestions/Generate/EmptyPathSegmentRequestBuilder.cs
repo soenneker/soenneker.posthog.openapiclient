@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Web_analytics_path_c
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.GeneratePathCleaningSuggestionResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Samples the team&apos;s recent paths, asks the LLM for cleaning rules, validates them against the real paths, and stores the result as a `path_cleaning_suggestions` health issue (replacing any previous active one). Runs even if the team already has rules. Returns the suggestion (or a skip status when there aren&apos;t enough paths to suggest from).

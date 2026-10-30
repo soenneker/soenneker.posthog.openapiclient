@@ -11,72 +11,105 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BoxPlotSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("excludeOutliers") is { } nullNodeExcludeOutliers && nullNodeExcludeOutliers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeOutliers = null;
+            if (parseNode.GetChildNode("maxColumn") is { } nullNodeMaxColumn && nullNodeMaxColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxColumn = null;
+            if (parseNode.GetChildNode("meanColumn") is { } nullNodeMeanColumn && nullNodeMeanColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeanColumn = null;
+            if (parseNode.GetChildNode("medianColumn") is { } nullNodeMedianColumn && nullNodeMedianColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianColumn = null;
+            if (parseNode.GetChildNode("minColumn") is { } nullNodeMinColumn && nullNodeMinColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinColumn = null;
+            if (parseNode.GetChildNode("p25Column") is { } nullNodeP25Column && nullNodeP25Column.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P25Column = null;
+            if (parseNode.GetChildNode("p75Column") is { } nullNodeP75Column && nullNodeP75Column.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P75Column = null;
+            if (parseNode.GetChildNode("seriesColumn") is { } nullNodeSeriesColumn && nullNodeSeriesColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesColumn = null;
+            if (parseNode.GetChildNode("xAxisColumn") is { } nullNodeXAxisColumn && nullNodeXAxisColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxisColumn = null;
+        }
+
         /// <summary>The excludeOutliers property</summary>
-        public bool? ExcludeOutliers { get; set; }
+        public bool? ExcludeOutliers { get => _explicitNullValueExcludeOutliers; set { _explicitNullValueExcludeOutliers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeOutliers"); else _explicitNullProperties?.Remove("excludeOutliers"); } }
+        private bool? _explicitNullValueExcludeOutliers = default!;
         /// <summary>The maxColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaxColumn { get; set; }
+        public string? MaxColumn { get => _explicitNullValueMaxColumn; set { _explicitNullValueMaxColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxColumn"); else _explicitNullProperties?.Remove("maxColumn"); } }
+        private string? _explicitNullValueMaxColumn = default!;
 #nullable restore
 #else
-        public string MaxColumn { get; set; }
+        public string MaxColumn { get => _explicitNullValueMaxColumn; set { _explicitNullValueMaxColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxColumn"); else _explicitNullProperties?.Remove("maxColumn"); } }
+        private string _explicitNullValueMaxColumn = default!;
 #endif
         /// <summary>The meanColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MeanColumn { get; set; }
+        public string? MeanColumn { get => _explicitNullValueMeanColumn; set { _explicitNullValueMeanColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meanColumn"); else _explicitNullProperties?.Remove("meanColumn"); } }
+        private string? _explicitNullValueMeanColumn = default!;
 #nullable restore
 #else
-        public string MeanColumn { get; set; }
+        public string MeanColumn { get => _explicitNullValueMeanColumn; set { _explicitNullValueMeanColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("meanColumn"); else _explicitNullProperties?.Remove("meanColumn"); } }
+        private string _explicitNullValueMeanColumn = default!;
 #endif
         /// <summary>The medianColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MedianColumn { get; set; }
+        public string? MedianColumn { get => _explicitNullValueMedianColumn; set { _explicitNullValueMedianColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianColumn"); else _explicitNullProperties?.Remove("medianColumn"); } }
+        private string? _explicitNullValueMedianColumn = default!;
 #nullable restore
 #else
-        public string MedianColumn { get; set; }
+        public string MedianColumn { get => _explicitNullValueMedianColumn; set { _explicitNullValueMedianColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianColumn"); else _explicitNullProperties?.Remove("medianColumn"); } }
+        private string _explicitNullValueMedianColumn = default!;
 #endif
         /// <summary>The minColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MinColumn { get; set; }
+        public string? MinColumn { get => _explicitNullValueMinColumn; set { _explicitNullValueMinColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minColumn"); else _explicitNullProperties?.Remove("minColumn"); } }
+        private string? _explicitNullValueMinColumn = default!;
 #nullable restore
 #else
-        public string MinColumn { get; set; }
+        public string MinColumn { get => _explicitNullValueMinColumn; set { _explicitNullValueMinColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minColumn"); else _explicitNullProperties?.Remove("minColumn"); } }
+        private string _explicitNullValueMinColumn = default!;
 #endif
         /// <summary>The p25Column property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? P25Column { get; set; }
+        public string? P25Column { get => _explicitNullValueP25Column; set { _explicitNullValueP25Column = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p25Column"); else _explicitNullProperties?.Remove("p25Column"); } }
+        private string? _explicitNullValueP25Column = default!;
 #nullable restore
 #else
-        public string P25Column { get; set; }
+        public string P25Column { get => _explicitNullValueP25Column; set { _explicitNullValueP25Column = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p25Column"); else _explicitNullProperties?.Remove("p25Column"); } }
+        private string _explicitNullValueP25Column = default!;
 #endif
         /// <summary>The p75Column property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? P75Column { get; set; }
+        public string? P75Column { get => _explicitNullValueP75Column; set { _explicitNullValueP75Column = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p75Column"); else _explicitNullProperties?.Remove("p75Column"); } }
+        private string? _explicitNullValueP75Column = default!;
 #nullable restore
 #else
-        public string P75Column { get; set; }
+        public string P75Column { get => _explicitNullValueP75Column; set { _explicitNullValueP75Column = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p75Column"); else _explicitNullProperties?.Remove("p75Column"); } }
+        private string _explicitNullValueP75Column = default!;
 #endif
         /// <summary>The seriesColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesColumn { get; set; }
+        public string? SeriesColumn { get => _explicitNullValueSeriesColumn; set { _explicitNullValueSeriesColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seriesColumn"); else _explicitNullProperties?.Remove("seriesColumn"); } }
+        private string? _explicitNullValueSeriesColumn = default!;
 #nullable restore
 #else
-        public string SeriesColumn { get; set; }
+        public string SeriesColumn { get => _explicitNullValueSeriesColumn; set { _explicitNullValueSeriesColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seriesColumn"); else _explicitNullProperties?.Remove("seriesColumn"); } }
+        private string _explicitNullValueSeriesColumn = default!;
 #endif
         /// <summary>The xAxisColumn property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XAxisColumn { get; set; }
+        public string? XAxisColumn { get => _explicitNullValueXAxisColumn; set { _explicitNullValueXAxisColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisColumn"); else _explicitNullProperties?.Remove("xAxisColumn"); } }
+        private string? _explicitNullValueXAxisColumn = default!;
 #nullable restore
 #else
-        public string XAxisColumn { get; set; }
+        public string XAxisColumn { get => _explicitNullValueXAxisColumn; set { _explicitNullValueXAxisColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xAxisColumn"); else _explicitNullProperties?.Remove("xAxisColumn"); } }
+        private string _explicitNullValueXAxisColumn = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -86,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BoxPlotSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -122,7 +155,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("p25Column", P25Column);
             writer.WriteStringValue("p75Column", P75Column);
             writer.WriteStringValue("seriesColumn", SeriesColumn);
-            writer.WriteStringValue("xAxisColumn", XAxisColumn);
+            writer.WriteStringValue("xAxisColumn", XAxisColumn);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

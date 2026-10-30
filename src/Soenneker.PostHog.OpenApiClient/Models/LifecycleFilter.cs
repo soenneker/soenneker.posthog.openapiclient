@@ -11,24 +11,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LifecycleFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("legendPosition") is { } nullNodeLegendPosition && nullNodeLegendPosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegendPosition = null;
+            if (parseNode.GetChildNode("showLegend") is { } nullNodeShowLegend && nullNodeShowLegend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLegend = null;
+            if (parseNode.GetChildNode("showPercentagesOnSeries") is { } nullNodeShowPercentagesOnSeries && nullNodeShowPercentagesOnSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowPercentagesOnSeries = null;
+            if (parseNode.GetChildNode("showValuesOnSeries") is { } nullNodeShowValuesOnSeries && nullNodeShowValuesOnSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowValuesOnSeries = null;
+            if (parseNode.GetChildNode("stacked") is { } nullNodeStacked && nullNodeStacked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stacked = null;
+            if (parseNode.GetChildNode("toggledLifecycles") is { } nullNodeToggledLifecycles && nullNodeToggledLifecycles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToggledLifecycles = null;
+        }
+
         /// <summary>Where the in-chart legend sits relative to the plot. Only applies to the in-chart legend.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? LegendPosition { get => _explicitNullValueLegendPosition; set { _explicitNullValueLegendPosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legendPosition"); else _explicitNullProperties?.Remove("legendPosition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LegendPosition? _explicitNullValueLegendPosition = default!;
         /// <summary>The showLegend property</summary>
-        public bool? ShowLegend { get; set; }
+        public bool? ShowLegend { get => _explicitNullValueShowLegend; set { _explicitNullValueShowLegend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLegend"); else _explicitNullProperties?.Remove("showLegend"); } }
+        private bool? _explicitNullValueShowLegend = default!;
         /// <summary>Append per-band percentage to each value label (e.g. `580 (42%)`). Requires `showValuesOnSeries` — on its own it has no visible effect.</summary>
-        public bool? ShowPercentagesOnSeries { get; set; }
+        public bool? ShowPercentagesOnSeries { get => _explicitNullValueShowPercentagesOnSeries; set { _explicitNullValueShowPercentagesOnSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showPercentagesOnSeries"); else _explicitNullProperties?.Remove("showPercentagesOnSeries"); } }
+        private bool? _explicitNullValueShowPercentagesOnSeries = default!;
         /// <summary>The showValuesOnSeries property</summary>
-        public bool? ShowValuesOnSeries { get; set; }
+        public bool? ShowValuesOnSeries { get => _explicitNullValueShowValuesOnSeries; set { _explicitNullValueShowValuesOnSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showValuesOnSeries"); else _explicitNullProperties?.Remove("showValuesOnSeries"); } }
+        private bool? _explicitNullValueShowValuesOnSeries = default!;
         /// <summary>The stacked property</summary>
-        public bool? Stacked { get; set; }
+        public bool? Stacked { get => _explicitNullValueStacked; set { _explicitNullValueStacked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stacked"); else _explicitNullProperties?.Remove("stacked"); } }
+        private bool? _explicitNullValueStacked = default!;
         /// <summary>The toggledLifecycles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle?>? ToggledLifecycles { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle?>? ToggledLifecycles { get => _explicitNullValueToggledLifecycles; set { _explicitNullValueToggledLifecycles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toggledLifecycles"); else _explicitNullProperties?.Remove("toggledLifecycles"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle?>? _explicitNullValueToggledLifecycles = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle?> ToggledLifecycles { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle?> ToggledLifecycles { get => _explicitNullValueToggledLifecycles; set { _explicitNullValueToggledLifecycles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("toggledLifecycles"); else _explicitNullProperties?.Remove("toggledLifecycles"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle?> _explicitNullValueToggledLifecycles = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LifecycleFilter"/> and sets the default values.
@@ -46,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LifecycleFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LifecycleFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LifecycleFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,7 +96,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showPercentagesOnSeries", ShowPercentagesOnSeries);
             writer.WriteBoolValue("showValuesOnSeries", ShowValuesOnSeries);
             writer.WriteBoolValue("stacked", Stacked);
-            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle>("toggledLifecycles", ToggledLifecycles);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.LifecycleToggle>("toggledLifecycles", ToggledLifecycles);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

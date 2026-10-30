@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sandbox_custom_image
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSandboxCustomImageDtoList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSandboxCustomImageDtoList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSandboxCustomImageDtoList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSandboxCustomImageDtoList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create a draft custom image and start its interactive image-builder agent task. The returned builder_task_id points at the conversation.
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sandbox_custom_image
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImageDto.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// API for custom sandbox base images, built on top of the VM sandbox base via an image-builder agent.Custom images only run on the Modal VM runtime, so every action is gated on the`tasks-modal-vm-sandbox` flag (org-enabled with `user_created` in its origin_products payload).
@@ -133,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sandbox_custom_image
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
-            /// <summary>Return 403 unless tasks from this origin product can run on custom images. Leave it out to only check that custom images are enabled.* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import</summary>
+            /// <summary>Return 403 unless tasks from this origin product can run on custom images. Leave it out to only check that custom images are enabled.* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import* `knowledge_writer` - Knowledge Writer</summary>
             [QueryParameter("origin_product")]
             public global::Soenneker.PostHog.OpenApiClient.Models.SandboxCustomImagesListOriginProductParameter? OriginProduct { get; set; }
         }

@@ -11,24 +11,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FeatureFlagRequestUsageItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("billing_units") is { } nullNodeBillingUnits && nullNodeBillingUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingUnits = null;
+            if (parseNode.GetChildNode("bucket") is { } nullNodeBucket && nullNodeBucket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bucket = null;
+            if (parseNode.GetChildNode("request_count") is { } nullNodeRequestCount && nullNodeRequestCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestCount = null;
+            if (parseNode.GetChildNode("request_type") is { } nullNodeRequestType && nullNodeRequestType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestType = null;
+            if (parseNode.GetChildNode("sdk") is { } nullNodeSdk && nullNodeSdk.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sdk = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Estimated billing units. Local evaluation requests count as 10 units each.</summary>
-        public int? BillingUnits { get; set; }
+        public int? BillingUnits { get => _explicitNullValueBillingUnits; set { _explicitNullValueBillingUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_units"); else _explicitNullProperties?.Remove("billing_units"); } }
+        private int? _explicitNullValueBillingUnits = default!;
         /// <summary>Start of the UTC billing-aggregation bucket. Hourly buckets approximate request time.</summary>
-        public DateTimeOffset? Bucket { get; set; }
+        public DateTimeOffset? Bucket { get => _explicitNullValueBucket; set { _explicitNullValueBucket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket"); else _explicitNullProperties?.Remove("bucket"); } }
+        private DateTimeOffset? _explicitNullValueBucket = default!;
         /// <summary>Number of billable requests in this bucket.</summary>
-        public int? RequestCount { get; set; }
+        public int? RequestCount { get => _explicitNullValueRequestCount; set { _explicitNullValueRequestCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_count"); else _explicitNullProperties?.Remove("request_count"); } }
+        private int? _explicitNullValueRequestCount = default!;
         /// <summary>* `remote_evaluation` - remote_evaluation* `local_evaluation` - local_evaluation</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType? RequestType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType? RequestType { get => _explicitNullValueRequestType; set { _explicitNullValueRequestType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_type"); else _explicitNullProperties?.Remove("request_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType? _explicitNullValueRequestType = default!;
         /// <summary>SDK family parsed from the request user agent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Sdk { get; set; }
+        public string? Sdk { get => _explicitNullValueSdk; set { _explicitNullValueSdk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdk"); else _explicitNullProperties?.Remove("sdk"); } }
+        private string? _explicitNullValueSdk = default!;
 #nullable restore
 #else
-        public string Sdk { get; set; }
+        public string Sdk { get => _explicitNullValueSdk; set { _explicitNullValueSdk = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdk"); else _explicitNullProperties?.Remove("sdk"); } }
+        private string _explicitNullValueSdk = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItem"/> and sets the default values.
@@ -45,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("request_count", RequestCount);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagRequestUsageItemRequestType>("request_type", RequestType);
             writer.WriteStringValue("sdk", Sdk);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

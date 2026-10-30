@@ -8,26 +8,31 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateReportCheckRequestConfig : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1? CreateReportCheckRequestConfigMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf1? CreateReportCheckRequestConfigOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1 CreateReportCheckRequestConfigMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf1 CreateReportCheckRequestConfigOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2? CreateReportCheckRequestConfigMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf2? CreateReportCheckRequestConfigOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2 CreateReportCheckRequestConfigMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf2 CreateReportCheckRequestConfigOneOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +44,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfig();
-            return result;
+            if("CreateReportCheckRequestConfigOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("CreateReportCheckRequestConfigOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("comparison") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("instructions") != null))();
+            if (result.CreateReportCheckRequestConfigOneOf1 == null && result.CreateReportCheckRequestConfigOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.CreateReportCheckRequestConfigOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf1(), parseNode);
+            if (result.CreateReportCheckRequestConfigOneOf1 == null && result.CreateReportCheckRequestConfigOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.CreateReportCheckRequestConfigOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf2(), parseNode);
+            if (result.CreateReportCheckRequestConfigOneOf1 == null && result.CreateReportCheckRequestConfigOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,13 +67,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(CreateReportCheckRequestConfigMember1 != null)
+            if(CreateReportCheckRequestConfigOneOf1 != null)
             {
-                return CreateReportCheckRequestConfigMember1.GetFieldDeserializers();
+                return CreateReportCheckRequestConfigOneOf1.GetFieldDeserializers();
             }
-            else if(CreateReportCheckRequestConfigMember2 != null)
+            else if(CreateReportCheckRequestConfigOneOf2 != null)
             {
-                return CreateReportCheckRequestConfigMember2.GetFieldDeserializers();
+                return CreateReportCheckRequestConfigOneOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -63,14 +83,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (CreateReportCheckRequestConfigOneOf1 == null && CreateReportCheckRequestConfigOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (CreateReportCheckRequestConfigOneOf1 != null && CreateReportCheckRequestConfigOneOf2 == null) { if (CreateReportCheckRequestConfigOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateReportCheckRequestConfigOneOf1); return; }
+            if (CreateReportCheckRequestConfigOneOf2 != null && CreateReportCheckRequestConfigOneOf1 == null) { if (CreateReportCheckRequestConfigOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CreateReportCheckRequestConfigOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(CreateReportCheckRequestConfigMember1 != null)
+            if(CreateReportCheckRequestConfigOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember1>(null, CreateReportCheckRequestConfigMember1);
+                if (CreateReportCheckRequestConfigOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf1>(null, CreateReportCheckRequestConfigOneOf1);
             }
-            else if(CreateReportCheckRequestConfigMember2 != null)
+            else if(CreateReportCheckRequestConfigOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigMember2>(null, CreateReportCheckRequestConfigMember2);
+                if (CreateReportCheckRequestConfigOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateReportCheckRequestConfigOneOf2>(null, CreateReportCheckRequestConfigOneOf2);
             }
         }
     }

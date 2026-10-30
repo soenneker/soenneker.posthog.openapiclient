@@ -11,40 +11,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AchievementsListResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("definitions") is { } nullNodeDefinitions && nullNodeDefinitions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Definitions = null;
+            if (parseNode.GetChildNode("pending_celebrations") is { } nullNodePendingCelebrations && nullNodePendingCelebrations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingCelebrations = null;
+            if (parseNode.GetChildNode("team_progress") is { } nullNodeTeamProgress && nullNodeTeamProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamProgress = null;
+            if (parseNode.GetChildNode("user_progress") is { } nullNodeUserProgress && nullNodeUserProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserProgress = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>All Wave-1 track definitions, thresholds resolved for the user&apos;s streak arm.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinition>? Definitions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinition>? Definitions { get => _explicitNullValueDefinitions; set { _explicitNullValueDefinitions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definitions"); else _explicitNullProperties?.Remove("definitions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinition>? _explicitNullValueDefinitions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinition> Definitions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinition> Definitions { get => _explicitNullValueDefinitions; set { _explicitNullValueDefinitions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definitions"); else _explicitNullProperties?.Remove("definitions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementDefinition> _explicitNullValueDefinitions = default!;
 #endif
         /// <summary>Newly unlocked stages awaiting an in-session celebration; acknowledge each to clear it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PendingCelebration>? PendingCelebrations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PendingCelebration>? PendingCelebrations { get => _explicitNullValuePendingCelebrations; set { _explicitNullValuePendingCelebrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_celebrations"); else _explicitNullProperties?.Remove("pending_celebrations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PendingCelebration>? _explicitNullValuePendingCelebrations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PendingCelebration> PendingCelebrations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PendingCelebration> PendingCelebrations { get => _explicitNullValuePendingCelebrations; set { _explicitNullValuePendingCelebrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_celebrations"); else _explicitNullProperties?.Remove("pending_celebrations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PendingCelebration> _explicitNullValuePendingCelebrations = default!;
 #endif
         /// <summary>The team&apos;s progress on per-team tracks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress>? TeamProgress { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress>? TeamProgress { get => _explicitNullValueTeamProgress; set { _explicitNullValueTeamProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_progress"); else _explicitNullProperties?.Remove("team_progress"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress>? _explicitNullValueTeamProgress = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress> TeamProgress { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress> TeamProgress { get => _explicitNullValueTeamProgress; set { _explicitNullValueTeamProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_progress"); else _explicitNullProperties?.Remove("team_progress"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress> _explicitNullValueTeamProgress = default!;
 #endif
         /// <summary>The requesting user&apos;s progress on per-user tracks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress>? UserProgress { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress>? UserProgress { get => _explicitNullValueUserProgress; set { _explicitNullValueUserProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_progress"); else _explicitNullProperties?.Remove("user_progress"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress>? _explicitNullValueUserProgress = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress> UserProgress { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress> UserProgress { get => _explicitNullValueUserProgress; set { _explicitNullValueUserProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_progress"); else _explicitNullProperties?.Remove("user_progress"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress> _explicitNullValueUserProgress = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AchievementsListResponse"/> and sets the default values.
@@ -61,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AchievementsListResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AchievementsListResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AchievementsListResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PendingCelebration>("pending_celebrations", PendingCelebrations);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress>("team_progress", TeamProgress);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AchievementProgress>("user_progress", UserProgress);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

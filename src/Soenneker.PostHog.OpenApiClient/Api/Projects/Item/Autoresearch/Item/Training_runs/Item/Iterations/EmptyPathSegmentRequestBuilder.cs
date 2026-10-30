@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Tr
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIteration>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIteration.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIteration>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchIteration.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Record one iteration of an open training run. Idempotent on iteration_number: re-sending the same number updates that iteration. A new iteration_number is refused once the run&apos;s iteration_budget is used. The recipe is validated server-side: feature_sql must be a read-only SELECT from {anchors} keyed on person_id, and model_class must be set. The class allowlist applies only at completion, to a run that uploaded no bundle.

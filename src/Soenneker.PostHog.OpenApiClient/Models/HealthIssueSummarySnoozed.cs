@@ -12,27 +12,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HealthIssueSummarySnoozed : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("by_kind") is { } nullNodeByKind && nullNodeByKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByKind = null;
+            if (parseNode.GetChildNode("by_severity") is { } nullNodeBySeverity && nullNodeBySeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BySeverity = null;
+            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Count of issues in this group keyed by check kind (e.g. &apos;sdk_outdated&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedByKind? ByKind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedByKind? ByKind { get => _explicitNullValueByKind; set { _explicitNullValueByKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_kind"); else _explicitNullProperties?.Remove("by_kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedByKind? _explicitNullValueByKind = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedByKind ByKind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedByKind ByKind { get => _explicitNullValueByKind; set { _explicitNullValueByKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_kind"); else _explicitNullProperties?.Remove("by_kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedByKind _explicitNullValueByKind = default!;
 #endif
         /// <summary>Count of issues in this group keyed by severity (&apos;critical&apos;, &apos;warning&apos;, &apos;info&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedBySeverity? BySeverity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedBySeverity? BySeverity { get => _explicitNullValueBySeverity; set { _explicitNullValueBySeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_severity"); else _explicitNullProperties?.Remove("by_severity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedBySeverity? _explicitNullValueBySeverity = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedBySeverity BySeverity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedBySeverity BySeverity { get => _explicitNullValueBySeverity; set { _explicitNullValueBySeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_severity"); else _explicitNullProperties?.Remove("by_severity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedBySeverity _explicitNullValueBySeverity = default!;
 #endif
         /// <summary>Total number of issues in this group.</summary>
-        public int? Total { get; set; }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed"/> and sets the default values.
         /// </summary>
@@ -48,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedByKind>("by_kind", ByKind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozedBySeverity>("by_severity", BySeverity);
             writer.WriteIntValue("total", Total);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

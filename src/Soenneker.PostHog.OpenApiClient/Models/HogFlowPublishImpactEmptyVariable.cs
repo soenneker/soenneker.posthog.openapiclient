@@ -11,32 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HogFlowPublishImpactEmptyVariable : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("referenced_by") is { } nullNodeReferencedBy && nullNodeReferencedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferencedBy = null;
+            if (parseNode.GetChildNode("set_by") is { } nullNodeSetBy && nullNodeSetBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetBy = null;
+            if (parseNode.GetChildNode("variable") is { } nullNodeVariable && nullNodeVariable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variable = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Ids of steps whose content references the variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ReferencedBy { get; set; }
+        public List<string>? ReferencedBy { get => _explicitNullValueReferencedBy; set { _explicitNullValueReferencedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenced_by"); else _explicitNullProperties?.Remove("referenced_by"); } }
+        private List<string>? _explicitNullValueReferencedBy = default!;
 #nullable restore
 #else
-        public List<string> ReferencedBy { get; set; }
+        public List<string> ReferencedBy { get => _explicitNullValueReferencedBy; set { _explicitNullValueReferencedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenced_by"); else _explicitNullProperties?.Remove("referenced_by"); } }
+        private List<string> _explicitNullValueReferencedBy = default!;
 #endif
         /// <summary>Id of the new action that sets it; null when the draft newly declares it as a workflow variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SetBy { get; set; }
+        public string? SetBy { get => _explicitNullValueSetBy; set { _explicitNullValueSetBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_by"); else _explicitNullProperties?.Remove("set_by"); } }
+        private string? _explicitNullValueSetBy = default!;
 #nullable restore
 #else
-        public string SetBy { get; set; }
+        public string SetBy { get => _explicitNullValueSetBy; set { _explicitNullValueSetBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_by"); else _explicitNullProperties?.Remove("set_by"); } }
+        private string _explicitNullValueSetBy = default!;
 #endif
         /// <summary>Variable that renders empty for runs already past its producer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Variable { get; set; }
+        public string? Variable { get => _explicitNullValueVariable; set { _explicitNullValueVariable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variable"); else _explicitNullProperties?.Remove("variable"); } }
+        private string? _explicitNullValueVariable = default!;
 #nullable restore
 #else
-        public string Variable { get; set; }
+        public string Variable { get => _explicitNullValueVariable; set { _explicitNullValueVariable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variable"); else _explicitNullProperties?.Remove("variable"); } }
+        private string _explicitNullValueVariable = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpactEmptyVariable(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("referenced_by", ReferencedBy);
             writer.WriteStringValue("set_by", SetBy);
             writer.WriteStringValue("variable", Variable);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

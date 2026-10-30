@@ -12,7 +12,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsAlertConfigurationDetail : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("cooldown_minutes") is { } nullNodeCooldownMinutes && nullNodeCooldownMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CooldownMinutes = null;
+            if (parseNode.GetChildNode("datapoints_to_alarm") is { } nullNodeDatapointsToAlarm && nullNodeDatapointsToAlarm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatapointsToAlarm = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("evaluation_periods") is { } nullNodeEvaluationPeriods && nullNodeEvaluationPeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationPeriods = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("grouping") is { } nullNodeGrouping && nullNodeGrouping.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Grouping = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("schedule_restriction") is { } nullNodeScheduleRestriction && nullNodeScheduleRestriction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScheduleRestriction = null;
+            if (parseNode.GetChildNode("snooze_until") is { } nullNodeSnoozeUntil && nullNodeSnoozeUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnoozeUntil = null;
+            if (parseNode.GetChildNode("threshold_count") is { } nullNodeThresholdCount && nullNodeThresholdCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdCount = null;
+            if (parseNode.GetChildNode("threshold_operator") is { } nullNodeThresholdOperator && nullNodeThresholdOperator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdOperator = null;
+            if (parseNode.GetChildNode("window_minutes") is { } nullNodeWindowMinutes && nullNodeWindowMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowMinutes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How often the alert is evaluated, in minutes. Server-managed.</summary>
@@ -20,7 +39,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Number of consecutive evaluation failures. Resets on success. Server-managed.</summary>
         public int? ConsecutiveFailures { get; private set; }
         /// <summary>Minimum minutes between notifications. The alert notifies once when it starts firing and once when it resolves. It does not notify again on each check while it stays firing. A fire or resolve notification inside the cooldown is skipped. Cooldown does not apply to PagerDuty incidents. 0 means no minimum.</summary>
-        public int? CooldownMinutes { get; set; }
+        public int? CooldownMinutes { get => _explicitNullValueCooldownMinutes; set { _explicitNullValueCooldownMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cooldown_minutes"); else _explicitNullProperties?.Remove("cooldown_minutes"); } }
+        private int? _explicitNullValueCooldownMinutes = default!;
         /// <summary>When the alert was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
@@ -32,7 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>How many periods within the evaluation window must breach the threshold to fire (N in N-of-M).</summary>
-        public int? DatapointsToAlarm { get; set; }
+        public int? DatapointsToAlarm { get => _explicitNullValueDatapointsToAlarm; set { _explicitNullValueDatapointsToAlarm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datapoints_to_alarm"); else _explicitNullProperties?.Remove("datapoints_to_alarm"); } }
+        private int? _explicitNullValueDatapointsToAlarm = default!;
         /// <summary>This alert&apos;s notification destinations, one entry per destination. Each carries the HogFunction IDs that delete it as a group, and its configuration with credential-bearing URL components removed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -50,26 +71,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationTypeEnum?> DestinationTypes { get; private set; }
 #endif
         /// <summary>Whether the alert is actively being evaluated. Disabling resets the state to not_firing.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Total number of check periods in the sliding evaluation window for firing (M in N-of-M).</summary>
-        public int? EvaluationPeriods { get; set; }
+        public int? EvaluationPeriods { get => _explicitNullValueEvaluationPeriods; set { _explicitNullValueEvaluationPeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_periods"); else _explicitNullProperties?.Remove("evaluation_periods"); } }
+        private int? _explicitNullValueEvaluationPeriods = default!;
         /// <summary>Filter criteria — subset of LogsViewerFilters. Must contain at least one of: severityLevels (list of severity strings), serviceNames (list of service name strings), or filterGroup (property filter group object). May be empty on draft alerts (enabled=false).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailFilters? Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailFilters? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailFilters? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailFilters Filters { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailFilters Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailFilters _explicitNullValueFilters = default!;
 #endif
         /// <summary>When the alert was first enabled. Null means the alert is still in draft state.</summary>
         public DateTimeOffset? FirstEnabledAt { get; private set; }
         /// <summary>How the alert splits its results into instances. Mode single keeps one instance for the whole alert. Mode by_result_labels with keys service_name and/or severity_text keeps one instance per service or severity, each firing and resolving on its own, and needs threshold_operator above. Only an alert the alerts platform evaluates can group. Any other alert reads as single and rejects a different value. Omit it on update to keep the current grouping. Changing the keys deletes the existing instances and closes their notification threads without a message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailGrouping? Grouping { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailGrouping? Grouping { get => _explicitNullValueGrouping; set { _explicitNullValueGrouping = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping"); else _explicitNullProperties?.Remove("grouping"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailGrouping? _explicitNullValueGrouping = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailGrouping Grouping { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailGrouping Grouping { get => _explicitNullValueGrouping; set { _explicitNullValueGrouping = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping"); else _explicitNullProperties?.Remove("grouping"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailGrouping _explicitNullValueGrouping = default!;
 #endif
         /// <summary>Unique identifier for this alert.</summary>
         public Guid? Id { get; private set; }
@@ -88,10 +115,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Human-readable name for this alert. Defaults to &apos;Untitled alert&apos; on create when omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>When the next evaluation is scheduled. Server-managed.</summary>
         public DateTimeOffset? NextCheckAt { get; private set; }
@@ -100,13 +129,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction _explicitNullValueScheduleRestriction = default!;
 #endif
         /// <summary>ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.</summary>
-        public DateTimeOffset? SnoozeUntil { get; set; }
+        public DateTimeOffset? SnoozeUntil { get => _explicitNullValueSnoozeUntil; set { _explicitNullValueSnoozeUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snooze_until"); else _explicitNullProperties?.Remove("snooze_until"); } }
+        private DateTimeOffset? _explicitNullValueSnoozeUntil = default!;
         /// <summary>* `not_firing` - Not firing* `firing` - Firing* `pending_resolve` - Pending resolve* `errored` - Errored* `snoozed` - Snoozed* `broken` - Broken</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailState? State { get; private set; }
         /// <summary>Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. For an alert the alerts platform evaluates, state changes come from the platform&apos;s check history instead. Drives the &apos;Last 24h&apos; status bar on the alert list.</summary>
@@ -118,13 +150,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval> StateTimeline { get; private set; }
 #endif
         /// <summary>Number of matching log entries that constitutes a threshold breach within the evaluation window. Defaults to 100. Use 0 with the &apos;above&apos; operator to fire on any matching log.</summary>
-        public int? ThresholdCount { get; set; }
+        public int? ThresholdCount { get => _explicitNullValueThresholdCount; set { _explicitNullValueThresholdCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_count"); else _explicitNullProperties?.Remove("threshold_count"); } }
+        private int? _explicitNullValueThresholdCount = default!;
         /// <summary>* `above` - Above* `below` - Below</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailThresholdOperator? ThresholdOperator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailThresholdOperator? ThresholdOperator { get => _explicitNullValueThresholdOperator; set { _explicitNullValueThresholdOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_operator"); else _explicitNullProperties?.Remove("threshold_operator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailThresholdOperator? _explicitNullValueThresholdOperator = default!;
         /// <summary>When the alert was last modified.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60.</summary>
-        public int? WindowMinutes { get; set; }
+        public int? WindowMinutes { get => _explicitNullValueWindowMinutes; set { _explicitNullValueWindowMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_minutes"); else _explicitNullProperties?.Remove("window_minutes"); } }
+        private int? _explicitNullValueWindowMinutes = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetail"/> and sets the default values.
         /// </summary>
@@ -146,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetail CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetail();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetail(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -205,6 +240,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("threshold_count", ThresholdCount);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailThresholdOperator>("threshold_operator", ThresholdOperator);
             writer.WriteIntValue("window_minutes", WindowMinutes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

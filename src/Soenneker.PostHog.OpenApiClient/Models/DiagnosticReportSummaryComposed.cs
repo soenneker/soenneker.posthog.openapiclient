@@ -12,27 +12,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DiagnosticReportSummaryComposed : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("next_action") is { } nullNodeNextAction && nullNodeNextAction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextAction = null;
+            if (parseNode.GetChildNode("primary_issue") is { } nullNodePrimaryIssue && nullNodePrimaryIssue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryIssue = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>One-sentence next action the customer should take. Null when nothing&apos;s wrong.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NextAction { get; set; }
+        public string? NextAction { get => _explicitNullValueNextAction; set { _explicitNullValueNextAction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_action"); else _explicitNullProperties?.Remove("next_action"); } }
+        private string? _explicitNullValueNextAction = default!;
 #nullable restore
 #else
-        public string NextAction { get; set; }
+        public string NextAction { get => _explicitNullValueNextAction; set { _explicitNullValueNextAction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_action"); else _explicitNullProperties?.Remove("next_action"); } }
+        private string _explicitNullValueNextAction = default!;
 #endif
         /// <summary>Check id of the most actionable failure, if any. Null when status is healthy.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrimaryIssue { get; set; }
+        public string? PrimaryIssue { get => _explicitNullValuePrimaryIssue; set { _explicitNullValuePrimaryIssue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_issue"); else _explicitNullProperties?.Remove("primary_issue"); } }
+        private string? _explicitNullValuePrimaryIssue = default!;
 #nullable restore
 #else
-        public string PrimaryIssue { get; set; }
+        public string PrimaryIssue { get => _explicitNullValuePrimaryIssue; set { _explicitNullValuePrimaryIssue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_issue"); else _explicitNullProperties?.Remove("primary_issue"); } }
+        private string _explicitNullValuePrimaryIssue = default!;
 #endif
         /// <summary>* `healthy` - healthy* `warn` - warn* `fail` - fail</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryComposed"/> and sets the default values.
         /// </summary>
@@ -48,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryComposed CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryComposed();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryComposed(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("next_action", NextAction);
             writer.WriteStringValue("primary_issue", PrimaryIssue);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DiagnosticReportSummaryStatus>("status", Status);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

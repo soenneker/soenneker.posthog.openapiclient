@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogs>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogs.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogs>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RunFailureLogs.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The thinned CI failure logs of one workflow run, grouped by failed job: the run-scoped twin of ci_failure_logs for surfaces that aren&apos;t PR-scoped (default-branch failures, the run page). logs_available is false when the run didn&apos;t fail or its logs aged out of the short Logs retention.

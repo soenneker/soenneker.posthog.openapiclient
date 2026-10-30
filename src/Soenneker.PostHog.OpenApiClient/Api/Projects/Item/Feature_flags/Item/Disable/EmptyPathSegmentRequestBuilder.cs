@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.D
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Disable a feature flag.Sets `active` to false and changes nothing else. Targeting, variants, payloads, tags andarchived state are left as they are. Refused when other active flags depend on this one.An already-disabled flag is returned unchanged.A disabled flag stops evaluating for every consumer, including a linked experiment or asession replay setting. Read the full definition first to report that impact.Send the `version` your last read returned. A flag whose `filters.version` is 2 requiresit, and for any flag a change after that version is refused with 409.

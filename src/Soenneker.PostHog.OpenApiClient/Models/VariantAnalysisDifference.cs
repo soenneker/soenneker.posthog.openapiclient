@@ -11,40 +11,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class VariantAnalysisDifference : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("counts") is { } nullNodeCounts && nullNodeCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Counts = null;
+            if (parseNode.GetChildNode("read") is { } nullNodeRead && nullNodeRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Read = null;
+            if (parseNode.GetChildNode("statement") is { } nullNodeStatement && nullNodeStatement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Statement = null;
+            if (parseNode.GetChildNode("theme") is { } nullNodeTheme && nullNodeTheme.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Theme = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Summaries the analysis read that show the theme, per variant key, as the scout counted them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceCountsProperty? Counts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceCountsProperty? Counts { get => _explicitNullValueCounts; set { _explicitNullValueCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("counts"); else _explicitNullProperties?.Remove("counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceCountsProperty? _explicitNullValueCounts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceCountsProperty Counts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceCountsProperty Counts { get => _explicitNullValueCounts; set { _explicitNullValueCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("counts"); else _explicitNullProperties?.Remove("counts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceCountsProperty _explicitNullValueCounts = default!;
 #endif
         /// <summary>Per variant key, how many summaries the theme was counted over, for a theme counted over fewer summaries than the analysis read in total. Empty when it was counted over all of them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceReadProperty? Read { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceReadProperty? Read { get => _explicitNullValueRead; set { _explicitNullValueRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read"); else _explicitNullProperties?.Remove("read"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceReadProperty? _explicitNullValueRead = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceReadProperty Read { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceReadProperty Read { get => _explicitNullValueRead; set { _explicitNullValueRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read"); else _explicitNullProperties?.Remove("read"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceReadProperty _explicitNullValueRead = default!;
 #endif
         /// <summary>What differs between the variants.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Statement { get; set; }
+        public string? Statement { get => _explicitNullValueStatement; set { _explicitNullValueStatement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statement"); else _explicitNullProperties?.Remove("statement"); } }
+        private string? _explicitNullValueStatement = default!;
 #nullable restore
 #else
-        public string Statement { get; set; }
+        public string Statement { get => _explicitNullValueStatement; set { _explicitNullValueStatement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statement"); else _explicitNullProperties?.Remove("statement"); } }
+        private string _explicitNullValueStatement = default!;
 #endif
         /// <summary>The theme the difference rests on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Theme { get; set; }
+        public string? Theme { get => _explicitNullValueTheme; set { _explicitNullValueTheme = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("theme"); else _explicitNullProperties?.Remove("theme"); } }
+        private string? _explicitNullValueTheme = default!;
 #nullable restore
 #else
-        public string Theme { get; set; }
+        public string Theme { get => _explicitNullValueTheme; set { _explicitNullValueTheme = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("theme"); else _explicitNullProperties?.Remove("theme"); } }
+        private string _explicitNullValueTheme = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifference"/> and sets the default values.
@@ -61,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifference CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifference();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifference(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifferenceReadProperty>("read", Read);
             writer.WriteStringValue("statement", Statement);
             writer.WriteStringValue("theme", Theme);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

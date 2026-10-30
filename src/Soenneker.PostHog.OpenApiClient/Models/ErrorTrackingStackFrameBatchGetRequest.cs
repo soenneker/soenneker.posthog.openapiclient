@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingStackFrameBatchGetRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("raw_ids") is { } nullNodeRawIds && nullNodeRawIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawIds = null;
+            if (parseNode.GetChildNode("symbol_set") is { } nullNodeSymbolSet && nullNodeSymbolSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SymbolSet = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Raw frame IDs in &apos;hash/part&apos; format to resolve in a single request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RawIds { get; set; }
+        public List<string>? RawIds { get => _explicitNullValueRawIds; set { _explicitNullValueRawIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ids"); else _explicitNullProperties?.Remove("raw_ids"); } }
+        private List<string>? _explicitNullValueRawIds = default!;
 #nullable restore
 #else
-        public List<string> RawIds { get; set; }
+        public List<string> RawIds { get => _explicitNullValueRawIds; set { _explicitNullValueRawIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ids"); else _explicitNullProperties?.Remove("raw_ids"); } }
+        private List<string> _explicitNullValueRawIds = default!;
 #endif
         /// <summary>Optional symbol set reference to scope the lookup to a single symbol set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SymbolSet { get; set; }
+        public string? SymbolSet { get => _explicitNullValueSymbolSet; set { _explicitNullValueSymbolSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_set"); else _explicitNullProperties?.Remove("symbol_set"); } }
+        private string? _explicitNullValueSymbolSet = default!;
 #nullable restore
 #else
-        public string SymbolSet { get; set; }
+        public string SymbolSet { get => _explicitNullValueSymbolSet; set { _explicitNullValueSymbolSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_set"); else _explicitNullProperties?.Remove("symbol_set"); } }
+        private string _explicitNullValueSymbolSet = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameBatchGetRequest"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameBatchGetRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameBatchGetRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameBatchGetRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("raw_ids", RawIds);
             writer.WriteStringValue("symbol_set", SymbolSet);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

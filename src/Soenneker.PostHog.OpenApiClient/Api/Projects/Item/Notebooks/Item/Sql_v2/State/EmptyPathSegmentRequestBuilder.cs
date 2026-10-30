@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Notebooks.Item.Sql_v
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2StateResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The full notebook view for agents: title, document source (markdown, or raw content for legacy rich-text notebooks), the notebook&apos;s declared variables, every cell with its dependency edges and derived run status (including staleness), and the kernel&apos;s runtime state and compute config. Flag-gated (revamped-py-notebooks).

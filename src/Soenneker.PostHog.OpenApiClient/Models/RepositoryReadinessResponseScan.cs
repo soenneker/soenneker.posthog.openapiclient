@@ -12,21 +12,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RepositoryReadinessResponseScan : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("detectedFilesCount") is { } nullNodeDetectedFilesCount && nullNodeDetectedFilesCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DetectedFilesCount = null;
+            if (parseNode.GetChildNode("eventNameCount") is { } nullNodeEventNameCount && nullNodeEventNameCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventNameCount = null;
+            if (parseNode.GetChildNode("filesScanned") is { } nullNodeFilesScanned && nullNodeFilesScanned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilesScanned = null;
+            if (parseNode.GetChildNode("foundErrorSignal") is { } nullNodeFoundErrorSignal && nullNodeFoundErrorSignal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FoundErrorSignal = null;
+            if (parseNode.GetChildNode("foundPosthogCapture") is { } nullNodeFoundPosthogCapture && nullNodeFoundPosthogCapture.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FoundPosthogCapture = null;
+            if (parseNode.GetChildNode("foundPosthogInit") is { } nullNodeFoundPosthogInit && nullNodeFoundPosthogInit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FoundPosthogInit = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Total candidate files detected</summary>
-        public int? DetectedFilesCount { get; set; }
+        public int? DetectedFilesCount { get => _explicitNullValueDetectedFilesCount; set { _explicitNullValueDetectedFilesCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detectedFilesCount"); else _explicitNullProperties?.Remove("detectedFilesCount"); } }
+        private int? _explicitNullValueDetectedFilesCount = default!;
         /// <summary>Number of distinct event names found</summary>
-        public int? EventNameCount { get; set; }
+        public int? EventNameCount { get => _explicitNullValueEventNameCount; set { _explicitNullValueEventNameCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eventNameCount"); else _explicitNullProperties?.Remove("eventNameCount"); } }
+        private int? _explicitNullValueEventNameCount = default!;
         /// <summary>Number of files scanned</summary>
-        public int? FilesScanned { get; set; }
+        public int? FilesScanned { get => _explicitNullValueFilesScanned; set { _explicitNullValueFilesScanned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filesScanned"); else _explicitNullProperties?.Remove("filesScanned"); } }
+        private int? _explicitNullValueFilesScanned = default!;
         /// <summary>Whether error tracking signals were found in scanned files</summary>
-        public bool? FoundErrorSignal { get; set; }
+        public bool? FoundErrorSignal { get => _explicitNullValueFoundErrorSignal; set { _explicitNullValueFoundErrorSignal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("foundErrorSignal"); else _explicitNullProperties?.Remove("foundErrorSignal"); } }
+        private bool? _explicitNullValueFoundErrorSignal = default!;
         /// <summary>Whether posthog.capture() was found in scanned files</summary>
-        public bool? FoundPosthogCapture { get; set; }
+        public bool? FoundPosthogCapture { get => _explicitNullValueFoundPosthogCapture; set { _explicitNullValueFoundPosthogCapture = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("foundPosthogCapture"); else _explicitNullProperties?.Remove("foundPosthogCapture"); } }
+        private bool? _explicitNullValueFoundPosthogCapture = default!;
         /// <summary>Whether posthog.init() was found in scanned files</summary>
-        public bool? FoundPosthogInit { get; set; }
+        public bool? FoundPosthogInit { get => _explicitNullValueFoundPosthogInit; set { _explicitNullValueFoundPosthogInit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("foundPosthogInit"); else _explicitNullProperties?.Remove("foundPosthogInit"); } }
+        private bool? _explicitNullValueFoundPosthogInit = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponseScan"/> and sets the default values.
         /// </summary>
@@ -42,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponseScan CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponseScan();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RepositoryReadinessResponseScan(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("foundErrorSignal", FoundErrorSignal);
             writer.WriteBoolValue("foundPosthogCapture", FoundPosthogCapture);
             writer.WriteBoolValue("foundPosthogInit", FoundPosthogInit);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

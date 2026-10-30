@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Push_tokens
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.UserPushTokenItem.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Register the device for the authenticated user, removing registrations for the same token belonging to other users on this instance. Re-registration refreshes `platform` and `last_seen_at`.

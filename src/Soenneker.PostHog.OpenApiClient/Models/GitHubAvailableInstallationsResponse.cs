@@ -11,32 +11,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GitHubAvailableInstallationsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("discovered_at") is { } nullNodeDiscoveredAt && nullNodeDiscoveredAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiscoveredAt = null;
+            if (parseNode.GetChildNode("discovery_id") is { } nullNodeDiscoveryId && nullNodeDiscoveryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiscoveryId = null;
+            if (parseNode.GetChildNode("installations") is { } nullNodeInstallations && nullNodeInstallations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Installations = null;
+            if (parseNode.GetChildNode("personal_discovery_status") is { } nullNodePersonalDiscoveryStatus && nullNodePersonalDiscoveryStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonalDiscoveryStatus = null;
+            if (parseNode.GetChildNode("personal_github_connected") is { } nullNodePersonalGithubConnected && nullNodePersonalGithubConnected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonalGithubConnected = null;
+            if (parseNode.GetChildNode("personal_github_login") is { } nullNodePersonalGithubLogin && nullNodePersonalGithubLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonalGithubLogin = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Time this discovery completed.</summary>
-        public DateTimeOffset? DiscoveredAt { get; set; }
+        public DateTimeOffset? DiscoveredAt { get => _explicitNullValueDiscoveredAt; set { _explicitNullValueDiscoveredAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discovered_at"); else _explicitNullProperties?.Remove("discovered_at"); } }
+        private DateTimeOffset? _explicitNullValueDiscoveredAt = default!;
         /// <summary>Correlation ID for this discovery response.</summary>
-        public Guid? DiscoveryId { get; set; }
+        public Guid? DiscoveryId { get => _explicitNullValueDiscoveryId; set { _explicitNullValueDiscoveryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("discovery_id"); else _explicitNullProperties?.Remove("discovery_id"); } }
+        private Guid? _explicitNullValueDiscoveryId = default!;
         /// <summary>GitHub installations available to link to this project: the organization&apos;s existing installations plus any the user&apos;s personal GitHub link can see but that aren&apos;t linked to any project yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation>? Installations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation>? Installations { get => _explicitNullValueInstallations; set { _explicitNullValueInstallations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installations"); else _explicitNullProperties?.Remove("installations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation>? _explicitNullValueInstallations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation> Installations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation> Installations { get => _explicitNullValueInstallations; set { _explicitNullValueInstallations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installations"); else _explicitNullProperties?.Remove("installations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallation> _explicitNullValueInstallations = default!;
 #endif
         /// <summary>* `ok` - Ok* `not_connected` - Not Connected* `unavailable` - Unavailable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus? PersonalDiscoveryStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus? PersonalDiscoveryStatus { get => _explicitNullValuePersonalDiscoveryStatus; set { _explicitNullValuePersonalDiscoveryStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personal_discovery_status"); else _explicitNullProperties?.Remove("personal_discovery_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus? _explicitNullValuePersonalDiscoveryStatus = default!;
         /// <summary>Whether the requesting user has a personal GitHub account linked (via Linked Accounts). Used to prompt for that link when it would surface more installations to adopt.</summary>
-        public bool? PersonalGithubConnected { get; set; }
+        public bool? PersonalGithubConnected { get => _explicitNullValuePersonalGithubConnected; set { _explicitNullValuePersonalGithubConnected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personal_github_connected"); else _explicitNullProperties?.Remove("personal_github_connected"); } }
+        private bool? _explicitNullValuePersonalGithubConnected = default!;
         /// <summary>GitHub identity of the credential used for personal discovery.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PersonalGithubLogin { get; set; }
+        public string? PersonalGithubLogin { get => _explicitNullValuePersonalGithubLogin; set { _explicitNullValuePersonalGithubLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personal_github_login"); else _explicitNullProperties?.Remove("personal_github_login"); } }
+        private string? _explicitNullValuePersonalGithubLogin = default!;
 #nullable restore
 #else
-        public string PersonalGithubLogin { get; set; }
+        public string PersonalGithubLogin { get => _explicitNullValuePersonalGithubLogin; set { _explicitNullValuePersonalGithubLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personal_github_login"); else _explicitNullProperties?.Remove("personal_github_login"); } }
+        private string _explicitNullValuePersonalGithubLogin = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponse"/> and sets the default values.
@@ -53,7 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubAvailableInstallationsResponsePersonalDiscoveryStatus>("personal_discovery_status", PersonalDiscoveryStatus);
             writer.WriteBoolValue("personal_github_connected", PersonalGithubConnected);
             writer.WriteStringValue("personal_github_login", PersonalGithubLogin);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

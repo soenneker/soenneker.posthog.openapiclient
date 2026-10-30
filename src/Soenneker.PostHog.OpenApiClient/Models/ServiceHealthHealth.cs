@@ -12,19 +12,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ServiceHealthHealth : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("error_count") is { } nullNodeErrorCount && nullNodeErrorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCount = null;
+            if (parseNode.GetChildNode("error_rate") is { } nullNodeErrorRate && nullNodeErrorRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRate = null;
+            if (parseNode.GetChildNode("p95_ms") is { } nullNodeP95Ms && nullNodeP95Ms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) P95Ms = null;
+            if (parseNode.GetChildNode("request_rate") is { } nullNodeRequestRate && nullNodeRequestRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestRate = null;
+            if (parseNode.GetChildNode("span_count") is { } nullNodeSpanCount && nullNodeSpanCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpanCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Requests with an error status in the window.</summary>
-        public int? ErrorCount { get; set; }
+        public int? ErrorCount { get => _explicitNullValueErrorCount; set { _explicitNullValueErrorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_count"); else _explicitNullProperties?.Remove("error_count"); } }
+        private int? _explicitNullValueErrorCount = default!;
         /// <summary>Share of requests with an error status, 0 to 1.</summary>
-        public double? ErrorRate { get; set; }
+        public double? ErrorRate { get => _explicitNullValueErrorRate; set { _explicitNullValueErrorRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_rate"); else _explicitNullProperties?.Remove("error_rate"); } }
+        private double? _explicitNullValueErrorRate = default!;
         /// <summary>95th percentile request duration in milliseconds.</summary>
-        public double? P95Ms { get; set; }
+        public double? P95Ms { get => _explicitNullValueP95Ms; set { _explicitNullValueP95Ms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("p95_ms"); else _explicitNullProperties?.Remove("p95_ms"); } }
+        private double? _explicitNullValueP95Ms = default!;
         /// <summary>Requests per second over the window.</summary>
-        public double? RequestRate { get; set; }
+        public double? RequestRate { get => _explicitNullValueRequestRate; set { _explicitNullValueRequestRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_rate"); else _explicitNullProperties?.Remove("request_rate"); } }
+        private double? _explicitNullValueRequestRate = default!;
         /// <summary>Requests counted in the window.</summary>
-        public int? SpanCount { get; set; }
+        public int? SpanCount { get => _explicitNullValueSpanCount; set { _explicitNullValueSpanCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("span_count"); else _explicitNullProperties?.Remove("span_count"); } }
+        private int? _explicitNullValueSpanCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthHealth"/> and sets the default values.
         /// </summary>
@@ -40,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthHealth CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthHealth();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthHealth(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("p95_ms", P95Ms);
             writer.WriteDoubleValue("request_rate", RequestRate);
             writer.WriteIntValue("span_count", SpanCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

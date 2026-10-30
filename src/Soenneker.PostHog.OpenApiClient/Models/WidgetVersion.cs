@@ -11,93 +11,139 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WidgetVersion : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("artifact_url") is { } nullNodeArtifactUrl && nullNodeArtifactUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactUrl = null;
+            if (parseNode.GetChildNode("build_hash") is { } nullNodeBuildHash && nullNodeBuildHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuildHash = null;
+            if (parseNode.GetChildNode("build_status") is { } nullNodeBuildStatus && nullNodeBuildStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuildStatus = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("effective_prompt") is { } nullNodeEffectivePrompt && nullNodeEffectivePrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectivePrompt = null;
+            if (parseNode.GetChildNode("frame_names") is { } nullNodeFrameNames && nullNodeFrameNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameNames = null;
+            if (parseNode.GetChildNode("generation_cost_usd") is { } nullNodeGenerationCostUsd && nullNodeGenerationCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GenerationCostUsd = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("is_current") is { } nullNodeIsCurrent && nullNodeIsCurrent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsCurrent = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("parent_version_id") is { } nullNodeParentVersionId && nullNodeParentVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ParentVersionId = null;
+            if (parseNode.GetChildNode("prompt_delta") is { } nullNodePromptDelta && nullNodePromptDelta.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptDelta = null;
+            if (parseNode.GetChildNode("security_review") is { } nullNodeSecurityReview && nullNodeSecurityReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecurityReview = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("version_operation") is { } nullNodeVersionOperation && nullNodeVersionOperation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionOperation = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Preview URL when retained and ready.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ArtifactUrl { get; set; }
+        public string? ArtifactUrl { get => _explicitNullValueArtifactUrl; set { _explicitNullValueArtifactUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_url"); else _explicitNullProperties?.Remove("artifact_url"); } }
+        private string? _explicitNullValueArtifactUrl = default!;
 #nullable restore
 #else
-        public string ArtifactUrl { get; set; }
+        public string ArtifactUrl { get => _explicitNullValueArtifactUrl; set { _explicitNullValueArtifactUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_url"); else _explicitNullProperties?.Remove("artifact_url"); } }
+        private string _explicitNullValueArtifactUrl = default!;
 #endif
         /// <summary>Hex SHA-256 over this version&apos;s exact immutable artifact manifest.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BuildHash { get; set; }
+        public string? BuildHash { get => _explicitNullValueBuildHash; set { _explicitNullValueBuildHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_hash"); else _explicitNullProperties?.Remove("build_hash"); } }
+        private string? _explicitNullValueBuildHash = default!;
 #nullable restore
 #else
-        public string BuildHash { get; set; }
+        public string BuildHash { get => _explicitNullValueBuildHash; set { _explicitNullValueBuildHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_hash"); else _explicitNullProperties?.Remove("build_hash"); } }
+        private string _explicitNullValueBuildHash = default!;
 #endif
         /// <summary>Preview build state.* `queued` - queued* `building` - building* `ready` - ready* `failed` - failed</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionBuildStatus? BuildStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionBuildStatus? BuildStatus { get => _explicitNullValueBuildStatus; set { _explicitNullValueBuildStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_status"); else _explicitNullProperties?.Remove("build_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionBuildStatus? _explicitNullValueBuildStatus = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionBuildStatus BuildStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionBuildStatus BuildStatus { get => _explicitNullValueBuildStatus; set { _explicitNullValueBuildStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_status"); else _explicitNullProperties?.Remove("build_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionBuildStatus _explicitNullValueBuildStatus = default!;
 #endif
         /// <summary>When this version was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Complete instructions represented by this version, up to 50,000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EffectivePrompt { get; set; }
+        public string? EffectivePrompt { get => _explicitNullValueEffectivePrompt; set { _explicitNullValueEffectivePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_prompt"); else _explicitNullProperties?.Remove("effective_prompt"); } }
+        private string? _explicitNullValueEffectivePrompt = default!;
 #nullable restore
 #else
-        public string EffectivePrompt { get; set; }
+        public string EffectivePrompt { get => _explicitNullValueEffectivePrompt; set { _explicitNullValueEffectivePrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_prompt"); else _explicitNullProperties?.Remove("effective_prompt"); } }
+        private string _explicitNullValueEffectivePrompt = default!;
 #endif
         /// <summary>Logical dataframe slots available to this version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FrameNames { get; set; }
+        public List<string>? FrameNames { get => _explicitNullValueFrameNames; set { _explicitNullValueFrameNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_names"); else _explicitNullProperties?.Remove("frame_names"); } }
+        private List<string>? _explicitNullValueFrameNames = default!;
 #nullable restore
 #else
-        public List<string> FrameNames { get; set; }
+        public List<string> FrameNames { get => _explicitNullValueFrameNames; set { _explicitNullValueFrameNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_names"); else _explicitNullProperties?.Remove("frame_names"); } }
+        private List<string> _explicitNullValueFrameNames = default!;
 #endif
         /// <summary>Estimated generation charge in USD, including retries, security review, and the AI credit markup. Null when unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GenerationCostUsd { get; set; }
+        public string? GenerationCostUsd { get => _explicitNullValueGenerationCostUsd; set { _explicitNullValueGenerationCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_cost_usd"); else _explicitNullProperties?.Remove("generation_cost_usd"); } }
+        private string? _explicitNullValueGenerationCostUsd = default!;
 #nullable restore
 #else
-        public string GenerationCostUsd { get; set; }
+        public string GenerationCostUsd { get => _explicitNullValueGenerationCostUsd; set { _explicitNullValueGenerationCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation_cost_usd"); else _explicitNullProperties?.Remove("generation_cost_usd"); } }
+        private string _explicitNullValueGenerationCostUsd = default!;
 #endif
         /// <summary>Immutable widget version identifier.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Whether this notebook instance currently displays this version.</summary>
-        public bool? IsCurrent { get; set; }
+        public bool? IsCurrent { get => _explicitNullValueIsCurrent; set { _explicitNullValueIsCurrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_current"); else _explicitNullProperties?.Remove("is_current"); } }
+        private bool? _explicitNullValueIsCurrent = default!;
         /// <summary>AI model, or null when this version did not run a model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Version this one was based on.</summary>
-        public Guid? ParentVersionId { get; set; }
+        public Guid? ParentVersionId { get => _explicitNullValueParentVersionId; set { _explicitNullValueParentVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parent_version_id"); else _explicitNullProperties?.Remove("parent_version_id"); } }
+        private Guid? _explicitNullValueParentVersionId = default!;
         /// <summary>Instructions added by this version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PromptDelta { get; set; }
+        public string? PromptDelta { get => _explicitNullValuePromptDelta; set { _explicitNullValuePromptDelta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_delta"); else _explicitNullProperties?.Remove("prompt_delta"); } }
+        private string? _explicitNullValuePromptDelta = default!;
 #nullable restore
 #else
-        public string PromptDelta { get; set; }
+        public string PromptDelta { get => _explicitNullValuePromptDelta; set { _explicitNullValuePromptDelta = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_delta"); else _explicitNullProperties?.Remove("prompt_delta"); } }
+        private string _explicitNullValuePromptDelta = default!;
 #endif
         /// <summary>Automated review for this source, or null for a legacy unreviewed version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? SecurityReview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? _explicitNullValueSecurityReview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview SecurityReview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview _explicitNullValueSecurityReview = default!;
 #endif
         /// <summary>One-based version number.</summary>
-        public int? Version { get; set; }
+        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private int? _explicitNullValueVersion = default!;
         /// <summary>* `initial` - initial* `regenerate` - regenerate* `improve` - improve* `revert` - revert</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation? VersionOperation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation? VersionOperation { get => _explicitNullValueVersionOperation; set { _explicitNullValueVersionOperation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_operation"); else _explicitNullProperties?.Remove("version_operation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation? _explicitNullValueVersionOperation = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersion"/> and sets the default values.
         /// </summary>
@@ -113,7 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersion CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersion();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersion(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -162,6 +208,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>("security_review", SecurityReview);
             writer.WriteIntValue("version", Version);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetVersionVersionOperation>("version_operation", VersionOperation);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

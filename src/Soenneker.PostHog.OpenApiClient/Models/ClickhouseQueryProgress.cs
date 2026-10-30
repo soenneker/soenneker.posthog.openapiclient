@@ -11,17 +11,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ClickhouseQueryProgress : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_cpu_time") is { } nullNodeActiveCpuTime && nullNodeActiveCpuTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveCpuTime = null;
+            if (parseNode.GetChildNode("bytes_read") is { } nullNodeBytesRead && nullNodeBytesRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BytesRead = null;
+            if (parseNode.GetChildNode("estimated_rows_total") is { } nullNodeEstimatedRowsTotal && nullNodeEstimatedRowsTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedRowsTotal = null;
+            if (parseNode.GetChildNode("rows_read") is { } nullNodeRowsRead && nullNodeRowsRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsRead = null;
+            if (parseNode.GetChildNode("time_elapsed") is { } nullNodeTimeElapsed && nullNodeTimeElapsed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimeElapsed = null;
+        }
+
         /// <summary>The active_cpu_time property</summary>
-        public int? ActiveCpuTime { get; set; }
+        public int? ActiveCpuTime { get => _explicitNullValueActiveCpuTime; set { _explicitNullValueActiveCpuTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_cpu_time"); else _explicitNullProperties?.Remove("active_cpu_time"); } }
+        private int? _explicitNullValueActiveCpuTime = default!;
         /// <summary>The bytes_read property</summary>
-        public int? BytesRead { get; set; }
+        public int? BytesRead { get => _explicitNullValueBytesRead; set { _explicitNullValueBytesRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytes_read"); else _explicitNullProperties?.Remove("bytes_read"); } }
+        private int? _explicitNullValueBytesRead = default!;
         /// <summary>The estimated_rows_total property</summary>
-        public int? EstimatedRowsTotal { get; set; }
+        public int? EstimatedRowsTotal { get => _explicitNullValueEstimatedRowsTotal; set { _explicitNullValueEstimatedRowsTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_rows_total"); else _explicitNullProperties?.Remove("estimated_rows_total"); } }
+        private int? _explicitNullValueEstimatedRowsTotal = default!;
         /// <summary>The rows_read property</summary>
-        public int? RowsRead { get; set; }
+        public int? RowsRead { get => _explicitNullValueRowsRead; set { _explicitNullValueRowsRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_read"); else _explicitNullProperties?.Remove("rows_read"); } }
+        private int? _explicitNullValueRowsRead = default!;
         /// <summary>The time_elapsed property</summary>
-        public int? TimeElapsed { get; set; }
+        public int? TimeElapsed { get => _explicitNullValueTimeElapsed; set { _explicitNullValueTimeElapsed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_elapsed"); else _explicitNullProperties?.Remove("time_elapsed"); } }
+        private int? _explicitNullValueTimeElapsed = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -30,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -58,7 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("bytes_read", BytesRead);
             writer.WriteIntValue("estimated_rows_total", EstimatedRowsTotal);
             writer.WriteIntValue("rows_read", RowsRead);
-            writer.WriteIntValue("time_elapsed", TimeElapsed);
+            writer.WriteIntValue("time_elapsed", TimeElapsed);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

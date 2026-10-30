@@ -11,15 +11,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MetricsYAxisSettings : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("max") is { } nullNodeMax && nullNodeMax.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Max = null;
+            if (parseNode.GetChildNode("min") is { } nullNodeMin && nullNodeMin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Min = null;
+            if (parseNode.GetChildNode("scale") is { } nullNodeScale && nullNodeScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scale = null;
+            if (parseNode.GetChildNode("startAtZero") is { } nullNodeStartAtZero && nullNodeStartAtZero.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartAtZero = null;
+        }
+
         /// <summary>Pins the top of the axis; unset means automatic. Pinning both ends drops the automatic stretch that keeps an off-scale goal line on-plot.</summary>
-        public double? Max { get; set; }
+        public double? Max { get => _explicitNullValueMax; set { _explicitNullValueMax = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max"); else _explicitNullProperties?.Remove("max"); } }
+        private double? _explicitNullValueMax = default!;
         /// <summary>Pins the bottom of the axis; unset means automatic. Ignored while `startAtZero` is on.</summary>
-        public double? Min { get; set; }
+        public double? Min { get => _explicitNullValueMin; set { _explicitNullValueMin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min"); else _explicitNullProperties?.Remove("min"); } }
+        private double? _explicitNullValueMin = default!;
         /// <summary>The scale property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScale? Scale { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScale? Scale { get => _explicitNullValueScale; set { _explicitNullValueScale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scale"); else _explicitNullProperties?.Remove("scale"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScale? _explicitNullValueScale = default!;
         /// <summary>When false the axis floats to the data range instead of starting at zero. Ignored on a logarithmic scale, and on the bar display, where a bar&apos;s length encodes magnitude from zero.</summary>
-        public bool? StartAtZero { get; set; }
+        public bool? StartAtZero { get => _explicitNullValueStartAtZero; set { _explicitNullValueStartAtZero = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("startAtZero"); else _explicitNullProperties?.Remove("startAtZero"); } }
+        private bool? _explicitNullValueStartAtZero = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings"/> and sets the default values.
         /// </summary>
@@ -35,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MetricsYAxisSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,7 +76,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("max", Max);
             writer.WriteDoubleValue("min", Min);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsAxisScale>("scale", Scale);
-            writer.WriteBoolValue("startAtZero", StartAtZero);
+            writer.WriteBoolValue("startAtZero", StartAtZero);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

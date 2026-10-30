@@ -11,36 +11,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ManagedWarehouseDataStatusResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("events") is { } nullNodeEvents && nullNodeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Events = null;
+            if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
+            if (parseNode.GetChildNode("overall_readiness_state") is { } nullNodeOverallReadinessState && nullNodeOverallReadinessState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OverallReadinessState = null;
+            if (parseNode.GetChildNode("persons") is { } nullNodePersons && nullNodePersons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Persons = null;
+            if (parseNode.GetChildNode("sources") is { } nullNodeSources && nullNodeSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sources = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Events backfill readiness.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents? Events { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents? Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents? _explicitNullValueEvents = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents Events { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseEvents _explicitNullValueEvents = default!;
 #endif
         /// <summary>When this status snapshot was generated.</summary>
-        public DateTimeOffset? GeneratedAt { get; set; }
+        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
+        private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
         /// <summary>* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState? OverallReadinessState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState? OverallReadinessState { get => _explicitNullValueOverallReadinessState; set { _explicitNullValueOverallReadinessState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overall_readiness_state"); else _explicitNullProperties?.Remove("overall_readiness_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState? _explicitNullValueOverallReadinessState = default!;
         /// <summary>Persons backfill readiness.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons? Persons { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons? Persons { get => _explicitNullValuePersons; set { _explicitNullValuePersons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("persons"); else _explicitNullProperties?.Remove("persons"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons? _explicitNullValuePersons = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons Persons { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons Persons { get => _explicitNullValuePersons; set { _explicitNullValuePersons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("persons"); else _explicitNullProperties?.Remove("persons"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons _explicitNullValuePersons = default!;
 #endif
         /// <summary>Imported source table readiness.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources? Sources { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources? Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources? _explicitNullValueSources = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources Sources { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources _explicitNullValueSources = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponse"/> and sets the default values.
@@ -57,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseOverallReadinessState>("overall_readiness_state", OverallReadinessState);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons>("persons", Persons);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponseSources>("sources", Sources);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

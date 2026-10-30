@@ -11,62 +11,93 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UtmIssue : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("alternative_sources") is { } nullNodeAlternativeSources && nullNodeAlternativeSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlternativeSources = null;
+            if (parseNode.GetChildNode("field") is { } nullNodeField && nullNodeField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Field = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("mapping_candidate") is { } nullNodeMappingCandidate && nullNodeMappingCandidate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MappingCandidate = null;
+            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("missing_source_count") is { } nullNodeMissingSourceCount && nullNodeMissingSourceCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissingSourceCount = null;
+            if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
+            if (parseNode.GetChildNode("shared_with_integrations") is { } nullNodeSharedWithIntegrations && nullNodeSharedWithIntegrations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedWithIntegrations = null;
+            if (parseNode.GetChildNode("suggested_actions") is { } nullNodeSuggestedActions && nullNodeSuggestedActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedActions = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>utm_source values actually found on this campaign&apos;s pageviews, ordered by event count</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource>? AlternativeSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource>? AlternativeSources { get => _explicitNullValueAlternativeSources; set { _explicitNullValueAlternativeSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alternative_sources"); else _explicitNullProperties?.Remove("alternative_sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource>? _explicitNullValueAlternativeSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource> AlternativeSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource> AlternativeSources { get => _explicitNullValueAlternativeSources; set { _explicitNullValueAlternativeSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alternative_sources"); else _explicitNullProperties?.Remove("alternative_sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.UtmAlternativeSource> _explicitNullValueAlternativeSources = default!;
 #endif
         /// <summary>The UTM field with the issue (e.g. utm_campaign, utm_source)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Field { get; set; }
+        public string? Field { get => _explicitNullValueField; set { _explicitNullValueField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field"); else _explicitNullProperties?.Remove("field"); } }
+        private string? _explicitNullValueField = default!;
 #nullable restore
 #else
-        public string Field { get; set; }
+        public string Field { get => _explicitNullValueField; set { _explicitNullValueField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field"); else _explicitNullProperties?.Remove("field"); } }
+        private string _explicitNullValueField = default!;
 #endif
         /// <summary>* `not_linked` - not_linked* `name_collision` - name_collision* `no_tagged_events` - no_tagged_events* `unknown_source` - unknown_source* `missing_source` - missing_source</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind? Kind { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueKind? _explicitNullValueKind = default!;
         /// <summary>The orphaned utm_campaign value that looks like a typo of this campaign, when one was found confidently. Set only alongside add_campaign_name_mapping; empty otherwise, including when several candidates tie and picking one could misattribute spend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MappingCandidate { get; set; }
+        public string? MappingCandidate { get => _explicitNullValueMappingCandidate; set { _explicitNullValueMappingCandidate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mapping_candidate"); else _explicitNullProperties?.Remove("mapping_candidate"); } }
+        private string? _explicitNullValueMappingCandidate = default!;
 #nullable restore
 #else
-        public string MappingCandidate { get; set; }
+        public string MappingCandidate { get => _explicitNullValueMappingCandidate; set { _explicitNullValueMappingCandidate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mapping_candidate"); else _explicitNullProperties?.Remove("mapping_candidate"); } }
+        private string _explicitNullValueMappingCandidate = default!;
 #endif
         /// <summary>Human-readable headline; the frontend composes richer text from the fields below</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get; set; }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get; set; }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>Pageviews that matched this campaign but carried no utm_source, on any issue kind</summary>
-        public int? MissingSourceCount { get; set; }
+        public int? MissingSourceCount { get => _explicitNullValueMissingSourceCount; set { _explicitNullValueMissingSourceCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_source_count"); else _explicitNullProperties?.Remove("missing_source_count"); } }
+        private int? _explicitNullValueMissingSourceCount = default!;
         /// <summary>* `error` - error* `warning` - warning</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity? Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity? _explicitNullValueSeverity = default!;
         /// <summary>Other integrations whose campaigns share this campaign&apos;s name (name_collision only)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SharedWithIntegrations { get; set; }
+        public List<string>? SharedWithIntegrations { get => _explicitNullValueSharedWithIntegrations; set { _explicitNullValueSharedWithIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_with_integrations"); else _explicitNullProperties?.Remove("shared_with_integrations"); } }
+        private List<string>? _explicitNullValueSharedWithIntegrations = default!;
 #nullable restore
 #else
-        public List<string> SharedWithIntegrations { get; set; }
+        public List<string> SharedWithIntegrations { get => _explicitNullValueSharedWithIntegrations; set { _explicitNullValueSharedWithIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_with_integrations"); else _explicitNullProperties?.Remove("shared_with_integrations"); } }
+        private List<string> _explicitNullValueSharedWithIntegrations = default!;
 #endif
         /// <summary>Recommended remediations, most-recommended first. fix_platform_urls cures the tagging bug itself; the others are workarounds that leave the bad URLs in place.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum?>? SuggestedActions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum?>? SuggestedActions { get => _explicitNullValueSuggestedActions; set { _explicitNullValueSuggestedActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_actions"); else _explicitNullProperties?.Remove("suggested_actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum?>? _explicitNullValueSuggestedActions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum?> SuggestedActions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum?> SuggestedActions { get => _explicitNullValueSuggestedActions; set { _explicitNullValueSuggestedActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_actions"); else _explicitNullProperties?.Remove("suggested_actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum?> _explicitNullValueSuggestedActions = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UtmIssue"/> and sets the default values.
@@ -83,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.UtmIssue CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.UtmIssue();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.UtmIssue(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,6 +151,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UtmIssueSeverity>("severity", Severity);
             writer.WriteCollectionOfPrimitiveValues<string>("shared_with_integrations", SharedWithIntegrations);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedActionsEnum>("suggested_actions", SuggestedActions);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

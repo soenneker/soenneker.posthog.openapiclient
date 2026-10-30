@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ContentAutopilotProposalEditRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("content_package") is { } nullNodeContentPackage && nullNodeContentPackage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentPackage = null;
+            if (parseNode.GetChildNode("proposed_markdown") is { } nullNodeProposedMarkdown && nullNodeProposedMarkdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProposedMarkdown = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Updated structured package to save with the proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage? ContentPackage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage? ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage? _explicitNullValueContentPackage = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage ContentPackage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage _explicitNullValueContentPackage = default!;
 #endif
         /// <summary>Edited Markdown to save for review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProposedMarkdown { get; set; }
+        public string? ProposedMarkdown { get => _explicitNullValueProposedMarkdown; set { _explicitNullValueProposedMarkdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposed_markdown"); else _explicitNullProperties?.Remove("proposed_markdown"); } }
+        private string? _explicitNullValueProposedMarkdown = default!;
 #nullable restore
 #else
-        public string ProposedMarkdown { get; set; }
+        public string ProposedMarkdown { get => _explicitNullValueProposedMarkdown; set { _explicitNullValueProposedMarkdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposed_markdown"); else _explicitNullProperties?.Remove("proposed_markdown"); } }
+        private string _explicitNullValueProposedMarkdown = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequest"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage>("content_package", ContentPackage);
             writer.WriteStringValue("proposed_markdown", ProposedMarkdown);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

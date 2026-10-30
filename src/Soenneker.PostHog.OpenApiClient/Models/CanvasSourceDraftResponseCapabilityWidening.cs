@@ -12,71 +12,105 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasSourceDraftResponseCapabilityWidening : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions_added") is { } nullNodeActionsAdded && nullNodeActionsAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsAdded = null;
+            if (parseNode.GetChildNode("agent_requests_enabled") is { } nullNodeAgentRequestsEnabled && nullNodeAgentRequestsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentRequestsEnabled = null;
+            if (parseNode.GetChildNode("capture_events_added") is { } nullNodeCaptureEventsAdded && nullNodeCaptureEventsAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CaptureEventsAdded = null;
+            if (parseNode.GetChildNode("connectors_added") is { } nullNodeConnectorsAdded && nullNodeConnectorsAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectorsAdded = null;
+            if (parseNode.GetChildNode("inline_queries_enabled") is { } nullNodeInlineQueriesEnabled && nullNodeInlineQueriesEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InlineQueriesEnabled = null;
+            if (parseNode.GetChildNode("insights_added") is { } nullNodeInsightsAdded && nullNodeInsightsAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightsAdded = null;
+            if (parseNode.GetChildNode("network_origins_added") is { } nullNodeNetworkOriginsAdded && nullNodeNetworkOriginsAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NetworkOriginsAdded = null;
+            if (parseNode.GetChildNode("state_scopes_added") is { } nullNodeStateScopesAdded && nullNodeStateScopesAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StateScopesAdded = null;
+            if (parseNode.GetChildNode("tools_added") is { } nullNodeToolsAdded && nullNodeToolsAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolsAdded = null;
+            if (parseNode.GetChildNode("widens") is { } nullNodeWidens && nullNodeWidens.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Widens = null;
+        }
+
         /// <summary>Action verbs the draft newly declares it may invoke via ph.actions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ActionsAdded { get; set; }
+        public List<string>? ActionsAdded { get => _explicitNullValueActionsAdded; set { _explicitNullValueActionsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_added"); else _explicitNullProperties?.Remove("actions_added"); } }
+        private List<string>? _explicitNullValueActionsAdded = default!;
 #nullable restore
 #else
-        public List<string> ActionsAdded { get; set; }
+        public List<string> ActionsAdded { get => _explicitNullValueActionsAdded; set { _explicitNullValueActionsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions_added"); else _explicitNullProperties?.Remove("actions_added"); } }
+        private List<string> _explicitNullValueActionsAdded = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True when the draft enables requests to the canvas&apos;s authoring agent and the current head does not.</summary>
-        public bool? AgentRequestsEnabled { get; set; }
+        public bool? AgentRequestsEnabled { get => _explicitNullValueAgentRequestsEnabled; set { _explicitNullValueAgentRequestsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_requests_enabled"); else _explicitNullProperties?.Remove("agent_requests_enabled"); } }
+        private bool? _explicitNullValueAgentRequestsEnabled = default!;
         /// <summary>Event names the draft newly declares it may capture.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CaptureEventsAdded { get; set; }
+        public List<string>? CaptureEventsAdded { get => _explicitNullValueCaptureEventsAdded; set { _explicitNullValueCaptureEventsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capture_events_added"); else _explicitNullProperties?.Remove("capture_events_added"); } }
+        private List<string>? _explicitNullValueCaptureEventsAdded = default!;
 #nullable restore
 #else
-        public List<string> CaptureEventsAdded { get; set; }
+        public List<string> CaptureEventsAdded { get => _explicitNullValueCaptureEventsAdded; set { _explicitNullValueCaptureEventsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capture_events_added"); else _explicitNullProperties?.Remove("capture_events_added"); } }
+        private List<string> _explicitNullValueCaptureEventsAdded = default!;
 #endif
         /// <summary>Connector providers and tools the draft newly declares it may call via ph.connectors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>? ConnectorsAdded { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>? ConnectorsAdded { get => _explicitNullValueConnectorsAdded; set { _explicitNullValueConnectorsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connectors_added"); else _explicitNullProperties?.Remove("connectors_added"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>? _explicitNullValueConnectorsAdded = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration> ConnectorsAdded { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration> ConnectorsAdded { get => _explicitNullValueConnectorsAdded; set { _explicitNullValueConnectorsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connectors_added"); else _explicitNullProperties?.Remove("connectors_added"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration> _explicitNullValueConnectorsAdded = default!;
 #endif
         /// <summary>True when the draft enables inline queries and the current head does not.</summary>
-        public bool? InlineQueriesEnabled { get; set; }
+        public bool? InlineQueriesEnabled { get => _explicitNullValueInlineQueriesEnabled; set { _explicitNullValueInlineQueriesEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inline_queries_enabled"); else _explicitNullProperties?.Remove("inline_queries_enabled"); } }
+        private bool? _explicitNullValueInlineQueriesEnabled = default!;
         /// <summary>Insight short ids the draft newly declares access to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? InsightsAdded { get; set; }
+        public List<string>? InsightsAdded { get => _explicitNullValueInsightsAdded; set { _explicitNullValueInsightsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights_added"); else _explicitNullProperties?.Remove("insights_added"); } }
+        private List<string>? _explicitNullValueInsightsAdded = default!;
 #nullable restore
 #else
-        public List<string> InsightsAdded { get; set; }
+        public List<string> InsightsAdded { get => _explicitNullValueInsightsAdded; set { _explicitNullValueInsightsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insights_added"); else _explicitNullProperties?.Remove("insights_added"); } }
+        private List<string> _explicitNullValueInsightsAdded = default!;
 #endif
         /// <summary>Network origins the draft newly declares it may reach.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? NetworkOriginsAdded { get; set; }
+        public List<string>? NetworkOriginsAdded { get => _explicitNullValueNetworkOriginsAdded; set { _explicitNullValueNetworkOriginsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network_origins_added"); else _explicitNullProperties?.Remove("network_origins_added"); } }
+        private List<string>? _explicitNullValueNetworkOriginsAdded = default!;
 #nullable restore
 #else
-        public List<string> NetworkOriginsAdded { get; set; }
+        public List<string> NetworkOriginsAdded { get => _explicitNullValueNetworkOriginsAdded; set { _explicitNullValueNetworkOriginsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network_origins_added"); else _explicitNullProperties?.Remove("network_origins_added"); } }
+        private List<string> _explicitNullValueNetworkOriginsAdded = default!;
 #endif
         /// <summary>State scopes (user, shared) the draft newly declares for ph.state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? StateScopesAdded { get; set; }
+        public List<string>? StateScopesAdded { get => _explicitNullValueStateScopesAdded; set { _explicitNullValueStateScopesAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state_scopes_added"); else _explicitNullProperties?.Remove("state_scopes_added"); } }
+        private List<string>? _explicitNullValueStateScopesAdded = default!;
 #nullable restore
 #else
-        public List<string> StateScopesAdded { get; set; }
+        public List<string> StateScopesAdded { get => _explicitNullValueStateScopesAdded; set { _explicitNullValueStateScopesAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state_scopes_added"); else _explicitNullProperties?.Remove("state_scopes_added"); } }
+        private List<string> _explicitNullValueStateScopesAdded = default!;
 #endif
         /// <summary>PostHog MCP tools the draft newly declares it may run via ph.tools.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ToolsAdded { get; set; }
+        public List<string>? ToolsAdded { get => _explicitNullValueToolsAdded; set { _explicitNullValueToolsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools_added"); else _explicitNullProperties?.Remove("tools_added"); } }
+        private List<string>? _explicitNullValueToolsAdded = default!;
 #nullable restore
 #else
-        public List<string> ToolsAdded { get; set; }
+        public List<string> ToolsAdded { get => _explicitNullValueToolsAdded; set { _explicitNullValueToolsAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools_added"); else _explicitNullProperties?.Remove("tools_added"); } }
+        private List<string> _explicitNullValueToolsAdded = default!;
 #endif
         /// <summary>True when the draft declares any capability the current head does not.</summary>
-        public bool? Widens { get; set; }
+        public bool? Widens { get => _explicitNullValueWidens; set { _explicitNullValueWidens = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widens"); else _explicitNullProperties?.Remove("widens"); } }
+        private bool? _explicitNullValueWidens = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening"/> and sets the default values.
         /// </summary>
@@ -92,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceDraftResponseCapabilityWidening(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -131,6 +165,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("state_scopes_added", StateScopesAdded);
             writer.WriteCollectionOfPrimitiveValues<string>("tools_added", ToolsAdded);
             writer.WriteBoolValue("widens", Widens);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

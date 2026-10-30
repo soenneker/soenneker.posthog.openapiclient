@@ -11,44 +11,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PathsV2ElementSelector : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anyStep") is { } nullNodeAnyStep && nullNodeAnyStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnyStep = null;
+            if (parseNode.GetChildNode("chain") is { } nullNodeChain && nullNodeChain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Chain = null;
+            if (parseNode.GetChildNode("elementType") is { } nullNodeElementType && nullNodeElementType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ElementType = null;
+            if (parseNode.GetChildNode("item") is { } nullNodeItem && nullNodeItem.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Item = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("stepIndex") is { } nullNodeStepIndex && nullNodeStepIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepIndex = null;
+            if (parseNode.GetChildNode("target") is { } nullNodeTarget && nullNodeTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Target = null;
+        }
+
         /// <summary>Match the source → target transition at any step of any whole journey instead of at one step pair: the position-free set behind an edge&apos;s anyStepCount. Requires a named source and target and open mode. Edge elements only.</summary>
-        public bool? AnyStep { get; set; }
+        public bool? AnyStep { get => _explicitNullValueAnyStep; set { _explicitNullValueAnyStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anyStep"); else _explicitNullProperties?.Remove("anyStep"); } }
+        private bool? _explicitNullValueAnyStep = default!;
         /// <summary>The chain&apos;s path items in order from the anchor. Returns the actors whose anchored sequence begins with exactly these items, the set behind a hover preview&apos;s per-chain counts. Chain elements only, anchored mode only. Bounded by the step maximum: a longer chain can never match a displayed card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>? Chain { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>? Chain { get => _explicitNullValueChain; set { _explicitNullValueChain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chain"); else _explicitNullProperties?.Remove("chain"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>? _explicitNullValueChain = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item> Chain { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item> Chain { get => _explicitNullValueChain; set { _explicitNullValueChain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chain"); else _explicitNullProperties?.Remove("chain"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item> _explicitNullValueChain = default!;
 #endif
         /// <summary>The elementType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ElementType? ElementType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ElementType? ElementType { get => _explicitNullValueElementType; set { _explicitNullValueElementType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("elementType"); else _explicitNullProperties?.Remove("elementType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ElementType? _explicitNullValueElementType = default!;
         /// <summary>The node card&apos;s path item. Node elements only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? Item { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? Item { get => _explicitNullValueItem; set { _explicitNullValueItem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("item"); else _explicitNullProperties?.Remove("item"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? _explicitNullValueItem = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item Item { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item Item { get => _explicitNullValueItem; set { _explicitNullValueItem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("item"); else _explicitNullProperties?.Remove("item"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item _explicitNullValueItem = default!;
 #endif
         /// <summary>The edge&apos;s source path item; omit for the source column&apos;s &quot;other&quot; row. Edge elements only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item _explicitNullValueSource = default!;
 #endif
         /// <summary>0-based step index (column) of the element; for an edge, its source column. Required for node, other, dropOff, and positional edge elements.</summary>
-        public int? StepIndex { get; set; }
+        public int? StepIndex { get => _explicitNullValueStepIndex; set { _explicitNullValueStepIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepIndex"); else _explicitNullProperties?.Remove("stepIndex"); } }
+        private int? _explicitNullValueStepIndex = default!;
         /// <summary>The edge&apos;s target path item; omit for the target column&apos;s &quot;other&quot; row. Edge elements only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? Target { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? _explicitNullValueTarget = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item Target { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item _explicitNullValueTarget = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -58,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ElementSelector CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ElementSelector();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PathsV2ElementSelector(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,7 +115,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>("item", Item);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>("source", Source);
             writer.WriteIntValue("stepIndex", StepIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>("target", Target);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>("target", Target);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

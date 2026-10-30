@@ -8,26 +8,31 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember2"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf2"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TaskRunArtifactResponseMetadata : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember1? TaskRunArtifactResponseMetadataMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf1? TaskRunArtifactResponseMetadataOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember1 TaskRunArtifactResponseMetadataMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf1 TaskRunArtifactResponseMetadataOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember2? TaskRunArtifactResponseMetadataMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf2? TaskRunArtifactResponseMetadataOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember2 TaskRunArtifactResponseMetadataMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf2 TaskRunArtifactResponseMetadataOneOf2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -39,7 +44,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadata();
-            return result;
+            if("TaskRunArtifactResponseMetadataOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("TaskRunArtifactResponseMetadataOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("bundle_format") != null && (parseNode.GetChildNode("bundle_format")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("zip".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("content_sha256") != null && parseNode.GetChildNode("schema_version") != null && parseNode.GetChildNode("skill_name") != null && parseNode.GetChildNode("skill_source") != null && (parseNode.GetChildNode("skill_source")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag6 && ("user".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "repo".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "marketplace".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "codex".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal)))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("object_id") != null && parseNode.GetChildNode("object_kind") != null && (parseNode.GetChildNode("object_kind")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag2 && ("insight".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "hogql".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "dashboard".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "error".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "replay".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "flag".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "experiment".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "survey".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "ticket".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "report".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "trace".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "eval".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "event".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "cohort".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "action".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal) || "person".Equals(tag2.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("occurrence_count") != null && parseNode.GetChildNode("reference_type") != null && (parseNode.GetChildNode("reference_type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag5 && ("posthog_object".Equals(tag5.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("source_message_ids") != null))();
+            if (result.TaskRunArtifactResponseMetadataOneOf1 == null && result.TaskRunArtifactResponseMetadataOneOf2 == null && matchesUnionBranch0 && !matchesUnionBranch1) result.TaskRunArtifactResponseMetadataOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf1(), parseNode);
+            if (result.TaskRunArtifactResponseMetadataOneOf1 == null && result.TaskRunArtifactResponseMetadataOneOf2 == null && matchesUnionBranch1 && !matchesUnionBranch0) result.TaskRunArtifactResponseMetadataOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf2(), parseNode);
+            if (result.TaskRunArtifactResponseMetadataOneOf1 == null && result.TaskRunArtifactResponseMetadataOneOf2 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,13 +67,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(TaskRunArtifactResponseMetadataMember1 != null)
+            if(TaskRunArtifactResponseMetadataOneOf1 != null)
             {
-                return TaskRunArtifactResponseMetadataMember1.GetFieldDeserializers();
+                return TaskRunArtifactResponseMetadataOneOf1.GetFieldDeserializers();
             }
-            else if(TaskRunArtifactResponseMetadataMember2 != null)
+            else if(TaskRunArtifactResponseMetadataOneOf2 != null)
             {
-                return TaskRunArtifactResponseMetadataMember2.GetFieldDeserializers();
+                return TaskRunArtifactResponseMetadataOneOf2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -63,14 +83,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (TaskRunArtifactResponseMetadataOneOf1 == null && TaskRunArtifactResponseMetadataOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (TaskRunArtifactResponseMetadataOneOf1 != null && TaskRunArtifactResponseMetadataOneOf2 == null) { if (TaskRunArtifactResponseMetadataOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TaskRunArtifactResponseMetadataOneOf1); return; }
+            if (TaskRunArtifactResponseMetadataOneOf2 != null && TaskRunArtifactResponseMetadataOneOf1 == null) { if (TaskRunArtifactResponseMetadataOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TaskRunArtifactResponseMetadataOneOf2); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(TaskRunArtifactResponseMetadataMember1 != null)
+            if(TaskRunArtifactResponseMetadataOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember1>(null, TaskRunArtifactResponseMetadataMember1);
+                if (TaskRunArtifactResponseMetadataOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf1>(null, TaskRunArtifactResponseMetadataOneOf1);
             }
-            else if(TaskRunArtifactResponseMetadataMember2 != null)
+            else if(TaskRunArtifactResponseMetadataOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataMember2>(null, TaskRunArtifactResponseMetadataMember2);
+                if (TaskRunArtifactResponseMetadataOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactResponseMetadataOneOf2>(null, TaskRunArtifactResponseMetadataOneOf2);
             }
         }
     }

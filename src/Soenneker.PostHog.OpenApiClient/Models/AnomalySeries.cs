@@ -11,78 +11,125 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AnomalySeries : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anomaly_rate") is { } nullNodeAnomalyRate && nullNodeAnomalyRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyRate = null;
+            if (parseNode.GetChildNode("baseline_rate") is { } nullNodeBaselineRate && nullNodeBaselineRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineRate = null;
+            if (parseNode.GetChildNode("breakdown_value") is { } nullNodeBreakdownValue && nullNodeBreakdownValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownValue = null;
+            if (parseNode.GetChildNode("coverage") is { } nullNodeCoverage && nullNodeCoverage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Coverage = null;
+            if (parseNode.GetChildNode("expected_buckets") is { } nullNodeExpectedBuckets && nullNodeExpectedBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedBuckets = null;
+            if (parseNode.GetChildNode("first_flagged_bucket") is { } nullNodeFirstFlaggedBucket && nullNodeFirstFlaggedBucket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstFlaggedBucket = null;
+            if (parseNode.GetChildNode("flagged_buckets") is { } nullNodeFlaggedBuckets && nullNodeFlaggedBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlaggedBuckets = null;
+            if (parseNode.GetChildNode("flagged_points") is { } nullNodeFlaggedPoints && nullNodeFlaggedPoints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlaggedPoints = null;
+            if (parseNode.GetChildNode("insight_id") is { } nullNodeInsightId && nullNodeInsightId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightId = null;
+            if (parseNode.GetChildNode("insight_name") is { } nullNodeInsightName && nullNodeInsightName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightName = null;
+            if (parseNode.GetChildNode("insight_url") is { } nullNodeInsightUrl && nullNodeInsightUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightUrl = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("last_flagged_bucket") is { } nullNodeLastFlaggedBucket && nullNodeLastFlaggedBucket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastFlaggedBucket = null;
+            if (parseNode.GetChildNode("scored_buckets") is { } nullNodeScoredBuckets && nullNodeScoredBuckets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoredBuckets = null;
+            if (parseNode.GetChildNode("scored_through") is { } nullNodeScoredThrough && nullNodeScoredThrough.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoredThrough = null;
+            if (parseNode.GetChildNode("series_key") is { } nullNodeSeriesKey && nullNodeSeriesKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesKey = null;
+            if (parseNode.GetChildNode("series_label") is { } nullNodeSeriesLabel && nullNodeSeriesLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesLabel = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>`flagged_buckets / scored_buckets`.</summary>
-        public double? AnomalyRate { get; set; }
+        public double? AnomalyRate { get => _explicitNullValueAnomalyRate; set { _explicitNullValueAnomalyRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomaly_rate"); else _explicitNullProperties?.Remove("anomaly_rate"); } }
+        private double? _explicitNullValueAnomalyRate = default!;
         /// <summary>The anomaly rate over the 30 days before the range. Null when no bucket was scored then.</summary>
-        public double? BaselineRate { get; set; }
+        public double? BaselineRate { get => _explicitNullValueBaselineRate; set { _explicitNullValueBaselineRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_rate"); else _explicitNullProperties?.Remove("baseline_rate"); } }
+        private double? _explicitNullValueBaselineRate = default!;
         /// <summary>The breakdown value of the series, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownValue { get; set; }
+        public string? BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_value"); else _explicitNullProperties?.Remove("breakdown_value"); } }
+        private string? _explicitNullValueBreakdownValue = default!;
 #nullable restore
 #else
-        public string BreakdownValue { get; set; }
+        public string BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_value"); else _explicitNullProperties?.Remove("breakdown_value"); } }
+        private string _explicitNullValueBreakdownValue = default!;
 #endif
         /// <summary>`scored_buckets / expected_buckets`: how much of the range was scored. Unscored buckets are unknown, not quiet.</summary>
-        public double? Coverage { get; set; }
+        public double? Coverage { get => _explicitNullValueCoverage; set { _explicitNullValueCoverage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coverage"); else _explicitNullProperties?.Remove("coverage"); } }
+        private double? _explicitNullValueCoverage = default!;
         /// <summary>Completed buckets of the series interval in the range, scored or not.</summary>
-        public int? ExpectedBuckets { get; set; }
+        public int? ExpectedBuckets { get => _explicitNullValueExpectedBuckets; set { _explicitNullValueExpectedBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_buckets"); else _explicitNullProperties?.Remove("expected_buckets"); } }
+        private int? _explicitNullValueExpectedBuckets = default!;
         /// <summary>The oldest flagged bucket in the range, in the project timezone.</summary>
-        public DateTimeOffset? FirstFlaggedBucket { get; set; }
+        public DateTimeOffset? FirstFlaggedBucket { get => _explicitNullValueFirstFlaggedBucket; set { _explicitNullValueFirstFlaggedBucket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_flagged_bucket"); else _explicitNullProperties?.Remove("first_flagged_bucket"); } }
+        private DateTimeOffset? _explicitNullValueFirstFlaggedBucket = default!;
         /// <summary>Scored buckets in the range that the detector flagged.</summary>
-        public int? FlaggedBuckets { get; set; }
+        public int? FlaggedBuckets { get => _explicitNullValueFlaggedBuckets; set { _explicitNullValueFlaggedBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flagged_buckets"); else _explicitNullProperties?.Remove("flagged_buckets"); } }
+        private int? _explicitNullValueFlaggedBuckets = default!;
         /// <summary>Up to 5 flagged buckets in the range, newest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyFlaggedPoint>? FlaggedPoints { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyFlaggedPoint>? FlaggedPoints { get => _explicitNullValueFlaggedPoints; set { _explicitNullValueFlaggedPoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flagged_points"); else _explicitNullProperties?.Remove("flagged_points"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyFlaggedPoint>? _explicitNullValueFlaggedPoints = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyFlaggedPoint> FlaggedPoints { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyFlaggedPoint> FlaggedPoints { get => _explicitNullValueFlaggedPoints; set { _explicitNullValueFlaggedPoints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flagged_points"); else _explicitNullProperties?.Remove("flagged_points"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AnomalyFlaggedPoint> _explicitNullValueFlaggedPoints = default!;
 #endif
         /// <summary>The numeric id of the insight.</summary>
-        public int? InsightId { get; set; }
+        public int? InsightId { get => _explicitNullValueInsightId; set { _explicitNullValueInsightId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_id"); else _explicitNullProperties?.Remove("insight_id"); } }
+        private int? _explicitNullValueInsightId = default!;
         /// <summary>The name of the insight. Null when it has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InsightName { get; set; }
+        public string? InsightName { get => _explicitNullValueInsightName; set { _explicitNullValueInsightName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_name"); else _explicitNullProperties?.Remove("insight_name"); } }
+        private string? _explicitNullValueInsightName = default!;
 #nullable restore
 #else
-        public string InsightName { get; set; }
+        public string InsightName { get => _explicitNullValueInsightName; set { _explicitNullValueInsightName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_name"); else _explicitNullProperties?.Remove("insight_name"); } }
+        private string _explicitNullValueInsightName = default!;
 #endif
         /// <summary>Opens the insight with a date range around the flagged buckets of this series.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InsightUrl { get; set; }
+        public string? InsightUrl { get => _explicitNullValueInsightUrl; set { _explicitNullValueInsightUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_url"); else _explicitNullProperties?.Remove("insight_url"); } }
+        private string? _explicitNullValueInsightUrl = default!;
 #nullable restore
 #else
-        public string InsightUrl { get; set; }
+        public string InsightUrl { get => _explicitNullValueInsightUrl; set { _explicitNullValueInsightUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_url"); else _explicitNullProperties?.Remove("insight_url"); } }
+        private string _explicitNullValueInsightUrl = default!;
 #endif
         /// <summary>* `hour` - Hour* `day` - Day* `week` - Week* `month` - Month</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeriesInterval? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeriesInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeriesInterval? _explicitNullValueInterval = default!;
         /// <summary>The newest flagged bucket in the range, in the project timezone.</summary>
-        public DateTimeOffset? LastFlaggedBucket { get; set; }
+        public DateTimeOffset? LastFlaggedBucket { get => _explicitNullValueLastFlaggedBucket; set { _explicitNullValueLastFlaggedBucket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_flagged_bucket"); else _explicitNullProperties?.Remove("last_flagged_bucket"); } }
+        private DateTimeOffset? _explicitNullValueLastFlaggedBucket = default!;
         /// <summary>Buckets in the range with a score. Warm-up buckets do not count.</summary>
-        public int? ScoredBuckets { get; set; }
+        public int? ScoredBuckets { get => _explicitNullValueScoredBuckets; set { _explicitNullValueScoredBuckets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scored_buckets"); else _explicitNullProperties?.Remove("scored_buckets"); } }
+        private int? _explicitNullValueScoredBuckets = default!;
         /// <summary>The newest scored bucket in the range. Buckets after it were not checked yet.</summary>
-        public DateTimeOffset? ScoredThrough { get; set; }
+        public DateTimeOffset? ScoredThrough { get => _explicitNullValueScoredThrough; set { _explicitNullValueScoredThrough = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scored_through"); else _explicitNullProperties?.Remove("scored_through"); } }
+        private DateTimeOffset? _explicitNullValueScoredThrough = default!;
         /// <summary>Identifies the series. Pass it to anomaly insight history.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesKey { get; set; }
+        public string? SeriesKey { get => _explicitNullValueSeriesKey; set { _explicitNullValueSeriesKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_key"); else _explicitNullProperties?.Remove("series_key"); } }
+        private string? _explicitNullValueSeriesKey = default!;
 #nullable restore
 #else
-        public string SeriesKey { get; set; }
+        public string SeriesKey { get => _explicitNullValueSeriesKey; set { _explicitNullValueSeriesKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_key"); else _explicitNullProperties?.Remove("series_key"); } }
+        private string _explicitNullValueSeriesKey = default!;
 #endif
         /// <summary>The series name as the insight shows it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesLabel { get; set; }
+        public string? SeriesLabel { get => _explicitNullValueSeriesLabel; set { _explicitNullValueSeriesLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_label"); else _explicitNullProperties?.Remove("series_label"); } }
+        private string? _explicitNullValueSeriesLabel = default!;
 #nullable restore
 #else
-        public string SeriesLabel { get; set; }
+        public string SeriesLabel { get => _explicitNullValueSeriesLabel; set { _explicitNullValueSeriesLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_label"); else _explicitNullProperties?.Remove("series_label"); } }
+        private string _explicitNullValueSeriesLabel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries"/> and sets the default values.
@@ -99,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AnomalySeries(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -152,6 +199,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("scored_through", ScoredThrough);
             writer.WriteStringValue("series_key", SeriesKey);
             writer.WriteStringValue("series_label", SeriesLabel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

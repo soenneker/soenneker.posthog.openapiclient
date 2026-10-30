@@ -11,40 +11,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ViewLinkValidation : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("joining_table_key") is { } nullNodeJoiningTableKey && nullNodeJoiningTableKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JoiningTableKey = null;
+            if (parseNode.GetChildNode("joining_table_name") is { } nullNodeJoiningTableName && nullNodeJoiningTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JoiningTableName = null;
+            if (parseNode.GetChildNode("source_table_key") is { } nullNodeSourceTableKey && nullNodeSourceTableKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTableKey = null;
+            if (parseNode.GetChildNode("source_table_name") is { } nullNodeSourceTableName && nullNodeSourceTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTableName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Column or HogQL expression on the joining table used as the join key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JoiningTableKey { get; set; }
+        public string? JoiningTableKey { get => _explicitNullValueJoiningTableKey; set { _explicitNullValueJoiningTableKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_key"); else _explicitNullProperties?.Remove("joining_table_key"); } }
+        private string? _explicitNullValueJoiningTableKey = default!;
 #nullable restore
 #else
-        public string JoiningTableKey { get; set; }
+        public string JoiningTableKey { get => _explicitNullValueJoiningTableKey; set { _explicitNullValueJoiningTableKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_key"); else _explicitNullProperties?.Remove("joining_table_key"); } }
+        private string _explicitNullValueJoiningTableKey = default!;
 #endif
         /// <summary>Name of the table or view being joined onto the source table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JoiningTableName { get; set; }
+        public string? JoiningTableName { get => _explicitNullValueJoiningTableName; set { _explicitNullValueJoiningTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_name"); else _explicitNullProperties?.Remove("joining_table_name"); } }
+        private string? _explicitNullValueJoiningTableName = default!;
 #nullable restore
 #else
-        public string JoiningTableName { get; set; }
+        public string JoiningTableName { get => _explicitNullValueJoiningTableName; set { _explicitNullValueJoiningTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_name"); else _explicitNullProperties?.Remove("joining_table_name"); } }
+        private string _explicitNullValueJoiningTableName = default!;
 #endif
         /// <summary>Column or HogQL expression on the source table used as the join key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceTableKey { get; set; }
+        public string? SourceTableKey { get => _explicitNullValueSourceTableKey; set { _explicitNullValueSourceTableKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_key"); else _explicitNullProperties?.Remove("source_table_key"); } }
+        private string? _explicitNullValueSourceTableKey = default!;
 #nullable restore
 #else
-        public string SourceTableKey { get; set; }
+        public string SourceTableKey { get => _explicitNullValueSourceTableKey; set { _explicitNullValueSourceTableKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_key"); else _explicitNullProperties?.Remove("source_table_key"); } }
+        private string _explicitNullValueSourceTableKey = default!;
 #endif
         /// <summary>Name of the table the join starts from, for example events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceTableName { get; set; }
+        public string? SourceTableName { get => _explicitNullValueSourceTableName; set { _explicitNullValueSourceTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_name"); else _explicitNullProperties?.Remove("source_table_name"); } }
+        private string? _explicitNullValueSourceTableName = default!;
 #nullable restore
 #else
-        public string SourceTableName { get; set; }
+        public string SourceTableName { get => _explicitNullValueSourceTableName; set { _explicitNullValueSourceTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_name"); else _explicitNullProperties?.Remove("source_table_name"); } }
+        private string _explicitNullValueSourceTableName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidation"/> and sets the default values.
@@ -61,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("joining_table_name", JoiningTableName);
             writer.WriteStringValue("source_table_key", SourceTableKey);
             writer.WriteStringValue("source_table_name", SourceTableName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

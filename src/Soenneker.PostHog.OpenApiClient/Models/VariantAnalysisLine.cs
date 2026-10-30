@@ -11,36 +11,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class VariantAnalysisLine : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("example_observation_ids") is { } nullNodeExampleObservationIds && nullNodeExampleObservationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExampleObservationIds = null;
+            if (parseNode.GetChildNode("read") is { } nullNodeRead && nullNodeRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Read = null;
+            if (parseNode.GetChildNode("statement") is { } nullNodeStatement && nullNodeStatement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Statement = null;
+            if (parseNode.GetChildNode("theme") is { } nullNodeTheme && nullNodeTheme.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Theme = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many of this variant&apos;s summaries the analysis read show the theme, as the scout counted them.</summary>
-        public int? Count { get; set; }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        private int? _explicitNullValueCount = default!;
         /// <summary>Observations of this variant the scout cited for the theme. Ids it can&apos;t back are dropped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ExampleObservationIds { get; set; }
+        public List<Guid?>? ExampleObservationIds { get => _explicitNullValueExampleObservationIds; set { _explicitNullValueExampleObservationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("example_observation_ids"); else _explicitNullProperties?.Remove("example_observation_ids"); } }
+        private List<Guid?>? _explicitNullValueExampleObservationIds = default!;
 #nullable restore
 #else
-        public List<Guid?> ExampleObservationIds { get; set; }
+        public List<Guid?> ExampleObservationIds { get => _explicitNullValueExampleObservationIds; set { _explicitNullValueExampleObservationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("example_observation_ids"); else _explicitNullProperties?.Remove("example_observation_ids"); } }
+        private List<Guid?> _explicitNullValueExampleObservationIds = default!;
 #endif
         /// <summary>How many of this variant&apos;s summaries the theme was counted over, when that is fewer than the analysis read in total. Null when the theme was counted over every summary the analysis read.</summary>
-        public int? Read { get; set; }
+        public int? Read { get => _explicitNullValueRead; set { _explicitNullValueRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read"); else _explicitNullProperties?.Remove("read"); } }
+        private int? _explicitNullValueRead = default!;
         /// <summary>How the theme shows up for this variant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Statement { get; set; }
+        public string? Statement { get => _explicitNullValueStatement; set { _explicitNullValueStatement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statement"); else _explicitNullProperties?.Remove("statement"); } }
+        private string? _explicitNullValueStatement = default!;
 #nullable restore
 #else
-        public string Statement { get; set; }
+        public string Statement { get => _explicitNullValueStatement; set { _explicitNullValueStatement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statement"); else _explicitNullProperties?.Remove("statement"); } }
+        private string _explicitNullValueStatement = default!;
 #endif
         /// <summary>A short label for the theme, shared across variants.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Theme { get; set; }
+        public string? Theme { get => _explicitNullValueTheme; set { _explicitNullValueTheme = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("theme"); else _explicitNullProperties?.Remove("theme"); } }
+        private string? _explicitNullValueTheme = default!;
 #nullable restore
 #else
-        public string Theme { get; set; }
+        public string Theme { get => _explicitNullValueTheme; set { _explicitNullValueTheme = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("theme"); else _explicitNullProperties?.Remove("theme"); } }
+        private string _explicitNullValueTheme = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine"/> and sets the default values.
@@ -57,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisLine(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -86,6 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("read", Read);
             writer.WriteStringValue("statement", Statement);
             writer.WriteStringValue("theme", Theme);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

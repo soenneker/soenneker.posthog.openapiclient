@@ -12,69 +12,106 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutCheckSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("check_id") is { } nullNodeCheckId && nullNodeCheckId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckId = null;
+            if (parseNode.GetChildNode("dispatched_at") is { } nullNodeDispatchedAt && nullNodeDispatchedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DispatchedAt = null;
+            if (parseNode.GetChildNode("dispatched_run_id") is { } nullNodeDispatchedRunId && nullNodeDispatchedRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DispatchedRunId = null;
+            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("last_outcome") is { } nullNodeLastOutcome && nullNodeLastOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastOutcome = null;
+            if (parseNode.GetChildNode("last_outcome_reason") is { } nullNodeLastOutcomeReason && nullNodeLastOutcomeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastOutcomeReason = null;
+            if (parseNode.GetChildNode("next_run_at") is { } nullNodeNextRunAt && nullNodeNextRunAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextRunAt = null;
+            if (parseNode.GetChildNode("report_id") is { } nullNodeReportId && nullNodeReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportId = null;
+            if (parseNode.GetChildNode("run_state") is { } nullNodeRunState && nullNodeRunState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunState = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("waiting_on_run") is { } nullNodeWaitingOnRun && nullNodeWaitingOnRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WaitingOnRun = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The check.</summary>
-        public Guid? CheckId { get; set; }
+        public Guid? CheckId { get => _explicitNullValueCheckId; set { _explicitNullValueCheckId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_id"); else _explicitNullProperties?.Remove("check_id"); } }
+        private Guid? _explicitNullValueCheckId = default!;
         /// <summary>When the coordinator last dispatched a run for the check. Null when no run waits.</summary>
-        public DateTimeOffset? DispatchedAt { get; set; }
+        public DateTimeOffset? DispatchedAt { get => _explicitNullValueDispatchedAt; set { _explicitNullValueDispatchedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dispatched_at"); else _explicitNullProperties?.Remove("dispatched_at"); } }
+        private DateTimeOffset? _explicitNullValueDispatchedAt = default!;
         /// <summary>The scout run the coordinator dispatched for the check, once it started. Null while queued.</summary>
-        public Guid? DispatchedRunId { get; set; }
+        public Guid? DispatchedRunId { get => _explicitNullValueDispatchedRunId; set { _explicitNullValueDispatchedRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dispatched_run_id"); else _explicitNullProperties?.Remove("dispatched_run_id"); } }
+        private Guid? _explicitNullValueDispatchedRunId = default!;
         /// <summary>`metric_threshold` (the coordinator measures it) or `agent` (a run does).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public string Kind { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
         /// <summary>Verdict of the most recent run; null before the first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastOutcome { get; set; }
+        public string? LastOutcome { get => _explicitNullValueLastOutcome; set { _explicitNullValueLastOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_outcome"); else _explicitNullProperties?.Remove("last_outcome"); } }
+        private string? _explicitNullValueLastOutcome = default!;
 #nullable restore
 #else
-        public string LastOutcome { get; set; }
+        public string LastOutcome { get => _explicitNullValueLastOutcome; set { _explicitNullValueLastOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_outcome"); else _explicitNullProperties?.Remove("last_outcome"); } }
+        private string _explicitNullValueLastOutcome = default!;
 #endif
         /// <summary>Why the most recent run was `inconclusive`: `awaiting_data`, `unmeasurable`, `needs_manual_verification`, or `no_fix_to_measure`. Null on any other outcome.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastOutcomeReason { get; set; }
+        public string? LastOutcomeReason { get => _explicitNullValueLastOutcomeReason; set { _explicitNullValueLastOutcomeReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_outcome_reason"); else _explicitNullProperties?.Remove("last_outcome_reason"); } }
+        private string? _explicitNullValueLastOutcomeReason = default!;
 #nullable restore
 #else
-        public string LastOutcomeReason { get; set; }
+        public string LastOutcomeReason { get => _explicitNullValueLastOutcomeReason; set { _explicitNullValueLastOutcomeReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_outcome_reason"); else _explicitNullProperties?.Remove("last_outcome_reason"); } }
+        private string _explicitNullValueLastOutcomeReason = default!;
 #endif
         /// <summary>When the check next runs. Provisional while it is `pending`.</summary>
-        public DateTimeOffset? NextRunAt { get; set; }
+        public DateTimeOffset? NextRunAt { get => _explicitNullValueNextRunAt; set { _explicitNullValueNextRunAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_run_at"); else _explicitNullProperties?.Remove("next_run_at"); } }
+        private DateTimeOffset? _explicitNullValueNextRunAt = default!;
         /// <summary>The report it is attached to.</summary>
-        public Guid? ReportId { get; set; }
+        public Guid? ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private Guid? _explicitNullValueReportId = default!;
         /// <summary>Where the check is in its run cycle. `waiting_on_report`: pending, no fix to measure yet. `paused`: active, but its report is suppressed or its horizon passed, so nothing runs it. `scheduled`: active, not due yet. `due`: due now, so a run on the check&apos;s scout may record the verdict. `queued`: a run was dispatched and has not started. `running`: the dispatched run started and has time left. `stale`: the dispatched run recorded nothing in its window, so the coordinator dispatches again. Any other value is the terminal status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunState { get; set; }
+        public string? RunState { get => _explicitNullValueRunState; set { _explicitNullValueRunState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_state"); else _explicitNullProperties?.Remove("run_state"); } }
+        private string? _explicitNullValueRunState = default!;
 #nullable restore
 #else
-        public string RunState { get; set; }
+        public string RunState { get => _explicitNullValueRunState; set { _explicitNullValueRunState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_state"); else _explicitNullProperties?.Remove("run_state"); } }
+        private string _explicitNullValueRunState = default!;
 #endif
         /// <summary>`pending` while the check waits for the report to resolve, `active` while it still runs; every other value is terminal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get; set; }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get; set; }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>The expectation the check states.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>True while an `agent` check waits on a dispatched run to record its verdict.</summary>
-        public bool? WaitingOnRun { get; set; }
+        public bool? WaitingOnRun { get => _explicitNullValueWaitingOnRun; set { _explicitNullValueWaitingOnRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("waiting_on_run"); else _explicitNullProperties?.Remove("waiting_on_run"); } }
+        private bool? _explicitNullValueWaitingOnRun = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutCheckSummary"/> and sets the default values.
         /// </summary>
@@ -90,7 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoutCheckSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoutCheckSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoutCheckSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -133,6 +170,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("title", Title);
             writer.WriteBoolValue("waiting_on_run", WaitingOnRun);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

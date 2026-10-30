@@ -12,27 +12,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SchemaDestinations : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("destination_ids") is { } nullNodeDestinationIds && nullNodeDestinationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationIds = null;
+            if (parseNode.GetChildNode("effective_destination_ids") is { } nullNodeEffectiveDestinationIds && nullNodeEffectiveDestinationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectiveDestinationIds = null;
+            if (parseNode.GetChildNode("inherits_from_source") is { } nullNodeInheritsFromSource && nullNodeInheritsFromSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InheritsFromSource = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The table&apos;s own destinations, or null when it follows its source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? DestinationIds { get; set; }
+        public List<Guid?>? DestinationIds { get => _explicitNullValueDestinationIds; set { _explicitNullValueDestinationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_ids"); else _explicitNullProperties?.Remove("destination_ids"); } }
+        private List<Guid?>? _explicitNullValueDestinationIds = default!;
 #nullable restore
 #else
-        public List<Guid?> DestinationIds { get; set; }
+        public List<Guid?> DestinationIds { get => _explicitNullValueDestinationIds; set { _explicitNullValueDestinationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_ids"); else _explicitNullProperties?.Remove("destination_ids"); } }
+        private List<Guid?> _explicitNullValueDestinationIds = default!;
 #endif
         /// <summary>Where the table actually syncs, after inheritance is resolved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? EffectiveDestinationIds { get; set; }
+        public List<Guid?>? EffectiveDestinationIds { get => _explicitNullValueEffectiveDestinationIds; set { _explicitNullValueEffectiveDestinationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_destination_ids"); else _explicitNullProperties?.Remove("effective_destination_ids"); } }
+        private List<Guid?>? _explicitNullValueEffectiveDestinationIds = default!;
 #nullable restore
 #else
-        public List<Guid?> EffectiveDestinationIds { get; set; }
+        public List<Guid?> EffectiveDestinationIds { get => _explicitNullValueEffectiveDestinationIds; set { _explicitNullValueEffectiveDestinationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_destination_ids"); else _explicitNullProperties?.Remove("effective_destination_ids"); } }
+        private List<Guid?> _explicitNullValueEffectiveDestinationIds = default!;
 #endif
         /// <summary>Whether this table follows its source rather than having its own destinations.</summary>
-        public bool? InheritsFromSource { get; set; }
+        public bool? InheritsFromSource { get => _explicitNullValueInheritsFromSource; set { _explicitNullValueInheritsFromSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherits_from_source"); else _explicitNullProperties?.Remove("inherits_from_source"); } }
+        private bool? _explicitNullValueInheritsFromSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SchemaDestinations"/> and sets the default values.
         /// </summary>
@@ -48,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SchemaDestinations CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SchemaDestinations();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SchemaDestinations(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<Guid?>("destination_ids", DestinationIds);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("effective_destination_ids", EffectiveDestinationIds);
             writer.WriteBoolValue("inherits_from_source", InheritsFromSource);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

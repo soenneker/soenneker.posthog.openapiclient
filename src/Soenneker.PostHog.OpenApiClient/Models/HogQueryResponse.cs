@@ -11,38 +11,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class HogQueryResponse : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bytecode") is { } nullNodeBytecode && nullNodeBytecode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Bytecode = null;
+            if (parseNode.GetChildNode("coloredBytecode") is { } nullNodeColoredBytecode && nullNodeColoredBytecode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColoredBytecode = null;
+            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("stdout") is { } nullNodeStdout && nullNodeStdout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stdout = null;
+        }
+
         /// <summary>The bytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Bytecode { get; set; }
+        public UntypedNode? Bytecode { get => _explicitNullValueBytecode; set { _explicitNullValueBytecode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytecode"); else _explicitNullProperties?.Remove("bytecode"); } }
+        private UntypedNode? _explicitNullValueBytecode = default!;
 #nullable restore
 #else
-        public UntypedNode Bytecode { get; set; }
+        public UntypedNode Bytecode { get => _explicitNullValueBytecode; set { _explicitNullValueBytecode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytecode"); else _explicitNullProperties?.Remove("bytecode"); } }
+        private UntypedNode _explicitNullValueBytecode = default!;
 #endif
         /// <summary>The coloredBytecode property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ColoredBytecode { get; set; }
+        public UntypedNode? ColoredBytecode { get => _explicitNullValueColoredBytecode; set { _explicitNullValueColoredBytecode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coloredBytecode"); else _explicitNullProperties?.Remove("coloredBytecode"); } }
+        private UntypedNode? _explicitNullValueColoredBytecode = default!;
 #nullable restore
 #else
-        public UntypedNode ColoredBytecode { get; set; }
+        public UntypedNode ColoredBytecode { get => _explicitNullValueColoredBytecode; set { _explicitNullValueColoredBytecode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coloredBytecode"); else _explicitNullProperties?.Remove("coloredBytecode"); } }
+        private UntypedNode _explicitNullValueColoredBytecode = default!;
 #endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Results { get; set; }
+        public UntypedNode? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private UntypedNode? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public UntypedNode Results { get; set; }
+        public UntypedNode Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        private UntypedNode _explicitNullValueResults = default!;
 #endif
         /// <summary>The stdout property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Stdout { get; set; }
+        public string? Stdout { get => _explicitNullValueStdout; set { _explicitNullValueStdout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stdout"); else _explicitNullProperties?.Remove("stdout"); } }
+        private string? _explicitNullValueStdout = default!;
 #nullable restore
 #else
-        public string Stdout { get; set; }
+        public string Stdout { get => _explicitNullValueStdout; set { _explicitNullValueStdout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stdout"); else _explicitNullProperties?.Remove("stdout"); } }
+        private string _explicitNullValueStdout = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -52,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.HogQueryResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,7 +97,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("bytecode", Bytecode);
             writer.WriteObjectValue<UntypedNode>("coloredBytecode", ColoredBytecode);
             writer.WriteObjectValue<UntypedNode>("results", Results);
-            writer.WriteStringValue("stdout", Stdout);
+            writer.WriteStringValue("stdout", Stdout);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

@@ -12,64 +12,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResolvedToolPolicy : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("decided_by") is { } nullNodeDecidedBy && nullNodeDecidedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecidedBy = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("input_schema") is { } nullNodeInputSchema && nullNodeInputSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputSchema = null;
+            if (parseNode.GetChildNode("is_destructive") is { } nullNodeIsDestructive && nullNodeIsDestructive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDestructive = null;
+            if (parseNode.GetChildNode("locked") is { } nullNodeLocked && nullNodeLocked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Locked = null;
+            if (parseNode.GetChildNode("policy_state") is { } nullNodePolicyState && nullNodePolicyState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PolicyState = null;
+            if (parseNode.GetChildNode("rule_description") is { } nullNodeRuleDescription && nullNodeRuleDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuleDescription = null;
+            if (parseNode.GetChildNode("rule_name") is { } nullNodeRuleName && nullNodeRuleName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuleName = null;
+            if (parseNode.GetChildNode("team_state") is { } nullNodeTeamState && nullNodeTeamState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamState = null;
+            if (parseNode.GetChildNode("tool_name") is { } nullNodeToolName && nullNodeToolName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolName = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `rule` - rule* `scope` - scope* `team` - team* `preset` - preset* `legacy` - legacy* `default` - default</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy? DecidedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy? DecidedBy { get => _explicitNullValueDecidedBy; set { _explicitNullValueDecidedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decided_by"); else _explicitNullProperties?.Remove("decided_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyDecidedBy? _explicitNullValueDecidedBy = default!;
         /// <summary>Tool description from the upstream server.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>JSON Schema describing the tool&apos;s input arguments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty? InputSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty? InputSchema { get => _explicitNullValueInputSchema; set { _explicitNullValueInputSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_schema"); else _explicitNullProperties?.Remove("input_schema"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty? _explicitNullValueInputSchema = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty InputSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty InputSchema { get => _explicitNullValueInputSchema; set { _explicitNullValueInputSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_schema"); else _explicitNullProperties?.Remove("input_schema"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyInputSchemaProperty _explicitNullValueInputSchema = default!;
 #endif
         /// <summary>Whether the canonical gateway heuristic treats this tool as destructive.</summary>
-        public bool? IsDestructive { get; set; }
+        public bool? IsDestructive { get => _explicitNullValueIsDestructive; set { _explicitNullValueIsDestructive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_destructive"); else _explicitNullProperties?.Remove("is_destructive"); } }
+        private bool? _explicitNullValueIsDestructive = default!;
         /// <summary>True when no state is editable for this scope (a rule match or a Blocked team ceiling).</summary>
-        public bool? Locked { get; set; }
+        public bool? Locked { get => _explicitNullValueLocked; set { _explicitNullValueLocked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locked"); else _explicitNullProperties?.Remove("locked"); } }
+        private bool? _explicitNullValueLocked = default!;
         /// <summary>* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState? PolicyState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState? PolicyState { get => _explicitNullValuePolicyState; set { _explicitNullValuePolicyState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("policy_state"); else _explicitNullProperties?.Remove("policy_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyPolicyState? _explicitNullValuePolicyState = default!;
         /// <summary>Matching org rule description, when decided_by is rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RuleDescription { get; set; }
+        public string? RuleDescription { get => _explicitNullValueRuleDescription; set { _explicitNullValueRuleDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule_description"); else _explicitNullProperties?.Remove("rule_description"); } }
+        private string? _explicitNullValueRuleDescription = default!;
 #nullable restore
 #else
-        public string RuleDescription { get; set; }
+        public string RuleDescription { get => _explicitNullValueRuleDescription; set { _explicitNullValueRuleDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule_description"); else _explicitNullProperties?.Remove("rule_description"); } }
+        private string _explicitNullValueRuleDescription = default!;
 #endif
         /// <summary>Matching org rule name, when decided_by is rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RuleName { get; set; }
+        public string? RuleName { get => _explicitNullValueRuleName; set { _explicitNullValueRuleName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule_name"); else _explicitNullProperties?.Remove("rule_name"); } }
+        private string? _explicitNullValueRuleName = default!;
 #nullable restore
 #else
-        public string RuleName { get; set; }
+        public string RuleName { get => _explicitNullValueRuleName; set { _explicitNullValueRuleName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule_name"); else _explicitNullProperties?.Remove("rule_name"); } }
+        private string _explicitNullValueRuleName = default!;
 #endif
         /// <summary>What the team-level chain (row or preset) yields, ignoring the scope. Null when the team imposes nothing.* `approved` - Approved* `needs_approval` - Needs approval* `do_not_use` - Do not use</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState? TeamState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState? TeamState { get => _explicitNullValueTeamState; set { _explicitNullValueTeamState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_state"); else _explicitNullProperties?.Remove("team_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState? _explicitNullValueTeamState = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState TeamState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState TeamState { get => _explicitNullValueTeamState; set { _explicitNullValueTeamState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_state"); else _explicitNullProperties?.Remove("team_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState _explicitNullValueTeamState = default!;
 #endif
         /// <summary>Tool name as exposed by the upstream server.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ToolName { get; set; }
+        public string? ToolName { get => _explicitNullValueToolName; set { _explicitNullValueToolName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_name"); else _explicitNullProperties?.Remove("tool_name"); } }
+        private string? _explicitNullValueToolName = default!;
 #nullable restore
 #else
-        public string ToolName { get; set; }
+        public string ToolName { get => _explicitNullValueToolName; set { _explicitNullValueToolName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_name"); else _explicitNullProperties?.Remove("tool_name"); } }
+        private string _explicitNullValueToolName = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicy"/> and sets the default values.
@@ -86,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicy CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicy();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicy(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -125,6 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("rule_name", RuleName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedToolPolicyTeamState>("team_state", TeamState);
             writer.WriteStringValue("tool_name", ToolName);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

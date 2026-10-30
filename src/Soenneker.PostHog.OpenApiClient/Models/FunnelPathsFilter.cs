@@ -11,19 +11,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FunnelPathsFilter : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("funnelPathType") is { } nullNodeFunnelPathType && nullNodeFunnelPathType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelPathType = null;
+            if (parseNode.GetChildNode("funnelSource") is { } nullNodeFunnelSource && nullNodeFunnelSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelSource = null;
+            if (parseNode.GetChildNode("funnelStep") is { } nullNodeFunnelStep && nullNodeFunnelStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelStep = null;
+        }
+
         /// <summary>The funnelPathType property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathType? FunnelPathType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathType? FunnelPathType { get => _explicitNullValueFunnelPathType; set { _explicitNullValueFunnelPathType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelPathType"); else _explicitNullProperties?.Remove("funnelPathType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathType? _explicitNullValueFunnelPathType = default!;
         /// <summary>The funnelSource property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery? FunnelSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery? FunnelSource { get => _explicitNullValueFunnelSource; set { _explicitNullValueFunnelSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelSource"); else _explicitNullProperties?.Remove("funnelSource"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery? _explicitNullValueFunnelSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery FunnelSource { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery FunnelSource { get => _explicitNullValueFunnelSource; set { _explicitNullValueFunnelSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelSource"); else _explicitNullProperties?.Remove("funnelSource"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery _explicitNullValueFunnelSource = default!;
 #endif
         /// <summary>The funnelStep property</summary>
-        public int? FunnelStep { get; set; }
+        public int? FunnelStep { get => _explicitNullValueFunnelStep; set { _explicitNullValueFunnelStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnelStep"); else _explicitNullProperties?.Remove("funnelStep"); } }
+        private int? _explicitNullValueFunnelStep = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -32,7 +46,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathsFilter(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,7 +70,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelPathType>("funnelPathType", FunnelPathType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQuery>("funnelSource", FunnelSource);
-            writer.WriteIntValue("funnelStep", FunnelStep);
+            writer.WriteIntValue("funnelStep", FunnelStep);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

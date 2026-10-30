@@ -11,129 +11,196 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentHealthInputs : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("archived") is { } nullNodeArchived && nullNodeArchived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Archived = null;
+            if (parseNode.GetChildNode("baseline_variant_key") is { } nullNodeBaselineVariantKey && nullNodeBaselineVariantKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineVariantKey = null;
+            if (parseNode.GetChildNode("condition_set_traffic") is { } nullNodeConditionSetTraffic && nullNodeConditionSetTraffic.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionSetTraffic = null;
+            if (parseNode.GetChildNode("condition_set_traffic_status") is { } nullNodeConditionSetTrafficStatus && nullNodeConditionSetTrafficStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConditionSetTrafficStatus = null;
+            if (parseNode.GetChildNode("events_received") is { } nullNodeEventsReceived && nullNodeEventsReceived.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventsReceived = null;
+            if (parseNode.GetChildNode("excluded_variant_keys") is { } nullNodeExcludedVariantKeys && nullNodeExcludedVariantKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedVariantKeys = null;
+            if (parseNode.GetChildNode("exposure_events") is { } nullNodeExposureEvents && nullNodeExposureEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposureEvents = null;
+            if (parseNode.GetChildNode("exposures") is { } nullNodeExposures && nullNodeExposures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Exposures = null;
+            if (parseNode.GetChildNode("flag") is { } nullNodeFlag && nullNodeFlag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Flag = null;
+            if (parseNode.GetChildNode("flag_called") is { } nullNodeFlagCalled && nullNodeFlagCalled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagCalled = null;
+            if (parseNode.GetChildNode("flag_called_after_end") is { } nullNodeFlagCalledAfterEnd && nullNodeFlagCalledAfterEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagCalledAfterEnd = null;
+            if (parseNode.GetChildNode("flag_called_during_run") is { } nullNodeFlagCalledDuringRun && nullNodeFlagCalledDuringRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagCalledDuringRun = null;
+            if (parseNode.GetChildNode("flag_history") is { } nullNodeFlagHistory && nullNodeFlagHistory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagHistory = null;
+            if (parseNode.GetChildNode("flag_last_called_at") is { } nullNodeFlagLastCalledAt && nullNodeFlagLastCalledAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagLastCalledAt = null;
+            if (parseNode.GetChildNode("has_ended") is { } nullNodeHasEnded && nullNodeHasEnded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEnded = null;
+            if (parseNode.GetChildNode("is_launched") is { } nullNodeIsLaunched && nullNodeIsLaunched.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsLaunched = null;
+            if (parseNode.GetChildNode("is_paused") is { } nullNodeIsPaused && nullNodeIsPaused.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPaused = null;
+            if (parseNode.GetChildNode("is_running") is { } nullNodeIsRunning && nullNodeIsRunning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsRunning = null;
+            if (parseNode.GetChildNode("latest_calculation") is { } nullNodeLatestCalculation && nullNodeLatestCalculation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestCalculation = null;
+            if (parseNode.GetChildNode("metric_compiles") is { } nullNodeMetricCompiles && nullNodeMetricCompiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricCompiles = null;
+            if (parseNode.GetChildNode("primary_metric_count") is { } nullNodePrimaryMetricCount && nullNodePrimaryMetricCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryMetricCount = null;
+            if (parseNode.GetChildNode("project") is { } nullNodeProject && nullNodeProject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Project = null;
+            if (parseNode.GetChildNode("reader_access") is { } nullNodeReaderAccess && nullNodeReaderAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReaderAccess = null;
+            if (parseNode.GetChildNode("secondary_metric_count") is { } nullNodeSecondaryMetricCount && nullNodeSecondaryMetricCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecondaryMetricCount = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the experiment is archived.</summary>
-        public bool? Archived { get; set; }
+        public bool? Archived { get => _explicitNullValueArchived; set { _explicitNullValueArchived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archived"); else _explicitNullProperties?.Remove("archived"); } }
+        private bool? _explicitNullValueArchived = default!;
         /// <summary>The baseline set in the experiment&apos;s settings. Null when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BaselineVariantKey { get; set; }
+        public string? BaselineVariantKey { get => _explicitNullValueBaselineVariantKey; set { _explicitNullValueBaselineVariantKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_variant_key"); else _explicitNullProperties?.Remove("baseline_variant_key"); } }
+        private string? _explicitNullValueBaselineVariantKey = default!;
 #nullable restore
 #else
-        public string BaselineVariantKey { get; set; }
+        public string BaselineVariantKey { get => _explicitNullValueBaselineVariantKey; set { _explicitNullValueBaselineVariantKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_variant_key"); else _explicitNullProperties?.Remove("baseline_variant_key"); } }
+        private string _explicitNullValueBaselineVariantKey = default!;
 #endif
         /// <summary>The flag&apos;s recent calls by condition set. Null unless condition_set_traffic_status is &apos;read&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic? ConditionSetTraffic { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic? ConditionSetTraffic { get => _explicitNullValueConditionSetTraffic; set { _explicitNullValueConditionSetTraffic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_set_traffic"); else _explicitNullProperties?.Remove("condition_set_traffic"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic? _explicitNullValueConditionSetTraffic = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic ConditionSetTraffic { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic ConditionSetTraffic { get => _explicitNullValueConditionSetTraffic; set { _explicitNullValueConditionSetTraffic = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_set_traffic"); else _explicitNullProperties?.Remove("condition_set_traffic"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTraffic _explicitNullValueConditionSetTraffic = default!;
 #endif
         /// <summary>* `read` - Read* `not_needed` - Not Needed* `no_query_access` - No Query Access* `denied_properties` - Denied Properties* `no_flag_version` - No Flag Version* `unknown` - Unknown</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTrafficStatus? ConditionSetTrafficStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTrafficStatus? ConditionSetTrafficStatus { get => _explicitNullValueConditionSetTrafficStatus; set { _explicitNullValueConditionSetTrafficStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition_set_traffic_status"); else _explicitNullProperties?.Remove("condition_set_traffic_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsConditionSetTrafficStatus? _explicitNullValueConditionSetTrafficStatus = default!;
         /// <summary>Whether the project has received each event that the metrics and the exposure criteria name, by event name. A name that ingestion keeps no record of is absent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsEventsReceivedProperty? EventsReceived { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsEventsReceivedProperty? EventsReceived { get => _explicitNullValueEventsReceived; set { _explicitNullValueEventsReceived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_received"); else _explicitNullProperties?.Remove("events_received"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsEventsReceivedProperty? _explicitNullValueEventsReceived = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsEventsReceivedProperty EventsReceived { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsEventsReceivedProperty EventsReceived { get => _explicitNullValueEventsReceived; set { _explicitNullValueEventsReceived = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events_received"); else _explicitNullProperties?.Remove("events_received"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsEventsReceivedProperty _explicitNullValueEventsReceived = default!;
 #endif
         /// <summary>The variants the analysis leaves out of the results. The forced-variant check ignores pins to them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExcludedVariantKeys { get; set; }
+        public List<string>? ExcludedVariantKeys { get => _explicitNullValueExcludedVariantKeys; set { _explicitNullValueExcludedVariantKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_variant_keys"); else _explicitNullProperties?.Remove("excluded_variant_keys"); } }
+        private List<string>? _explicitNullValueExcludedVariantKeys = default!;
 #nullable restore
 #else
-        public List<string> ExcludedVariantKeys { get; set; }
+        public List<string> ExcludedVariantKeys { get => _explicitNullValueExcludedVariantKeys; set { _explicitNullValueExcludedVariantKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_variant_keys"); else _explicitNullProperties?.Remove("excluded_variant_keys"); } }
+        private List<string> _explicitNullValueExcludedVariantKeys = default!;
 #endif
         /// <summary>The events the exposure criteria count. Null when the stored exposure criteria don&apos;t parse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents? ExposureEvents { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents? ExposureEvents { get => _explicitNullValueExposureEvents; set { _explicitNullValueExposureEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_events"); else _explicitNullProperties?.Remove("exposure_events"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents? _explicitNullValueExposureEvents = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents ExposureEvents { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents ExposureEvents { get => _explicitNullValueExposureEvents; set { _explicitNullValueExposureEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposure_events"); else _explicitNullProperties?.Remove("exposure_events"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureEvents _explicitNullValueExposureEvents = default!;
 #endif
         /// <summary>The exposure query&apos;s answer that the exposure checks read, from the cache.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed? Exposures { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed? Exposures { get => _explicitNullValueExposures; set { _explicitNullValueExposures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposures"); else _explicitNullProperties?.Remove("exposures"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed? _explicitNullValueExposures = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed Exposures { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed Exposures { get => _explicitNullValueExposures; set { _explicitNullValueExposures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposures"); else _explicitNullProperties?.Remove("exposures"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed _explicitNullValueExposures = default!;
 #endif
         /// <summary>The experiment&apos;s feature flag. Null when it has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag? Flag { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag? Flag { get => _explicitNullValueFlag; set { _explicitNullValueFlag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag"); else _explicitNullProperties?.Remove("flag"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag? _explicitNullValueFlag = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag Flag { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag Flag { get => _explicitNullValueFlag; set { _explicitNullValueFlag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag"); else _explicitNullProperties?.Remove("flag"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlag _explicitNullValueFlag = default!;
 #endif
         /// <summary>Whether PostHog has recorded any call of the flag. The flag traffic check reads it on a draft. Null when the experiment has no flag, or the organization&apos;s flag calls are stored where the checks can&apos;t read them.</summary>
-        public bool? FlagCalled { get; set; }
+        public bool? FlagCalled { get => _explicitNullValueFlagCalled; set { _explicitNullValueFlagCalled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_called"); else _explicitNullProperties?.Remove("flag_called"); } }
+        private bool? _explicitNullValueFlagCalled = default!;
         /// <summary>Whether PostHog has recorded a call of the flag after the end. The flag state check reads it on an ended experiment whose flag is still active with multiple variants. False only after 3 days without a recorded call. Null before the end, before those 3 days are over, or when the organization&apos;s flag calls can&apos;t be read.</summary>
-        public bool? FlagCalledAfterEnd { get; set; }
+        public bool? FlagCalledAfterEnd { get => _explicitNullValueFlagCalledAfterEnd; set { _explicitNullValueFlagCalledAfterEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_called_after_end"); else _explicitNullProperties?.Remove("flag_called_after_end"); } }
+        private bool? _explicitNullValueFlagCalledAfterEnd = default!;
         /// <summary>Whether PostHog has recorded a call of the flag between launch and the end, or until now. The zero exposures check reads it to say whether the flag is called. Null before launch, after a latest call that came after the end, or when the organization&apos;s flag calls can&apos;t be read.</summary>
-        public bool? FlagCalledDuringRun { get; set; }
+        public bool? FlagCalledDuringRun { get => _explicitNullValueFlagCalledDuringRun; set { _explicitNullValueFlagCalledDuringRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_called_during_run"); else _explicitNullProperties?.Remove("flag_called_during_run"); } }
+        private bool? _explicitNullValueFlagCalledDuringRun = default!;
         /// <summary>The changes of the flag since launch that can move exposed people. Null when the experiment is not running, is archived, its flag is missing or deleted, or the read failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory? FlagHistory { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory? FlagHistory { get => _explicitNullValueFlagHistory; set { _explicitNullValueFlagHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_history"); else _explicitNullProperties?.Remove("flag_history"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory? _explicitNullValueFlagHistory = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory FlagHistory { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory FlagHistory { get => _explicitNullValueFlagHistory; set { _explicitNullValueFlagHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_history"); else _explicitNullProperties?.Remove("flag_history"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagHistory _explicitNullValueFlagHistory = default!;
 #endif
         /// <summary>The flag&apos;s latest recorded call, which a periodic sync of the flag call events sets. Null when the experiment has no flag, or the flag has no recorded call.</summary>
-        public DateTimeOffset? FlagLastCalledAt { get; set; }
+        public DateTimeOffset? FlagLastCalledAt { get => _explicitNullValueFlagLastCalledAt; set { _explicitNullValueFlagLastCalledAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flag_last_called_at"); else _explicitNullProperties?.Remove("flag_last_called_at"); } }
+        private DateTimeOffset? _explicitNullValueFlagLastCalledAt = default!;
         /// <summary>Whether the experiment has an end date.</summary>
-        public bool? HasEnded { get; set; }
+        public bool? HasEnded { get => _explicitNullValueHasEnded; set { _explicitNullValueHasEnded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_ended"); else _explicitNullProperties?.Remove("has_ended"); } }
+        private bool? _explicitNullValueHasEnded = default!;
         /// <summary>Whether the experiment has a start date.</summary>
-        public bool? IsLaunched { get; set; }
+        public bool? IsLaunched { get => _explicitNullValueIsLaunched; set { _explicitNullValueIsLaunched = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_launched"); else _explicitNullProperties?.Remove("is_launched"); } }
+        private bool? _explicitNullValueIsLaunched = default!;
         /// <summary>Whether the experiment is paused.</summary>
-        public bool? IsPaused { get; set; }
+        public bool? IsPaused { get => _explicitNullValueIsPaused; set { _explicitNullValueIsPaused = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_paused"); else _explicitNullProperties?.Remove("is_paused"); } }
+        private bool? _explicitNullValueIsPaused = default!;
         /// <summary>Whether the experiment is launched and not ended.</summary>
-        public bool? IsRunning { get; set; }
+        public bool? IsRunning { get => _explicitNullValueIsRunning; set { _explicitNullValueIsRunning = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_running"); else _explicitNullProperties?.Remove("is_running"); } }
+        private bool? _explicitNullValueIsRunning = default!;
         /// <summary>The latest finished calculation of the metrics, which the metric results check reads. Null before launch, on an archived experiment, or when the read failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation? LatestCalculation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation? LatestCalculation { get => _explicitNullValueLatestCalculation; set { _explicitNullValueLatestCalculation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_calculation"); else _explicitNullProperties?.Remove("latest_calculation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation? _explicitNullValueLatestCalculation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation LatestCalculation { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation LatestCalculation { get => _explicitNullValueLatestCalculation; set { _explicitNullValueLatestCalculation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_calculation"); else _explicitNullProperties?.Remove("latest_calculation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsLatestCalculation _explicitNullValueLatestCalculation = default!;
 #endif
         /// <summary>The compile of each metric&apos;s query without running it, as the reader, which the &apos;Invalid metric definitions&apos; check reads. A metric that compiles is cached per reader for a day, and a failing metric compiles again on every request. Null when the compile itself failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles? MetricCompiles { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles? MetricCompiles { get => _explicitNullValueMetricCompiles; set { _explicitNullValueMetricCompiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_compiles"); else _explicitNullProperties?.Remove("metric_compiles"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles? _explicitNullValueMetricCompiles = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles MetricCompiles { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles MetricCompiles { get => _explicitNullValueMetricCompiles; set { _explicitNullValueMetricCompiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_compiles"); else _explicitNullProperties?.Remove("metric_compiles"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsMetricCompiles _explicitNullValueMetricCompiles = default!;
 #endif
         /// <summary>Single-use primary metrics plus shared metrics linked as primary.</summary>
-        public int? PrimaryMetricCount { get; set; }
+        public int? PrimaryMetricCount { get => _explicitNullValuePrimaryMetricCount; set { _explicitNullValuePrimaryMetricCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_metric_count"); else _explicitNullProperties?.Remove("primary_metric_count"); } }
+        private int? _explicitNullValuePrimaryMetricCount = default!;
         /// <summary>Facts about the project that no check reads yet, from the same providers as the setup context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed? Project { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed? Project { get => _explicitNullValueProject; set { _explicitNullValueProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project"); else _explicitNullProperties?.Remove("project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed? _explicitNullValueProject = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed Project { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed Project { get => _explicitNullValueProject; set { _explicitNullValueProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project"); else _explicitNullProperties?.Remove("project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed _explicitNullValueProject = default!;
 #endif
         /// <summary>What the reader may read, which decides what the checks can load.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed? ReaderAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed? ReaderAccess { get => _explicitNullValueReaderAccess; set { _explicitNullValueReaderAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reader_access"); else _explicitNullProperties?.Remove("reader_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed? _explicitNullValueReaderAccess = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed ReaderAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed ReaderAccess { get => _explicitNullValueReaderAccess; set { _explicitNullValueReaderAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reader_access"); else _explicitNullProperties?.Remove("reader_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed _explicitNullValueReaderAccess = default!;
 #endif
         /// <summary>Single-use secondary metrics plus shared metrics linked as secondary.</summary>
-        public int? SecondaryMetricCount { get; set; }
+        public int? SecondaryMetricCount { get => _explicitNullValueSecondaryMetricCount; set { _explicitNullValueSecondaryMetricCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("secondary_metric_count"); else _explicitNullProperties?.Remove("secondary_metric_count"); } }
+        private int? _explicitNullValueSecondaryMetricCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputs"/> and sets the default values.
         /// </summary>
@@ -149,7 +216,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputs CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputs();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputs(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -216,6 +283,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsProjectComposed>("project", Project);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReaderAccessComposed>("reader_access", ReaderAccess);
             writer.WriteIntValue("secondary_metric_count", SecondaryMetricCount);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

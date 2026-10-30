@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Reviews.T
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewReviewsTablePage>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewReviewsTablePage.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ReviewReviewsTablePage>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ReviewReviewsTablePage.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Code reviews on this project as a paginated table: reviews with a completed turn plus reviews with a run in flight, ordered by last activity, so a review that starts or finishes moves to the top. Pages with `limit` and `offset`; `count` is the total across pages. Filters by `repository`, `review_mode`, `status`, and `published`. `running_count` counts the running reviews under every filter except `status`. By default only the requesting user&apos;s reviews; `scope=everyone` lists every review on the project.

@@ -11,48 +11,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BreakdownColorConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("breakdownProperty") is { } nullNodeBreakdownProperty && nullNodeBreakdownProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownProperty = null;
+            if (parseNode.GetChildNode("breakdownType") is { } nullNodeBreakdownType && nullNodeBreakdownType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownType = null;
+            if (parseNode.GetChildNode("breakdownValue") is { } nullNodeBreakdownValue && nullNodeBreakdownValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownValue = null;
+            if (parseNode.GetChildNode("colorToken") is { } nullNodeColorToken && nullNodeColorToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColorToken = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Breakdown property the color is scoped to, so the color applies only to tiles that break down by that property. Omit to apply it under every property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownProperty { get; set; }
+        public string? BreakdownProperty { get => _explicitNullValueBreakdownProperty; set { _explicitNullValueBreakdownProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownProperty"); else _explicitNullProperties?.Remove("breakdownProperty"); } }
+        private string? _explicitNullValueBreakdownProperty = default!;
 #nullable restore
 #else
-        public string BreakdownProperty { get; set; }
+        public string BreakdownProperty { get => _explicitNullValueBreakdownProperty; set { _explicitNullValueBreakdownProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownProperty"); else _explicitNullProperties?.Remove("breakdownProperty"); } }
+        private string _explicitNullValueBreakdownProperty = default!;
 #endif
         /// <summary>Breakdown type the value came from, such as `event`, `person`, `session`, or `cohort`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownType { get; set; }
+        public string? BreakdownType { get => _explicitNullValueBreakdownType; set { _explicitNullValueBreakdownType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownType"); else _explicitNullProperties?.Remove("breakdownType"); } }
+        private string? _explicitNullValueBreakdownType = default!;
 #nullable restore
 #else
-        public string BreakdownType { get; set; }
+        public string BreakdownType { get => _explicitNullValueBreakdownType; set { _explicitNullValueBreakdownType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownType"); else _explicitNullProperties?.Remove("breakdownType"); } }
+        private string _explicitNullValueBreakdownType = default!;
 #endif
         /// <summary>The breakdown value this color applies to, as it appears in the chart legend.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownValue { get; set; }
+        public string? BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownValue"); else _explicitNullProperties?.Remove("breakdownValue"); } }
+        private string? _explicitNullValueBreakdownValue = default!;
 #nullable restore
 #else
-        public string BreakdownValue { get; set; }
+        public string BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownValue"); else _explicitNullProperties?.Remove("breakdownValue"); } }
+        private string _explicitNullValueBreakdownValue = default!;
 #endif
         /// <summary>Palette slot to color the value with, as `preset-1` upwards. Not a CSS color: a hex value is rejected. Null leaves the value on its default color.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ColorToken { get; set; }
+        public string? ColorToken { get => _explicitNullValueColorToken; set { _explicitNullValueColorToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("colorToken"); else _explicitNullProperties?.Remove("colorToken"); } }
+        private string? _explicitNullValueColorToken = default!;
 #nullable restore
 #else
-        public string ColorToken { get; set; }
+        public string ColorToken { get => _explicitNullValueColorToken; set { _explicitNullValueColorToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("colorToken"); else _explicitNullProperties?.Remove("colorToken"); } }
+        private string _explicitNullValueColorToken = default!;
 #endif
         /// <summary>`manual` for a color a person picked, `auto` for one the dashboard assigned.* `auto` - auto* `manual` - manual</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfigSource? Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfigSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfigSource? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfigSource Source { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfigSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfigSource _explicitNullValueSource = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig"/> and sets the default values.
@@ -69,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -98,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("breakdownValue", BreakdownValue);
             writer.WriteStringValue("colorToken", ColorToken);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfigSource>("source", Source);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

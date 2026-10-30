@@ -12,42 +12,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ContentAutopilotRunInputSnapshot : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("brand_rules") is { } nullNodeBrandRules && nullNodeBrandRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandRules = null;
+            if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
+            if (parseNode.GetChildNode("content_boundaries") is { } nullNodeContentBoundaries && nullNodeContentBoundaries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentBoundaries = null;
+            if (parseNode.GetChildNode("domain") is { } nullNodeDomain && nullNodeDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Domain = null;
+            if (parseNode.GetChildNode("source_urls") is { } nullNodeSourceUrls && nullNodeSourceUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceUrls = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Editorial rules captured for this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BrandRules { get; set; }
+        public List<string>? BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
+        private List<string>? _explicitNullValueBrandRules = default!;
 #nullable restore
 #else
-        public List<string> BrandRules { get; set; }
+        public List<string> BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
+        private List<string> _explicitNullValueBrandRules = default!;
 #endif
         /// <summary>* `standard` - Standard* `lower` - Lower</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence? Confidence { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence? _explicitNullValueConfidence = default!;
         /// <summary>Site paths authorized for this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ContentBoundaries { get; set; }
+        public List<string>? ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
+        private List<string>? _explicitNullValueContentBoundaries = default!;
 #nullable restore
 #else
-        public List<string> ContentBoundaries { get; set; }
+        public List<string> ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
+        private List<string> _explicitNullValueContentBoundaries = default!;
 #endif
         /// <summary>Site domain used for the run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Domain { get; set; }
+        public string? Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
+        private string? _explicitNullValueDomain = default!;
 #nullable restore
 #else
-        public string Domain { get; set; }
+        public string Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
+        private string _explicitNullValueDomain = default!;
 #endif
         /// <summary>Public sources authorized for this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SourceUrls { get; set; }
+        public List<string>? SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
+        private List<string>? _explicitNullValueSourceUrls = default!;
 #nullable restore
 #else
-        public List<string> SourceUrls { get; set; }
+        public List<string> SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
+        private List<string> _explicitNullValueSourceUrls = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot"/> and sets the default values.
@@ -64,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("content_boundaries", ContentBoundaries);
             writer.WriteStringValue("domain", Domain);
             writer.WriteCollectionOfPrimitiveValues<string>("source_urls", SourceUrls);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

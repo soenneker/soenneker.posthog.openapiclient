@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Insights.Item.Data_c
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecks>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecks.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecks>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecks.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Run the data checks on a saved insight, found by its numeric id or its `short_id`. The checks read the query the insight stores, and work the same way as the checks on a query that is not saved. The `status` is `unsupported` for an insight that still stores legacy `filters` and no query. Nothing is stored.

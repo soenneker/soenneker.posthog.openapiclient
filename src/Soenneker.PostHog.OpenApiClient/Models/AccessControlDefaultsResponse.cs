@@ -12,52 +12,78 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccessControlDefaultsResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("available_project_levels") is { } nullNodeAvailableProjectLevels && nullNodeAvailableProjectLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableProjectLevels = null;
+            if (parseNode.GetChildNode("available_resource_levels") is { } nullNodeAvailableResourceLevels && nullNodeAvailableResourceLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableResourceLevels = null;
+            if (parseNode.GetChildNode("can_edit") is { } nullNodeCanEdit && nullNodeCanEdit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanEdit = null;
+            if (parseNode.GetChildNode("is_managed_by_terraform") is { } nullNodeIsManagedByTerraform && nullNodeIsManagedByTerraform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsManagedByTerraform = null;
+            if (parseNode.GetChildNode("object_rule_resources") is { } nullNodeObjectRuleResources && nullNodeObjectRuleResources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObjectRuleResources = null;
+            if (parseNode.GetChildNode("project_access_level") is { } nullNodeProjectAccessLevel && nullNodeProjectAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectAccessLevel = null;
+            if (parseNode.GetChildNode("resource_access_levels") is { } nullNodeResourceAccessLevels && nullNodeResourceAccessLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceAccessLevels = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The project access levels, lowest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AvailableProjectLevels { get; set; }
+        public List<string>? AvailableProjectLevels { get => _explicitNullValueAvailableProjectLevels; set { _explicitNullValueAvailableProjectLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_project_levels"); else _explicitNullProperties?.Remove("available_project_levels"); } }
+        private List<string>? _explicitNullValueAvailableProjectLevels = default!;
 #nullable restore
 #else
-        public List<string> AvailableProjectLevels { get; set; }
+        public List<string> AvailableProjectLevels { get => _explicitNullValueAvailableProjectLevels; set { _explicitNullValueAvailableProjectLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_project_levels"); else _explicitNullProperties?.Remove("available_project_levels"); } }
+        private List<string> _explicitNullValueAvailableProjectLevels = default!;
 #endif
         /// <summary>The resource access levels, lowest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AvailableResourceLevels { get; set; }
+        public List<string>? AvailableResourceLevels { get => _explicitNullValueAvailableResourceLevels; set { _explicitNullValueAvailableResourceLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_resource_levels"); else _explicitNullProperties?.Remove("available_resource_levels"); } }
+        private List<string>? _explicitNullValueAvailableResourceLevels = default!;
 #nullable restore
 #else
-        public List<string> AvailableResourceLevels { get; set; }
+        public List<string> AvailableResourceLevels { get => _explicitNullValueAvailableResourceLevels; set { _explicitNullValueAvailableResourceLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_resource_levels"); else _explicitNullProperties?.Remove("available_resource_levels"); } }
+        private List<string> _explicitNullValueAvailableResourceLevels = default!;
 #endif
         /// <summary>Whether the caller may change access rules in this project.</summary>
-        public bool? CanEdit { get; set; }
+        public bool? CanEdit { get => _explicitNullValueCanEdit; set { _explicitNullValueCanEdit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_edit"); else _explicitNullProperties?.Remove("can_edit"); } }
+        private bool? _explicitNullValueCanEdit = default!;
         /// <summary>Whether the access rules of this project are locked to Terraform.</summary>
-        public bool? IsManagedByTerraform { get; set; }
+        public bool? IsManagedByTerraform { get => _explicitNullValueIsManagedByTerraform; set { _explicitNullValueIsManagedByTerraform = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_managed_by_terraform"); else _explicitNullProperties?.Remove("is_managed_by_terraform"); } }
+        private bool? _explicitNullValueIsManagedByTerraform = default!;
         /// <summary>The resource types that accept rules on single objects, with the levels each accepts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource>? ObjectRuleResources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource>? ObjectRuleResources { get => _explicitNullValueObjectRuleResources; set { _explicitNullValueObjectRuleResources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_rule_resources"); else _explicitNullProperties?.Remove("object_rule_resources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource>? _explicitNullValueObjectRuleResources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource> ObjectRuleResources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource> ObjectRuleResources { get => _explicitNullValueObjectRuleResources; set { _explicitNullValueObjectRuleResources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_rule_resources"); else _explicitNullProperties?.Remove("object_rule_resources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource> _explicitNullValueObjectRuleResources = default!;
 #endif
         /// <summary>The default project access level for members.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectAccessLevel { get; set; }
+        public string? ProjectAccessLevel { get => _explicitNullValueProjectAccessLevel; set { _explicitNullValueProjectAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_access_level"); else _explicitNullProperties?.Remove("project_access_level"); } }
+        private string? _explicitNullValueProjectAccessLevel = default!;
 #nullable restore
 #else
-        public string ProjectAccessLevel { get; set; }
+        public string ProjectAccessLevel { get => _explicitNullValueProjectAccessLevel; set { _explicitNullValueProjectAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_access_level"); else _explicitNullProperties?.Remove("project_access_level"); } }
+        private string _explicitNullValueProjectAccessLevel = default!;
 #endif
         /// <summary>The default level per resource type, keyed by resource name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty? ResourceAccessLevels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty? ResourceAccessLevels { get => _explicitNullValueResourceAccessLevels; set { _explicitNullValueResourceAccessLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_access_levels"); else _explicitNullProperties?.Remove("resource_access_levels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty? _explicitNullValueResourceAccessLevels = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty ResourceAccessLevels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty ResourceAccessLevels { get => _explicitNullValueResourceAccessLevels; set { _explicitNullValueResourceAccessLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_access_levels"); else _explicitNullProperties?.Remove("resource_access_levels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty _explicitNullValueResourceAccessLevels = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponse"/> and sets the default values.
@@ -74,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -107,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResource>("object_rule_resources", ObjectRuleResources);
             writer.WriteStringValue("project_access_level", ProjectAccessLevel);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlDefaultsResponseResourceAccessLevelsProperty>("resource_access_levels", ResourceAccessLevels);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

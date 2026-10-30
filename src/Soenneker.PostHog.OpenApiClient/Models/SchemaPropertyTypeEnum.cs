@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `DateTime` - DateTime* `String` - String* `Numeric` - Numeric* `Boolean` - Boolean* `Object` - Object</summary>
+    /// <summary>* `DateTime` - DateTime* `String` - String* `Numeric` - Numeric* `Boolean` - Boolean* `Object` - Object* `Array` - Array</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SchemaPropertyTypeEnum
     {
@@ -26,6 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "Object")]
         #pragma warning disable CS1591
         ObjectValue,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "Array")]
+        #pragma warning disable CS1591
+        Array,
         #pragma warning restore CS1591
     }
 }

@@ -11,40 +11,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class FlakyTestItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("classification") is { } nullNodeClassification && nullNodeClassification.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Classification = null;
+            if (parseNode.GetChildNode("failed_pr_count") is { } nullNodeFailedPrCount && nullNodeFailedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedPrCount = null;
+            if (parseNode.GetChildNode("failed_run_count") is { } nullNodeFailedRunCount && nullNodeFailedRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedRunCount = null;
+            if (parseNode.GetChildNode("last_signal_at") is { } nullNodeLastSignalAt && nullNodeLastSignalAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSignalAt = null;
+            if (parseNode.GetChildNode("master_failed_run_count") is { } nullNodeMasterFailedRunCount && nullNodeMasterFailedRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MasterFailedRunCount = null;
+            if (parseNode.GetChildNode("nodeid") is { } nullNodeNodeid && nullNodeNodeid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nodeid = null;
+            if (parseNode.GetChildNode("quarantined_failed_run_count") is { } nullNodeQuarantinedFailedRunCount && nullNodeQuarantinedFailedRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuarantinedFailedRunCount = null;
+            if (parseNode.GetChildNode("runner") is { } nullNodeRunner && nullNodeRunner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runner = null;
+            if (parseNode.GetChildNode("same_commit_recovery_run_count") is { } nullNodeSameCommitRecoveryRunCount && nullNodeSameCommitRecoveryRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SameCommitRecoveryRunCount = null;
+            if (parseNode.GetChildNode("selector") is { } nullNodeSelector && nullNodeSelector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selector = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `confirmed_flake` - Confirmed Flake* `suspected_regression` - Suspected Regression* `quarantined` - Quarantined</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification? Classification { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification? Classification { get => _explicitNullValueClassification; set { _explicitNullValueClassification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classification"); else _explicitNullProperties?.Remove("classification"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemClassification? _explicitNullValueClassification = default!;
         /// <summary>Distinct pull requests among the failed runs. Failures on master or unattributed branches carry no PR number and are excluded here (still in failed_run_count).</summary>
-        public int? FailedPrCount { get; set; }
+        public int? FailedPrCount { get => _explicitNullValueFailedPrCount; set { _explicitNullValueFailedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_pr_count"); else _explicitNullProperties?.Remove("failed_pr_count"); } }
+        private int? _explicitNullValueFailedPrCount = default!;
         /// <summary>Distinct CI runs whose recorded outcome was failed or error. A run counts once however many matrix legs it failed in.</summary>
-        public int? FailedRunCount { get; set; }
+        public int? FailedRunCount { get => _explicitNullValueFailedRunCount; set { _explicitNullValueFailedRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_run_count"); else _explicitNullProperties?.Remove("failed_run_count"); } }
+        private int? _explicitNullValueFailedRunCount = default!;
         /// <summary>Most recent failure, recovery, or quarantined-failure run for this test in the window.</summary>
-        public DateTimeOffset? LastSignalAt { get; set; }
+        public DateTimeOffset? LastSignalAt { get => _explicitNullValueLastSignalAt; set { _explicitNullValueLastSignalAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_signal_at"); else _explicitNullProperties?.Remove("last_signal_at"); } }
+        private DateTimeOffset? _explicitNullValueLastSignalAt = default!;
         /// <summary>Failed runs on the default branch (master/main approximation): the &apos;matters right now&apos; signal that a test is breaking the trunk, not just PR branches.</summary>
-        public int? MasterFailedRunCount { get; set; }
+        public int? MasterFailedRunCount { get => _explicitNullValueMasterFailedRunCount; set { _explicitNullValueMasterFailedRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("master_failed_run_count"); else _explicitNullProperties?.Remove("master_failed_run_count"); } }
+        private int? _explicitNullValueMasterFailedRunCount = default!;
         /// <summary>Runner-specific stable test identity (the CI span name). This is a grouping key, not necessarily runnable; use `selector` to run or quarantine the test.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Nodeid { get; set; }
+        public string? Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
+        private string? _explicitNullValueNodeid = default!;
 #nullable restore
 #else
-        public string Nodeid { get; set; }
+        public string Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
+        private string _explicitNullValueNodeid = default!;
 #endif
         /// <summary>Runs where the test recorded a tolerated failure while quarantined: already masked in CI, still failing.</summary>
-        public int? QuarantinedFailedRunCount { get; set; }
+        public int? QuarantinedFailedRunCount { get => _explicitNullValueQuarantinedFailedRunCount; set { _explicitNullValueQuarantinedFailedRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantined_failed_run_count"); else _explicitNullProperties?.Remove("quarantined_failed_run_count"); } }
+        private int? _explicitNullValueQuarantinedFailedRunCount = default!;
         /// <summary>* `pytest` - Pytest* `jest` - Jest</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner? Runner { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner? Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner? _explicitNullValueRunner = default!;
         /// <summary>Runs where one commit both failed and passed the test: a &apos;Re-run failed jobs&apos; attempt went green on the same commit, or an in-job pytest retry (tests hand-marked @pytest.mark.flaky(reruns=N)) recovered it. A pass in a different run is a different commit and never counts.</summary>
-        public int? SameCommitRecoveryRunCount { get; set; }
+        public int? SameCommitRecoveryRunCount { get => _explicitNullValueSameCommitRecoveryRunCount; set { _explicitNullValueSameCommitRecoveryRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("same_commit_recovery_run_count"); else _explicitNullProperties?.Remove("same_commit_recovery_run_count"); } }
+        private int? _explicitNullValueSameCommitRecoveryRunCount = default!;
         /// <summary>Runnable pytest or Jest selector. Exact when the CI reporter emitted it; older pytest spans use a best-effort reconstruction from the nodeid.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Selector { get; set; }
+        public string? Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        private string? _explicitNullValueSelector = default!;
 #nullable restore
 #else
-        public string Selector { get; set; }
+        public string Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        private string _explicitNullValueSelector = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItem"/> and sets the default values.
@@ -61,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -100,6 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FlakyTestItemRunner>("runner", Runner);
             writer.WriteIntValue("same_commit_recovery_run_count", SameCommitRecoveryRunCount);
             writer.WriteStringValue("selector", Selector);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

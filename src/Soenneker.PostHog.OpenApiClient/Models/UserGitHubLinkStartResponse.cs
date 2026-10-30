@@ -11,24 +11,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class UserGitHubLinkStartResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("connect_flow") is { } nullNodeConnectFlow && nullNodeConnectFlow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectFlow = null;
+            if (parseNode.GetChildNode("install_url") is { } nullNodeInstallUrl && nullNodeInstallUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallUrl = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>OAuth or install flow used for this GitHub connection.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectFlow { get; set; }
+        public string? ConnectFlow { get => _explicitNullValueConnectFlow; set { _explicitNullValueConnectFlow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_flow"); else _explicitNullProperties?.Remove("connect_flow"); } }
+        private string? _explicitNullValueConnectFlow = default!;
 #nullable restore
 #else
-        public string ConnectFlow { get; set; }
+        public string ConnectFlow { get => _explicitNullValueConnectFlow; set { _explicitNullValueConnectFlow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_flow"); else _explicitNullProperties?.Remove("connect_flow"); } }
+        private string _explicitNullValueConnectFlow = default!;
 #endif
         /// <summary>URL to open in the browser to install or authorize the GitHub App for this user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InstallUrl { get; set; }
+        public string? InstallUrl { get => _explicitNullValueInstallUrl; set { _explicitNullValueInstallUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("install_url"); else _explicitNullProperties?.Remove("install_url"); } }
+        private string? _explicitNullValueInstallUrl = default!;
 #nullable restore
 #else
-        public string InstallUrl { get; set; }
+        public string InstallUrl { get => _explicitNullValueInstallUrl; set { _explicitNullValueInstallUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("install_url"); else _explicitNullProperties?.Remove("install_url"); } }
+        private string _explicitNullValueInstallUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubLinkStartResponse"/> and sets the default values.
@@ -45,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubLinkStartResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubLinkStartResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubLinkStartResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,6 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("connect_flow", ConnectFlow);
             writer.WriteStringValue("install_url", InstallUrl);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

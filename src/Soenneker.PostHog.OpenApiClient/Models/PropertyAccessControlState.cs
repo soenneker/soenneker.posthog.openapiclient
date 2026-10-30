@@ -12,32 +12,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PropertyAccessControlState : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("access_controls") is { } nullNodeAccessControls && nullNodeAccessControls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessControls = null;
+            if (parseNode.GetChildNode("available_access_levels") is { } nullNodeAvailableAccessLevels && nullNodeAvailableAccessLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableAccessLevels = null;
+            if (parseNode.GetChildNode("default_access_level") is { } nullNodeDefaultAccessLevel && nullNodeDefaultAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultAccessLevel = null;
+        }
+
         /// <summary>List of all access control rules for this property definition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule>? AccessControls { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule>? AccessControls { get => _explicitNullValueAccessControls; set { _explicitNullValueAccessControls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_controls"); else _explicitNullProperties?.Remove("access_controls"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule>? _explicitNullValueAccessControls = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule> AccessControls { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule> AccessControls { get => _explicitNullValueAccessControls; set { _explicitNullValueAccessControls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_controls"); else _explicitNullProperties?.Remove("access_controls"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule> _explicitNullValueAccessControls = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Available access levels that can be assigned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AvailableAccessLevels { get; set; }
+        public List<string>? AvailableAccessLevels { get => _explicitNullValueAvailableAccessLevels; set { _explicitNullValueAvailableAccessLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_access_levels"); else _explicitNullProperties?.Remove("available_access_levels"); } }
+        private List<string>? _explicitNullValueAvailableAccessLevels = default!;
 #nullable restore
 #else
-        public List<string> AvailableAccessLevels { get; set; }
+        public List<string> AvailableAccessLevels { get => _explicitNullValueAvailableAccessLevels; set { _explicitNullValueAvailableAccessLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_access_levels"); else _explicitNullProperties?.Remove("available_access_levels"); } }
+        private List<string> _explicitNullValueAvailableAccessLevels = default!;
 #endif
         /// <summary>The default access level when no rules match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultAccessLevel { get; set; }
+        public string? DefaultAccessLevel { get => _explicitNullValueDefaultAccessLevel; set { _explicitNullValueDefaultAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_access_level"); else _explicitNullProperties?.Remove("default_access_level"); } }
+        private string? _explicitNullValueDefaultAccessLevel = default!;
 #nullable restore
 #else
-        public string DefaultAccessLevel { get; set; }
+        public string DefaultAccessLevel { get => _explicitNullValueDefaultAccessLevel; set { _explicitNullValueDefaultAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_access_level"); else _explicitNullProperties?.Remove("default_access_level"); } }
+        private string _explicitNullValueDefaultAccessLevel = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlState"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlState CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlState();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlState(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule>("access_controls", AccessControls);
             writer.WriteCollectionOfPrimitiveValues<string>("available_access_levels", AvailableAccessLevels);
             writer.WriteStringValue("default_access_level", DefaultAccessLevel);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

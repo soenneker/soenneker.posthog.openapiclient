@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Data_warehouse.Delet
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DeleteWarehouseOrgResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DeleteWarehouseOrgResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DeleteWarehouseOrgResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DeleteWarehouseOrgResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Remove the organization&apos;s provisioning record after teardown, freeing its warehouse name.Called once the warehouse status reports `deleted`: deprovision tears the warehousedown, this removes the now-empty org row so the database_name can be reused. Restrictedto organization admins.

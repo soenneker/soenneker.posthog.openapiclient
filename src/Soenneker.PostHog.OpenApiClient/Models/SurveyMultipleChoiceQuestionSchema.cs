@@ -11,67 +11,102 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SurveyMultipleChoiceQuestionSchema : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("buttonText") is { } nullNodeButtonText && nullNodeButtonText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ButtonText = null;
+            if (parseNode.GetChildNode("choices") is { } nullNodeChoices && nullNodeChoices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Choices = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("descriptionContentType") is { } nullNodeDescriptionContentType && nullNodeDescriptionContentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DescriptionContentType = null;
+            if (parseNode.GetChildNode("hasOpenChoice") is { } nullNodeHasOpenChoice && nullNodeHasOpenChoice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasOpenChoice = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("optional") is { } nullNodeOptional && nullNodeOptional.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Optional = null;
+            if (parseNode.GetChildNode("question") is { } nullNodeQuestion && nullNodeQuestion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Question = null;
+            if (parseNode.GetChildNode("shuffleOptions") is { } nullNodeShuffleOptions && nullNodeShuffleOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShuffleOptions = null;
+            if (parseNode.GetChildNode("translations") is { } nullNodeTranslations && nullNodeTranslations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Translations = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Custom button label.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ButtonText { get; set; }
+        public string? ButtonText { get => _explicitNullValueButtonText; set { _explicitNullValueButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonText"); else _explicitNullProperties?.Remove("buttonText"); } }
+        private string? _explicitNullValueButtonText = default!;
 #nullable restore
 #else
-        public string ButtonText { get; set; }
+        public string ButtonText { get => _explicitNullValueButtonText; set { _explicitNullValueButtonText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("buttonText"); else _explicitNullProperties?.Remove("buttonText"); } }
+        private string _explicitNullValueButtonText = default!;
 #endif
         /// <summary>Array of choice options. Multiple selections allowed. No branching logic supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Choices { get; set; }
+        public List<string>? Choices { get => _explicitNullValueChoices; set { _explicitNullValueChoices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choices"); else _explicitNullProperties?.Remove("choices"); } }
+        private List<string>? _explicitNullValueChoices = default!;
 #nullable restore
 #else
-        public List<string> Choices { get; set; }
+        public List<string> Choices { get => _explicitNullValueChoices; set { _explicitNullValueChoices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choices"); else _explicitNullProperties?.Remove("choices"); } }
+        private List<string> _explicitNullValueChoices = default!;
 #endif
         /// <summary>Optional helper text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>* `html` - html* `text` - text</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType? DescriptionContentType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType? DescriptionContentType { get => _explicitNullValueDescriptionContentType; set { _explicitNullValueDescriptionContentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("descriptionContentType"); else _explicitNullProperties?.Remove("descriptionContentType"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaDescriptionContentType? _explicitNullValueDescriptionContentType = default!;
         /// <summary>Whether the final option should be an open-text choice (for example, &apos;Other&apos;).</summary>
-        public bool? HasOpenChoice { get; set; }
+        public bool? HasOpenChoice { get => _explicitNullValueHasOpenChoice; set { _explicitNullValueHasOpenChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasOpenChoice"); else _explicitNullProperties?.Remove("hasOpenChoice"); } }
+        private bool? _explicitNullValueHasOpenChoice = default!;
         /// <summary>Stable question identifier (UUID). When editing an existing question, send back its current id so its responses (keyed by $survey_response_&lt;id&gt;) stay attached; omit it for new questions and the server generates one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Whether respondents may skip this question.</summary>
-        public bool? Optional { get; set; }
+        public bool? Optional { get => _explicitNullValueOptional; set { _explicitNullValueOptional = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optional"); else _explicitNullProperties?.Remove("optional"); } }
+        private bool? _explicitNullValueOptional = default!;
         /// <summary>Question text shown to respondents.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Question { get; set; }
+        public string? Question { get => _explicitNullValueQuestion; set { _explicitNullValueQuestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question"); else _explicitNullProperties?.Remove("question"); } }
+        private string? _explicitNullValueQuestion = default!;
 #nullable restore
 #else
-        public string Question { get; set; }
+        public string Question { get => _explicitNullValueQuestion; set { _explicitNullValueQuestion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question"); else _explicitNullProperties?.Remove("question"); } }
+        private string _explicitNullValueQuestion = default!;
 #endif
         /// <summary>Whether to randomize the order of choices for each respondent.</summary>
-        public bool? ShuffleOptions { get; set; }
+        public bool? ShuffleOptions { get => _explicitNullValueShuffleOptions; set { _explicitNullValueShuffleOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shuffleOptions"); else _explicitNullProperties?.Remove("shuffleOptions"); } }
+        private bool? _explicitNullValueShuffleOptions = default!;
         /// <summary>Inline translations keyed by language code (for example &apos;es&apos; or &apos;pt-BR&apos;). Send back the current value when editing other question fields, or the translations are lost.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty? Translations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty? Translations { get => _explicitNullValueTranslations; set { _explicitNullValueTranslations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("translations"); else _explicitNullProperties?.Remove("translations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty? _explicitNullValueTranslations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty Translations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty Translations { get => _explicitNullValueTranslations; set { _explicitNullValueTranslations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("translations"); else _explicitNullProperties?.Remove("translations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty _explicitNullValueTranslations = default!;
 #endif
         /// <summary>* `multiple_choice` - multiple_choice</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTypeEnum? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTypeEnum? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTypeEnum? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema"/> and sets the default values.
         /// </summary>
@@ -87,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -128,6 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("shuffleOptions", ShuffleOptions);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTranslationsProperty>("translations", Translations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchemaTypeEnum>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

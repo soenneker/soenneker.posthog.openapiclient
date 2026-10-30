@@ -11,47 +11,77 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentSetupSdkProfile : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("computed_at") is { } nullNodeComputedAt && nullNodeComputedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputedAt = null;
+            if (parseNode.GetChildNode("evaluated_on_server_and_web") is { } nullNodeEvaluatedOnServerAndWeb && nullNodeEvaluatedOnServerAndWeb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluatedOnServerAndWeb = null;
+            if (parseNode.GetChildNode("flags_evaluated_on_server_and_web") is { } nullNodeFlagsEvaluatedOnServerAndWeb && nullNodeFlagsEvaluatedOnServerAndWeb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagsEvaluatedOnServerAndWeb = null;
+            if (parseNode.GetChildNode("flags_seen") is { } nullNodeFlagsSeen && nullNodeFlagsSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlagsSeen = null;
+            if (parseNode.GetChildNode("libs") is { } nullNodeLibs && nullNodeLibs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Libs = null;
+            if (parseNode.GetChildNode("libs_on_any_event") is { } nullNodeLibsOnAnyEvent && nullNodeLibsOnAnyEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibsOnAnyEvent = null;
+            if (parseNode.GetChildNode("libs_on_any_event_truncated") is { } nullNodeLibsOnAnyEventTruncated && nullNodeLibsOnAnyEventTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibsOnAnyEventTruncated = null;
+            if (parseNode.GetChildNode("libs_truncated") is { } nullNodeLibsTruncated && nullNodeLibsTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibsTruncated = null;
+            if (parseNode.GetChildNode("source_event") is { } nullNodeSourceEvent && nullNodeSourceEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceEvent = null;
+            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the numbers were computed. They are cached for hours.</summary>
-        public DateTimeOffset? ComputedAt { get; set; }
+        public DateTimeOffset? ComputedAt { get => _explicitNullValueComputedAt; set { _explicitNullValueComputedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed_at"); else _explicitNullProperties?.Remove("computed_at"); } }
+        private DateTimeOffset? _explicitNullValueComputedAt = default!;
         /// <summary>True when at least one flag key was called by both a server SDK and the web SDK. The same flag decided on the server and read in the browser can bucket one user into two variants.</summary>
-        public bool? EvaluatedOnServerAndWeb { get; set; }
+        public bool? EvaluatedOnServerAndWeb { get => _explicitNullValueEvaluatedOnServerAndWeb; set { _explicitNullValueEvaluatedOnServerAndWeb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_on_server_and_web"); else _explicitNullProperties?.Remove("evaluated_on_server_and_web"); } }
+        private bool? _explicitNullValueEvaluatedOnServerAndWeb = default!;
         /// <summary>How many of those flag keys were called by both a server SDK and the web SDK.</summary>
-        public int? FlagsEvaluatedOnServerAndWeb { get; set; }
+        public int? FlagsEvaluatedOnServerAndWeb { get => _explicitNullValueFlagsEvaluatedOnServerAndWeb; set { _explicitNullValueFlagsEvaluatedOnServerAndWeb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flags_evaluated_on_server_and_web"); else _explicitNullProperties?.Remove("flags_evaluated_on_server_and_web"); } }
+        private int? _explicitNullValueFlagsEvaluatedOnServerAndWeb = default!;
         /// <summary>Distinct multivariate flag keys called in the window.</summary>
-        public int? FlagsSeen { get; set; }
+        public int? FlagsSeen { get => _explicitNullValueFlagsSeen; set { _explicitNullValueFlagsSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flags_seen"); else _explicitNullProperties?.Remove("flags_seen"); } }
+        private int? _explicitNullValueFlagsSeen = default!;
         /// <summary>One row per SDK, most calls first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib>? Libs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib>? Libs { get => _explicitNullValueLibs; set { _explicitNullValueLibs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs"); else _explicitNullProperties?.Remove("libs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib>? _explicitNullValueLibs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib> Libs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib> Libs { get => _explicitNullValueLibs; set { _explicitNullValueLibs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs"); else _explicitNullProperties?.Remove("libs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkLib> _explicitNullValueLibs = default!;
 #endif
         /// <summary>Up to 10 SDKs seen on any event over the last day, most events first. Set only when libs is empty, so a project creating its first experiment still says which platforms it sends from. Null when flag calls exist, and null when this extra read timed out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity>? LibsOnAnyEvent { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity>? LibsOnAnyEvent { get => _explicitNullValueLibsOnAnyEvent; set { _explicitNullValueLibsOnAnyEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs_on_any_event"); else _explicitNullProperties?.Remove("libs_on_any_event"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity>? _explicitNullValueLibsOnAnyEvent = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity> LibsOnAnyEvent { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity> LibsOnAnyEvent { get => _explicitNullValueLibsOnAnyEvent; set { _explicitNullValueLibsOnAnyEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs_on_any_event"); else _explicitNullProperties?.Remove("libs_on_any_event"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibActivity> _explicitNullValueLibsOnAnyEvent = default!;
 #endif
         /// <summary>True when more SDKs sent events than libs_on_any_event lists. False when it is null.</summary>
-        public bool? LibsOnAnyEventTruncated { get; set; }
+        public bool? LibsOnAnyEventTruncated { get => _explicitNullValueLibsOnAnyEventTruncated; set { _explicitNullValueLibsOnAnyEventTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs_on_any_event_truncated"); else _explicitNullProperties?.Remove("libs_on_any_event_truncated"); } }
+        private bool? _explicitNullValueLibsOnAnyEventTruncated = default!;
         /// <summary>True when more SDKs sent flag calls than libs lists.</summary>
-        public bool? LibsTruncated { get; set; }
+        public bool? LibsTruncated { get => _explicitNullValueLibsTruncated; set { _explicitNullValueLibsTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs_truncated"); else _explicitNullProperties?.Remove("libs_truncated"); } }
+        private bool? _explicitNullValueLibsTruncated = default!;
         /// <summary>The event read: &apos;$experiment_exposure&apos; when the project receives it, otherwise &apos;$feature_flag_called&apos;. Only one is read, because one copies the other, and only multivariate responses count either way. This says what the project&apos;s events carry today, so it can differ from team_defaults.default_exposure_event, which says what a new experiment would count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceEvent { get; set; }
+        public string? SourceEvent { get => _explicitNullValueSourceEvent; set { _explicitNullValueSourceEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_event"); else _explicitNullProperties?.Remove("source_event"); } }
+        private string? _explicitNullValueSourceEvent = default!;
 #nullable restore
 #else
-        public string SourceEvent { get; set; }
+        public string SourceEvent { get => _explicitNullValueSourceEvent; set { _explicitNullValueSourceEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_event"); else _explicitNullProperties?.Remove("source_event"); } }
+        private string _explicitNullValueSourceEvent = default!;
 #endif
         /// <summary>Days of flag calls read, ending now.</summary>
-        public int? WindowDays { get; set; }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkProfile"/> and sets the default values.
         /// </summary>
@@ -67,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkProfile CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkProfile();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSdkProfile(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -106,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("libs_truncated", LibsTruncated);
             writer.WriteStringValue("source_event", SourceEvent);
             writer.WriteIntValue("window_days", WindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

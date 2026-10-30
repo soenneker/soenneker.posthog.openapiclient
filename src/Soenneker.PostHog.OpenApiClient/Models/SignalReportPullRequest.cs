@@ -11,11 +11,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class SignalReportPullRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("attached_at") is { } nullNodeAttachedAt && nullNodeAttachedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttachedAt = null;
+            if (parseNode.GetChildNode("claim_id") is { } nullNodeClaimId && nullNodeClaimId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimId = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("merged") is { } nullNodeMerged && nullNodeMerged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Merged = null;
+            if (parseNode.GetChildNode("merged_at") is { } nullNodeMergedAt && nullNodeMergedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedAt = null;
+            if (parseNode.GetChildNode("review_decision") is { } nullNodeReviewDecision && nullNodeReviewDecision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewDecision = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the first PR link was recorded. For backfilled links this is the import time; null for an unmigrated link.</summary>
-        public DateTimeOffset? AttachedAt { get; set; }
+        public DateTimeOffset? AttachedAt { get => _explicitNullValueAttachedAt; set { _explicitNullValueAttachedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached_at"); else _explicitNullProperties?.Remove("attached_at"); } }
+        private DateTimeOffset? _explicitNullValueAttachedAt = default!;
         /// <summary>Who first attached this PR to the report, not necessarily its GitHub author. Task-output links identify the originating task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,30 +41,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy AttachedBy { get; private set; }
 #endif
         /// <summary>Originating work claim. Null for legacy links without a recorded claim.</summary>
-        public Guid? ClaimId { get; set; }
+        public Guid? ClaimId { get => _explicitNullValueClaimId; set { _explicitNullValueClaimId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_id"); else _explicitNullProperties?.Remove("claim_id"); } }
+        private Guid? _explicitNullValueClaimId = default!;
         /// <summary>PR selection ID. Task-output links use a deterministic ID until attached as an artefact.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Whether this PR merged.</summary>
-        public bool? Merged { get; set; }
+        public bool? Merged { get => _explicitNullValueMerged; set { _explicitNullValueMerged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged"); else _explicitNullProperties?.Remove("merged"); } }
+        private bool? _explicitNullValueMerged = default!;
         /// <summary>When GitHub reports that this pull request merged. Null when it has not merged or the time is unavailable.</summary>
-        public DateTimeOffset? MergedAt { get; set; }
+        public DateTimeOffset? MergedAt { get => _explicitNullValueMergedAt; set { _explicitNullValueMergedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_at"); else _explicitNullProperties?.Remove("merged_at"); } }
+        private DateTimeOffset? _explicitNullValueMergedAt = default!;
         /// <summary>Current GitHub code review decision: approved, changes_requested, or review_required. Null when GitHub does not provide a review decision.* `approved` - Approved* `changes_requested` - Changes requested* `review_required` - Review required</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision? ReviewDecision { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision? ReviewDecision { get => _explicitNullValueReviewDecision; set { _explicitNullValueReviewDecision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_decision"); else _explicitNullProperties?.Remove("review_decision"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision? _explicitNullValueReviewDecision = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision ReviewDecision { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision ReviewDecision { get => _explicitNullValueReviewDecision; set { _explicitNullValueReviewDecision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_decision"); else _explicitNullProperties?.Remove("review_decision"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision _explicitNullValueReviewDecision = default!;
 #endif
         /// <summary>* `unknown` - Unknown* `draft` - Draft* `open` - Open* `closed` - Closed* `merged` - Merged</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestState? _explicitNullValueState = default!;
         /// <summary>GitHub pull request URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Url { get; set; }
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public string Url { get; set; }
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest"/> and sets the default values.
@@ -65,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestReviewDecision>("review_decision", ReviewDecision);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestState>("state", State);
             writer.WriteStringValue("url", Url);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

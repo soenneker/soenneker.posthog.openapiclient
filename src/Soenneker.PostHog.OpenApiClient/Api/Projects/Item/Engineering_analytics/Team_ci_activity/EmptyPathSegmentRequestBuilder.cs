@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TeamCiActivity>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TeamCiActivity.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.TeamCiActivity>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.TeamCiActivity.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// One owning team&apos;s CI test activity: per-test current-vs-prior signal pairs (the before/after comparison) over the window and its equal-length prior twin. Signal = runs where an owned test failed, errored, or a retry recovered it. Counts are absolute, never rates: CI emits every failure but omits ordinary passing spans, so there is no execution denominator. &apos;suspected_regression&apos; means no recovery was recorded in this data, not that the test never flakes.

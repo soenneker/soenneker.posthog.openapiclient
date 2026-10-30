@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Remove_blocked_
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationRemoveBlockedMembersResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationRemoveBlockedMembersResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationRemoveBlockedMembersResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.OrganizationRemoveBlockedMembersResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Remove the members whose email domain is outside the organization&apos;s verified domains and turn`enforce_verified_domains` on, in one transaction. Owners are never removed; they keep gatedaccess and can disable the setting themselves. Admin only.Use this only when the caller has confirmed the removals. To turn the setting on withouttouching memberships, PATCH `enforce_verified_domains` on the organization instead.

@@ -11,50 +11,74 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewInstallation : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("account_name") is { } nullNodeAccountName && nullNodeAccountName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountName = null;
+            if (parseNode.GetChildNode("all_taken_by_project") is { } nullNodeAllTakenByProject && nullNodeAllTakenByProject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllTakenByProject = null;
+            if (parseNode.GetChildNode("claim_id") is { } nullNodeClaimId && nullNodeClaimId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimId = null;
+            if (parseNode.GetChildNode("connected_by") is { } nullNodeConnectedBy && nullNodeConnectedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectedBy = null;
+            if (parseNode.GetChildNode("installation_id") is { } nullNodeInstallationId && nullNodeInstallationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallationId = null;
+            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+        }
+
         /// <summary>The GitHub account (organization or user) of the installation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccountName { get; set; }
+        public string? AccountName { get => _explicitNullValueAccountName; set { _explicitNullValueAccountName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_name"); else _explicitNullProperties?.Remove("account_name"); } }
+        private string? _explicitNullValueAccountName = default!;
 #nullable restore
 #else
-        public string AccountName { get; set; }
+        public string AccountName { get => _explicitNullValueAccountName; set { _explicitNullValueAccountName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_name"); else _explicitNullProperties?.Remove("account_name"); } }
+        private string _explicitNullValueAccountName = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Another project that takes all repositories of the installation, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? AllTakenByProject { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? AllTakenByProject { get => _explicitNullValueAllTakenByProject; set { _explicitNullValueAllTakenByProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all_taken_by_project"); else _explicitNullProperties?.Remove("all_taken_by_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? _explicitNullValueAllTakenByProject = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef AllTakenByProject { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef AllTakenByProject { get => _explicitNullValueAllTakenByProject; set { _explicitNullValueAllTakenByProject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all_taken_by_project"); else _explicitNullProperties?.Remove("all_taken_by_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef _explicitNullValueAllTakenByProject = default!;
 #endif
         /// <summary>Id of this project&apos;s claim. Null when the project reviews nothing there.</summary>
-        public Guid? ClaimId { get; set; }
+        public Guid? ClaimId { get => _explicitNullValueClaimId; set { _explicitNullValueClaimId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_id"); else _explicitNullProperties?.Remove("claim_id"); } }
+        private Guid? _explicitNullValueClaimId = default!;
         /// <summary>Who connected the installation to this project. Automatic Standard reviews of bot pull requests run as this user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ConnectedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ConnectedBy { get => _explicitNullValueConnectedBy; set { _explicitNullValueConnectedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_by"); else _explicitNullProperties?.Remove("connected_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? _explicitNullValueConnectedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ConnectedBy { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ConnectedBy { get => _explicitNullValueConnectedBy; set { _explicitNullValueConnectedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_by"); else _explicitNullProperties?.Remove("connected_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasic _explicitNullValueConnectedBy = default!;
 #endif
         /// <summary>The GitHub App installation id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InstallationId { get; set; }
+        public string? InstallationId { get => _explicitNullValueInstallationId; set { _explicitNullValueInstallationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_id"); else _explicitNullProperties?.Remove("installation_id"); } }
+        private string? _explicitNullValueInstallationId = default!;
 #nullable restore
 #else
-        public string InstallationId { get; set; }
+        public string InstallationId { get => _explicitNullValueInstallationId; set { _explicitNullValueInstallationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_id"); else _explicitNullProperties?.Remove("installation_id"); } }
+        private string _explicitNullValueInstallationId = default!;
 #endif
         /// <summary>Which repositories this project reviews: &apos;all&apos; (every repository no other project selected, including future ones), &apos;selected&apos; (only the selected ones), or null (none).* `all` - All repositories* `selected` - Only selected repositories</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope? Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope? _explicitNullValueScope = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope Scope { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope _explicitNullValueScope = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallation"/> and sets the default values.
@@ -71,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallation CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallation();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallation(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -102,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>("connected_by", ConnectedBy);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope>("scope", Scope);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

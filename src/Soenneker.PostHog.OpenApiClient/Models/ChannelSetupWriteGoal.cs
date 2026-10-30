@@ -13,38 +13,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ChannelSetupWriteGoal : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("deadline") is { } nullNodeDeadline && nullNodeDeadline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deadline = null;
+            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("insight_short_id") is { } nullNodeInsightShortId && nullNodeInsightShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightShortId = null;
+            if (parseNode.GetChildNode("period") is { } nullNodePeriod && nullNodePeriod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Period = null;
+            if (parseNode.GetChildNode("statement") is { } nullNodeStatement && nullNodeStatement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Statement = null;
+            if (parseNode.GetChildNode("target") is { } nullNodeTarget && nullNodeTarget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Target = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Date the target should be reached.</summary>
-        public Date? Deadline { get; set; }
+        public Date? Deadline { get => _explicitNullValueDeadline; set { _explicitNullValueDeadline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deadline"); else _explicitNullProperties?.Remove("deadline"); } }
+        private Date? _explicitNullValueDeadline = default!;
         /// <summary>* `at_least` - At least* `at_most` - At most</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection? Direction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWriteDirection? _explicitNullValueDirection = default!;
         /// <summary>Short id of an existing insight that measures the goal, when there is one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InsightShortId { get; set; }
+        public string? InsightShortId { get => _explicitNullValueInsightShortId; set { _explicitNullValueInsightShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_short_id"); else _explicitNullProperties?.Remove("insight_short_id"); } }
+        private string? _explicitNullValueInsightShortId = default!;
 #nullable restore
 #else
-        public string InsightShortId { get; set; }
+        public string InsightShortId { get => _explicitNullValueInsightShortId; set { _explicitNullValueInsightShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_short_id"); else _explicitNullProperties?.Remove("insight_short_id"); } }
+        private string _explicitNullValueInsightShortId = default!;
 #endif
         /// <summary>* `day` - Day* `week` - Week* `month` - Month</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod? Period { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod? Period { get => _explicitNullValuePeriod; set { _explicitNullValuePeriod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period"); else _explicitNullProperties?.Remove("period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod? _explicitNullValuePeriod = default!;
         /// <summary>The goal in one or two sentences, e.g. &apos;Increase the weekly activation rate&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Statement { get; set; }
+        public string? Statement { get => _explicitNullValueStatement; set { _explicitNullValueStatement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statement"); else _explicitNullProperties?.Remove("statement"); } }
+        private string? _explicitNullValueStatement = default!;
 #nullable restore
 #else
-        public string Statement { get; set; }
+        public string Statement { get => _explicitNullValueStatement; set { _explicitNullValueStatement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("statement"); else _explicitNullProperties?.Remove("statement"); } }
+        private string _explicitNullValueStatement = default!;
 #endif
         /// <summary>Target value as typed, e.g. &apos;20%&apos; or &apos;1500&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Target { get; set; }
+        public string? Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
+        private string? _explicitNullValueTarget = default!;
 #nullable restore
 #else
-        public string Target { get; set; }
+        public string Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
+        private string _explicitNullValueTarget = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteGoal"/> and sets the default values.
@@ -61,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteGoal CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteGoal();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ChannelSetupWriteGoal(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SpaceGoalWritePeriod>("period", Period);
             writer.WriteStringValue("statement", Statement);
             writer.WriteStringValue("target", Target);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

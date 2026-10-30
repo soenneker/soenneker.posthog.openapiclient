@@ -12,36 +12,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ObservationStatsLabels : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("by_day") is { } nullNodeByDay && nullNodeByDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByDay = null;
+            if (parseNode.GetChildNode("by_rating_day") is { } nullNodeByRatingDay && nullNodeByRatingDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByRatingDay = null;
+            if (parseNode.GetChildNode("down_total") is { } nullNodeDownTotal && nullNodeDownTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DownTotal = null;
+            if (parseNode.GetChildNode("up_total") is { } nullNodeUpTotal && nullNodeUpTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpTotal = null;
+            if (parseNode.GetChildNode("version_markers") is { } nullNodeVersionMarkers && nullNodeVersionMarkers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionMarkers = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Daily label counts over the last `recent_days` days, bucketed by the day the session was scanned so the series tracks scanner quality over time. Days without labels are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount>? ByDay { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount>? ByDay { get => _explicitNullValueByDay; set { _explicitNullValueByDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_day"); else _explicitNullProperties?.Remove("by_day"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount>? _explicitNullValueByDay = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount> ByDay { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount> ByDay { get => _explicitNullValueByDay; set { _explicitNullValueByDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_day"); else _explicitNullProperties?.Remove("by_day"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount> _explicitNullValueByDay = default!;
 #endif
         /// <summary>Daily label counts over the last `recent_days` days, bucketed by the day the rating was last set or changed: the team&apos;s rating activity. Days without rating changes are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount>? ByRatingDay { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount>? ByRatingDay { get => _explicitNullValueByRatingDay; set { _explicitNullValueByRatingDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_rating_day"); else _explicitNullProperties?.Remove("by_rating_day"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount>? _explicitNullValueByRatingDay = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount> ByRatingDay { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount> ByRatingDay { get => _explicitNullValueByRatingDay; set { _explicitNullValueByRatingDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_rating_day"); else _explicitNullProperties?.Remove("by_rating_day"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationLabelDayCount> _explicitNullValueByRatingDay = default!;
 #endif
         /// <summary>Observations in the filtered set labeled incorrect (thumbs down).</summary>
-        public int? DownTotal { get; set; }
+        public int? DownTotal { get => _explicitNullValueDownTotal; set { _explicitNullValueDownTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("down_total"); else _explicitNullProperties?.Remove("down_total"); } }
+        private int? _explicitNullValueDownTotal = default!;
         /// <summary>Observations in the filtered set labeled correct (thumbs up).</summary>
-        public int? UpTotal { get; set; }
+        public int? UpTotal { get => _explicitNullValueUpTotal; set { _explicitNullValueUpTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("up_total"); else _explicitNullProperties?.Remove("up_total"); } }
+        private int? _explicitNullValueUpTotal = default!;
         /// <summary>Each scanner version that produced observations (all-time), with its first day, the config it ran with, and rating counts, for chart markers and the config version history.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarker>? VersionMarkers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarker>? VersionMarkers { get => _explicitNullValueVersionMarkers; set { _explicitNullValueVersionMarkers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_markers"); else _explicitNullProperties?.Remove("version_markers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarker>? _explicitNullValueVersionMarkers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarker> VersionMarkers { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarker> VersionMarkers { get => _explicitNullValueVersionMarkers; set { _explicitNullValueVersionMarkers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_markers"); else _explicitNullProperties?.Remove("version_markers"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarker> _explicitNullValueVersionMarkers = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels"/> and sets the default values.
@@ -58,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("down_total", DownTotal);
             writer.WriteIntValue("up_total", UpTotal);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ObservationVersionMarker>("version_markers", VersionMarkers);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,32 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ConfusionByCutoff : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("likely") is { } nullNodeLikely && nullNodeLikely.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Likely = null;
+            if (parseNode.GetChildNode("top_10") is { } nullNodeTop10 && nullNodeTop10.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Top10 = null;
+            if (parseNode.GetChildNode("top_20") is { } nullNodeTop20 && nullNodeTop20.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Top20 = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Counts when users in the Likely segment, with a score of likely_threshold or higher, are flagged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely? Likely { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely? Likely { get => _explicitNullValueLikely; set { _explicitNullValueLikely = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely"); else _explicitNullProperties?.Remove("likely"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely? _explicitNullValueLikely = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely Likely { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely Likely { get => _explicitNullValueLikely; set { _explicitNullValueLikely = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely"); else _explicitNullProperties?.Remove("likely"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely _explicitNullValueLikely = default!;
 #endif
         /// <summary>Counts when the top 10% of users by score are flagged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10? Top10 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10? Top10 { get => _explicitNullValueTop10; set { _explicitNullValueTop10 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_10"); else _explicitNullProperties?.Remove("top_10"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10? _explicitNullValueTop10 = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10 Top10 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10 Top10 { get => _explicitNullValueTop10; set { _explicitNullValueTop10 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_10"); else _explicitNullProperties?.Remove("top_10"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10 _explicitNullValueTop10 = default!;
 #endif
         /// <summary>Counts when the top 20% of users by score are flagged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20? Top20 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20? Top20 { get => _explicitNullValueTop20; set { _explicitNullValueTop20 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_20"); else _explicitNullProperties?.Remove("top_20"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20? _explicitNullValueTop20 = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20 Top20 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20 Top20 { get => _explicitNullValueTop20; set { _explicitNullValueTop20 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_20"); else _explicitNullProperties?.Remove("top_20"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20 _explicitNullValueTop20 = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely>("likely", Likely);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10>("top_10", Top10);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20>("top_20", Top20);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

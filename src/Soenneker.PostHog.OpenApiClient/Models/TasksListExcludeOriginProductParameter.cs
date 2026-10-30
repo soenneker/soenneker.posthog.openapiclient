@@ -112,5 +112,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         MetricsImport,
         #pragma warning restore CS1591
+        [EnumMember(Value = "knowledge_writer")]
+        #pragma warning disable CS1591
+        KnowledgeWriter,
+        #pragma warning restore CS1591
     }
 }

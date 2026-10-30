@@ -12,37 +12,64 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TestHogRequestOutputConfig : IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allows_na") is { } nullNodeAllowsNa && nullNodeAllowsNa.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowsNa = null;
+            if (parseNode.GetChildNode("decision_threshold") is { } nullNodeDecisionThreshold && nullNodeDecisionThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DecisionThreshold = null;
+            if (parseNode.GetChildNode("max") is { } nullNodeMax && nullNodeMax.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Max = null;
+            if (parseNode.GetChildNode("min") is { } nullNodeMin && nullNodeMin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Min = null;
+            if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
+            if (parseNode.GetChildNode("passing_rule") is { } nullNodePassingRule && nullNodePassingRule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassingRule = null;
+            if (parseNode.GetChildNode("selection_mode") is { } nullNodeSelectionMode && nullNodeSelectionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectionMode = null;
+            if (parseNode.GetChildNode("step") is { } nullNodeStep && nullNodeStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Step = null;
+            if (parseNode.GetChildNode("true_is_failure") is { } nullNodeTrueIsFailure && nullNodeTrueIsFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrueIsFailure = null;
+        }
+
         /// <summary>Whether the evaluation can return N/A for non-applicable generations.</summary>
-        public bool? AllowsNa { get; set; }
+        public bool? AllowsNa { get => _explicitNullValueAllowsNa; set { _explicitNullValueAllowsNa = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allows_na"); else _explicitNullProperties?.Remove("allows_na"); } }
+        private bool? _explicitNullValueAllowsNa = default!;
         /// <summary>Boolean decision-model judges only. Minimum probability of true required for a true result, inclusive. Omit or set null to use 0.5. Applies to new runs; historical results are unchanged.</summary>
-        public double? DecisionThreshold { get; set; }
+        public double? DecisionThreshold { get => _explicitNullValueDecisionThreshold; set { _explicitNullValueDecisionThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("decision_threshold"); else _explicitNullProperties?.Remove("decision_threshold"); } }
+        private double? _explicitNullValueDecisionThreshold = default!;
         /// <summary>Inclusive maximum numeric score. Omit for no upper bound. Required for numeric decision models and must exceed min.</summary>
-        public double? Max { get; set; }
+        public double? Max { get => _explicitNullValueMax; set { _explicitNullValueMax = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max"); else _explicitNullProperties?.Remove("max"); } }
+        private double? _explicitNullValueMax = default!;
         /// <summary>Inclusive minimum numeric score. Omit for no lower bound. Required for numeric decision models.</summary>
-        public double? Min { get; set; }
+        public double? Min { get => _explicitNullValueMin; set { _explicitNullValueMin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min"); else _explicitNullProperties?.Remove("min"); } }
+        private double? _explicitNullValueMin = default!;
         /// <summary>Categorical output options. Keys identify stored results; labels are displayed to users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem>? Options { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem>? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem>? _explicitNullValueOptions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem> Options { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem> Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigOptionsItem> _explicitNullValueOptions = default!;
 #endif
         /// <summary>Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigPassingRule? PassingRule { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigPassingRule? PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigPassingRule? _explicitNullValuePassingRule = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigPassingRule PassingRule { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigPassingRule PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigPassingRule _explicitNullValuePassingRule = default!;
 #endif
         /// <summary>Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigSelectionMode? SelectionMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigSelectionMode? SelectionMode { get => _explicitNullValueSelectionMode; set { _explicitNullValueSelectionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selection_mode"); else _explicitNullProperties?.Remove("selection_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigSelectionMode? _explicitNullValueSelectionMode = default!;
         /// <summary>Optional positive input increment. Does not round evaluation results.</summary>
-        public double? Step { get; set; }
+        public double? Step { get => _explicitNullValueStep; set { _explicitNullValueStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step"); else _explicitNullProperties?.Remove("step"); } }
+        private double? _explicitNullValueStep = default!;
         /// <summary>Boolean output only. Omit for numeric, categorical, and sentiment output. Whether a true result means the evaluation found a problem. False (the default) suits pass/fail evaluations, where a true result satisfied the criteria. Set it to true for detector-style evaluations, so a true result is counted and labeled as a fail.</summary>
-        public bool? TrueIsFailure { get; set; }
+        public bool? TrueIsFailure { get => _explicitNullValueTrueIsFailure; set { _explicitNullValueTrueIsFailure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_is_failure"); else _explicitNullProperties?.Remove("true_is_failure"); } }
+        private bool? _explicitNullValueTrueIsFailure = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -51,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,7 +114,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigPassingRule>("passing_rule", PassingRule);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TestHogRequestOutputConfigSelectionMode>("selection_mode", SelectionMode);
             writer.WriteDoubleValue("step", Step);
-            writer.WriteBoolValue("true_is_failure", TrueIsFailure);
+            writer.WriteBoolValue("true_is_failure", TrueIsFailure);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

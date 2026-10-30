@@ -11,29 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MarketingAnalyticsAttributionRow : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("breakdownValue") is { } nullNodeBreakdownValue && nullNodeBreakdownValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownValue = null;
+            if (parseNode.GetChildNode("influencedConversions") is { } nullNodeInfluencedConversions && nullNodeInfluencedConversions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InfluencedConversions = null;
+            if (parseNode.GetChildNode("influencedValue") is { } nullNodeInfluencedValue && nullNodeInfluencedValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InfluencedValue = null;
+            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+            if (parseNode.GetChildNode("visitors") is { } nullNodeVisitors && nullNodeVisitors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visitors = null;
+        }
+
         /// <summary>The breakdownValue property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownValue { get; set; }
+        public string? BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownValue"); else _explicitNullProperties?.Remove("breakdownValue"); } }
+        private string? _explicitNullValueBreakdownValue = default!;
 #nullable restore
 #else
-        public string BreakdownValue { get; set; }
+        public string BreakdownValue { get => _explicitNullValueBreakdownValue; set { _explicitNullValueBreakdownValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownValue"); else _explicitNullProperties?.Remove("breakdownValue"); } }
+        private string _explicitNullValueBreakdownValue = default!;
 #endif
         /// <summary>Conversions with at least one touchpoint on this dimension. Counted once per conversion, so a conversion influenced by several dimensions is counted in each of their rows. These deliberately sum to more than the total, unlike the per-model columns.</summary>
-        public int? InfluencedConversions { get; set; }
+        public int? InfluencedConversions { get => _explicitNullValueInfluencedConversions; set { _explicitNullValueInfluencedConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("influencedConversions"); else _explicitNullProperties?.Remove("influencedConversions"); } }
+        private int? _explicitNullValueInfluencedConversions = default!;
         /// <summary>The influencedValue property</summary>
-        public double? InfluencedValue { get; set; }
+        public double? InfluencedValue { get => _explicitNullValueInfluencedValue; set { _explicitNullValueInfluencedValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("influencedValue"); else _explicitNullProperties?.Remove("influencedValue"); } }
+        private double? _explicitNullValueInfluencedValue = default!;
         /// <summary>One cell per model, always in the order given by the response&apos;s `models`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionModelCell>? Models { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionModelCell>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionModelCell>? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionModelCell> Models { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionModelCell> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionModelCell> _explicitNullValueModels = default!;
 #endif
         /// <summary>Unique persons who arrived via this dimension in the date range, converters or not.</summary>
-        public int? Visitors { get; set; }
+        public int? Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
+        private int? _explicitNullValueVisitors = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -42,7 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,7 +89,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("influencedConversions", InfluencedConversions);
             writer.WriteDoubleValue("influencedValue", InfluencedValue);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsAttributionModelCell>("models", Models);
-            writer.WriteIntValue("visitors", Visitors);
+            writer.WriteIntValue("visitors", Visitors);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

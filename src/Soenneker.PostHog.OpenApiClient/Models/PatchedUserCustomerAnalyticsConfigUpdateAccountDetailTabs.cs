@@ -12,32 +12,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("default_tab_id") is { } nullNodeDefaultTabId && nullNodeDefaultTabId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultTabId = null;
+            if (parseNode.GetChildNode("hidden_tab_ids") is { } nullNodeHiddenTabIds && nullNodeHiddenTabIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenTabIds = null;
+            if (parseNode.GetChildNode("ordered_tab_ids") is { } nullNodeOrderedTabIds && nullNodeOrderedTabIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderedTabIds = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Tab identifier opened by default. Null uses the first available system tab.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultTabId { get; set; }
+        public string? DefaultTabId { get => _explicitNullValueDefaultTabId; set { _explicitNullValueDefaultTabId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tab_id"); else _explicitNullProperties?.Remove("default_tab_id"); } }
+        private string? _explicitNullValueDefaultTabId = default!;
 #nullable restore
 #else
-        public string DefaultTabId { get; set; }
+        public string DefaultTabId { get => _explicitNullValueDefaultTabId; set { _explicitNullValueDefaultTabId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tab_id"); else _explicitNullProperties?.Remove("default_tab_id"); } }
+        private string _explicitNullValueDefaultTabId = default!;
 #endif
         /// <summary>Tab identifiers hidden from the tab strip.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? HiddenTabIds { get; set; }
+        public List<string>? HiddenTabIds { get => _explicitNullValueHiddenTabIds; set { _explicitNullValueHiddenTabIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_tab_ids"); else _explicitNullProperties?.Remove("hidden_tab_ids"); } }
+        private List<string>? _explicitNullValueHiddenTabIds = default!;
 #nullable restore
 #else
-        public List<string> HiddenTabIds { get; set; }
+        public List<string> HiddenTabIds { get => _explicitNullValueHiddenTabIds; set { _explicitNullValueHiddenTabIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_tab_ids"); else _explicitNullProperties?.Remove("hidden_tab_ids"); } }
+        private List<string> _explicitNullValueHiddenTabIds = default!;
 #endif
         /// <summary>Tab identifiers in the user&apos;s preferred order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OrderedTabIds { get; set; }
+        public List<string>? OrderedTabIds { get => _explicitNullValueOrderedTabIds; set { _explicitNullValueOrderedTabIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_tab_ids"); else _explicitNullProperties?.Remove("ordered_tab_ids"); } }
+        private List<string>? _explicitNullValueOrderedTabIds = default!;
 #nullable restore
 #else
-        public List<string> OrderedTabIds { get; set; }
+        public List<string> OrderedTabIds { get => _explicitNullValueOrderedTabIds; set { _explicitNullValueOrderedTabIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_tab_ids"); else _explicitNullProperties?.Remove("ordered_tab_ids"); } }
+        private List<string> _explicitNullValueOrderedTabIds = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs"/> and sets the default values.
@@ -54,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("default_tab_id", DefaultTabId);
             writer.WriteCollectionOfPrimitiveValues<string>("hidden_tab_ids", HiddenTabIds);
             writer.WriteCollectionOfPrimitiveValues<string>("ordered_tab_ids", OrderedTabIds);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

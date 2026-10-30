@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Users.Item.Login_sessions.Revoke_o
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RevokeOtherSessionsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RevokeOtherSessionsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.RevokeOtherSessionsResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.RevokeOtherSessionsResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Revoke every login session for the current user except the one making this request. Self-only.Requires recent auth (TimeSensitiveActionPermission) so a stolen cookie can&apos;t weaponize the&quot;log out everywhere else&quot; lock-out, and is blocked while impersonating.

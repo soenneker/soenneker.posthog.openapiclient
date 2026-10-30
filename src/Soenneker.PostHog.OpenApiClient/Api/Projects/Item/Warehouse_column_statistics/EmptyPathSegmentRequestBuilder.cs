@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_column_sta
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseColumnStatisticsList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseColumnStatisticsList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseColumnStatisticsList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedWarehouseColumnStatisticsList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Read per-column data statistics (null fraction, min/max, row count) for warehouse tables.Statistics are computed automatically after a sync and surfaced to the AI agent so it can writebetter queries. They are system-owned and read-only here. List can be filtered to one table with`?table_id=&lt;uuid&gt;`.

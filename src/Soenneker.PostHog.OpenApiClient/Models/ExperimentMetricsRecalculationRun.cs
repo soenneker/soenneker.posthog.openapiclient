@@ -12,7 +12,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ExperimentMetricsRecalculationRun : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("estimated_rows_total") is { } nullNodeEstimatedRowsTotal && nullNodeEstimatedRowsTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedRowsTotal = null;
+            if (parseNode.GetChildNode("rows_read") is { } nullNodeRowsRead && nullNodeRowsRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsRead = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When processing completed</summary>
@@ -22,7 +31,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When the job was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>ClickHouse&apos;s total_rows_approx across running queries plus the final read_rows of finished ones. A soft ceiling revised mid-scan, so it can exceed or trail rows_read; treat rows_read as the reliable signal</summary>
-        public int? EstimatedRowsTotal { get; set; }
+        public int? EstimatedRowsTotal { get => _explicitNullValueEstimatedRowsTotal; set { _explicitNullValueEstimatedRowsTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_rows_total"); else _explicitNullProperties?.Remove("estimated_rows_total"); } }
+        private int? _explicitNullValueEstimatedRowsTotal = default!;
         /// <summary>ID of the experiment being recalculated</summary>
         public int? ExperimentId { get; private set; }
         /// <summary>Number of failed metrics in this run (derived): FAILED result rows plus discovery-step failures that never made it to a result row</summary>
@@ -56,7 +66,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricRecalculationResult> Results { get; private set; }
 #endif
         /// <summary>Rows read by the run&apos;s metric queries so far, both finished and currently running. Cumulative and roughly monotonic across the run; the primary live progress signal</summary>
-        public int? RowsRead { get; set; }
+        public int? RowsRead { get => _explicitNullValueRowsRead; set { _explicitNullValueRowsRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_read"); else _explicitNullProperties?.Remove("rows_read"); } }
+        private int? _explicitNullValueRowsRead = default!;
         /// <summary>When processing started</summary>
         public DateTimeOffset? StartedAt { get; private set; }
         /// <summary>* `pending` - Pending* `in_progress` - In Progress* `completed` - Completed* `failed` - Failed</summary>
@@ -78,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRun CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRun();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationRun(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -114,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("estimated_rows_total", EstimatedRowsTotal);
             writer.WriteIntValue("rows_read", RowsRead);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,23 +11,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ApplyUtmDefaultsResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_workflows_updated") is { } nullNodeActiveWorkflowsUpdated && nullNodeActiveWorkflowsUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveWorkflowsUpdated = null;
+            if (parseNode.GetChildNode("emails_off") is { } nullNodeEmailsOff && nullNodeEmailsOff.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailsOff = null;
+            if (parseNode.GetChildNode("emails_turned_on") is { } nullNodeEmailsTurnedOn && nullNodeEmailsTurnedOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailsTurnedOn = null;
+            if (parseNode.GetChildNode("emails_updated") is { } nullNodeEmailsUpdated && nullNodeEmailsUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailsUpdated = null;
+            if (parseNode.GetChildNode("workflows_failed") is { } nullNodeWorkflowsFailed && nullNodeWorkflowsFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowsFailed = null;
+            if (parseNode.GetChildNode("workflows_updated") is { } nullNodeWorkflowsUpdated && nullNodeWorkflowsUpdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowsUpdated = null;
+            if (parseNode.GetChildNode("workflows_without_access") is { } nullNodeWorkflowsWithoutAccess && nullNodeWorkflowsWithoutAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowsWithoutAccess = null;
+        }
+
         /// <summary>Of those, the ones that are live, so their next send uses the new values.</summary>
-        public int? ActiveWorkflowsUpdated { get; set; }
+        public int? ActiveWorkflowsUpdated { get => _explicitNullValueActiveWorkflowsUpdated; set { _explicitNullValueActiveWorkflowsUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_workflows_updated"); else _explicitNullProperties?.Remove("active_workflows_updated"); } }
+        private int? _explicitNullValueActiveWorkflowsUpdated = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Email steps in scope that have UTM tags off. enable_where_off turns them on.</summary>
-        public int? EmailsOff { get; set; }
+        public int? EmailsOff { get => _explicitNullValueEmailsOff; set { _explicitNullValueEmailsOff = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails_off"); else _explicitNullProperties?.Remove("emails_off"); } }
+        private int? _explicitNullValueEmailsOff = default!;
         /// <summary>Email steps where UTM tags get (or would get) turned on.</summary>
-        public int? EmailsTurnedOn { get; set; }
+        public int? EmailsTurnedOn { get => _explicitNullValueEmailsTurnedOn; set { _explicitNullValueEmailsTurnedOn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails_turned_on"); else _explicitNullProperties?.Remove("emails_turned_on"); } }
+        private int? _explicitNullValueEmailsTurnedOn = default!;
         /// <summary>Email steps that get (or would get) the team defaults.</summary>
-        public int? EmailsUpdated { get; set; }
+        public int? EmailsUpdated { get => _explicitNullValueEmailsUpdated; set { _explicitNullValueEmailsUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails_updated"); else _explicitNullProperties?.Remove("emails_updated"); } }
+        private int? _explicitNullValueEmailsUpdated = default!;
         /// <summary>Workflows that could not be saved, for example because they fail validation. They keep their old values.</summary>
-        public int? WorkflowsFailed { get; set; }
+        public int? WorkflowsFailed { get => _explicitNullValueWorkflowsFailed; set { _explicitNullValueWorkflowsFailed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflows_failed"); else _explicitNullProperties?.Remove("workflows_failed"); } }
+        private int? _explicitNullValueWorkflowsFailed = default!;
         /// <summary>Workflows and broadcasts that contain those email steps.</summary>
-        public int? WorkflowsUpdated { get; set; }
+        public int? WorkflowsUpdated { get => _explicitNullValueWorkflowsUpdated; set { _explicitNullValueWorkflowsUpdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflows_updated"); else _explicitNullProperties?.Remove("workflows_updated"); } }
+        private int? _explicitNullValueWorkflowsUpdated = default!;
         /// <summary>Workflows with emails to update that you can&apos;t edit. They keep their old values.</summary>
-        public int? WorkflowsWithoutAccess { get; set; }
+        public int? WorkflowsWithoutAccess { get => _explicitNullValueWorkflowsWithoutAccess; set { _explicitNullValueWorkflowsWithoutAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflows_without_access"); else _explicitNullProperties?.Remove("workflows_without_access"); } }
+        private int? _explicitNullValueWorkflowsWithoutAccess = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ApplyUtmDefaultsResponse"/> and sets the default values.
         /// </summary>
@@ -43,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ApplyUtmDefaultsResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ApplyUtmDefaultsResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ApplyUtmDefaultsResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("workflows_failed", WorkflowsFailed);
             writer.WriteIntValue("workflows_updated", WorkflowsUpdated);
             writer.WriteIntValue("workflows_without_access", WorkflowsWithoutAccess);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

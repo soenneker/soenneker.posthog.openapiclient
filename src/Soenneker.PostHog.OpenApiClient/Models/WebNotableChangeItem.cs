@@ -11,39 +11,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class WebNotableChangeItem : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("current_value") is { } nullNodeCurrentValue && nullNodeCurrentValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentValue = null;
+            if (parseNode.GetChildNode("dimension_type") is { } nullNodeDimensionType && nullNodeDimensionType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DimensionType = null;
+            if (parseNode.GetChildNode("dimension_value") is { } nullNodeDimensionValue && nullNodeDimensionValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DimensionValue = null;
+            if (parseNode.GetChildNode("impact_score") is { } nullNodeImpactScore && nullNodeImpactScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImpactScore = null;
+            if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
+            if (parseNode.GetChildNode("percent_change") is { } nullNodePercentChange && nullNodePercentChange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PercentChange = null;
+            if (parseNode.GetChildNode("previous_value") is { } nullNodePreviousValue && nullNodePreviousValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousValue = null;
+        }
+
         /// <summary>The current_value property</summary>
-        public double? CurrentValue { get; set; }
+        public double? CurrentValue { get => _explicitNullValueCurrentValue; set { _explicitNullValueCurrentValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_value"); else _explicitNullProperties?.Remove("current_value"); } }
+        private double? _explicitNullValueCurrentValue = default!;
         /// <summary>The dimension_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DimensionType { get; set; }
+        public string? DimensionType { get => _explicitNullValueDimensionType; set { _explicitNullValueDimensionType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension_type"); else _explicitNullProperties?.Remove("dimension_type"); } }
+        private string? _explicitNullValueDimensionType = default!;
 #nullable restore
 #else
-        public string DimensionType { get; set; }
+        public string DimensionType { get => _explicitNullValueDimensionType; set { _explicitNullValueDimensionType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension_type"); else _explicitNullProperties?.Remove("dimension_type"); } }
+        private string _explicitNullValueDimensionType = default!;
 #endif
         /// <summary>The dimension_value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DimensionValue { get; set; }
+        public string? DimensionValue { get => _explicitNullValueDimensionValue; set { _explicitNullValueDimensionValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension_value"); else _explicitNullProperties?.Remove("dimension_value"); } }
+        private string? _explicitNullValueDimensionValue = default!;
 #nullable restore
 #else
-        public string DimensionValue { get; set; }
+        public string DimensionValue { get => _explicitNullValueDimensionValue; set { _explicitNullValueDimensionValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dimension_value"); else _explicitNullProperties?.Remove("dimension_value"); } }
+        private string _explicitNullValueDimensionValue = default!;
 #endif
         /// <summary>The impact_score property</summary>
-        public double? ImpactScore { get; set; }
+        public double? ImpactScore { get => _explicitNullValueImpactScore; set { _explicitNullValueImpactScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact_score"); else _explicitNullProperties?.Remove("impact_score"); } }
+        private double? _explicitNullValueImpactScore = default!;
         /// <summary>The metric property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Metric { get; set; }
+        public string? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private string? _explicitNullValueMetric = default!;
 #nullable restore
 #else
-        public string Metric { get; set; }
+        public string Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        private string _explicitNullValueMetric = default!;
 #endif
         /// <summary>The percent_change property</summary>
-        public double? PercentChange { get; set; }
+        public double? PercentChange { get => _explicitNullValuePercentChange; set { _explicitNullValuePercentChange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("percent_change"); else _explicitNullProperties?.Remove("percent_change"); } }
+        private double? _explicitNullValuePercentChange = default!;
         /// <summary>The previous_value property</summary>
-        public double? PreviousValue { get; set; }
+        public double? PreviousValue { get => _explicitNullValuePreviousValue; set { _explicitNullValuePreviousValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_value"); else _explicitNullProperties?.Remove("previous_value"); } }
+        private double? _explicitNullValuePreviousValue = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -52,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WebNotableChangeItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WebNotableChangeItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WebNotableChangeItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -84,7 +108,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("impact_score", ImpactScore);
             writer.WriteStringValue("metric", Metric);
             writer.WriteDoubleValue("percent_change", PercentChange);
-            writer.WriteDoubleValue("previous_value", PreviousValue);
+            writer.WriteDoubleValue("previous_value", PreviousValue);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

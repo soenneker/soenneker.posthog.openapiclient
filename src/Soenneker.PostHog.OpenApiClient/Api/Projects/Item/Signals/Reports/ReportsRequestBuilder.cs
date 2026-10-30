@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Available_reviewers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Bulk_claim;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Pr_ci_statuses;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Ranking_outcomes;
@@ -28,6 +29,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Available_reviewers.Available_reviewersRequestBuilder Available_reviewers
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Available_reviewers.Available_reviewersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The bulk_claim property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Bulk_claim.Bulk_claimRequestBuilder Bulk_claim
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Bulk_claim.Bulk_claimRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The bulkState property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.BulkState.BulkStateRequestBuilder BulkState

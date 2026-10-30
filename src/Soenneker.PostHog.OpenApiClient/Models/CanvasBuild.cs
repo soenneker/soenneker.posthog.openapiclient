@@ -12,7 +12,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasBuild : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("build_status") is { } nullNodeBuildStatus && nullNodeBuildStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuildStatus = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("diagnostics") is { } nullNodeDiagnostics && nullNodeDiagnostics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Diagnostics = null;
+            if (parseNode.GetChildNode("finished_at") is { } nullNodeFinishedAt && nullNodeFinishedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinishedAt = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("integrity") is { } nullNodeIntegrity && nullNodeIntegrity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Integrity = null;
+            if (parseNode.GetChildNode("manifest") is { } nullNodeManifest && nullNodeManifest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Manifest = null;
+            if (parseNode.GetChildNode("pinned") is { } nullNodePinned && nullNodePinned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pinned = null;
+            if (parseNode.GetChildNode("source_version_id") is { } nullNodeSourceVersionId && nullNodeSourceVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceVersionId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Signed URL for the ready build&apos;s entry HTML. Null until ready or when artifact delivery is unavailable.</summary>
@@ -24,41 +40,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string ArtifactUrl { get; private set; }
 #endif
         /// <summary>* `queued` - queued* `building` - building* `ready` - ready* `failed` - failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus? BuildStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus? BuildStatus { get => _explicitNullValueBuildStatus; set { _explicitNullValueBuildStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_status"); else _explicitNullProperties?.Remove("build_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildBuildStatus? _explicitNullValueBuildStatus = default!;
         /// <summary>When the build was queued.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>Structured diagnostics recorded by the build (errors explain a failed status).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? Diagnostics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? Diagnostics { get => _explicitNullValueDiagnostics; set { _explicitNullValueDiagnostics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnostics"); else _explicitNullProperties?.Remove("diagnostics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? _explicitNullValueDiagnostics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> Diagnostics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> Diagnostics { get => _explicitNullValueDiagnostics; set { _explicitNullValueDiagnostics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnostics"); else _explicitNullProperties?.Remove("diagnostics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> _explicitNullValueDiagnostics = default!;
 #endif
         /// <summary>When the build reached a terminal state.</summary>
-        public DateTimeOffset? FinishedAt { get; set; }
+        public DateTimeOffset? FinishedAt { get => _explicitNullValueFinishedAt; set { _explicitNullValueFinishedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finished_at"); else _explicitNullProperties?.Remove("finished_at"); } }
+        private DateTimeOffset? _explicitNullValueFinishedAt = default!;
         /// <summary>The build&apos;s id.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Hex SHA-256 over the manifest — the artifact&apos;s integrity anchor. Null until ready.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Integrity { get; set; }
+        public string? Integrity { get => _explicitNullValueIntegrity; set { _explicitNullValueIntegrity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrity"); else _explicitNullProperties?.Remove("integrity"); } }
+        private string? _explicitNullValueIntegrity = default!;
 #nullable restore
 #else
-        public string Integrity { get; set; }
+        public string Integrity { get => _explicitNullValueIntegrity; set { _explicitNullValueIntegrity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrity"); else _explicitNullProperties?.Remove("integrity"); } }
+        private string _explicitNullValueIntegrity = default!;
 #endif
         /// <summary>The frozen artifact manifest — present once the build is ready.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest? Manifest { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest? Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest? _explicitNullValueManifest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest Manifest { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest _explicitNullValueManifest = default!;
 #endif
         /// <summary>Pinned builds are retained for the lifetime of the canvas.</summary>
-        public bool? Pinned { get; set; }
+        public bool? Pinned { get => _explicitNullValuePinned; set { _explicitNullValuePinned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned"); else _explicitNullProperties?.Remove("pinned"); } }
+        private bool? _explicitNullValuePinned = default!;
         /// <summary>The source version this build compiled.</summary>
-        public Guid? SourceVersionId { get; set; }
+        public Guid? SourceVersionId { get => _explicitNullValueSourceVersionId; set { _explicitNullValueSourceVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_version_id"); else _explicitNullProperties?.Remove("source_version_id"); } }
+        private Guid? _explicitNullValueSourceVersionId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild"/> and sets the default values.
         /// </summary>
@@ -74,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -112,6 +140,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest>("manifest", Manifest);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteGuidValue("source_version_id", SourceVersionId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

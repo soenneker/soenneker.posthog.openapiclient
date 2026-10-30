@@ -11,54 +11,87 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class OfflineResultRead : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("accepted_at") is { } nullNodeAcceptedAt && nullNodeAcceptedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AcceptedAt = null;
+            if (parseNode.GetChildNode("error_code") is { } nullNodeErrorCode && nullNodeErrorCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCode = null;
+            if (parseNode.GetChildNode("evaluated_at") is { } nullNodeEvaluatedAt && nullNodeEvaluatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluatedAt = null;
+            if (parseNode.GetChildNode("evaluator_trace_id") is { } nullNodeEvaluatorTraceId && nullNodeEvaluatorTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluatorTraceId = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("item_id") is { } nullNodeItemId && nullNodeItemId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ItemId = null;
+            if (parseNode.GetChildNode("payload_expires_at") is { } nullNodePayloadExpiresAt && nullNodePayloadExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadExpiresAt = null;
+            if (parseNode.GetChildNode("payload_state") is { } nullNodePayloadState && nullNodePayloadState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadState = null;
+            if (parseNode.GetChildNode("scorer") is { } nullNodeScorer && nullNodeScorer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scorer = null;
+            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("value") is { } nullNodeValue && nullNodeValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Value = null;
+        }
+
         /// <summary>Original server acceptance time.</summary>
-        public DateTimeOffset? AcceptedAt { get; set; }
+        public DateTimeOffset? AcceptedAt { get => _explicitNullValueAcceptedAt; set { _explicitNullValueAcceptedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accepted_at"); else _explicitNullProperties?.Remove("accepted_at"); } }
+        private DateTimeOffset? _explicitNullValueAcceptedAt = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional evaluator error code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ErrorCode { get; set; }
+        public string? ErrorCode { get => _explicitNullValueErrorCode; set { _explicitNullValueErrorCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_code"); else _explicitNullProperties?.Remove("error_code"); } }
+        private string? _explicitNullValueErrorCode = default!;
 #nullable restore
 #else
-        public string ErrorCode { get; set; }
+        public string ErrorCode { get => _explicitNullValueErrorCode; set { _explicitNullValueErrorCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_code"); else _explicitNullProperties?.Remove("error_code"); } }
+        private string _explicitNullValueErrorCode = default!;
 #endif
         /// <summary>Caller-supplied evaluation time.</summary>
-        public DateTimeOffset? EvaluatedAt { get; set; }
+        public DateTimeOffset? EvaluatedAt { get => _explicitNullValueEvaluatedAt; set { _explicitNullValueEvaluatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluated_at"); else _explicitNullProperties?.Remove("evaluated_at"); } }
+        private DateTimeOffset? _explicitNullValueEvaluatedAt = default!;
         /// <summary>Optional evaluator trace navigation reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvaluatorTraceId { get; set; }
+        public string? EvaluatorTraceId { get => _explicitNullValueEvaluatorTraceId; set { _explicitNullValueEvaluatorTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluator_trace_id"); else _explicitNullProperties?.Remove("evaluator_trace_id"); } }
+        private string? _explicitNullValueEvaluatorTraceId = default!;
 #nullable restore
 #else
-        public string EvaluatorTraceId { get; set; }
+        public string EvaluatorTraceId { get => _explicitNullValueEvaluatorTraceId; set { _explicitNullValueEvaluatorTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluator_trace_id"); else _explicitNullProperties?.Remove("evaluator_trace_id"); } }
+        private string _explicitNullValueEvaluatorTraceId = default!;
 #endif
         /// <summary>Stable result UUID.</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Item evaluated by this result.</summary>
-        public Guid? ItemId { get; set; }
-        /// <summary>Payload retention deadline; cleanup is not yet enabled.</summary>
-        public DateTimeOffset? PayloadExpiresAt { get; set; }
+        public Guid? ItemId { get => _explicitNullValueItemId; set { _explicitNullValueItemId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("item_id"); else _explicitNullProperties?.Remove("item_id"); } }
+        private Guid? _explicitNullValueItemId = default!;
+        /// <summary>Payload expires 30 days after first acceptance; deletion runs hourly.</summary>
+        public DateTimeOffset? PayloadExpiresAt { get => _explicitNullValuePayloadExpiresAt; set { _explicitNullValuePayloadExpiresAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_expires_at"); else _explicitNullProperties?.Remove("payload_expires_at"); } }
+        private DateTimeOffset? _explicitNullValuePayloadExpiresAt = default!;
         /// <summary>* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState? PayloadState { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState? PayloadState { get => _explicitNullValuePayloadState; set { _explicitNullValuePayloadState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_state"); else _explicitNullProperties?.Remove("payload_state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadPayloadState? _explicitNullValuePayloadState = default!;
         /// <summary>Pinned scorer version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer? Scorer { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer? Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer? _explicitNullValueScorer = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer Scorer { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer _explicitNullValueScorer = default!;
 #endif
         /// <summary>* `ok` - OK* `error` - Error* `skipped` - Skipped* `not_applicable` - Not applicable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus? Status { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus? _explicitNullValueStatus = default!;
         /// <summary>Typed score for ok outcomes; null for other outcomes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue? Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue? Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue? _explicitNullValueValue = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue Value { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue Value { get => _explicitNullValueValue; set { _explicitNullValueValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value"); else _explicitNullProperties?.Remove("value"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue _explicitNullValueValue = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultRead"/> and sets the default values.
@@ -75,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultRead CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultRead();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultRead(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,6 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadScorer>("scorer", Scorer);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadStatus>("status", Status);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultReadValue>("value", Value);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

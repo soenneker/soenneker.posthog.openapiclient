@@ -11,60 +11,100 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentHealthFinding : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
+            if (parseNode.GetChildNode("detail") is { } nullNodeDetail && nullNodeDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detail = null;
+            if (parseNode.GetChildNode("diagnostic_ref") is { } nullNodeDiagnosticRef && nullNodeDiagnosticRef.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiagnosticRef = null;
+            if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
+            if (parseNode.GetChildNode("subcode") is { } nullNodeSubcode && nullNodeSubcode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subcode = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>The actions that fix the problem, in order of preference, for example &apos;open_feature_flag&apos; or &apos;add_primary_metric&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingActionKindEnum?>? Actions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingActionKindEnum?>? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingActionKindEnum?>? _explicitNullValueActions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingActionKindEnum?> Actions { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingActionKindEnum?> Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingActionKindEnum?> _explicitNullValueActions = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `flag_off_while_running` - Flag Off While Running* `variant_shipped_while_running` - Variant Shipped While Running* `flag_live_after_end` - Flag Live After End* `flag_live_before_launch` - Flag Live Before Launch* `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded* `multiple_variants_share` - Multiple Variants Share* `no_metric` - No Metric* `metric_event_not_ingested` - Metric Event Not Ingested* `metric_cannot_compile` - Metric Cannot Compile* `metric_calculation_failed` - Metric Calculation Failed* `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match* `exposure_filter_on_dynamic_cohort` - Exposure Filter On Dynamic Cohort* `exposure_filter_excludes_events` - Exposure Filter Excludes Events* `srm` - Sample Ratio Mismatch* `zero_exposures` - Zero Exposures* `forced_variant_release_condition` - Forced Variant Release Condition* `flag_variants_mismatch` - Flag Variants Mismatch* `split_changed_mid_run` - Split Changed Mid Run* `bucketing_changed_mid_run` - Bucketing Changed Mid Run* `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run* `new_flag_no_traffic` - New Flag No Traffic* `early_significance` - Early Significance</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingCode? Code { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingCode? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingCode? _explicitNullValueCode = default!;
         /// <summary>What is wrong, what it does to the experiment, and how to fix it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Detail { get; set; }
+        public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        private string? _explicitNullValueDetail = default!;
 #nullable restore
 #else
-        public string Detail { get; set; }
+        public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        private string _explicitNullValueDetail = default!;
 #endif
         /// <summary>The id of the matching diagnostic in the diagnosing-experiment-health skill, for example &apos;A5&apos;. Null when the skill has none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DiagnosticRef { get; set; }
+        public string? DiagnosticRef { get => _explicitNullValueDiagnosticRef; set { _explicitNullValueDiagnosticRef = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnostic_ref"); else _explicitNullProperties?.Remove("diagnostic_ref"); } }
+        private string? _explicitNullValueDiagnosticRef = default!;
 #nullable restore
 #else
-        public string DiagnosticRef { get; set; }
+        public string DiagnosticRef { get => _explicitNullValueDiagnosticRef; set { _explicitNullValueDiagnosticRef = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnostic_ref"); else _explicitNullProperties?.Remove("diagnostic_ref"); } }
+        private string _explicitNullValueDiagnosticRef = default!;
 #endif
         /// <summary>The values behind the finding, such as the key of a shipped variant or the share of users exposed to multiple variants. The keys depend on the code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty? Evidence { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty? _explicitNullValueEvidence = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty Evidence { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty _explicitNullValueEvidence = default!;
+#endif
+        /// <summary>A stable qualifier below the subcode: where a sample ratio mismatch is located (&apos;library&apos;, &apos;page&apos;), what leaves nobody exposed (&apos;test_account_filter&apos;), or why a check could not read what it needs (&apos;no_history_access&apos;). Null when the finding names none.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string? _explicitNullValueReason = default!;
+#nullable restore
+#else
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private string _explicitNullValueReason = default!;
 #endif
         /// <summary>* `critical` - Critical severity* `warning` - Warning severity* `info` - Info severity</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingSeverity? Severity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingSeverity? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingSeverity? _explicitNullValueSeverity = default!;
         /// <summary>The case within the code, when a code covers several, for example &apos;running_but_no_rollout&apos; within &apos;flag_off_while_running&apos;. Null when the code has one case.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Subcode { get; set; }
+        public string? Subcode { get => _explicitNullValueSubcode; set { _explicitNullValueSubcode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subcode"); else _explicitNullProperties?.Remove("subcode"); } }
+        private string? _explicitNullValueSubcode = default!;
 #nullable restore
 #else
-        public string Subcode { get; set; }
+        public string Subcode { get => _explicitNullValueSubcode; set { _explicitNullValueSubcode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subcode"); else _explicitNullProperties?.Remove("subcode"); } }
+        private string _explicitNullValueSubcode = default!;
 #endif
         /// <summary>One-line summary of the problem.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFinding"/> and sets the default values.
@@ -81,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFinding CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFinding();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFinding(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -96,6 +136,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "diagnostic_ref", n => { DiagnosticRef = n.GetStringValue(); } },
                 { "evidence", n => { Evidence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty.CreateFromDiscriminatorValue); } },
+                { "reason", n => { Reason = n.GetStringValue(); } },
                 { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingSeverity>(); } },
                 { "subcode", n => { Subcode = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -113,9 +154,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("detail", Detail);
             writer.WriteStringValue("diagnostic_ref", DiagnosticRef);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingEvidenceProperty>("evidence", Evidence);
+            writer.WriteStringValue("reason", Reason);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFindingSeverity>("severity", Severity);
             writer.WriteStringValue("subcode", Subcode);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

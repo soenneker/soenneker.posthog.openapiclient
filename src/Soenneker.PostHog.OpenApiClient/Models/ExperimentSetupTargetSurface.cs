@@ -11,57 +11,92 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ExperimentSetupTargetSurface : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("anonymous_share") is { } nullNodeAnonymousShare && nullNodeAnonymousShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnonymousShare = null;
+            if (parseNode.GetChildNode("computed_at") is { } nullNodeComputedAt && nullNodeComputedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputedAt = null;
+            if (parseNode.GetChildNode("device_id_share") is { } nullNodeDeviceIdShare && nullNodeDeviceIdShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceIdShare = null;
+            if (parseNode.GetChildNode("exposures_per_day_estimate") is { } nullNodeExposuresPerDayEstimate && nullNodeExposuresPerDayEstimate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposuresPerDayEstimate = null;
+            if (parseNode.GetChildNode("libs") is { } nullNodeLibs && nullNodeLibs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Libs = null;
+            if (parseNode.GetChildNode("libs_truncated") is { } nullNodeLibsTruncated && nullNodeLibsTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LibsTruncated = null;
+            if (parseNode.GetChildNode("source_event") is { } nullNodeSourceEvent && nullNodeSourceEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceEvent = null;
+            if (parseNode.GetChildNode("target_properties") is { } nullNodeTargetProperties && nullNodeTargetProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetProperties = null;
+            if (parseNode.GetChildNode("target_url_contains") is { } nullNodeTargetUrlContains && nullNodeTargetUrlContains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetUrlContains = null;
+            if (parseNode.GetChildNode("test_accounts_filtered") is { } nullNodeTestAccountsFiltered && nullNodeTestAccountsFiltered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestAccountsFiltered = null;
+            if (parseNode.GetChildNode("unique_persons") is { } nullNodeUniquePersons && nullNodeUniquePersons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniquePersons = null;
+            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Among all distinct ids that report whether they are identified, whichever SDK they came from, the share that was anonymous. Null when no target event reported it.</summary>
-        public double? AnonymousShare { get; set; }
+        public double? AnonymousShare { get => _explicitNullValueAnonymousShare; set { _explicitNullValueAnonymousShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anonymous_share"); else _explicitNullProperties?.Remove("anonymous_share"); } }
+        private double? _explicitNullValueAnonymousShare = default!;
         /// <summary>When the numbers were computed. They are cached for an hour.</summary>
-        public DateTimeOffset? ComputedAt { get; set; }
+        public DateTimeOffset? ComputedAt { get => _explicitNullValueComputedAt; set { _explicitNullValueComputedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed_at"); else _explicitNullProperties?.Remove("computed_at"); } }
+        private DateTimeOffset? _explicitNullValueComputedAt = default!;
         /// <summary>Share of all target events that carry a $device_id. Null when there were no target events.</summary>
-        public double? DeviceIdShare { get; set; }
+        public double? DeviceIdShare { get => _explicitNullValueDeviceIdShare; set { _explicitNullValueDeviceIdShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_id_share"); else _explicitNullProperties?.Remove("device_id_share"); } }
+        private double? _explicitNullValueDeviceIdShare = default!;
         /// <summary>unique_persons divided by window_days. Pass it as exposure_rate_per_day to experiment-calculate-running-time, scaled by the share of traffic the experiment will include.</summary>
-        public double? ExposuresPerDayEstimate { get; set; }
+        public double? ExposuresPerDayEstimate { get => _explicitNullValueExposuresPerDayEstimate; set { _explicitNullValueExposuresPerDayEstimate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposures_per_day_estimate"); else _explicitNullProperties?.Remove("exposures_per_day_estimate"); } }
+        private double? _explicitNullValueExposuresPerDayEstimate = default!;
         /// <summary>Up to 5 SDKs, most persons reached first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach>? Libs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach>? Libs { get => _explicitNullValueLibs; set { _explicitNullValueLibs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs"); else _explicitNullProperties?.Remove("libs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach>? _explicitNullValueLibs = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach> Libs { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach> Libs { get => _explicitNullValueLibs; set { _explicitNullValueLibs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs"); else _explicitNullProperties?.Remove("libs"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach> _explicitNullValueLibs = default!;
 #endif
         /// <summary>True when more SDKs sent target events than libs lists.</summary>
-        public bool? LibsTruncated { get; set; }
+        public bool? LibsTruncated { get => _explicitNullValueLibsTruncated; set { _explicitNullValueLibsTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("libs_truncated"); else _explicitNullProperties?.Remove("libs_truncated"); } }
+        private bool? _explicitNullValueLibsTruncated = default!;
         /// <summary>The target event that was counted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceEvent { get; set; }
+        public string? SourceEvent { get => _explicitNullValueSourceEvent; set { _explicitNullValueSourceEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_event"); else _explicitNullProperties?.Remove("source_event"); } }
+        private string? _explicitNullValueSourceEvent = default!;
 #nullable restore
 #else
-        public string SourceEvent { get; set; }
+        public string SourceEvent { get => _explicitNullValueSourceEvent; set { _explicitNullValueSourceEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_event"); else _explicitNullProperties?.Remove("source_event"); } }
+        private string _explicitNullValueSourceEvent = default!;
 #endif
         /// <summary>Event or person property filters that narrow which events are counted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? TargetProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? TargetProperties { get => _explicitNullValueTargetProperties; set { _explicitNullValueTargetProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_properties"); else _explicitNullProperties?.Remove("target_properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? _explicitNullValueTargetProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> TargetProperties { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> TargetProperties { get => _explicitNullValueTargetProperties; set { _explicitNullValueTargetProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_properties"); else _explicitNullProperties?.Remove("target_properties"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> _explicitNullValueTargetProperties = default!;
 #endif
         /// <summary>The URL filter that was applied, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetUrlContains { get; set; }
+        public string? TargetUrlContains { get => _explicitNullValueTargetUrlContains; set { _explicitNullValueTargetUrlContains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_url_contains"); else _explicitNullProperties?.Remove("target_url_contains"); } }
+        private string? _explicitNullValueTargetUrlContains = default!;
 #nullable restore
 #else
-        public string TargetUrlContains { get; set; }
+        public string TargetUrlContains { get => _explicitNullValueTargetUrlContains; set { _explicitNullValueTargetUrlContains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_url_contains"); else _explicitNullProperties?.Remove("target_url_contains"); } }
+        private string _explicitNullValueTargetUrlContains = default!;
 #endif
         /// <summary>Whether test accounts were left out. It follows the default a new experiment gets, so the counts match the population that experiment analyzes. False when the project defines no test-account filters.</summary>
-        public bool? TestAccountsFiltered { get; set; }
+        public bool? TestAccountsFiltered { get => _explicitNullValueTestAccountsFiltered; set { _explicitNullValueTestAccountsFiltered = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_accounts_filtered"); else _explicitNullProperties?.Remove("test_accounts_filtered"); } }
+        private bool? _explicitNullValueTestAccountsFiltered = default!;
         /// <summary>Persons who sent the target event in the window.</summary>
-        public int? UniquePersons { get; set; }
+        public int? UniquePersons { get => _explicitNullValueUniquePersons; set { _explicitNullValueUniquePersons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_persons"); else _explicitNullProperties?.Remove("unique_persons"); } }
+        private int? _explicitNullValueUniquePersons = default!;
         /// <summary>Days of target events read, ending now.</summary>
-        public int? WindowDays { get; set; }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurface"/> and sets the default values.
         /// </summary>
@@ -77,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurface CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurface();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTargetSurface(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -120,6 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("test_accounts_filtered", TestAccountsFiltered);
             writer.WriteIntValue("unique_persons", UniquePersons);
             writer.WriteIntValue("window_days", WindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -22,6 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activi
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.Available_filters.Available_filtersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The EmptyPathSegment property</summary>
+        [Obsolete("")]
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activity_logs.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);

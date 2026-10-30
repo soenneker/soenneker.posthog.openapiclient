@@ -11,32 +11,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class InsightFilterOverrideContext : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("dashboard") is { } nullNodeDashboard && nullNodeDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dashboard = null;
+            if (parseNode.GetChildNode("overridden_dashboard") is { } nullNodeOverriddenDashboard && nullNodeOverriddenDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OverriddenDashboard = null;
+            if (parseNode.GetChildNode("tile") is { } nullNodeTile && nullNodeTile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tile = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Dashboard filters that remain active after applying tile precedence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? Dashboard { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? Dashboard { get => _explicitNullValueDashboard; set { _explicitNullValueDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard"); else _explicitNullProperties?.Remove("dashboard"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? _explicitNullValueDashboard = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter Dashboard { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter Dashboard { get => _explicitNullValueDashboard; set { _explicitNullValueDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard"); else _explicitNullProperties?.Remove("dashboard"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter _explicitNullValueDashboard = default!;
 #endif
         /// <summary>Dashboard filters replaced by the tile filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? OverriddenDashboard { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? OverriddenDashboard { get => _explicitNullValueOverriddenDashboard; set { _explicitNullValueOverriddenDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overridden_dashboard"); else _explicitNullProperties?.Remove("overridden_dashboard"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? _explicitNullValueOverriddenDashboard = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter OverriddenDashboard { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter OverriddenDashboard { get => _explicitNullValueOverriddenDashboard; set { _explicitNullValueOverriddenDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overridden_dashboard"); else _explicitNullProperties?.Remove("overridden_dashboard"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter _explicitNullValueOverriddenDashboard = default!;
 #endif
         /// <summary>Tile filters applied above the dashboard filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TileFilters? Tile { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileFilters? Tile { get => _explicitNullValueTile; set { _explicitNullValueTile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile"); else _explicitNullProperties?.Remove("tile"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TileFilters? _explicitNullValueTile = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TileFilters Tile { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileFilters Tile { get => _explicitNullValueTile; set { _explicitNullValueTile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile"); else _explicitNullProperties?.Remove("tile"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TileFilters _explicitNullValueTile = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext"/> and sets the default values.
@@ -53,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>("dashboard", Dashboard);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>("overridden_dashboard", OverriddenDashboard);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TileFilters>("tile", Tile);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

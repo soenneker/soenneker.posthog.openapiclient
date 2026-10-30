@@ -11,13 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PreprocessingConfig : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("diffs_n") is { } nullNodeDiffsN && nullNodeDiffsN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiffsN = null;
+            if (parseNode.GetChildNode("lags_n") is { } nullNodeLagsN && nullNodeLagsN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LagsN = null;
+            if (parseNode.GetChildNode("smooth_n") is { } nullNodeSmoothN && nullNodeSmoothN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SmoothN = null;
+        }
+
         /// <summary>Order of differencing. 0 = raw values, 1 = first-order diffs (default: 0)</summary>
-        public int? DiffsN { get; set; }
+        public int? DiffsN { get => _explicitNullValueDiffsN; set { _explicitNullValueDiffsN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diffs_n"); else _explicitNullProperties?.Remove("diffs_n"); } }
+        private int? _explicitNullValueDiffsN = default!;
         /// <summary>Number of lag features. 0 = none, &gt;0 = include n lagged values (default: 0)</summary>
-        public int? LagsN { get; set; }
+        public int? LagsN { get => _explicitNullValueLagsN; set { _explicitNullValueLagsN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lags_n"); else _explicitNullProperties?.Remove("lags_n"); } }
+        private int? _explicitNullValueLagsN = default!;
         /// <summary>Moving average window size. 0 = no smoothing, &gt;1 = smooth over n points (default: 0)</summary>
-        public int? SmoothN { get; set; }
+        public int? SmoothN { get => _explicitNullValueSmoothN; set { _explicitNullValueSmoothN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("smooth_n"); else _explicitNullProperties?.Remove("smooth_n"); } }
+        private int? _explicitNullValueSmoothN = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -26,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PreprocessingConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("diffs_n", DiffsN);
             writer.WriteIntValue("lags_n", LagsN);
-            writer.WriteIntValue("smooth_n", SmoothN);
+            writer.WriteIntValue("smooth_n", SmoothN);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

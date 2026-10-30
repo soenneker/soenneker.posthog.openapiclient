@@ -12,40 +12,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SummarizeResponseSummary : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("flow_diagram") is { } nullNodeFlowDiagram && nullNodeFlowDiagram.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlowDiagram = null;
+            if (parseNode.GetChildNode("interesting_notes") is { } nullNodeInterestingNotes && nullNodeInterestingNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InterestingNotes = null;
+            if (parseNode.GetChildNode("summary_bullets") is { } nullNodeSummaryBullets && nullNodeSummaryBullets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryBullets = null;
+            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mermaid flowchart code showing the main flow</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FlowDiagram { get; set; }
+        public string? FlowDiagram { get => _explicitNullValueFlowDiagram; set { _explicitNullValueFlowDiagram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flow_diagram"); else _explicitNullProperties?.Remove("flow_diagram"); } }
+        private string? _explicitNullValueFlowDiagram = default!;
 #nullable restore
 #else
-        public string FlowDiagram { get; set; }
+        public string FlowDiagram { get => _explicitNullValueFlowDiagram; set { _explicitNullValueFlowDiagram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flow_diagram"); else _explicitNullProperties?.Remove("flow_diagram"); } }
+        private string _explicitNullValueFlowDiagram = default!;
 #endif
         /// <summary>Interesting notes (0-2 for minimal, more for detailed)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote>? InterestingNotes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote>? InterestingNotes { get => _explicitNullValueInterestingNotes; set { _explicitNullValueInterestingNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interesting_notes"); else _explicitNullProperties?.Remove("interesting_notes"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote>? _explicitNullValueInterestingNotes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote> InterestingNotes { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote> InterestingNotes { get => _explicitNullValueInterestingNotes; set { _explicitNullValueInterestingNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interesting_notes"); else _explicitNullProperties?.Remove("interesting_notes"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote> _explicitNullValueInterestingNotes = default!;
 #endif
         /// <summary>Main summary bullets</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet>? SummaryBullets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet>? SummaryBullets { get => _explicitNullValueSummaryBullets; set { _explicitNullValueSummaryBullets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_bullets"); else _explicitNullProperties?.Remove("summary_bullets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet>? _explicitNullValueSummaryBullets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet> SummaryBullets { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet> SummaryBullets { get => _explicitNullValueSummaryBullets; set { _explicitNullValueSummaryBullets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_bullets"); else _explicitNullProperties?.Remove("summary_bullets"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet> _explicitNullValueSummaryBullets = default!;
 #endif
         /// <summary>Concise title (no longer than 10 words) summarizing the trace/event</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get; set; }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get; set; }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary"/> and sets the default values.
@@ -62,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SummarizeResponseSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote>("interesting_notes", InterestingNotes);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet>("summary_bullets", SummaryBullets);
             writer.WriteStringValue("title", Title);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

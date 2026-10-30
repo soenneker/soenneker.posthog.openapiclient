@@ -11,50 +11,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MissingSymbolsExample : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("example_exception") is { } nullNodeExampleException && nullNodeExampleException.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExampleException = null;
+            if (parseNode.GetChildNode("frames") is { } nullNodeFrames && nullNodeFrames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Frames = null;
+            if (parseNode.GetChildNode("http_status") is { } nullNodeHttpStatus && nullNodeHttpStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HttpStatus = null;
+            if (parseNode.GetChildNode("issue_count") is { } nullNodeIssueCount && nullNodeIssueCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssueCount = null;
+            if (parseNode.GetChildNode("issue_count_capped") is { } nullNodeIssueCountCapped && nullNodeIssueCountCapped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IssueCountCapped = null;
+            if (parseNode.GetChildNode("issues") is { } nullNodeIssues && nullNodeIssues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Issues = null;
+            if (parseNode.GetChildNode("location") is { } nullNodeLocation && nullNodeLocation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Location = null;
+            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("symbol_id") is { } nullNodeSymbolId && nullNodeSymbolId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SymbolId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A recent exception whose stack trace contains these frames, or null when none was found.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException? ExampleException { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException? ExampleException { get => _explicitNullValueExampleException; set { _explicitNullValueExampleException = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("example_exception"); else _explicitNullProperties?.Remove("example_exception"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException? _explicitNullValueExampleException = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException ExampleException { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException ExampleException { get => _explicitNullValueExampleException; set { _explicitNullValueExampleException = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("example_exception"); else _explicitNullProperties?.Remove("example_exception"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException _explicitNullValueExampleException = default!;
 #endif
         /// <summary>How many distinct stack frames in the lookback window this covers.</summary>
-        public int? Frames { get; set; }
+        public int? Frames { get => _explicitNullValueFrames; set { _explicitNullValueFrames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frames"); else _explicitNullProperties?.Remove("frames"); } }
+        private int? _explicitNullValueFrames = default!;
         /// <summary>The HTTP status the script or source map returned, for &apos;file_not_reachable&apos;.</summary>
-        public int? HttpStatus { get; set; }
+        public int? HttpStatus { get => _explicitNullValueHttpStatus; set { _explicitNullValueHttpStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("http_status"); else _explicitNullProperties?.Remove("http_status"); } }
+        private int? _explicitNullValueHttpStatus = default!;
         /// <summary>How many issues have exceptions in the lookback window that contain these frames.</summary>
-        public int? IssueCount { get; set; }
+        public int? IssueCount { get => _explicitNullValueIssueCount; set { _explicitNullValueIssueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issue_count"); else _explicitNullProperties?.Remove("issue_count"); } }
+        private int? _explicitNullValueIssueCount = default!;
         /// <summary>True when the exception scan searched only a sample of the frames or stopped at its limit, so `issue_count` is a lower bound.</summary>
-        public bool? IssueCountCapped { get; set; }
+        public bool? IssueCountCapped { get => _explicitNullValueIssueCountCapped; set { _explicitNullValueIssueCountCapped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issue_count_capped"); else _explicitNullProperties?.Remove("issue_count_capped"); } }
+        private bool? _explicitNullValueIssueCountCapped = default!;
         /// <summary>Up to five issues whose exceptions in the lookback window contain these frames, most occurrences first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsIssue>? Issues { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsIssue>? Issues { get => _explicitNullValueIssues; set { _explicitNullValueIssues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issues"); else _explicitNullProperties?.Remove("issues"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsIssue>? _explicitNullValueIssues = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsIssue> Issues { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsIssue> Issues { get => _explicitNullValueIssues; set { _explicitNullValueIssues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issues"); else _explicitNullProperties?.Remove("issues"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsIssue> _explicitNullValueIssues = default!;
 #endif
         /// <summary>Where the frames come from: the script URL or path, the bundle, or an example class or app image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Location { get; set; }
+        public string? Location { get => _explicitNullValueLocation; set { _explicitNullValueLocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("location"); else _explicitNullProperties?.Remove("location"); } }
+        private string? _explicitNullValueLocation = default!;
 #nullable restore
 #else
-        public string Location { get; set; }
+        public string Location { get => _explicitNullValueLocation; set { _explicitNullValueLocation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("location"); else _explicitNullProperties?.Remove("location"); } }
+        private string _explicitNullValueLocation = default!;
 #endif
         /// <summary>* `chunk_not_uploaded` - Source map not uploaded* `no_source_map_linked` - Script links no source map* `file_not_reachable` - Script or source map not reachable* `invalid_source_map` - Source map URL returns something else* `too_large_to_fetch` - Too large to fetch* `bundle_not_injected` - Bundle not processed by the PostHog CLI* `mapping_not_uploaded` - Mapping file not uploaded* `dsym_not_uploaded` - dSYM not uploaded* `debug_symbols_not_uploaded` - Debug symbols not uploaded</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleReason? Reason { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleReason? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleReason? _explicitNullValueReason = default!;
         /// <summary>The chunk ID, mapping ID or debug ID that the missing symbols must be uploaded under, when known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SymbolId { get; set; }
+        public string? SymbolId { get => _explicitNullValueSymbolId; set { _explicitNullValueSymbolId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_id"); else _explicitNullProperties?.Remove("symbol_id"); } }
+        private string? _explicitNullValueSymbolId = default!;
 #nullable restore
 #else
-        public string SymbolId { get; set; }
+        public string SymbolId { get => _explicitNullValueSymbolId; set { _explicitNullValueSymbolId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_id"); else _explicitNullProperties?.Remove("symbol_id"); } }
+        private string _explicitNullValueSymbolId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample"/> and sets the default values.
@@ -71,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -108,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("location", Location);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleReason>("reason", Reason);
             writer.WriteStringValue("symbol_id", SymbolId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

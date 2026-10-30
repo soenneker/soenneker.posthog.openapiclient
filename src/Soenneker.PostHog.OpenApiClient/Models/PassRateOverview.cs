@@ -11,34 +11,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class PassRateOverview : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("entries") is { } nullNodeEntries && nullNodeEntries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Entries = null;
+            if (parseNode.GetChildNode("median") is { } nullNodeMedian && nullNodeMedian.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Median = null;
+            if (parseNode.GetChildNode("medianComparison") is { } nullNodeMedianComparison && nullNodeMedianComparison.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianComparison = null;
+            if (parseNode.GetChildNode("medianTrend") is { } nullNodeMedianTrend && nullNodeMedianTrend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianTrend = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Enabled pass rate evaluations, lowest rate first.</summary>
+        /// <summary>Pass rate evaluations with results in the period, paused ones included, lowest rate first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry>? Entries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry>? Entries { get => _explicitNullValueEntries; set { _explicitNullValueEntries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entries"); else _explicitNullProperties?.Remove("entries"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry>? _explicitNullValueEntries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry> Entries { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry> Entries { get => _explicitNullValueEntries; set { _explicitNullValueEntries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entries"); else _explicitNullProperties?.Remove("entries"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry> _explicitNullValueEntries = default!;
 #endif
         /// <summary>Median of the per-evaluation pass rates without low evidence.</summary>
-        public double? Median { get; set; }
+        public double? Median { get => _explicitNullValueMedian; set { _explicitNullValueMedian = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median"); else _explicitNullProperties?.Remove("median"); } }
+        private double? _explicitNullValueMedian = default!;
         /// <summary>Median pass rate in each period, over evaluations with results in both. Null when none has.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? MedianComparison { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? _explicitNullValueMedianComparison = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison MedianComparison { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison _explicitNullValueMedianComparison = default!;
 #endif
         /// <summary>Median pass rate per bucket, aligned with `buckets`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? MedianTrend { get; set; }
+        public List<double?>? MedianTrend { get => _explicitNullValueMedianTrend; set { _explicitNullValueMedianTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianTrend"); else _explicitNullProperties?.Remove("medianTrend"); } }
+        private List<double?>? _explicitNullValueMedianTrend = default!;
 #nullable restore
 #else
-        public List<double?> MedianTrend { get; set; }
+        public List<double?> MedianTrend { get => _explicitNullValueMedianTrend; set { _explicitNullValueMedianTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianTrend"); else _explicitNullProperties?.Remove("medianTrend"); } }
+        private List<double?> _explicitNullValueMedianTrend = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverview(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("median", Median);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison>("medianComparison", MedianComparison);
             writer.WriteCollectionOfPrimitiveValues<double?>("medianTrend", MedianTrend);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

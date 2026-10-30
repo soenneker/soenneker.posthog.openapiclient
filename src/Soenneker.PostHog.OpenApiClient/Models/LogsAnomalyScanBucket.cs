@@ -11,34 +11,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsAnomalyScanBucket : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("expected") is { } nullNodeExpected && nullNodeExpected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Expected = null;
+            if (parseNode.GetChildNode("lower") is { } nullNodeLower && nullNodeLower.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lower = null;
+            if (parseNode.GetChildNode("observed") is { } nullNodeObserved && nullNodeObserved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Observed = null;
+            if (parseNode.GetChildNode("stage") is { } nullNodeStage && nullNodeStage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stage = null;
+            if (parseNode.GetChildNode("time") is { } nullNodeTime && nullNodeTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Time = null;
+            if (parseNode.GetChildNode("upper") is { } nullNodeUpper && nullNodeUpper.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Upper = null;
+            if (parseNode.GetChildNode("verdict") is { } nullNodeVerdict && nullNodeVerdict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Verdict = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Expected count from the learned baseline. Null when the bucket was not scored.</summary>
-        public double? Expected { get; set; }
+        public double? Expected { get => _explicitNullValueExpected; set { _explicitNullValueExpected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected"); else _explicitNullProperties?.Remove("expected"); } }
+        private double? _explicitNullValueExpected = default!;
         /// <summary>Lower edge of the expected band. Observed below this is a drop or silence candidate.</summary>
-        public double? Lower { get; set; }
+        public double? Lower { get => _explicitNullValueLower; set { _explicitNullValueLower = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lower"); else _explicitNullProperties?.Remove("lower"); } }
+        private double? _explicitNullValueLower = default!;
         /// <summary>Log records observed in this bucket.</summary>
-        public double? Observed { get; set; }
+        public double? Observed { get => _explicitNullValueObserved; set { _explicitNullValueObserved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observed"); else _explicitNullProperties?.Remove("observed"); } }
+        private double? _explicitNullValueObserved = default!;
         /// <summary>How much history backed the baseline for this bucket. Wider bands and lower confidence in cold_start; mature means a full seasonal baseline. Null when the bucket was gated out (for example, traffic below the detection floor).* `insufficient` - insufficient* `cold_start` - cold_start* `developing` - developing* `mature` - mature</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketStage? Stage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketStage? Stage { get => _explicitNullValueStage; set { _explicitNullValueStage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stage"); else _explicitNullProperties?.Remove("stage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketStage? _explicitNullValueStage = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketStage Stage { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketStage Stage { get => _explicitNullValueStage; set { _explicitNullValueStage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stage"); else _explicitNullProperties?.Remove("stage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketStage _explicitNullValueStage = default!;
 #endif
         /// <summary>Start of the 5 minute bucket (UTC).</summary>
-        public DateTimeOffset? Time { get; set; }
+        public DateTimeOffset? Time { get => _explicitNullValueTime; set { _explicitNullValueTime = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time"); else _explicitNullProperties?.Remove("time"); } }
+        private DateTimeOffset? _explicitNullValueTime = default!;
         /// <summary>Upper edge of the expected band. Observed above this is a spike candidate.</summary>
-        public double? Upper { get; set; }
+        public double? Upper { get => _explicitNullValueUpper; set { _explicitNullValueUpper = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upper"); else _explicitNullProperties?.Remove("upper"); } }
+        private double? _explicitNullValueUpper = default!;
         /// <summary>Anomaly verdict for this bucket, or null when the observed count sat inside the band.* `spike` - spike* `drop` - drop* `silence` - silence</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketVerdict? Verdict { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketVerdict? Verdict { get => _explicitNullValueVerdict; set { _explicitNullValueVerdict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verdict"); else _explicitNullProperties?.Remove("verdict"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketVerdict? _explicitNullValueVerdict = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketVerdict Verdict { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketVerdict Verdict { get => _explicitNullValueVerdict; set { _explicitNullValueVerdict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("verdict"); else _explicitNullProperties?.Remove("verdict"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketVerdict _explicitNullValueVerdict = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket"/> and sets the default values.
@@ -55,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucket(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -88,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("time", Time);
             writer.WriteDoubleValue("upper", Upper);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanBucketVerdict>("verdict", Verdict);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

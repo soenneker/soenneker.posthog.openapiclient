@@ -11,13 +11,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogsPlatformAlertCondition : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("threshold_count") is { } nullNodeThresholdCount && nullNodeThresholdCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdCount = null;
+            if (parseNode.GetChildNode("threshold_operator") is { } nullNodeThresholdOperator && nullNodeThresholdOperator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThresholdOperator = null;
+            if (parseNode.GetChildNode("window_minutes") is { } nullNodeWindowMinutes && nullNodeWindowMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowMinutes = null;
+        }
+
         /// <summary>Number of matching log entries in the window that breaches the threshold. Use 0 with the above operator to fire on any matching log.</summary>
-        public int? ThresholdCount { get; set; }
+        public int? ThresholdCount { get => _explicitNullValueThresholdCount; set { _explicitNullValueThresholdCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_count"); else _explicitNullProperties?.Remove("threshold_count"); } }
+        private int? _explicitNullValueThresholdCount = default!;
         /// <summary>Whether the alert fires when the count is above or below the threshold.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperator? ThresholdOperator { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperator? ThresholdOperator { get => _explicitNullValueThresholdOperator; set { _explicitNullValueThresholdOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold_operator"); else _explicitNullProperties?.Remove("threshold_operator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperator? _explicitNullValueThresholdOperator = default!;
         /// <summary>Time window in minutes over which logs are counted.</summary>
-        public int? WindowMinutes { get; set; }
+        public int? WindowMinutes { get => _explicitNullValueWindowMinutes; set { _explicitNullValueWindowMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_minutes"); else _explicitNullProperties?.Remove("window_minutes"); } }
+        private int? _explicitNullValueWindowMinutes = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -26,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertCondition CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertCondition();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogsPlatformAlertCondition(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,7 +63,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("threshold_count", ThresholdCount);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdOperator>("threshold_operator", ThresholdOperator);
-            writer.WriteIntValue("window_minutes", WindowMinutes);
+            writer.WriteIntValue("window_minutes", WindowMinutes);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

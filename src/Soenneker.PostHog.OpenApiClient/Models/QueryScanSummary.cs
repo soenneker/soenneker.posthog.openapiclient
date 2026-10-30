@@ -11,23 +11,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QueryScanSummary : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("analysis") is { } nullNodeAnalysis && nullNodeAnalysis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Analysis = null;
+            if (parseNode.GetChildNode("analysis_requested") is { } nullNodeAnalysisRequested && nullNodeAnalysisRequested.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnalysisRequested = null;
+            if (parseNode.GetChildNode("duration_ms") is { } nullNodeDurationMs && nullNodeDurationMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DurationMs = null;
+            if (parseNode.GetChildNode("killed") is { } nullNodeKilled && nullNodeKilled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Killed = null;
+            if (parseNode.GetChildNode("rows_read") is { } nullNodeRowsRead && nullNodeRowsRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsRead = null;
+        }
+
         /// <summary>The stored analysis, put on the response when it is served. Absent while the analysis runs, and when none was requested.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis? Analysis { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis? Analysis { get => _explicitNullValueAnalysis; set { _explicitNullValueAnalysis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis"); else _explicitNullProperties?.Remove("analysis"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis? _explicitNullValueAnalysis = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis Analysis { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis Analysis { get => _explicitNullValueAnalysis; set { _explicitNullValueAnalysis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis"); else _explicitNullProperties?.Remove("analysis"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryScanAnalysis _explicitNullValueAnalysis = default!;
 #endif
         /// <summary>True when the run asked for an analysis, or found one stored. While `analysis` is absent, poll `GET /query/scan/{cache_key}` for it.</summary>
-        public bool? AnalysisRequested { get; set; }
+        public bool? AnalysisRequested { get => _explicitNullValueAnalysisRequested; set { _explicitNullValueAnalysisRequested = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis_requested"); else _explicitNullProperties?.Remove("analysis_requested"); } }
+        private bool? _explicitNullValueAnalysisRequested = default!;
         /// <summary>ClickHouse time for the last fresh run, summed over its ClickHouse queries.</summary>
-        public int? DurationMs { get; set; }
+        public int? DurationMs { get => _explicitNullValueDurationMs; set { _explicitNullValueDurationMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration_ms"); else _explicitNullProperties?.Remove("duration_ms"); } }
+        private int? _explicitNullValueDurationMs = default!;
         /// <summary>True when ClickHouse stopped the run instead of finishing it.</summary>
-        public bool? Killed { get; set; }
+        public bool? Killed { get => _explicitNullValueKilled; set { _explicitNullValueKilled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("killed"); else _explicitNullProperties?.Remove("killed"); } }
+        private bool? _explicitNullValueKilled = default!;
         /// <summary>Rows ClickHouse read for the last fresh run, all tables included.</summary>
-        public int? RowsRead { get; set; }
+        public int? RowsRead { get => _explicitNullValueRowsRead; set { _explicitNullValueRowsRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_read"); else _explicitNullProperties?.Remove("rows_read"); } }
+        private int? _explicitNullValueRowsRead = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -36,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,7 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("analysis_requested", AnalysisRequested);
             writer.WriteIntValue("duration_ms", DurationMs);
             writer.WriteBoolValue("killed", Killed);
-            writer.WriteIntValue("rows_read", RowsRead);
+            writer.WriteIntValue("rows_read", RowsRead);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

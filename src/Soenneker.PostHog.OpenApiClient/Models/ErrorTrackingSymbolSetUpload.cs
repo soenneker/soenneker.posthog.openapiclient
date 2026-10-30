@@ -11,34 +11,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ErrorTrackingSymbolSetUpload : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("chunk_id") is { } nullNodeChunkId && nullNodeChunkId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunkId = null;
+            if (parseNode.GetChildNode("content_hash") is { } nullNodeContentHash && nullNodeContentHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentHash = null;
+            if (parseNode.GetChildNode("content_length") is { } nullNodeContentLength && nullNodeContentLength.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentLength = null;
+            if (parseNode.GetChildNode("release_id") is { } nullNodeReleaseId && nullNodeReleaseId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Symbol set reference to upload.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChunkId { get; set; }
+        public string? ChunkId { get => _explicitNullValueChunkId; set { _explicitNullValueChunkId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_id"); else _explicitNullProperties?.Remove("chunk_id"); } }
+        private string? _explicitNullValueChunkId = default!;
 #nullable restore
 #else
-        public string ChunkId { get; set; }
+        public string ChunkId { get => _explicitNullValueChunkId; set { _explicitNullValueChunkId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_id"); else _explicitNullProperties?.Remove("chunk_id"); } }
+        private string _explicitNullValueChunkId = default!;
 #endif
         /// <summary>Optional hash of the symbol set content, used to skip unchanged uploads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContentHash { get; set; }
+        public string? ContentHash { get => _explicitNullValueContentHash; set { _explicitNullValueContentHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hash"); else _explicitNullProperties?.Remove("content_hash"); } }
+        private string? _explicitNullValueContentHash = default!;
 #nullable restore
 #else
-        public string ContentHash { get; set; }
+        public string ContentHash { get => _explicitNullValueContentHash; set { _explicitNullValueContentHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hash"); else _explicitNullProperties?.Remove("content_hash"); } }
+        private string _explicitNullValueContentHash = default!;
 #endif
         /// <summary>Optional byte count of the content about to be uploaded. When given, the upload response also carries a presigned PUT signed for exactly this length, which S3-compatible stores without presigned POST support (such as Cloudflare R2) accept.</summary>
-        public int? ContentLength { get; set; }
+        public int? ContentLength { get => _explicitNullValueContentLength; set { _explicitNullValueContentLength = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_length"); else _explicitNullProperties?.Remove("content_length"); } }
+        private int? _explicitNullValueContentLength = default!;
         /// <summary>Optional error tracking release ID associated with this symbol set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReleaseId { get; set; }
+        public string? ReleaseId { get => _explicitNullValueReleaseId; set { _explicitNullValueReleaseId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_id"); else _explicitNullProperties?.Remove("release_id"); } }
+        private string? _explicitNullValueReleaseId = default!;
 #nullable restore
 #else
-        public string ReleaseId { get; set; }
+        public string ReleaseId { get => _explicitNullValueReleaseId; set { _explicitNullValueReleaseId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_id"); else _explicitNullProperties?.Remove("release_id"); } }
+        private string _explicitNullValueReleaseId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("content_hash", ContentHash);
             writer.WriteIntValue("content_length", ContentLength);
             writer.WriteStringValue("release_id", ReleaseId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Service_
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccount>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccount.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccount>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccount.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// PostHog&apos;s built-in agents and their MCP access grants.The catalog is fixed. Projects can pause an agent&apos;s MCP access and grant orrevoke servers, but cannot create, rename, rotate, or delete agents.
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Service_
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountUpdate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountUpdate.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// PostHog&apos;s built-in agents and their MCP access grants.The catalog is fixed. Projects can pause an agent&apos;s MCP access and grant orrevoke servers, but cannot create, rename, rotate, or delete agents.
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Mcp_gateway.Service_
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountUpdate.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountUpdate>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.McpServiceAccountUpdate.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// PostHog&apos;s built-in agents and their MCP access grants.The catalog is fixed. Projects can pause an agent&apos;s MCP access and grant orrevoke servers, but cannot create, rename, rotate, or delete agents.

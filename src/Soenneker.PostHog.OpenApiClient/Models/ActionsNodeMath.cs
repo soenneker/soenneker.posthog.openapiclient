@@ -12,7 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ActionsNodeMath : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathAnyOf8"/></summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathAnyOf8? ActionsNodeMathAnyOf8 { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathMember1"/></summary>
@@ -46,42 +51,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMath();
-            if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathAnyOf8>() is global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathAnyOf8 actionsNodeMathAnyOf8Value)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue0 && ("hogql".Equals(unionEnumValue0.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathAnyOf8>() is global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathAnyOf8 actionsNodeMathAnyOf8Value)
             {
                 result.ActionsNodeMathAnyOf8 = actionsNodeMathAnyOf8Value;
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType baseMathTypeValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue1 && ("total".Equals(unionEnumValue1.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "dau".Equals(unionEnumValue1.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "weekly_active".Equals(unionEnumValue1.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "monthly_active".Equals(unionEnumValue1.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "unique_session".Equals(unionEnumValue1.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "first_time_for_user".Equals(unionEnumValue1.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "first_matching_event_for_user".Equals(unionEnumValue1.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.BaseMathType baseMathTypeValue)
             {
                 result.BaseMathType = baseMathTypeValue;
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType calendarHeatmapMathTypeValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue2 && ("total".Equals(unionEnumValue2.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "dau".Equals(unionEnumValue2.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapMathType calendarHeatmapMathTypeValue)
             {
                 result.CalendarHeatmapMathType = calendarHeatmapMathTypeValue;
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType countPerActorMathTypeValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue3 && ("avg_count_per_actor".Equals(unionEnumValue3.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "min_count_per_actor".Equals(unionEnumValue3.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "max_count_per_actor".Equals(unionEnumValue3.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "median_count_per_actor".Equals(unionEnumValue3.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "p75_count_per_actor".Equals(unionEnumValue3.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "p90_count_per_actor".Equals(unionEnumValue3.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "p95_count_per_actor".Equals(unionEnumValue3.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "p99_count_per_actor".Equals(unionEnumValue3.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.CountPerActorMathType countPerActorMathTypeValue)
             {
                 result.CountPerActorMathType = countPerActorMathTypeValue;
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType experimentMetricMathTypeValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue4 && ("total".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "sum".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "unique_session".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "min".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "max".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "avg".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "dau".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "unique_group".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "hogql".Equals(unionEnumValue4.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType experimentMetricMathTypeValue)
             {
                 result.ExperimentMetricMathType = experimentMetricMathTypeValue;
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType funnelMathTypeValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue5 && ("total".Equals(unionEnumValue5.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "first_time_for_user".Equals(unionEnumValue5.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "first_time_for_user_with_filters".Equals(unionEnumValue5.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.FunnelMathType funnelMathTypeValue)
             {
                 result.FunnelMathType = funnelMathTypeValue;
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType groupMathTypeValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue6 && ("unique_group".Equals(unionEnumValue6.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "first_time_for_group".Equals(unionEnumValue6.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "first_matching_event_for_group".Equals(unionEnumValue6.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.GroupMathType groupMathTypeValue)
             {
                 result.GroupMathType = groupMathTypeValue;
             }
-            else if(parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType propertyMathTypeValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString unionEnumValue7 && ("avg".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "sum".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "min".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "max".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "median".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "p75".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "p90".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "p95".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase) || "p99".Equals(unionEnumValue7.GetValue(), global::System.StringComparison.OrdinalIgnoreCase)) && parseNode.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType>() is global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType propertyMathTypeValue)
             {
                 result.PropertyMathType = propertyMathTypeValue;
             }
             else {
-                result.ActionsNodeMathMember1 = new global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathMember1();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            if (result.ActionsNodeMathAnyOf8 == null && result.ActionsNodeMathMember1 == null && result.BaseMathType == null && result.CalendarHeatmapMathType == null && result.CountPerActorMathType == null && result.ExperimentMetricMathType == null && result.FunnelMathType == null && result.GroupMathType == null && result.PropertyMathType == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,6 +109,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (ActionsNodeMathAnyOf8 == null && ActionsNodeMathMember1 == null && BaseMathType == null && CalendarHeatmapMathType == null && CountPerActorMathType == null && ExperimentMetricMathType == null && FunnelMathType == null && GroupMathType == null && PropertyMathType == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (ActionsNodeMathMember1 != null && ActionsNodeMathAnyOf8 == null && BaseMathType == null && CalendarHeatmapMathType == null && CountPerActorMathType == null && ExperimentMetricMathType == null && FunnelMathType == null && GroupMathType == null && PropertyMathType == null) { if (ActionsNodeMathMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ActionsNodeMathMember1); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(ActionsNodeMathAnyOf8 != null)
             {
@@ -135,6 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PropertyMathType>(null, PropertyMathType);
             }
             else {
+                if (ActionsNodeMathMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathMember1>(null, ActionsNodeMathMember1);
             }
         }

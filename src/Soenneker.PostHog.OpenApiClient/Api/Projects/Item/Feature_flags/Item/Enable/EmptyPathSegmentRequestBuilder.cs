@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags.Item.E
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlag.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Enable a feature flag.Sets `active` to true and changes nothing else. Targeting, variants, payloads, tags andarchived state are left as they are. An archived flag is refused: unarchive it first. Aflag whose own flag dependencies are disabled or use an unsupported configurationformat is also refused, as is a flag whose release conditions target a deleted cohort.An already-enabled flag is returned unchanged.Send the `version` your last read returned. A flag whose `filters.version` is 2 requiresit, and for any flag a change after that version is refused with 409.

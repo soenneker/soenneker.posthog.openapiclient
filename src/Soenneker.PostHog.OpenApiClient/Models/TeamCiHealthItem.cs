@@ -11,47 +11,87 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamCiHealthItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("failed_run_count") is { } nullNodeFailedRunCount && nullNodeFailedRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedRunCount = null;
+            if (parseNode.GetChildNode("failed_run_count_prior") is { } nullNodeFailedRunCountPrior && nullNodeFailedRunCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedRunCountPrior = null;
+            if (parseNode.GetChildNode("flaky_test_count") is { } nullNodeFlakyTestCount && nullNodeFlakyTestCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlakyTestCount = null;
+            if (parseNode.GetChildNode("flaky_test_count_prior") is { } nullNodeFlakyTestCountPrior && nullNodeFlakyTestCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlakyTestCountPrior = null;
+            if (parseNode.GetChildNode("last_seen_at") is { } nullNodeLastSeenAt && nullNodeLastSeenAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeenAt = null;
+            if (parseNode.GetChildNode("merged_pr_count") is { } nullNodeMergedPrCount && nullNodeMergedPrCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCount = null;
+            if (parseNode.GetChildNode("merged_pr_count_prior") is { } nullNodeMergedPrCountPrior && nullNodeMergedPrCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedPrCountPrior = null;
+            if (parseNode.GetChildNode("owner_team") is { } nullNodeOwnerTeam && nullNodeOwnerTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerTeam = null;
+            if (parseNode.GetChildNode("quarantined_failed_run_count") is { } nullNodeQuarantinedFailedRunCount && nullNodeQuarantinedFailedRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuarantinedFailedRunCount = null;
+            if (parseNode.GetChildNode("quarantined_failed_run_count_prior") is { } nullNodeQuarantinedFailedRunCountPrior && nullNodeQuarantinedFailedRunCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuarantinedFailedRunCountPrior = null;
+            if (parseNode.GetChildNode("regression_test_count") is { } nullNodeRegressionTestCount && nullNodeRegressionTestCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegressionTestCount = null;
+            if (parseNode.GetChildNode("regression_test_count_prior") is { } nullNodeRegressionTestCountPrior && nullNodeRegressionTestCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegressionTestCountPrior = null;
+            if (parseNode.GetChildNode("same_commit_recovery_run_count") is { } nullNodeSameCommitRecoveryRunCount && nullNodeSameCommitRecoveryRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SameCommitRecoveryRunCount = null;
+            if (parseNode.GetChildNode("same_commit_recovery_run_count_prior") is { } nullNodeSameCommitRecoveryRunCountPrior && nullNodeSameCommitRecoveryRunCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SameCommitRecoveryRunCountPrior = null;
+            if (parseNode.GetChildNode("test_file_count") is { } nullNodeTestFileCount && nullNodeTestFileCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestFileCount = null;
+            if (parseNode.GetChildNode("test_file_count_prior") is { } nullNodeTestFileCountPrior && nullNodeTestFileCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TestFileCountPrior = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Distinct CI runs where at least one owned test failed or errored. A run with many failing owned tests counts once. An absolute count, not a rate: fast passing runs are not emitted.</summary>
-        public int? FailedRunCount { get; set; }
+        public int? FailedRunCount { get => _explicitNullValueFailedRunCount; set { _explicitNullValueFailedRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_run_count"); else _explicitNullProperties?.Remove("failed_run_count"); } }
+        private int? _explicitNullValueFailedRunCount = default!;
         /// <summary>Same count over the prior window.</summary>
-        public int? FailedRunCountPrior { get; set; }
+        public int? FailedRunCountPrior { get => _explicitNullValueFailedRunCountPrior; set { _explicitNullValueFailedRunCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_run_count_prior"); else _explicitNullProperties?.Remove("failed_run_count_prior"); } }
+        private int? _explicitNullValueFailedRunCountPrior = default!;
         /// <summary>Owned tests one commit was seen both failing and passing in the window: the same proof, and the same word, that flaky_tests calls a confirmed_flake. Compare with flaky_test_count_prior for the delta.</summary>
-        public int? FlakyTestCount { get; set; }
+        public int? FlakyTestCount { get => _explicitNullValueFlakyTestCount; set { _explicitNullValueFlakyTestCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flaky_test_count"); else _explicitNullProperties?.Remove("flaky_test_count"); } }
+        private int? _explicitNullValueFlakyTestCount = default!;
         /// <summary>Same count over the equal-length window immediately before date_from.</summary>
-        public int? FlakyTestCountPrior { get; set; }
+        public int? FlakyTestCountPrior { get => _explicitNullValueFlakyTestCountPrior; set { _explicitNullValueFlakyTestCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flaky_test_count_prior"); else _explicitNullProperties?.Remove("flaky_test_count_prior"); } }
+        private int? _explicitNullValueFlakyTestCountPrior = default!;
         /// <summary>Most recent failure, recovery, or quarantined-failure run across the team&apos;s owned tests, either window. Null for a team present only through the census (no CI signal recorded).</summary>
-        public DateTimeOffset? LastSeenAt { get; set; }
+        public DateTimeOffset? LastSeenAt { get => _explicitNullValueLastSeenAt; set { _explicitNullValueLastSeenAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen_at"); else _explicitNullProperties?.Remove("last_seen_at"); } }
+        private DateTimeOffset? _explicitNullValueLastSeenAt = default!;
         /// <summary>Merged PRs authored by the team&apos;s members in the window, bots excluded. Null when the team_members snapshot isn&apos;t synced, or for &apos;unowned&apos;.</summary>
-        public int? MergedPrCount { get; set; }
+        public int? MergedPrCount { get => _explicitNullValueMergedPrCount; set { _explicitNullValueMergedPrCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count"); else _explicitNullProperties?.Remove("merged_pr_count"); } }
+        private int? _explicitNullValueMergedPrCount = default!;
         /// <summary>Same count over the prior window.</summary>
-        public int? MergedPrCountPrior { get; set; }
+        public int? MergedPrCountPrior { get => _explicitNullValueMergedPrCountPrior; set { _explicitNullValueMergedPrCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_pr_count_prior"); else _explicitNullProperties?.Remove("merged_pr_count_prior"); } }
+        private int? _explicitNullValueMergedPrCountPrior = default!;
         /// <summary>Owning team slug from the repo&apos;s owners.yaml map (e.g. &apos;team-replay&apos;), or the literal &apos;unowned&apos; for tests whose spans carry no ownership stamp.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OwnerTeam { get; set; }
+        public string? OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        private string? _explicitNullValueOwnerTeam = default!;
 #nullable restore
 #else
-        public string OwnerTeam { get; set; }
+        public string OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        private string _explicitNullValueOwnerTeam = default!;
 #endif
         /// <summary>Distinct CI runs where at least one owned test recorded a tolerated failure while quarantined.</summary>
-        public int? QuarantinedFailedRunCount { get; set; }
+        public int? QuarantinedFailedRunCount { get => _explicitNullValueQuarantinedFailedRunCount; set { _explicitNullValueQuarantinedFailedRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantined_failed_run_count"); else _explicitNullProperties?.Remove("quarantined_failed_run_count"); } }
+        private int? _explicitNullValueQuarantinedFailedRunCount = default!;
         /// <summary>Same count over the prior window.</summary>
-        public int? QuarantinedFailedRunCountPrior { get; set; }
+        public int? QuarantinedFailedRunCountPrior { get => _explicitNullValueQuarantinedFailedRunCountPrior; set { _explicitNullValueQuarantinedFailedRunCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantined_failed_run_count_prior"); else _explicitNullProperties?.Remove("quarantined_failed_run_count_prior"); } }
+        private int? _explicitNullValueQuarantinedFailedRunCountPrior = default!;
         /// <summary>Owned tests that failed with no recorded same-commit recovery and still hit the blast-radius bar (a master/main failure, or min_failed_prs distinct PRs). Not flakes: absence of proof, not proof.</summary>
-        public int? RegressionTestCount { get; set; }
+        public int? RegressionTestCount { get => _explicitNullValueRegressionTestCount; set { _explicitNullValueRegressionTestCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regression_test_count"); else _explicitNullProperties?.Remove("regression_test_count"); } }
+        private int? _explicitNullValueRegressionTestCount = default!;
         /// <summary>Same count over the prior window.</summary>
-        public int? RegressionTestCountPrior { get; set; }
+        public int? RegressionTestCountPrior { get => _explicitNullValueRegressionTestCountPrior; set { _explicitNullValueRegressionTestCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regression_test_count_prior"); else _explicitNullProperties?.Remove("regression_test_count_prior"); } }
+        private int? _explicitNullValueRegressionTestCountPrior = default!;
         /// <summary>Distinct CI runs where one commit both failed and passed at least one owned test: a re-run attempt went green, or an in-job retry recovered it.</summary>
-        public int? SameCommitRecoveryRunCount { get; set; }
+        public int? SameCommitRecoveryRunCount { get => _explicitNullValueSameCommitRecoveryRunCount; set { _explicitNullValueSameCommitRecoveryRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("same_commit_recovery_run_count"); else _explicitNullProperties?.Remove("same_commit_recovery_run_count"); } }
+        private int? _explicitNullValueSameCommitRecoveryRunCount = default!;
         /// <summary>Same count over the prior window.</summary>
-        public int? SameCommitRecoveryRunCountPrior { get; set; }
+        public int? SameCommitRecoveryRunCountPrior { get => _explicitNullValueSameCommitRecoveryRunCountPrior; set { _explicitNullValueSameCommitRecoveryRunCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("same_commit_recovery_run_count_prior"); else _explicitNullProperties?.Remove("same_commit_recovery_run_count_prior"); } }
+        private int? _explicitNullValueSameCommitRecoveryRunCountPrior = default!;
         /// <summary>Test files the team owns per the daily owners.yaml census. Null until a census event exists for the repository.</summary>
-        public int? TestFileCount { get; set; }
+        public int? TestFileCount { get => _explicitNullValueTestFileCount; set { _explicitNullValueTestFileCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_file_count"); else _explicitNullProperties?.Remove("test_file_count"); } }
+        private int? _explicitNullValueTestFileCount = default!;
         /// <summary>The latest census value at or before the window start, for the trend.</summary>
-        public int? TestFileCountPrior { get; set; }
+        public int? TestFileCountPrior { get => _explicitNullValueTestFileCountPrior; set { _explicitNullValueTestFileCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("test_file_count_prior"); else _explicitNullProperties?.Remove("test_file_count_prior"); } }
+        private int? _explicitNullValueTestFileCountPrior = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamCiHealthItem"/> and sets the default values.
         /// </summary>
@@ -67,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamCiHealthItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamCiHealthItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamCiHealthItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -118,6 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("same_commit_recovery_run_count_prior", SameCommitRecoveryRunCountPrior);
             writer.WriteIntValue("test_file_count", TestFileCount);
             writer.WriteIntValue("test_file_count_prior", TestFileCountPrior);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

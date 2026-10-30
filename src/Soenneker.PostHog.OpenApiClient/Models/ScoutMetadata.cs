@@ -12,26 +12,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ScoutMetadata : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("banner_message") is { } nullNodeBannerMessage && nullNodeBannerMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BannerMessage = null;
+            if (parseNode.GetChildNode("enrolled") is { } nullNodeEnrolled && nullNodeEnrolled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enrolled = null;
+            if (parseNode.GetChildNode("limits") is { } nullNodeLimits && nullNodeLimits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limits = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Free-form announcement banner to show above the scout UI (e.g. alpha run-limit notice), or null when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BannerMessage { get; set; }
+        public string? BannerMessage { get => _explicitNullValueBannerMessage; set { _explicitNullValueBannerMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("banner_message"); else _explicitNullProperties?.Remove("banner_message"); } }
+        private string? _explicitNullValueBannerMessage = default!;
 #nullable restore
 #else
-        public string BannerMessage { get; set; }
+        public string BannerMessage { get => _explicitNullValueBannerMessage; set { _explicitNullValueBannerMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("banner_message"); else _explicitNullProperties?.Remove("banner_message"); } }
+        private string _explicitNullValueBannerMessage = default!;
 #endif
         /// <summary>Whether this project runs scouts. True when the project is in the signals-scout flag&apos;s enrollment set — either listed explicitly in guaranteed_team_ids or covered by the &quot;*&quot; wildcard (every project that turns scouts on) — and not in skip_team_ids.</summary>
-        public bool? Enrolled { get; set; }
+        public bool? Enrolled { get => _explicitNullValueEnrolled; set { _explicitNullValueEnrolled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enrolled"); else _explicitNullProperties?.Remove("enrolled"); } }
+        private bool? _explicitNullValueEnrolled = default!;
         /// <summary>The team&apos;s enforced scout run caps and current usage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits? Limits { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits? Limits { get => _explicitNullValueLimits; set { _explicitNullValueLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limits"); else _explicitNullProperties?.Remove("limits"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits? _explicitNullValueLimits = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits Limits { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits Limits { get => _explicitNullValueLimits; set { _explicitNullValueLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limits"); else _explicitNullProperties?.Remove("limits"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits _explicitNullValueLimits = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadata"/> and sets the default values.
@@ -48,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadata CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadata();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadata(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("banner_message", BannerMessage);
             writer.WriteBoolValue("enrolled", Enrolled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits>("limits", Limits);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

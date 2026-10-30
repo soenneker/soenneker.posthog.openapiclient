@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Sc
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRun.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRun>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRun.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Start scoring the inference population using the champion model. Scoring runs in the background: it emits autoresearch_prediction events for each scored user and sets the pipeline&apos;s output_person_property on each scored person. The response returns at once with the running run. A second request while a run is running returns that run and starts nothing. The daily Temporal inference workflow also scores each pipeline on its cadence.

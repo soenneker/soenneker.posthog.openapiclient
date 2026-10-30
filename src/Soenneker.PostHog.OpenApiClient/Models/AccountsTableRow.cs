@@ -11,80 +11,116 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AccountsTableRow : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("accountFields") is { } nullNodeAccountFields && nullNodeAccountFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountFields = null;
+            if (parseNode.GetChildNode("customProperties") is { } nullNodeCustomProperties && nullNodeCustomProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomProperties = null;
+            if (parseNode.GetChildNode("customPropertyHistory") is { } nullNodeCustomPropertyHistory && nullNodeCustomPropertyHistory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomPropertyHistory = null;
+            if (parseNode.GetChildNode("externalId") is { } nullNodeExternalId && nullNodeExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalId = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("logoDomain") is { } nullNodeLogoDomain && nullNodeLogoDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LogoDomain = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("noteCount") is { } nullNodeNoteCount && nullNodeNoteCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoteCount = null;
+            if (parseNode.GetChildNode("relationships") is { } nullNodeRelationships && nullNodeRelationships.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Relationships = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+        }
+
         /// <summary>Requested direct Account fields, keyed by their typed field reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowAccountFieldsProperty? AccountFields { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowAccountFieldsProperty? AccountFields { get => _explicitNullValueAccountFields; set { _explicitNullValueAccountFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accountFields"); else _explicitNullProperties?.Remove("accountFields"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowAccountFieldsProperty? _explicitNullValueAccountFields = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowAccountFieldsProperty AccountFields { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowAccountFieldsProperty AccountFields { get => _explicitNullValueAccountFields; set { _explicitNullValueAccountFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("accountFields"); else _explicitNullProperties?.Remove("accountFields"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowAccountFieldsProperty _explicitNullValueAccountFields = default!;
 #endif
         /// <summary>Current values keyed by requested custom property definition ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertiesProperty? CustomProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertiesProperty? CustomProperties { get => _explicitNullValueCustomProperties; set { _explicitNullValueCustomProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customProperties"); else _explicitNullProperties?.Remove("customProperties"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertiesProperty? _explicitNullValueCustomProperties = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertiesProperty CustomProperties { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertiesProperty CustomProperties { get => _explicitNullValueCustomProperties; set { _explicitNullValueCustomProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customProperties"); else _explicitNullProperties?.Remove("customProperties"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertiesProperty _explicitNullValueCustomProperties = default!;
 #endif
         /// <summary>Numeric write history keyed by requested custom property definition ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty? CustomPropertyHistory { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty? CustomPropertyHistory { get => _explicitNullValueCustomPropertyHistory; set { _explicitNullValueCustomPropertyHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customPropertyHistory"); else _explicitNullProperties?.Remove("customPropertyHistory"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty? _explicitNullValueCustomPropertyHistory = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty CustomPropertyHistory { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty CustomPropertyHistory { get => _explicitNullValueCustomPropertyHistory; set { _explicitNullValueCustomPropertyHistory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customPropertyHistory"); else _explicitNullProperties?.Remove("customPropertyHistory"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowCustomPropertyHistoryProperty _explicitNullValueCustomPropertyHistory = default!;
 #endif
         /// <summary>The externalId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExternalId { get; set; }
+        public string? ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("externalId"); else _explicitNullProperties?.Remove("externalId"); } }
+        private string? _explicitNullValueExternalId = default!;
 #nullable restore
 #else
-        public string ExternalId { get; set; }
+        public string ExternalId { get => _explicitNullValueExternalId; set { _explicitNullValueExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("externalId"); else _explicitNullProperties?.Remove("externalId"); } }
+        private string _explicitNullValueExternalId = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>Bare hostname the row&apos;s logo is rendered from. Null when no source resolved one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LogoDomain { get; set; }
+        public string? LogoDomain { get => _explicitNullValueLogoDomain; set { _explicitNullValueLogoDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logoDomain"); else _explicitNullProperties?.Remove("logoDomain"); } }
+        private string? _explicitNullValueLogoDomain = default!;
 #nullable restore
 #else
-        public string LogoDomain { get; set; }
+        public string LogoDomain { get => _explicitNullValueLogoDomain; set { _explicitNullValueLogoDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("logoDomain"); else _explicitNullProperties?.Remove("logoDomain"); } }
+        private string _explicitNullValueLogoDomain = default!;
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Number of linked internal notes. Omitted when the request does not select the note count.</summary>
-        public int? NoteCount { get; set; }
+        public int? NoteCount { get => _explicitNullValueNoteCount; set { _explicitNullValueNoteCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("noteCount"); else _explicitNullProperties?.Remove("noteCount"); } }
+        private int? _explicitNullValueNoteCount = default!;
         /// <summary>Active assignee user IDs keyed by requested relationship definition ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty? Relationships { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty? Relationships { get => _explicitNullValueRelationships; set { _explicitNullValueRelationships = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationships"); else _explicitNullProperties?.Remove("relationships"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty? _explicitNullValueRelationships = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty Relationships { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty Relationships { get => _explicitNullValueRelationships; set { _explicitNullValueRelationships = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relationships"); else _explicitNullProperties?.Remove("relationships"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty _explicitNullValueRelationships = default!;
 #endif
         /// <summary>Sorted tag names. Omitted when the request does not select tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -94,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRow CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRow();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRow(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -132,7 +168,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("noteCount", NoteCount);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRowRelationshipsProperty>("relationships", Relationships);
-            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

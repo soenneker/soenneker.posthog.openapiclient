@@ -57,6 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Warehouse_view_links
             {
                 { "400", global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidationError.CreateFromDiscriminatorValue },
                 { "500", global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidationError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidationResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.ViewLinkValidationResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

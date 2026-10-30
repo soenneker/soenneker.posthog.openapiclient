@@ -12,42 +12,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedCustomPropertySourceUpdate : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("column_descriptions") is { } nullNodeColumnDescriptions && nullNodeColumnDescriptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColumnDescriptions = null;
+            if (parseNode.GetChildNode("column_property_map") is { } nullNodeColumnPropertyMap && nullNodeColumnPropertyMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColumnPropertyMap = null;
+            if (parseNode.GetChildNode("is_enabled") is { } nullNodeIsEnabled && nullNodeIsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsEnabled = null;
+            if (parseNode.GetChildNode("key_column") is { } nullNodeKeyColumn && nullNodeKeyColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyColumn = null;
+            if (parseNode.GetChildNode("source_column") is { } nullNodeSourceColumn && nullNodeSourceColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceColumn = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Person and group sources only: {warehouse_column: description} for mapped columns. Optional per column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ColumnDescriptions { get; set; }
+        public UntypedNode? ColumnDescriptions { get => _explicitNullValueColumnDescriptions; set { _explicitNullValueColumnDescriptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_descriptions"); else _explicitNullProperties?.Remove("column_descriptions"); } }
+        private UntypedNode? _explicitNullValueColumnDescriptions = default!;
 #nullable restore
 #else
-        public UntypedNode ColumnDescriptions { get; set; }
+        public UntypedNode ColumnDescriptions { get => _explicitNullValueColumnDescriptions; set { _explicitNullValueColumnDescriptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_descriptions"); else _explicitNullProperties?.Remove("column_descriptions"); } }
+        private UntypedNode _explicitNullValueColumnDescriptions = default!;
 #endif
         /// <summary>Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ColumnPropertyMap { get; set; }
+        public UntypedNode? ColumnPropertyMap { get => _explicitNullValueColumnPropertyMap; set { _explicitNullValueColumnPropertyMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_property_map"); else _explicitNullProperties?.Remove("column_property_map"); } }
+        private UntypedNode? _explicitNullValueColumnPropertyMap = default!;
 #nullable restore
 #else
-        public UntypedNode ColumnPropertyMap { get; set; }
+        public UntypedNode ColumnPropertyMap { get => _explicitNullValueColumnPropertyMap; set { _explicitNullValueColumnPropertyMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_property_map"); else _explicitNullProperties?.Remove("column_property_map"); } }
+        private UntypedNode _explicitNullValueColumnPropertyMap = default!;
 #endif
         /// <summary>Whether the source syncs; re-enabling it resets the failure count.</summary>
-        public bool? IsEnabled { get; set; }
+        public bool? IsEnabled { get => _explicitNullValueIsEnabled; set { _explicitNullValueIsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_enabled"); else _explicitNullProperties?.Remove("is_enabled"); } }
+        private bool? _explicitNullValueIsEnabled = default!;
         /// <summary>Column in the view whose value matches an account&apos;s external_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? KeyColumn { get; set; }
+        public string? KeyColumn { get => _explicitNullValueKeyColumn; set { _explicitNullValueKeyColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_column"); else _explicitNullProperties?.Remove("key_column"); } }
+        private string? _explicitNullValueKeyColumn = default!;
 #nullable restore
 #else
-        public string KeyColumn { get; set; }
+        public string KeyColumn { get => _explicitNullValueKeyColumn; set { _explicitNullValueKeyColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_column"); else _explicitNullProperties?.Remove("key_column"); } }
+        private string _explicitNullValueKeyColumn = default!;
 #endif
         /// <summary>Column in the view whose value is written to the property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceColumn { get; set; }
+        public string? SourceColumn { get => _explicitNullValueSourceColumn; set { _explicitNullValueSourceColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_column"); else _explicitNullProperties?.Remove("source_column"); } }
+        private string? _explicitNullValueSourceColumn = default!;
 #nullable restore
 #else
-        public string SourceColumn { get; set; }
+        public string SourceColumn { get => _explicitNullValueSourceColumn; set { _explicitNullValueSourceColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_column"); else _explicitNullProperties?.Remove("source_column"); } }
+        private string _explicitNullValueSourceColumn = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdate"/> and sets the default values.
@@ -64,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedCustomPropertySourceUpdate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -93,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_enabled", IsEnabled);
             writer.WriteStringValue("key_column", KeyColumn);
             writer.WriteStringValue("source_column", SourceColumn);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

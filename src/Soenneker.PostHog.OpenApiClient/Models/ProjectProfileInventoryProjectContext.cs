@@ -12,24 +12,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfileInventoryProjectContext : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("app_urls") is { } nullNodeAppUrls && nullNodeAppUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AppUrls = null;
+            if (parseNode.GetChildNode("product_description") is { } nullNodeProductDescription && nullNodeProductDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductDescription = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Registered app URLs for this team (toolbar / replay). The team&apos;s actual product surface; complements `$pageview.$host` discovery via `read-data-schema`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AppUrls { get; set; }
+        public List<string>? AppUrls { get => _explicitNullValueAppUrls; set { _explicitNullValueAppUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_urls"); else _explicitNullProperties?.Remove("app_urls"); } }
+        private List<string>? _explicitNullValueAppUrls = default!;
 #nullable restore
 #else
-        public List<string> AppUrls { get; set; }
+        public List<string> AppUrls { get => _explicitNullValueAppUrls; set { _explicitNullValueAppUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("app_urls"); else _explicitNullProperties?.Remove("app_urls"); } }
+        private List<string> _explicitNullValueAppUrls = default!;
 #endif
         /// <summary>Human-set product description on the project (max 1000 chars). When present, the most direct &quot;what does this team&apos;s product do&quot; answer. `null` when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProductDescription { get; set; }
+        public string? ProductDescription { get => _explicitNullValueProductDescription; set { _explicitNullValueProductDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_description"); else _explicitNullProperties?.Remove("product_description"); } }
+        private string? _explicitNullValueProductDescription = default!;
 #nullable restore
 #else
-        public string ProductDescription { get; set; }
+        public string ProductDescription { get => _explicitNullValueProductDescription; set { _explicitNullValueProductDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_description"); else _explicitNullProperties?.Remove("product_description"); } }
+        private string _explicitNullValueProductDescription = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("app_urls", AppUrls);
             writer.WriteStringValue("product_description", ProductDescription);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

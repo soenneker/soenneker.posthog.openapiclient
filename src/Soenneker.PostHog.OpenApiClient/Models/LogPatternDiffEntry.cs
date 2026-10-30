@@ -11,48 +11,75 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogPatternDiffEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("baseline_estimated_count") is { } nullNodeBaselineEstimatedCount && nullNodeBaselineEstimatedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineEstimatedCount = null;
+            if (parseNode.GetChildNode("baseline_volume_share_pct") is { } nullNodeBaselineVolumeSharePct && nullNodeBaselineVolumeSharePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineVolumeSharePct = null;
+            if (parseNode.GetChildNode("classification") is { } nullNodeClassification && nullNodeClassification.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Classification = null;
+            if (parseNode.GetChildNode("first_seen_ever") is { } nullNodeFirstSeenEver && nullNodeFirstSeenEver.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstSeenEver = null;
+            if (parseNode.GetChildNode("masked_example") is { } nullNodeMaskedExample && nullNodeMaskedExample.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskedExample = null;
+            if (parseNode.GetChildNode("pattern") is { } nullNodePattern && nullNodePattern.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pattern = null;
+            if (parseNode.GetChildNode("rate_ratio") is { } nullNodeRateRatio && nullNodeRateRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RateRatio = null;
+            if (parseNode.GetChildNode("services") is { } nullNodeServices && nullNodeServices.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Services = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Estimated occurrences across the baseline window (extrapolated like `estimated_count`). Null when the pattern was not seen in the baseline sample.</summary>
-        public int? BaselineEstimatedCount { get; set; }
+        public int? BaselineEstimatedCount { get => _explicitNullValueBaselineEstimatedCount; set { _explicitNullValueBaselineEstimatedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_estimated_count"); else _explicitNullProperties?.Remove("baseline_estimated_count"); } }
+        private int? _explicitNullValueBaselineEstimatedCount = default!;
         /// <summary>Share of the baseline sample this pattern represented (0-100). Null when absent from the baseline.</summary>
-        public double? BaselineVolumeSharePct { get; set; }
+        public double? BaselineVolumeSharePct { get => _explicitNullValueBaselineVolumeSharePct; set { _explicitNullValueBaselineVolumeSharePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_volume_share_pct"); else _explicitNullProperties?.Remove("baseline_volume_share_pct"); } }
+        private double? _explicitNullValueBaselineVolumeSharePct = default!;
         /// <summary>* `new` - new* `rate_shift` - rate_shift* `gone` - gone* `unchanged` - unchanged</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification? Classification { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification? Classification { get => _explicitNullValueClassification; set { _explicitNullValueClassification = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classification"); else _explicitNullProperties?.Remove("classification"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryClassification? _explicitNullValueClassification = default!;
         /// <summary>Earliest 5-minute bucket (UTC) with this pattern, up to 14 days back. Null on body mining.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstSeenEver { get; set; }
+        public string? FirstSeenEver { get => _explicitNullValueFirstSeenEver; set { _explicitNullValueFirstSeenEver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen_ever"); else _explicitNullProperties?.Remove("first_seen_ever"); } }
+        private string? _explicitNullValueFirstSeenEver = default!;
 #nullable restore
 #else
-        public string FirstSeenEver { get; set; }
+        public string FirstSeenEver { get => _explicitNullValueFirstSeenEver; set { _explicitNullValueFirstSeenEver = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen_ever"); else _explicitNullProperties?.Remove("first_seen_ever"); } }
+        private string _explicitNullValueFirstSeenEver = default!;
 #endif
         /// <summary>The template with variable parts masked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaskedExample { get; set; }
+        public string? MaskedExample { get => _explicitNullValueMaskedExample; set { _explicitNullValueMaskedExample = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_example"); else _explicitNullProperties?.Remove("masked_example"); } }
+        private string? _explicitNullValueMaskedExample = default!;
 #nullable restore
 #else
-        public string MaskedExample { get; set; }
+        public string MaskedExample { get => _explicitNullValueMaskedExample; set { _explicitNullValueMaskedExample = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_example"); else _explicitNullProperties?.Remove("masked_example"); } }
+        private string _explicitNullValueMaskedExample = default!;
 #endif
         /// <summary>The mined pattern with full stats. Taken from the current window, or from the baseline window for &quot;gone&quot; entries. When template wobble split one message across several near-identical templates, this is the highest-volume representative and the entry&apos;s classification reflects their combined counts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern? Pattern { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern? Pattern { get => _explicitNullValuePattern; set { _explicitNullValuePattern = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pattern"); else _explicitNullProperties?.Remove("pattern"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern? _explicitNullValuePattern = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern Pattern { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern Pattern { get => _explicitNullValuePattern; set { _explicitNullValuePattern = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pattern"); else _explicitNullProperties?.Remove("pattern"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern _explicitNullValuePattern = default!;
 #endif
         /// <summary>Current-window rate divided by baseline rate, both normalized per second so windows of different lengths compare fairly. 4.0 means 4x faster now; 0.25 means quartered. Null when the pattern is missing from either window.</summary>
-        public double? RateRatio { get; set; }
+        public double? RateRatio { get => _explicitNullValueRateRatio; set { _explicitNullValueRateRatio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate_ratio"); else _explicitNullProperties?.Remove("rate_ratio"); } }
+        private double? _explicitNullValueRateRatio = default!;
         /// <summary>Up to 4 services with this pattern.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Services { get; set; }
+        public List<string>? Services { get => _explicitNullValueServices; set { _explicitNullValueServices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("services"); else _explicitNullProperties?.Remove("services"); } }
+        private List<string>? _explicitNullValueServices = default!;
 #nullable restore
 #else
-        public List<string> Services { get; set; }
+        public List<string> Services { get => _explicitNullValueServices; set { _explicitNullValueServices = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("services"); else _explicitNullProperties?.Remove("services"); } }
+        private List<string> _explicitNullValueServices = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry"/> and sets the default values.
@@ -69,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -104,6 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogPatternDiffEntryPattern>("pattern", Pattern);
             writer.WriteDoubleValue("rate_ratio", RateRatio);
             writer.WriteCollectionOfPrimitiveValues<string>("services", Services);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

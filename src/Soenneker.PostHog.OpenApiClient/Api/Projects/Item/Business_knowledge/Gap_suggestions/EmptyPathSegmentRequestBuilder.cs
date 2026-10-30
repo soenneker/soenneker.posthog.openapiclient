@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.G
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedKnowledgeGapSuggestionList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedKnowledgeGapSuggestionList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedKnowledgeGapSuggestionList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedKnowledgeGapSuggestionList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Surfaces topics the support AI couldn&apos;t answer from the knowledge base.Two list shapes controlled by the ``ticket_id`` query param:- **per-ticket** (``?ticket_id=&lt;uuid&gt;``): individual gap rows for that ticket.- **aggregated** (no ``ticket_id``): gaps grouped by normalized topic with counts,  for the Business knowledge suggestions panel.

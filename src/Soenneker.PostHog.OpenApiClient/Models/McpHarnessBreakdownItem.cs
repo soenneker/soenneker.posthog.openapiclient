@@ -11,25 +11,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class McpHarnessBreakdownItem : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("error_rate_pct") is { } nullNodeErrorRatePct && nullNodeErrorRatePct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorRatePct = null;
+            if (parseNode.GetChildNode("errors") is { } nullNodeErrors && nullNodeErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Errors = null;
+            if (parseNode.GetChildNode("harness") is { } nullNodeHarness && nullNodeHarness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Harness = null;
+            if (parseNode.GetChildNode("harness_sessions") is { } nullNodeHarnessSessions && nullNodeHarnessSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HarnessSessions = null;
+            if (parseNode.GetChildNode("sessions") is { } nullNodeSessions && nullNodeSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sessions = null;
+            if (parseNode.GetChildNode("total_calls") is { } nullNodeTotalCalls && nullNodeTotalCalls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCalls = null;
+        }
+
         /// <summary>The error_rate_pct property</summary>
-        public double? ErrorRatePct { get; set; }
+        public double? ErrorRatePct { get => _explicitNullValueErrorRatePct; set { _explicitNullValueErrorRatePct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_rate_pct"); else _explicitNullProperties?.Remove("error_rate_pct"); } }
+        private double? _explicitNullValueErrorRatePct = default!;
         /// <summary>The errors property</summary>
-        public int? Errors { get; set; }
+        public int? Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        private int? _explicitNullValueErrors = default!;
         /// <summary>Customer-facing harness label, e.g. &quot;Claude Agent SDK&quot;, &quot;OpenAI Codex&quot;, &quot;Cursor&quot;, &quot;Other&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Harness { get; set; }
+        public string? Harness { get => _explicitNullValueHarness; set { _explicitNullValueHarness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("harness"); else _explicitNullProperties?.Remove("harness"); } }
+        private string? _explicitNullValueHarness = default!;
 #nullable restore
 #else
-        public string Harness { get; set; }
+        public string Harness { get => _explicitNullValueHarness; set { _explicitNullValueHarness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("harness"); else _explicitNullProperties?.Remove("harness"); } }
+        private string _explicitNullValueHarness = default!;
 #endif
         /// <summary>Distinct sessions in this harness across all tools, in the same window and filters. The denominator for the tool&apos;s session share within the harness. Set only when the query has toolName.</summary>
-        public int? HarnessSessions { get; set; }
+        public int? HarnessSessions { get => _explicitNullValueHarnessSessions; set { _explicitNullValueHarnessSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("harness_sessions"); else _explicitNullProperties?.Remove("harness_sessions"); } }
+        private int? _explicitNullValueHarnessSessions = default!;
         /// <summary>The sessions property</summary>
-        public int? Sessions { get; set; }
+        public int? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
+        private int? _explicitNullValueSessions = default!;
         /// <summary>The total_calls property</summary>
-        public int? TotalCalls { get; set; }
+        public int? TotalCalls { get => _explicitNullValueTotalCalls; set { _explicitNullValueTotalCalls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_calls"); else _explicitNullProperties?.Remove("total_calls"); } }
+        private int? _explicitNullValueTotalCalls = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -38,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.McpHarnessBreakdownItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.McpHarnessBreakdownItem();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.McpHarnessBreakdownItem(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,7 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("harness", Harness);
             writer.WriteIntValue("harness_sessions", HarnessSessions);
             writer.WriteIntValue("sessions", Sessions);
-            writer.WriteIntValue("total_calls", TotalCalls);
+            writer.WriteIntValue("total_calls", TotalCalls);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

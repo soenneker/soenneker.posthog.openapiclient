@@ -8,42 +8,47 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember4"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf4"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WarehouseSuggestionPayloadComposed : IComposedTypeWrapper, IParsable
-    {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember1"/></summary>
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember1? WarehouseSuggestionPayloadComposedMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf1? WarehouseSuggestionPayloadComposedOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember1 WarehouseSuggestionPayloadComposedMember1 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf1 WarehouseSuggestionPayloadComposedOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember2"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember2? WarehouseSuggestionPayloadComposedMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf2? WarehouseSuggestionPayloadComposedOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember2 WarehouseSuggestionPayloadComposedMember2 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf2 WarehouseSuggestionPayloadComposedOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember3"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember3? WarehouseSuggestionPayloadComposedMember3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf3? WarehouseSuggestionPayloadComposedOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember3 WarehouseSuggestionPayloadComposedMember3 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf3 WarehouseSuggestionPayloadComposedOneOf3 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember4"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember4? WarehouseSuggestionPayloadComposedMember4 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf4? WarehouseSuggestionPayloadComposedOneOf4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember4 WarehouseSuggestionPayloadComposedMember4 { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf4 WarehouseSuggestionPayloadComposedOneOf4 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -55,7 +60,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposed();
-            return result;
+            if("WarehouseSuggestionPayloadComposedOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("WarehouseSuggestionPayloadComposedOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("WarehouseSuggestionPayloadComposedOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("WarehouseSuggestionPayloadComposedOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("subject_name") != null))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("refresh_bytes_per_month") != null && parseNode.GetChildNode("refresh_seconds_per_month") != null && parseNode.GetChildNode("subject_name") != null))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("freshness_after_seconds") != null && parseNode.GetChildNode("freshness_today_seconds") != null && parseNode.GetChildNode("live_sources") != null && parseNode.GetChildNode("refresh_interval_basis") != null && parseNode.GetChildNode("refresh_interval_seconds") != null && parseNode.GetChildNode("refresh_mode") != null && (parseNode.GetChildNode("refresh_mode")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag6 && ("full".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal) || "incremental".Equals(tag6.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("saves_bytes_per_month") != null && parseNode.GetChildNode("saves_seconds_per_month") != null && parseNode.GetChildNode("subject_name") != null && parseNode.GetChildNode("unknown_sources") != null))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("live_bytes_per_month") != null && parseNode.GetChildNode("live_seconds_per_month") != null && parseNode.GetChildNode("read_seconds") != null && parseNode.GetChildNode("refresh_bytes_per_month") != null && parseNode.GetChildNode("refresh_seconds_per_month") != null && parseNode.GetChildNode("subject_name") != null))();
+            if (result.WarehouseSuggestionPayloadComposedOneOf1 == null && result.WarehouseSuggestionPayloadComposedOneOf2 == null && result.WarehouseSuggestionPayloadComposedOneOf3 == null && result.WarehouseSuggestionPayloadComposedOneOf4 == null && matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2 && !matchesUnionBranch3) result.WarehouseSuggestionPayloadComposedOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf1(), parseNode);
+            if (result.WarehouseSuggestionPayloadComposedOneOf1 == null && result.WarehouseSuggestionPayloadComposedOneOf2 == null && result.WarehouseSuggestionPayloadComposedOneOf3 == null && result.WarehouseSuggestionPayloadComposedOneOf4 == null && matchesUnionBranch1 && !matchesUnionBranch0 && !matchesUnionBranch2 && !matchesUnionBranch3) result.WarehouseSuggestionPayloadComposedOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf2(), parseNode);
+            if (result.WarehouseSuggestionPayloadComposedOneOf1 == null && result.WarehouseSuggestionPayloadComposedOneOf2 == null && result.WarehouseSuggestionPayloadComposedOneOf3 == null && result.WarehouseSuggestionPayloadComposedOneOf4 == null && matchesUnionBranch2 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch3) result.WarehouseSuggestionPayloadComposedOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf3(), parseNode);
+            if (result.WarehouseSuggestionPayloadComposedOneOf1 == null && result.WarehouseSuggestionPayloadComposedOneOf2 == null && result.WarehouseSuggestionPayloadComposedOneOf3 == null && result.WarehouseSuggestionPayloadComposedOneOf4 == null && matchesUnionBranch3 && !matchesUnionBranch0 && !matchesUnionBranch1 && !matchesUnionBranch2) result.WarehouseSuggestionPayloadComposedOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf4(), parseNode);
+            if (result.WarehouseSuggestionPayloadComposedOneOf1 == null && result.WarehouseSuggestionPayloadComposedOneOf2 == null && result.WarehouseSuggestionPayloadComposedOneOf3 == null && result.WarehouseSuggestionPayloadComposedOneOf4 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -63,21 +95,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(WarehouseSuggestionPayloadComposedMember1 != null)
+            if(WarehouseSuggestionPayloadComposedOneOf1 != null)
             {
-                return WarehouseSuggestionPayloadComposedMember1.GetFieldDeserializers();
+                return WarehouseSuggestionPayloadComposedOneOf1.GetFieldDeserializers();
             }
-            else if(WarehouseSuggestionPayloadComposedMember2 != null)
+            else if(WarehouseSuggestionPayloadComposedOneOf2 != null)
             {
-                return WarehouseSuggestionPayloadComposedMember2.GetFieldDeserializers();
+                return WarehouseSuggestionPayloadComposedOneOf2.GetFieldDeserializers();
             }
-            else if(WarehouseSuggestionPayloadComposedMember3 != null)
+            else if(WarehouseSuggestionPayloadComposedOneOf3 != null)
             {
-                return WarehouseSuggestionPayloadComposedMember3.GetFieldDeserializers();
+                return WarehouseSuggestionPayloadComposedOneOf3.GetFieldDeserializers();
             }
-            else if(WarehouseSuggestionPayloadComposedMember4 != null)
+            else if(WarehouseSuggestionPayloadComposedOneOf4 != null)
             {
-                return WarehouseSuggestionPayloadComposedMember4.GetFieldDeserializers();
+                return WarehouseSuggestionPayloadComposedOneOf4.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -87,22 +119,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (WarehouseSuggestionPayloadComposedOneOf1 == null && WarehouseSuggestionPayloadComposedOneOf2 == null && WarehouseSuggestionPayloadComposedOneOf3 == null && WarehouseSuggestionPayloadComposedOneOf4 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (WarehouseSuggestionPayloadComposedOneOf1 != null && WarehouseSuggestionPayloadComposedOneOf2 == null && WarehouseSuggestionPayloadComposedOneOf3 == null && WarehouseSuggestionPayloadComposedOneOf4 == null) { if (WarehouseSuggestionPayloadComposedOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WarehouseSuggestionPayloadComposedOneOf1); return; }
+            if (WarehouseSuggestionPayloadComposedOneOf2 != null && WarehouseSuggestionPayloadComposedOneOf1 == null && WarehouseSuggestionPayloadComposedOneOf3 == null && WarehouseSuggestionPayloadComposedOneOf4 == null) { if (WarehouseSuggestionPayloadComposedOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WarehouseSuggestionPayloadComposedOneOf2); return; }
+            if (WarehouseSuggestionPayloadComposedOneOf3 != null && WarehouseSuggestionPayloadComposedOneOf1 == null && WarehouseSuggestionPayloadComposedOneOf2 == null && WarehouseSuggestionPayloadComposedOneOf4 == null) { if (WarehouseSuggestionPayloadComposedOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WarehouseSuggestionPayloadComposedOneOf3); return; }
+            if (WarehouseSuggestionPayloadComposedOneOf4 != null && WarehouseSuggestionPayloadComposedOneOf1 == null && WarehouseSuggestionPayloadComposedOneOf2 == null && WarehouseSuggestionPayloadComposedOneOf3 == null) { if (WarehouseSuggestionPayloadComposedOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, WarehouseSuggestionPayloadComposedOneOf4); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(WarehouseSuggestionPayloadComposedMember1 != null)
+            if(WarehouseSuggestionPayloadComposedOneOf1 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember1>(null, WarehouseSuggestionPayloadComposedMember1);
+                if (WarehouseSuggestionPayloadComposedOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf1>(null, WarehouseSuggestionPayloadComposedOneOf1);
             }
-            else if(WarehouseSuggestionPayloadComposedMember2 != null)
+            else if(WarehouseSuggestionPayloadComposedOneOf2 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember2>(null, WarehouseSuggestionPayloadComposedMember2);
+                if (WarehouseSuggestionPayloadComposedOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf2>(null, WarehouseSuggestionPayloadComposedOneOf2);
             }
-            else if(WarehouseSuggestionPayloadComposedMember3 != null)
+            else if(WarehouseSuggestionPayloadComposedOneOf3 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember3>(null, WarehouseSuggestionPayloadComposedMember3);
+                if (WarehouseSuggestionPayloadComposedOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf3>(null, WarehouseSuggestionPayloadComposedOneOf3);
             }
-            else if(WarehouseSuggestionPayloadComposedMember4 != null)
+            else if(WarehouseSuggestionPayloadComposedOneOf4 != null)
             {
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedMember4>(null, WarehouseSuggestionPayloadComposedMember4);
+                if (WarehouseSuggestionPayloadComposedOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf4>(null, WarehouseSuggestionPayloadComposedOneOf4);
             }
         }
     }

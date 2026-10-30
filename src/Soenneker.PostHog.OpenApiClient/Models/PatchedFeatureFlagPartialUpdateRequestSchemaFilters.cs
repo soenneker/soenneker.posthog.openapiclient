@@ -12,38 +12,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedFeatureFlagPartialUpdateRequestSchemaFilters : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("aggregation_group_type_index") is { } nullNodeAggregationGroupTypeIndex && nullNodeAggregationGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AggregationGroupTypeIndex = null;
+            if (parseNode.GetChildNode("early_exit") is { } nullNodeEarlyExit && nullNodeEarlyExit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EarlyExit = null;
+            if (parseNode.GetChildNode("feature_enrollment") is { } nullNodeFeatureEnrollment && nullNodeFeatureEnrollment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureEnrollment = null;
+            if (parseNode.GetChildNode("groups") is { } nullNodeGroups && nullNodeGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groups = null;
+            if (parseNode.GetChildNode("multivariate") is { } nullNodeMultivariate && nullNodeMultivariate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Multivariate = null;
+            if (parseNode.GetChildNode("payloads") is { } nullNodePayloads && nullNodePayloads.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Payloads = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Group type index for group-based feature flags.</summary>
-        public int? AggregationGroupTypeIndex { get; set; }
+        public int? AggregationGroupTypeIndex { get => _explicitNullValueAggregationGroupTypeIndex; set { _explicitNullValueAggregationGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation_group_type_index"); else _explicitNullProperties?.Remove("aggregation_group_type_index"); } }
+        private int? _explicitNullValueAggregationGroupTypeIndex = default!;
         /// <summary>When true, condition evaluation stops at the first matching condition set rather than continuing to evaluate subsequent groups.</summary>
-        public bool? EarlyExit { get; set; }
+        public bool? EarlyExit { get => _explicitNullValueEarlyExit; set { _explicitNullValueEarlyExit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("early_exit"); else _explicitNullProperties?.Remove("early_exit"); } }
+        private bool? _explicitNullValueEarlyExit = default!;
         /// <summary>Whether this flag has early access feature enrollment enabled. When true, the flag is evaluated against the person property $feature_enrollment/{flag_key}.</summary>
-        public bool? FeatureEnrollment { get; set; }
+        public bool? FeatureEnrollment { get => _explicitNullValueFeatureEnrollment; set { _explicitNullValueFeatureEnrollment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_enrollment"); else _explicitNullProperties?.Remove("feature_enrollment"); } }
+        private bool? _explicitNullValueFeatureEnrollment = default!;
         /// <summary>Release condition groups for the feature flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>? Groups { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>? Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>? _explicitNullValueGroups = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema> Groups { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema> Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema> _explicitNullValueGroups = default!;
 #endif
         /// <summary>Multivariate configuration for variant-based rollouts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema? Multivariate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema? Multivariate { get => _explicitNullValueMultivariate; set { _explicitNullValueMultivariate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multivariate"); else _explicitNullProperties?.Remove("multivariate"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema? _explicitNullValueMultivariate = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema Multivariate { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema Multivariate { get => _explicitNullValueMultivariate; set { _explicitNullValueMultivariate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multivariate"); else _explicitNullProperties?.Remove("multivariate"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema _explicitNullValueMultivariate = default!;
 #endif
         /// <summary>Optional payload values keyed by variant key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads? Payloads { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads? Payloads { get => _explicitNullValuePayloads; set { _explicitNullValuePayloads = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payloads"); else _explicitNullProperties?.Remove("payloads"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads? _explicitNullValuePayloads = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads Payloads { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads Payloads { get => _explicitNullValuePayloads; set { _explicitNullValuePayloads = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payloads"); else _explicitNullProperties?.Remove("payloads"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads _explicitNullValuePayloads = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters"/> and sets the default values.
@@ -61,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFilters(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>("groups", Groups);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema>("multivariate", Multivariate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads>("payloads", Payloads);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,27 +11,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TwoFactorStatus : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("backup_codes_remaining") is { } nullNodeBackupCodesRemaining && nullNodeBackupCodesRemaining.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BackupCodesRemaining = null;
+            if (parseNode.GetChildNode("has_passkeys") is { } nullNodeHasPasskeys && nullNodeHasPasskeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasPasskeys = null;
+            if (parseNode.GetChildNode("has_totp") is { } nullNodeHasTotp && nullNodeHasTotp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasTotp = null;
+            if (parseNode.GetChildNode("is_enabled") is { } nullNodeIsEnabled && nullNodeIsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsEnabled = null;
+            if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
+            if (parseNode.GetChildNode("passkeys_enabled_for_2fa") is { } nullNodePasskeysEnabledFor2fa && nullNodePasskeysEnabledFor2fa.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PasskeysEnabledFor2fa = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of unused backup codes. The codes themselves are only returned when they are generated.</summary>
-        public int? BackupCodesRemaining { get; set; }
+        public int? BackupCodesRemaining { get => _explicitNullValueBackupCodesRemaining; set { _explicitNullValueBackupCodesRemaining = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backup_codes_remaining"); else _explicitNullProperties?.Remove("backup_codes_remaining"); } }
+        private int? _explicitNullValueBackupCodesRemaining = default!;
         /// <summary>Whether the user has at least one verified passkey.</summary>
-        public bool? HasPasskeys { get; set; }
+        public bool? HasPasskeys { get => _explicitNullValueHasPasskeys; set { _explicitNullValueHasPasskeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_passkeys"); else _explicitNullProperties?.Remove("has_passkeys"); } }
+        private bool? _explicitNullValueHasPasskeys = default!;
         /// <summary>Whether the user has an authenticator app set up.</summary>
-        public bool? HasTotp { get; set; }
+        public bool? HasTotp { get => _explicitNullValueHasTotp; set { _explicitNullValueHasTotp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_totp"); else _explicitNullProperties?.Remove("has_totp"); } }
+        private bool? _explicitNullValueHasTotp = default!;
         /// <summary>Whether the user has any 2FA method enabled.</summary>
-        public bool? IsEnabled { get; set; }
+        public bool? IsEnabled { get => _explicitNullValueIsEnabled; set { _explicitNullValueIsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_enabled"); else _explicitNullProperties?.Remove("is_enabled"); } }
+        private bool? _explicitNullValueIsEnabled = default!;
         /// <summary>The primary 2FA method: &quot;TOTP&quot; or &quot;passkey&quot;. Null when 2FA is off.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Method { get; set; }
+        public string? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
+        private string? _explicitNullValueMethod = default!;
 #nullable restore
 #else
-        public string Method { get; set; }
+        public string Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
+        private string _explicitNullValueMethod = default!;
 #endif
         /// <summary>Whether passkeys count as a 2FA method.</summary>
-        public bool? PasskeysEnabledFor2fa { get; set; }
+        public bool? PasskeysEnabledFor2fa { get => _explicitNullValuePasskeysEnabledFor2fa; set { _explicitNullValuePasskeysEnabledFor2fa = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passkeys_enabled_for_2fa"); else _explicitNullProperties?.Remove("passkeys_enabled_for_2fa"); } }
+        private bool? _explicitNullValuePasskeysEnabledFor2fa = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TwoFactorStatus"/> and sets the default values.
         /// </summary>
@@ -47,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TwoFactorStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TwoFactorStatus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TwoFactorStatus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,6 +98,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_enabled", IsEnabled);
             writer.WriteStringValue("method", Method);
             writer.WriteBoolValue("passkeys_enabled_for_2fa", PasskeysEnabledFor2fa);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

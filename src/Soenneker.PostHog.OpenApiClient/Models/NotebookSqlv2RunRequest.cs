@@ -11,56 +11,86 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class NotebookSqlv2RunRequest : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
+            if (parseNode.GetChildNode("connection_id") is { } nullNodeConnectionId && nullNodeConnectionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectionId = null;
+            if (parseNode.GetChildNode("node_id") is { } nullNodeNodeId && nullNodeNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodeId = null;
+            if (parseNode.GetChildNode("node_type") is { } nullNodeNodeType && nullNodeNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodeType = null;
+            if (parseNode.GetChildNode("output_name") is { } nullNodeOutputName && nullNodeOutputName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputName = null;
+            if (parseNode.GetChildNode("refs") is { } nullNodeRefs && nullNodeRefs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Refs = null;
+            if (parseNode.GetChildNode("reuse_results") is { } nullNodeReuseResults && nullNodeReuseResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReuseResults = null;
+            if (parseNode.GetChildNode("send_raw_query") is { } nullNodeSendRawQuery && nullNodeSendRawQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendRawQuery = null;
+            if (parseNode.GetChildNode("variables") is { } nullNodeVariables && nullNodeVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variables = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The node&apos;s source — SQL for a hogql node, Python for a python node. Must not be blank.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get; set; }
+        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private string? _explicitNullValueCode = default!;
 #nullable restore
 #else
-        public string Code { get; set; }
+        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        private string _explicitNullValueCode = default!;
 #endif
         /// <summary>SQL nodes only: id of a direct-query-capable external data source to run against instead of PostHog&apos;s ClickHouse. Omit to query PostHog.</summary>
-        public Guid? ConnectionId { get; set; }
+        public Guid? ConnectionId { get => _explicitNullValueConnectionId; set { _explicitNullValueConnectionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection_id"); else _explicitNullProperties?.Remove("connection_id"); } }
+        private Guid? _explicitNullValueConnectionId = default!;
         /// <summary>ProseMirror node id of the SQLV2 node being run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NodeId { get; set; }
+        public string? NodeId { get => _explicitNullValueNodeId; set { _explicitNullValueNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_id"); else _explicitNullProperties?.Remove("node_id"); } }
+        private string? _explicitNullValueNodeId = default!;
 #nullable restore
 #else
-        public string NodeId { get; set; }
+        public string NodeId { get => _explicitNullValueNodeId; set { _explicitNullValueNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_id"); else _explicitNullProperties?.Remove("node_id"); } }
+        private string _explicitNullValueNodeId = default!;
 #endif
         /// <summary>* `hogql` - hogql* `python` - python</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType? NodeType { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType? NodeType { get => _explicitNullValueNodeType; set { _explicitNullValueNodeType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_type"); else _explicitNullProperties?.Remove("node_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestNodeType? _explicitNullValueNodeType = default!;
         /// <summary>Kernel nodes only: the dataframe variable to bind the result to in the kernel namespace (a python node falls back to the last expression for its preview).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OutputName { get; set; }
+        public string? OutputName { get => _explicitNullValueOutputName; set { _explicitNullValueOutputName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_name"); else _explicitNullProperties?.Remove("output_name"); } }
+        private string? _explicitNullValueOutputName = default!;
 #nullable restore
 #else
-        public string OutputName { get; set; }
+        public string OutputName { get => _explicitNullValueOutputName; set { _explicitNullValueOutputName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_name"); else _explicitNullProperties?.Remove("output_name"); } }
+        private string _explicitNullValueOutputName = default!;
 #endif
         /// <summary>Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs — unless it references a local ref, which reroutes the run to the sandbox&apos;s DuckDB; a python node materializes the hogql refs its code reads as pandas frames.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty? Refs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty? Refs { get => _explicitNullValueRefs; set { _explicitNullValueRefs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refs"); else _explicitNullProperties?.Remove("refs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty? _explicitNullValueRefs = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty Refs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty Refs { get => _explicitNullValueRefs; set { _explicitNullValueRefs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refs"); else _explicitNullProperties?.Remove("refs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequestRefsProperty _explicitNullValueRefs = default!;
 #endif
         /// <summary>Reuse the requesting user&apos;s running or completed HogQL run with the same cell and resolved query from the last hour. Does not apply to token-only callers, kernel runs, or connection runs.</summary>
-        public bool? ReuseResults { get; set; }
+        public bool? ReuseResults { get => _explicitNullValueReuseResults; set { _explicitNullValueReuseResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reuse_results"); else _explicitNullProperties?.Remove("reuse_results"); } }
+        private bool? _explicitNullValueReuseResults = default!;
         /// <summary>Send the code to the selected connection verbatim instead of compiling it from HogQL first. Ignored without connection_id, and incompatible with references to other cells.</summary>
-        public bool? SendRawQuery { get; set; }
+        public bool? SendRawQuery { get => _explicitNullValueSendRawQuery; set { _explicitNullValueSendRawQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_raw_query"); else _explicitNullProperties?.Remove("send_raw_query"); } }
+        private bool? _explicitNullValueSendRawQuery = default!;
         /// <summary>Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>? Variables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>? Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>? _explicitNullValueVariables = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable> Variables { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable> Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable> _explicitNullValueVariables = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequest"/> and sets the default values.
@@ -79,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,6 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("reuse_results", ReuseResults);
             writer.WriteBoolValue("send_raw_query", SendRawQuery);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.NotebookVariable>("variables", Variables);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

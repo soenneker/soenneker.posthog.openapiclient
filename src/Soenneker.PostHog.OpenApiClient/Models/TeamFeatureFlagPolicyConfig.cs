@@ -11,27 +11,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class TeamFeatureFlagPolicyConfig : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("blocked_hosts") is { } nullNodeBlockedHosts && nullNodeBlockedHosts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockedHosts = null;
+            if (parseNode.GetChildNode("blocked_ips") is { } nullNodeBlockedIps && nullNodeBlockedIps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BlockedIps = null;
+            if (parseNode.GetChildNode("require_tags") is { } nullNodeRequireTags && nullNodeRequireTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequireTags = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Domains to block from feature flag requests (/flags and /decide), up to 100. A domain also covers its subdomains. It is compared with the Origin header, or with the Referer header when Origin is missing. Entries are stored lowercase without duplicates. A pasted URL is reduced to its domain, and an internationalized domain is stored as punycode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BlockedHosts { get; set; }
+        public List<string>? BlockedHosts { get => _explicitNullValueBlockedHosts; set { _explicitNullValueBlockedHosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_hosts"); else _explicitNullProperties?.Remove("blocked_hosts"); } }
+        private List<string>? _explicitNullValueBlockedHosts = default!;
 #nullable restore
 #else
-        public List<string> BlockedHosts { get; set; }
+        public List<string> BlockedHosts { get => _explicitNullValueBlockedHosts; set { _explicitNullValueBlockedHosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_hosts"); else _explicitNullProperties?.Remove("blocked_hosts"); } }
+        private List<string> _explicitNullValueBlockedHosts = default!;
 #endif
         /// <summary>IPv4 or IPv6 addresses or CIDR ranges to block from feature flag requests (/flags and /decide), up to 100. Ranges can be /8 or narrower for IPv4 and /16 or narrower for IPv6. Entries are stored in canonical form without duplicates, and an IPv4-mapped IPv6 address is stored as IPv4.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BlockedIps { get; set; }
+        public List<string>? BlockedIps { get => _explicitNullValueBlockedIps; set { _explicitNullValueBlockedIps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_ips"); else _explicitNullProperties?.Remove("blocked_ips"); } }
+        private List<string>? _explicitNullValueBlockedIps = default!;
 #nullable restore
 #else
-        public List<string> BlockedIps { get; set; }
+        public List<string> BlockedIps { get => _explicitNullValueBlockedIps; set { _explicitNullValueBlockedIps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_ips"); else _explicitNullProperties?.Remove("blocked_ips"); } }
+        private List<string> _explicitNullValueBlockedIps = default!;
 #endif
         /// <summary>When enabled, a new feature flag needs at least one tag, and a tagged flag cannot lose its last one. A create that declares it comes from a survey, experiment, early access feature, product tour, or web experiment is exempt, because those forms have no tag input. The caller sets that declaration, so a flag can still be created without a tag.</summary>
-        public bool? RequireTags { get; set; }
+        public bool? RequireTags { get => _explicitNullValueRequireTags; set { _explicitNullValueRequireTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("require_tags"); else _explicitNullProperties?.Remove("require_tags"); } }
+        private bool? _explicitNullValueRequireTags = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig"/> and sets the default values.
         /// </summary>
@@ -47,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TeamFeatureFlagPolicyConfig(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,6 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("blocked_hosts", BlockedHosts);
             writer.WriteCollectionOfPrimitiveValues<string>("blocked_ips", BlockedIps);
             writer.WriteBoolValue("require_tags", RequireTags);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

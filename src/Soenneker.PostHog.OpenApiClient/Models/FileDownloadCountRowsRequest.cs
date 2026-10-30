@@ -12,31 +12,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FileDownloadCountRowsRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("data_interval_end") is { } nullNodeDataIntervalEnd && nullNodeDataIntervalEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalEnd = null;
+            if (parseNode.GetChildNode("data_interval_start") is { } nullNodeDataIntervalStart && nullNodeDataIntervalStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalStart = null;
+            if (parseNode.GetChildNode("hogql_modifiers") is { } nullNodeHogqlModifiers && nullNodeHogqlModifiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogqlModifiers = null;
+            if (parseNode.GetChildNode("hogql_query") is { } nullNodeHogqlQuery && nullNodeHogqlQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogqlQuery = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>End of the export interval. Required for the events, persons, and sessions models. For HogQL, required only when the query references {data_interval_end}. A supplied end must not be in the future or precede a supplied start. Bounds replace HogQL placeholders; they do not add filters to the query.</summary>
-        public DateTimeOffset? DataIntervalEnd { get; set; }
+        public DateTimeOffset? DataIntervalEnd { get => _explicitNullValueDataIntervalEnd; set { _explicitNullValueDataIntervalEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_end"); else _explicitNullProperties?.Remove("data_interval_end"); } }
+        private DateTimeOffset? _explicitNullValueDataIntervalEnd = default!;
         /// <summary>Start of the export interval. Required for the events, persons, and sessions models. For HogQL, required only when the query references {data_interval_start}. A supplied start must not be in the future. When both bounds are supplied, the interval must span at most seven days.</summary>
-        public DateTimeOffset? DataIntervalStart { get; set; }
+        public DateTimeOffset? DataIntervalStart { get => _explicitNullValueDataIntervalStart; set { _explicitNullValueDataIntervalStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_start"); else _explicitNullProperties?.Remove("data_interval_start"); } }
+        private DateTimeOffset? _explicitNullValueDataIntervalStart = default!;
         /// <summary>HogQL modifiers to use when the query runs, as an object keyed by modifier name, for example {&quot;convertToProjectTimezone&quot;: true}. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. If neither sets convertToProjectTimezone, it defaults to false, so timestamps are exported in UTC. Set it to true to export timestamps in the project timezone instead. Unknown modifier names are rejected. On update, the object replaces the modifiers stored on the export, so include every modifier to keep, or send null to remove them all.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers? HogqlModifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers? HogqlModifiers { get => _explicitNullValueHogqlModifiers; set { _explicitNullValueHogqlModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_modifiers"); else _explicitNullProperties?.Remove("hogql_modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers? _explicitNullValueHogqlModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers HogqlModifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers HogqlModifiers { get => _explicitNullValueHogqlModifiers; set { _explicitNullValueHogqlModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_modifiers"); else _explicitNullProperties?.Remove("hogql_modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers _explicitNullValueHogqlModifiers = default!;
 #endif
         /// <summary>HogQL SELECT query whose results are exported. This model is in closed beta and is enabled per team; when it is not enabled, the request fails with a permission error that names HogQL batch exports. Contact PostHog support to request access. The query may reference the {data_interval_start} and {data_interval_end} placeholders. Provide a value for each placeholder the query references; missing referenced bounds are rejected, not inferred. When both bounds are supplied, they must span at most seven days. Neither supplied bound may be in the future. Without placeholders, the query runs unchanged, even if bounds are supplied. Every column in the SELECT clause must be a field or have an alias. It is recommended to limit the query with a WHERE clause, for example bounding timestamp on the events table, both to avoid exporting more rows than expected and because user queries run under stricter resource limits than the other models.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HogqlQuery { get; set; }
+        public string? HogqlQuery { get => _explicitNullValueHogqlQuery; set { _explicitNullValueHogqlQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_query"); else _explicitNullProperties?.Remove("hogql_query"); } }
+        private string? _explicitNullValueHogqlQuery = default!;
 #nullable restore
 #else
-        public string HogqlQuery { get; set; }
+        public string HogqlQuery { get => _explicitNullValueHogqlQuery; set { _explicitNullValueHogqlQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_query"); else _explicitNullProperties?.Remove("hogql_query"); } }
+        private string _explicitNullValueHogqlQuery = default!;
 #endif
         /// <summary>* `hogql` - hogql</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel? _explicitNullValueModel = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequest"/> and sets the default values.
         /// </summary>
@@ -52,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -81,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestHogqlModifiers>("hogql_modifiers", HogqlModifiers);
             writer.WriteStringValue("hogql_query", HogqlQuery);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadCountRowsRequestModel>("model", Model);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,15 +11,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class Population : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("both") is { } nullNodeBoth && nullNodeBoth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Both = null;
+            if (parseNode.GetChildNode("exception_only") is { } nullNodeExceptionOnly && nullNodeExceptionOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExceptionOnly = null;
+            if (parseNode.GetChildNode("neither") is { } nullNodeNeither && nullNodeNeither.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Neither = null;
+            if (parseNode.GetChildNode("success_only") is { } nullNodeSuccessOnly && nullNodeSuccessOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuccessOnly = null;
+        }
+
         /// <summary>The both property</summary>
-        public double? Both { get; set; }
+        public double? Both { get => _explicitNullValueBoth; set { _explicitNullValueBoth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("both"); else _explicitNullProperties?.Remove("both"); } }
+        private double? _explicitNullValueBoth = default!;
         /// <summary>The exception_only property</summary>
-        public double? ExceptionOnly { get; set; }
+        public double? ExceptionOnly { get => _explicitNullValueExceptionOnly; set { _explicitNullValueExceptionOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exception_only"); else _explicitNullProperties?.Remove("exception_only"); } }
+        private double? _explicitNullValueExceptionOnly = default!;
         /// <summary>The neither property</summary>
-        public double? Neither { get; set; }
+        public double? Neither { get => _explicitNullValueNeither; set { _explicitNullValueNeither = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("neither"); else _explicitNullProperties?.Remove("neither"); } }
+        private double? _explicitNullValueNeither = default!;
         /// <summary>The success_only property</summary>
-        public double? SuccessOnly { get; set; }
+        public double? SuccessOnly { get => _explicitNullValueSuccessOnly; set { _explicitNullValueSuccessOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("success_only"); else _explicitNullProperties?.Remove("success_only"); } }
+        private double? _explicitNullValueSuccessOnly = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -28,7 +43,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.Population CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.Population();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.Population(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -54,7 +69,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("both", Both);
             writer.WriteDoubleValue("exception_only", ExceptionOnly);
             writer.WriteDoubleValue("neither", Neither);
-            writer.WriteDoubleValue("success_only", SuccessOnly);
+            writer.WriteDoubleValue("success_only", SuccessOnly);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

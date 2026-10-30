@@ -50,6 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_skills.Search
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "503", global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchError.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }

@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows.Item.Invoc
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationCancelResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationCancelResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationCancelResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationCancelResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Cancel in-flight invocations of this workflow, by id or all at once.Cancellation is asynchronous: runs are flagged here, then terminated bythe workflow workers, promptly for parked runs (delays and waits) and atthe next step boundary for runs mid-execution. Steps that alreadyexecuted are not undone. Canceled runs can be re-run later via `rerun`.

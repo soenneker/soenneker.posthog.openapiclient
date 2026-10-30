@@ -61,6 +61,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Llm_analytics.Me.Spend
                 { "403", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2.CreateFromDiscriminatorValue },
                 { "404", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2.CreateFromDiscriminatorValue },
                 { "429", global::Soenneker.PostHog.OpenApiClient.Models.ErrorResponse2.CreateFromDiscriminatorValue },
+                { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
+                { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };
             var collectionResult = await RequestAdapter.SendCollectionAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonalSpendAnalysisResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
             return collectionResult?.AsList();

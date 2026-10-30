@@ -12,72 +12,108 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WarehouseDestinationPlatformAlertConfigurationEdit : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("annotations") is { } nullNodeAnnotations && nullNodeAnnotations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Annotations = null;
+            if (parseNode.GetChildNode("cooldown_minutes") is { } nullNodeCooldownMinutes && nullNodeCooldownMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CooldownMinutes = null;
+            if (parseNode.GetChildNode("datapoints_to_alarm") is { } nullNodeDatapointsToAlarm && nullNodeDatapointsToAlarm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DatapointsToAlarm = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("evaluation_periods") is { } nullNodeEvaluationPeriods && nullNodeEvaluationPeriods.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationPeriods = null;
+            if (parseNode.GetChildNode("grouping") is { } nullNodeGrouping && nullNodeGrouping.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Grouping = null;
+            if (parseNode.GetChildNode("labels") is { } nullNodeLabels && nullNodeLabels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Labels = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("schedule_restriction") is { } nullNodeScheduleRestriction && nullNodeScheduleRestriction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScheduleRestriction = null;
+            if (parseNode.GetChildNode("source_config") is { } nullNodeSourceConfig && nullNodeSourceConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceConfig = null;
+            if (parseNode.GetChildNode("source_kind") is { } nullNodeSourceKind && nullNodeSourceKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceKind = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Context for whoever responds, such as {&quot;runbook_url&quot;: &quot;https://...&quot;}. Values can use {{ $labels.&lt;name&gt; }} for a grouping key or label of the alert, and {{ $value }}. An annotation whose name ends in _url must start with https://.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditAnnotationsProperty? Annotations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditAnnotationsProperty? Annotations { get => _explicitNullValueAnnotations; set { _explicitNullValueAnnotations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("annotations"); else _explicitNullProperties?.Remove("annotations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditAnnotationsProperty? _explicitNullValueAnnotations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditAnnotationsProperty Annotations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditAnnotationsProperty Annotations { get => _explicitNullValueAnnotations; set { _explicitNullValueAnnotations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("annotations"); else _explicitNullProperties?.Remove("annotations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditAnnotationsProperty _explicitNullValueAnnotations = default!;
 #endif
         /// <summary>Minimum minutes between notifications for the same alert.</summary>
-        public int? CooldownMinutes { get; set; }
+        public int? CooldownMinutes { get => _explicitNullValueCooldownMinutes; set { _explicitNullValueCooldownMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cooldown_minutes"); else _explicitNullProperties?.Remove("cooldown_minutes"); } }
+        private int? _explicitNullValueCooldownMinutes = default!;
         /// <summary>Number of breaching checks within evaluation_periods required to fire. Cannot exceed evaluation_periods.</summary>
-        public int? DatapointsToAlarm { get; set; }
+        public int? DatapointsToAlarm { get => _explicitNullValueDatapointsToAlarm; set { _explicitNullValueDatapointsToAlarm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datapoints_to_alarm"); else _explicitNullProperties?.Remove("datapoints_to_alarm"); } }
+        private int? _explicitNullValueDatapointsToAlarm = default!;
         /// <summary>Whether the alert is evaluated on schedule.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Number of recent checks considered when deciding to fire.</summary>
-        public int? EvaluationPeriods { get; set; }
+        public int? EvaluationPeriods { get => _explicitNullValueEvaluationPeriods; set { _explicitNullValueEvaluationPeriods = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_periods"); else _explicitNullProperties?.Remove("evaluation_periods"); } }
+        private int? _explicitNullValueEvaluationPeriods = default!;
         /// <summary>How the alert splits its results into instances.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditGrouping? Grouping { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditGrouping? Grouping { get => _explicitNullValueGrouping; set { _explicitNullValueGrouping = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping"); else _explicitNullProperties?.Remove("grouping"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditGrouping? _explicitNullValueGrouping = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditGrouping Grouping { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditGrouping Grouping { get => _explicitNullValueGrouping; set { _explicitNullValueGrouping = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping"); else _explicitNullProperties?.Remove("grouping"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditGrouping _explicitNullValueGrouping = default!;
 #endif
         /// <summary>Labels that say who owns the alert and how urgent it is, such as {&quot;team&quot;: &quot;checkout&quot;, &quot;severity&quot;: &quot;critical&quot;}. Names use letters, digits and underscores. alertname and names that start with posthog_ are reserved. Values cannot use templates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditLabelsProperty? Labels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditLabelsProperty? Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditLabelsProperty? _explicitNullValueLabels = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditLabelsProperty Labels { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditLabelsProperty Labels { get => _explicitNullValueLabels; set { _explicitNullValueLabels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("labels"); else _explicitNullProperties?.Remove("labels"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditLabelsProperty _explicitNullValueLabels = default!;
 #endif
         /// <summary>Human-readable name of the alert.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Blocked local time windows (HH:MM in the project timezone) when the alert does not notify. Null means no quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction _explicitNullValueScheduleRestriction = default!;
 #endif
         /// <summary>Settings for a warehouse_destination alert. The bound the alert is evaluated against is under condition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditSourceConfig? SourceConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditSourceConfig? SourceConfig { get => _explicitNullValueSourceConfig; set { _explicitNullValueSourceConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_config"); else _explicitNullProperties?.Remove("source_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditSourceConfig? _explicitNullValueSourceConfig = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditSourceConfig SourceConfig { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditSourceConfig SourceConfig { get => _explicitNullValueSourceConfig; set { _explicitNullValueSourceConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_config"); else _explicitNullProperties?.Remove("source_config"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditSourceConfig _explicitNullValueSourceConfig = default!;
 #endif
         /// <summary>Product whose data the alert evaluates. It cannot change, so it must match the stored value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceKind { get; set; }
+        public string? SourceKind { get => _explicitNullValueSourceKind; set { _explicitNullValueSourceKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_kind"); else _explicitNullProperties?.Remove("source_kind"); } }
+        private string? _explicitNullValueSourceKind = default!;
 #nullable restore
 #else
-        public string SourceKind { get; set; }
+        public string SourceKind { get => _explicitNullValueSourceKind; set { _explicitNullValueSourceKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_kind"); else _explicitNullProperties?.Remove("source_kind"); } }
+        private string _explicitNullValueSourceKind = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEdit"/> and sets the default values.
@@ -94,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEdit CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEdit();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEdit(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -135,6 +171,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseDestinationPlatformAlertConfigurationEditSourceConfig>("source_config", SourceConfig);
             writer.WriteStringValue("source_kind", SourceKind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

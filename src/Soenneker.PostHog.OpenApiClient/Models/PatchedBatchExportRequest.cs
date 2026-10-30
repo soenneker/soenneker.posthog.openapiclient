@@ -12,84 +12,127 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedBatchExportRequest : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("destination") is { } nullNodeDestination && nullNodeDestination.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Destination = null;
+            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("hogql_modifiers") is { } nullNodeHogqlModifiers && nullNodeHogqlModifiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogqlModifiers = null;
+            if (parseNode.GetChildNode("hogql_query") is { } nullNodeHogqlQuery && nullNodeHogqlQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogqlQuery = null;
+            if (parseNode.GetChildNode("incremental_mode") is { } nullNodeIncrementalMode && nullNodeIncrementalMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalMode = null;
+            if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("offset_day") is { } nullNodeOffsetDay && nullNodeOffsetDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OffsetDay = null;
+            if (parseNode.GetChildNode("offset_hour") is { } nullNodeOffsetHour && nullNodeOffsetHour.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OffsetHour = null;
+            if (parseNode.GetChildNode("paused") is { } nullNodePaused && nullNodePaused.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Paused = null;
+            if (parseNode.GetChildNode("primary_key") is { } nullNodePrimaryKey && nullNodePrimaryKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryKey = null;
+            if (parseNode.GetChildNode("timezone") is { } nullNodeTimezone && nullNodeTimezone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timezone = null;
+            if (parseNode.GetChildNode("version_key") is { } nullNodeVersionKey && nullNodeVersionKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionKey = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Destination configuration. Required integration_id is enforced per destination type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination? Destination { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination? Destination { get => _explicitNullValueDestination; set { _explicitNullValueDestination = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination"); else _explicitNullProperties?.Remove("destination"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination? _explicitNullValueDestination = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination Destination { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination Destination { get => _explicitNullValueDestination; set { _explicitNullValueDestination = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination"); else _explicitNullProperties?.Remove("destination"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination _explicitNullValueDestination = default!;
 #endif
         /// <summary>Optional list of property filters to restrict which events are exported. Each filter is a serialized HogQL property filter object with a &apos;type&apos; of one of: &apos;event&apos;, &apos;hogql&apos;, &apos;person&apos; (e.g. {&quot;key&quot;: &quot;$browser&quot;, &quot;operator&quot;: &quot;exact&quot;, &quot;type&quot;: &quot;event&quot;, &quot;value&quot;: [&quot;Firefox&quot;]}).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Filters { get; set; }
+        public UntypedNode? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private UntypedNode? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public UntypedNode Filters { get; set; }
+        public UntypedNode Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private UntypedNode _explicitNullValueFilters = default!;
 #endif
         /// <summary>HogQL modifiers to use when the query runs, as an object keyed by modifier name, for example {&quot;convertToProjectTimezone&quot;: true}. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. If neither sets convertToProjectTimezone, it defaults to false, so timestamps are exported in UTC. Set it to true to export timestamps in the project timezone instead. Unknown modifier names are rejected. On update, the object replaces the modifiers stored on the export, so include every modifier to keep, or send null to remove them all.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? HogqlModifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? HogqlModifiers { get => _explicitNullValueHogqlModifiers; set { _explicitNullValueHogqlModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_modifiers"); else _explicitNullProperties?.Remove("hogql_modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? _explicitNullValueHogqlModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers HogqlModifiers { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers HogqlModifiers { get => _explicitNullValueHogqlModifiers; set { _explicitNullValueHogqlModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_modifiers"); else _explicitNullProperties?.Remove("hogql_modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers _explicitNullValueHogqlModifiers = default!;
 #endif
         /// <summary>HogQL SELECT query. With model &apos;hogql&apos;, its results are the data exported by every run. The query may reference the {data_interval_start} and {data_interval_end} placeholders, replaced with each run&apos;s data interval bounds, for example: WHERE timestamp &gt;= {data_interval_start} AND timestamp &lt; {data_interval_end}. Without them every run exports all rows the query returns. Required when model is &apos;hogql&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HogqlQuery { get; set; }
+        public string? HogqlQuery { get => _explicitNullValueHogqlQuery; set { _explicitNullValueHogqlQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_query"); else _explicitNullProperties?.Remove("hogql_query"); } }
+        private string? _explicitNullValueHogqlQuery = default!;
 #nullable restore
 #else
-        public string HogqlQuery { get; set; }
+        public string HogqlQuery { get => _explicitNullValueHogqlQuery; set { _explicitNullValueHogqlQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_query"); else _explicitNullProperties?.Remove("hogql_query"); } }
+        private string _explicitNullValueHogqlQuery = default!;
 #endif
         /// <summary>* `APPEND` - Append* `MERGE` - Merge</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestIncrementalMode? IncrementalMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestIncrementalMode? IncrementalMode { get => _explicitNullValueIncrementalMode; set { _explicitNullValueIncrementalMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_mode"); else _explicitNullProperties?.Remove("incremental_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestIncrementalMode? _explicitNullValueIncrementalMode = default!;
         /// <summary>* `hour` - hour* `day` - day* `week` - week* `every 5 minutes` - every 5 minutes* `every 15 minutes` - every 15 minutes</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestInterval? Interval { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestInterval? _explicitNullValueInterval = default!;
         /// <summary>* `events` - Events* `persons` - Persons* `sessions` - Sessions* `hogql` - Hogql</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestModel? Model { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestModel? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestModel? _explicitNullValueModel = default!;
         /// <summary>Human-readable name for the batch export.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Day-of-week offset for weekly intervals (0=Sunday, 6=Saturday).</summary>
-        public int? OffsetDay { get; set; }
+        public int? OffsetDay { get => _explicitNullValueOffsetDay; set { _explicitNullValueOffsetDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("offset_day"); else _explicitNullProperties?.Remove("offset_day"); } }
+        private int? _explicitNullValueOffsetDay = default!;
         /// <summary>Hour-of-day offset (0-23) for daily and weekly intervals.</summary>
-        public int? OffsetHour { get; set; }
+        public int? OffsetHour { get => _explicitNullValueOffsetHour; set { _explicitNullValueOffsetHour = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("offset_hour"); else _explicitNullProperties?.Remove("offset_hour"); } }
+        private int? _explicitNullValueOffsetHour = default!;
         /// <summary>Whether the batch export is paused.</summary>
-        public bool? Paused { get; set; }
+        public bool? Paused { get => _explicitNullValuePaused; set { _explicitNullValuePaused = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("paused"); else _explicitNullProperties?.Remove("paused"); } }
+        private bool? _explicitNullValuePaused = default!;
         /// <summary>The column or columns in the provided HogQL query that make up the primary key for a HogQL-backed batch export. Required if incremental mode is &apos;MERGE&apos;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PrimaryKey { get; set; }
+        public List<string>? PrimaryKey { get => _explicitNullValuePrimaryKey; set { _explicitNullValuePrimaryKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_key"); else _explicitNullProperties?.Remove("primary_key"); } }
+        private List<string>? _explicitNullValuePrimaryKey = default!;
 #nullable restore
 #else
-        public List<string> PrimaryKey { get; set; }
+        public List<string> PrimaryKey { get => _explicitNullValuePrimaryKey; set { _explicitNullValuePrimaryKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_key"); else _explicitNullProperties?.Remove("primary_key"); } }
+        private List<string> _explicitNullValuePrimaryKey = default!;
 #endif
         /// <summary>IANA timezone name (e.g. &apos;America/New_York&apos;, &apos;Europe/London&apos;, &apos;UTC&apos;) controlling daily and weekly interval boundaries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Timezone { get; set; }
+        public string? Timezone { get => _explicitNullValueTimezone; set { _explicitNullValueTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone"); else _explicitNullProperties?.Remove("timezone"); } }
+        private string? _explicitNullValueTimezone = default!;
 #nullable restore
 #else
-        public string Timezone { get; set; }
+        public string Timezone { get => _explicitNullValueTimezone; set { _explicitNullValueTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timezone"); else _explicitNullProperties?.Remove("timezone"); } }
+        private string _explicitNullValueTimezone = default!;
 #endif
         /// <summary>The column or columns in the provided HogQL query that make up the version key for a HogQL-backed batch export.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? VersionKey { get; set; }
+        public List<string>? VersionKey { get => _explicitNullValueVersionKey; set { _explicitNullValueVersionKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_key"); else _explicitNullProperties?.Remove("version_key"); } }
+        private List<string>? _explicitNullValueVersionKey = default!;
 #nullable restore
 #else
-        public List<string> VersionKey { get; set; }
+        public List<string> VersionKey { get => _explicitNullValueVersionKey; set { _explicitNullValueVersionKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_key"); else _explicitNullProperties?.Remove("version_key"); } }
+        private List<string> _explicitNullValueVersionKey = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequest"/> and sets the default values.
@@ -106,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequest CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequest();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequest(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -153,6 +196,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("primary_key", PrimaryKey);
             writer.WriteStringValue("timezone", Timezone);
             writer.WriteCollectionOfPrimitiveValues<string>("version_key", VersionKey);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

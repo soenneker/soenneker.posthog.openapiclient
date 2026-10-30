@@ -12,7 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EvaluationEvaluationConfig : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,17 +54,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfig();
             if("EvaluationEvaluationConfigHogConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EvaluationEvaluationConfigHogConfig = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig();
+                
             }
             else if("EvaluationEvaluationConfigLlmJudgeConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EvaluationEvaluationConfigLlmJudgeConfig = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig();
+                
             }
             else if("EvaluationEvaluationConfigSentimentConfig".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EvaluationEvaluationConfigSentimentConfig = new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfig();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("prompt") != null && (parseNode.GetChildNode("judge_method") == null || (parseNode.GetChildNode("judge_method")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag1 && ("llm".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal) || "decision".Equals(optionalTag1.GetValue(), global::System.StringComparison.Ordinal)))) && (parseNode.GetChildNode("reasoning_level") == null || (parseNode.GetChildNode("reasoning_level")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString optionalTag2 && ("minimal".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal) || "low".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal) || "medium".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal) || "high".Equals(optionalTag2.GetValue(), global::System.StringComparison.Ordinal))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("source") != null))();
+            if (result.EvaluationEvaluationConfigHogConfig == null && result.EvaluationEvaluationConfigLlmJudgeConfig == null && result.EvaluationEvaluationConfigSentimentConfig == null && matchesUnionBranch0 && !matchesUnionBranch1) result.EvaluationEvaluationConfigLlmJudgeConfig = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig(), parseNode);
+            if (result.EvaluationEvaluationConfigHogConfig == null && result.EvaluationEvaluationConfigLlmJudgeConfig == null && result.EvaluationEvaluationConfigSentimentConfig == null && matchesUnionBranch1 && !matchesUnionBranch0) result.EvaluationEvaluationConfigHogConfig = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig(), parseNode);
+            if (result.EvaluationEvaluationConfigHogConfig == null && result.EvaluationEvaluationConfigLlmJudgeConfig == null && result.EvaluationEvaluationConfigSentimentConfig == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,17 +99,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (EvaluationEvaluationConfigHogConfig == null && EvaluationEvaluationConfigLlmJudgeConfig == null && EvaluationEvaluationConfigSentimentConfig == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (EvaluationEvaluationConfigHogConfig != null && EvaluationEvaluationConfigLlmJudgeConfig == null && EvaluationEvaluationConfigSentimentConfig == null) { if (EvaluationEvaluationConfigHogConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, EvaluationEvaluationConfigHogConfig); return; }
+            if (EvaluationEvaluationConfigLlmJudgeConfig != null && EvaluationEvaluationConfigHogConfig == null && EvaluationEvaluationConfigSentimentConfig == null) { if (EvaluationEvaluationConfigLlmJudgeConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, EvaluationEvaluationConfigLlmJudgeConfig); return; }
+            if (EvaluationEvaluationConfigSentimentConfig != null && EvaluationEvaluationConfigHogConfig == null && EvaluationEvaluationConfigLlmJudgeConfig == null) { if (EvaluationEvaluationConfigSentimentConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, EvaluationEvaluationConfigSentimentConfig); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(EvaluationEvaluationConfigHogConfig != null)
             {
+                if (EvaluationEvaluationConfigHogConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigHogConfig>(null, EvaluationEvaluationConfigHogConfig);
             }
             else if(EvaluationEvaluationConfigLlmJudgeConfig != null)
             {
+                if (EvaluationEvaluationConfigLlmJudgeConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigLlmJudgeConfig>(null, EvaluationEvaluationConfigLlmJudgeConfig);
             }
             else if(EvaluationEvaluationConfigSentimentConfig != null)
             {
+                if (EvaluationEvaluationConfigSentimentConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfigSentimentConfig>(null, EvaluationEvaluationConfigSentimentConfig);
             }
         }

@@ -12,7 +12,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EnsembleDetectorConfigDetectorsItem : IComposedTypeWrapper, IParsable
-    {
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CopodDetectorConfig"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -121,53 +126,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem();
             if("copod".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.CopodDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.CopodDetectorConfig();
+                
             }
             else if("ecod".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.EcodDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.EcodDetectorConfig();
+                
             }
             else if("hbos".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.HbosDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.HbosDetectorConfig();
+                
             }
             else if("iqr".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.IqrDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.IqrDetectorConfig();
+                
             }
             else if("isolation_forest".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.IsolationForestDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig();
+                
             }
             else if("knn".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.KnnDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.KnnDetectorConfig();
+                
             }
             else if("lof".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.LofDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.LofDetectorConfig();
+                
             }
             else if("mad".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.MadDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.MadDetectorConfig();
+                
             }
             else if("ocsvm".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.OcsvmDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.OcsvmDetectorConfig();
+                
             }
             else if("pca".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.PcaDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.PcaDetectorConfig();
+                
             }
             else if("threshold".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ThresholdDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig();
+                
             }
             else if("zscore".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
-                result.ZScoreDetectorConfig = new global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig();
+                
             }
-            return result;
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            if (result.CopodDetectorConfig == null && result.EcodDetectorConfig == null && result.HbosDetectorConfig == null && result.IqrDetectorConfig == null && result.IsolationForestDetectorConfig == null && result.KnnDetectorConfig == null && result.LofDetectorConfig == null && result.MadDetectorConfig == null && result.OcsvmDetectorConfig == null && result.PcaDetectorConfig == null && result.ThresholdDetectorConfig == null && result.ZScoreDetectorConfig == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -231,53 +239,80 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (CopodDetectorConfig != null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (CopodDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, CopodDetectorConfig); return; }
+            if (EcodDetectorConfig != null && CopodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (EcodDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, EcodDetectorConfig); return; }
+            if (HbosDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (HbosDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, HbosDetectorConfig); return; }
+            if (IqrDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (IqrDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, IqrDetectorConfig); return; }
+            if (IsolationForestDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (IsolationForestDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, IsolationForestDetectorConfig); return; }
+            if (KnnDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (KnnDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, KnnDetectorConfig); return; }
+            if (LofDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (LofDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, LofDetectorConfig); return; }
+            if (MadDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (MadDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MadDetectorConfig); return; }
+            if (OcsvmDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (OcsvmDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, OcsvmDetectorConfig); return; }
+            if (PcaDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && ThresholdDetectorConfig == null && ZScoreDetectorConfig == null) { if (PcaDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PcaDetectorConfig); return; }
+            if (ThresholdDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ZScoreDetectorConfig == null) { if (ThresholdDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ThresholdDetectorConfig); return; }
+            if (ZScoreDetectorConfig != null && CopodDetectorConfig == null && EcodDetectorConfig == null && HbosDetectorConfig == null && IqrDetectorConfig == null && IsolationForestDetectorConfig == null && KnnDetectorConfig == null && LofDetectorConfig == null && MadDetectorConfig == null && OcsvmDetectorConfig == null && PcaDetectorConfig == null && ThresholdDetectorConfig == null) { if (ZScoreDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ZScoreDetectorConfig); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(CopodDetectorConfig != null)
             {
+                if (CopodDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CopodDetectorConfig>(null, CopodDetectorConfig);
             }
             else if(EcodDetectorConfig != null)
             {
+                if (EcodDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EcodDetectorConfig>(null, EcodDetectorConfig);
             }
             else if(HbosDetectorConfig != null)
             {
+                if (HbosDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HbosDetectorConfig>(null, HbosDetectorConfig);
             }
             else if(IqrDetectorConfig != null)
             {
+                if (IqrDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IqrDetectorConfig>(null, IqrDetectorConfig);
             }
             else if(IsolationForestDetectorConfig != null)
             {
+                if (IsolationForestDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IsolationForestDetectorConfig>(null, IsolationForestDetectorConfig);
             }
             else if(KnnDetectorConfig != null)
             {
+                if (KnnDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.KnnDetectorConfig>(null, KnnDetectorConfig);
             }
             else if(LofDetectorConfig != null)
             {
+                if (LofDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LofDetectorConfig>(null, LofDetectorConfig);
             }
             else if(MadDetectorConfig != null)
             {
+                if (MadDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MadDetectorConfig>(null, MadDetectorConfig);
             }
             else if(OcsvmDetectorConfig != null)
             {
+                if (OcsvmDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OcsvmDetectorConfig>(null, OcsvmDetectorConfig);
             }
             else if(PcaDetectorConfig != null)
             {
+                if (PcaDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PcaDetectorConfig>(null, PcaDetectorConfig);
             }
             else if(ThresholdDetectorConfig != null)
             {
+                if (ThresholdDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ThresholdDetectorConfig>(null, ThresholdDetectorConfig);
             }
             else if(ZScoreDetectorConfig != null)
             {
+                if (ZScoreDetectorConfig is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ZScoreDetectorConfig>(null, ZScoreDetectorConfig);
             }
         }

@@ -11,27 +11,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class MarketingAnalyticsSearchMetrics : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("absoluteTopImpressionRate") is { } nullNodeAbsoluteTopImpressionRate && nullNodeAbsoluteTopImpressionRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AbsoluteTopImpressionRate = null;
+            if (parseNode.GetChildNode("clicks") is { } nullNodeClicks && nullNodeClicks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clicks = null;
+            if (parseNode.GetChildNode("conversions") is { } nullNodeConversions && nullNodeConversions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conversions = null;
+            if (parseNode.GetChildNode("cost") is { } nullNodeCost && nullNodeCost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cost = null;
+            if (parseNode.GetChildNode("cpa") is { } nullNodeCpa && nullNodeCpa.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cpa = null;
+            if (parseNode.GetChildNode("cpc") is { } nullNodeCpc && nullNodeCpc.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cpc = null;
+            if (parseNode.GetChildNode("ctr") is { } nullNodeCtr && nullNodeCtr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ctr = null;
+            if (parseNode.GetChildNode("impressions") is { } nullNodeImpressions && nullNodeImpressions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Impressions = null;
+            if (parseNode.GetChildNode("position") is { } nullNodePosition && nullNodePosition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Position = null;
+            if (parseNode.GetChildNode("topImpressionRate") is { } nullNodeTopImpressionRate && nullNodeTopImpressionRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopImpressionRate = null;
+        }
+
         /// <summary>Fraction of Google Search ad impressions shown as the first ad.</summary>
-        public double? AbsoluteTopImpressionRate { get; set; }
+        public double? AbsoluteTopImpressionRate { get => _explicitNullValueAbsoluteTopImpressionRate; set { _explicitNullValueAbsoluteTopImpressionRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("absoluteTopImpressionRate"); else _explicitNullProperties?.Remove("absoluteTopImpressionRate"); } }
+        private double? _explicitNullValueAbsoluteTopImpressionRate = default!;
         /// <summary>The clicks property</summary>
-        public double? Clicks { get; set; }
+        public double? Clicks { get => _explicitNullValueClicks; set { _explicitNullValueClicks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clicks"); else _explicitNullProperties?.Remove("clicks"); } }
+        private double? _explicitNullValueClicks = default!;
         /// <summary>The conversions property</summary>
-        public double? Conversions { get; set; }
+        public double? Conversions { get => _explicitNullValueConversions; set { _explicitNullValueConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversions"); else _explicitNullProperties?.Remove("conversions"); } }
+        private double? _explicitNullValueConversions = default!;
         /// <summary>The cost property</summary>
-        public double? Cost { get; set; }
+        public double? Cost { get => _explicitNullValueCost; set { _explicitNullValueCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cost"); else _explicitNullProperties?.Remove("cost"); } }
+        private double? _explicitNullValueCost = default!;
         /// <summary>The cpa property</summary>
-        public double? Cpa { get; set; }
+        public double? Cpa { get => _explicitNullValueCpa; set { _explicitNullValueCpa = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpa"); else _explicitNullProperties?.Remove("cpa"); } }
+        private double? _explicitNullValueCpa = default!;
         /// <summary>The cpc property</summary>
-        public double? Cpc { get; set; }
+        public double? Cpc { get => _explicitNullValueCpc; set { _explicitNullValueCpc = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpc"); else _explicitNullProperties?.Remove("cpc"); } }
+        private double? _explicitNullValueCpc = default!;
         /// <summary>The ctr property</summary>
-        public double? Ctr { get; set; }
+        public double? Ctr { get => _explicitNullValueCtr; set { _explicitNullValueCtr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ctr"); else _explicitNullProperties?.Remove("ctr"); } }
+        private double? _explicitNullValueCtr = default!;
         /// <summary>The impressions property</summary>
-        public double? Impressions { get; set; }
+        public double? Impressions { get => _explicitNullValueImpressions; set { _explicitNullValueImpressions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impressions"); else _explicitNullProperties?.Remove("impressions"); } }
+        private double? _explicitNullValueImpressions = default!;
         /// <summary>The position property</summary>
-        public double? Position { get; set; }
+        public double? Position { get => _explicitNullValuePosition; set { _explicitNullValuePosition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("position"); else _explicitNullProperties?.Remove("position"); } }
+        private double? _explicitNullValuePosition = default!;
         /// <summary>Fraction of Google Search ad impressions shown among the top ads.</summary>
-        public double? TopImpressionRate { get; set; }
+        public double? TopImpressionRate { get => _explicitNullValueTopImpressionRate; set { _explicitNullValueTopImpressionRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topImpressionRate"); else _explicitNullProperties?.Remove("topImpressionRate"); } }
+        private double? _explicitNullValueTopImpressionRate = default!;
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -40,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,7 +105,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("ctr", Ctr);
             writer.WriteDoubleValue("impressions", Impressions);
             writer.WriteDoubleValue("position", Position);
-            writer.WriteDoubleValue("topImpressionRate", TopImpressionRate);
+            writer.WriteDoubleValue("topImpressionRate", TopImpressionRate);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

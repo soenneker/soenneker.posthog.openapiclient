@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_pl
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSessionRecordingPlaylistList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSessionRecordingPlaylistList.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSessionRecordingPlaylistList>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PaginatedSessionRecordingPlaylistList.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist"/></returns>
         /// <param name="body">The request body</param>
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_pl
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingPlaylist.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Override list to include synthetic playlists.Synthetics have no DB row, so we compute each one&apos;s position in the mergedsort and split the requested page between synthetics and a DB queryset slice.The merge/rank/sort is all in-memory, so each phase is wrapped in a span andthe input sizes are recorded as span attributes — a slow response on a teamwith many playlists then shows up as a wide span against a large db_count.

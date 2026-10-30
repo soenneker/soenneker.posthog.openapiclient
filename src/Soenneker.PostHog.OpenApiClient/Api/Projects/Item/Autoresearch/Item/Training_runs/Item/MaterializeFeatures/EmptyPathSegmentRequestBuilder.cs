@@ -51,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Autoresearch.Item.Tr
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.MaterializeFeaturesResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.MaterializeFeaturesResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.MaterializeFeaturesResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.MaterializeFeaturesResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Run features_sql server-side against the labeled training population and write the resulting train/holdout feature and label parquet files directly into this run&apos;s sandbox. Returns the local sandbox paths, row counts, and feature columns. The rows never pass through the agent&apos;s context and there is no 500-row cap. Read the returned paths with pd.read_parquet and iterate in Python.

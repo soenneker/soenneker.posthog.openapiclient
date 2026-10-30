@@ -12,184 +12,257 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ProjectProfilePayloadInventory : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("emit_eligibility") is { } nullNodeEmitEligibility && nullNodeEmitEligibility.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmitEligibility = null;
+            if (parseNode.GetChildNode("existing_inbox_reports") is { } nullNodeExistingInboxReports && nullNodeExistingInboxReports.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExistingInboxReports = null;
+            if (parseNode.GetChildNode("external_data_sources") is { } nullNodeExternalDataSources && nullNodeExternalDataSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalDataSources = null;
+            if (parseNode.GetChildNode("integrations") is { } nullNodeIntegrations && nullNodeIntegrations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Integrations = null;
+            if (parseNode.GetChildNode("product_intents") is { } nullNodeProductIntents && nullNodeProductIntents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductIntents = null;
+            if (parseNode.GetChildNode("products_in_use") is { } nullNodeProductsInUse && nullNodeProductsInUse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductsInUse = null;
+            if (parseNode.GetChildNode("project_context") is { } nullNodeProjectContext && nullNodeProjectContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectContext = null;
+            if (parseNode.GetChildNode("recent_actions") is { } nullNodeRecentActions && nullNodeRecentActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentActions = null;
+            if (parseNode.GetChildNode("recent_activity") is { } nullNodeRecentActivity && nullNodeRecentActivity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentActivity = null;
+            if (parseNode.GetChildNode("recent_alerts") is { } nullNodeRecentAlerts && nullNodeRecentAlerts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentAlerts = null;
+            if (parseNode.GetChildNode("recent_cohorts") is { } nullNodeRecentCohorts && nullNodeRecentCohorts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentCohorts = null;
+            if (parseNode.GetChildNode("recent_dashboards") is { } nullNodeRecentDashboards && nullNodeRecentDashboards.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentDashboards = null;
+            if (parseNode.GetChildNode("recent_experiments") is { } nullNodeRecentExperiments && nullNodeRecentExperiments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentExperiments = null;
+            if (parseNode.GetChildNode("recent_feature_flags") is { } nullNodeRecentFeatureFlags && nullNodeRecentFeatureFlags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentFeatureFlags = null;
+            if (parseNode.GetChildNode("recent_hog_flows") is { } nullNodeRecentHogFlows && nullNodeRecentHogFlows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentHogFlows = null;
+            if (parseNode.GetChildNode("recent_hog_functions") is { } nullNodeRecentHogFunctions && nullNodeRecentHogFunctions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentHogFunctions = null;
+            if (parseNode.GetChildNode("recent_notebooks") is { } nullNodeRecentNotebooks && nullNodeRecentNotebooks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentNotebooks = null;
+            if (parseNode.GetChildNode("recent_reviewer_corrections") is { } nullNodeRecentReviewerCorrections && nullNodeRecentReviewerCorrections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentReviewerCorrections = null;
+            if (parseNode.GetChildNode("recent_surveys") is { } nullNodeRecentSurveys && nullNodeRecentSurveys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentSurveys = null;
+            if (parseNode.GetChildNode("scout_fleet") is { } nullNodeScoutFleet && nullNodeScoutFleet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutFleet = null;
+            if (parseNode.GetChildNode("signal_source_configs") is { } nullNodeSignalSourceConfigs && nullNodeSignalSourceConfigs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalSourceConfigs = null;
+            if (parseNode.GetChildNode("top_events") is { } nullNodeTopEvents && nullNodeTopEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopEvents = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether scout findings can actually reach the inbox for this team — the org-level AI data-processing consent gate and the `signals_scout` source toggle, plus a one-line remediation pointer. Read at cold start to quick-close before doing throwaway work.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryEmitEligibility? EmitEligibility { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryEmitEligibility? EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryEmitEligibility? _explicitNullValueEmitEligibility = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryEmitEligibility EmitEligibility { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryEmitEligibility EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryEmitEligibility _explicitNullValueEmitEligibility = default!;
 #endif
         /// <summary>Counts of reports already in the inbox, grouped by status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryExistingInboxReports? ExistingInboxReports { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryExistingInboxReports? ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryExistingInboxReports? _explicitNullValueExistingInboxReports = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryExistingInboxReports ExistingInboxReports { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryExistingInboxReports ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryExistingInboxReports _explicitNullValueExistingInboxReports = default!;
 #endif
         /// <summary>Connected warehouse sources (excludes soft-deleted).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceEntry>? ExternalDataSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceEntry>? ExternalDataSources { get => _explicitNullValueExternalDataSources; set { _explicitNullValueExternalDataSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_data_sources"); else _explicitNullProperties?.Remove("external_data_sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceEntry>? _explicitNullValueExternalDataSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceEntry> ExternalDataSources { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceEntry> ExternalDataSources { get => _explicitNullValueExternalDataSources; set { _explicitNullValueExternalDataSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_data_sources"); else _explicitNullProperties?.Remove("external_data_sources"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceEntry> _explicitNullValueExternalDataSources = default!;
 #endif
         /// <summary>Connected integrations (kind + connection time only — config never surfaced).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationEntry>? Integrations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationEntry>? Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationEntry>? _explicitNullValueIntegrations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationEntry> Integrations { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationEntry> Integrations { get => _explicitNullValueIntegrations; set { _explicitNullValueIntegrations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integrations"); else _explicitNullProperties?.Remove("integrations"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationEntry> _explicitNullValueIntegrations = default!;
 #endif
         /// <summary>Products the team signaled intent to use; useful for spotting stuck onboardings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductIntentEntry>? ProductIntents { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductIntentEntry>? ProductIntents { get => _explicitNullValueProductIntents; set { _explicitNullValueProductIntents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_intents"); else _explicitNullProperties?.Remove("product_intents"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ProductIntentEntry>? _explicitNullValueProductIntents = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductIntentEntry> ProductIntents { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductIntentEntry> ProductIntents { get => _explicitNullValueProductIntents; set { _explicitNullValueProductIntents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_intents"); else _explicitNullProperties?.Remove("product_intents"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ProductIntentEntry> _explicitNullValueProductIntents = default!;
 #endif
         /// <summary>Product keys this team has completed onboarding for, sorted alphabetically.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ProductsInUse { get; set; }
+        public List<string>? ProductsInUse { get => _explicitNullValueProductsInUse; set { _explicitNullValueProductsInUse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products_in_use"); else _explicitNullProperties?.Remove("products_in_use"); } }
+        private List<string>? _explicitNullValueProductsInUse = default!;
 #nullable restore
 #else
-        public List<string> ProductsInUse { get; set; }
+        public List<string> ProductsInUse { get => _explicitNullValueProductsInUse; set { _explicitNullValueProductsInUse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products_in_use"); else _explicitNullProperties?.Remove("products_in_use"); } }
+        private List<string> _explicitNullValueProductsInUse = default!;
 #endif
         /// <summary>Free-form orientation: human-set product description + registered app URLs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext? ProjectContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext? ProjectContext { get => _explicitNullValueProjectContext; set { _explicitNullValueProjectContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_context"); else _explicitNullProperties?.Remove("project_context"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext? _explicitNullValueProjectContext = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext ProjectContext { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext ProjectContext { get => _explicitNullValueProjectContext; set { _explicitNullValueProjectContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("project_context"); else _explicitNullProperties?.Remove("project_context"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryProjectContext _explicitNullValueProjectContext = default!;
 #endif
         /// <summary>Action orientation: total + the 5 most recently updated actions — useful to anchor agent reasoning about what the team treats as a meaningful interaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActions? RecentActions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActions? RecentActions { get => _explicitNullValueRecentActions; set { _explicitNullValueRecentActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_actions"); else _explicitNullProperties?.Remove("recent_actions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActions? _explicitNullValueRecentActions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActions RecentActions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActions RecentActions { get => _explicitNullValueRecentActions; set { _explicitNullValueRecentActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_actions"); else _explicitNullProperties?.Remove("recent_actions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActions _explicitNullValueRecentActions = default!;
 #endif
         /// <summary>Per-scope counts off the activity log over the recent-activity window — cross-cutting orientation across every entity type (surveys, feature flags, experiments, dashboards, insights, cohorts, notebooks, actions, etc.). Each scope reports `edits` (total log entries), `users` (distinct user count), and `last_edit` (ISO-8601). Use to triage which scope a team has been working in lately before drilling down via the per-entity readers or `advanced-activity-logs-list`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActivity? RecentActivity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActivity? RecentActivity { get => _explicitNullValueRecentActivity; set { _explicitNullValueRecentActivity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_activity"); else _explicitNullProperties?.Remove("recent_activity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActivity? _explicitNullValueRecentActivity = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActivity RecentActivity { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActivity RecentActivity { get => _explicitNullValueRecentActivity; set { _explicitNullValueRecentActivity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_activity"); else _explicitNullProperties?.Remove("recent_activity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActivity _explicitNullValueRecentActivity = default!;
 #endif
         /// <summary>Alert orientation: total + enabled count, plus the 5 most recently created alerts with their state and threshold metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentAlerts? RecentAlerts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentAlerts? RecentAlerts { get => _explicitNullValueRecentAlerts; set { _explicitNullValueRecentAlerts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_alerts"); else _explicitNullProperties?.Remove("recent_alerts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentAlerts? _explicitNullValueRecentAlerts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentAlerts RecentAlerts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentAlerts RecentAlerts { get => _explicitNullValueRecentAlerts; set { _explicitNullValueRecentAlerts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_alerts"); else _explicitNullProperties?.Remove("recent_alerts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentAlerts _explicitNullValueRecentAlerts = default!;
 #endif
         /// <summary>Cohort orientation: total + the 5 most recently created cohorts on the team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentCohorts? RecentCohorts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentCohorts? RecentCohorts { get => _explicitNullValueRecentCohorts; set { _explicitNullValueRecentCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_cohorts"); else _explicitNullProperties?.Remove("recent_cohorts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentCohorts? _explicitNullValueRecentCohorts = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentCohorts RecentCohorts { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentCohorts RecentCohorts { get => _explicitNullValueRecentCohorts; set { _explicitNullValueRecentCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_cohorts"); else _explicitNullProperties?.Remove("recent_cohorts"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentCohorts _explicitNullValueRecentCohorts = default!;
 #endif
         /// <summary>Up to 20 dashboards on this team sorted by `last_accessed_at` desc — what the team is currently looking at, not necessarily the most-trafficked. We don&apos;t have per-dashboard view counts in Postgres, only the timestamp of the most recent access.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecentDashboardEntry>? RecentDashboards { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecentDashboardEntry>? RecentDashboards { get => _explicitNullValueRecentDashboards; set { _explicitNullValueRecentDashboards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_dashboards"); else _explicitNullProperties?.Remove("recent_dashboards"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RecentDashboardEntry>? _explicitNullValueRecentDashboards = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecentDashboardEntry> RecentDashboards { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.RecentDashboardEntry> RecentDashboards { get => _explicitNullValueRecentDashboards; set { _explicitNullValueRecentDashboards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_dashboards"); else _explicitNullProperties?.Remove("recent_dashboards"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.RecentDashboardEntry> _explicitNullValueRecentDashboards = default!;
 #endif
         /// <summary>Experiment orientation: total + running count, plus the 5 most recently updated experiments. The feature_flag_key on each row lets the scout correlate experiments with the `recent_feature_flags` section.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentExperiments? RecentExperiments { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentExperiments? RecentExperiments { get => _explicitNullValueRecentExperiments; set { _explicitNullValueRecentExperiments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_experiments"); else _explicitNullProperties?.Remove("recent_experiments"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentExperiments? _explicitNullValueRecentExperiments = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentExperiments RecentExperiments { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentExperiments RecentExperiments { get => _explicitNullValueRecentExperiments; set { _explicitNullValueRecentExperiments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_experiments"); else _explicitNullProperties?.Remove("recent_experiments"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentExperiments _explicitNullValueRecentExperiments = default!;
 #endif
         /// <summary>Feature flag orientation: total + active count, plus the 5 most recently updated non-deleted flags with id, key, name, active, and updated_at.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentFeatureFlags? RecentFeatureFlags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentFeatureFlags? RecentFeatureFlags { get => _explicitNullValueRecentFeatureFlags; set { _explicitNullValueRecentFeatureFlags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_feature_flags"); else _explicitNullProperties?.Remove("recent_feature_flags"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentFeatureFlags? _explicitNullValueRecentFeatureFlags = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentFeatureFlags RecentFeatureFlags { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentFeatureFlags RecentFeatureFlags { get => _explicitNullValueRecentFeatureFlags; set { _explicitNullValueRecentFeatureFlags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_feature_flags"); else _explicitNullProperties?.Remove("recent_feature_flags"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentFeatureFlags _explicitNullValueRecentFeatureFlags = default!;
 #endif
         /// <summary>Hog flow orientation: total + non-archived count, plus the 5 most recently updated automation flows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFlows? RecentHogFlows { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFlows? RecentHogFlows { get => _explicitNullValueRecentHogFlows; set { _explicitNullValueRecentHogFlows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_hog_flows"); else _explicitNullProperties?.Remove("recent_hog_flows"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFlows? _explicitNullValueRecentHogFlows = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFlows RecentHogFlows { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFlows RecentHogFlows { get => _explicitNullValueRecentHogFlows; set { _explicitNullValueRecentHogFlows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_hog_flows"); else _explicitNullProperties?.Remove("recent_hog_flows"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFlows _explicitNullValueRecentHogFlows = default!;
 #endif
         /// <summary>Hog function orientation: total + enabled count, plus the 5 most recently updated destinations / transformations the team has wired up via the CDP pipelines.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFunctions? RecentHogFunctions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFunctions? RecentHogFunctions { get => _explicitNullValueRecentHogFunctions; set { _explicitNullValueRecentHogFunctions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_hog_functions"); else _explicitNullProperties?.Remove("recent_hog_functions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFunctions? _explicitNullValueRecentHogFunctions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFunctions RecentHogFunctions { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFunctions RecentHogFunctions { get => _explicitNullValueRecentHogFunctions; set { _explicitNullValueRecentHogFunctions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_hog_functions"); else _explicitNullProperties?.Remove("recent_hog_functions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentHogFunctions _explicitNullValueRecentHogFunctions = default!;
 #endif
         /// <summary>Notebook orientation: total + the 5 most recently modified notebooks — useful signal for what the team has been investigating.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentNotebooks? RecentNotebooks { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentNotebooks? RecentNotebooks { get => _explicitNullValueRecentNotebooks; set { _explicitNullValueRecentNotebooks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_notebooks"); else _explicitNullProperties?.Remove("recent_notebooks"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentNotebooks? _explicitNullValueRecentNotebooks = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentNotebooks RecentNotebooks { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentNotebooks RecentNotebooks { get => _explicitNullValueRecentNotebooks; set { _explicitNullValueRecentNotebooks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_notebooks"); else _explicitNullProperties?.Remove("recent_notebooks"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentNotebooks _explicitNullValueRecentNotebooks = default!;
 #endif
         /// <summary>Recent human edits to report reviewer lists (before/after GitHub logins). The strongest ownership precedent available — check it before setting `suggested_reviewers` and fold what it shows into `reviewer:` memory keys.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentReviewerCorrections? RecentReviewerCorrections { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentReviewerCorrections? RecentReviewerCorrections { get => _explicitNullValueRecentReviewerCorrections; set { _explicitNullValueRecentReviewerCorrections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_reviewer_corrections"); else _explicitNullProperties?.Remove("recent_reviewer_corrections"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentReviewerCorrections? _explicitNullValueRecentReviewerCorrections = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentReviewerCorrections RecentReviewerCorrections { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentReviewerCorrections RecentReviewerCorrections { get => _explicitNullValueRecentReviewerCorrections; set { _explicitNullValueRecentReviewerCorrections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_reviewer_corrections"); else _explicitNullProperties?.Remove("recent_reviewer_corrections"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentReviewerCorrections _explicitNullValueRecentReviewerCorrections = default!;
 #endif
         /// <summary>Surveys orientation: total + active count, plus the 5 most recently updated surveys with id, name, type, status (draft / running / stopped / archived), and updated_at.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentSurveys? RecentSurveys { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentSurveys? RecentSurveys { get => _explicitNullValueRecentSurveys; set { _explicitNullValueRecentSurveys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_surveys"); else _explicitNullProperties?.Remove("recent_surveys"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentSurveys? _explicitNullValueRecentSurveys = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentSurveys RecentSurveys { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentSurveys RecentSurveys { get => _explicitNullValueRecentSurveys; set { _explicitNullValueRecentSurveys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_surveys"); else _explicitNullProperties?.Remove("recent_surveys"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentSurveys _explicitNullValueRecentSurveys = default!;
 #endif
         /// <summary>The other scouts configured on this project, split into enabled / disabled, each with its cadence, dry-run posture, last run, and last emit. Read it to see who else is watching this project before investigating a surface a sibling already covers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet? ScoutFleet { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet? ScoutFleet { get => _explicitNullValueScoutFleet; set { _explicitNullValueScoutFleet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_fleet"); else _explicitNullProperties?.Remove("scout_fleet"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet? _explicitNullValueScoutFleet = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet ScoutFleet { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet ScoutFleet { get => _explicitNullValueScoutFleet; set { _explicitNullValueScoutFleet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_fleet"); else _explicitNullProperties?.Remove("scout_fleet"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet _explicitNullValueScoutFleet = default!;
 #endif
         /// <summary>Signal source configs split into enabled / disabled buckets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventorySignalSourceConfigs? SignalSourceConfigs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventorySignalSourceConfigs? SignalSourceConfigs { get => _explicitNullValueSignalSourceConfigs; set { _explicitNullValueSignalSourceConfigs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_source_configs"); else _explicitNullProperties?.Remove("signal_source_configs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventorySignalSourceConfigs? _explicitNullValueSignalSourceConfigs = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventorySignalSourceConfigs SignalSourceConfigs { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventorySignalSourceConfigs SignalSourceConfigs { get => _explicitNullValueSignalSourceConfigs; set { _explicitNullValueSignalSourceConfigs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_source_configs"); else _explicitNullProperties?.Remove("signal_source_configs"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventorySignalSourceConfigs _explicitNullValueSignalSourceConfigs = default!;
 #endif
         /// <summary>Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project&apos;s counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry>? TopEvents { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry>? TopEvents { get => _explicitNullValueTopEvents; set { _explicitNullValueTopEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_events"); else _explicitNullProperties?.Remove("top_events"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry>? _explicitNullValueTopEvents = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry> TopEvents { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry> TopEvents { get => _explicitNullValueTopEvents; set { _explicitNullValueTopEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_events"); else _explicitNullProperties?.Remove("top_events"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry> _explicitNullValueTopEvents = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadInventory"/> and sets the default values.
@@ -206,7 +279,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadInventory CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadInventory();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfilePayloadInventory(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -269,6 +342,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryScoutFleet>("scout_fleet", ScoutFleet);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventorySignalSourceConfigs>("signal_source_configs", SignalSourceConfigs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TopEventEntry>("top_events", TopEvents);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

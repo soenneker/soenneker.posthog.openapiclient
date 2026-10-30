@@ -11,34 +11,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class LogAttributeEntry : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("matchedOn") is { } nullNodeMatchedOn && nullNodeMatchedOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedOn = null;
+            if (parseNode.GetChildNode("matchedValue") is { } nullNodeMatchedValue && nullNodeMatchedValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedValue = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("propertyFilterType") is { } nullNodePropertyFilterType && nullNodePropertyFilterType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertyFilterType = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `key` - key* `value` - value</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntryMatchedOn? MatchedOn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntryMatchedOn? MatchedOn { get => _explicitNullValueMatchedOn; set { _explicitNullValueMatchedOn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matchedOn"); else _explicitNullProperties?.Remove("matchedOn"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntryMatchedOn? _explicitNullValueMatchedOn = default!;
         /// <summary>Sample matching value — only set when matchedOn is &quot;value&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchedValue { get; set; }
+        public string? MatchedValue { get => _explicitNullValueMatchedValue; set { _explicitNullValueMatchedValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matchedValue"); else _explicitNullProperties?.Remove("matchedValue"); } }
+        private string? _explicitNullValueMatchedValue = default!;
 #nullable restore
 #else
-        public string MatchedValue { get; set; }
+        public string MatchedValue { get => _explicitNullValueMatchedValue; set { _explicitNullValueMatchedValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matchedValue"); else _explicitNullProperties?.Remove("matchedValue"); } }
+        private string _explicitNullValueMatchedValue = default!;
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Property filter type: &quot;log_attribute&quot; or &quot;log_resource_attribute&quot;. Use this as the `type` field when filtering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PropertyFilterType { get; set; }
+        public string? PropertyFilterType { get => _explicitNullValuePropertyFilterType; set { _explicitNullValuePropertyFilterType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("propertyFilterType"); else _explicitNullProperties?.Remove("propertyFilterType"); } }
+        private string? _explicitNullValuePropertyFilterType = default!;
 #nullable restore
 #else
-        public string PropertyFilterType { get; set; }
+        public string PropertyFilterType { get => _explicitNullValuePropertyFilterType; set { _explicitNullValuePropertyFilterType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("propertyFilterType"); else _explicitNullProperties?.Remove("propertyFilterType"); } }
+        private string _explicitNullValuePropertyFilterType = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntry"/> and sets the default values.
@@ -55,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntry CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntry();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.LogAttributeEntry(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -82,6 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("matchedValue", MatchedValue);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("propertyFilterType", PropertyFilterType);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

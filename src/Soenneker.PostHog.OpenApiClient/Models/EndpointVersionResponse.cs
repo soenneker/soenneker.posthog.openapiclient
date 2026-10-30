@@ -12,27 +12,66 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EndpointVersionResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("bucket_overrides") is { } nullNodeBucketOverrides && nullNodeBucketOverrides.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketOverrides = null;
+            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("created_at") is { } nullNodeCreatedAt && nullNodeCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedAt = null;
+            if (parseNode.GetChildNode("current_version") is { } nullNodeCurrentVersion && nullNodeCurrentVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentVersion = null;
+            if (parseNode.GetChildNode("current_version_id") is { } nullNodeCurrentVersionId && nullNodeCurrentVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentVersionId = null;
+            if (parseNode.GetChildNode("data_freshness_seconds") is { } nullNodeDataFreshnessSeconds && nullNodeDataFreshnessSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataFreshnessSeconds = null;
+            if (parseNode.GetChildNode("derived_from_insight") is { } nullNodeDerivedFromInsight && nullNodeDerivedFromInsight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DerivedFromInsight = null;
+            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("endpoint_is_active") is { } nullNodeEndpointIsActive && nullNodeEndpointIsActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointIsActive = null;
+            if (parseNode.GetChildNode("endpoint_path") is { } nullNodeEndpointPath && nullNodeEndpointPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EndpointPath = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("is_active") is { } nullNodeIsActive && nullNodeIsActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsActive = null;
+            if (parseNode.GetChildNode("is_materialized") is { } nullNodeIsMaterialized && nullNodeIsMaterialized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsMaterialized = null;
+            if (parseNode.GetChildNode("last_executed_at") is { } nullNodeLastExecutedAt && nullNodeLastExecutedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastExecutedAt = null;
+            if (parseNode.GetChildNode("materialization") is { } nullNodeMaterialization && nullNodeMaterialization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Materialization = null;
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("optional_breakdown_properties") is { } nullNodeOptionalBreakdownProperties && nullNodeOptionalBreakdownProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OptionalBreakdownProperties = null;
+            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("ui_url") is { } nullNodeUiUrl && nullNodeUiUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UiUrl = null;
+            if (parseNode.GetChildNode("updated_at") is { } nullNodeUpdatedAt && nullNodeUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpdatedAt = null;
+            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("version_created_at") is { } nullNodeVersionCreatedAt && nullNodeVersionCreatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionCreatedAt = null;
+            if (parseNode.GetChildNode("version_id") is { } nullNodeVersionId && nullNodeVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionId = null;
+            if (parseNode.GetChildNode("versions_count") is { } nullNodeVersionsCount && nullNodeVersionsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionsCount = null;
+            if (parseNode.GetChildNode("version_updated_at") is { } nullNodeVersionUpdatedAt && nullNodeVersionUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VersionUpdatedAt = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Per-column bucket overrides for range variable materialization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty? BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty? BucketOverrides { get => _explicitNullValueBucketOverrides; set { _explicitNullValueBucketOverrides = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_overrides"); else _explicitNullProperties?.Remove("bucket_overrides"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty? _explicitNullValueBucketOverrides = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty BucketOverrides { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty BucketOverrides { get => _explicitNullValueBucketOverrides; set { _explicitNullValueBucketOverrides = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_overrides"); else _explicitNullProperties?.Remove("bucket_overrides"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseBucketOverridesProperty _explicitNullValueBucketOverrides = default!;
 #endif
         /// <summary>Column names and types from the query&apos;s SELECT clause.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn>? Columns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn> Columns { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.EndpointColumn> _explicitNullValueColumns = default!;
 #endif
         /// <summary>When the endpoint was created (ISO 8601).</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
+        private DateTimeOffset? _explicitNullValueCreatedAt = default!;
         /// <summary>User who created the endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -42,112 +81,144 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Latest version number.</summary>
-        public int? CurrentVersion { get; set; }
+        public int? CurrentVersion { get => _explicitNullValueCurrentVersion; set { _explicitNullValueCurrentVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_version"); else _explicitNullProperties?.Remove("current_version"); } }
+        private int? _explicitNullValueCurrentVersion = default!;
         /// <summary>UUID of the current EndpointVersion row.</summary>
-        public Guid? CurrentVersionId { get; set; }
-        /// <summary>How fresh the data is, in seconds. One of: 900, 1800, 3600, 21600, 43200, 86400, 604800.</summary>
-        public int? DataFreshnessSeconds { get; set; }
+        public Guid? CurrentVersionId { get => _explicitNullValueCurrentVersionId; set { _explicitNullValueCurrentVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_version_id"); else _explicitNullProperties?.Remove("current_version_id"); } }
+        private Guid? _explicitNullValueCurrentVersionId = default!;
+        /// <summary>Effective data freshness, in seconds. Materialized endpoints use the node&apos;s refresh target, which can differ from the standard freshness choices. Other endpoints use the cache duration.</summary>
+        public int? DataFreshnessSeconds { get => _explicitNullValueDataFreshnessSeconds; set { _explicitNullValueDataFreshnessSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_freshness_seconds"); else _explicitNullProperties?.Remove("data_freshness_seconds"); } }
+        private int? _explicitNullValueDataFreshnessSeconds = default!;
         /// <summary>Short ID of the source insight, if derived from one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DerivedFromInsight { get; set; }
+        public string? DerivedFromInsight { get => _explicitNullValueDerivedFromInsight; set { _explicitNullValueDerivedFromInsight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("derived_from_insight"); else _explicitNullProperties?.Remove("derived_from_insight"); } }
+        private string? _explicitNullValueDerivedFromInsight = default!;
 #nullable restore
 #else
-        public string DerivedFromInsight { get; set; }
+        public string DerivedFromInsight { get => _explicitNullValueDerivedFromInsight; set { _explicitNullValueDerivedFromInsight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("derived_from_insight"); else _explicitNullProperties?.Remove("derived_from_insight"); } }
+        private string _explicitNullValueDerivedFromInsight = default!;
 #endif
         /// <summary>Human-readable description of the endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get; set; }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get; set; }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Whether the parent endpoint is active (distinct from version.is_active).</summary>
-        public bool? EndpointIsActive { get; set; }
+        public bool? EndpointIsActive { get => _explicitNullValueEndpointIsActive; set { _explicitNullValueEndpointIsActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_is_active"); else _explicitNullProperties?.Remove("endpoint_is_active"); } }
+        private bool? _explicitNullValueEndpointIsActive = default!;
         /// <summary>Relative API path to execute this endpoint (e.g. /api/projects/{team_id}/endpoints/{name}/run).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EndpointPath { get; set; }
+        public string? EndpointPath { get => _explicitNullValueEndpointPath; set { _explicitNullValueEndpointPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_path"); else _explicitNullProperties?.Remove("endpoint_path"); } }
+        private string? _explicitNullValueEndpointPath = default!;
 #nullable restore
 #else
-        public string EndpointPath { get; set; }
+        public string EndpointPath { get => _explicitNullValueEndpointPath; set { _explicitNullValueEndpointPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("endpoint_path"); else _explicitNullProperties?.Remove("endpoint_path"); } }
+        private string _explicitNullValueEndpointPath = default!;
 #endif
         /// <summary>Unique endpoint identifier (UUID).</summary>
-        public Guid? Id { get; set; }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private Guid? _explicitNullValueId = default!;
         /// <summary>Whether the endpoint can be executed via the API.</summary>
-        public bool? IsActive { get; set; }
+        public bool? IsActive { get => _explicitNullValueIsActive; set { _explicitNullValueIsActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_active"); else _explicitNullProperties?.Remove("is_active"); } }
+        private bool? _explicitNullValueIsActive = default!;
         /// <summary>Whether the current version&apos;s results are pre-computed to S3.</summary>
-        public bool? IsMaterialized { get; set; }
+        public bool? IsMaterialized { get => _explicitNullValueIsMaterialized; set { _explicitNullValueIsMaterialized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_materialized"); else _explicitNullProperties?.Remove("is_materialized"); } }
+        private bool? _explicitNullValueIsMaterialized = default!;
         /// <summary>When this specific version was last executed via the API (ISO 8601), or null if it hasn&apos;t been executed. Per-version tracking is recent, so versions that predate it read null until their next run.</summary>
-        public DateTimeOffset? LastExecutedAt { get; set; }
+        public DateTimeOffset? LastExecutedAt { get => _explicitNullValueLastExecutedAt; set { _explicitNullValueLastExecutedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_executed_at"); else _explicitNullProperties?.Remove("last_executed_at"); } }
+        private DateTimeOffset? _explicitNullValueLastExecutedAt = default!;
         /// <summary>Materialization status and configuration for the current version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization? Materialization { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization? Materialization { get => _explicitNullValueMaterialization; set { _explicitNullValueMaterialization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("materialization"); else _explicitNullProperties?.Remove("materialization"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization? _explicitNullValueMaterialization = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization Materialization { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization Materialization { get => _explicitNullValueMaterialization; set { _explicitNullValueMaterialization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("materialization"); else _explicitNullProperties?.Remove("materialization"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponseMaterialization _explicitNullValueMaterialization = default!;
 #endif
         /// <summary>URL-safe endpoint name, unique per team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Breakdown property names that may be omitted on /run. Omitted ones return data aggregated across all values of that breakdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OptionalBreakdownProperties { get; set; }
+        public List<string>? OptionalBreakdownProperties { get => _explicitNullValueOptionalBreakdownProperties; set { _explicitNullValueOptionalBreakdownProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optional_breakdown_properties"); else _explicitNullProperties?.Remove("optional_breakdown_properties"); } }
+        private List<string>? _explicitNullValueOptionalBreakdownProperties = default!;
 #nullable restore
 #else
-        public List<string> OptionalBreakdownProperties { get; set; }
+        public List<string> OptionalBreakdownProperties { get => _explicitNullValueOptionalBreakdownProperties; set { _explicitNullValueOptionalBreakdownProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("optional_breakdown_properties"); else _explicitNullProperties?.Remove("optional_breakdown_properties"); } }
+        private List<string> _explicitNullValueOptionalBreakdownProperties = default!;
 #endif
         /// <summary>The HogQL or insight query definition (JSON object with &apos;kind&apos; key).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Query { get; set; }
+        public UntypedNode? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public UntypedNode Query { get; set; }
+        public UntypedNode Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode _explicitNullValueQuery = default!;
 #endif
         /// <summary>Tag names associated with this endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>Absolute URL to view this endpoint in the PostHog UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UiUrl { get; set; }
+        public string? UiUrl { get => _explicitNullValueUiUrl; set { _explicitNullValueUiUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ui_url"); else _explicitNullProperties?.Remove("ui_url"); } }
+        private string? _explicitNullValueUiUrl = default!;
 #nullable restore
 #else
-        public string UiUrl { get; set; }
+        public string UiUrl { get => _explicitNullValueUiUrl; set { _explicitNullValueUiUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ui_url"); else _explicitNullProperties?.Remove("ui_url"); } }
+        private string _explicitNullValueUiUrl = default!;
 #endif
         /// <summary>When the endpoint was last updated (ISO 8601).</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
+        private DateTimeOffset? _explicitNullValueUpdatedAt = default!;
         /// <summary>Absolute URL to execute this endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Url { get; set; }
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public string Url { get; set; }
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>Version number.</summary>
-        public int? Version { get; set; }
+        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        private int? _explicitNullValueVersion = default!;
         /// <summary>ISO 8601 timestamp when this version was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VersionCreatedAt { get; set; }
+        public string? VersionCreatedAt { get => _explicitNullValueVersionCreatedAt; set { _explicitNullValueVersionCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_created_at"); else _explicitNullProperties?.Remove("version_created_at"); } }
+        private string? _explicitNullValueVersionCreatedAt = default!;
 #nullable restore
 #else
-        public string VersionCreatedAt { get; set; }
+        public string VersionCreatedAt { get => _explicitNullValueVersionCreatedAt; set { _explicitNullValueVersionCreatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_created_at"); else _explicitNullProperties?.Remove("version_created_at"); } }
+        private string _explicitNullValueVersionCreatedAt = default!;
 #endif
         /// <summary>User who created this version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -158,16 +229,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic VersionCreatedBy { get; private set; }
 #endif
         /// <summary>Version unique identifier (UUID).</summary>
-        public Guid? VersionId { get; set; }
+        public Guid? VersionId { get => _explicitNullValueVersionId; set { _explicitNullValueVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_id"); else _explicitNullProperties?.Remove("version_id"); } }
+        private Guid? _explicitNullValueVersionId = default!;
         /// <summary>Total number of versions for this endpoint.</summary>
-        public int? VersionsCount { get; set; }
+        public int? VersionsCount { get => _explicitNullValueVersionsCount; set { _explicitNullValueVersionsCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("versions_count"); else _explicitNullProperties?.Remove("versions_count"); } }
+        private int? _explicitNullValueVersionsCount = default!;
         /// <summary>ISO 8601 timestamp when this version was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VersionUpdatedAt { get; set; }
+        public string? VersionUpdatedAt { get => _explicitNullValueVersionUpdatedAt; set { _explicitNullValueVersionUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_updated_at"); else _explicitNullProperties?.Remove("version_updated_at"); } }
+        private string? _explicitNullValueVersionUpdatedAt = default!;
 #nullable restore
 #else
-        public string VersionUpdatedAt { get; set; }
+        public string VersionUpdatedAt { get => _explicitNullValueVersionUpdatedAt; set { _explicitNullValueVersionUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_updated_at"); else _explicitNullProperties?.Remove("version_updated_at"); } }
+        private string _explicitNullValueVersionUpdatedAt = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse"/> and sets the default values.
@@ -184,7 +259,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EndpointVersionResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -259,6 +334,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("version_id", VersionId);
             writer.WriteIntValue("versions_count", VersionsCount);
             writer.WriteStringValue("version_updated_at", VersionUpdatedAt);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

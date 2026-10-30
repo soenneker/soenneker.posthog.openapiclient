@@ -12,27 +12,52 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EstimateResponse : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("active_backfill_credits") is { } nullNodeActiveBackfillCredits && nullNodeActiveBackfillCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveBackfillCredits = null;
+            if (parseNode.GetChildNode("credits_per_observation") is { } nullNodeCreditsPerObservation && nullNodeCreditsPerObservation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreditsPerObservation = null;
+            if (parseNode.GetChildNode("estimated_credits_per_month") is { } nullNodeEstimatedCreditsPerMonth && nullNodeEstimatedCreditsPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedCreditsPerMonth = null;
+            if (parseNode.GetChildNode("estimated_observations_per_month") is { } nullNodeEstimatedObservationsPerMonth && nullNodeEstimatedObservationsPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedObservationsPerMonth = null;
+            if (parseNode.GetChildNode("free_only_monthly_credits_left") is { } nullNodeFreeOnlyMonthlyCreditsLeft && nullNodeFreeOnlyMonthlyCreditsLeft.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FreeOnlyMonthlyCreditsLeft = null;
+            if (parseNode.GetChildNode("matched_sessions_in_window") is { } nullNodeMatchedSessionsInWindow && nullNodeMatchedSessionsInWindow.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedSessionsInWindow = null;
+            if (parseNode.GetChildNode("other_enabled_scanners_monthly_credits") is { } nullNodeOtherEnabledScannersMonthlyCredits && nullNodeOtherEnabledScannersMonthlyCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OtherEnabledScannersMonthlyCredits = null;
+            if (parseNode.GetChildNode("sampling_rate") is { } nullNodeSamplingRate && nullNodeSamplingRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SamplingRate = null;
+            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+        }
+
         /// <summary>Committed-but-unspent credits of the org&apos;s active backfills, the same figure the quota snapshot&apos;s projection carries. A one-off charge rather than a monthly rate, so the forecast shows it as its own segment instead of adding it to a per-month total.</summary>
-        public int? ActiveBackfillCredits { get; set; }
+        public int? ActiveBackfillCredits { get => _explicitNullValueActiveBackfillCredits; set { _explicitNullValueActiveBackfillCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_backfill_credits"); else _explicitNullProperties?.Remove("active_backfill_credits"); } }
+        private int? _explicitNullValueActiveBackfillCredits = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Credits one observation costs at the proposed `model` (1 credit = $0.01).</summary>
-        public int? CreditsPerObservation { get; set; }
+        public int? CreditsPerObservation { get => _explicitNullValueCreditsPerObservation; set { _explicitNullValueCreditsPerObservation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credits_per_observation"); else _explicitNullProperties?.Remove("credits_per_observation"); } }
+        private int? _explicitNullValueCreditsPerObservation = default!;
         /// <summary>`estimated_observations_per_month` priced at `credits_per_observation`.</summary>
-        public int? EstimatedCreditsPerMonth { get; set; }
+        public int? EstimatedCreditsPerMonth { get => _explicitNullValueEstimatedCreditsPerMonth; set { _explicitNullValueEstimatedCreditsPerMonth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_credits_per_month"); else _explicitNullProperties?.Remove("estimated_credits_per_month"); } }
+        private int? _explicitNullValueEstimatedCreditsPerMonth = default!;
         /// <summary>Projected monthly observations: quality-filtered matched sessions scaled from `window_days` to 30 days, times sampling_rate.</summary>
-        public int? EstimatedObservationsPerMonth { get; set; }
+        public int? EstimatedObservationsPerMonth { get => _explicitNullValueEstimatedObservationsPerMonth; set { _explicitNullValueEstimatedObservationsPerMonth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_observations_per_month"); else _explicitNullProperties?.Remove("estimated_observations_per_month"); } }
+        private int? _explicitNullValueEstimatedObservationsPerMonth = default!;
         /// <summary>The monthly credit rate the organization&apos;s free credits still cover for one more free-only scanner, after the other free-only scanners and backfills. The forecast caps a free-only scanner at this rate, because free-only scanners share one pool.</summary>
-        public int? FreeOnlyMonthlyCreditsLeft { get; set; }
+        public int? FreeOnlyMonthlyCreditsLeft { get => _explicitNullValueFreeOnlyMonthlyCreditsLeft; set { _explicitNullValueFreeOnlyMonthlyCreditsLeft = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("free_only_monthly_credits_left"); else _explicitNullProperties?.Remove("free_only_monthly_credits_left"); } }
+        private int? _explicitNullValueFreeOnlyMonthlyCreditsLeft = default!;
         /// <summary>Distinct sessions matching the query within the scanned window (`window_days`), after the sampling_mode quality filter but before random sampling.</summary>
-        public int? MatchedSessionsInWindow { get; set; }
+        public int? MatchedSessionsInWindow { get => _explicitNullValueMatchedSessionsInWindow; set { _explicitNullValueMatchedSessionsInWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_sessions_in_window"); else _explicitNullProperties?.Remove("matched_sessions_in_window"); } }
+        private int? _explicitNullValueMatchedSessionsInWindow = default!;
         /// <summary>Credit-weighted projected monthly spend of the org&apos;s other enabled scanners (excluding `scanner_id`), from their cached estimates. Read from the same snapshot as this estimate so the forecast can&apos;t double-count the edited scanner.</summary>
-        public int? OtherEnabledScannersMonthlyCredits { get; set; }
+        public int? OtherEnabledScannersMonthlyCredits { get => _explicitNullValueOtherEnabledScannersMonthlyCredits; set { _explicitNullValueOtherEnabledScannersMonthlyCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("other_enabled_scanners_monthly_credits"); else _explicitNullProperties?.Remove("other_enabled_scanners_monthly_credits"); } }
+        private int? _explicitNullValueOtherEnabledScannersMonthlyCredits = default!;
         /// <summary>Sampling rate applied to the projection. Echoed from the request.</summary>
-        public double? SamplingRate { get; set; }
+        public double? SamplingRate { get => _explicitNullValueSamplingRate; set { _explicitNullValueSamplingRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sampling_rate"); else _explicitNullProperties?.Remove("sampling_rate"); } }
+        private double? _explicitNullValueSamplingRate = default!;
         /// <summary>Days of recordings the estimate scanned before scaling to 30. Up to a week (shorter when the query&apos;s operand rules out sampling); smaller when the team has fewer days of recordings.</summary>
-        public int? WindowDays { get; set; }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EstimateResponse"/> and sets the default values.
         /// </summary>
@@ -48,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.EstimateResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.EstimateResponse();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.EstimateResponse(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -85,6 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("other_enabled_scanners_monthly_credits", OtherEnabledScannersMonthlyCredits);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);
             writer.WriteIntValue("window_days", WindowDays);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

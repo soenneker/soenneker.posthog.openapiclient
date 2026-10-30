@@ -12,24 +12,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasComponentMeta : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("configSchema") is { } nullNodeConfigSchema && nullNodeConfigSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigSchema = null;
+            if (parseNode.GetChildNode("size") is { } nullNodeSize && nullNodeSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Size = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>JSON Schema (&quot;type&quot;: &quot;object&quot;) for a placement&apos;s config. The host validates each placement&apos;s config against it and passes the validated object to the widget at mount.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaConfigSchemaProperty? ConfigSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaConfigSchemaProperty? ConfigSchema { get => _explicitNullValueConfigSchema; set { _explicitNullValueConfigSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configSchema"); else _explicitNullProperties?.Remove("configSchema"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaConfigSchemaProperty? _explicitNullValueConfigSchema = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaConfigSchemaProperty ConfigSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaConfigSchemaProperty ConfigSchema { get => _explicitNullValueConfigSchema; set { _explicitNullValueConfigSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configSchema"); else _explicitNullProperties?.Remove("configSchema"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaConfigSchemaProperty _explicitNullValueConfigSchema = default!;
 #endif
         /// <summary>Grid-size contract for placements of this component.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaSize? Size { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaSize? Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaSize? _explicitNullValueSize = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaSize Size { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaSize Size { get => _explicitNullValueSize; set { _explicitNullValueSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("size"); else _explicitNullProperties?.Remove("size"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaSize _explicitNullValueSize = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta"/> and sets the default values.
@@ -46,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaConfigSchemaProperty>("configSchema", ConfigSchema);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaSize>("size", Size);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,29 +11,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class AlertCreateDestination : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("slack_channel_id") is { } nullNodeSlackChannelId && nullNodeSlackChannelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelId = null;
+            if (parseNode.GetChildNode("slack_channel_name") is { } nullNodeSlackChannelName && nullNodeSlackChannelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelName = null;
+            if (parseNode.GetChildNode("slack_workspace_id") is { } nullNodeSlackWorkspaceId && nullNodeSlackWorkspaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackWorkspaceId = null;
+            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Slack channel ID to post in, for example C0123456789.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackChannelId { get; set; }
+        public string? SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
+        private string? _explicitNullValueSlackChannelId = default!;
 #nullable restore
 #else
-        public string SlackChannelId { get; set; }
+        public string SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
+        private string _explicitNullValueSlackChannelId = default!;
 #endif
         /// <summary>Channel name shown on the destination, for example product-alerts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackChannelName { get; set; }
+        public string? SlackChannelName { get => _explicitNullValueSlackChannelName; set { _explicitNullValueSlackChannelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_name"); else _explicitNullProperties?.Remove("slack_channel_name"); } }
+        private string? _explicitNullValueSlackChannelName = default!;
 #nullable restore
 #else
-        public string SlackChannelName { get; set; }
+        public string SlackChannelName { get => _explicitNullValueSlackChannelName; set { _explicitNullValueSlackChannelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_name"); else _explicitNullProperties?.Remove("slack_channel_name"); } }
+        private string _explicitNullValueSlackChannelName = default!;
 #endif
         /// <summary>Integration ID of the Slack workspace to post in. List them with the integrations endpoint.</summary>
-        public int? SlackWorkspaceId { get; set; }
+        public int? SlackWorkspaceId { get => _explicitNullValueSlackWorkspaceId; set { _explicitNullValueSlackWorkspaceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace_id"); else _explicitNullProperties?.Remove("slack_workspace_id"); } }
+        private int? _explicitNullValueSlackWorkspaceId = default!;
         /// <summary>* `slack` - slack</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType? Type { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestination"/> and sets the default values.
         /// </summary>
@@ -49,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestination CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestination();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestination(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -76,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("slack_channel_name", SlackChannelName);
             writer.WriteIntValue("slack_workspace_id", SlackWorkspaceId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCreateDestinationType>("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

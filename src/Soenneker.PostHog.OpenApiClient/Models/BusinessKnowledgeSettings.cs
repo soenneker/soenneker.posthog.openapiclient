@@ -11,11 +11,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class BusinessKnowledgeSettings : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("learn_from_support_enabled") is { } nullNodeLearnFromSupportEnabled && nullNodeLearnFromSupportEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LearnFromSupportEnabled = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Requires Support to be enabled for this environment.</summary>
-        public bool? LearnFromSupportEnabled { get; set; }
+        public bool? LearnFromSupportEnabled { get => _explicitNullValueLearnFromSupportEnabled; set { _explicitNullValueLearnFromSupportEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("learn_from_support_enabled"); else _explicitNullProperties?.Remove("learn_from_support_enabled"); } }
+        private bool? _explicitNullValueLearnFromSupportEnabled = default!;
         /// <summary>Whether Support is enabled for this environment. Learning cannot be turned on while this is false.</summary>
         public bool? SupportEnabled { get; private set; }
         /// <summary>
@@ -33,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.BusinessKnowledgeSettings CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.BusinessKnowledgeSettings();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.BusinessKnowledgeSettings(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,6 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("learn_from_support_enabled", LearnFromSupportEnabled);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

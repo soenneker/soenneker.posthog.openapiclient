@@ -12,27 +12,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PullRequestListItemCi : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("failing") is { } nullNodeFailing && nullNodeFailing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Failing = null;
+            if (parseNode.GetChildNode("failing_workflows") is { } nullNodeFailingWorkflows && nullNodeFailingWorkflows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailingWorkflows = null;
+            if (parseNode.GetChildNode("inconclusive") is { } nullNodeInconclusive && nullNodeInconclusive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inconclusive = null;
+            if (parseNode.GetChildNode("passing") is { } nullNodePassing && nullNodePassing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Passing = null;
+            if (parseNode.GetChildNode("pending") is { } nullNodePending && nullNodePending.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pending = null;
+            if (parseNode.GetChildNode("runs") is { } nullNodeRuns && nullNodeRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runs = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Latest runs that ended in failure, timeout, startup failure, or staleness.</summary>
-        public int? Failing { get; set; }
+        public int? Failing { get => _explicitNullValueFailing; set { _explicitNullValueFailing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing"); else _explicitNullProperties?.Remove("failing"); } }
+        private int? _explicitNullValueFailing = default!;
         /// <summary>The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FailingWorkflows { get; set; }
+        public List<string>? FailingWorkflows { get => _explicitNullValueFailingWorkflows; set { _explicitNullValueFailingWorkflows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_workflows"); else _explicitNullProperties?.Remove("failing_workflows"); } }
+        private List<string>? _explicitNullValueFailingWorkflows = default!;
 #nullable restore
 #else
-        public List<string> FailingWorkflows { get; set; }
+        public List<string> FailingWorkflows { get => _explicitNullValueFailingWorkflows; set { _explicitNullValueFailingWorkflows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_workflows"); else _explicitNullProperties?.Remove("failing_workflows"); } }
+        private List<string> _explicitNullValueFailingWorkflows = default!;
 #endif
         /// <summary>Latest runs that completed without a pass-or-fail verdict: cancelled, skipped, neutral, or action required. Together with the three counts above this covers every run, so a PR whose CI was entirely cancelled is not readable as passing.</summary>
-        public int? Inconclusive { get; set; }
+        public int? Inconclusive { get => _explicitNullValueInconclusive; set { _explicitNullValueInconclusive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inconclusive"); else _explicitNullProperties?.Remove("inconclusive"); } }
+        private int? _explicitNullValueInconclusive = default!;
         /// <summary>Latest runs that completed with conclusion &apos;success&apos;.</summary>
-        public int? Passing { get; set; }
+        public int? Passing { get => _explicitNullValuePassing; set { _explicitNullValuePassing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing"); else _explicitNullProperties?.Remove("passing"); } }
+        private int? _explicitNullValuePassing = default!;
         /// <summary>Latest runs not yet completed (queued or in progress).</summary>
-        public int? Pending { get; set; }
+        public int? Pending { get => _explicitNullValuePending; set { _explicitNullValuePending = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending"); else _explicitNullProperties?.Remove("pending"); } }
+        private int? _explicitNullValuePending = default!;
         /// <summary>Distinct workflows run on the PR&apos;s head SHA.</summary>
-        public int? Runs { get; set; }
+        public int? Runs { get => _explicitNullValueRuns; set { _explicitNullValueRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs"); else _explicitNullProperties?.Remove("runs"); } }
+        private int? _explicitNullValueRuns = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi"/> and sets the default values.
         /// </summary>
@@ -48,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PullRequestListItemCi(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -79,6 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("passing", Passing);
             writer.WriteIntValue("pending", Pending);
             writer.WriteIntValue("runs", Runs);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,38 +11,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class QueryLogTags : IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("presetId") is { } nullNodePresetId && nullNodePresetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PresetId = null;
+            if (parseNode.GetChildNode("productKey") is { } nullNodeProductKey && nullNodeProductKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductKey = null;
+            if (parseNode.GetChildNode("scene") is { } nullNodeScene && nullNodeScene.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scene = null;
+        }
+
         /// <summary>Name of the query, preferably unique. For example web_analytics_vitals</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        private string _explicitNullValueName = default!;
 #endif
         /// <summary>Short id of the saved Web analytics filter preset this query was run under, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PresetId { get; set; }
+        public string? PresetId { get => _explicitNullValuePresetId; set { _explicitNullValuePresetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presetId"); else _explicitNullProperties?.Remove("presetId"); } }
+        private string? _explicitNullValuePresetId = default!;
 #nullable restore
 #else
-        public string PresetId { get; set; }
+        public string PresetId { get => _explicitNullValuePresetId; set { _explicitNullValuePresetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presetId"); else _explicitNullProperties?.Remove("presetId"); } }
+        private string _explicitNullValuePresetId = default!;
 #endif
         /// <summary>Product responsible for this query. Use string, there&apos;s no need to churn the Schema when we add a new product *</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProductKey { get; set; }
+        public string? ProductKey { get => _explicitNullValueProductKey; set { _explicitNullValueProductKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("productKey"); else _explicitNullProperties?.Remove("productKey"); } }
+        private string? _explicitNullValueProductKey = default!;
 #nullable restore
 #else
-        public string ProductKey { get; set; }
+        public string ProductKey { get => _explicitNullValueProductKey; set { _explicitNullValueProductKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("productKey"); else _explicitNullProperties?.Remove("productKey"); } }
+        private string _explicitNullValueProductKey = default!;
 #endif
         /// <summary>Scene where this query is shown in the UI. Use string, there&apos;s no need to churn the Schema when we add a new Scene *</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Scene { get; set; }
+        public string? Scene { get => _explicitNullValueScene; set { _explicitNullValueScene = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scene"); else _explicitNullProperties?.Remove("scene"); } }
+        private string? _explicitNullValueScene = default!;
 #nullable restore
 #else
-        public string Scene { get; set; }
+        public string Scene { get => _explicitNullValueScene; set { _explicitNullValueScene = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scene"); else _explicitNullProperties?.Remove("scene"); } }
+        private string _explicitNullValueScene = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -52,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -78,7 +97,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("presetId", PresetId);
             writer.WriteStringValue("productKey", ProductKey);
-            writer.WriteStringValue("scene", Scene);
+            writer.WriteStringValue("scene", Scene);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            
         }
     }
 }

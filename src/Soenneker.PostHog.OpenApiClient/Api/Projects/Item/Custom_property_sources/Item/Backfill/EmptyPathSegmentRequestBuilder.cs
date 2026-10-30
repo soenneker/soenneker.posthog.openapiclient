@@ -49,7 +49,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Custom_property_sour
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncTriggerResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Person and group sources only: start a backfill that reads the whole warehouse table andpopulates person or group properties for historical rows. If one is already running for thetable, queue a follow-up that observes the latest mapping.

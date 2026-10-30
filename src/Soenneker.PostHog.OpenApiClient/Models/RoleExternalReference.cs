@@ -11,7 +11,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class RoleExternalReference : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("provider") is { } nullNodeProvider && nullNodeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Provider = null;
+            if (parseNode.GetChildNode("provider_organization_id") is { } nullNodeProviderOrganizationId && nullNodeProviderOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderOrganizationId = null;
+            if (parseNode.GetChildNode("provider_role_id") is { } nullNodeProviderRoleId && nullNodeProviderRoleId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderRoleId = null;
+            if (parseNode.GetChildNode("provider_role_name") is { } nullNodeProviderRoleName && nullNodeProviderRoleName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderRoleName = null;
+            if (parseNode.GetChildNode("provider_role_slug") is { } nullNodeProviderRoleSlug && nullNodeProviderRoleSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderRoleSlug = null;
+            if (parseNode.GetChildNode("role") is { } nullNodeRole && nullNodeRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Role = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The created_at property</summary>
@@ -29,45 +42,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Integration kind (e.g., github, linear, jira, slack).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Provider { get; set; }
+        public string? Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        private string? _explicitNullValueProvider = default!;
 #nullable restore
 #else
-        public string Provider { get; set; }
+        public string Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        private string _explicitNullValueProvider = default!;
 #endif
         /// <summary>Provider organization/workspace/site identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderOrganizationId { get; set; }
+        public string? ProviderOrganizationId { get => _explicitNullValueProviderOrganizationId; set { _explicitNullValueProviderOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_organization_id"); else _explicitNullProperties?.Remove("provider_organization_id"); } }
+        private string? _explicitNullValueProviderOrganizationId = default!;
 #nullable restore
 #else
-        public string ProviderOrganizationId { get; set; }
+        public string ProviderOrganizationId { get => _explicitNullValueProviderOrganizationId; set { _explicitNullValueProviderOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_organization_id"); else _explicitNullProperties?.Remove("provider_organization_id"); } }
+        private string _explicitNullValueProviderOrganizationId = default!;
 #endif
         /// <summary>Stable provider role identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderRoleId { get; set; }
+        public string? ProviderRoleId { get => _explicitNullValueProviderRoleId; set { _explicitNullValueProviderRoleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_role_id"); else _explicitNullProperties?.Remove("provider_role_id"); } }
+        private string? _explicitNullValueProviderRoleId = default!;
 #nullable restore
 #else
-        public string ProviderRoleId { get; set; }
+        public string ProviderRoleId { get => _explicitNullValueProviderRoleId; set { _explicitNullValueProviderRoleId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_role_id"); else _explicitNullProperties?.Remove("provider_role_id"); } }
+        private string _explicitNullValueProviderRoleId = default!;
 #endif
         /// <summary>Display name of the provider role.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderRoleName { get; set; }
+        public string? ProviderRoleName { get => _explicitNullValueProviderRoleName; set { _explicitNullValueProviderRoleName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_role_name"); else _explicitNullProperties?.Remove("provider_role_name"); } }
+        private string? _explicitNullValueProviderRoleName = default!;
 #nullable restore
 #else
-        public string ProviderRoleName { get; set; }
+        public string ProviderRoleName { get => _explicitNullValueProviderRoleName; set { _explicitNullValueProviderRoleName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_role_name"); else _explicitNullProperties?.Remove("provider_role_name"); } }
+        private string _explicitNullValueProviderRoleName = default!;
 #endif
         /// <summary>Human-friendly provider role identifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderRoleSlug { get; set; }
+        public string? ProviderRoleSlug { get => _explicitNullValueProviderRoleSlug; set { _explicitNullValueProviderRoleSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_role_slug"); else _explicitNullProperties?.Remove("provider_role_slug"); } }
+        private string? _explicitNullValueProviderRoleSlug = default!;
 #nullable restore
 #else
-        public string ProviderRoleSlug { get; set; }
+        public string ProviderRoleSlug { get => _explicitNullValueProviderRoleSlug; set { _explicitNullValueProviderRoleSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_role_slug"); else _explicitNullProperties?.Remove("provider_role_slug"); } }
+        private string _explicitNullValueProviderRoleSlug = default!;
 #endif
         /// <summary>PostHog role UUID this external role maps to.</summary>
-        public Guid? Role { get; set; }
+        public Guid? Role { get => _explicitNullValueRole; set { _explicitNullValueRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("role"); else _explicitNullProperties?.Remove("role"); } }
+        private Guid? _explicitNullValueRole = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference"/> and sets the default values.
         /// </summary>
@@ -83,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -117,6 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("provider_role_name", ProviderRoleName);
             writer.WriteStringValue("provider_role_slug", ProviderRoleSlug);
             writer.WriteGuidValue("role", Role);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

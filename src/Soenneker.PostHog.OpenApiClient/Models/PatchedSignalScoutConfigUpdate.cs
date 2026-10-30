@@ -12,120 +12,179 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedSignalScoutConfigUpdate : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("allowed_mcp_tools") is { } nullNodeAllowedMcpTools && nullNodeAllowedMcpTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedMcpTools = null;
+            if (parseNode.GetChildNode("auto_pause_exempt") is { } nullNodeAutoPauseExempt && nullNodeAutoPauseExempt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoPauseExempt = null;
+            if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
+            if (parseNode.GetChildNode("emit") is { } nullNodeEmit && nullNodeEmit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emit = null;
+            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("lifecycle_locked") is { } nullNodeLifecycleLocked && nullNodeLifecycleLocked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LifecycleLocked = null;
+            if (parseNode.GetChildNode("mcp_gateway_server_ids") is { } nullNodeMcpGatewayServerIds && nullNodeMcpGatewayServerIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpGatewayServerIds = null;
+            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("network_access") is { } nullNodeNetworkAccess && nullNodeNetworkAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NetworkAccess = null;
+            if (parseNode.GetChildNode("output_destinations") is { } nullNodeOutputDestinations && nullNodeOutputDestinations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OutputDestinations = null;
+            if (parseNode.GetChildNode("precheck_disabled") is { } nullNodePrecheckDisabled && nullNodePrecheckDisabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrecheckDisabled = null;
+            if (parseNode.GetChildNode("precheck_query") is { } nullNodePrecheckQuery && nullNodePrecheckQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrecheckQuery = null;
+            if (parseNode.GetChildNode("repositories") is { } nullNodeRepositories && nullNodeRepositories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repositories = null;
+            if (parseNode.GetChildNode("run_cron_schedule") is { } nullNodeRunCronSchedule && nullNodeRunCronSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCronSchedule = null;
+            if (parseNode.GetChildNode("run_interval_minutes") is { } nullNodeRunIntervalMinutes && nullNodeRunIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIntervalMinutes = null;
+            if (parseNode.GetChildNode("structured_output_schema") is { } nullNodeStructuredOutputSchema && nullNodeStructuredOutputSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StructuredOutputSchema = null;
+            if (parseNode.GetChildNode("suggestion_id") is { } nullNodeSuggestionId && nullNodeSuggestionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestionId = null;
+            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("tool_preset") is { } nullNodeToolPreset && nullNodeToolPreset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolPreset = null;
+            if (parseNode.GetChildNode("write_scopes") is { } nullNodeWriteScopes && nullNodeWriteScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WriteScopes = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Exact MCP tool names selected for this scout, excluding its built-in run context tools. Null means no tool restriction; an empty list selects no additional tools. Write access is derived from selected write tools. Clearing to null preserves the last write scopes. Send this field or tool_preset, never both. Requires the scouts-tool-access feature flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedMcpTools { get; set; }
+        public List<string>? AllowedMcpTools { get => _explicitNullValueAllowedMcpTools; set { _explicitNullValueAllowedMcpTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_mcp_tools"); else _explicitNullProperties?.Remove("allowed_mcp_tools"); } }
+        private List<string>? _explicitNullValueAllowedMcpTools = default!;
 #nullable restore
 #else
-        public List<string> AllowedMcpTools { get; set; }
+        public List<string> AllowedMcpTools { get => _explicitNullValueAllowedMcpTools; set { _explicitNullValueAllowedMcpTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_mcp_tools"); else _explicitNullProperties?.Remove("allowed_mcp_tools"); } }
+        private List<string> _explicitNullValueAllowedMcpTools = default!;
 #endif
         /// <summary>Exempt this scout from the inactivity sweep, meaning both the `ignored` pause and the `no_output` quiet warning. Set it on watchdog scouts whose value is staying quiet.</summary>
-        public bool? AutoPauseExempt { get; set; }
+        public bool? AutoPauseExempt { get => _explicitNullValueAutoPauseExempt; set { _explicitNullValueAutoPauseExempt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_pause_exempt"); else _explicitNullProperties?.Remove("auto_pause_exempt"); } }
+        private bool? _explicitNullValueAutoPauseExempt = default!;
         /// <summary>Name shown wherever people identify this scout, written however you want it — spaces, capitalization, and acronyms are kept as typed, and two scouts may share one. It does not change the scout&apos;s skill name, which stays its identity, so renaming a scout keeps its schedule, run history, notes, memory, and links. At most 200 characters; blank means the scout has no name of its own and is labelled from its skill name instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DisplayName { get; set; }
+        public string? DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string? _explicitNullValueDisplayName = default!;
 #nullable restore
 #else
-        public string DisplayName { get; set; }
+        public string DisplayName { get => _explicitNullValueDisplayName; set { _explicitNullValueDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display_name"); else _explicitNullProperties?.Remove("display_name"); } }
+        private string _explicitNullValueDisplayName = default!;
 #endif
         /// <summary>Whether the scout writes findings to the inbox. False = dry-run: it runs and logs but emits nothing.</summary>
-        public bool? Emit { get; set; }
+        public bool? Emit { get => _explicitNullValueEmit; set { _explicitNullValueEmit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit"); else _explicitNullProperties?.Remove("emit"); } }
+        private bool? _explicitNullValueEmit = default!;
         /// <summary>Whether this scout runs on its schedule. Disabled scouts are skipped by the coordinator. Turning this off records a user pause (`status` becomes `paused_by_user`, which the system never overrides); turning it on resumes the scout from any pause. Only a change of value is a lifecycle action: re-sending the current value leaves the existing status and its ownership untouched.</summary>
-        public bool? Enabled { get; set; }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        private bool? _explicitNullValueEnabled = default!;
         /// <summary>Opt-in guard on this scout&apos;s lifecycle. Off by default, so anyone with scout write access may pause, resume, switch the scout to dry run, or delete it. On, only the person the scout&apos;s runs act as or a project admin may do any of those, or change this flag. Use it on a scout whose output people depend on: `signal_scout:write` is a project-wide scope held by people and by unattended agents alike, and a resume has to pass the project&apos;s enabled-scout maximum that a pause does not, so a bulk pause is not undone in one step. The lock never stops an automatic pause, such as the inactivity sweep or the repeated-failure breaker.</summary>
-        public bool? LifecycleLocked { get; set; }
+        public bool? LifecycleLocked { get => _explicitNullValueLifecycleLocked; set { _explicitNullValueLifecycleLocked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lifecycle_locked"); else _explicitNullProperties?.Remove("lifecycle_locked"); } }
+        private bool? _explicitNullValueLifecycleLocked = default!;
         /// <summary>MCP gateway servers (by id) this scout&apos;s runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? McpGatewayServerIds { get; set; }
+        public List<Guid?>? McpGatewayServerIds { get => _explicitNullValueMcpGatewayServerIds; set { _explicitNullValueMcpGatewayServerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_gateway_server_ids"); else _explicitNullProperties?.Remove("mcp_gateway_server_ids"); } }
+        private List<Guid?>? _explicitNullValueMcpGatewayServerIds = default!;
 #nullable restore
 #else
-        public List<Guid?> McpGatewayServerIds { get; set; }
+        public List<Guid?> McpGatewayServerIds { get => _explicitNullValueMcpGatewayServerIds; set { _explicitNullValueMcpGatewayServerIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_gateway_server_ids"); else _explicitNullProperties?.Remove("mcp_gateway_server_ids"); } }
+        private List<Guid?> _explicitNullValueMcpGatewayServerIds = default!;
 #endif
         /// <summary>Optional model id this scout&apos;s runs are pinned to, e.g. `claude-opus-4-5`. Must be one of the platform&apos;s agent models; an invalid id is rejected with the available ones listed. Null keeps the default model, chosen by the platform. Early access: the pin can only be set on projects enrolled in the scout model preview, and only takes effect there. Set null to clear it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get; set; }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get; set; }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        private string _explicitNullValueModel = default!;
 #endif
         /// <summary>* `trusted` - Trusted domains only* `full` - Full</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateNetworkAccess? NetworkAccess { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateNetworkAccess? NetworkAccess { get => _explicitNullValueNetworkAccess; set { _explicitNullValueNetworkAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network_access"); else _explicitNullProperties?.Remove("network_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateNetworkAccess? _explicitNullValueNetworkAccess = default!;
         /// <summary>Destinations that receive each finding or report this scout emits. Pass an empty object to disable delivery.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations? OutputDestinations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations? OutputDestinations { get => _explicitNullValueOutputDestinations; set { _explicitNullValueOutputDestinations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_destinations"); else _explicitNullProperties?.Remove("output_destinations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations? _explicitNullValueOutputDestinations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations OutputDestinations { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations OutputDestinations { get => _explicitNullValueOutputDestinations; set { _explicitNullValueOutputDestinations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("output_destinations"); else _explicitNullProperties?.Remove("output_destinations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateOutputDestinations _explicitNullValueOutputDestinations = default!;
 #endif
         /// <summary>True turns off the pre-check, both `precheck_query` and the default the skill ships, so every scheduled run starts. False (the default) uses `precheck_query`, or the skill default when that is null.</summary>
-        public bool? PrecheckDisabled { get; set; }
+        public bool? PrecheckDisabled { get => _explicitNullValuePrecheckDisabled; set { _explicitNullValuePrecheckDisabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precheck_disabled"); else _explicitNullProperties?.Remove("precheck_disabled"); } }
+        private bool? _explicitNullValuePrecheckDisabled = default!;
         /// <summary>Optional HogQL `SELECT` a scheduled run evaluates before it starts. When it returns no rows, or one row with one false value (`false`, `0`, null or empty), the run is skipped: no sandbox, no model call, and no run row. Any other result starts the run, and the scout reads the rows. A query error also starts the run. Use `{since}` (the start of the last run that ran, or when the scout was created) and `{now}` to look only at what is new, e.g. `SELECT count() FROM events WHERE event = &apos;$exception&apos; AND timestamp &gt; {since}`. To run at least once a week however quiet it is, add `OR {since} &lt; {now} - INTERVAL 7 DAY` to the condition. Only scheduled runs evaluate it: a manual or workflow run always starts. `{interval_minutes}` is the gap between two scheduled runs, so a backstop can follow the schedule: `{since} &lt; {now} - toIntervalMinute(greatest(1440, 2 * {interval_minutes}))` runs at least daily and never more often than every two intervals. The query stops after 10 seconds and reads at most 50 rows. Try a query with `scout-config-precheck-test` before you save it. Null or blank uses the default pre-check the scout&apos;s skill ships, if any. To turn every pre-check off, set `precheck_disabled`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrecheckQuery { get; set; }
+        public string? PrecheckQuery { get => _explicitNullValuePrecheckQuery; set { _explicitNullValuePrecheckQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precheck_query"); else _explicitNullProperties?.Remove("precheck_query"); } }
+        private string? _explicitNullValuePrecheckQuery = default!;
 #nullable restore
 #else
-        public string PrecheckQuery { get; set; }
+        public string PrecheckQuery { get => _explicitNullValuePrecheckQuery; set { _explicitNullValuePrecheckQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precheck_query"); else _explicitNullProperties?.Remove("precheck_query"); } }
+        private string _explicitNullValuePrecheckQuery = default!;
 #endif
         /// <summary>GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project&apos;s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout&apos;s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project&apos;s GitHub connection. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Repositories { get; set; }
+        public List<string>? Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
+        private List<string>? _explicitNullValueRepositories = default!;
 #nullable restore
 #else
-        public List<string> Repositories { get; set; }
+        public List<string> Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
+        private List<string> _explicitNullValueRepositories = default!;
 #endif
         /// <summary>Optional five-field cron expression, e.g. &apos;30 9 * * *&apos; (daily at 09:30), &apos;0 9,17 * * *&apos; (twice daily), or &apos;0 9 * * 1-5&apos; (weekday mornings). Evaluated in the project timezone. Takes precedence over `run_interval_minutes`; occurrences must be at least 30 minutes apart. Set null to return to the rolling interval schedule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunCronSchedule { get; set; }
+        public string? RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
+        private string? _explicitNullValueRunCronSchedule = default!;
 #nullable restore
 #else
-        public string RunCronSchedule { get; set; }
+        public string RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
+        private string _explicitNullValueRunCronSchedule = default!;
 #endif
         /// <summary>Minutes between runs (30–43200). Use 1440 for a daily schedule.</summary>
-        public int? RunIntervalMinutes { get; set; }
+        public int? RunIntervalMinutes { get => _explicitNullValueRunIntervalMinutes; set { _explicitNullValueRunIntervalMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_interval_minutes"); else _explicitNullProperties?.Remove("run_interval_minutes"); } }
+        private int? _explicitNullValueRunIntervalMinutes = default!;
         /// <summary>Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;verdict&quot;: {&quot;enum&quot;: [&quot;good&quot;, &quot;bad&quot;, &quot;unsure&quot;]}, &quot;reason&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;verdict&quot;, &quot;reason&quot;]}`). The root must be `&quot;type&quot;: &quot;object&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty? StructuredOutputSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty? StructuredOutputSchema { get => _explicitNullValueStructuredOutputSchema; set { _explicitNullValueStructuredOutputSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("structured_output_schema"); else _explicitNullProperties?.Remove("structured_output_schema"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty? _explicitNullValueStructuredOutputSchema = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty StructuredOutputSchema { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty StructuredOutputSchema { get => _explicitNullValueStructuredOutputSchema; set { _explicitNullValueStructuredOutputSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("structured_output_schema"); else _explicitNullProperties?.Remove("structured_output_schema"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateStructuredOutputSchemaProperty _explicitNullValueStructuredOutputSchema = default!;
 #endif
         /// <summary>Optional id of the canonical scout suggestion this request turns on. It records that the scout came from that suggestion. An id this project&apos;s batch does not hold is ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestionId { get; set; }
+        public string? SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
+        private string? _explicitNullValueSuggestionId = default!;
 #nullable restore
 #else
-        public string SuggestionId { get; set; }
+        public string SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
+        private string _explicitNullValueSuggestionId = default!;
 #endif
         /// <summary>Free-form labels for grouping the fleet, e.g. `[&quot;revenue&quot;, &quot;on-call&quot;]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get; set; }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get; set; }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>* `read_only` - Read only* `support_notes` - Support notes</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateToolPreset? ToolPreset { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateToolPreset? ToolPreset { get => _explicitNullValueToolPreset; set { _explicitNullValueToolPreset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_preset"); else _explicitNullProperties?.Remove("tool_preset"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateToolPreset? _explicitNullValueToolPreset = default!;
         /// <summary>Write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `canvas:write`, `customer_task:write`, `dashboard:write`, `experiment:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `notebook:write`, `replay_scanner:write`, `ticket:write`, `warehouse_table:write`, `warehouse_view:write`. A new scout starts with `notebook:write` when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. `ticket:write` lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout&apos;s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout&apos;s next run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? WriteScopes { get; set; }
+        public List<string>? WriteScopes { get => _explicitNullValueWriteScopes; set { _explicitNullValueWriteScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_scopes"); else _explicitNullProperties?.Remove("write_scopes"); } }
+        private List<string>? _explicitNullValueWriteScopes = default!;
 #nullable restore
 #else
-        public List<string> WriteScopes { get; set; }
+        public List<string> WriteScopes { get => _explicitNullValueWriteScopes; set { _explicitNullValueWriteScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("write_scopes"); else _explicitNullProperties?.Remove("write_scopes"); } }
+        private List<string> _explicitNullValueWriteScopes = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdate"/> and sets the default values.
@@ -142,7 +201,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdate();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdate(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -201,6 +260,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSignalScoutConfigUpdateToolPreset>("tool_preset", ToolPreset);
             writer.WriteCollectionOfPrimitiveValues<string>("write_scopes", WriteScopes);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

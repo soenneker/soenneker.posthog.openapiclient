@@ -11,47 +11,72 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class ReviewPrStatus : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("latest_resolution") is { } nullNodeLatestResolution && nullNodeLatestResolution.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestResolution = null;
+            if (parseNode.GetChildNode("latest_review") is { } nullNodeLatestReview && nullNodeLatestReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestReview = null;
+            if (parseNode.GetChildNode("pr_number") is { } nullNodePrNumber && nullNodePrNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrNumber = null;
+            if (parseNode.GetChildNode("report_id") is { } nullNodeReportId && nullNodeReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportId = null;
+            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("request_outcome") is { } nullNodeRequestOutcome && nullNodeRequestOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestOutcome = null;
+            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The latest Resolve run, finished ones too; null when no Resolve run has queued threads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution? LatestResolution { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution? LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution? _explicitNullValueLatestResolution = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution LatestResolution { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution _explicitNullValueLatestResolution = default!;
 #endif
         /// <summary>The latest completed review turn; null before the first one completes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview? LatestReview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview? LatestReview { get => _explicitNullValueLatestReview; set { _explicitNullValueLatestReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_review"); else _explicitNullProperties?.Remove("latest_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview? _explicitNullValueLatestReview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview LatestReview { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview LatestReview { get => _explicitNullValueLatestReview; set { _explicitNullValueLatestReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_review"); else _explicitNullProperties?.Remove("latest_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview _explicitNullValueLatestReview = default!;
 #endif
         /// <summary>The pull request number.</summary>
-        public int? PrNumber { get; set; }
+        public int? PrNumber { get => _explicitNullValuePrNumber; set { _explicitNullValuePrNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_number"); else _explicitNullProperties?.Remove("pr_number"); } }
+        private int? _explicitNullValuePrNumber = default!;
         /// <summary>The PR&apos;s review id, for `review-hog-reviews-get`; null before its first run.</summary>
-        public Guid? ReportId { get; set; }
+        public Guid? ReportId { get => _explicitNullValueReportId; set { _explicitNullValueReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_id"); else _explicitNullProperties?.Remove("report_id"); } }
+        private Guid? _explicitNullValueReportId = default!;
         /// <summary>The pull request&apos;s repository as &apos;owner/repo&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Repository { get; set; }
+        public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string? _explicitNullValueRepository = default!;
 #nullable restore
 #else
-        public string Repository { get; set; }
+        public string Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        private string _explicitNullValueRepository = default!;
 #endif
         /// <summary>How the request at `requested_at` ended; null without `requested_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome? RequestOutcome { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome? RequestOutcome { get => _explicitNullValueRequestOutcome; set { _explicitNullValueRequestOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_outcome"); else _explicitNullProperties?.Remove("request_outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome? _explicitNullValueRequestOutcome = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome RequestOutcome { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome RequestOutcome { get => _explicitNullValueRequestOutcome; set { _explicitNullValueRequestOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_outcome"); else _explicitNullProperties?.Remove("request_outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome _explicitNullValueRequestOutcome = default!;
 #endif
         /// <summary>* `not_reviewed` - Not reviewed* `queued` - Queued* `reviewing` - Reviewing* `resolving` - Resolving* `idle` - Idle* `unknown` - Unknown</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusState? State { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusState? _explicitNullValueState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatus"/> and sets the default values.
         /// </summary>
@@ -67,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatus CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatus();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatus(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -100,6 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("repository", Repository);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome>("request_outcome", RequestOutcome);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusState>("state", State);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

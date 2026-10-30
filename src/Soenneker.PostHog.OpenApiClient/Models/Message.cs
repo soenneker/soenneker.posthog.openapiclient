@@ -12,64 +12,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Message : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("agent_mode") is { } nullNodeAgentMode && nullNodeAgentMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentMode = null;
+            if (parseNode.GetChildNode("billing_context") is { } nullNodeBillingContext && nullNodeBillingContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BillingContext = null;
+            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("contextual_tools") is { } nullNodeContextualTools && nullNodeContextualTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextualTools = null;
+            if (parseNode.GetChildNode("conversation") is { } nullNodeConversation && nullNodeConversation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conversation = null;
+            if (parseNode.GetChildNode("is_sandbox") is { } nullNodeIsSandbox && nullNodeIsSandbox.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsSandbox = null;
+            if (parseNode.GetChildNode("resume_payload") is { } nullNodeResumePayload && nullNodeResumePayload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResumePayload = null;
+            if (parseNode.GetChildNode("session_id") is { } nullNodeSessionId && nullNodeSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionId = null;
+            if (parseNode.GetChildNode("trace_id") is { } nullNodeTraceId && nullNodeTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceId = null;
+            if (parseNode.GetChildNode("ui_context") is { } nullNodeUiContext && nullNodeUiContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UiContext = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `product_analytics` - product_analytics* `sql` - sql* `session_replay` - session_replay* `error_tracking` - error_tracking* `plan` - plan* `execution` - execution* `survey` - survey* `research` - research* `flags` - flags* `llm_analytics` - llm_analytics* `sandbox` - sandbox* `user_interview` - user_interview* `customer_analytics` - customer_analytics</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AgentModeEnum? AgentMode { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AgentModeEnum? AgentMode { get => _explicitNullValueAgentMode; set { _explicitNullValueAgentMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_mode"); else _explicitNullProperties?.Remove("agent_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AgentModeEnum? _explicitNullValueAgentMode = default!;
         /// <summary>The billing_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? BillingContext { get; set; }
+        public UntypedNode? BillingContext { get => _explicitNullValueBillingContext; set { _explicitNullValueBillingContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_context"); else _explicitNullProperties?.Remove("billing_context"); } }
+        private UntypedNode? _explicitNullValueBillingContext = default!;
 #nullable restore
 #else
-        public UntypedNode BillingContext { get; set; }
+        public UntypedNode BillingContext { get => _explicitNullValueBillingContext; set { _explicitNullValueBillingContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_context"); else _explicitNullProperties?.Remove("billing_context"); } }
+        private UntypedNode _explicitNullValueBillingContext = default!;
 #endif
         /// <summary>The content property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Content { get; set; }
+        public string? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private string? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public string Content { get; set; }
+        public string Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private string _explicitNullValueContent = default!;
 #endif
         /// <summary>The contextual_tools property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty? ContextualTools { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty? ContextualTools { get => _explicitNullValueContextualTools; set { _explicitNullValueContextualTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextual_tools"); else _explicitNullProperties?.Remove("contextual_tools"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty? _explicitNullValueContextualTools = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty ContextualTools { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty ContextualTools { get => _explicitNullValueContextualTools; set { _explicitNullValueContextualTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextual_tools"); else _explicitNullProperties?.Remove("contextual_tools"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MessageContextualToolsProperty _explicitNullValueContextualTools = default!;
 #endif
         /// <summary>The conversation property</summary>
-        public Guid? Conversation { get; set; }
+        public Guid? Conversation { get => _explicitNullValueConversation; set { _explicitNullValueConversation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversation"); else _explicitNullProperties?.Remove("conversation"); } }
+        private Guid? _explicitNullValueConversation = default!;
         /// <summary>The is_sandbox property</summary>
-        public bool? IsSandbox { get; set; }
+        public bool? IsSandbox { get => _explicitNullValueIsSandbox; set { _explicitNullValueIsSandbox = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_sandbox"); else _explicitNullProperties?.Remove("is_sandbox"); } }
+        private bool? _explicitNullValueIsSandbox = default!;
         /// <summary>The resume_payload property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ResumePayload { get; set; }
+        public UntypedNode? ResumePayload { get => _explicitNullValueResumePayload; set { _explicitNullValueResumePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_payload"); else _explicitNullProperties?.Remove("resume_payload"); } }
+        private UntypedNode? _explicitNullValueResumePayload = default!;
 #nullable restore
 #else
-        public UntypedNode ResumePayload { get; set; }
+        public UntypedNode ResumePayload { get => _explicitNullValueResumePayload; set { _explicitNullValueResumePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_payload"); else _explicitNullProperties?.Remove("resume_payload"); } }
+        private UntypedNode _explicitNullValueResumePayload = default!;
 #endif
         /// <summary>The session_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionId { get; set; }
+        public string? SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private string? _explicitNullValueSessionId = default!;
 #nullable restore
 #else
-        public string SessionId { get; set; }
+        public string SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        private string _explicitNullValueSessionId = default!;
 #endif
         /// <summary>The trace_id property</summary>
-        public Guid? TraceId { get; set; }
+        public Guid? TraceId { get => _explicitNullValueTraceId; set { _explicitNullValueTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trace_id"); else _explicitNullProperties?.Remove("trace_id"); } }
+        private Guid? _explicitNullValueTraceId = default!;
         /// <summary>The ui_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? UiContext { get; set; }
+        public UntypedNode? UiContext { get => _explicitNullValueUiContext; set { _explicitNullValueUiContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ui_context"); else _explicitNullProperties?.Remove("ui_context"); } }
+        private UntypedNode? _explicitNullValueUiContext = default!;
 #nullable restore
 #else
-        public UntypedNode UiContext { get; set; }
+        public UntypedNode UiContext { get => _explicitNullValueUiContext; set { _explicitNullValueUiContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ui_context"); else _explicitNullProperties?.Remove("ui_context"); } }
+        private UntypedNode _explicitNullValueUiContext = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.Message"/> and sets the default values.
@@ -87,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.Message CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.Message();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.Message(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -126,6 +159,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteGuidValue("trace_id", TraceId);
             writer.WriteObjectValue<UntypedNode>("ui_context", UiContext);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

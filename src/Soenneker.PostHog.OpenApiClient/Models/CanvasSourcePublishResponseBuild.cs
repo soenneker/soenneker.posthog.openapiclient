@@ -12,26 +12,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CanvasSourcePublishResponseBuild : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("build_status") is { } nullNodeBuildStatus && nullNodeBuildStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuildStatus = null;
+            if (parseNode.GetChildNode("diagnostics") is { } nullNodeDiagnostics && nullNodeDiagnostics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Diagnostics = null;
+            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `queued` - queued* `building` - building* `ready` - ready* `failed` - failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus? BuildStatus { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus? BuildStatus { get => _explicitNullValueBuildStatus; set { _explicitNullValueBuildStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_status"); else _explicitNullProperties?.Remove("build_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus? _explicitNullValueBuildStatus = default!;
         /// <summary>Structured diagnostics recorded by the build (errors explain a failed status).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? Diagnostics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? Diagnostics { get => _explicitNullValueDiagnostics; set { _explicitNullValueDiagnostics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnostics"); else _explicitNullProperties?.Remove("diagnostics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>? _explicitNullValueDiagnostics = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> Diagnostics { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> Diagnostics { get => _explicitNullValueDiagnostics; set { _explicitNullValueDiagnostics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diagnostics"); else _explicitNullProperties?.Remove("diagnostics"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic> _explicitNullValueDiagnostics = default!;
 #endif
         /// <summary>The build&apos;s id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get; set; }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get; set; }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        private string _explicitNullValueId = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild"/> and sets the default values.
@@ -48,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourcePublishResponseBuild(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -73,6 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasPublishedBuildBuildStatus>("build_status", BuildStatus);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasDiagnostic>("diagnostics", Diagnostics);
             writer.WriteStringValue("id", Id);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
