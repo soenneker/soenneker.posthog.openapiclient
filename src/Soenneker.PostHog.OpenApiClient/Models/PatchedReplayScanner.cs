@@ -121,6 +121,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting ExperimentTargeting { get => _explicitNullValueExperimentTargeting; set { _explicitNullValueExperimentTargeting = value; AdditionalData?.Remove("experiment_targeting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_targeting"); else _explicitNullProperties?.Remove("experiment_targeting"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting _explicitNullValueExperimentTargeting = default!;
 #endif
+        /// <summary>Why the scanner&apos;s recording filter cannot run, from the last sweep or estimate that tried it. Cleared when the filter changes or a sweep runs it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FilterError { get; private set; }
+#nullable restore
+#else
+        public string FilterError { get; private set; }
+#endif
         /// <summary>Run only while the organization has free credits left this billing period, so the scanner never adds spend.</summary>
         public bool? FreeOnly { get => _explicitNullValueFreeOnly; set { _explicitNullValueFreeOnly = value; AdditionalData?.Remove("free_only"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("free_only"); else _explicitNullProperties?.Remove("free_only"); } }
         private bool? _explicitNullValueFreeOnly = default!;
@@ -262,6 +270,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "estimated_monthly_credits", n => { EstimatedMonthlyCredits = n.GetIntValue(); } },
                 { "estimated_monthly_observations", n => { EstimatedMonthlyObservations = n.GetIntValue(); } },
                 { "experiment_targeting", n => { ExperimentTargeting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting.CreateFromDiscriminatorValue); } },
+                { "filter_error", n => { FilterError = n.GetStringValue(); } },
                 { "free_only", n => { FreeOnly = n.GetBoolValue(); } },
                 { "goal", n => { Goal = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

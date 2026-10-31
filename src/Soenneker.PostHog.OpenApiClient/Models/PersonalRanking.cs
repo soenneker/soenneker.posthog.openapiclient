@@ -19,6 +19,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("activity_summary_version") is null) { _explicitNullValueActivitySummaryVersion = default!; _explicitNullProperties?.Remove("activity_summary_version"); }
             else if (parseNode.GetChildNode("activity_summary_version") is { } nullNodeActivitySummaryVersion && nullNodeActivitySummaryVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivitySummaryVersion = null;
+            if (parseNode.GetChildNode("building") is null) { _explicitNullValueBuilding = default!; _explicitNullProperties?.Remove("building"); }
+            else if (parseNode.GetChildNode("building") is { } nullNodeBuilding && nullNodeBuilding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Building = null;
             if (parseNode.GetChildNode("cached") is null) { _explicitNullValueCached = default!; _explicitNullProperties?.Remove("cached"); }
             else if (parseNode.GetChildNode("cached") is { } nullNodeCached && nullNodeCached.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cached = null;
             if (parseNode.GetChildNode("candidates_considered") is null) { _explicitNullValueCandidatesConsidered = default!; _explicitNullProperties?.Remove("candidates_considered"); }
@@ -48,13 +50,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         private int? _explicitNullValueActivitySummaryVersion = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>True when the list comes from storage, false when this request built it.</summary>
+        /// <summary>True when a new list is being built in the background. Call again in a few seconds, or pass `wait_seconds`, to get it.</summary>
+        public bool? Building { get => _explicitNullValueBuilding; set { _explicitNullValueBuilding = value; AdditionalData?.Remove("building"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("building"); else _explicitNullProperties?.Remove("building"); } }
+        private bool? _explicitNullValueBuilding = default!;
+        /// <summary>True when the list is a stored one. False when it is the inbox order fallback or the new list that `wait_seconds` waited for.</summary>
         public bool? Cached { get => _explicitNullValueCached; set { _explicitNullValueCached = value; AdditionalData?.Remove("cached"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cached"); else _explicitNullProperties?.Remove("cached"); } }
         private bool? _explicitNullValueCached = default!;
         /// <summary>How many reports the build considered.</summary>
         public int? CandidatesConsidered { get => _explicitNullValueCandidatesConsidered; set { _explicitNullValueCandidatesConsidered = value; AdditionalData?.Remove("candidates_considered"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates_considered"); else _explicitNullProperties?.Remove("candidates_considered"); } }
         private int? _explicitNullValueCandidatesConsidered = default!;
-        /// <summary>Why the list is in inbox order and not ranked by the language model: llm_error, timeout, malformed_output, truncated_output, no_candidates or ai_not_approved. Null when the model ranked it.</summary>
+        /// <summary>Why the list is in inbox order and not ranked by the language model. building: no list is stored yet and one is being built. rate_limited: no list is stored yet and you reached the build limit. build_failed: no list is stored yet and the build could not start. llm_error, timeout, malformed_output, truncated_output, no_candidates or ai_not_approved: the stored build fell back. Null when the model ranked it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FallbackReason { get => _explicitNullValueFallbackReason; set { _explicitNullValueFallbackReason = value; AdditionalData?.Remove("fallback_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_reason"); else _explicitNullProperties?.Remove("fallback_reason"); } }
@@ -96,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonalRankingEntry> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PersonalRankingEntry> _explicitNullValueResults = default!;
 #endif
-        /// <summary>True when the list does not match your current inbox, because you reached the build limit. Try `refresh` again later.</summary>
+        /// <summary>True when the list does not match your current inbox or focus. When `building` is true, a newer list is on the way. Otherwise you reached the build limit, so try again later.</summary>
         public bool? Stale { get => _explicitNullValueStale; set { _explicitNullValueStale = value; AdditionalData?.Remove("stale"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stale"); else _explicitNullProperties?.Remove("stale"); } }
         private bool? _explicitNullValueStale = default!;
         /// <summary>* `ready` - ready* `unavailable` - unavailable</summary>
@@ -128,6 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "activity_summary_version", n => { ActivitySummaryVersion = n.GetIntValue(); } },
+                { "building", n => { Building = n.GetBoolValue(); } },
                 { "cached", n => { Cached = n.GetBoolValue(); } },
                 { "candidates_considered", n => { CandidatesConsidered = n.GetIntValue(); } },
                 { "fallback_reason", n => { FallbackReason = n.GetStringValue(); } },
@@ -149,6 +155,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("activity_summary_version", ActivitySummaryVersion);
+            writer.WriteBoolValue("building", Building);
             writer.WriteBoolValue("cached", Cached);
             writer.WriteIntValue("candidates_considered", CandidatesConsidered);
             writer.WriteStringValue("fallback_reason", FallbackReason);

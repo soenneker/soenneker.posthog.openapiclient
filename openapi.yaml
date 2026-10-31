@@ -71258,9 +71258,8 @@ paths:
         name: force_refresh
         schema:
           type: boolean
-        description: When true, bypasses the Redis cache and re-queries ClickHouse
-          for SDK usage. A background job refreshes this data once a day, so the cached
-          answer is usually current. Use sparingly.
+        description: When true, bypasses the cache and re-reads SDK usage. The cached
+          answer is at most an hour old, so use this sparingly.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - sdk_health
@@ -74551,11 +74550,14 @@ paths:
   /api/projects/{project_id}/signals/reports/for_me/:
     get:
       operationId: signals_reports_for_me_retrieve
-      description: Your open inbox reports, ranked for you by one language model call
-        over your activity summary, the reports that need you and the ranking model's
-        predictions. Each entry has a reason and a compact report. A current stored
-        list returns at once. Otherwise the request builds a new list, which can take
-        30 seconds or more. Only the user the list is about can read it.
+      description: 'Your open inbox reports, ranked for you by one language model
+        call over your activity summary, the reports that need you and the ranking
+        model''s predictions. Each entry has a reason and a compact report. The request
+        never waits on the model. A current stored list returns at once. Otherwise
+        the request starts a background build and returns the last stored list with
+        `stale: true`, or your reports in inbox order with `fallback_reason: building`,
+        and `building: true`. Pass `wait_seconds` to wait a short time for the new
+        list. Only the user the list is about can read it.'
       summary: Get your personal ranked inbox
       parameters:
       - in: query
@@ -74564,8 +74566,8 @@ paths:
           type: string
           maxLength: 2000
         description: Free text about what to put first, such as `error tracking` or
-          `billing reports`. A request with focus always builds a new list, and an
-          unfocused request never reuses it.
+          `billing reports`. A request with focus always starts a new build, and an
+          unfocused request never reuses it. Pass `wait_seconds` to wait for it.
       - in: query
         name: limit
         schema:
@@ -74580,8 +74582,19 @@ paths:
         schema:
           type: boolean
           default: false
-        description: Build a new list even when the stored one is current. A build
-          calls a model and can take 30 seconds or more.
+        description: 'Start a new build even when the stored one is current. The build
+          runs in the background, so the response has `building: true`. Pass `wait_seconds`
+          to wait for it.'
+      - in: query
+        name: wait_seconds
+        schema:
+          type: integer
+          maximum: 30
+          minimum: 0
+          default: 0
+        description: When the request starts a build or one is running, wait up to
+          this many seconds for its list. Defaults to 0, which returns at once. A
+          build usually takes 10 to 60 seconds.
       tags:
       - signals
       security:
@@ -74598,8 +74611,6 @@ paths:
           description: ''
         '404':
           description: Personal ranking is not available to the caller.
-        '429':
-          description: The build limit is reached and no stored list exists yet.
       x-product:
       - signals
   /api/projects/{project_id}/signals/reports/pr_ci_statuses/:
@@ -228465,6 +228476,14 @@ components:
           readOnly: true
           description: Watermark for the scanner's last scheduled fire. Mirrors Temporal
             schedule state for recovery.
+        filter_error:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Why the scanner's recording filter cannot run, from the last
+            sweep or estimate that tried it. Cleared when the filter changes or a
+            sweep runs it.
         created_at:
           type: string
           format: date-time
@@ -233614,19 +233633,27 @@ components:
             the inbox order.
         cached:
           type: boolean
-          description: True when the list comes from storage, false when this request
-            built it.
+          description: True when the list is a stored one. False when it is the inbox
+            order fallback or the new list that `wait_seconds` waited for.
         stale:
           type: boolean
-          description: True when the list does not match your current inbox, because
-            you reached the build limit. Try `refresh` again later.
+          description: True when the list does not match your current inbox or focus.
+            When `building` is true, a newer list is on the way. Otherwise you reached
+            the build limit, so try again later.
+        building:
+          type: boolean
+          description: True when a new list is being built in the background. Call
+            again in a few seconds, or pass `wait_seconds`, to get it.
         fallback_reason:
           type:
           - string
           - 'null'
           description: 'Why the list is in inbox order and not ranked by the language
-            model: llm_error, timeout, malformed_output, truncated_output, no_candidates
-            or ai_not_approved. Null when the model ranked it.'
+            model. building: no list is stored yet and one is being built. rate_limited:
+            no list is stored yet and you reached the build limit. build_failed: no
+            list is stored yet and the build could not start. llm_error, timeout,
+            malformed_output, truncated_output, no_candidates or ai_not_approved:
+            the stored build fell back. Null when the model ranked it.'
         generated_at:
           type:
           - string
@@ -233666,6 +233693,7 @@ components:
             the same work.
       required:
       - activity_summary_version
+      - building
       - cached
       - candidates_considered
       - fallback_reason
@@ -256816,6 +256844,14 @@ components:
           readOnly: true
           description: Watermark for the scanner's last scheduled fire. Mirrors Temporal
             schedule state for recovery.
+        filter_error:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: Why the scanner's recording filter cannot run, from the last
+            sweep or estimate that tried it. Cleared when the filter changes or a
+            sweep runs it.
         created_at:
           type: string
           format: date-time
@@ -256847,6 +256883,7 @@ components:
       - estimated_at
       - estimated_monthly_credits
       - estimated_monthly_observations
+      - filter_error
       - id
       - last_swept_at
       - limit_from_free_credits

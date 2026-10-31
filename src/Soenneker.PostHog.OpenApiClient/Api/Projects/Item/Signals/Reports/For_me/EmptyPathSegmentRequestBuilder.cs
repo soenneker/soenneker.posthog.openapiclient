@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports/for_me/{?focus*,limit*,refresh*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports/for_me/{?focus*,limit*,refresh*,wait_seconds*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports/for_me/{?focus*,limit*,refresh*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/signals/reports/for_me/{?focus*,limit*,refresh*,wait_seconds*}", rawUrl)
         {
         }
         /// <summary>
-        /// Your open inbox reports, ranked for you by one language model call over your activity summary, the reports that need you and the ranking model&apos;s predictions. Each entry has a reason and a compact report. A current stored list returns at once. Otherwise the request builds a new list, which can take 30 seconds or more. Only the user the list is about can read it.
+        /// Your open inbox reports, ranked for you by one language model call over your activity summary, the reports that need you and the ranking model&apos;s predictions. Each entry has a reason and a compact report. The request never waits on the model. A current stored list returns at once. Otherwise the request starts a background build and returns the last stored list with `stale: true`, or your reports in inbox order with `fallback_reason: building`, and `building: true`. Pass `wait_seconds` to wait a short time for the new list. Only the user the list is about can read it.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PersonalRanking"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.PersonalRanking>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.PersonalRanking.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Your open inbox reports, ranked for you by one language model call over your activity summary, the reports that need you and the ranking model&apos;s predictions. Each entry has a reason and a compact report. A current stored list returns at once. Otherwise the request builds a new list, which can take 30 seconds or more. Only the user the list is about can read it.
+        /// Your open inbox reports, ranked for you by one language model call over your activity summary, the reports that need you and the ranking model&apos;s predictions. Each entry has a reason and a compact report. The request never waits on the model. A current stored list returns at once. Otherwise the request starts a background build and returns the last stored list with `stale: true`, or your reports in inbox order with `fallback_reason: building`, and `building: true`. Pass `wait_seconds` to wait a short time for the new list. Only the user the list is about can read it.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -65,7 +65,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_me.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://us.posthog.com", "/api/projects/{projectId}/signals/reports/for_me/", PathParameters.ContainsKey("request-raw-url")), PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
@@ -80,12 +80,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_me.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Your open inbox reports, ranked for you by one language model call over your activity summary, the reports that need you and the ranking model&apos;s predictions. Each entry has a reason and a compact report. A current stored list returns at once. Otherwise the request builds a new list, which can take 30 seconds or more. Only the user the list is about can read it.
+        /// Your open inbox reports, ranked for you by one language model call over your activity summary, the reports that need you and the ranking model&apos;s predictions. Each entry has a reason and a compact report. The request never waits on the model. A current stored list returns at once. Otherwise the request starts a background build and returns the last stored list with `stale: true`, or your reports in inbox order with `fallback_reason: building`, and `building: true`. Pass `wait_seconds` to wait a short time for the new list. Only the user the list is about can read it.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         {
-            /// <summary>Free text about what to put first, such as `error tracking` or `billing reports`. A request with focus always builds a new list, and an unfocused request never reuses it.</summary>
+            /// <summary>Free text about what to put first, such as `error tracking` or `billing reports`. A request with focus always starts a new build, and an unfocused request never reuses it. Pass `wait_seconds` to wait for it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("focus")]
@@ -98,9 +98,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.For_
             /// <summary>The most reports to return, best first. Defaults to 25. Values above the configured maximum (50) use the maximum.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>Build a new list even when the stored one is current. A build calls a model and can take 30 seconds or more.</summary>
+            /// <summary>Start a new build even when the stored one is current. The build runs in the background, so the response has `building: true`. Pass `wait_seconds` to wait for it.</summary>
             [QueryParameter("refresh")]
             public bool? Refresh { get; set; }
+            /// <summary>When the request starts a build or one is running, wait up to this many seconds for its list. Defaults to 0, which returns at once. A build usually takes 10 to 60 seconds.</summary>
+            [QueryParameter("wait_seconds")]
+            public int? WaitSeconds { get; set; }
         }
     }
 }
