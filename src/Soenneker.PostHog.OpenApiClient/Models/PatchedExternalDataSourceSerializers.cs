@@ -140,6 +140,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine Engine { get; private set; }
 #endif
+        /// <summary>The name of the file a file upload source imports. Null for other sources or when it is unknown.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? FileName { get; private set; }
+#nullable restore
+#else
+        public string FileName { get; private set; }
+#endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The job_inputs property</summary>
@@ -255,6 +263,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "direct_query_enabled", n => { DirectQueryEnabled = n.GetBoolValue(); } },
                 { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine.CreateFromDiscriminatorValue); } },
+                { "file_name", n => { FileName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "job_inputs", n => { JobInputs = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "last_run_at", n => { LastRunAt = n.GetStringValue(); } },

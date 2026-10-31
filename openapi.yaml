@@ -161373,6 +161373,15 @@ components:
           - 'null'
           additionalProperties: true
           readOnly: true
+        table_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: The id of the warehouse table this schema syncs into. Set before
+            the first sync for a table the schema already names, such as a migrated
+            one. Null when there is none.
         should_sync:
           type: boolean
         last_synced_at:
@@ -161645,6 +161654,10 @@ components:
               type: array
               items:
                 type: string
+            file_name:
+              type:
+              - string
+              - 'null'
           readOnly: true
           description: Lightweight parent-source summary (id, source_type, access_method,
             column-selection support, the requesting user's access level). Only populated
@@ -161692,6 +161705,7 @@ components:
       - source_column_metadata_available
       - status
       - table
+      - table_id
       - user_access_level
     ExternalDataSchemaSyncFrequencyEnum:
       enum:
@@ -165070,6 +165084,13 @@ components:
           readOnly: true
           description: Whether this source supports per-column sync selection via
             `enabled_columns`.
+        file_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: The name of the file a file upload source imports. Null for
+            other sources or when it is unknown.
         api_version:
           type:
           - string
@@ -165102,6 +165123,7 @@ components:
       - created_at
       - created_by
       - engine
+      - file_name
       - id
       - last_run_at
       - latest_error
@@ -223242,6 +223264,15 @@ components:
           - 'null'
           additionalProperties: true
           readOnly: true
+        table_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+          description: The id of the warehouse table this schema syncs into. Set before
+            the first sync for a table the schema already names, such as a migrated
+            one. Null when there is none.
         should_sync:
           type: boolean
         last_synced_at:
@@ -223514,6 +223545,10 @@ components:
               type: array
               items:
                 type: string
+            file_name:
+              type:
+              - string
+              - 'null'
           readOnly: true
           description: Lightweight parent-source summary (id, source_type, access_method,
             column-selection support, the requesting user's access level). Only populated
@@ -223672,6 +223707,13 @@ components:
           readOnly: true
           description: Whether this source supports per-column sync selection via
             `enabled_columns`.
+        file_name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: The name of the file a file upload source imports. Null for
+            other sources or when it is unknown.
         api_version:
           type:
           - string

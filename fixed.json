@@ -238216,6 +238216,7 @@
           "source_column_metadata_available",
           "status",
           "table",
+          "table_id",
           "user_access_level"
         ],
         "type": "object",
@@ -238238,6 +238239,15 @@
           },
           "table": {
             "$ref": "#/components/schemas/ExternalDataSchemaTableProperty"
+          },
+          "table_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The id of the warehouse table this schema syncs into. Set before the first sync for a table the schema already names, such as a migrated one. Null when there is none.",
+            "format": "uuid",
+            "readOnly": true
           },
           "should_sync": {
             "type": "boolean"
@@ -238974,6 +238984,7 @@
           "created_at",
           "created_by",
           "engine",
+          "file_name",
           "id",
           "last_run_at",
           "latest_error",
@@ -239103,6 +239114,14 @@
           "supports_column_selection": {
             "type": "boolean",
             "description": "Whether this source supports per-column sync selection via \u0060enabled_columns\u0060.",
+            "readOnly": true
+          },
+          "file_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The name of the file a file upload source imports. Null for other sources or when it is unknown.",
             "readOnly": true
           },
           "api_version": {
@@ -305754,6 +305773,15 @@
           "table": {
             "$ref": "#/components/schemas/PatchedExternalDataSchemaTableProperty"
           },
+          "table_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The id of the warehouse table this schema syncs into. Set before the first sync for a table the schema already names, such as a migrated one. Null when there is none.",
+            "format": "uuid",
+            "readOnly": true
+          },
           "should_sync": {
             "type": "boolean"
           },
@@ -306067,6 +306095,14 @@
           "supports_column_selection": {
             "type": "boolean",
             "description": "Whether this source supports per-column sync selection via \u0060enabled_columns\u0060.",
+            "readOnly": true
+          },
+          "file_name": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The name of the file a file upload source imports. Null for other sources or when it is unknown.",
             "readOnly": true
           },
           "api_version": {
@@ -565536,6 +565572,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "file_name": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         },
         "description": "Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user\u0027s access level). Only populated on the single-schema retrieve endpoint \u2014 \u0060null\u0060 elsewhere \u2014 so read-only views can render without fetching the full source and all its schemas.",
@@ -567027,6 +567069,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "file_name": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         },
         "description": "Lightweight parent-source summary (id, source_type, access_method, column-selection support, the requesting user\u0027s access level). Only populated on the single-schema retrieve endpoint \u2014 \u0060null\u0060 elsewhere \u2014 so read-only views can render without fetching the full source and all its schemas.",

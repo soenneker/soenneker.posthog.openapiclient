@@ -268,6 +268,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty Table { get; private set; }
 #endif
+        /// <summary>The id of the warehouse table this schema syncs into. Set before the first sync for a table the schema already names, such as a migrated one. Null when there is none.</summary>
+        public Guid? TableId { get; private set; }
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -333,6 +335,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sync_time_of_day", n => { SyncTimeOfDay = n.GetStringValue(); } },
                 { "sync_type", n => { SyncType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncType>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaSyncType.CreateFromDiscriminatorValue); } },
                 { "table", n => { Table = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaTableProperty.CreateFromDiscriminatorValue); } },
+                { "table_id", n => { TableId = n.GetGuidValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
         }
