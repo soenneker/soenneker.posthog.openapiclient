@@ -32,6 +32,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
             else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("query_additions") is null) { _explicitNullValueQueryAdditions = default!; _explicitNullProperties?.Remove("query_additions"); }
+            else if (parseNode.GetChildNode("query_additions") is { } nullNodeQueryAdditions && nullNodeQueryAdditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryAdditions = null;
             if (parseNode.GetChildNode("rationale") is null) { _explicitNullValueRationale = default!; _explicitNullProperties?.Remove("rationale"); }
             else if (parseNode.GetChildNode("rationale") is { } nullNodeRationale && nullNodeRationale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rationale = null;
             if (parseNode.GetChildNode("sampling_mode") is null) { _explicitNullValueSamplingMode = default!; _explicitNullProperties?.Remove("sampling_mode"); }
@@ -94,6 +96,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public UntypedNode Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private UntypedNode _explicitNullValueQuery = default!;
+#endif
+        /// <summary>When the request passed a `query`: the filters the draft ANDed onto it, which `query` already includes. Show them to the person as added by AI. Null when nothing was added or no `query` was passed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? QueryAdditions { get => _explicitNullValueQueryAdditions; set { _explicitNullValueQueryAdditions = value; AdditionalData?.Remove("query_additions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_additions"); else _explicitNullProperties?.Remove("query_additions"); } }
+        private UntypedNode? _explicitNullValueQueryAdditions = default!;
+#nullable restore
+#else
+        public UntypedNode QueryAdditions { get => _explicitNullValueQueryAdditions; set { _explicitNullValueQueryAdditions = value; AdditionalData?.Remove("query_additions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_additions"); else _explicitNullProperties?.Remove("query_additions"); } }
+        private UntypedNode _explicitNullValueQueryAdditions = default!;
 #endif
         /// <summary>Why the draft picked this scanner type and configuration, addressed to the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -163,6 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "model", n => { Model = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel>(global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "query_additions", n => { QueryAdditions = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
                 { "sampling_mode", n => { SamplingMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode>(global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode.CreateFromDiscriminatorValue); } },
                 { "sampling_rate", n => { SamplingRate = n.GetDoubleValue(); } },
@@ -184,6 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseModel>("model", Model);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<UntypedNode>("query", Query);
+            writer.WriteObjectValue<UntypedNode>("query_additions", QueryAdditions);
             writer.WriteStringValue("rationale", Rationale);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerResponseSamplingMode>("sampling_mode", SamplingMode);
             writer.WriteDoubleValue("sampling_rate", SamplingRate);

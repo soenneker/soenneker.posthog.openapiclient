@@ -120,12 +120,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Events and actions to include</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItem>? Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
-        private List<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItem>? _explicitNullValueSeries = default!;
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuerySeriesItem>? Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuerySeriesItem>? _explicitNullValueSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItem> Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
-        private List<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItem> _explicitNullValueSeries = default!;
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuerySeriesItem> Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuerySeriesItem> _explicitNullValueSeries = default!;
 #endif
         /// <summary>Properties specific to the stickiness insight</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -186,7 +186,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryProperties>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryProperties.CreateFromDiscriminatorValue); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryResponse>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryResponse.CreateFromDiscriminatorValue); } },
                 { "samplingFactor", n => { SamplingFactor = n.GetDoubleValue(); } },
-                { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItem>(global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuerySeriesItem>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuerySeriesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "stickinessFilter", n => { StickinessFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter>(global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -210,7 +210,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryProperties>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQueryResponse>("response", Response);
             writer.WriteDoubleValue("samplingFactor", SamplingFactor);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItem>("series", Series);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.StickinessQuerySeriesItem>("series", Series);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StickinessFilter>("stickinessFilter", StickinessFilter);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
             writer.WriteDoubleValue("version", Version);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

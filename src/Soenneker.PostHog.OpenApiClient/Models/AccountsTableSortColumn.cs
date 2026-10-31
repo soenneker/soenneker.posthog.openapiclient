@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn"/>
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf5"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountsTableSortColumn : IComposedTypeWrapper, IParsable
@@ -18,45 +18,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn? AccountsTableAccountFieldColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf1? AccountsTableSortColumnOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn AccountsTableAccountFieldColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf1 AccountsTableSortColumnOneOf1 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn? AccountsTableCustomPropertyColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf2? AccountsTableSortColumnOneOf2 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn AccountsTableCustomPropertyColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf2 AccountsTableSortColumnOneOf2 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn? AccountsTableNoteCountColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf3? AccountsTableSortColumnOneOf3 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn AccountsTableNoteCountColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf3 AccountsTableSortColumnOneOf3 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn? AccountsTableRelationshipColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf4? AccountsTableSortColumnOneOf4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn AccountsTableRelationshipColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf4 AccountsTableSortColumnOneOf4 { get; set; }
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn"/></summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf5"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn? AccountsTableTagsColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf5? AccountsTableSortColumnOneOf5 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn AccountsTableTagsColumn { get; set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf5 AccountsTableSortColumnOneOf5 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -66,48 +66,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumn CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumn();
-            if("account_field".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("AccountsTableSortColumnOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 
             }
-            else if("custom_property".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AccountsTableSortColumnOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 
             }
-            else if("note_count".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AccountsTableSortColumnOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 
             }
-            else if("relationship".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AccountsTableSortColumnOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 
             }
-            else if("tags".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("AccountsTableSortColumnOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("field") && (!shapeMembers1.ContainsKey("field") || (((shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "name".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "external_id".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "created_at".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "updated_at".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "churned_at".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal7 && "ignored_at".Equals(literal7.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal8 && "stripe_customer_id".Equals(literal8.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal9 && "hubspot_deal_id".Equals(literal9.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal10 && "billing_id".Equals(literal10.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "sfdc_id".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "zendesk_id".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal15 && "account_field".Equals(literal15.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal16 && "account_field".Equals(literal16.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "field" || key == "kind"))))))();
-            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && ((!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "tags".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "tags".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "kind"))))))();
-            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && ((!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "note_count".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "note_count".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "kind"))))))();
-            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("definitionId") && (!shapeMembers1.ContainsKey("definitionId") || (((shapeMembers1["definitionId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "relationship".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "relationship".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "definitionId" || key == "kind"))))))();
-            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("definitionId") && (!shapeMembers1.ContainsKey("definitionId") || (((shapeMembers1["definitionId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "custom_property".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "custom_property".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "definitionId" || key == "kind"))))))();
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("field") && shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("field") || (((shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "name".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "external_id".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "created_at".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "updated_at".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "churned_at".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal7 && "ignored_at".Equals(literal7.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal8 && "stripe_customer_id".Equals(literal8.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal9 && "hubspot_deal_id".Equals(literal9.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal10 && "billing_id".Equals(literal10.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "sfdc_id".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "zendesk_id".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal15 && "account_field".Equals(literal15.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal16 && "account_field".Equals(literal16.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "field" || key == "kind"))))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "tags".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "tags".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "kind"))))))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "note_count".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "note_count".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "kind"))))))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("definitionId") && shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("definitionId") || (((shapeMembers1["definitionId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "relationship".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "relationship".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "definitionId" || key == "kind"))))))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("definitionId") && shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("definitionId") || (((shapeMembers1["definitionId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "custom_property".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "custom_property".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "definitionId" || key == "kind"))))))();
             int matchingUnionBranches = 0;
             if (matchesUnionBranch0) matchingUnionBranches++;
             if (matchesUnionBranch1) matchingUnionBranches++;
             if (matchesUnionBranch2) matchingUnionBranches++;
             if (matchesUnionBranch3) matchingUnionBranches++;
             if (matchesUnionBranch4) matchingUnionBranches++;
-            bool noSelectedUnionBranch = result.AccountsTableAccountFieldColumn == null && result.AccountsTableCustomPropertyColumn == null && result.AccountsTableNoteCountColumn == null && result.AccountsTableRelationshipColumn == null && result.AccountsTableTagsColumn == null;
-            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.AccountsTableAccountFieldColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.AccountsTableTagsColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.AccountsTableNoteCountColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch3 && matchingUnionBranches == 1) result.AccountsTableRelationshipColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch4 && matchingUnionBranches == 1) result.AccountsTableCustomPropertyColumn = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn(), parseNode);
-            if (result.AccountsTableAccountFieldColumn == null && result.AccountsTableCustomPropertyColumn == null && result.AccountsTableNoteCountColumn == null && result.AccountsTableRelationshipColumn == null && result.AccountsTableTagsColumn == null) result.UnrecognizedValue = unionPayload;
+            bool noSelectedUnionBranch = result.AccountsTableSortColumnOneOf1 == null && result.AccountsTableSortColumnOneOf2 == null && result.AccountsTableSortColumnOneOf3 == null && result.AccountsTableSortColumnOneOf4 == null && result.AccountsTableSortColumnOneOf5 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.AccountsTableSortColumnOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf1(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.AccountsTableSortColumnOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf2(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.AccountsTableSortColumnOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf3(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch3 && matchingUnionBranches == 1) result.AccountsTableSortColumnOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf4(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch4 && matchingUnionBranches == 1) result.AccountsTableSortColumnOneOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf5(), parseNode);
+            if (result.AccountsTableSortColumnOneOf1 == null && result.AccountsTableSortColumnOneOf2 == null && result.AccountsTableSortColumnOneOf3 == null && result.AccountsTableSortColumnOneOf4 == null && result.AccountsTableSortColumnOneOf5 == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -118,25 +118,25 @@ return result;
         {
             if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
 
-            if(AccountsTableAccountFieldColumn != null)
+            if(AccountsTableSortColumnOneOf1 != null)
             {
-                return AccountsTableAccountFieldColumn.GetFieldDeserializers();
+                return AccountsTableSortColumnOneOf1.GetFieldDeserializers();
             }
-            else if(AccountsTableCustomPropertyColumn != null)
+            else if(AccountsTableSortColumnOneOf2 != null)
             {
-                return AccountsTableCustomPropertyColumn.GetFieldDeserializers();
+                return AccountsTableSortColumnOneOf2.GetFieldDeserializers();
             }
-            else if(AccountsTableNoteCountColumn != null)
+            else if(AccountsTableSortColumnOneOf3 != null)
             {
-                return AccountsTableNoteCountColumn.GetFieldDeserializers();
+                return AccountsTableSortColumnOneOf3.GetFieldDeserializers();
             }
-            else if(AccountsTableRelationshipColumn != null)
+            else if(AccountsTableSortColumnOneOf4 != null)
             {
-                return AccountsTableRelationshipColumn.GetFieldDeserializers();
+                return AccountsTableSortColumnOneOf4.GetFieldDeserializers();
             }
-            else if(AccountsTableTagsColumn != null)
+            else if(AccountsTableSortColumnOneOf5 != null)
             {
-                return AccountsTableTagsColumn.GetFieldDeserializers();
+                return AccountsTableSortColumnOneOf5.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -147,44 +147,44 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (AccountsTableAccountFieldColumn == null && AccountsTableCustomPropertyColumn == null && AccountsTableNoteCountColumn == null && AccountsTableRelationshipColumn == null && AccountsTableTagsColumn == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AccountsTableSortColumnOneOf1 == null && AccountsTableSortColumnOneOf2 == null && AccountsTableSortColumnOneOf3 == null && AccountsTableSortColumnOneOf4 == null && AccountsTableSortColumnOneOf5 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
             int selectedUnionBranches = 0;
-            if (AccountsTableAccountFieldColumn != null) selectedUnionBranches++;
-            if (AccountsTableCustomPropertyColumn != null) selectedUnionBranches++;
-            if (AccountsTableNoteCountColumn != null) selectedUnionBranches++;
-            if (AccountsTableRelationshipColumn != null) selectedUnionBranches++;
-            if (AccountsTableTagsColumn != null) selectedUnionBranches++;
-            if (AccountsTableAccountFieldColumn != null && selectedUnionBranches == 1) { if (AccountsTableAccountFieldColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableAccountFieldColumn); return; }
-            if (AccountsTableCustomPropertyColumn != null && selectedUnionBranches == 1) { if (AccountsTableCustomPropertyColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableCustomPropertyColumn); return; }
-            if (AccountsTableNoteCountColumn != null && selectedUnionBranches == 1) { if (AccountsTableNoteCountColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableNoteCountColumn); return; }
-            if (AccountsTableRelationshipColumn != null && selectedUnionBranches == 1) { if (AccountsTableRelationshipColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableRelationshipColumn); return; }
-            if (AccountsTableTagsColumn != null && selectedUnionBranches == 1) { if (AccountsTableTagsColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableTagsColumn); return; }
+            if (AccountsTableSortColumnOneOf1 != null) selectedUnionBranches++;
+            if (AccountsTableSortColumnOneOf2 != null) selectedUnionBranches++;
+            if (AccountsTableSortColumnOneOf3 != null) selectedUnionBranches++;
+            if (AccountsTableSortColumnOneOf4 != null) selectedUnionBranches++;
+            if (AccountsTableSortColumnOneOf5 != null) selectedUnionBranches++;
+            if (AccountsTableSortColumnOneOf1 != null && selectedUnionBranches == 1) { if (AccountsTableSortColumnOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableSortColumnOneOf1); return; }
+            if (AccountsTableSortColumnOneOf2 != null && selectedUnionBranches == 1) { if (AccountsTableSortColumnOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableSortColumnOneOf2); return; }
+            if (AccountsTableSortColumnOneOf3 != null && selectedUnionBranches == 1) { if (AccountsTableSortColumnOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableSortColumnOneOf3); return; }
+            if (AccountsTableSortColumnOneOf4 != null && selectedUnionBranches == 1) { if (AccountsTableSortColumnOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableSortColumnOneOf4); return; }
+            if (AccountsTableSortColumnOneOf5 != null && selectedUnionBranches == 1) { if (AccountsTableSortColumnOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableSortColumnOneOf5); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(AccountsTableAccountFieldColumn != null)
+            if(AccountsTableSortColumnOneOf1 != null)
             {
-                if (AccountsTableAccountFieldColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableAccountFieldColumn>(null, AccountsTableAccountFieldColumn);
+                if (AccountsTableSortColumnOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf1>(null, AccountsTableSortColumnOneOf1);
             }
-            else if(AccountsTableCustomPropertyColumn != null)
+            else if(AccountsTableSortColumnOneOf2 != null)
             {
-                if (AccountsTableCustomPropertyColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyColumn>(null, AccountsTableCustomPropertyColumn);
+                if (AccountsTableSortColumnOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf2>(null, AccountsTableSortColumnOneOf2);
             }
-            else if(AccountsTableNoteCountColumn != null)
+            else if(AccountsTableSortColumnOneOf3 != null)
             {
-                if (AccountsTableNoteCountColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableNoteCountColumn>(null, AccountsTableNoteCountColumn);
+                if (AccountsTableSortColumnOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf3>(null, AccountsTableSortColumnOneOf3);
             }
-            else if(AccountsTableRelationshipColumn != null)
+            else if(AccountsTableSortColumnOneOf4 != null)
             {
-                if (AccountsTableRelationshipColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipColumn>(null, AccountsTableRelationshipColumn);
+                if (AccountsTableSortColumnOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf4>(null, AccountsTableSortColumnOneOf4);
             }
-            else if(AccountsTableTagsColumn != null)
+            else if(AccountsTableSortColumnOneOf5 != null)
             {
-                if (AccountsTableTagsColumn is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableTagsColumn>(null, AccountsTableTagsColumn);
+                if (AccountsTableSortColumnOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf5>(null, AccountsTableSortColumnOneOf5);
             }
         }
     }

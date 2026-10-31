@@ -8,426 +8,56 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The query definition for this insight. The `kind` field determines the query type:- `InsightVizNode` — product analytics (trends, funnels, retention, paths, stickiness, lifecycle)- `DataVisualizationNode` — SQL insights using HogQL- `BIVisualizationNode` — business intelligence worksheets with a HogQL source- `DataTableNode` — raw data tables- `HogQuery` — Hog language queries
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf5"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class InsightDataChecksRequestQuery : IAdditionalDataHolder, IParsable
-    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
-        // Track explicitly assigned nulls separately from absent properties.
-        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+    public partial class InsightDataChecksRequestQuery : IComposedTypeWrapper, IParsable
+    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
+        // Preserve ambiguous union payloads without inventing a discriminator.
+        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
-        {
-            if (parseNode.GetChildNode("allowSorting") is null) { _explicitNullValueAllowSorting = default!; _explicitNullProperties?.Remove("allowSorting"); }
-            else if (parseNode.GetChildNode("allowSorting") is { } nullNodeAllowSorting && nullNodeAllowSorting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSorting = null;
-            if (parseNode.GetChildNode("chartSettings") is null) { _explicitNullValueChartSettings = default!; _explicitNullProperties?.Remove("chartSettings"); }
-            else if (parseNode.GetChildNode("chartSettings") is { } nullNodeChartSettings && nullNodeChartSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChartSettings = null;
-            if (parseNode.GetChildNode("code") is null) { _explicitNullValueCode = default!; _explicitNullProperties?.Remove("code"); }
-            else if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
-            if (parseNode.GetChildNode("columns") is null) { _explicitNullValueColumns = default!; _explicitNullProperties?.Remove("columns"); }
-            else if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
-            if (parseNode.GetChildNode("config") is null) { _explicitNullValueConfig = default!; _explicitNullProperties?.Remove("config"); }
-            else if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
-            if (parseNode.GetChildNode("context") is null) { _explicitNullValueContext = default!; _explicitNullProperties?.Remove("context"); }
-            else if (parseNode.GetChildNode("context") is { } nullNodeContext && nullNodeContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Context = null;
-            if (parseNode.GetChildNode("contextKey") is null) { _explicitNullValueContextKey = default!; _explicitNullProperties?.Remove("contextKey"); }
-            else if (parseNode.GetChildNode("contextKey") is { } nullNodeContextKey && nullNodeContextKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextKey = null;
-            if (parseNode.GetChildNode("defaultColumns") is null) { _explicitNullValueDefaultColumns = default!; _explicitNullProperties?.Remove("defaultColumns"); }
-            else if (parseNode.GetChildNode("defaultColumns") is { } nullNodeDefaultColumns && nullNodeDefaultColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultColumns = null;
-            if (parseNode.GetChildNode("display") is null) { _explicitNullValueDisplay = default!; _explicitNullProperties?.Remove("display"); }
-            else if (parseNode.GetChildNode("display") is { } nullNodeDisplay && nullNodeDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Display = null;
-            if (parseNode.GetChildNode("embedded") is null) { _explicitNullValueEmbedded = default!; _explicitNullProperties?.Remove("embedded"); }
-            else if (parseNode.GetChildNode("embedded") is { } nullNodeEmbedded && nullNodeEmbedded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Embedded = null;
-            if (parseNode.GetChildNode("expandable") is null) { _explicitNullValueExpandable = default!; _explicitNullProperties?.Remove("expandable"); }
-            else if (parseNode.GetChildNode("expandable") is { } nullNodeExpandable && nullNodeExpandable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Expandable = null;
-            if (parseNode.GetChildNode("full") is null) { _explicitNullValueFull = default!; _explicitNullProperties?.Remove("full"); }
-            else if (parseNode.GetChildNode("full") is { } nullNodeFull && nullNodeFull.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Full = null;
-            if (parseNode.GetChildNode("hiddenColumns") is null) { _explicitNullValueHiddenColumns = default!; _explicitNullProperties?.Remove("hiddenColumns"); }
-            else if (parseNode.GetChildNode("hiddenColumns") is { } nullNodeHiddenColumns && nullNodeHiddenColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenColumns = null;
-            if (parseNode.GetChildNode("hidePersonsModal") is null) { _explicitNullValueHidePersonsModal = default!; _explicitNullProperties?.Remove("hidePersonsModal"); }
-            else if (parseNode.GetChildNode("hidePersonsModal") is { } nullNodeHidePersonsModal && nullNodeHidePersonsModal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HidePersonsModal = null;
-            if (parseNode.GetChildNode("hideTooltipOnScroll") is null) { _explicitNullValueHideTooltipOnScroll = default!; _explicitNullProperties?.Remove("hideTooltipOnScroll"); }
-            else if (parseNode.GetChildNode("hideTooltipOnScroll") is { } nullNodeHideTooltipOnScroll && nullNodeHideTooltipOnScroll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideTooltipOnScroll = null;
-            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
-            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
-            if (parseNode.GetChildNode("modifiers") is null) { _explicitNullValueModifiers = default!; _explicitNullProperties?.Remove("modifiers"); }
-            else if (parseNode.GetChildNode("modifiers") is { } nullNodeModifiers && nullNodeModifiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modifiers = null;
-            if (parseNode.GetChildNode("pinnedColumns") is null) { _explicitNullValuePinnedColumns = default!; _explicitNullProperties?.Remove("pinnedColumns"); }
-            else if (parseNode.GetChildNode("pinnedColumns") is { } nullNodePinnedColumns && nullNodePinnedColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedColumns = null;
-            if (parseNode.GetChildNode("propertiesViaUrl") is null) { _explicitNullValuePropertiesViaUrl = default!; _explicitNullProperties?.Remove("propertiesViaUrl"); }
-            else if (parseNode.GetChildNode("propertiesViaUrl") is { } nullNodePropertiesViaUrl && nullNodePropertiesViaUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertiesViaUrl = null;
-            if (parseNode.GetChildNode("response") is null) { _explicitNullValueResponse = default!; _explicitNullProperties?.Remove("response"); }
-            else if (parseNode.GetChildNode("response") is { } nullNodeResponse && nullNodeResponse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Response = null;
-            if (parseNode.GetChildNode("showAbsoluteTime") is null) { _explicitNullValueShowAbsoluteTime = default!; _explicitNullProperties?.Remove("showAbsoluteTime"); }
-            else if (parseNode.GetChildNode("showAbsoluteTime") is { } nullNodeShowAbsoluteTime && nullNodeShowAbsoluteTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowAbsoluteTime = null;
-            if (parseNode.GetChildNode("showActions") is null) { _explicitNullValueShowActions = default!; _explicitNullProperties?.Remove("showActions"); }
-            else if (parseNode.GetChildNode("showActions") is { } nullNodeShowActions && nullNodeShowActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowActions = null;
-            if (parseNode.GetChildNode("showColumnConfigurator") is null) { _explicitNullValueShowColumnConfigurator = default!; _explicitNullProperties?.Remove("showColumnConfigurator"); }
-            else if (parseNode.GetChildNode("showColumnConfigurator") is { } nullNodeShowColumnConfigurator && nullNodeShowColumnConfigurator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowColumnConfigurator = null;
-            if (parseNode.GetChildNode("showCorrelationTable") is null) { _explicitNullValueShowCorrelationTable = default!; _explicitNullProperties?.Remove("showCorrelationTable"); }
-            else if (parseNode.GetChildNode("showCorrelationTable") is { } nullNodeShowCorrelationTable && nullNodeShowCorrelationTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowCorrelationTable = null;
-            if (parseNode.GetChildNode("showCount") is null) { _explicitNullValueShowCount = default!; _explicitNullProperties?.Remove("showCount"); }
-            else if (parseNode.GetChildNode("showCount") is { } nullNodeShowCount && nullNodeShowCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowCount = null;
-            if (parseNode.GetChildNode("showDateRange") is null) { _explicitNullValueShowDateRange = default!; _explicitNullProperties?.Remove("showDateRange"); }
-            else if (parseNode.GetChildNode("showDateRange") is { } nullNodeShowDateRange && nullNodeShowDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowDateRange = null;
-            if (parseNode.GetChildNode("showElapsedTime") is null) { _explicitNullValueShowElapsedTime = default!; _explicitNullProperties?.Remove("showElapsedTime"); }
-            else if (parseNode.GetChildNode("showElapsedTime") is { } nullNodeShowElapsedTime && nullNodeShowElapsedTime.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowElapsedTime = null;
-            if (parseNode.GetChildNode("showEventFilter") is null) { _explicitNullValueShowEventFilter = default!; _explicitNullProperties?.Remove("showEventFilter"); }
-            else if (parseNode.GetChildNode("showEventFilter") is { } nullNodeShowEventFilter && nullNodeShowEventFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowEventFilter = null;
-            if (parseNode.GetChildNode("showEventsFilter") is null) { _explicitNullValueShowEventsFilter = default!; _explicitNullProperties?.Remove("showEventsFilter"); }
-            else if (parseNode.GetChildNode("showEventsFilter") is { } nullNodeShowEventsFilter && nullNodeShowEventsFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowEventsFilter = null;
-            if (parseNode.GetChildNode("showExport") is null) { _explicitNullValueShowExport = default!; _explicitNullProperties?.Remove("showExport"); }
-            else if (parseNode.GetChildNode("showExport") is { } nullNodeShowExport && nullNodeShowExport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowExport = null;
-            if (parseNode.GetChildNode("showFilters") is null) { _explicitNullValueShowFilters = default!; _explicitNullProperties?.Remove("showFilters"); }
-            else if (parseNode.GetChildNode("showFilters") is { } nullNodeShowFilters && nullNodeShowFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowFilters = null;
-            if (parseNode.GetChildNode("showHeader") is null) { _explicitNullValueShowHeader = default!; _explicitNullProperties?.Remove("showHeader"); }
-            else if (parseNode.GetChildNode("showHeader") is { } nullNodeShowHeader && nullNodeShowHeader.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowHeader = null;
-            if (parseNode.GetChildNode("showHogQLEditor") is null) { _explicitNullValueShowHogQLEditor = default!; _explicitNullProperties?.Remove("showHogQLEditor"); }
-            else if (parseNode.GetChildNode("showHogQLEditor") is { } nullNodeShowHogQLEditor && nullNodeShowHogQLEditor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowHogQLEditor = null;
-            if (parseNode.GetChildNode("showLastComputation") is null) { _explicitNullValueShowLastComputation = default!; _explicitNullProperties?.Remove("showLastComputation"); }
-            else if (parseNode.GetChildNode("showLastComputation") is { } nullNodeShowLastComputation && nullNodeShowLastComputation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLastComputation = null;
-            if (parseNode.GetChildNode("showLastComputationRefresh") is null) { _explicitNullValueShowLastComputationRefresh = default!; _explicitNullProperties?.Remove("showLastComputationRefresh"); }
-            else if (parseNode.GetChildNode("showLastComputationRefresh") is { } nullNodeShowLastComputationRefresh && nullNodeShowLastComputationRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowLastComputationRefresh = null;
-            if (parseNode.GetChildNode("showOpenEditorButton") is null) { _explicitNullValueShowOpenEditorButton = default!; _explicitNullProperties?.Remove("showOpenEditorButton"); }
-            else if (parseNode.GetChildNode("showOpenEditorButton") is { } nullNodeShowOpenEditorButton && nullNodeShowOpenEditorButton.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowOpenEditorButton = null;
-            if (parseNode.GetChildNode("showPersistentColumnConfigurator") is null) { _explicitNullValueShowPersistentColumnConfigurator = default!; _explicitNullProperties?.Remove("showPersistentColumnConfigurator"); }
-            else if (parseNode.GetChildNode("showPersistentColumnConfigurator") is { } nullNodeShowPersistentColumnConfigurator && nullNodeShowPersistentColumnConfigurator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowPersistentColumnConfigurator = null;
-            if (parseNode.GetChildNode("showPropertyFilter") is null) { _explicitNullValueShowPropertyFilter = default!; _explicitNullProperties?.Remove("showPropertyFilter"); }
-            else if (parseNode.GetChildNode("showPropertyFilter") is { } nullNodeShowPropertyFilter && nullNodeShowPropertyFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowPropertyFilter = null;
-            if (parseNode.GetChildNode("showRecordingColumn") is null) { _explicitNullValueShowRecordingColumn = default!; _explicitNullProperties?.Remove("showRecordingColumn"); }
-            else if (parseNode.GetChildNode("showRecordingColumn") is { } nullNodeShowRecordingColumn && nullNodeShowRecordingColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowRecordingColumn = null;
-            if (parseNode.GetChildNode("showReload") is null) { _explicitNullValueShowReload = default!; _explicitNullProperties?.Remove("showReload"); }
-            else if (parseNode.GetChildNode("showReload") is { } nullNodeShowReload && nullNodeShowReload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowReload = null;
-            if (parseNode.GetChildNode("showResults") is null) { _explicitNullValueShowResults = default!; _explicitNullProperties?.Remove("showResults"); }
-            else if (parseNode.GetChildNode("showResults") is { } nullNodeShowResults && nullNodeShowResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowResults = null;
-            if (parseNode.GetChildNode("showResultsTable") is null) { _explicitNullValueShowResultsTable = default!; _explicitNullProperties?.Remove("showResultsTable"); }
-            else if (parseNode.GetChildNode("showResultsTable") is { } nullNodeShowResultsTable && nullNodeShowResultsTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowResultsTable = null;
-            if (parseNode.GetChildNode("showSavedFilters") is null) { _explicitNullValueShowSavedFilters = default!; _explicitNullProperties?.Remove("showSavedFilters"); }
-            else if (parseNode.GetChildNode("showSavedFilters") is { } nullNodeShowSavedFilters && nullNodeShowSavedFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowSavedFilters = null;
-            if (parseNode.GetChildNode("showSavedQueries") is null) { _explicitNullValueShowSavedQueries = default!; _explicitNullProperties?.Remove("showSavedQueries"); }
-            else if (parseNode.GetChildNode("showSavedQueries") is { } nullNodeShowSavedQueries && nullNodeShowSavedQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowSavedQueries = null;
-            if (parseNode.GetChildNode("showSearch") is null) { _explicitNullValueShowSearch = default!; _explicitNullProperties?.Remove("showSearch"); }
-            else if (parseNode.GetChildNode("showSearch") is { } nullNodeShowSearch && nullNodeShowSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowSearch = null;
-            if (parseNode.GetChildNode("showSourceQueryOptions") is null) { _explicitNullValueShowSourceQueryOptions = default!; _explicitNullProperties?.Remove("showSourceQueryOptions"); }
-            else if (parseNode.GetChildNode("showSourceQueryOptions") is { } nullNodeShowSourceQueryOptions && nullNodeShowSourceQueryOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowSourceQueryOptions = null;
-            if (parseNode.GetChildNode("showTable") is null) { _explicitNullValueShowTable = default!; _explicitNullProperties?.Remove("showTable"); }
-            else if (parseNode.GetChildNode("showTable") is { } nullNodeShowTable && nullNodeShowTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTable = null;
-            if (parseNode.GetChildNode("showTableViews") is null) { _explicitNullValueShowTableViews = default!; _explicitNullProperties?.Remove("showTableViews"); }
-            else if (parseNode.GetChildNode("showTableViews") is { } nullNodeShowTableViews && nullNodeShowTableViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTableViews = null;
-            if (parseNode.GetChildNode("showTestAccountFilters") is null) { _explicitNullValueShowTestAccountFilters = default!; _explicitNullProperties?.Remove("showTestAccountFilters"); }
-            else if (parseNode.GetChildNode("showTestAccountFilters") is { } nullNodeShowTestAccountFilters && nullNodeShowTestAccountFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTestAccountFilters = null;
-            if (parseNode.GetChildNode("showTimings") is null) { _explicitNullValueShowTimings = default!; _explicitNullProperties?.Remove("showTimings"); }
-            else if (parseNode.GetChildNode("showTimings") is { } nullNodeShowTimings && nullNodeShowTimings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTimings = null;
-            if (parseNode.GetChildNode("source") is null) { _explicitNullValueSource = default!; _explicitNullProperties?.Remove("source"); }
-            else if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
-            if (parseNode.GetChildNode("suppressSessionAnalysisWarning") is null) { _explicitNullValueSuppressSessionAnalysisWarning = default!; _explicitNullProperties?.Remove("suppressSessionAnalysisWarning"); }
-            else if (parseNode.GetChildNode("suppressSessionAnalysisWarning") is { } nullNodeSuppressSessionAnalysisWarning && nullNodeSuppressSessionAnalysisWarning.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuppressSessionAnalysisWarning = null;
-            if (parseNode.GetChildNode("tableSettings") is null) { _explicitNullValueTableSettings = default!; _explicitNullProperties?.Remove("tableSettings"); }
-            else if (parseNode.GetChildNode("tableSettings") is { } nullNodeTableSettings && nullNodeTableSettings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TableSettings = null;
-            if (parseNode.GetChildNode("tags") is null) { _explicitNullValueTags = default!; _explicitNullProperties?.Remove("tags"); }
-            else if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
-            if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
-            else if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
-            if (parseNode.GetChildNode("vizSpecificOptions") is null) { _explicitNullValueVizSpecificOptions = default!; _explicitNullProperties?.Remove("vizSpecificOptions"); }
-            else if (parseNode.GetChildNode("vizSpecificOptions") is { } nullNodeVizSpecificOptions && nullNodeVizSpecificOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VizSpecificOptions = null;
-        }
-
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Can the user click on column headers to sort the table? (default: true)</summary>
-        public bool? AllowSorting { get => _explicitNullValueAllowSorting; set { _explicitNullValueAllowSorting = value; AdditionalData?.Remove("allowSorting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowSorting"); else _explicitNullProperties?.Remove("allowSorting"); } }
-        private bool? _explicitNullValueAllowSorting = default!;
-        /// <summary>The chartSettings property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings? ChartSettings { get => _explicitNullValueChartSettings; set { _explicitNullValueChartSettings = value; AdditionalData?.Remove("chartSettings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartSettings"); else _explicitNullProperties?.Remove("chartSettings"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings? _explicitNullValueChartSettings = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf1? InsightDataChecksRequestQueryOneOf1 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings ChartSettings { get => _explicitNullValueChartSettings; set { _explicitNullValueChartSettings = value; AdditionalData?.Remove("chartSettings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartSettings"); else _explicitNullProperties?.Remove("chartSettings"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings _explicitNullValueChartSettings = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf1 InsightDataChecksRequestQueryOneOf1 { get; set; }
 #endif
-        /// <summary>The code property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf2"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
-        private string? _explicitNullValueCode = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf2? InsightDataChecksRequestQueryOneOf2 { get; set; }
 #nullable restore
 #else
-        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
-        private string _explicitNullValueCode = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf2 InsightDataChecksRequestQueryOneOf2 { get; set; }
 #endif
-        /// <summary>Columns shown in the table, unless the `source` provides them.</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf3"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; AdditionalData?.Remove("columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
-        private List<string>? _explicitNullValueColumns = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf3? InsightDataChecksRequestQueryOneOf3 { get; set; }
 #nullable restore
 #else
-        public List<string> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; AdditionalData?.Remove("columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
-        private List<string> _explicitNullValueColumns = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf3 InsightDataChecksRequestQueryOneOf3 { get; set; }
 #endif
-        /// <summary>The config property</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf4"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiConfig? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; AdditionalData?.Remove("config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BiConfig? _explicitNullValueConfig = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf4? InsightDataChecksRequestQueryOneOf4 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiConfig Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; AdditionalData?.Remove("config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BiConfig _explicitNullValueConfig = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf4 InsightDataChecksRequestQueryOneOf4 { get; set; }
 #endif
-        /// <summary>Context for the table, used by components like ColumnConfigurator</summary>
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf5"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext? Context { get => _explicitNullValueContext; set { _explicitNullValueContext = value; AdditionalData?.Remove("context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context"); else _explicitNullProperties?.Remove("context"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext? _explicitNullValueContext = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf5? InsightDataChecksRequestQueryOneOf5 { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext Context { get => _explicitNullValueContext; set { _explicitNullValueContext = value; AdditionalData?.Remove("context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context"); else _explicitNullProperties?.Remove("context"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext _explicitNullValueContext = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf5 InsightDataChecksRequestQueryOneOf5 { get; set; }
 #endif
-        /// <summary>Context key for universal column configuration (e.g., &quot;survey:123&quot;)</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? ContextKey { get => _explicitNullValueContextKey; set { _explicitNullValueContextKey = value; AdditionalData?.Remove("contextKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextKey"); else _explicitNullProperties?.Remove("contextKey"); } }
-        private string? _explicitNullValueContextKey = default!;
-#nullable restore
-#else
-        public string ContextKey { get => _explicitNullValueContextKey; set { _explicitNullValueContextKey = value; AdditionalData?.Remove("contextKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contextKey"); else _explicitNullProperties?.Remove("contextKey"); } }
-        private string _explicitNullValueContextKey = default!;
-#endif
-        /// <summary>Default columns to use when resetting column configuration</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? DefaultColumns { get => _explicitNullValueDefaultColumns; set { _explicitNullValueDefaultColumns = value; AdditionalData?.Remove("defaultColumns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defaultColumns"); else _explicitNullProperties?.Remove("defaultColumns"); } }
-        private List<string>? _explicitNullValueDefaultColumns = default!;
-#nullable restore
-#else
-        public List<string> DefaultColumns { get => _explicitNullValueDefaultColumns; set { _explicitNullValueDefaultColumns = value; AdditionalData?.Remove("defaultColumns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defaultColumns"); else _explicitNullProperties?.Remove("defaultColumns"); } }
-        private List<string> _explicitNullValueDefaultColumns = default!;
-#endif
-        /// <summary>The display property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; AdditionalData?.Remove("display"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType? _explicitNullValueDisplay = default!;
-        /// <summary>Query is embedded inside another bordered component</summary>
-        public bool? Embedded { get => _explicitNullValueEmbedded; set { _explicitNullValueEmbedded = value; AdditionalData?.Remove("embedded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("embedded"); else _explicitNullProperties?.Remove("embedded"); } }
-        private bool? _explicitNullValueEmbedded = default!;
-        /// <summary>Can expand row to show raw event data (default: true)</summary>
-        public bool? Expandable { get => _explicitNullValueExpandable; set { _explicitNullValueExpandable = value; AdditionalData?.Remove("expandable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expandable"); else _explicitNullProperties?.Remove("expandable"); } }
-        private bool? _explicitNullValueExpandable = default!;
-        /// <summary>Show with most visual options enabled. Used in insight scene.</summary>
-        public bool? Full { get => _explicitNullValueFull; set { _explicitNullValueFull = value; AdditionalData?.Remove("full"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("full"); else _explicitNullProperties?.Remove("full"); } }
-        private bool? _explicitNullValueFull = default!;
-        /// <summary>Columns that aren&apos;t shown in the table, even if in columns or returned data</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? HiddenColumns { get => _explicitNullValueHiddenColumns; set { _explicitNullValueHiddenColumns = value; AdditionalData?.Remove("hiddenColumns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hiddenColumns"); else _explicitNullProperties?.Remove("hiddenColumns"); } }
-        private List<string>? _explicitNullValueHiddenColumns = default!;
-#nullable restore
-#else
-        public List<string> HiddenColumns { get => _explicitNullValueHiddenColumns; set { _explicitNullValueHiddenColumns = value; AdditionalData?.Remove("hiddenColumns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hiddenColumns"); else _explicitNullProperties?.Remove("hiddenColumns"); } }
-        private List<string> _explicitNullValueHiddenColumns = default!;
-#endif
-        /// <summary>The hidePersonsModal property</summary>
-        public bool? HidePersonsModal { get => _explicitNullValueHidePersonsModal; set { _explicitNullValueHidePersonsModal = value; AdditionalData?.Remove("hidePersonsModal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidePersonsModal"); else _explicitNullProperties?.Remove("hidePersonsModal"); } }
-        private bool? _explicitNullValueHidePersonsModal = default!;
-        /// <summary>The hideTooltipOnScroll property</summary>
-        public bool? HideTooltipOnScroll { get => _explicitNullValueHideTooltipOnScroll; set { _explicitNullValueHideTooltipOnScroll = value; AdditionalData?.Remove("hideTooltipOnScroll"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hideTooltipOnScroll"); else _explicitNullProperties?.Remove("hideTooltipOnScroll"); } }
-        private bool? _explicitNullValueHideTooltipOnScroll = default!;
-        /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
-        private string? _explicitNullValueKind = default!;
-#nullable restore
-#else
-        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
-        private string _explicitNullValueKind = default!;
-#endif
-        /// <summary>Modifiers used when performing the query</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; AdditionalData?.Remove("modifiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? _explicitNullValueModifiers = default!;
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; AdditionalData?.Remove("modifiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers _explicitNullValueModifiers = default!;
-#endif
-        /// <summary>Columns that are sticky when scrolling horizontally</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? PinnedColumns { get => _explicitNullValuePinnedColumns; set { _explicitNullValuePinnedColumns = value; AdditionalData?.Remove("pinnedColumns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinnedColumns"); else _explicitNullProperties?.Remove("pinnedColumns"); } }
-        private List<string>? _explicitNullValuePinnedColumns = default!;
-#nullable restore
-#else
-        public List<string> PinnedColumns { get => _explicitNullValuePinnedColumns; set { _explicitNullValuePinnedColumns = value; AdditionalData?.Remove("pinnedColumns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinnedColumns"); else _explicitNullProperties?.Remove("pinnedColumns"); } }
-        private List<string> _explicitNullValuePinnedColumns = default!;
-#endif
-        /// <summary>Link properties via the URL (default: false)</summary>
-        public bool? PropertiesViaUrl { get => _explicitNullValuePropertiesViaUrl; set { _explicitNullValuePropertiesViaUrl = value; AdditionalData?.Remove("propertiesViaUrl"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("propertiesViaUrl"); else _explicitNullProperties?.Remove("propertiesViaUrl"); } }
-        private bool? _explicitNullValuePropertiesViaUrl = default!;
-        /// <summary>The response property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public UntypedNode? Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; AdditionalData?.Remove("response"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
-        private UntypedNode? _explicitNullValueResponse = default!;
-#nullable restore
-#else
-        public UntypedNode Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; AdditionalData?.Remove("response"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
-        private UntypedNode _explicitNullValueResponse = default!;
-#endif
-        /// <summary>Render date-time columns (timestamp, created_at, last_seen, last_seen_at, session_start, session_end) as absolute date+time instead of relative (&quot;X ago&quot;). The toggle is exposed in the column header menu only on EventsQuery / ActorsQuery sources.</summary>
-        public bool? ShowAbsoluteTime { get => _explicitNullValueShowAbsoluteTime; set { _explicitNullValueShowAbsoluteTime = value; AdditionalData?.Remove("showAbsoluteTime"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showAbsoluteTime"); else _explicitNullProperties?.Remove("showAbsoluteTime"); } }
-        private bool? _explicitNullValueShowAbsoluteTime = default!;
-        /// <summary>Show the kebab menu at the end of the row</summary>
-        public bool? ShowActions { get => _explicitNullValueShowActions; set { _explicitNullValueShowActions = value; AdditionalData?.Remove("showActions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showActions"); else _explicitNullProperties?.Remove("showActions"); } }
-        private bool? _explicitNullValueShowActions = default!;
-        /// <summary>Show a button to configure the table&apos;s columns if possible</summary>
-        public bool? ShowColumnConfigurator { get => _explicitNullValueShowColumnConfigurator; set { _explicitNullValueShowColumnConfigurator = value; AdditionalData?.Remove("showColumnConfigurator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showColumnConfigurator"); else _explicitNullProperties?.Remove("showColumnConfigurator"); } }
-        private bool? _explicitNullValueShowColumnConfigurator = default!;
-        /// <summary>The showCorrelationTable property</summary>
-        public bool? ShowCorrelationTable { get => _explicitNullValueShowCorrelationTable; set { _explicitNullValueShowCorrelationTable = value; AdditionalData?.Remove("showCorrelationTable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showCorrelationTable"); else _explicitNullProperties?.Remove("showCorrelationTable"); } }
-        private bool? _explicitNullValueShowCorrelationTable = default!;
-        /// <summary>Show count of total and filtered results</summary>
-        public bool? ShowCount { get => _explicitNullValueShowCount; set { _explicitNullValueShowCount = value; AdditionalData?.Remove("showCount"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showCount"); else _explicitNullProperties?.Remove("showCount"); } }
-        private bool? _explicitNullValueShowCount = default!;
-        /// <summary>Show date range selector</summary>
-        public bool? ShowDateRange { get => _explicitNullValueShowDateRange; set { _explicitNullValueShowDateRange = value; AdditionalData?.Remove("showDateRange"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showDateRange"); else _explicitNullProperties?.Remove("showDateRange"); } }
-        private bool? _explicitNullValueShowDateRange = default!;
-        /// <summary>Show the time it takes to run a query</summary>
-        public bool? ShowElapsedTime { get => _explicitNullValueShowElapsedTime; set { _explicitNullValueShowElapsedTime = value; AdditionalData?.Remove("showElapsedTime"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showElapsedTime"); else _explicitNullProperties?.Remove("showElapsedTime"); } }
-        private bool? _explicitNullValueShowElapsedTime = default!;
-        /// <summary>Include an event filter above the table (EventsNode only)</summary>
-        public bool? ShowEventFilter { get => _explicitNullValueShowEventFilter; set { _explicitNullValueShowEventFilter = value; AdditionalData?.Remove("showEventFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showEventFilter"); else _explicitNullProperties?.Remove("showEventFilter"); } }
-        private bool? _explicitNullValueShowEventFilter = default!;
-        /// <summary>Include an events filter above the table to filter by multiple events (EventsQuery only)</summary>
-        public bool? ShowEventsFilter { get => _explicitNullValueShowEventsFilter; set { _explicitNullValueShowEventsFilter = value; AdditionalData?.Remove("showEventsFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showEventsFilter"); else _explicitNullProperties?.Remove("showEventsFilter"); } }
-        private bool? _explicitNullValueShowEventsFilter = default!;
-        /// <summary>Show the export button</summary>
-        public bool? ShowExport { get => _explicitNullValueShowExport; set { _explicitNullValueShowExport = value; AdditionalData?.Remove("showExport"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showExport"); else _explicitNullProperties?.Remove("showExport"); } }
-        private bool? _explicitNullValueShowExport = default!;
-        /// <summary>The showFilters property</summary>
-        public bool? ShowFilters { get => _explicitNullValueShowFilters; set { _explicitNullValueShowFilters = value; AdditionalData?.Remove("showFilters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showFilters"); else _explicitNullProperties?.Remove("showFilters"); } }
-        private bool? _explicitNullValueShowFilters = default!;
-        /// <summary>The showHeader property</summary>
-        public bool? ShowHeader { get => _explicitNullValueShowHeader; set { _explicitNullValueShowHeader = value; AdditionalData?.Remove("showHeader"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showHeader"); else _explicitNullProperties?.Remove("showHeader"); } }
-        private bool? _explicitNullValueShowHeader = default!;
-        /// <summary>Include a HogQL query editor above HogQL tables</summary>
-        public bool? ShowHogQLEditor { get => _explicitNullValueShowHogQLEditor; set { _explicitNullValueShowHogQLEditor = value; AdditionalData?.Remove("showHogQLEditor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showHogQLEditor"); else _explicitNullProperties?.Remove("showHogQLEditor"); } }
-        private bool? _explicitNullValueShowHogQLEditor = default!;
-        /// <summary>The showLastComputation property</summary>
-        public bool? ShowLastComputation { get => _explicitNullValueShowLastComputation; set { _explicitNullValueShowLastComputation = value; AdditionalData?.Remove("showLastComputation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLastComputation"); else _explicitNullProperties?.Remove("showLastComputation"); } }
-        private bool? _explicitNullValueShowLastComputation = default!;
-        /// <summary>The showLastComputationRefresh property</summary>
-        public bool? ShowLastComputationRefresh { get => _explicitNullValueShowLastComputationRefresh; set { _explicitNullValueShowLastComputationRefresh = value; AdditionalData?.Remove("showLastComputationRefresh"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showLastComputationRefresh"); else _explicitNullProperties?.Remove("showLastComputationRefresh"); } }
-        private bool? _explicitNullValueShowLastComputationRefresh = default!;
-        /// <summary>Show a button to open the current query as a new insight. (default: true)</summary>
-        public bool? ShowOpenEditorButton { get => _explicitNullValueShowOpenEditorButton; set { _explicitNullValueShowOpenEditorButton = value; AdditionalData?.Remove("showOpenEditorButton"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showOpenEditorButton"); else _explicitNullProperties?.Remove("showOpenEditorButton"); } }
-        private bool? _explicitNullValueShowOpenEditorButton = default!;
-        /// <summary>Show a button to configure and persist the table&apos;s default columns if possible</summary>
-        public bool? ShowPersistentColumnConfigurator { get => _explicitNullValueShowPersistentColumnConfigurator; set { _explicitNullValueShowPersistentColumnConfigurator = value; AdditionalData?.Remove("showPersistentColumnConfigurator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showPersistentColumnConfigurator"); else _explicitNullProperties?.Remove("showPersistentColumnConfigurator"); } }
-        private bool? _explicitNullValueShowPersistentColumnConfigurator = default!;
-        /// <summary>Include a property filter above the table</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter? ShowPropertyFilter { get => _explicitNullValueShowPropertyFilter; set { _explicitNullValueShowPropertyFilter = value; AdditionalData?.Remove("showPropertyFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showPropertyFilter"); else _explicitNullProperties?.Remove("showPropertyFilter"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter? _explicitNullValueShowPropertyFilter = default!;
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter ShowPropertyFilter { get => _explicitNullValueShowPropertyFilter; set { _explicitNullValueShowPropertyFilter = value; AdditionalData?.Remove("showPropertyFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showPropertyFilter"); else _explicitNullProperties?.Remove("showPropertyFilter"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter _explicitNullValueShowPropertyFilter = default!;
-#endif
-        /// <summary>Show a recording column for events with session recordings</summary>
-        public bool? ShowRecordingColumn { get => _explicitNullValueShowRecordingColumn; set { _explicitNullValueShowRecordingColumn = value; AdditionalData?.Remove("showRecordingColumn"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showRecordingColumn"); else _explicitNullProperties?.Remove("showRecordingColumn"); } }
-        private bool? _explicitNullValueShowRecordingColumn = default!;
-        /// <summary>Show a reload button</summary>
-        public bool? ShowReload { get => _explicitNullValueShowReload; set { _explicitNullValueShowReload = value; AdditionalData?.Remove("showReload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showReload"); else _explicitNullProperties?.Remove("showReload"); } }
-        private bool? _explicitNullValueShowReload = default!;
-        /// <summary>The showResults property</summary>
-        public bool? ShowResults { get => _explicitNullValueShowResults; set { _explicitNullValueShowResults = value; AdditionalData?.Remove("showResults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showResults"); else _explicitNullProperties?.Remove("showResults"); } }
-        private bool? _explicitNullValueShowResults = default!;
-        /// <summary>Show a results table</summary>
-        public bool? ShowResultsTable { get => _explicitNullValueShowResultsTable; set { _explicitNullValueShowResultsTable = value; AdditionalData?.Remove("showResultsTable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showResultsTable"); else _explicitNullProperties?.Remove("showResultsTable"); } }
-        private bool? _explicitNullValueShowResultsTable = default!;
-        /// <summary>Show saved filters feature for this table (requires uniqueKey)</summary>
-        public bool? ShowSavedFilters { get => _explicitNullValueShowSavedFilters; set { _explicitNullValueShowSavedFilters = value; AdditionalData?.Remove("showSavedFilters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showSavedFilters"); else _explicitNullProperties?.Remove("showSavedFilters"); } }
-        private bool? _explicitNullValueShowSavedFilters = default!;
-        /// <summary>Shows a list of saved queries</summary>
-        public bool? ShowSavedQueries { get => _explicitNullValueShowSavedQueries; set { _explicitNullValueShowSavedQueries = value; AdditionalData?.Remove("showSavedQueries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showSavedQueries"); else _explicitNullProperties?.Remove("showSavedQueries"); } }
-        private bool? _explicitNullValueShowSavedQueries = default!;
-        /// <summary>Include a free text search field (PersonsNode only)</summary>
-        public bool? ShowSearch { get => _explicitNullValueShowSearch; set { _explicitNullValueShowSearch = value; AdditionalData?.Remove("showSearch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showSearch"); else _explicitNullProperties?.Remove("showSearch"); } }
-        private bool? _explicitNullValueShowSearch = default!;
-        /// <summary>Show actors query options and back to source</summary>
-        public bool? ShowSourceQueryOptions { get => _explicitNullValueShowSourceQueryOptions; set { _explicitNullValueShowSourceQueryOptions = value; AdditionalData?.Remove("showSourceQueryOptions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showSourceQueryOptions"); else _explicitNullProperties?.Remove("showSourceQueryOptions"); } }
-        private bool? _explicitNullValueShowSourceQueryOptions = default!;
-        /// <summary>The showTable property</summary>
-        public bool? ShowTable { get => _explicitNullValueShowTable; set { _explicitNullValueShowTable = value; AdditionalData?.Remove("showTable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTable"); else _explicitNullProperties?.Remove("showTable"); } }
-        private bool? _explicitNullValueShowTable = default!;
-        /// <summary>Show table views feature for this table (requires uniqueKey)</summary>
-        public bool? ShowTableViews { get => _explicitNullValueShowTableViews; set { _explicitNullValueShowTableViews = value; AdditionalData?.Remove("showTableViews"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTableViews"); else _explicitNullProperties?.Remove("showTableViews"); } }
-        private bool? _explicitNullValueShowTableViews = default!;
-        /// <summary>Show filter to exclude test accounts</summary>
-        public bool? ShowTestAccountFilters { get => _explicitNullValueShowTestAccountFilters; set { _explicitNullValueShowTestAccountFilters = value; AdditionalData?.Remove("showTestAccountFilters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTestAccountFilters"); else _explicitNullProperties?.Remove("showTestAccountFilters"); } }
-        private bool? _explicitNullValueShowTestAccountFilters = default!;
-        /// <summary>Show a detailed query timing breakdown</summary>
-        public bool? ShowTimings { get => _explicitNullValueShowTimings; set { _explicitNullValueShowTimings = value; AdditionalData?.Remove("showTimings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("showTimings"); else _explicitNullProperties?.Remove("showTimings"); } }
-        private bool? _explicitNullValueShowTimings = default!;
-        /// <summary>The source property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource? _explicitNullValueSource = default!;
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource _explicitNullValueSource = default!;
-#endif
-        /// <summary>The suppressSessionAnalysisWarning property</summary>
-        public bool? SuppressSessionAnalysisWarning { get => _explicitNullValueSuppressSessionAnalysisWarning; set { _explicitNullValueSuppressSessionAnalysisWarning = value; AdditionalData?.Remove("suppressSessionAnalysisWarning"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suppressSessionAnalysisWarning"); else _explicitNullProperties?.Remove("suppressSessionAnalysisWarning"); } }
-        private bool? _explicitNullValueSuppressSessionAnalysisWarning = default!;
-        /// <summary>The tableSettings property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettings? TableSettings { get => _explicitNullValueTableSettings; set { _explicitNullValueTableSettings = value; AdditionalData?.Remove("tableSettings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tableSettings"); else _explicitNullProperties?.Remove("tableSettings"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TableSettings? _explicitNullValueTableSettings = default!;
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TableSettings TableSettings { get => _explicitNullValueTableSettings; set { _explicitNullValueTableSettings = value; AdditionalData?.Remove("tableSettings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tableSettings"); else _explicitNullProperties?.Remove("tableSettings"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TableSettings _explicitNullValueTableSettings = default!;
-#endif
-        /// <summary>The tags property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; AdditionalData?.Remove("tags"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags? _explicitNullValueTags = default!;
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; AdditionalData?.Remove("tags"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags _explicitNullValueTags = default!;
-#endif
-        /// <summary>version of the node, used for schema migrations</summary>
-        public double? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
-        private double? _explicitNullValueVersion = default!;
-        /// <summary>The vizSpecificOptions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? VizSpecificOptions { get => _explicitNullValueVizSpecificOptions; set { _explicitNullValueVizSpecificOptions = value; AdditionalData?.Remove("vizSpecificOptions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vizSpecificOptions"); else _explicitNullProperties?.Remove("vizSpecificOptions"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions? _explicitNullValueVizSpecificOptions = default!;
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions VizSpecificOptions { get => _explicitNullValueVizSpecificOptions; set { _explicitNullValueVizSpecificOptions = value; AdditionalData?.Remove("vizSpecificOptions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("vizSpecificOptions"); else _explicitNullProperties?.Remove("vizSpecificOptions"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions _explicitNullValueVizSpecificOptions = default!;
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery"/> and sets the default values.
-        /// </summary>
-        public InsightDataChecksRequestQuery()
-        {
-            AdditionalData = new Dictionary<string, object>();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -436,7 +66,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery(), parseNode);
+            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
+            var result = new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQuery();
+            if("InsightVizNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DataTableNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("DataVisualizationNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("BIVisualizationNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            else if("HogQuery".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            {
+                
+            }
+            
+            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
+            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
+            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
+            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("code") || ((((shapeMembers1["code"] == null || shapeMembers1["code"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["code"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "HogQuery".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "HogQuery".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("modifiers") || (((((shapeMembers1["modifiers"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["modifiers"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject10 || (shapeObject10.GetValue() is var shapeMembers11 && ((!shapeMembers11.ContainsKey("bounceRateDurationSeconds") || ((((shapeMembers11["bounceRateDurationSeconds"] == null || shapeMembers11["bounceRateDurationSeconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["bounceRateDurationSeconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong or global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal)))) && (!shapeMembers11.ContainsKey("bounceRatePageViewMode") || (((((shapeMembers11["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal16 && "count_pageviews".Equals(literal16.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal17 && "uniq_urls".Equals(literal17.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal18 && "uniq_page_screen_autocaptures".Equals(literal18.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["bounceRatePageViewMode"] == null || shapeMembers11["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("convertToProjectTimezone") || ((((shapeMembers11["convertToProjectTimezone"] == null || shapeMembers11["convertToProjectTimezone"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["convertToProjectTimezone"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("cookielessTrafficIsRegular") || ((((shapeMembers11["cookielessTrafficIsRegular"] == null || shapeMembers11["cookielessTrafficIsRegular"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["cookielessTrafficIsRegular"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("customBotDefinitions") || ((((shapeMembers11["customBotDefinitions"] == null || shapeMembers11["customBotDefinitions"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["customBotDefinitions"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers11.ContainsKey("customChannelTypeRules") || ((((shapeMembers11["customChannelTypeRules"] == null || shapeMembers11["customChannelTypeRules"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["customChannelTypeRules"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers11.ContainsKey("dataWarehouseEventsModifiers") || ((((shapeMembers11["dataWarehouseEventsModifiers"] == null || shapeMembers11["dataWarehouseEventsModifiers"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["dataWarehouseEventsModifiers"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers11.ContainsKey("debug") || ((((shapeMembers11["debug"] == null || shapeMembers11["debug"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["debug"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("forceClickhouseDataSkippingIndexes") || ((((shapeMembers11["forceClickhouseDataSkippingIndexes"] == null || shapeMembers11["forceClickhouseDataSkippingIndexes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["forceClickhouseDataSkippingIndexes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers11.ContainsKey("formatCsvAllowDoubleQuotes") || ((((shapeMembers11["formatCsvAllowDoubleQuotes"] == null || shapeMembers11["formatCsvAllowDoubleQuotes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["formatCsvAllowDoubleQuotes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("inCohortVia") || (((((shapeMembers11["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal41 && "auto".Equals(literal41.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal42 && "leftjoin".Equals(literal42.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal43 && "subquery".Equals(literal43.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal44 && "leftjoin_conjoined".Equals(literal44.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["inCohortVia"] == null || shapeMembers11["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("inlineCohortCalculation") || (((((shapeMembers11["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal51 && "off".Equals(literal51.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal52 && "auto".Equals(literal52.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal53 && "always".Equals(literal53.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["inlineCohortCalculation"] == null || shapeMembers11["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("materializationMode") || (((((shapeMembers11["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal60 && "auto".Equals(literal60.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal61 && "legacy_null_as_string".Equals(literal61.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal62 && "legacy_null_as_null".Equals(literal62.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal63 && "disabled".Equals(literal63.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["materializationMode"] == null || shapeMembers11["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("materializeRepeatedCTEs") || ((((shapeMembers11["materializeRepeatedCTEs"] == null || shapeMembers11["materializeRepeatedCTEs"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["materializeRepeatedCTEs"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("materializedColumnsOptimizationMode") || (((((shapeMembers11["materializedColumnsOptimizationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["materializedColumnsOptimizationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal72 && "disabled".Equals(literal72.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["materializedColumnsOptimizationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal73 && "optimized".Equals(literal73.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["materializedColumnsOptimizationMode"] == null || shapeMembers11["materializedColumnsOptimizationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("mergeFederatedAggregateJoins") || ((((shapeMembers11["mergeFederatedAggregateJoins"] == null || shapeMembers11["mergeFederatedAggregateJoins"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["mergeFederatedAggregateJoins"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("negatedPersonFiltersNotIn") || ((((shapeMembers11["negatedPersonFiltersNotIn"] == null || shapeMembers11["negatedPersonFiltersNotIn"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["negatedPersonFiltersNotIn"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("optimizeJoinedFilters") || ((((shapeMembers11["optimizeJoinedFilters"] == null || shapeMembers11["optimizeJoinedFilters"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["optimizeJoinedFilters"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("optimizeProjections") || ((((shapeMembers11["optimizeProjections"] == null || shapeMembers11["optimizeProjections"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["optimizeProjections"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("parserMode") || (((((shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal88 && "cpp_only".Equals(literal88.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal89 && "cpp_with_rust_shadow".Equals(literal89.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal90 && "cpp_with_rust_py_shadow".Equals(literal90.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal91 && "rust_with_cpp_shadow".Equals(literal91.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal92 && "rust_only".Equals(literal92.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal93 && "rust_py_only".Equals(literal93.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal94 && "rust_py_with_cpp_shadow".Equals(literal94.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["parserMode"] == null || shapeMembers11["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("personIdPushdown") || ((((shapeMembers11["personIdPushdown"] == null || shapeMembers11["personIdPushdown"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["personIdPushdown"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("personsArgMaxVersion") || (((((shapeMembers11["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal103 && "auto".Equals(literal103.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal104 && "v1".Equals(literal104.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal105 && "v2".Equals(literal105.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["personsArgMaxVersion"] == null || shapeMembers11["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("personsJoinMode") || (((((shapeMembers11["personsJoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["personsJoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal112 && "inner".Equals(literal112.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["personsJoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal113 && "left".Equals(literal113.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["personsJoinMode"] == null || shapeMembers11["personsJoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("personsOnEventsMode") || (((((shapeMembers11["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal120 && "disabled".Equals(literal120.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal121 && "person_id_no_override_properties_on_events".Equals(literal121.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal122 && "person_id_override_properties_on_events".Equals(literal122.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal123 && "person_id_override_properties_joined".Equals(literal123.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["personsOnEventsMode"] == null || shapeMembers11["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("propertyGroupsMode") || (((((shapeMembers11["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal130 && "enabled".Equals(literal130.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal131 && "disabled".Equals(literal131.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal132 && "optimized".Equals(literal132.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["propertyGroupsMode"] == null || shapeMembers11["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("pushDownPredicates") || ((((shapeMembers11["pushDownPredicates"] == null || shapeMembers11["pushDownPredicates"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["pushDownPredicates"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("s3TableUseInvalidColumns") || ((((shapeMembers11["s3TableUseInvalidColumns"] == null || shapeMembers11["s3TableUseInvalidColumns"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["s3TableUseInvalidColumns"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("sessionIdPushdown") || ((((shapeMembers11["sessionIdPushdown"] == null || shapeMembers11["sessionIdPushdown"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["sessionIdPushdown"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("sessionPropertyPreAggregation") || ((((shapeMembers11["sessionPropertyPreAggregation"] == null || shapeMembers11["sessionPropertyPreAggregation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["sessionPropertyPreAggregation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("sessionTableVersion") || (((((shapeMembers11["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal147 && "auto".Equals(literal147.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal148 && "v1".Equals(literal148.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal149 && "v2".Equals(literal149.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal150 && "v3".Equals(literal150.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["sessionTableVersion"] == null || shapeMembers11["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("sessionTimestampBufferMinutes") || ((((shapeMembers11["sessionTimestampBufferMinutes"] == null || shapeMembers11["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers11["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers11["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral155 && integral155.GetValue() % 1 == 0) || (shapeMembers11["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral156 && integral156.GetValue() % 1 == 0) || (shapeMembers11["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral157 && integral157.GetValue() % 1 == 0)))))) && (!shapeMembers11.ContainsKey("sessionsV2JoinMode") || (((((shapeMembers11["sessionsV2JoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers11["sessionsV2JoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal162 && "string".Equals(literal162.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers11["sessionsV2JoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal163 && "uuid".Equals(literal163.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers11["sessionsV2JoinMode"] == null || shapeMembers11["sessionsV2JoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers11.ContainsKey("timings") || ((((shapeMembers11["timings"] == null || shapeMembers11["timings"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["timings"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("typeAwareCastSimplification") || ((((shapeMembers11["typeAwareCastSimplification"] == null || shapeMembers11["typeAwareCastSimplification"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["typeAwareCastSimplification"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("useMaterializedViews") || ((((shapeMembers11["useMaterializedViews"] == null || shapeMembers11["useMaterializedViews"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["useMaterializedViews"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("useNewEventsSchema") || ((((shapeMembers11["useNewEventsSchema"] == null || shapeMembers11["useNewEventsSchema"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["useNewEventsSchema"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("usePreaggregatedIntermediateResults") || ((((shapeMembers11["usePreaggregatedIntermediateResults"] == null || shapeMembers11["usePreaggregatedIntermediateResults"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["usePreaggregatedIntermediateResults"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("usePreaggregatedTableTransforms") || ((((shapeMembers11["usePreaggregatedTableTransforms"] == null || shapeMembers11["usePreaggregatedTableTransforms"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["usePreaggregatedTableTransforms"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("useWebAnalyticsPreAggregatedTables") || ((((shapeMembers11["useWebAnalyticsPreAggregatedTables"] == null || shapeMembers11["useWebAnalyticsPreAggregatedTables"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["useWebAnalyticsPreAggregatedTables"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers11.ContainsKey("webAnalyticsFirstPageviewFilters") || ((((shapeMembers11["webAnalyticsFirstPageviewFilters"] == null || shapeMembers11["webAnalyticsFirstPageviewFilters"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers11["webAnalyticsFirstPageviewFilters"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && global::System.Linq.Enumerable.All(shapeMembers11.Keys, key => key == "bounceRateDurationSeconds" || key == "bounceRatePageViewMode" || key == "convertToProjectTimezone" || key == "cookielessTrafficIsRegular" || key == "customBotDefinitions" || key == "customChannelTypeRules" || key == "dataWarehouseEventsModifiers" || key == "debug" || key == "forceClickhouseDataSkippingIndexes" || key == "formatCsvAllowDoubleQuotes" || key == "inCohortVia" || key == "inlineCohortCalculation" || key == "materializationMode" || key == "materializeRepeatedCTEs" || key == "materializedColumnsOptimizationMode" || key == "mergeFederatedAggregateJoins" || key == "negatedPersonFiltersNotIn" || key == "optimizeJoinedFilters" || key == "optimizeProjections" || key == "parserMode" || key == "personIdPushdown" || key == "personsArgMaxVersion" || key == "personsJoinMode" || key == "personsOnEventsMode" || key == "propertyGroupsMode" || key == "pushDownPredicates" || key == "s3TableUseInvalidColumns" || key == "sessionIdPushdown" || key == "sessionPropertyPreAggregation" || key == "sessionTableVersion" || key == "sessionTimestampBufferMinutes" || key == "sessionsV2JoinMode" || key == "timings" || key == "typeAwareCastSimplification" || key == "useMaterializedViews" || key == "useNewEventsSchema" || key == "usePreaggregatedIntermediateResults" || key == "usePreaggregatedTableTransforms" || key == "useWebAnalyticsPreAggregatedTables" || key == "webAnalyticsFirstPageviewFilters"))))) || ((((shapeMembers1["modifiers"] == null || shapeMembers1["modifiers"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers1.ContainsKey("response") || (((((shapeMembers1["response"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["response"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject188 || (shapeObject188.GetValue() is var shapeMembers189 && (shapeMembers189.ContainsKey("results") && (!shapeMembers189.ContainsKey("bytecode") || ((((shapeMembers189["bytecode"] == null || shapeMembers189["bytecode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers189["bytecode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers189.ContainsKey("coloredBytecode") || ((((shapeMembers189["coloredBytecode"] == null || shapeMembers189["coloredBytecode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers189["coloredBytecode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers189.ContainsKey("results") || (true)) && (!shapeMembers189.ContainsKey("stdout") || ((((shapeMembers189["stdout"] == null || shapeMembers189["stdout"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers189["stdout"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && global::System.Linq.Enumerable.All(shapeMembers189.Keys, key => key == "bytecode" || key == "coloredBytecode" || key == "results" || key == "stdout"))))) || ((((shapeMembers1["response"] == null || shapeMembers1["response"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers1.ContainsKey("tags") || (((((shapeMembers1["tags"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["tags"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject202 || (shapeObject202.GetValue() is var shapeMembers203 && ((!shapeMembers203.ContainsKey("name") || ((((shapeMembers203["name"] == null || shapeMembers203["name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers203["name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers203.ContainsKey("presetId") || ((((shapeMembers203["presetId"] == null || shapeMembers203["presetId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers203["presetId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers203.ContainsKey("productKey") || ((((shapeMembers203["productKey"] == null || shapeMembers203["productKey"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers203["productKey"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers203.ContainsKey("scene") || ((((shapeMembers203["scene"] == null || shapeMembers203["scene"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers203["scene"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && global::System.Linq.Enumerable.All(shapeMembers203.Keys, key => key == "name" || key == "presetId" || key == "productKey" || key == "scene"))))) || ((((shapeMembers1["tags"] == null || shapeMembers1["tags"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers1.ContainsKey("version") || ((((shapeMembers1["version"] == null || shapeMembers1["version"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["version"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong or global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal)))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            if (matchesUnionBranch2) matchingUnionBranches++;
+            if (matchesUnionBranch3) matchingUnionBranches++;
+            if (matchesUnionBranch4) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.InsightDataChecksRequestQueryOneOf1 == null && result.InsightDataChecksRequestQueryOneOf2 == null && result.InsightDataChecksRequestQueryOneOf3 == null && result.InsightDataChecksRequestQueryOneOf4 == null && result.InsightDataChecksRequestQueryOneOf5 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch4 && matchingUnionBranches == 1) result.InsightDataChecksRequestQueryOneOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf5(), parseNode);
+            if (result.InsightDataChecksRequestQueryOneOf1 == null && result.InsightDataChecksRequestQueryOneOf2 == null && result.InsightDataChecksRequestQueryOneOf3 == null && result.InsightDataChecksRequestQueryOneOf4 == null && result.InsightDataChecksRequestQueryOneOf5 == null) result.UnrecognizedValue = unionPayload;
+return result;
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -444,65 +112,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
+            if(InsightDataChecksRequestQueryOneOf1 != null)
             {
-                { "allowSorting", n => { AllowSorting = n.GetBoolValue(); } },
-                { "chartSettings", n => { ChartSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings.CreateFromDiscriminatorValue); } },
-                { "code", n => { Code = n.GetStringValue(); } },
-                { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiConfig>(global::Soenneker.PostHog.OpenApiClient.Models.BiConfig.CreateFromDiscriminatorValue); } },
-                { "context", n => { Context = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext.CreateFromDiscriminatorValue); } },
-                { "contextKey", n => { ContextKey = n.GetStringValue(); } },
-                { "defaultColumns", n => { DefaultColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "display", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDisplay = default; _explicitNullProperties?.Remove("display"); AdditionalData["display"] = unknown; } else { Display = parsed; AdditionalData.Remove("display"); } } },
-                { "embedded", n => { Embedded = n.GetBoolValue(); } },
-                { "expandable", n => { Expandable = n.GetBoolValue(); } },
-                { "full", n => { Full = n.GetBoolValue(); } },
-                { "hiddenColumns", n => { HiddenColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "hidePersonsModal", n => { HidePersonsModal = n.GetBoolValue(); } },
-                { "hideTooltipOnScroll", n => { HideTooltipOnScroll = n.GetBoolValue(); } },
-                { "kind", n => { Kind = n.GetStringValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
-                { "pinnedColumns", n => { PinnedColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "propertiesViaUrl", n => { PropertiesViaUrl = n.GetBoolValue(); } },
-                { "response", n => { Response = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "showAbsoluteTime", n => { ShowAbsoluteTime = n.GetBoolValue(); } },
-                { "showActions", n => { ShowActions = n.GetBoolValue(); } },
-                { "showColumnConfigurator", n => { ShowColumnConfigurator = n.GetBoolValue(); } },
-                { "showCorrelationTable", n => { ShowCorrelationTable = n.GetBoolValue(); } },
-                { "showCount", n => { ShowCount = n.GetBoolValue(); } },
-                { "showDateRange", n => { ShowDateRange = n.GetBoolValue(); } },
-                { "showElapsedTime", n => { ShowElapsedTime = n.GetBoolValue(); } },
-                { "showEventFilter", n => { ShowEventFilter = n.GetBoolValue(); } },
-                { "showEventsFilter", n => { ShowEventsFilter = n.GetBoolValue(); } },
-                { "showExport", n => { ShowExport = n.GetBoolValue(); } },
-                { "showFilters", n => { ShowFilters = n.GetBoolValue(); } },
-                { "showHeader", n => { ShowHeader = n.GetBoolValue(); } },
-                { "showHogQLEditor", n => { ShowHogQLEditor = n.GetBoolValue(); } },
-                { "showLastComputation", n => { ShowLastComputation = n.GetBoolValue(); } },
-                { "showLastComputationRefresh", n => { ShowLastComputationRefresh = n.GetBoolValue(); } },
-                { "showOpenEditorButton", n => { ShowOpenEditorButton = n.GetBoolValue(); } },
-                { "showPersistentColumnConfigurator", n => { ShowPersistentColumnConfigurator = n.GetBoolValue(); } },
-                { "showPropertyFilter", n => { ShowPropertyFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter.CreateFromDiscriminatorValue); } },
-                { "showRecordingColumn", n => { ShowRecordingColumn = n.GetBoolValue(); } },
-                { "showReload", n => { ShowReload = n.GetBoolValue(); } },
-                { "showResults", n => { ShowResults = n.GetBoolValue(); } },
-                { "showResultsTable", n => { ShowResultsTable = n.GetBoolValue(); } },
-                { "showSavedFilters", n => { ShowSavedFilters = n.GetBoolValue(); } },
-                { "showSavedQueries", n => { ShowSavedQueries = n.GetBoolValue(); } },
-                { "showSearch", n => { ShowSearch = n.GetBoolValue(); } },
-                { "showSourceQueryOptions", n => { ShowSourceQueryOptions = n.GetBoolValue(); } },
-                { "showTable", n => { ShowTable = n.GetBoolValue(); } },
-                { "showTableViews", n => { ShowTableViews = n.GetBoolValue(); } },
-                { "showTestAccountFilters", n => { ShowTestAccountFilters = n.GetBoolValue(); } },
-                { "showTimings", n => { ShowTimings = n.GetBoolValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource.CreateFromDiscriminatorValue); } },
-                { "suppressSessionAnalysisWarning", n => { SuppressSessionAnalysisWarning = n.GetBoolValue(); } },
-                { "tableSettings", n => { TableSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettings>(global::Soenneker.PostHog.OpenApiClient.Models.TableSettings.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
-                { "version", n => { Version = n.GetDoubleValue(); } },
-                { "vizSpecificOptions", n => { VizSpecificOptions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions>(global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions.CreateFromDiscriminatorValue); } },
-            };
+                return InsightDataChecksRequestQueryOneOf1.GetFieldDeserializers();
+            }
+            else if(InsightDataChecksRequestQueryOneOf2 != null)
+            {
+                return InsightDataChecksRequestQueryOneOf2.GetFieldDeserializers();
+            }
+            else if(InsightDataChecksRequestQueryOneOf3 != null)
+            {
+                return InsightDataChecksRequestQueryOneOf3.GetFieldDeserializers();
+            }
+            else if(InsightDataChecksRequestQueryOneOf4 != null)
+            {
+                return InsightDataChecksRequestQueryOneOf4.GetFieldDeserializers();
+            }
+            else if(InsightDataChecksRequestQueryOneOf5 != null)
+            {
+                return InsightDataChecksRequestQueryOneOf5.GetFieldDeserializers();
+            }
+            return new Dictionary<string, Action<IParseNode>>();
         }
         /// <summary>
         /// Serializes information the current object
@@ -510,65 +142,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
+            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
+            if (InsightDataChecksRequestQueryOneOf1 == null && InsightDataChecksRequestQueryOneOf2 == null && InsightDataChecksRequestQueryOneOf3 == null && InsightDataChecksRequestQueryOneOf4 == null && InsightDataChecksRequestQueryOneOf5 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (InsightDataChecksRequestQueryOneOf1 != null) selectedUnionBranches++;
+            if (InsightDataChecksRequestQueryOneOf2 != null) selectedUnionBranches++;
+            if (InsightDataChecksRequestQueryOneOf3 != null) selectedUnionBranches++;
+            if (InsightDataChecksRequestQueryOneOf4 != null) selectedUnionBranches++;
+            if (InsightDataChecksRequestQueryOneOf5 != null) selectedUnionBranches++;
+            if (InsightDataChecksRequestQueryOneOf1 != null && selectedUnionBranches == 1) { if (InsightDataChecksRequestQueryOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightDataChecksRequestQueryOneOf1); return; }
+            if (InsightDataChecksRequestQueryOneOf2 != null && selectedUnionBranches == 1) { if (InsightDataChecksRequestQueryOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightDataChecksRequestQueryOneOf2); return; }
+            if (InsightDataChecksRequestQueryOneOf3 != null && selectedUnionBranches == 1) { if (InsightDataChecksRequestQueryOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightDataChecksRequestQueryOneOf3); return; }
+            if (InsightDataChecksRequestQueryOneOf4 != null && selectedUnionBranches == 1) { if (InsightDataChecksRequestQueryOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightDataChecksRequestQueryOneOf4); return; }
+            if (InsightDataChecksRequestQueryOneOf5 != null && selectedUnionBranches == 1) { if (InsightDataChecksRequestQueryOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightDataChecksRequestQueryOneOf5); return; }
+
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("allowSorting", AllowSorting);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettings>("chartSettings", ChartSettings);
-            writer.WriteStringValue("code", Code);
-            writer.WriteCollectionOfPrimitiveValues<string>("columns", Columns);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiConfig>("config", Config);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeViewPropsContext>("context", Context);
-            writer.WriteStringValue("contextKey", ContextKey);
-            writer.WriteCollectionOfPrimitiveValues<string>("defaultColumns", DefaultColumns);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartDisplayType>("display", Display);
-            writer.WriteBoolValue("embedded", Embedded);
-            writer.WriteBoolValue("expandable", Expandable);
-            writer.WriteBoolValue("full", Full);
-            writer.WriteCollectionOfPrimitiveValues<string>("hiddenColumns", HiddenColumns);
-            writer.WriteBoolValue("hidePersonsModal", HidePersonsModal);
-            writer.WriteBoolValue("hideTooltipOnScroll", HideTooltipOnScroll);
-            writer.WriteStringValue("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
-            writer.WriteCollectionOfPrimitiveValues<string>("pinnedColumns", PinnedColumns);
-            writer.WriteBoolValue("propertiesViaUrl", PropertiesViaUrl);
-            writer.WriteObjectValue<UntypedNode>("response", Response);
-            writer.WriteBoolValue("showAbsoluteTime", ShowAbsoluteTime);
-            writer.WriteBoolValue("showActions", ShowActions);
-            writer.WriteBoolValue("showColumnConfigurator", ShowColumnConfigurator);
-            writer.WriteBoolValue("showCorrelationTable", ShowCorrelationTable);
-            writer.WriteBoolValue("showCount", ShowCount);
-            writer.WriteBoolValue("showDateRange", ShowDateRange);
-            writer.WriteBoolValue("showElapsedTime", ShowElapsedTime);
-            writer.WriteBoolValue("showEventFilter", ShowEventFilter);
-            writer.WriteBoolValue("showEventsFilter", ShowEventsFilter);
-            writer.WriteBoolValue("showExport", ShowExport);
-            writer.WriteBoolValue("showFilters", ShowFilters);
-            writer.WriteBoolValue("showHeader", ShowHeader);
-            writer.WriteBoolValue("showHogQLEditor", ShowHogQLEditor);
-            writer.WriteBoolValue("showLastComputation", ShowLastComputation);
-            writer.WriteBoolValue("showLastComputationRefresh", ShowLastComputationRefresh);
-            writer.WriteBoolValue("showOpenEditorButton", ShowOpenEditorButton);
-            writer.WriteBoolValue("showPersistentColumnConfigurator", ShowPersistentColumnConfigurator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeShowPropertyFilter>("showPropertyFilter", ShowPropertyFilter);
-            writer.WriteBoolValue("showRecordingColumn", ShowRecordingColumn);
-            writer.WriteBoolValue("showReload", ShowReload);
-            writer.WriteBoolValue("showResults", ShowResults);
-            writer.WriteBoolValue("showResultsTable", ShowResultsTable);
-            writer.WriteBoolValue("showSavedFilters", ShowSavedFilters);
-            writer.WriteBoolValue("showSavedQueries", ShowSavedQueries);
-            writer.WriteBoolValue("showSearch", ShowSearch);
-            writer.WriteBoolValue("showSourceQueryOptions", ShowSourceQueryOptions);
-            writer.WriteBoolValue("showTable", ShowTable);
-            writer.WriteBoolValue("showTableViews", ShowTableViews);
-            writer.WriteBoolValue("showTestAccountFilters", ShowTestAccountFilters);
-            writer.WriteBoolValue("showTimings", ShowTimings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource>("source", Source);
-            writer.WriteBoolValue("suppressSessionAnalysisWarning", SuppressSessionAnalysisWarning);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettings>("tableSettings", TableSettings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);
-            writer.WriteDoubleValue("version", Version);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VizSpecificOptions>("vizSpecificOptions", VizSpecificOptions);
-            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
-            writer.WriteAdditionalData(AdditionalData);
+            if(InsightDataChecksRequestQueryOneOf1 != null)
+            {
+                if (InsightDataChecksRequestQueryOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf1>(null, InsightDataChecksRequestQueryOneOf1);
+            }
+            else if(InsightDataChecksRequestQueryOneOf2 != null)
+            {
+                if (InsightDataChecksRequestQueryOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf2>(null, InsightDataChecksRequestQueryOneOf2);
+            }
+            else if(InsightDataChecksRequestQueryOneOf3 != null)
+            {
+                if (InsightDataChecksRequestQueryOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf3>(null, InsightDataChecksRequestQueryOneOf3);
+            }
+            else if(InsightDataChecksRequestQueryOneOf4 != null)
+            {
+                if (InsightDataChecksRequestQueryOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf4>(null, InsightDataChecksRequestQueryOneOf4);
+            }
+            else if(InsightDataChecksRequestQueryOneOf5 != null)
+            {
+                if (InsightDataChecksRequestQueryOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
+                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksRequestQueryOneOf5>(null, InsightDataChecksRequestQueryOneOf5);
+            }
         }
     }
 }

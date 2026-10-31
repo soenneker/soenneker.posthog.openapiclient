@@ -23,5 +23,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         MultipleVariantsShare,
         #pragma warning restore CS1591
+        [EnumMember(Value = "test_account_filter_removes_exposures")]
+        #pragma warning disable CS1591
+        TestAccountFilterRemovesExposures,
+        #pragma warning restore CS1591
     }
 }

@@ -37739,7 +37739,13 @@ paths:
         wrote for users), and `calculated_at` is when the calculation finished. It is a
         warning when a primary metric fails for a kind that a change fixes (`query_limit`,
         `settings`, `experiment_too_old`), also after the end, because the calculation after the fix
-        reads the events up to the end. It is info otherwise.
+        reads the events up to the end. It is info otherwise. When the first failure reached the
+        read, memory or time limit, `reason` names the cause that the calculation shows: `metric`
+        when another metric of the same calculation completed the same read of the exposures, or
+        `exposure_criteria` when every metric reached a limit and an exposure or test account filter
+        makes each query read all the properties of an event, person or group. `evidence.properties`
+        then names the filters. A query that read precomputed exposures doesn't apply those filters,
+        so it can't get `exposure_criteria`. It is null otherwise.
 
         The severity of the `some_conditions_pinned` finding follows the largest share that the
         users of the pinned release conditions make up among the users who got one variant from
@@ -37782,6 +37788,10 @@ paths:
         sample is below the one the running time estimate plans for the minimum detectable
         effect. It reads the metric's current stored result, the one the results page shows
         after its last calculation, and the running time calculator's formula.
+
+        A running experiment with `only_count_matured_users` on gets the info
+        `metrics_not_matured` while it is younger than the conversion or retention window of
+        every primary metric, because no user can count for those metrics until a window passes.
       parameters:
       - in: path
         name: id
@@ -141241,6 +141251,18 @@ components:
           format: int64
           description: A launched experiment the person picked for the scanner to
             watch. The draft is then an `experiment` scanner on it.
+        query:
+          description: A `RecordingsQuery` the person already chose, as the replay
+            list holds it. The draft starts from it and never removes or widens it.
+            When the goal asks for narrower recordings, the draft can AND its own
+            page, event, action or cohort filters onto it. It keeps them only when
+            the combined filter still matches recent recordings, returns them in `query_additions`,
+            and sizes the sampling dials against the combined `query`. `experiment_exposure`
+            becomes the scanner's experiment and variants, which the draft keeps as
+            they are. `date_from`/`date_to` are dropped, because a scanner's schedule
+            owns time. `comment_text`, `hide_viewed_recordings` and in-session exposure
+            are refused, because a scanner cannot apply them. A query with no filters
+            starts from every new recording. Omit to let the draft pick the sessions.
       required:
       - goal
     DraftScannerResponse:
@@ -141275,6 +141297,10 @@ components:
         query:
           description: '`RecordingsQuery` narrowing which sessions get scanned; null
             when the draft targets every session.'
+        query_additions:
+          description: 'When the request passed a `query`: the filters the draft ANDed
+            onto it, which `query` already includes. Show them to the person as added
+            by AI. Null when nothing was added or no `query` was passed.'
         sampling_mode:
           description: |-
             The quality pre-filter the draft chose for the goal. Null when the costing estimate failed, in which case the wizard keeps its defaults.
@@ -141332,6 +141358,7 @@ components:
       - model
       - name
       - query
+      - query_additions
       - rationale
       - sampling_mode
       - sampling_rate
@@ -155139,6 +155166,7 @@ components:
       - srm
       - bias_risk_multiple_excluded
       - multiple_variants_share
+      - test_account_filter_removes_exposures
       title: ExperimentExposureHealthCheckKey
       type: string
     ExperimentExposureHealthCheckStatus:
@@ -155232,6 +155260,7 @@ components:
       - srm
       - bias_risk_multiple_excluded
       - multiple_variants_share
+      - test_account_filter_removes_exposures
       title: ExperimentExposureHealthFindingCode
       type: string
     ExperimentExposureHealthFindingSeverity:
@@ -155764,7 +155793,9 @@ components:
       - exposure_criteria_cannot_match
       - exposure_filters
       - early_significance
+      - metrics_not_matured
       - zero_exposures
+      - test_account_filter_removes_exposures
       - srm
       - bias_risk_multiple_excluded
       - multiple_variants_share
@@ -155785,7 +155816,9 @@ components:
         * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
         * `exposure_filters` - Exposure Filters
         * `early_significance` - Early Significance
+        * `metrics_not_matured` - Metrics Not Matured
         * `zero_exposures` - Zero Exposures
+        * `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures
         * `srm` - Srm
         * `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded
         * `multiple_variants_share` - Multiple Variants Share
@@ -155813,7 +155846,9 @@ components:
             * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
             * `exposure_filters` - Exposure Filters
             * `early_significance` - Early Significance
+            * `metrics_not_matured` - Metrics Not Matured
             * `zero_exposures` - Zero Exposures
+            * `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures
             * `srm` - Srm
             * `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded
             * `multiple_variants_share` - Multiple Variants Share
@@ -155879,6 +155914,7 @@ components:
             * `exposure_filter_excludes_events` - Exposure Filter Excludes Events
             * `srm` - Sample Ratio Mismatch
             * `zero_exposures` - Zero Exposures
+            * `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures
             * `forced_variant_release_condition` - Forced Variant Release Condition
             * `flag_variants_mismatch` - Flag Variants Mismatch
             * `split_changed_mid_run` - Split Changed Mid Run
@@ -155886,6 +155922,7 @@ components:
             * `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run
             * `new_flag_no_traffic` - New Flag No Traffic
             * `early_significance` - Early Significance
+            * `metrics_not_matured` - Metrics Not Matured
         subcode:
           type:
           - string
@@ -155899,8 +155936,9 @@ components:
           - 'null'
           description: 'A stable qualifier below the subcode: where a sample ratio
             mismatch is located (''library'', ''page''), what leaves nobody exposed
-            (''test_account_filter''), or why a check could not read what it needs
-            (''no_history_access''). Null when the finding names none.'
+            (''test_account_filter''), what made a metric reach a query limit (''metric'',
+            ''exposure_criteria''), or why a check could not read what it needs (''no_history_access'').
+            Null when the finding names none.'
         severity:
           allOf:
           - $ref: '#/components/schemas/ExperimentHealthFindingSeverityEnum'
@@ -155987,6 +156025,7 @@ components:
       - exposure_filter_excludes_events
       - srm
       - zero_exposures
+      - test_account_filter_removes_exposures
       - forced_variant_release_condition
       - flag_variants_mismatch
       - split_changed_mid_run
@@ -155994,6 +156033,7 @@ components:
       - release_conditions_changed_mid_run
       - new_flag_no_traffic
       - early_significance
+      - metrics_not_matured
       type: string
       description: |-
         * `flag_off_while_running` - Flag Off While Running
@@ -156011,6 +156051,7 @@ components:
         * `exposure_filter_excludes_events` - Exposure Filter Excludes Events
         * `srm` - Sample Ratio Mismatch
         * `zero_exposures` - Zero Exposures
+        * `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures
         * `forced_variant_release_condition` - Forced Variant Release Condition
         * `flag_variants_mismatch` - Flag Variants Mismatch
         * `split_changed_mid_run` - Split Changed Mid Run
@@ -156018,6 +156059,7 @@ components:
         * `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run
         * `new_flag_no_traffic` - New Flag No Traffic
         * `early_significance` - Early Significance
+        * `metrics_not_matured` - Metrics Not Matured
     ExperimentHealthFindingSeverityEnum:
       enum:
       - critical
@@ -157135,9 +157177,11 @@ components:
         metric_errors:
           readOnly: true
           description: 'Terminal failure per metric_uuid: {step, message, error_type,
-            retriable, timestamp}. retriable is true when a transient error exhausted
-            its attempts, so a heal_latest_run or manual_retry can succeed; false
-            when the metric config, the data, or a resource limit must change first'
+            retriable, timestamp, exposures_path}. retriable is true when a transient
+            error exhausted its attempts, so a heal_latest_run or manual_retry can
+            succeed; false when the metric config, the data, or a resource limit must
+            change first. exposures_path is where the query read the exposures, and
+            is missing when the query failed before it was built'
         created_at:
           type: string
           format: date-time
@@ -157226,9 +157270,11 @@ components:
         metric_errors:
           readOnly: true
           description: 'Terminal failure per metric_uuid: {step, message, error_type,
-            retriable, timestamp}. retriable is true when a transient error exhausted
-            its attempts, so a heal_latest_run or manual_retry can succeed; false
-            when the metric config, the data, or a resource limit must change first'
+            retriable, timestamp, exposures_path}. retriable is true when a transient
+            error exhausted its attempts, so a heal_latest_run or manual_retry can
+            succeed; false when the metric config, the data, or a resource limit must
+            change first. exposures_path is where the query read the exposures, and
+            is missing when the query failed before it was built'
         created_at:
           type: string
           format: date-time
@@ -157378,9 +157424,11 @@ components:
         metric_errors:
           readOnly: true
           description: 'Terminal failure per metric_uuid: {step, message, error_type,
-            retriable, timestamp}. retriable is true when a transient error exhausted
-            its attempts, so a heal_latest_run or manual_retry can succeed; false
-            when the metric config, the data, or a resource limit must change first'
+            retriable, timestamp, exposures_path}. retriable is true when a transient
+            error exhausted its attempts, so a heal_latest_run or manual_retry can
+            succeed; false when the metric config, the data, or a resource limit must
+            change first. exposures_path is where the query read the exposures, and
+            is missing when the query failed before it was built'
         created_at:
           type: string
           format: date-time

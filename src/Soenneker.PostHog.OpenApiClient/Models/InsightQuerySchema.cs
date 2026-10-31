@@ -236,15 +236,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? HideTooltipOnScroll { get => _explicitNullValueHideTooltipOnScroll; set { _explicitNullValueHideTooltipOnScroll = value; AdditionalData?.Remove("hideTooltipOnScroll"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hideTooltipOnScroll"); else _explicitNullProperties?.Remove("hideTooltipOnScroll"); } }
         private bool? _explicitNullValueHideTooltipOnScroll = default!;
         /// <summary>The kind property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private string? _explicitNullValueKind = default!;
 #nullable restore
-#else
-        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
-        private string _explicitNullValueKind = default!;
-#endif
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -378,12 +373,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource? _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource _explicitNullValueSource = default!;
 #endif
         /// <summary>The suppressSessionAnalysisWarning property</summary>
         public bool? SuppressSessionAnalysisWarning { get => _explicitNullValueSuppressSessionAnalysisWarning; set { _explicitNullValueSuppressSessionAnalysisWarning = value; AdditionalData?.Remove("suppressSessionAnalysisWarning"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suppressSessionAnalysisWarning"); else _explicitNullProperties?.Remove("suppressSessionAnalysisWarning"); } }
@@ -496,7 +491,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "showTableViews", n => { ShowTableViews = n.GetBoolValue(); } },
                 { "showTestAccountFilters", n => { ShowTestAccountFilters = n.GetBoolValue(); } },
                 { "showTimings", n => { ShowTimings = n.GetBoolValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource>(global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource>(global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource.CreateFromDiscriminatorValue); } },
                 { "suppressSessionAnalysisWarning", n => { SuppressSessionAnalysisWarning = n.GetBoolValue(); } },
                 { "tableSettings", n => { TableSettings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettings>(global::Soenneker.PostHog.OpenApiClient.Models.TableSettings.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>(global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags.CreateFromDiscriminatorValue); } },
@@ -561,7 +556,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("showTableViews", ShowTableViews);
             writer.WriteBoolValue("showTestAccountFilters", ShowTestAccountFilters);
             writer.WriteBoolValue("showTimings", ShowTimings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource>("source", Source);
             writer.WriteBoolValue("suppressSessionAnalysisWarning", SuppressSessionAnalysisWarning);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TableSettings>("tableSettings", TableSettings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryLogTags>("tags", Tags);

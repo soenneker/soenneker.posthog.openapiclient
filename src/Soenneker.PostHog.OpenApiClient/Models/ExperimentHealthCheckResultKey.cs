@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `flag_state` - Flag State* `flag_history` - Flag History* `split_changed_mid_run` - Split Changed Mid Run* `bucketing_changed_mid_run` - Bucketing Changed Mid Run* `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run* `flag_variants_mismatch` - Flag Variants Mismatch* `forced_variant_release_condition` - Forced Variant Release Condition* `new_flag_no_traffic` - New Flag No Traffic* `no_metric` - No Metric* `metric_event_not_ingested` - Metric Event Not Ingested* `metric_cannot_compile` - Metric Cannot Compile* `metric_calculation_failed` - Metric Calculation Failed* `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match* `exposure_filters` - Exposure Filters* `early_significance` - Early Significance* `zero_exposures` - Zero Exposures* `srm` - Srm* `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded* `multiple_variants_share` - Multiple Variants Share</summary>
+    /// <summary>* `flag_state` - Flag State* `flag_history` - Flag History* `split_changed_mid_run` - Split Changed Mid Run* `bucketing_changed_mid_run` - Bucketing Changed Mid Run* `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run* `flag_variants_mismatch` - Flag Variants Mismatch* `forced_variant_release_condition` - Forced Variant Release Condition* `new_flag_no_traffic` - New Flag No Traffic* `no_metric` - No Metric* `metric_event_not_ingested` - Metric Event Not Ingested* `metric_cannot_compile` - Metric Cannot Compile* `metric_calculation_failed` - Metric Calculation Failed* `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match* `exposure_filters` - Exposure Filters* `early_significance` - Early Significance* `metrics_not_matured` - Metrics Not Matured* `zero_exposures` - Zero Exposures* `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures* `srm` - Srm* `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded* `multiple_variants_share` - Multiple Variants Share</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ExperimentHealthCheckResultKey
     {
@@ -67,9 +67,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         EarlySignificance,
         #pragma warning restore CS1591
+        [EnumMember(Value = "metrics_not_matured")]
+        #pragma warning disable CS1591
+        MetricsNotMatured,
+        #pragma warning restore CS1591
         [EnumMember(Value = "zero_exposures")]
         #pragma warning disable CS1591
         ZeroExposures,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "test_account_filter_removes_exposures")]
+        #pragma warning disable CS1591
+        TestAccountFilterRemovesExposures,
         #pragma warning restore CS1591
         [EnumMember(Value = "srm")]
         #pragma warning disable CS1591

@@ -135,6 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sum", n => { Sum = n.GetDoubleValue(); } },
                 { "sum_squares", n => { SumSquares = n.GetDoubleValue(); } },
                 { "validation_failures", n => { ValidationFailures = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+
             };
         }
         /// <summary>

@@ -166,15 +166,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public double? LowerBoundPercentile { get => _explicitNullValueLowerBoundPercentile; set { _explicitNullValueLowerBoundPercentile = value; AdditionalData?.Remove("lower_bound_percentile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lower_bound_percentile"); else _explicitNullProperties?.Remove("lower_bound_percentile"); } }
         private double? _explicitNullValueLowerBoundPercentile = default!;
         /// <summary>The metric_type property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; AdditionalData?.Remove("metric_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
         private string? _explicitNullValueMetricType = default!;
 #nullable restore
-#else
-        public string MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; AdditionalData?.Remove("metric_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_type"); else _explicitNullProperties?.Remove("metric_type"); } }
-        private string _explicitNullValueMetricType = default!;
-#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

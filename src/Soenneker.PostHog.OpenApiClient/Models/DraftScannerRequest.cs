@@ -26,6 +26,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("goal") is { } nullNodeGoal && nullNodeGoal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goal = null;
             if (parseNode.GetChildNode("monthly_credit_budget") is null) { _explicitNullValueMonthlyCreditBudget = default!; _explicitNullProperties?.Remove("monthly_credit_budget"); }
             else if (parseNode.GetChildNode("monthly_credit_budget") is { } nullNodeMonthlyCreditBudget && nullNodeMonthlyCreditBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MonthlyCreditBudget = null;
+            if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
+            else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -49,6 +51,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Credits a month to spend (1 credit = $0.01). The draft picks the `model`, then solves `sampling_mode` and `sampling_rate` so the projected spend lands on this number, and sets `credit_limit` to it as a hard cap. Ask the person for it rather than guessing. Required unless `free_only` is true, and not allowed with it.</summary>
         public int? MonthlyCreditBudget { get => _explicitNullValueMonthlyCreditBudget; set { _explicitNullValueMonthlyCreditBudget = value; AdditionalData?.Remove("monthly_credit_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monthly_credit_budget"); else _explicitNullProperties?.Remove("monthly_credit_budget"); } }
         private int? _explicitNullValueMonthlyCreditBudget = default!;
+        /// <summary>A `RecordingsQuery` the person already chose, as the replay list holds it. The draft starts from it and never removes or widens it. When the goal asks for narrower recordings, the draft can AND its own page, event, action or cohort filters onto it. It keeps them only when the combined filter still matches recent recordings, returns them in `query_additions`, and sizes the sampling dials against the combined `query`. `experiment_exposure` becomes the scanner&apos;s experiment and variants, which the draft keeps as they are. `date_from`/`date_to` are dropped, because a scanner&apos;s schedule owns time. `comment_text`, `hide_viewed_recordings` and in-session exposure are refused, because a scanner cannot apply them. A query with no filters starts from every new recording. Omit to let the draft pick the sessions.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode? _explicitNullValueQuery = default!;
+#nullable restore
+#else
+        public UntypedNode Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        private UntypedNode _explicitNullValueQuery = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DraftScannerRequest"/> and sets the default values.
         /// </summary>
@@ -79,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "free_only", n => { FreeOnly = n.GetBoolValue(); } },
                 { "goal", n => { Goal = n.GetStringValue(); } },
                 { "monthly_credit_budget", n => { MonthlyCreditBudget = n.GetIntValue(); } },
+                { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -92,6 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("free_only", FreeOnly);
             writer.WriteStringValue("goal", Goal);
             writer.WriteIntValue("monthly_credit_budget", MonthlyCreditBudget);
+            writer.WriteObjectValue<UntypedNode>("query", Query);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

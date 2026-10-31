@@ -60,6 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+
             };
         }
         /// <summary>
