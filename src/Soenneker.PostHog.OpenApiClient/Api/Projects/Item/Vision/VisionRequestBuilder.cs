@@ -3,10 +3,12 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Alerts;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Groups;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Quota;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Requests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Themes;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -23,6 +25,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Alerts.AlertsRequestBuilder Alerts
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Alerts.AlertsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The groups property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Groups.GroupsRequestBuilder Groups
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Groups.GroupsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The observations property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Observations.ObservationsRequestBuilder Observations
@@ -43,6 +50,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.ScannersRequestBuilder Scanners
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.ScannersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The themes property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Themes.ThemesRequestBuilder Themes
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Themes.ThemesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.VisionRequestBuilder"/> and sets the default values.

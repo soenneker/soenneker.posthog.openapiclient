@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("mcp_sessions") is null) { _explicitNullValueMcpSessions = default!; _explicitNullProperties?.Remove("mcp_sessions"); }
+            else if (parseNode.GetChildNode("mcp_sessions") is { } nullNodeMcpSessions && nullNodeMcpSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpSessions = null;
             if (parseNode.GetChildNode("owned") is null) { _explicitNullValueOwned = default!; _explicitNullProperties?.Remove("owned"); }
             else if (parseNode.GetChildNode("owned") is { } nullNodeOwned && nullNodeOwned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Owned = null;
             if (parseNode.GetChildNode("pages") is null) { _explicitNullValuePages = default!; _explicitNullProperties?.Remove("pages"); }
@@ -27,12 +29,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("schema_version") is { } nullNodeSchemaVersion && nullNodeSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaVersion = null;
             if (parseNode.GetChildNode("task_count") is null) { _explicitNullValueTaskCount = default!; _explicitNullProperties?.Remove("task_count"); }
             else if (parseNode.GetChildNode("task_count") is { } nullNodeTaskCount && nullNodeTaskCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskCount = null;
+            if (parseNode.GetChildNode("tasks") is null) { _explicitNullValueTasks = default!; _explicitNullProperties?.Remove("tasks"); }
+            else if (parseNode.GetChildNode("tasks") is { } nullNodeTasks && nullNodeTasks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tasks = null;
             if (parseNode.GetChildNode("watched") is null) { _explicitNullValueWatched = default!; _explicitNullProperties?.Remove("watched"); }
             else if (parseNode.GetChildNode("watched") is { } nullNodeWatched && nullNodeWatched.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Watched = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Sessions of the user&apos;s AI agent over MCP that the summary input showed, oldest first. Empty on summaries from before MCP refs existed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef>? McpSessions { get => _explicitNullValueMcpSessions; set { _explicitNullValueMcpSessions = value; AdditionalData?.Remove("mcp_sessions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_sessions"); else _explicitNullProperties?.Remove("mcp_sessions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef>? _explicitNullValueMcpSessions = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef> McpSessions { get => _explicitNullValueMcpSessions; set { _explicitNullValueMcpSessions = value; AdditionalData?.Remove("mcp_sessions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_sessions"); else _explicitNullProperties?.Remove("mcp_sessions"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef> _explicitNullValueMcpSessions = default!;
+#endif
         /// <summary>Objects the user created or changed, the most edited first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,6 +83,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The number of tasks the user gave to PostHog AI or the Slack agent.</summary>
         public int? TaskCount { get => _explicitNullValueTaskCount; set { _explicitNullValueTaskCount = value; AdditionalData?.Remove("task_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_count"); else _explicitNullProperties?.Remove("task_count"); } }
         private int? _explicitNullValueTaskCount = default!;
+        /// <summary>Tasks the user gave to PostHog AI or the Slack agent that the summary input showed, oldest first. Empty on summaries from before task refs existed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef>? Tasks { get => _explicitNullValueTasks; set { _explicitNullValueTasks = value; AdditionalData?.Remove("tasks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks"); else _explicitNullProperties?.Remove("tasks"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef>? _explicitNullValueTasks = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef> Tasks { get => _explicitNullValueTasks; set { _explicitNullValueTasks = value; AdditionalData?.Remove("tasks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tasks"); else _explicitNullProperties?.Remove("tasks"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef> _explicitNullValueTasks = default!;
+#endif
         /// <summary>Objects the user opened on 3 or more days, the most opened first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -104,11 +128,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "mcp_sessions", n => { McpSessions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef>(global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "owned", n => { Owned = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject>(global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pages", n => { Pages = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits>(global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "products", n => { Products = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts>(global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts.CreateFromDiscriminatorValue); } },
                 { "schema_version", n => { SchemaVersion = n.GetIntValue(); } },
                 { "task_count", n => { TaskCount = n.GetIntValue(); } },
+                { "tasks", n => { Tasks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef>(global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "watched", n => { Watched = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject>(global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -119,11 +145,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef>("mcp_sessions", McpSessions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryOwnedObject>("owned", Owned);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisits>("pages", Pages);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedProducts>("products", Products);
             writer.WriteIntValue("schema_version", SchemaVersion);
             writer.WriteIntValue("task_count", TaskCount);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryLineRef>("tasks", Tasks);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryWatchedObject>("watched", Watched);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

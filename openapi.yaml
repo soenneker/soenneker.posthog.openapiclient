@@ -88475,6 +88475,178 @@ paths:
           description: ''
       x-product:
       - replay_vision
+  /api/projects/{project_id}/vision/groups/:
+    get:
+      operationId: vision_groups_list
+      description: Groups of near-duplicate issue observations, each one scanner's
+        sessions that tell the same story, such as one bug many people hit. Narrower
+        than themes. Use it to find the issues that reach the most people.
+      parameters:
+      - in: query
+        name: by_variant
+        schema:
+          type: boolean
+          default: false
+        description: Split each group's window counts by experiment variant in `variants`.
+          Use it on experiment scanners.
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          minLength: 1
+        description: 'Count members from this time: ISO 8601 or relative like `-7d`.
+          Defaults to `-30d`. The window spans at most 90 days with `scanner_id`,
+          and at most 30 days without it.'
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          minLength: 1
+        description: 'Count members up to this time: ISO 8601, relative, or `now`.
+          Defaults to now.'
+      - in: query
+        name: include_routine
+        schema:
+          type: boolean
+          default: false
+        description: Also count routine observations, so groups describe ordinary
+          behavior and not only issues. Use it for experiment scanners, where the
+          question is how each variant's users behave.
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
+        description: Page size.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Rows to skip, for the next page.
+      - in: query
+        name: order
+        schema:
+          enum:
+          - people
+          - observations
+          - growth
+          - recent
+          type: string
+          default: people
+          minLength: 1
+        description: |-
+          `people` (distinct people affected), `observations` (member count), `growth` (members gained over the same-length window before `date_from`), or `recent` (newest member first).
+
+          * `people` - People
+          * `observations` - Observations
+          * `growth` - Growth
+          * `recent` - Recent
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scanner_id
+        schema:
+          type: string
+          format: uuid
+        description: Only this scanner's clusters. Defaults to every scanner you can
+          read.
+      - in: query
+        name: variant
+        schema:
+          type: string
+          minLength: 1
+        description: 'Experiment scanners only: count only members attributed to these
+          variant keys (comma-separated). `__unattributed__` matches members with
+          no attributed variant.'
+      tags:
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterList'
+          description: ''
+      x-product:
+      - replay_vision
+  /api/projects/{project_id}/vision/groups/{id}/:
+    get:
+      operationId: vision_groups_retrieve
+      description: One group's counts and examples over the window.
+      parameters:
+      - in: query
+        name: by_variant
+        schema:
+          type: boolean
+          default: false
+        description: Split each group's window counts by experiment variant in `variants`.
+          Use it on experiment scanners.
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          minLength: 1
+        description: 'Count members from this time: ISO 8601 or relative like `-7d`.
+          Defaults to `-30d`. The window spans at most 90 days with `scanner_id`,
+          and at most 30 days without it.'
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          minLength: 1
+        description: 'Count members up to this time: ISO 8601, relative, or `now`.
+          Defaults to now.'
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: include_routine
+        schema:
+          type: boolean
+          default: false
+        description: Also count routine observations, so groups describe ordinary
+          behavior and not only issues. Use it for experiment scanners, where the
+          question is how each variant's users behave.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scanner_id
+        schema:
+          type: string
+          format: uuid
+        description: Only this scanner's clusters. Defaults to every scanner you can
+          read.
+      - in: query
+        name: variant
+        schema:
+          type: string
+          minLength: 1
+        description: 'Experiment scanners only: count only members attributed to these
+          variant keys (comma-separated). `__unattributed__` matches members with
+          no attributed variant.'
+      tags:
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
+          description: ''
+      x-product:
+      - replay_vision
   /api/projects/{project_id}/vision/observations/:
     get:
       operationId: vision_observations_list
@@ -88573,6 +88745,13 @@ paths:
           8601, a relative date like `-1d`, or `now` for the current time; omit it
           to query through the current time. Date-only values include the whole day,
           interpreted in the project's timezone.
+      - in: query
+        name: group
+        schema:
+          type: string
+        description: Only issue observations in this group of near duplicates, an
+          `id` from the groups list. Pair it with the same `date_from`, `date_to`,
+          `include_routine` and `variant` to list the observations the group counted.
       - in: path
         name: id
         schema:
@@ -88581,9 +88760,15 @@ paths:
         description: A UUID string identifying this replay observation.
         required: true
       - in: query
+        name: include_routine
+        schema:
+          type: boolean
+        description: With `group`, also list the group's routine observations, as
+          the groups list does with the same flag.
+      - in: query
         name: labeled
         schema:
-          type: string
+          type: boolean
         description: When true, return only observations that have a shared label
           (thumbs up or down); when false, only unlabeled observations.
       - in: query
@@ -88656,6 +88841,13 @@ paths:
         description: Filter classifier observations whose fixed or freeform tags include
           any of the given values (comma-separated). Matches if the tag appears in
           either `tags` or `tags_freeform`.
+      - in: query
+        name: theme
+        schema:
+          type: string
+        description: Only issue observations in this search theme, an `id` from the
+          themes list. Pair it with the same `date_from` and `date_to` to list the
+          observations the theme counted.
       - in: query
         name: triggered_by
         schema:
@@ -90103,6 +90295,20 @@ paths:
           to query through the current time. Date-only values include the whole day,
           interpreted in the project's timezone.
       - in: query
+        name: group
+        schema:
+          type: string
+          format: uuid
+        description: Only issue observations in this group of near duplicates, an
+          `id` from the groups list. Pair it with the same `date_from`, `date_to`,
+          `include_routine` and `variant` to list the observations the group counted.
+      - in: query
+        name: include_routine
+        schema:
+          type: boolean
+        description: With `group`, also list the group's routine observations, as
+          the groups list does with the same flag.
+      - in: query
         name: labeled
         schema:
           type: boolean
@@ -90197,6 +90403,14 @@ paths:
           any of the given values (comma-separated). Matches if the tag appears in
           either `tags` or `tags_freeform`.
       - in: query
+        name: theme
+        schema:
+          type: string
+          format: uuid
+        description: Only issue observations in this search theme, an `id` from the
+          themes list. Pair it with the same `date_from` and `date_to` to list the
+          observations the theme counted.
+      - in: query
         name: triggered_by
         schema:
           type: string
@@ -90273,6 +90487,13 @@ paths:
           8601, a relative date like `-1d`, or `now` for the current time; omit it
           to query through the current time. Date-only values include the whole day,
           interpreted in the project's timezone.
+      - in: query
+        name: group
+        schema:
+          type: string
+        description: Only issue observations in this group of near duplicates, an
+          `id` from the groups list. Pair it with the same `date_from`, `date_to`,
+          `include_routine` and `variant` to list the observations the group counted.
       - in: path
         name: id
         schema:
@@ -90281,9 +90502,15 @@ paths:
         description: A UUID string identifying this replay observation.
         required: true
       - in: query
+        name: include_routine
+        schema:
+          type: boolean
+        description: With `group`, also list the group's routine observations, as
+          the groups list does with the same flag.
+      - in: query
         name: labeled
         schema:
-          type: string
+          type: boolean
         description: When true, return only observations that have a shared label
           (thumbs up or down); when false, only unlabeled observations.
       - in: query
@@ -90362,6 +90589,13 @@ paths:
         description: Filter classifier observations whose fixed or freeform tags include
           any of the given values (comma-separated). Matches if the tag appears in
           either `tags` or `tags_freeform`.
+      - in: query
+        name: theme
+        schema:
+          type: string
+        description: Only issue observations in this search theme, an `id` from the
+          themes list. Pair it with the same `date_from` and `date_to` to list the
+          observations the theme counted.
       - in: query
         name: triggered_by
         schema:
@@ -90681,6 +90915,14 @@ paths:
           8601, a relative date like `-1d`, or `now` for the current time; omit it
           to query through the current time. Date-only values include the whole day,
           interpreted in the project's timezone.
+      - in: query
+        name: group
+        schema:
+          type: string
+          format: uuid
+        description: Only issue observations in this group of near duplicates, an
+          `id` from the groups list. Pair it with the same `date_from`, `date_to`,
+          `include_routine` and `variant` to list the observations the group counted.
       - in: path
         name: id
         schema:
@@ -90688,6 +90930,12 @@ paths:
           format: uuid
         description: A UUID string identifying this replay observation.
         required: true
+      - in: query
+        name: include_routine
+        schema:
+          type: boolean
+        description: With `group`, also list the group's routine observations, as
+          the groups list does with the same flag.
       - in: query
         name: labeled
         schema:
@@ -90750,6 +90998,14 @@ paths:
         description: Filter classifier observations whose fixed or freeform tags include
           any of the given values (comma-separated). Matches if the tag appears in
           either `tags` or `tags_freeform`.
+      - in: query
+        name: theme
+        schema:
+          type: string
+          format: uuid
+        description: Only issue observations in this search theme, an `id` from the
+          themes list. Pair it with the same `date_from` and `date_to` to list the
+          observations the theme counted.
       - in: query
         name: triggered_by
         schema:
@@ -90918,9 +91174,22 @@ paths:
           to query through the current time. Date-only values include the whole day,
           interpreted in the project's timezone.
       - in: query
-        name: labeled
+        name: group
         schema:
           type: string
+        description: Only issue observations in this group of near duplicates, an
+          `id` from the groups list. Pair it with the same `date_from`, `date_to`,
+          `include_routine` and `variant` to list the observations the group counted.
+      - in: query
+        name: include_routine
+        schema:
+          type: boolean
+        description: With `group`, also list the group's routine observations, as
+          the groups list does with the same flag.
+      - in: query
+        name: labeled
+        schema:
+          type: boolean
         description: When true, return only observations that have a shared label
           (thumbs up or down); when false, only unlabeled observations.
       - in: query
@@ -90976,6 +91245,13 @@ paths:
         description: Filter classifier observations whose fixed or freeform tags include
           any of the given values (comma-separated). Matches if the tag appears in
           either `tags` or `tags_freeform`.
+      - in: query
+        name: theme
+        schema:
+          type: string
+        description: Only issue observations in this search theme, an `id` from the
+          themes list. Pair it with the same `date_from` and `date_to` to list the
+          observations the theme counted.
       - in: query
         name: triggered_by
         schema:
@@ -91132,6 +91408,35 @@ paths:
           description: The scout already existed; the supplied config was applied.
         '403':
           description: The caller may not edit this scanner.
+      x-product:
+      - replay_vision
+  /api/projects/{project_id}/vision/scanners/{scanner_id}/scouts/templates/:
+    get:
+      operationId: vision_scanners_scouts_templates_list
+      description: The scout templates this scanner offers, rendered for it, in the
+        order the picker shows them.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: path
+        name: scanner_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScannerScoutTemplate'
+          description: ''
       x-product:
       - replay_vision
   /api/projects/{project_id}/vision/scanners/{scanner_id}/variants/:
@@ -91478,6 +91783,132 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScannerStatsResponse'
+          description: ''
+      x-product:
+      - replay_vision
+  /api/projects/{project_id}/vision/themes/:
+    get:
+      operationId: vision_themes_list
+      description: Recurring kinds of issue in replay observations, each a broad cluster
+        of one scanner's issue observations with a short model-written name. Use it
+        to see what comes up often and what is growing.
+      parameters:
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          minLength: 1
+        description: 'Count members from this time: ISO 8601 or relative like `-7d`.
+          Defaults to `-30d`. The window spans at most 90 days with `scanner_id`,
+          and at most 30 days without it.'
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          minLength: 1
+        description: 'Count members up to this time: ISO 8601, relative, or `now`.
+          Defaults to now.'
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
+        description: Page size.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Rows to skip, for the next page.
+      - in: query
+        name: order
+        schema:
+          enum:
+          - people
+          - observations
+          - growth
+          - recent
+          type: string
+          default: people
+          minLength: 1
+        description: |-
+          `people` (distinct people affected), `observations` (member count), `growth` (members gained over the same-length window before `date_from`), or `recent` (newest member first).
+
+          * `people` - People
+          * `observations` - Observations
+          * `growth` - Growth
+          * `recent` - Recent
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scanner_id
+        schema:
+          type: string
+          format: uuid
+        description: Only this scanner's clusters. Defaults to every scanner you can
+          read.
+      tags:
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterList'
+          description: ''
+      x-product:
+      - replay_vision
+  /api/projects/{project_id}/vision/themes/{id}/:
+    get:
+      operationId: vision_themes_retrieve
+      description: One search theme's counts and examples over the window.
+      parameters:
+      - in: query
+        name: date_from
+        schema:
+          type: string
+          minLength: 1
+        description: 'Count members from this time: ISO 8601 or relative like `-7d`.
+          Defaults to `-30d`. The window spans at most 90 days with `scanner_id`,
+          and at most 30 days without it.'
+      - in: query
+        name: date_to
+        schema:
+          type: string
+          minLength: 1
+        description: 'Count members up to this time: ISO 8601, relative, or `now`.
+          Defaults to now.'
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: scanner_id
+        schema:
+          type: string
+          format: uuid
+        description: Only this scanner's clusters. Defaults to every scanner you can
+          read.
+      tags:
+      - vision
+      security:
+      - PersonalAPIKeyAuth:
+        - replay_scanner:read
+        - session_recording:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cluster'
           description: ''
       x-product:
       - replay_vision
@@ -104545,13 +104976,41 @@ components:
           type: integer
           description: The number of tasks the user gave to PostHog AI or the Slack
             agent.
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivitySummaryLineRef'
+          description: Tasks the user gave to PostHog AI or the Slack agent that the
+            summary input showed, oldest first. Empty on summaries from before task
+            refs existed.
+        mcp_sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivitySummaryLineRef'
+          description: Sessions of the user's AI agent over MCP that the summary input
+            showed, oldest first. Empty on summaries from before MCP refs existed.
       required:
+      - mcp_sessions
       - owned
       - pages
       - products
       - schema_version
       - task_count
+      - tasks
       - watched
+    ActivitySummaryLineRef:
+      type: object
+      properties:
+        ref:
+          type: string
+          description: The ref that themes cite, such as `t1` for a task or `m1` for
+            an MCP session.
+        last_at:
+          type: string
+          description: The day of the task or MCP session, as YYYY-MM-DD.
+      required:
+      - last_at
+      - ref
     ActivitySummaryModeEnum:
       enum:
       - building
@@ -104765,9 +105224,10 @@ components:
           type: array
           items:
             type: string
-          description: Refs into `computed.owned`, `computed.watched` and `computed.pages`
-            of the same version, such as `o1` or `p2`, that show this thread. A ref
-            is valid only inside one version.
+          description: Refs into `computed.owned`, `computed.watched`, `computed.pages`,
+            `computed.tasks` and `computed.mcp_sessions` of the same version, such
+            as `o1`, `p2`, `t3` or `m1`, that show this thread. A ref is valid only
+            inside one version.
         last_seen:
           type:
           - string
@@ -122286,6 +122746,116 @@ components:
       - date_created
       title: ClickupTaskSignalExtra
       type: object
+    Cluster:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The cluster id. Pass it as `theme` or `group` to `vision-scanners-observations-list`
+            to read members.
+        scanner_id:
+          type: string
+          format: uuid
+          description: The scanner whose observations the cluster groups.
+        scanner_name:
+          type: string
+          description: The scanner's name.
+        name:
+          type:
+          - string
+          - 'null'
+          description: A short model-written search phrase for a theme. Null for a
+            group, and for a theme too small to be named; `example_summary` stands
+            in.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/ClusterStatusEnum'
+          description: |-
+            Where the cluster stands, from its members: `emerging` (first member this week), `active`, `fading` (last week under half of the week before) or `dormant` (no member for two weeks).
+
+            * `emerging` - Emerging
+            * `active` - Active
+            * `fading` - Fading
+            * `dormant` - Dormant
+        observation_count:
+          type: integer
+          description: 'Readable observations in the window: issue observations, plus
+            routine ones with `include_routine`.'
+        people_count:
+          type: integer
+          description: Distinct people among them; a session without an identified
+            person counts as one.
+        previous_observation_count:
+          type: integer
+          description: Members in the same-length window just before `date_from`,
+            to compare the trend against.
+        first_seen:
+          type: string
+          format: date-time
+          description: When the window's oldest member was observed.
+        last_seen:
+          type: string
+          format: date-time
+          description: When the window's newest member was observed.
+        example_observation_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          description: Up to 3 of the window's highest-ranked members, best first.
+        example_summary:
+          type: string
+          description: One-line summary of the best example; the readable label for
+            a group, which has no name.
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariantCount'
+          description: The window's members split by experiment variant, largest first.
+            Empty unless `by_variant` is set. Compare each variant's share of the
+            group with its share of the scanner's sessions, since variants are sampled
+            at different rates.
+      required:
+      - example_observation_ids
+      - example_summary
+      - first_seen
+      - id
+      - last_seen
+      - name
+      - observation_count
+      - people_count
+      - previous_observation_count
+      - scanner_id
+      - scanner_name
+      - status
+      - variants
+    ClusterList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cluster'
+          description: Clusters with at least one member in the window.
+        has_more:
+          type: boolean
+          description: Whether another page follows at `offset + limit`.
+      required:
+      - has_more
+      - results
+    ClusterStatusEnum:
+      enum:
+      - emerging
+      - active
+      - fading
+      - dormant
+      type: string
+      description: |-
+        * `emerging` - Emerging
+        * `active` - Active
+        * `fading` - Fading
+        * `dormant` - Dormant
     ClusterSummary:
       type: object
       properties:
@@ -136870,6 +137440,7 @@ components:
             * `Soniox` - Soniox
             * `Nango` - Nango
             * `Fathom` - Fathom
+            * `Stamped` - Stamped
       required:
       - source_type
     DatabaseSchemaSchema:
@@ -140564,6 +141135,7 @@ components:
             * `Soniox` - Soniox
             * `Nango` - Nango
             * `Fathom` - Fathom
+            * `Stamped` - Stamped
         label:
           type: string
           readOnly: true
@@ -163354,6 +163926,7 @@ components:
             * `Soniox` - Soniox
             * `Nango` - Nango
             * `Fathom` - Fathom
+            * `Stamped` - Stamped
         access_method:
           allOf:
           - $ref: '#/components/schemas/ExternalDataSourceAccessMethodEnum'
@@ -164813,6 +165386,7 @@ components:
             * `Soniox` - Soniox
             * `Nango` - Nango
             * `Fathom` - Fathom
+            * `Stamped` - Stamped
         payload:
           type: object
           additionalProperties: true
@@ -166550,6 +167124,7 @@ components:
       - Soniox
       - Nango
       - Fathom
+      - Stamped
       type: string
       description: |-
         * `Ashby` - Ashby
@@ -167966,6 +168541,7 @@ components:
         * `Soniox` - Soniox
         * `Nango` - Nango
         * `Fathom` - Fathom
+        * `Stamped` - Stamped
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -228395,6 +228971,13 @@ components:
           oneOf:
           - $ref: '#/components/schemas/ScannerCreationMethodEnum'
           - $ref: '#/components/schemas/NullEnum'
+        take_over_as_creator:
+          type: boolean
+          writeOnly: true
+          description: 'Set with `enabled: true` to turn on a scanner whose creator
+            can no longer view recordings. The caller becomes the scanner''s creator,
+            and scheduled scans then run as the caller. Without it, that request fails
+            with code `scanner_creator_lost_access`.'
         scanner_config:
           description: Type-specific configuration. All scanner types require `prompt`;
             monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers
@@ -256763,6 +257346,13 @@ components:
           oneOf:
           - $ref: '#/components/schemas/ScannerCreationMethodEnum'
           - $ref: '#/components/schemas/NullEnum'
+        take_over_as_creator:
+          type: boolean
+          writeOnly: true
+          description: 'Set with `enabled: true` to turn on a scanner whose creator
+            can no longer view recordings. The caller becomes the scanner''s creator,
+            and scheduled scans then run as the caller. Without it, that request fails
+            with code `scanner_creator_lost_access`.'
         scanner_config:
           description: Type-specific configuration. All scanner types require `prompt`;
             monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers
@@ -268597,6 +269187,19 @@ components:
           description: 'Make this the experiment scanner''s variant analysis scout:
             its runs record a structured comparison of the variants, which the scanner''s
             variants readout shows. Experiment scanners only.'
+        template_key:
+          allOf:
+          - $ref: '#/components/schemas/ScoutTemplateKeyEnum'
+          description: |-
+            The template the body came from. A body left exactly as the template rendered it keeps following later edits to that template; an edited body stays as written.
+
+            * `variant-analysis` - Variant analysis
+            * `daily-digest` - Daily digest
+            * `root-cause` - Root cause
+            * `weekly-themes` - Weekly themes
+            * `trend-watch` - Trend watch
+            * `new-issues` - New issue watch
+            * `scratch` - Start from scratch
       required:
       - body
       - description
@@ -268615,6 +269218,45 @@ components:
       required:
       - config
       - created
+    ScannerScoutTemplate:
+      type: object
+      properties:
+        key:
+          allOf:
+          - $ref: '#/components/schemas/ScoutTemplateKeyEnum'
+          description: |-
+            The template's id.
+
+            * `variant-analysis` - Variant analysis
+            * `daily-digest` - Daily digest
+            * `root-cause` - Root cause
+            * `weekly-themes` - Weekly themes
+            * `trend-watch` - Trend watch
+            * `new-issues` - New issue watch
+            * `scratch` - Start from scratch
+        title:
+          type: string
+          description: The template's name, as the template picker shows it.
+        description:
+          type: string
+          description: What a scout made from this template does.
+        default_name:
+          type: string
+          description: The name the create form starts with.
+        cron:
+          type: string
+          description: The default run schedule, as a cron expression in the project
+            timezone.
+        body:
+          type: string
+          description: The scout's instructions, rendered for this scanner.
+      required:
+      - body
+      - cron
+      - default_name
+      - description
+      - key
+      - title
     ScannerSelfDrivingStats:
       type: object
       description: Response of GET /vision/scanners/:id/self_driving_stats/.
@@ -271023,6 +271665,24 @@ components:
       - items
       - model
       - status
+    ScoutTemplateKeyEnum:
+      enum:
+      - variant-analysis
+      - daily-digest
+      - root-cause
+      - weekly-themes
+      - trend-watch
+      - new-issues
+      - scratch
+      type: string
+      description: |-
+        * `variant-analysis` - Variant analysis
+        * `daily-digest` - Daily digest
+        * `root-cause` - Root cause
+        * `weekly-themes` - Weekly themes
+        * `trend-watch` - Trend watch
+        * `new-issues` - New issue watch
+        * `scratch` - Start from scratch
     ScoutToolCatalogue:
       type: object
       description: The MCP tool catalogue, with the scout scope postures to read it
@@ -283609,6 +284269,7 @@ components:
             * `Soniox` - Soniox
             * `Nango` - Nango
             * `Fathom` - Fathom
+            * `Stamped` - Stamped
         payload:
           type: object
           additionalProperties: true
@@ -285722,6 +286383,7 @@ components:
             * `Soniox` - Soniox
             * `Nango` - Nango
             * `Fathom` - Fathom
+            * `Stamped` - Stamped
         payload:
           type: object
           additionalProperties: true
@@ -287213,6 +287875,7 @@ components:
             * `Soniox` - Soniox
             * `Nango` - Nango
             * `Fathom` - Fathom
+            * `Stamped` - Stamped
         payload:
           type: object
           additionalProperties: true
@@ -308908,6 +309571,22 @@ components:
       - read
       - statement
       - theme
+    VariantCount:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The variant key, or `__unattributed__` for members with none.
+        observation_count:
+          type: integer
+          description: The group's members in this variant in the window.
+        people_count:
+          type: integer
+          description: Distinct people among them.
+      required:
+      - key
+      - observation_count
+      - people_count
     VariantReadout:
       type: object
       properties:

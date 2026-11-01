@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{id}/observations/{?backfill_id*,date_from*,date_to*,labeled*,limit*,max_score*,min_score*,offset*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*,watch_category*,watch_group*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{id}/observations/{?backfill_id*,date_from*,date_to*,group*,include_routine*,labeled*,limit*,max_score*,min_score*,offset*,order_by*,recording_subject*,session_id*,status*,tags*,theme*,triggered_by*,variant*,verdict*,watch_category*,watch_group*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{id}/observations/{?backfill_id*,date_from*,date_to*,labeled*,limit*,max_score*,min_score*,offset*,order_by*,recording_subject*,session_id*,status*,tags*,triggered_by*,variant*,verdict*,watch_category*,watch_group*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/vision/scanners/{id}/observations/{?backfill_id*,date_from*,date_to*,group*,include_routine*,labeled*,limit*,max_score*,min_score*,offset*,order_by*,recording_subject*,session_id*,status*,tags*,theme*,triggered_by*,variant*,verdict*,watch_category*,watch_group*}", rawUrl)
         {
         }
         /// <summary>
@@ -108,6 +108,12 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
             [QueryParameter("date_to")]
             public string DateTo { get; set; }
 #endif
+            /// <summary>Only issue observations in this group of near duplicates, an `id` from the groups list. Pair it with the same `date_from`, `date_to`, `include_routine` and `variant` to list the observations the group counted.</summary>
+            [QueryParameter("group")]
+            public Guid? Group { get; set; }
+            /// <summary>With `group`, also list the group&apos;s routine observations, as the groups list does with the same flag.</summary>
+            [QueryParameter("include_routine")]
+            public bool? IncludeRoutine { get; set; }
             /// <summary>When true, return only observations that have a shared label (thumbs up or down); when false, only unlabeled observations.</summary>
             [QueryParameter("labeled")]
             public bool? Labeled { get; set; }
@@ -166,6 +172,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
             [QueryParameter("tags")]
             public string Tags { get; set; }
 #endif
+            /// <summary>Only issue observations in this search theme, an `id` from the themes list. Pair it with the same `date_from` and `date_to` to list the observations the theme counted.</summary>
+            [QueryParameter("theme")]
+            public Guid? Theme { get; set; }
             /// <summary>Filter by trigger source (schedule, on_demand, retry, or backfill). Accepts a comma-separated list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

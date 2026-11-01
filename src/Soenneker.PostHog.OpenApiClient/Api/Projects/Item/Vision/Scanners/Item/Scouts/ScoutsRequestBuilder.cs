@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts.Templates;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The templates property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts.Templates.TemplatesRequestBuilder Templates
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts.Templates.TemplatesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item.Scouts.ScoutsRequestBuilder"/> and sets the default values.

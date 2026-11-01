@@ -52,6 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("scanner_type") is { } nullNodeScannerType && nullNodeScannerType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerType = null;
             if (parseNode.GetChildNode("tags") is null) { _explicitNullValueTags = default!; _explicitNullProperties?.Remove("tags"); }
             else if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("take_over_as_creator") is null) { _explicitNullValueTakeOverAsCreator = default!; _explicitNullProperties?.Remove("take_over_as_creator"); }
+            else if (parseNode.GetChildNode("take_over_as_creator") is { } nullNodeTakeOverAsCreator && nullNodeTakeOverAsCreator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TakeOverAsCreator = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -219,6 +221,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; AdditionalData?.Remove("tags"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
         private List<string> _explicitNullValueTags = default!;
 #endif
+        /// <summary>Set with `enabled: true` to turn on a scanner whose creator can no longer view recordings. The caller becomes the scanner&apos;s creator, and scheduled scans then run as the caller. Without it, that request fails with code `scanner_creator_lost_access`.</summary>
+        public bool? TakeOverAsCreator { get => _explicitNullValueTakeOverAsCreator; set { _explicitNullValueTakeOverAsCreator = value; AdditionalData?.Remove("take_over_as_creator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("take_over_as_creator"); else _explicitNullProperties?.Remove("take_over_as_creator"); } }
+        private bool? _explicitNullValueTakeOverAsCreator = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The effective access level the user has for this object</summary>
@@ -290,6 +295,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "scanner_version", n => { ScannerVersion = n.GetIntValue(); } },
                 { "sweep_throttle_factor", n => { SweepThrottleFactor = n.GetIntValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "take_over_as_creator", n => { TakeOverAsCreator = n.GetBoolValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };
@@ -318,6 +324,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<UntypedNode>("scanner_config", ScannerConfig);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerScannerType>("scanner_type", ScannerType);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
+            writer.WriteBoolValue("take_over_as_creator", TakeOverAsCreator);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

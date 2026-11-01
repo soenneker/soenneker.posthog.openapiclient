@@ -28,6 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("display_name") is { } nullNodeDisplayName && nullNodeDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayName = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("template_key") is null) { _explicitNullValueTemplateKey = default!; _explicitNullProperties?.Remove("template_key"); }
+            else if (parseNode.GetChildNode("template_key") is { } nullNodeTemplateKey && nullNodeTemplateKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateKey = null;
             if (parseNode.GetChildNode("variant_analysis") is null) { _explicitNullValueVariantAnalysis = default!; _explicitNullProperties?.Remove("variant_analysis"); }
             else if (parseNode.GetChildNode("variant_analysis") is { } nullNodeVariantAnalysis && nullNodeVariantAnalysis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantAnalysis = null;
         }
@@ -84,6 +86,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
+        /// <summary>* `variant-analysis` - Variant analysis* `daily-digest` - Daily digest* `root-cause` - Root cause* `weekly-themes` - Weekly themes* `trend-watch` - Trend watch* `new-issues` - New issue watch* `scratch` - Start from scratch</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreateTemplateKey? TemplateKey { get => _explicitNullValueTemplateKey; set { _explicitNullValueTemplateKey = value; AdditionalData?.Remove("template_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_key"); else _explicitNullProperties?.Remove("template_key"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreateTemplateKey? _explicitNullValueTemplateKey = default!;
         /// <summary>Make this the experiment scanner&apos;s variant analysis scout: its runs record a structured comparison of the variants, which the scanner&apos;s variants readout shows. Experiment scanners only.</summary>
         public bool? VariantAnalysis { get => _explicitNullValueVariantAnalysis; set { _explicitNullValueVariantAnalysis = value; AdditionalData?.Remove("variant_analysis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_analysis"); else _explicitNullProperties?.Remove("variant_analysis"); } }
         private bool? _explicitNullValueVariantAnalysis = default!;
@@ -118,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "template_key", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreateTemplateKey>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTemplateKey = default; _explicitNullProperties?.Remove("template_key"); AdditionalData["template_key"] = unknown; } else { TemplateKey = parsed; AdditionalData.Remove("template_key"); } } },
                 { "variant_analysis", n => { VariantAnalysis = n.GetBoolValue(); } },
             };
         }
@@ -133,6 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("name", Name);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerScoutCreateTemplateKey>("template_key", TemplateKey);
             writer.WriteBoolValue("variant_analysis", VariantAnalysis);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
