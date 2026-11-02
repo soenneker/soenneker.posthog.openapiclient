@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSourceExperimentMeanMetricSourceOneOf2(),
-                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSourceExperimentMeanMetricSourceOneOf1(),
-                "ExperimentDataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSourceExperimentMeanMetricSourceOneOf3(),
-                "ExperimentWarehouseNativeNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSourceExperimentMeanMetricSourceOneOf4(),
+                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSourceOneOf2Variant(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSourceOneOf1Variant(),
+                "ExperimentDataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSourceOneOf3Variant(),
+                "ExperimentWarehouseNativeNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSourceOneOf4Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMeanMetricSource(),
             };
         }

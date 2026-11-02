@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumeratorExperimentRatioMetricNumeratorOneOf2(),
-                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumeratorExperimentRatioMetricNumeratorOneOf1(),
-                "ExperimentDataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumeratorExperimentRatioMetricNumeratorOneOf3(),
-                "ExperimentWarehouseNativeNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumeratorExperimentRatioMetricNumeratorOneOf4(),
+                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumeratorOneOf2Variant(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumeratorOneOf1Variant(),
+                "ExperimentDataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumeratorOneOf3Variant(),
+                "ExperimentWarehouseNativeNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumeratorOneOf4Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRatioMetricNumerator(),
             };
         }

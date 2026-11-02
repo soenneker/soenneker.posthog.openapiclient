@@ -52,8 +52,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "git_repository" => new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspaceWizardRunCreateRequestWorkspaceOneOf2(),
-                "local_folder" => new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspaceWizardRunCreateRequestWorkspaceOneOf1(),
+                "git_repository" => new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspaceOneOf2Variant(),
+                "local_folder" => new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspaceOneOf1Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.WizardRunCreateRequestWorkspace(),
             };
         }

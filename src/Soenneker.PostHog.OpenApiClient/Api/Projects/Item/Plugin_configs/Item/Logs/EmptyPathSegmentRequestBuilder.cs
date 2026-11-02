@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/plugin_configs/{pluginConfigId}/logs/{?limit*,offset*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/plugin_configs/{pluginConfigId}/logs/{?after*,before*,limit*,offset*,search*,type_filter*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/plugin_configs/{pluginConfigId}/logs/{?limit*,offset*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/plugin_configs/{pluginConfigId}/logs/{?after*,before*,limit*,offset*,search*,type_filter*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedPluginLogEntryList"/></returns>
@@ -78,12 +78,38 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Plugin_configs.Item.
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>Number of results to return per page.</summary>
+            /// <summary>Only return entries after this ISO 8601 timestamp.</summary>
+            [QueryParameter("after")]
+            public DateTimeOffset? After { get; set; }
+            /// <summary>Only return entries before this ISO 8601 timestamp.</summary>
+            [QueryParameter("before")]
+            public DateTimeOffset? Before { get; set; }
+            /// <summary>Maximum number of log entries to return (1-1000, default 100).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }
+            /// <summary>Case-insensitive substring search across log messages.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("search")]
+            public string? Search { get; set; }
+#nullable restore
+#else
+            [QueryParameter("search")]
+            public string Search { get; set; }
+#endif
+            /// <summary>Log types to include. Repeat the parameter to include more than one type.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("type_filter")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.PluginConfigsLogsListTypeFilterParameterItem[]? TypeFilter { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type_filter")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.PluginConfigsLogsListTypeFilterParameterItem[] TypeFilter { get; set; }
+#endif
         }
     }
 }

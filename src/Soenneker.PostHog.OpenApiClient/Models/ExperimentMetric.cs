@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("metric_type")?.GetStringValue();
             return mappingValue switch
             {
-                "funnel" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricExperimentMetricOneOf2(),
-                "mean" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricExperimentMetricOneOf1(),
-                "ratio" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricExperimentMetricOneOf3(),
-                "retention" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricExperimentMetricOneOf4(),
+                "funnel" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOneOf2Variant(),
+                "mean" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOneOf1Variant(),
+                "ratio" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOneOf3Variant(),
+                "retention" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOneOf4Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetric(),
             };
         }

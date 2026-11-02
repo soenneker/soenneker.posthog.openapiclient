@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEventExperimentRetentionMetricStartEventOneOf2(),
-                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEventExperimentRetentionMetricStartEventOneOf1(),
-                "ExperimentDataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEventExperimentRetentionMetricStartEventOneOf3(),
-                "ExperimentExposureNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEventExperimentRetentionMetricStartEventOneOf4(),
+                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEventOneOf2Variant(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEventOneOf1Variant(),
+                "ExperimentDataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEventOneOf3Variant(),
+                "ExperimentExposureNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEventOneOf4Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricStartEvent(),
             };
         }

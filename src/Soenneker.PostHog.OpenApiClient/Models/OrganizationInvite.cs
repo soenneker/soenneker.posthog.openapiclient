@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
         public int? Level { get => _explicitNullValueLevel; set { _explicitNullValueLevel = value; AdditionalData?.Remove("level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("level"); else _explicitNullProperties?.Remove("level"); } }
         private int? _explicitNullValueLevel = default!;
-        /// <summary>The message property</summary>
+        /// <summary>Optional personal message in the invite email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }

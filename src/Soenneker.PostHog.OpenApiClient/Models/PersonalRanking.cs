@@ -59,7 +59,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How many reports the build considered.</summary>
         public int? CandidatesConsidered { get => _explicitNullValueCandidatesConsidered; set { _explicitNullValueCandidatesConsidered = value; AdditionalData?.Remove("candidates_considered"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates_considered"); else _explicitNullProperties?.Remove("candidates_considered"); } }
         private int? _explicitNullValueCandidatesConsidered = default!;
-        /// <summary>Why the list is in inbox order and not ranked by the language model. building: no list is stored yet and one is being built. rate_limited: no list is stored yet and you reached the build limit. build_failed: no list is stored yet and the build could not start. llm_error, timeout, malformed_output, truncated_output, no_candidates or ai_not_approved: the stored build fell back. Null when the model ranked it.</summary>
+        /// <summary>Why the list is in inbox order and not ranked by the language model. building: no list is stored yet and one is being built. rate_limited: no list is stored yet and a build limit was reached, either yours or the shared daily one. build_failed: no list is stored yet and the build could not start. no_activity_summary: you have no activity summary yet, so the model did not rank the list. llm_error, timeout, malformed_output, truncated_output, no_candidates or ai_not_approved: the stored build fell back. Null when the model ranked it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? FallbackReason { get => _explicitNullValueFallbackReason; set { _explicitNullValueFallbackReason = value; AdditionalData?.Remove("fallback_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_reason"); else _explicitNullProperties?.Remove("fallback_reason"); } }
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.PersonalRankingEntry> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PersonalRankingEntry> _explicitNullValueResults = default!;
 #endif
-        /// <summary>True when the list does not match your current inbox or focus. When `building` is true, a newer list is on the way. Otherwise you reached the build limit, so try again later.</summary>
+        /// <summary>True when the list does not match your current inbox or focus. When `building` is true, a newer list is on the way. Otherwise a build limit was reached, so try again later.</summary>
         public bool? Stale { get => _explicitNullValueStale; set { _explicitNullValueStale = value; AdditionalData?.Remove("stale"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stale"); else _explicitNullProperties?.Remove("stale"); } }
         private bool? _explicitNullValueStale = default!;
         /// <summary>* `ready` - ready* `unavailable` - unavailable</summary>

@@ -51,9 +51,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItemCalendarHeatmapQuerySeriesItemOneOf2(),
-                "DataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItemCalendarHeatmapQuerySeriesItemOneOf3(),
-                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItemCalendarHeatmapQuerySeriesItemOneOf1(),
+                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItemOneOf2Variant(),
+                "DataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItemOneOf3Variant(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItemOneOf1Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.CalendarHeatmapQuerySeriesItem(),
             };
         }

@@ -51,12 +51,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "account_field" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf1(),
-                "custom_property" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf5(),
-                "custom_property_history" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf6(),
-                "note_count" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf3(),
-                "relationship" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf4(),
-                "tags" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf2(),
+                "account_field" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf1Variant(),
+                "custom_property" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf5Variant(),
+                "custom_property_history" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf6Variant(),
+                "note_count" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf3Variant(),
+                "relationship" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf4Variant(),
+                "tags" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf2Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem(),
             };
         }

@@ -52,11 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "BIVisualizationNode" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaInsightQuerySchemaOneOf4(),
-                "DataTableNode" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaInsightQuerySchemaOneOf2(),
-                "DataVisualizationNode" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaInsightQuerySchemaOneOf3(),
-                "HogQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaInsightQuerySchemaOneOf5(),
-                "InsightVizNode" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaInsightQuerySchemaOneOf1(),
+                "BIVisualizationNode" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaOneOf4Variant(),
+                "DataTableNode" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaOneOf2Variant(),
+                "DataVisualizationNode" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaOneOf3Variant(),
+                "HogQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaOneOf5Variant(),
+                "InsightVizNode" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchemaOneOf1Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.InsightQuerySchema(),
             };
         }

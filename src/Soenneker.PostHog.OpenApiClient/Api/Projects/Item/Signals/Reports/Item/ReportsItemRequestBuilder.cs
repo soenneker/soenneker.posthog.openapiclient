@@ -17,6 +17,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Ref
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Reingest;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Reviewers;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Signals;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Spend;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.State;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Viewed;
 using System.Collections.Generic;
@@ -110,6 +111,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Signals.SignalsRequestBuilder Signals
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Signals.SignalsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The spend property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Spend.SpendRequestBuilder Spend
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.Spend.SpendRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The state property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item.State.StateRequestBuilder State

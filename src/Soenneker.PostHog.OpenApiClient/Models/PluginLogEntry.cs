@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The timestamp property</summary>
         public DateTimeOffset? Timestamp { get => _explicitNullValueTimestamp; set { _explicitNullValueTimestamp = value; AdditionalData?.Remove("timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp"); else _explicitNullProperties?.Remove("timestamp"); } }
         private DateTimeOffset? _explicitNullValueTimestamp = default!;
-        /// <summary>* `DEBUG` - DEBUG* `LOG` - LOG* `INFO` - INFO* `WARN` - WARN* `ERROR` - ERROR</summary>
+        /// <summary>* `DEBUG` - Debug* `LOG` - Log* `INFO` - Info* `WARN` - Warn* `ERROR` - Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PluginLogEntryTypeEnum? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PluginLogEntryTypeEnum? _explicitNullValueType = default!;
         /// <summary>

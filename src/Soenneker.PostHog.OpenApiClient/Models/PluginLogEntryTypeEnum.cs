@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `DEBUG` - DEBUG* `LOG` - LOG* `INFO` - INFO* `WARN` - WARN* `ERROR` - ERROR</summary>
+    /// <summary>* `DEBUG` - Debug* `LOG` - Log* `INFO` - Info* `WARN` - Warn* `ERROR` - Error</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PluginLogEntryTypeEnum
     {

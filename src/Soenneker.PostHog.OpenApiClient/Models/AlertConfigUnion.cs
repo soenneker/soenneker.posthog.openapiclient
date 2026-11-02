@@ -52,10 +52,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "FunnelsAlertConfig" => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnionAlertConfigUnionOneOf3(),
-                "HogQLAlertConfig" => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnionAlertConfigUnionOneOf2(),
-                "MetricsAlertConfig" => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnionAlertConfigUnionOneOf4(),
-                "TrendsAlertConfig" => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnionAlertConfigUnionOneOf1(),
+                "FunnelsAlertConfig" => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnionOneOf3Variant(),
+                "HogQLAlertConfig" => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnionOneOf2Variant(),
+                "MetricsAlertConfig" => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnionOneOf4Variant(),
+                "TrendsAlertConfig" => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnionOneOf1Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion(),
             };
         }

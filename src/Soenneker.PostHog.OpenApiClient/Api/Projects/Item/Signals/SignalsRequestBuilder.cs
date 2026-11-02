@@ -12,6 +12,8 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reviewer_exclusions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_configs;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_spend;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Spend;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -73,6 +75,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_configs.Source_configsRequestBuilder Source_configs
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_configs.Source_configsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The source_spend property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_spend.Source_spendRequestBuilder Source_spend
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Source_spend.Source_spendRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The spend property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Spend.SpendRequestBuilder Spend
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Spend.SpendRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.SignalsRequestBuilder"/> and sets the default values.

@@ -51,8 +51,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItemFunnelsFilterExclusionsItemOneOf2(),
-                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItemFunnelsFilterExclusionsItemOneOf1(),
+                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItemOneOf2Variant(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItemOneOf1Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsFilterExclusionsItem(),
             };
         }

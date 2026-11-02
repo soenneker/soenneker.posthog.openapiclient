@@ -52,14 +52,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "AwsS3" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationPatchedBatchExportRequestDestinationOneOf5(),
-                "AzureBlob" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationPatchedBatchExportRequestDestinationOneOf2(),
-                "BigQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationPatchedBatchExportRequestDestinationOneOf3(),
-                "Databricks" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationPatchedBatchExportRequestDestinationOneOf1(),
-                "Postgres" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationPatchedBatchExportRequestDestinationOneOf4(),
-                "Redshift" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationPatchedBatchExportRequestDestinationOneOf8(),
-                "S3Compatible" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationPatchedBatchExportRequestDestinationOneOf6(),
-                "Snowflake" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationPatchedBatchExportRequestDestinationOneOf7(),
+                "AwsS3" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationOneOf5Variant(),
+                "AzureBlob" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationOneOf2Variant(),
+                "BigQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationOneOf3Variant(),
+                "Databricks" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationOneOf1Variant(),
+                "Postgres" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationOneOf4Variant(),
+                "Redshift" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationOneOf8Variant(),
+                "S3Compatible" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationOneOf6Variant(),
+                "Snowflake" => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestinationOneOf7Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination(),
             };
         }

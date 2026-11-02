@@ -51,18 +51,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
             return mappingValue switch
             {
-                "copod" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf6(),
-                "ecod" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf5(),
-                "hbos" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf9(),
-                "iqr" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf3(),
-                "isolation_forest" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf7(),
-                "knn" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf8(),
-                "lof" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf10(),
-                "mad" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf2(),
-                "ocsvm" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf11(),
-                "pca" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf12(),
-                "threshold" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf4(),
-                "zscore" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemEnsembleDetectorConfigDetectorsItemOneOf1(),
+                "copod" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf6Variant(),
+                "ecod" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf5Variant(),
+                "hbos" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf9Variant(),
+                "iqr" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf3Variant(),
+                "isolation_forest" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf7Variant(),
+                "knn" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf8Variant(),
+                "lof" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf10Variant(),
+                "mad" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf2Variant(),
+                "ocsvm" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf11Variant(),
+                "pca" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf12Variant(),
+                "threshold" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf4Variant(),
+                "zscore" => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItemOneOf1Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.EnsembleDetectorConfigDetectorsItem(),
             };
         }

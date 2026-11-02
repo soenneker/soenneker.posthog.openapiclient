@@ -52,11 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "account_field" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnAccountsTableSortColumnOneOf1(),
-                "custom_property" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnAccountsTableSortColumnOneOf5(),
-                "note_count" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnAccountsTableSortColumnOneOf3(),
-                "relationship" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnAccountsTableSortColumnOneOf4(),
-                "tags" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnAccountsTableSortColumnOneOf2(),
+                "account_field" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf1Variant(),
+                "custom_property" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf5Variant(),
+                "note_count" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf3Variant(),
+                "relationship" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf4Variant(),
+                "tags" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumnOneOf2Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableSortColumn(),
             };
         }

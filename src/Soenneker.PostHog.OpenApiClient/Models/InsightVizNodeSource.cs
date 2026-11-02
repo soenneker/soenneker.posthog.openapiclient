@@ -51,15 +51,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
             return mappingValue switch
             {
-                "FunnelsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf2(),
-                "LifecycleQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf7(),
-                "PathsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf4(),
-                "PathsV2Query" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf5(),
-                "RetentionQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf3(),
-                "StickinessQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf6(),
-                "TrendsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf1(),
-                "WebOverviewQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf9(),
-                "WebStatsTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceInsightVizNodeSourceOneOf8(),
+                "FunnelsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf2Variant(),
+                "LifecycleQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf7Variant(),
+                "PathsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf4Variant(),
+                "PathsV2Query" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf5Variant(),
+                "RetentionQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf3Variant(),
+                "StickinessQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf6Variant(),
+                "TrendsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf1Variant(),
+                "WebOverviewQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf9Variant(),
+                "WebStatsTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSourceOneOf8Variant(),
                 _ => new global::Soenneker.PostHog.OpenApiClient.Models.InsightVizNodeSource(),
             };
         }

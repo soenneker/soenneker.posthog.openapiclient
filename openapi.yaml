@@ -2974,6 +2974,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 100
       - name: offset
         required: false
         in: query
@@ -3053,6 +3054,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 100
       - name: offset
         required: false
         in: query
@@ -38059,15 +38061,13 @@ paths:
         warning in every state, `filter_on_property_not_ingested` also reports after the end, and
         the other findings stop at the end.
 
-        `exposure_filters` reads the cohort and event property filters of the exposure criteria and
-        of the activation, not the test account filters. `exposure_filter_on_dynamic_cohort` is a
-        warning in every state: the results use the members of a dynamic cohort at the calculation,
-        not at exposure. Its subcode is `cohort_forces_variant` when a release condition of the flag
-        that matches the cohort's members gives one variant, `cohort_in_release_conditions` when the
-        release conditions match its members otherwise, and `evidence.cohort_ids` names the cohorts.
-        Both subcodes need the exposure criteria to keep the members too, not to leave them out.
-        `exposure_filter_excludes_events` is info: a negated filter on an event property leaves out
-        events, not users (`evidence.properties`).
+        `exposure_filters` reads the cohort filters of the exposure criteria and of the activation,
+        not the test account filters. `exposure_filter_on_dynamic_cohort` is a warning in every
+        state: the results use the members of a dynamic cohort at the calculation, not at exposure.
+        Its subcode is `cohort_forces_variant` when a release condition of the flag that matches the
+        cohort's members gives one variant, `cohort_in_release_conditions` when the release
+        conditions match its members otherwise, and `evidence.cohort_ids` names the cohorts. Both
+        subcodes need the exposure criteria to keep the members too, not to leave them out.
 
         `metric_cannot_compile` builds and compiles the query of each metric without running it, as
         the caller, so a metric that every calculation fails on shows before launch. A metric that
@@ -44205,6 +44205,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -46365,6 +46366,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 500
       - name: offset
         required: false
         in: query
@@ -47702,6 +47704,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 500
       - name: offset
         required: false
         in: query
@@ -48080,6 +48083,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 500
       - name: offset
         required: false
         in: query
@@ -67141,12 +67145,25 @@ paths:
     get:
       operationId: plugin_configs_logs_list
       parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
+      - in: query
+        name: after
+        schema:
+          type: string
+          format: date-time
+        description: Only return entries after this ISO 8601 timestamp.
+      - in: query
+        name: before
+        schema:
+          type: string
+          format: date-time
+        description: Only return entries before this ISO 8601 timestamp.
+      - in: query
+        name: limit
         schema:
           type: integer
+          maximum: 1000
+          minimum: 1
+        description: Maximum number of log entries to return (1-1000, default 100).
       - name: offset
         required: false
         in: query
@@ -67159,6 +67176,31 @@ paths:
           type: integer
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: search
+        schema:
+          type: string
+        description: Case-insensitive substring search across log messages.
+      - in: query
+        name: type_filter
+        schema:
+          type: array
+          items:
+            enum:
+            - DEBUG
+            - LOG
+            - INFO
+            - WARN
+            - ERROR
+            type: string
+            description: |-
+              * `DEBUG` - Debug
+              * `LOG` - Log
+              * `INFO` - Info
+              * `WARN` - Warn
+              * `ERROR` - Error
+        description: Log types to include. Repeat the parameter to include more than
+          one type.
       tags:
       - plugin_configs
       security:
@@ -71714,6 +71756,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 500
       - name: offset
         required: false
         in: query
@@ -74219,6 +74262,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportSignalsResponse'
+          description: ''
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/reports/{id}/spend/:
+    get:
+      operationId: signals_report_spend
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this signal report.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_usage:read
+      - PersonalAPIKeyAuth:
+        - signal_usage:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportSpend'
           description: ''
       x-product:
       - signals
@@ -78642,6 +78713,50 @@ paths:
       responses:
         '204':
           description: No response body
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/source_spend/:
+    get:
+      operationId: signals_source_spend
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_usage:read
+      - PersonalAPIKeyAuth:
+        - signal_usage:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SourceSpend'
+          description: ''
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/spend/:
+    get:
+      operationId: signals_spend_overview
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_usage:read
+      - PersonalAPIKeyAuth:
+        - signal_usage:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpendOverview'
+          description: ''
       x-product:
       - signals
   /api/projects/{project_id}/stamphog/digest_runs/:
@@ -94950,6 +95065,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 100
       - name: offset
         required: false
         in: query
@@ -97533,6 +97649,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 100
       - name: offset
         required: false
         in: query
@@ -97945,7 +98062,7 @@ paths:
         schema:
           type: integer
           maximum: 200
-          minimum: 0
+          minimum: 1
           default: 50
         description: Maximum number of sessions to return.
       - in: query
@@ -101586,6 +101703,7 @@ components:
             * `session_recording_playlist` - session_recording_playlist
             * `sharing_configuration` - sharing_configuration
             * `signal_scout` - signal_scout
+            * `signal_usage` - signal_usage
             * `stamphog` - stamphog
             * `streamlit_app` - streamlit_app
             * `subscription` - subscription
@@ -101734,6 +101852,7 @@ components:
             * `session_recording_playlist` - session_recording_playlist
             * `sharing_configuration` - sharing_configuration
             * `signal_scout` - signal_scout
+            * `signal_usage` - signal_usage
             * `stamphog` - stamphog
             * `streamlit_app` - streamlit_app
             * `subscription` - subscription
@@ -157109,7 +157228,6 @@ components:
             * `metric_all_zero` - Metric All Zero
             * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
             * `exposure_filter_on_dynamic_cohort` - Exposure Filter On Dynamic Cohort
-            * `exposure_filter_excludes_events` - Exposure Filter Excludes Events
             * `srm` - Sample Ratio Mismatch
             * `zero_exposures` - Zero Exposures
             * `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures
@@ -157221,7 +157339,6 @@ components:
       - metric_all_zero
       - exposure_criteria_cannot_match
       - exposure_filter_on_dynamic_cohort
-      - exposure_filter_excludes_events
       - srm
       - zero_exposures
       - test_account_filter_removes_exposures
@@ -157248,7 +157365,6 @@ components:
         * `metric_all_zero` - Metric All Zero
         * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
         * `exposure_filter_on_dynamic_cohort` - Exposure Filter On Dynamic Cohort
-        * `exposure_filter_excludes_events` - Exposure Filter Excludes Events
         * `srm` - Sample Ratio Mismatch
         * `zero_exposures` - Zero Exposures
         * `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures
@@ -212510,6 +212626,8 @@ components:
           type:
           - string
           - 'null'
+          description: Optional personal message in the invite email.
+          maxLength: 1000
         private_project_access:
           description: List of team IDs and corresponding access levels to private
             projects.
@@ -235031,8 +235149,8 @@ components:
         stale:
           type: boolean
           description: True when the list does not match your current inbox or focus.
-            When `building` is true, a newer list is on the way. Otherwise you reached
-            the build limit, so try again later.
+            When `building` is true, a newer list is on the way. Otherwise a build
+            limit was reached, so try again later.
         building:
           type: boolean
           description: True when a new list is being built in the background. Call
@@ -235043,10 +235161,12 @@ components:
           - 'null'
           description: 'Why the list is in inbox order and not ranked by the language
             model. building: no list is stored yet and one is being built. rate_limited:
-            no list is stored yet and you reached the build limit. build_failed: no
-            list is stored yet and the build could not start. llm_error, timeout,
-            malformed_output, truncated_output, no_candidates or ai_not_approved:
-            the stored build fell back. Null when the model ranked it.'
+            no list is stored yet and a build limit was reached, either yours or the
+            shared daily one. build_failed: no list is stored yet and the build could
+            not start. no_activity_summary: you have no activity summary yet, so the
+            model did not rank the list. llm_error, timeout, malformed_output, truncated_output,
+            no_candidates or ai_not_approved: the stored build fell back. Null when
+            the model ranked it.'
         generated_at:
           type:
           - string
@@ -236442,11 +236562,11 @@ components:
       - ERROR
       type: string
       description: |-
-        * `DEBUG` - DEBUG
-        * `LOG` - LOG
-        * `INFO` - INFO
-        * `WARN` - WARN
-        * `ERROR` - ERROR
+        * `DEBUG` - Debug
+        * `LOG` - Log
+        * `INFO` - Info
+        * `WARN` - Warn
+        * `ERROR` - Error
     Population:
       additionalProperties: false
       properties:
@@ -237925,6 +238045,7 @@ components:
             * `session_recording_playlist` - session_recording_playlist
             * `sharing_configuration` - sharing_configuration
             * `signal_scout` - signal_scout
+            * `signal_usage` - signal_usage
             * `stamphog` - stamphog
             * `streamlit_app` - streamlit_app
             * `subscription` - subscription
@@ -259987,6 +260108,27 @@ components:
       required:
       - product
       - reason
+    ReportSpend:
+      type: object
+      properties:
+        generation:
+          allOf:
+          - $ref: '#/components/schemas/SpendAmount'
+          description: Usage for the report's backing signals, research and repository
+            selection.
+        implementation:
+          allOf:
+          - $ref: '#/components/schemas/SpendAmount'
+          description: Usage for implementation tasks owned by the report.
+        shared_scout_runs:
+          allOf:
+          - $ref: '#/components/schemas/SpendAmount'
+          description: Full usage of scout runs that authored this report. Shared
+            with all other output of those runs.
+      required:
+      - generation
+      - implementation
+      - shared_scout_runs
     ReportStartupFailure:
       type: object
       properties:
@@ -260603,6 +260745,7 @@ components:
             * `session_recording_playlist` - session_recording_playlist
             * `sharing_configuration` - sharing_configuration
             * `signal_scout` - signal_scout
+            * `signal_usage` - signal_usage
             * `stamphog` - stamphog
             * `streamlit_app` - streamlit_app
             * `subscription` - subscription
@@ -270566,6 +270709,7 @@ components:
       - session_recording_playlist
       - sharing_configuration
       - signal_scout
+      - signal_usage
       - stamphog
       - streamlit_app
       - subscription
@@ -270685,6 +270829,7 @@ components:
         * `session_recording_playlist` - session_recording_playlist
         * `sharing_configuration` - sharing_configuration
         * `signal_scout` - signal_scout
+        * `signal_usage` - signal_usage
         * `stamphog` - stamphog
         * `streamlit_app` - streamlit_app
         * `subscription` - subscription
@@ -272267,6 +272412,27 @@ components:
       required:
       - name
       - scopes
+    ScoutSpend:
+      type: object
+      properties:
+        skill_name:
+          type: string
+          description: Name of the scout skill.
+        spend:
+          allOf:
+          - $ref: '#/components/schemas/SpendAmount'
+          description: Accumulated usage for this scout's runs in the period.
+        average_spend:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Average recorded usage per tracked scout run in USD cents;
+            null when no runs were tracked.
+      required:
+      - average_spend
+      - skill_name
+      - spend
     ScoutSuggestionItem:
       type: object
       properties:
@@ -288710,6 +288876,28 @@ components:
       - pending_inputs
       - success
       - webhook_url
+    SourceSpend:
+      type: object
+      properties:
+        source_product:
+          type: string
+          description: Product that emitted the signals.
+        source_type:
+          type: string
+          description: Type of signals emitted by the source.
+        signal_count:
+          type: integer
+          description: Number of signals received in the last 30 days.
+        spend:
+          allOf:
+          - $ref: '#/components/schemas/SpendAmount'
+          description: Accumulated processing usage on these signals, including later
+            processing.
+      required:
+      - signal_count
+      - source_product
+      - source_type
+      - spend
     SourceStatusEnum:
       enum:
       - pending
@@ -289045,6 +289233,22 @@ components:
       - pr_title
       - reason
       - specific_enough
+    SpendAmount:
+      type: object
+      properties:
+        total_spend:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Recorded usage in USD cents, before billing exemptions; null
+            when untracked.
+        incomplete:
+          type: boolean
+          description: Whether usage is still settling or accounting is incomplete.
+      required:
+      - incomplete
+      - total_spend
     SpendItem:
       type: object
       properties:
@@ -289076,6 +289280,31 @@ components:
       - kind
       - tier_spend
       - usage_key
+    SpendOverview:
+      type: object
+      properties:
+        period_start:
+          type: string
+          format: date-time
+          description: Inclusive start of the rolling 30-day run window.
+        period_end:
+          type: string
+          format: date-time
+          description: Exclusive end of the rolling 30-day run window.
+        scouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoutSpend'
+          description: Usage for each scout with runs in the period.
+        scout_spend:
+          allOf:
+          - $ref: '#/components/schemas/SpendAmount'
+          description: Total scout run usage in the period.
+      required:
+      - period_end
+      - period_start
+      - scout_spend
+      - scouts
     SprigFeedbackSignalExtra:
       additionalProperties: false
       properties:
