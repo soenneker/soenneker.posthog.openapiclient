@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Declares the `next` and `previous` links of a page response that the view fills with `page_link`.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class OfflineHistoryPage : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -30,6 +31,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Total authorized rows matching the filters, independent of this page.</summary>
         public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; AdditionalData?.Remove("count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
         private int? _explicitNullValueCount = default!;
+        /// <summary>URL of the next page, or null on the last page.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Next { get; private set; }
+#nullable restore
+#else
+        public string Next { get; private set; }
+#endif
         /// <summary>Continuation cursor, or null after the final page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,6 +48,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string NextCursor { get => _explicitNullValueNextCursor; set { _explicitNullValueNextCursor = value; AdditionalData?.Remove("next_cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_cursor"); else _explicitNullProperties?.Remove("next_cursor"); } }
         private string _explicitNullValueNextCursor = default!;
+#endif
+        /// <summary>URL of the previous page, or null on the first page and on lists that page forward only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Previous { get; private set; }
+#nullable restore
+#else
+        public string Previous { get; private set; }
 #endif
         /// <summary>Experiment/scorer-version history page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,7 +93,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "count", n => { Count = n.GetIntValue(); } },
+                { "next", n => { Next = n.GetStringValue(); } },
                 { "next_cursor", n => { NextCursor = n.GetStringValue(); } },
+                { "previous", n => { Previous = n.GetStringValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPoint>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineHistoryPoint.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

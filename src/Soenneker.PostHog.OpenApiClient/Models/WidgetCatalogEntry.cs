@@ -58,7 +58,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 "experiments_list" => new global::Soenneker.PostHog.OpenApiClient.Models.WidgetCatalogEntryExperimentsListWidgetCatalogEntryOpenApi(),
                 "experiment_results" => new global::Soenneker.PostHog.OpenApiClient.Models.WidgetCatalogEntryExperimentResultsWidgetCatalogEntryOpenApi(),
                 "logs_list" => new global::Soenneker.PostHog.OpenApiClient.Models.WidgetCatalogEntryLogsListWidgetCatalogEntryOpenApi(),
-                "metrics" => new global::Soenneker.PostHog.OpenApiClient.Models.WidgetCatalogEntryMetricsWidgetCatalogEntryOpenApi(),
                 "metrics_table" => new global::Soenneker.PostHog.OpenApiClient.Models.WidgetCatalogEntryMetricsTableWidgetCatalogEntryOpenApi(),
                 "notebook_widget" => new global::Soenneker.PostHog.OpenApiClient.Models.WidgetCatalogEntryNotebookWidgetCatalogEntryOpenApi(),
                 "session_replay_list" => new global::Soenneker.PostHog.OpenApiClient.Models.WidgetCatalogEntrySessionReplayListWidgetCatalogEntryOpenApi(),

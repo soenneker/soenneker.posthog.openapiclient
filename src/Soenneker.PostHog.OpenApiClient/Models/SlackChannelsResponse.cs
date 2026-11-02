@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Declares the `next` and `previous` links of a page response that the view fills with `page_link`.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class SlackChannelsResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -50,6 +51,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string LastRefreshedAt { get => _explicitNullValueLastRefreshedAt; set { _explicitNullValueLastRefreshedAt = value; AdditionalData?.Remove("lastRefreshedAt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lastRefreshedAt"); else _explicitNullProperties?.Remove("lastRefreshedAt"); } }
         private string _explicitNullValueLastRefreshedAt = default!;
 #endif
+        /// <summary>URL of the next page, or null on the last page.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Next { get; private set; }
+#nullable restore
+#else
+        public string Next { get; private set; }
+#endif
+        /// <summary>URL of the previous page, or null on the first page and on lists that page forward only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Previous { get; private set; }
+#nullable restore
+#else
+        public string Previous { get; private set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SlackChannelsResponse"/> and sets the default values.
         /// </summary>
@@ -78,6 +95,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "channels", n => { Channels = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SlackChannel>(global::Soenneker.PostHog.OpenApiClient.Models.SlackChannel.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "lastRefreshedAt", n => { LastRefreshedAt = n.GetStringValue(); } },
+                { "next", n => { Next = n.GetStringValue(); } },
+                { "previous", n => { Previous = n.GetStringValue(); } },
             };
         }
         /// <summary>

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboardId}/run_widgets/?tile_ids={tile_ids}{&filters_override*,format*,refresh*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboardId}/run_widgets/?tile_ids={tile_ids}{&format*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboardId}/run_widgets/?tile_ids={tile_ids}{&filters_override*,format*,refresh*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/dashboards/{dashboardId}/run_widgets/?tile_ids={tile_ids}{&format*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RunWidgetsResponse"/></returns>
@@ -78,23 +78,10 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Dashboards.Item.Run_
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
         #pragma warning restore CS1591
         {
-            /// <summary>Object (or pre-encoded JSON string) to override dashboard filters for this request only (not persisted). Top-level keys replace; nested values are not deep-merged — pass the complete value for any key you override. Accepts the same keys as the dashboard filters schema (e.g., `date_from`, `date_to`, `properties`). Ignored when accessed via a sharing token.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("filters_override")]
-            public string? FiltersOverride { get; set; }
-#nullable restore
-#else
-            [QueryParameter("filters_override")]
-            public string FiltersOverride { get; set; }
-#endif
             #pragma warning disable CS1591
             [QueryParameter("format")]
             public global::Soenneker.PostHog.OpenApiClient.Models.DashboardsRunWidgetsRetrieveFormatParameter? Format { get; set; }
             #pragma warning restore CS1591
-            /// <summary>Recompute widgets that follow dashboard filters (such as metrics) instead of serving their query cache, as a manual refresh of an insight tile does.</summary>
-            [QueryParameter("refresh")]
-            public bool? Refresh { get; set; }
             /// <summary>Comma-separated dashboard tile IDs to run widgets for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

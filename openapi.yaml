@@ -23827,16 +23827,6 @@ paths:
       operationId: dashboards_run_widgets_retrieve
       parameters:
       - in: query
-        name: filters_override
-        schema:
-          type: string
-        description: Object (or pre-encoded JSON string) to override dashboard filters
-          for this request only (not persisted). Top-level keys replace; nested values
-          are not deep-merged — pass the complete value for any key you override.
-          Accepts the same keys as the dashboard filters schema (e.g., `date_from`,
-          `date_to`, `properties`). Ignored when accessed via a sharing token.
-        x-accepts-stringified-json: true
-      - in: query
         name: format
         schema:
           type: string
@@ -23850,13 +23840,6 @@ paths:
         description: A unique integer value identifying this dashboard.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
-      - in: query
-        name: refresh
-        schema:
-          type: boolean
-        description: Recompute widgets that follow dashboard filters (such as metrics)
-          instead of serving their query cache, as a manual refresh of an insight
-          tile does.
       - in: query
         name: tile_ids
         schema:
@@ -24312,7 +24295,6 @@ paths:
             - experiment_results
             - experiments_list
             - logs_list
-            - metrics
             - metrics_table
             - notebook_widget
             - session_replay_list
@@ -106342,7 +106324,6 @@ components:
             * `experiment_results` - Experiment Results
             * `experiments_list` - Experiments List
             * `logs_list` - Logs List
-            * `metrics` - Metrics
             * `metrics_table` - Metrics Table
             * `notebook_widget` - Notebook Widget
             * `session_replay_list` - Session Replay List
@@ -106368,8 +106349,8 @@ components:
             $ref: '#/components/schemas/AddDashboardWidgetRequest'
           description: 'Widget tiles to add atomically. Supported widget_type values:
             activity_events_list, canvas_app, conversations_recent_tickets, error_tracking_list,
-            experiment_results, experiments_list, logs_list, metrics, metrics_table,
-            notebook_widget, session_replay_list, survey_results. Use dashboard-widget-catalog-list
+            experiment_results, experiments_list, logs_list, metrics_table, notebook_widget,
+            session_replay_list, survey_results. Use dashboard-widget-catalog-list
             for per-type config_schema documentation. (1–10 per request).'
           maxItems: 10
           minItems: 1
@@ -131583,7 +131564,6 @@ components:
             * `experiment_results` - Experiment Results
             * `experiments_list` - Experiments List
             * `logs_list` - Logs List
-            * `metrics` - Metrics
             * `metrics_table` - Metrics Table
             * `notebook_widget` - Notebook Widget
             * `session_replay_list` - Session Replay List
@@ -131902,7 +131882,6 @@ components:
       - $ref: '#/components/schemas/ConversationsRecentTicketsWidgetConfig'
       - $ref: '#/components/schemas/CanvasAppWidgetConfig'
       - $ref: '#/components/schemas/MetricsTableWidgetConfig'
-      - $ref: '#/components/schemas/MetricsWidgetConfig'
     DashboardWidgetRunResult:
       type: object
       properties:
@@ -131926,11 +131905,6 @@ components:
           - string
           - 'null'
           description: Error message when the widget could not be run.
-        error_is_user_facing:
-          type: boolean
-          description: True when `error` explains the failure to the viewer (for example,
-            no access or an invalid query) and can be shown as is. Other errors are
-            generic.
       required:
       - error
       - result
@@ -131945,7 +131919,6 @@ components:
       - experiment_results
       - experiments_list
       - logs_list
-      - metrics
       - metrics_table
       - notebook_widget
       - session_replay_list
@@ -131959,7 +131932,6 @@ components:
         * `experiment_results` - Experiment Results
         * `experiments_list` - Experiments List
         * `logs_list` - Logs List
-        * `metrics` - Metrics
         * `metrics_table` - Metrics Table
         * `notebook_widget` - Notebook Widget
         * `session_replay_list` - Session Replay List
@@ -175458,7 +175430,24 @@ components:
       - personal_github_login
     GitHubBranchesResponse:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         branches:
           type: array
           items:
@@ -175475,6 +175464,8 @@ components:
       required:
       - branches
       - has_more
+      - next
+      - previous
     GitHubInstallRequestItem:
       type: object
       properties:
@@ -175677,7 +175668,24 @@ components:
       - repositories
     GitHubReposResponse:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         repositories:
           type: array
           items:
@@ -175697,7 +175705,9 @@ components:
             all pages.
       required:
       - has_more
+      - next
       - next_offset
+      - previous
       - repositories
       - total
     GitHubRepositoryAccessResponse:
@@ -175750,7 +175760,24 @@ components:
       - slug
     GitHubTeamsResponse:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         teams:
           type: array
           items:
@@ -175761,6 +175788,8 @@ components:
           description: Whether more teams are available beyond this page.
       required:
       - has_more
+      - next
+      - previous
       - teams
     GitProviderFileLinkResolveResponse:
       type: object
@@ -207348,48 +207377,6 @@ components:
       - values
       title: MetricsVariableValue
       type: object
-    MetricsWidgetCatalogEntryOpenApi:
-      type: object
-      properties:
-        widget_type:
-          $ref: '#/components/schemas/MetricsWidgetTypeEnum'
-        group_id:
-          type: string
-        group_label:
-          type: string
-        label:
-          type: string
-        description:
-          type: string
-        config_schema:
-          allOf:
-          - $ref: '#/components/schemas/MetricsWidgetConfig'
-          readOnly: true
-          description: Config shape for this widget type. Build the config for the
-            batch add and batch update tools from it, because their schemas do not
-            list config keys.
-        required_product_access:
-          type:
-          - string
-          - 'null'
-        live:
-          type: boolean
-          description: Whether tiles of this type self-update in real time after load.
-            Live tiles show a fixed real-time window and cannot apply test-account
-            filtering to the stream, so their config takes neither dateRange nor filterTestAccounts.
-      required:
-      - config_schema
-      - description
-      - group_id
-      - group_label
-      - label
-      - live
-      - widget_type
-    MetricsWidgetTypeEnum:
-      enum:
-      - metrics
-      type: string
-      description: '* `metrics` - metrics'
     MetricsYAxisSettings:
       additionalProperties: false
       properties:
@@ -210751,7 +210738,24 @@ components:
           additionalProperties: true
     OfflineExperimentPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         count:
           type: integer
           description: Total authorized rows matching the filters, independent of
@@ -210768,7 +210772,9 @@ components:
           description: Experiment page.
       required:
       - count
+      - next
       - next_cursor
+      - previous
       - results
     OfflineExperimentRead:
       type: object
@@ -210945,7 +210951,24 @@ components:
         * `failed` - Failed
     OfflineHistoryPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         count:
           type: integer
           description: Total authorized rows matching the filters, independent of
@@ -210962,7 +210985,9 @@ components:
           description: Experiment/scorer-version history page.
       required:
       - count
+      - next
       - next_cursor
+      - previous
       - results
     OfflineHistoryPoint:
       type: object
@@ -210986,7 +211011,24 @@ components:
       - summary
     OfflineItemPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         count:
           type: integer
           description: Total authorized rows matching the filters, independent of
@@ -211009,7 +211051,9 @@ components:
             with no results.
       required:
       - count
+      - next
       - next_cursor
+      - previous
       - results
       - scorer_versions
     OfflineItemPayloadRead:
@@ -211242,7 +211286,24 @@ components:
       - scorer_versions
     OfflineResultPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         count:
           type: integer
           description: Total authorized rows matching the filters, independent of
@@ -211259,7 +211320,9 @@ components:
           description: Result page.
       required:
       - count
+      - next
       - next_cursor
+      - previous
       - results
     OfflineResultPayloadRead:
       type: object
@@ -211561,7 +211624,24 @@ components:
       - skipped
     OfflineSummaryPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         count:
           type: integer
           description: Total authorized rows matching the filters, independent of
@@ -211579,7 +211659,9 @@ components:
             results.
       required:
       - count
+      - next
       - next_cursor
+      - previous
       - results
     OkendoReviewSignalExtra:
       additionalProperties: false
@@ -214418,8 +214500,12 @@ components:
     PaginatedCommentList:
       type: object
       required:
+      - count
       - results
       properties:
+        count:
+          type: integer
+          example: 123
         next:
           type:
           - string
@@ -216918,9 +217004,23 @@ components:
     PaginatedMCPSessionList:
       type: object
       required:
+      - next
+      - previous
       - results
       - has_next
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL of the previous page, or null on the first page.
         results:
           type: array
           items:
@@ -216932,9 +217032,23 @@ components:
     PaginatedMCPToolCallList:
       type: object
       required:
+      - next
+      - previous
       - results
       - has_next
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL of the previous page, or null on the first page.
         results:
           type: array
           items:
@@ -230824,23 +230938,24 @@ components:
             type: string
           description: Write access granted to this one scout, as scope strings. The
             grantable set is `alert:write`, `annotation:write`, `canvas:write`, `customer_task:write`,
-            `dashboard:write`, `experiment:write`, `hog_flow_proposal:write`, `insight:write`,
-            `llm_skill:write`, `notebook:write`, `replay_scanner:write`, `ticket:write`,
-            `warehouse_table:write`, `warehouse_view:write`. A new scout starts with
-            `notebook:write` when this field is omitted. Empty means the scout reads
-            the project and writes only its findings and its own memory. Each scope
-            is project-wide and object-level, so a scout holding `dashboard:write`
+            `dashboard:write`, `event_definition:write`, `experiment:write`, `hog_flow_proposal:write`,
+            `insight:write`, `llm_skill:write`, `notebook:write`, `replay_scanner:write`,
+            `ticket:write`, `warehouse_table:write`, `warehouse_view:write`. A new
+            scout starts with `notebook:write` when this field is omitted. Empty means
+            the scout reads the project and writes only its findings and its own memory.
+            Each scope is project-wide and object-level, so a scout holding `dashboard:write`
             can update or delete any dashboard in the project, not only ones it made.
             `ticket:write` lets the scout update tickets, manage saved views, and
             add private notes. Scouts cannot send public replies, compose emails,
             change existing notes, or change customer identity fields. Ticket changes
-            can start workflows that message customers. Grant only what this scout
-            maintains. Only the person the scout's runs act as (whoever authored it)
-            or a project admin can set it, and a scoped API key must itself carry
-            each scope it grants. A dry run (`emit=false`) never holds the grant,
-            and a run that acts as a project member other than the author holds only
-            the default scopes. Applies from the scout's next run.
-          maxItems: 14
+            can start workflows that message customers. `event_definition:write` lets
+            the scout change the tags on event definitions and nothing else. Grant
+            only what this scout maintains. Only the person the scout's runs act as
+            (whoever authored it) or a project admin can set it, and a scoped API
+            key must itself carry each scope it grants. A dry run (`emit=false`) never
+            holds the grant, and a run that acts as a project member other than the
+            author holds only the default scopes. Applies from the scout's next run.
+          maxItems: 15
         precheck_query:
           type:
           - string
@@ -264661,7 +264776,24 @@ components:
             pinned or latest version.
     ReusableWidgetPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         results:
           type: array
           items:
@@ -264677,7 +264809,9 @@ components:
           description: Offset for the next page, or null when this is the final page.
       required:
       - count
+      - next
       - next_offset
+      - previous
       - results
     ReusableWidgetPublishRequest:
       type: object
@@ -264884,7 +265018,24 @@ components:
       - version
     ReusableWidgetVersionPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         results:
           type: array
           items:
@@ -264900,7 +265051,9 @@ components:
           description: Next page offset, or null on the final page.
       required:
       - count
+      - next
       - next_offset
+      - previous
       - results
     RevenueAnalyticsPropertyFilter:
       additionalProperties: false
@@ -266909,7 +267062,24 @@ components:
       - total
     ReviewReviewsTablePage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         count:
           type: integer
           description: How many reviews match the scope and every filter, across all
@@ -266925,6 +267095,8 @@ components:
           description: One page of reviews, most recent activity first.
       required:
       - count
+      - next
+      - previous
       - results
       - running_count
     ReviewRun:
@@ -271143,7 +271315,24 @@ components:
       - version
     ScoreDefinitionVersionPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         count:
           type: integer
           description: Total immutable versions for this scorer.
@@ -271159,7 +271348,9 @@ components:
           description: Versions on this page, newest first.
       required:
       - count
+      - next
       - next_cursor
+      - previous
       - results
     ScoreDistribution:
       properties:
@@ -279864,23 +280055,24 @@ components:
           readOnly: true
           description: Write access granted to this one scout, as scope strings. The
             grantable set is `alert:write`, `annotation:write`, `canvas:write`, `customer_task:write`,
-            `dashboard:write`, `experiment:write`, `hog_flow_proposal:write`, `insight:write`,
-            `llm_skill:write`, `notebook:write`, `replay_scanner:write`, `ticket:write`,
-            `warehouse_table:write`, `warehouse_view:write`. A new scout starts with
-            `notebook:write` when this field is omitted. Empty means the scout reads
-            the project and writes only its findings and its own memory. Each scope
-            is project-wide and object-level, so a scout holding `dashboard:write`
+            `dashboard:write`, `event_definition:write`, `experiment:write`, `hog_flow_proposal:write`,
+            `insight:write`, `llm_skill:write`, `notebook:write`, `replay_scanner:write`,
+            `ticket:write`, `warehouse_table:write`, `warehouse_view:write`. A new
+            scout starts with `notebook:write` when this field is omitted. Empty means
+            the scout reads the project and writes only its findings and its own memory.
+            Each scope is project-wide and object-level, so a scout holding `dashboard:write`
             can update or delete any dashboard in the project, not only ones it made.
             `ticket:write` lets the scout update tickets, manage saved views, and
             add private notes. Scouts cannot send public replies, compose emails,
             change existing notes, or change customer identity fields. Ticket changes
-            can start workflows that message customers. Grant only what this scout
-            maintains. Only the person the scout's runs act as (whoever authored it)
-            or a project admin can set it, and a scoped API key must itself carry
-            each scope it grants. A dry run (`emit=false`) never holds the grant,
-            and a run that acts as a project member other than the author holds only
-            the default scopes. Applies from the scout's next run.
-          maxItems: 14
+            can start workflows that message customers. `event_definition:write` lets
+            the scout change the tags on event definitions and nothing else. Grant
+            only what this scout maintains. Only the person the scout's runs act as
+            (whoever authored it) or a project admin can set it, and a scoped API
+            key must itself carry each scope it grants. A dry run (`emit=false`) never
+            holds the grant, and a run that acts as a project member other than the
+            author holds only the default scopes. Applies from the scout's next run.
+          maxItems: 15
         lifecycle_locked:
           type: boolean
           readOnly: true
@@ -280183,23 +280375,24 @@ components:
             type: string
           description: Write access granted to this one scout, as scope strings. The
             grantable set is `alert:write`, `annotation:write`, `canvas:write`, `customer_task:write`,
-            `dashboard:write`, `experiment:write`, `hog_flow_proposal:write`, `insight:write`,
-            `llm_skill:write`, `notebook:write`, `replay_scanner:write`, `ticket:write`,
-            `warehouse_table:write`, `warehouse_view:write`. A new scout starts with
-            `notebook:write` when this field is omitted. Empty means the scout reads
-            the project and writes only its findings and its own memory. Each scope
-            is project-wide and object-level, so a scout holding `dashboard:write`
+            `dashboard:write`, `event_definition:write`, `experiment:write`, `hog_flow_proposal:write`,
+            `insight:write`, `llm_skill:write`, `notebook:write`, `replay_scanner:write`,
+            `ticket:write`, `warehouse_table:write`, `warehouse_view:write`. A new
+            scout starts with `notebook:write` when this field is omitted. Empty means
+            the scout reads the project and writes only its findings and its own memory.
+            Each scope is project-wide and object-level, so a scout holding `dashboard:write`
             can update or delete any dashboard in the project, not only ones it made.
             `ticket:write` lets the scout update tickets, manage saved views, and
             add private notes. Scouts cannot send public replies, compose emails,
             change existing notes, or change customer identity fields. Ticket changes
-            can start workflows that message customers. Grant only what this scout
-            maintains. Only the person the scout's runs act as (whoever authored it)
-            or a project admin can set it, and a scoped API key must itself carry
-            each scope it grants. A dry run (`emit=false`) never holds the grant,
-            and a run that acts as a project member other than the author holds only
-            the default scopes. Applies from the scout's next run.
-          maxItems: 14
+            can start workflows that message customers. `event_definition:write` lets
+            the scout change the tags on event definitions and nothing else. Grant
+            only what this scout maintains. Only the person the scout's runs act as
+            (whoever authored it) or a project admin can set it, and a scoped API
+            key must itself carry each scope it grants. A dry run (`emit=false`) never
+            holds the grant, and a run that acts as a project member other than the
+            author holds only the default scopes. Applies from the scout's next run.
+          maxItems: 15
         lifecycle_locked:
           type: boolean
           description: 'Opt-in guard on this scout''s lifecycle. Off by default, so
@@ -280403,23 +280596,24 @@ components:
             type: string
           description: Write access granted to this one scout, as scope strings. The
             grantable set is `alert:write`, `annotation:write`, `canvas:write`, `customer_task:write`,
-            `dashboard:write`, `experiment:write`, `hog_flow_proposal:write`, `insight:write`,
-            `llm_skill:write`, `notebook:write`, `replay_scanner:write`, `ticket:write`,
-            `warehouse_table:write`, `warehouse_view:write`. A new scout starts with
-            `notebook:write` when this field is omitted. Empty means the scout reads
-            the project and writes only its findings and its own memory. Each scope
-            is project-wide and object-level, so a scout holding `dashboard:write`
+            `dashboard:write`, `event_definition:write`, `experiment:write`, `hog_flow_proposal:write`,
+            `insight:write`, `llm_skill:write`, `notebook:write`, `replay_scanner:write`,
+            `ticket:write`, `warehouse_table:write`, `warehouse_view:write`. A new
+            scout starts with `notebook:write` when this field is omitted. Empty means
+            the scout reads the project and writes only its findings and its own memory.
+            Each scope is project-wide and object-level, so a scout holding `dashboard:write`
             can update or delete any dashboard in the project, not only ones it made.
             `ticket:write` lets the scout update tickets, manage saved views, and
             add private notes. Scouts cannot send public replies, compose emails,
             change existing notes, or change customer identity fields. Ticket changes
-            can start workflows that message customers. Grant only what this scout
-            maintains. Only the person the scout's runs act as (whoever authored it)
-            or a project admin can set it, and a scoped API key must itself carry
-            each scope it grants. A dry run (`emit=false`) never holds the grant,
-            and a run that acts as a project member other than the author holds only
-            the default scopes. Applies from the scout's next run.
-          maxItems: 14
+            can start workflows that message customers. `event_definition:write` lets
+            the scout change the tags on event definitions and nothing else. Grant
+            only what this scout maintains. Only the person the scout's runs act as
+            (whoever authored it) or a project admin can set it, and a scoped API
+            key must itself carry each scope it grants. A dry run (`emit=false`) never
+            holds the grant, and a run that acts as a project member other than the
+            author holds only the default scopes. Applies from the scout's next run.
+          maxItems: 15
         lifecycle_locked:
           type: boolean
           description: 'Opt-in guard on this scout''s lifecycle. Off by default, so
@@ -282739,7 +282933,24 @@ components:
       - name
     SlackChannelsResponse:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         channels:
           type: array
           items:
@@ -282757,6 +282968,8 @@ components:
             page.
       required:
       - channels
+      - next
+      - previous
     SlackSummaryCadenceEnum:
       enum:
       - daily
@@ -283068,7 +283281,24 @@ components:
       - name
     SlackUsersResponse:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         users:
           type: array
           items:
@@ -283084,6 +283314,8 @@ components:
           type: boolean
           description: Whether more members match the current search beyond this page.
       required:
+      - next
+      - previous
       - users
     SleekplanFeedbackSignalExtra:
       additionalProperties: false
@@ -293208,7 +293440,24 @@ components:
       - uuid
     SurveyResponsesList:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         results:
           type: array
           items:
@@ -293227,7 +293476,9 @@ components:
       required:
       - has_more
       - limit
+      - next
       - offset
+      - previous
       - results
     SurveyResponsesStatusEnum:
       enum:
@@ -294747,7 +294998,24 @@ components:
           format: uuid
           description: Activity ID to pass as before_id for the next page, or null
             on the final page.
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, with before and before_id set, or null
+            on the final page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: 'Always null: the feed pages forward only.'
       required:
+      - next
+      - previous
       - results
       - unread_count
     TaskActivityReadMarker:
@@ -308387,7 +308655,6 @@ components:
             * `experiment_results` - Experiment Results
             * `experiments_list` - Experiments List
             * `logs_list` - Logs List
-            * `metrics` - Metrics
             * `metrics_table` - Metrics Table
             * `notebook_widget` - Notebook Widget
             * `session_replay_list` - Session Replay List
@@ -317408,7 +317675,6 @@ components:
       - $ref: '#/components/schemas/ConversationsRecentTicketsWidgetCatalogEntryOpenApi'
       - $ref: '#/components/schemas/CanvasAppWidgetCatalogEntryOpenApi'
       - $ref: '#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi'
-      - $ref: '#/components/schemas/MetricsWidgetCatalogEntryOpenApi'
       discriminator:
         propertyName: widget_type
         mapping:
@@ -317423,7 +317689,6 @@ components:
           conversations_recent_tickets: '#/components/schemas/ConversationsRecentTicketsWidgetCatalogEntryOpenApi'
           canvas_app: '#/components/schemas/CanvasAppWidgetCatalogEntryOpenApi'
           metrics_table: '#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi'
-          metrics: '#/components/schemas/MetricsWidgetCatalogEntryOpenApi'
     WidgetCatalogResponse:
       type: object
       properties:
@@ -318114,7 +318379,24 @@ components:
       - version_operation
     WidgetVersionPage:
       type: object
+      description: Declares the `next` and `previous` links of a page response that
+        the view fills with `page_link`.
       properties:
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          readOnly: true
+          description: URL of the previous page, or null on the first page and on
+            lists that page forward only.
         results:
           type: array
           items:
@@ -318131,7 +318413,9 @@ components:
           description: Offset for the next page.
       required:
       - count
+      - next
       - next_offset
+      - previous
       - results
     WikiExport:
       type: object
@@ -327573,105 +327857,6 @@ components:
           title: Limit
           type: integer
       title: MetricsTableWidgetConfig
-      type: object
-    MetricsWidgetQuery:
-      additionalProperties: false
-      description: |-
-        A `MetricsQuery` as a metrics widget stores it.
-
-        Response, modifier and tag fields are runtime state, so a stored config can't carry them.
-      properties:
-        clauses:
-          description: Builder series. Empty when `language` is `promql` or `sql`,
-            or until a metric is picked.
-          items:
-            $ref: '#/components/schemas/MetricsQueryClause'
-          maxItems: 10
-          title: Clauses
-          type: array
-        dateRange:
-          anyOf:
-          - $ref: '#/components/schemas/DateRange'
-          - type: 'null'
-          default: null
-          description: Defaults to the last 24 hours when omitted; dashboard date
-            filters override it
-        display:
-          anyOf:
-          - $ref: '#/components/schemas/MetricsDisplaySettings'
-          - type: 'null'
-          default: null
-          description: Chart presentation. A node without it renders as a line chart.
-        formula:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Arithmetic over clause aliases (e.g. "a / b"); when set, only
-            the formula series are returned
-          title: Formula
-        interval:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: 'Bucket size, one of: second_15, second_30, minute, minute_5,
-            minute_15, minute_30, hour, hour_6, day, week; auto-picked from the range
-            when omitted. Fixed intervals are coarsened above 500 buckets. A dashboard
-            variable reference such as `$window` pins the interval to its single duration
-            value (15s, 30s, 1m, 5m, 15m, 30m, 1h, 6h, 1d, 1w). Variable intervals
-            that exceed 500 buckets require a larger value or shorter date range,
-            so the step stays consistent with PromQL lookbacks using that variable.'
-          title: Interval
-        kind:
-          const: MetricsQuery
-          default: MetricsQuery
-          title: Kind
-          type: string
-        language:
-          anyOf:
-          - $ref: '#/components/schemas/MetricsQueryLanguage'
-          - type: 'null'
-          default: null
-          description: How the query is written; the builder when unset.
-        promql:
-          anyOf:
-          - maxLength: 10000
-            type: string
-          - type: 'null'
-          default: null
-          description: PromQL expression, run as a range query. Used when `language`
-            is `promql`.
-          title: Promql
-        sql:
-          anyOf:
-          - maxLength: 10000
-            type: string
-          - type: 'null'
-          default: null
-          description: HogQL SELECT over the posthog.metric* tables. Used when `language`
-            is `sql`. It must return a `time` and a `value` column; every other column
-            is a series label.
-          title: Sql
-        version:
-          anyOf:
-          - type: number
-          - type: 'null'
-          default: null
-          description: version of the node, used for schema migrations
-          title: Version
-      title: MetricsWidgetQuery
-      type: object
-    MetricsWidgetConfig:
-      additionalProperties: false
-      properties:
-        query:
-          $ref: '#/components/schemas/MetricsWidgetQuery'
-          description: 'Metrics query the tile runs and how it draws it (`display.type`:
-            line, area, bar, stat, gauge, bargauge, table or heatmap). `dateRange`
-            is the default window; the dashboard date filter overrides it. A config
-            update replaces the whole query.'
-      title: MetricsWidgetConfig
       type: object
   securitySchemes:
     PersonalAPIKeyAuth:

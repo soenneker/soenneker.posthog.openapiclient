@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>
+    /// Declares the `next` and `previous` links of a page response that the view fills with `page_link`.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class GitHubReposResponse : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
         // Track explicitly assigned nulls separately from absent properties.
         private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
@@ -32,9 +33,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether more repositories are available beyond this page.</summary>
         public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; AdditionalData?.Remove("has_more"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
         private bool? _explicitNullValueHasMore = default!;
+        /// <summary>URL of the next page, or null on the last page.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Next { get; private set; }
+#nullable restore
+#else
+        public string Next { get; private set; }
+#endif
         /// <summary>The offset to pass to get the next page, or null when this page is the last one.</summary>
         public int? NextOffset { get => _explicitNullValueNextOffset; set { _explicitNullValueNextOffset = value; AdditionalData?.Remove("next_offset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_offset"); else _explicitNullProperties?.Remove("next_offset"); } }
         private int? _explicitNullValueNextOffset = default!;
+        /// <summary>URL of the previous page, or null on the first page and on lists that page forward only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Previous { get; private set; }
+#nullable restore
+#else
+        public string Previous { get; private set; }
+#endif
         /// <summary>The repositories property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,7 +91,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
+                { "next", n => { Next = n.GetStringValue(); } },
                 { "next_offset", n => { NextOffset = n.GetIntValue(); } },
+                { "previous", n => { Previous = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "total", n => { Total = n.GetIntValue(); } },
             };

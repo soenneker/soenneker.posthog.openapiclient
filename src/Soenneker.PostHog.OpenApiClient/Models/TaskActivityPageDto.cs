@@ -30,12 +30,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>URL of the next page, with before and before_id set, or null on the final page.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Next { get; private set; }
+#nullable restore
+#else
+        public string Next { get; private set; }
+#endif
         /// <summary>Activity timestamp to pass as before for the next page, or null on the final page.</summary>
         public DateTimeOffset? NextBefore { get => _explicitNullValueNextBefore; set { _explicitNullValueNextBefore = value; AdditionalData?.Remove("next_before"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_before"); else _explicitNullProperties?.Remove("next_before"); } }
         private DateTimeOffset? _explicitNullValueNextBefore = default!;
         /// <summary>Activity ID to pass as before_id for the next page, or null on the final page.</summary>
         public Guid? NextBeforeId { get => _explicitNullValueNextBeforeId; set { _explicitNullValueNextBeforeId = value; AdditionalData?.Remove("next_before_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_before_id"); else _explicitNullProperties?.Remove("next_before_id"); } }
         private Guid? _explicitNullValueNextBeforeId = default!;
+        /// <summary>Always null: the feed pages forward only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Previous { get; private set; }
+#nullable restore
+#else
+        public string Previous { get; private set; }
+#endif
         /// <summary>Tasks with activity, most recent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -74,8 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "next", n => { Next = n.GetStringValue(); } },
                 { "next_before", n => { NextBefore = n.GetDateTimeOffsetValue(); } },
                 { "next_before_id", n => { NextBeforeId = n.GetGuidValue(); } },
+                { "previous", n => { Previous = n.GetStringValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDto>(global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDto.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "unread_count", n => { UnreadCount = n.GetIntValue(); } },
             };

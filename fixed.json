@@ -39737,15 +39737,6 @@
         "operationId": "DashboardsRunWidgetsRetrieve",
         "parameters": [
           {
-            "name": "filters_override",
-            "in": "query",
-            "description": "Object (or pre-encoded JSON string) to override dashboard filters for this request only (not persisted). Top-level keys replace; nested values are not deep-merged \u2014 pass the complete value for any key you override. Accepts the same keys as the dashboard filters schema (e.g., \u0060date_from\u0060, \u0060date_to\u0060, \u0060properties\u0060). Ignored when accessed via a sharing token.",
-            "schema": {
-              "type": "string"
-            },
-            "x-accepts-stringified-json": true
-          },
-          {
             "name": "format",
             "in": "query",
             "schema": {
@@ -39768,14 +39759,6 @@
             "required": true,
             "schema": {
               "type": "string"
-            }
-          },
-          {
-            "name": "refresh",
-            "in": "query",
-            "description": "Recompute widgets that follow dashboard filters (such as metrics) instead of serving their query cache, as a manual refresh of an insight tile does.",
-            "schema": {
-              "type": "boolean"
             }
           },
           {
@@ -175145,7 +175128,7 @@
             "items": {
               "$ref": "#/components/schemas/AddDashboardWidgetRequest"
             },
-            "description": "Widget tiles to add atomically. Supported widget_type values: activity_events_list, canvas_app, conversations_recent_tickets, error_tracking_list, experiment_results, experiments_list, logs_list, metrics, metrics_table, notebook_widget, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1\u201310 per request)."
+            "description": "Widget tiles to add atomically. Supported widget_type values: activity_events_list, canvas_app, conversations_recent_tickets, error_tracking_list, experiment_results, experiments_list, logs_list, metrics_table, notebook_widget, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1\u201310 per request)."
           }
         },
         "description": "OpenAPI-only batch-add schema with widget_type-discriminated config shapes for agents."
@@ -199871,10 +199854,6 @@
               "string"
             ],
             "description": "Error message when the widget could not be run."
-          },
-          "error_is_user_facing": {
-            "type": "boolean",
-            "description": "True when \u0060error\u0060 explains the failure to the viewer (for example, no access or an invalid query) and can be shown as is. Other errors are generic."
           }
         }
       },
@@ -228617,10 +228596,30 @@
       "GitHubBranchesResponse": {
         "required": [
           "branches",
-          "has_more"
+          "has_more",
+          "next",
+          "previous"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "branches": {
             "type": "array",
             "items": {
@@ -228639,7 +228638,8 @@
             "type": "boolean",
             "description": "Whether more branches exist beyond the returned page"
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "GitHubInstallRequestItem": {
         "required": [
@@ -228856,12 +228856,32 @@
       "GitHubReposResponse": {
         "required": [
           "has_more",
+          "next",
           "next_offset",
+          "previous",
           "repositories",
           "total"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "repositories": {
             "type": "array",
             "items": {
@@ -228883,7 +228903,8 @@
             "type": "integer",
             "description": "Total number of repositories matching the search query, across all pages."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "GitHubRepositoryAccessResponse": {
         "required": [
@@ -228948,10 +228969,30 @@
       "GitHubTeamsResponse": {
         "required": [
           "has_more",
+          "next",
+          "previous",
           "teams"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "teams": {
             "type": "array",
             "items": {
@@ -228963,7 +229004,8 @@
             "type": "boolean",
             "description": "Whether more teams are available beyond this page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "GitProviderFileLinkResolveResponse": {
         "required": [
@@ -251603,23 +251645,6 @@
         },
         "additionalProperties": false
       },
-      "MetricsWidgetTypeEnum": {
-        "enum": [
-          "metrics"
-        ],
-        "type": "string",
-        "description": "* \u0060metrics\u0060 - metrics",
-        "x-ms-enum": {
-          "name": "MetricsWidgetTypeEnum",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "metrics",
-              "name": "Metrics"
-            }
-          ]
-        }
-      },
       "MicrosoftDefenderCloudAppsScannerFindingSignalExtra": {
         "title": "MicrosoftDefenderCloudAppsScannerFindingSignalExtra",
         "required": [
@@ -254491,11 +254516,31 @@
       "OfflineExperimentPage": {
         "required": [
           "count",
+          "next",
           "next_cursor",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "count": {
             "type": "integer",
             "description": "Total authorized rows matching the filters, independent of this page."
@@ -254514,7 +254559,8 @@
             },
             "description": "Experiment page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "OfflineExperimentRead": {
         "required": [
@@ -254720,11 +254766,31 @@
       "OfflineHistoryPage": {
         "required": [
           "count",
+          "next",
           "next_cursor",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "count": {
             "type": "integer",
             "description": "Total authorized rows matching the filters, independent of this page."
@@ -254743,7 +254809,8 @@
             },
             "description": "Experiment/scorer-version history page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "OfflineHistoryPoint": {
         "required": [
@@ -254770,12 +254837,32 @@
       "OfflineItemPage": {
         "required": [
           "count",
+          "next",
           "next_cursor",
+          "previous",
           "results",
           "scorer_versions"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "count": {
             "type": "integer",
             "description": "Total authorized rows matching the filters, independent of this page."
@@ -254801,7 +254888,8 @@
             },
             "description": "Selected scorer versions, each returned once, including versions with no results."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "OfflineItemPayloadRead": {
         "required": [
@@ -255043,11 +255131,31 @@
       "OfflineResultPage": {
         "required": [
           "count",
+          "next",
           "next_cursor",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "count": {
             "type": "integer",
             "description": "Total authorized rows matching the filters, independent of this page."
@@ -255066,7 +255174,8 @@
             },
             "description": "Result page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "OfflineResultPayloadRead": {
         "required": [
@@ -255355,11 +255464,31 @@
       "OfflineSummaryPage": {
         "required": [
           "count",
+          "next",
           "next_cursor",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "count": {
             "type": "integer",
             "description": "Total authorized rows matching the filters, independent of this page."
@@ -255378,7 +255507,8 @@
             },
             "description": "Scorer-version summary page; each group includes all matching results."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "OkendoReviewSignalExtra": {
         "title": "OkendoReviewSignalExtra",
@@ -258614,10 +258744,15 @@
       },
       "PaginatedCommentList": {
         "required": [
+          "count",
           "results"
         ],
         "type": "object",
         "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
           "next": {
             "type": [
               "null",
@@ -262113,11 +262248,29 @@
       },
       "PaginatedMcpSessionList": {
         "required": [
+          "next",
+          "previous",
           "results",
           "has_next"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page.",
+            "x-client-original-format": "uri"
+          },
           "results": {
             "type": "array",
             "items": {
@@ -262132,11 +262285,29 @@
       },
       "PaginatedMcpToolCallList": {
         "required": [
+          "next",
+          "previous",
           "results",
           "has_next"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page.",
+            "x-client-original-format": "uri"
+          },
           "results": {
             "type": "array",
             "items": {
@@ -274865,12 +275036,12 @@
             "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
           },
           "write_scopes": {
-            "maxItems": 14,
+            "maxItems": 15,
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
+            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060event_definition:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. \u0060event_definition:write\u0060 lets the scout change the tags on event definitions and nothing else. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
           },
           "precheck_query": {
             "maxLength": 10000,
@@ -289693,11 +289864,31 @@
       "ReusableWidgetPage": {
         "required": [
           "count",
+          "next",
           "next_offset",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "results": {
             "type": "array",
             "items": {
@@ -289716,7 +289907,8 @@
             ],
             "description": "Offset for the next page, or null when this is the final page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "ReusableWidgetPublishRequest": {
         "required": [
@@ -289951,11 +290143,31 @@
       "ReusableWidgetVersionPage": {
         "required": [
           "count",
+          "next",
           "next_offset",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "results": {
             "type": "array",
             "items": {
@@ -289974,7 +290186,8 @@
             ],
             "description": "Next page offset, or null on the final page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "RevenueAnalyticsPropertyFilter": {
         "title": "RevenueAnalyticsPropertyFilter",
@@ -291570,11 +291783,31 @@
       "ReviewReviewsTablePage": {
         "required": [
           "count",
+          "next",
+          "previous",
           "results",
           "running_count"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "count": {
             "type": "integer",
             "description": "How many reviews match the scope and every filter, across all pages."
@@ -291590,7 +291823,8 @@
             },
             "description": "One page of reviews, most recent activity first."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "ReviewRun": {
         "required": [
@@ -295061,11 +295295,31 @@
       "ScoreDefinitionVersionPage": {
         "required": [
           "count",
+          "next",
           "next_cursor",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "count": {
             "type": "integer",
             "description": "Total immutable versions for this scorer."
@@ -295084,7 +295338,8 @@
             },
             "description": "Versions on this page, newest first."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "ScoreHistogram": {
         "title": "ScoreHistogram",
@@ -302455,12 +302710,12 @@
             "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
           },
           "write_scopes": {
-            "maxItems": 14,
+            "maxItems": 15,
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run.",
+            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060event_definition:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. \u0060event_definition:write\u0060 lets the scout change the tags on event definitions and nothing else. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run.",
             "readOnly": true
           },
           "lifecycle_locked": {
@@ -302643,12 +302898,12 @@
             "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
           },
           "write_scopes": {
-            "maxItems": 14,
+            "maxItems": 15,
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
+            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060event_definition:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. \u0060event_definition:write\u0060 lets the scout change the tags on event definitions and nothing else. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
           },
           "lifecycle_locked": {
             "type": "boolean",
@@ -304703,10 +304958,30 @@
       },
       "SlackChannelsResponse": {
         "required": [
-          "channels"
+          "channels",
+          "next",
+          "previous"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "channels": {
             "type": "array",
             "items": {
@@ -304725,7 +305000,8 @@
             "type": "boolean",
             "description": "Whether more channels match the current search beyond this page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "SlackSummaryCadenceEnum": {
         "enum": [
@@ -304931,10 +305207,30 @@
       },
       "SlackUsersResponse": {
         "required": [
+          "next",
+          "previous",
           "users"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "users": {
             "type": "array",
             "items": {
@@ -304953,7 +305249,8 @@
             "type": "boolean",
             "description": "Whether more members match the current search beyond this page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "SleekplanFeedbackSignalExtra": {
         "title": "SleekplanFeedbackSignalExtra",
@@ -309586,11 +309883,31 @@
         "required": [
           "has_more",
           "limit",
+          "next",
           "offset",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "results": {
             "type": "array",
             "items": {
@@ -309610,7 +309927,8 @@
             "type": "integer",
             "description": "The offset applied to this query (echoed back for pagination)."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "SurveyResultsWidgetTypeEnum": {
         "enum": [
@@ -310848,6 +311166,8 @@
       },
       "TaskActivityPageDto": {
         "required": [
+          "next",
+          "previous",
           "results",
           "unread_count"
         ],
@@ -310879,6 +311199,24 @@
             ],
             "description": "Activity ID to pass as before_id for the next page, or null on the final page.",
             "format": "uuid"
+          },
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, with before and before_id set, or null on the final page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Always null: the feed pages forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
           }
         },
         "description": "A page of the requester\u0027s activity feed, plus the unread total across the whole feed."
@@ -328704,8 +329042,7 @@
             "logs_list": "#/components/schemas/LogsListWidgetCatalogEntryOpenApi",
             "conversations_recent_tickets": "#/components/schemas/ConversationsRecentTicketsWidgetCatalogEntryOpenApi",
             "canvas_app": "#/components/schemas/CanvasAppWidgetCatalogEntryOpenApi",
-            "metrics_table": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi",
-            "metrics": "#/components/schemas/MetricsWidgetCatalogEntryOpenApi"
+            "metrics_table": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi"
           }
         },
         "discriminator": {
@@ -328721,8 +329058,7 @@
             "logs_list": "#/components/schemas/WidgetCatalogEntryLogsListWidgetCatalogEntryOpenApi",
             "conversations_recent_tickets": "#/components/schemas/WidgetCatalogEntryConversationsRecentTicketsWidgetCatalogEntryOpenApi",
             "canvas_app": "#/components/schemas/WidgetCatalogEntryCanvasAppWidgetCatalogEntryOpenApi",
-            "metrics_table": "#/components/schemas/WidgetCatalogEntryMetricsTableWidgetCatalogEntryOpenApi",
-            "metrics": "#/components/schemas/WidgetCatalogEntryMetricsWidgetCatalogEntryOpenApi"
+            "metrics_table": "#/components/schemas/WidgetCatalogEntryMetricsTableWidgetCatalogEntryOpenApi"
           }
         },
         "x-client-original-tagged-union": {
@@ -328759,9 +329095,6 @@
             },
             {
               "$ref": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi"
-            },
-            {
-              "$ref": "#/components/schemas/MetricsWidgetCatalogEntryOpenApi"
             }
           ],
           "x-client-original-discriminator": {
@@ -328777,8 +329110,7 @@
               "logs_list": "#/components/schemas/LogsListWidgetCatalogEntryOpenApi",
               "conversations_recent_tickets": "#/components/schemas/ConversationsRecentTicketsWidgetCatalogEntryOpenApi",
               "canvas_app": "#/components/schemas/CanvasAppWidgetCatalogEntryOpenApi",
-              "metrics_table": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi",
-              "metrics": "#/components/schemas/MetricsWidgetCatalogEntryOpenApi"
+              "metrics_table": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi"
             }
           },
           "discriminator": {
@@ -328794,8 +329126,7 @@
               "logs_list": "#/components/schemas/LogsListWidgetCatalogEntryOpenApi",
               "conversations_recent_tickets": "#/components/schemas/ConversationsRecentTicketsWidgetCatalogEntryOpenApi",
               "canvas_app": "#/components/schemas/CanvasAppWidgetCatalogEntryOpenApi",
-              "metrics_table": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi",
-              "metrics": "#/components/schemas/MetricsWidgetCatalogEntryOpenApi"
+              "metrics_table": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi"
             }
           }
         },
@@ -329466,11 +329797,31 @@
       "WidgetVersionPage": {
         "required": [
           "count",
+          "next",
           "next_offset",
+          "previous",
           "results"
         ],
         "type": "object",
         "properties": {
+          "next": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the next page, or null on the last page.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
+          "previous": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "URL of the previous page, or null on the first page and on lists that page forward only.",
+            "readOnly": true,
+            "x-client-original-format": "uri"
+          },
           "results": {
             "type": "array",
             "items": {
@@ -329490,7 +329841,8 @@
             ],
             "description": "Offset for the next page."
           }
-        }
+        },
+        "description": "Declares the \u0060next\u0060 and \u0060previous\u0060 links of a page response that the view fills with \u0060page_link\u0060."
       },
       "WikiExport": {
         "required": [
@@ -336975,82 +337327,6 @@
         },
         "additionalProperties": false
       },
-      "MetricsWidgetQuery": {
-        "title": "MetricsWidgetQuery",
-        "type": "object",
-        "properties": {
-          "clauses": {
-            "title": "Clauses",
-            "maxItems": 10,
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MetricsQueryClause"
-            },
-            "description": "Builder series. Empty when \u0060language\u0060 is \u0060promql\u0060 or \u0060sql\u0060, or until a metric is picked."
-          },
-          "dateRange": {
-            "$ref": "#/components/schemas/MetricsHistogramQueryDateRange"
-          },
-          "display": {
-            "$ref": "#/components/schemas/MetricsQueryDisplay"
-          },
-          "formula": {
-            "title": "Formula",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Arithmetic over clause aliases (e.g. \u0022a / b\u0022); when set, only the formula series are returned",
-            "default": null
-          },
-          "interval": {
-            "title": "Interval",
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "Bucket size, one of: second_15, second_30, minute, minute_5, minute_15, minute_30, hour, hour_6, day, week; auto-picked from the range when omitted. Fixed intervals are coarsened above 500 buckets. A dashboard variable reference such as \u0060$window\u0060 pins the interval to its single duration value (15s, 30s, 1m, 5m, 15m, 30m, 1h, 6h, 1d, 1w). Variable intervals that exceed 500 buckets require a larger value or shorter date range, so the step stays consistent with PromQL lookbacks using that variable.",
-            "default": null
-          },
-          "kind": {
-            "$ref": "#/components/schemas/MetricsWidgetQueryKind"
-          },
-          "language": {
-            "$ref": "#/components/schemas/MetricsQueryLanguageComposed"
-          },
-          "promql": {
-            "title": "Promql",
-            "maxLength": 10000,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "PromQL expression, run as a range query. Used when \u0060language\u0060 is \u0060promql\u0060.",
-            "default": null
-          },
-          "sql": {
-            "title": "Sql",
-            "maxLength": 10000,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "HogQL SELECT over the posthog.metric* tables. Used when \u0060language\u0060 is \u0060sql\u0060. It must return a \u0060time\u0060 and a \u0060value\u0060 column; every other column is a series label.",
-            "default": null
-          },
-          "version": {
-            "title": "Version",
-            "type": [
-              "null",
-              "number"
-            ],
-            "description": "version of the node, used for schema migrations",
-            "default": null
-          }
-        },
-        "additionalProperties": false,
-        "description": "A \u0060MetricsQuery\u0060 as a metrics widget stores it.\n\nResponse, modifier and tag fields are runtime state, so a stored config can\u0027t carry them."
-      },
       "AeoPromptVersionCreatedBy": {
         "required": [
           "email",
@@ -341747,14 +342023,13 @@
           "experiment_results",
           "experiments_list",
           "logs_list",
-          "metrics",
           "metrics_table",
           "notebook_widget",
           "session_replay_list",
           "survey_results"
         ],
         "type": "string",
-        "description": "* \u0060activity_events_list\u0060 - Activity Events List\n* \u0060canvas_app\u0060 - Canvas App\n* \u0060conversations_recent_tickets\u0060 - Conversations Recent Tickets\n* \u0060error_tracking_list\u0060 - Error Tracking List\n* \u0060experiment_results\u0060 - Experiment Results\n* \u0060experiments_list\u0060 - Experiments List\n* \u0060logs_list\u0060 - Logs List\n* \u0060metrics\u0060 - Metrics\n* \u0060metrics_table\u0060 - Metrics Table\n* \u0060notebook_widget\u0060 - Notebook Widget\n* \u0060session_replay_list\u0060 - Session Replay List\n* \u0060survey_results\u0060 - Survey Results",
+        "description": "* \u0060activity_events_list\u0060 - Activity Events List\n* \u0060canvas_app\u0060 - Canvas App\n* \u0060conversations_recent_tickets\u0060 - Conversations Recent Tickets\n* \u0060error_tracking_list\u0060 - Error Tracking List\n* \u0060experiment_results\u0060 - Experiment Results\n* \u0060experiments_list\u0060 - Experiments List\n* \u0060logs_list\u0060 - Logs List\n* \u0060metrics_table\u0060 - Metrics Table\n* \u0060notebook_widget\u0060 - Notebook Widget\n* \u0060session_replay_list\u0060 - Session Replay List\n* \u0060survey_results\u0060 - Survey Results",
         "x-ms-enum": {
           "name": "AddDashboardWidgetRequestWidgetType",
           "modelAsString": false,
@@ -341786,10 +342061,6 @@
             {
               "value": "logs_list",
               "name": "LogsList"
-            },
-            {
-              "value": "metrics",
-              "name": "Metrics"
             },
             {
               "value": "metrics_table",
@@ -357499,14 +357770,13 @@
           "experiment_results",
           "experiments_list",
           "logs_list",
-          "metrics",
           "metrics_table",
           "notebook_widget",
           "session_replay_list",
           "survey_results"
         ],
         "type": "string",
-        "description": "* \u0060activity_events_list\u0060 - Activity Events List\n* \u0060canvas_app\u0060 - Canvas App\n* \u0060conversations_recent_tickets\u0060 - Conversations Recent Tickets\n* \u0060error_tracking_list\u0060 - Error Tracking List\n* \u0060experiment_results\u0060 - Experiment Results\n* \u0060experiments_list\u0060 - Experiments List\n* \u0060logs_list\u0060 - Logs List\n* \u0060metrics\u0060 - Metrics\n* \u0060metrics_table\u0060 - Metrics Table\n* \u0060notebook_widget\u0060 - Notebook Widget\n* \u0060session_replay_list\u0060 - Session Replay List\n* \u0060survey_results\u0060 - Survey Results",
+        "description": "* \u0060activity_events_list\u0060 - Activity Events List\n* \u0060canvas_app\u0060 - Canvas App\n* \u0060conversations_recent_tickets\u0060 - Conversations Recent Tickets\n* \u0060error_tracking_list\u0060 - Error Tracking List\n* \u0060experiment_results\u0060 - Experiment Results\n* \u0060experiments_list\u0060 - Experiments List\n* \u0060logs_list\u0060 - Logs List\n* \u0060metrics_table\u0060 - Metrics Table\n* \u0060notebook_widget\u0060 - Notebook Widget\n* \u0060session_replay_list\u0060 - Session Replay List\n* \u0060survey_results\u0060 - Survey Results",
         "x-ms-enum": {
           "name": "DashboardPatchWidgetOpenApiWidgetType",
           "modelAsString": false,
@@ -357538,10 +357808,6 @@
             {
               "value": "logs_list",
               "name": "LogsList"
-            },
-            {
-              "value": "metrics",
-              "name": "Metrics"
             },
             {
               "value": "metrics_table",
@@ -357597,9 +357863,6 @@
           },
           {
             "$ref": "#/components/schemas/DashboardPatchWidgetOpenApiConfigOneOf11"
-          },
-          {
-            "$ref": "#/components/schemas/DashboardPatchWidgetOpenApiConfigOneOf12"
           }
         ]
       },
@@ -357982,9 +358245,6 @@
           },
           {
             "$ref": "#/components/schemas/DashboardWidgetConfigComposedOneOf11"
-          },
-          {
-            "$ref": "#/components/schemas/DashboardWidgetConfigComposedOneOf12"
           }
         ]
       },
@@ -408654,19 +408914,6 @@
           "description": "The definition of a variable set to All, so that a SQL query can load its options."
         }
       },
-      "MetricsWidgetCatalogEntryOpenApiConfigSchema": {
-        "title": "MetricsWidgetConfig",
-        "type": "object",
-        "properties": {
-          "query": {
-            "description": "Metrics query the tile runs and how it draws it (\u0060display.type\u0060: line, area, bar, stat, gauge, bargauge, table or heatmap). \u0060dateRange\u0060 is the default window; the dashboard date filter overrides it. A config update replaces the whole query.",
-            "$ref": "#/components/schemas/MetricsWidgetQuery"
-          }
-        },
-        "additionalProperties": false,
-        "description": "Config shape for this widget type. Build the config for the batch add and batch update tools from it, because their schemas do not list config keys.",
-        "readOnly": true
-      },
       "MetricsYAxisSettingsScale": {
         "anyOf": [
           {
@@ -454693,12 +454940,12 @@
             "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
           },
           "write_scopes": {
-            "maxItems": 14,
+            "maxItems": 15,
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
+            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060event_definition:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. \u0060event_definition:write\u0060 lets the scout change the tags on event definitions and nothing else. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
           },
           "lifecycle_locked": {
             "type": "boolean",
@@ -454959,12 +455206,12 @@
             "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
           },
           "write_scopes": {
-            "maxItems": 14,
+            "maxItems": 15,
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run.",
+            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060event_definition:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. \u0060event_definition:write\u0060 lets the scout change the tags on event definitions and nothing else. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run.",
             "readOnly": true
           },
           "lifecycle_locked": {
@@ -462319,12 +462566,12 @@
             "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
           },
           "write_scopes": {
-            "maxItems": 14,
+            "maxItems": 15,
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
+            "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060event_definition:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. \u0060event_definition:write\u0060 lets the scout change the tags on event definitions and nothing else. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
           },
           "lifecycle_locked": {
             "type": "boolean",
@@ -485133,14 +485380,13 @@
           "experiment_results",
           "experiments_list",
           "logs_list",
-          "metrics",
           "metrics_table",
           "notebook_widget",
           "session_replay_list",
           "survey_results"
         ],
         "type": "string",
-        "description": "* \u0060activity_events_list\u0060 - Activity Events List\n* \u0060canvas_app\u0060 - Canvas App\n* \u0060conversations_recent_tickets\u0060 - Conversations Recent Tickets\n* \u0060error_tracking_list\u0060 - Error Tracking List\n* \u0060experiment_results\u0060 - Experiment Results\n* \u0060experiments_list\u0060 - Experiments List\n* \u0060logs_list\u0060 - Logs List\n* \u0060metrics\u0060 - Metrics\n* \u0060metrics_table\u0060 - Metrics Table\n* \u0060notebook_widget\u0060 - Notebook Widget\n* \u0060session_replay_list\u0060 - Session Replay List\n* \u0060survey_results\u0060 - Survey Results",
+        "description": "* \u0060activity_events_list\u0060 - Activity Events List\n* \u0060canvas_app\u0060 - Canvas App\n* \u0060conversations_recent_tickets\u0060 - Conversations Recent Tickets\n* \u0060error_tracking_list\u0060 - Error Tracking List\n* \u0060experiment_results\u0060 - Experiment Results\n* \u0060experiments_list\u0060 - Experiments List\n* \u0060logs_list\u0060 - Logs List\n* \u0060metrics_table\u0060 - Metrics Table\n* \u0060notebook_widget\u0060 - Notebook Widget\n* \u0060session_replay_list\u0060 - Session Replay List\n* \u0060survey_results\u0060 - Survey Results",
         "x-ms-enum": {
           "name": "UpdateDashboardWidgetRequestWidgetType",
           "modelAsString": false,
@@ -485172,10 +485418,6 @@
             {
               "value": "logs_list",
               "name": "LogsList"
-            },
-            {
-              "value": "metrics",
-              "name": "Metrics"
             },
             {
               "value": "metrics_table",
@@ -507776,14 +508018,6 @@
           ]
         }
       },
-      "MetricsWidgetQueryKind": {
-        "title": "Kind",
-        "enum": [
-          "MetricsQuery"
-        ],
-        "type": "string",
-        "x-client-original-const": "MetricsQuery"
-      },
       "ActionsNodeMathAnyOf8": {
         "enum": [
           "hogql"
@@ -511018,7 +511252,6 @@
           "experiment_results",
           "experiments_list",
           "logs_list",
-          "metrics",
           "metrics_table",
           "notebook_widget",
           "session_replay_list",
@@ -511056,10 +511289,6 @@
             {
               "value": "logs_list",
               "name": "LogsList"
-            },
-            {
-              "value": "metrics",
-              "name": "Metrics"
             },
             {
               "value": "metrics_table",
@@ -519745,17 +519974,6 @@
         },
         "additionalProperties": false
       },
-      "DashboardPatchWidgetOpenApiConfigOneOf12": {
-        "title": "MetricsWidgetConfig",
-        "type": "object",
-        "properties": {
-          "query": {
-            "description": "Metrics query the tile runs and how it draws it (\u0060display.type\u0060: line, area, bar, stat, gauge, bargauge, table or heatmap). \u0060dateRange\u0060 is the default window; the dashboard date filter overrides it. A config update replaces the whole query.",
-            "$ref": "#/components/schemas/MetricsWidgetQuery"
-          }
-        },
-        "additionalProperties": false
-      },
       "DashboardWidgetConfigComposedOneOf1": {
         "title": "NotebookWidgetConfig",
         "type": "object",
@@ -520182,17 +520400,6 @@
             "type": "integer",
             "description": "Maximum number of rows to show.",
             "default": 25
-          }
-        },
-        "additionalProperties": false
-      },
-      "DashboardWidgetConfigComposedOneOf12": {
-        "title": "MetricsWidgetConfig",
-        "type": "object",
-        "properties": {
-          "query": {
-            "description": "Metrics query the tile runs and how it draws it (\u0060display.type\u0060: line, area, bar, stat, gauge, bargauge, table or heatmap). \u0060dateRange\u0060 is the default window; the dashboard date filter overrides it. A config update replaces the whole query.",
-            "$ref": "#/components/schemas/MetricsWidgetQuery"
           }
         },
         "additionalProperties": false
@@ -526459,56 +526666,6 @@
               },
               "config_schema": {
                 "$ref": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApiConfigSchema"
-              },
-              "required_product_access": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "live": {
-                "type": "boolean",
-                "description": "Whether tiles of this type self-update in real time after load. Live tiles show a fixed real-time window and cannot apply test-account filtering to the stream, so their config takes neither dateRange nor filterTestAccounts."
-              }
-            }
-          }
-        ]
-      },
-      "WidgetCatalogEntryMetricsWidgetCatalogEntryOpenApi": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/WidgetCatalogEntry"
-          },
-          {
-            "required": [
-              "config_schema",
-              "description",
-              "group_id",
-              "group_label",
-              "label",
-              "live",
-              "widget_type"
-            ],
-            "type": "object",
-            "properties": {
-              "widget_type": {
-                "description": "* \u0060metrics\u0060 - metrics",
-                "$ref": "#/components/schemas/MetricsWidgetTypeEnum"
-              },
-              "group_id": {
-                "type": "string"
-              },
-              "group_label": {
-                "type": "string"
-              },
-              "label": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "config_schema": {
-                "$ref": "#/components/schemas/MetricsWidgetCatalogEntryOpenApiConfigSchema"
               },
               "required_product_access": {
                 "type": [
@@ -608391,9 +608548,6 @@
         },
         {
           "$ref": "#/components/schemas/MetricsTableWidgetConfig"
-        },
-        {
-          "$ref": "#/components/schemas/MetricsWidgetConfig"
         }
       ]
     },
@@ -608406,14 +608560,13 @@
         "experiment_results",
         "experiments_list",
         "logs_list",
-        "metrics",
         "metrics_table",
         "notebook_widget",
         "session_replay_list",
         "survey_results"
       ],
       "type": "string",
-      "description": "* \u0060activity_events_list\u0060 - Activity Events List\n* \u0060canvas_app\u0060 - Canvas App\n* \u0060conversations_recent_tickets\u0060 - Conversations Recent Tickets\n* \u0060error_tracking_list\u0060 - Error Tracking List\n* \u0060experiment_results\u0060 - Experiment Results\n* \u0060experiments_list\u0060 - Experiments List\n* \u0060logs_list\u0060 - Logs List\n* \u0060metrics\u0060 - Metrics\n* \u0060metrics_table\u0060 - Metrics Table\n* \u0060notebook_widget\u0060 - Notebook Widget\n* \u0060session_replay_list\u0060 - Session Replay List\n* \u0060survey_results\u0060 - Survey Results",
+      "description": "* \u0060activity_events_list\u0060 - Activity Events List\n* \u0060canvas_app\u0060 - Canvas App\n* \u0060conversations_recent_tickets\u0060 - Conversations Recent Tickets\n* \u0060error_tracking_list\u0060 - Error Tracking List\n* \u0060experiment_results\u0060 - Experiment Results\n* \u0060experiments_list\u0060 - Experiments List\n* \u0060logs_list\u0060 - Logs List\n* \u0060metrics_table\u0060 - Metrics Table\n* \u0060notebook_widget\u0060 - Notebook Widget\n* \u0060session_replay_list\u0060 - Session Replay List\n* \u0060survey_results\u0060 - Survey Results",
       "x-ms-enum": {
         "name": "DashboardWidgetTypeEnum",
         "modelAsString": false,
@@ -608445,10 +608598,6 @@
           {
             "value": "logs_list",
             "name": "LogsList"
-          },
-          {
-            "value": "metrics",
-            "name": "Metrics"
           },
           {
             "value": "metrics_table",
@@ -634883,49 +635032,6 @@
         },
         "config_schema": {
           "$ref": "#/components/schemas/MetricsTableWidgetCatalogEntryOpenApiConfigSchema"
-        },
-        "required_product_access": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "live": {
-          "type": "boolean",
-          "description": "Whether tiles of this type self-update in real time after load. Live tiles show a fixed real-time window and cannot apply test-account filtering to the stream, so their config takes neither dateRange nor filterTestAccounts."
-        }
-      }
-    },
-    "MetricsWidgetCatalogEntryOpenApi": {
-      "required": [
-        "config_schema",
-        "description",
-        "group_id",
-        "group_label",
-        "label",
-        "live",
-        "widget_type"
-      ],
-      "type": "object",
-      "properties": {
-        "widget_type": {
-          "description": "* \u0060metrics\u0060 - metrics",
-          "$ref": "#/components/schemas/MetricsWidgetTypeEnum"
-        },
-        "group_id": {
-          "type": "string"
-        },
-        "group_label": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "config_schema": {
-          "$ref": "#/components/schemas/MetricsWidgetCatalogEntryOpenApiConfigSchema"
         },
         "required_product_access": {
           "type": [
@@ -663107,12 +663213,12 @@
           "description": "GitHub repositories this scout clones into its sandbox, each in \u0060organization/repo\u0060 format. Set them for a scout that reads code, so it can search the tree and run the project\u0027s own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout\u0027s GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project\u0027s GitHub connection. Applies from the scout\u0027s next run."
         },
         "write_scopes": {
-          "maxItems": 14,
+          "maxItems": 15,
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
+          "description": "Write access granted to this one scout, as scope strings. The grantable set is \u0060alert:write\u0060, \u0060annotation:write\u0060, \u0060canvas:write\u0060, \u0060customer_task:write\u0060, \u0060dashboard:write\u0060, \u0060event_definition:write\u0060, \u0060experiment:write\u0060, \u0060hog_flow_proposal:write\u0060, \u0060insight:write\u0060, \u0060llm_skill:write\u0060, \u0060notebook:write\u0060, \u0060replay_scanner:write\u0060, \u0060ticket:write\u0060, \u0060warehouse_table:write\u0060, \u0060warehouse_view:write\u0060. A new scout starts with \u0060notebook:write\u0060 when this field is omitted. Empty means the scout reads the project and writes only its findings and its own memory. Each scope is project-wide and object-level, so a scout holding \u0060dashboard:write\u0060 can update or delete any dashboard in the project, not only ones it made. \u0060ticket:write\u0060 lets the scout update tickets, manage saved views, and add private notes. Scouts cannot send public replies, compose emails, change existing notes, or change customer identity fields. Ticket changes can start workflows that message customers. \u0060event_definition:write\u0060 lets the scout change the tags on event definitions and nothing else. Grant only what this scout maintains. Only the person the scout\u0027s runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (\u0060emit=false\u0060) never holds the grant, and a run that acts as a project member other than the author holds only the default scopes. Applies from the scout\u0027s next run."
         },
         "lifecycle_locked": {
           "type": "boolean",
@@ -680511,17 +680617,6 @@
           "type": "integer",
           "description": "Maximum number of rows to show.",
           "default": 25
-        }
-      },
-      "additionalProperties": false
-    },
-    "MetricsWidgetConfig": {
-      "title": "MetricsWidgetConfig",
-      "type": "object",
-      "properties": {
-        "query": {
-          "description": "Metrics query the tile runs and how it draws it (\u0060display.type\u0060: line, area, bar, stat, gauge, bargauge, table or heatmap). \u0060dateRange\u0060 is the default window; the dashboard date filter overrides it. A config update replaces the whole query.",
-          "$ref": "#/components/schemas/MetricsWidgetQuery"
         }
       },
       "additionalProperties": false
@@ -865719,168 +865814,6 @@
           }
         ]
       }
-    },
-    "MetricsWidgetQueryDateRange": {
-      "title": "DateRange",
-      "type": [
-        "object",
-        "null"
-      ],
-      "properties": {
-        "date_from": {
-          "title": "Date From",
-          "type": [
-            "null",
-            "string"
-          ],
-          "description": "Start of the date range. Accepts ISO 8601 timestamps (e.g., 2024-01-15T00:00:00Z) or relative formats: -7d (7 days ago), -2w (2 weeks ago), -1m (1 month ago),\n-1h (1 hour ago), -1mStart (start of last month), -1yStart (start of last year).",
-          "default": null
-        },
-        "date_to": {
-          "title": "Date To",
-          "type": [
-            "null",
-            "string"
-          ],
-          "description": "End of the date range. Same format as date_from. Omit or null for \u0022now\u0022. A calendar day without a time (2024-01-15) is inclusive: it rounds to the last moment of that day in the project timezone, unless explicitDate is set.",
-          "default": null
-        },
-        "daysOfWeek": {
-          "title": "Daysofweek",
-          "type": [
-            "null",
-            "array"
-          ],
-          "items": {
-            "$ref": "#/components/schemas/DaysOfWeekEnum"
-          },
-          "description": "Restrict the query to events occurring on these ISO days of week (1=Monday to 7=Sunday), evaluated in the project timezone. Omit or empty for all days. Only applied by insight queries.",
-          "default": null
-        },
-        "excludeIncompletePeriods": {
-          "title": "Excludeincompleteperiods",
-          "type": [
-            "null",
-            "boolean"
-          ],
-          "description": "Exclude the current, still-collecting period by clipping date_to to the end of the last complete interval (evaluated in the project timezone). No-op when the range contains no complete interval. Only applied by insight queries.",
-          "default": false
-        },
-        "explicitDate": {
-          "title": "Explicitdate",
-          "type": [
-            "null",
-            "boolean"
-          ],
-          "description": "Whether the date_from and date_to should be used verbatim. Disables rounding to the start and end of period.",
-          "default": false
-        }
-      },
-      "additionalProperties": false,
-      "description": "Defaults to the last 24 hours when omitted; dashboard date filters override it",
-      "x-client-original-nullable-union": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/DateRange"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "Defaults to the last 24 hours when omitted; dashboard date filters override it"
-      }
-    },
-    "MetricsWidgetQueryDisplay": {
-      "title": "MetricsDisplaySettings",
-      "type": [
-        "object",
-        "null"
-      ],
-      "properties": {
-        "goalLines": {
-          "title": "Goallines",
-          "type": [
-            "null",
-            "array"
-          ],
-          "items": {
-            "$ref": "#/components/schemas/GoalLine"
-          },
-          "default": null
-        },
-        "legendCalcs": {
-          "title": "Legendcalcs",
-          "type": [
-            "null",
-            "array"
-          ],
-          "items": {
-            "$ref": "#/components/schemas/MetricsReducer"
-          },
-          "description": "Time-series panels only: which reducers the legend table shows. Empty means no legend calcs.",
-          "default": null
-        },
-        "nullMode": {
-          "$ref": "#/components/schemas/MetricsDisplaySettingsNullMode"
-        },
-        "reduce": {
-          "$ref": "#/components/schemas/MetricsDisplaySettingsReduce"
-        },
-        "statSummary": {
-          "$ref": "#/components/schemas/MetricsDisplaySettingsStatSummary"
-        },
-        "thresholds": {
-          "title": "Thresholds",
-          "type": [
-            "null",
-            "array"
-          ],
-          "items": {
-            "$ref": "#/components/schemas/MetricsThreshold"
-          },
-          "description": "Color bands for the scalar panels. Sorted by \u0060value\u0060 at read time, so entry order does not matter.",
-          "default": null
-        },
-        "type": {
-          "$ref": "#/components/schemas/MetricsDisplaySettingsType"
-        },
-        "unit": {
-          "title": "Unit",
-          "type": [
-            "null",
-            "string"
-          ],
-          "description": "UCUM unit string as OTel writes it, e.g. \u0022By\u0022, \u0022ms\u0022, \u0022%\u0022. Defaults from the response unit.",
-          "default": null
-        },
-        "yAxis": {
-          "$ref": "#/components/schemas/MetricsDisplaySettingsYAxis"
-        }
-      },
-      "additionalProperties": false,
-      "description": "Chart presentation. A node without it renders as a line chart.",
-      "x-client-original-nullable-union": {
-        "anyOf": [
-          {
-            "$ref": "#/components/schemas/MetricsDisplaySettings"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "description": "Chart presentation. A node without it renders as a line chart."
-      }
-    },
-    "MetricsWidgetQueryLanguage": {
-      "anyOf": [
-        {
-          "$ref": "#/components/schemas/MetricsQueryLanguage"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "description": "How the query is written; the builder when unset."
     },
     "ActorsQueryPropertiesAnyOf1Item": {
       "anyOf": [
