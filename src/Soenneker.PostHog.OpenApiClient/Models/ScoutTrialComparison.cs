@@ -74,12 +74,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Saved evaluation and report when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation? Evaluation { get => _explicitNullValueEvaluation; set { _explicitNullValueEvaluation = value; AdditionalData?.Remove("evaluation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation"); else _explicitNullProperties?.Remove("evaluation"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation? _explicitNullValueEvaluation = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonEvaluation? Evaluation { get => _explicitNullValueEvaluation; set { _explicitNullValueEvaluation = value; AdditionalData?.Remove("evaluation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation"); else _explicitNullProperties?.Remove("evaluation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonEvaluation? _explicitNullValueEvaluation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation Evaluation { get => _explicitNullValueEvaluation; set { _explicitNullValueEvaluation = value; AdditionalData?.Remove("evaluation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation"); else _explicitNullProperties?.Remove("evaluation"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation _explicitNullValueEvaluation = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonEvaluation Evaluation { get => _explicitNullValueEvaluation; set { _explicitNullValueEvaluation = value; AdditionalData?.Remove("evaluation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation"); else _explicitNullProperties?.Remove("evaluation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonEvaluation _explicitNullValueEvaluation = default!;
 #endif
         /// <summary>Reviewed rubric revision frozen before the runs started.</summary>
         public int? RubricRevision { get => _explicitNullValueRubricRevision; set { _explicitNullValueRubricRevision = value; AdditionalData?.Remove("rubric_revision"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rubric_revision"); else _explicitNullProperties?.Remove("rubric_revision"); } }
@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "context_id", n => { ContextId = n.GetGuidValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "evaluation", n => { Evaluation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation.CreateFromDiscriminatorValue); } },
+                { "evaluation", n => { Evaluation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonEvaluation>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonEvaluation.CreateFromDiscriminatorValue); } },
                 { "rubric_revision", n => { RubricRevision = n.GetIntValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "variants", n => { Variants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -149,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("context_id", ContextId);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluation>("evaluation", Evaluation);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonEvaluation>("evaluation", Evaluation);
             writer.WriteIntValue("rubric_revision", RubricRevision);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariant>("variants", Variants);

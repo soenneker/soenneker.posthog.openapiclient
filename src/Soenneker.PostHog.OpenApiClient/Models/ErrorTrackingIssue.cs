@@ -54,32 +54,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The aggregations property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations? Aggregations { get => _explicitNullValueAggregations; set { _explicitNullValueAggregations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregations"); else _explicitNullProperties?.Remove("aggregations"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations? _explicitNullValueAggregations = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsComposed? Aggregations { get => _explicitNullValueAggregations; set { _explicitNullValueAggregations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregations"); else _explicitNullProperties?.Remove("aggregations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsComposed? _explicitNullValueAggregations = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations Aggregations { get => _explicitNullValueAggregations; set { _explicitNullValueAggregations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregations"); else _explicitNullProperties?.Remove("aggregations"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations _explicitNullValueAggregations = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsComposed Aggregations { get => _explicitNullValueAggregations; set { _explicitNullValueAggregations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregations"); else _explicitNullProperties?.Remove("aggregations"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsComposed _explicitNullValueAggregations = default!;
 #endif
         /// <summary>The assignee property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee? _explicitNullValueAssignee = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueAssignee? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueAssignee? _explicitNullValueAssignee = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee _explicitNullValueAssignee = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueAssignee Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueAssignee _explicitNullValueAssignee = default!;
 #endif
         /// <summary>The cohort property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort? Cohort { get => _explicitNullValueCohort; set { _explicitNullValueCohort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohort"); else _explicitNullProperties?.Remove("cohort"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort? _explicitNullValueCohort = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueCohort? Cohort { get => _explicitNullValueCohort; set { _explicitNullValueCohort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohort"); else _explicitNullProperties?.Remove("cohort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueCohort? _explicitNullValueCohort = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort Cohort { get => _explicitNullValueCohort; set { _explicitNullValueCohort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohort"); else _explicitNullProperties?.Remove("cohort"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort _explicitNullValueCohort = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueCohort Cohort { get => _explicitNullValueCohort; set { _explicitNullValueCohort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohort"); else _explicitNullProperties?.Remove("cohort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueCohort _explicitNullValueCohort = default!;
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,12 +104,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The first_event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FirstEvent? FirstEvent { get => _explicitNullValueFirstEvent; set { _explicitNullValueFirstEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_event"); else _explicitNullProperties?.Remove("first_event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FirstEvent? _explicitNullValueFirstEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFirstEvent? FirstEvent { get => _explicitNullValueFirstEvent; set { _explicitNullValueFirstEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_event"); else _explicitNullProperties?.Remove("first_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFirstEvent? _explicitNullValueFirstEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FirstEvent FirstEvent { get => _explicitNullValueFirstEvent; set { _explicitNullValueFirstEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_event"); else _explicitNullProperties?.Remove("first_event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FirstEvent _explicitNullValueFirstEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFirstEvent FirstEvent { get => _explicitNullValueFirstEvent; set { _explicitNullValueFirstEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_event"); else _explicitNullProperties?.Remove("first_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFirstEvent _explicitNullValueFirstEvent = default!;
 #endif
         /// <summary>The first_seen property</summary>
         public DateTimeOffset? FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
@@ -137,12 +137,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The last_event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LastEvent? LastEvent { get => _explicitNullValueLastEvent; set { _explicitNullValueLastEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_event"); else _explicitNullProperties?.Remove("last_event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LastEvent? _explicitNullValueLastEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueLastEvent? LastEvent { get => _explicitNullValueLastEvent; set { _explicitNullValueLastEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_event"); else _explicitNullProperties?.Remove("last_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueLastEvent? _explicitNullValueLastEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LastEvent LastEvent { get => _explicitNullValueLastEvent; set { _explicitNullValueLastEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_event"); else _explicitNullProperties?.Remove("last_event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LastEvent _explicitNullValueLastEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueLastEvent LastEvent { get => _explicitNullValueLastEvent; set { _explicitNullValueLastEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_event"); else _explicitNullProperties?.Remove("last_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueLastEvent _explicitNullValueLastEvent = default!;
 #endif
         /// <summary>The last_seen property</summary>
         public DateTimeOffset? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
@@ -201,16 +201,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "aggregations", n => { Aggregations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations.CreateFromDiscriminatorValue); } },
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee.CreateFromDiscriminatorValue); } },
-                { "cohort", n => { Cohort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort.CreateFromDiscriminatorValue); } },
+                { "aggregations", n => { Aggregations = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsComposed.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueAssignee.CreateFromDiscriminatorValue); } },
+                { "cohort", n => { Cohort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueCohort>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueCohort.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "external_issues", n => { ExternalIssues = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReference>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReference.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "first_event", n => { FirstEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstEvent>(global::Soenneker.PostHog.OpenApiClient.Models.FirstEvent.CreateFromDiscriminatorValue); } },
+                { "first_event", n => { FirstEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFirstEvent>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFirstEvent.CreateFromDiscriminatorValue); } },
                 { "first_seen", n => { FirstSeen = n.GetDateTimeOffsetValue(); } },
                 { "function", n => { Function = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "last_event", n => { LastEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LastEvent>(global::Soenneker.PostHog.OpenApiClient.Models.LastEvent.CreateFromDiscriminatorValue); } },
+                { "last_event", n => { LastEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueLastEvent>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueLastEvent.CreateFromDiscriminatorValue); } },
                 { "last_seen", n => { LastSeen = n.GetDateTimeOffsetValue(); } },
                 { "library", n => { Library = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -226,16 +226,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregations>("aggregations", Aggregations);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAssignee>("assignee", Assignee);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohort>("cohort", Cohort);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueAggregationsComposed>("aggregations", Aggregations);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueAssignee>("assignee", Assignee);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingCorrelatedIssueCohort>("cohort", Cohort);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingExternalReference>("external_issues", ExternalIssues);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstEvent>("first_event", FirstEvent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueFirstEvent>("first_event", FirstEvent);
             writer.WriteDateTimeOffsetValue("first_seen", FirstSeen);
             writer.WriteStringValue("function", Function);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LastEvent>("last_event", LastEvent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueLastEvent>("last_event", LastEvent);
             writer.WriteDateTimeOffsetValue("last_seen", LastSeen);
             writer.WriteStringValue("library", Library);
             writer.WriteStringValue("name", Name);

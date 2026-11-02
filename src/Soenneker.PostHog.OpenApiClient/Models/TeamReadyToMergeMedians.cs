@@ -38,12 +38,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Over the pull requests by the team&apos;s members, the same population as a github_team scope, without the pr_number pull request. Null when fewer than three other authors contribute a ready time, because the author could read a teammate&apos;s value back from the median. The approval medians are null on the same terms for approvals.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians? Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; AdditionalData?.Remove("medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians? _explicitNullValueMedians = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMediansMedians? Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; AdditionalData?.Remove("medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMediansMedians? _explicitNullValueMedians = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; AdditionalData?.Remove("medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians _explicitNullValueMedians = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMediansMedians Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; AdditionalData?.Remove("medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMediansMedians _explicitNullValueMedians = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians"/> and sets the default values.
@@ -71,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "github_team", n => { GithubTeam = n.GetStringValue(); } },
-                { "medians", n => { Medians = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians>(global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians.CreateFromDiscriminatorValue); } },
+                { "medians", n => { Medians = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMediansMedians>(global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMediansMedians.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("github_team", GithubTeam);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians>("medians", Medians);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMediansMedians>("medians", Medians);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

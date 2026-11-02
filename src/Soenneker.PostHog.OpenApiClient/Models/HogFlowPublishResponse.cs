@@ -49,12 +49,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>What publishing does to people in-flight. Only set on previews; counts are approximate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact? Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; AdditionalData?.Remove("impact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact? _explicitNullValueImpact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseImpact? Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; AdditionalData?.Remove("impact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseImpact? _explicitNullValueImpact = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; AdditionalData?.Remove("impact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact _explicitNullValueImpact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseImpact Impact { get => _explicitNullValueImpact; set { _explicitNullValueImpact = value; AdditionalData?.Remove("impact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("impact"); else _explicitNullProperties?.Remove("impact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseImpact _explicitNullValueImpact = default!;
 #endif
         /// <summary>Runs currently in flight (parked on waits/delays or executing) that will follow the new config once published. Null when the count is unavailable.</summary>
         public int? InFlightRuns { get => _explicitNullValueInFlightRuns; set { _explicitNullValueInFlightRuns = value; AdditionalData?.Remove("in_flight_runs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("in_flight_runs"); else _explicitNullProperties?.Remove("in_flight_runs"); } }
@@ -65,12 +65,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The workflow after publishing (only set when published=true).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlow? Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; AdditionalData?.Remove("workflow"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlow? _explicitNullValueWorkflow = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseWorkflow? Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; AdditionalData?.Remove("workflow"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseWorkflow? _explicitNullValueWorkflow = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlow Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; AdditionalData?.Remove("workflow"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlow _explicitNullValueWorkflow = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseWorkflow Workflow { get => _explicitNullValueWorkflow; set { _explicitNullValueWorkflow = value; AdditionalData?.Remove("workflow"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow"); else _explicitNullProperties?.Remove("workflow"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseWorkflow _explicitNullValueWorkflow = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponse"/> and sets the default values.
@@ -99,10 +99,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "confirm_token", n => { ConfirmToken = n.GetStringValue(); } },
                 { "draft_updated_at", n => { DraftUpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "impact", n => { Impact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact.CreateFromDiscriminatorValue); } },
+                { "impact", n => { Impact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseImpact>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseImpact.CreateFromDiscriminatorValue); } },
                 { "in_flight_runs", n => { InFlightRuns = n.GetIntValue(); } },
                 { "published", n => { Published = n.GetBoolValue(); } },
-                { "workflow", n => { Workflow = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlow.CreateFromDiscriminatorValue); } },
+                { "workflow", n => { Workflow = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseWorkflow>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseWorkflow.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -114,10 +114,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("confirm_token", ConfirmToken);
             writer.WriteDateTimeOffsetValue("draft_updated_at", DraftUpdatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishImpact>("impact", Impact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseImpact>("impact", Impact);
             writer.WriteIntValue("in_flight_runs", InFlightRuns);
             writer.WriteBoolValue("published", Published);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlow>("workflow", Workflow);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowPublishResponseWorkflow>("workflow", Workflow);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

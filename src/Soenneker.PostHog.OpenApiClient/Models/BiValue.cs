@@ -51,12 +51,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The display property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay? _explicitNullValueDisplay = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiValueDisplay? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiValueDisplay? _explicitNullValueDisplay = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay _explicitNullValueDisplay = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiValueDisplay Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiValueDisplay _explicitNullValueDisplay = default!;
 #endif
         /// <summary>The field property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -71,12 +71,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The formatting property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsFormatting? Formatting { get => _explicitNullValueFormatting; set { _explicitNullValueFormatting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("formatting"); else _explicitNullProperties?.Remove("formatting"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsFormatting? _explicitNullValueFormatting = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiValueFormatting? Formatting { get => _explicitNullValueFormatting; set { _explicitNullValueFormatting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("formatting"); else _explicitNullProperties?.Remove("formatting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiValueFormatting? _explicitNullValueFormatting = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsFormatting Formatting { get => _explicitNullValueFormatting; set { _explicitNullValueFormatting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("formatting"); else _explicitNullProperties?.Remove("formatting"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsFormatting _explicitNullValueFormatting = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiValueFormatting Formatting { get => _explicitNullValueFormatting; set { _explicitNullValueFormatting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("formatting"); else _explicitNullProperties?.Remove("formatting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiValueFormatting _explicitNullValueFormatting = default!;
 #endif
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,12 +94,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tableCalculation property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation? TableCalculation { get => _explicitNullValueTableCalculation; set { _explicitNullValueTableCalculation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tableCalculation"); else _explicitNullProperties?.Remove("tableCalculation"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation? _explicitNullValueTableCalculation = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiValueTableCalculation? TableCalculation { get => _explicitNullValueTableCalculation; set { _explicitNullValueTableCalculation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tableCalculation"); else _explicitNullProperties?.Remove("tableCalculation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiValueTableCalculation? _explicitNullValueTableCalculation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation TableCalculation { get => _explicitNullValueTableCalculation; set { _explicitNullValueTableCalculation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tableCalculation"); else _explicitNullProperties?.Remove("tableCalculation"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation _explicitNullValueTableCalculation = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BiValueTableCalculation TableCalculation { get => _explicitNullValueTableCalculation; set { _explicitNullValueTableCalculation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tableCalculation"); else _explicitNullProperties?.Remove("tableCalculation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BiValueTableCalculation _explicitNullValueTableCalculation = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -121,12 +121,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "aggregation", n => { Aggregation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BiAggregation>(); } },
                 { "customExpression", n => { CustomExpression = n.GetStringValue(); } },
-                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay.CreateFromDiscriminatorValue); } },
+                { "display", n => { Display = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiValueDisplay>(global::Soenneker.PostHog.OpenApiClient.Models.BiValueDisplay.CreateFromDiscriminatorValue); } },
                 { "field", n => { Field = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiField>(global::Soenneker.PostHog.OpenApiClient.Models.BiField.CreateFromDiscriminatorValue); } },
-                { "formatting", n => { Formatting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsFormatting>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsFormatting.CreateFromDiscriminatorValue); } },
+                { "formatting", n => { Formatting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiValueFormatting>(global::Soenneker.PostHog.OpenApiClient.Models.BiValueFormatting.CreateFromDiscriminatorValue); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "shelf", n => { Shelf = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Shelf>(); } },
-                { "tableCalculation", n => { TableCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation.CreateFromDiscriminatorValue); } },
+                { "tableCalculation", n => { TableCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiValueTableCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.BiValueTableCalculation.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -138,12 +138,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BiAggregation>("aggregation", Aggregation);
             writer.WriteStringValue("customExpression", CustomExpression);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsDisplay>("display", Display);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiValueDisplay>("display", Display);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiField>("field", Field);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsFormatting>("formatting", Formatting);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiValueFormatting>("formatting", Formatting);
             writer.WriteStringValue("label", Label);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Shelf>("shelf", Shelf);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiTableCalculation>("tableCalculation", TableCalculation);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiValueTableCalculation>("tableCalculation", TableCalculation);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

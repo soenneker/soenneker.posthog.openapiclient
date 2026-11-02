@@ -55,12 +55,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The level the subject falls back to without a rule of its own, with the rule that supplies it. Read `source` and `source_subject` to tell a role rule from the project default, or an organization admin&apos;s full access.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess? InheritedAccess { get => _explicitNullValueInheritedAccess; set { _explicitNullValueInheritedAccess = value; AdditionalData?.Remove("inherited_access"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_access"); else _explicitNullProperties?.Remove("inherited_access"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess? _explicitNullValueInheritedAccess = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubjectAccessEntryInheritedAccess? InheritedAccess { get => _explicitNullValueInheritedAccess; set { _explicitNullValueInheritedAccess = value; AdditionalData?.Remove("inherited_access"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_access"); else _explicitNullProperties?.Remove("inherited_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubjectAccessEntryInheritedAccess? _explicitNullValueInheritedAccess = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess InheritedAccess { get => _explicitNullValueInheritedAccess; set { _explicitNullValueInheritedAccess = value; AdditionalData?.Remove("inherited_access"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_access"); else _explicitNullProperties?.Remove("inherited_access"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess _explicitNullValueInheritedAccess = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubjectAccessEntryInheritedAccess InheritedAccess { get => _explicitNullValueInheritedAccess; set { _explicitNullValueInheritedAccess = value; AdditionalData?.Remove("inherited_access"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_access"); else _explicitNullProperties?.Remove("inherited_access"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SubjectAccessEntryInheritedAccess _explicitNullValueInheritedAccess = default!;
 #endif
         /// <summary>The highest level this scope allows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "access_level", n => { AccessLevel = n.GetStringValue(); } },
                 { "effective_access_level", n => { EffectiveAccessLevel = n.GetStringValue(); } },
-                { "inherited_access", n => { InheritedAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess.CreateFromDiscriminatorValue); } },
+                { "inherited_access", n => { InheritedAccess = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubjectAccessEntryInheritedAccess>(global::Soenneker.PostHog.OpenApiClient.Models.SubjectAccessEntryInheritedAccess.CreateFromDiscriminatorValue); } },
                 { "maximum", n => { Maximum = n.GetStringValue(); } },
                 { "minimum", n => { Minimum = n.GetStringValue(); } },
             };
@@ -123,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("access_level", AccessLevel);
             writer.WriteStringValue("effective_access_level", EffectiveAccessLevel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess>("inherited_access", InheritedAccess);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SubjectAccessEntryInheritedAccess>("inherited_access", InheritedAccess);
             writer.WriteStringValue("maximum", Maximum);
             writer.WriteStringValue("minimum", Minimum);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

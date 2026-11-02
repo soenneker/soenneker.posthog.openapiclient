@@ -75,12 +75,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Unpublished edits to a transactional template&apos;s content. Sends keep using `content`. Saving `content` publishes it and clears the draft. Set null to discard the draft.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent? DraftContent { get => _explicitNullValueDraftContent; set { _explicitNullValueDraftContent = value; AdditionalData?.Remove("draft_content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_content"); else _explicitNullProperties?.Remove("draft_content"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent? _explicitNullValueDraftContent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateDraftContent? DraftContent { get => _explicitNullValueDraftContent; set { _explicitNullValueDraftContent = value; AdditionalData?.Remove("draft_content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_content"); else _explicitNullProperties?.Remove("draft_content"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateDraftContent? _explicitNullValueDraftContent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent DraftContent { get => _explicitNullValueDraftContent; set { _explicitNullValueDraftContent = value; AdditionalData?.Remove("draft_content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_content"); else _explicitNullProperties?.Remove("draft_content"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent _explicitNullValueDraftContent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateDraftContent DraftContent { get => _explicitNullValueDraftContent; set { _explicitNullValueDraftContent = value; AdditionalData?.Remove("draft_content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_content"); else _explicitNullProperties?.Remove("draft_content"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateDraftContent _explicitNullValueDraftContent = default!;
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -154,7 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMessageTemplateCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedMessageTemplateCreatedBy.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "draft_content", n => { DraftContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent>(global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent.CreateFromDiscriminatorValue); } },
+                { "draft_content", n => { DraftContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateDraftContent>(global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateDraftContent.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message_category", n => { MessageCategory = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -175,7 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedMessageTemplateContent>("content", Content);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContent>("draft_content", DraftContent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateDraftContent>("draft_content", DraftContent);
             writer.WriteGuidValue("message_category", MessageCategory);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("sensitive", Sensitive);

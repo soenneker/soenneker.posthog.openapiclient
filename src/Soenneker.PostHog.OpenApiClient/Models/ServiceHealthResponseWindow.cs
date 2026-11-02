@@ -31,12 +31,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The baseline window. Null when compare is none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthTimeRange? Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; AdditionalData?.Remove("baseline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthTimeRange? _explicitNullValueBaseline = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowBaseline? Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; AdditionalData?.Remove("baseline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowBaseline? _explicitNullValueBaseline = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthTimeRange Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; AdditionalData?.Remove("baseline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthTimeRange _explicitNullValueBaseline = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowBaseline Baseline { get => _explicitNullValueBaseline; set { _explicitNullValueBaseline = value; AdditionalData?.Remove("baseline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline"); else _explicitNullProperties?.Remove("baseline"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowBaseline _explicitNullValueBaseline = default!;
 #endif
         /// <summary>The scored window. Reuse it as dateRange in follow-up calls.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "baseline", n => { Baseline = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthTimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthTimeRange.CreateFromDiscriminatorValue); } },
+                { "baseline", n => { Baseline = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowBaseline>(global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowBaseline.CreateFromDiscriminatorValue); } },
                 { "current", n => { Current = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowCurrent>(global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowCurrent.CreateFromDiscriminatorValue); } },
                 { "timezone", n => { Timezone = n.GetStringValue(); } },
             };
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthTimeRange>("baseline", Baseline);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowBaseline>("baseline", Baseline);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ServiceHealthWindowCurrent>("current", Current);
             writer.WriteStringValue("timezone", Timezone);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

@@ -65,12 +65,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The pr_number pull request measured the same way, when it merged in the window. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge? PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge? _explicitNullValuePullRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonPullRequest? PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonPullRequest? _explicitNullValuePullRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge _explicitNullValuePullRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonPullRequest PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonPullRequest _explicitNullValuePullRequest = default!;
 #endif
         /// <summary>False when issue events aren&apos;t synced: the ready-to-merge medians are then null.</summary>
         public bool? ReadyDataAvailable { get => _explicitNullValueReadyDataAvailable; set { _explicitNullValueReadyDataAvailable = value; AdditionalData?.Remove("ready_data_available"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_data_available"); else _explicitNullProperties?.Remove("ready_data_available"); } }
@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "author", n => { Author = n.GetStringValue(); } },
                 { "author_medians", n => { AuthorMedians = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians>(global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians.CreateFromDiscriminatorValue); } },
                 { "has_membership_data", n => { HasMembershipData = n.GetBoolValue(); } },
-                { "pull_request", n => { PullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge.CreateFromDiscriminatorValue); } },
+                { "pull_request", n => { PullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonPullRequest.CreateFromDiscriminatorValue); } },
                 { "ready_data_available", n => { ReadyDataAvailable = n.GetBoolValue(); } },
                 { "repo_medians", n => { RepoMedians = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians>(global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians.CreateFromDiscriminatorValue); } },
                 { "review_data_available", n => { ReviewDataAvailable = n.GetBoolValue(); } },
@@ -147,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("author", Author);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians>("author_medians", AuthorMedians);
             writer.WriteBoolValue("has_membership_data", HasMembershipData);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge>("pull_request", PullRequest);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonPullRequest>("pull_request", PullRequest);
             writer.WriteBoolValue("ready_data_available", ReadyDataAvailable);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians>("repo_medians", RepoMedians);
             writer.WriteBoolValue("review_data_available", ReviewDataAvailable);

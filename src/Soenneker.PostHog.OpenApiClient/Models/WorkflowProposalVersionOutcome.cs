@@ -95,12 +95,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who published this version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? PublishedBy { get => _explicitNullValuePublishedBy; set { _explicitNullValuePublishedBy = value; AdditionalData?.Remove("published_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_by"); else _explicitNullProperties?.Remove("published_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? _explicitNullValuePublishedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomePublishedBy? PublishedBy { get => _explicitNullValuePublishedBy; set { _explicitNullValuePublishedBy = value; AdditionalData?.Remove("published_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_by"); else _explicitNullProperties?.Remove("published_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomePublishedBy? _explicitNullValuePublishedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic PublishedBy { get => _explicitNullValuePublishedBy; set { _explicitNullValuePublishedBy = value; AdditionalData?.Remove("published_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_by"); else _explicitNullProperties?.Remove("published_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasic _explicitNullValuePublishedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomePublishedBy PublishedBy { get => _explicitNullValuePublishedBy; set { _explicitNullValuePublishedBy = value; AdditionalData?.Remove("published_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_by"); else _explicitNullProperties?.Remove("published_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomePublishedBy _explicitNullValuePublishedBy = default!;
 #endif
         /// <summary>The rate read beside the target, so a lift in one is visible against the other.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -168,7 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "other_changes", n => { OtherChanges = n.GetBoolValue(); } },
                 { "proposed_against", n => { ProposedAgainst = n.GetBoolValue(); } },
                 { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
-                { "published_by", n => { PublishedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "published_by", n => { PublishedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomePublishedBy>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomePublishedBy.CreateFromDiscriminatorValue); } },
                 { "secondary", n => { Secondary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeSecondary>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeSecondary.CreateFromDiscriminatorValue); } },
                 { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeTarget>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeTarget.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
@@ -190,7 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("other_changes", OtherChanges);
             writer.WriteBoolValue("proposed_against", ProposedAgainst);
             writer.WriteDateTimeOffsetValue("published_at", PublishedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>("published_by", PublishedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomePublishedBy>("published_by", PublishedBy);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeSecondary>("secondary", Secondary);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcomeTarget>("target", Target);
             writer.WriteIntValue("version", Version);

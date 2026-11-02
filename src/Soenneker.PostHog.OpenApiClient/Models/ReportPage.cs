@@ -85,12 +85,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The pull request the proposal names, or else the summary, when it names exactly one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink? NamedPullRequest { get => _explicitNullValueNamedPullRequest; set { _explicitNullValueNamedPullRequest = value; AdditionalData?.Remove("named_pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("named_pull_request"); else _explicitNullProperties?.Remove("named_pull_request"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink? _explicitNullValueNamedPullRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportPageNamedPullRequest? NamedPullRequest { get => _explicitNullValueNamedPullRequest; set { _explicitNullValueNamedPullRequest = value; AdditionalData?.Remove("named_pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("named_pull_request"); else _explicitNullProperties?.Remove("named_pull_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReportPageNamedPullRequest? _explicitNullValueNamedPullRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink NamedPullRequest { get => _explicitNullValueNamedPullRequest; set { _explicitNullValueNamedPullRequest = value; AdditionalData?.Remove("named_pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("named_pull_request"); else _explicitNullProperties?.Remove("named_pull_request"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink _explicitNullValueNamedPullRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportPageNamedPullRequest NamedPullRequest { get => _explicitNullValueNamedPullRequest; set { _explicitNullValueNamedPullRequest = value; AdditionalData?.Remove("named_pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("named_pull_request"); else _explicitNullProperties?.Remove("named_pull_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReportPageNamedPullRequest _explicitNullValueNamedPullRequest = default!;
 #endif
         /// <summary>The proposed fix cut to whole sentences, as markdown. Empty when the report proposes none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -138,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "impact_sentence", n => { ImpactSentence = n.GetStringValue(); } },
                 { "last_seen", n => { LastSeen = n.GetDateTimeOffsetValue(); } },
                 { "lead", n => { Lead = n.GetStringValue(); } },
-                { "named_pull_request", n => { NamedPullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink.CreateFromDiscriminatorValue); } },
+                { "named_pull_request", n => { NamedPullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportPageNamedPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.ReportPageNamedPullRequest.CreateFromDiscriminatorValue); } },
                 { "proposal", n => { Proposal = n.GetStringValue(); } },
                 { "solution_names_pull_request", n => { SolutionNamesPullRequest = n.GetBoolValue(); } },
                 { "source_count", n => { SourceCount = n.GetIntValue(); } },
@@ -156,7 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("impact_sentence", ImpactSentence);
             writer.WriteDateTimeOffsetValue("last_seen", LastSeen);
             writer.WriteStringValue("lead", Lead);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestLink>("named_pull_request", NamedPullRequest);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportPageNamedPullRequest>("named_pull_request", NamedPullRequest);
             writer.WriteStringValue("proposal", Proposal);
             writer.WriteBoolValue("solution_names_pull_request", SolutionNamesPullRequest);
             writer.WriteIntValue("source_count", SourceCount);

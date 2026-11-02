@@ -84,12 +84,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Change against the previous period, or null when not comparable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultChange? Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; AdditionalData?.Remove("change"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ResultChange? _explicitNullValueChange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultChange? Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; AdditionalData?.Remove("change"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultChange? _explicitNullValueChange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResultChange Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; AdditionalData?.Remove("change"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ResultChange _explicitNullValueChange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultChange Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; AdditionalData?.Remove("change"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultChange _explicitNullValueChange = default!;
 #endif
         /// <summary>The createdBy property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -239,7 +239,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "attentionReasons", n => { AttentionReasons = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.AttentionReasonsEnum>()?.AsList(); } },
                 { "bucketStatus", n => { BucketStatus = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.BucketStatusEnum>()?.AsList(); } },
-                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultChange>(global::Soenneker.PostHog.OpenApiClient.Models.ResultChange.CreateFromDiscriminatorValue); } },
+                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultChange>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultChange.CreateFromDiscriminatorValue); } },
                 { "createdBy", n => { CreatedBy = n.GetStringValue(); } },
                 { "directoryName", n => { DirectoryName = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
@@ -268,7 +268,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.AttentionReasonsEnum>("attentionReasons", AttentionReasons);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.BucketStatusEnum>("bucketStatus", BucketStatus);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResultChange>("change", Change);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationResultChange>("change", Change);
             writer.WriteStringValue("createdBy", CreatedBy);
             writer.WriteStringValue("directoryName", DirectoryName);
             writer.WriteBoolValue("enabled", Enabled);

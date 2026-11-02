@@ -132,10 +132,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Distilled cross-run learning summary written on completion. Null until the run completes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary? Summary { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunSummary? Summary { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary Summary { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunSummary Summary { get; private set; }
 #endif
         /// <summary>Parent Task ID in the tasks sandbox. Null for stub runs.</summary>
         public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; AdditionalData?.Remove("task_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
@@ -195,7 +195,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "reader_summary", n => { ReaderSummary = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunStatus>(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingRunSummary.CreateFromDiscriminatorValue); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
                 { "task_run_id", n => { TaskRunId = n.GetGuidValue(); } },
                 { "task_url", n => { TaskUrl = n.GetStringValue(); } },

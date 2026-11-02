@@ -63,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the evaluation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Set to true to soft-delete the evaluation.</summary>
         public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; AdditionalData?.Remove("deleted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
@@ -105,12 +105,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration? ModelConfiguration { get => _explicitNullValueModelConfiguration; set { _explicitNullValueModelConfiguration = value; AdditionalData?.Remove("model_configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_configuration"); else _explicitNullProperties?.Remove("model_configuration"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration? _explicitNullValueModelConfiguration = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationModelConfiguration? ModelConfiguration { get => _explicitNullValueModelConfiguration; set { _explicitNullValueModelConfiguration = value; AdditionalData?.Remove("model_configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_configuration"); else _explicitNullProperties?.Remove("model_configuration"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationModelConfiguration? _explicitNullValueModelConfiguration = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration ModelConfiguration { get => _explicitNullValueModelConfiguration; set { _explicitNullValueModelConfiguration = value; AdditionalData?.Remove("model_configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_configuration"); else _explicitNullProperties?.Remove("model_configuration"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration _explicitNullValueModelConfiguration = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationModelConfiguration ModelConfiguration { get => _explicitNullValueModelConfiguration; set { _explicitNullValueModelConfiguration = value; AdditionalData?.Remove("model_configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_configuration"); else _explicitNullProperties?.Remove("model_configuration"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationModelConfiguration _explicitNullValueModelConfiguration = default!;
 #endif
         /// <summary>Name of the evaluation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -203,7 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationCondition>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationCreatedBy.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "directory_id", n => { DirectoryId = n.GetGuidValue(); } },
@@ -211,7 +211,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "evaluation_config", n => { EvaluationConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfig.CreateFromDiscriminatorValue); } },
                 { "evaluation_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEvaluationType = default; _explicitNullProperties?.Remove("evaluation_type"); AdditionalData["evaluation_type"] = unknown; } else { EvaluationType = parsed; AdditionalData.Remove("evaluation_type"); } } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration.CreateFromDiscriminatorValue); } },
+                { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationModelConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationModelConfiguration.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "output_config", n => { OutputConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfig>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfig.CreateFromDiscriminatorValue); } },
                 { "output_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOutputType = default; _explicitNullProperties?.Remove("output_type"); AdditionalData["output_type"] = unknown; } else { OutputType = parsed; AdditionalData.Remove("output_type"); } } },
@@ -238,7 +238,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("enabled", Enabled);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationConfig>("evaluation_config", EvaluationConfig);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationEvaluationType>("evaluation_type", EvaluationType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ModelConfiguration>("model_configuration", ModelConfiguration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationModelConfiguration>("model_configuration", ModelConfiguration);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputConfig>("output_config", OutputConfig);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationOutputType>("output_type", OutputType);

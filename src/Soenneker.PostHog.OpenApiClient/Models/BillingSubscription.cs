@@ -63,22 +63,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set when a provisioning partner pays for this organization and the organization has no Stripe customer of its own. Self-serve subscription and payment changes are refused while it is set. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner? BillingManagedByPartner { get => _explicitNullValueBillingManagedByPartner; set { _explicitNullValueBillingManagedByPartner = value; AdditionalData?.Remove("billing_managed_by_partner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_managed_by_partner"); else _explicitNullProperties?.Remove("billing_managed_by_partner"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner? _explicitNullValueBillingManagedByPartner = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingManagedByPartner? BillingManagedByPartner { get => _explicitNullValueBillingManagedByPartner; set { _explicitNullValueBillingManagedByPartner = value; AdditionalData?.Remove("billing_managed_by_partner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_managed_by_partner"); else _explicitNullProperties?.Remove("billing_managed_by_partner"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingManagedByPartner? _explicitNullValueBillingManagedByPartner = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner BillingManagedByPartner { get => _explicitNullValueBillingManagedByPartner; set { _explicitNullValueBillingManagedByPartner = value; AdditionalData?.Remove("billing_managed_by_partner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_managed_by_partner"); else _explicitNullProperties?.Remove("billing_managed_by_partner"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner _explicitNullValueBillingManagedByPartner = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingManagedByPartner BillingManagedByPartner { get => _explicitNullValueBillingManagedByPartner; set { _explicitNullValueBillingManagedByPartner = value; AdditionalData?.Remove("billing_managed_by_partner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_managed_by_partner"); else _explicitNullProperties?.Remove("billing_managed_by_partner"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingManagedByPartner _explicitNullValueBillingManagedByPartner = default!;
 #endif
         /// <summary>The billing_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? _explicitNullValueBillingPeriod = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod? BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod? _explicitNullValueBillingPeriod = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod _explicitNullValueBillingPeriod = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod _explicitNullValueBillingPeriod = default!;
 #endif
         /// <summary>The billing_plan property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -195,12 +195,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The trial property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Trial? Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; AdditionalData?.Remove("trial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Trial? _explicitNullValueTrial = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionTrial? Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; AdditionalData?.Remove("trial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionTrial? _explicitNullValueTrial = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Trial Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; AdditionalData?.Remove("trial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Trial _explicitNullValueTrial = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionTrial Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; AdditionalData?.Remove("trial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionTrial _explicitNullValueTrial = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscription"/> and sets the default values.
@@ -228,8 +228,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "amount_off_expires_at", n => { AmountOffExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "billing_managed_by_partner", n => { BillingManagedByPartner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner>(global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner.CreateFromDiscriminatorValue); } },
-                { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod.CreateFromDiscriminatorValue); } },
+                { "billing_managed_by_partner", n => { BillingManagedByPartner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingManagedByPartner>(global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingManagedByPartner.CreateFromDiscriminatorValue); } },
+                { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod.CreateFromDiscriminatorValue); } },
                 { "billing_plan", n => { BillingPlan = n.GetStringValue(); } },
                 { "billing_portal_url", n => { BillingPortalUrl = n.GetStringValue(); } },
                 { "billing_provider", n => { BillingProvider = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionBillingProvider>(global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionBillingProvider.CreateFromDiscriminatorValue); } },
@@ -244,7 +244,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "startup_program_label", n => { StartupProgramLabel = n.GetStringValue(); } },
                 { "startup_program_label_previous", n => { StartupProgramLabelPrevious = n.GetStringValue(); } },
                 { "subscription_level", n => { SubscriptionLevel = n.GetStringValue(); } },
-                { "trial", n => { Trial = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Trial>(global::Soenneker.PostHog.OpenApiClient.Models.Trial.CreateFromDiscriminatorValue); } },
+                { "trial", n => { Trial = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionTrial>(global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionTrial.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -255,8 +255,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("amount_off_expires_at", AmountOffExpiresAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingManagedByPartner>("billing_managed_by_partner", BillingManagedByPartner);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod>("billing_period", BillingPeriod);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingOverviewResponseBillingManagedByPartner>("billing_managed_by_partner", BillingManagedByPartner);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod>("billing_period", BillingPeriod);
             writer.WriteStringValue("billing_plan", BillingPlan);
             writer.WriteStringValue("billing_portal_url", BillingPortalUrl);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionBillingProvider>("billing_provider", BillingProvider);
@@ -271,7 +271,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("startup_program_label", StartupProgramLabel);
             writer.WriteStringValue("startup_program_label_previous", StartupProgramLabelPrevious);
             writer.WriteStringValue("subscription_level", SubscriptionLevel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Trial>("trial", Trial);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingSubscriptionTrial>("trial", Trial);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

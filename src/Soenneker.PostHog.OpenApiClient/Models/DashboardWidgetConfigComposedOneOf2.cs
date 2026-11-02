@@ -34,12 +34,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange? _explicitNullValueDateRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange? _explicitNullValueDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange _explicitNullValueDateRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange _explicitNullValueDateRange = default!;
 #endif
         /// <summary>Limit the feed to a single event name. Omit or null for all events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange.CreateFromDiscriminatorValue); } },
                 { "eventName", n => { EventName = n.GetStringValue(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
@@ -117,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange>("dateRange", DateRange);
             writer.WriteStringValue("eventName", EventName);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
             writer.WriteIntValue("limit", Limit);

@@ -44,12 +44,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The event property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeEvent? Event { get => _explicitNullValueEvent; set { _explicitNullValueEvent = value; AdditionalData?.Remove("event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event"); else _explicitNullProperties?.Remove("event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeEvent? _explicitNullValueEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailEvent? Event { get => _explicitNullValueEvent; set { _explicitNullValueEvent = value; AdditionalData?.Remove("event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event"); else _explicitNullProperties?.Remove("event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailEvent? _explicitNullValueEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeEvent Event { get => _explicitNullValueEvent; set { _explicitNullValueEvent = value; AdditionalData?.Remove("event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event"); else _explicitNullProperties?.Remove("event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeEvent _explicitNullValueEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailEvent Event { get => _explicitNullValueEvent; set { _explicitNullValueEvent = value; AdditionalData?.Remove("event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event"); else _explicitNullProperties?.Remove("event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailEvent _explicitNullValueEvent = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "event", n => { Event = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeEvent.CreateFromDiscriminatorValue); } },
+                { "event", n => { Event = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailEvent>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailEvent.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailKind>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKind = default; _explicitNullProperties?.Remove("kind"); AdditionalData["kind"] = unknown; } else { Kind = parsed; AdditionalData.Remove("kind"); } } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeMetadata.CreateFromDiscriminatorValue); } },
@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeEvent>("event", Event);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailEvent>("event", Event);
             writer.WriteStringValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeDetailKind>("kind", Kind);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeMetadata>("metadata", Metadata);

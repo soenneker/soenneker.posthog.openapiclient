@@ -99,12 +99,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Summary of the most recent run; null when never run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun? LastRun { get => _explicitNullValueLastRun; set { _explicitNullValueLastRun = value; AdditionalData?.Remove("last_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run"); else _explicitNullProperties?.Remove("last_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun? _explicitNullValueLastRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun? LastRun { get => _explicitNullValueLastRun; set { _explicitNullValueLastRun = value; AdditionalData?.Remove("last_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run"); else _explicitNullProperties?.Remove("last_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun? _explicitNullValueLastRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun LastRun { get => _explicitNullValueLastRun; set { _explicitNullValueLastRun = value; AdditionalData?.Remove("last_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run"); else _explicitNullProperties?.Remove("last_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun _explicitNullValueLastRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun LastRun { get => _explicitNullValueLastRun; set { _explicitNullValueLastRun = value; AdditionalData?.Remove("last_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run"); else _explicitNullProperties?.Remove("last_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun _explicitNullValueLastRun = default!;
 #endif
         /// <summary>Durable cell identity, used by the cell run and edit endpoints.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -132,12 +132,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>SQL cells only: the chart the cell opens on, set in the editor or with the visualization parameter of notebooks-add-cell. Null when the cell opens on its results table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization? Visualization { get => _explicitNullValueVisualization; set { _explicitNullValueVisualization = value; AdditionalData?.Remove("visualization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization"); else _explicitNullProperties?.Remove("visualization"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization? _explicitNullValueVisualization = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateVisualization? Visualization { get => _explicitNullValueVisualization; set { _explicitNullValueVisualization = value; AdditionalData?.Remove("visualization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization"); else _explicitNullProperties?.Remove("visualization"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateVisualization? _explicitNullValueVisualization = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization Visualization { get => _explicitNullValueVisualization; set { _explicitNullValueVisualization = value; AdditionalData?.Remove("visualization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization"); else _explicitNullProperties?.Remove("visualization"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization _explicitNullValueVisualization = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateVisualization Visualization { get => _explicitNullValueVisualization; set { _explicitNullValueVisualization = value; AdditionalData?.Remove("visualization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization"); else _explicitNullProperties?.Remove("visualization"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateVisualization _explicitNullValueVisualization = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellState"/> and sets the default values.
@@ -170,11 +170,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dependents", n => { Dependents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "depends_on", n => { DependsOn = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "end", n => { End = n.GetIntValue(); } },
-                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun.CreateFromDiscriminatorValue); } },
+                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun.CreateFromDiscriminatorValue); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
                 { "start", n => { Start = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
-                { "visualization", n => { Visualization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization.CreateFromDiscriminatorValue); } },
+                { "visualization", n => { Visualization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateVisualization>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateVisualization.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -190,11 +190,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("dependents", Dependents);
             writer.WriteCollectionOfPrimitiveValues<string>("depends_on", DependsOn);
             writer.WriteIntValue("end", End);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun>("last_run", LastRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateLastRun>("last_run", LastRun);
             writer.WriteStringValue("node_id", NodeId);
             writer.WriteIntValue("start", Start);
             writer.WriteStringValue("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization>("visualization", Visualization);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellStateVisualization>("visualization", Visualization);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

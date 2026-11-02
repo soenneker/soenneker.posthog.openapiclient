@@ -29,12 +29,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The project that already holds the repository or the installation, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? ConflictingProject { get => _explicitNullValueConflictingProject; set { _explicitNullValueConflictingProject = value; AdditionalData?.Remove("conflicting_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conflicting_project"); else _explicitNullProperties?.Remove("conflicting_project"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? _explicitNullValueConflictingProject = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogSettingsErrorConflictingProject? ConflictingProject { get => _explicitNullValueConflictingProject; set { _explicitNullValueConflictingProject = value; AdditionalData?.Remove("conflicting_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conflicting_project"); else _explicitNullProperties?.Remove("conflicting_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogSettingsErrorConflictingProject? _explicitNullValueConflictingProject = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef ConflictingProject { get => _explicitNullValueConflictingProject; set { _explicitNullValueConflictingProject = value; AdditionalData?.Remove("conflicting_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conflicting_project"); else _explicitNullProperties?.Remove("conflicting_project"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef _explicitNullValueConflictingProject = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogSettingsErrorConflictingProject ConflictingProject { get => _explicitNullValueConflictingProject; set { _explicitNullValueConflictingProject = value; AdditionalData?.Remove("conflicting_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conflicting_project"); else _explicitNullProperties?.Remove("conflicting_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogSettingsErrorConflictingProject _explicitNullValueConflictingProject = default!;
 #endif
         /// <summary>Why the request was rejected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -73,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "conflicting_project", n => { ConflictingProject = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef.CreateFromDiscriminatorValue); } },
+                { "conflicting_project", n => { ConflictingProject = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogSettingsErrorConflictingProject>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogSettingsErrorConflictingProject.CreateFromDiscriminatorValue); } },
                 { "error", n => { Error = n.GetStringValue(); } },
             };
         }
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef>("conflicting_project", ConflictingProject);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewHogSettingsErrorConflictingProject>("conflicting_project", ConflictingProject);
             writer.WriteStringValue("error", Error);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

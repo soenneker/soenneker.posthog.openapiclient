@@ -84,12 +84,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Chart rendering style overrides (line shape).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle? _explicitNullValueChartStyle = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterChartStyle? ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterChartStyle? _explicitNullValueChartStyle = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle _explicitNullValueChartStyle = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterChartStyle ChartStyle { get => _explicitNullValueChartStyle; set { _explicitNullValueChartStyle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chartStyle"); else _explicitNullProperties?.Remove("chartStyle"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterChartStyle _explicitNullValueChartStyle = default!;
 #endif
         /// <summary>Starting index used when labeling cohort columns (e.g. 0 for D0/D1/D2, 1 for D1/D2/D3). Display-only — does not affect retention calculations.</summary>
         public int? CohortLabelStartIndex { get => _explicitNullValueCohortLabelStartIndex; set { _explicitNullValueCohortLabelStartIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohortLabelStartIndex"); else _explicitNullProperties?.Remove("cohortLabelStartIndex"); } }
@@ -144,12 +144,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The returningEntity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? ReturningEntity { get => _explicitNullValueReturningEntity; set { _explicitNullValueReturningEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returningEntity"); else _explicitNullProperties?.Remove("returningEntity"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? _explicitNullValueReturningEntity = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity? ReturningEntity { get => _explicitNullValueReturningEntity; set { _explicitNullValueReturningEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returningEntity"); else _explicitNullProperties?.Remove("returningEntity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity? _explicitNullValueReturningEntity = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity ReturningEntity { get => _explicitNullValueReturningEntity; set { _explicitNullValueReturningEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returningEntity"); else _explicitNullProperties?.Remove("returningEntity"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity _explicitNullValueReturningEntity = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity ReturningEntity { get => _explicitNullValueReturningEntity; set { _explicitNullValueReturningEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("returningEntity"); else _explicitNullProperties?.Remove("returningEntity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity _explicitNullValueReturningEntity = default!;
 #endif
         /// <summary>The selected interval to display across all cohorts (null = show all intervals for each cohort)</summary>
         public int? SelectedInterval { get => _explicitNullValueSelectedInterval; set { _explicitNullValueSelectedInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selectedInterval"); else _explicitNullProperties?.Remove("selectedInterval"); } }
@@ -163,12 +163,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The targetEntity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? TargetEntity { get => _explicitNullValueTargetEntity; set { _explicitNullValueTargetEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetEntity"); else _explicitNullProperties?.Remove("targetEntity"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity? _explicitNullValueTargetEntity = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity? TargetEntity { get => _explicitNullValueTargetEntity; set { _explicitNullValueTargetEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetEntity"); else _explicitNullProperties?.Remove("targetEntity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity? _explicitNullValueTargetEntity = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity TargetEntity { get => _explicitNullValueTargetEntity; set { _explicitNullValueTargetEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetEntity"); else _explicitNullProperties?.Remove("targetEntity"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity _explicitNullValueTargetEntity = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity TargetEntity { get => _explicitNullValueTargetEntity; set { _explicitNullValueTargetEntity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targetEntity"); else _explicitNullProperties?.Remove("targetEntity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity _explicitNullValueTargetEntity = default!;
 #endif
         /// <summary>The time window mode to use for retention calculations</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode? TimeWindowMode { get => _explicitNullValueTimeWindowMode; set { _explicitNullValueTimeWindowMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timeWindowMode"); else _explicitNullProperties?.Remove("timeWindowMode"); } }
@@ -205,7 +205,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "aggregationProperty", n => { AggregationProperty = n.GetStringValue(); } },
                 { "aggregationPropertyType", n => { AggregationPropertyType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType>(); } },
                 { "aggregationType", n => { AggregationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationType>(); } },
-                { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle.CreateFromDiscriminatorValue); } },
+                { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterChartStyle.CreateFromDiscriminatorValue); } },
                 { "cohortLabelStartIndex", n => { CohortLabelStartIndex = n.GetIntValue(); } },
                 { "cumulative", n => { Cumulative = n.GetBoolValue(); } },
                 { "customAggregationTarget", n => { CustomAggregationTarget = n.GetBoolValue(); } },
@@ -218,11 +218,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "retentionCustomBrackets", n => { RetentionCustomBrackets = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "retentionReference", n => { RetentionReference = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference>(); } },
                 { "retentionType", n => { RetentionType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionType>(); } },
-                { "returningEntity", n => { ReturningEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
+                { "returningEntity", n => { ReturningEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity.CreateFromDiscriminatorValue); } },
                 { "selectedInterval", n => { SelectedInterval = n.GetIntValue(); } },
                 { "showMeanLine", n => { ShowMeanLine = n.GetBoolValue(); } },
                 { "showTrendLines", n => { ShowTrendLines = n.GetBoolValue(); } },
-                { "targetEntity", n => { TargetEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity.CreateFromDiscriminatorValue); } },
+                { "targetEntity", n => { TargetEntity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity>(global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity.CreateFromDiscriminatorValue); } },
                 { "timeWindowMode", n => { TimeWindowMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode>(); } },
                 { "totalIntervals", n => { TotalIntervals = n.GetIntValue(); } },
             };
@@ -237,7 +237,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("aggregationProperty", AggregationProperty);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationPropertyType>("aggregationPropertyType", AggregationPropertyType);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AggregationType>("aggregationType", AggregationType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartStyle>("chartStyle", ChartStyle);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterChartStyle>("chartStyle", ChartStyle);
             writer.WriteIntValue("cohortLabelStartIndex", CohortLabelStartIndex);
             writer.WriteBoolValue("cumulative", Cumulative);
             writer.WriteBoolValue("customAggregationTarget", CustomAggregationTarget);
@@ -250,11 +250,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<double?>("retentionCustomBrackets", RetentionCustomBrackets);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionReference>("retentionReference", RetentionReference);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionType>("retentionType", RetentionType);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("returningEntity", ReturningEntity);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity>("returningEntity", ReturningEntity);
             writer.WriteIntValue("selectedInterval", SelectedInterval);
             writer.WriteBoolValue("showMeanLine", ShowMeanLine);
             writer.WriteBoolValue("showTrendLines", ShowTrendLines);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionEntity>("targetEntity", TargetEntity);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RetentionFilterReturningEntity>("targetEntity", TargetEntity);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeWindowMode>("timeWindowMode", TimeWindowMode);
             writer.WriteIntValue("totalIntervals", TotalIntervals);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             

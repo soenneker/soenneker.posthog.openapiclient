@@ -28,12 +28,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Currently effective sandbox compute rate card, or null before pricing is published.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard? Current { get => _explicitNullValueCurrent; set { _explicitNullValueCurrent = value; AdditionalData?.Remove("current"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current"); else _explicitNullProperties?.Remove("current"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard? _explicitNullValueCurrent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent? Current { get => _explicitNullValueCurrent; set { _explicitNullValueCurrent = value; AdditionalData?.Remove("current"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current"); else _explicitNullProperties?.Remove("current"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent? _explicitNullValueCurrent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard Current { get => _explicitNullValueCurrent; set { _explicitNullValueCurrent = value; AdditionalData?.Remove("current"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current"); else _explicitNullProperties?.Remove("current"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard _explicitNullValueCurrent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent Current { get => _explicitNullValueCurrent; set { _explicitNullValueCurrent = value; AdditionalData?.Remove("current"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current"); else _explicitNullProperties?.Remove("current"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent _explicitNullValueCurrent = default!;
 #endif
         /// <summary>Expired sandbox compute rate cards, newest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "current", n => { Current = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard>(global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard.CreateFromDiscriminatorValue); } },
+                { "current", n => { Current = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent.CreateFromDiscriminatorValue); } },
                 { "history", n => { History = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard>(global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard>("current", Current);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxComputePricingCurrent>("current", Current);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ComputeRateCard>("history", History);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

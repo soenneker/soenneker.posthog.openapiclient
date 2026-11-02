@@ -92,12 +92,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The source property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertySource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertySource? _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyDefinitionSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyDefinitionSource? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertySource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertySource _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyDefinitionSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyDefinitionSource _explicitNullValueSource = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -125,7 +125,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_canonical", n => { IsCanonical = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyOption>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyOption.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertySource>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertySource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyDefinitionSource>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyDefinitionSource.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -143,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_canonical", IsCanonical);
             writer.WriteStringValue("name", Name);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyOption>("options", Options);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertySource>("source", Source);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableCustomPropertyDefinitionSource>("source", Source);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

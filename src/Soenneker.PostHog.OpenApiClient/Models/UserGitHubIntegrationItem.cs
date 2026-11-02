@@ -46,12 +46,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Installation account metadata from GitHub.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount? Account { get => _explicitNullValueAccount; set { _explicitNullValueAccount = value; AdditionalData?.Remove("account"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account"); else _explicitNullProperties?.Remove("account"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount? _explicitNullValueAccount = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount? Account { get => _explicitNullValueAccount; set { _explicitNullValueAccount = value; AdditionalData?.Remove("account"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account"); else _explicitNullProperties?.Remove("account"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount? _explicitNullValueAccount = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount Account { get => _explicitNullValueAccount; set { _explicitNullValueAccount = value; AdditionalData?.Remove("account"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account"); else _explicitNullProperties?.Remove("account"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount _explicitNullValueAccount = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount Account { get => _explicitNullValueAccount; set { _explicitNullValueAccount = value; AdditionalData?.Remove("account"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account"); else _explicitNullProperties?.Remove("account"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount _explicitNullValueAccount = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount.CreateFromDiscriminatorValue); } },
+                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount>(global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "github_login", n => { GithubLogin = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -162,7 +162,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubAccount>("account", Account);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserGitHubIntegrationItemAccount>("account", Account);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("github_login", GithubLogin);
             writer.WriteGuidValue("id", Id);

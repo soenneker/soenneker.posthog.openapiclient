@@ -7,89 +7,39 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf9"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class InsightActorsQuerySource : IComposedTypeWrapper, IParsable
-    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
-        // Preserve ambiguous union payloads without inventing a discriminator.
-        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    #pragma warning disable CS1591
+    public partial class InsightActorsQuerySource : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf1"/></summary>
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+        }
+
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf1? InsightActorsQuerySourceOneOf1 { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf1 InsightActorsQuerySourceOneOf1 { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf2? InsightActorsQuerySourceOneOf2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf2 InsightActorsQuerySourceOneOf2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf3? InsightActorsQuerySourceOneOf3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf3 InsightActorsQuerySourceOneOf3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf4? InsightActorsQuerySourceOneOf4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf4 InsightActorsQuerySourceOneOf4 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf5? InsightActorsQuerySourceOneOf5 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf5 InsightActorsQuerySourceOneOf5 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf6"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf6? InsightActorsQuerySourceOneOf6 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf6 InsightActorsQuerySourceOneOf6 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf7"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf7? InsightActorsQuerySourceOneOf7 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf7 InsightActorsQuerySourceOneOf7 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf8"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf8? InsightActorsQuerySourceOneOf8 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf8 InsightActorsQuerySourceOneOf8 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf9"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf9? InsightActorsQuerySourceOneOf9 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf9 InsightActorsQuerySourceOneOf9 { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource"/> and sets the default values.
+        /// </summary>
+        public InsightActorsQuerySource()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -98,48 +48,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource();
-            if("InsightActorsQuerySourceOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
+            return mappingValue switch
             {
-                
-            }
-            else if("InsightActorsQuerySourceOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("InsightActorsQuerySourceOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("InsightActorsQuerySourceOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("InsightActorsQuerySourceOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("InsightActorsQuerySourceOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("InsightActorsQuerySourceOneOf7".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("InsightActorsQuerySourceOneOf8".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("InsightActorsQuerySourceOneOf9".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            
-            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.InsightActorsQuerySourceOneOf1 == null && result.InsightActorsQuerySourceOneOf2 == null && result.InsightActorsQuerySourceOneOf3 == null && result.InsightActorsQuerySourceOneOf4 == null && result.InsightActorsQuerySourceOneOf5 == null && result.InsightActorsQuerySourceOneOf6 == null && result.InsightActorsQuerySourceOneOf7 == null && result.InsightActorsQuerySourceOneOf8 == null && result.InsightActorsQuerySourceOneOf9 == null) result.UnrecognizedValue = unionPayload;
-return result;
+                "FunnelsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf2(),
+                "LifecycleQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf7(),
+                "PathsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf4(),
+                "PathsV2Query" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf5(),
+                "RetentionQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf3(),
+                "StickinessQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf6(),
+                "TrendsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf1(),
+                "WebOverviewQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf9(),
+                "WebStatsTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceInsightActorsQuerySourceOneOf8(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySource(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -147,45 +69,10 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
-
-            if(InsightActorsQuerySourceOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return InsightActorsQuerySourceOneOf1.GetFieldDeserializers();
-            }
-            else if(InsightActorsQuerySourceOneOf2 != null)
-            {
-                return InsightActorsQuerySourceOneOf2.GetFieldDeserializers();
-            }
-            else if(InsightActorsQuerySourceOneOf3 != null)
-            {
-                return InsightActorsQuerySourceOneOf3.GetFieldDeserializers();
-            }
-            else if(InsightActorsQuerySourceOneOf4 != null)
-            {
-                return InsightActorsQuerySourceOneOf4.GetFieldDeserializers();
-            }
-            else if(InsightActorsQuerySourceOneOf5 != null)
-            {
-                return InsightActorsQuerySourceOneOf5.GetFieldDeserializers();
-            }
-            else if(InsightActorsQuerySourceOneOf6 != null)
-            {
-                return InsightActorsQuerySourceOneOf6.GetFieldDeserializers();
-            }
-            else if(InsightActorsQuerySourceOneOf7 != null)
-            {
-                return InsightActorsQuerySourceOneOf7.GetFieldDeserializers();
-            }
-            else if(InsightActorsQuerySourceOneOf8 != null)
-            {
-                return InsightActorsQuerySourceOneOf8.GetFieldDeserializers();
-            }
-            else if(InsightActorsQuerySourceOneOf9 != null)
-            {
-                return InsightActorsQuerySourceOneOf9.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "kind", n => { Kind = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -193,74 +80,10 @@ return result;
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (InsightActorsQuerySourceOneOf1 == null && InsightActorsQuerySourceOneOf2 == null && InsightActorsQuerySourceOneOf3 == null && InsightActorsQuerySourceOneOf4 == null && InsightActorsQuerySourceOneOf5 == null && InsightActorsQuerySourceOneOf6 == null && InsightActorsQuerySourceOneOf7 == null && InsightActorsQuerySourceOneOf8 == null && InsightActorsQuerySourceOneOf9 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            int selectedUnionBranches = 0;
-            if (InsightActorsQuerySourceOneOf1 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf2 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf3 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf4 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf5 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf6 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf7 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf8 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf9 != null) selectedUnionBranches++;
-            if (InsightActorsQuerySourceOneOf1 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf1); return; }
-            if (InsightActorsQuerySourceOneOf2 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf2); return; }
-            if (InsightActorsQuerySourceOneOf3 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf3); return; }
-            if (InsightActorsQuerySourceOneOf4 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf4); return; }
-            if (InsightActorsQuerySourceOneOf5 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf5); return; }
-            if (InsightActorsQuerySourceOneOf6 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf6); return; }
-            if (InsightActorsQuerySourceOneOf7 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf7); return; }
-            if (InsightActorsQuerySourceOneOf8 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf8); return; }
-            if (InsightActorsQuerySourceOneOf9 != null && selectedUnionBranches == 1) { if (InsightActorsQuerySourceOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, InsightActorsQuerySourceOneOf9); return; }
-
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(InsightActorsQuerySourceOneOf1 != null)
-            {
-                if (InsightActorsQuerySourceOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf1>(null, InsightActorsQuerySourceOneOf1);
-            }
-            else if(InsightActorsQuerySourceOneOf2 != null)
-            {
-                if (InsightActorsQuerySourceOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf2>(null, InsightActorsQuerySourceOneOf2);
-            }
-            else if(InsightActorsQuerySourceOneOf3 != null)
-            {
-                if (InsightActorsQuerySourceOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf3>(null, InsightActorsQuerySourceOneOf3);
-            }
-            else if(InsightActorsQuerySourceOneOf4 != null)
-            {
-                if (InsightActorsQuerySourceOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf4>(null, InsightActorsQuerySourceOneOf4);
-            }
-            else if(InsightActorsQuerySourceOneOf5 != null)
-            {
-                if (InsightActorsQuerySourceOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf5>(null, InsightActorsQuerySourceOneOf5);
-            }
-            else if(InsightActorsQuerySourceOneOf6 != null)
-            {
-                if (InsightActorsQuerySourceOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf6>(null, InsightActorsQuerySourceOneOf6);
-            }
-            else if(InsightActorsQuerySourceOneOf7 != null)
-            {
-                if (InsightActorsQuerySourceOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf7>(null, InsightActorsQuerySourceOneOf7);
-            }
-            else if(InsightActorsQuerySourceOneOf8 != null)
-            {
-                if (InsightActorsQuerySourceOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf8>(null, InsightActorsQuerySourceOneOf8);
-            }
-            else if(InsightActorsQuerySourceOneOf9 != null)
-            {
-                if (InsightActorsQuerySourceOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightActorsQuerySourceOneOf9>(null, InsightActorsQuerySourceOneOf9);
-            }
+            writer.WriteStringValue("kind", Kind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

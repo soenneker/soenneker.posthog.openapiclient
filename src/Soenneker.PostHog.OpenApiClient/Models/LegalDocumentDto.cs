@@ -54,12 +54,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentCreator? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentCreator? _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentDtoCreatedBy? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentDtoCreatedBy? _explicitNullValueCreatedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentCreator CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentCreator _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentDtoCreatedBy CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentDtoCreatedBy _explicitNullValueCreatedBy = default!;
 #endif
         /// <summary>The document_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "company_name", n => { CompanyName = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentCreator>(global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentCreator.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentDtoCreatedBy.CreateFromDiscriminatorValue); } },
                 { "document_type", n => { DocumentType = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "representative_email", n => { RepresentativeEmail = n.GetStringValue(); } },
@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("company_name", CompanyName);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentCreator>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LegalDocumentDtoCreatedBy>("created_by", CreatedBy);
             writer.WriteStringValue("document_type", DocumentType);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("representative_email", RepresentativeEmail);

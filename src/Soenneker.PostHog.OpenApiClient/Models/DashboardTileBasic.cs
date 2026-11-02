@@ -23,12 +23,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The dashboard_id property</summary>
+        /// <summary>ID of the dashboard the tile sits on.</summary>
         public int? DashboardId { get; private set; }
-        /// <summary>The deleted property</summary>
+        /// <summary>Whether the tile was removed from the dashboard.</summary>
         public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; AdditionalData?.Remove("deleted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
         private bool? _explicitNullValueDeleted = default!;
-        /// <summary>The id property</summary>
+        /// <summary>ID of the dashboard tile.</summary>
         public int? Id { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileBasic"/> and sets the default values.

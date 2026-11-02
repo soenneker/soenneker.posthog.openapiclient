@@ -137,12 +137,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The widget property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidget? Widget { get => _explicitNullValueWidget; set { _explicitNullValueWidget = value; AdditionalData?.Remove("widget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget"); else _explicitNullProperties?.Remove("widget"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidget? _explicitNullValueWidget = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileWidget? Widget { get => _explicitNullValueWidget; set { _explicitNullValueWidget = value; AdditionalData?.Remove("widget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget"); else _explicitNullProperties?.Remove("widget"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileWidget? _explicitNullValueWidget = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidget Widget { get => _explicitNullValueWidget; set { _explicitNullValueWidget = value; AdditionalData?.Remove("widget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget"); else _explicitNullProperties?.Remove("widget"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidget _explicitNullValueWidget = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileWidget Widget { get => _explicitNullValueWidget; set { _explicitNullValueWidget = value; AdditionalData?.Remove("widget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget"); else _explicitNullProperties?.Remove("widget"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileWidget _explicitNullValueWidget = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardTile"/> and sets the default values.
@@ -180,7 +180,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "show_description", n => { ShowDescription = n.GetBoolValue(); } },
                 { "text", n => { Text = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Text>(global::Soenneker.PostHog.OpenApiClient.Models.Text.CreateFromDiscriminatorValue); } },
                 { "transparent_background", n => { TransparentBackground = n.GetBoolValue(); } },
-                { "widget", n => { Widget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidget>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidget.CreateFromDiscriminatorValue); } },
+                { "widget", n => { Widget = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileWidget>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileWidget.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -201,7 +201,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("show_description", ShowDescription);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Text>("text", Text);
             writer.WriteBoolValue("transparent_background", TransparentBackground);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardWidget>("widget", Widget);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTileWidget>("widget", Widget);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

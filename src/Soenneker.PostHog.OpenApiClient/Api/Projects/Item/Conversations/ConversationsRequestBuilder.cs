@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ai_context_account_properties;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ai_reply_playbook;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Macros;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Views;
 using System.Collections.Generic;
@@ -33,6 +34,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The macros property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Macros.MacrosRequestBuilder Macros
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Macros.MacrosRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The tickets property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.TicketsRequestBuilder Tickets

@@ -33,12 +33,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Where to upload the story-to-file map, as a presigned POST with a JSON body. Null when the request sent no map, or the store already holds a map with that hash.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget? StoryIndexUpload { get => _explicitNullValueStoryIndexUpload; set { _explicitNullValueStoryIndexUpload = value; AdditionalData?.Remove("story_index_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_upload"); else _explicitNullProperties?.Remove("story_index_upload"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget? _explicitNullValueStoryIndexUpload = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsResultStoryIndexUpload? StoryIndexUpload { get => _explicitNullValueStoryIndexUpload; set { _explicitNullValueStoryIndexUpload = value; AdditionalData?.Remove("story_index_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_upload"); else _explicitNullProperties?.Remove("story_index_upload"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsResultStoryIndexUpload? _explicitNullValueStoryIndexUpload = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget StoryIndexUpload { get => _explicitNullValueStoryIndexUpload; set { _explicitNullValueStoryIndexUpload = value; AdditionalData?.Remove("story_index_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_upload"); else _explicitNullProperties?.Remove("story_index_upload"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget _explicitNullValueStoryIndexUpload = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsResultStoryIndexUpload StoryIndexUpload { get => _explicitNullValueStoryIndexUpload; set { _explicitNullValueStoryIndexUpload = value; AdditionalData?.Remove("story_index_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_upload"); else _explicitNullProperties?.Remove("story_index_upload"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsResultStoryIndexUpload _explicitNullValueStoryIndexUpload = default!;
 #endif
         /// <summary>The uploads property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "added", n => { Added = n.GetIntValue(); } },
-                { "story_index_upload", n => { StoryIndexUpload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>(global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget.CreateFromDiscriminatorValue); } },
+                { "story_index_upload", n => { StoryIndexUpload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsResultStoryIndexUpload>(global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsResultStoryIndexUpload.CreateFromDiscriminatorValue); } },
                 { "uploads", n => { Uploads = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>(global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("added", Added);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>("story_index_upload", StoryIndexUpload);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AddSnapshotsResultStoryIndexUpload>("story_index_upload", StoryIndexUpload);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>("uploads", Uploads);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

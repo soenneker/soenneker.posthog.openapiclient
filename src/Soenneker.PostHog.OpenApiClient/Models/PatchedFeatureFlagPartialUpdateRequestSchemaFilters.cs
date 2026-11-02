@@ -56,12 +56,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Multivariate configuration for variant-based rollouts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema? Multivariate { get => _explicitNullValueMultivariate; set { _explicitNullValueMultivariate = value; AdditionalData?.Remove("multivariate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multivariate"); else _explicitNullProperties?.Remove("multivariate"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema? _explicitNullValueMultivariate = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate? Multivariate { get => _explicitNullValueMultivariate; set { _explicitNullValueMultivariate = value; AdditionalData?.Remove("multivariate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multivariate"); else _explicitNullProperties?.Remove("multivariate"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate? _explicitNullValueMultivariate = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema Multivariate { get => _explicitNullValueMultivariate; set { _explicitNullValueMultivariate = value; AdditionalData?.Remove("multivariate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multivariate"); else _explicitNullProperties?.Remove("multivariate"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema _explicitNullValueMultivariate = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate Multivariate { get => _explicitNullValueMultivariate; set { _explicitNullValueMultivariate = value; AdditionalData?.Remove("multivariate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("multivariate"); else _explicitNullProperties?.Remove("multivariate"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate _explicitNullValueMultivariate = default!;
 #endif
         /// <summary>Optional payload values keyed by variant key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "early_exit", n => { EarlyExit = n.GetBoolValue(); } },
                 { "feature_enrollment", n => { FeatureEnrollment = n.GetBoolValue(); } },
                 { "groups", n => { Groups = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "multivariate", n => { Multivariate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema.CreateFromDiscriminatorValue); } },
+                { "multivariate", n => { Multivariate = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate.CreateFromDiscriminatorValue); } },
                 { "payloads", n => { Payloads = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads.CreateFromDiscriminatorValue); } },
             };
         }
@@ -118,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("early_exit", EarlyExit);
             writer.WriteBoolValue("feature_enrollment", FeatureEnrollment);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagConditionGroupSchema>("groups", Groups);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagMultivariateSchema>("multivariate", Multivariate);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchemaMultivariate>("multivariate", Multivariate);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedFeatureFlagPartialUpdateRequestSchemaFiltersPayloads>("payloads", Payloads);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

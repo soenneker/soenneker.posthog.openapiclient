@@ -60,10 +60,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Linked GitHub issue, or null when no issue is linked.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLink? GithubLink { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGithubLinkComposed? GithubLink { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLink GithubLink { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGithubLinkComposed GithubLink { get; private set; }
 #endif
         /// <summary>Stable feature request ID.</summary>
         public Guid? Id { get; private set; }
@@ -135,7 +135,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "evidence_count", n => { EvidenceCount = n.GetIntValue(); } },
-                { "github_link", n => { GithubLink = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLink>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGitHubLink.CreateFromDiscriminatorValue); } },
+                { "github_link", n => { GithubLink = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGithubLinkComposed>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestGithubLinkComposed.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_archived", n => { IsArchived = n.GetBoolValue(); } },
                 { "product_areas", n => { ProductAreas = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestProductArea.CreateFromDiscriminatorValue)?.AsList(); } },

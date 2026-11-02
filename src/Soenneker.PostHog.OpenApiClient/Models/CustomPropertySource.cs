@@ -100,10 +100,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Person and group sources only: the most recent sync/backfill run, or null if none yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun? LatestRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceLatestRun? LatestRun { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun LatestRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceLatestRun LatestRun { get; private set; }
 #endif
         /// <summary>Person and group sources only: approximate time of the next scheduled run (last run + interval). Approximate — drifts if the schedule was paused. Null for account sources, if never run, or when the interval is unavailable.</summary>
         public DateTimeOffset? NextSyncAt { get; private set; }
@@ -179,7 +179,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "key_column", n => { KeyColumn = n.GetStringValue(); } },
                 { "last_sync_error", n => { LastSyncError = n.GetStringValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },
-                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySyncRun.CreateFromDiscriminatorValue); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceLatestRun>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySourceLatestRun.CreateFromDiscriminatorValue); } },
                 { "next_sync_at", n => { NextSyncAt = n.GetDateTimeOffsetValue(); } },
                 { "saved_query", n => { SavedQuery = n.GetGuidValue(); } },
                 { "saved_query_name", n => { SavedQueryName = n.GetStringValue(); } },

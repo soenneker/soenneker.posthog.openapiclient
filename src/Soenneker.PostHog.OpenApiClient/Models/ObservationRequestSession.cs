@@ -33,10 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The scanner&apos;s answer for this session. Null until the session succeeds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult? ScannerResult { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationRequestSessionScannerResult? ScannerResult { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult ScannerResult { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationRequestSessionScannerResult ScannerResult { get; private set; }
 #endif
         /// <summary>How the session&apos;s scan started, with the same values as a bulk scan trigger. Null while the request still waits for the session to end, or before its scan has started.* `started` - Started* `already_running` - Already running* `already_scanned` - Already scanned* `skipped_limit` - Skipped, in-flight limit reached* `skipped_quota` - Skipped, the org&apos;s credit quota for this period was reached* `skipped_scanner_limit` - Skipped, scanner&apos;s own credit limit reached* `failed` - Failed to start</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "observation_id", n => { ObservationId = n.GetGuidValue(); } },
                 { "scan_outcome", n => { ScanOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationRequestSessionScanOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationRequestSessionScanOutcome.CreateFromDiscriminatorValue); } },
-                { "scanner_result", n => { ScannerResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult.CreateFromDiscriminatorValue); } },
+                { "scanner_result", n => { ScannerResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationRequestSessionScannerResult>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationRequestSessionScannerResult.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationRequestSessionState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueState = default; _explicitNullProperties?.Remove("state"); AdditionalData["state"] = unknown; } else { State = parsed; AdditionalData.Remove("state"); } } },
             };

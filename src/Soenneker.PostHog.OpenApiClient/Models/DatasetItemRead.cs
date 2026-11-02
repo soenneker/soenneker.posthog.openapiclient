@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Dataset that owns the item.</summary>
         public Guid? Dataset { get; private set; }
@@ -110,10 +110,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The version_created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? VersionCreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy? VersionCreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic VersionCreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy VersionCreatedBy { get; private set; }
 #endif
         /// <summary>ID of this immutable item version.</summary>
         public Guid? VersionId { get; private set; }
@@ -145,7 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "client_item_id", n => { ClientItemId = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "dataset", n => { Dataset = n.GetGuidValue(); } },
                 { "dataset_revision", n => { DatasetRevision = n.GetIntValue(); } },
                 { "dataset_revision_id", n => { DatasetRevisionId = n.GetGuidValue(); } },
@@ -161,7 +161,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
                 { "version_created_at", n => { VersionCreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "version_created_by", n => { VersionCreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "version_created_by", n => { VersionCreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "version_id", n => { VersionId = n.GetGuidValue(); } },
             };
         }

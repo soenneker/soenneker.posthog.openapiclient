@@ -36,6 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         LogsList,
         #pragma warning restore CS1591
+        [EnumMember(Value = "metrics")]
+        #pragma warning disable CS1591
+        Metrics,
+        #pragma warning restore CS1591
         [EnumMember(Value = "metrics_table")]
         #pragma warning disable CS1591
         MetricsTable,

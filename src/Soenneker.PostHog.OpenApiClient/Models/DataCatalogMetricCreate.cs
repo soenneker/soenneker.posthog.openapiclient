@@ -61,10 +61,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who approved this metric as canonical, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ApprovedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApprovedBy? ApprovedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ApprovedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApprovedBy ApprovedBy { get; private set; }
 #endif
         /// <summary>AI author&apos;s confidence in the proposal, 0-1.</summary>
         public double? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; AdditionalData?.Remove("confidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
@@ -225,7 +225,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "ai_model", n => { AiModel = n.GetStringValue(); } },
                 { "approved_at", n => { ApprovedAt = n.GetDateTimeOffsetValue(); } },
-                { "approved_by", n => { ApprovedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "approved_by", n => { ApprovedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApprovedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApprovedBy.CreateFromDiscriminatorValue); } },
                 { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreateCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricCreateCreatedBy.CreateFromDiscriminatorValue); } },

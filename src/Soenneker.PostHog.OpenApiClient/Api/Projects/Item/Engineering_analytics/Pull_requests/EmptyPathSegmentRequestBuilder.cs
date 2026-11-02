@@ -131,7 +131,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             [QueryParameter("repo")]
             public string Repo { get; set; }
 #endif
-            /// <summary>Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.</summary>
+            /// <summary>Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source that the `sources` list reports as synced, when the team has more than one.</summary>
             [QueryParameter("source_id")]
             public Guid? SourceId { get; set; }
             /// <summary>Optional state filter. &apos;merged&apos; lists PRs merged in the window, newest merged_at first. &apos;closed&apos; lists PRs closed without a merge in the window, newest closed_at first. &apos;open&apos; lists all open PRs whatever their age, newest first. Omit it to get open PRs plus any merged or closed in the window.</summary>

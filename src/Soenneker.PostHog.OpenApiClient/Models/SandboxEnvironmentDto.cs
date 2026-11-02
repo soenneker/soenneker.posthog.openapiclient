@@ -69,15 +69,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("created_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
         private DateTimeOffset? _explicitNullValueCreatedAt = default!;
-        /// <summary>The created_by property</summary>
+        /// <summary>Response shape for a task creator, mirroring core ``UserBasicSerializer`` output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? _explicitNullValueCreatedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy _explicitNullValueCreatedBy = default!;
 #endif
         /// <summary>The custom_image_id property</summary>
         public Guid? CustomImageId { get => _explicitNullValueCustomImageId; set { _explicitNullValueCustomImageId = value; AdditionalData?.Remove("custom_image_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_image_id"); else _explicitNullProperties?.Remove("custom_image_id"); } }
@@ -197,7 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allowed_domains", n => { AllowedDomains = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy.CreateFromDiscriminatorValue); } },
                 { "custom_image_id", n => { CustomImageId = n.GetGuidValue(); } },
                 { "custom_image_name", n => { CustomImageName = n.GetStringValue(); } },
                 { "custom_image_status", n => { CustomImageStatus = n.GetStringValue(); } },
@@ -223,7 +223,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("allowed_domains", AllowedDomains);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>("created_by", CreatedBy);
             writer.WriteGuidValue("custom_image_id", CustomImageId);
             writer.WriteStringValue("custom_image_name", CustomImageName);
             writer.WriteStringValue("custom_image_status", CustomImageStatus);

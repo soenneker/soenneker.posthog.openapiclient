@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>For component-kind canvases: the head version&apos;s placement contract (size, optional configSchema). Null for other kinds and unpublished components.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta? ComponentMeta { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaComposed? ComponentMeta { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta ComponentMeta { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaComposed ComponentMeta { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "channel", n => { Channel = n.GetGuidValue(); } },
-                { "component_meta", n => { ComponentMeta = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMeta.CreateFromDiscriminatorValue); } },
+                { "component_meta", n => { ComponentMeta = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaComposed>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaComposed.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasCreatedBy.CreateFromDiscriminatorValue); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },

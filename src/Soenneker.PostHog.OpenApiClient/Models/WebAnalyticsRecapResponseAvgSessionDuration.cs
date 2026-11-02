@@ -31,12 +31,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Period-over-period change, null when not meaningful.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChange? Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; AdditionalData?.Remove("change"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WoWChange? _explicitNullValueChange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange? Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; AdditionalData?.Remove("change"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange? _explicitNullValueChange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WoWChange Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; AdditionalData?.Remove("change"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WoWChange _explicitNullValueChange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange Change { get => _explicitNullValueChange; set { _explicitNullValueChange = value; AdditionalData?.Remove("change"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change"); else _explicitNullProperties?.Remove("change"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange _explicitNullValueChange = default!;
 #endif
         /// <summary>Human-readable duration, e.g. &apos;2m 34s&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChange>(global::Soenneker.PostHog.OpenApiClient.Models.WoWChange.CreateFromDiscriminatorValue); } },
+                { "change", n => { Change = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange>(global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange.CreateFromDiscriminatorValue); } },
                 { "current", n => { Current = n.GetStringValue(); } },
                 { "previous", n => { Previous = n.GetStringValue(); } },
             };
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WoWChange>("change", Change);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DurationMetricChange>("change", Change);
             writer.WriteStringValue("current", Current);
             writer.WriteStringValue("previous", Previous);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

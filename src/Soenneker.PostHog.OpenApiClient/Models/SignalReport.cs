@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Current user, internal task, or external agent claim owner. Null when unclaimed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee? Assignee { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssigneeComposed? Assignee { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee Assignee { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssigneeComposed Assignee { get; private set; }
 #endif
         /// <summary>Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.* `posthog_health_check` - PostHog health check* `posthog_onboarding` - PostHog onboarding* `posthog_system` - PostHog system</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -116,10 +116,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The plan this report leads or is a step of, with every step in it. A report that other reports link to with `part_of` is a plan. Null when the report is in no plan, and always null in list responses, because finding a plan&apos;s steps costs several queries per report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan? Plan { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListPlan? Plan { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan Plan { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListPlan Plan { get; private set; }
 #endif
         /// <summary>P0–P4 from the latest priority judgment artefact (when present).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -148,10 +148,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The report&apos;s PR refund, when one exists. One refund per report, ever.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund? Refund { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefund? Refund { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund Refund { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefund Refund { get; private set; }
 #endif
         /// <summary>Why refunding this report&apos;s PR would be rejected right now, or null when a refund would be accepted (see the field&apos;s schema for the reason values).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -172,18 +172,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Evidence available to the latest research pass. Null for legacy reports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext? ResearchContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListResearchContext? ResearchContext { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext ResearchContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListResearchContext ResearchContext { get; private set; }
 #endif
         /// <summary>Reviewer control and state token for preparing an automatic proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse? ReviewerAssignment { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListReviewerAssignment? ReviewerAssignment { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse ReviewerAssignment { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListReviewerAssignment ReviewerAssignment { get; private set; }
 #endif
         /// <summary>skill_name slug of the scout that authored this report, when scout-authored (from ClickHouse); null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -208,18 +208,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>A product the team does not use that would have given this report better evidence, from the latest source suggestion artefact. Null when there is none, or when the team now uses the product. Always null in list responses, because its in-use check can query ClickHouse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion? SourceSuggestion { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListSourceSuggestion? SourceSuggestion { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion SourceSuggestion { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListSourceSuggestion SourceSuggestion { get; private set; }
 #endif
         /// <summary>Startup failure from the latest failed research attempt, when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure? StartupFailure { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListStartupFailure? StartupFailure { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure StartupFailure { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListStartupFailure StartupFailure { get; private set; }
 #endif
         /// <summary>* `potential` - Potential* `candidate` - Candidate* `in_progress` - In Progress* `pending_input` - Pending Input* `ready` - Ready* `monitoring` - Monitoring* `resolved` - Resolved* `closed` - Closed* `failed` - Failed* `deleted` - Deleted* `suppressed` - Suppressed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus? Status { get; private set; }
@@ -338,7 +338,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "actionability", n => { Actionability = n.GetStringValue(); } },
                 { "already_addressed", n => { AlreadyAddressed = n.GetBoolValue(); } },
                 { "artefact_count", n => { ArtefactCount = n.GetIntValue(); } },
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssigneeComposed>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssigneeComposed.CreateFromDiscriminatorValue); } },
                 { "billing_exempt_reason", n => { BillingExemptReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason.CreateFromDiscriminatorValue); } },
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -354,21 +354,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_suggested_reviewer", n => { IsSuggestedReviewer = n.GetBoolValue(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetric>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetric.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "monitoring_started_at", n => { MonitoringStartedAt = n.GetDateTimeOffsetValue(); } },
-                { "plan", n => { Plan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan>(global::Soenneker.PostHog.OpenApiClient.Models.ReportPlan.CreateFromDiscriminatorValue); } },
+                { "plan", n => { Plan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListPlan>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListPlan.CreateFromDiscriminatorValue); } },
                 { "priority", n => { Priority = n.GetStringValue(); } },
                 { "pull_requests", n => { PullRequests = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "ranking", n => { Ranking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRanking>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRanking.CreateFromDiscriminatorValue); } },
-                { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund.CreateFromDiscriminatorValue); } },
+                { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefund>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefund.CreateFromDiscriminatorValue); } },
                 { "refund_ineligibility_reason", n => { RefundIneligibilityReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefundIneligibilityReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefundIneligibilityReason.CreateFromDiscriminatorValue); } },
                 { "repo_slug", n => { RepoSlug = n.GetStringValue(); } },
-                { "research_context", n => { ResearchContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext>(global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext.CreateFromDiscriminatorValue); } },
-                { "reviewer_assignment", n => { ReviewerAssignment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse.CreateFromDiscriminatorValue); } },
+                { "research_context", n => { ResearchContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListResearchContext>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListResearchContext.CreateFromDiscriminatorValue); } },
+                { "reviewer_assignment", n => { ReviewerAssignment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListReviewerAssignment>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListReviewerAssignment.CreateFromDiscriminatorValue); } },
                 { "scout_name", n => { ScoutName = n.GetStringValue(); } },
                 { "signal_count", n => { SignalCount = n.GetIntValue(); } },
                 { "signals_at_run", n => { SignalsAtRun = n.GetIntValue(); } },
                 { "source_products", n => { SourceProducts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "source_suggestion", n => { SourceSuggestion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion>(global::Soenneker.PostHog.OpenApiClient.Models.ReportSourceSuggestion.CreateFromDiscriminatorValue); } },
-                { "startup_failure", n => { StartupFailure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure>(global::Soenneker.PostHog.OpenApiClient.Models.ReportStartupFailure.CreateFromDiscriminatorValue); } },
+                { "source_suggestion", n => { SourceSuggestion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListSourceSuggestion>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListSourceSuggestion.CreateFromDiscriminatorValue); } },
+                { "startup_failure", n => { StartupFailure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListStartupFailure>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListStartupFailure.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportStatus>(); } },
                 { "suggested_prompts", n => { SuggestedPrompts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },

@@ -102,12 +102,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Where a scout finding links outside PostHog, if anywhere.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PageLink? Link { get => _explicitNullValueLink; set { _explicitNullValueLink = value; AdditionalData?.Remove("link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link"); else _explicitNullProperties?.Remove("link"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PageLink? _explicitNullValueLink = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalViewLink? Link { get => _explicitNullValueLink; set { _explicitNullValueLink = value; AdditionalData?.Remove("link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link"); else _explicitNullProperties?.Remove("link"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalViewLink? _explicitNullValueLink = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PageLink Link { get => _explicitNullValueLink; set { _explicitNullValueLink = value; AdditionalData?.Remove("link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link"); else _explicitNullProperties?.Remove("link"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PageLink _explicitNullValueLink = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalViewLink Link { get => _explicitNullValueLink; set { _explicitNullValueLink = value; AdditionalData?.Remove("link"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("link"); else _explicitNullProperties?.Remove("link"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalViewLink _explicitNullValueLink = default!;
 #endif
         /// <summary>Identifiers such as a pull request or ticket number, joined by dots.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -122,22 +122,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>What expanding the signal shows, if anything.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalPreview? Preview { get => _explicitNullValuePreview; set { _explicitNullValuePreview = value; AdditionalData?.Remove("preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preview"); else _explicitNullProperties?.Remove("preview"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalPreview? _explicitNullValuePreview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalViewPreview? Preview { get => _explicitNullValuePreview; set { _explicitNullValuePreview = value; AdditionalData?.Remove("preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preview"); else _explicitNullProperties?.Remove("preview"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalViewPreview? _explicitNullValuePreview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalPreview Preview { get => _explicitNullValuePreview; set { _explicitNullValuePreview = value; AdditionalData?.Remove("preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preview"); else _explicitNullProperties?.Remove("preview"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalPreview _explicitNullValuePreview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalViewPreview Preview { get => _explicitNullValuePreview; set { _explicitNullValuePreview = value; AdditionalData?.Remove("preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preview"); else _explicitNullProperties?.Remove("preview"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalViewPreview _explicitNullValuePreview = default!;
 #endif
         /// <summary>The recording the signal plays, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingTarget? Recording { get => _explicitNullValueRecording; set { _explicitNullValueRecording = value; AdditionalData?.Remove("recording"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording"); else _explicitNullProperties?.Remove("recording"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RecordingTarget? _explicitNullValueRecording = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalViewRecording? Recording { get => _explicitNullValueRecording; set { _explicitNullValueRecording = value; AdditionalData?.Remove("recording"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording"); else _explicitNullProperties?.Remove("recording"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalViewRecording? _explicitNullValueRecording = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordingTarget Recording { get => _explicitNullValueRecording; set { _explicitNullValueRecording = value; AdditionalData?.Remove("recording"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording"); else _explicitNullProperties?.Remove("recording"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RecordingTarget _explicitNullValueRecording = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalViewRecording Recording { get => _explicitNullValueRecording; set { _explicitNullValueRecording = value; AdditionalData?.Remove("recording"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording"); else _explicitNullProperties?.Remove("recording"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalViewRecording _explicitNullValueRecording = default!;
 #endif
         /// <summary>The signal&apos;s id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -212,10 +212,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "extra", n => { Extra = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalViewExtraProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalViewExtraProperty.CreateFromDiscriminatorValue); } },
                 { "headline", n => { Headline = n.GetStringValue(); } },
                 { "lead", n => { Lead = n.GetStringValue(); } },
-                { "link", n => { Link = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PageLink>(global::Soenneker.PostHog.OpenApiClient.Models.PageLink.CreateFromDiscriminatorValue); } },
+                { "link", n => { Link = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalViewLink>(global::Soenneker.PostHog.OpenApiClient.Models.SignalViewLink.CreateFromDiscriminatorValue); } },
                 { "meta", n => { Meta = n.GetStringValue(); } },
-                { "preview", n => { Preview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalPreview>(global::Soenneker.PostHog.OpenApiClient.Models.SignalPreview.CreateFromDiscriminatorValue); } },
-                { "recording", n => { Recording = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingTarget>(global::Soenneker.PostHog.OpenApiClient.Models.RecordingTarget.CreateFromDiscriminatorValue); } },
+                { "preview", n => { Preview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalViewPreview>(global::Soenneker.PostHog.OpenApiClient.Models.SignalViewPreview.CreateFromDiscriminatorValue); } },
+                { "recording", n => { Recording = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalViewRecording>(global::Soenneker.PostHog.OpenApiClient.Models.SignalViewRecording.CreateFromDiscriminatorValue); } },
                 { "signal_id", n => { SignalId = n.GetStringValue(); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
                 { "source_product", n => { SourceProduct = n.GetStringValue(); } },
@@ -235,10 +235,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalViewExtraProperty>("extra", Extra);
             writer.WriteStringValue("headline", Headline);
             writer.WriteStringValue("lead", Lead);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PageLink>("link", Link);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalViewLink>("link", Link);
             writer.WriteStringValue("meta", Meta);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalPreview>("preview", Preview);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordingTarget>("recording", Recording);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalViewPreview>("preview", Preview);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalViewRecording>("recording", Recording);
             writer.WriteStringValue("signal_id", SignalId);
             writer.WriteStringValue("source_id", SourceId);
             writer.WriteStringValue("source_product", SourceProduct);

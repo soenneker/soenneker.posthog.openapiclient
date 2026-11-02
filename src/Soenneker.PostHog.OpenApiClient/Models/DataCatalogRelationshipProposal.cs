@@ -123,10 +123,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who accepted or rejected the proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ReviewedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalReviewedBy? ReviewedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ReviewedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalReviewedBy ReviewedBy { get; private set; }
 #endif
         /// <summary>HogQL key expression on the source table (casts allowed).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -194,7 +194,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
                 { "rejection_reason", n => { RejectionReason = n.GetStringValue(); } },
                 { "reviewed_at", n => { ReviewedAt = n.GetDateTimeOffsetValue(); } },
-                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalReviewedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogRelationshipProposalReviewedBy.CreateFromDiscriminatorValue); } },
                 { "source_table_key", n => { SourceTableKey = n.GetStringValue(); } },
                 { "source_table_name", n => { SourceTableName = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },

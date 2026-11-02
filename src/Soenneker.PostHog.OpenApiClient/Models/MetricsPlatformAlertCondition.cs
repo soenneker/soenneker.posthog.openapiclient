@@ -29,8 +29,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionKind? _explicitNullValueKind = default!;
         /// <summary>How a series&apos; value compares with `threshold`. Required for a threshold.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator? Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator? _explicitNullValueOperator = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator _explicitNullValueOperator = default!;
+#endif
         /// <summary>The value a series is compared with. Required for a threshold.</summary>
         public double? Threshold { get => _explicitNullValueThreshold; set { _explicitNullValueThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("threshold"); else _explicitNullProperties?.Remove("threshold"); } }
         private double? _explicitNullValueThreshold = default!;
@@ -53,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionKind>(); } },
-                { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator>(); } },
+                { "operator", n => { Operator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator.CreateFromDiscriminatorValue); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
             };
         }
@@ -65,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionKind>("kind", Kind);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator>("operator", Operator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsPlatformAlertConditionOperator>("operator", Operator);
             writer.WriteDoubleValue("threshold", Threshold);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

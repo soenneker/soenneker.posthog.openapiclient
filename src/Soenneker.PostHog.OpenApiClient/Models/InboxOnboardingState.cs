@@ -41,22 +41,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Saved setup choices, without activating them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft? Draft { get => _explicitNullValueDraft; set { _explicitNullValueDraft = value; AdditionalData?.Remove("draft"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft"); else _explicitNullProperties?.Remove("draft"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft? _explicitNullValueDraft = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateDraft? Draft { get => _explicitNullValueDraft; set { _explicitNullValueDraft = value; AdditionalData?.Remove("draft"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft"); else _explicitNullProperties?.Remove("draft"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateDraft? _explicitNullValueDraft = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft Draft { get => _explicitNullValueDraft; set { _explicitNullValueDraft = value; AdditionalData?.Remove("draft"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft"); else _explicitNullProperties?.Remove("draft"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft _explicitNullValueDraft = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateDraft Draft { get => _explicitNullValueDraft; set { _explicitNullValueDraft = value; AdditionalData?.Remove("draft"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft"); else _explicitNullProperties?.Remove("draft"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateDraft _explicitNullValueDraft = default!;
 #endif
         /// <summary>First investigation outcome.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState? FirstReport { get => _explicitNullValueFirstReport; set { _explicitNullValueFirstReport = value; AdditionalData?.Remove("first_report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report"); else _explicitNullProperties?.Remove("first_report"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState? _explicitNullValueFirstReport = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateFirstReport? FirstReport { get => _explicitNullValueFirstReport; set { _explicitNullValueFirstReport = value; AdditionalData?.Remove("first_report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report"); else _explicitNullProperties?.Remove("first_report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateFirstReport? _explicitNullValueFirstReport = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState FirstReport { get => _explicitNullValueFirstReport; set { _explicitNullValueFirstReport = value; AdditionalData?.Remove("first_report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report"); else _explicitNullProperties?.Remove("first_report"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState _explicitNullValueFirstReport = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateFirstReport FirstReport { get => _explicitNullValueFirstReport; set { _explicitNullValueFirstReport = value; AdditionalData?.Remove("first_report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report"); else _explicitNullProperties?.Remove("first_report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateFirstReport _explicitNullValueFirstReport = default!;
 #endif
         /// <summary>Whether the current user can receive an in-app notification when this investigation finishes.</summary>
         public bool? FirstReportCompletionNotification { get => _explicitNullValueFirstReportCompletionNotification; set { _explicitNullValueFirstReportCompletionNotification = value; AdditionalData?.Remove("first_report_completion_notification"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_report_completion_notification"); else _explicitNullProperties?.Remove("first_report_completion_notification"); } }
@@ -110,8 +110,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
-                { "draft", n => { Draft = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft.CreateFromDiscriminatorValue); } },
-                { "first_report", n => { FirstReport = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState>(global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState.CreateFromDiscriminatorValue); } },
+                { "draft", n => { Draft = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateDraft>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateDraft.CreateFromDiscriminatorValue); } },
+                { "first_report", n => { FirstReport = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateFirstReport>(global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateFirstReport.CreateFromDiscriminatorValue); } },
                 { "first_report_completion_notification", n => { FirstReportCompletionNotification = n.GetBoolValue(); } },
                 { "first_report_notification_email", n => { FirstReportNotificationEmail = n.GetStringValue(); } },
                 { "github_optional_available", n => { GithubOptionalAvailable = n.GetBoolValue(); } },
@@ -126,8 +126,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingDraft>("draft", Draft);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FirstReportState>("first_report", FirstReport);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateDraft>("draft", Draft);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateFirstReport>("first_report", FirstReport);
             writer.WriteBoolValue("first_report_completion_notification", FirstReportCompletionNotification);
             writer.WriteStringValue("first_report_notification_email", FirstReportNotificationEmail);
             writer.WriteBoolValue("github_optional_available", GithubOptionalAvailable);

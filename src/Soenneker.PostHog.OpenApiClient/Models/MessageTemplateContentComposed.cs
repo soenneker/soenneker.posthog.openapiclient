@@ -29,12 +29,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Email message content. Replaced as a whole on update — send the complete object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate? _explicitNullValueEmail = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail? Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail? _explicitNullValueEmail = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate _explicitNullValueEmail = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail Email { get => _explicitNullValueEmail; set { _explicitNullValueEmail = value; AdditionalData?.Remove("email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email"); else _explicitNullProperties?.Remove("email"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail _explicitNullValueEmail = default!;
 #endif
         /// <summary>* `liquid` - liquid</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating? Templating { get => _explicitNullValueTemplating; set { _explicitNullValueTemplating = value; AdditionalData?.Remove("templating"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("templating"); else _explicitNullProperties?.Remove("templating"); } }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "email", n => { Email = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate.CreateFromDiscriminatorValue); } },
+                { "email", n => { Email = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail>(global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail.CreateFromDiscriminatorValue); } },
                 { "templating", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTemplating = default; _explicitNullProperties?.Remove("templating"); AdditionalData["templating"] = unknown; } else { Templating = parsed; AdditionalData.Remove("templating"); } } },
             };
         }
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailTemplate>("email", Email);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentEmail>("email", Email);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MessageTemplateContentTemplating>("templating", Templating);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

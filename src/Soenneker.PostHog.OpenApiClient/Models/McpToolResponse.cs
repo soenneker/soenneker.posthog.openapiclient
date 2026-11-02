@@ -52,8 +52,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         private string _explicitNullValueErrorCode = default!;
 #endif
         /// <summary>Failure category for MCP analytics.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType? ErrorType { get => _explicitNullValueErrorType; set { _explicitNullValueErrorType = value; AdditionalData?.Remove("error_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_type"); else _explicitNullProperties?.Remove("error_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType? _explicitNullValueErrorType = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType ErrorType { get => _explicitNullValueErrorType; set { _explicitNullValueErrorType = value; AdditionalData?.Remove("error_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_type"); else _explicitNullProperties?.Remove("error_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType _explicitNullValueErrorType = default!;
+#endif
         /// <summary>Structured tool output for native widgets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "error_code", n => { ErrorCode = n.GetStringValue(); } },
-                { "error_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueErrorType = default; _explicitNullProperties?.Remove("error_type"); AdditionalData["error_type"] = unknown; } else { ErrorType = parsed; AdditionalData.Remove("error_type"); } } },
+                { "error_type", n => { ErrorType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType.CreateFromDiscriminatorValue); } },
                 { "structured_content", n => { StructuredContent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseStructuredContentProperty>(global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseStructuredContentProperty.CreateFromDiscriminatorValue); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
             };
@@ -108,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteStringValue("error_code", ErrorCode);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType>("error_type", ErrorType);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseErrorType>("error_type", ErrorType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpToolResponseStructuredContentProperty>("structured_content", StructuredContent);
             writer.WriteBoolValue("success", Success);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

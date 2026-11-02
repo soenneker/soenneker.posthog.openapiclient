@@ -40,12 +40,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Which days and how many events the checks read. Null when the checks could not choose the days to read, such as for an `unsupported` insight.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage? Coverage { get => _explicitNullValueCoverage; set { _explicitNullValueCoverage = value; AdditionalData?.Remove("coverage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coverage"); else _explicitNullProperties?.Remove("coverage"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage? _explicitNullValueCoverage = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverageComposed? Coverage { get => _explicitNullValueCoverage; set { _explicitNullValueCoverage = value; AdditionalData?.Remove("coverage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coverage"); else _explicitNullProperties?.Remove("coverage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverageComposed? _explicitNullValueCoverage = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage Coverage { get => _explicitNullValueCoverage; set { _explicitNullValueCoverage = value; AdditionalData?.Remove("coverage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coverage"); else _explicitNullProperties?.Remove("coverage"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage _explicitNullValueCoverage = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverageComposed Coverage { get => _explicitNullValueCoverage; set { _explicitNullValueCoverage = value; AdditionalData?.Remove("coverage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("coverage"); else _explicitNullProperties?.Remove("coverage"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverageComposed _explicitNullValueCoverage = default!;
 #endif
         /// <summary>* `passed` - No data issues found* `warning` - A check found a small issue* `problem` - A check found a large issue* `partial` - Some checks could not run, and the others found no issue* `on_request` - The checks would read a lot of data, so they run only on request* `no_events` - No events to check* `unsupported` - This kind of insight cannot be checked* `inconclusive` - No check could run</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "checks", n => { Checks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheck>(global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheck.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage>(global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage.CreateFromDiscriminatorValue); } },
+                { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverageComposed>(global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverageComposed.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheck>("checks", Checks);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverage>("coverage", Coverage);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksCoverageComposed>("coverage", Coverage);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataChecksStatus>("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

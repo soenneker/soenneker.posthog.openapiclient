@@ -39,12 +39,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Raw control-group statistics. When provided, the server derives baseline_value and variance.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats? BaselineStats { get => _explicitNullValueBaselineStats; set { _explicitNullValueBaselineStats = value; AdditionalData?.Remove("baseline_stats"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_stats"); else _explicitNullProperties?.Remove("baseline_stats"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats? _explicitNullValueBaselineStats = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats? BaselineStats { get => _explicitNullValueBaselineStats; set { _explicitNullValueBaselineStats = value; AdditionalData?.Remove("baseline_stats"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_stats"); else _explicitNullProperties?.Remove("baseline_stats"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats? _explicitNullValueBaselineStats = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats BaselineStats { get => _explicitNullValueBaselineStats; set { _explicitNullValueBaselineStats = value; AdditionalData?.Remove("baseline_stats"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_stats"); else _explicitNullProperties?.Remove("baseline_stats"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats _explicitNullValueBaselineStats = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats BaselineStats { get => _explicitNullValueBaselineStats; set { _explicitNullValueBaselineStats = value; AdditionalData?.Remove("baseline_stats"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_stats"); else _explicitNullProperties?.Remove("baseline_stats"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats _explicitNullValueBaselineStats = default!;
 #endif
         /// <summary>Baseline metric value: conversion rate as a fraction 0-1 (funnel), average per user (mean), or the ratio (ratio/retention). Provide this or baseline_stats.</summary>
         public double? BaselineValue { get => _explicitNullValueBaselineValue; set { _explicitNullValueBaselineValue = value; AdditionalData?.Remove("baseline_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_value"); else _explicitNullProperties?.Remove("baseline_value"); } }
@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "baseline_stats", n => { BaselineStats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats.CreateFromDiscriminatorValue); } },
+                { "baseline_stats", n => { BaselineStats = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats.CreateFromDiscriminatorValue); } },
                 { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
                 { "exposure_rate_per_day", n => { ExposureRatePerDay = n.GetDoubleValue(); } },
                 { "metric_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMetricType = default; _explicitNullProperties?.Remove("metric_type"); AdditionalData["metric_type"] = unknown; } else { MetricType = parsed; AdditionalData.Remove("metric_type"); } } },
@@ -106,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeBaselineStats>("baseline_stats", BaselineStats);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputBaselineStats>("baseline_stats", BaselineStats);
             writer.WriteDoubleValue("baseline_value", BaselineValue);
             writer.WriteDoubleValue("exposure_rate_per_day", ExposureRatePerDay);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeCalculationInputMetricType>("metric_type", MetricType);

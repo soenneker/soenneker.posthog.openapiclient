@@ -47,12 +47,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy? _explicitNullValueCreatedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy _explicitNullValueCreatedBy = default!;
 #endif
         /// <summary>The expires_at property</summary>
         public DateTimeOffset? ExpiresAt { get => _explicitNullValueExpiresAt; set { _explicitNullValueExpiresAt = value; AdditionalData?.Remove("expires_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_at"); else _explicitNullProperties?.Remove("expires_at"); } }
@@ -103,12 +103,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Run whose failing snapshot prompted this quarantine. Null when quarantine was created without run context.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineSourceRun? SourceRun { get => _explicitNullValueSourceRun; set { _explicitNullValueSourceRun = value; AdditionalData?.Remove("source_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_run"); else _explicitNullProperties?.Remove("source_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineSourceRun? _explicitNullValueSourceRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantinedIdentifierEntrySourceRun? SourceRun { get => _explicitNullValueSourceRun; set { _explicitNullValueSourceRun = value; AdditionalData?.Remove("source_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_run"); else _explicitNullProperties?.Remove("source_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantinedIdentifierEntrySourceRun? _explicitNullValueSourceRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineSourceRun SourceRun { get => _explicitNullValueSourceRun; set { _explicitNullValueSourceRun = value; AdditionalData?.Remove("source_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_run"); else _explicitNullProperties?.Remove("source_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineSourceRun _explicitNullValueSourceRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantinedIdentifierEntrySourceRun SourceRun { get => _explicitNullValueSourceRun; set { _explicitNullValueSourceRun = value; AdditionalData?.Remove("source_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_run"); else _explicitNullProperties?.Remove("source_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantinedIdentifierEntrySourceRun _explicitNullValueSourceRun = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get => _explicitNullValueUpdatedAt; set { _explicitNullValueUpdatedAt = value; AdditionalData?.Remove("updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updated_at"); else _explicitNullProperties?.Remove("updated_at"); } }
@@ -139,14 +139,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy.CreateFromDiscriminatorValue); } },
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "run_type", n => { RunType = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
-                { "source_run", n => { SourceRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineSourceRun>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineSourceRun.CreateFromDiscriminatorValue); } },
+                { "source_run", n => { SourceRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantinedIdentifierEntrySourceRun>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantinedIdentifierEntrySourceRun.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -158,14 +158,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy>("created_by", CreatedBy);
             writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("identifier", Identifier);
             writer.WriteStringValue("reason", Reason);
             writer.WriteStringValue("run_type", RunType);
             writer.WriteStringValue("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineSourceRun>("source_run", SourceRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantinedIdentifierEntrySourceRun>("source_run", SourceRun);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

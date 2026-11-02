@@ -7,73 +7,39 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyDateSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyMultiContainsSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchema"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class FeatureFlagFilterPropertySchema : IComposedTypeWrapper, IParsable
-    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
-        // Preserve ambiguous union payloads without inventing a discriminator.
-        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    #pragma warning disable CS1591
+    public partial class FeatureFlagFilterPropertySchema : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema"/></summary>
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("operator") is null) { _explicitNullValueOperator = default!; _explicitNullProperties?.Remove("operator"); }
+            else if (parseNode.GetChildNode("operator") is { } nullNodeOperator && nullNodeOperator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Operator = null;
+        }
+
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The operator property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema? FeatureFlagFilterPropertyCohortInSchema { get; set; }
+        public string? Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; AdditionalData?.Remove("operator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
+        private string? _explicitNullValueOperator = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema FeatureFlagFilterPropertyCohortInSchema { get; set; }
+        public string Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; AdditionalData?.Remove("operator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
+        private string _explicitNullValueOperator = default!;
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyDateSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyDateSchema? FeatureFlagFilterPropertyDateSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyDateSchema FeatureFlagFilterPropertyDateSchema { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema? FeatureFlagFilterPropertyExistsSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema FeatureFlagFilterPropertyExistsSchema { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema? FeatureFlagFilterPropertyFlagEvaluatesSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema FeatureFlagFilterPropertyFlagEvaluatesSchema { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchema? FeatureFlagFilterPropertyGenericSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchema FeatureFlagFilterPropertyGenericSchema { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyMultiContainsSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyMultiContainsSchema? FeatureFlagFilterPropertyMultiContainsSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyMultiContainsSchema FeatureFlagFilterPropertyMultiContainsSchema { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchema? FeatureFlagFilterPropertySemverSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchema FeatureFlagFilterPropertySemverSchema { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchema"/> and sets the default values.
+        /// </summary>
+        public FeatureFlagFilterPropertySchema()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -82,63 +48,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchema();
-            if("FeatureFlagFilterPropertyCohortInSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            var mappingValue = parseNode.GetChildNode("operator")?.GetStringValue();
+            return mappingValue switch
             {
-                
-            }
-            else if("FeatureFlagFilterPropertyDateSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("FeatureFlagFilterPropertyExistsSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("FeatureFlagFilterPropertyFlagEvaluatesSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("FeatureFlagFilterPropertyGenericSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("FeatureFlagFilterPropertyMultiContainsSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("FeatureFlagFilterPropertySemverSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            
-            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("key") && shapeMembers1.ContainsKey("operator") && shapeMembers1.ContainsKey("value") && (!shapeMembers1.ContainsKey("key") || (((shapeMembers1["key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "cohort".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "person".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "group".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("cohort_name") || ((((shapeMembers1["cohort_name"] == null || shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("group_type_index") || ((((shapeMembers1["group_type_index"] == null || shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral11 && integral11.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral12 && integral12.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral13 && integral13.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("value") || (true)) && (!shapeMembers1.ContainsKey("operator") || (((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal18 && "exact".Equals(literal18.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal19 && "is_not".Equals(literal19.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal20 && "icontains".Equals(literal20.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal21 && "not_icontains".Equals(literal21.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal22 && "starts_with".Equals(literal22.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal23 && "not_starts_with".Equals(literal23.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal24 && "ends_with".Equals(literal24.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal25 && "not_ends_with".Equals(literal25.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal26 && "regex".Equals(literal26.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal27 && "not_regex".Equals(literal27.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal28 && "gt".Equals(literal28.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal29 && "gte".Equals(literal29.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal30 && "lt".Equals(literal30.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal31 && "lte".Equals(literal31.GetValue(), global::System.StringComparison.Ordinal))))))))))();
-            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("key") && shapeMembers1.ContainsKey("operator") && (!shapeMembers1.ContainsKey("key") || (((shapeMembers1["key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "cohort".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "person".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "group".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("cohort_name") || ((((shapeMembers1["cohort_name"] == null || shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("group_type_index") || ((((shapeMembers1["group_type_index"] == null || shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral11 && integral11.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral12 && integral12.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral13 && integral13.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("operator") || (((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal16 && "is_set".Equals(literal16.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal17 && "is_not_set".Equals(literal17.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("value") || (true)))))))();
-            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("key") && shapeMembers1.ContainsKey("operator") && shapeMembers1.ContainsKey("value") && (!shapeMembers1.ContainsKey("key") || (((shapeMembers1["key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "cohort".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "person".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "group".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("cohort_name") || ((((shapeMembers1["cohort_name"] == null || shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("group_type_index") || ((((shapeMembers1["group_type_index"] == null || shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral11 && integral11.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral12 && integral12.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral13 && integral13.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("operator") || (((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal16 && "is_date_exact".Equals(literal16.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal17 && "is_date_before".Equals(literal17.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal18 && "is_date_after".Equals(literal18.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("value") || (((shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
-            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("key") && shapeMembers1.ContainsKey("operator") && shapeMembers1.ContainsKey("value") && (!shapeMembers1.ContainsKey("key") || (((shapeMembers1["key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "cohort".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "person".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "group".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("cohort_name") || ((((shapeMembers1["cohort_name"] == null || shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("group_type_index") || ((((shapeMembers1["group_type_index"] == null || shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral11 && integral11.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral12 && integral12.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral13 && integral13.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("operator") || (((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal16 && "semver_eq".Equals(literal16.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal17 && "semver_neq".Equals(literal17.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal18 && "semver_gt".Equals(literal18.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal19 && "semver_gte".Equals(literal19.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal20 && "semver_lt".Equals(literal20.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal21 && "semver_lte".Equals(literal21.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal22 && "semver_tilde".Equals(literal22.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal23 && "semver_caret".Equals(literal23.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal24 && "semver_wildcard".Equals(literal24.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("value") || (((shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
-            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("key") && shapeMembers1.ContainsKey("operator") && shapeMembers1.ContainsKey("value") && (!shapeMembers1.ContainsKey("key") || (((shapeMembers1["key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "cohort".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "person".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "group".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("cohort_name") || ((((shapeMembers1["cohort_name"] == null || shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("group_type_index") || ((((shapeMembers1["group_type_index"] == null || shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral11 && integral11.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral12 && integral12.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral13 && integral13.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("operator") || (((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal16 && "icontains_multi".Equals(literal16.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal17 && "not_icontains_multi".Equals(literal17.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("value") || (((shapeMembers1["value"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))))))))();
-            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("key") && shapeMembers1.ContainsKey("operator") && shapeMembers1.ContainsKey("type") && shapeMembers1.ContainsKey("value") && (!shapeMembers1.ContainsKey("key") || (((shapeMembers1["key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "cohort".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("cohort_name") || ((((shapeMembers1["cohort_name"] == null || shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("group_type_index") || ((((shapeMembers1["group_type_index"] == null || shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral9 && integral9.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral10 && integral10.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral11 && integral11.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("operator") || (((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal14 && "in".Equals(literal14.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal15 && "not_in".Equals(literal15.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("value") || (true)) && (!shapeMembers1.ContainsKey("cohort_deleted") || (((shapeMembers1["cohort_deleted"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("cohort_missing") || (((shapeMembers1["cohort_missing"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))))))))();
-            bool matchesUnionBranch6 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("key") && shapeMembers1.ContainsKey("operator") && shapeMembers1.ContainsKey("type") && shapeMembers1.ContainsKey("value") && (!shapeMembers1.ContainsKey("key") || (((shapeMembers1["key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "flag".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("cohort_name") || ((((shapeMembers1["cohort_name"] == null || shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["cohort_name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("group_type_index") || ((((shapeMembers1["group_type_index"] == null || shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral9 && integral9.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral10 && integral10.GetValue() % 1 == 0) || (shapeMembers1["group_type_index"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral11 && integral11.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("operator") || (((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["operator"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal14 && "flag_evaluates_to".Equals(literal14.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("value") || (true)))))))();
-            int matchingUnionBranches = 0;
-            if (matchesUnionBranch0) matchingUnionBranches++;
-            if (matchesUnionBranch1) matchingUnionBranches++;
-            if (matchesUnionBranch2) matchingUnionBranches++;
-            if (matchesUnionBranch3) matchingUnionBranches++;
-            if (matchesUnionBranch4) matchingUnionBranches++;
-            if (matchesUnionBranch5) matchingUnionBranches++;
-            if (matchesUnionBranch6) matchingUnionBranches++;
-            bool noSelectedUnionBranch = result.FeatureFlagFilterPropertyCohortInSchema == null && result.FeatureFlagFilterPropertyDateSchema == null && result.FeatureFlagFilterPropertyExistsSchema == null && result.FeatureFlagFilterPropertyFlagEvaluatesSchema == null && result.FeatureFlagFilterPropertyGenericSchema == null && result.FeatureFlagFilterPropertyMultiContainsSchema == null && result.FeatureFlagFilterPropertySemverSchema == null;
-            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.FeatureFlagFilterPropertyGenericSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.FeatureFlagFilterPropertyExistsSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.FeatureFlagFilterPropertyDateSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyDateSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch3 && matchingUnionBranches == 1) result.FeatureFlagFilterPropertySemverSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch4 && matchingUnionBranches == 1) result.FeatureFlagFilterPropertyMultiContainsSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyMultiContainsSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch5 && matchingUnionBranches == 1) result.FeatureFlagFilterPropertyCohortInSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch6 && matchingUnionBranches == 1) result.FeatureFlagFilterPropertyFlagEvaluatesSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema(), parseNode);
-            if (result.FeatureFlagFilterPropertyCohortInSchema == null && result.FeatureFlagFilterPropertyDateSchema == null && result.FeatureFlagFilterPropertyExistsSchema == null && result.FeatureFlagFilterPropertyFlagEvaluatesSchema == null && result.FeatureFlagFilterPropertyGenericSchema == null && result.FeatureFlagFilterPropertyMultiContainsSchema == null && result.FeatureFlagFilterPropertySemverSchema == null) result.UnrecognizedValue = unionPayload;
-return result;
+                "ends_with" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "exact" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "flag_evaluates_to" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyFlagEvaluatesSchema(),
+                "gt" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "gte" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "icontains" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "icontains_multi" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyMultiContainsSchema(),
+                "in" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyCohortInSchema(),
+                "is_date_after" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyDateSchema(),
+                "is_date_before" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyDateSchema(),
+                "is_date_exact" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyDateSchema(),
+                "is_not" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "is_not_set" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyExistsSchema(),
+                "is_set" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyExistsSchema(),
+                "lt" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "lte" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "not_ends_with" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "not_icontains" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "not_icontains_multi" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyMultiContainsSchema(),
+                "not_in" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyCohortInSchema(),
+                "not_regex" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "not_starts_with" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "regex" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                "semver_caret" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "semver_eq" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "semver_gt" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "semver_gte" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "semver_lt" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "semver_lte" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "semver_neq" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "semver_tilde" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "semver_wildcard" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertySemverSchema(),
+                "starts_with" => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchemaFeatureFlagFilterPropertyGenericSchema(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySchema(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -146,37 +93,10 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
-
-            if(FeatureFlagFilterPropertyCohortInSchema != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return FeatureFlagFilterPropertyCohortInSchema.GetFieldDeserializers();
-            }
-            else if(FeatureFlagFilterPropertyDateSchema != null)
-            {
-                return FeatureFlagFilterPropertyDateSchema.GetFieldDeserializers();
-            }
-            else if(FeatureFlagFilterPropertyExistsSchema != null)
-            {
-                return FeatureFlagFilterPropertyExistsSchema.GetFieldDeserializers();
-            }
-            else if(FeatureFlagFilterPropertyFlagEvaluatesSchema != null)
-            {
-                return FeatureFlagFilterPropertyFlagEvaluatesSchema.GetFieldDeserializers();
-            }
-            else if(FeatureFlagFilterPropertyGenericSchema != null)
-            {
-                return FeatureFlagFilterPropertyGenericSchema.GetFieldDeserializers();
-            }
-            else if(FeatureFlagFilterPropertyMultiContainsSchema != null)
-            {
-                return FeatureFlagFilterPropertyMultiContainsSchema.GetFieldDeserializers();
-            }
-            else if(FeatureFlagFilterPropertySemverSchema != null)
-            {
-                return FeatureFlagFilterPropertySemverSchema.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "operator", n => { Operator = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -184,60 +104,10 @@ return result;
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (FeatureFlagFilterPropertyCohortInSchema == null && FeatureFlagFilterPropertyDateSchema == null && FeatureFlagFilterPropertyExistsSchema == null && FeatureFlagFilterPropertyFlagEvaluatesSchema == null && FeatureFlagFilterPropertyGenericSchema == null && FeatureFlagFilterPropertyMultiContainsSchema == null && FeatureFlagFilterPropertySemverSchema == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            int selectedUnionBranches = 0;
-            if (FeatureFlagFilterPropertyCohortInSchema != null) selectedUnionBranches++;
-            if (FeatureFlagFilterPropertyDateSchema != null) selectedUnionBranches++;
-            if (FeatureFlagFilterPropertyExistsSchema != null) selectedUnionBranches++;
-            if (FeatureFlagFilterPropertyFlagEvaluatesSchema != null) selectedUnionBranches++;
-            if (FeatureFlagFilterPropertyGenericSchema != null) selectedUnionBranches++;
-            if (FeatureFlagFilterPropertyMultiContainsSchema != null) selectedUnionBranches++;
-            if (FeatureFlagFilterPropertySemverSchema != null) selectedUnionBranches++;
-            if (FeatureFlagFilterPropertyCohortInSchema != null && selectedUnionBranches == 1) { if (FeatureFlagFilterPropertyCohortInSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureFlagFilterPropertyCohortInSchema); return; }
-            if (FeatureFlagFilterPropertyDateSchema != null && selectedUnionBranches == 1) { if (FeatureFlagFilterPropertyDateSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureFlagFilterPropertyDateSchema); return; }
-            if (FeatureFlagFilterPropertyExistsSchema != null && selectedUnionBranches == 1) { if (FeatureFlagFilterPropertyExistsSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureFlagFilterPropertyExistsSchema); return; }
-            if (FeatureFlagFilterPropertyFlagEvaluatesSchema != null && selectedUnionBranches == 1) { if (FeatureFlagFilterPropertyFlagEvaluatesSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureFlagFilterPropertyFlagEvaluatesSchema); return; }
-            if (FeatureFlagFilterPropertyGenericSchema != null && selectedUnionBranches == 1) { if (FeatureFlagFilterPropertyGenericSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureFlagFilterPropertyGenericSchema); return; }
-            if (FeatureFlagFilterPropertyMultiContainsSchema != null && selectedUnionBranches == 1) { if (FeatureFlagFilterPropertyMultiContainsSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureFlagFilterPropertyMultiContainsSchema); return; }
-            if (FeatureFlagFilterPropertySemverSchema != null && selectedUnionBranches == 1) { if (FeatureFlagFilterPropertySemverSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FeatureFlagFilterPropertySemverSchema); return; }
-
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(FeatureFlagFilterPropertyCohortInSchema != null)
-            {
-                if (FeatureFlagFilterPropertyCohortInSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyCohortInSchema>(null, FeatureFlagFilterPropertyCohortInSchema);
-            }
-            else if(FeatureFlagFilterPropertyDateSchema != null)
-            {
-                if (FeatureFlagFilterPropertyDateSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyDateSchema>(null, FeatureFlagFilterPropertyDateSchema);
-            }
-            else if(FeatureFlagFilterPropertyExistsSchema != null)
-            {
-                if (FeatureFlagFilterPropertyExistsSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyExistsSchema>(null, FeatureFlagFilterPropertyExistsSchema);
-            }
-            else if(FeatureFlagFilterPropertyFlagEvaluatesSchema != null)
-            {
-                if (FeatureFlagFilterPropertyFlagEvaluatesSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyFlagEvaluatesSchema>(null, FeatureFlagFilterPropertyFlagEvaluatesSchema);
-            }
-            else if(FeatureFlagFilterPropertyGenericSchema != null)
-            {
-                if (FeatureFlagFilterPropertyGenericSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyGenericSchema>(null, FeatureFlagFilterPropertyGenericSchema);
-            }
-            else if(FeatureFlagFilterPropertyMultiContainsSchema != null)
-            {
-                if (FeatureFlagFilterPropertyMultiContainsSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertyMultiContainsSchema>(null, FeatureFlagFilterPropertyMultiContainsSchema);
-            }
-            else if(FeatureFlagFilterPropertySemverSchema != null)
-            {
-                if (FeatureFlagFilterPropertySemverSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFilterPropertySemverSchema>(null, FeatureFlagFilterPropertySemverSchema);
-            }
+            writer.WriteStringValue("operator", Operator);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

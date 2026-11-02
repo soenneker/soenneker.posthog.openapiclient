@@ -7,49 +7,39 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf4"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class TrendsQuerySeriesItem : IComposedTypeWrapper, IParsable
-    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
-        // Preserve ambiguous union payloads without inventing a discriminator.
-        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    #pragma warning disable CS1591
+    public partial class TrendsQuerySeriesItem : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf1"/></summary>
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+        }
+
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf1? TrendsQuerySeriesItemOneOf1 { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf1 TrendsQuerySeriesItemOneOf1 { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf2? TrendsQuerySeriesItemOneOf2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf2 TrendsQuerySeriesItemOneOf2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf3? TrendsQuerySeriesItemOneOf3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf3 TrendsQuerySeriesItemOneOf3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf4? TrendsQuerySeriesItemOneOf4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf4 TrendsQuerySeriesItemOneOf4 { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItem"/> and sets the default values.
+        /// </summary>
+        public TrendsQuerySeriesItem()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -58,28 +48,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItem();
-            if("TrendsQuerySeriesItemOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
+            return mappingValue switch
             {
-                
-            }
-            else if("TrendsQuerySeriesItemOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("TrendsQuerySeriesItemOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("TrendsQuerySeriesItemOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            
-            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.TrendsQuerySeriesItemOneOf1 == null && result.TrendsQuerySeriesItemOneOf2 == null && result.TrendsQuerySeriesItemOneOf3 == null && result.TrendsQuerySeriesItemOneOf4 == null) result.UnrecognizedValue = unionPayload;
-return result;
+                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemTrendsQuerySeriesItemOneOf2(),
+                "DataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemTrendsQuerySeriesItemOneOf3(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemTrendsQuerySeriesItemOneOf1(),
+                "GroupNode" => new global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemTrendsQuerySeriesItemOneOf4(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItem(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,25 +64,10 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
-
-            if(TrendsQuerySeriesItemOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return TrendsQuerySeriesItemOneOf1.GetFieldDeserializers();
-            }
-            else if(TrendsQuerySeriesItemOneOf2 != null)
-            {
-                return TrendsQuerySeriesItemOneOf2.GetFieldDeserializers();
-            }
-            else if(TrendsQuerySeriesItemOneOf3 != null)
-            {
-                return TrendsQuerySeriesItemOneOf3.GetFieldDeserializers();
-            }
-            else if(TrendsQuerySeriesItemOneOf4 != null)
-            {
-                return TrendsQuerySeriesItemOneOf4.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "kind", n => { Kind = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -113,39 +75,10 @@ return result;
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (TrendsQuerySeriesItemOneOf1 == null && TrendsQuerySeriesItemOneOf2 == null && TrendsQuerySeriesItemOneOf3 == null && TrendsQuerySeriesItemOneOf4 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            int selectedUnionBranches = 0;
-            if (TrendsQuerySeriesItemOneOf1 != null) selectedUnionBranches++;
-            if (TrendsQuerySeriesItemOneOf2 != null) selectedUnionBranches++;
-            if (TrendsQuerySeriesItemOneOf3 != null) selectedUnionBranches++;
-            if (TrendsQuerySeriesItemOneOf4 != null) selectedUnionBranches++;
-            if (TrendsQuerySeriesItemOneOf1 != null && selectedUnionBranches == 1) { if (TrendsQuerySeriesItemOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsQuerySeriesItemOneOf1); return; }
-            if (TrendsQuerySeriesItemOneOf2 != null && selectedUnionBranches == 1) { if (TrendsQuerySeriesItemOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsQuerySeriesItemOneOf2); return; }
-            if (TrendsQuerySeriesItemOneOf3 != null && selectedUnionBranches == 1) { if (TrendsQuerySeriesItemOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsQuerySeriesItemOneOf3); return; }
-            if (TrendsQuerySeriesItemOneOf4 != null && selectedUnionBranches == 1) { if (TrendsQuerySeriesItemOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsQuerySeriesItemOneOf4); return; }
-
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(TrendsQuerySeriesItemOneOf1 != null)
-            {
-                if (TrendsQuerySeriesItemOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf1>(null, TrendsQuerySeriesItemOneOf1);
-            }
-            else if(TrendsQuerySeriesItemOneOf2 != null)
-            {
-                if (TrendsQuerySeriesItemOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf2>(null, TrendsQuerySeriesItemOneOf2);
-            }
-            else if(TrendsQuerySeriesItemOneOf3 != null)
-            {
-                if (TrendsQuerySeriesItemOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf3>(null, TrendsQuerySeriesItemOneOf3);
-            }
-            else if(TrendsQuerySeriesItemOneOf4 != null)
-            {
-                if (TrendsQuerySeriesItemOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsQuerySeriesItemOneOf4>(null, TrendsQuerySeriesItemOneOf4);
-            }
+            writer.WriteStringValue("kind", Kind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

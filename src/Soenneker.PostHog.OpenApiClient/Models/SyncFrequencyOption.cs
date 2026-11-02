@@ -45,12 +45,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The source or consumer named in `blocked_by`. Null when allowed, and also when the blocker sits outside the caller&apos;s access grants, where `blocked_by` still gives the direction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker? Blocker { get => _explicitNullValueBlocker; set { _explicitNullValueBlocker = value; AdditionalData?.Remove("blocker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocker"); else _explicitNullProperties?.Remove("blocker"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker? _explicitNullValueBlocker = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker? Blocker { get => _explicitNullValueBlocker; set { _explicitNullValueBlocker = value; AdditionalData?.Remove("blocker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocker"); else _explicitNullProperties?.Remove("blocker"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker? _explicitNullValueBlocker = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker Blocker { get => _explicitNullValueBlocker; set { _explicitNullValueBlocker = value; AdditionalData?.Remove("blocker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocker"); else _explicitNullProperties?.Remove("blocker"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker _explicitNullValueBlocker = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker Blocker { get => _explicitNullValueBlocker; set { _explicitNullValueBlocker = value; AdditionalData?.Remove("blocker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocker"); else _explicitNullProperties?.Remove("blocker"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker _explicitNullValueBlocker = default!;
 #endif
         /// <summary>* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence? Cadence { get => _explicitNullValueCadence; set { _explicitNullValueCadence = value; AdditionalData?.Remove("cadence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cadence"); else _explicitNullProperties?.Remove("cadence"); } }
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "allowed", n => { Allowed = n.GetBoolValue(); } },
                 { "blocked_by", n => { BlockedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy.CreateFromDiscriminatorValue); } },
-                { "blocker", n => { Blocker = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker.CreateFromDiscriminatorValue); } },
+                { "blocker", n => { Blocker = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker.CreateFromDiscriminatorValue); } },
                 { "cadence", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCadence = default; _explicitNullProperties?.Remove("cadence"); AdditionalData["cadence"] = unknown; } else { Cadence = parsed; AdditionalData.Remove("cadence"); } } },
             };
         }
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("allowed", Allowed);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlockedBy>("blocked_by", BlockedBy);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>("blocker", Blocker);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionBlocker>("blocker", Blocker);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOptionCadence>("cadence", Cadence);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

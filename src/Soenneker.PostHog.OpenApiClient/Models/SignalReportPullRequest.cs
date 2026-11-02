@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who first attached this PR to the report, not necessarily its GitHub author. Task-output links identify the originating task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy? AttachedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByComposed? AttachedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy AttachedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByComposed AttachedBy { get; private set; }
 #endif
         /// <summary>Originating work claim. Null for legacy links without a recorded claim.</summary>
         public Guid? ClaimId { get => _explicitNullValueClaimId; set { _explicitNullValueClaimId = value; AdditionalData?.Remove("claim_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_id"); else _explicitNullProperties?.Remove("claim_id"); } }
@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attached_at", n => { AttachedAt = n.GetDateTimeOffsetValue(); } },
-                { "attached_by", n => { AttachedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedBy.CreateFromDiscriminatorValue); } },
+                { "attached_by", n => { AttachedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByComposed>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequestAttachedByComposed.CreateFromDiscriminatorValue); } },
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "merged", n => { Merged = n.GetBoolValue(); } },

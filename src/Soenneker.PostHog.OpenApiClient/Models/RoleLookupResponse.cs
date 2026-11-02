@@ -26,12 +26,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Matching reference, or null if none exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference? Reference { get => _explicitNullValueReference; set { _explicitNullValueReference = value; AdditionalData?.Remove("reference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference"); else _explicitNullProperties?.Remove("reference"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference? _explicitNullValueReference = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponseReference? Reference { get => _explicitNullValueReference; set { _explicitNullValueReference = value; AdditionalData?.Remove("reference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference"); else _explicitNullProperties?.Remove("reference"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponseReference? _explicitNullValueReference = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference Reference { get => _explicitNullValueReference; set { _explicitNullValueReference = value; AdditionalData?.Remove("reference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference"); else _explicitNullProperties?.Remove("reference"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference _explicitNullValueReference = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponseReference Reference { get => _explicitNullValueReference; set { _explicitNullValueReference = value; AdditionalData?.Remove("reference"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference"); else _explicitNullProperties?.Remove("reference"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponseReference _explicitNullValueReference = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponse"/> and sets the default values.
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "reference", n => { Reference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference>(global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference.CreateFromDiscriminatorValue); } },
+                { "reference", n => { Reference = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponseReference>(global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponseReference.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleExternalReference>("reference", Reference);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RoleLookupResponseReference>("reference", Reference);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

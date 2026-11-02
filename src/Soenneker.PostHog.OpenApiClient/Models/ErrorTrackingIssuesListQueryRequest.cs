@@ -62,12 +62,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Filter by issue assignee. Omit to include all assignees.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignee? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignee? _explicitNullValueAssignee = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestAssignee? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestAssignee? _explicitNullValueAssignee = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignee Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignee _explicitNullValueAssignee = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestAssignee Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestAssignee _explicitNullValueAssignee = default!;
 #endif
         /// <summary>Date range for issue aggregates. Defaults to the last 7 days.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -222,7 +222,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignee.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestAssignee.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestDateRange.CreateFromDiscriminatorValue); } },
                 { "filePath", n => { FilePath = n.GetStringValue(); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem>(global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -250,7 +250,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingAssignee>("assignee", Assignee);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestAssignee>("assignee", Assignee);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssuesListQueryRequestDateRange>("dateRange", DateRange);
             writer.WriteStringValue("filePath", FilePath);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PropertyItem>("filterGroup", FilterGroup);

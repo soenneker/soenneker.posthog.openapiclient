@@ -40,10 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user who submitted it; null for an agent-authored suggestion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Unique UUID of this suggestion.</summary>
         public Guid? Id { get; private set; }
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "agent_response", n => { AgentResponse = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchSuggestionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "linked_iteration_ids", n => { LinkedIterationIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "pipeline", n => { Pipeline = n.GetGuidValue(); } },

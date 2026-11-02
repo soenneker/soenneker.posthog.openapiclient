@@ -55,12 +55,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Latest attempt, independent of the available image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest? LatestRequest { get => _explicitNullValueLatestRequest; set { _explicitNullValueLatestRequest = value; AdditionalData?.Remove("latest_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_request"); else _explicitNullProperties?.Remove("latest_request"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest? _explicitNullValueLatestRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryItemLatestRequest? LatestRequest { get => _explicitNullValueLatestRequest; set { _explicitNullValueLatestRequest = value; AdditionalData?.Remove("latest_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_request"); else _explicitNullProperties?.Remove("latest_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryItemLatestRequest? _explicitNullValueLatestRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest LatestRequest { get => _explicitNullValueLatestRequest; set { _explicitNullValueLatestRequest = value; AdditionalData?.Remove("latest_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_request"); else _explicitNullProperties?.Remove("latest_request"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest _explicitNullValueLatestRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryItemLatestRequest LatestRequest { get => _explicitNullValueLatestRequest; set { _explicitNullValueLatestRequest = value; AdditionalData?.Remove("latest_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_request"); else _explicitNullProperties?.Remove("latest_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryItemLatestRequest _explicitNullValueLatestRequest = default!;
 #endif
         /// <summary>The page_status property</summary>
         public int? PageStatus { get; private set; }
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "failure_cause", n => { FailureCause = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "latest_request", n => { LatestRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest.CreateFromDiscriminatorValue); } },
+                { "latest_request", n => { LatestRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryItemLatestRequest>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryItemLatestRequest.CreateFromDiscriminatorValue); } },
                 { "page_status", n => { PageStatus = n.GetIntValue(); } },
                 { "revision", n => { Revision = n.GetGuidValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryItemStatus>(); } },
@@ -138,7 +138,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest>("latest_request", LatestRequest);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapScreenshotHistoryItemLatestRequest>("latest_request", LatestRequest);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

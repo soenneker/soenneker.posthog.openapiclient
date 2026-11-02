@@ -29,22 +29,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The delivery gate: whether scout findings can reach the inbox for this team, with a one-line `remediation` when they cannot. Check `can_emit` before investigating anything, because when it is False every emit is silently dropped. Null only for a stored profile built before this section existed, which the caller should treat as unknown rather than as permission to emit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility? EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; AdditionalData?.Remove("emit_eligibility"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility? _explicitNullValueEmitEligibility = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryEmitEligibility? EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; AdditionalData?.Remove("emit_eligibility"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryEmitEligibility? _explicitNullValueEmitEligibility = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; AdditionalData?.Remove("emit_eligibility"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility _explicitNullValueEmitEligibility = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryEmitEligibility EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; AdditionalData?.Remove("emit_eligibility"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryEmitEligibility _explicitNullValueEmitEligibility = default!;
 #endif
         /// <summary>Counts of reports already in the inbox, grouped by status, which is what a new finding would be deduped against. Null for a stored profile built before this section existed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports? ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; AdditionalData?.Remove("existing_inbox_reports"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports? _explicitNullValueExistingInboxReports = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryExistingInboxReports? ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; AdditionalData?.Remove("existing_inbox_reports"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryExistingInboxReports? _explicitNullValueExistingInboxReports = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; AdditionalData?.Remove("existing_inbox_reports"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports _explicitNullValueExistingInboxReports = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryExistingInboxReports ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; AdditionalData?.Remove("existing_inbox_reports"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryExistingInboxReports _explicitNullValueExistingInboxReports = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryComposed"/> and sets the default values.
@@ -71,8 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "emit_eligibility", n => { EmitEligibility = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility>(global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility.CreateFromDiscriminatorValue); } },
-                { "existing_inbox_reports", n => { ExistingInboxReports = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports>(global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports.CreateFromDiscriminatorValue); } },
+                { "emit_eligibility", n => { EmitEligibility = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryEmitEligibility>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryEmitEligibility.CreateFromDiscriminatorValue); } },
+                { "existing_inbox_reports", n => { ExistingInboxReports = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryExistingInboxReports>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryExistingInboxReports.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -82,8 +82,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility>("emit_eligibility", EmitEligibility);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports>("existing_inbox_reports", ExistingInboxReports);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryEmitEligibility>("emit_eligibility", EmitEligibility);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileSummaryExistingInboxReports>("existing_inbox_reports", ExistingInboxReports);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

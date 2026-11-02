@@ -50,12 +50,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional passing categories. Omit or set null for neutral scores. Each scorer version keeps its own rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule? PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule? _explicitNullValuePassingRule = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigPassingRule? PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigPassingRule? _explicitNullValuePassingRule = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule _explicitNullValuePassingRule = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigPassingRule PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigPassingRule _explicitNullValuePassingRule = default!;
 #endif
         /// <summary>* `single` - single* `multiple` - multiple</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode? SelectionMode { get => _explicitNullValueSelectionMode; set { _explicitNullValueSelectionMode = value; AdditionalData?.Remove("selection_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selection_mode"); else _explicitNullProperties?.Remove("selection_mode"); } }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "max_selections", n => { MaxSelections = n.GetIntValue(); } },
                 { "min_selections", n => { MinSelections = n.GetIntValue(); } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "passing_rule", n => { PassingRule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule.CreateFromDiscriminatorValue); } },
+                { "passing_rule", n => { PassingRule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigPassingRule>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigPassingRule.CreateFromDiscriminatorValue); } },
                 { "selection_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSelectionMode = default; _explicitNullProperties?.Remove("selection_mode"); AdditionalData["selection_mode"] = unknown; } else { SelectionMode = parsed; AdditionalData.Remove("selection_mode"); } } },
             };
         }
@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("max_selections", MaxSelections);
             writer.WriteIntValue("min_selections", MinSelections);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>("options", Options);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule>("passing_rule", PassingRule);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigPassingRule>("passing_rule", PassingRule);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode>("selection_mode", SelectionMode);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

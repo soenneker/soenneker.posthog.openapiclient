@@ -45,12 +45,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Median pass rate in each period, over evaluations with results in both. Null when none has.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; AdditionalData?.Remove("medianComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? _explicitNullValueMedianComparison = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewMedianComparison? MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; AdditionalData?.Remove("medianComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewMedianComparison? _explicitNullValueMedianComparison = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; AdditionalData?.Remove("medianComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison _explicitNullValueMedianComparison = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewMedianComparison MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; AdditionalData?.Remove("medianComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewMedianComparison _explicitNullValueMedianComparison = default!;
 #endif
         /// <summary>Median pass rate per bucket, aligned with `buckets`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "entries", n => { Entries = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry>(global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "median", n => { Median = n.GetDoubleValue(); } },
-                { "medianComparison", n => { MedianComparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison>(global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison.CreateFromDiscriminatorValue); } },
+                { "medianComparison", n => { MedianComparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewMedianComparison>(global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewMedianComparison.CreateFromDiscriminatorValue); } },
                 { "medianTrend", n => { MedianTrend = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
             };
         }
@@ -102,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry>("entries", Entries);
             writer.WriteDoubleValue("median", Median);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison>("medianComparison", MedianComparison);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewMedianComparison>("medianComparison", MedianComparison);
             writer.WriteCollectionOfPrimitiveValues<double?>("medianTrend", MedianTrend);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

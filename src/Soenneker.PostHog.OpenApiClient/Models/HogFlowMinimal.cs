@@ -103,10 +103,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Newest task this loop workflow created, as its last run. Null when the workflow is not a loop or has not run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun? LastRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRunComposed? LastRun { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun LastRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRunComposed LastRun { get; private set; }
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -211,7 +211,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "email_sending_rate_limit", n => { EmailSendingRateLimit = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "exit_condition", n => { ExitCondition = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalExitCondition>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun.CreateFromDiscriminatorValue); } },
+                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRunComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRunComposed.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMinimalOriginProduct.CreateFromDiscriminatorValue); } },
                 { "pending_suggestions", n => { PendingSuggestions = n.GetIntValue(); } },

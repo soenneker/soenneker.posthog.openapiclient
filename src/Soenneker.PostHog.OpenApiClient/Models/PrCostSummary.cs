@@ -77,12 +77,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Agent LLM token spend attributed to this PR by git branch ($ai_git_branch), or null when no generation matched: independent of the CI cost figures, so it can be present even when jobs_available is false. The UI hides the row when null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; AdditionalData?.Remove("llm_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? _explicitNullValueLlmSpend = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend? LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; AdditionalData?.Remove("llm_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend? _explicitNullValueLlmSpend = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; AdditionalData?.Remove("llm_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend _explicitNullValueLlmSpend = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; AdditionalData?.Remove("llm_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend _explicitNullValueLlmSpend = default!;
 #endif
         /// <summary>Billable Linux jobs still queued/running (no elapsed): excluded from the estimate.</summary>
         public int? UnsettledJobs { get => _explicitNullValueUnsettledJobs; set { _explicitNullValueUnsettledJobs = value; AdditionalData?.Remove("unsettled_jobs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsettled_jobs"); else _explicitNullProperties?.Remove("unsettled_jobs"); } }
@@ -119,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "estimated_cost_usd", n => { EstimatedCostUsd = n.GetDoubleValue(); } },
                 { "excluded_jobs", n => { ExcludedJobs = n.GetIntValue(); } },
                 { "jobs_available", n => { JobsAvailable = n.GetBoolValue(); } },
-                { "llm_spend", n => { LlmSpend = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend>(global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend.CreateFromDiscriminatorValue); } },
+                { "llm_spend", n => { LlmSpend = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend>(global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend.CreateFromDiscriminatorValue); } },
                 { "unsettled_jobs", n => { UnsettledJobs = n.GetIntValue(); } },
             };
         }
@@ -137,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("estimated_cost_usd", EstimatedCostUsd);
             writer.WriteIntValue("excluded_jobs", ExcludedJobs);
             writer.WriteBoolValue("jobs_available", JobsAvailable);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend>("llm_spend", LlmSpend);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrCostSummaryLlmSpend>("llm_spend", LlmSpend);
             writer.WriteIntValue("unsettled_jobs", UnsettledJobs);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

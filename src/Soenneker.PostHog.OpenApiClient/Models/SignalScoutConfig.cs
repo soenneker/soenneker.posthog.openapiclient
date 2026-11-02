@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set when PostHog is retiring this scout, and null otherwise. Carries the phase, the reason to show, what replaces the scout, and when it stops running. Only a canonical scout the project has not edited is ever marked: a project&apos;s own copy keeps running and reads as null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation? Deprecation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigDeprecation? Deprecation { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation Deprecation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigDeprecation Deprecation { get; private set; }
 #endif
         /// <summary>Human-readable summary of what this scout investigates, sourced from the scout skill&apos;s `description` metadata. Use it for a quick steer on the scout&apos;s focus without loading the full skill body. Empty if the skill is not currently present on the team or carries no description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -209,10 +209,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who last moved `status`, when a person did it through this API. Null for a system transition such as an automatic pause, for a row whose status never changed, and for a caller that may not read member identities. Pair it with `status` to say who turned a scout off, instead of only when it went off.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? StatusChangedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatusChangedBy? StatusChangedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic StatusChangedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatusChangedBy StatusChangedBy { get; private set; }
 #endif
         /// <summary>Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` — e.g. a per-report quality judgment (`{&quot;type&quot;: &quot;object&quot;, &quot;properties&quot;: {&quot;verdict&quot;: {&quot;enum&quot;: [&quot;good&quot;, &quot;bad&quot;, &quot;unsure&quot;]}, &quot;reason&quot;: {&quot;type&quot;: &quot;string&quot;}}, &quot;required&quot;: [&quot;verdict&quot;, &quot;reason&quot;]}`). The root must be `&quot;type&quot;: &quot;object&quot;`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit — a dry-run scout has nowhere to record to. Cardinality is the scout&apos;s call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -279,7 +279,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "auto_pause_exempt", n => { AutoPauseExempt = n.GetBoolValue(); } },
                 { "consecutive_failure_count", n => { ConsecutiveFailureCount = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "deprecation", n => { Deprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutDeprecation.CreateFromDiscriminatorValue); } },
+                { "deprecation", n => { Deprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigDeprecation.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "effective_precheck_query", n => { EffectivePrecheckQuery = n.GetStringValue(); } },
@@ -311,7 +311,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "source_product", n => { SourceProduct = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatus>(); } },
                 { "status_changed_at", n => { StatusChangedAt = n.GetDateTimeOffsetValue(); } },
-                { "status_changed_by", n => { StatusChangedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "status_changed_by", n => { StatusChangedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatusChangedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStatusChangedBy.CreateFromDiscriminatorValue); } },
                 { "structured_output_schema", n => { StructuredOutputSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigStructuredOutputSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tool_preset", n => { ToolPreset = n.GetStringValue(); } },

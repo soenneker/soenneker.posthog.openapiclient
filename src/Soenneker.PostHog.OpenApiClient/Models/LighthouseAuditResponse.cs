@@ -80,12 +80,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The element the browser chose as the LCP, or null when Lighthouse could not name one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LcpElement? LcpElement { get => _explicitNullValueLcpElement; set { _explicitNullValueLcpElement = value; AdditionalData?.Remove("lcp_element"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_element"); else _explicitNullProperties?.Remove("lcp_element"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LcpElement? _explicitNullValueLcpElement = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseLcpElement? LcpElement { get => _explicitNullValueLcpElement; set { _explicitNullValueLcpElement = value; AdditionalData?.Remove("lcp_element"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_element"); else _explicitNullProperties?.Remove("lcp_element"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseLcpElement? _explicitNullValueLcpElement = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LcpElement LcpElement { get => _explicitNullValueLcpElement; set { _explicitNullValueLcpElement = value; AdditionalData?.Remove("lcp_element"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_element"); else _explicitNullProperties?.Remove("lcp_element"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LcpElement _explicitNullValueLcpElement = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseLcpElement LcpElement { get => _explicitNullValueLcpElement; set { _explicitNullValueLcpElement = value; AdditionalData?.Remove("lcp_element"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lcp_element"); else _explicitNullProperties?.Remove("lcp_element"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseLcpElement _explicitNullValueLcpElement = default!;
 #endif
         /// <summary>Where the LCP time went, phase by phase. Empty when the report omits the breakdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -169,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "final_url", n => { FinalUrl = n.GetStringValue(); } },
                 { "form_factor", n => { FormFactor = n.GetStringValue(); } },
                 { "lcp_checks_failed", n => { LcpChecksFailed = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>(global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "lcp_element", n => { LcpElement = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LcpElement>(global::Soenneker.PostHog.OpenApiClient.Models.LcpElement.CreateFromDiscriminatorValue); } },
+                { "lcp_element", n => { LcpElement = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseLcpElement>(global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseLcpElement.CreateFromDiscriminatorValue); } },
                 { "lcp_phases", n => { LcpPhases = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase>(global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "lighthouse_version", n => { LighthouseVersion = n.GetStringValue(); } },
                 { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty.CreateFromDiscriminatorValue); } },
@@ -189,7 +189,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("final_url", FinalUrl);
             writer.WriteStringValue("form_factor", FormFactor);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AuditOpportunity>("lcp_checks_failed", LcpChecksFailed);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LcpElement>("lcp_element", LcpElement);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseLcpElement>("lcp_element", LcpElement);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LcpPhase>("lcp_phases", LcpPhases);
             writer.WriteStringValue("lighthouse_version", LighthouseVersion);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LighthouseAuditResponseMetricsProperty>("metrics", Metrics);

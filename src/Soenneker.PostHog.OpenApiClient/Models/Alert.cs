@@ -71,12 +71,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Alert condition type. Determines how the value is evaluated: absolute_value, relative_increase, or relative_decrease.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition? Condition { get => _explicitNullValueCondition; set { _explicitNullValueCondition = value; AdditionalData?.Remove("condition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition"); else _explicitNullProperties?.Remove("condition"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition? _explicitNullValueCondition = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed? Condition { get => _explicitNullValueCondition; set { _explicitNullValueCondition = value; AdditionalData?.Remove("condition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition"); else _explicitNullProperties?.Remove("condition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed? _explicitNullValueCondition = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition Condition { get => _explicitNullValueCondition; set { _explicitNullValueCondition = value; AdditionalData?.Remove("condition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition"); else _explicitNullProperties?.Remove("condition"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition _explicitNullValueCondition = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed Condition { get => _explicitNullValueCondition; set { _explicitNullValueCondition = value; AdditionalData?.Remove("condition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("condition"); else _explicitNullProperties?.Remove("condition"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed _explicitNullValueCondition = default!;
 #endif
         /// <summary>Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation (&apos;last_row&apos; checks the latest value of an oldest-&gt;newest query, &apos;first_row&apos; checks the first value of a newest-&gt;oldest query, &apos;any_row&apos; fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric (&apos;conversion_from_start&apos; or &apos;conversion_from_previous&apos;), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -167,12 +167,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocked local time windows (HH:MM in the project timezone). Interval is half-open [start, end): start inclusive, end exclusive. Use blocked_windows array of {start, end}. Null disables.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed? _explicitNullValueScheduleRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction _explicitNullValueScheduleRestriction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed _explicitNullValueScheduleRestriction = default!;
 #endif
         /// <summary>Local time that starts alert checks in HH:MM format. Updating this value recalculates the next check. Set null to remove the custom start time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -261,7 +261,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "calculation_interval", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCalculationInterval>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCalculationInterval = default; _explicitNullProperties?.Remove("calculation_interval"); AdditionalData["calculation_interval"] = unknown; } else { CalculationInterval = parsed; AdditionalData.Remove("calculation_interval"); } } },
                 { "checks", n => { Checks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCheck.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "checks_total", n => { ChecksTotal = n.GetIntValue(); } },
-                { "condition", n => { Condition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition.CreateFromDiscriminatorValue); } },
+                { "condition", n => { Condition = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed.CreateFromDiscriminatorValue); } },
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>(global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AlertCreatedBy.CreateFromDiscriminatorValue); } },
@@ -281,7 +281,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "llm_detector_available", n => { LlmDetectorAvailable = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
-                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
+                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed.CreateFromDiscriminatorValue); } },
                 { "schedule_start_time", n => { ScheduleStartTime = n.GetStringValue(); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "skip_weekend", n => { SkipWeekend = n.GetBoolValue(); } },
@@ -299,7 +299,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCalculationInterval>("calculation_interval", CalculationInterval);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertCondition>("condition", Condition);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConditionComposed>("condition", Condition);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertConfigUnion>("config", Config);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DetectorConfig>("detector_config", DetectorConfig);
             writer.WriteBoolValue("enabled", Enabled);
@@ -309,7 +309,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("investigation_gates_notifications", InvestigationGatesNotifications);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertInvestigationInconclusiveAction>("investigation_inconclusive_action", InvestigationInconclusiveAction);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestrictionComposed>("schedule_restriction", ScheduleRestriction);
             writer.WriteStringValue("schedule_start_time", ScheduleStartTime);
             writer.WriteBoolValue("skip_weekend", SkipWeekend);
             writer.WriteStringValue("snoozed_until", SnoozedUntil);

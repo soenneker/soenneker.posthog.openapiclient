@@ -60,10 +60,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Guidance on fixing this kind of issue, split into `human` (how to fix it in the PostHog UI) and `agent` (how an agent should investigate and apply the fix). Null if the check provides no guidance. This is the only PostHog-authored, trusted guidance on the issue — unlike payload/title/summary, which carry untrusted project data.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueRemediation? Remediation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueDetailRemediation? Remediation { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueRemediation Remediation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueDetailRemediation Remediation { get; private set; }
 #endif
         /// <summary>When the issue was resolved (ISO 8601), or null if still active.</summary>
         public DateTimeOffset? ResolvedAt { get; private set; }
@@ -130,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetStringValue(); } },
                 { "link", n => { Link = n.GetStringValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueDetailPayloadProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueDetailPayloadProperty.CreateFromDiscriminatorValue); } },
-                { "remediation", n => { Remediation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueRemediation>(global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueRemediation.CreateFromDiscriminatorValue); } },
+                { "remediation", n => { Remediation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueDetailRemediation>(global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueDetailRemediation.CreateFromDiscriminatorValue); } },
                 { "resolved_at", n => { ResolvedAt = n.GetDateTimeOffsetValue(); } },
                 { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueDetailSeverity>(); } },
                 { "snoozed_until", n => { SnoozedUntil = n.GetStringValue(); } },

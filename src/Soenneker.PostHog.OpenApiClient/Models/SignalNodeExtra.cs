@@ -3311,12 +3311,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The time_range property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange? TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; AdditionalData?.Remove("time_range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange? _explicitNullValueTimeRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraTimeRange? TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; AdditionalData?.Remove("time_range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraTimeRange? _explicitNullValueTimeRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; AdditionalData?.Remove("time_range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange _explicitNullValueTimeRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraTimeRange TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; AdditionalData?.Remove("time_range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraTimeRange _explicitNullValueTimeRange = default!;
 #endif
         /// <summary>The timestamp property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -3884,7 +3884,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "threshold_count", n => { ThresholdCount = n.GetIntValue(); } },
                 { "threshold_operator", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueThresholdOperator = default; _explicitNullProperties?.Remove("threshold_operator"); AdditionalData["threshold_operator"] = unknown; } else { ThresholdOperator = parsed; AdditionalData.Remove("threshold_operator"); } } },
                 { "ticketnumber", n => { Ticketnumber = n.GetStringValue(); } },
-                { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange.CreateFromDiscriminatorValue); } },
+                { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraTimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraTimeRange.CreateFromDiscriminatorValue); } },
                 { "timestamp", n => { Timestamp = n.GetStringValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "topic_id", n => { TopicId = n.GetStringValue(); } },
@@ -4213,7 +4213,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateChangeSignalExtraThresholdOperator>("threshold_operator", ThresholdOperator);
             writer.WriteIntValue("ticket_number", Ticket_number);
             writer.WriteStringValue("ticketnumber", Ticketnumber);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutTimeRange>("time_range", TimeRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalsScoutSignalExtraTimeRange>("time_range", TimeRange);
             writer.WriteStringValue("timestamp", Timestamp);
             writer.WriteStringValue("title", Title);
             writer.WriteStringValue("topic_id", TopicId);

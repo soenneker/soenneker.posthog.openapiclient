@@ -54,10 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The team&apos;s shared label on this observation (correct/incorrect + feedback), or null if unlabeled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabel? Label { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabelComposed? Label { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabel Label { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabelComposed Label { get; private set; }
 #endif
         /// <summary>Frames illustrating this observation, in order. Empty until the media render finishes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -102,18 +102,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Result data persisted on success; null until the observation succeeds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult? ScannerResult { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerResult? ScannerResult { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult ScannerResult { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerResult ScannerResult { get; private set; }
 #endif
         /// <summary>Frozen view of the scanner at run time; scanner edits do not retroactively mutate this observation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot? ScannerSnapshot { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerSnapshot? ScannerSnapshot { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot ScannerSnapshot { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerSnapshot ScannerSnapshot { get; private set; }
 #endif
         /// <summary>Session recording id this scanner was applied to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -141,10 +141,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who triggered an on-demand observation; null for scheduled observations.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? TriggeredByUser { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredByUser? TriggeredByUser { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic TriggeredByUser { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredByUser TriggeredByUser { get; private set; }
 #endif
         /// <summary>Whether the calling user has opened this observation.</summary>
         public bool? Viewed { get; private set; }
@@ -187,7 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "error_reason", n => { ErrorReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "label", n => { Label = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabel>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabel.CreateFromDiscriminatorValue); } },
+                { "label", n => { Label = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabelComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationLabelComposed.CreateFromDiscriminatorValue); } },
                 { "media", n => { Media = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationMedia.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "next_observation_id", n => { NextObservationId = n.GetGuidValue(); } },
                 { "previous_observation_id", n => { PreviousObservationId = n.GetGuidValue(); } },
@@ -196,14 +196,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "recording_subject_email", n => { RecordingSubjectEmail = n.GetStringValue(); } },
                 { "scanner_id", n => { ScannerId = n.GetGuidValue(); } },
                 { "scanner_origin", n => { ScannerOrigin = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerOrigin>(); } },
-                { "scanner_result", n => { ScannerResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult.CreateFromDiscriminatorValue); } },
-                { "scanner_snapshot", n => { ScannerSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot>(global::Soenneker.PostHog.OpenApiClient.Models.ScannerSnapshot.CreateFromDiscriminatorValue); } },
+                { "scanner_result", n => { ScannerResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerResult>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerResult.CreateFromDiscriminatorValue); } },
+                { "scanner_snapshot", n => { ScannerSnapshot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerSnapshot>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationScannerSnapshot.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationStatus>(); } },
                 { "summary_line", n => { SummaryLine = n.GetStringValue(); } },
                 { "triggered_by", n => { TriggeredBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredBy>(); } },
-                { "triggered_by_user", n => { TriggeredByUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "triggered_by_user", n => { TriggeredByUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredByUser>(global::Soenneker.PostHog.OpenApiClient.Models.ReplayObservationTriggeredByUser.CreateFromDiscriminatorValue); } },
                 { "viewed", n => { Viewed = n.GetBoolValue(); } },
                 { "workflow_id", n => { WorkflowId = n.GetStringValue(); } },
             };

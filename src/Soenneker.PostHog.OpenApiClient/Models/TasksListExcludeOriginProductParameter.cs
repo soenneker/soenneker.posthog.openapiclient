@@ -116,5 +116,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         KnowledgeWriter,
         #pragma warning restore CS1591
+        [EnumMember(Value = "context_layer")]
+        #pragma warning disable CS1591
+        ContextLayer,
+        #pragma warning restore CS1591
     }
 }

@@ -208,12 +208,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>From the completed result that covers the latest data under the experiment&apos;s current configuration. A funnel or a mean primary metric is chosen over a retention or a ratio one, because only its samples are the analyzed population. Null when no result exists for that configuration, for example after a relaunch or a settings edit until the results are recalculated, and for older metric definitions that results are never stored for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome? Outcome { get => _explicitNullValueOutcome; set { _explicitNullValueOutcome = value; AdditionalData?.Remove("outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome"); else _explicitNullProperties?.Remove("outcome"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome? _explicitNullValueOutcome = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentOutcome? Outcome { get => _explicitNullValueOutcome; set { _explicitNullValueOutcome = value; AdditionalData?.Remove("outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome"); else _explicitNullProperties?.Remove("outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentOutcome? _explicitNullValueOutcome = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome Outcome { get => _explicitNullValueOutcome; set { _explicitNullValueOutcome = value; AdditionalData?.Remove("outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome"); else _explicitNullProperties?.Remove("outcome"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome _explicitNullValueOutcome = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentOutcome Outcome { get => _explicitNullValueOutcome; set { _explicitNullValueOutcome = value; AdditionalData?.Remove("outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome"); else _explicitNullProperties?.Remove("outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentOutcome _explicitNullValueOutcome = default!;
 #endif
         /// <summary>Actions the primary metrics count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -334,7 +334,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "multiple_variant_handling", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMultipleVariantHandling = default; _explicitNullProperties?.Remove("multiple_variant_handling"); AdditionalData["multiple_variant_handling"] = unknown; } else { MultipleVariantHandling = parsed; AdditionalData.Remove("multiple_variant_handling"); } } },
                 { "multiple_variant_handling_set", n => { MultipleVariantHandlingSet = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome.CreateFromDiscriminatorValue); } },
+                { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentOutcome.CreateFromDiscriminatorValue); } },
                 { "primary_metric_action_ids", n => { PrimaryMetricActionIds = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
                 { "primary_metric_count", n => { PrimaryMetricCount = n.GetIntValue(); } },
                 { "primary_metric_events", n => { PrimaryMetricEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -377,7 +377,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentMultipleVariantHandling>("multiple_variant_handling", MultipleVariantHandling);
             writer.WriteBoolValue("multiple_variant_handling_set", MultipleVariantHandlingSet);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupOutcome>("outcome", Outcome);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPreviousExperimentOutcome>("outcome", Outcome);
             writer.WriteCollectionOfPrimitiveValues<int?>("primary_metric_action_ids", PrimaryMetricActionIds);
             writer.WriteIntValue("primary_metric_count", PrimaryMetricCount);
             writer.WriteCollectionOfPrimitiveValues<string>("primary_metric_events", PrimaryMetricEvents);

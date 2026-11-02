@@ -82,12 +82,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>A rule for the project&apos;s internal and test users filter that removes what the check found: the local hosts or team emails it found, up to 50 values, or bot and AI agent traffic. Null when the check found none, and for the internal users check for a token without the `person:read` scope.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilter? FilterToAdd { get => _explicitNullValueFilterToAdd; set { _explicitNullValueFilterToAdd = value; AdditionalData?.Remove("filter_to_add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_to_add"); else _explicitNullProperties?.Remove("filter_to_add"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilter? _explicitNullValueFilterToAdd = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilterToAdd? FilterToAdd { get => _explicitNullValueFilterToAdd; set { _explicitNullValueFilterToAdd = value; AdditionalData?.Remove("filter_to_add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_to_add"); else _explicitNullProperties?.Remove("filter_to_add"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilterToAdd? _explicitNullValueFilterToAdd = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilter FilterToAdd { get => _explicitNullValueFilterToAdd; set { _explicitNullValueFilterToAdd = value; AdditionalData?.Remove("filter_to_add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_to_add"); else _explicitNullProperties?.Remove("filter_to_add"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilter _explicitNullValueFilterToAdd = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilterToAdd FilterToAdd { get => _explicitNullValueFilterToAdd; set { _explicitNullValueFilterToAdd = value; AdditionalData?.Remove("filter_to_add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filter_to_add"); else _explicitNullProperties?.Remove("filter_to_add"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilterToAdd _explicitNullValueFilterToAdd = default!;
 #endif
         /// <summary>* `internal_users` - Internal and test users* `local_development` - Local development events* `bot_traffic` - Bot and crawler traffic* `duplicate_events` - Events sent twice</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckKey? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
@@ -197,7 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "distinct_emails", n => { DistinctEmails = n.GetIntValue(); } },
                 { "distinct_hosts", n => { DistinctHosts = n.GetIntValue(); } },
                 { "events", n => { Events = n.GetIntValue(); } },
-                { "filter_to_add", n => { FilterToAdd = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilter>(global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilter.CreateFromDiscriminatorValue); } },
+                { "filter_to_add", n => { FilterToAdd = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilterToAdd>(global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilterToAdd.CreateFromDiscriminatorValue); } },
                 { "key", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckKey>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKey = default; _explicitNullProperties?.Remove("key"); AdditionalData["key"] = unknown; } else { Key = parsed; AdditionalData.Remove("key"); } } },
                 { "level", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckLevel>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLevel = default; _explicitNullProperties?.Remove("level"); AdditionalData["level"] = unknown; } else { Level = parsed; AdditionalData.Remove("level"); } } },
                 { "method", n => { Method = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckMethod>(global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckMethod.CreateFromDiscriminatorValue); } },
@@ -224,7 +224,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("distinct_emails", DistinctEmails);
             writer.WriteIntValue("distinct_hosts", DistinctHosts);
             writer.WriteIntValue("events", Events);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilter>("filter_to_add", FilterToAdd);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckFilterToAdd>("filter_to_add", FilterToAdd);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckKey>("key", Key);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckLevel>("level", Level);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightDataCheckMethod>("method", Method);

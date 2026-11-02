@@ -53,10 +53,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who registered the server. Null when that user was deleted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -137,10 +137,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The requesting user&apos;s own connection, or null when not connected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayYourConnection? YourConnection { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerYourConnection? YourConnection { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.GatewayYourConnection YourConnection { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerYourConnection YourConnection { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServer"/> and sets the default values.
@@ -172,7 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCategory>(); } },
                 { "connections", n => { Connections = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GatewayConnection>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayConnection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "docs_url", n => { DocsUrl = n.GetStringValue(); } },
                 { "icon_domain", n => { IconDomain = n.GetStringValue(); } },
@@ -187,7 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "tool_count", n => { ToolCount = n.GetIntValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "your_connection", n => { YourConnection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.GatewayYourConnection>(global::Soenneker.PostHog.OpenApiClient.Models.GatewayYourConnection.CreateFromDiscriminatorValue); } },
+                { "your_connection", n => { YourConnection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerYourConnection>(global::Soenneker.PostHog.OpenApiClient.Models.McpGatewayServerYourConnection.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

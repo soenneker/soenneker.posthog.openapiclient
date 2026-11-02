@@ -144,22 +144,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The query_progress property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress? QueryProgress { get => _explicitNullValueQueryProgress; set { _explicitNullValueQueryProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_progress"); else _explicitNullProperties?.Remove("query_progress"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress? _explicitNullValueQueryProgress = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryProgress? QueryProgress { get => _explicitNullValueQueryProgress; set { _explicitNullValueQueryProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_progress"); else _explicitNullProperties?.Remove("query_progress"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryProgress? _explicitNullValueQueryProgress = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress QueryProgress { get => _explicitNullValueQueryProgress; set { _explicitNullValueQueryProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_progress"); else _explicitNullProperties?.Remove("query_progress"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress _explicitNullValueQueryProgress = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryProgress QueryProgress { get => _explicitNullValueQueryProgress; set { _explicitNullValueQueryProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_progress"); else _explicitNullProperties?.Remove("query_progress"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryProgress _explicitNullValueQueryProgress = default!;
 #endif
         /// <summary>The query_scan property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary? QueryScan { get => _explicitNullValueQueryScan; set { _explicitNullValueQueryScan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_scan"); else _explicitNullProperties?.Remove("query_scan"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary? _explicitNullValueQueryScan = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryScan? QueryScan { get => _explicitNullValueQueryScan; set { _explicitNullValueQueryScan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_scan"); else _explicitNullProperties?.Remove("query_scan"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryScan? _explicitNullValueQueryScan = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary QueryScan { get => _explicitNullValueQueryScan; set { _explicitNullValueQueryScan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_scan"); else _explicitNullProperties?.Remove("query_scan"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary _explicitNullValueQueryScan = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryScan QueryScan { get => _explicitNullValueQueryScan; set { _explicitNullValueQueryScan = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_scan"); else _explicitNullProperties?.Remove("query_scan"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryScan _explicitNullValueQueryScan = default!;
 #endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -229,8 +229,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "labels", n => { Labels = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pickup_time", n => { PickupTime = n.GetDateTimeOffsetValue(); } },
                 { "query_async", n => { QueryAsync = n.GetBoolValue(); } },
-                { "query_progress", n => { QueryProgress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress.CreateFromDiscriminatorValue); } },
-                { "query_scan", n => { QueryScan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary>(global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary.CreateFromDiscriminatorValue); } },
+                { "query_progress", n => { QueryProgress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryProgress>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryProgress.CreateFromDiscriminatorValue); } },
+                { "query_scan", n => { QueryScan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryScan>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryScan.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "start_time", n => { StartTime = n.GetDateTimeOffsetValue(); } },
                 { "task_id", n => { TaskId = n.GetStringValue(); } },
@@ -259,8 +259,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("labels", Labels);
             writer.WriteDateTimeOffsetValue("pickup_time", PickupTime);
             writer.WriteBoolValue("query_async", QueryAsync);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClickhouseQueryProgress>("query_progress", QueryProgress);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryScanSummary>("query_scan", QueryScan);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryProgress>("query_progress", QueryProgress);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatusQueryScan>("query_scan", QueryScan);
             writer.WriteObjectValue<UntypedNode>("results", Results);
             writer.WriteDateTimeOffsetValue("start_time", StartTime);
             writer.WriteStringValue("task_id", TaskId);

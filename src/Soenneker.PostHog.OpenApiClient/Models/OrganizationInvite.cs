@@ -50,6 +50,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The emailing_attempt_made property</summary>
         public bool? EmailingAttemptMade { get; private set; }
+        /// <summary>True when the email provider reported the target address as suppressed at send time.</summary>
+        public bool? EmailSuppressed { get; private set; }
         /// <summary>The first_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -132,6 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "combine_pending_invites", n => { CombinePendingInvites = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInviteCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationInviteCreatedBy.CreateFromDiscriminatorValue); } },
+                { "email_suppressed", n => { EmailSuppressed = n.GetBoolValue(); } },
                 { "emailing_attempt_made", n => { EmailingAttemptMade = n.GetBoolValue(); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

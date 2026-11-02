@@ -33,12 +33,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Null when the pull request did not merge in the window, or a bot authored it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown? PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown? _explicitNullValuePullRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetailPullRequest? PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetailPullRequest? _explicitNullValuePullRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown _explicitNullValuePullRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetailPullRequest PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetailPullRequest _explicitNullValuePullRequest = default!;
 #endif
         /// <summary>Pull requests merged in this many days before the view last refreshed.</summary>
         public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; AdditionalData?.Remove("window_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "available", n => { Available = n.GetBoolValue(); } },
-                { "pull_request", n => { PullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown.CreateFromDiscriminatorValue); } },
+                { "pull_request", n => { PullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetailPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetailPullRequest.CreateFromDiscriminatorValue); } },
                 { "window_days", n => { WindowDays = n.GetIntValue(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("available", Available);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionBreakdown>("pull_request", PullRequest);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PullRequestFrictionDetailPullRequest>("pull_request", PullRequest);
             writer.WriteIntValue("window_days", WindowDays);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

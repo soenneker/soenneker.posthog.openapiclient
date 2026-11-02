@@ -82,22 +82,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Break the metric results down by up to 3 event, person, session or group properties.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownFilter? BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownFilter"); else _explicitNullProperties?.Remove("breakdownFilter"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownFilter? _explicitNullValueBreakdownFilter = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricBreakdownFilter? BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownFilter"); else _explicitNullProperties?.Remove("breakdownFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricBreakdownFilter? _explicitNullValueBreakdownFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownFilter BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownFilter"); else _explicitNullProperties?.Remove("breakdownFilter"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownFilter _explicitNullValueBreakdownFilter = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricBreakdownFilter BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownFilter"); else _explicitNullProperties?.Remove("breakdownFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricBreakdownFilter _explicitNullValueBreakdownFilter = default!;
 #endif
         /// <summary>For retention metrics: completion event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? CompletionEvent { get => _explicitNullValueCompletionEvent; set { _explicitNullValueCompletionEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_event"); else _explicitNullProperties?.Remove("completion_event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? _explicitNullValueCompletionEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricCompletionEvent? CompletionEvent { get => _explicitNullValueCompletionEvent; set { _explicitNullValueCompletionEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_event"); else _explicitNullProperties?.Remove("completion_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricCompletionEvent? _explicitNullValueCompletionEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource CompletionEvent { get => _explicitNullValueCompletionEvent; set { _explicitNullValueCompletionEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_event"); else _explicitNullProperties?.Remove("completion_event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource _explicitNullValueCompletionEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricCompletionEvent CompletionEvent { get => _explicitNullValueCompletionEvent; set { _explicitNullValueCompletionEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completion_event"); else _explicitNullProperties?.Remove("completion_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricCompletionEvent _explicitNullValueCompletionEvent = default!;
 #endif
         /// <summary>Only count metric events within this many units after the user&apos;s first exposure. Requires conversion_window_unit: a window without a unit is ignored and the metric counts events until the experiment ends. Omit both to count until the experiment ends.</summary>
         public int? ConversionWindow { get => _explicitNullValueConversionWindow; set { _explicitNullValueConversionWindow = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_window"); else _explicitNullProperties?.Remove("conversion_window"); } }
@@ -108,22 +108,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>For ratio metrics: denominator source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? Denominator { get => _explicitNullValueDenominator; set { _explicitNullValueDenominator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator"); else _explicitNullProperties?.Remove("denominator"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? _explicitNullValueDenominator = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominator? Denominator { get => _explicitNullValueDenominator; set { _explicitNullValueDenominator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator"); else _explicitNullProperties?.Remove("denominator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominator? _explicitNullValueDenominator = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource Denominator { get => _explicitNullValueDenominator; set { _explicitNullValueDenominator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator"); else _explicitNullProperties?.Remove("denominator"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource _explicitNullValueDenominator = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominator Denominator { get => _explicitNullValueDenominator; set { _explicitNullValueDenominator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator"); else _explicitNullProperties?.Remove("denominator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominator _explicitNullValueDenominator = default!;
 #endif
         /// <summary>For ratio metrics: winsorization applied to the denominator aggregate. Leave unset for a binomial-style denominator, which is never clamped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling? DenominatorOutlierHandling { get => _explicitNullValueDenominatorOutlierHandling; set { _explicitNullValueDenominatorOutlierHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_outlier_handling"); else _explicitNullProperties?.Remove("denominator_outlier_handling"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling? _explicitNullValueDenominatorOutlierHandling = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominatorOutlierHandling? DenominatorOutlierHandling { get => _explicitNullValueDenominatorOutlierHandling; set { _explicitNullValueDenominatorOutlierHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_outlier_handling"); else _explicitNullProperties?.Remove("denominator_outlier_handling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominatorOutlierHandling? _explicitNullValueDenominatorOutlierHandling = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling DenominatorOutlierHandling { get => _explicitNullValueDenominatorOutlierHandling; set { _explicitNullValueDenominatorOutlierHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_outlier_handling"); else _explicitNullProperties?.Remove("denominator_outlier_handling"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling _explicitNullValueDenominatorOutlierHandling = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominatorOutlierHandling DenominatorOutlierHandling { get => _explicitNullValueDenominatorOutlierHandling; set { _explicitNullValueDenominatorOutlierHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_outlier_handling"); else _explicitNullProperties?.Remove("denominator_outlier_handling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominatorOutlierHandling _explicitNullValueDenominatorOutlierHandling = default!;
 #endif
         /// <summary>For funnel metrics: how the steps must occur. &apos;ordered&apos; (default) or &apos;unordered&apos;. Do not use &apos;strict&apos;: experiment funnels give wrong counts with it.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue? FunnelOrderType { get => _explicitNullValueFunnelOrderType; set { _explicitNullValueFunnelOrderType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnel_order_type"); else _explicitNullProperties?.Remove("funnel_order_type"); } }
@@ -156,22 +156,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>For ratio metrics: numerator source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? Numerator { get => _explicitNullValueNumerator; set { _explicitNullValueNumerator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator"); else _explicitNullProperties?.Remove("numerator"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? _explicitNullValueNumerator = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumerator? Numerator { get => _explicitNullValueNumerator; set { _explicitNullValueNumerator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator"); else _explicitNullProperties?.Remove("numerator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumerator? _explicitNullValueNumerator = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource Numerator { get => _explicitNullValueNumerator; set { _explicitNullValueNumerator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator"); else _explicitNullProperties?.Remove("numerator"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource _explicitNullValueNumerator = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumerator Numerator { get => _explicitNullValueNumerator; set { _explicitNullValueNumerator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator"); else _explicitNullProperties?.Remove("numerator"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumerator _explicitNullValueNumerator = default!;
 #endif
         /// <summary>For ratio metrics: winsorization applied to the numerator aggregate, independently of the denominator and each with its own percentile thresholds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling? NumeratorOutlierHandling { get => _explicitNullValueNumeratorOutlierHandling; set { _explicitNullValueNumeratorOutlierHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator_outlier_handling"); else _explicitNullProperties?.Remove("numerator_outlier_handling"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling? _explicitNullValueNumeratorOutlierHandling = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumeratorOutlierHandling? NumeratorOutlierHandling { get => _explicitNullValueNumeratorOutlierHandling; set { _explicitNullValueNumeratorOutlierHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator_outlier_handling"); else _explicitNullProperties?.Remove("numerator_outlier_handling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumeratorOutlierHandling? _explicitNullValueNumeratorOutlierHandling = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling NumeratorOutlierHandling { get => _explicitNullValueNumeratorOutlierHandling; set { _explicitNullValueNumeratorOutlierHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator_outlier_handling"); else _explicitNullProperties?.Remove("numerator_outlier_handling"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling _explicitNullValueNumeratorOutlierHandling = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumeratorOutlierHandling NumeratorOutlierHandling { get => _explicitNullValueNumeratorOutlierHandling; set { _explicitNullValueNumeratorOutlierHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator_outlier_handling"); else _explicitNullProperties?.Remove("numerator_outlier_handling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumeratorOutlierHandling _explicitNullValueNumeratorOutlierHandling = default!;
 #endif
         /// <summary>The retention_window_end property</summary>
         public int? RetentionWindowEnd { get => _explicitNullValueRetentionWindowEnd; set { _explicitNullValueRetentionWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_window_end"); else _explicitNullProperties?.Remove("retention_window_end"); } }
@@ -195,22 +195,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>For mean metrics: event source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource? _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricSource? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricSource _explicitNullValueSource = default!;
 #endif
         /// <summary>For retention metrics: start event. Pass {&quot;kind&quot;: &quot;ExperimentExposureNode&quot;} to start retention from the experiment&apos;s exposure event; a conversion window or &apos;last_seen&apos; start_handling is rejected then, because the start is always the user&apos;s first exposure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart? StartEvent { get => _explicitNullValueStartEvent; set { _explicitNullValueStartEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_event"); else _explicitNullProperties?.Remove("start_event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart? _explicitNullValueStartEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricStartEvent? StartEvent { get => _explicitNullValueStartEvent; set { _explicitNullValueStartEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_event"); else _explicitNullProperties?.Remove("start_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricStartEvent? _explicitNullValueStartEvent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart StartEvent { get => _explicitNullValueStartEvent; set { _explicitNullValueStartEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_event"); else _explicitNullProperties?.Remove("start_event"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart _explicitNullValueStartEvent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricStartEvent StartEvent { get => _explicitNullValueStartEvent; set { _explicitNullValueStartEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_event"); else _explicitNullProperties?.Remove("start_event"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricStartEvent _explicitNullValueStartEvent = default!;
 #endif
         /// <summary>The start_handling property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.StartHandling? StartHandling { get => _explicitNullValueStartHandling; set { _explicitNullValueStartHandling = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_handling"); else _explicitNullProperties?.Remove("start_handling"); } }
@@ -251,12 +251,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "breakdownAttributionType", n => { BreakdownAttributionType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownAttributionType>(); } },
                 { "breakdownAttributionValue", n => { BreakdownAttributionValue = n.GetIntValue(); } },
-                { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownFilter.CreateFromDiscriminatorValue); } },
-                { "completion_event", n => { CompletionEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
+                { "breakdownFilter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricBreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricBreakdownFilter.CreateFromDiscriminatorValue); } },
+                { "completion_event", n => { CompletionEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricCompletionEvent>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricCompletionEvent.CreateFromDiscriminatorValue); } },
                 { "conversion_window", n => { ConversionWindow = n.GetIntValue(); } },
                 { "conversion_window_unit", n => { ConversionWindowUnit = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>(); } },
-                { "denominator", n => { Denominator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
-                { "denominator_outlier_handling", n => { DenominatorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling.CreateFromDiscriminatorValue); } },
+                { "denominator", n => { Denominator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominator.CreateFromDiscriminatorValue); } },
+                { "denominator_outlier_handling", n => { DenominatorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominatorOutlierHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominatorOutlierHandling.CreateFromDiscriminatorValue); } },
                 { "funnel_order_type", n => { FunnelOrderType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue>(); } },
                 { "goal", n => { Goal = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>(); } },
                 { "ignore_zeros", n => { IgnoreZeros = n.GetBoolValue(); } },
@@ -264,14 +264,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "lower_bound_percentile", n => { LowerBoundPercentile = n.GetDoubleValue(); } },
                 { "metric_type", n => { MetricType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricType>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "numerator", n => { Numerator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
-                { "numerator_outlier_handling", n => { NumeratorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling.CreateFromDiscriminatorValue); } },
+                { "numerator", n => { Numerator = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumerator>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumerator.CreateFromDiscriminatorValue); } },
+                { "numerator_outlier_handling", n => { NumeratorOutlierHandling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumeratorOutlierHandling>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumeratorOutlierHandling.CreateFromDiscriminatorValue); } },
                 { "retention_window_end", n => { RetentionWindowEnd = n.GetIntValue(); } },
                 { "retention_window_start", n => { RetentionWindowStart = n.GetIntValue(); } },
                 { "retention_window_unit", n => { RetentionWindowUnit = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>(); } },
                 { "series", n => { Series = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource.CreateFromDiscriminatorValue); } },
-                { "start_event", n => { StartEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricSource>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricSource.CreateFromDiscriminatorValue); } },
+                { "start_event", n => { StartEvent = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricStartEvent>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricStartEvent.CreateFromDiscriminatorValue); } },
                 { "start_handling", n => { StartHandling = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StartHandling>(); } },
                 { "threshold", n => { Threshold = n.GetDoubleValue(); } },
                 { "upper_bound_percentile", n => { UpperBoundPercentile = n.GetDoubleValue(); } },
@@ -287,12 +287,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownAttributionType>("breakdownAttributionType", BreakdownAttributionType);
             writer.WriteIntValue("breakdownAttributionValue", BreakdownAttributionValue);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiBreakdownFilter>("breakdownFilter", BreakdownFilter);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("completion_event", CompletionEvent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricBreakdownFilter>("breakdownFilter", BreakdownFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricCompletionEvent>("completion_event", CompletionEvent);
             writer.WriteIntValue("conversion_window", ConversionWindow);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>("conversion_window_unit", ConversionWindowUnit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("denominator", Denominator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>("denominator_outlier_handling", DenominatorOutlierHandling);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominator>("denominator", Denominator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricDenominatorOutlierHandling>("denominator_outlier_handling", DenominatorOutlierHandling);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StepOrderValue>("funnel_order_type", FunnelOrderType);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricGoal>("goal", Goal);
             writer.WriteBoolValue("ignore_zeros", IgnoreZeros);
@@ -300,14 +300,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("lower_bound_percentile", LowerBoundPercentile);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricType>("metric_type", MetricType);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("numerator", Numerator);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricOutlierHandling>("numerator_outlier_handling", NumeratorOutlierHandling);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumerator>("numerator", Numerator);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricNumeratorOutlierHandling>("numerator_outlier_handling", NumeratorOutlierHandling);
             writer.WriteIntValue("retention_window_end", RetentionWindowEnd);
             writer.WriteIntValue("retention_window_start", RetentionWindowStart);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionWindowTimeUnit>("retention_window_unit", RetentionWindowUnit);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("series", Series);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSource>("source", Source);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStart>("start_event", StartEvent);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricSource>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiMetricStartEvent>("start_event", StartEvent);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StartHandling>("start_handling", StartHandling);
             writer.WriteDoubleValue("threshold", Threshold);
             writer.WriteDoubleValue("upper_bound_percentile", UpperBoundPercentile);

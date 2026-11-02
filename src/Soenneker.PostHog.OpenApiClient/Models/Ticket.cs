@@ -171,13 +171,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string OrganizationIdSource { get; private set; }
 #endif
-        /// <summary>The person property</summary>
+        /// <summary>Minimal person serializer for embedding in ticket responses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson? Person { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPersonComposed? Person { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson Person { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketPersonComposed Person { get; private set; }
 #endif
         /// <summary>Ticket priority: low, medium, high, or critical. Null if unset.* `low` - Low* `medium` - Medium* `high` - High* `critical` - Critical</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -313,7 +313,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "message_count", n => { MessageCount = n.GetIntValue(); } },
                 { "organization_id", n => { OrganizationId = n.GetStringValue(); } },
                 { "organization_id_source", n => { OrganizationIdSource = n.GetStringValue(); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson>(global::Soenneker.PostHog.OpenApiClient.Models.TicketPerson.CreateFromDiscriminatorValue); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketPersonComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TicketPersonComposed.CreateFromDiscriminatorValue); } },
                 { "priority", n => { Priority = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketPriority>(global::Soenneker.PostHog.OpenApiClient.Models.TicketPriority.CreateFromDiscriminatorValue); } },
                 { "session_context", n => { SessionContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketSessionContext>(global::Soenneker.PostHog.OpenApiClient.Models.TicketSessionContext.CreateFromDiscriminatorValue); } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },

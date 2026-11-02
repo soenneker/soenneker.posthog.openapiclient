@@ -59,12 +59,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Legacy optional comparison. New report metrics must omit it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison? Comparison { get => _explicitNullValueComparison; set { _explicitNullValueComparison = value; AdditionalData?.Remove("comparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison"); else _explicitNullProperties?.Remove("comparison"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison? _explicitNullValueComparison = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteComparison? Comparison { get => _explicitNullValueComparison; set { _explicitNullValueComparison = value; AdditionalData?.Remove("comparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison"); else _explicitNullProperties?.Remove("comparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteComparison? _explicitNullValueComparison = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison Comparison { get => _explicitNullValueComparison; set { _explicitNullValueComparison = value; AdditionalData?.Remove("comparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison"); else _explicitNullProperties?.Remove("comparison"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison _explicitNullValueComparison = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteComparison Comparison { get => _explicitNullValueComparison; set { _explicitNullValueComparison = value; AdditionalData?.Remove("comparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison"); else _explicitNullProperties?.Remove("comparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteComparison _explicitNullValueComparison = default!;
 #endif
         /// <summary>* `affected_users` - affected_users* `affected_sessions` - affected_sessions* `occurrences` - occurrences* `conversion_rate` - conversion_rate* `error_rate` - error_rate* `duration` - duration* `revenue` - revenue* `custom` - custom</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
@@ -157,7 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "caption", n => { Caption = n.GetStringValue(); } },
-                { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison.CreateFromDiscriminatorValue); } },
+                { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteComparison>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteComparison.CreateFromDiscriminatorValue); } },
                 { "kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteKind>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKind = default; _explicitNullProperties?.Remove("kind"); AdditionalData["kind"] = unknown; } else { Kind = parsed; AdditionalData.Remove("kind"); } } },
                 { "metric_id", n => { MetricId = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
@@ -178,7 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("caption", Caption);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricComparison>("comparison", Comparison);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteComparison>("comparison", Comparison);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricWriteKind>("kind", Kind);
             writer.WriteStringValue("metric_id", MetricId);
             writer.WriteObjectValue<UntypedNode>("query", Query);

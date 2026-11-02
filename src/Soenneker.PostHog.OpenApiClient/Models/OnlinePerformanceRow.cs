@@ -95,12 +95,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Confusion counts, precision and recall at three cutoffs: top 10%, top 20%, and the Likely segment. Null for dates validated before this metric existed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff? Confusion { get => _explicitNullValueConfusion; set { _explicitNullValueConfusion = value; AdditionalData?.Remove("confusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confusion"); else _explicitNullProperties?.Remove("confusion"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff? _explicitNullValueConfusion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRowConfusion? Confusion { get => _explicitNullValueConfusion; set { _explicitNullValueConfusion = value; AdditionalData?.Remove("confusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confusion"); else _explicitNullProperties?.Remove("confusion"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRowConfusion? _explicitNullValueConfusion = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff Confusion { get => _explicitNullValueConfusion; set { _explicitNullValueConfusion = value; AdditionalData?.Remove("confusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confusion"); else _explicitNullProperties?.Remove("confusion"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff _explicitNullValueConfusion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRowConfusion Confusion { get => _explicitNullValueConfusion; set { _explicitNullValueConfusion = value; AdditionalData?.Remove("confusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confusion"); else _explicitNullProperties?.Remove("confusion"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRowConfusion _explicitNullValueConfusion = default!;
 #endif
         /// <summary>Role the model has now: &apos;champion&apos;, &apos;challenger&apos;, &apos;archived&apos;, or &apos;deleted&apos;. A former champion that a promotion archived keeps its rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -207,7 +207,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "brier_score", n => { BrierScore = n.GetDoubleValue(); } },
                 { "calibration_bins", n => { CalibrationBins = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin>(global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "calibration_error", n => { CalibrationError = n.GetDoubleValue(); } },
-                { "confusion", n => { Confusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff>(global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff.CreateFromDiscriminatorValue); } },
+                { "confusion", n => { Confusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRowConfusion>(global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRowConfusion.CreateFromDiscriminatorValue); } },
                 { "current_role", n => { CurrentRole = n.GetStringValue(); } },
                 { "emitted_role", n => { EmittedRole = n.GetStringValue(); } },
                 { "horizon_days", n => { HorizonDays = n.GetIntValue(); } },
@@ -240,7 +240,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("brier_score", BrierScore);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin>("calibration_bins", CalibrationBins);
             writer.WriteDoubleValue("calibration_error", CalibrationError);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoff>("confusion", Confusion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRowConfusion>("confusion", Confusion);
             writer.WriteStringValue("current_role", CurrentRole);
             writer.WriteStringValue("emitted_role", EmittedRole);
             writer.WriteIntValue("horizon_days", HorizonDays);

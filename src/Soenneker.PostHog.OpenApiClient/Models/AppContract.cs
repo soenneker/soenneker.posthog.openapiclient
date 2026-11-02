@@ -46,12 +46,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Currently active version, or null if none uploaded yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AppVersionContract? ActiveVersion { get => _explicitNullValueActiveVersion; set { _explicitNullValueActiveVersion = value; AdditionalData?.Remove("active_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_version"); else _explicitNullProperties?.Remove("active_version"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AppVersionContract? _explicitNullValueActiveVersion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AppContractActiveVersion? ActiveVersion { get => _explicitNullValueActiveVersion; set { _explicitNullValueActiveVersion = value; AdditionalData?.Remove("active_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_version"); else _explicitNullProperties?.Remove("active_version"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AppContractActiveVersion? _explicitNullValueActiveVersion = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AppVersionContract ActiveVersion { get => _explicitNullValueActiveVersion; set { _explicitNullValueActiveVersion = value; AdditionalData?.Remove("active_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_version"); else _explicitNullProperties?.Remove("active_version"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AppVersionContract _explicitNullValueActiveVersion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AppContractActiveVersion ActiveVersion { get => _explicitNullValueActiveVersion; set { _explicitNullValueActiveVersion = value; AdditionalData?.Remove("active_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_version"); else _explicitNullProperties?.Remove("active_version"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AppContractActiveVersion _explicitNullValueActiveVersion = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -64,12 +64,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created this app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo? _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AppContractCreatedBy? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AppContractCreatedBy? _explicitNullValueCreatedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AppContractCreatedBy CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AppContractCreatedBy _explicitNullValueCreatedBy = default!;
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,12 +100,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Current sandbox state, or null if the app has never started.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AppSandboxContract? Sandbox { get => _explicitNullValueSandbox; set { _explicitNullValueSandbox = value; AdditionalData?.Remove("sandbox"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox"); else _explicitNullProperties?.Remove("sandbox"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AppSandboxContract? _explicitNullValueSandbox = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AppContractSandbox? Sandbox { get => _explicitNullValueSandbox; set { _explicitNullValueSandbox = value; AdditionalData?.Remove("sandbox"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox"); else _explicitNullProperties?.Remove("sandbox"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AppContractSandbox? _explicitNullValueSandbox = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AppSandboxContract Sandbox { get => _explicitNullValueSandbox; set { _explicitNullValueSandbox = value; AdditionalData?.Remove("sandbox"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox"); else _explicitNullProperties?.Remove("sandbox"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AppSandboxContract _explicitNullValueSandbox = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AppContractSandbox Sandbox { get => _explicitNullValueSandbox; set { _explicitNullValueSandbox = value; AdditionalData?.Remove("sandbox"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox"); else _explicitNullProperties?.Remove("sandbox"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AppContractSandbox _explicitNullValueSandbox = default!;
 #endif
         /// <summary>The short_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -155,15 +155,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active_version", n => { ActiveVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppVersionContract>(global::Soenneker.PostHog.OpenApiClient.Models.AppVersionContract.CreateFromDiscriminatorValue); } },
+                { "active_version", n => { ActiveVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppContractActiveVersion>(global::Soenneker.PostHog.OpenApiClient.Models.AppContractActiveVersion.CreateFromDiscriminatorValue); } },
                 { "cpu_cores", n => { CpuCores = n.GetDoubleValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo>(global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppContractCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AppContractCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "memory_gb", n => { MemoryGb = n.GetDoubleValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "sandbox", n => { Sandbox = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppSandboxContract>(global::Soenneker.PostHog.OpenApiClient.Models.AppSandboxContract.CreateFromDiscriminatorValue); } },
+                { "sandbox", n => { Sandbox = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppContractSandbox>(global::Soenneker.PostHog.OpenApiClient.Models.AppContractSandbox.CreateFromDiscriminatorValue); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -176,15 +176,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppVersionContract>("active_version", ActiveVersion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppContractActiveVersion>("active_version", ActiveVersion);
             writer.WriteDoubleValue("cpu_cores", CpuCores);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.StreamlitAppUserInfo>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppContractCreatedBy>("created_by", CreatedBy);
             writer.WriteStringValue("description", Description);
             writer.WriteGuidValue("id", Id);
             writer.WriteDoubleValue("memory_gb", MemoryGb);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppSandboxContract>("sandbox", Sandbox);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AppContractSandbox>("sandbox", Sandbox);
             writer.WriteStringValue("short_id", ShortId);
             writer.WriteStringValue("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

@@ -152,12 +152,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson? _explicitNullValuePerson = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePersonComposed? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePersonComposed? _explicitNullValuePerson = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson _explicitNullValuePerson = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePersonComposed Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePersonComposed _explicitNullValuePerson = default!;
 #endif
         /// <summary>The requestCost property</summary>
         public double? RequestCost { get => _explicitNullValueRequestCost; set { _explicitNullValueRequestCost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requestCost"); else _explicitNullProperties?.Remove("requestCost"); } }
@@ -165,12 +165,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The sentiment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult? _explicitNullValueSentiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment? _explicitNullValueSentiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult _explicitNullValueSentiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment _explicitNullValueSentiment = default!;
 #endif
         /// <summary>The tools property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -232,9 +232,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "outputCost", n => { OutputCost = n.GetDoubleValue(); } },
                 { "outputState", n => { OutputState = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "outputTokens", n => { OutputTokens = n.GetDoubleValue(); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson.CreateFromDiscriminatorValue); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePersonComposed>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePersonComposed.CreateFromDiscriminatorValue); } },
                 { "requestCost", n => { RequestCost = n.GetDoubleValue(); } },
-                { "sentiment", n => { Sentiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult.CreateFromDiscriminatorValue); } },
+                { "sentiment", n => { Sentiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment.CreateFromDiscriminatorValue); } },
                 { "tools", n => { Tools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "totalCost", n => { TotalCost = n.GetDoubleValue(); } },
                 { "totalLatency", n => { TotalLatency = n.GetDoubleValue(); } },
@@ -262,9 +262,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("outputCost", OutputCost);
             writer.WriteObjectValue<UntypedNode>("outputState", OutputState);
             writer.WriteDoubleValue("outputTokens", OutputTokens);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePerson>("person", Person);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTracePersonComposed>("person", Person);
             writer.WriteDoubleValue("requestCost", RequestCost);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult>("sentiment", Sentiment);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment>("sentiment", Sentiment);
             writer.WriteCollectionOfPrimitiveValues<string>("tools", Tools);
             writer.WriteDoubleValue("totalCost", TotalCost);
             writer.WriteDoubleValue("totalLatency", TotalLatency);

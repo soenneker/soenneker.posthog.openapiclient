@@ -117,12 +117,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sort order for the ticket list.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting? Sorting { get => _explicitNullValueSorting; set { _explicitNullValueSorting = value; AdditionalData?.Remove("sorting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sorting"); else _explicitNullProperties?.Remove("sorting"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting? _explicitNullValueSorting = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting? Sorting { get => _explicitNullValueSorting; set { _explicitNullValueSorting = value; AdditionalData?.Remove("sorting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sorting"); else _explicitNullProperties?.Remove("sorting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting? _explicitNullValueSorting = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting Sorting { get => _explicitNullValueSorting; set { _explicitNullValueSorting = value; AdditionalData?.Remove("sorting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sorting"); else _explicitNullProperties?.Remove("sorting"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting _explicitNullValueSorting = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting Sorting { get => _explicitNullValueSorting; set { _explicitNullValueSorting = value; AdditionalData?.Remove("sorting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sorting"); else _explicitNullProperties?.Remove("sorting"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting _explicitNullValueSorting = default!;
 #endif
         /// <summary>Ticket statuses to include. Empty or omitted means all statuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -190,7 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "priority", n => { Priority = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.TicketPriorityEnum>()?.AsList(); } },
                 { "search", n => { Search = n.GetStringValue(); } },
                 { "sla", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSla>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSla = default; _explicitNullProperties?.Remove("sla"); AdditionalData["sla"] = unknown; } else { Sla = parsed; AdditionalData.Remove("sla"); } } },
-                { "sorting", n => { Sorting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting>(global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting.CreateFromDiscriminatorValue); } },
+                { "sorting", n => { Sorting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting>(global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.TicketStatusEnum>()?.AsList(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "tagsExclude", n => { TagsExclude = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -212,7 +212,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.TicketPriorityEnum>("priority", Priority);
             writer.WriteStringValue("search", Search);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSla>("sla", Sla);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewSorting>("sorting", Sorting);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketViewFiltersSorting>("sorting", Sorting);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.TicketStatusEnum>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteCollectionOfPrimitiveValues<string>("tagsExclude", TagsExclude);

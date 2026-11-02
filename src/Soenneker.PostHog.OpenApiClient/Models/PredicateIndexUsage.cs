@@ -130,12 +130,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>A deterministic query edit that unblocks the index.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix? Quickfix { get => _explicitNullValueQuickfix; set { _explicitNullValueQuickfix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quickfix"); else _explicitNullProperties?.Remove("quickfix"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix? _explicitNullValueQuickfix = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsageQuickfix? Quickfix { get => _explicitNullValueQuickfix; set { _explicitNullValueQuickfix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quickfix"); else _explicitNullProperties?.Remove("quickfix"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsageQuickfix? _explicitNullValueQuickfix = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix Quickfix { get => _explicitNullValueQuickfix; set { _explicitNullValueQuickfix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quickfix"); else _explicitNullProperties?.Remove("quickfix"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix _explicitNullValueQuickfix = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsageQuickfix Quickfix { get => _explicitNullValueQuickfix; set { _explicitNullValueQuickfix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quickfix"); else _explicitNullProperties?.Remove("quickfix"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsageQuickfix _explicitNullValueQuickfix = default!;
 #endif
         /// <summary>The scope property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PredicateScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
@@ -203,7 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "operator", n => { Operator = n.GetStringValue(); } },
                 { "physical_type", n => { PhysicalType = n.GetStringValue(); } },
                 { "property_name", n => { PropertyName = n.GetStringValue(); } },
-                { "quickfix", n => { Quickfix = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix>(global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix.CreateFromDiscriminatorValue); } },
+                { "quickfix", n => { Quickfix = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsageQuickfix>(global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsageQuickfix.CreateFromDiscriminatorValue); } },
                 { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateScope>(); } },
                 { "semantic_type", n => { SemanticType = n.GetStringValue(); } },
                 { "source_label", n => { SourceLabel = n.GetStringValue(); } },
@@ -228,7 +228,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("operator", Operator);
             writer.WriteStringValue("physical_type", PhysicalType);
             writer.WriteStringValue("property_name", PropertyName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateQuickfix>("quickfix", Quickfix);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateIndexUsageQuickfix>("quickfix", Quickfix);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PredicateScope>("scope", Scope);
             writer.WriteStringValue("semantic_type", SemanticType);
             writer.WriteStringValue("source_label", SourceLabel);

@@ -240,12 +240,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The trial property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTrialConfig? Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; AdditionalData?.Remove("trial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ProductTrialConfig? _explicitNullValueTrial = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingAddonTrial? Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; AdditionalData?.Remove("trial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingAddonTrial? _explicitNullValueTrial = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProductTrialConfig Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; AdditionalData?.Remove("trial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ProductTrialConfig _explicitNullValueTrial = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingAddonTrial Trial { get => _explicitNullValueTrial; set { _explicitNullValueTrial = value; AdditionalData?.Remove("trial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trial"); else _explicitNullProperties?.Remove("trial"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingAddonTrial _explicitNullValueTrial = default!;
 #endif
         /// <summary>The unit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -328,7 +328,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "tiered", n => { Tiered = n.GetBoolValue(); } },
                 { "tiers", n => { Tiers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PriceTier>(global::Soenneker.PostHog.OpenApiClient.Models.PriceTier.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "trial", n => { Trial = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTrialConfig>(global::Soenneker.PostHog.OpenApiClient.Models.ProductTrialConfig.CreateFromDiscriminatorValue); } },
+                { "trial", n => { Trial = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingAddonTrial>(global::Soenneker.PostHog.OpenApiClient.Models.BillingAddonTrial.CreateFromDiscriminatorValue); } },
                 { "unit", n => { Unit = n.GetStringValue(); } },
                 { "unit_amount_usd", n => { UnitAmountUsd = n.GetStringValue(); } },
                 { "usage_key", n => { UsageKey = n.GetStringValue(); } },
@@ -365,7 +365,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteBoolValue("tiered", Tiered);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PriceTier>("tiers", Tiers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProductTrialConfig>("trial", Trial);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingAddonTrial>("trial", Trial);
             writer.WriteStringValue("unit", Unit);
             writer.WriteStringValue("unit_amount_usd", UnitAmountUsd);
             writer.WriteStringValue("usage_key", UsageKey);

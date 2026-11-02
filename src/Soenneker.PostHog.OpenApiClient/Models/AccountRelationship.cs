@@ -47,10 +47,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The assigned user; null when their account was deleted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountAssignment? User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipUser? User { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountAssignment User { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipUser User { get; private set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationship"/> and sets the default values.
@@ -82,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipSource>(global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipSource.CreateFromDiscriminatorValue); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountAssignment>(global::Soenneker.PostHog.OpenApiClient.Models.AccountAssignment.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipUser>(global::Soenneker.PostHog.OpenApiClient.Models.AccountRelationshipUser.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

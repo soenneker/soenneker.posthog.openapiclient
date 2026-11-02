@@ -7,41 +7,39 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoal"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoal"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class MarketingAnalyticsConversionGoalListItem : IComposedTypeWrapper, IParsable
-    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
-        // Preserve ambiguous union payloads without inventing a discriminator.
-        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    #pragma warning disable CS1591
+    public partial class MarketingAnalyticsConversionGoalListItem : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal"/></summary>
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+        }
+
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal? MarketingAnalyticsActionConversionGoal { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal MarketingAnalyticsActionConversionGoal { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoal"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoal? MarketingAnalyticsEventConversionGoal { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoal MarketingAnalyticsEventConversionGoal { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoal"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoal? MarketingAnalyticsWarehouseConversionGoal { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoal MarketingAnalyticsWarehouseConversionGoal { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem"/> and sets the default values.
+        /// </summary>
+        public MarketingAnalyticsConversionGoalListItem()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -51,23 +49,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem();
-            if("ActionsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            return mappingValue switch
             {
-                
-            }
-            else if("EventsNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataWarehouseNode".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            
-            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.MarketingAnalyticsActionConversionGoal == null && result.MarketingAnalyticsEventConversionGoal == null && result.MarketingAnalyticsWarehouseConversionGoal == null) result.UnrecognizedValue = unionPayload;
-return result;
+                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItemMarketingAnalyticsActionConversionGoal(),
+                "DataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItemMarketingAnalyticsWarehouseConversionGoal(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItemMarketingAnalyticsEventConversionGoal(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsConversionGoalListItem(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,21 +63,10 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
-
-            if(MarketingAnalyticsActionConversionGoal != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return MarketingAnalyticsActionConversionGoal.GetFieldDeserializers();
-            }
-            else if(MarketingAnalyticsEventConversionGoal != null)
-            {
-                return MarketingAnalyticsEventConversionGoal.GetFieldDeserializers();
-            }
-            else if(MarketingAnalyticsWarehouseConversionGoal != null)
-            {
-                return MarketingAnalyticsWarehouseConversionGoal.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "kind", n => { Kind = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -97,32 +74,10 @@ return result;
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (MarketingAnalyticsActionConversionGoal == null && MarketingAnalyticsEventConversionGoal == null && MarketingAnalyticsWarehouseConversionGoal == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            int selectedUnionBranches = 0;
-            if (MarketingAnalyticsActionConversionGoal != null) selectedUnionBranches++;
-            if (MarketingAnalyticsEventConversionGoal != null) selectedUnionBranches++;
-            if (MarketingAnalyticsWarehouseConversionGoal != null) selectedUnionBranches++;
-            if (MarketingAnalyticsActionConversionGoal != null && selectedUnionBranches == 1) { if (MarketingAnalyticsActionConversionGoal is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MarketingAnalyticsActionConversionGoal); return; }
-            if (MarketingAnalyticsEventConversionGoal != null && selectedUnionBranches == 1) { if (MarketingAnalyticsEventConversionGoal is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MarketingAnalyticsEventConversionGoal); return; }
-            if (MarketingAnalyticsWarehouseConversionGoal != null && selectedUnionBranches == 1) { if (MarketingAnalyticsWarehouseConversionGoal is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, MarketingAnalyticsWarehouseConversionGoal); return; }
-
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(MarketingAnalyticsActionConversionGoal != null)
-            {
-                if (MarketingAnalyticsActionConversionGoal is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsActionConversionGoal>(null, MarketingAnalyticsActionConversionGoal);
-            }
-            else if(MarketingAnalyticsEventConversionGoal != null)
-            {
-                if (MarketingAnalyticsEventConversionGoal is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsEventConversionGoal>(null, MarketingAnalyticsEventConversionGoal);
-            }
-            else if(MarketingAnalyticsWarehouseConversionGoal != null)
-            {
-                if (MarketingAnalyticsWarehouseConversionGoal is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsWarehouseConversionGoal>(null, MarketingAnalyticsWarehouseConversionGoal);
-            }
+            writer.WriteStringValue("kind", Kind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

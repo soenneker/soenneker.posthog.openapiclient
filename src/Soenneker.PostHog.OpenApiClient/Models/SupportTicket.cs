@@ -51,10 +51,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sender, timestamp, and direction of the latest public message, when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary? LastMessage { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SupportTicketLastMessage? LastMessage { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary LastMessage { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SupportTicketLastMessage LastMessage { get; private set; }
 #endif
         /// <summary>When the most recent message was sent on this ticket.</summary>
         public DateTimeOffset? LastMessageAt { get; private set; }
@@ -113,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "deep_link", n => { DeepLink = n.GetStringValue(); } },
                 { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "last_message", n => { LastMessage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMessageSummary.CreateFromDiscriminatorValue); } },
+                { "last_message", n => { LastMessage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SupportTicketLastMessage>(global::Soenneker.PostHog.OpenApiClient.Models.SupportTicketLastMessage.CreateFromDiscriminatorValue); } },
                 { "last_message_at", n => { LastMessageAt = n.GetDateTimeOffsetValue(); } },
                 { "last_message_text", n => { LastMessageText = n.GetStringValue(); } },
                 { "started_by", n => { StartedBy = n.GetStringValue(); } },

@@ -50,12 +50,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>This project&apos;s repository exception. Null when the repository follows the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException? Exception { get => _explicitNullValueException; set { _explicitNullValueException = value; AdditionalData?.Remove("exception"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exception"); else _explicitNullProperties?.Remove("exception"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException? _explicitNullValueException = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryException? Exception { get => _explicitNullValueException; set { _explicitNullValueException = value; AdditionalData?.Remove("exception"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exception"); else _explicitNullProperties?.Remove("exception"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryException? _explicitNullValueException = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException Exception { get => _explicitNullValueException; set { _explicitNullValueException = value; AdditionalData?.Remove("exception"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exception"); else _explicitNullProperties?.Remove("exception"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException _explicitNullValueException = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryException Exception { get => _explicitNullValueException; set { _explicitNullValueException = value; AdditionalData?.Remove("exception"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exception"); else _explicitNullProperties?.Remove("exception"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryException _explicitNullValueException = default!;
 #endif
         /// <summary>GitHub repository in &apos;owner/name&apos; form.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -112,12 +112,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The other project that reviews the repository, when owner is &apos;other_project&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? OwnerProject { get => _explicitNullValueOwnerProject; set { _explicitNullValueOwnerProject = value; AdditionalData?.Remove("owner_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_project"); else _explicitNullProperties?.Remove("owner_project"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? _explicitNullValueOwnerProject = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwnerProject? OwnerProject { get => _explicitNullValueOwnerProject; set { _explicitNullValueOwnerProject = value; AdditionalData?.Remove("owner_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_project"); else _explicitNullProperties?.Remove("owner_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwnerProject? _explicitNullValueOwnerProject = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef OwnerProject { get => _explicitNullValueOwnerProject; set { _explicitNullValueOwnerProject = value; AdditionalData?.Remove("owner_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_project"); else _explicitNullProperties?.Remove("owner_project"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef _explicitNullValueOwnerProject = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwnerProject OwnerProject { get => _explicitNullValueOwnerProject; set { _explicitNullValueOwnerProject = value; AdditionalData?.Remove("owner_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_project"); else _explicitNullProperties?.Remove("owner_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwnerProject _explicitNullValueOwnerProject = default!;
 #endif
         /// <summary>Id of this project&apos;s repository entry, for the people list endpoints.</summary>
         public Guid? RepositoryId { get => _explicitNullValueRepositoryId; set { _explicitNullValueRepositoryId = value; AdditionalData?.Remove("repository_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository_id"); else _explicitNullProperties?.Remove("repository_id"); } }
@@ -160,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "exception", n => { Exception = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException.CreateFromDiscriminatorValue); } },
+                { "exception", n => { Exception = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryException>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryException.CreateFromDiscriminatorValue); } },
                 { "full_name", n => { FullName = n.GetStringValue(); } },
                 { "github_repo_id", n => { GithubRepoId = n.GetIntValue(); } },
                 { "in_project", n => { InProject = n.GetBoolValue(); } },
@@ -169,7 +169,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "my_choice_id", n => { MyChoiceId = n.GetGuidValue(); } },
                 { "my_result", n => { MyResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult.CreateFromDiscriminatorValue); } },
                 { "owner", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwner>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOwner = default; _explicitNullProperties?.Remove("owner"); AdditionalData["owner"] = unknown; } else { Owner = parsed; AdditionalData.Remove("owner"); } } },
-                { "owner_project", n => { OwnerProject = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef.CreateFromDiscriminatorValue); } },
+                { "owner_project", n => { OwnerProject = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwnerProject>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwnerProject.CreateFromDiscriminatorValue); } },
                 { "repository_id", n => { RepositoryId = n.GetGuidValue(); } },
                 { "repository_result", n => { RepositoryResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult.CreateFromDiscriminatorValue); } },
                 { "selected", n => { Selected = n.GetBoolValue(); } },
@@ -182,7 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryException>("exception", Exception);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryException>("exception", Exception);
             writer.WriteStringValue("full_name", FullName);
             writer.WriteIntValue("github_repo_id", GithubRepoId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryInheritedResult>("inherited_result", InheritedResult);
@@ -191,7 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("my_choice_id", MyChoiceId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult>("my_result", MyResult);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwner>("owner", Owner);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef>("owner_project", OwnerProject);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryOwnerProject>("owner_project", OwnerProject);
             writer.WriteGuidValue("repository_id", RepositoryId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryRepositoryResult>("repository_result", RepositoryResult);
             writer.WriteBoolValue("selected", Selected);

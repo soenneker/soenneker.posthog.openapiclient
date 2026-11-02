@@ -42,15 +42,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The author property</summary>
+        /// <summary>Response shape for a task creator, mirroring core ``UserBasicSerializer`` output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? _explicitNullValueAuthor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? _explicitNullValueAuthor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo _explicitNullValueAuthor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy _explicitNullValueAuthor = default!;
 #endif
         /// <summary>The author_kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -85,15 +85,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Event { get => _explicitNullValueEvent; set { _explicitNullValueEvent = value; AdditionalData?.Remove("event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event"); else _explicitNullProperties?.Remove("event"); } }
         private string _explicitNullValueEvent = default!;
 #endif
-        /// <summary>The forwarded_by property</summary>
+        /// <summary>Response shape for a task creator, mirroring core ``UserBasicSerializer`` output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? ForwardedBy { get => _explicitNullValueForwardedBy; set { _explicitNullValueForwardedBy = value; AdditionalData?.Remove("forwarded_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forwarded_by"); else _explicitNullProperties?.Remove("forwarded_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? _explicitNullValueForwardedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? ForwardedBy { get => _explicitNullValueForwardedBy; set { _explicitNullValueForwardedBy = value; AdditionalData?.Remove("forwarded_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forwarded_by"); else _explicitNullProperties?.Remove("forwarded_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? _explicitNullValueForwardedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo ForwardedBy { get => _explicitNullValueForwardedBy; set { _explicitNullValueForwardedBy = value; AdditionalData?.Remove("forwarded_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forwarded_by"); else _explicitNullProperties?.Remove("forwarded_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo _explicitNullValueForwardedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy ForwardedBy { get => _explicitNullValueForwardedBy; set { _explicitNullValueForwardedBy = value; AdditionalData?.Remove("forwarded_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forwarded_by"); else _explicitNullProperties?.Remove("forwarded_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy _explicitNullValueForwardedBy = default!;
 #endif
         /// <summary>The forwarded_to_agent_at property</summary>
         public DateTimeOffset? ForwardedToAgentAt { get => _explicitNullValueForwardedToAgentAt; set { _explicitNullValueForwardedToAgentAt = value; AdditionalData?.Remove("forwarded_to_agent_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forwarded_to_agent_at"); else _explicitNullProperties?.Remove("forwarded_to_agent_at"); } }
@@ -139,12 +139,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy.CreateFromDiscriminatorValue); } },
                 { "author_kind", n => { AuthorKind = n.GetStringValue(); } },
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "forwarded_by", n => { ForwardedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "forwarded_by", n => { ForwardedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy.CreateFromDiscriminatorValue); } },
                 { "forwarded_to_agent_at", n => { ForwardedToAgentAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoPayloadProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoPayloadProperty.CreateFromDiscriminatorValue); } },
@@ -158,12 +158,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("author", Author);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>("author", Author);
             writer.WriteStringValue("author_kind", AuthorKind);
             writer.WriteStringValue("content", Content);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("event", Event);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("forwarded_by", ForwardedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>("forwarded_by", ForwardedBy);
             writer.WriteDateTimeOffsetValue("forwarded_to_agent_at", ForwardedToAgentAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskThreadMessageDtoPayloadProperty>("payload", Payload);

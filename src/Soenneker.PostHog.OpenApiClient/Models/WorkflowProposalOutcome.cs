@@ -34,22 +34,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The versions that carried the change. Null until the proposal is applied.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? After { get => _explicitNullValueAfter; set { _explicitNullValueAfter = value; AdditionalData?.Remove("after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after"); else _explicitNullProperties?.Remove("after"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? _explicitNullValueAfter = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeAfter? After { get => _explicitNullValueAfter; set { _explicitNullValueAfter = value; AdditionalData?.Remove("after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after"); else _explicitNullProperties?.Remove("after"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeAfter? _explicitNullValueAfter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome After { get => _explicitNullValueAfter; set { _explicitNullValueAfter = value; AdditionalData?.Remove("after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after"); else _explicitNullProperties?.Remove("after"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome _explicitNullValueAfter = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeAfter After { get => _explicitNullValueAfter; set { _explicitNullValueAfter = value; AdditionalData?.Remove("after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("after"); else _explicitNullProperties?.Remove("after"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeAfter _explicitNullValueAfter = default!;
 #endif
         /// <summary>The version the change was proposed against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; AdditionalData?.Remove("before"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome? _explicitNullValueBefore = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeBefore? Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; AdditionalData?.Remove("before"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeBefore? _explicitNullValueBefore = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; AdditionalData?.Remove("before"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome _explicitNullValueBefore = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeBefore Before { get => _explicitNullValueBefore; set { _explicitNullValueBefore = value; AdditionalData?.Remove("before"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("before"); else _explicitNullProperties?.Remove("before"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeBefore _explicitNullValueBefore = default!;
 #endif
         /// <summary>The version that changed what the suggestion changed, which is where the after side stops. Null while the change is still live.</summary>
         public int? ChangeEndedAtVersion { get => _explicitNullValueChangeEndedAtVersion; set { _explicitNullValueChangeEndedAtVersion = value; AdditionalData?.Remove("change_ended_at_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change_ended_at_version"); else _explicitNullProperties?.Remove("change_ended_at_version"); } }
@@ -99,8 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome.CreateFromDiscriminatorValue); } },
-                { "before", n => { Before = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome.CreateFromDiscriminatorValue); } },
+                { "after", n => { After = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeAfter>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeAfter.CreateFromDiscriminatorValue); } },
+                { "before", n => { Before = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeBefore>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeBefore.CreateFromDiscriminatorValue); } },
                 { "change_ended_at_version", n => { ChangeEndedAtVersion = n.GetIntValue(); } },
                 { "unavailable_guardrails", n => { UnavailableGuardrails = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "versions", n => { Versions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -113,8 +113,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>("after", After);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>("before", Before);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeAfter>("after", After);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalOutcomeBefore>("before", Before);
             writer.WriteIntValue("change_ended_at_version", ChangeEndedAtVersion);
             writer.WriteCollectionOfPrimitiveValues<string>("unavailable_guardrails", UnavailableGuardrails);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalVersionOutcome>("versions", Versions);

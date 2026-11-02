@@ -45,10 +45,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Score coverage and score age at the cutoff of a live champion run. Null for backfill, shadow, validation and older runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage? Coverage { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunCoverage? Coverage { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage Coverage { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunCoverage Coverage { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -118,7 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
-                { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage.CreateFromDiscriminatorValue); } },
+                { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunCoverage>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRunCoverage.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

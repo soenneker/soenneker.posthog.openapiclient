@@ -42,12 +42,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The result envelope once the run is &apos;done&apos; or &apos;interrupted&apos; (an interrupted run keeps the stdout/stderr captured before the stop); null while running and for failed runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope? Result { get => _explicitNullValueResult; set { _explicitNullValueResult = value; AdditionalData?.Remove("result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result"); else _explicitNullProperties?.Remove("result"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope? _explicitNullValueResult = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult? Result { get => _explicitNullValueResult; set { _explicitNullValueResult = value; AdditionalData?.Remove("result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result"); else _explicitNullProperties?.Remove("result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult? _explicitNullValueResult = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope Result { get => _explicitNullValueResult; set { _explicitNullValueResult = value; AdditionalData?.Remove("result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result"); else _explicitNullProperties?.Remove("result"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope _explicitNullValueResult = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult Result { get => _explicitNullValueResult; set { _explicitNullValueResult = value; AdditionalData?.Remove("result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result"); else _explicitNullProperties?.Remove("result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult _explicitNullValueResult = default!;
 #endif
         /// <summary>SQL (hogql) runs only: the full capped row set for client-side paging, present while the query manager&apos;s transient result is alive (~20 minutes). Absent afterwards and for kernel (python/duckdb) runs, which keep only the envelope&apos;s first_page preview.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
-                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope.CreateFromDiscriminatorValue); } },
+                { "result", n => { Result = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult>(global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult.CreateFromDiscriminatorValue); } },
                 { "rows", n => { Rows = n.GetCollectionOfObjectValues<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
             };
@@ -108,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2Envelope>("result", Result);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunStatusResponseResult>("result", Result);
             writer.WriteCollectionOfPrimitiveValues<UntypedNode>("rows", Rows);
             writer.WriteStringValue("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

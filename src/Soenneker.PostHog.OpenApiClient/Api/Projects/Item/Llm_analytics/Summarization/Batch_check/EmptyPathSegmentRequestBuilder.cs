@@ -40,8 +40,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Summar
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsSummarizationBatchCheckCreate400ResponseSchema">When receiving a 400 status code</exception>
-        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsSummarizationBatchCheckCreate403ResponseSchema">When receiving a 403 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsSummarizationBatchCheckCreate400ResponseSchemaError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsSummarizationBatchCheckCreate403ResponseSchemaError">When receiving a 403 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.PostHog.OpenApiClient.Models.BatchCheckResponse?> PostAsync(global::Soenneker.PostHog.OpenApiClient.Models.BatchCheckRequest body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -55,8 +55,8 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Llm_analytics.Summar
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "400", global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsSummarizationBatchCheckCreate400ResponseSchema.CreateFromDiscriminatorValue },
-                { "403", global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsSummarizationBatchCheckCreate403ResponseSchema.CreateFromDiscriminatorValue },
+                { "400", global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsSummarizationBatchCheckCreate400ResponseSchemaError.CreateFromDiscriminatorValue },
+                { "403", global::Soenneker.PostHog.OpenApiClient.Models.LlmAnalyticsSummarizationBatchCheckCreate403ResponseSchemaError.CreateFromDiscriminatorValue },
                 { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
                 { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue },
             };

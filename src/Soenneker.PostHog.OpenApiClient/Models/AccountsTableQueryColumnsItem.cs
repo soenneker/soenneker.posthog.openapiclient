@@ -7,65 +7,39 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf6"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AccountsTableQueryColumnsItem : IComposedTypeWrapper, IParsable
-    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
-        // Preserve ambiguous union payloads without inventing a discriminator.
-        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    #pragma warning disable CS1591
+    public partial class AccountsTableQueryColumnsItem : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf1"/></summary>
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+        }
+
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf1? AccountsTableQueryColumnsItemOneOf1 { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf1 AccountsTableQueryColumnsItemOneOf1 { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf2? AccountsTableQueryColumnsItemOneOf2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf2 AccountsTableQueryColumnsItemOneOf2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf3? AccountsTableQueryColumnsItemOneOf3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf3 AccountsTableQueryColumnsItemOneOf3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf4? AccountsTableQueryColumnsItemOneOf4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf4 AccountsTableQueryColumnsItemOneOf4 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf5? AccountsTableQueryColumnsItemOneOf5 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf5 AccountsTableQueryColumnsItemOneOf5 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf6"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf6? AccountsTableQueryColumnsItemOneOf6 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf6 AccountsTableQueryColumnsItemOneOf6 { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem"/> and sets the default values.
+        /// </summary>
+        public AccountsTableQueryColumnsItem()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -74,56 +48,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem();
-            if("AccountsTableQueryColumnsItemOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
+            return mappingValue switch
             {
-                
-            }
-            else if("AccountsTableQueryColumnsItemOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("AccountsTableQueryColumnsItemOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("AccountsTableQueryColumnsItemOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("AccountsTableQueryColumnsItemOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("AccountsTableQueryColumnsItemOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            
-            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("field") && shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("field") || (((shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "name".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "external_id".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "created_at".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "updated_at".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal6 && "churned_at".Equals(literal6.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal7 && "ignored_at".Equals(literal7.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal8 && "stripe_customer_id".Equals(literal8.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal9 && "hubspot_deal_id".Equals(literal9.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal10 && "billing_id".Equals(literal10.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "sfdc_id".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["field"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "zendesk_id".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal15 && "account_field".Equals(literal15.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal16 && "account_field".Equals(literal16.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "field" || key == "kind"))))))();
-            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "tags".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "tags".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "kind"))))))();
-            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "note_count".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "note_count".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "kind"))))))();
-            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("definitionId") && shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("definitionId") || (((shapeMembers1["definitionId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "relationship".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "relationship".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "definitionId" || key == "kind"))))))();
-            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("definitionId") && shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("definitionId") || (((shapeMembers1["definitionId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "custom_property".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "custom_property".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "definitionId" || key == "kind"))))))();
-            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("definitionId") && shapeMembers1.ContainsKey("windowDays") && shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("definitionId") || (((shapeMembers1["definitionId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "custom_property_history".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal5 && "custom_property_history".Equals(literal5.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("windowDays") || (((shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong or global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal)) && (((shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger number9 && number9.GetValue() == 7m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong number10 && number10.GetValue() == 7m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat number11 && number11.GetValue() == (double)7m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble number12 && number12.GetValue() == (double)7m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal number13 && number13.GetValue() == 7m)) || ((shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger number15 && number15.GetValue() == 14m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong number16 && number16.GetValue() == 14m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat number17 && number17.GetValue() == (double)14m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble number18 && number18.GetValue() == (double)14m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal number19 && number19.GetValue() == 14m)) || ((shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger number21 && number21.GetValue() == 30m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong number22 && number22.GetValue() == 30m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat number23 && number23.GetValue() == (double)30m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble number24 && number24.GetValue() == (double)30m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal number25 && number25.GetValue() == 30m)) || ((shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger number27 && number27.GetValue() == 90m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong number28 && number28.GetValue() == 90m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat number29 && number29.GetValue() == (double)90m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble number30 && number30.GetValue() == (double)90m) || (shapeMembers1["windowDays"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal number31 && number31.GetValue() == 90m))))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "definitionId" || key == "kind" || key == "windowDays"))))))();
-            int matchingUnionBranches = 0;
-            if (matchesUnionBranch0) matchingUnionBranches++;
-            if (matchesUnionBranch1) matchingUnionBranches++;
-            if (matchesUnionBranch2) matchingUnionBranches++;
-            if (matchesUnionBranch3) matchingUnionBranches++;
-            if (matchesUnionBranch4) matchingUnionBranches++;
-            if (matchesUnionBranch5) matchingUnionBranches++;
-            bool noSelectedUnionBranch = result.AccountsTableQueryColumnsItemOneOf1 == null && result.AccountsTableQueryColumnsItemOneOf2 == null && result.AccountsTableQueryColumnsItemOneOf3 == null && result.AccountsTableQueryColumnsItemOneOf4 == null && result.AccountsTableQueryColumnsItemOneOf5 == null && result.AccountsTableQueryColumnsItemOneOf6 == null;
-            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.AccountsTableQueryColumnsItemOneOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf1(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.AccountsTableQueryColumnsItemOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf2(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.AccountsTableQueryColumnsItemOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf3(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch3 && matchingUnionBranches == 1) result.AccountsTableQueryColumnsItemOneOf4 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf4(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch4 && matchingUnionBranches == 1) result.AccountsTableQueryColumnsItemOneOf5 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf5(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch5 && matchingUnionBranches == 1) result.AccountsTableQueryColumnsItemOneOf6 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf6(), parseNode);
-            if (result.AccountsTableQueryColumnsItemOneOf1 == null && result.AccountsTableQueryColumnsItemOneOf2 == null && result.AccountsTableQueryColumnsItemOneOf3 == null && result.AccountsTableQueryColumnsItemOneOf4 == null && result.AccountsTableQueryColumnsItemOneOf5 == null && result.AccountsTableQueryColumnsItemOneOf6 == null) result.UnrecognizedValue = unionPayload;
-return result;
+                "account_field" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf1(),
+                "custom_property" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf5(),
+                "custom_property_history" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf6(),
+                "note_count" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf3(),
+                "relationship" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf4(),
+                "tags" => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemAccountsTableQueryColumnsItemOneOf2(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItem(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -131,33 +66,10 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
-
-            if(AccountsTableQueryColumnsItemOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return AccountsTableQueryColumnsItemOneOf1.GetFieldDeserializers();
-            }
-            else if(AccountsTableQueryColumnsItemOneOf2 != null)
-            {
-                return AccountsTableQueryColumnsItemOneOf2.GetFieldDeserializers();
-            }
-            else if(AccountsTableQueryColumnsItemOneOf3 != null)
-            {
-                return AccountsTableQueryColumnsItemOneOf3.GetFieldDeserializers();
-            }
-            else if(AccountsTableQueryColumnsItemOneOf4 != null)
-            {
-                return AccountsTableQueryColumnsItemOneOf4.GetFieldDeserializers();
-            }
-            else if(AccountsTableQueryColumnsItemOneOf5 != null)
-            {
-                return AccountsTableQueryColumnsItemOneOf5.GetFieldDeserializers();
-            }
-            else if(AccountsTableQueryColumnsItemOneOf6 != null)
-            {
-                return AccountsTableQueryColumnsItemOneOf6.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "kind", n => { Kind = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -165,53 +77,10 @@ return result;
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (AccountsTableQueryColumnsItemOneOf1 == null && AccountsTableQueryColumnsItemOneOf2 == null && AccountsTableQueryColumnsItemOneOf3 == null && AccountsTableQueryColumnsItemOneOf4 == null && AccountsTableQueryColumnsItemOneOf5 == null && AccountsTableQueryColumnsItemOneOf6 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            int selectedUnionBranches = 0;
-            if (AccountsTableQueryColumnsItemOneOf1 != null) selectedUnionBranches++;
-            if (AccountsTableQueryColumnsItemOneOf2 != null) selectedUnionBranches++;
-            if (AccountsTableQueryColumnsItemOneOf3 != null) selectedUnionBranches++;
-            if (AccountsTableQueryColumnsItemOneOf4 != null) selectedUnionBranches++;
-            if (AccountsTableQueryColumnsItemOneOf5 != null) selectedUnionBranches++;
-            if (AccountsTableQueryColumnsItemOneOf6 != null) selectedUnionBranches++;
-            if (AccountsTableQueryColumnsItemOneOf1 != null && selectedUnionBranches == 1) { if (AccountsTableQueryColumnsItemOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableQueryColumnsItemOneOf1); return; }
-            if (AccountsTableQueryColumnsItemOneOf2 != null && selectedUnionBranches == 1) { if (AccountsTableQueryColumnsItemOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableQueryColumnsItemOneOf2); return; }
-            if (AccountsTableQueryColumnsItemOneOf3 != null && selectedUnionBranches == 1) { if (AccountsTableQueryColumnsItemOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableQueryColumnsItemOneOf3); return; }
-            if (AccountsTableQueryColumnsItemOneOf4 != null && selectedUnionBranches == 1) { if (AccountsTableQueryColumnsItemOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableQueryColumnsItemOneOf4); return; }
-            if (AccountsTableQueryColumnsItemOneOf5 != null && selectedUnionBranches == 1) { if (AccountsTableQueryColumnsItemOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableQueryColumnsItemOneOf5); return; }
-            if (AccountsTableQueryColumnsItemOneOf6 != null && selectedUnionBranches == 1) { if (AccountsTableQueryColumnsItemOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, AccountsTableQueryColumnsItemOneOf6); return; }
-
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(AccountsTableQueryColumnsItemOneOf1 != null)
-            {
-                if (AccountsTableQueryColumnsItemOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf1>(null, AccountsTableQueryColumnsItemOneOf1);
-            }
-            else if(AccountsTableQueryColumnsItemOneOf2 != null)
-            {
-                if (AccountsTableQueryColumnsItemOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf2>(null, AccountsTableQueryColumnsItemOneOf2);
-            }
-            else if(AccountsTableQueryColumnsItemOneOf3 != null)
-            {
-                if (AccountsTableQueryColumnsItemOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf3>(null, AccountsTableQueryColumnsItemOneOf3);
-            }
-            else if(AccountsTableQueryColumnsItemOneOf4 != null)
-            {
-                if (AccountsTableQueryColumnsItemOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf4>(null, AccountsTableQueryColumnsItemOneOf4);
-            }
-            else if(AccountsTableQueryColumnsItemOneOf5 != null)
-            {
-                if (AccountsTableQueryColumnsItemOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf5>(null, AccountsTableQueryColumnsItemOneOf5);
-            }
-            else if(AccountsTableQueryColumnsItemOneOf6 != null)
-            {
-                if (AccountsTableQueryColumnsItemOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryColumnsItemOneOf6>(null, AccountsTableQueryColumnsItemOneOf6);
-            }
+            writer.WriteStringValue("kind", Kind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

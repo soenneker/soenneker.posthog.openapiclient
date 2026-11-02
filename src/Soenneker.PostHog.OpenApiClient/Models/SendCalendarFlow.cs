@@ -48,10 +48,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the workflow.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarFlowCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarFlowCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The &apos;To&apos; address of the first email step. A schedule trigger has no audience, so it sends here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -139,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "audience_properties", n => { AudienceProperties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarFlowAudiencePropertiesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarFlowAudiencePropertiesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "audience_type", n => { AudienceType = n.GetStringValue(); } },
                 { "batch_jobs", n => { BatchJobs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarBatchJob>(global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarBatchJob.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarFlowCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarFlowCreatedBy.CreateFromDiscriminatorValue); } },
                 { "email_to", n => { EmailTo = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message_category_id", n => { MessageCategoryId = n.GetStringValue(); } },

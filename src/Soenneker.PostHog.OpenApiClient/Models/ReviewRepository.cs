@@ -26,10 +26,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who added the repository.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The repository exception: &apos;everyone&apos;, &apos;listed&apos;, or &apos;off&apos; (opt-in only). Null when the repository follows the project rule.* `everyone` - Automatic Flash for everyone* `listed` - Automatic Flash for these people* `off` - Automatic Flash opt-in only</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryCreatedBy.CreateFromDiscriminatorValue); } },
                 { "flash_for", n => { FlashFor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryFlashFor>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryFlashFor.CreateFromDiscriminatorValue); } },
                 { "full_name", n => { FullName = n.GetStringValue(); } },
                 { "github_repo_id", n => { GithubRepoId = n.GetIntValue(); } },

@@ -88,12 +88,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Survey appearance customization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema? Appearance { get => _explicitNullValueAppearance; set { _explicitNullValueAppearance = value; AdditionalData?.Remove("appearance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appearance"); else _explicitNullProperties?.Remove("appearance"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema? _explicitNullValueAppearance = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaAppearance? Appearance { get => _explicitNullValueAppearance; set { _explicitNullValueAppearance = value; AdditionalData?.Remove("appearance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appearance"); else _explicitNullProperties?.Remove("appearance"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaAppearance? _explicitNullValueAppearance = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema Appearance { get => _explicitNullValueAppearance; set { _explicitNullValueAppearance = value; AdditionalData?.Remove("appearance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appearance"); else _explicitNullProperties?.Remove("appearance"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema _explicitNullValueAppearance = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaAppearance Appearance { get => _explicitNullValueAppearance; set { _explicitNullValueAppearance = value; AdditionalData?.Remove("appearance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("appearance"); else _explicitNullProperties?.Remove("appearance"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaAppearance _explicitNullValueAppearance = default!;
 #endif
         /// <summary>Archive state for the survey.</summary>
         public bool? Archived { get => _explicitNullValueArchived; set { _explicitNullValueArchived = value; AdditionalData?.Remove("archived"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("archived"); else _explicitNullProperties?.Remove("archived"); } }
@@ -111,12 +111,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Display and targeting conditions for the survey.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema? Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; AdditionalData?.Remove("conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema? _explicitNullValueConditions = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaConditions? Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; AdditionalData?.Remove("conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaConditions? _explicitNullValueConditions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; AdditionalData?.Remove("conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema _explicitNullValueConditions = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaConditions Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; AdditionalData?.Remove("conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaConditions _explicitNullValueConditions = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -292,12 +292,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Target specific users based on their properties. Example: {groups: [{properties: [{key: &apos;email&apos;, value: [&apos;@company.com&apos;], operator: &apos;icontains&apos;}], rollout_percentage: 100}]}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema? TargetingFlagFilters { get => _explicitNullValueTargetingFlagFilters; set { _explicitNullValueTargetingFlagFilters = value; AdditionalData?.Remove("targeting_flag_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targeting_flag_filters"); else _explicitNullProperties?.Remove("targeting_flag_filters"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema? _explicitNullValueTargetingFlagFilters = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters? TargetingFlagFilters { get => _explicitNullValueTargetingFlagFilters; set { _explicitNullValueTargetingFlagFilters = value; AdditionalData?.Remove("targeting_flag_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targeting_flag_filters"); else _explicitNullProperties?.Remove("targeting_flag_filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters? _explicitNullValueTargetingFlagFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema TargetingFlagFilters { get => _explicitNullValueTargetingFlagFilters; set { _explicitNullValueTargetingFlagFilters = value; AdditionalData?.Remove("targeting_flag_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targeting_flag_filters"); else _explicitNullProperties?.Remove("targeting_flag_filters"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema _explicitNullValueTargetingFlagFilters = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters TargetingFlagFilters { get => _explicitNullValueTargetingFlagFilters; set { _explicitNullValueTargetingFlagFilters = value; AdditionalData?.Remove("targeting_flag_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targeting_flag_filters"); else _explicitNullProperties?.Remove("targeting_flag_filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters _explicitNullValueTargetingFlagFilters = default!;
 #endif
         /// <summary>An existing targeting flag to use for this survey.</summary>
         public int? TargetingFlagId { get => _explicitNullValueTargetingFlagId; set { _explicitNullValueTargetingFlagId = value; AdditionalData?.Remove("targeting_flag_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targeting_flag_id"); else _explicitNullProperties?.Remove("targeting_flag_id"); } }
@@ -340,10 +340,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "appearance", n => { Appearance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema.CreateFromDiscriminatorValue); } },
+                { "appearance", n => { Appearance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaAppearance>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaAppearance.CreateFromDiscriminatorValue); } },
                 { "archived", n => { Archived = n.GetBoolValue(); } },
                 { "base_language", n => { BaseLanguage = n.GetStringValue(); } },
-                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema.CreateFromDiscriminatorValue); } },
+                { "conditions", n => { Conditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaConditions>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaConditions.CreateFromDiscriminatorValue); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaCreatedBy.CreateFromDiscriminatorValue); } },
@@ -374,7 +374,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "schedule", n => { Schedule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "targeting_flag", n => { TargetingFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlag>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlag.CreateFromDiscriminatorValue); } },
-                { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema.CreateFromDiscriminatorValue); } },
+                { "targeting_flag_filters", n => { TargetingFlagFilters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters.CreateFromDiscriminatorValue); } },
                 { "targeting_flag_id", n => { TargetingFlagId = n.GetIntValue(); } },
                 { "translations", n => { Translations = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
@@ -387,10 +387,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyAppearanceSchema>("appearance", Appearance);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaAppearance>("appearance", Appearance);
             writer.WriteBoolValue("archived", Archived);
             writer.WriteStringValue("base_language", BaseLanguage);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema>("conditions", Conditions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaConditions>("conditions", Conditions);
             writer.WriteStringValue("_create_in_folder", CreateInFolder);
             writer.WriteIntValue("current_iteration", CurrentIteration);
             writer.WriteDateTimeOffsetValue("current_iteration_start_date", CurrentIterationStartDate);
@@ -415,7 +415,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("responses_limit", ResponsesLimit);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaSchedule>("schedule", Schedule);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagFiltersSchema>("targeting_flag_filters", TargetingFlagFilters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaTargetingFlagFilters>("targeting_flag_filters", TargetingFlagFilters);
             writer.WriteIntValue("targeting_flag_id", TargetingFlagId);
             writer.WriteObjectValue<UntypedNode>("translations", Translations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedSurveySerializerCreateUpdateOnlySchemaType>("type", Type);

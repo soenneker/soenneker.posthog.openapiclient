@@ -32,8 +32,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Null when the evaluation has no passing rule, or the run was not graded by it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome? Outcome { get => _explicitNullValueOutcome; set { _explicitNullValueOutcome = value; AdditionalData?.Remove("outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome"); else _explicitNullProperties?.Remove("outcome"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome? _explicitNullValueOutcome = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome Outcome { get => _explicitNullValueOutcome; set { _explicitNullValueOutcome = value; AdditionalData?.Remove("outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outcome"); else _explicitNullProperties?.Remove("outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome _explicitNullValueOutcome = default!;
+#endif
         /// <summary>The evaluator&apos;s reasoning, cut to about 1,000 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -92,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "outcome", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOutcome = default; _explicitNullProperties?.Remove("outcome"); AdditionalData["outcome"] = unknown; } else { Outcome = parsed; AdditionalData.Remove("outcome"); } } },
+                { "outcome", n => { Outcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome.CreateFromDiscriminatorValue); } },
                 { "reasoning", n => { Reasoning = n.GetStringValue(); } },
                 { "targetEventId", n => { TargetEventId = n.GetStringValue(); } },
                 { "timestamp", n => { Timestamp = n.GetDateTimeOffsetValue(); } },
@@ -106,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome>("outcome", Outcome);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationRunOutcome>("outcome", Outcome);
             writer.WriteStringValue("reasoning", Reasoning);
             writer.WriteStringValue("targetEventId", TargetEventId);
             writer.WriteDateTimeOffsetValue("timestamp", Timestamp);

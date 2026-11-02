@@ -27,10 +27,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Run currently executing for this experiment, if any; poll it by id for live progress</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun? ActiveRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestActiveRun? ActiveRun { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun ActiveRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestActiveRun ActiveRun { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -111,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active_run", n => { ActiveRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun>(global::Soenneker.PostHog.OpenApiClient.Models.ActiveRecalculationRun.CreateFromDiscriminatorValue); } },
+                { "active_run", n => { ActiveRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestActiveRun>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestActiveRun.CreateFromDiscriminatorValue); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "completed_metrics", n => { CompletedMetrics = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },

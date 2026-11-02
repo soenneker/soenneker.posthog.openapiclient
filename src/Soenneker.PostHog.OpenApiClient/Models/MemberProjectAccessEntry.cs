@@ -44,12 +44,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The rule that supplies the level. Read `source` and `source_subject` to tell an organization admin&apos;s bypass from a member rule, a role rule or the project default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectAccessSource? Resolved { get => _explicitNullValueResolved; set { _explicitNullValueResolved = value; AdditionalData?.Remove("resolved"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved"); else _explicitNullProperties?.Remove("resolved"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectAccessSource? _explicitNullValueResolved = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MemberProjectAccessEntryResolved? Resolved { get => _explicitNullValueResolved; set { _explicitNullValueResolved = value; AdditionalData?.Remove("resolved"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved"); else _explicitNullProperties?.Remove("resolved"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MemberProjectAccessEntryResolved? _explicitNullValueResolved = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ProjectAccessSource Resolved { get => _explicitNullValueResolved; set { _explicitNullValueResolved = value; AdditionalData?.Remove("resolved"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved"); else _explicitNullProperties?.Remove("resolved"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ProjectAccessSource _explicitNullValueResolved = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MemberProjectAccessEntryResolved Resolved { get => _explicitNullValueResolved; set { _explicitNullValueResolved = value; AdditionalData?.Remove("resolved"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved"); else _explicitNullProperties?.Remove("resolved"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MemberProjectAccessEntryResolved _explicitNullValueResolved = default!;
 #endif
         /// <summary>The id of the role or organization membership whose rule decided. Null when the default or a bypass decided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "access_level", n => { AccessLevel = n.GetStringValue(); } },
-                { "resolved", n => { Resolved = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectAccessSource>(global::Soenneker.PostHog.OpenApiClient.Models.ProjectAccessSource.CreateFromDiscriminatorValue); } },
+                { "resolved", n => { Resolved = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MemberProjectAccessEntryResolved>(global::Soenneker.PostHog.OpenApiClient.Models.MemberProjectAccessEntryResolved.CreateFromDiscriminatorValue); } },
                 { "subject_id", n => { SubjectId = n.GetStringValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
                 { "team_name", n => { TeamName = n.GetStringValue(); } },
@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("access_level", AccessLevel);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ProjectAccessSource>("resolved", Resolved);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MemberProjectAccessEntryResolved>("resolved", Resolved);
             writer.WriteStringValue("subject_id", SubjectId);
             writer.WriteIntValue("team_id", TeamId);
             writer.WriteStringValue("team_name", TeamName);

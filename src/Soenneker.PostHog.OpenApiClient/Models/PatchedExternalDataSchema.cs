@@ -64,10 +64,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set when this schema&apos;s version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation? ApiVersionDeprecation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaApiVersionDeprecation? ApiVersionDeprecation { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation ApiVersionDeprecation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaApiVersionDeprecation ApiVersionDeprecation { get; private set; }
 #endif
         /// <summary>Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table&apos;s columns. Empty only before the first successful sync/refresh.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -304,7 +304,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "api_version", n => { ApiVersion = n.GetStringValue(); } },
-                { "api_version_deprecation", n => { ApiVersionDeprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation.CreateFromDiscriminatorValue); } },
+                { "api_version_deprecation", n => { ApiVersionDeprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaApiVersionDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaApiVersionDeprecation.CreateFromDiscriminatorValue); } },
                 { "available_columns", n => { AvailableColumns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaAvailableColumnsItem>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSchemaAvailableColumnsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "cdc_table_mode", n => { CdcTableMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaCdcTableMode>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaCdcTableMode.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },

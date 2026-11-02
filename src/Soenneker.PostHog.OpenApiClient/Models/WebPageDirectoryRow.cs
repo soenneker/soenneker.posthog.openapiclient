@@ -55,22 +55,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The aiCrawls property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? AiCrawls { get => _explicitNullValueAiCrawls; set { _explicitNullValueAiCrawls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawls"); else _explicitNullProperties?.Remove("aiCrawls"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueAiCrawls = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? AiCrawls { get => _explicitNullValueAiCrawls; set { _explicitNullValueAiCrawls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawls"); else _explicitNullProperties?.Remove("aiCrawls"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? _explicitNullValueAiCrawls = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue AiCrawls { get => _explicitNullValueAiCrawls; set { _explicitNullValueAiCrawls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawls"); else _explicitNullProperties?.Remove("aiCrawls"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueAiCrawls = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls AiCrawls { get => _explicitNullValueAiCrawls; set { _explicitNullValueAiCrawls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiCrawls"); else _explicitNullProperties?.Remove("aiCrawls"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls _explicitNullValueAiCrawls = default!;
 #endif
         /// <summary>The aiReferrals property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? AiReferrals { get => _explicitNullValueAiReferrals; set { _explicitNullValueAiReferrals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiReferrals"); else _explicitNullProperties?.Remove("aiReferrals"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueAiReferrals = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? AiReferrals { get => _explicitNullValueAiReferrals; set { _explicitNullValueAiReferrals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiReferrals"); else _explicitNullProperties?.Remove("aiReferrals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? _explicitNullValueAiReferrals = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue AiReferrals { get => _explicitNullValueAiReferrals; set { _explicitNullValueAiReferrals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiReferrals"); else _explicitNullProperties?.Remove("aiReferrals"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueAiReferrals = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls AiReferrals { get => _explicitNullValueAiReferrals; set { _explicitNullValueAiReferrals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aiReferrals"); else _explicitNullProperties?.Remove("aiReferrals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls _explicitNullValueAiReferrals = default!;
 #endif
         /// <summary>The bounceRate property</summary>
         public double? BounceRate { get => _explicitNullValueBounceRate; set { _explicitNullValueBounceRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounceRate"); else _explicitNullProperties?.Remove("bounceRate"); } }
@@ -78,22 +78,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conversions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? Conversions { get => _explicitNullValueConversions; set { _explicitNullValueConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversions"); else _explicitNullProperties?.Remove("conversions"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueConversions = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? Conversions { get => _explicitNullValueConversions; set { _explicitNullValueConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversions"); else _explicitNullProperties?.Remove("conversions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? _explicitNullValueConversions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue Conversions { get => _explicitNullValueConversions; set { _explicitNullValueConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversions"); else _explicitNullProperties?.Remove("conversions"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueConversions = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls Conversions { get => _explicitNullValueConversions; set { _explicitNullValueConversions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversions"); else _explicitNullProperties?.Remove("conversions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls _explicitNullValueConversions = default!;
 #endif
         /// <summary>The googleSearch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? GoogleSearch { get => _explicitNullValueGoogleSearch; set { _explicitNullValueGoogleSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("googleSearch"); else _explicitNullProperties?.Remove("googleSearch"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueGoogleSearch = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? GoogleSearch { get => _explicitNullValueGoogleSearch; set { _explicitNullValueGoogleSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("googleSearch"); else _explicitNullProperties?.Remove("googleSearch"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? _explicitNullValueGoogleSearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue GoogleSearch { get => _explicitNullValueGoogleSearch; set { _explicitNullValueGoogleSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("googleSearch"); else _explicitNullProperties?.Remove("googleSearch"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueGoogleSearch = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls GoogleSearch { get => _explicitNullValueGoogleSearch; set { _explicitNullValueGoogleSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("googleSearch"); else _explicitNullProperties?.Remove("googleSearch"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls _explicitNullValueGoogleSearch = default!;
 #endif
         /// <summary>The page property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -111,12 +111,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The visitors property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue? _explicitNullValueVisitors = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls? _explicitNullValueVisitors = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue _explicitNullValueVisitors = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls _explicitNullValueVisitors = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -138,14 +138,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "aiCrawlerNames", n => { AiCrawlerNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "aiCrawlers", n => { AiCrawlers = n.GetIntValue(); } },
-                { "aiCrawls", n => { AiCrawls = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue.CreateFromDiscriminatorValue); } },
-                { "aiReferrals", n => { AiReferrals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue.CreateFromDiscriminatorValue); } },
+                { "aiCrawls", n => { AiCrawls = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls.CreateFromDiscriminatorValue); } },
+                { "aiReferrals", n => { AiReferrals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls.CreateFromDiscriminatorValue); } },
                 { "bounceRate", n => { BounceRate = n.GetDoubleValue(); } },
-                { "conversions", n => { Conversions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue.CreateFromDiscriminatorValue); } },
-                { "googleSearch", n => { GoogleSearch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue.CreateFromDiscriminatorValue); } },
+                { "conversions", n => { Conversions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls.CreateFromDiscriminatorValue); } },
+                { "googleSearch", n => { GoogleSearch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls.CreateFromDiscriminatorValue); } },
                 { "page", n => { Page = n.GetStringValue(); } },
                 { "timeOnPageP90", n => { TimeOnPageP90 = n.GetDoubleValue(); } },
-                { "visitors", n => { Visitors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue.CreateFromDiscriminatorValue); } },
+                { "visitors", n => { Visitors = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>(global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -157,14 +157,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("aiCrawlerNames", AiCrawlerNames);
             writer.WriteIntValue("aiCrawlers", AiCrawlers);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>("aiCrawls", AiCrawls);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>("aiReferrals", AiReferrals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>("aiCrawls", AiCrawls);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>("aiReferrals", AiReferrals);
             writer.WriteDoubleValue("bounceRate", BounceRate);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>("conversions", Conversions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>("googleSearch", GoogleSearch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>("conversions", Conversions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>("googleSearch", GoogleSearch);
             writer.WriteStringValue("page", Page);
             writer.WriteDoubleValue("timeOnPageP90", TimeOnPageP90);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryValue>("visitors", Visitors);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebPageDirectoryRowAiCrawls>("visitors", Visitors);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

@@ -50,22 +50,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The slowest bound: no cadence coarser than this is allowed, because the consumer named here refreshes that often. Null when no consumer withholds a cadence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound? Ceiling { get => _explicitNullValueCeiling; set { _explicitNullValueCeiling = value; AdditionalData?.Remove("ceiling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ceiling"); else _explicitNullProperties?.Remove("ceiling"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound? _explicitNullValueCeiling = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsCeiling? Ceiling { get => _explicitNullValueCeiling; set { _explicitNullValueCeiling = value; AdditionalData?.Remove("ceiling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ceiling"); else _explicitNullProperties?.Remove("ceiling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsCeiling? _explicitNullValueCeiling = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound Ceiling { get => _explicitNullValueCeiling; set { _explicitNullValueCeiling = value; AdditionalData?.Remove("ceiling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ceiling"); else _explicitNullProperties?.Remove("ceiling"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound _explicitNullValueCeiling = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsCeiling Ceiling { get => _explicitNullValueCeiling; set { _explicitNullValueCeiling = value; AdditionalData?.Remove("ceiling"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ceiling"); else _explicitNullProperties?.Remove("ceiling"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsCeiling _explicitNullValueCeiling = default!;
 #endif
         /// <summary>The fastest bound: no cadence finer than this is allowed, because the source named here does not sync more often. Null when no source withholds a cadence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound? Floor { get => _explicitNullValueFloor; set { _explicitNullValueFloor = value; AdditionalData?.Remove("floor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("floor"); else _explicitNullProperties?.Remove("floor"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound? _explicitNullValueFloor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFloor? Floor { get => _explicitNullValueFloor; set { _explicitNullValueFloor = value; AdditionalData?.Remove("floor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("floor"); else _explicitNullProperties?.Remove("floor"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFloor? _explicitNullValueFloor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound Floor { get => _explicitNullValueFloor; set { _explicitNullValueFloor = value; AdditionalData?.Remove("floor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("floor"); else _explicitNullProperties?.Remove("floor"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound _explicitNullValueFloor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFloor Floor { get => _explicitNullValueFloor; set { _explicitNullValueFloor = value; AdditionalData?.Remove("floor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("floor"); else _explicitNullProperties?.Remove("floor"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFloor _explicitNullValueFloor = default!;
 #endif
         /// <summary>* `tiered` - tiered* `managed_viewset` - managed_viewset* `no_node` - no_node</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode? FrequencyMode { get => _explicitNullValueFrequencyMode; set { _explicitNullValueFrequencyMode = value; AdditionalData?.Remove("frequency_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frequency_mode"); else _explicitNullProperties?.Remove("frequency_mode"); } }
@@ -107,8 +107,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "best_effort_sources", n => { BestEffortSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "best_effort_sources_withheld", n => { BestEffortSourcesWithheld = n.GetBoolValue(); } },
-                { "ceiling", n => { Ceiling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound.CreateFromDiscriminatorValue); } },
-                { "floor", n => { Floor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound.CreateFromDiscriminatorValue); } },
+                { "ceiling", n => { Ceiling = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsCeiling>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsCeiling.CreateFromDiscriminatorValue); } },
+                { "floor", n => { Floor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFloor>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFloor.CreateFromDiscriminatorValue); } },
                 { "frequency_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFrequencyMode = default; _explicitNullProperties?.Remove("frequency_mode"); AdditionalData["frequency_mode"] = unknown; } else { FrequencyMode = parsed; AdditionalData.Remove("frequency_mode"); } } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOption>(global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOption.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -122,8 +122,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBlocker>("best_effort_sources", BestEffortSources);
             writer.WriteBoolValue("best_effort_sources_withheld", BestEffortSourcesWithheld);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound>("ceiling", Ceiling);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBound>("floor", Floor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsCeiling>("ceiling", Ceiling);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFloor>("floor", Floor);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyBoundsFrequencyMode>("frequency_mode", FrequencyMode);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SyncFrequencyOption>("options", Options);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

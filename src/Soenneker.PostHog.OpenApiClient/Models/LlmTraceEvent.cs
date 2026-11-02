@@ -72,12 +72,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The sentiment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult? _explicitNullValueSentiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment? _explicitNullValueSentiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult _explicitNullValueSentiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment _explicitNullValueSentiment = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventPropertiesProperty.CreateFromDiscriminatorValue); } },
-                { "sentiment", n => { Sentiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult>(global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult.CreateFromDiscriminatorValue); } },
+                { "sentiment", n => { Sentiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment>(global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -115,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("event", Event);
             writer.WriteStringValue("id", Id);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventPropertiesProperty>("properties", Properties);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSentimentResult>("sentiment", Sentiment);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmTraceEventSentiment>("sentiment", Sentiment);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

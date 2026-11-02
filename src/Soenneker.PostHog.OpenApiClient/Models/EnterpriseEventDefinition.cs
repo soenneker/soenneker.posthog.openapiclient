@@ -111,10 +111,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user responsible for the event, or null when it has no owner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? Owner { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinitionOwner? Owner { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic Owner { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinitionOwner Owner { get; private set; }
 #endif
         /// <summary>The post_to_slack property</summary>
         public bool? PostToSlack { get => _explicitNullValuePostToSlack; set { _explicitNullValuePostToSlack = value; AdditionalData?.Remove("post_to_slack"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("post_to_slack"); else _explicitNullProperties?.Remove("post_to_slack"); } }
@@ -203,7 +203,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "media_preview_urls", n => { MediaPreviewUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "owner", n => { Owner = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinitionOwner>(global::Soenneker.PostHog.OpenApiClient.Models.EnterpriseEventDefinitionOwner.CreateFromDiscriminatorValue); } },
                 { "post_to_slack", n => { PostToSlack = n.GetBoolValue(); } },
                 { "primary_property", n => { PrimaryProperty = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },

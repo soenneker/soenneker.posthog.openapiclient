@@ -328,6 +328,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Ticket,
         #pragma warning restore CS1591
+        [EnumMember(Value = "TicketMacro")]
+        #pragma warning disable CS1591
+        TicketMacro,
+        #pragma warning restore CS1591
         [EnumMember(Value = "KnowledgeSource")]
         #pragma warning disable CS1591
         KnowledgeSource,

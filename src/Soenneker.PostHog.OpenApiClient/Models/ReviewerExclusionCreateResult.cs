@@ -42,12 +42,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The saved instruction, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion? Exclusion { get => _explicitNullValueExclusion; set { _explicitNullValueExclusion = value; AdditionalData?.Remove("exclusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusion"); else _explicitNullProperties?.Remove("exclusion"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion? _explicitNullValueExclusion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusionCreateResultExclusion? Exclusion { get => _explicitNullValueExclusion; set { _explicitNullValueExclusion = value; AdditionalData?.Remove("exclusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusion"); else _explicitNullProperties?.Remove("exclusion"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusionCreateResultExclusion? _explicitNullValueExclusion = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion Exclusion { get => _explicitNullValueExclusion; set { _explicitNullValueExclusion = value; AdditionalData?.Remove("exclusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusion"); else _explicitNullProperties?.Remove("exclusion"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion _explicitNullValueExclusion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusionCreateResultExclusion Exclusion { get => _explicitNullValueExclusion; set { _explicitNullValueExclusion = value; AdditionalData?.Remove("exclusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusion"); else _explicitNullProperties?.Remove("exclusion"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusionCreateResultExclusion _explicitNullValueExclusion = default!;
 #endif
         /// <summary>True only when the instruction is saved. Only then does it keep you off automatic selection.</summary>
         public bool? InstructionSaved { get => _explicitNullValueInstructionSaved; set { _explicitNullValueInstructionSaved = value; AdditionalData?.Remove("instruction_saved"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruction_saved"); else _explicitNullProperties?.Remove("instruction_saved"); } }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "detail", n => { Detail = n.GetStringValue(); } },
-                { "exclusion", n => { Exclusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion.CreateFromDiscriminatorValue); } },
+                { "exclusion", n => { Exclusion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusionCreateResultExclusion>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusionCreateResultExclusion.CreateFromDiscriminatorValue); } },
                 { "instruction_saved", n => { InstructionSaved = n.GetBoolValue(); } },
                 { "report_removed", n => { ReportRemoved = n.GetBoolValue(); } },
             };
@@ -94,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("detail", Detail);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion>("exclusion", Exclusion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusionCreateResultExclusion>("exclusion", Exclusion);
             writer.WriteBoolValue("instruction_saved", InstructionSaved);
             writer.WriteBoolValue("report_removed", ReportRemoved);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

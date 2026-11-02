@@ -46,10 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Legacy mirror of content.metrics. May contain partial boolean metrics on older runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics? Metadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunMetadata? Metadata { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics Metadata { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunMetadata Metadata { get; private set; }
 #endif
         /// <summary>End of the evaluation window covered by this report.</summary>
         public DateTimeOffset? PeriodEnd { get; private set; }
@@ -87,7 +87,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "delivery_errors", n => { DeliveryErrors = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "delivery_status", n => { DeliveryStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunDeliveryStatus>(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics.CreateFromDiscriminatorValue); } },
+                { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunMetadata.CreateFromDiscriminatorValue); } },
                 { "period_end", n => { PeriodEnd = n.GetDateTimeOffsetValue(); } },
                 { "period_start", n => { PeriodStart = n.GetDateTimeOffsetValue(); } },
                 { "report", n => { Report = n.GetGuidValue(); } },

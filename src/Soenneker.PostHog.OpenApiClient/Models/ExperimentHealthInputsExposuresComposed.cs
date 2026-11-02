@@ -61,12 +61,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>What the exposure checks read. Null without an answer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals? Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; AdditionalData?.Remove("totals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals? _explicitNullValueTotals = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresTotals? Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; AdditionalData?.Remove("totals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresTotals? _explicitNullValueTotals = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; AdditionalData?.Remove("totals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals _explicitNullValueTotals = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresTotals Totals { get => _explicitNullValueTotals; set { _explicitNullValueTotals = value; AdditionalData?.Remove("totals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("totals"); else _explicitNullProperties?.Remove("totals"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresTotals _explicitNullValueTotals = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresComposed"/> and sets the default values.
@@ -97,7 +97,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "findings", n => { Findings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFinding>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFinding.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
-                { "totals", n => { Totals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals.CreateFromDiscriminatorValue); } },
+                { "totals", n => { Totals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresTotals>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresTotals.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -111,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("error", Error);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthFinding>("findings", Findings);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresStatus>("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposureTotals>("totals", Totals);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposuresTotals>("totals", Totals);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

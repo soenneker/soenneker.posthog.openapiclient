@@ -30,22 +30,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The summary when `status` is `ready`, else null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContent? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContent? _explicitNullValueContent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContentComposed? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContentComposed? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContent Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContent _explicitNullValueContent = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContentComposed Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContentComposed _explicitNullValueContent = default!;
 #endif
         /// <summary>Why it failed when `status` is `failed`, else null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailure? Failure { get => _explicitNullValueFailure; set { _explicitNullValueFailure = value; AdditionalData?.Remove("failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure"); else _explicitNullProperties?.Remove("failure"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailure? _explicitNullValueFailure = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailureComposed? Failure { get => _explicitNullValueFailure; set { _explicitNullValueFailure = value; AdditionalData?.Remove("failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure"); else _explicitNullProperties?.Remove("failure"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailureComposed? _explicitNullValueFailure = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailure Failure { get => _explicitNullValueFailure; set { _explicitNullValueFailure = value; AdditionalData?.Remove("failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure"); else _explicitNullProperties?.Remove("failure"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailure _explicitNullValueFailure = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailureComposed Failure { get => _explicitNullValueFailure; set { _explicitNullValueFailure = value; AdditionalData?.Remove("failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure"); else _explicitNullProperties?.Remove("failure"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailureComposed _explicitNullValueFailure = default!;
 #endif
         /// <summary>`pending` while the summary is written, then `ready` or `failed`.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
@@ -75,8 +75,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContent>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContent.CreateFromDiscriminatorValue); } },
-                { "failure", n => { Failure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailure>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailure.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContentComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContentComposed.CreateFromDiscriminatorValue); } },
+                { "failure", n => { Failure = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailureComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailureComposed.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
@@ -87,8 +87,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContent>("content", Content);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailure>("failure", Failure);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryContentComposed>("content", Content);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryFailureComposed>("failure", Failure);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryStatus>("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

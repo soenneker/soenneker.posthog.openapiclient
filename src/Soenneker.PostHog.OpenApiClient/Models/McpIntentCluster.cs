@@ -34,10 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Top Sankey-shaped paths the agents took within this cluster. Each path is up to four ordered tool calls plus a completed/error outcome. Null when journey data is unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourney? Journey { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyComposed? Journey { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourney Journey { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyComposed Journey { get; private set; }
 #endif
         /// <summary>Representative intent text for the cluster (the medoid intent closest to the cluster centroid).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error_rate_pct", n => { ErrorRatePct = n.GetDoubleValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "intent_count", n => { IntentCount = n.GetIntValue(); } },
-                { "journey", n => { Journey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourney>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourney.CreateFromDiscriminatorValue); } },
+                { "journey", n => { Journey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyComposed>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterJourneyComposed.CreateFromDiscriminatorValue); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "routing_entropy", n => { RoutingEntropy = n.GetDoubleValue(); } },
                 { "sample_intents", n => { SampleIntents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },

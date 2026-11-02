@@ -123,12 +123,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional time window the finding refers to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimeRange? TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; AdditionalData?.Remove("time_range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TimeRange? _explicitNullValueTimeRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange? TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; AdditionalData?.Remove("time_range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange? _explicitNullValueTimeRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TimeRange TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; AdditionalData?.Remove("time_range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TimeRange _explicitNullValueTimeRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange TimeRange { get => _explicitNullValueTimeRange; set { _explicitNullValueTimeRange = value; AdditionalData?.Remove("time_range"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("time_range"); else _explicitNullProperties?.Remove("time_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange _explicitNullValueTimeRange = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequest"/> and sets the default values.
@@ -163,7 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "mcp_trace_id", n => { McpTraceId = n.GetStringValue(); } },
                 { "severity", n => { Severity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity>(global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.TimeRange.CreateFromDiscriminatorValue); } },
+                { "time_range", n => { TimeRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange>(global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -181,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("mcp_trace_id", McpTraceId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestSeverity>("severity", Severity);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TimeRange>("time_range", TimeRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmitFindingRequestTimeRange>("time_range", TimeRange);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

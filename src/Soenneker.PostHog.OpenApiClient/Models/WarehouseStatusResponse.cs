@@ -54,12 +54,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Postgres connection target. Null for organizations on the Trino Data ops variant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection? Connection { get => _explicitNullValueConnection; set { _explicitNullValueConnection = value; AdditionalData?.Remove("connection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection"); else _explicitNullProperties?.Remove("connection"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection? _explicitNullValueConnection = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection? Connection { get => _explicitNullValueConnection; set { _explicitNullValueConnection = value; AdditionalData?.Remove("connection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection"); else _explicitNullProperties?.Remove("connection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection? _explicitNullValueConnection = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection Connection { get => _explicitNullValueConnection; set { _explicitNullValueConnection = value; AdditionalData?.Remove("connection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection"); else _explicitNullProperties?.Remove("connection"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection _explicitNullValueConnection = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection Connection { get => _explicitNullValueConnection; set { _explicitNullValueConnection = value; AdditionalData?.Remove("connection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connection"); else _explicitNullProperties?.Remove("connection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection _explicitNullValueConnection = default!;
 #endif
         /// <summary>When provisioning failed</summary>
         public DateTimeOffset? FailedAt { get => _explicitNullValueFailedAt; set { _explicitNullValueFailedAt = value; AdditionalData?.Remove("failed_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_at"); else _explicitNullProperties?.Remove("failed_at"); } }
@@ -159,12 +159,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Trino status for organizations on the Trino Data ops variant, once the warehouse is ready. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus? Trino { get => _explicitNullValueTrino; set { _explicitNullValueTrino = value; AdditionalData?.Remove("trino"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trino"); else _explicitNullProperties?.Remove("trino"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus? _explicitNullValueTrino = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseTrino? Trino { get => _explicitNullValueTrino; set { _explicitNullValueTrino = value; AdditionalData?.Remove("trino"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trino"); else _explicitNullProperties?.Remove("trino"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseTrino? _explicitNullValueTrino = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus Trino { get => _explicitNullValueTrino; set { _explicitNullValueTrino = value; AdditionalData?.Remove("trino"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trino"); else _explicitNullProperties?.Remove("trino"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus _explicitNullValueTrino = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseTrino Trino { get => _explicitNullValueTrino; set { _explicitNullValueTrino = value; AdditionalData?.Remove("trino"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trino"); else _explicitNullProperties?.Remove("trino"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseTrino _explicitNullValueTrino = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponse"/> and sets the default values.
@@ -191,7 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "connection", n => { Connection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection.CreateFromDiscriminatorValue); } },
+                { "connection", n => { Connection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection.CreateFromDiscriminatorValue); } },
                 { "failed_at", n => { FailedAt = n.GetDateTimeOffsetValue(); } },
                 { "has_backfill", n => { HasBackfill = n.GetBoolValue(); } },
                 { "identity_state", n => { IdentityState = n.GetStringValue(); } },
@@ -205,7 +205,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "status_message", n => { StatusMessage = n.GetStringValue(); } },
                 { "table_suffix", n => { TableSuffix = n.GetStringValue(); } },
                 { "team_onboarded", n => { TeamOnboarded = n.GetBoolValue(); } },
-                { "trino", n => { Trino = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus.CreateFromDiscriminatorValue); } },
+                { "trino", n => { Trino = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseTrino>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseTrino.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -215,7 +215,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseConnection>("connection", Connection);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseConnection>("connection", Connection);
             writer.WriteDateTimeOffsetValue("failed_at", FailedAt);
             writer.WriteBoolValue("has_backfill", HasBackfill);
             writer.WriteStringValue("identity_state", IdentityState);
@@ -229,7 +229,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("status_message", StatusMessage);
             writer.WriteStringValue("table_suffix", TableSuffix);
             writer.WriteBoolValue("team_onboarded", TeamOnboarded);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseTrinoStatus>("trino", Trino);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseStatusResponseTrino>("trino", Trino);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

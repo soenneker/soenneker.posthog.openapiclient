@@ -44,12 +44,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The detected DNS host of the root domain, from its nameservers. Null when unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost? DnsHost { get => _explicitNullValueDnsHost; set { _explicitNullValueDnsHost = value; AdditionalData?.Remove("dns_host"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dns_host"); else _explicitNullProperties?.Remove("dns_host"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost? _explicitNullValueDnsHost = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectCheckDnsHost? DnsHost { get => _explicitNullValueDnsHost; set { _explicitNullValueDnsHost = value; AdditionalData?.Remove("dns_host"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dns_host"); else _explicitNullProperties?.Remove("dns_host"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectCheckDnsHost? _explicitNullValueDnsHost = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost DnsHost { get => _explicitNullValueDnsHost; set { _explicitNullValueDnsHost = value; AdditionalData?.Remove("dns_host"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dns_host"); else _explicitNullProperties?.Remove("dns_host"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost _explicitNullValueDnsHost = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectCheckDnsHost DnsHost { get => _explicitNullValueDnsHost; set { _explicitNullValueDnsHost = value; AdditionalData?.Remove("dns_host"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dns_host"); else _explicitNullProperties?.Remove("dns_host"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectCheckDnsHost _explicitNullValueDnsHost = default!;
 #endif
         /// <summary>Email tools that already send for the root domain, detected from SPF and DKIM records. Best effort, empty when none are found or when include_email_setup is off.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "available_providers", n => { AvailableProviders = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider>(global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "dns_host", n => { DnsHost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost>(global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost.CreateFromDiscriminatorValue); } },
+                { "dns_host", n => { DnsHost = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectCheckDnsHost>(global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectCheckDnsHost.CreateFromDiscriminatorValue); } },
                 { "existing_email_tools", n => { ExistingEmailTools = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "provider_name", n => { ProviderName = n.GetStringValue(); } },
                 { "supported", n => { Supported = n.GetBoolValue(); } },
@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider>("available_providers", AvailableProviders);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost>("dns_host", DnsHost);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectCheckDnsHost>("dns_host", DnsHost);
             writer.WriteCollectionOfPrimitiveValues<string>("existing_email_tools", ExistingEmailTools);
             writer.WriteStringValue("provider_name", ProviderName);
             writer.WriteBoolValue("supported", Supported);

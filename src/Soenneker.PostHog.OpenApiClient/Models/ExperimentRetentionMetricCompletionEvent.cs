@@ -7,41 +7,39 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf3"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ExperimentRetentionMetricCompletionEvent : IComposedTypeWrapper, IParsable
-    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
-        // Preserve ambiguous union payloads without inventing a discriminator.
-        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    #pragma warning disable CS1591
+    public partial class ExperimentRetentionMetricCompletionEvent : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf1"/></summary>
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+        }
+
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf1? ExperimentRetentionMetricCompletionEventOneOf1 { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf1 ExperimentRetentionMetricCompletionEventOneOf1 { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf2? ExperimentRetentionMetricCompletionEventOneOf2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf2 ExperimentRetentionMetricCompletionEventOneOf2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf3? ExperimentRetentionMetricCompletionEventOneOf3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf3 ExperimentRetentionMetricCompletionEventOneOf3 { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent"/> and sets the default values.
+        /// </summary>
+        public ExperimentRetentionMetricCompletionEvent()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -50,24 +48,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent();
-            if("ExperimentRetentionMetricCompletionEventOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
+            return mappingValue switch
             {
-                
-            }
-            else if("ExperimentRetentionMetricCompletionEventOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("ExperimentRetentionMetricCompletionEventOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            
-            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.ExperimentRetentionMetricCompletionEventOneOf1 == null && result.ExperimentRetentionMetricCompletionEventOneOf2 == null && result.ExperimentRetentionMetricCompletionEventOneOf3 == null) result.UnrecognizedValue = unionPayload;
-return result;
+                "ActionsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventExperimentRetentionMetricCompletionEventOneOf2(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventExperimentRetentionMetricCompletionEventOneOf1(),
+                "ExperimentDataWarehouseNode" => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventExperimentRetentionMetricCompletionEventOneOf3(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEvent(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,21 +63,10 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
-
-            if(ExperimentRetentionMetricCompletionEventOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return ExperimentRetentionMetricCompletionEventOneOf1.GetFieldDeserializers();
-            }
-            else if(ExperimentRetentionMetricCompletionEventOneOf2 != null)
-            {
-                return ExperimentRetentionMetricCompletionEventOneOf2.GetFieldDeserializers();
-            }
-            else if(ExperimentRetentionMetricCompletionEventOneOf3 != null)
-            {
-                return ExperimentRetentionMetricCompletionEventOneOf3.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "kind", n => { Kind = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -97,32 +74,10 @@ return result;
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (ExperimentRetentionMetricCompletionEventOneOf1 == null && ExperimentRetentionMetricCompletionEventOneOf2 == null && ExperimentRetentionMetricCompletionEventOneOf3 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            int selectedUnionBranches = 0;
-            if (ExperimentRetentionMetricCompletionEventOneOf1 != null) selectedUnionBranches++;
-            if (ExperimentRetentionMetricCompletionEventOneOf2 != null) selectedUnionBranches++;
-            if (ExperimentRetentionMetricCompletionEventOneOf3 != null) selectedUnionBranches++;
-            if (ExperimentRetentionMetricCompletionEventOneOf1 != null && selectedUnionBranches == 1) { if (ExperimentRetentionMetricCompletionEventOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentRetentionMetricCompletionEventOneOf1); return; }
-            if (ExperimentRetentionMetricCompletionEventOneOf2 != null && selectedUnionBranches == 1) { if (ExperimentRetentionMetricCompletionEventOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentRetentionMetricCompletionEventOneOf2); return; }
-            if (ExperimentRetentionMetricCompletionEventOneOf3 != null && selectedUnionBranches == 1) { if (ExperimentRetentionMetricCompletionEventOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ExperimentRetentionMetricCompletionEventOneOf3); return; }
-
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ExperimentRetentionMetricCompletionEventOneOf1 != null)
-            {
-                if (ExperimentRetentionMetricCompletionEventOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf1>(null, ExperimentRetentionMetricCompletionEventOneOf1);
-            }
-            else if(ExperimentRetentionMetricCompletionEventOneOf2 != null)
-            {
-                if (ExperimentRetentionMetricCompletionEventOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf2>(null, ExperimentRetentionMetricCompletionEventOneOf2);
-            }
-            else if(ExperimentRetentionMetricCompletionEventOneOf3 != null)
-            {
-                if (ExperimentRetentionMetricCompletionEventOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRetentionMetricCompletionEventOneOf3>(null, ExperimentRetentionMetricCompletionEventOneOf3);
-            }
+            writer.WriteStringValue("kind", Kind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

@@ -54,10 +54,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Flags describing which kinds of conditions the cohort&apos;s filters contain. Null when the cohort has no filters to classify.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionTypeFlags? ConditionType { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionType? ConditionType { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionTypeFlags ConditionType { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionType ConditionType { get; private set; }
 #endif
         /// <summary>The count property</summary>
         public int? Count { get; private set; }
@@ -117,12 +117,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters? _explicitNullValueFilters = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFiltersComposed? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortFiltersComposed? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters _explicitNullValueFilters = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortFiltersComposed Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CohortFiltersComposed _explicitNullValueFilters = default!;
 #endif
         /// <summary>The groups property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -182,10 +182,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether feature flags can target this cohort, and the progress of the build that gets it there. Null outside the realtime cohort flag targeting rollout, on projects the realtime pipeline does not cover, and for cohorts that match on neither events nor person properties, which nothing in the flag API decides on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness? Realtime { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtime? Realtime { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness Realtime { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtime Realtime { get; private set; }
 #endif
         /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -223,7 +223,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "cohort_type", n => { CohortType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortCohortType>(global::Soenneker.PostHog.OpenApiClient.Models.CohortCohortType.CreateFromDiscriminatorValue); } },
-                { "condition_type", n => { ConditionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionTypeFlags>(global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionTypeFlags.CreateFromDiscriminatorValue); } },
+                { "condition_type", n => { ConditionType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionType>(global::Soenneker.PostHog.OpenApiClient.Models.CohortConditionType.CreateFromDiscriminatorValue); } },
                 { "count", n => { Count = n.GetIntValue(); } },
                 { "_create_in_folder", n => { CreateInFolder = n.GetStringValue(); } },
                 { "_create_static_person_ids", n => { CreateStaticPersonIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -233,7 +233,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "errors_calculating", n => { ErrorsCalculating = n.GetIntValue(); } },
                 { "experiment_set", n => { ExperimentSet = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters.CreateFromDiscriminatorValue); } },
+                { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFiltersComposed>(global::Soenneker.PostHog.OpenApiClient.Models.CohortFiltersComposed.CreateFromDiscriminatorValue); } },
                 { "groups", n => { Groups = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_calculating", n => { IsCalculating = n.GetBoolValue(); } },
@@ -246,7 +246,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pending_version", n => { PendingVersion = n.GetIntValue(); } },
                 { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "realtime", n => { Realtime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness>(global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtimeReadiness.CreateFromDiscriminatorValue); } },
+                { "realtime", n => { Realtime = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtime>(global::Soenneker.PostHog.OpenApiClient.Models.CohortRealtime.CreateFromDiscriminatorValue); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
@@ -263,7 +263,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("_create_static_person_ids", CreateStaticPersonIds);
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("description", Description);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFilters>("filters", Filters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CohortFiltersComposed>("filters", Filters);
             writer.WriteObjectValue<UntypedNode>("groups", Groups);
             writer.WriteBoolValue("is_static", IsStatic);
             writer.WriteStringValue("name", Name);

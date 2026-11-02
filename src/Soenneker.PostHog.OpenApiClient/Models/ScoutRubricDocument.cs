@@ -47,20 +47,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Latest background generation, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration? Generation { get => _explicitNullValueGeneration; set { _explicitNullValueGeneration = value; AdditionalData?.Remove("generation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation"); else _explicitNullProperties?.Remove("generation"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration? _explicitNullValueGeneration = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentGeneration? Generation { get => _explicitNullValueGeneration; set { _explicitNullValueGeneration = value; AdditionalData?.Remove("generation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation"); else _explicitNullProperties?.Remove("generation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentGeneration? _explicitNullValueGeneration = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration Generation { get => _explicitNullValueGeneration; set { _explicitNullValueGeneration = value; AdditionalData?.Remove("generation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation"); else _explicitNullProperties?.Remove("generation"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration _explicitNullValueGeneration = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentGeneration Generation { get => _explicitNullValueGeneration; set { _explicitNullValueGeneration = value; AdditionalData?.Remove("generation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generation"); else _explicitNullProperties?.Remove("generation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentGeneration _explicitNullValueGeneration = default!;
 #endif
         /// <summary>Governing source explicitly adopted for the saved rubric.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument? ReferenceContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentReferenceContext? ReferenceContext { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument ReferenceContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentReferenceContext ReferenceContext { get; private set; }
 #endif
         /// <summary>Generation whose governing source was adopted for the saved rubric.</summary>
         public Guid? ReferenceGenerationId { get; private set; }
@@ -104,8 +104,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "config_id", n => { ConfigId = n.GetGuidValue(); } },
                 { "criteria", n => { Criteria = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "generation", n => { Generation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration.CreateFromDiscriminatorValue); } },
-                { "reference_context", n => { ReferenceContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument.CreateFromDiscriminatorValue); } },
+                { "generation", n => { Generation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentGeneration>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentGeneration.CreateFromDiscriminatorValue); } },
+                { "reference_context", n => { ReferenceContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentReferenceContext>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentReferenceContext.CreateFromDiscriminatorValue); } },
                 { "reference_generation_id", n => { ReferenceGenerationId = n.GetGuidValue(); } },
                 { "revision", n => { Revision = n.GetIntValue(); } },
                 { "skill_name", n => { SkillName = n.GetStringValue(); } },
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("config_id", ConfigId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricCriterion>("criteria", Criteria);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricGeneration>("generation", Generation);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricDocumentGeneration>("generation", Generation);
             writer.WriteIntValue("revision", Revision);
             writer.WriteStringValue("skill_name", SkillName);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

@@ -33,12 +33,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional first evidence item to create for the account in the same change.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload? _explicitNullValueEvidence = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAddAccountEvidence? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAddAccountEvidence? _explicitNullValueEvidence = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload _explicitNullValueEvidence = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAddAccountEvidence Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAddAccountEvidence _explicitNullValueEvidence = default!;
 #endif
         /// <summary>Request version loaded by the editor. Stale versions return 409 Conflict.</summary>
         public int? ExpectedVersion { get => _explicitNullValueExpectedVersion; set { _explicitNullValueExpectedVersion = value; AdditionalData?.Remove("expected_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_version"); else _explicitNullProperties?.Remove("expected_version"); } }
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account_id", n => { AccountId = n.GetGuidValue(); } },
-                { "evidence", n => { Evidence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload.CreateFromDiscriminatorValue); } },
+                { "evidence", n => { Evidence = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAddAccountEvidence>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAddAccountEvidence.CreateFromDiscriminatorValue); } },
                 { "expected_version", n => { ExpectedVersion = n.GetIntValue(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("account_id", AccountId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidencePayload>("evidence", Evidence);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestAddAccountEvidence>("evidence", Evidence);
             writer.WriteIntValue("expected_version", ExpectedVersion);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

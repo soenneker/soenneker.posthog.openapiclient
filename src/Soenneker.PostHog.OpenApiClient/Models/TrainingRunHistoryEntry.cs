@@ -76,12 +76,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Distilled tier-1 summary of this run — read this first to orient. Null for older runs without one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary? _explicitNullValueSummary = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntrySummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntrySummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary _explicitNullValueSummary = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntrySummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntrySummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>Target event this run&apos;s pipeline predicts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -126,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "iterations", n => { Iterations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe>(global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pipeline_id", n => { PipelineId = n.GetGuidValue(); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntrySummary>(global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntrySummary.CreateFromDiscriminatorValue); } },
                 { "target_event", n => { TargetEvent = n.GetStringValue(); } },
             };
         }
@@ -145,7 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipe>("iterations", Iterations);
             writer.WriteGuidValue("pipeline_id", PipelineId);
             writer.WriteGuidValue("run_id", RunId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunHistoryEntrySummary>("summary", Summary);
             writer.WriteStringValue("target_event", TargetEvent);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

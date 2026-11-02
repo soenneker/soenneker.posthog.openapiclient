@@ -123,12 +123,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Resolved org member. Null when the entry resolves to nobody.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.User2? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; AdditionalData?.Remove("user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.User2? _explicitNullValueUser = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryReadUser? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; AdditionalData?.Remove("user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryReadUser? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.User2 User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; AdditionalData?.Remove("user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.User2 _explicitNullValueUser = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryReadUser User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; AdditionalData?.Remove("user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryReadUser _explicitNullValueUser = default!;
 #endif
         /// <summary>PostHog user this entry routes to. Null on entries written before reviewers had one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -174,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "relevant_commits", n => { RelevantCommits = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "source_label", n => { SourceLabel = n.GetStringValue(); } },
                 { "source_skill", n => { SourceSkill = n.GetStringValue(); } },
-                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>(global::Soenneker.PostHog.OpenApiClient.Models.User2.CreateFromDiscriminatorValue); } },
+                { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryReadUser>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryReadUser.CreateFromDiscriminatorValue); } },
                 { "user_uuid", n => { UserUuid = n.GetStringValue(); } },
             };
         }
@@ -194,7 +194,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit>("relevant_commits", RelevantCommits);
             writer.WriteStringValue("source_label", SourceLabel);
             writer.WriteStringValue("source_skill", SourceSkill);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>("user", User);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryReadUser>("user", User);
             writer.WriteStringValue("user_uuid", UserUuid);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

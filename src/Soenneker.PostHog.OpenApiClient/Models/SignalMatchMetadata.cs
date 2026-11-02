@@ -76,22 +76,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>PR-specificity gate result, when the gate ran.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? Specificity { get => _explicitNullValueSpecificity; set { _explicitNullValueSpecificity = value; AdditionalData?.Remove("specificity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity"); else _explicitNullProperties?.Remove("specificity"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? _explicitNullValueSpecificity = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity? Specificity { get => _explicitNullValueSpecificity; set { _explicitNullValueSpecificity = value; AdditionalData?.Remove("specificity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity"); else _explicitNullProperties?.Remove("specificity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity? _explicitNullValueSpecificity = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata Specificity { get => _explicitNullValueSpecificity; set { _explicitNullValueSpecificity = value; AdditionalData?.Remove("specificity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity"); else _explicitNullProperties?.Remove("specificity"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata _explicitNullValueSpecificity = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity Specificity { get => _explicitNullValueSpecificity; set { _explicitNullValueSpecificity = value; AdditionalData?.Remove("specificity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity"); else _explicitNullProperties?.Remove("specificity"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity _explicitNullValueSpecificity = default!;
 #endif
         /// <summary>PR-specificity gate result that caused a rejection, when present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? SpecificityRejection { get => _explicitNullValueSpecificityRejection; set { _explicitNullValueSpecificityRejection = value; AdditionalData?.Remove("specificity_rejection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity_rejection"); else _explicitNullProperties?.Remove("specificity_rejection"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata? _explicitNullValueSpecificityRejection = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection? SpecificityRejection { get => _explicitNullValueSpecificityRejection; set { _explicitNullValueSpecificityRejection = value; AdditionalData?.Remove("specificity_rejection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity_rejection"); else _explicitNullProperties?.Remove("specificity_rejection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection? _explicitNullValueSpecificityRejection = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata SpecificityRejection { get => _explicitNullValueSpecificityRejection; set { _explicitNullValueSpecificityRejection = value; AdditionalData?.Remove("specificity_rejection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity_rejection"); else _explicitNullProperties?.Remove("specificity_rejection"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata _explicitNullValueSpecificityRejection = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection SpecificityRejection { get => _explicitNullValueSpecificityRejection; set { _explicitNullValueSpecificityRejection = value; AdditionalData?.Remove("specificity_rejection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specificity_rejection"); else _explicitNullProperties?.Remove("specificity_rejection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection _explicitNullValueSpecificityRejection = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalMatchMetadata"/> and sets the default values.
@@ -122,8 +122,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "parent_signal_id", n => { ParentSignalId = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "rejected_signal_ids", n => { RejectedSignalIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "specificity", n => { Specificity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata.CreateFromDiscriminatorValue); } },
-                { "specificity_rejection", n => { SpecificityRejection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>(global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata.CreateFromDiscriminatorValue); } },
+                { "specificity", n => { Specificity = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity>(global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity.CreateFromDiscriminatorValue); } },
+                { "specificity_rejection", n => { SpecificityRejection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection>(global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -137,8 +137,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("parent_signal_id", ParentSignalId);
             writer.WriteStringValue("reason", Reason);
             writer.WriteCollectionOfPrimitiveValues<string>("rejected_signal_ids", RejectedSignalIds);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>("specificity", Specificity);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata>("specificity_rejection", SpecificityRejection);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MatchedMetadataSpecificity>("specificity", Specificity);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NoMatchMetadataSpecificityRejection>("specificity_rejection", SpecificityRejection);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -110,12 +110,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Review of the pinned widget source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? _explicitNullValueSecurityReview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotSecurityReview? _explicitNullValueSecurityReview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview _explicitNullValueSecurityReview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotSecurityReview _explicitNullValueSecurityReview = default!;
 #endif
         /// <summary>Pinned generated widget version.</summary>
         public Guid? VersionId { get => _explicitNullValueVersionId; set { _explicitNullValueVersionId = value; AdditionalData?.Remove("version_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version_id"); else _explicitNullProperties?.Remove("version_id"); } }
@@ -153,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "input_bindings", n => { InputBindings = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotInputBindingsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotInputBindingsProperty.CreateFromDiscriminatorValue); } },
                 { "input_contract", n => { InputContract = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "node_id", n => { NodeId = n.GetStringValue(); } },
-                { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview.CreateFromDiscriminatorValue); } },
+                { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotSecurityReview.CreateFromDiscriminatorValue); } },
                 { "version_id", n => { VersionId = n.GetGuidValue(); } },
             };
         }
@@ -172,7 +172,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotInputBindingsProperty>("input_bindings", InputBindings);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>("input_contract", InputContract);
             writer.WriteStringValue("node_id", NodeId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>("security_review", SecurityReview);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSnapshotSecurityReview>("security_review", SecurityReview);
             writer.WriteGuidValue("version_id", VersionId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

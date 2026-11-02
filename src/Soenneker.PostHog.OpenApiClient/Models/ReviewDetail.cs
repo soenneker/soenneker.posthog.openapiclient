@@ -203,12 +203,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The report&apos;s latest resolution run, completed runs included: its status, counts, and fix commits. Null when no resolution run has queued threads on this report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution? LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; AdditionalData?.Remove("latest_resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution? _explicitNullValueLatestResolution = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailLatestResolution? LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; AdditionalData?.Remove("latest_resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailLatestResolution? _explicitNullValueLatestResolution = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; AdditionalData?.Remove("latest_resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution _explicitNullValueLatestResolution = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailLatestResolution LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; AdditionalData?.Remove("latest_resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailLatestResolution _explicitNullValueLatestResolution = default!;
 #endif
         /// <summary>The latest turn&apos;s valid findings at must_fix effective priority.</summary>
         public int? MustFixCount { get => _explicitNullValueMustFixCount; set { _explicitNullValueMustFixCount = value; AdditionalData?.Remove("must_fix_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("must_fix_count"); else _explicitNullProperties?.Remove("must_fix_count"); } }
@@ -222,12 +222,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The selector&apos;s per-chunk perspective plan for the latest turn; null when the turn ran without a selection (selector unavailable, failed, or the run predates it).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveSelection? PerspectiveSelection { get => _explicitNullValuePerspectiveSelection; set { _explicitNullValuePerspectiveSelection = value; AdditionalData?.Remove("perspective_selection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perspective_selection"); else _explicitNullProperties?.Remove("perspective_selection"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveSelection? _explicitNullValuePerspectiveSelection = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailPerspectiveSelection? PerspectiveSelection { get => _explicitNullValuePerspectiveSelection; set { _explicitNullValuePerspectiveSelection = value; AdditionalData?.Remove("perspective_selection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perspective_selection"); else _explicitNullProperties?.Remove("perspective_selection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailPerspectiveSelection? _explicitNullValuePerspectiveSelection = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveSelection PerspectiveSelection { get => _explicitNullValuePerspectiveSelection; set { _explicitNullValuePerspectiveSelection = value; AdditionalData?.Remove("perspective_selection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perspective_selection"); else _explicitNullProperties?.Remove("perspective_selection"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveSelection _explicitNullValuePerspectiveSelection = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailPerspectiveSelection PerspectiveSelection { get => _explicitNullValuePerspectiveSelection; set { _explicitNullValuePerspectiveSelection = value; AdditionalData?.Remove("perspective_selection"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("perspective_selection"); else _explicitNullProperties?.Remove("perspective_selection"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailPerspectiveSelection _explicitNullValuePerspectiveSelection = default!;
 #endif
         /// <summary>The pull request author&apos;s GitHub login; null if unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -245,12 +245,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The in-flight review turn&apos;s stage and counters; null unless a review turn is running (a resolving report carries `resolution` instead).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress? Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; AdditionalData?.Remove("progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress? _explicitNullValueProgress = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailProgress? Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; AdditionalData?.Remove("progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailProgress? _explicitNullValueProgress = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; AdditionalData?.Remove("progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress _explicitNullValueProgress = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailProgress Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; AdditionalData?.Remove("progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailProgress _explicitNullValueProgress = default!;
 #endif
         /// <summary>The pull request&apos;s title, from the latest reviewed snapshot; null if unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -288,12 +288,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The report&apos;s latest resolution run (settling the PR&apos;s review threads): live progress while it runs, or where it stopped when it died partway. Null when there is none, it completed, or a newer review turn superseded it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus? Resolution { get => _explicitNullValueResolution; set { _explicitNullValueResolution = value; AdditionalData?.Remove("resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolution"); else _explicitNullProperties?.Remove("resolution"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus? _explicitNullValueResolution = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailResolution? Resolution { get => _explicitNullValueResolution; set { _explicitNullValueResolution = value; AdditionalData?.Remove("resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolution"); else _explicitNullProperties?.Remove("resolution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailResolution? _explicitNullValueResolution = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus Resolution { get => _explicitNullValueResolution; set { _explicitNullValueResolution = value; AdditionalData?.Remove("resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolution"); else _explicitNullProperties?.Remove("resolution"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus _explicitNullValueResolution = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailResolution Resolution { get => _explicitNullValueResolution; set { _explicitNullValueResolution = value; AdditionalData?.Remove("resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolution"); else _explicitNullProperties?.Remove("resolution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailResolution _explicitNullValueResolution = default!;
 #endif
         /// <summary>How the returned turn found its issues. &apos;pipeline&apos;: chunks, perspectives, a blind-spot sweep and a separate validation step. &apos;single_agent&apos;: one main review plus focused lenses, with no separate validation step. Null when the turn recorded no design (turns from before it was recorded ran the pipeline).* `pipeline` - Pipeline* `single_agent` - Single agent</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -391,19 +391,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "in_progress", n => { InProgress = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
-                { "latest_resolution", n => { LatestResolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution.CreateFromDiscriminatorValue); } },
+                { "latest_resolution", n => { LatestResolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailLatestResolution>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailLatestResolution.CreateFromDiscriminatorValue); } },
                 { "must_fix_count", n => { MustFixCount = n.GetIntValue(); } },
                 { "perspective_count", n => { PerspectiveCount = n.GetIntValue(); } },
                 { "perspective_issue_count", n => { PerspectiveIssueCount = n.GetIntValue(); } },
-                { "perspective_selection", n => { PerspectiveSelection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveSelection>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveSelection.CreateFromDiscriminatorValue); } },
+                { "perspective_selection", n => { PerspectiveSelection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailPerspectiveSelection>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailPerspectiveSelection.CreateFromDiscriminatorValue); } },
                 { "pr_author", n => { PrAuthor = n.GetStringValue(); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "pr_title", n => { PrTitle = n.GetStringValue(); } },
-                { "progress", n => { Progress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress.CreateFromDiscriminatorValue); } },
+                { "progress", n => { Progress = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailProgress>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailProgress.CreateFromDiscriminatorValue); } },
                 { "published", n => { Published = n.GetBoolValue(); } },
                 { "report_markdown", n => { ReportMarkdown = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
-                { "resolution", n => { Resolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus.CreateFromDiscriminatorValue); } },
+                { "resolution", n => { Resolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailResolution>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailResolution.CreateFromDiscriminatorValue); } },
                 { "review_design", n => { ReviewDesign = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewDesign>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewDesign.CreateFromDiscriminatorValue); } },
                 { "review_mode", n => { ReviewMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewMode>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewMode.CreateFromDiscriminatorValue); } },
                 { "run_count", n => { RunCount = n.GetIntValue(); } },
@@ -440,19 +440,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("in_progress", InProgress);
             writer.WriteDateTimeOffsetValue("last_run_at", LastRunAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution>("latest_resolution", LatestResolution);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailLatestResolution>("latest_resolution", LatestResolution);
             writer.WriteIntValue("must_fix_count", MustFixCount);
             writer.WriteIntValue("perspective_count", PerspectiveCount);
             writer.WriteIntValue("perspective_issue_count", PerspectiveIssueCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPerspectiveSelection>("perspective_selection", PerspectiveSelection);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailPerspectiveSelection>("perspective_selection", PerspectiveSelection);
             writer.WriteStringValue("pr_author", PrAuthor);
             writer.WriteIntValue("pr_number", PrNumber);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProgress>("progress", Progress);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailProgress>("progress", Progress);
             writer.WriteStringValue("pr_title", PrTitle);
             writer.WriteBoolValue("published", Published);
             writer.WriteStringValue("report_markdown", ReportMarkdown);
             writer.WriteStringValue("repository", Repository);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewResolutionStatus>("resolution", Resolution);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailResolution>("resolution", Resolution);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewDesign>("review_design", ReviewDesign);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewDetailReviewMode>("review_mode", ReviewMode);
             writer.WriteIntValue("run_count", RunCount);

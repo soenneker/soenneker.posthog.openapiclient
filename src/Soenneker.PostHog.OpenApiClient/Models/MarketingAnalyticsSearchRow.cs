@@ -136,12 +136,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The previous property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics? Previous { get => _explicitNullValuePrevious; set { _explicitNullValuePrevious = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous"); else _explicitNullProperties?.Remove("previous"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics? _explicitNullValuePrevious = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchRowPrevious? Previous { get => _explicitNullValuePrevious; set { _explicitNullValuePrevious = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous"); else _explicitNullProperties?.Remove("previous"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchRowPrevious? _explicitNullValuePrevious = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics Previous { get => _explicitNullValuePrevious; set { _explicitNullValuePrevious = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous"); else _explicitNullProperties?.Remove("previous"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics _explicitNullValuePrevious = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchRowPrevious Previous { get => _explicitNullValuePrevious; set { _explicitNullValuePrevious = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous"); else _explicitNullProperties?.Remove("previous"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchRowPrevious _explicitNullValuePrevious = default!;
 #endif
         /// <summary>Fraction of Google Search ad impressions shown among the top ads.</summary>
         public double? TopImpressionRate { get => _explicitNullValueTopImpressionRate; set { _explicitNullValueTopImpressionRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("topImpressionRate"); else _explicitNullProperties?.Remove("topImpressionRate"); } }
@@ -179,7 +179,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "platform", n => { Platform = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Platform>(); } },
                 { "position", n => { Position = n.GetDoubleValue(); } },
                 { "posthogConversions", n => { PosthogConversions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchConversion>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchConversion.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "previous", n => { Previous = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics.CreateFromDiscriminatorValue); } },
+                { "previous", n => { Previous = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchRowPrevious>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchRowPrevious.CreateFromDiscriminatorValue); } },
                 { "topImpressionRate", n => { TopImpressionRate = n.GetDoubleValue(); } },
             };
         }
@@ -205,7 +205,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Platform>("platform", Platform);
             writer.WriteDoubleValue("position", Position);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchConversion>("posthogConversions", PosthogConversions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchMetrics>("previous", Previous);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsSearchRowPrevious>("previous", Previous);
             writer.WriteDoubleValue("topImpressionRate", TopImpressionRate);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

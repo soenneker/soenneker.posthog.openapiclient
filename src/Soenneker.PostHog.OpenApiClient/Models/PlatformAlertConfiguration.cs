@@ -108,10 +108,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocked local time windows (HH:MM in the project timezone) when the alert does not run. Null means no quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationScheduleRestriction? ScheduleRestriction { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationScheduleRestriction ScheduleRestriction { get; private set; }
 #endif
         /// <summary>Time until which every instance&apos;s notifications are muted. Null when not muted. An instance&apos;s own snooze_until mutes one group, and the later of the two holds.</summary>
         public DateTimeOffset? SnoozeUntil { get; private set; }
@@ -173,7 +173,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "overflowed_groups", n => { OverflowedGroups = n.GetIntValue(); } },
                 { "owner", n => { Owner = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationOwner>(); } },
                 { "recurrence_unit", n => { RecurrenceUnit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationRecurrenceUnit>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationRecurrenceUnit.CreateFromDiscriminatorValue); } },
-                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
+                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "snooze_until", n => { SnoozeUntil = n.GetDateTimeOffsetValue(); } },
                 { "source_config", n => { SourceConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceConfigProperty.CreateFromDiscriminatorValue); } },
                 { "source_kind", n => { SourceKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertConfigurationSourceKind>(); } },

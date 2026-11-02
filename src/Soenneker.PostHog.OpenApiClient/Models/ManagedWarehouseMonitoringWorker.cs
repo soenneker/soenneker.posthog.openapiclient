@@ -76,12 +76,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sanitized live session assigned to the worker, when one exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSession? Session { get => _explicitNullValueSession; set { _explicitNullValueSession = value; AdditionalData?.Remove("session"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session"); else _explicitNullProperties?.Remove("session"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSession? _explicitNullValueSession = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSessionComposed? Session { get => _explicitNullValueSession; set { _explicitNullValueSession = value; AdditionalData?.Remove("session"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session"); else _explicitNullProperties?.Remove("session"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSessionComposed? _explicitNullValueSession = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSession Session { get => _explicitNullValueSession; set { _explicitNullValueSession = value; AdditionalData?.Remove("session"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session"); else _explicitNullProperties?.Remove("session"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSession _explicitNullValueSession = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSessionComposed Session { get => _explicitNullValueSession; set { _explicitNullValueSession = value; AdditionalData?.Remove("session"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session"); else _explicitNullProperties?.Remove("session"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSessionComposed _explicitNullValueSession = default!;
 #endif
         /// <summary>Current worker lifecycle state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -126,7 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "last_heartbeat_at", n => { LastHeartbeatAt = n.GetDateTimeOffsetValue(); } },
                 { "memory", n => { Memory = n.GetStringValue(); } },
-                { "session", n => { Session = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSession>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSession.CreateFromDiscriminatorValue); } },
+                { "session", n => { Session = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSessionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSessionComposed.CreateFromDiscriminatorValue); } },
                 { "state", n => { State = n.GetStringValue(); } },
                 { "ttl_seconds", n => { TtlSeconds = n.GetIntValue(); } },
             };
@@ -143,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_heartbeat_at", LastHeartbeatAt);
             writer.WriteStringValue("memory", Memory);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSession>("session", Session);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringWorkerSessionComposed>("session", Session);
             writer.WriteStringValue("state", State);
             writer.WriteIntValue("ttl_seconds", TtlSeconds);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

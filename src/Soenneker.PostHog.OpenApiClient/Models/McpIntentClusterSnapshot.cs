@@ -32,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Settings and coverage of the snapshot&apos;s corpus. Null when no snapshot has been computed yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotMeta? ComputedWith { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotComputedWith? ComputedWith { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotMeta ComputedWith { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotComputedWith ComputedWith { get; private set; }
 #endif
         /// <summary>Error message from the most recent failed run, otherwise empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -99,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "clusters", n => { Clusters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentCluster>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentCluster.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "computed_with", n => { ComputedWith = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotMeta>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotMeta.CreateFromDiscriminatorValue); } },
+                { "computed_with", n => { ComputedWith = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotComputedWith>(global::Soenneker.PostHog.OpenApiClient.Models.McpIntentClusterSnapshotComputedWith.CreateFromDiscriminatorValue); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "last_computed_at", n => { LastComputedAt = n.GetDateTimeOffsetValue(); } },
                 { "last_computed_by_email", n => { LastComputedByEmail = n.GetStringValue(); } },

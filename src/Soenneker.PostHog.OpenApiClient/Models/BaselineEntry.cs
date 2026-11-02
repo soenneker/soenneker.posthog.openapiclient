@@ -87,12 +87,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Active quarantine details when `is_quarantined` is true. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? _explicitNullValueQuarantine = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine? Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine? _explicitNullValueQuarantine = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary _explicitNullValueQuarantine = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine _explicitNullValueQuarantine = default!;
 #endif
         /// <summary>The recent_drift_avg property</summary>
         public double? RecentDriftAvg { get => _explicitNullValueRecentDriftAvg; set { _explicitNullValueRecentDriftAvg = value; AdditionalData?.Remove("recent_drift_avg"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_drift_avg"); else _explicitNullProperties?.Remove("recent_drift_avg"); } }
@@ -158,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "identifier", n => { Identifier = n.GetStringValue(); } },
                 { "is_quarantined", n => { IsQuarantined = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
-                { "quarantine", n => { Quarantine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary.CreateFromDiscriminatorValue); } },
+                { "quarantine", n => { Quarantine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine.CreateFromDiscriminatorValue); } },
                 { "recent_drift_avg", n => { RecentDriftAvg = n.GetDoubleValue(); } },
                 { "run_type", n => { RunType = n.GetStringValue(); } },
                 { "thumbnail_hash", n => { ThumbnailHash = n.GetStringValue(); } },
@@ -181,7 +181,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("identifier", Identifier);
             writer.WriteBoolValue("is_quarantined", IsQuarantined);
             writer.WriteDateTimeOffsetValue("last_run_at", LastRunAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary>("quarantine", Quarantine);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine>("quarantine", Quarantine);
             writer.WriteDoubleValue("recent_drift_avg", RecentDriftAvg);
             writer.WriteStringValue("run_type", RunType);
             writer.WriteStringValue("thumbnail_hash", ThumbnailHash);

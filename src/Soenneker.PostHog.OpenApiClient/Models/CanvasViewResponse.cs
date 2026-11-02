@@ -72,22 +72,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>For grid canvases: the head layout document. Null for other kinds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout? Layout { get => _explicitNullValueLayout; set { _explicitNullValueLayout = value; AdditionalData?.Remove("layout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout"); else _explicitNullProperties?.Remove("layout"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout? _explicitNullValueLayout = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseLayout? Layout { get => _explicitNullValueLayout; set { _explicitNullValueLayout = value; AdditionalData?.Remove("layout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout"); else _explicitNullProperties?.Remove("layout"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseLayout? _explicitNullValueLayout = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout Layout { get => _explicitNullValueLayout; set { _explicitNullValueLayout = value; AdditionalData?.Remove("layout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout"); else _explicitNullProperties?.Remove("layout"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout _explicitNullValueLayout = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseLayout Layout { get => _explicitNullValueLayout; set { _explicitNullValueLayout = value; AdditionalData?.Remove("layout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout"); else _explicitNullProperties?.Remove("layout"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseLayout _explicitNullValueLayout = default!;
 #endif
         /// <summary>The live build with its signed artifact URL. Null until a build completes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild? PublishedBuild { get => _explicitNullValuePublishedBuild; set { _explicitNullValuePublishedBuild = value; AdditionalData?.Remove("published_build"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_build"); else _explicitNullProperties?.Remove("published_build"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild? _explicitNullValuePublishedBuild = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponsePublishedBuild? PublishedBuild { get => _explicitNullValuePublishedBuild; set { _explicitNullValuePublishedBuild = value; AdditionalData?.Remove("published_build"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_build"); else _explicitNullProperties?.Remove("published_build"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponsePublishedBuild? _explicitNullValuePublishedBuild = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild PublishedBuild { get => _explicitNullValuePublishedBuild; set { _explicitNullValuePublishedBuild = value; AdditionalData?.Remove("published_build"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_build"); else _explicitNullProperties?.Remove("published_build"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild _explicitNullValuePublishedBuild = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponsePublishedBuild PublishedBuild { get => _explicitNullValuePublishedBuild; set { _explicitNullValuePublishedBuild = value; AdditionalData?.Remove("published_build"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published_build"); else _explicitNullProperties?.Remove("published_build"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponsePublishedBuild _explicitNullValuePublishedBuild = default!;
 #endif
         /// <summary>URL of the sandbox document that renders the head source project in an iframe, served from the artifact origin. Load it by URL, not as srcdoc. Null when artifact delivery is unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,12 +100,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The head source project, present only when the canvas has no live build to render (the client-side fallback tier). Null otherwise, and always null for grid canvases.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject? _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseSource? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseSource _explicitNullValueSource = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponse"/> and sets the default values.
@@ -136,10 +136,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "component_lifecycles", n => { ComponentLifecycles = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentLifecycle>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentLifecycle.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetStringValue(); } },
                 { "has_active_build", n => { HasActiveBuild = n.GetBoolValue(); } },
-                { "layout", n => { Layout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout.CreateFromDiscriminatorValue); } },
-                { "published_build", n => { PublishedBuild = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild.CreateFromDiscriminatorValue); } },
+                { "layout", n => { Layout = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseLayout>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseLayout.CreateFromDiscriminatorValue); } },
+                { "published_build", n => { PublishedBuild = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponsePublishedBuild>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponsePublishedBuild.CreateFromDiscriminatorValue); } },
                 { "sandbox_document_url", n => { SandboxDocumentUrl = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseSource>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseSource.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -153,9 +153,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentLifecycle>("component_lifecycles", ComponentLifecycles);
             writer.WriteStringValue("current_version_id", CurrentVersionId);
             writer.WriteBoolValue("has_active_build", HasActiveBuild);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayout>("layout", Layout);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuild>("published_build", PublishedBuild);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasSourceProject>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseLayout>("layout", Layout);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponsePublishedBuild>("published_build", PublishedBuild);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasViewResponseSource>("source", Source);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

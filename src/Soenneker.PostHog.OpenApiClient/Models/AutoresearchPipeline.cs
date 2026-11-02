@@ -93,10 +93,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Score coverage and score age from the newest live champion run that measured them. Null before the first such run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage? Coverage { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCoverage? Coverage { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage Coverage { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCoverage Coverage { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -169,10 +169,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Progress of the pending or running training run. Null when no run is live.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchLiveTrainingRun? LiveTrainingRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineLiveTrainingRun? LiveTrainingRun { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchLiveTrainingRun LiveTrainingRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineLiveTrainingRun LiveTrainingRun { get; private set; }
 #endif
         /// <summary>Display name for the pipeline.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -289,7 +289,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "champion_realized_auc", n => { ChampionRealizedAuc = n.GetDoubleValue(); } },
                 { "champion_realized_auc_trend", n => { ChampionRealizedAucTrend = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRealizedAucPoint>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchRealizedAucPoint.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "champion_training_trend", n => { ChampionTrainingTrend = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingTrendPoint>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchTrainingTrendPoint.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPredictionCoverage.CreateFromDiscriminatorValue); } },
+                { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCoverage>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCoverage.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -306,7 +306,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_scored_at", n => { LastScoredAt = n.GetDateTimeOffsetValue(); } },
                 { "likely_count", n => { LikelyCount = n.GetIntValue(); } },
                 { "likely_threshold", n => { LikelyThreshold = n.GetDoubleValue(); } },
-                { "live_training_run", n => { LiveTrainingRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchLiveTrainingRun>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchLiveTrainingRun.CreateFromDiscriminatorValue); } },
+                { "live_training_run", n => { LiveTrainingRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineLiveTrainingRun>(global::Soenneker.PostHog.OpenApiClient.Models.AutoresearchPipelineLiveTrainingRun.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_research_at", n => { NextResearchAt = n.GetDateTimeOffsetValue(); } },
                 { "output_person_property", n => { OutputPersonProperty = n.GetStringValue(); } },

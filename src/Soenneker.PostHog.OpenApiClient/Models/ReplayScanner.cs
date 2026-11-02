@@ -63,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the scanner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>How the creator built this scanner: from an AI draft, from a template, or from scratch. Reported to product analytics at creation and not stored on the scanner. Independent of any experiment the creator is in, since a person offered the AI flow can still fill the form by hand. Only the app can answer this, so a request from anywhere else reports the calling surface instead of whatever it sends here. Ignored on update.* `ai` - AI draft* `template` - Template* `scratch` - From scratch</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -224,6 +224,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set with `enabled: true` to turn on a scanner whose creator can no longer view recordings. The caller becomes the scanner&apos;s creator, and scheduled scans then run as the caller. Without it, that request fails with code `scanner_creator_lost_access`.</summary>
         public bool? TakeOverAsCreator { get => _explicitNullValueTakeOverAsCreator; set { _explicitNullValueTakeOverAsCreator = value; AdditionalData?.Remove("take_over_as_creator"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("take_over_as_creator"); else _explicitNullProperties?.Remove("take_over_as_creator"); } }
         private bool? _explicitNullValueTakeOverAsCreator = default!;
+        /// <summary>Why the scanner can never run, or null when it can. `no_ai_consent`: the organization has not approved AI data processing. `creator_lost_access`: the creator can no longer view recordings, which the sweep reads as them, so turning the scanner on requires `take_over_as_creator`. The sweep turns an enabled scanner off when either applies.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerUnrunnableReason? UnrunnableReason { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerUnrunnableReason UnrunnableReason { get; private set; }
+#endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The effective access level the user has for this object</summary>
@@ -260,7 +268,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreatedBy.CreateFromDiscriminatorValue); } },
                 { "creation_method", n => { CreationMethod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerCreationMethod.CreateFromDiscriminatorValue); } },
                 { "credit_limit", n => { CreditLimit = n.GetIntValue(); } },
                 { "credits_per_observation", n => { CreditsPerObservation = n.GetIntValue(); } },
@@ -296,6 +304,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sweep_throttle_factor", n => { SweepThrottleFactor = n.GetIntValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "take_over_as_creator", n => { TakeOverAsCreator = n.GetBoolValue(); } },
+                { "unrunnable_reason", n => { UnrunnableReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerUnrunnableReason>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerUnrunnableReason.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
             };

@@ -102,8 +102,15 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Vision.Scanners.Item
             public string Tag { get; set; }
 #endif
             /// <summary>Monitor scanners only: count sessions with this verdict. Defaults to `yes`. Not applicable to other scanner types.* `yes` - Yes* `no` - No* `inconclusive` - Inconclusive</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("verdict")]
-            public global::Soenneker.PostHog.OpenApiClient.Models.VisionScannersImpactRetrieveVerdictParameter? Verdict { get; set; }
+            public string? Verdict { get; set; }
+#nullable restore
+#else
+            [QueryParameter("verdict")]
+            public string Verdict { get; set; }
+#endif
             /// <summary>Trailing window of observations to count. Defaults to 30 days.</summary>
             [QueryParameter("window_days")]
             public int? WindowDays { get; set; }

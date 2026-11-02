@@ -68,10 +68,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The resolved_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ResolvedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy? ResolvedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ResolvedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy ResolvedBy { get; private set; }
 #endif
         /// <summary>Stable id of the producing agent run or finding, e.g. &apos;run:&lt;run id&gt;:finding:&lt;finding id&gt;&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -134,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
                 { "rejection_reason", n => { RejectionReason = n.GetStringValue(); } },
                 { "resolved_at", n => { ResolvedAt = n.GetDateTimeOffsetValue(); } },
-                { "resolved_by", n => { ResolvedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "resolved_by", n => { ResolvedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WorkflowProposalStatus>(); } },
                 { "step_id", n => { StepId = n.GetStringValue(); } },

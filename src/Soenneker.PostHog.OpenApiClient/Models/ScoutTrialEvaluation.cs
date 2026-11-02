@@ -52,12 +52,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Saved comparison scores and their supporting evidence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrialComparisonReport? Report { get => _explicitNullValueReport; set { _explicitNullValueReport = value; AdditionalData?.Remove("report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report"); else _explicitNullProperties?.Remove("report"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TrialComparisonReport? _explicitNullValueReport = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationReport? Report { get => _explicitNullValueReport; set { _explicitNullValueReport = value; AdditionalData?.Remove("report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report"); else _explicitNullProperties?.Remove("report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationReport? _explicitNullValueReport = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrialComparisonReport Report { get => _explicitNullValueReport; set { _explicitNullValueReport = value; AdditionalData?.Remove("report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report"); else _explicitNullProperties?.Remove("report"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TrialComparisonReport _explicitNullValueReport = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationReport Report { get => _explicitNullValueReport; set { _explicitNullValueReport = value; AdditionalData?.Remove("report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report"); else _explicitNullProperties?.Remove("report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationReport _explicitNullValueReport = default!;
 #endif
         /// <summary>Immutable request for exact retries, including saved variant labels.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "context_id", n => { ContextId = n.GetGuidValue(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "evaluation_id", n => { EvaluationId = n.GetGuidValue(); } },
-                { "report", n => { Report = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrialComparisonReport>(global::Soenneker.PostHog.OpenApiClient.Models.TrialComparisonReport.CreateFromDiscriminatorValue); } },
+                { "report", n => { Report = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationReport>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationReport.CreateFromDiscriminatorValue); } },
                 { "request", n => { Request = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationRequestComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationRequestComposed.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
@@ -115,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("context_id", ContextId);
             writer.WriteStringValue("error", Error);
             writer.WriteGuidValue("evaluation_id", EvaluationId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrialComparisonReport>("report", Report);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationReport>("report", Report);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationRequestComposed>("request", Request);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialEvaluationStatus>("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

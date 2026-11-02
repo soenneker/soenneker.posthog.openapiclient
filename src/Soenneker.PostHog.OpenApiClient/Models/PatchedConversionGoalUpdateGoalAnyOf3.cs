@@ -207,12 +207,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The math_property_revenue_currency property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig? MathPropertyRevenueCurrency { get => _explicitNullValueMathPropertyRevenueCurrency; set { _explicitNullValueMathPropertyRevenueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property_revenue_currency"); else _explicitNullProperties?.Remove("math_property_revenue_currency"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig? _explicitNullValueMathPropertyRevenueCurrency = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathPropertyRevenueCurrency? MathPropertyRevenueCurrency { get => _explicitNullValueMathPropertyRevenueCurrency; set { _explicitNullValueMathPropertyRevenueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property_revenue_currency"); else _explicitNullProperties?.Remove("math_property_revenue_currency"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathPropertyRevenueCurrency? _explicitNullValueMathPropertyRevenueCurrency = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig MathPropertyRevenueCurrency { get => _explicitNullValueMathPropertyRevenueCurrency; set { _explicitNullValueMathPropertyRevenueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property_revenue_currency"); else _explicitNullProperties?.Remove("math_property_revenue_currency"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig _explicitNullValueMathPropertyRevenueCurrency = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathPropertyRevenueCurrency MathPropertyRevenueCurrency { get => _explicitNullValueMathPropertyRevenueCurrency; set { _explicitNullValueMathPropertyRevenueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_property_revenue_currency"); else _explicitNullProperties?.Remove("math_property_revenue_currency"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathPropertyRevenueCurrency _explicitNullValueMathPropertyRevenueCurrency = default!;
 #endif
         /// <summary>The math_property_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -324,7 +324,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
                 { "math_multiplier", n => { MathMultiplier = n.GetDoubleValue(); } },
                 { "math_property", n => { MathProperty = n.GetStringValue(); } },
-                { "math_property_revenue_currency", n => { MathPropertyRevenueCurrency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig>(global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig.CreateFromDiscriminatorValue); } },
+                { "math_property_revenue_currency", n => { MathPropertyRevenueCurrency = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathPropertyRevenueCurrency>(global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathPropertyRevenueCurrency.CreateFromDiscriminatorValue); } },
                 { "math_property_type", n => { MathPropertyType = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "optionalInFunnel", n => { OptionalInFunnel = n.GetBoolValue(); } },
@@ -359,7 +359,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("math_hogql", MathHogql);
             writer.WriteDoubleValue("math_multiplier", MathMultiplier);
             writer.WriteStringValue("math_property", MathProperty);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RevenueCurrencyPropertyConfig>("math_property_revenue_currency", MathPropertyRevenueCurrency);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeMathPropertyRevenueCurrency>("math_property_revenue_currency", MathPropertyRevenueCurrency);
             writer.WriteStringValue("math_property_type", MathPropertyType);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("optionalInFunnel", OptionalInFunnel);

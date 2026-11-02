@@ -46,12 +46,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dateRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange? _explicitNullValueDateRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange? _explicitNullValueDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange _explicitNullValueDateRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange _explicitNullValueDateRange = default!;
 #endif
         /// <summary>Label that makes one row per value, e.g. `http.route`. Null until the user sets it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -64,8 +64,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         private string _explicitNullValueGroupBy = default!;
 #endif
         /// <summary>Time between the points of the full charts that open from a row. Null picks one from the date range. The table sparklines always use at most 30 points.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval? _explicitNullValueInterval = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval _explicitNullValueInterval = default!;
+#endif
         /// <summary>Maximum number of rows to show.</summary>
         public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
         private int? _explicitNullValueLimit = default!;
@@ -102,9 +109,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "columns", n => { Columns = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumn>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumn.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange.CreateFromDiscriminatorValue); } },
+                { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange.CreateFromDiscriminatorValue); } },
                 { "groupBy", n => { GroupBy = n.GetStringValue(); } },
-                { "interval", n => { Interval = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval>(); } },
+                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval.CreateFromDiscriminatorValue); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "orderByColumn", n => { OrderByColumn = n.GetIntValue(); } },
                 { "orderDirection", n => { OrderDirection = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigOrderDirection>(); } },
@@ -118,9 +125,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableColumn>("columns", Columns);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetDateRange>("dateRange", DateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityEventsListWidgetConfigDateRange>("dateRange", DateRange);
             writer.WriteStringValue("groupBy", GroupBy);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval>("interval", Interval);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigInterval>("interval", Interval);
             writer.WriteIntValue("limit", Limit);
             writer.WriteIntValue("orderByColumn", OrderByColumn);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsTableWidgetConfigOrderDirection>("orderDirection", OrderDirection);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

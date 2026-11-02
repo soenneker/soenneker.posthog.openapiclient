@@ -81,12 +81,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window: how long after entry a conversion counts, as a duration string such as &apos;7d&apos; or &apos;12h&apos;, maximum &apos;365d&apos;. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion? Conversion { get => _explicitNullValueConversion; set { _explicitNullValueConversion = value; AdditionalData?.Remove("conversion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion"); else _explicitNullProperties?.Remove("conversion"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion? _explicitNullValueConversion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed? Conversion { get => _explicitNullValueConversion; set { _explicitNullValueConversion = value; AdditionalData?.Remove("conversion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion"); else _explicitNullProperties?.Remove("conversion"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed? _explicitNullValueConversion = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion Conversion { get => _explicitNullValueConversion; set { _explicitNullValueConversion = value; AdditionalData?.Remove("conversion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion"); else _explicitNullProperties?.Remove("conversion"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion _explicitNullValueConversion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed Conversion { get => _explicitNullValueConversion; set { _explicitNullValueConversion = value; AdditionalData?.Remove("conversion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion"); else _explicitNullProperties?.Remove("conversion"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed _explicitNullValueConversion = default!;
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -151,12 +151,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional email pacing for deliverability: {count, period: &apos;minute&apos; | &apos;hour&apos;}. The email worker spreads this workflow&apos;s sends to stay under the limit; over-limit sends wait for capacity instead of failing. Null disables pacing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit? EmailSendingRateLimit { get => _explicitNullValueEmailSendingRateLimit; set { _explicitNullValueEmailSendingRateLimit = value; AdditionalData?.Remove("email_sending_rate_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_sending_rate_limit"); else _explicitNullProperties?.Remove("email_sending_rate_limit"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit? _explicitNullValueEmailSendingRateLimit = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitComposed? EmailSendingRateLimit { get => _explicitNullValueEmailSendingRateLimit; set { _explicitNullValueEmailSendingRateLimit = value; AdditionalData?.Remove("email_sending_rate_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_sending_rate_limit"); else _explicitNullProperties?.Remove("email_sending_rate_limit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitComposed? _explicitNullValueEmailSendingRateLimit = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit EmailSendingRateLimit { get => _explicitNullValueEmailSendingRateLimit; set { _explicitNullValueEmailSendingRateLimit = value; AdditionalData?.Remove("email_sending_rate_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_sending_rate_limit"); else _explicitNullProperties?.Remove("email_sending_rate_limit"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit _explicitNullValueEmailSendingRateLimit = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitComposed EmailSendingRateLimit { get => _explicitNullValueEmailSendingRateLimit; set { _explicitNullValueEmailSendingRateLimit = value; AdditionalData?.Remove("email_sending_rate_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_sending_rate_limit"); else _explicitNullProperties?.Remove("email_sending_rate_limit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitComposed _explicitNullValueEmailSendingRateLimit = default!;
 #endif
         /// <summary>When sending was last resumed. Every detector window starts after this, so resuming does not immediately re-trip on the feedback that caused the pause. Null if never paused.</summary>
         public DateTimeOffset? EmailSendingResumedAt { get; private set; }
@@ -168,10 +168,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Newest task this loop workflow created, as its last run. Null when the workflow is not a loop or has not run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun? LastRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRunComposed? LastRun { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun LastRun { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRunComposed LastRun { get; private set; }
 #endif
         /// <summary>Workflow name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -223,12 +223,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional dedup/throttle on an already-matched trigger: {hash: &lt;HogQL template&gt;, ttl: &lt;seconds, 60-94608000&gt;, threshold?: &lt;int&gt;}. Without threshold: fire once per hash, then suppress repeats within ttl (hash &apos;{person.id}&apos; = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn&apos;t decide who enters. Server compiles bytecode from hash; omit to disable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking? TriggerMasking { get => _explicitNullValueTriggerMasking; set { _explicitNullValueTriggerMasking = value; AdditionalData?.Remove("trigger_masking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_masking"); else _explicitNullProperties?.Remove("trigger_masking"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking? _explicitNullValueTriggerMasking = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking? TriggerMasking { get => _explicitNullValueTriggerMasking; set { _explicitNullValueTriggerMasking = value; AdditionalData?.Remove("trigger_masking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_masking"); else _explicitNullProperties?.Remove("trigger_masking"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking? _explicitNullValueTriggerMasking = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking TriggerMasking { get => _explicitNullValueTriggerMasking; set { _explicitNullValueTriggerMasking = value; AdditionalData?.Remove("trigger_masking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_masking"); else _explicitNullProperties?.Remove("trigger_masking"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking _explicitNullValueTriggerMasking = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking TriggerMasking { get => _explicitNullValueTriggerMasking; set { _explicitNullValueTriggerMasking = value; AdditionalData?.Remove("trigger_masking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_masking"); else _explicitNullProperties?.Remove("trigger_masking"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking _explicitNullValueTriggerMasking = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -281,7 +281,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "action_redirects", n => { ActionRedirects = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateActionRedirectsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateActionRedirectsProperty.CreateFromDiscriminatorValue); } },
                 { "actions", n => { Actions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "billable_action_types", n => { BillableActionTypes = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "conversion", n => { Conversion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion.CreateFromDiscriminatorValue); } },
+                { "conversion", n => { Conversion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
@@ -292,18 +292,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "email_sending_paused_at", n => { EmailSendingPausedAt = n.GetDateTimeOffsetValue(); } },
                 { "email_sending_paused_by", n => { EmailSendingPausedBy = n.GetStringValue(); } },
                 { "email_sending_paused_reason", n => { EmailSendingPausedReason = n.GetStringValue(); } },
-                { "email_sending_rate_limit", n => { EmailSendingRateLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit.CreateFromDiscriminatorValue); } },
+                { "email_sending_rate_limit", n => { EmailSendingRateLimit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitComposed.CreateFromDiscriminatorValue); } },
                 { "email_sending_resumed_at", n => { EmailSendingResumedAt = n.GetDateTimeOffsetValue(); } },
                 { "exit_condition", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateExitCondition>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueExitCondition = default; _explicitNullProperties?.Remove("exit_condition"); AdditionalData["exit_condition"] = unknown; } else { ExitCondition = parsed; AdditionalData.Remove("exit_condition"); } } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRun.CreateFromDiscriminatorValue); } },
+                { "last_run", n => { LastRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRunComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowLastRunComposed.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateOriginProduct>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateOriginProduct.CreateFromDiscriminatorValue); } },
                 { "schedules", n => { Schedules = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowSchedule.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "trigger", n => { Trigger = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "trigger_masking", n => { TriggerMasking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking.CreateFromDiscriminatorValue); } },
+                { "trigger_masking", n => { TriggerMasking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking.CreateFromDiscriminatorValue); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
                 { "variables", n => { Variables = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateVariablesItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateVariablesItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -318,15 +318,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowAction>("actions", Actions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversion>("conversion", Conversion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConversionComposed>("conversion", Conversion);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEdge>("edges", Edges);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimit>("email_sending_rate_limit", EmailSendingRateLimit);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowEmailSendingRateLimitComposed>("email_sending_rate_limit", EmailSendingRateLimit);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateExitCondition>("exit_condition", ExitCondition);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateStatus>("status", Status);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowMasking>("trigger_masking", TriggerMasking);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowTriggerMasking>("trigger_masking", TriggerMasking);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateVariablesItemProperty>("variables", Variables);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

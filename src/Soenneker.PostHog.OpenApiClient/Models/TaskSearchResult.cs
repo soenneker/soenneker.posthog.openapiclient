@@ -51,12 +51,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who created the containing task, when the match has one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultCreatedBy? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultCreatedBy? _explicitNullValueCreatedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultCreatedBy CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultCreatedBy _explicitNullValueCreatedBy = default!;
 #endif
         /// <summary>Search document identifier.</summary>
         public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -67,12 +67,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Status of the containing task&apos;s most recent run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary? LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary? _explicitNullValueLatestRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultLatestRun? LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultLatestRun? _explicitNullValueLatestRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary _explicitNullValueLatestRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultLatestRun LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultLatestRun _explicitNullValueLatestRun = default!;
 #endif
         /// <summary>Resource-specific navigation metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -149,10 +149,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKind = default; _explicitNullProperties?.Remove("kind"); AdditionalData["kind"] = unknown; } else { Kind = parsed; AdditionalData.Remove("kind"); } } },
-                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary.CreateFromDiscriminatorValue); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultLatestRun>(global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultLatestRun.CreateFromDiscriminatorValue); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "subtitle", n => { Subtitle = n.GetStringValue(); } },
@@ -170,10 +170,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteGuidValue("channel_id", ChannelId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultCreatedBy>("created_by", CreatedBy);
             writer.WriteGuidValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultKind>("kind", Kind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunSummary>("latest_run", LatestRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskSearchResultLatestRun>("latest_run", LatestRun);
             writer.WriteObjectValue<UntypedNode>("metadata", Metadata);
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteStringValue("subtitle", Subtitle);

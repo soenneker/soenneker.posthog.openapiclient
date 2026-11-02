@@ -48,22 +48,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The dimension that carries the person distinct ID on most matching logs. Group by this dimension to drill into the users behind the counts. Null when no matching log carries a distinct ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? PersonGroupKey { get => _explicitNullValuePersonGroupKey; set { _explicitNullValuePersonGroupKey = value; AdditionalData?.Remove("personGroupKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personGroupKey"); else _explicitNullProperties?.Remove("personGroupKey"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? _explicitNullValuePersonGroupKey = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponsePersonGroupKey? PersonGroupKey { get => _explicitNullValuePersonGroupKey; set { _explicitNullValuePersonGroupKey = value; AdditionalData?.Remove("personGroupKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personGroupKey"); else _explicitNullProperties?.Remove("personGroupKey"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponsePersonGroupKey? _explicitNullValuePersonGroupKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey PersonGroupKey { get => _explicitNullValuePersonGroupKey; set { _explicitNullValuePersonGroupKey = value; AdditionalData?.Remove("personGroupKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personGroupKey"); else _explicitNullProperties?.Remove("personGroupKey"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey _explicitNullValuePersonGroupKey = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponsePersonGroupKey PersonGroupKey { get => _explicitNullValuePersonGroupKey; set { _explicitNullValuePersonGroupKey = value; AdditionalData?.Remove("personGroupKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("personGroupKey"); else _explicitNullProperties?.Remove("personGroupKey"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponsePersonGroupKey _explicitNullValuePersonGroupKey = default!;
 #endif
         /// <summary>The dimension that carries the session ID on most matching logs. Group by this dimension to drill into the sessions behind the counts. Null when no matching log carries a session ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? SessionGroupKey { get => _explicitNullValueSessionGroupKey; set { _explicitNullValueSessionGroupKey = value; AdditionalData?.Remove("sessionGroupKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionGroupKey"); else _explicitNullProperties?.Remove("sessionGroupKey"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey? _explicitNullValueSessionGroupKey = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponseSessionGroupKey? SessionGroupKey { get => _explicitNullValueSessionGroupKey; set { _explicitNullValueSessionGroupKey = value; AdditionalData?.Remove("sessionGroupKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionGroupKey"); else _explicitNullProperties?.Remove("sessionGroupKey"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponseSessionGroupKey? _explicitNullValueSessionGroupKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey SessionGroupKey { get => _explicitNullValueSessionGroupKey; set { _explicitNullValueSessionGroupKey = value; AdditionalData?.Remove("sessionGroupKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionGroupKey"); else _explicitNullProperties?.Remove("sessionGroupKey"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey _explicitNullValueSessionGroupKey = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponseSessionGroupKey SessionGroupKey { get => _explicitNullValueSessionGroupKey; set { _explicitNullValueSessionGroupKey = value; AdditionalData?.Remove("sessionGroupKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionGroupKey"); else _explicitNullProperties?.Remove("sessionGroupKey"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponseSessionGroupKey _explicitNullValueSessionGroupKey = default!;
 #endif
         /// <summary>Estimated number of unique session IDs across the matching logs (HyperLogLog, about 1-2% error).</summary>
         public int? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; AdditionalData?.Remove("sessions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
@@ -121,8 +121,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "logsWithDistinctId", n => { LogsWithDistinctId = n.GetIntValue(); } },
                 { "logsWithSessionId", n => { LogsWithSessionId = n.GetIntValue(); } },
-                { "personGroupKey", n => { PersonGroupKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey>(global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey.CreateFromDiscriminatorValue); } },
-                { "sessionGroupKey", n => { SessionGroupKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey>(global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey.CreateFromDiscriminatorValue); } },
+                { "personGroupKey", n => { PersonGroupKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponsePersonGroupKey>(global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponsePersonGroupKey.CreateFromDiscriminatorValue); } },
+                { "sessionGroupKey", n => { SessionGroupKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponseSessionGroupKey>(global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponseSessionGroupKey.CreateFromDiscriminatorValue); } },
                 { "sessions", n => { Sessions = n.GetIntValue(); } },
                 { "topSessions", n => { TopSessions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>(global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "topUsers", n => { TopUsers = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>(global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -139,8 +139,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("logsWithDistinctId", LogsWithDistinctId);
             writer.WriteIntValue("logsWithSessionId", LogsWithSessionId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey>("personGroupKey", PersonGroupKey);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactGroupKey>("sessionGroupKey", SessionGroupKey);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponsePersonGroupKey>("personGroupKey", PersonGroupKey);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactResponseSessionGroupKey>("sessionGroupKey", SessionGroupKey);
             writer.WriteIntValue("sessions", Sessions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>("topSessions", TopSessions);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsImpactTopValue>("topUsers", TopUsers);

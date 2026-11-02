@@ -103,10 +103,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The reviewer&apos;s reasoning, the same text stamphog posts as its GitHub review. Returned only when retrieving a single run, and null in list results. Its fields are null until the reviewer has run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewReasoning? Reasoning { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunReasoning? Reasoning { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewReasoning Reasoning { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunReasoning Reasoning { get; private set; }
 #endif
         /// <summary>Full name of the repository this review run belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -174,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
                 { "pull_request", n => { PullRequest = n.GetGuidValue(); } },
-                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewReasoning>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewReasoning.CreateFromDiscriminatorValue); } },
+                { "reasoning", n => { Reasoning = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunReasoning>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunReasoning.CreateFromDiscriminatorValue); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRunStatus>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },

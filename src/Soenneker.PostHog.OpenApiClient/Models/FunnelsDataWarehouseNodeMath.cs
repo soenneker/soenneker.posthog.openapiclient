@@ -88,6 +88,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool? matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject ? (bool?)null : (bool?)false;
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0 != false) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.BaseMathType == null && result.CalendarHeatmapMathType == null && result.CountPerActorMathType == null && result.ExperimentMetricMathType == null && result.FunnelMathType == null && result.FunnelsDataWarehouseNodeMathAnyOf8 == null && result.FunnelsDataWarehouseNodeMathMember1 == null && result.GroupMathType == null && result.PropertyMathType == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 == true && matchingUnionBranches == 1) result.FunnelsDataWarehouseNodeMathMember1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsDataWarehouseNodeMathMember1(), parseNode);
             if (result.BaseMathType == null && result.CalendarHeatmapMathType == null && result.CountPerActorMathType == null && result.ExperimentMetricMathType == null && result.FunnelMathType == null && result.FunnelsDataWarehouseNodeMathAnyOf8 == null && result.FunnelsDataWarehouseNodeMathMember1 == null && result.GroupMathType == null && result.PropertyMathType == null) result.UnrecognizedValue = unionPayload;
 return result;
         }

@@ -78,12 +78,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The baseline_artifact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? BaselineArtifact { get => _explicitNullValueBaselineArtifact; set { _explicitNullValueBaselineArtifact = value; AdditionalData?.Remove("baseline_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_artifact"); else _explicitNullProperties?.Remove("baseline_artifact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Artifact? _explicitNullValueBaselineArtifact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact? BaselineArtifact { get => _explicitNullValueBaselineArtifact; set { _explicitNullValueBaselineArtifact = value; AdditionalData?.Remove("baseline_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_artifact"); else _explicitNullProperties?.Remove("baseline_artifact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact? _explicitNullValueBaselineArtifact = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact BaselineArtifact { get => _explicitNullValueBaselineArtifact; set { _explicitNullValueBaselineArtifact = value; AdditionalData?.Remove("baseline_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_artifact"); else _explicitNullProperties?.Remove("baseline_artifact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Artifact _explicitNullValueBaselineArtifact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact BaselineArtifact { get => _explicitNullValueBaselineArtifact; set { _explicitNullValueBaselineArtifact = value; AdditionalData?.Remove("baseline_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_artifact"); else _explicitNullProperties?.Remove("baseline_artifact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact _explicitNullValueBaselineArtifact = default!;
 #endif
         /// <summary>The change_kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,32 +108,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The cluster_summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary? ClusterSummary { get => _explicitNullValueClusterSummary; set { _explicitNullValueClusterSummary = value; AdditionalData?.Remove("cluster_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_summary"); else _explicitNullProperties?.Remove("cluster_summary"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary? _explicitNullValueClusterSummary = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotClusterSummary? ClusterSummary { get => _explicitNullValueClusterSummary; set { _explicitNullValueClusterSummary = value; AdditionalData?.Remove("cluster_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_summary"); else _explicitNullProperties?.Remove("cluster_summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotClusterSummary? _explicitNullValueClusterSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary ClusterSummary { get => _explicitNullValueClusterSummary; set { _explicitNullValueClusterSummary = value; AdditionalData?.Remove("cluster_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_summary"); else _explicitNullProperties?.Remove("cluster_summary"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary _explicitNullValueClusterSummary = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotClusterSummary ClusterSummary { get => _explicitNullValueClusterSummary; set { _explicitNullValueClusterSummary = value; AdditionalData?.Remove("cluster_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cluster_summary"); else _explicitNullProperties?.Remove("cluster_summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotClusterSummary _explicitNullValueClusterSummary = default!;
 #endif
         /// <summary>The current_artifact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? CurrentArtifact { get => _explicitNullValueCurrentArtifact; set { _explicitNullValueCurrentArtifact = value; AdditionalData?.Remove("current_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_artifact"); else _explicitNullProperties?.Remove("current_artifact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Artifact? _explicitNullValueCurrentArtifact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact? CurrentArtifact { get => _explicitNullValueCurrentArtifact; set { _explicitNullValueCurrentArtifact = value; AdditionalData?.Remove("current_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_artifact"); else _explicitNullProperties?.Remove("current_artifact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact? _explicitNullValueCurrentArtifact = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact CurrentArtifact { get => _explicitNullValueCurrentArtifact; set { _explicitNullValueCurrentArtifact = value; AdditionalData?.Remove("current_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_artifact"); else _explicitNullProperties?.Remove("current_artifact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Artifact _explicitNullValueCurrentArtifact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact CurrentArtifact { get => _explicitNullValueCurrentArtifact; set { _explicitNullValueCurrentArtifact = value; AdditionalData?.Remove("current_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_artifact"); else _explicitNullProperties?.Remove("current_artifact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact _explicitNullValueCurrentArtifact = default!;
 #endif
         /// <summary>The diff_artifact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? DiffArtifact { get => _explicitNullValueDiffArtifact; set { _explicitNullValueDiffArtifact = value; AdditionalData?.Remove("diff_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diff_artifact"); else _explicitNullProperties?.Remove("diff_artifact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Artifact? _explicitNullValueDiffArtifact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact? DiffArtifact { get => _explicitNullValueDiffArtifact; set { _explicitNullValueDiffArtifact = value; AdditionalData?.Remove("diff_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diff_artifact"); else _explicitNullProperties?.Remove("diff_artifact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact? _explicitNullValueDiffArtifact = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact DiffArtifact { get => _explicitNullValueDiffArtifact; set { _explicitNullValueDiffArtifact = value; AdditionalData?.Remove("diff_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diff_artifact"); else _explicitNullProperties?.Remove("diff_artifact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Artifact _explicitNullValueDiffArtifact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact DiffArtifact { get => _explicitNullValueDiffArtifact; set { _explicitNullValueDiffArtifact = value; AdditionalData?.Remove("diff_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diff_artifact"); else _explicitNullProperties?.Remove("diff_artifact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact _explicitNullValueDiffArtifact = default!;
 #endif
         /// <summary>The diff_percentage property</summary>
         public double? DiffPercentage { get => _explicitNullValueDiffPercentage; set { _explicitNullValueDiffPercentage = value; AdditionalData?.Remove("diff_percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diff_percentage"); else _explicitNullProperties?.Remove("diff_percentage"); } }
@@ -183,12 +183,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The reviewed_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; AdditionalData?.Remove("reviewed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? _explicitNullValueReviewedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy? ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; AdditionalData?.Remove("reviewed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy? _explicitNullValueReviewedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; AdditionalData?.Remove("reviewed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo _explicitNullValueReviewedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; AdditionalData?.Remove("reviewed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy _explicitNullValueReviewedBy = default!;
 #endif
         /// <summary>The review_state property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -203,12 +203,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The row_shift property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RowShift? RowShift { get => _explicitNullValueRowShift; set { _explicitNullValueRowShift = value; AdditionalData?.Remove("row_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_shift"); else _explicitNullProperties?.Remove("row_shift"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RowShift? _explicitNullValueRowShift = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift? RowShift { get => _explicitNullValueRowShift; set { _explicitNullValueRowShift = value; AdditionalData?.Remove("row_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_shift"); else _explicitNullProperties?.Remove("row_shift"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift? _explicitNullValueRowShift = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RowShift RowShift { get => _explicitNullValueRowShift; set { _explicitNullValueRowShift = value; AdditionalData?.Remove("row_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_shift"); else _explicitNullProperties?.Remove("row_shift"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RowShift _explicitNullValueRowShift = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift RowShift { get => _explicitNullValueRowShift; set { _explicitNullValueRowShift = value; AdditionalData?.Remove("row_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_shift"); else _explicitNullProperties?.Remove("row_shift"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift _explicitNullValueRowShift = default!;
 #endif
         /// <summary>The run_id property</summary>
         public Guid? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; AdditionalData?.Remove("run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
@@ -248,12 +248,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "approved_hash", n => { ApprovedHash = n.GetStringValue(); } },
-                { "baseline_artifact", n => { BaselineArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
+                { "baseline_artifact", n => { BaselineArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact.CreateFromDiscriminatorValue); } },
                 { "change_kind", n => { ChangeKind = n.GetStringValue(); } },
                 { "classification_reason", n => { ClassificationReason = n.GetStringValue(); } },
-                { "cluster_summary", n => { ClusterSummary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary.CreateFromDiscriminatorValue); } },
-                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
-                { "diff_artifact", n => { DiffArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
+                { "cluster_summary", n => { ClusterSummary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotClusterSummary>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotClusterSummary.CreateFromDiscriminatorValue); } },
+                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact.CreateFromDiscriminatorValue); } },
+                { "diff_artifact", n => { DiffArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact.CreateFromDiscriminatorValue); } },
                 { "diff_percentage", n => { DiffPercentage = n.GetDoubleValue(); } },
                 { "diff_pixel_count", n => { DiffPixelCount = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
@@ -263,8 +263,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "result", n => { Result = n.GetStringValue(); } },
                 { "review_state", n => { ReviewState = n.GetStringValue(); } },
                 { "reviewed_at", n => { ReviewedAt = n.GetDateTimeOffsetValue(); } },
-                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo.CreateFromDiscriminatorValue); } },
-                { "row_shift", n => { RowShift = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RowShift>(global::Soenneker.PostHog.OpenApiClient.Models.RowShift.CreateFromDiscriminatorValue); } },
+                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy.CreateFromDiscriminatorValue); } },
+                { "row_shift", n => { RowShift = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift.CreateFromDiscriminatorValue); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
                 { "size_mismatch", n => { SizeMismatch = n.GetBoolValue(); } },
                 { "ssim_score", n => { SsimScore = n.GetDoubleValue(); } },
@@ -279,12 +279,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("approved_hash", ApprovedHash);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("baseline_artifact", BaselineArtifact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact>("baseline_artifact", BaselineArtifact);
             writer.WriteStringValue("change_kind", ChangeKind);
             writer.WriteStringValue("classification_reason", ClassificationReason);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClusterSummary>("cluster_summary", ClusterSummary);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("current_artifact", CurrentArtifact);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("diff_artifact", DiffArtifact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotClusterSummary>("cluster_summary", ClusterSummary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact>("current_artifact", CurrentArtifact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact>("diff_artifact", DiffArtifact);
             writer.WriteDoubleValue("diff_percentage", DiffPercentage);
             writer.WriteIntValue("diff_pixel_count", DiffPixelCount);
             writer.WriteGuidValue("id", Id);
@@ -293,9 +293,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotMetadataProperty>("metadata", Metadata);
             writer.WriteStringValue("result", Result);
             writer.WriteDateTimeOffsetValue("reviewed_at", ReviewedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>("reviewed_by", ReviewedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy>("reviewed_by", ReviewedBy);
             writer.WriteStringValue("review_state", ReviewState);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RowShift>("row_shift", RowShift);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift>("row_shift", RowShift);
             writer.WriteGuidValue("run_id", RunId);
             writer.WriteBoolValue("size_mismatch", SizeMismatch);
             writer.WriteDoubleValue("ssim_score", SsimScore);

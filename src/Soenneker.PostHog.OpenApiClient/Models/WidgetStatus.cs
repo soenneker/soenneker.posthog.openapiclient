@@ -56,12 +56,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Active generation job, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob? ActiveJob { get => _explicitNullValueActiveJob; set { _explicitNullValueActiveJob = value; AdditionalData?.Remove("active_job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_job"); else _explicitNullProperties?.Remove("active_job"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob? _explicitNullValueActiveJob = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusActiveJob? ActiveJob { get => _explicitNullValueActiveJob; set { _explicitNullValueActiveJob = value; AdditionalData?.Remove("active_job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_job"); else _explicitNullProperties?.Remove("active_job"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusActiveJob? _explicitNullValueActiveJob = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob ActiveJob { get => _explicitNullValueActiveJob; set { _explicitNullValueActiveJob = value; AdditionalData?.Remove("active_job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_job"); else _explicitNullProperties?.Remove("active_job"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob _explicitNullValueActiveJob = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusActiveJob ActiveJob { get => _explicitNullValueActiveJob; set { _explicitNullValueActiveJob = value; AdditionalData?.Remove("active_job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_job"); else _explicitNullProperties?.Remove("active_job"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusActiveJob _explicitNullValueActiveJob = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -166,12 +166,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Automated review for the selected source, or null for a legacy unreviewed version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? _explicitNullValueSecurityReview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusSecurityReview? _explicitNullValueSecurityReview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview _explicitNullValueSecurityReview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusSecurityReview _explicitNullValueSecurityReview = default!;
 #endif
         /// <summary>Reusable widget identity.</summary>
         public Guid? WidgetId { get => _explicitNullValueWidgetId; set { _explicitNullValueWidgetId = value; AdditionalData?.Remove("widget_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget_id"); else _explicitNullProperties?.Remove("widget_id"); } }
@@ -201,7 +201,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "active_job", n => { ActiveJob = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob.CreateFromDiscriminatorValue); } },
+                { "active_job", n => { ActiveJob = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusActiveJob>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusActiveJob.CreateFromDiscriminatorValue); } },
                 { "artifact_url", n => { ArtifactUrl = n.GetStringValue(); } },
                 { "build_hash", n => { BuildHash = n.GetStringValue(); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetGuidValue(); } },
@@ -216,7 +216,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_reusable", n => { IsReusable = n.GetBoolValue(); } },
                 { "lifecycle_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLifecycleStatus = default; _explicitNullProperties?.Remove("lifecycle_status"); AdditionalData["lifecycle_status"] = unknown; } else { LifecycleStatus = parsed; AdditionalData.Remove("lifecycle_status"); } } },
                 { "pinned_version_id", n => { PinnedVersionId = n.GetGuidValue(); } },
-                { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview.CreateFromDiscriminatorValue); } },
+                { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusSecurityReview.CreateFromDiscriminatorValue); } },
                 { "widget_id", n => { WidgetId = n.GetGuidValue(); } },
             };
         }
@@ -227,7 +227,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob>("active_job", ActiveJob);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusActiveJob>("active_job", ActiveJob);
             writer.WriteStringValue("artifact_url", ArtifactUrl);
             writer.WriteStringValue("build_hash", BuildHash);
             writer.WriteGuidValue("current_version_id", CurrentVersionId);
@@ -242,7 +242,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_reusable", IsReusable);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus>("lifecycle_status", LifecycleStatus);
             writer.WriteGuidValue("pinned_version_id", PinnedVersionId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>("security_review", SecurityReview);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusSecurityReview>("security_review", SecurityReview);
             writer.WriteGuidValue("widget_id", WidgetId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

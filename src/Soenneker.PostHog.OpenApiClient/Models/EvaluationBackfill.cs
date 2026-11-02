@@ -36,10 +36,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who started the backfill.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Units the backfill has started an evaluation for so far.</summary>
         public int? DispatchedCount { get; private set; }
@@ -103,7 +103,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "completed_count", n => { CompletedCount = n.GetIntValue(); } },
                 { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillCondition>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillCondition.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillCreatedBy.CreateFromDiscriminatorValue); } },
                 { "dispatched_count", n => { DispatchedCount = n.GetIntValue(); } },
                 { "evaluation_skipped_count", n => { EvaluationSkippedCount = n.GetIntValue(); } },
                 { "failed_count", n => { FailedCount = n.GetIntValue(); } },

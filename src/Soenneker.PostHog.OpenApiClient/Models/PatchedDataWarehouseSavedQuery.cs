@@ -100,20 +100,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Update the materialized table in place instead of rebuilding it. Null or absent means every run rebuilds the whole table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig? Incremental { get => _explicitNullValueIncremental; set { _explicitNullValueIncremental = value; AdditionalData?.Remove("incremental"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental"); else _explicitNullProperties?.Remove("incremental"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig? _explicitNullValueIncremental = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental? Incremental { get => _explicitNullValueIncremental; set { _explicitNullValueIncremental = value; AdditionalData?.Remove("incremental"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental"); else _explicitNullProperties?.Remove("incremental"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental? _explicitNullValueIncremental = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig Incremental { get => _explicitNullValueIncremental; set { _explicitNullValueIncremental = value; AdditionalData?.Remove("incremental"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental"); else _explicitNullProperties?.Remove("incremental"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig _explicitNullValueIncremental = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental Incremental { get => _explicitNullValueIncremental; set { _explicitNullValueIncremental = value; AdditionalData?.Remove("incremental"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental"); else _explicitNullProperties?.Remove("incremental"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental _explicitNullValueIncremental = default!;
 #endif
         /// <summary>How far incremental materialization has progressed. Null until the first run records any. Written by the materialization run, not by this API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState? IncrementalState { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncrementalState? IncrementalState { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState IncrementalState { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncrementalState IncrementalState { get; private set; }
 #endif
         /// <summary>The is_materialized property</summary>
         public bool? IsMaterialized { get; private set; }
@@ -251,8 +251,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "folder_name", n => { FolderName = n.GetStringValue(); } },
                 { "has_incremental_history", n => { HasIncrementalHistory = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "incremental", n => { Incremental = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig>(global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig.CreateFromDiscriminatorValue); } },
-                { "incremental_state", n => { IncrementalState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState>(global::Soenneker.PostHog.OpenApiClient.Models.IncrementalState.CreateFromDiscriminatorValue); } },
+                { "incremental", n => { Incremental = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental.CreateFromDiscriminatorValue); } },
+                { "incremental_state", n => { IncrementalState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncrementalState>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncrementalState.CreateFromDiscriminatorValue); } },
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
                 { "is_test", n => { IsTest = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
@@ -281,7 +281,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("edited_history_id", EditedHistoryId);
             writer.WriteGuidValue("folder_id", FolderId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IncrementalConfig>("incremental", Incremental);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental>("incremental", Incremental);
             writer.WriteBoolValue("is_test", IsTest);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataWarehouseSavedQueryQuery>("query", Query);

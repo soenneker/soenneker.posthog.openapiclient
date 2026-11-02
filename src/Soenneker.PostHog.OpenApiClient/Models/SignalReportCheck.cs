@@ -68,10 +68,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Server-derived timing for open checks on Monitoring reports, including archived Monitoring periods. Omitted when Monitoring is disabled or the check is outside that lane.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTiming? MonitoringTiming { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckMonitoringTiming? MonitoringTiming { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTiming MonitoringTiming { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckMonitoringTiming MonitoringTiming { get; private set; }
 #endif
         /// <summary>Stored coordinator schedule, provisional while pending. During Monitoring this can be the observation-window end rather than another measurement; use `monitoring_timing` for interim timing.</summary>
         public DateTimeOffset? NextRunAt { get; private set; }
@@ -137,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_outcome", n => { LastOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcome.CreateFromDiscriminatorValue); } },
                 { "last_outcome_reason", n => { LastOutcomeReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcomeReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckLastOutcomeReason.CreateFromDiscriminatorValue); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
-                { "monitoring_timing", n => { MonitoringTiming = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTiming>(global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTiming.CreateFromDiscriminatorValue); } },
+                { "monitoring_timing", n => { MonitoringTiming = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckMonitoringTiming>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportCheckMonitoringTiming.CreateFromDiscriminatorValue); } },
                 { "next_run_at", n => { NextRunAt = n.GetDateTimeOffsetValue(); } },
                 { "rationale", n => { Rationale = n.GetStringValue(); } },
                 { "run_interval_minutes", n => { RunIntervalMinutes = n.GetIntValue(); } },

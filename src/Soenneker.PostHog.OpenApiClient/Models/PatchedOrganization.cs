@@ -120,12 +120,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Notice shown in a banner to every member of the organization. Set to null to remove it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice? MemberNotice { get => _explicitNullValueMemberNotice; set { _explicitNullValueMemberNotice = value; AdditionalData?.Remove("member_notice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_notice"); else _explicitNullProperties?.Remove("member_notice"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice? _explicitNullValueMemberNotice = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNoticeComposed? MemberNotice { get => _explicitNullValueMemberNotice; set { _explicitNullValueMemberNotice = value; AdditionalData?.Remove("member_notice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_notice"); else _explicitNullProperties?.Remove("member_notice"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNoticeComposed? _explicitNullValueMemberNotice = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice MemberNotice { get => _explicitNullValueMemberNotice; set { _explicitNullValueMemberNotice = value; AdditionalData?.Remove("member_notice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_notice"); else _explicitNullProperties?.Remove("member_notice"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice _explicitNullValueMemberNotice = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNoticeComposed MemberNotice { get => _explicitNullValueMemberNotice; set { _explicitNullValueMemberNotice = value; AdditionalData?.Remove("member_notice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("member_notice"); else _explicitNullProperties?.Remove("member_notice"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNoticeComposed _explicitNullValueMemberNotice = default!;
 #endif
         /// <summary>When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects.</summary>
         public bool? MembersCanCreateProjects { get => _explicitNullValueMembersCanCreateProjects; set { _explicitNullValueMembersCanCreateProjects = value; AdditionalData?.Remove("members_can_create_projects"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("members_can_create_projects"); else _explicitNullProperties?.Remove("members_can_create_projects"); } }
@@ -239,7 +239,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "is_pending_deletion", n => { IsPendingDeletion = n.GetBoolValue(); } },
                 { "logo_media_id", n => { LogoMediaId = n.GetGuidValue(); } },
                 { "member_count", n => { MemberCount = n.GetIntValue(); } },
-                { "member_notice", n => { MemberNotice = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice.CreateFromDiscriminatorValue); } },
+                { "member_notice", n => { MemberNotice = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNoticeComposed>(global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNoticeComposed.CreateFromDiscriminatorValue); } },
                 { "members_can_create_projects", n => { MembersCanCreateProjects = n.GetBoolValue(); } },
                 { "members_can_invite", n => { MembersCanInvite = n.GetBoolValue(); } },
                 { "members_can_see_org_members", n => { MembersCanSeeOrgMembers = n.GetBoolValue(); } },
@@ -272,7 +272,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("is_ai_data_processing_approved", IsAiDataProcessingApproved);
             writer.WriteBoolValue("is_ai_training_opted_in", IsAiTrainingOptedIn);
             writer.WriteGuidValue("logo_media_id", LogoMediaId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNotice>("member_notice", MemberNotice);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationMemberNoticeComposed>("member_notice", MemberNotice);
             writer.WriteBoolValue("members_can_create_projects", MembersCanCreateProjects);
             writer.WriteBoolValue("members_can_invite", MembersCanInvite);
             writer.WriteBoolValue("members_can_see_org_members", MembersCanSeeOrgMembers);

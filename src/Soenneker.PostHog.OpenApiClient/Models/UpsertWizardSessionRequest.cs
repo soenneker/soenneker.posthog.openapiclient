@@ -75,12 +75,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Populated while the wizard is blocked on a question in the terminal. Null/absent means no input is pending; a push without it clears the previous prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PendingInput? PendingInput { get => _explicitNullValuePendingInput; set { _explicitNullValuePendingInput = value; AdditionalData?.Remove("pending_input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_input"); else _explicitNullProperties?.Remove("pending_input"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PendingInput? _explicitNullValuePendingInput = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput? PendingInput { get => _explicitNullValuePendingInput; set { _explicitNullValuePendingInput = value; AdditionalData?.Remove("pending_input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_input"); else _explicitNullProperties?.Remove("pending_input"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput? _explicitNullValuePendingInput = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PendingInput PendingInput { get => _explicitNullValuePendingInput; set { _explicitNullValuePendingInput = value; AdditionalData?.Remove("pending_input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_input"); else _explicitNullProperties?.Remove("pending_input"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PendingInput _explicitNullValuePendingInput = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput PendingInput { get => _explicitNullValuePendingInput; set { _explicitNullValuePendingInput = value; AdditionalData?.Remove("pending_input"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_input"); else _explicitNullProperties?.Remove("pending_input"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput _explicitNullValuePendingInput = default!;
 #endif
         /// <summary>* `idle` - IDLE* `running` - RUNNING* `completed` - COMPLETED* `error` - ERROR</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase? RunPhase { get => _explicitNullValueRunPhase; set { _explicitNullValueRunPhase = value; AdditionalData?.Remove("run_phase"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_phase"); else _explicitNullProperties?.Remove("run_phase"); } }
@@ -156,7 +156,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "error", n => { Error = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty.CreateFromDiscriminatorValue); } },
                 { "event_plan", n => { EventPlan = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty.CreateFromDiscriminatorValue); } },
                 { "handoff_text", n => { HandoffText = n.GetStringValue(); } },
-                { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.PendingInput.CreateFromDiscriminatorValue); } },
+                { "pending_input", n => { PendingInput = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput>(global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput.CreateFromDiscriminatorValue); } },
                 { "run_phase", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRunPhase = default; _explicitNullProperties?.Remove("run_phase"); AdditionalData["run_phase"] = unknown; } else { RunPhase = parsed; AdditionalData.Remove("run_phase"); } } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
                 { "skill_id", n => { SkillId = n.GetStringValue(); } },
@@ -175,7 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestErrorProperty>("error", Error);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestEventPlanProperty>("event_plan", EventPlan);
             writer.WriteStringValue("handoff_text", HandoffText);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PendingInput>("pending_input", PendingInput);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestPendingInput>("pending_input", PendingInput);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.UpsertWizardSessionRequestRunPhase>("run_phase", RunPhase);
             writer.WriteStringValue("session_id", SessionId);
             writer.WriteStringValue("skill_id", SkillId);

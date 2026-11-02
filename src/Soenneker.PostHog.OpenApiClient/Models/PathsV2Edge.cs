@@ -38,12 +38,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Source path item, or null for the source column&apos;s &quot;other&quot; row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeSource? _explicitNullValueSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item _explicitNullValueSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeSource Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeSource _explicitNullValueSource = default!;
 #endif
         /// <summary>0-based step index of the source column; the target sits at `stepIndex + 1`.</summary>
         public int? StepIndex { get => _explicitNullValueStepIndex; set { _explicitNullValueStepIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stepIndex"); else _explicitNullProperties?.Remove("stepIndex"); } }
@@ -51,12 +51,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Target path item, or null for the target column&apos;s &quot;other&quot; row.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item? _explicitNullValueTarget = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeTarget? Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeTarget? _explicitNullValueTarget = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item _explicitNullValueTarget = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeTarget Target { get => _explicitNullValueTarget; set { _explicitNullValueTarget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target"); else _explicitNullProperties?.Remove("target"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeTarget _explicitNullValueTarget = default!;
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -78,9 +78,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "anyStepCount", n => { AnyStepCount = n.GetDoubleValue(); } },
                 { "count", n => { Count = n.GetDoubleValue(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>(global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeSource>(global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeSource.CreateFromDiscriminatorValue); } },
                 { "stepIndex", n => { StepIndex = n.GetIntValue(); } },
-                { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>(global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item.CreateFromDiscriminatorValue); } },
+                { "target", n => { Target = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeTarget>(global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeTarget.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -92,9 +92,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("anyStepCount", AnyStepCount);
             writer.WriteDoubleValue("count", Count);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>("source", Source);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeSource>("source", Source);
             writer.WriteIntValue("stepIndex", StepIndex);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2Item>("target", Target);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PathsV2EdgeTarget>("target", Target);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

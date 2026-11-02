@@ -87,12 +87,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Generated draft waiting for manual review, or null when no review is pending.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail? PendingVersion { get => _explicitNullValuePendingVersion; set { _explicitNullValuePendingVersion = value; AdditionalData?.Remove("pending_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_version"); else _explicitNullProperties?.Remove("pending_version"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail? _explicitNullValuePendingVersion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPendingVersion? PendingVersion { get => _explicitNullValuePendingVersion; set { _explicitNullValuePendingVersion = value; AdditionalData?.Remove("pending_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_version"); else _explicitNullProperties?.Remove("pending_version"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPendingVersion? _explicitNullValuePendingVersion = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail PendingVersion { get => _explicitNullValuePendingVersion; set { _explicitNullValuePendingVersion = value; AdditionalData?.Remove("pending_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_version"); else _explicitNullProperties?.Remove("pending_version"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail _explicitNullValuePendingVersion = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPendingVersion PendingVersion { get => _explicitNullValuePendingVersion; set { _explicitNullValuePendingVersion = value; AdditionalData?.Remove("pending_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_version"); else _explicitNullProperties?.Remove("pending_version"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPendingVersion _explicitNullValuePendingVersion = default!;
 #endif
         /// <summary>* `published` - published* `deprecated` - deprecated</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus? PublicationStatus { get => _explicitNullValuePublicationStatus; set { _explicitNullValuePublicationStatus = value; AdditionalData?.Remove("publication_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("publication_status"); else _explicitNullProperties?.Remove("publication_status"); } }
@@ -147,7 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "instance_count", n => { InstanceCount = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "pending_version", n => { PendingVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail>(global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail.CreateFromDiscriminatorValue); } },
+                { "pending_version", n => { PendingVersion = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPendingVersion>(global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPendingVersion.CreateFromDiscriminatorValue); } },
                 { "publication_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePublicationStatus = default; _explicitNullProperties?.Remove("publication_status"); AdditionalData["publication_status"] = unknown; } else { PublicationStatus = parsed; AdditionalData.Remove("publication_status"); } } },
                 { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -168,7 +168,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteIntValue("instance_count", InstanceCount);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetail>("pending_version", PendingVersion);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPendingVersion>("pending_version", PendingVersion);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetDetailPublicationStatus>("publication_status", PublicationStatus);
             writer.WriteDateTimeOffsetValue("published_at", PublishedAt);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);

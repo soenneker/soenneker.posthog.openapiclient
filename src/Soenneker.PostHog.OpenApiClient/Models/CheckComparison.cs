@@ -29,12 +29,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The inclusive range for `between`; unused by `lte` and `gte`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CheckThresholdBounds? Bounds { get => _explicitNullValueBounds; set { _explicitNullValueBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounds"); else _explicitNullProperties?.Remove("bounds"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CheckThresholdBounds? _explicitNullValueBounds = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonBounds? Bounds { get => _explicitNullValueBounds; set { _explicitNullValueBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounds"); else _explicitNullProperties?.Remove("bounds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonBounds? _explicitNullValueBounds = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CheckThresholdBounds Bounds { get => _explicitNullValueBounds; set { _explicitNullValueBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounds"); else _explicitNullProperties?.Remove("bounds"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CheckThresholdBounds _explicitNullValueBounds = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonBounds Bounds { get => _explicitNullValueBounds; set { _explicitNullValueBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounds"); else _explicitNullProperties?.Remove("bounds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonBounds _explicitNullValueBounds = default!;
 #endif
         /// <summary>`lte`, `gte`, or `between`.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonOperator? Operator { get => _explicitNullValueOperator; set { _explicitNullValueOperator = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator"); else _explicitNullProperties?.Remove("operator"); } }
@@ -60,7 +60,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bounds", n => { Bounds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckThresholdBounds>(global::Soenneker.PostHog.OpenApiClient.Models.CheckThresholdBounds.CreateFromDiscriminatorValue); } },
+                { "bounds", n => { Bounds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonBounds>(global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonBounds.CreateFromDiscriminatorValue); } },
                 { "operator", n => { Operator = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonOperator>(); } },
                 { "value", n => { Value = n.GetDoubleValue(); } },
             };
@@ -72,7 +72,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckThresholdBounds>("bounds", Bounds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonBounds>("bounds", Bounds);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparisonOperator>("operator", Operator);
             writer.WriteDoubleValue("value", Value);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             

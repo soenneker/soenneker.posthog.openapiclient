@@ -94,12 +94,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Person? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Person? _explicitNullValuePerson = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventTypePerson? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EventTypePerson? _explicitNullValuePerson = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Person Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Person _explicitNullValuePerson = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventTypePerson Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EventTypePerson _explicitNullValuePerson = default!;
 #endif
         /// <summary>The person_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -174,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "elements_chain", n => { ElementsChain = n.GetStringValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Person>(global::Soenneker.PostHog.OpenApiClient.Models.Person.CreateFromDiscriminatorValue); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTypePerson>(global::Soenneker.PostHog.OpenApiClient.Models.EventTypePerson.CreateFromDiscriminatorValue); } },
                 { "person_id", n => { PersonId = n.GetStringValue(); } },
                 { "person_mode", n => { PersonMode = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTypePropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.EventTypePropertiesProperty.CreateFromDiscriminatorValue); } },
@@ -194,7 +194,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("elements_chain", ElementsChain);
             writer.WriteStringValue("event", Event);
             writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Person>("person", Person);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTypePerson>("person", Person);
             writer.WriteStringValue("person_id", PersonId);
             writer.WriteStringValue("person_mode", PersonMode);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EventTypePropertiesProperty>("properties", Properties);

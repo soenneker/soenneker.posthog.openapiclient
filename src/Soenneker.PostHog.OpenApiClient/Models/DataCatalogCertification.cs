@@ -28,10 +28,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who last set certified/deprecated, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CertifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogCertificationCertifiedBy? CertifiedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CertifiedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogCertificationCertifiedBy CertifiedBy { get; private set; }
 #endif
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -111,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "certified_at", n => { CertifiedAt = n.GetDateTimeOffsetValue(); } },
-                { "certified_by", n => { CertifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "certified_by", n => { CertifiedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogCertificationCertifiedBy>(global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogCertificationCertifiedBy.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

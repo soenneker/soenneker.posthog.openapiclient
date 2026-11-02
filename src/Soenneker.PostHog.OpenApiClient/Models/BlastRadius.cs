@@ -64,22 +64,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set when the audience is one realtime cohort. &apos;affected&apos; is then the cohort&apos;s last calculated size, and a batch run waits until the cohort is ready.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus? RealtimeCohort { get => _explicitNullValueRealtimeCohort; set { _explicitNullValueRealtimeCohort = value; AdditionalData?.Remove("realtime_cohort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort"); else _explicitNullProperties?.Remove("realtime_cohort"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus? _explicitNullValueRealtimeCohort = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohort? RealtimeCohort { get => _explicitNullValueRealtimeCohort; set { _explicitNullValueRealtimeCohort = value; AdditionalData?.Remove("realtime_cohort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort"); else _explicitNullProperties?.Remove("realtime_cohort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohort? _explicitNullValueRealtimeCohort = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus RealtimeCohort { get => _explicitNullValueRealtimeCohort; set { _explicitNullValueRealtimeCohort = value; AdditionalData?.Remove("realtime_cohort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort"); else _explicitNullProperties?.Remove("realtime_cohort"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus _explicitNullValueRealtimeCohort = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohort RealtimeCohort { get => _explicitNullValueRealtimeCohort; set { _explicitNullValueRealtimeCohort = value; AdditionalData?.Remove("realtime_cohort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort"); else _explicitNullProperties?.Remove("realtime_cohort"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohort _explicitNullValueRealtimeCohort = default!;
 #endif
         /// <summary>Set when a realtime cohort shares the audience with other conditions. Saving that audience fails: a realtime cohort has to be the only condition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef? RealtimeCohortWithOtherConditions { get => _explicitNullValueRealtimeCohortWithOtherConditions; set { _explicitNullValueRealtimeCohortWithOtherConditions = value; AdditionalData?.Remove("realtime_cohort_with_other_conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort_with_other_conditions"); else _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef? _explicitNullValueRealtimeCohortWithOtherConditions = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohortWithOtherConditions? RealtimeCohortWithOtherConditions { get => _explicitNullValueRealtimeCohortWithOtherConditions; set { _explicitNullValueRealtimeCohortWithOtherConditions = value; AdditionalData?.Remove("realtime_cohort_with_other_conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort_with_other_conditions"); else _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohortWithOtherConditions? _explicitNullValueRealtimeCohortWithOtherConditions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef RealtimeCohortWithOtherConditions { get => _explicitNullValueRealtimeCohortWithOtherConditions; set { _explicitNullValueRealtimeCohortWithOtherConditions = value; AdditionalData?.Remove("realtime_cohort_with_other_conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort_with_other_conditions"); else _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef _explicitNullValueRealtimeCohortWithOtherConditions = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohortWithOtherConditions RealtimeCohortWithOtherConditions { get => _explicitNullValueRealtimeCohortWithOtherConditions; set { _explicitNullValueRealtimeCohortWithOtherConditions = value; AdditionalData?.Remove("realtime_cohort_with_other_conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort_with_other_conditions"); else _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohortWithOtherConditions _explicitNullValueRealtimeCohortWithOtherConditions = default!;
 #endif
         /// <summary>Total number of users</summary>
         public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
@@ -113,8 +113,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "confirm_token", n => { ConfirmToken = n.GetStringValue(); } },
                 { "dedupe_key", n => { DedupeKey = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey.CreateFromDiscriminatorValue); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "realtime_cohort", n => { RealtimeCohort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus>(global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus.CreateFromDiscriminatorValue); } },
-                { "realtime_cohort_with_other_conditions", n => { RealtimeCohortWithOtherConditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef>(global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef.CreateFromDiscriminatorValue); } },
+                { "realtime_cohort", n => { RealtimeCohort = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohort>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohort.CreateFromDiscriminatorValue); } },
+                { "realtime_cohort_with_other_conditions", n => { RealtimeCohortWithOtherConditions = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohortWithOtherConditions>(global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohortWithOtherConditions.CreateFromDiscriminatorValue); } },
                 { "total", n => { Total = n.GetIntValue(); } },
             };
         }
@@ -129,8 +129,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("confirm_token", ConfirmToken);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey>("dedupe_key", DedupeKey);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus>("realtime_cohort", RealtimeCohort);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef>("realtime_cohort_with_other_conditions", RealtimeCohortWithOtherConditions);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohort>("realtime_cohort", RealtimeCohort);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusRealtimeCohortWithOtherConditions>("realtime_cohort_with_other_conditions", RealtimeCohortWithOtherConditions);
             writer.WriteIntValue("total", Total);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

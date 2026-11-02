@@ -40,12 +40,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The author&apos;s score and rank. Null below 3 merged pull requests in the window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction? Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction? _explicitNullValueAuthor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionDetailAuthor? Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionDetailAuthor? _explicitNullValueAuthor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction _explicitNullValueAuthor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionDetailAuthor Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionDetailAuthor _explicitNullValueAuthor = default!;
 #endif
         /// <summary>False when the per-PR friction view does not exist yet: it needs a GitHub source with workflow runs, workflow jobs and pull requests synced.</summary>
         public bool? Available { get => _explicitNullValueAvailable; set { _explicitNullValueAvailable = value; AdditionalData?.Remove("available"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available"); else _explicitNullProperties?.Remove("available"); } }
@@ -107,7 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction>(global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction.CreateFromDiscriminatorValue); } },
+                { "author", n => { Author = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionDetailAuthor>(global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionDetailAuthor.CreateFromDiscriminatorValue); } },
                 { "available", n => { Available = n.GetBoolValue(); } },
                 { "has_membership_data", n => { HasMembershipData = n.GetBoolValue(); } },
                 { "pr_count", n => { PrCount = n.GetIntValue(); } },
@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFriction>("author", Author);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AuthorFrictionDetailAuthor>("author", Author);
             writer.WriteBoolValue("available", Available);
             writer.WriteBoolValue("has_membership_data", HasMembershipData);
             writer.WriteIntValue("pr_count", PrCount);

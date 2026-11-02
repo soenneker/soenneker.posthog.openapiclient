@@ -21,7 +21,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/external_data_schemas/{id}/logs/{?after*,before*,instance_id*,level*,limit*,search*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/external_data_schemas/{id}/logs/{?after*,before*,instance_id*,level*,limit*,offset*,search*}", pathParameters)
         {
         }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/external_data_schemas/{id}/logs/{?after*,before*,instance_id*,level*,limit*,search*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/external_data_schemas/{id}/logs/{?after*,before*,instance_id*,level*,limit*,offset*,search*}", rawUrl)
         {
         }
         /// <returns>A <see cref="Stream"/></returns>
@@ -105,6 +105,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_schema
             /// <summary>Maximum number of log entries to return (1-500, default 50).</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>Number of log entries to skip before the first returned entry (default 0).</summary>
+            [QueryParameter("offset")]
+            public int? Offset { get; set; }
             /// <summary>Case-insensitive substring search across log messages.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

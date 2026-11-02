@@ -163,12 +163,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How the insight formats its values. Null for a key metric and for an insight with plain numbers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightValueFormat? ValueFormat { get => _explicitNullValueValueFormat; set { _explicitNullValueValueFormat = value; AdditionalData?.Remove("value_format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_format"); else _explicitNullProperties?.Remove("value_format"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HighlightValueFormat? _explicitNullValueValueFormat = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricValueFormat? ValueFormat { get => _explicitNullValueValueFormat; set { _explicitNullValueValueFormat = value; AdditionalData?.Remove("value_format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_format"); else _explicitNullProperties?.Remove("value_format"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricValueFormat? _explicitNullValueValueFormat = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightValueFormat ValueFormat { get => _explicitNullValueValueFormat; set { _explicitNullValueValueFormat = value; AdditionalData?.Remove("value_format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_format"); else _explicitNullProperties?.Remove("value_format"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HighlightValueFormat _explicitNullValueValueFormat = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricValueFormat ValueFormat { get => _explicitNullValueValueFormat; set { _explicitNullValueValueFormat = value; AdditionalData?.Remove("value_format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_format"); else _explicitNullProperties?.Remove("value_format"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricValueFormat _explicitNullValueValueFormat = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric"/> and sets the default values.
@@ -211,7 +211,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "unit", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricUnit>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueUnit = default; _explicitNullProperties?.Remove("unit"); AdditionalData["unit"] = unknown; } else { Unit = parsed; AdditionalData.Remove("unit"); } } },
                 { "url", n => { Url = n.GetStringValue(); } },
                 { "value", n => { Value = n.GetDoubleValue(); } },
-                { "value_format", n => { ValueFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightValueFormat>(global::Soenneker.PostHog.OpenApiClient.Models.HighlightValueFormat.CreateFromDiscriminatorValue); } },
+                { "value_format", n => { ValueFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricValueFormat>(global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricValueFormat.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -237,7 +237,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricUnit>("unit", Unit);
             writer.WriteStringValue("url", Url);
             writer.WriteDoubleValue("value", Value);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightValueFormat>("value_format", ValueFormat);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetricValueFormat>("value_format", ValueFormat);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

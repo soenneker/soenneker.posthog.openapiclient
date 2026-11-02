@@ -63,10 +63,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation? ApiVersionDeprecation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersApiVersionDeprecation? ApiVersionDeprecation { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation ApiVersionDeprecation { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersApiVersionDeprecation ApiVersionDeprecation { get; private set; }
 #endif
         /// <summary>Automatically enable syncing for schemas discovered on this source after creation, on both the scheduled discovery pass and manual schema refreshes. Defaults to false. Not supported for direct-query sources.</summary>
         public bool? AutoSyncNewSchemas { get => _explicitNullValueAutoSyncNewSchemas; set { _explicitNullValueAutoSyncNewSchemas = value; AdditionalData?.Remove("auto_sync_new_schemas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_sync_new_schemas"); else _explicitNullProperties?.Remove("auto_sync_new_schemas"); } }
@@ -252,7 +252,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "access_method", n => { AccessMethod = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersAccessMethod>(); } },
                 { "account_id", n => { AccountId = n.GetStringValue(); } },
                 { "api_version", n => { ApiVersion = n.GetStringValue(); } },
-                { "api_version_deprecation", n => { ApiVersionDeprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation.CreateFromDiscriminatorValue); } },
+                { "api_version_deprecation", n => { ApiVersionDeprecation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersApiVersionDeprecation>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersApiVersionDeprecation.CreateFromDiscriminatorValue); } },
                 { "auto_sync_new_schemas", n => { AutoSyncNewSchemas = n.GetBoolValue(); } },
                 { "auto_sync_schema_patterns", n => { AutoSyncSchemaPatterns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "client_secret", n => { ClientSecret = n.GetStringValue(); } },

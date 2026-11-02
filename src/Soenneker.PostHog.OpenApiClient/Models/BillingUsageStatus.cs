@@ -31,12 +31,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The billing_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? _explicitNullValueBillingPeriod = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod? BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod? _explicitNullValueBillingPeriod = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod _explicitNullValueBillingPeriod = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod _explicitNullValueBillingPeriod = default!;
 #endif
         /// <summary>The products property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod.CreateFromDiscriminatorValue); } },
+                { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod.CreateFromDiscriminatorValue); } },
                 { "products", n => { Products = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ProductUsageStatus>(global::Soenneker.PostHog.OpenApiClient.Models.ProductUsageStatus.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "usage_reported_through", n => { UsageReportedThrough = n.GetDateValue(); } },
             };
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod>("billing_period", BillingPeriod);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod>("billing_period", BillingPeriod);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ProductUsageStatus>("products", Products);
             writer.WriteDateValue("usage_reported_through", UsageReportedThrough);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

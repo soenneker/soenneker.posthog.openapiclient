@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyFilterGroup FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; AdditionalData?.Remove("filterGroup"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsQueryBodyFilterGroup _explicitNullValueFilterGroup = default!;
 #endif
-        /// <summary>Max results (1-1000).</summary>
+        /// <summary>Max results. Values above 2000 are capped at 2000.</summary>
         public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; AdditionalData?.Remove("limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
         private int? _explicitNullValueLimit = default!;
         /// <summary>* `latest` - latest* `earliest` - earliest</summary>

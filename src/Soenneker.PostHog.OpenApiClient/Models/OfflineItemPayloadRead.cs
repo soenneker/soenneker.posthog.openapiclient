@@ -37,12 +37,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Stored item payload, preserving omitted properties and JSON null; null if unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInput? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInput? _explicitNullValueData = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadData? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadData? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInput Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInput _explicitNullValueData = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadData Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadData _explicitNullValueData = default!;
 #endif
         /// <summary>Owning item UUID.</summary>
         public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "available", n => { Available = n.GetBoolValue(); } },
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInput>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInput.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadData>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadData.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "payload_expires_at", n => { PayloadExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "payload_state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadPayloadState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePayloadState = default; _explicitNullProperties?.Remove("payload_state"); AdditionalData["payload_state"] = unknown; } else { PayloadState = parsed; AdditionalData.Remove("payload_state"); } } },
@@ -93,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("available", Available);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineExperimentItemPayloadInput>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadData>("data", Data);
             writer.WriteGuidValue("id", Id);
             writer.WriteDateTimeOffsetValue("payload_expires_at", PayloadExpiresAt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineItemPayloadReadPayloadState>("payload_state", PayloadState);

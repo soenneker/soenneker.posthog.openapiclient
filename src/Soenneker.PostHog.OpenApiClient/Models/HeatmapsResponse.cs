@@ -30,12 +30,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Above/below-the-fold summary for the returned interactions. Present for click/rageclick/mousemove; omitted for scrolldepth.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary? Fold { get => _explicitNullValueFold; set { _explicitNullValueFold = value; AdditionalData?.Remove("fold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fold"); else _explicitNullProperties?.Remove("fold"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary? _explicitNullValueFold = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold? Fold { get => _explicitNullValueFold; set { _explicitNullValueFold = value; AdditionalData?.Remove("fold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fold"); else _explicitNullProperties?.Remove("fold"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold? _explicitNullValueFold = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary Fold { get => _explicitNullValueFold; set { _explicitNullValueFold = value; AdditionalData?.Remove("fold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fold"); else _explicitNullProperties?.Remove("fold"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary _explicitNullValueFold = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold Fold { get => _explicitNullValueFold; set { _explicitNullValueFold = value; AdditionalData?.Remove("fold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fold"); else _explicitNullProperties?.Remove("fold"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold _explicitNullValueFold = default!;
 #endif
         /// <summary>True when more coordinate points exist beyond the returned page. Raise &apos;limit&apos; or page with &apos;offset&apos; to fetch them. Always false for scrolldepth, which returns every bucket.</summary>
         public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; AdditionalData?.Remove("has_more"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "fold", n => { Fold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary.CreateFromDiscriminatorValue); } },
+                { "fold", n => { Fold = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold.CreateFromDiscriminatorValue); } },
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapResponseItem>(global::Soenneker.PostHog.OpenApiClient.Models.HeatmapResponseItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapFoldSummary>("fold", Fold);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapsResponseFold>("fold", Fold);
             writer.WriteBoolValue("has_more", HasMore);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HeatmapResponseItem>("results", Results);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

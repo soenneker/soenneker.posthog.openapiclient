@@ -29,12 +29,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The team&apos;s experiment defaults.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults? _explicitNullValueData = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionData? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionData? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults _explicitNullValueData = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionData Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionData _explicitNullValueData = default!;
 #endif
         /// <summary>* `ok` - Ok* `skipped` - Skipped* `timed_out` - Timed Out* `error` - Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionData>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionData.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaults>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionData>("data", Data);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupTeamDefaultsSectionStatus>("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

@@ -39,12 +39,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>For an experiment scanner: the `experiment_id` and `variants` it will keep in its config, merged into the query as its exposure filter so the estimate counts only exposed sessions. Not combined with `experiment_targeting`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope? Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope? _explicitNullValueExperiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperiment? Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperiment? _explicitNullValueExperiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope _explicitNullValueExperiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperiment Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperiment _explicitNullValueExperiment = default!;
 #endif
         /// <summary>Proposed experiment targeting, merged into the query as its exposure filter the same way a saved scanner derives it. The estimate then runs as the requesting user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -104,7 +104,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "experiment", n => { Experiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope>(global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope.CreateFromDiscriminatorValue); } },
+                { "experiment", n => { Experiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperiment>(global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperiment.CreateFromDiscriminatorValue); } },
                 { "experiment_targeting", n => { ExperimentTargeting = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting>(global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting.CreateFromDiscriminatorValue); } },
                 { "model", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueModel = default; _explicitNullProperties?.Remove("model"); AdditionalData["model"] = unknown; } else { Model = parsed; AdditionalData.Remove("model"); } } },
                 { "query", n => { Query = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateExperimentScope>("experiment", Experiment);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperiment>("experiment", Experiment);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestExperimentTargeting>("experiment_targeting", ExperimentTargeting);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EstimateRequestModel>("model", Model);
             writer.WriteObjectValue<UntypedNode>("query", Query);

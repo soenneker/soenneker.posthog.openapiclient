@@ -72,12 +72,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The release property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease? Release { get => _explicitNullValueRelease; set { _explicitNullValueRelease = value; AdditionalData?.Remove("release"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release"); else _explicitNullProperties?.Remove("release"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease? _explicitNullValueRelease = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease? Release { get => _explicitNullValueRelease; set { _explicitNullValueRelease = value; AdditionalData?.Remove("release"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release"); else _explicitNullProperties?.Remove("release"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease? _explicitNullValueRelease = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease Release { get => _explicitNullValueRelease; set { _explicitNullValueRelease = value; AdditionalData?.Remove("release"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release"); else _explicitNullProperties?.Remove("release"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease _explicitNullValueRelease = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease Release { get => _explicitNullValueRelease; set { _explicitNullValueRelease = value; AdditionalData?.Remove("release"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release"); else _explicitNullProperties?.Remove("release"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease _explicitNullValueRelease = default!;
 #endif
         /// <summary>The team_id property</summary>
         public int? TeamId { get => _explicitNullValueTeamId; set { _explicitNullValueTeamId = value; AdditionalData?.Remove("team_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_id"); else _explicitNullProperties?.Remove("team_id"); } }
@@ -113,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_used", n => { LastUsed = n.GetDateTimeOffsetValue(); } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
-                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease.CreateFromDiscriminatorValue); } },
+                { "release", n => { Release = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease.CreateFromDiscriminatorValue); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },
             };
         }
@@ -130,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_used", LastUsed);
             writer.WriteStringValue("ref", Ref);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingRelease>("release", Release);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStackFrameRelease>("release", Release);
             writer.WriteIntValue("team_id", TeamId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

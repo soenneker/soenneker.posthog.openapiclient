@@ -22,10 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Linked account, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAccount? Account { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAccountComposed? Account { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAccount Account { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAccountComposed Account { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -34,10 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Assigned project member, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser? AssignedTo { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAssignedTo? AssignedTo { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser AssignedTo { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAssignedTo AssignedTo { get; private set; }
 #endif
         /// <summary>Whether the current user can edit this task.</summary>
         public bool? CanEdit { get; private set; }
@@ -48,20 +48,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User credited with completion, if known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser? CompletedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskCompletedBy? CompletedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser CompletedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskCompletedBy CompletedBy { get; private set; }
 #endif
         /// <summary>When the task was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>User who created the task, if known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Task description, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -112,15 +112,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAccount>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAccount.CreateFromDiscriminatorValue); } },
+                { "account", n => { Account = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAccountComposed>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAccountComposed.CreateFromDiscriminatorValue); } },
                 { "archived_at", n => { ArchivedAt = n.GetDateTimeOffsetValue(); } },
-                { "assigned_to", n => { AssignedTo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser.CreateFromDiscriminatorValue); } },
+                { "assigned_to", n => { AssignedTo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAssignedTo>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskAssignedTo.CreateFromDiscriminatorValue); } },
                 { "can_edit", n => { CanEdit = n.GetBoolValue(); } },
                 { "can_restore", n => { CanRestore = n.GetBoolValue(); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
-                { "completed_by", n => { CompletedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser.CreateFromDiscriminatorValue); } },
+                { "completed_by", n => { CompletedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskCompletedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskCompletedBy.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "due_at", n => { DueAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

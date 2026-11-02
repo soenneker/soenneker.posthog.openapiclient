@@ -60,17 +60,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         private string _explicitNullValueMetricId = default!;
 #endif
         /// <summary>How to draw this measurement; copied from a referenced metric.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind? MetricKind { get => _explicitNullValueMetricKind; set { _explicitNullValueMetricKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_kind"); else _explicitNullProperties?.Remove("metric_kind"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind? _explicitNullValueMetricKind = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind MetricKind { get => _explicitNullValueMetricKind; set { _explicitNullValueMetricKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_kind"); else _explicitNullProperties?.Remove("metric_kind"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind _explicitNullValueMetricKind = default!;
+#endif
         /// <summary>Optional Monitoring measurement definition, available only with the organization&apos;s Monitoring rollout. Measurements cover Monitoring start through the observation time. Omit for existing whole-window checks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig? Monitoring { get => _explicitNullValueMonitoring; set { _explicitNullValueMonitoring = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitoring"); else _explicitNullProperties?.Remove("monitoring"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig? _explicitNullValueMonitoring = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMonitoring? Monitoring { get => _explicitNullValueMonitoring; set { _explicitNullValueMonitoring = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitoring"); else _explicitNullProperties?.Remove("monitoring"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMonitoring? _explicitNullValueMonitoring = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig Monitoring { get => _explicitNullValueMonitoring; set { _explicitNullValueMonitoring = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitoring"); else _explicitNullProperties?.Remove("monitoring"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig _explicitNullValueMonitoring = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMonitoring Monitoring { get => _explicitNullValueMonitoring; set { _explicitNullValueMonitoring = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitoring"); else _explicitNullProperties?.Remove("monitoring"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMonitoring _explicitNullValueMonitoring = default!;
 #endif
         /// <summary>Live InsightVizNode wrapping one TrendsQuery: supplied by the caller, or copied from the named metric when the check is created. `dateRange.date_from` must be a relative window such as `-13d`, and `date_to` must be empty, so the check measures the days before each run rather than the days before it was written. The query must produce exactly one output series: use one event or action series, or combine up to ten of them with exactly one formula. Use no breakdown and no compare mode. A `trendsFilter.display` of `Metric` turns compare mode on, so `metricShowChange` is switched off for you unless `metricSummary` is `latest`, which keeps compare mode off already.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -93,8 +100,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         private string _explicitNullValueUnit = default!;
 #endif
         /// <summary>How to format measured values; copied from a referenced metric.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat? ValueFormat { get => _explicitNullValueValueFormat; set { _explicitNullValueValueFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_format"); else _explicitNullProperties?.Remove("value_format"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat? _explicitNullValueValueFormat = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat ValueFormat { get => _explicitNullValueValueFormat; set { _explicitNullValueValueFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("value_format"); else _explicitNullProperties?.Remove("value_format"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat _explicitNullValueValueFormat = default!;
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -116,11 +130,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
                 { "comparison", n => { Comparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>(global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison.CreateFromDiscriminatorValue); } },
                 { "metric_id", n => { MetricId = n.GetStringValue(); } },
-                { "metric_kind", n => { MetricKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>(); } },
-                { "monitoring", n => { Monitoring = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig>(global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig.CreateFromDiscriminatorValue); } },
+                { "metric_kind", n => { MetricKind = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>(global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind.CreateFromDiscriminatorValue); } },
+                { "monitoring", n => { Monitoring = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMonitoring>(global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMonitoring.CreateFromDiscriminatorValue); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty.CreateFromDiscriminatorValue); } },
                 { "unit", n => { Unit = n.GetStringValue(); } },
-                { "value_format", n => { ValueFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>(); } },
+                { "value_format", n => { ValueFormat = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>(global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -133,11 +147,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("baseline_value", BaselineValue);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CheckComparison>("comparison", Comparison);
             writer.WriteStringValue("metric_id", MetricId);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>("metric_kind", MetricKind);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfig>("monitoring", Monitoring);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMetricKind>("metric_kind", MetricKind);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigMonitoring>("monitoring", Monitoring);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigQueryProperty>("query", Query);
             writer.WriteStringValue("unit", Unit);
-            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>("value_format", ValueFormat);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricThresholdConfigValueFormat>("value_format", ValueFormat);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

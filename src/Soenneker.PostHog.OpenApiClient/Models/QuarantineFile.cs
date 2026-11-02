@@ -74,12 +74,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Repository the file was read from. Null in local-dev mode, where the server&apos;s own checkout is read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepoRef? Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; AdditionalData?.Remove("repo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RepoRef? _explicitNullValueRepo = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineFileRepo? Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; AdditionalData?.Remove("repo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineFileRepo? _explicitNullValueRepo = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RepoRef Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; AdditionalData?.Remove("repo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RepoRef _explicitNullValueRepo = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineFileRepo Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; AdditionalData?.Remove("repo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineFileRepo _explicitNullValueRepo = default!;
 #endif
         /// <summary>GitHub blob URL of the quarantine file, or empty when read locally or unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -121,7 +121,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "generated_at", n => { GeneratedAt = n.GetDateTimeOffsetValue(); } },
                 { "parse_errors", n => { ParseErrors = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "parse_warnings", n => { ParseWarnings = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoRef>(global::Soenneker.PostHog.OpenApiClient.Models.RepoRef.CreateFromDiscriminatorValue); } },
+                { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineFileRepo>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineFileRepo.CreateFromDiscriminatorValue); } },
                 { "source_url", n => { SourceUrl = n.GetStringValue(); } },
             };
         }
@@ -137,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("generated_at", GeneratedAt);
             writer.WriteCollectionOfPrimitiveValues<string>("parse_errors", ParseErrors);
             writer.WriteCollectionOfPrimitiveValues<string>("parse_warnings", ParseWarnings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RepoRef>("repo", Repo);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineFileRepo>("repo", Repo);
             writer.WriteStringValue("source_url", SourceUrl);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

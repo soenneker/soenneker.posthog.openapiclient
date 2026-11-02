@@ -43,10 +43,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The user who created this early access feature. Null for features created before creator tracking was added.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>A longer description of what this early access feature does, shown to users in the opt-in UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -134,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureAssignee.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "documentation_url", n => { DocumentationUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureDocumentationUrl>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureDocumentationUrl.CreateFromDiscriminatorValue); } },
                 { "feature_flag", n => { FeatureFlag = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureFeatureFlag>(global::Soenneker.PostHog.OpenApiClient.Models.EarlyAccessFeatureFeatureFlag.CreateFromDiscriminatorValue); } },

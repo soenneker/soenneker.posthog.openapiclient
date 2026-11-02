@@ -56,12 +56,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The signal that states the number. Null when the agent&apos;s research states it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalView? Signal { get => _explicitNullValueSignal; set { _explicitNullValueSignal = value; AdditionalData?.Remove("signal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal"); else _explicitNullProperties?.Remove("signal"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalView? _explicitNullValueSignal = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteSignal? Signal { get => _explicitNullValueSignal; set { _explicitNullValueSignal = value; AdditionalData?.Remove("signal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal"); else _explicitNullProperties?.Remove("signal"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteSignal? _explicitNullValueSignal = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalView Signal { get => _explicitNullValueSignal; set { _explicitNullValueSignal = value; AdditionalData?.Remove("signal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal"); else _explicitNullProperties?.Remove("signal"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalView _explicitNullValueSignal = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteSignal Signal { get => _explicitNullValueSignal; set { _explicitNullValueSignal = value; AdditionalData?.Remove("signal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal"); else _explicitNullProperties?.Remove("signal"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteSignal _explicitNullValueSignal = default!;
 #endif
         /// <summary>Where the number starts in the sentence.</summary>
         public int? Start { get => _explicitNullValueStart; set { _explicitNullValueStart = value; AdditionalData?.Remove("start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start"); else _explicitNullProperties?.Remove("start"); } }
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "end", n => { End = n.GetIntValue(); } },
                 { "kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteKind>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKind = default; _explicitNullProperties?.Remove("kind"); AdditionalData["kind"] = unknown; } else { Kind = parsed; AdditionalData.Remove("kind"); } } },
                 { "sentence", n => { Sentence = n.GetStringValue(); } },
-                { "signal", n => { Signal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalView>(global::Soenneker.PostHog.OpenApiClient.Models.SignalView.CreateFromDiscriminatorValue); } },
+                { "signal", n => { Signal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteSignal>(global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteSignal.CreateFromDiscriminatorValue); } },
                 { "start", n => { Start = n.GetIntValue(); } },
             };
         }
@@ -110,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("end", End);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteKind>("kind", Kind);
             writer.WriteStringValue("sentence", Sentence);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalView>("signal", Signal);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FigureQuoteSignal>("signal", Signal);
             writer.WriteIntValue("start", Start);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

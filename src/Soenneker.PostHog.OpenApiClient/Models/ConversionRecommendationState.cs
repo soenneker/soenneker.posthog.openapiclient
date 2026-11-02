@@ -47,22 +47,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Latest analysis, including its actual state and observation period.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? _explicitNullValueLatestRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateLatestRun? LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateLatestRun? _explicitNullValueLatestRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun _explicitNullValueLatestRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateLatestRun LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateLatestRun _explicitNullValueLatestRun = default!;
 #endif
         /// <summary>Completed analysis that supplied the visible recommendations. Previous results remain available during an update or failure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? ResultRun { get => _explicitNullValueResultRun; set { _explicitNullValueResultRun = value; AdditionalData?.Remove("result_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_run"); else _explicitNullProperties?.Remove("result_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun? _explicitNullValueResultRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResultRun? ResultRun { get => _explicitNullValueResultRun; set { _explicitNullValueResultRun = value; AdditionalData?.Remove("result_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_run"); else _explicitNullProperties?.Remove("result_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResultRun? _explicitNullValueResultRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun ResultRun { get => _explicitNullValueResultRun; set { _explicitNullValueResultRun = value; AdditionalData?.Remove("result_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_run"); else _explicitNullProperties?.Remove("result_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun _explicitNullValueResultRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResultRun ResultRun { get => _explicitNullValueResultRun; set { _explicitNullValueResultRun = value; AdditionalData?.Remove("result_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("result_run"); else _explicitNullProperties?.Remove("result_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResultRun _explicitNullValueResultRun = default!;
 #endif
         /// <summary>Suggested event or action goals with source evidence and business questions. Configure reviewed goals with the existing editor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -101,8 +101,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "can_generate", n => { CanGenerate = n.GetBoolValue(); } },
                 { "generation_disabled_reason", n => { GenerationDisabledReason = n.GetStringValue(); } },
-                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun.CreateFromDiscriminatorValue); } },
-                { "result_run", n => { ResultRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun.CreateFromDiscriminatorValue); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateLatestRun>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateLatestRun.CreateFromDiscriminatorValue); } },
+                { "result_run", n => { ResultRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResultRun>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResultRun.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults>(global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults.CreateFromDiscriminatorValue); } },
             };
         }
@@ -115,8 +115,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("can_generate", CanGenerate);
             writer.WriteStringValue("generation_disabled_reason", GenerationDisabledReason);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun>("latest_run", LatestRun);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationRun>("result_run", ResultRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateLatestRun>("latest_run", LatestRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResultRun>("result_run", ResultRun);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversionRecommendationStateResults>("results", Results);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

@@ -80,12 +80,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who should accept or dismiss this suggestion. When a view&apos;s suggestion is first shown, it goes to the person who created the view, if they can accept it. Null when nobody is assigned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? _explicitNullValueAssignee = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssignee? Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssignee? _explicitNullValueAssignee = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer _explicitNullValueAssignee = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssignee Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssignee _explicitNullValueAssignee = default!;
 #endif
         /// <summary>Whether the caller has edit access to the subject and so may accept, dismiss or resume.</summary>
         public bool? CanAct { get => _explicitNullValueCanAct; set { _explicitNullValueCanAct = value; AdditionalData?.Remove("can_act"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_act"); else _explicitNullProperties?.Remove("can_act"); } }
@@ -168,12 +168,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who accepted or dismissed this suggestion. Null while it is open.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; AdditionalData?.Remove("reviewed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer? _explicitNullValueReviewedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewedBy? ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; AdditionalData?.Remove("reviewed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewedBy? _explicitNullValueReviewedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; AdditionalData?.Remove("reviewed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer _explicitNullValueReviewedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewedBy ReviewedBy { get => _explicitNullValueReviewedBy; set { _explicitNullValueReviewedBy = value; AdditionalData?.Remove("reviewed_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewed_by"); else _explicitNullProperties?.Remove("reviewed_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewedBy _explicitNullValueReviewedBy = default!;
 #endif
         /// <summary>* `proposed` - Proposed* `accepted` - Accepted* `dismissed` - Dismissed* `expired` - Expired* `auto_resolved` - Auto-resolved</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionStatusComposed? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
@@ -219,7 +219,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "asset_outcome", n => { AssetOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome.CreateFromDiscriminatorValue); } },
-                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer.CreateFromDiscriminatorValue); } },
+                { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssignee.CreateFromDiscriminatorValue); } },
                 { "can_act", n => { CanAct = n.GetBoolValue(); } },
                 { "created_asset", n => { CreatedAsset = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty.CreateFromDiscriminatorValue); } },
                 { "dismissal_note", n => { DismissalNote = n.GetStringValue(); } },
@@ -235,7 +235,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "realized_bytes_saved_per_month", n => { RealizedBytesSavedPerMonth = n.GetDoubleValue(); } },
                 { "realized_seconds_saved_per_month", n => { RealizedSecondsSavedPerMonth = n.GetDoubleValue(); } },
                 { "reviewed_at", n => { ReviewedAt = n.GetDateTimeOffsetValue(); } },
-                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer.CreateFromDiscriminatorValue); } },
+                { "reviewed_by", n => { ReviewedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewedBy>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewedBy.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionStatusComposed>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "subject_id", n => { SubjectId = n.GetGuidValue(); } },
                 { "subject_kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionSubjectKind>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSubjectKind = default; _explicitNullProperties?.Remove("subject_kind"); AdditionalData["subject_kind"] = unknown; } else { SubjectKind = parsed; AdditionalData.Remove("subject_kind"); } } },
@@ -252,7 +252,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssetOutcome>("asset_outcome", AssetOutcome);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer>("assignee", Assignee);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionAssignee>("assignee", Assignee);
             writer.WriteBoolValue("can_act", CanAct);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionCreatedAssetProperty>("created_asset", CreatedAsset);
             writer.WriteStringValue("dismissal_note", DismissalNote);
@@ -267,7 +267,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("realized_bytes_saved_per_month", RealizedBytesSavedPerMonth);
             writer.WriteDoubleValue("realized_seconds_saved_per_month", RealizedSecondsSavedPerMonth);
             writer.WriteDateTimeOffsetValue("reviewed_at", ReviewedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewer>("reviewed_by", ReviewedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionReviewedBy>("reviewed_by", ReviewedBy);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionStatusComposed>("status", Status);
             writer.WriteGuidValue("subject_id", SubjectId);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionSubjectKind>("subject_kind", SubjectKind);

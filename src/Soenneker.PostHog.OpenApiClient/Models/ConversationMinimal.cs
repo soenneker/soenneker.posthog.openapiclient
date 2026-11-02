@@ -45,13 +45,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>* `idle` - Idle* `in_progress` - In progress* `canceling` - Canceling</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalStatus? Status { get; private set; }
-        /// <summary>The task property</summary>
+        /// <summary>Conversation envelope variant: ``latest_run`` is just the latest run&apos;s id, not the nestedrun detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the idavoids presigning a log URL per conversation. Task data follows the task&apos;s space visibility.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask? Task { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTask? Task { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask Task { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTask Task { get; private set; }
 #endif
         /// <summary>Title of the conversation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -112,7 +112,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "slack_thread_key", n => { SlackThreadKey = n.GetStringValue(); } },
                 { "slack_workspace_domain", n => { SlackWorkspaceDomain = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalStatus>(); } },
-                { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask.CreateFromDiscriminatorValue); } },
+                { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTask>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTask.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "topic", n => { Topic = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalType>(); } },

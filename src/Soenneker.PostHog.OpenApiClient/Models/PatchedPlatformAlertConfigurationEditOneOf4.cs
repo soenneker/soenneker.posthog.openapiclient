@@ -98,12 +98,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocked local time windows (HH:MM in the project timezone) when the alert does not notify. Null means no quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConfigurationEditScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConfigurationEditScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction _explicitNullValueScheduleRestriction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConfigurationEditScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConfigurationEditScheduleRestriction _explicitNullValueScheduleRestriction = default!;
 #endif
         /// <summary>Settings for a warehouse_destination alert. The bound the alert is evaluated against is under condition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -158,7 +158,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "grouping", n => { Grouping = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditGrouping>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditGrouping.CreateFromDiscriminatorValue); } },
                 { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditLabelsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditLabelsProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
+                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConfigurationEditScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConfigurationEditScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "source_config", n => { SourceConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditSourceConfig>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditSourceConfig.CreateFromDiscriminatorValue); } },
                 { "source_kind", n => { SourceKind = n.GetStringValue(); } },
             };
@@ -178,7 +178,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditGrouping>("grouping", Grouping);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditLabelsProperty>("labels", Labels);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightPlatformAlertConfigurationEditScheduleRestriction>("schedule_restriction", ScheduleRestriction);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedWarehouseDestinationPlatformAlertConfigurationEditSourceConfig>("source_config", SourceConfig);
             writer.WriteStringValue("source_kind", SourceKind);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

@@ -62,12 +62,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Current sandbox run for this turn. Null when the run cannot be loaded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxRun? Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; AdditionalData?.Remove("run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SandboxRun? _explicitNullValueRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlaygroundTurnRun? Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; AdditionalData?.Remove("run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PlaygroundTurnRun? _explicitNullValueRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SandboxRun Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; AdditionalData?.Remove("run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SandboxRun _explicitNullValueRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PlaygroundTurnRun Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; AdditionalData?.Remove("run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PlaygroundTurnRun _explicitNullValueRun = default!;
 #endif
         /// <summary>Sandbox task id for this turn.</summary>
         public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; AdditionalData?.Remove("task_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
@@ -101,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "question", n => { Question = n.GetStringValue(); } },
-                { "run", n => { Run = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxRun>(global::Soenneker.PostHog.OpenApiClient.Models.SandboxRun.CreateFromDiscriminatorValue); } },
+                { "run", n => { Run = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlaygroundTurnRun>(global::Soenneker.PostHog.OpenApiClient.Models.PlaygroundTurnRun.CreateFromDiscriminatorValue); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
         }
@@ -116,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteIntValue("position", Position);
             writer.WriteStringValue("question", Question);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SandboxRun>("run", Run);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PlaygroundTurnRun>("run", Run);
             writer.WriteGuidValue("task_id", TaskId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

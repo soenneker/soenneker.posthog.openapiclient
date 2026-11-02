@@ -38,12 +38,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional passing rule. Omit or set null for neutral scores. Each scorer version keeps its own rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NumericScorePassingRule? PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.NumericScorePassingRule? _explicitNullValuePassingRule = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfigPassingRule? PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfigPassingRule? _explicitNullValuePassingRule = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NumericScorePassingRule PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.NumericScorePassingRule _explicitNullValuePassingRule = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfigPassingRule PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfigPassingRule _explicitNullValuePassingRule = default!;
 #endif
         /// <summary>Optional increment step for numeric input, for example 1 or 0.5.</summary>
         public double? Step { get => _explicitNullValueStep; set { _explicitNullValueStep = value; AdditionalData?.Remove("step"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step"); else _explicitNullProperties?.Remove("step"); } }
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "max", n => { Max = n.GetDoubleValue(); } },
                 { "min", n => { Min = n.GetDoubleValue(); } },
-                { "passing_rule", n => { PassingRule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericScorePassingRule>(global::Soenneker.PostHog.OpenApiClient.Models.NumericScorePassingRule.CreateFromDiscriminatorValue); } },
+                { "passing_rule", n => { PassingRule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfigPassingRule>(global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfigPassingRule.CreateFromDiscriminatorValue); } },
                 { "step", n => { Step = n.GetDoubleValue(); } },
             };
         }
@@ -88,7 +88,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDoubleValue("max", Max);
             writer.WriteDoubleValue("min", Min);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericScorePassingRule>("passing_rule", PassingRule);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.NumericScoreDefinitionConfigPassingRule>("passing_rule", PassingRule);
             writer.WriteDoubleValue("step", Step);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

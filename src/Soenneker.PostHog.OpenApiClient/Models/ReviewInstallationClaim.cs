@@ -34,10 +34,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who made the claim.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationClaimCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationClaimCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Id of the claim.</summary>
         public Guid? Id { get; private set; }
@@ -78,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "account_name", n => { AccountName = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationClaimCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationClaimCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationClaimScope>(); } },

@@ -38,12 +38,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The billing_period property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod? _explicitNullValueBillingPeriod = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod? BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod? _explicitNullValueBillingPeriod = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod _explicitNullValueBillingPeriod = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod BillingPeriod { get => _explicitNullValueBillingPeriod; set { _explicitNullValueBillingPeriod = value; AdditionalData?.Remove("billing_period"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("billing_period"); else _explicitNullProperties?.Remove("billing_period"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod _explicitNullValueBillingPeriod = default!;
 #endif
         /// <summary>The computed_at property</summary>
         public DateTimeOffset? ComputedAt { get => _explicitNullValueComputedAt; set { _explicitNullValueComputedAt = value; AdditionalData?.Remove("computed_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed_at"); else _explicitNullProperties?.Remove("computed_at"); } }
@@ -123,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod.CreateFromDiscriminatorValue); } },
+                { "billing_period", n => { BillingPeriod = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod>(global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod.CreateFromDiscriminatorValue); } },
                 { "computed_at", n => { ComputedAt = n.GetDateTimeOffsetValue(); } },
                 { "products", n => { Products = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast>(global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "projected_total_amount_usd", n => { ProjectedTotalAmountUsd = n.GetStringValue(); } },
@@ -139,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriod>("billing_period", BillingPeriod);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BillingForecastBillingPeriod>("billing_period", BillingPeriod);
             writer.WriteDateTimeOffsetValue("computed_at", ComputedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ProductForecast>("products", Products);
             writer.WriteStringValue("projected_total_amount_usd", ProjectedTotalAmountUsd);

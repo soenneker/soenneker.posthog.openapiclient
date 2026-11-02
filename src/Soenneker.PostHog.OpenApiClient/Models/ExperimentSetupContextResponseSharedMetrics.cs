@@ -29,12 +29,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Shared metrics the project reuses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetrics? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetrics? _explicitNullValueData = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionData? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionData? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetrics Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetrics _explicitNullValueData = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionData Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionData _explicitNullValueData = default!;
 #endif
         /// <summary>* `ok` - Ok* `skipped` - Skipped* `timed_out` - Timed Out* `error` - Error</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
@@ -64,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetrics.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionData>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionData.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
@@ -75,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetrics>("data", Data);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionData>("data", Data);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupSharedMetricsSectionStatus>("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

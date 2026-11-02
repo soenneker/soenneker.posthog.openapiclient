@@ -27,12 +27,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The bounds property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds? Bounds { get => _explicitNullValueBounds; set { _explicitNullValueBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounds"); else _explicitNullProperties?.Remove("bounds"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds? _explicitNullValueBounds = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdBounds? Bounds { get => _explicitNullValueBounds; set { _explicitNullValueBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounds"); else _explicitNullProperties?.Remove("bounds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdBounds? _explicitNullValueBounds = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds Bounds { get => _explicitNullValueBounds; set { _explicitNullValueBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounds"); else _explicitNullProperties?.Remove("bounds"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds _explicitNullValueBounds = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdBounds Bounds { get => _explicitNullValueBounds; set { _explicitNullValueBounds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounds"); else _explicitNullProperties?.Remove("bounds"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdBounds _explicitNullValueBounds = default!;
 #endif
         /// <summary>Whether bounds are compared as absolute values or as percentage change from the previous interval.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
@@ -55,7 +55,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bounds", n => { Bounds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds>(global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds.CreateFromDiscriminatorValue); } },
+                { "bounds", n => { Bounds = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdBounds>(global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdBounds.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdType>(); } },
             };
         }
@@ -66,7 +66,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightsThresholdBounds>("bounds", Bounds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdBounds>("bounds", Bounds);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightThresholdType>("type", Type);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

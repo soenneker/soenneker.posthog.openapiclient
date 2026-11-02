@@ -180,12 +180,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>PII masking configuration with TTL, threshold, and hash expression.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking? Masking { get => _explicitNullValueMasking; set { _explicitNullValueMasking = value; AdditionalData?.Remove("masking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masking"); else _explicitNullProperties?.Remove("masking"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking? _explicitNullValueMasking = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed? Masking { get => _explicitNullValueMasking; set { _explicitNullValueMasking = value; AdditionalData?.Remove("masking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masking"); else _explicitNullProperties?.Remove("masking"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed? _explicitNullValueMasking = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking Masking { get => _explicitNullValueMasking; set { _explicitNullValueMasking = value; AdditionalData?.Remove("masking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masking"); else _explicitNullProperties?.Remove("masking"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking _explicitNullValueMasking = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed Masking { get => _explicitNullValueMasking; set { _explicitNullValueMasking = value; AdditionalData?.Remove("masking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masking"); else _explicitNullProperties?.Remove("masking"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed _explicitNullValueMasking = default!;
 #endif
         /// <summary>Display name for the function.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -208,10 +208,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus Status { get; private set; }
 #endif
         /// <summary>The template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -297,10 +297,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionInputsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionInputsProperty.CreateFromDiscriminatorValue); } },
                 { "inputs_schema", n => { InputsSchema = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>(global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "mappings", n => { Mappings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>(global::Soenneker.PostHog.OpenApiClient.Models.Mappings.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "masking", n => { Masking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking.CreateFromDiscriminatorValue); } },
+                { "masking", n => { Masking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus.CreateFromDiscriminatorValue); } },
                 { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionTemplate.CreateFromDiscriminatorValue); } },
                 { "template_id", n => { TemplateId = n.GetStringValue(); } },
                 { "transpiled", n => { Transpiled = n.GetStringValue(); } },
@@ -328,7 +328,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedHogFunctionInputsProperty>("inputs", Inputs);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.InputsSchemaItem>("inputs_schema", InputsSchema);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.Mappings>("mappings", Mappings);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMasking>("masking", Masking);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMaskingComposed>("masking", Masking);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("template_id", TemplateId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionType>("type", Type);

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `flag_off_while_running` - Flag Off While Running* `variant_shipped_while_running` - Variant Shipped While Running* `flag_live_after_end` - Flag Live After End* `flag_live_before_launch` - Flag Live Before Launch* `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded* `multiple_variants_share` - Multiple Variants Share* `no_metric` - No Metric* `metric_event_not_ingested` - Metric Event Not Ingested* `metric_cannot_compile` - Metric Cannot Compile* `metric_calculation_failed` - Metric Calculation Failed* `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match* `exposure_filter_on_dynamic_cohort` - Exposure Filter On Dynamic Cohort* `exposure_filter_excludes_events` - Exposure Filter Excludes Events* `srm` - Sample Ratio Mismatch* `zero_exposures` - Zero Exposures* `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures* `forced_variant_release_condition` - Forced Variant Release Condition* `flag_variants_mismatch` - Flag Variants Mismatch* `split_changed_mid_run` - Split Changed Mid Run* `bucketing_changed_mid_run` - Bucketing Changed Mid Run* `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run* `new_flag_no_traffic` - New Flag No Traffic* `early_significance` - Early Significance* `metrics_not_matured` - Metrics Not Matured</summary>
+    /// <summary>* `flag_off_while_running` - Flag Off While Running* `variant_shipped_while_running` - Variant Shipped While Running* `flag_live_after_end` - Flag Live After End* `flag_live_before_launch` - Flag Live Before Launch* `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded* `multiple_variants_share` - Multiple Variants Share* `no_metric` - No Metric* `metric_event_not_ingested` - Metric Event Not Ingested* `metric_cannot_compile` - Metric Cannot Compile* `metric_calculation_failed` - Metric Calculation Failed* `metric_all_zero` - Metric All Zero* `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match* `exposure_filter_on_dynamic_cohort` - Exposure Filter On Dynamic Cohort* `exposure_filter_excludes_events` - Exposure Filter Excludes Events* `srm` - Sample Ratio Mismatch* `zero_exposures` - Zero Exposures* `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures* `forced_variant_release_condition` - Forced Variant Release Condition* `flag_variants_mismatch` - Flag Variants Mismatch* `split_changed_mid_run` - Split Changed Mid Run* `bucketing_changed_mid_run` - Bucketing Changed Mid Run* `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run* `new_flag_no_traffic` - New Flag No Traffic* `early_significance` - Early Significance* `metrics_not_matured` - Metrics Not Matured</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ExperimentHealthFindingCode
     {
@@ -46,6 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "metric_calculation_failed")]
         #pragma warning disable CS1591
         MetricCalculationFailed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "metric_all_zero")]
+        #pragma warning disable CS1591
+        MetricAllZero,
         #pragma warning restore CS1591
         [EnumMember(Value = "exposure_criteria_cannot_match")]
         #pragma warning disable CS1591

@@ -49,12 +49,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The signal the number comes from, if one does.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalView? Signal { get => _explicitNullValueSignal; set { _explicitNullValueSignal = value; AdditionalData?.Remove("signal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal"); else _explicitNullProperties?.Remove("signal"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalView? _explicitNullValueSignal = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberSignal? Signal { get => _explicitNullValueSignal; set { _explicitNullValueSignal = value; AdditionalData?.Remove("signal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal"); else _explicitNullProperties?.Remove("signal"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberSignal? _explicitNullValueSignal = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalView Signal { get => _explicitNullValueSignal; set { _explicitNullValueSignal = value; AdditionalData?.Remove("signal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal"); else _explicitNullProperties?.Remove("signal"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalView _explicitNullValueSignal = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberSignal Signal { get => _explicitNullValueSignal; set { _explicitNullValueSignal = value; AdditionalData?.Remove("signal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal"); else _explicitNullProperties?.Remove("signal"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberSignal _explicitNullValueSignal = default!;
 #endif
         /// <summary>The number as shown, such as &apos;2&apos; or &apos;1 hour&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -79,12 +79,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How the number is worked out, if it is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ImpactWorking? Working { get => _explicitNullValueWorking; set { _explicitNullValueWorking = value; AdditionalData?.Remove("working"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("working"); else _explicitNullProperties?.Remove("working"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ImpactWorking? _explicitNullValueWorking = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberWorking? Working { get => _explicitNullValueWorking; set { _explicitNullValueWorking = value; AdditionalData?.Remove("working"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("working"); else _explicitNullProperties?.Remove("working"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberWorking? _explicitNullValueWorking = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ImpactWorking Working { get => _explicitNullValueWorking; set { _explicitNullValueWorking = value; AdditionalData?.Remove("working"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("working"); else _explicitNullProperties?.Remove("working"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ImpactWorking _explicitNullValueWorking = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberWorking Working { get => _explicitNullValueWorking; set { _explicitNullValueWorking = value; AdditionalData?.Remove("working"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("working"); else _explicitNullProperties?.Remove("working"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberWorking _explicitNullValueWorking = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumber"/> and sets the default values.
@@ -113,10 +113,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "key", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberKey>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKey = default; _explicitNullProperties?.Remove("key"); AdditionalData["key"] = unknown; } else { Key = parsed; AdditionalData.Remove("key"); } } },
                 { "sentence", n => { Sentence = n.GetStringValue(); } },
-                { "signal", n => { Signal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalView>(global::Soenneker.PostHog.OpenApiClient.Models.SignalView.CreateFromDiscriminatorValue); } },
+                { "signal", n => { Signal = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberSignal>(global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberSignal.CreateFromDiscriminatorValue); } },
                 { "value", n => { Value = n.GetStringValue(); } },
                 { "values", n => { Values = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "working", n => { Working = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ImpactWorking>(global::Soenneker.PostHog.OpenApiClient.Models.ImpactWorking.CreateFromDiscriminatorValue); } },
+                { "working", n => { Working = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberWorking>(global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberWorking.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -128,10 +128,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberKey>("key", Key);
             writer.WriteStringValue("sentence", Sentence);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalView>("signal", Signal);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberSignal>("signal", Signal);
             writer.WriteStringValue("value", Value);
             writer.WriteCollectionOfPrimitiveValues<string>("values", Values);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ImpactWorking>("working", Working);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ImpactNumberWorking>("working", Working);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -7,57 +7,39 @@ using System.IO;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchema"/>
-    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class SurveyQuestionInputSchema : IComposedTypeWrapper, IParsable
-    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
-        // Preserve ambiguous union payloads without inventing a discriminator.
-        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    #pragma warning disable CS1591
+    public partial class SurveyQuestionInputSchema : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchema"/></summary>
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+        }
+
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchema? SurveyLinkQuestionSchema { get; set; }
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string? _explicitNullValueType = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchema SurveyLinkQuestionSchema { get; set; }
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string _explicitNullValueType = default!;
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema? SurveyMultipleChoiceQuestionSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema SurveyMultipleChoiceQuestionSchema { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchema? SurveyOpenQuestionSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchema SurveyOpenQuestionSchema { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema? SurveyRatingQuestionSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema SurveyRatingQuestionSchema { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchema? SurveySingleChoiceQuestionSchema { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchema SurveySingleChoiceQuestionSchema { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema"/> and sets the default values.
+        /// </summary>
+        public SurveyQuestionInputSchema()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -66,49 +48,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema();
-            if("SurveyLinkQuestionSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            return mappingValue switch
             {
-                
-            }
-            else if("SurveyMultipleChoiceQuestionSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("SurveyOpenQuestionSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("SurveyRatingQuestionSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("SurveySingleChoiceQuestionSchema".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            
-            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("question") && shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("id") || (((shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "open".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("question") || (((shapeMembers1["question"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("description") || (((shapeMembers1["description"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("descriptionContentType") || (((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "html".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "text".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("optional") || (((shapeMembers1["optional"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("buttonText") || (((shapeMembers1["buttonText"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("translations") || (((shapeMembers1["translations"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("validation") || ((((shapeMembers1["validation"] == null || shapeMembers1["validation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["validation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))))))))();
-            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("link") && shapeMembers1.ContainsKey("question") && shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("id") || (((shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "link".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("question") || (((shapeMembers1["question"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("description") || (((shapeMembers1["description"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("descriptionContentType") || (((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "html".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "text".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("optional") || (((shapeMembers1["optional"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("buttonText") || (((shapeMembers1["buttonText"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("translations") || (((shapeMembers1["translations"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("link") || (((shapeMembers1["link"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
-            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("question") && shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("id") || (((shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "rating".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("question") || (((shapeMembers1["question"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("description") || (((shapeMembers1["description"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("descriptionContentType") || (((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "html".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "text".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("optional") || (((shapeMembers1["optional"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("buttonText") || (((shapeMembers1["buttonText"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("translations") || (((shapeMembers1["translations"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("display") || (((shapeMembers1["display"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["display"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal21 && "number".Equals(literal21.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["display"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal22 && "emoji".Equals(literal22.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("scale") || ((((shapeMembers1["scale"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["scale"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral25 && integral25.GetValue() % 1 == 0) || (shapeMembers1["scale"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral26 && integral26.GetValue() % 1 == 0) || (shapeMembers1["scale"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral27 && integral27.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("lowerBoundLabel") || (((shapeMembers1["lowerBoundLabel"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("upperBoundLabel") || (((shapeMembers1["upperBoundLabel"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("isNpsQuestion") || (((shapeMembers1["isNpsQuestion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))))))))();
-            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("choices") && shapeMembers1.ContainsKey("question") && shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("id") || (((shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "single_choice".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("question") || (((shapeMembers1["question"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("description") || (((shapeMembers1["description"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("descriptionContentType") || (((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "html".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "text".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("optional") || (((shapeMembers1["optional"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("buttonText") || (((shapeMembers1["buttonText"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("translations") || (((shapeMembers1["translations"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("choices") || (((shapeMembers1["choices"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("shuffleOptions") || (((shapeMembers1["shuffleOptions"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("hasOpenChoice") || (((shapeMembers1["hasOpenChoice"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))))))))();
-            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("choices") && shapeMembers1.ContainsKey("question") && shapeMembers1.ContainsKey("type") && (!shapeMembers1.ContainsKey("id") || (((shapeMembers1["id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal4 && "multiple_choice".Equals(literal4.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("question") || (((shapeMembers1["question"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("description") || (((shapeMembers1["description"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("descriptionContentType") || (((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "html".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["descriptionContentType"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "text".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("optional") || (((shapeMembers1["optional"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("buttonText") || (((shapeMembers1["buttonText"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("translations") || (((shapeMembers1["translations"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("choices") || (((shapeMembers1["choices"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("shuffleOptions") || (((shapeMembers1["shuffleOptions"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers1.ContainsKey("hasOpenChoice") || (((shapeMembers1["hasOpenChoice"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))))))))();
-            int matchingUnionBranches = 0;
-            if (matchesUnionBranch0) matchingUnionBranches++;
-            if (matchesUnionBranch1) matchingUnionBranches++;
-            if (matchesUnionBranch2) matchingUnionBranches++;
-            if (matchesUnionBranch3) matchingUnionBranches++;
-            if (matchesUnionBranch4) matchingUnionBranches++;
-            bool noSelectedUnionBranch = result.SurveyLinkQuestionSchema == null && result.SurveyMultipleChoiceQuestionSchema == null && result.SurveyOpenQuestionSchema == null && result.SurveyRatingQuestionSchema == null && result.SurveySingleChoiceQuestionSchema == null;
-            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.SurveyOpenQuestionSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.SurveyLinkQuestionSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.SurveyRatingQuestionSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch3 && matchingUnionBranches == 1) result.SurveySingleChoiceQuestionSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchema(), parseNode);
-            if (noSelectedUnionBranch && matchesUnionBranch4 && matchingUnionBranches == 1) result.SurveyMultipleChoiceQuestionSchema = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema(), parseNode);
-            if (result.SurveyLinkQuestionSchema == null && result.SurveyMultipleChoiceQuestionSchema == null && result.SurveyOpenQuestionSchema == null && result.SurveyRatingQuestionSchema == null && result.SurveySingleChoiceQuestionSchema == null) result.UnrecognizedValue = unionPayload;
-return result;
+                "link" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchemaSurveyLinkQuestionSchema(),
+                "multiple_choice" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchemaSurveyMultipleChoiceQuestionSchema(),
+                "open" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchemaSurveyOpenQuestionSchema(),
+                "rating" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchemaSurveyRatingQuestionSchema(),
+                "single_choice" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchemaSurveySingleChoiceQuestionSchema(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyQuestionInputSchema(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -116,29 +65,10 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
-
-            if(SurveyLinkQuestionSchema != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return SurveyLinkQuestionSchema.GetFieldDeserializers();
-            }
-            else if(SurveyMultipleChoiceQuestionSchema != null)
-            {
-                return SurveyMultipleChoiceQuestionSchema.GetFieldDeserializers();
-            }
-            else if(SurveyOpenQuestionSchema != null)
-            {
-                return SurveyOpenQuestionSchema.GetFieldDeserializers();
-            }
-            else if(SurveyRatingQuestionSchema != null)
-            {
-                return SurveyRatingQuestionSchema.GetFieldDeserializers();
-            }
-            else if(SurveySingleChoiceQuestionSchema != null)
-            {
-                return SurveySingleChoiceQuestionSchema.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "type", n => { Type = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -146,46 +76,10 @@ return result;
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (SurveyLinkQuestionSchema == null && SurveyMultipleChoiceQuestionSchema == null && SurveyOpenQuestionSchema == null && SurveyRatingQuestionSchema == null && SurveySingleChoiceQuestionSchema == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            int selectedUnionBranches = 0;
-            if (SurveyLinkQuestionSchema != null) selectedUnionBranches++;
-            if (SurveyMultipleChoiceQuestionSchema != null) selectedUnionBranches++;
-            if (SurveyOpenQuestionSchema != null) selectedUnionBranches++;
-            if (SurveyRatingQuestionSchema != null) selectedUnionBranches++;
-            if (SurveySingleChoiceQuestionSchema != null) selectedUnionBranches++;
-            if (SurveyLinkQuestionSchema != null && selectedUnionBranches == 1) { if (SurveyLinkQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SurveyLinkQuestionSchema); return; }
-            if (SurveyMultipleChoiceQuestionSchema != null && selectedUnionBranches == 1) { if (SurveyMultipleChoiceQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SurveyMultipleChoiceQuestionSchema); return; }
-            if (SurveyOpenQuestionSchema != null && selectedUnionBranches == 1) { if (SurveyOpenQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SurveyOpenQuestionSchema); return; }
-            if (SurveyRatingQuestionSchema != null && selectedUnionBranches == 1) { if (SurveyRatingQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SurveyRatingQuestionSchema); return; }
-            if (SurveySingleChoiceQuestionSchema != null && selectedUnionBranches == 1) { if (SurveySingleChoiceQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, SurveySingleChoiceQuestionSchema); return; }
-
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(SurveyLinkQuestionSchema != null)
-            {
-                if (SurveyLinkQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyLinkQuestionSchema>(null, SurveyLinkQuestionSchema);
-            }
-            else if(SurveyMultipleChoiceQuestionSchema != null)
-            {
-                if (SurveyMultipleChoiceQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyMultipleChoiceQuestionSchema>(null, SurveyMultipleChoiceQuestionSchema);
-            }
-            else if(SurveyOpenQuestionSchema != null)
-            {
-                if (SurveyOpenQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyOpenQuestionSchema>(null, SurveyOpenQuestionSchema);
-            }
-            else if(SurveyRatingQuestionSchema != null)
-            {
-                if (SurveyRatingQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyRatingQuestionSchema>(null, SurveyRatingQuestionSchema);
-            }
-            else if(SurveySingleChoiceQuestionSchema != null)
-            {
-                if (SurveySingleChoiceQuestionSchema is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveySingleChoiceQuestionSchema>(null, SurveySingleChoiceQuestionSchema);
-            }
+            writer.WriteStringValue("type", Type);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

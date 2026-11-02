@@ -46,12 +46,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Another project that takes all repositories of the installation, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? AllTakenByProject { get => _explicitNullValueAllTakenByProject; set { _explicitNullValueAllTakenByProject = value; AdditionalData?.Remove("all_taken_by_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all_taken_by_project"); else _explicitNullProperties?.Remove("all_taken_by_project"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef? _explicitNullValueAllTakenByProject = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationAllTakenByProject? AllTakenByProject { get => _explicitNullValueAllTakenByProject; set { _explicitNullValueAllTakenByProject = value; AdditionalData?.Remove("all_taken_by_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all_taken_by_project"); else _explicitNullProperties?.Remove("all_taken_by_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationAllTakenByProject? _explicitNullValueAllTakenByProject = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef AllTakenByProject { get => _explicitNullValueAllTakenByProject; set { _explicitNullValueAllTakenByProject = value; AdditionalData?.Remove("all_taken_by_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all_taken_by_project"); else _explicitNullProperties?.Remove("all_taken_by_project"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef _explicitNullValueAllTakenByProject = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationAllTakenByProject AllTakenByProject { get => _explicitNullValueAllTakenByProject; set { _explicitNullValueAllTakenByProject = value; AdditionalData?.Remove("all_taken_by_project"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all_taken_by_project"); else _explicitNullProperties?.Remove("all_taken_by_project"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationAllTakenByProject _explicitNullValueAllTakenByProject = default!;
 #endif
         /// <summary>Id of this project&apos;s claim. Null when the project reviews nothing there.</summary>
         public Guid? ClaimId { get => _explicitNullValueClaimId; set { _explicitNullValueClaimId = value; AdditionalData?.Remove("claim_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_id"); else _explicitNullProperties?.Remove("claim_id"); } }
@@ -59,12 +59,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who connected the installation to this project. Automatic Standard reviews of bot pull requests run as this user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ConnectedBy { get => _explicitNullValueConnectedBy; set { _explicitNullValueConnectedBy = value; AdditionalData?.Remove("connected_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_by"); else _explicitNullProperties?.Remove("connected_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? _explicitNullValueConnectedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationConnectedBy? ConnectedBy { get => _explicitNullValueConnectedBy; set { _explicitNullValueConnectedBy = value; AdditionalData?.Remove("connected_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_by"); else _explicitNullProperties?.Remove("connected_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationConnectedBy? _explicitNullValueConnectedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ConnectedBy { get => _explicitNullValueConnectedBy; set { _explicitNullValueConnectedBy = value; AdditionalData?.Remove("connected_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_by"); else _explicitNullProperties?.Remove("connected_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasic _explicitNullValueConnectedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationConnectedBy ConnectedBy { get => _explicitNullValueConnectedBy; set { _explicitNullValueConnectedBy = value; AdditionalData?.Remove("connected_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connected_by"); else _explicitNullProperties?.Remove("connected_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationConnectedBy _explicitNullValueConnectedBy = default!;
 #endif
         /// <summary>The GitHub App installation id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -112,9 +112,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account_name", n => { AccountName = n.GetStringValue(); } },
-                { "all_taken_by_project", n => { AllTakenByProject = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef.CreateFromDiscriminatorValue); } },
+                { "all_taken_by_project", n => { AllTakenByProject = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationAllTakenByProject>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationAllTakenByProject.CreateFromDiscriminatorValue); } },
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
-                { "connected_by", n => { ConnectedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "connected_by", n => { ConnectedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationConnectedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationConnectedBy.CreateFromDiscriminatorValue); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "scope", n => { Scope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope.CreateFromDiscriminatorValue); } },
             };
@@ -127,9 +127,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account_name", AccountName);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewProjectRef>("all_taken_by_project", AllTakenByProject);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationAllTakenByProject>("all_taken_by_project", AllTakenByProject);
             writer.WriteGuidValue("claim_id", ClaimId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>("connected_by", ConnectedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationConnectedBy>("connected_by", ConnectedBy);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewInstallationScope>("scope", Scope);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

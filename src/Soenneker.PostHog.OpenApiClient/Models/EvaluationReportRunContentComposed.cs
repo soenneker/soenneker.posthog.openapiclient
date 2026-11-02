@@ -53,12 +53,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Structured metrics for completed reports, or null when metrics were temporarily unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; AdditionalData?.Remove("metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics? _explicitNullValueMetrics = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics? Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; AdditionalData?.Remove("metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics? _explicitNullValueMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; AdditionalData?.Remove("metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics _explicitNullValueMetrics = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics Metrics { get => _explicitNullValueMetrics; set { _explicitNullValueMetrics = value; AdditionalData?.Remove("metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metrics"); else _explicitNullProperties?.Remove("metrics"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics _explicitNullValueMetrics = default!;
 #endif
         /// <summary>Ordered narrative sections in the report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "citations", n => { Citations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "evaluation_target", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEvaluationTarget = default; _explicitNullProperties?.Remove("evaluation_target"); AdditionalData["evaluation_target"] = unknown; } else { EvaluationTarget = parsed; AdditionalData.Remove("evaluation_target"); } } },
                 { "generation_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueGenerationStatus = default; _explicitNullProperties?.Remove("generation_status"); AdditionalData["generation_status"] = unknown; } else { GenerationStatus = parsed; AdditionalData.Remove("generation_status"); } } },
-                { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics.CreateFromDiscriminatorValue); } },
+                { "metrics", n => { Metrics = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics.CreateFromDiscriminatorValue); } },
                 { "sections", n => { Sections = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection>(global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
@@ -123,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportCitation>("citations", Citations);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentEvaluationTarget>("evaluation_target", EvaluationTarget);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentGenerationStatus>("generation_status", GenerationStatus);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportMetrics>("metrics", Metrics);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportRunContentMetrics>("metrics", Metrics);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationReportSection>("sections", Sections);
             writer.WriteStringValue("title", Title);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

@@ -96,10 +96,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The data-warehouse view-sync binding feeding this property, or null when values are set manually.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource? Source { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionSource? Source { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource Source { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionSource Source { get; private set; }
 #endif
         /// <summary>* `account` - account* `person` - person* `group` - group</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionTargetType? TargetType { get => _explicitNullValueTargetType; set { _explicitNullValueTargetType = value; AdditionalData?.Remove("target_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_type"); else _explicitNullProperties?.Remove("target_type"); } }
@@ -144,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyOption.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "references", n => { References = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyReference>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyReference.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertySource.CreateFromDiscriminatorValue); } },
+                { "source", n => { Source = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionSource>(global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionSource.CreateFromDiscriminatorValue); } },
                 { "target_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomPropertyDefinitionTargetType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTargetType = default; _explicitNullProperties?.Remove("target_type"); AdditionalData["target_type"] = unknown; } else { TargetType = parsed; AdditionalData.Remove("target_type"); } } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };

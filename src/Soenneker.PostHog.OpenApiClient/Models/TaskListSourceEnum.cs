@@ -3,13 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `autoresearch` - autoresearch* `error_tracking` - error_tracking* `eval_clusters` - eval_clusters* `experiments` - experiments* `hogdesk` - hogdesk* `image_builder` - image_builder* `knowledge_writer` - knowledge_writer* `loop` - loop* `mcp_analytics` - mcp_analytics* `onboarding` - onboarding* `posthog_ai` - posthog_ai* `posthog_desktop` - posthog_desktop* `posthog_mobile` - posthog_mobile* `posthog_web` - posthog_web* `review_hog` - review_hog* `scout_suggestions` - scout_suggestions* `session_summaries` - session_summaries* `signal_report` - signal_report* `signals_chat` - signals_chat* `signals_scout` - signals_scout* `slack` - slack* `space_setup` - space_setup* `support_queue` - support_queue* `support_reply` - support_reply* `task_analysis` - task_analysis* `workflow` - workflow</summary>
+    /// <summary>* `autoresearch` - autoresearch* `context_layer` - context_layer* `error_tracking` - error_tracking* `eval_clusters` - eval_clusters* `experiments` - experiments* `hogdesk` - hogdesk* `image_builder` - image_builder* `knowledge_writer` - knowledge_writer* `loop` - loop* `mcp_analytics` - mcp_analytics* `onboarding` - onboarding* `posthog_ai` - posthog_ai* `posthog_desktop` - posthog_desktop* `posthog_mobile` - posthog_mobile* `posthog_web` - posthog_web* `review_hog` - review_hog* `scout_suggestions` - scout_suggestions* `session_summaries` - session_summaries* `signal_report` - signal_report* `signals_chat` - signals_chat* `signals_scout` - signals_scout* `slack` - slack* `space_setup` - space_setup* `support_queue` - support_queue* `support_reply` - support_reply* `task_analysis` - task_analysis* `workflow` - workflow</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum TaskListSourceEnum
     {
         [EnumMember(Value = "autoresearch")]
         #pragma warning disable CS1591
         Autoresearch,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "context_layer")]
+        #pragma warning disable CS1591
+        ContextLayer,
         #pragma warning restore CS1591
         [EnumMember(Value = "error_tracking")]
         #pragma warning disable CS1591

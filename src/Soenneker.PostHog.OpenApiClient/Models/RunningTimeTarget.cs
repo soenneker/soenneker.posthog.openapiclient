@@ -39,12 +39,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>What the experiment can detect over time, on the same curve the target is sized on. Null in manual mode, before launch, when the current results cover less than 0.1 days, and when no result can size the target.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook? Outlook { get => _explicitNullValueOutlook; set { _explicitNullValueOutlook = value; AdditionalData?.Remove("outlook"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outlook"); else _explicitNullProperties?.Remove("outlook"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook? _explicitNullValueOutlook = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTargetOutlook? Outlook { get => _explicitNullValueOutlook; set { _explicitNullValueOutlook = value; AdditionalData?.Remove("outlook"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outlook"); else _explicitNullProperties?.Remove("outlook"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTargetOutlook? _explicitNullValueOutlook = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook Outlook { get => _explicitNullValueOutlook; set { _explicitNullValueOutlook = value; AdditionalData?.Remove("outlook"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outlook"); else _explicitNullProperties?.Remove("outlook"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook _explicitNullValueOutlook = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTargetOutlook Outlook { get => _explicitNullValueOutlook; set { _explicitNullValueOutlook = value; AdditionalData?.Remove("outlook"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outlook"); else _explicitNullProperties?.Remove("outlook"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTargetOutlook _explicitNullValueOutlook = default!;
 #endif
         /// <summary>Exposures needed across the analyzed variants, so that the comparison of each variant with the control can detect the minimum detectable effect at the analysis&apos;s confidence level and 80% power. In manual running time mode, the saved target. Otherwise sized from the first primary metric&apos;s current result, with the variance the analysis uses and the flag&apos;s traffic split. Null when no result can size it yet. The variances come from the result and don&apos;t depend on the effect, so the sample scales with 1 / effect²: the target for another effect is recommended_sample_size × (minimum_detectable_effect / effect)².</summary>
         public int? RecommendedSampleSize { get => _explicitNullValueRecommendedSampleSize; set { _explicitNullValueRecommendedSampleSize = value; AdditionalData?.Remove("recommended_sample_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_sample_size"); else _explicitNullProperties?.Remove("recommended_sample_size"); } }
@@ -76,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "current_sample_size", n => { CurrentSampleSize = n.GetIntValue(); } },
                 { "minimum_detectable_effect", n => { MinimumDetectableEffect = n.GetDoubleValue(); } },
-                { "outlook", n => { Outlook = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook.CreateFromDiscriminatorValue); } },
+                { "outlook", n => { Outlook = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTargetOutlook>(global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTargetOutlook.CreateFromDiscriminatorValue); } },
                 { "recommended_sample_size", n => { RecommendedSampleSize = n.GetIntValue(); } },
             };
         }
@@ -89,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("current_sample_size", CurrentSampleSize);
             writer.WriteDoubleValue("minimum_detectable_effect", MinimumDetectableEffect);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeOutlook>("outlook", Outlook);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RunningTimeTargetOutlook>("outlook", Outlook);
             writer.WriteIntValue("recommended_sample_size", RecommendedSampleSize);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

@@ -117,12 +117,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? _explicitNullValueModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers? _explicitNullValueModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers _explicitNullValueModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers _explicitNullValueModifiers = default!;
 #endif
         /// <summary>The offset property</summary>
         public int? Offset { get => _explicitNullValueOffset; set { _explicitNullValueOffset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("offset"); else _explicitNullProperties?.Remove("offset"); } }
@@ -130,12 +130,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Query status indicates whether next to the provided data, a query is still running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus? QueryStatus { get => _explicitNullValueQueryStatus; set { _explicitNullValueQueryStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_status"); else _explicitNullProperties?.Remove("query_status"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus? _explicitNullValueQueryStatus = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus? QueryStatus { get => _explicitNullValueQueryStatus; set { _explicitNullValueQueryStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_status"); else _explicitNullProperties?.Remove("query_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus? _explicitNullValueQueryStatus = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus QueryStatus { get => _explicitNullValueQueryStatus; set { _explicitNullValueQueryStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_status"); else _explicitNullProperties?.Remove("query_status"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus _explicitNullValueQueryStatus = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus QueryStatus { get => _explicitNullValueQueryStatus; set { _explicitNullValueQueryStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_status"); else _explicitNullProperties?.Remove("query_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus _explicitNullValueQueryStatus = default!;
 #endif
         /// <summary>The relationshipDefinitions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -150,22 +150,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The resolved previous/comparison period date range, when comparing against another period</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? ResolvedCompareDateRange { get => _explicitNullValueResolvedCompareDateRange; set { _explicitNullValueResolvedCompareDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_compare_date_range"); else _explicitNullProperties?.Remove("resolved_compare_date_range"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? _explicitNullValueResolvedCompareDateRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedCompareDateRange? ResolvedCompareDateRange { get => _explicitNullValueResolvedCompareDateRange; set { _explicitNullValueResolvedCompareDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_compare_date_range"); else _explicitNullProperties?.Remove("resolved_compare_date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedCompareDateRange? _explicitNullValueResolvedCompareDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse ResolvedCompareDateRange { get => _explicitNullValueResolvedCompareDateRange; set { _explicitNullValueResolvedCompareDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_compare_date_range"); else _explicitNullProperties?.Remove("resolved_compare_date_range"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse _explicitNullValueResolvedCompareDateRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedCompareDateRange ResolvedCompareDateRange { get => _explicitNullValueResolvedCompareDateRange; set { _explicitNullValueResolvedCompareDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_compare_date_range"); else _explicitNullProperties?.Remove("resolved_compare_date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedCompareDateRange _explicitNullValueResolvedCompareDateRange = default!;
 #endif
         /// <summary>The date range used for the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? ResolvedDateRange { get => _explicitNullValueResolvedDateRange; set { _explicitNullValueResolvedDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_date_range"); else _explicitNullProperties?.Remove("resolved_date_range"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse? _explicitNullValueResolvedDateRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedDateRange? ResolvedDateRange { get => _explicitNullValueResolvedDateRange; set { _explicitNullValueResolvedDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_date_range"); else _explicitNullProperties?.Remove("resolved_date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedDateRange? _explicitNullValueResolvedDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse ResolvedDateRange { get => _explicitNullValueResolvedDateRange; set { _explicitNullValueResolvedDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_date_range"); else _explicitNullProperties?.Remove("resolved_date_range"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse _explicitNullValueResolvedDateRange = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedDateRange ResolvedDateRange { get => _explicitNullValueResolvedDateRange; set { _explicitNullValueResolvedDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_date_range"); else _explicitNullProperties?.Remove("resolved_date_range"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedDateRange _explicitNullValueResolvedDateRange = default!;
 #endif
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -233,12 +233,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryResponseKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "metricsResults", n => { MetricsResults = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
-                { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus.CreateFromDiscriminatorValue); } },
+                { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus.CreateFromDiscriminatorValue); } },
                 { "relationshipDefinitions", n => { RelationshipDefinitions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
-                { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse.CreateFromDiscriminatorValue); } },
+                { "resolved_compare_date_range", n => { ResolvedCompareDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedCompareDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedCompareDateRange.CreateFromDiscriminatorValue); } },
+                { "resolved_date_range", n => { ResolvedDateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedDateRange.CreateFromDiscriminatorValue); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRow>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRow.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "timings", n => { Timings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>(global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "used_data_warehouse_sources", n => { UsedDataWarehouseSources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -260,12 +260,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryResponseKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfPrimitiveValues<double?>("metricsResults", MetricsResults);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QueryStatus>("query_status", QueryStatus);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus>("query_status", QueryStatus);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipDefinition>("relationshipDefinitions", RelationshipDefinitions);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_compare_date_range", ResolvedCompareDateRange);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ResolvedDateRangeResponse>("resolved_date_range", ResolvedDateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedCompareDateRange>("resolved_compare_date_range", ResolvedCompareDateRange);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseResolvedDateRange>("resolved_date_range", ResolvedDateRange);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRow>("results", Results);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.QueryTiming>("timings", Timings);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSourceUsage>("used_data_warehouse_sources", UsedDataWarehouseSources);

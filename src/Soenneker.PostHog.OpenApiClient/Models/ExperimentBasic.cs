@@ -154,22 +154,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag&apos;s current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters? Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; AdditionalData?.Remove("parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters? _explicitNullValueParameters = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters? Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; AdditionalData?.Remove("parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters? _explicitNullValueParameters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; AdditionalData?.Remove("parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters _explicitNullValueParameters = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters Parameters { get => _explicitNullValueParameters; set { _explicitNullValueParameters = value; AdditionalData?.Remove("parameters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("parameters"); else _explicitNullProperties?.Remove("parameters"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters _explicitNullValueParameters = default!;
 #endif
         /// <summary>Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation? RunningTimeCalculation { get => _explicitNullValueRunningTimeCalculation; set { _explicitNullValueRunningTimeCalculation = value; AdditionalData?.Remove("running_time_calculation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("running_time_calculation"); else _explicitNullProperties?.Remove("running_time_calculation"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation? _explicitNullValueRunningTimeCalculation = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation? RunningTimeCalculation { get => _explicitNullValueRunningTimeCalculation; set { _explicitNullValueRunningTimeCalculation = value; AdditionalData?.Remove("running_time_calculation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("running_time_calculation"); else _explicitNullProperties?.Remove("running_time_calculation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation? _explicitNullValueRunningTimeCalculation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation RunningTimeCalculation { get => _explicitNullValueRunningTimeCalculation; set { _explicitNullValueRunningTimeCalculation = value; AdditionalData?.Remove("running_time_calculation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("running_time_calculation"); else _explicitNullProperties?.Remove("running_time_calculation"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation _explicitNullValueRunningTimeCalculation = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation RunningTimeCalculation { get => _explicitNullValueRunningTimeCalculation; set { _explicitNullValueRunningTimeCalculation = value; AdditionalData?.Remove("running_time_calculation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("running_time_calculation"); else _explicitNullProperties?.Remove("running_time_calculation"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation _explicitNullValueRunningTimeCalculation = default!;
 #endif
         /// <summary>The start_date property</summary>
         public DateTimeOffset? StartDate { get => _explicitNullValueStartDate; set { _explicitNullValueStartDate = value; AdditionalData?.Remove("start_date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start_date"); else _explicitNullProperties?.Remove("start_date"); } }
@@ -248,8 +248,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "is_legacy", n => { IsLegacy = n.GetBoolValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters.CreateFromDiscriminatorValue); } },
-                { "running_time_calculation", n => { RunningTimeCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation.CreateFromDiscriminatorValue); } },
+                { "parameters", n => { Parameters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters.CreateFromDiscriminatorValue); } },
+                { "running_time_calculation", n => { RunningTimeCalculation = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation.CreateFromDiscriminatorValue); } },
                 { "start_date", n => { StartDate = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicStatus>(); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -274,8 +274,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("excluded_variants", ExcludedVariants);
             writer.WriteStringValue("feature_flag_key", FeatureFlagKey);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentParameters>("parameters", Parameters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentRunningTimeCalculation>("running_time_calculation", RunningTimeCalculation);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicParameters>("parameters", Parameters);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicRunningTimeCalculation>("running_time_calculation", RunningTimeCalculation);
             writer.WriteDateTimeOffsetValue("start_date", StartDate);
             writer.WriteCollectionOfPrimitiveValues<string>("tags", Tags);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentBasicType>("type", Type);

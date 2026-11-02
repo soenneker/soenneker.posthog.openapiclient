@@ -17,34 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("index") is null) { _explicitNullValueIndex = default!; _explicitNullProperties?.Remove("index"); }
-            else if (parseNode.GetChildNode("index") is { } nullNodeIndex && nullNodeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Index = null;
-            if (parseNode.GetChildNode("responseValues") is null) { _explicitNullValueResponseValues = default!; _explicitNullProperties?.Remove("responseValues"); }
-            else if (parseNode.GetChildNode("responseValues") is { } nullNodeResponseValues && nullNodeResponseValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResponseValues = null;
             if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
             else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>0-based index of the next question.</summary>
-        public int? Index { get => _explicitNullValueIndex; set { _explicitNullValueIndex = value; AdditionalData?.Remove("index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("index"); else _explicitNullProperties?.Remove("index"); } }
-        private int? _explicitNullValueIndex = default!;
-        /// <summary>Response-based branching map. Values can be a question index or &apos;end&apos;.</summary>
+        /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty? ResponseValues { get => _explicitNullValueResponseValues; set { _explicitNullValueResponseValues = value; AdditionalData?.Remove("responseValues"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responseValues"); else _explicitNullProperties?.Remove("responseValues"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty? _explicitNullValueResponseValues = default!;
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty ResponseValues { get => _explicitNullValueResponseValues; set { _explicitNullValueResponseValues = value; AdditionalData?.Remove("responseValues"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responseValues"); else _explicitNullProperties?.Remove("responseValues"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty _explicitNullValueResponseValues = default!;
-#endif
-        /// <summary>* `next_question` - next_question</summary>
 #nullable enable
         public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private string? _explicitNullValueType = default!;
 #nullable restore
+#else
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        private string _explicitNullValueType = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema"/> and sets the default values.
         /// </summary>
@@ -60,7 +48,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema(), parseNode);
+            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            return mappingValue switch
+            {
+                "end" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchemaSurveyEndBranching(),
+                "next_question" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchemaSurveyNextQuestionBranching(),
+                "response_based" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchemaSurveyResponseBasedBranching(),
+                "specific_question" => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchemaSurveySpecificQuestionBranching(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.SurveyBranchingSchema(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,8 +66,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "index", n => { Index = n.GetIntValue(); } },
-                { "responseValues", n => { ResponseValues = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };
         }
@@ -82,8 +76,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("index", Index);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyResponseBasedBranchingResponseValuesProperty>("responseValues", ResponseValues);
             writer.WriteStringValue("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

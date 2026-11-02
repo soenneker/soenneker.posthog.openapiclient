@@ -19,6 +19,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("error") is null) { _explicitNullValueError = default!; _explicitNullProperties?.Remove("error"); }
             else if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("error_is_user_facing") is null) { _explicitNullValueErrorIsUserFacing = default!; _explicitNullProperties?.Remove("error_is_user_facing"); }
+            else if (parseNode.GetChildNode("error_is_user_facing") is { } nullNodeErrorIsUserFacing && nullNodeErrorIsUserFacing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorIsUserFacing = null;
             if (parseNode.GetChildNode("result") is null) { _explicitNullValueResult = default!; _explicitNullProperties?.Remove("result"); }
             else if (parseNode.GetChildNode("result") is { } nullNodeResult && nullNodeResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Result = null;
             if (parseNode.GetChildNode("tile_id") is null) { _explicitNullValueTileId = default!; _explicitNullProperties?.Remove("tile_id"); }
@@ -39,6 +41,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; AdditionalData?.Remove("error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
         private string _explicitNullValueError = default!;
 #endif
+        /// <summary>True when `error` explains the failure to the viewer (for example, no access or an invalid query) and can be shown as is. Other errors are generic.</summary>
+        public bool? ErrorIsUserFacing { get => _explicitNullValueErrorIsUserFacing; set { _explicitNullValueErrorIsUserFacing = value; AdditionalData?.Remove("error_is_user_facing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_is_user_facing"); else _explicitNullProperties?.Remove("error_is_user_facing"); } }
+        private bool? _explicitNullValueErrorIsUserFacing = default!;
         /// <summary>Live widget query result payload. List widgets return results (array), limit (configured page size), hasMore (boolean), totalCount (matching rows for current filters), totalCountCapped (true when totalCount hit the widget max and more may exist), and optional offset/nextOffset. error_tracking_list results are issue summaries; session_replay_list results are recording metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -88,6 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "error", n => { Error = n.GetStringValue(); } },
+                { "error_is_user_facing", n => { ErrorIsUserFacing = n.GetBoolValue(); } },
                 { "result", n => { Result = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "tile_id", n => { TileId = n.GetIntValue(); } },
                 { "widget_type", n => { WidgetType = n.GetStringValue(); } },
@@ -101,6 +107,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("error", Error);
+            writer.WriteBoolValue("error_is_user_facing", ErrorIsUserFacing);
             writer.WriteObjectValue<UntypedNode>("result", Result);
             writer.WriteIntValue("tile_id", TileId);
             writer.WriteStringValue("widget_type", WidgetType);

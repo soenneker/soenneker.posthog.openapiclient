@@ -28,12 +28,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The stored choice. Null when the value equals the inherited one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice? Choice { get => _explicitNullValueChoice; set { _explicitNullValueChoice = value; AdditionalData?.Remove("choice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choice"); else _explicitNullProperties?.Remove("choice"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice? _explicitNullValueChoice = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseChoice? Choice { get => _explicitNullValueChoice; set { _explicitNullValueChoice = value; AdditionalData?.Remove("choice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choice"); else _explicitNullProperties?.Remove("choice"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseChoice? _explicitNullValueChoice = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice Choice { get => _explicitNullValueChoice; set { _explicitNullValueChoice = value; AdditionalData?.Remove("choice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choice"); else _explicitNullProperties?.Remove("choice"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice _explicitNullValueChoice = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseChoice Choice { get => _explicitNullValueChoice; set { _explicitNullValueChoice = value; AdditionalData?.Remove("choice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choice"); else _explicitNullProperties?.Remove("choice"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseChoice _explicitNullValueChoice = default!;
 #endif
         /// <summary>What the requesting user&apos;s own pull requests get in this repository after the write.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -70,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "choice", n => { Choice = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice.CreateFromDiscriminatorValue); } },
+                { "choice", n => { Choice = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseChoice>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseChoice.CreateFromDiscriminatorValue); } },
                 { "my_result", n => { MyResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult.CreateFromDiscriminatorValue); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice>("choice", Choice);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseChoice>("choice", Choice);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult>("my_result", MyResult);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

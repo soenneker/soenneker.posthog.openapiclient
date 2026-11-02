@@ -29,10 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How close the live version is to the sample PostHog needs before it suggests anything. Null while suggestions are on but the scout is not running, or when the workflow has no email step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SuggestionsSample? Sample { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimizationSample? Sample { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SuggestionsSample Sample { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimizationSample Sample { get; private set; }
 #endif
         /// <summary>* `running` - Running* `paused_by_user` - Paused By User* `paused_by_system` - Paused By System* `dry_run` - Dry Run* `not_running` - Not Running</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimizationScoutStatus? ScoutStatus { get; private set; }
@@ -62,7 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
-                { "sample", n => { Sample = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SuggestionsSample>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestionsSample.CreateFromDiscriminatorValue); } },
+                { "sample", n => { Sample = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimizationSample>(global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimizationSample.CreateFromDiscriminatorValue); } },
                 { "scout_status", n => { ScoutStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOptimizationScoutStatus>(); } },
             };
         }

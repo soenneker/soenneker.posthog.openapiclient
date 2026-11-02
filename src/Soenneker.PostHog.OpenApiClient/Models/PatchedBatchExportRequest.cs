@@ -73,12 +73,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>HogQL modifiers to use when the query runs, as an object keyed by modifier name, for example {&quot;convertToProjectTimezone&quot;: true}. Only supported when &apos;model&apos; is &apos;hogql&apos;. Each modifier set here overrides the project modifier with the same name, and the project modifiers apply to all others. If neither sets convertToProjectTimezone, it defaults to false, so timestamps are exported in UTC. Set it to true to export timestamps in the project timezone instead. Unknown modifier names are rejected. On update, the object replaces the modifiers stored on the export, so include every modifier to keep, or send null to remove them all.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? HogqlModifiers { get => _explicitNullValueHogqlModifiers; set { _explicitNullValueHogqlModifiers = value; AdditionalData?.Remove("hogql_modifiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_modifiers"); else _explicitNullProperties?.Remove("hogql_modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers? _explicitNullValueHogqlModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportHogqlModifiers? HogqlModifiers { get => _explicitNullValueHogqlModifiers; set { _explicitNullValueHogqlModifiers = value; AdditionalData?.Remove("hogql_modifiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_modifiers"); else _explicitNullProperties?.Remove("hogql_modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BatchExportHogqlModifiers? _explicitNullValueHogqlModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers HogqlModifiers { get => _explicitNullValueHogqlModifiers; set { _explicitNullValueHogqlModifiers = value; AdditionalData?.Remove("hogql_modifiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_modifiers"); else _explicitNullProperties?.Remove("hogql_modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers _explicitNullValueHogqlModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportHogqlModifiers HogqlModifiers { get => _explicitNullValueHogqlModifiers; set { _explicitNullValueHogqlModifiers = value; AdditionalData?.Remove("hogql_modifiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hogql_modifiers"); else _explicitNullProperties?.Remove("hogql_modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BatchExportHogqlModifiers _explicitNullValueHogqlModifiers = default!;
 #endif
         /// <summary>HogQL SELECT query. With model &apos;hogql&apos;, its results are the data exported by every run. The query may reference the {data_interval_start} and {data_interval_end} placeholders, replaced with each run&apos;s data interval bounds, for example: WHERE timestamp &gt;= {data_interval_start} AND timestamp &lt; {data_interval_end}. Without them every run exports all rows the query returns. Required when model is &apos;hogql&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -175,7 +175,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "destination", n => { Destination = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination.CreateFromDiscriminatorValue); } },
                 { "filters", n => { Filters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "hogql_modifiers", n => { HogqlModifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "hogql_modifiers", n => { HogqlModifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportHogqlModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.BatchExportHogqlModifiers.CreateFromDiscriminatorValue); } },
                 { "hogql_query", n => { HogqlQuery = n.GetStringValue(); } },
                 { "incremental_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestIncrementalMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueIncrementalMode = default; _explicitNullProperties?.Remove("incremental_mode"); AdditionalData["incremental_mode"] = unknown; } else { IncrementalMode = parsed; AdditionalData.Remove("incremental_mode"); } } },
                 { "interval", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestInterval>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInterval = default; _explicitNullProperties?.Remove("interval"); AdditionalData["interval"] = unknown; } else { Interval = parsed; AdditionalData.Remove("interval"); } } },
@@ -198,7 +198,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestDestination>("destination", Destination);
             writer.WriteObjectValue<UntypedNode>("filters", Filters);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlQueryModifiers>("hogql_modifiers", HogqlModifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportHogqlModifiers>("hogql_modifiers", HogqlModifiers);
             writer.WriteStringValue("hogql_query", HogqlQuery);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestIncrementalMode>("incremental_mode", IncrementalMode);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedBatchExportRequestInterval>("interval", Interval);

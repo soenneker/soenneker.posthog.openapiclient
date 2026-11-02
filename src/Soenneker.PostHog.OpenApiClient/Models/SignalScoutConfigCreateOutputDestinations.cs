@@ -34,22 +34,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Slack destination for each emitted scout finding or report. Null or omitted disables Slack delivery.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination? Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; AdditionalData?.Remove("slack"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination? _explicitNullValueSlack = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsSlack? Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; AdditionalData?.Remove("slack"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsSlack? _explicitNullValueSlack = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; AdditionalData?.Remove("slack"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination _explicitNullValueSlack = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsSlack Slack { get => _explicitNullValueSlack; set { _explicitNullValueSlack = value; AdditionalData?.Remove("slack"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack"); else _explicitNullProperties?.Remove("slack"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsSlack _explicitNullValueSlack = default!;
 #endif
         /// <summary>The CDP destination another product provisioned for this scout&apos;s reports. Null or omitted means no webhook. Unlike Slack, Signals does not deliver this itself: the reference lives here so the owning product can manage the destination&apos;s lifecycle.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination? Webhook { get => _explicitNullValueWebhook; set { _explicitNullValueWebhook = value; AdditionalData?.Remove("webhook"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhook"); else _explicitNullProperties?.Remove("webhook"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination? _explicitNullValueWebhook = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsUpdateWebhook? Webhook { get => _explicitNullValueWebhook; set { _explicitNullValueWebhook = value; AdditionalData?.Remove("webhook"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhook"); else _explicitNullProperties?.Remove("webhook"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsUpdateWebhook? _explicitNullValueWebhook = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination Webhook { get => _explicitNullValueWebhook; set { _explicitNullValueWebhook = value; AdditionalData?.Remove("webhook"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhook"); else _explicitNullProperties?.Remove("webhook"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination _explicitNullValueWebhook = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsUpdateWebhook Webhook { get => _explicitNullValueWebhook; set { _explicitNullValueWebhook = value; AdditionalData?.Remove("webhook"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhook"); else _explicitNullProperties?.Remove("webhook"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsUpdateWebhook _explicitNullValueWebhook = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutConfigCreateOutputDestinations"/> and sets the default values.
@@ -77,8 +77,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "inbox", n => { Inbox = n.GetBoolValue(); } },
-                { "slack", n => { Slack = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination.CreateFromDiscriminatorValue); } },
-                { "webhook", n => { Webhook = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination.CreateFromDiscriminatorValue); } },
+                { "slack", n => { Slack = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsSlack>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsSlack.CreateFromDiscriminatorValue); } },
+                { "webhook", n => { Webhook = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsUpdateWebhook>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsUpdateWebhook.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -89,8 +89,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("inbox", Inbox);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutSlackDestination>("slack", Slack);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutWebhookDestination>("webhook", Webhook);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsSlack>("slack", Slack);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutOutputDestinationsUpdateWebhook>("webhook", Webhook);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

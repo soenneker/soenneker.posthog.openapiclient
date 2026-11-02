@@ -8499,10 +8499,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedActionList'
+                $ref: '#/components/schemas/ActionListResponse'
             text/csv:
               schema:
-                $ref: '#/components/schemas/PaginatedActionList'
+                $ref: '#/components/schemas/ActionListResponse'
           description: ''
       x-product:
       - actions
@@ -8960,6 +8960,7 @@ paths:
           - DashboardWidget
           - ProductTour
           - Ticket
+          - TicketMacro
           - KnowledgeSource
           - KnowledgeLibrary
           - InstanceSetting
@@ -9066,6 +9067,7 @@ paths:
           * `DashboardWidget` - DashboardWidget
           * `ProductTour` - ProductTour
           * `Ticket` - Ticket
+          * `TicketMacro` - TicketMacro
           * `KnowledgeSource` - KnowledgeSource
           * `KnowledgeLibrary` - KnowledgeLibrary
           * `InstanceSetting` - InstanceSetting
@@ -9173,6 +9175,7 @@ paths:
             - DashboardWidget
             - ProductTour
             - Ticket
+            - TicketMacro
             - KnowledgeSource
             - KnowledgeLibrary
             - InstanceSetting
@@ -9276,6 +9279,7 @@ paths:
               * `DashboardWidget` - DashboardWidget
               * `ProductTour` - ProductTour
               * `Ticket` - Ticket
+              * `TicketMacro` - TicketMacro
               * `KnowledgeSource` - KnowledgeSource
               * `KnowledgeLibrary` - KnowledgeLibrary
               * `InstanceSetting` - InstanceSetting
@@ -14881,6 +14885,14 @@ paths:
           minimum: 1
           default: 50
         description: Maximum number of log entries to return (1-500, default 50).
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of log entries to skip before the first returned entry
+          (default 0).
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -15112,6 +15124,14 @@ paths:
           minimum: 1
           default: 50
         description: Maximum number of log entries to return (1-500, default 50).
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of log entries to skip before the first returned entry
+          (default 0).
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -19243,6 +19263,22 @@ paths:
           type: integer
         description: A unique integer value identifying this cohort.
         required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 500
+          minimum: 1
+          default: 100
+        description: Number of calculation runs to return. Defaults to 100, at most
+          500.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of calculation runs to skip. Defaults to 0.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - cohorts
@@ -19251,7 +19287,11 @@ paths:
         - cohort:read
       responses:
         '200':
-          description: No response body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CohortCalculationHistoryResponse'
+          description: ''
       x-product:
       - cohorts
   /api/projects/{project_id}/cohorts/{id}/persons/:
@@ -20197,6 +20237,176 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AIReplyPlaybook'
+          description: ''
+      x-product:
+      - conversations
+  /api/projects/{project_id}/conversations/macros/:
+    get:
+      operationId: conversations_macros_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      security:
+      - PersonalAPIKeyAuth:
+        - ticket:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTicketMacroList'
+          description: ''
+      x-product:
+      - conversations
+    post:
+      operationId: conversations_macros_create
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TicketMacro'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TicketMacro'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TicketMacro'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - ticket:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketMacro'
+          description: ''
+      x-product:
+      - conversations
+  /api/projects/{project_id}/conversations/macros/{id}/:
+    get:
+      operationId: conversations_macros_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this ticket macro.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      security:
+      - PersonalAPIKeyAuth:
+        - ticket:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketMacro'
+          description: ''
+      x-product:
+      - conversations
+    patch:
+      operationId: conversations_macros_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this ticket macro.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTicketMacro'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTicketMacro'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTicketMacro'
+      security:
+      - PersonalAPIKeyAuth:
+        - ticket:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketMacro'
+          description: ''
+      x-product:
+      - conversations
+    delete:
+      operationId: conversations_macros_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this ticket macro.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      security:
+      - PersonalAPIKeyAuth:
+        - ticket:write
+      responses:
+        '204':
+          description: No response body
+      x-product:
+      - conversations
+  /api/projects/{project_id}/conversations/macros/{id}/used/:
+    post:
+      operationId: conversations_macros_used_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this ticket macro.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      security:
+      - PersonalAPIKeyAuth:
+        - ticket:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketMacro'
           description: ''
       x-product:
       - conversations
@@ -23126,6 +23336,59 @@ paths:
           description: No response body
       x-product:
       - dashboards
+  /api/projects/{project_id}/dashboards/{id}/add_insight/:
+    post:
+      operationId: dashboards_add_insight_create
+      description: Place an existing insight on this dashboard as a new tile. Requires
+        edit access to the dashboard and view access to the insight. Returns the tile.
+        Adding an insight the dashboard already shows returns its tile unchanged,
+        and adding one that was removed from the dashboard restores its tile with
+        its old layout. To take an insight off a dashboard, use delete_tile.
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - txt
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this dashboard.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - dashboards
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddInsightToDashboardRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AddInsightToDashboardRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AddInsightToDashboardRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - dashboard:write
+        - insight:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardTileBasic'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/DashboardTileBasic'
+          description: ''
+      x-product:
+      - dashboards
   /api/projects/{project_id}/dashboards/{id}/copy_group/:
     post:
       operationId: dashboards_copy_group_create
@@ -23562,6 +23825,16 @@ paths:
       operationId: dashboards_run_widgets_retrieve
       parameters:
       - in: query
+        name: filters_override
+        schema:
+          type: string
+        description: Object (or pre-encoded JSON string) to override dashboard filters
+          for this request only (not persisted). Top-level keys replace; nested values
+          are not deep-merged — pass the complete value for any key you override.
+          Accepts the same keys as the dashboard filters schema (e.g., `date_from`,
+          `date_to`, `properties`). Ignored when accessed via a sharing token.
+        x-accepts-stringified-json: true
+      - in: query
         name: format
         schema:
           type: string
@@ -23575,6 +23848,13 @@ paths:
         description: A unique integer value identifying this dashboard.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: refresh
+        schema:
+          type: boolean
+        description: Recompute widgets that follow dashboard filters (such as metrics)
+          instead of serving their query cache, as a manual refresh of an insight
+          tile does.
       - in: query
         name: tile_ids
         schema:
@@ -24030,6 +24310,7 @@ paths:
             - experiment_results
             - experiments_list
             - logs_list
+            - metrics
             - metrics_table
             - notebook_widget
             - session_replay_list
@@ -24878,18 +25159,6 @@ paths:
     get:
       operationId: data_color_themes_list
       parameters:
-      - name: limit
-        required: false
-        in: query
-        description: Number of results to return per page.
-        schema:
-          type: integer
-      - name: offset
-        required: false
-        in: query
-        description: The initial index from which to return the results.
-        schema:
-          type: integer
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - data_color_themes
@@ -24901,7 +25170,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedDataColorThemeList'
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataColorTheme'
           description: ''
       x-product:
       - dashboards
@@ -28740,6 +29011,14 @@ paths:
           type: string
           description: URL-safe name for the endpoint
         required: true
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of log entries to skip before the first returned entry
+          (default 0).
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -29023,7 +29302,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29069,7 +29349,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29112,7 +29393,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29173,7 +29455,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29230,7 +29513,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29268,6 +29552,13 @@ paths:
         distinction needs the job-level source synced: without it those failures fall
         through to flaky/pr_only rather than being misreported.'
       parameters:
+      - in: query
+        name: branch
+        schema:
+          type: string
+        description: Optional exact branch name. Keeps only tests that failed on it,
+          but the counts still cover every branch, so a row shows whether the test
+          also fails elsewhere. Applied before the limit.
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: repo
@@ -29282,7 +29573,15 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
+      - in: query
+        name: test
+        schema:
+          type: string
+        description: Optional case-insensitive substring of the test id to keep, e.g.
+          'test_cohort' or 'posthog/api/test/test_user.py'. Applied before the limit,
+          so a test past the cap is still found.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29376,7 +29675,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29468,7 +29768,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29614,7 +29915,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29680,7 +29982,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29745,7 +30048,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29830,7 +30134,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29864,6 +30169,13 @@ paths:
         recorded in this data, not that the test never flakes.'
       parameters:
       - in: query
+        name: branch
+        schema:
+          type: string
+        description: Optional exact branch name. Keeps only tests that failed on it,
+          but the counts still cover every branch, so a row shows whether the test
+          also fails elsewhere. Applied before the limit.
+      - in: query
         name: date_from
         schema:
           type: string
@@ -29886,6 +30198,14 @@ paths:
         description: A test with no recorded recovery qualifies once it failed on
           at least this many distinct pull requests in the window. Minimum 1. Defaults
           to 3.
+      - in: query
+        name: pr_number
+        schema:
+          type: integer
+        description: Optional pull request number. Keeps only tests that failed in
+          that PR's CI runs, but the counts still cover every PR. Pass min_failed_prs=1
+          too, so a test that failed on this PR alone qualifies. Applied before the
+          limit.
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: repo
@@ -29908,7 +30228,15 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
+      - in: query
+        name: test
+        schema:
+          type: string
+        description: Optional case-insensitive substring of the test id to keep, e.g.
+          'test_cohort' or 'posthog/api/test/test_user.py'. Applied before the limit,
+          so a test past the cap is still found.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -29923,8 +30251,8 @@ paths:
                 $ref: '#/components/schemas/FlakyTestList'
           description: ''
         '400':
-          description: Invalid date, threshold, limit, runner, or source_id, or a
-            window longer than 30 days.
+          description: Invalid date, threshold, limit, runner, pr_number, or source_id,
+            or a window longer than 30 days.
       x-product:
       - engineering_analytics
   /api/projects/{project_id}/engineering_analytics/job_aggregates/:
@@ -29984,7 +30312,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       - in: query
         name: workflow_name
         schema:
@@ -30111,7 +30440,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30170,7 +30500,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30220,7 +30551,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30265,7 +30597,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30310,7 +30643,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30358,7 +30692,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30428,7 +30763,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30503,7 +30839,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       - in: query
         name: state
         schema:
@@ -30558,7 +30895,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30665,7 +31003,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30728,7 +31067,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30778,7 +31118,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       - in: query
         name: timestamp
         schema:
@@ -30844,7 +31185,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -30936,7 +31278,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       - in: query
         name: test_limit
         schema:
@@ -31029,7 +31372,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -31092,7 +31436,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -31137,7 +31482,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -31217,7 +31563,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       - in: query
         name: workflow_name
         schema:
@@ -31288,7 +31635,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -31344,7 +31692,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       tags:
       - engineering_analytics
       - engineering_analytics
@@ -31421,7 +31770,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       - in: query
         name: workflow_name
         schema:
@@ -31499,7 +31849,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       - in: query
         name: workflow_name
         schema:
@@ -31580,7 +31931,8 @@ paths:
           type: string
           format: uuid
         description: Connected GitHub data warehouse source to read from. Defaults
-          to the oldest connected GitHub source when the team has more than one.
+          to the oldest connected GitHub source that the `sources` list reports as
+          synced, when the team has more than one.
       - in: query
         name: workflow_name
         schema:
@@ -37747,6 +38099,26 @@ paths:
         then names the filters. A query that read precomputed exposures doesn't apply those filters,
         so it can't get `exposure_criteria`. It is null otherwise.
 
+        `metric_all_zero` reports a metric that reads zero in every variant, from the same latest
+        finished calculation, so the results page shows "Not enough data yet" at any sample size.
+        Each side of a ratio that is zero in every variant counts on its own. It reads the stored
+        result and the project's event definitions, and no events. A primary metric needs 1,000
+        exposures in the result and 72 hours of data, because most zeros before that are outcomes
+        that take time. A retention metric counts those hours from the start of its retention
+        window. The subcode is the cause of the first metric: `blank_event` (an event with an empty
+        name), `event_stopped` (the project last received the event before launch, while ingestion
+        still records the project), `outlier_bound` (an upper outlier bound that is 0 while some
+        exposures have a value) or null when none shows a cause. `blank_event` and `outlier_bound`
+        also report a secondary metric, and need only 100 exposures and 12 hours of data, because
+        they read 0 at any traffic. A bound on the largest value of the exposures can't be 0 while
+        one has a value, so it is no cause. Neither is a bound on a metric with breakdowns, which
+        gets one bound per breakdown group. Until the end, the check leaves out a metric that uses an
+        event `metric_event_not_ingested` reports. Each metric, or side of a ratio, is in the
+        `evidence` keys `metric_N`, `metric_N_role`, `metric_N_side`, `metric_N_exposures` and
+        `metric_N_cause`. It is a warning for a primary metric. After the end it stays a warning only
+        for a cause that a setting fixes, because the calculation after the fix reads the events up
+        to the end. It is info otherwise.
+
         The severity of the `some_conditions_pinned` finding follows the largest share that the
         users of the pinned release conditions make up among the users who got one variant from
         the flag, in the last 7 days, or since launch or the flag's last save if later. It reads
@@ -39716,6 +40088,14 @@ paths:
           minimum: 1
           default: 50
         description: Maximum number of log entries to return (1-500, default 50).
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of log entries to skip before the first returned entry
+          (default 0).
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -43739,6 +44119,14 @@ paths:
           minimum: 1
           default: 50
         description: Maximum number of log entries to return (1-500, default 50).
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of log entries to skip before the first returned entry
+          (default 0).
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -46916,6 +47304,14 @@ paths:
           minimum: 1
           default: 50
         description: Maximum number of log entries to return (1-500, default 50).
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of log entries to skip before the first returned entry
+          (default 0).
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -48689,6 +49085,14 @@ paths:
           minimum: 1
           default: 50
         description: Maximum number of log entries to return (1-500, default 50).
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of log entries to skip before the first returned entry
+          (default 0).
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
@@ -60782,7 +61186,7 @@ paths:
     post:
       operationId: messaging_send_email_create
       description: Send one transactional email to one recipient from the template
-        named in `template.id`. The template must be made transactional first. `message_data`
+        named in `template_id`. The template must be made transactional first. `message_data`
         fills the template's `{{ variables.* }}` placeholders. Transactional emails
         skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry
         safely without sending the email twice.
@@ -69735,6 +70139,7 @@ paths:
           - business_knowledge
           - metrics_import
           - knowledge_writer
+          - context_layer
           type: string
           minLength: 1
         description: |-
@@ -69767,6 +70172,7 @@ paths:
           * `business_knowledge` - Business Knowledge
           * `metrics_import` - Metrics Import
           * `knowledge_writer` - Knowledge Writer
+          * `context_layer` - Context Layer
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - sandbox-custom-images
@@ -71589,7 +71995,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedSessionRecordingList'
+                $ref: '#/components/schemas/SessionRecordingListResponse'
           description: ''
       x-product:
       - replay
@@ -81031,8 +81437,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedChannelDTOList'
-          description: List of channels
+                $ref: '#/components/schemas/ChannelListResponse'
+          description: An array of channels without limit, or a page of channels with
+            limit
       x-product:
       - tasks
     post:
@@ -81981,6 +82388,7 @@ paths:
           - business_knowledge
           - metrics_import
           - knowledge_writer
+          - context_layer
           type: string
           minLength: 1
         description: |-
@@ -82013,6 +82421,7 @@ paths:
           * `business_knowledge` - Business Knowledge
           * `metrics_import` - Metrics Import
           * `knowledge_writer` - Knowledge Writer
+          * `context_layer` - Context Layer
       - in: query
         name: hog_flow_id
         schema:
@@ -82125,6 +82534,7 @@ paths:
           items:
             enum:
             - autoresearch
+            - context_layer
             - error_tracking
             - eval_clusters
             - experiments
@@ -82153,6 +82563,7 @@ paths:
             type: string
             description: |-
               * `autoresearch` - autoresearch
+              * `context_layer` - context_layer
               * `error_tracking` - error_tracking
               * `eval_clusters` - eval_clusters
               * `experiments` - experiments
@@ -87077,19 +87488,20 @@ paths:
           type: integer
           maximum: 100
           minimum: 1
+          default: 100
         description: 'Max results (default: 100).'
       - in: query
         name: offset
         schema:
           type: integer
           minimum: 0
+          default: 0
         description: 'Pagination offset (default: 0).'
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: search
         schema:
           type: string
-          minLength: 1
         description: Search filter for attribute names.
       - in: query
         name: search_values
@@ -87610,19 +88022,20 @@ paths:
           type: integer
           maximum: 100
           minimum: 1
+          default: 100
         description: 'Max results (default: 100).'
       - in: query
         name: offset
         schema:
           type: integer
           minimum: 0
+          default: 0
         description: 'Pagination offset (default: 0).'
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: value
         schema:
           type: string
-          minLength: 1
         description: Search filter for attribute values.
       tags:
       - tracing
@@ -91923,6 +92336,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -92122,6 +92536,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -92383,6 +92798,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -92523,6 +92939,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -92941,6 +93358,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -93107,6 +93525,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -96784,7 +97203,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaginatedWebExperimentsAPIList'
           description: ''
-      x-product: []
+      x-product:
+      - web_experiments
     post:
       operationId: web_experiments_create
       parameters:
@@ -96813,7 +97233,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebExperimentsAPI'
           description: ''
-      x-product: []
+      x-product:
+      - web_experiments
   /api/projects/{project_id}/web_experiments/{id}/:
     get:
       operationId: web_experiments_retrieve
@@ -96837,7 +97258,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebExperimentsAPI'
           description: ''
-      x-product: []
+      x-product:
+      - web_experiments
     put:
       operationId: web_experiments_update
       parameters:
@@ -96872,7 +97294,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebExperimentsAPI'
           description: ''
-      x-product: []
+      x-product:
+      - web_experiments
     patch:
       operationId: web_experiments_partial_update
       parameters:
@@ -96906,7 +97329,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/WebExperimentsAPI'
           description: ''
-      x-product: []
+      x-product:
+      - web_experiments
     delete:
       operationId: web_experiments_destroy
       parameters:
@@ -96925,7 +97349,8 @@ paths:
       responses:
         '204':
           description: No response body
-      x-product: []
+      x-product:
+      - web_experiments
   /api/projects/{project_id}/web_vitals/:
     get:
       operationId: web_vitals_retrieve
@@ -104236,6 +104661,21 @@ components:
       - actionId
       title: ActionConversionGoal
       type: object
+    ActionListResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of actions that match the filters. Without `limit`,
+            it is `offset` plus the number of actions returned.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Action'
+          description: Actions on this page, or every matching action without `limit`.
+      required:
+      - count
+      - results
     ActionReference:
       type: object
       properties:
@@ -105783,6 +106223,7 @@ components:
             * `experiment_results` - Experiment Results
             * `experiments_list` - Experiments List
             * `logs_list` - Logs List
+            * `metrics` - Metrics
             * `metrics_table` - Metrics Table
             * `notebook_widget` - Notebook Widget
             * `session_replay_list` - Session Replay List
@@ -105808,8 +106249,8 @@ components:
             $ref: '#/components/schemas/AddDashboardWidgetRequest'
           description: 'Widget tiles to add atomically. Supported widget_type values:
             activity_events_list, canvas_app, conversations_recent_tickets, error_tracking_list,
-            experiment_results, experiments_list, logs_list, metrics_table, notebook_widget,
-            session_replay_list, survey_results. Use dashboard-widget-catalog-list
+            experiment_results, experiments_list, logs_list, metrics, metrics_table,
+            notebook_widget, session_replay_list, survey_results. Use dashboard-widget-catalog-list
             for per-type config_schema documentation. (1–10 per request).'
           maxItems: 10
           minItems: 1
@@ -105825,6 +106266,17 @@ components:
           description: Created dashboard widget tiles in request order.
       required:
       - tiles
+    AddInsightToDashboardRequest:
+      type: object
+      properties:
+        insight_id:
+          type: integer
+          description: ID of an existing insight to place on the dashboard. The insight
+            must belong to the same environment as the dashboard. Adding an insight
+            the dashboard already shows changes nothing, and adding one that was removed
+            from the dashboard restores its tile.
+      required:
+      - insight_id
     AddOptOutRequest:
       type: object
       properties:
@@ -121734,6 +122186,12 @@ components:
             with 409; omit to publish unguarded.'
       required:
       - content
+    ChannelListResponse:
+      oneOf:
+      - type: array
+        items:
+          $ref: '#/components/schemas/ChannelDTO'
+      - $ref: '#/components/schemas/ChannelPage'
     ChannelMembersWrite:
       type: object
       properties:
@@ -121747,6 +122205,34 @@ components:
           maxItems: 100
       required:
       - user_ids
+    ChannelPage:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of channels the requester can access.
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL of the next page, or null on the last page.
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL of the previous page, or null on the first page.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChannelDTO'
+          description: Channels on this page.
+      required:
+      - count
+      - next
+      - previous
+      - results
     ChannelSetupWrite:
       type: object
       description: Request body for starting the task that sets a space up for a goal
@@ -123466,6 +123952,124 @@ components:
       - realtime
       - search_match_type
       - version
+    CohortCalculationHistory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        filters:
+          description: Cohort filters/properties at time of calculation
+        count:
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: 0
+          description: Number of people in cohort
+        started_at:
+          type: string
+          format: date-time
+          description: When calculation started
+        finished_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When calculation finished
+        queries:
+          description: Array of query information (query, query_id, query_ms, memory_mb,
+            read_rows, written_rows)
+        error:
+          type:
+          - string
+          - 'null'
+          description: Error message if calculation failed
+        duration_seconds:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: Calculate duration in seconds if both start and end times are
+            available
+          readOnly: true
+        is_completed:
+          type: boolean
+          description: Check if calculation is completed (successfully or with error)
+          readOnly: true
+        is_successful:
+          type: boolean
+          description: Check if calculation completed successfully
+          readOnly: true
+        total_query_ms:
+          type:
+          - integer
+          - 'null'
+          description: Get total query duration across all queries
+          readOnly: true
+        total_memory_mb:
+          type:
+          - integer
+          - 'null'
+          description: Get total memory usage across all queries
+          readOnly: true
+        total_read_rows:
+          type:
+          - integer
+          - 'null'
+          description: Get total rows read across all queries
+          readOnly: true
+        total_written_rows:
+          type:
+          - integer
+          - 'null'
+          description: Get total rows written across all queries
+          readOnly: true
+        main_query:
+          type:
+          - string
+          - 'null'
+          description: Get the main query (first query in the array)
+          readOnly: true
+      required:
+      - duration_seconds
+      - filters
+      - id
+      - is_completed
+      - is_successful
+      - main_query
+      - total_memory_mb
+      - total_query_ms
+      - total_read_rows
+      - total_written_rows
+    CohortCalculationHistoryResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CohortCalculationHistory'
+          description: Calculation runs on this page, newest first.
+        count:
+          type: integer
+          description: Number of calculation runs recorded for the cohort.
+        next:
+          type:
+          - string
+          - 'null'
+          description: Query string for the next page, such as `?limit=100&offset=100`,
+            or null.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: Query string for the previous page, or null on the first page.
+      required:
+      - count
+      - next
+      - previous
+      - results
     CohortConditionTypeFlags:
       additionalProperties: false
       properties:
@@ -130860,6 +131464,7 @@ components:
             * `experiment_results` - Experiment Results
             * `experiments_list` - Experiments List
             * `logs_list` - Logs List
+            * `metrics` - Metrics
             * `metrics_table` - Metrics Table
             * `notebook_widget` - Notebook Widget
             * `session_replay_list` - Session Replay List
@@ -131045,13 +131650,16 @@ components:
         id:
           type: integer
           readOnly: true
+          description: ID of the dashboard tile.
         dashboard_id:
           type: integer
           readOnly: true
+          description: ID of the dashboard the tile sits on.
         deleted:
           type:
           - boolean
           - 'null'
+          description: Whether the tile was removed from the dashboard.
       required:
       - dashboard_id
       - id
@@ -131175,6 +131783,7 @@ components:
       - $ref: '#/components/schemas/ConversationsRecentTicketsWidgetConfig'
       - $ref: '#/components/schemas/CanvasAppWidgetConfig'
       - $ref: '#/components/schemas/MetricsTableWidgetConfig'
+      - $ref: '#/components/schemas/MetricsWidgetConfig'
     DashboardWidgetRunResult:
       type: object
       properties:
@@ -131198,6 +131807,11 @@ components:
           - string
           - 'null'
           description: Error message when the widget could not be run.
+        error_is_user_facing:
+          type: boolean
+          description: True when `error` explains the failure to the viewer (for example,
+            no access or an invalid query) and can be shown as is. Other errors are
+            generic.
       required:
       - error
       - result
@@ -131212,6 +131826,7 @@ components:
       - experiment_results
       - experiments_list
       - logs_list
+      - metrics
       - metrics_table
       - notebook_widget
       - session_replay_list
@@ -131225,6 +131840,7 @@ components:
         * `experiment_results` - Experiment Results
         * `experiments_list` - Experiments List
         * `logs_list` - Logs List
+        * `metrics` - Metrics
         * `metrics_table` - Metrics Table
         * `notebook_widget` - Notebook Widget
         * `session_replay_list` - Session Replay List
@@ -149820,6 +150436,12 @@ components:
           description: Whether the project ingests exception events. When false, ingestion
             drops every $exception event for this project before it is stored or billed,
             and the events cannot be recovered.
+        linear_status_sync_enabled:
+          type: boolean
+          description: Whether status changes on linked Linear tickets update the
+            issue. When true, an issue resolves once every linked Linear ticket is
+            closed and at least one is done, and a resolved issue becomes active again
+            when a linked ticket reopens.
     ErrorTrackingSeverityRule:
       type: object
       properties:
@@ -156362,6 +156984,7 @@ components:
       - metric_event_not_ingested
       - metric_cannot_compile
       - metric_calculation_failed
+      - metric_all_zero
       - exposure_criteria_cannot_match
       - exposure_filters
       - early_significance
@@ -156385,6 +157008,7 @@ components:
         * `metric_event_not_ingested` - Metric Event Not Ingested
         * `metric_cannot_compile` - Metric Cannot Compile
         * `metric_calculation_failed` - Metric Calculation Failed
+        * `metric_all_zero` - Metric All Zero
         * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
         * `exposure_filters` - Exposure Filters
         * `early_significance` - Early Significance
@@ -156415,6 +157039,7 @@ components:
             * `metric_event_not_ingested` - Metric Event Not Ingested
             * `metric_cannot_compile` - Metric Cannot Compile
             * `metric_calculation_failed` - Metric Calculation Failed
+            * `metric_all_zero` - Metric All Zero
             * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
             * `exposure_filters` - Exposure Filters
             * `early_significance` - Early Significance
@@ -156481,6 +157106,7 @@ components:
             * `metric_event_not_ingested` - Metric Event Not Ingested
             * `metric_cannot_compile` - Metric Cannot Compile
             * `metric_calculation_failed` - Metric Calculation Failed
+            * `metric_all_zero` - Metric All Zero
             * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
             * `exposure_filter_on_dynamic_cohort` - Exposure Filter On Dynamic Cohort
             * `exposure_filter_excludes_events` - Exposure Filter Excludes Events
@@ -156592,6 +157218,7 @@ components:
       - metric_event_not_ingested
       - metric_cannot_compile
       - metric_calculation_failed
+      - metric_all_zero
       - exposure_criteria_cannot_match
       - exposure_filter_on_dynamic_cohort
       - exposure_filter_excludes_events
@@ -156618,6 +157245,7 @@ components:
         * `metric_event_not_ingested` - Metric Event Not Ingested
         * `metric_cannot_compile` - Metric Cannot Compile
         * `metric_calculation_failed` - Metric Calculation Failed
+        * `metric_all_zero` - Metric All Zero
         * `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match
         * `exposure_filter_on_dynamic_cohort` - Exposure Filter On Dynamic Cohort
         * `exposure_filter_excludes_events` - Exposure Filter Excludes Events
@@ -157133,9 +157761,23 @@ components:
             $ref: '#/components/schemas/ExperimentHealthInputsMetricCalculationFailure'
           description: The metrics whose latest calculation failed, with the error
             that the results page shows.
+        hours_of_data:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: The hours from launch to the end of the data of this calculation.
+            Null when none has finished.
+        zero_metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentHealthInputsZeroMetric'
+          description: The metrics that read zero in every variant in this calculation.
       required:
       - failures
       - finished_at
+      - hours_of_data
+      - zero_metrics
     ExperimentHealthInputsMetricCalculationFailure:
       type: object
       properties:
@@ -157345,6 +157987,37 @@ components:
       required:
       - key
       - rollout_percentage
+    ExperimentHealthInputsZeroMetric:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the metric, as the results page shows it.
+        role:
+          type: string
+          description: Whether the metric is a primary or a secondary metric of the
+            experiment.
+        exposures:
+          type: integer
+          description: The persons or groups of the result, across the variants.
+        ratio_side:
+          type:
+          - string
+          - 'null'
+          description: The side of a ratio that reads zero. Each side that reads zero
+            has its own entry. Null for the other metric types.
+        stopped_events:
+          type: array
+          items:
+            type: string
+          description: The events of the metric that the project last received before
+            launch.
+      required:
+      - exposures
+      - name
+      - ratio_side
+      - role
+      - stopped_events
     ExperimentHealthMetricCompileErrorKindEnum:
       enum:
       - rejected
@@ -206559,6 +207232,48 @@ components:
       - values
       title: MetricsVariableValue
       type: object
+    MetricsWidgetCatalogEntryOpenApi:
+      type: object
+      properties:
+        widget_type:
+          $ref: '#/components/schemas/MetricsWidgetTypeEnum'
+        group_id:
+          type: string
+        group_label:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        config_schema:
+          allOf:
+          - $ref: '#/components/schemas/MetricsWidgetConfig'
+          readOnly: true
+          description: Config shape for this widget type. Build the config for the
+            batch add and batch update tools from it, because their schemas do not
+            list config keys.
+        required_product_access:
+          type:
+          - string
+          - 'null'
+        live:
+          type: boolean
+          description: Whether tiles of this type self-update in real time after load.
+            Live tiles show a fixed real-time window and cannot apply test-account
+            filtering to the stream, so their config takes neither dateRange nor filterTestAccounts.
+      required:
+      - config_schema
+      - description
+      - group_id
+      - group_label
+      - label
+      - live
+      - widget_type
+    MetricsWidgetTypeEnum:
+      enum:
+      - metrics
+      type: string
+      description: '* `metrics` - metrics'
     MetricsYAxisSettings:
       additionalProperties: false
       properties:
@@ -211768,6 +212483,11 @@ components:
         emailing_attempt_made:
           type: boolean
           readOnly: true
+        email_suppressed:
+          type: boolean
+          readOnly: true
+          description: True when the email provider reported the target address as
+            suppressed at send time.
         level:
           $ref: '#/components/schemas/OrganizationMembershipLevelEnum'
         is_expired:
@@ -211804,6 +212524,7 @@ components:
       required:
       - created_at
       - created_by
+      - email_suppressed
       - emailing_attempt_made
       - id
       - is_expired
@@ -212951,31 +213672,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AccountTrackRuleRunView'
-    PaginatedActionList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Action'
     PaginatedActivityLogList:
       type: object
       required:
@@ -213488,31 +214184,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ChangeRequest'
-    PaginatedChannelDTOList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ChannelDTO'
     PaginatedChannelFeedMessageDTOList:
       type: object
       required:
@@ -214072,31 +214743,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataCatalogRelationshipProposal'
-    PaginatedDataColorThemeList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataColorTheme'
     PaginatedDataDeletionRequestList:
       type: object
       required:
@@ -217240,31 +217886,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ScoreDefinition'
-    PaginatedSessionRecordingList:
-      type: object
-      required:
-      - count
-      - results
-      properties:
-        count:
-          type: integer
-          example: 123
-        next:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=400&limit=100
-        previous:
-          type:
-          - string
-          - 'null'
-          format: uri
-          example: http://api.example.org/accounts/?offset=200&limit=100
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SessionRecording'
     PaginatedSessionRecordingPlaylistList:
       type: object
       required:
@@ -217820,6 +218441,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ticket'
+    PaginatedTicketMacroList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/TicketMacro'
     PaginatedTicketMessageList:
       type: object
       required:
@@ -222660,6 +223306,12 @@ components:
           description: Whether the project ingests exception events. When false, ingestion
             drops every $exception event for this project before it is stored or billed,
             and the events cannot be recovered.
+        linear_status_sync_enabled:
+          type: boolean
+          description: Whether status changes on linked Linear tickets update the
+            issue. When true, an issue resolves once every linked Linear ticket is
+            closed and at least one is done, and a resolved issue becomes active again
+            when a linked ticket reopens.
     PatchedErrorTrackingSeverityRuleReorderRequest:
       type: object
       properties:
@@ -229157,6 +229809,16 @@ components:
           description: Why the scanner's recording filter cannot run, from the last
             sweep or estimate that tried it. Cleared when the filter changes or a
             sweep runs it.
+        unrunnable_reason:
+          description: 'Why the scanner can never run, or null when it can. `no_ai_consent`:
+            the organization has not approved AI data processing. `creator_lost_access`:
+            the creator can no longer view recordings, which the sweep reads as them,
+            so turning the scanner on requires `take_over_as_creator`. The sweep turns
+            an enabled scanner off when either applies.'
+          readOnly: true
+          oneOf:
+          - $ref: '#/components/schemas/UnrunnableReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
         created_at:
           type: string
           format: date-time
@@ -231066,6 +231728,7 @@ components:
             * `business_knowledge` - Business Knowledge
             * `metrics_import` - Metrics Import
             * `knowledge_writer` - Knowledge Writer
+            * `context_layer` - Context Layer
         repository:
           type:
           - string
@@ -231297,6 +231960,63 @@ components:
           - 'null'
           format: date-time
           readOnly: true
+    PatchedTicketMacro:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID of the macro.
+        name:
+          type: string
+          description: Name shown in the macro list and the composer menu.
+          maxLength: 200
+        shortcut:
+          type:
+          - string
+          - 'null'
+          description: Slash command for this macro, without the leading slash. Lowercase
+            letters, numbers, and hyphens. Unique within the project. Null when the
+            macro has no shortcut.
+          maxLength: 50
+        body:
+          type: string
+          description: Reply text in markdown. May contain {{customer.first_name}},
+            {{customer.name}}, {{customer.email}}, {{agent.first_name}}, {{agent.name}},
+            and {{ticket.number}}. Variables are filled in when an agent inserts the
+            macro.
+          maxLength: 10000
+        usage_count:
+          type: integer
+          readOnly: true
+          description: How many times agents have inserted this macro.
+        last_used_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When an agent last inserted this macro. Null if it has never
+            been used.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: When the macro was created.
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the macro was last edited. Null until the first edit.
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: The user who created this macro. Null when that user was deleted.
     PatchedTicketNoteUpdateRequest:
       type: object
       description: Payload for updating a private note on a ticket.
@@ -257532,6 +258252,16 @@ components:
           description: Why the scanner's recording filter cannot run, from the last
             sweep or estimate that tried it. Cleared when the filter changes or a
             sweep runs it.
+        unrunnable_reason:
+          description: 'Why the scanner can never run, or null when it can. `no_ai_consent`:
+            the organization has not approved AI data processing. `creator_lost_access`:
+            the creator can no longer view recordings, which the sweep reads as them,
+            so turning the scanner on requires `take_over_as_creator`. The sweep turns
+            an enabled scanner off when either applies.'
+          readOnly: true
+          oneOf:
+          - $ref: '#/components/schemas/UnrunnableReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
         created_at:
           type: string
           format: date-time
@@ -257576,6 +258306,7 @@ components:
       - scanner_type
       - scanner_version
       - sweep_throttle_factor
+      - unrunnable_reason
       - updated_at
       - user_access_level
     ReplayScannerBackfill:
@@ -273079,33 +273810,30 @@ components:
           type: string
           format: email
           description: Email address of the recipient.
-        identifiers:
-          allOf:
-          - $ref: '#/components/schemas/TransactionalEmailIdentifiers'
-          description: Who the email is for, used to attribute engagement events.
         message_data:
           type: object
           additionalProperties: {}
           description: 'Data for the template''s Liquid placeholders, available as
             `variables`. For example `{"reset_link": "https://..."}` fills `{{ variables.reset_link
             }}`.'
-        template:
-          allOf:
-          - $ref: '#/components/schemas/SendEmailTemplate'
-          description: The transactional email template to send.
-      required:
-      - template
-      - to
-    SendEmailTemplate:
-      type: object
-      properties:
-        id:
+        template_id:
           type: string
           format: uuid
           description: ID of the email template to send. The template must be made
             transactional first.
+        distinct_id:
+          type:
+          - string
+          - 'null'
+          description: Distinct ID of the recipient's person. The email's engagement
+            events (sent, delivered, opened, clicked, bounced) and the send itself
+            are recorded against that person. Defaults to the recipient's email address.
+            The template can't read the person's properties, so pass everything it
+            needs in `message_data`.
+          maxLength: 400
       required:
-      - id
+      - template_id
+      - to
     SendTransactionalEmail:
       type: object
       properties:
@@ -273113,16 +273841,16 @@ components:
           type: string
           format: email
           description: Email address of the recipient.
-        identifiers:
-          allOf:
-          - $ref: '#/components/schemas/TransactionalEmailIdentifiers'
-          description: Who the email is for, used to attribute engagement events.
         message_data:
           type: object
           additionalProperties: {}
           description: 'Data for the template''s Liquid placeholders, available as
             `variables`. For example `{"reset_link": "https://..."}` fills `{{ variables.reset_link
             }}`.'
+        identifiers:
+          allOf:
+          - $ref: '#/components/schemas/TransactionalEmailIdentifiers'
+          description: Who the email is for, used to attribute engagement events.
       required:
       - to
     SendTransactionalEmailResponse:
@@ -274490,6 +275218,29 @@ components:
       - title
       title: SessionRecordingExternalReference
       type: object
+    SessionRecordingListResponse:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SessionRecording'
+          description: Recordings on this page.
+        has_next:
+          type: boolean
+          description: Whether more recordings match the query after this page.
+        version:
+          type: integer
+          description: Version of the listing response format.
+        next_cursor:
+          type: string
+          description: Cursor for the next page. Send it back as `after` to load the
+            next page. Absent when the query does not page by cursor or there is no
+            next page.
+      required:
+      - has_next
+      - results
+      - version
     SessionRecordingPlaylist:
       type: object
       properties:
@@ -294321,6 +295072,7 @@ components:
             * `business_knowledge` - Business Knowledge
             * `metrics_import` - Metrics Import
             * `knowledge_writer` - Knowledge Writer
+            * `context_layer` - Context Layer
         repository:
           type:
           - string
@@ -294887,6 +295639,7 @@ components:
     TaskListSourceEnum:
       enum:
       - autoresearch
+      - context_layer
       - error_tracking
       - eval_clusters
       - experiments
@@ -294915,6 +295668,7 @@ components:
       type: string
       description: |-
         * `autoresearch` - autoresearch
+        * `context_layer` - context_layer
         * `error_tracking` - error_tracking
         * `eval_clusters` - eval_clusters
         * `experiments` - experiments
@@ -295011,6 +295765,7 @@ components:
       - business_knowledge
       - metrics_import
       - knowledge_writer
+      - context_layer
       type: string
       description: |-
         * `onboarding` - Onboarding
@@ -295040,6 +295795,7 @@ components:
         * `business_knowledge` - Business Knowledge
         * `metrics_import` - Metrics Import
         * `knowledge_writer` - Knowledge Writer
+        * `context_layer` - Context Layer
     TaskPinRequest:
       type: object
       properties:
@@ -297665,6 +298421,7 @@ components:
             * `business_knowledge` - Business Knowledge
             * `metrics_import` - Metrics Import
             * `knowledge_writer` - Knowledge Writer
+            * `context_layer` - Context Layer
         repository:
           type:
           - string
@@ -300246,6 +301003,72 @@ components:
           description: Full inbound email body in Markdown.
       required:
       - content
+    TicketMacro:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+          description: UUID of the macro.
+        name:
+          type: string
+          description: Name shown in the macro list and the composer menu.
+          maxLength: 200
+        shortcut:
+          type:
+          - string
+          - 'null'
+          description: Slash command for this macro, without the leading slash. Lowercase
+            letters, numbers, and hyphens. Unique within the project. Null when the
+            macro has no shortcut.
+          maxLength: 50
+        body:
+          type: string
+          description: Reply text in markdown. May contain {{customer.first_name}},
+            {{customer.name}}, {{customer.email}}, {{agent.first_name}}, {{agent.name}},
+            and {{ticket.number}}. Variables are filled in when an agent inserts the
+            macro.
+          maxLength: 10000
+        usage_count:
+          type: integer
+          readOnly: true
+          description: How many times agents have inserted this macro.
+        last_used_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When an agent last inserted this macro. Null if it has never
+            been used.
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          description: When the macro was created.
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: When the macro was last edited. Null until the first edit.
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+          description: The user who created this macro. Null when that user was deleted.
+      required:
+      - body
+      - created_at
+      - created_by
+      - id
+      - last_used_at
+      - name
+      - updated_at
+      - usage_count
     TicketMessage:
       type: object
       description: A single message in a ticket thread (output-only).
@@ -307283,6 +308106,11 @@ components:
           maxLength: 512
       required:
       - identifier
+    UnrunnableReasonEnum:
+      enum:
+      - no_ai_consent
+      - creator_lost_access
+      type: string
     UpdateAppInput:
       type: object
       properties:
@@ -307330,6 +308158,7 @@ components:
             * `experiment_results` - Experiment Results
             * `experiments_list` - Experiments List
             * `logs_list` - Logs List
+            * `metrics` - Metrics
             * `metrics_table` - Metrics Table
             * `notebook_widget` - Notebook Widget
             * `session_replay_list` - Session Replay List
@@ -316350,6 +317179,7 @@ components:
       - $ref: '#/components/schemas/ConversationsRecentTicketsWidgetCatalogEntryOpenApi'
       - $ref: '#/components/schemas/CanvasAppWidgetCatalogEntryOpenApi'
       - $ref: '#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi'
+      - $ref: '#/components/schemas/MetricsWidgetCatalogEntryOpenApi'
       discriminator:
         propertyName: widget_type
         mapping:
@@ -316364,6 +317194,7 @@ components:
           conversations_recent_tickets: '#/components/schemas/ConversationsRecentTicketsWidgetCatalogEntryOpenApi'
           canvas_app: '#/components/schemas/CanvasAppWidgetCatalogEntryOpenApi'
           metrics_table: '#/components/schemas/MetricsTableWidgetCatalogEntryOpenApi'
+          metrics: '#/components/schemas/MetricsWidgetCatalogEntryOpenApi'
     WidgetCatalogResponse:
       type: object
       properties:
@@ -322022,8 +322853,9 @@ components:
             groups.
         limit:
           type: integer
+          minimum: 1
           default: 100
-          description: Max results (1-1000).
+          description: Max results. Values above 2000 are capped at 2000.
         after:
           type: string
           description: Pagination cursor from previous response.
@@ -326512,6 +327344,105 @@ components:
           title: Limit
           type: integer
       title: MetricsTableWidgetConfig
+      type: object
+    MetricsWidgetQuery:
+      additionalProperties: false
+      description: |-
+        A `MetricsQuery` as a metrics widget stores it.
+
+        Response, modifier and tag fields are runtime state, so a stored config can't carry them.
+      properties:
+        clauses:
+          description: Builder series. Empty when `language` is `promql` or `sql`,
+            or until a metric is picked.
+          items:
+            $ref: '#/components/schemas/MetricsQueryClause'
+          maxItems: 10
+          title: Clauses
+          type: array
+        dateRange:
+          anyOf:
+          - $ref: '#/components/schemas/DateRange'
+          - type: 'null'
+          default: null
+          description: Defaults to the last 24 hours when omitted; dashboard date
+            filters override it
+        display:
+          anyOf:
+          - $ref: '#/components/schemas/MetricsDisplaySettings'
+          - type: 'null'
+          default: null
+          description: Chart presentation. A node without it renders as a line chart.
+        formula:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Arithmetic over clause aliases (e.g. "a / b"); when set, only
+            the formula series are returned
+          title: Formula
+        interval:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: 'Bucket size, one of: second_15, second_30, minute, minute_5,
+            minute_15, minute_30, hour, hour_6, day, week; auto-picked from the range
+            when omitted. Fixed intervals are coarsened above 500 buckets. A dashboard
+            variable reference such as `$window` pins the interval to its single duration
+            value (15s, 30s, 1m, 5m, 15m, 30m, 1h, 6h, 1d, 1w). Variable intervals
+            that exceed 500 buckets require a larger value or shorter date range,
+            so the step stays consistent with PromQL lookbacks using that variable.'
+          title: Interval
+        kind:
+          const: MetricsQuery
+          default: MetricsQuery
+          title: Kind
+          type: string
+        language:
+          anyOf:
+          - $ref: '#/components/schemas/MetricsQueryLanguage'
+          - type: 'null'
+          default: null
+          description: How the query is written; the builder when unset.
+        promql:
+          anyOf:
+          - maxLength: 10000
+            type: string
+          - type: 'null'
+          default: null
+          description: PromQL expression, run as a range query. Used when `language`
+            is `promql`.
+          title: Promql
+        sql:
+          anyOf:
+          - maxLength: 10000
+            type: string
+          - type: 'null'
+          default: null
+          description: HogQL SELECT over the posthog.metric* tables. Used when `language`
+            is `sql`. It must return a `time` and a `value` column; every other column
+            is a series label.
+          title: Sql
+        version:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: version of the node, used for schema migrations
+          title: Version
+      title: MetricsWidgetQuery
+      type: object
+    MetricsWidgetConfig:
+      additionalProperties: false
+      properties:
+        query:
+          $ref: '#/components/schemas/MetricsWidgetQuery'
+          description: 'Metrics query the tile runs and how it draws it (`display.type`:
+            line, area, bar, stat, gauge, bargauge, table or heatmap). `dateRange`
+            is the default window; the dashboard date filter overrides it. A config
+            update replaces the whole query.'
+      title: MetricsWidgetConfig
       type: object
   securitySchemes:
     PersonalAPIKeyAuth:

@@ -26,12 +26,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The pull request the trace&apos;s git branch belongs to, ranked by engineering analytics, or null when the trace has no branch, the project has no GitHub source, or no pull request matches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequest? PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pullRequest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pullRequest"); else _explicitNullProperties?.Remove("pullRequest"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequest? _explicitNullValuePullRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequestLookupPullRequest? PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pullRequest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pullRequest"); else _explicitNullProperties?.Remove("pullRequest"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequestLookupPullRequest? _explicitNullValuePullRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequest PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pullRequest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pullRequest"); else _explicitNullProperties?.Remove("pullRequest"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequest _explicitNullValuePullRequest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequestLookupPullRequest PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pullRequest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pullRequest"); else _explicitNullProperties?.Remove("pullRequest"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequestLookupPullRequest _explicitNullValuePullRequest = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequestLookup"/> and sets the default values.
@@ -58,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "pullRequest", n => { PullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequest.CreateFromDiscriminatorValue); } },
+                { "pullRequest", n => { PullRequest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequestLookupPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequestLookupPullRequest.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequest>("pullRequest", PullRequest);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePullRequestLookupPullRequest>("pullRequest", PullRequest);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

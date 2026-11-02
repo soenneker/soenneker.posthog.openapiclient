@@ -135,12 +135,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Automated source review for this version, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? _explicitNullValueSecurityReview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailSecurityReview? _explicitNullValueSecurityReview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview _explicitNullValueSecurityReview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailSecurityReview _explicitNullValueSecurityReview = default!;
 #endif
         /// <summary>Title stored with this version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -191,7 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "input_contract", n => { InputContract = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "model", n => { Model = n.GetStringValue(); } },
                 { "operation", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOperation = default; _explicitNullProperties?.Remove("operation"); AdditionalData["operation"] = unknown; } else { Operation = parsed; AdditionalData.Remove("operation"); } } },
-                { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview.CreateFromDiscriminatorValue); } },
+                { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailSecurityReview.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetIntValue(); } },
             };
@@ -214,7 +214,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>("input_contract", InputContract);
             writer.WriteStringValue("model", Model);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailOperation>("operation", Operation);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>("security_review", SecurityReview);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReusableWidgetVersionDetailSecurityReview>("security_review", SecurityReview);
             writer.WriteStringValue("title", Title);
             writer.WriteIntValue("version", Version);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

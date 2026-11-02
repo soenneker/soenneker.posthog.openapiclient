@@ -8,216 +8,39 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf10"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf11"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf12"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf13"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf14"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf15"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf16"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf17"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf18"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf19"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf2"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf20"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf21"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf22"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf23"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf24"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf25"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf3"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf4"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf5"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf6"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf7"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf8"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf9"/>
+    /// Source of the events
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DataTableNodeSource : IComposedTypeWrapper, IParsable
-    , global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder {
-        // Preserve ambiguous union payloads without inventing a discriminator.
-        /// <summary>The complete payload when no unique typed union branch can be selected.</summary>
-        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+    public partial class DataTableNodeSource : IAdditionalDataHolder, IParsable
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
 
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf1"/></summary>
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+        }
+
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The kind property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf1? DataTableNodeSourceOneOf1 { get; set; }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf1 DataTableNodeSourceOneOf1 { get; set; }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        private string _explicitNullValueKind = default!;
 #endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf10"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf10? DataTableNodeSourceOneOf10 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf10 DataTableNodeSourceOneOf10 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf11"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf11? DataTableNodeSourceOneOf11 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf11 DataTableNodeSourceOneOf11 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf12"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf12? DataTableNodeSourceOneOf12 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf12 DataTableNodeSourceOneOf12 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf13"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf13? DataTableNodeSourceOneOf13 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf13 DataTableNodeSourceOneOf13 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf14"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf14? DataTableNodeSourceOneOf14 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf14 DataTableNodeSourceOneOf14 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf15"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf15? DataTableNodeSourceOneOf15 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf15 DataTableNodeSourceOneOf15 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf16"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf16? DataTableNodeSourceOneOf16 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf16 DataTableNodeSourceOneOf16 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf17"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf17? DataTableNodeSourceOneOf17 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf17 DataTableNodeSourceOneOf17 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf18"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf18? DataTableNodeSourceOneOf18 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf18 DataTableNodeSourceOneOf18 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf19"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf19? DataTableNodeSourceOneOf19 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf19 DataTableNodeSourceOneOf19 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf2? DataTableNodeSourceOneOf2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf2 DataTableNodeSourceOneOf2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf20"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf20? DataTableNodeSourceOneOf20 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf20 DataTableNodeSourceOneOf20 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf21"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf21? DataTableNodeSourceOneOf21 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf21 DataTableNodeSourceOneOf21 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf22"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf22? DataTableNodeSourceOneOf22 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf22 DataTableNodeSourceOneOf22 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf23"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf23? DataTableNodeSourceOneOf23 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf23 DataTableNodeSourceOneOf23 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf24"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf24? DataTableNodeSourceOneOf24 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf24 DataTableNodeSourceOneOf24 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf25"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf25? DataTableNodeSourceOneOf25 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf25 DataTableNodeSourceOneOf25 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf3? DataTableNodeSourceOneOf3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf3 DataTableNodeSourceOneOf3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf4"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf4? DataTableNodeSourceOneOf4 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf4 DataTableNodeSourceOneOf4 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf5? DataTableNodeSourceOneOf5 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf5 DataTableNodeSourceOneOf5 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf6"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf6? DataTableNodeSourceOneOf6 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf6 DataTableNodeSourceOneOf6 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf7"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf7? DataTableNodeSourceOneOf7 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf7 DataTableNodeSourceOneOf7 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf8"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf8? DataTableNodeSourceOneOf8 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf8 DataTableNodeSourceOneOf8 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf9"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf9? DataTableNodeSourceOneOf9 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf9 DataTableNodeSourceOneOf9 { get; set; }
-#endif
+        /// <summary>
+        /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSource"/> and sets the default values.
+        /// </summary>
+        public DataTableNodeSource()
+        {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -226,165 +49,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public static global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSource CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
-            var result = new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSource();
-            if("DataTableNodeSourceOneOf1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            var mappingValue = parseNode.GetChildNode("kind")?.GetStringValue();
+            return mappingValue switch
             {
-                
-            }
-            else if("DataTableNodeSourceOneOf10".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf11".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf12".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf13".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf14".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf15".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf16".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf17".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf18".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf19".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf20".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf21".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf22".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf23".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf24".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf25".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf4".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf6".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf7".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf8".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            else if("DataTableNodeSourceOneOf9".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                
-            }
-            
-            var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch2 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("kind") && (!shapeMembers1.ContainsKey("cohort") || ((((shapeMembers1["cohort"] == null || shapeMembers1["cohort"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["cohort"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["cohort"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral2 && integral2.GetValue() % 1 == 0) || (shapeMembers1["cohort"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral3 && integral3.GetValue() % 1 == 0) || (shapeMembers1["cohort"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral4 && integral4.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("distinctId") || ((((shapeMembers1["distinctId"] == null || shapeMembers1["distinctId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["distinctId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("fixedProperties") || ((((shapeMembers1["fixedProperties"] == null || shapeMembers1["fixedProperties"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["fixedProperties"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("kind") || (((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && (shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal11 && "PersonsNode".Equals(literal11.GetValue(), global::System.StringComparison.Ordinal)) && ((shapeMembers1["kind"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal12 && "PersonsNode".Equals(literal12.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("limit") || ((((shapeMembers1["limit"] == null || shapeMembers1["limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral15 && integral15.GetValue() % 1 == 0) || (shapeMembers1["limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral16 && integral16.GetValue() % 1 == 0) || (shapeMembers1["limit"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral17 && integral17.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("modifiers") || (((((shapeMembers1["modifiers"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["modifiers"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject22 || (shapeObject22.GetValue() is var shapeMembers23 && ((!shapeMembers23.ContainsKey("bounceRateDurationSeconds") || ((((shapeMembers23["bounceRateDurationSeconds"] == null || shapeMembers23["bounceRateDurationSeconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["bounceRateDurationSeconds"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong or global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal)))) && (!shapeMembers23.ContainsKey("bounceRatePageViewMode") || (((((shapeMembers23["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal28 && "count_pageviews".Equals(literal28.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal29 && "uniq_urls".Equals(literal29.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal30 && "uniq_page_screen_autocaptures".Equals(literal30.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["bounceRatePageViewMode"] == null || shapeMembers23["bounceRatePageViewMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("convertToProjectTimezone") || ((((shapeMembers23["convertToProjectTimezone"] == null || shapeMembers23["convertToProjectTimezone"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["convertToProjectTimezone"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("cookielessTrafficIsRegular") || ((((shapeMembers23["cookielessTrafficIsRegular"] == null || shapeMembers23["cookielessTrafficIsRegular"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["cookielessTrafficIsRegular"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("customBotDefinitions") || ((((shapeMembers23["customBotDefinitions"] == null || shapeMembers23["customBotDefinitions"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["customBotDefinitions"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers23.ContainsKey("customChannelTypeRules") || ((((shapeMembers23["customChannelTypeRules"] == null || shapeMembers23["customChannelTypeRules"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["customChannelTypeRules"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers23.ContainsKey("dataWarehouseEventsModifiers") || ((((shapeMembers23["dataWarehouseEventsModifiers"] == null || shapeMembers23["dataWarehouseEventsModifiers"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["dataWarehouseEventsModifiers"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers23.ContainsKey("debug") || ((((shapeMembers23["debug"] == null || shapeMembers23["debug"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["debug"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("forceClickhouseDataSkippingIndexes") || ((((shapeMembers23["forceClickhouseDataSkippingIndexes"] == null || shapeMembers23["forceClickhouseDataSkippingIndexes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["forceClickhouseDataSkippingIndexes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers23.ContainsKey("formatCsvAllowDoubleQuotes") || ((((shapeMembers23["formatCsvAllowDoubleQuotes"] == null || shapeMembers23["formatCsvAllowDoubleQuotes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["formatCsvAllowDoubleQuotes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("inCohortVia") || (((((shapeMembers23["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal53 && "auto".Equals(literal53.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal54 && "leftjoin".Equals(literal54.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal55 && "subquery".Equals(literal55.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal56 && "leftjoin_conjoined".Equals(literal56.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["inCohortVia"] == null || shapeMembers23["inCohortVia"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("inlineCohortCalculation") || (((((shapeMembers23["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal63 && "off".Equals(literal63.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal64 && "auto".Equals(literal64.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal65 && "always".Equals(literal65.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["inlineCohortCalculation"] == null || shapeMembers23["inlineCohortCalculation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("materializationMode") || (((((shapeMembers23["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal72 && "auto".Equals(literal72.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal73 && "legacy_null_as_string".Equals(literal73.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal74 && "legacy_null_as_null".Equals(literal74.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal75 && "disabled".Equals(literal75.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["materializationMode"] == null || shapeMembers23["materializationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("materializeRepeatedCTEs") || ((((shapeMembers23["materializeRepeatedCTEs"] == null || shapeMembers23["materializeRepeatedCTEs"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["materializeRepeatedCTEs"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("materializedColumnsOptimizationMode") || (((((shapeMembers23["materializedColumnsOptimizationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["materializedColumnsOptimizationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal84 && "disabled".Equals(literal84.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["materializedColumnsOptimizationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal85 && "optimized".Equals(literal85.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["materializedColumnsOptimizationMode"] == null || shapeMembers23["materializedColumnsOptimizationMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("mergeFederatedAggregateJoins") || ((((shapeMembers23["mergeFederatedAggregateJoins"] == null || shapeMembers23["mergeFederatedAggregateJoins"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["mergeFederatedAggregateJoins"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("negatedPersonFiltersNotIn") || ((((shapeMembers23["negatedPersonFiltersNotIn"] == null || shapeMembers23["negatedPersonFiltersNotIn"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["negatedPersonFiltersNotIn"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("optimizeJoinedFilters") || ((((shapeMembers23["optimizeJoinedFilters"] == null || shapeMembers23["optimizeJoinedFilters"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["optimizeJoinedFilters"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("optimizeProjections") || ((((shapeMembers23["optimizeProjections"] == null || shapeMembers23["optimizeProjections"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["optimizeProjections"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("parserMode") || (((((shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal100 && "cpp_only".Equals(literal100.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal101 && "cpp_with_rust_shadow".Equals(literal101.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal102 && "cpp_with_rust_py_shadow".Equals(literal102.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal103 && "rust_with_cpp_shadow".Equals(literal103.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal104 && "rust_only".Equals(literal104.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal105 && "rust_py_only".Equals(literal105.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal106 && "rust_py_with_cpp_shadow".Equals(literal106.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["parserMode"] == null || shapeMembers23["parserMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("personIdPushdown") || ((((shapeMembers23["personIdPushdown"] == null || shapeMembers23["personIdPushdown"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["personIdPushdown"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("personsArgMaxVersion") || (((((shapeMembers23["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal115 && "auto".Equals(literal115.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal116 && "v1".Equals(literal116.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal117 && "v2".Equals(literal117.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["personsArgMaxVersion"] == null || shapeMembers23["personsArgMaxVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("personsJoinMode") || (((((shapeMembers23["personsJoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["personsJoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal124 && "inner".Equals(literal124.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["personsJoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal125 && "left".Equals(literal125.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["personsJoinMode"] == null || shapeMembers23["personsJoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("personsOnEventsMode") || (((((shapeMembers23["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal132 && "disabled".Equals(literal132.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal133 && "person_id_no_override_properties_on_events".Equals(literal133.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal134 && "person_id_override_properties_on_events".Equals(literal134.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal135 && "person_id_override_properties_joined".Equals(literal135.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["personsOnEventsMode"] == null || shapeMembers23["personsOnEventsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("propertyGroupsMode") || (((((shapeMembers23["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal142 && "enabled".Equals(literal142.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal143 && "disabled".Equals(literal143.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal144 && "optimized".Equals(literal144.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["propertyGroupsMode"] == null || shapeMembers23["propertyGroupsMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("pushDownPredicates") || ((((shapeMembers23["pushDownPredicates"] == null || shapeMembers23["pushDownPredicates"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["pushDownPredicates"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("s3TableUseInvalidColumns") || ((((shapeMembers23["s3TableUseInvalidColumns"] == null || shapeMembers23["s3TableUseInvalidColumns"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["s3TableUseInvalidColumns"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("sessionIdPushdown") || ((((shapeMembers23["sessionIdPushdown"] == null || shapeMembers23["sessionIdPushdown"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["sessionIdPushdown"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("sessionPropertyPreAggregation") || ((((shapeMembers23["sessionPropertyPreAggregation"] == null || shapeMembers23["sessionPropertyPreAggregation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["sessionPropertyPreAggregation"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("sessionTableVersion") || (((((shapeMembers23["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal159 && "auto".Equals(literal159.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal160 && "v1".Equals(literal160.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal161 && "v2".Equals(literal161.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal162 && "v3".Equals(literal162.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["sessionTableVersion"] == null || shapeMembers23["sessionTableVersion"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("sessionTimestampBufferMinutes") || ((((shapeMembers23["sessionTimestampBufferMinutes"] == null || shapeMembers23["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers23["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers23["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral167 && integral167.GetValue() % 1 == 0) || (shapeMembers23["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral168 && integral168.GetValue() % 1 == 0) || (shapeMembers23["sessionTimestampBufferMinutes"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral169 && integral169.GetValue() % 1 == 0)))))) && (!shapeMembers23.ContainsKey("sessionsV2JoinMode") || (((((shapeMembers23["sessionsV2JoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers23["sessionsV2JoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal174 && "string".Equals(literal174.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers23["sessionsV2JoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal175 && "uuid".Equals(literal175.GetValue(), global::System.StringComparison.Ordinal)))) || ((((shapeMembers23["sessionsV2JoinMode"] == null || shapeMembers23["sessionsV2JoinMode"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers23.ContainsKey("timings") || ((((shapeMembers23["timings"] == null || shapeMembers23["timings"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["timings"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("typeAwareCastSimplification") || ((((shapeMembers23["typeAwareCastSimplification"] == null || shapeMembers23["typeAwareCastSimplification"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["typeAwareCastSimplification"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("useMaterializedViews") || ((((shapeMembers23["useMaterializedViews"] == null || shapeMembers23["useMaterializedViews"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["useMaterializedViews"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("useNewEventsSchema") || ((((shapeMembers23["useNewEventsSchema"] == null || shapeMembers23["useNewEventsSchema"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["useNewEventsSchema"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("usePreaggregatedIntermediateResults") || ((((shapeMembers23["usePreaggregatedIntermediateResults"] == null || shapeMembers23["usePreaggregatedIntermediateResults"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["usePreaggregatedIntermediateResults"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("usePreaggregatedTableTransforms") || ((((shapeMembers23["usePreaggregatedTableTransforms"] == null || shapeMembers23["usePreaggregatedTableTransforms"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["usePreaggregatedTableTransforms"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("useWebAnalyticsPreAggregatedTables") || ((((shapeMembers23["useWebAnalyticsPreAggregatedTables"] == null || shapeMembers23["useWebAnalyticsPreAggregatedTables"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["useWebAnalyticsPreAggregatedTables"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && (!shapeMembers23.ContainsKey("webAnalyticsFirstPageviewFilters") || ((((shapeMembers23["webAnalyticsFirstPageviewFilters"] == null || shapeMembers23["webAnalyticsFirstPageviewFilters"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers23["webAnalyticsFirstPageviewFilters"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean)))) && global::System.Linq.Enumerable.All(shapeMembers23.Keys, key => key == "bounceRateDurationSeconds" || key == "bounceRatePageViewMode" || key == "convertToProjectTimezone" || key == "cookielessTrafficIsRegular" || key == "customBotDefinitions" || key == "customChannelTypeRules" || key == "dataWarehouseEventsModifiers" || key == "debug" || key == "forceClickhouseDataSkippingIndexes" || key == "formatCsvAllowDoubleQuotes" || key == "inCohortVia" || key == "inlineCohortCalculation" || key == "materializationMode" || key == "materializeRepeatedCTEs" || key == "materializedColumnsOptimizationMode" || key == "mergeFederatedAggregateJoins" || key == "negatedPersonFiltersNotIn" || key == "optimizeJoinedFilters" || key == "optimizeProjections" || key == "parserMode" || key == "personIdPushdown" || key == "personsArgMaxVersion" || key == "personsJoinMode" || key == "personsOnEventsMode" || key == "propertyGroupsMode" || key == "pushDownPredicates" || key == "s3TableUseInvalidColumns" || key == "sessionIdPushdown" || key == "sessionPropertyPreAggregation" || key == "sessionTableVersion" || key == "sessionTimestampBufferMinutes" || key == "sessionsV2JoinMode" || key == "timings" || key == "typeAwareCastSimplification" || key == "useMaterializedViews" || key == "useNewEventsSchema" || key == "usePreaggregatedIntermediateResults" || key == "usePreaggregatedTableTransforms" || key == "useWebAnalyticsPreAggregatedTables" || key == "webAnalyticsFirstPageviewFilters"))))) || ((((shapeMembers1["modifiers"] == null || shapeMembers1["modifiers"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers1.ContainsKey("offset") || ((((shapeMembers1["offset"] == null || shapeMembers1["offset"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || ((shapeMembers1["offset"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong || (shapeMembers1["offset"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble integral198 && integral198.GetValue() % 1 == 0) || (shapeMembers1["offset"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal integral199 && integral199.GetValue() % 1 == 0) || (shapeMembers1["offset"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat integral200 && integral200.GetValue() % 1 == 0)))))) && (!shapeMembers1.ContainsKey("properties") || ((((shapeMembers1["properties"] == null || shapeMembers1["properties"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["properties"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && (!shapeMembers1.ContainsKey("response") || ((((shapeMembers1["response"] == null || shapeMembers1["response"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["response"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)))) && (!shapeMembers1.ContainsKey("search") || ((((shapeMembers1["search"] == null || shapeMembers1["search"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["search"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("tags") || (((((shapeMembers1["tags"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (shapeMembers1["tags"] is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject211 || (shapeObject211.GetValue() is var shapeMembers212 && ((!shapeMembers212.ContainsKey("name") || ((((shapeMembers212["name"] == null || shapeMembers212["name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers212["name"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers212.ContainsKey("presetId") || ((((shapeMembers212["presetId"] == null || shapeMembers212["presetId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers212["presetId"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers212.ContainsKey("productKey") || ((((shapeMembers212["productKey"] == null || shapeMembers212["productKey"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers212["productKey"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers212.ContainsKey("scene") || ((((shapeMembers212["scene"] == null || shapeMembers212["scene"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers212["scene"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && global::System.Linq.Enumerable.All(shapeMembers212.Keys, key => key == "name" || key == "presetId" || key == "productKey" || key == "scene"))))) || ((((shapeMembers1["tags"] == null || shapeMembers1["tags"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull))))))) && (!shapeMembers1.ContainsKey("version") || ((((shapeMembers1["version"] == null || shapeMembers1["version"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull)) || (shapeMembers1["version"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong or global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal)))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "cohort" || key == "distinctId" || key == "fixedProperties" || key == "kind" || key == "limit" || key == "modifiers" || key == "offset" || key == "properties" || key == "response" || key == "search" || key == "tags" || key == "version"))))))();
-            bool matchesUnionBranch3 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch4 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch5 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch6 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch7 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch8 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch9 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch10 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch11 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch12 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch13 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch14 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch15 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch16 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch17 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch18 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch19 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch20 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch21 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch22 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch23 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            bool matchesUnionBranch24 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => true))();
-            int matchingUnionBranches = 0;
-            if (matchesUnionBranch0) matchingUnionBranches++;
-            if (matchesUnionBranch1) matchingUnionBranches++;
-            if (matchesUnionBranch2) matchingUnionBranches++;
-            if (matchesUnionBranch3) matchingUnionBranches++;
-            if (matchesUnionBranch4) matchingUnionBranches++;
-            if (matchesUnionBranch5) matchingUnionBranches++;
-            if (matchesUnionBranch6) matchingUnionBranches++;
-            if (matchesUnionBranch7) matchingUnionBranches++;
-            if (matchesUnionBranch8) matchingUnionBranches++;
-            if (matchesUnionBranch9) matchingUnionBranches++;
-            if (matchesUnionBranch10) matchingUnionBranches++;
-            if (matchesUnionBranch11) matchingUnionBranches++;
-            if (matchesUnionBranch12) matchingUnionBranches++;
-            if (matchesUnionBranch13) matchingUnionBranches++;
-            if (matchesUnionBranch14) matchingUnionBranches++;
-            if (matchesUnionBranch15) matchingUnionBranches++;
-            if (matchesUnionBranch16) matchingUnionBranches++;
-            if (matchesUnionBranch17) matchingUnionBranches++;
-            if (matchesUnionBranch18) matchingUnionBranches++;
-            if (matchesUnionBranch19) matchingUnionBranches++;
-            if (matchesUnionBranch20) matchingUnionBranches++;
-            if (matchesUnionBranch21) matchingUnionBranches++;
-            if (matchesUnionBranch22) matchingUnionBranches++;
-            if (matchesUnionBranch23) matchingUnionBranches++;
-            if (matchesUnionBranch24) matchingUnionBranches++;
-            bool noSelectedUnionBranch = result.DataTableNodeSourceOneOf1 == null && result.DataTableNodeSourceOneOf10 == null && result.DataTableNodeSourceOneOf11 == null && result.DataTableNodeSourceOneOf12 == null && result.DataTableNodeSourceOneOf13 == null && result.DataTableNodeSourceOneOf14 == null && result.DataTableNodeSourceOneOf15 == null && result.DataTableNodeSourceOneOf16 == null && result.DataTableNodeSourceOneOf17 == null && result.DataTableNodeSourceOneOf18 == null && result.DataTableNodeSourceOneOf19 == null && result.DataTableNodeSourceOneOf2 == null && result.DataTableNodeSourceOneOf20 == null && result.DataTableNodeSourceOneOf21 == null && result.DataTableNodeSourceOneOf22 == null && result.DataTableNodeSourceOneOf23 == null && result.DataTableNodeSourceOneOf24 == null && result.DataTableNodeSourceOneOf25 == null && result.DataTableNodeSourceOneOf3 == null && result.DataTableNodeSourceOneOf4 == null && result.DataTableNodeSourceOneOf5 == null && result.DataTableNodeSourceOneOf6 == null && result.DataTableNodeSourceOneOf7 == null && result.DataTableNodeSourceOneOf8 == null && result.DataTableNodeSourceOneOf9 == null;
-            if (noSelectedUnionBranch && matchesUnionBranch2 && matchingUnionBranches == 1) result.DataTableNodeSourceOneOf3 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf3(), parseNode);
-            if (result.DataTableNodeSourceOneOf1 == null && result.DataTableNodeSourceOneOf10 == null && result.DataTableNodeSourceOneOf11 == null && result.DataTableNodeSourceOneOf12 == null && result.DataTableNodeSourceOneOf13 == null && result.DataTableNodeSourceOneOf14 == null && result.DataTableNodeSourceOneOf15 == null && result.DataTableNodeSourceOneOf16 == null && result.DataTableNodeSourceOneOf17 == null && result.DataTableNodeSourceOneOf18 == null && result.DataTableNodeSourceOneOf19 == null && result.DataTableNodeSourceOneOf2 == null && result.DataTableNodeSourceOneOf20 == null && result.DataTableNodeSourceOneOf21 == null && result.DataTableNodeSourceOneOf22 == null && result.DataTableNodeSourceOneOf23 == null && result.DataTableNodeSourceOneOf24 == null && result.DataTableNodeSourceOneOf25 == null && result.DataTableNodeSourceOneOf3 == null && result.DataTableNodeSourceOneOf4 == null && result.DataTableNodeSourceOneOf5 == null && result.DataTableNodeSourceOneOf6 == null && result.DataTableNodeSourceOneOf7 == null && result.DataTableNodeSourceOneOf8 == null && result.DataTableNodeSourceOneOf9 == null) result.UnrecognizedValue = unionPayload;
-return result;
+                "AccountsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf24(),
+                "AccountsTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf25(),
+                "ActorsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf4(),
+                "EndpointsUsageTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf23(),
+                "ErrorTrackingIssueCorrelationQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf19(),
+                "ErrorTrackingQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf18(),
+                "EventsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf1(),
+                "EventsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf2(),
+                "GroupsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf5(),
+                "HogQLQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf6(),
+                "MarketingAnalyticsAggregatedQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf17(),
+                "MarketingAnalyticsTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf16(),
+                "PersonsNode" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf3(),
+                "SessionAttributionExplorerQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf14(),
+                "SessionQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf22(),
+                "SessionsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf15(),
+                "TraceQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf21(),
+                "TracesQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf20(),
+                "WebBotsTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf10(),
+                "WebExternalClicksTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf9(),
+                "WebGoalsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf11(),
+                "WebOverviewQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf7(),
+                "WebStatsTableQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf8(),
+                "WebVitalsPathBreakdownQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf13(),
+                "WebVitalsQuery" => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceDataTableNodeSourceOneOf12(),
+                _ => new global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSource(),
+            };
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -392,109 +86,10 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
-
-            if(DataTableNodeSourceOneOf1 != null)
+            return new Dictionary<string, Action<IParseNode>>
             {
-                return DataTableNodeSourceOneOf1.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf10 != null)
-            {
-                return DataTableNodeSourceOneOf10.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf11 != null)
-            {
-                return DataTableNodeSourceOneOf11.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf12 != null)
-            {
-                return DataTableNodeSourceOneOf12.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf13 != null)
-            {
-                return DataTableNodeSourceOneOf13.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf14 != null)
-            {
-                return DataTableNodeSourceOneOf14.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf15 != null)
-            {
-                return DataTableNodeSourceOneOf15.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf16 != null)
-            {
-                return DataTableNodeSourceOneOf16.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf17 != null)
-            {
-                return DataTableNodeSourceOneOf17.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf18 != null)
-            {
-                return DataTableNodeSourceOneOf18.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf19 != null)
-            {
-                return DataTableNodeSourceOneOf19.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf2 != null)
-            {
-                return DataTableNodeSourceOneOf2.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf20 != null)
-            {
-                return DataTableNodeSourceOneOf20.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf21 != null)
-            {
-                return DataTableNodeSourceOneOf21.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf22 != null)
-            {
-                return DataTableNodeSourceOneOf22.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf23 != null)
-            {
-                return DataTableNodeSourceOneOf23.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf24 != null)
-            {
-                return DataTableNodeSourceOneOf24.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf25 != null)
-            {
-                return DataTableNodeSourceOneOf25.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf3 != null)
-            {
-                return DataTableNodeSourceOneOf3.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf4 != null)
-            {
-                return DataTableNodeSourceOneOf4.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf5 != null)
-            {
-                return DataTableNodeSourceOneOf5.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf6 != null)
-            {
-                return DataTableNodeSourceOneOf6.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf7 != null)
-            {
-                return DataTableNodeSourceOneOf7.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf8 != null)
-            {
-                return DataTableNodeSourceOneOf8.GetFieldDeserializers();
-            }
-            else if(DataTableNodeSourceOneOf9 != null)
-            {
-                return DataTableNodeSourceOneOf9.GetFieldDeserializers();
-            }
-            return new Dictionary<string, Action<IParseNode>>();
+                { "kind", n => { Kind = n.GetStringValue(); } },
+            };
         }
         /// <summary>
         /// Serializes information the current object
@@ -502,186 +97,10 @@ return result;
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (DataTableNodeSourceOneOf1 == null && DataTableNodeSourceOneOf10 == null && DataTableNodeSourceOneOf11 == null && DataTableNodeSourceOneOf12 == null && DataTableNodeSourceOneOf13 == null && DataTableNodeSourceOneOf14 == null && DataTableNodeSourceOneOf15 == null && DataTableNodeSourceOneOf16 == null && DataTableNodeSourceOneOf17 == null && DataTableNodeSourceOneOf18 == null && DataTableNodeSourceOneOf19 == null && DataTableNodeSourceOneOf2 == null && DataTableNodeSourceOneOf20 == null && DataTableNodeSourceOneOf21 == null && DataTableNodeSourceOneOf22 == null && DataTableNodeSourceOneOf23 == null && DataTableNodeSourceOneOf24 == null && DataTableNodeSourceOneOf25 == null && DataTableNodeSourceOneOf3 == null && DataTableNodeSourceOneOf4 == null && DataTableNodeSourceOneOf5 == null && DataTableNodeSourceOneOf6 == null && DataTableNodeSourceOneOf7 == null && DataTableNodeSourceOneOf8 == null && DataTableNodeSourceOneOf9 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            int selectedUnionBranches = 0;
-            if (DataTableNodeSourceOneOf1 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf10 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf11 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf12 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf13 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf14 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf15 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf16 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf17 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf18 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf19 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf2 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf20 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf21 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf22 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf23 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf24 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf25 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf3 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf4 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf5 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf6 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf7 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf8 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf9 != null) selectedUnionBranches++;
-            if (DataTableNodeSourceOneOf1 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf1); return; }
-            if (DataTableNodeSourceOneOf10 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf10); return; }
-            if (DataTableNodeSourceOneOf11 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf11); return; }
-            if (DataTableNodeSourceOneOf12 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf12 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf12); return; }
-            if (DataTableNodeSourceOneOf13 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf13 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf13); return; }
-            if (DataTableNodeSourceOneOf14 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf14 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf14); return; }
-            if (DataTableNodeSourceOneOf15 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf15 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf15); return; }
-            if (DataTableNodeSourceOneOf16 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf16 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf16); return; }
-            if (DataTableNodeSourceOneOf17 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf17 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf17); return; }
-            if (DataTableNodeSourceOneOf18 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf18 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf18); return; }
-            if (DataTableNodeSourceOneOf19 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf19 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf19); return; }
-            if (DataTableNodeSourceOneOf2 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf2); return; }
-            if (DataTableNodeSourceOneOf20 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf20 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf20); return; }
-            if (DataTableNodeSourceOneOf21 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf21 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf21); return; }
-            if (DataTableNodeSourceOneOf22 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf22 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf22); return; }
-            if (DataTableNodeSourceOneOf23 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf23 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf23); return; }
-            if (DataTableNodeSourceOneOf24 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf24 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf24); return; }
-            if (DataTableNodeSourceOneOf25 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf25 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf25); return; }
-            if (DataTableNodeSourceOneOf3 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf3); return; }
-            if (DataTableNodeSourceOneOf4 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf4); return; }
-            if (DataTableNodeSourceOneOf5 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf5); return; }
-            if (DataTableNodeSourceOneOf6 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf6); return; }
-            if (DataTableNodeSourceOneOf7 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf7); return; }
-            if (DataTableNodeSourceOneOf8 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf8); return; }
-            if (DataTableNodeSourceOneOf9 != null && selectedUnionBranches == 1) { if (DataTableNodeSourceOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataTableNodeSourceOneOf9); return; }
-
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(DataTableNodeSourceOneOf1 != null)
-            {
-                if (DataTableNodeSourceOneOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf1>(null, DataTableNodeSourceOneOf1);
-            }
-            else if(DataTableNodeSourceOneOf10 != null)
-            {
-                if (DataTableNodeSourceOneOf10 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf10>(null, DataTableNodeSourceOneOf10);
-            }
-            else if(DataTableNodeSourceOneOf11 != null)
-            {
-                if (DataTableNodeSourceOneOf11 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf11>(null, DataTableNodeSourceOneOf11);
-            }
-            else if(DataTableNodeSourceOneOf12 != null)
-            {
-                if (DataTableNodeSourceOneOf12 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf12>(null, DataTableNodeSourceOneOf12);
-            }
-            else if(DataTableNodeSourceOneOf13 != null)
-            {
-                if (DataTableNodeSourceOneOf13 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf13>(null, DataTableNodeSourceOneOf13);
-            }
-            else if(DataTableNodeSourceOneOf14 != null)
-            {
-                if (DataTableNodeSourceOneOf14 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf14>(null, DataTableNodeSourceOneOf14);
-            }
-            else if(DataTableNodeSourceOneOf15 != null)
-            {
-                if (DataTableNodeSourceOneOf15 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf15>(null, DataTableNodeSourceOneOf15);
-            }
-            else if(DataTableNodeSourceOneOf16 != null)
-            {
-                if (DataTableNodeSourceOneOf16 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf16>(null, DataTableNodeSourceOneOf16);
-            }
-            else if(DataTableNodeSourceOneOf17 != null)
-            {
-                if (DataTableNodeSourceOneOf17 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf17>(null, DataTableNodeSourceOneOf17);
-            }
-            else if(DataTableNodeSourceOneOf18 != null)
-            {
-                if (DataTableNodeSourceOneOf18 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf18>(null, DataTableNodeSourceOneOf18);
-            }
-            else if(DataTableNodeSourceOneOf19 != null)
-            {
-                if (DataTableNodeSourceOneOf19 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf19>(null, DataTableNodeSourceOneOf19);
-            }
-            else if(DataTableNodeSourceOneOf2 != null)
-            {
-                if (DataTableNodeSourceOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf2>(null, DataTableNodeSourceOneOf2);
-            }
-            else if(DataTableNodeSourceOneOf20 != null)
-            {
-                if (DataTableNodeSourceOneOf20 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf20>(null, DataTableNodeSourceOneOf20);
-            }
-            else if(DataTableNodeSourceOneOf21 != null)
-            {
-                if (DataTableNodeSourceOneOf21 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf21>(null, DataTableNodeSourceOneOf21);
-            }
-            else if(DataTableNodeSourceOneOf22 != null)
-            {
-                if (DataTableNodeSourceOneOf22 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf22>(null, DataTableNodeSourceOneOf22);
-            }
-            else if(DataTableNodeSourceOneOf23 != null)
-            {
-                if (DataTableNodeSourceOneOf23 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf23>(null, DataTableNodeSourceOneOf23);
-            }
-            else if(DataTableNodeSourceOneOf24 != null)
-            {
-                if (DataTableNodeSourceOneOf24 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf24>(null, DataTableNodeSourceOneOf24);
-            }
-            else if(DataTableNodeSourceOneOf25 != null)
-            {
-                if (DataTableNodeSourceOneOf25 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf25>(null, DataTableNodeSourceOneOf25);
-            }
-            else if(DataTableNodeSourceOneOf3 != null)
-            {
-                if (DataTableNodeSourceOneOf3 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf3>(null, DataTableNodeSourceOneOf3);
-            }
-            else if(DataTableNodeSourceOneOf4 != null)
-            {
-                if (DataTableNodeSourceOneOf4 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf4>(null, DataTableNodeSourceOneOf4);
-            }
-            else if(DataTableNodeSourceOneOf5 != null)
-            {
-                if (DataTableNodeSourceOneOf5 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf5>(null, DataTableNodeSourceOneOf5);
-            }
-            else if(DataTableNodeSourceOneOf6 != null)
-            {
-                if (DataTableNodeSourceOneOf6 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf6>(null, DataTableNodeSourceOneOf6);
-            }
-            else if(DataTableNodeSourceOneOf7 != null)
-            {
-                if (DataTableNodeSourceOneOf7 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf7>(null, DataTableNodeSourceOneOf7);
-            }
-            else if(DataTableNodeSourceOneOf8 != null)
-            {
-                if (DataTableNodeSourceOneOf8 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf8>(null, DataTableNodeSourceOneOf8);
-            }
-            else if(DataTableNodeSourceOneOf9 != null)
-            {
-                if (DataTableNodeSourceOneOf9 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;
-                writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataTableNodeSourceOneOf9>(null, DataTableNodeSourceOneOf9);
-            }
+            writer.WriteStringValue("kind", Kind);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

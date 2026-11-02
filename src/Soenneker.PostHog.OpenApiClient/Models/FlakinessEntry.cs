@@ -157,12 +157,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Active quarantine details when `is_quarantined` is true. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? _explicitNullValueQuarantine = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine? Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine? _explicitNullValueQuarantine = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary _explicitNullValueQuarantine = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine _explicitNullValueQuarantine = default!;
 #endif
         /// <summary>The run_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -243,7 +243,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "last_flaked_at", n => { LastFlakedAt = n.GetDateTimeOffsetValue(); } },
                 { "needs_decision", n => { NeedsDecision = n.GetBoolValue(); } },
                 { "owner_team", n => { OwnerTeam = n.GetStringValue(); } },
-                { "quarantine", n => { Quarantine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary.CreateFromDiscriminatorValue); } },
+                { "quarantine", n => { Quarantine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine.CreateFromDiscriminatorValue); } },
                 { "run_type", n => { RunType = n.GetStringValue(); } },
                 { "soft_count", n => { SoftCount = n.GetIntValue(); } },
                 { "soft_rate", n => { SoftRate = n.GetDoubleValue(); } },
@@ -277,7 +277,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("last_flaked_at", LastFlakedAt);
             writer.WriteBoolValue("needs_decision", NeedsDecision);
             writer.WriteStringValue("owner_team", OwnerTeam);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary>("quarantine", Quarantine);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntryQuarantine>("quarantine", Quarantine);
             writer.WriteStringValue("run_type", RunType);
             writer.WriteIntValue("soft_count", SoftCount);
             writer.WriteDoubleValue("soft_rate", SoftRate);

@@ -46,10 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Authenticated user principal for user or external agent writes. Null for internal task and system writes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.User2? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.User2 CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -91,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
                 { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.User2>(global::Soenneker.PostHog.OpenApiClient.Models.User2.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactCreatedBy.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "pull_request_id", n => { PullRequestId = n.GetGuidValue(); } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },

@@ -17,27 +17,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("identifiers") is null) { _explicitNullValueIdentifiers = default!; _explicitNullProperties?.Remove("identifiers"); }
-            else if (parseNode.GetChildNode("identifiers") is { } nullNodeIdentifiers && nullNodeIdentifiers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Identifiers = null;
+            if (parseNode.GetChildNode("distinct_id") is null) { _explicitNullValueDistinctId = default!; _explicitNullProperties?.Remove("distinct_id"); }
+            else if (parseNode.GetChildNode("distinct_id") is { } nullNodeDistinctId && nullNodeDistinctId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctId = null;
             if (parseNode.GetChildNode("message_data") is null) { _explicitNullValueMessageData = default!; _explicitNullProperties?.Remove("message_data"); }
             else if (parseNode.GetChildNode("message_data") is { } nullNodeMessageData && nullNodeMessageData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageData = null;
-            if (parseNode.GetChildNode("template") is null) { _explicitNullValueTemplate = default!; _explicitNullProperties?.Remove("template"); }
-            else if (parseNode.GetChildNode("template") is { } nullNodeTemplate && nullNodeTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Template = null;
+            if (parseNode.GetChildNode("template_id") is null) { _explicitNullValueTemplateId = default!; _explicitNullProperties?.Remove("template_id"); }
+            else if (parseNode.GetChildNode("template_id") is { } nullNodeTemplateId && nullNodeTemplateId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateId = null;
             if (parseNode.GetChildNode("to") is null) { _explicitNullValueTo = default!; _explicitNullProperties?.Remove("to"); }
             else if (parseNode.GetChildNode("to") is { } nullNodeTo && nullNodeTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) To = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Who the email is for, used to attribute engagement events.</summary>
+        /// <summary>Distinct ID of the recipient&apos;s person. The email&apos;s engagement events (sent, delivered, opened, clicked, bounced) and the send itself are recorded against that person. Defaults to the recipient&apos;s email address. The template can&apos;t read the person&apos;s properties, so pass everything it needs in `message_data`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SendEmailIdentifiers? Identifiers { get => _explicitNullValueIdentifiers; set { _explicitNullValueIdentifiers = value; AdditionalData?.Remove("identifiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifiers"); else _explicitNullProperties?.Remove("identifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SendEmailIdentifiers? _explicitNullValueIdentifiers = default!;
+        public string? DistinctId { get => _explicitNullValueDistinctId; set { _explicitNullValueDistinctId = value; AdditionalData?.Remove("distinct_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_id"); else _explicitNullProperties?.Remove("distinct_id"); } }
+        private string? _explicitNullValueDistinctId = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SendEmailIdentifiers Identifiers { get => _explicitNullValueIdentifiers; set { _explicitNullValueIdentifiers = value; AdditionalData?.Remove("identifiers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifiers"); else _explicitNullProperties?.Remove("identifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SendEmailIdentifiers _explicitNullValueIdentifiers = default!;
+        public string DistinctId { get => _explicitNullValueDistinctId; set { _explicitNullValueDistinctId = value; AdditionalData?.Remove("distinct_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_id"); else _explicitNullProperties?.Remove("distinct_id"); } }
+        private string _explicitNullValueDistinctId = default!;
 #endif
         /// <summary>Data for the template&apos;s Liquid placeholders, available as `variables`. For example `{&quot;reset_link&quot;: &quot;https://...&quot;}` fills `{{ variables.reset_link }}`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,16 +49,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.SendEmailMessageDataProperty MessageData { get => _explicitNullValueMessageData; set { _explicitNullValueMessageData = value; AdditionalData?.Remove("message_data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_data"); else _explicitNullProperties?.Remove("message_data"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SendEmailMessageDataProperty _explicitNullValueMessageData = default!;
 #endif
-        /// <summary>The transactional email template to send.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SendEmailTemplateComposed? Template { get => _explicitNullValueTemplate; set { _explicitNullValueTemplate = value; AdditionalData?.Remove("template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template"); else _explicitNullProperties?.Remove("template"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SendEmailTemplateComposed? _explicitNullValueTemplate = default!;
-#nullable restore
-#else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SendEmailTemplateComposed Template { get => _explicitNullValueTemplate; set { _explicitNullValueTemplate = value; AdditionalData?.Remove("template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template"); else _explicitNullProperties?.Remove("template"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SendEmailTemplateComposed _explicitNullValueTemplate = default!;
-#endif
+        /// <summary>ID of the email template to send. The template must be made transactional first.</summary>
+        public Guid? TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; AdditionalData?.Remove("template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
+        private Guid? _explicitNullValueTemplateId = default!;
         /// <summary>Email address of the recipient.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,9 +87,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "identifiers", n => { Identifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SendEmailIdentifiers>(global::Soenneker.PostHog.OpenApiClient.Models.SendEmailIdentifiers.CreateFromDiscriminatorValue); } },
+                { "distinct_id", n => { DistinctId = n.GetStringValue(); } },
                 { "message_data", n => { MessageData = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SendEmailMessageDataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SendEmailMessageDataProperty.CreateFromDiscriminatorValue); } },
-                { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SendEmailTemplateComposed>(global::Soenneker.PostHog.OpenApiClient.Models.SendEmailTemplateComposed.CreateFromDiscriminatorValue); } },
+                { "template_id", n => { TemplateId = n.GetGuidValue(); } },
                 { "to", n => { To = n.GetStringValue(); } },
             };
         }
@@ -107,9 +100,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SendEmailIdentifiers>("identifiers", Identifiers);
+            writer.WriteStringValue("distinct_id", DistinctId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SendEmailMessageDataProperty>("message_data", MessageData);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SendEmailTemplateComposed>("template", Template);
+            writer.WriteGuidValue("template_id", TemplateId);
             writer.WriteStringValue("to", To);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

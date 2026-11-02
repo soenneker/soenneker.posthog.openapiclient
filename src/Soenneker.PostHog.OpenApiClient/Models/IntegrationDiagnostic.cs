@@ -40,22 +40,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Attribution (UTM events) side health, or null if no data</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry? Attribution { get => _explicitNullValueAttribution; set { _explicitNullValueAttribution = value; AdditionalData?.Remove("attribution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution"); else _explicitNullProperties?.Remove("attribution"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry? _explicitNullValueAttribution = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution? Attribution { get => _explicitNullValueAttribution; set { _explicitNullValueAttribution = value; AdditionalData?.Remove("attribution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution"); else _explicitNullProperties?.Remove("attribution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution? _explicitNullValueAttribution = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry Attribution { get => _explicitNullValueAttribution; set { _explicitNullValueAttribution = value; AdditionalData?.Remove("attribution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution"); else _explicitNullProperties?.Remove("attribution"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry _explicitNullValueAttribution = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution Attribution { get => _explicitNullValueAttribution; set { _explicitNullValueAttribution = value; AdditionalData?.Remove("attribution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution"); else _explicitNullProperties?.Remove("attribution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution _explicitNullValueAttribution = default!;
 #endif
         /// <summary>Data-source (sync) side health, or null if not connected</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry? DataSource { get => _explicitNullValueDataSource; set { _explicitNullValueDataSource = value; AdditionalData?.Remove("data_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_source"); else _explicitNullProperties?.Remove("data_source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry? _explicitNullValueDataSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource? DataSource { get => _explicitNullValueDataSource; set { _explicitNullValueDataSource = value; AdditionalData?.Remove("data_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_source"); else _explicitNullProperties?.Remove("data_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource? _explicitNullValueDataSource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry DataSource { get => _explicitNullValueDataSource; set { _explicitNullValueDataSource = value; AdditionalData?.Remove("data_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_source"); else _explicitNullProperties?.Remove("data_source"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry _explicitNullValueDataSource = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource DataSource { get => _explicitNullValueDataSource; set { _explicitNullValueDataSource = value; AdditionalData?.Remove("data_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_source"); else _explicitNullProperties?.Remove("data_source"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource _explicitNullValueDataSource = default!;
 #endif
         /// <summary>Human-readable cross-domain diagnosis</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -142,8 +142,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attribution", n => { Attribution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry>(global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry.CreateFromDiscriminatorValue); } },
-                { "data_source", n => { DataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry>(global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry.CreateFromDiscriminatorValue); } },
+                { "attribution", n => { Attribution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution.CreateFromDiscriminatorValue); } },
+                { "data_source", n => { DataSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource.CreateFromDiscriminatorValue); } },
                 { "diagnosis", n => { Diagnosis = n.GetStringValue(); } },
                 { "display_name", n => { DisplayName = n.GetStringValue(); } },
                 { "integration_key", n => { IntegrationKey = n.GetStringValue(); } },
@@ -159,8 +159,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AttributionHealthEntry>("attribution", Attribution);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataSourceHealthEntry>("data_source", DataSource);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticAttribution>("attribution", Attribution);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationDiagnosticDataSource>("data_source", DataSource);
             writer.WriteStringValue("diagnosis", Diagnosis);
             writer.WriteStringValue("display_name", DisplayName);
             writer.WriteStringValue("integration_key", IntegrationKey);

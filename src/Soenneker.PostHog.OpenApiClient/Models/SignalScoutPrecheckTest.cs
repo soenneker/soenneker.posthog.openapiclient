@@ -40,10 +40,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The member scheduled runs check the query as, when that is not you. The test runs with your access, so a table you can read can still fail on a scheduled run, and the run then starts as if there were no pre-check. Null when scheduled runs check it as you.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? ActingUser { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTestActingUser? ActingUser { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic ActingUser { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTestActingUser ActingUser { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -120,7 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "acting_user", n => { ActingUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "acting_user", n => { ActingUser = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTestActingUser>(global::Soenneker.PostHog.OpenApiClient.Models.SignalScoutPrecheckTestActingUser.CreateFromDiscriminatorValue); } },
                 { "columns", n => { Columns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "interval_minutes", n => { IntervalMinutes = n.GetIntValue(); } },

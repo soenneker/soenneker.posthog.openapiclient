@@ -48,12 +48,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Classifier-type aggregates; null when the scanner is not a classifier.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats? Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; AdditionalData?.Remove("classifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats? _explicitNullValueClassifier = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsClassifier? Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; AdditionalData?.Remove("classifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsClassifier? _explicitNullValueClassifier = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; AdditionalData?.Remove("classifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats _explicitNullValueClassifier = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsClassifier Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; AdditionalData?.Remove("classifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsClassifier _explicitNullValueClassifier = default!;
 #endif
         /// <summary>Session-level scanner coverage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -78,22 +78,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Monitor-type aggregates; null when the scanner is not a monitor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats? Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; AdditionalData?.Remove("monitor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats? _explicitNullValueMonitor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsMonitor? Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; AdditionalData?.Remove("monitor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsMonitor? _explicitNullValueMonitor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; AdditionalData?.Remove("monitor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats _explicitNullValueMonitor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsMonitor Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; AdditionalData?.Remove("monitor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsMonitor _explicitNullValueMonitor = default!;
 #endif
         /// <summary>Scorer-type aggregates; null when the scanner is not a scorer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats? Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; AdditionalData?.Remove("scorer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats? _explicitNullValueScorer = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsScorer? Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; AdditionalData?.Remove("scorer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsScorer? _explicitNullValueScorer = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; AdditionalData?.Remove("scorer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats _explicitNullValueScorer = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsScorer Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; AdditionalData?.Remove("scorer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsScorer _explicitNullValueScorer = default!;
 #endif
         /// <summary>Counts of observations by terminal status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -131,11 +131,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "available_tags", n => { AvailableTags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "classifier", n => { Classifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats>(global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats.CreateFromDiscriminatorValue); } },
+                { "classifier", n => { Classifier = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsClassifier>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsClassifier.CreateFromDiscriminatorValue); } },
                 { "coverage", n => { Coverage = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage.CreateFromDiscriminatorValue); } },
                 { "labels", n => { Labels = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels.CreateFromDiscriminatorValue); } },
-                { "monitor", n => { Monitor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats>(global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats.CreateFromDiscriminatorValue); } },
-                { "scorer", n => { Scorer = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats>(global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats.CreateFromDiscriminatorValue); } },
+                { "monitor", n => { Monitor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsMonitor>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsMonitor.CreateFromDiscriminatorValue); } },
+                { "scorer", n => { Scorer = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsScorer>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsScorer.CreateFromDiscriminatorValue); } },
                 { "status_counts", n => { StatusCounts = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts>(global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts.CreateFromDiscriminatorValue); } },
             };
         }
@@ -147,11 +147,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("available_tags", AvailableTags);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ClassifierStats>("classifier", Classifier);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsClassifier>("classifier", Classifier);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage>("coverage", Coverage);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsLabels>("labels", Labels);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats>("monitor", Monitor);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScorerStats>("scorer", Scorer);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsMonitor>("monitor", Monitor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsScorer>("scorer", Scorer);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsStatusCounts>("status_counts", StatusCounts);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

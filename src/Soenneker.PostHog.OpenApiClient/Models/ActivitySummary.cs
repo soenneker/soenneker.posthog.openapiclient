@@ -46,12 +46,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Exact fields that code computed from the user&apos;s activity, with ids. The theme refs point into them. Null before the first update that computed them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed? Computed { get => _explicitNullValueComputed; set { _explicitNullValueComputed = value; AdditionalData?.Remove("computed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed"); else _explicitNullProperties?.Remove("computed"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed? _explicitNullValueComputed = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedComposed? Computed { get => _explicitNullValueComputed; set { _explicitNullValueComputed = value; AdditionalData?.Remove("computed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed"); else _explicitNullProperties?.Remove("computed"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedComposed? _explicitNullValueComputed = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed Computed { get => _explicitNullValueComputed; set { _explicitNullValueComputed = value; AdditionalData?.Remove("computed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed"); else _explicitNullProperties?.Remove("computed"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed _explicitNullValueComputed = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedComposed Computed { get => _explicitNullValueComputed; set { _explicitNullValueComputed = value; AdditionalData?.Remove("computed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed"); else _explicitNullProperties?.Remove("computed"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedComposed _explicitNullValueComputed = default!;
 #endif
         /// <summary>When this version of the summary was written.</summary>
         public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; AdditionalData?.Remove("generated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
@@ -143,7 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "computed", n => { Computed = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed>(global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed.CreateFromDiscriminatorValue); } },
+                { "computed", n => { Computed = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedComposed.CreateFromDiscriminatorValue); } },
                 { "generated_at", n => { GeneratedAt = n.GetDateTimeOffsetValue(); } },
                 { "headline", n => { Headline = n.GetStringValue(); } },
                 { "modes", n => { Modes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryModeEnum>()?.AsList(); } },
@@ -163,7 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed>("computed", Computed);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputedComposed>("computed", Computed);
             writer.WriteDateTimeOffsetValue("generated_at", GeneratedAt);
             writer.WriteStringValue("headline", Headline);
             writer.WriteCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryModeEnum>("modes", Modes);

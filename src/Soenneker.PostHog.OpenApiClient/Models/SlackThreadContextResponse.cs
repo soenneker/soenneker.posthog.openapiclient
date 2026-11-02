@@ -41,12 +41,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Linked PostHog Task. Null when no mapping was found for the thread.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextTask? Task { get => _explicitNullValueTask; set { _explicitNullValueTask = value; AdditionalData?.Remove("task"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task"); else _explicitNullProperties?.Remove("task"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextTask? _explicitNullValueTask = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseTask? Task { get => _explicitNullValueTask; set { _explicitNullValueTask = value; AdditionalData?.Remove("task"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task"); else _explicitNullProperties?.Remove("task"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseTask? _explicitNullValueTask = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextTask Task { get => _explicitNullValueTask; set { _explicitNullValueTask = value; AdditionalData?.Remove("task"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task"); else _explicitNullProperties?.Remove("task"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextTask _explicitNullValueTask = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseTask Task { get => _explicitNullValueTask; set { _explicitNullValueTask = value; AdditionalData?.Remove("task"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task"); else _explicitNullProperties?.Remove("task"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseTask _explicitNullValueTask = default!;
 #endif
         /// <summary>Slack-side identifiers and the mapping metadata.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "runs", n => { Runs = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRun>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRun.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextTask>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextTask.CreateFromDiscriminatorValue); } },
+                { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseTask>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseTask.CreateFromDiscriminatorValue); } },
                 { "thread", n => { Thread = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseThread>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseThread.CreateFromDiscriminatorValue); } },
             };
         }
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRun>("runs", Runs);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextTask>("task", Task);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseTask>("task", Task);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextResponseThread>("thread", Thread);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

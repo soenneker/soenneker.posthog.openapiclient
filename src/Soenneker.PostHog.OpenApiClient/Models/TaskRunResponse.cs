@@ -110,15 +110,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("created_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
         private DateTimeOffset? _explicitNullValueCreatedAt = default!;
-        /// <summary>The created_by property</summary>
+        /// <summary>Response shape for a task creator, mirroring core ``UserBasicSerializer`` output.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy? _explicitNullValueCreatedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo _explicitNullValueCreatedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy CreatedBy { get => _explicitNullValueCreatedBy; set { _explicitNullValueCreatedBy = value; AdditionalData?.Remove("created_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_by"); else _explicitNullProperties?.Remove("created_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy _explicitNullValueCreatedBy = default!;
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -158,12 +158,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Latest run details for this task</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto? LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto? _explicitNullValueLatestRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicLatestRun? LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicLatestRun? _explicitNullValueLatestRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto _explicitNullValueLatestRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicLatestRun LatestRun { get => _explicitNullValueLatestRun; set { _explicitNullValueLatestRun = value; AdditionalData?.Remove("latest_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run"); else _explicitNullProperties?.Remove("latest_run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicLatestRun _explicitNullValueLatestRun = default!;
 #endif
         /// <summary>Stable key of the server-side flow that created this task, e.g. `desktop_onboarding_session:&lt;user_id&gt;`. Null for tasks people create themselves.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -208,12 +208,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The run this call created or activated. Read run-scoped ids from here — `run.id` is the id the run&apos;s stream and command endpoints take, while the top-level `id` is the task&apos;s. Set on every 200; when `run_error` is also set, the run exists but its workflow did not start.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto? Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; AdditionalData?.Remove("run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto? _explicitNullValueRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRun? Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; AdditionalData?.Remove("run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRun? _explicitNullValueRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; AdditionalData?.Remove("run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto _explicitNullValueRun = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRun Run { get => _explicitNullValueRun; set { _explicitNullValueRun = value; AdditionalData?.Remove("run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run"); else _explicitNullProperties?.Remove("run"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRun _explicitNullValueRun = default!;
 #endif
         /// <summary>Error returned when the run could not start.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -299,7 +299,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "ci_prompt", n => { CiPrompt = n.GetStringValue(); } },
                 { "client_provenance", n => { ClientProvenance = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicClientProvenance>(global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicClientProvenance.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "github_integration", n => { GithubIntegration = n.GetIntValue(); } },
                 { "github_user_integration", n => { GithubUserIntegration = n.GetGuidValue(); } },
@@ -307,12 +307,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "internal", n => { Internal = n.GetBoolValue(); } },
                 { "json_schema", n => { JsonSchema = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseJsonSchemaProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseJsonSchemaProperty.CreateFromDiscriminatorValue); } },
                 { "last_activity_at", n => { LastActivityAt = n.GetDateTimeOffsetValue(); } },
-                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto.CreateFromDiscriminatorValue); } },
+                { "latest_run", n => { LatestRun = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicLatestRun>(global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicLatestRun.CreateFromDiscriminatorValue); } },
                 { "origin_key", n => { OriginKey = n.GetStringValue(); } },
                 { "origin_product", n => { OriginProduct = n.GetStringValue(); } },
                 { "repositories", n => { Repositories = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
-                { "run", n => { Run = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto.CreateFromDiscriminatorValue); } },
+                { "run", n => { Run = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRun>(global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRun.CreateFromDiscriminatorValue); } },
                 { "run_error", n => { RunError = n.GetStringValue(); } },
                 { "runtime", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRuntime>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRuntime = default; _explicitNullProperties?.Remove("runtime"); AdditionalData["runtime"] = unknown; } else { Runtime = parsed; AdditionalData.Remove("runtime"); } } },
                 { "signal_report", n => { SignalReport = n.GetGuidValue(); } },
@@ -337,7 +337,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("ci_prompt", CiPrompt);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicClientProvenance>("client_provenance", ClientProvenance);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("created_by", CreatedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChannelDtoCreatedBy>("created_by", CreatedBy);
             writer.WriteStringValue("description", Description);
             writer.WriteIntValue("github_integration", GithubIntegration);
             writer.WriteGuidValue("github_user_integration", GithubUserIntegration);
@@ -345,12 +345,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("internal", Internal);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseJsonSchemaProperty>("json_schema", JsonSchema);
             writer.WriteDateTimeOffsetValue("last_activity_at", LastActivityAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>("latest_run", LatestRun);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskBasicLatestRun>("latest_run", LatestRun);
             writer.WriteStringValue("origin_key", OriginKey);
             writer.WriteStringValue("origin_product", OriginProduct);
             writer.WriteCollectionOfPrimitiveValues<string>("repositories", Repositories);
             writer.WriteStringValue("repository", Repository);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunDetailDto>("run", Run);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRun>("run", Run);
             writer.WriteStringValue("run_error", RunError);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunResponseRuntime>("runtime", Runtime);
             writer.WriteGuidValue("signal_report", SignalReport);

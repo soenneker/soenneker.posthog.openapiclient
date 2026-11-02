@@ -24,10 +24,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who made the change, if known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser? Actor { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActor? Actor { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser Actor { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActor Actor { get; private set; }
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -69,7 +69,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "activity_type", n => { ActivityType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActivityType>(); } },
-                { "actor", n => { Actor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskUser.CreateFromDiscriminatorValue); } },
+                { "actor", n => { Actor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActor>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskActivityActor.CreateFromDiscriminatorValue); } },
                 { "changes", n => { Changes = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChange>(global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskChange.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },

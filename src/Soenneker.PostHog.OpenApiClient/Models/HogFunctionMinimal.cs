@@ -90,10 +90,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus? Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus? Status { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus Status { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus Status { get; private set; }
 #endif
         /// <summary>The template property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -150,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType.CreateFromDiscriminatorValue); } },
-                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus.CreateFromDiscriminatorValue); } },
+                { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalStatus.CreateFromDiscriminatorValue); } },
                 { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalTemplate.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },

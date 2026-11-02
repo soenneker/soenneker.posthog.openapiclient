@@ -49,12 +49,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Agent LLM token spend attributed to this pull request, by the same rule as `pr_cost`, or null when no generation matched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; AdditionalData?.Remove("llm_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend? _explicitNullValueLlmSpend = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendLlmSpend? LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; AdditionalData?.Remove("llm_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendLlmSpend? _explicitNullValueLlmSpend = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; AdditionalData?.Remove("llm_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend _explicitNullValueLlmSpend = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendLlmSpend LlmSpend { get => _explicitNullValueLlmSpend; set { _explicitNullValueLlmSpend = value; AdditionalData?.Remove("llm_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("llm_spend"); else _explicitNullProperties?.Remove("llm_spend"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendLlmSpend _explicitNullValueLlmSpend = default!;
 #endif
         /// <summary>Pull request number.</summary>
         public int? Number { get => _explicitNullValueNumber; set { _explicitNullValueNumber = value; AdditionalData?.Remove("number"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number"); else _explicitNullProperties?.Remove("number"); } }
@@ -99,7 +99,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "head_branch", n => { HeadBranch = n.GetStringValue(); } },
-                { "llm_spend", n => { LlmSpend = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend>(global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend.CreateFromDiscriminatorValue); } },
+                { "llm_spend", n => { LlmSpend = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendLlmSpend>(global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendLlmSpend.CreateFromDiscriminatorValue); } },
                 { "number", n => { Number = n.GetIntValue(); } },
                 { "state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueState = default; _explicitNullProperties?.Remove("state"); AdditionalData["state"] = unknown; } else { State = parsed; AdditionalData.Remove("state"); } } },
                 { "title", n => { Title = n.GetStringValue(); } },
@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("head_branch", HeadBranch);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PrllmSpend>("llm_spend", LlmSpend);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendLlmSpend>("llm_spend", LlmSpend);
             writer.WriteIntValue("number", Number);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AuthorPrllmSpendState>("state", State);
             writer.WriteStringValue("title", Title);

@@ -42,12 +42,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>A recent exception whose stack trace contains these frames, or null when none was found.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException? ExampleException { get => _explicitNullValueExampleException; set { _explicitNullValueExampleException = value; AdditionalData?.Remove("example_exception"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("example_exception"); else _explicitNullProperties?.Remove("example_exception"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException? _explicitNullValueExampleException = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleExampleException? ExampleException { get => _explicitNullValueExampleException; set { _explicitNullValueExampleException = value; AdditionalData?.Remove("example_exception"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("example_exception"); else _explicitNullProperties?.Remove("example_exception"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleExampleException? _explicitNullValueExampleException = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException ExampleException { get => _explicitNullValueExampleException; set { _explicitNullValueExampleException = value; AdditionalData?.Remove("example_exception"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("example_exception"); else _explicitNullProperties?.Remove("example_exception"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException _explicitNullValueExampleException = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleExampleException ExampleException { get => _explicitNullValueExampleException; set { _explicitNullValueExampleException = value; AdditionalData?.Remove("example_exception"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("example_exception"); else _explicitNullProperties?.Remove("example_exception"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleExampleException _explicitNullValueExampleException = default!;
 #endif
         /// <summary>How many distinct stack frames in the lookback window this covers.</summary>
         public int? Frames { get => _explicitNullValueFrames; set { _explicitNullValueFrames = value; AdditionalData?.Remove("frames"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frames"); else _explicitNullProperties?.Remove("frames"); } }
@@ -119,7 +119,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "example_exception", n => { ExampleException = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException>(global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException.CreateFromDiscriminatorValue); } },
+                { "example_exception", n => { ExampleException = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleExampleException>(global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleExampleException.CreateFromDiscriminatorValue); } },
                 { "frames", n => { Frames = n.GetIntValue(); } },
                 { "http_status", n => { HttpStatus = n.GetIntValue(); } },
                 { "issue_count", n => { IssueCount = n.GetIntValue(); } },
@@ -137,7 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleException>("example_exception", ExampleException);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExampleExampleException>("example_exception", ExampleException);
             writer.WriteIntValue("frames", Frames);
             writer.WriteIntValue("http_status", HttpStatus);
             writer.WriteIntValue("issue_count", IssueCount);

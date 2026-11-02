@@ -64,10 +64,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who created the alert; null once that user is deleted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic? CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedBy? CreatedBy { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasic CreatedBy { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Metric alerts only: how many periods must breach to fire (N in N-of-M).</summary>
         public int? DatapointsToAlarm { get => _explicitNullValueDatapointsToAlarm; set { _explicitNullValueDatapointsToAlarm = value; AdditionalData?.Remove("datapoints_to_alarm"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("datapoints_to_alarm"); else _explicitNullProperties?.Remove("datapoints_to_alarm"); } }
@@ -121,12 +121,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocked local time windows when the alert must not notify. Times use the project timezone. Null disables quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction _explicitNullValueScheduleRestriction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationScheduleRestriction _explicitNullValueScheduleRestriction = default!;
 #endif
         /// <summary>Which observations count. Empty matches every observation of the scanner.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -182,7 +182,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "consecutive_failures", n => { ConsecutiveFailures = n.GetIntValue(); } },
                 { "cooldown_minutes", n => { CooldownMinutes = n.GetIntValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasic.CreateFromDiscriminatorValue); } },
+                { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationCreatedBy.CreateFromDiscriminatorValue); } },
                 { "datapoints_to_alarm", n => { DatapointsToAlarm = n.GetIntValue(); } },
                 { "destinations", n => { Destinations = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertDestinationConfig>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertDestinationConfig.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "direction", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailDirection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDirection = default; _explicitNullProperties?.Remove("direction"); AdditionalData["direction"] = unknown; } else { Direction = parsed; AdditionalData.Remove("direction"); } } },
@@ -197,7 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
                 { "scanner_id", n => { ScannerId = n.GetGuidValue(); } },
-                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
+                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "selection", n => { Selection = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection>(global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection.CreateFromDiscriminatorValue); } },
                 { "snooze_until", n => { SnoozeUntil = n.GetDateTimeOffsetValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailState>(); } },
@@ -223,7 +223,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailMetric>("metric", Metric);
             writer.WriteStringValue("name", Name);
             writer.WriteGuidValue("scanner_id", ScannerId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedVisionAlertConfigurationScheduleRestriction>("schedule_restriction", ScheduleRestriction);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VisionAlertConfigurationDetailSelection>("selection", Selection);
             writer.WriteDateTimeOffsetValue("snooze_until", SnoozeUntil);
             writer.WriteDoubleValue("threshold", Threshold);

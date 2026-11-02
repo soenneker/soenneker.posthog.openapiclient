@@ -118,12 +118,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>User who requested the lift, or on whose behalf an agent did.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? RequestedBy { get => _explicitNullValueRequestedBy; set { _explicitNullValueRequestedBy = value; AdditionalData?.Remove("requested_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_by"); else _explicitNullProperties?.Remove("requested_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? _explicitNullValueRequestedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryRequestedBy? RequestedBy { get => _explicitNullValueRequestedBy; set { _explicitNullValueRequestedBy = value; AdditionalData?.Remove("requested_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_by"); else _explicitNullProperties?.Remove("requested_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryRequestedBy? _explicitNullValueRequestedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo RequestedBy { get => _explicitNullValueRequestedBy; set { _explicitNullValueRequestedBy = value; AdditionalData?.Remove("requested_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_by"); else _explicitNullProperties?.Remove("requested_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo _explicitNullValueRequestedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryRequestedBy RequestedBy { get => _explicitNullValueRequestedBy; set { _explicitNullValueRequestedBy = value; AdditionalData?.Remove("requested_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_by"); else _explicitNullProperties?.Remove("requested_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryRequestedBy _explicitNullValueRequestedBy = default!;
 #endif
         /// <summary>When the request left `pending`. Null while it waits.</summary>
         public DateTimeOffset? ResolvedAt { get => _explicitNullValueResolvedAt; set { _explicitNullValueResolvedAt = value; AdditionalData?.Remove("resolved_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_at"); else _explicitNullProperties?.Remove("resolved_at"); } }
@@ -191,7 +191,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "merge_commit_sha", n => { MergeCommitSha = n.GetStringValue(); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "quarantine_id", n => { QuarantineId = n.GetGuidValue(); } },
-                { "requested_by", n => { RequestedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "requested_by", n => { RequestedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryRequestedBy>(global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryRequestedBy.CreateFromDiscriminatorValue); } },
                 { "resolved_at", n => { ResolvedAt = n.GetDateTimeOffsetValue(); } },
                 { "run_type", n => { RunType = n.GetStringValue(); } },
                 { "source", n => { Source = n.GetStringValue(); } },
@@ -216,7 +216,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("merge_commit_sha", MergeCommitSha);
             writer.WriteIntValue("pr_number", PrNumber);
             writer.WriteGuidValue("quarantine_id", QuarantineId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>("requested_by", RequestedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.QuarantineLiftEntryRequestedBy>("requested_by", RequestedBy);
             writer.WriteDateTimeOffsetValue("resolved_at", ResolvedAt);
             writer.WriteStringValue("run_type", RunType);
             writer.WriteStringValue("source", Source);

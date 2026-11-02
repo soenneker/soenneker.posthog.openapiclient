@@ -75,15 +75,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
-        /// <summary>The model_configuration property</summary>
+        /// <summary>Nested serializer for model configuration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration? ModelConfiguration { get => _explicitNullValueModelConfiguration; set { _explicitNullValueModelConfiguration = value; AdditionalData?.Remove("model_configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_configuration"); else _explicitNullProperties?.Remove("model_configuration"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration? _explicitNullValueModelConfiguration = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationComposed? ModelConfiguration { get => _explicitNullValueModelConfiguration; set { _explicitNullValueModelConfiguration = value; AdditionalData?.Remove("model_configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_configuration"); else _explicitNullProperties?.Remove("model_configuration"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationComposed? _explicitNullValueModelConfiguration = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration ModelConfiguration { get => _explicitNullValueModelConfiguration; set { _explicitNullValueModelConfiguration = value; AdditionalData?.Remove("model_configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_configuration"); else _explicitNullProperties?.Remove("model_configuration"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration _explicitNullValueModelConfiguration = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationComposed ModelConfiguration { get => _explicitNullValueModelConfiguration; set { _explicitNullValueModelConfiguration = value; AdditionalData?.Remove("model_configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_configuration"); else _explicitNullProperties?.Remove("model_configuration"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationComposed _explicitNullValueModelConfiguration = default!;
 #endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -142,7 +142,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration.CreateFromDiscriminatorValue); } },
+                { "model_configuration", n => { ModelConfiguration = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationComposed.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "tagger_config", n => { TaggerConfig = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerTaggerConfig>(global::Soenneker.PostHog.OpenApiClient.Models.TaggerTaggerConfig.CreateFromDiscriminatorValue); } },
                 { "tagger_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerTaggerType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTaggerType = default; _explicitNullProperties?.Remove("tagger_type"); AdditionalData["tagger_type"] = unknown; } else { TaggerType = parsed; AdditionalData.Remove("tagger_type"); } } },
@@ -160,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("enabled", Enabled);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfiguration>("model_configuration", ModelConfiguration);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerModelConfigurationComposed>("model_configuration", ModelConfiguration);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerTaggerConfig>("tagger_config", TaggerConfig);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaggerTaggerType>("tagger_type", TaggerType);

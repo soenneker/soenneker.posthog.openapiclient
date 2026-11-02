@@ -136,10 +136,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Resolved dashboard and tile filter layers used to explain filter precedence in the UI.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext? FilterOverrideContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContextComposed? FilterOverrideContext { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext FilterOverrideContext { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContextComposed FilterOverrideContext { get; private set; }
 #endif
         /// <summary>The hasMore property</summary>
         public bool? HasMore { get; private set; }
@@ -334,7 +334,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "derived_name", n => { DerivedName = n.GetStringValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "favorited", n => { Favorited = n.GetBoolValue(); } },
-                { "filter_override_context", n => { FilterOverrideContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext>(global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContext.CreateFromDiscriminatorValue); } },
+                { "filter_override_context", n => { FilterOverrideContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContextComposed>(global::Soenneker.PostHog.OpenApiClient.Models.InsightFilterOverrideContextComposed.CreateFromDiscriminatorValue); } },
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },

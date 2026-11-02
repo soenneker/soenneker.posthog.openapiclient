@@ -67,12 +67,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>With view &apos;differs&apos;, or &apos;all&apos; without a search: what the requesting user&apos;s own pull requests get in every left-out repository, which is the same for all of them. Null otherwise, or when nothing is left out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision? FoldedResult { get => _explicitNullValueFoldedResult; set { _explicitNullValueFoldedResult = value; AdditionalData?.Remove("folded_result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_result"); else _explicitNullProperties?.Remove("folded_result"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision? _explicitNullValueFoldedResult = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewFoldedResult? FoldedResult { get => _explicitNullValueFoldedResult; set { _explicitNullValueFoldedResult = value; AdditionalData?.Remove("folded_result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_result"); else _explicitNullProperties?.Remove("folded_result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewFoldedResult? _explicitNullValueFoldedResult = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision FoldedResult { get => _explicitNullValueFoldedResult; set { _explicitNullValueFoldedResult = value; AdditionalData?.Remove("folded_result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_result"); else _explicitNullProperties?.Remove("folded_result"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision _explicitNullValueFoldedResult = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewFoldedResult FoldedResult { get => _explicitNullValueFoldedResult; set { _explicitNullValueFoldedResult = value; AdditionalData?.Remove("folded_result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_result"); else _explicitNullProperties?.Remove("folded_result"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewFoldedResult _explicitNullValueFoldedResult = default!;
 #endif
         /// <summary>Whether more entries follow this page.</summary>
         public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; AdditionalData?.Remove("has_more"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
@@ -134,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "claim_scope", n => { ClaimScope = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope.CreateFromDiscriminatorValue); } },
                 { "folded", n => { Folded = n.GetIntValue(); } },
                 { "folded_preview", n => { FoldedPreview = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "folded_result", n => { FoldedResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision>(global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision.CreateFromDiscriminatorValue); } },
+                { "folded_result", n => { FoldedResult = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewFoldedResult>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewFoldedResult.CreateFromDiscriminatorValue); } },
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "installation_id", n => { InstallationId = n.GetStringValue(); } },
                 { "my_choices_unlike_default", n => { MyChoicesUnlikeDefault = n.GetIntValue(); } },
@@ -153,7 +153,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope>("claim_scope", ClaimScope);
             writer.WriteIntValue("folded", Folded);
             writer.WriteCollectionOfPrimitiveValues<string>("folded_preview", FoldedPreview);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision>("folded_result", FoldedResult);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewFoldedResult>("folded_result", FoldedResult);
             writer.WriteBoolValue("has_more", HasMore);
             writer.WriteStringValue("installation_id", InstallationId);
             writer.WriteIntValue("my_choices_unlike_default", MyChoicesUnlikeDefault);

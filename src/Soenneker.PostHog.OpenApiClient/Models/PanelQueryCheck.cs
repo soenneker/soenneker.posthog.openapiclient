@@ -38,12 +38,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Builder query. Used when language is &apos;builder&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery? Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery? _explicitNullValueBuilder = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckBuilder? Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckBuilder? _explicitNullValueBuilder = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery _explicitNullValueBuilder = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckBuilder Builder { get => _explicitNullValueBuilder; set { _explicitNullValueBuilder = value; AdditionalData?.Remove("builder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("builder"); else _explicitNullProperties?.Remove("builder"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckBuilder _explicitNullValueBuilder = default!;
 #endif
         /// <summary>Histogram metric name. Used when language is &apos;histogram&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -123,7 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "builder", n => { Builder = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery>(global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery.CreateFromDiscriminatorValue); } },
+                { "builder", n => { Builder = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckBuilder>(global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckBuilder.CreateFromDiscriminatorValue); } },
                 { "histogram_metric", n => { HistogramMetric = n.GetStringValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
@@ -139,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PanelBuilderQuery>("builder", Builder);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheckBuilder>("builder", Builder);
             writer.WriteStringValue("histogram_metric", HistogramMetric);
             writer.WriteStringValue("hogql", Hogql);
             writer.WriteStringValue("key", Key);

@@ -85,12 +85,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The current_artifact property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact? CurrentArtifact { get => _explicitNullValueCurrentArtifact; set { _explicitNullValueCurrentArtifact = value; AdditionalData?.Remove("current_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_artifact"); else _explicitNullProperties?.Remove("current_artifact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Artifact? _explicitNullValueCurrentArtifact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact? CurrentArtifact { get => _explicitNullValueCurrentArtifact; set { _explicitNullValueCurrentArtifact = value; AdditionalData?.Remove("current_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_artifact"); else _explicitNullProperties?.Remove("current_artifact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact? _explicitNullValueCurrentArtifact = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.Artifact CurrentArtifact { get => _explicitNullValueCurrentArtifact; set { _explicitNullValueCurrentArtifact = value; AdditionalData?.Remove("current_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_artifact"); else _explicitNullProperties?.Remove("current_artifact"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.Artifact _explicitNullValueCurrentArtifact = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact CurrentArtifact { get => _explicitNullValueCurrentArtifact; set { _explicitNullValueCurrentArtifact = value; AdditionalData?.Remove("current_artifact"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_artifact"); else _explicitNullProperties?.Remove("current_artifact"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact _explicitNullValueCurrentArtifact = default!;
 #endif
         /// <summary>The diff_percentage property</summary>
         public double? DiffPercentage { get => _explicitNullValueDiffPercentage; set { _explicitNullValueDiffPercentage = value; AdditionalData?.Remove("diff_percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("diff_percentage"); else _explicitNullProperties?.Remove("diff_percentage"); } }
@@ -121,12 +121,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The row_shift property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RowShift? RowShift { get => _explicitNullValueRowShift; set { _explicitNullValueRowShift = value; AdditionalData?.Remove("row_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_shift"); else _explicitNullProperties?.Remove("row_shift"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RowShift? _explicitNullValueRowShift = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift? RowShift { get => _explicitNullValueRowShift; set { _explicitNullValueRowShift = value; AdditionalData?.Remove("row_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_shift"); else _explicitNullProperties?.Remove("row_shift"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift? _explicitNullValueRowShift = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RowShift RowShift { get => _explicitNullValueRowShift; set { _explicitNullValueRowShift = value; AdditionalData?.Remove("row_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_shift"); else _explicitNullProperties?.Remove("row_shift"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.RowShift _explicitNullValueRowShift = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift RowShift { get => _explicitNullValueRowShift; set { _explicitNullValueRowShift = value; AdditionalData?.Remove("row_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("row_shift"); else _explicitNullProperties?.Remove("row_shift"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift _explicitNullValueRowShift = default!;
 #endif
         /// <summary>The run_id property</summary>
         public Guid? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; AdditionalData?.Remove("run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
@@ -169,12 +169,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "change_kind", n => { ChangeKind = n.GetStringValue(); } },
                 { "commit_sha", n => { CommitSha = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>(global::Soenneker.PostHog.OpenApiClient.Models.Artifact.CreateFromDiscriminatorValue); } },
+                { "current_artifact", n => { CurrentArtifact = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact.CreateFromDiscriminatorValue); } },
                 { "diff_percentage", n => { DiffPercentage = n.GetDoubleValue(); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "result", n => { Result = n.GetStringValue(); } },
                 { "review_state", n => { ReviewState = n.GetStringValue(); } },
-                { "row_shift", n => { RowShift = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RowShift>(global::Soenneker.PostHog.OpenApiClient.Models.RowShift.CreateFromDiscriminatorValue); } },
+                { "row_shift", n => { RowShift = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift>(global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift.CreateFromDiscriminatorValue); } },
                 { "run_id", n => { RunId = n.GetGuidValue(); } },
                 { "size_mismatch", n => { SizeMismatch = n.GetBoolValue(); } },
                 { "snapshot_id", n => { SnapshotId = n.GetGuidValue(); } },
@@ -192,12 +192,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("change_kind", ChangeKind);
             writer.WriteStringValue("commit_sha", CommitSha);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.Artifact>("current_artifact", CurrentArtifact);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotBaselineArtifact>("current_artifact", CurrentArtifact);
             writer.WriteDoubleValue("diff_percentage", DiffPercentage);
             writer.WriteIntValue("pr_number", PrNumber);
             writer.WriteStringValue("result", Result);
             writer.WriteStringValue("review_state", ReviewState);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.RowShift>("row_shift", RowShift);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SnapshotHistoryEntryRowShift>("row_shift", RowShift);
             writer.WriteGuidValue("run_id", RunId);
             writer.WriteBoolValue("size_mismatch", SizeMismatch);
             writer.WriteGuidValue("snapshot_id", SnapshotId);

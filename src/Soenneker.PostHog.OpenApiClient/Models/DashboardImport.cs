@@ -123,12 +123,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Panel counts, when the import ended.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary? _explicitNullValueSummary = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummaryComposed? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummaryComposed? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary _explicitNullValueSummary = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummaryComposed Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummaryComposed _explicitNullValueSummary = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardImport"/> and sets the default values.
@@ -166,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "phase", n => { Phase = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase.CreateFromDiscriminatorValue); } },
                 { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
-                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary.CreateFromDiscriminatorValue); } },
+                { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummaryComposed>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummaryComposed.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -187,7 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportPhase>("phase", Phase);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSource>("source", Source);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportStatus>("status", Status);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummary>("summary", Summary);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportSummaryComposed>("summary", Summary);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

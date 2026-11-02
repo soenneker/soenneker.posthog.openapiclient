@@ -38,22 +38,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The latest Resolve run, finished ones too; null when no Resolve run has queued threads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution? LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; AdditionalData?.Remove("latest_resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution? _explicitNullValueLatestResolution = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestResolution? LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; AdditionalData?.Remove("latest_resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestResolution? _explicitNullValueLatestResolution = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; AdditionalData?.Remove("latest_resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution _explicitNullValueLatestResolution = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestResolution LatestResolution { get => _explicitNullValueLatestResolution; set { _explicitNullValueLatestResolution = value; AdditionalData?.Remove("latest_resolution"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_resolution"); else _explicitNullProperties?.Remove("latest_resolution"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestResolution _explicitNullValueLatestResolution = default!;
 #endif
         /// <summary>The latest completed review turn; null before the first one completes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview? LatestReview { get => _explicitNullValueLatestReview; set { _explicitNullValueLatestReview = value; AdditionalData?.Remove("latest_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_review"); else _explicitNullProperties?.Remove("latest_review"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview? _explicitNullValueLatestReview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewComposed? LatestReview { get => _explicitNullValueLatestReview; set { _explicitNullValueLatestReview = value; AdditionalData?.Remove("latest_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_review"); else _explicitNullProperties?.Remove("latest_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewComposed? _explicitNullValueLatestReview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview LatestReview { get => _explicitNullValueLatestReview; set { _explicitNullValueLatestReview = value; AdditionalData?.Remove("latest_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_review"); else _explicitNullProperties?.Remove("latest_review"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview _explicitNullValueLatestReview = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewComposed LatestReview { get => _explicitNullValueLatestReview; set { _explicitNullValueLatestReview = value; AdditionalData?.Remove("latest_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_review"); else _explicitNullProperties?.Remove("latest_review"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewComposed _explicitNullValueLatestReview = default!;
 #endif
         /// <summary>The pull request number.</summary>
         public int? PrNumber { get => _explicitNullValuePrNumber; set { _explicitNullValuePrNumber = value; AdditionalData?.Remove("pr_number"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_number"); else _explicitNullProperties?.Remove("pr_number"); } }
@@ -74,12 +74,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How the request at `requested_at` ended; null without `requested_at`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome? RequestOutcome { get => _explicitNullValueRequestOutcome; set { _explicitNullValueRequestOutcome = value; AdditionalData?.Remove("request_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_outcome"); else _explicitNullProperties?.Remove("request_outcome"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome? _explicitNullValueRequestOutcome = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeComposed? RequestOutcome { get => _explicitNullValueRequestOutcome; set { _explicitNullValueRequestOutcome = value; AdditionalData?.Remove("request_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_outcome"); else _explicitNullProperties?.Remove("request_outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeComposed? _explicitNullValueRequestOutcome = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome RequestOutcome { get => _explicitNullValueRequestOutcome; set { _explicitNullValueRequestOutcome = value; AdditionalData?.Remove("request_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_outcome"); else _explicitNullProperties?.Remove("request_outcome"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome _explicitNullValueRequestOutcome = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeComposed RequestOutcome { get => _explicitNullValueRequestOutcome; set { _explicitNullValueRequestOutcome = value; AdditionalData?.Remove("request_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_outcome"); else _explicitNullProperties?.Remove("request_outcome"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeComposed _explicitNullValueRequestOutcome = default!;
 #endif
         /// <summary>* `not_reviewed` - Not reviewed* `queued` - Queued* `reviewing` - Reviewing* `resolving` - Resolving* `idle` - Idle* `unknown` - Unknown</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
@@ -109,12 +109,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "latest_resolution", n => { LatestResolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution.CreateFromDiscriminatorValue); } },
-                { "latest_review", n => { LatestReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview.CreateFromDiscriminatorValue); } },
+                { "latest_resolution", n => { LatestResolution = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestResolution>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestResolution.CreateFromDiscriminatorValue); } },
+                { "latest_review", n => { LatestReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewComposed.CreateFromDiscriminatorValue); } },
                 { "pr_number", n => { PrNumber = n.GetIntValue(); } },
                 { "report_id", n => { ReportId = n.GetGuidValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
-                { "request_outcome", n => { RequestOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome.CreateFromDiscriminatorValue); } },
+                { "request_outcome", n => { RequestOutcome = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeComposed>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeComposed.CreateFromDiscriminatorValue); } },
                 { "state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueState = default; _explicitNullProperties?.Remove("state"); AdditionalData["state"] = unknown; } else { State = parsed; AdditionalData.Remove("state"); } } },
             };
         }
@@ -125,12 +125,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewLatestResolution>("latest_resolution", LatestResolution);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReview>("latest_review", LatestReview);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestResolution>("latest_resolution", LatestResolution);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusLatestReviewComposed>("latest_review", LatestReview);
             writer.WriteIntValue("pr_number", PrNumber);
             writer.WriteGuidValue("report_id", ReportId);
             writer.WriteStringValue("repository", Repository);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcome>("request_outcome", RequestOutcome);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusRequestOutcomeComposed>("request_outcome", RequestOutcome);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewPrStatusState>("state", State);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

@@ -36,12 +36,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The scanner&apos;s variant analysis scout and its newest run; null when none is set up.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VariantsAnalysisState? Analysis { get => _explicitNullValueAnalysis; set { _explicitNullValueAnalysis = value; AdditionalData?.Remove("analysis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis"); else _explicitNullProperties?.Remove("analysis"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.VariantsAnalysisState? _explicitNullValueAnalysis = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutAnalysis? Analysis { get => _explicitNullValueAnalysis; set { _explicitNullValueAnalysis = value; AdditionalData?.Remove("analysis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis"); else _explicitNullProperties?.Remove("analysis"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutAnalysis? _explicitNullValueAnalysis = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VariantsAnalysisState Analysis { get => _explicitNullValueAnalysis; set { _explicitNullValueAnalysis = value; AdditionalData?.Remove("analysis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis"); else _explicitNullProperties?.Remove("analysis"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.VariantsAnalysisState _explicitNullValueAnalysis = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutAnalysis Analysis { get => _explicitNullValueAnalysis; set { _explicitNullValueAnalysis = value; AdditionalData?.Remove("analysis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis"); else _explicitNullProperties?.Remove("analysis"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutAnalysis _explicitNullValueAnalysis = default!;
 #endif
         /// <summary>What differs between variants, from the variant analysis. Null without a current analysis.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -56,12 +56,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The watched experiment; null if it was deleted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.VariantsExperiment? Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.VariantsExperiment? _explicitNullValueExperiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutExperiment? Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutExperiment? _explicitNullValueExperiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.VariantsExperiment Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.VariantsExperiment _explicitNullValueExperiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutExperiment Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutExperiment _explicitNullValueExperiment = default!;
 #endif
         /// <summary>Succeeded observations with no attributed variant.</summary>
         public int? UnattributedCount { get => _explicitNullValueUnattributedCount; set { _explicitNullValueUnattributedCount = value; AdditionalData?.Remove("unattributed_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unattributed_count"); else _explicitNullProperties?.Remove("unattributed_count"); } }
@@ -111,9 +111,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "analysis", n => { Analysis = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VariantsAnalysisState>(global::Soenneker.PostHog.OpenApiClient.Models.VariantsAnalysisState.CreateFromDiscriminatorValue); } },
+                { "analysis", n => { Analysis = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutAnalysis>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutAnalysis.CreateFromDiscriminatorValue); } },
                 { "differences", n => { Differences = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifference>(global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifference.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "experiment", n => { Experiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VariantsExperiment>(global::Soenneker.PostHog.OpenApiClient.Models.VariantsExperiment.CreateFromDiscriminatorValue); } },
+                { "experiment", n => { Experiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutExperiment>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutExperiment.CreateFromDiscriminatorValue); } },
                 { "unattributed_count", n => { UnattributedCount = n.GetIntValue(); } },
                 { "variants", n => { Variants = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VariantReadout>(global::Soenneker.PostHog.OpenApiClient.Models.VariantReadout.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "window", n => { Window = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutWindow>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutWindow.CreateFromDiscriminatorValue); } },
@@ -126,9 +126,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VariantsAnalysisState>("analysis", Analysis);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutAnalysis>("analysis", Analysis);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VariantAnalysisDifference>("differences", Differences);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.VariantsExperiment>("experiment", Experiment);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutExperiment>("experiment", Experiment);
             writer.WriteIntValue("unattributed_count", UnattributedCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.VariantReadout>("variants", Variants);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentVariantsReadoutWindow>("window", Window);

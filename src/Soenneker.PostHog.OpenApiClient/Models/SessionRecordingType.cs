@@ -190,12 +190,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonType? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PersonType? _explicitNullValuePerson = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingTypePerson? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingTypePerson? _explicitNullValuePerson = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonType Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PersonType _explicitNullValuePerson = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingTypePerson Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingTypePerson _explicitNullValuePerson = default!;
 #endif
         /// <summary>Length of recording in seconds.</summary>
         public double? RecordingDuration { get => _explicitNullValueRecordingDuration; set { _explicitNullValueRecordingDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recording_duration"); else _explicitNullProperties?.Remove("recording_duration"); } }
@@ -302,7 +302,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "matching_events", n => { MatchingEvents = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording>(global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "mouse_activity_count", n => { MouseActivityCount = n.GetDoubleValue(); } },
                 { "ongoing", n => { Ongoing = n.GetBoolValue(); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonType>(global::Soenneker.PostHog.OpenApiClient.Models.PersonType.CreateFromDiscriminatorValue); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingTypePerson>(global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingTypePerson.CreateFromDiscriminatorValue); } },
                 { "recording_duration", n => { RecordingDuration = n.GetDoubleValue(); } },
                 { "recording_ttl", n => { RecordingTtl = n.GetDoubleValue(); } },
                 { "retention_period_days", n => { RetentionPeriodDays = n.GetDoubleValue(); } },
@@ -342,7 +342,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MatchedRecording>("matching_events", MatchingEvents);
             writer.WriteDoubleValue("mouse_activity_count", MouseActivityCount);
             writer.WriteBoolValue("ongoing", Ongoing);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PersonType>("person", Person);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SessionRecordingTypePerson>("person", Person);
             writer.WriteDoubleValue("recording_duration", RecordingDuration);
             writer.WriteDoubleValue("recording_ttl", RecordingTtl);
             writer.WriteDoubleValue("retention_period_days", RetentionPeriodDays);

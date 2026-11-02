@@ -57,22 +57,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Live webhook state as the external service reports it, when it could be read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebhookExternalStatus? ExternalStatus { get => _explicitNullValueExternalStatus; set { _explicitNullValueExternalStatus = value; AdditionalData?.Remove("external_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_status"); else _explicitNullProperties?.Remove("external_status"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebhookExternalStatus? _explicitNullValueExternalStatus = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseExternalStatus? ExternalStatus { get => _explicitNullValueExternalStatus; set { _explicitNullValueExternalStatus = value; AdditionalData?.Remove("external_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_status"); else _explicitNullProperties?.Remove("external_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseExternalStatus? _explicitNullValueExternalStatus = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebhookExternalStatus ExternalStatus { get => _explicitNullValueExternalStatus; set { _explicitNullValueExternalStatus = value; AdditionalData?.Remove("external_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_status"); else _explicitNullProperties?.Remove("external_status"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebhookExternalStatus _explicitNullValueExternalStatus = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseExternalStatus ExternalStatus { get => _explicitNullValueExternalStatus; set { _explicitNullValueExternalStatus = value; AdditionalData?.Remove("external_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_status"); else _explicitNullProperties?.Remove("external_status"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseExternalStatus _explicitNullValueExternalStatus = default!;
 #endif
         /// <summary>The webhook delivery function, present once the webhook exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction? HogFunction { get => _explicitNullValueHogFunction; set { _explicitNullValueHogFunction = value; AdditionalData?.Remove("hog_function"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function"); else _explicitNullProperties?.Remove("hog_function"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction? _explicitNullValueHogFunction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseHogFunction? HogFunction { get => _explicitNullValueHogFunction; set { _explicitNullValueHogFunction = value; AdditionalData?.Remove("hog_function"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function"); else _explicitNullProperties?.Remove("hog_function"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseHogFunction? _explicitNullValueHogFunction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction HogFunction { get => _explicitNullValueHogFunction; set { _explicitNullValueHogFunction = value; AdditionalData?.Remove("hog_function"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function"); else _explicitNullProperties?.Remove("hog_function"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction _explicitNullValueHogFunction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseHogFunction HogFunction { get => _explicitNullValueHogFunction; set { _explicitNullValueHogFunction = value; AdditionalData?.Remove("hog_function"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function"); else _explicitNullProperties?.Remove("hog_function"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseHogFunction _explicitNullValueHogFunction = default!;
 #endif
         /// <summary>Current webhook function inputs keyed by the source&apos;s declared webhook field names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -154,8 +154,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "auto_creation_blocked_reason", n => { AutoCreationBlockedReason = n.GetStringValue(); } },
                 { "exists", n => { Exists = n.GetBoolValue(); } },
-                { "external_status", n => { ExternalStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookExternalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WebhookExternalStatus.CreateFromDiscriminatorValue); } },
-                { "hog_function", n => { HogFunction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction>(global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction.CreateFromDiscriminatorValue); } },
+                { "external_status", n => { ExternalStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseExternalStatus>(global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseExternalStatus.CreateFromDiscriminatorValue); } },
+                { "hog_function", n => { HogFunction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseHogFunction>(global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseHogFunction.CreateFromDiscriminatorValue); } },
                 { "inputs", n => { Inputs = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseInputsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseInputsProperty.CreateFromDiscriminatorValue); } },
                 { "missing_events", n => { MissingEvents = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "missing_inputs", n => { MissingInputs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
@@ -173,8 +173,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("auto_creation_blocked_reason", AutoCreationBlockedReason);
             writer.WriteBoolValue("exists", Exists);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookExternalStatus>("external_status", ExternalStatus);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookHogFunction>("hog_function", HogFunction);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseExternalStatus>("external_status", ExternalStatus);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseHogFunction>("hog_function", HogFunction);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WebhookInfoResponseInputsProperty>("inputs", Inputs);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_events", MissingEvents);
             writer.WriteCollectionOfPrimitiveValues<string>("missing_inputs", MissingInputs);

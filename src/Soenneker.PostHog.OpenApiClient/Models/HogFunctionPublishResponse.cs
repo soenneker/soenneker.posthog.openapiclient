@@ -57,12 +57,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The function after publishing (only set when published=true).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction? Function { get => _explicitNullValueFunction; set { _explicitNullValueFunction = value; AdditionalData?.Remove("function"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function"); else _explicitNullProperties?.Remove("function"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunction? _explicitNullValueFunction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction? Function { get => _explicitNullValueFunction; set { _explicitNullValueFunction = value; AdditionalData?.Remove("function"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function"); else _explicitNullProperties?.Remove("function"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction? _explicitNullValueFunction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunction Function { get => _explicitNullValueFunction; set { _explicitNullValueFunction = value; AdditionalData?.Remove("function"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function"); else _explicitNullProperties?.Remove("function"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunction _explicitNullValueFunction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction Function { get => _explicitNullValueFunction; set { _explicitNullValueFunction = value; AdditionalData?.Remove("function"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("function"); else _explicitNullProperties?.Remove("function"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction _explicitNullValueFunction = default!;
 #endif
         /// <summary>Whether the draft was applied to the live function.</summary>
         public bool? Published { get => _explicitNullValuePublished; set { _explicitNullValuePublished = value; AdditionalData?.Remove("published"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("published"); else _explicitNullProperties?.Remove("published"); } }
@@ -95,7 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "changed_fields", n => { ChangedFields = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "confirm_token", n => { ConfirmToken = n.GetStringValue(); } },
                 { "draft_updated_at", n => { DraftUpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "function", n => { Function = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunction.CreateFromDiscriminatorValue); } },
+                { "function", n => { Function = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction.CreateFromDiscriminatorValue); } },
                 { "published", n => { Published = n.GetBoolValue(); } },
             };
         }
@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("changed_fields", ChangedFields);
             writer.WriteStringValue("confirm_token", ConfirmToken);
             writer.WriteDateTimeOffsetValue("draft_updated_at", DraftUpdatedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunction>("function", Function);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionPublishResponseFunction>("function", Function);
             writer.WriteBoolValue("published", Published);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

@@ -70,12 +70,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The branch the trace&apos;s work ran on: the latest stamped branch other than main or master, else the first stamp. Null when no event carries a branch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceGit? Git { get => _explicitNullValueGit; set { _explicitNullValueGit = value; AdditionalData?.Remove("git"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("git"); else _explicitNullProperties?.Remove("git"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TraceGit? _explicitNullValueGit = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceGitComposed? Git { get => _explicitNullValueGit; set { _explicitNullValueGit = value; AdditionalData?.Remove("git"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("git"); else _explicitNullProperties?.Remove("git"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TraceGitComposed? _explicitNullValueGit = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceGit Git { get => _explicitNullValueGit; set { _explicitNullValueGit = value; AdditionalData?.Remove("git"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("git"); else _explicitNullProperties?.Remove("git"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TraceGit _explicitNullValueGit = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceGitComposed Git { get => _explicitNullValueGit; set { _explicitNullValueGit = value; AdditionalData?.Remove("git"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("git"); else _explicitNullProperties?.Remove("git"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TraceGitComposed _explicitNullValueGit = default!;
 #endif
         /// <summary>The hasError property</summary>
         public bool? HasError { get => _explicitNullValueHasError; set { _explicitNullValueHasError = value; AdditionalData?.Remove("hasError"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasError"); else _explicitNullProperties?.Remove("hasError"); } }
@@ -113,12 +113,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The person property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracePerson? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; AdditionalData?.Remove("person"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TracePerson? _explicitNullValuePerson = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracePersonComposed? Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; AdditionalData?.Remove("person"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracePersonComposed? _explicitNullValuePerson = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracePerson Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; AdditionalData?.Remove("person"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TracePerson _explicitNullValuePerson = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracePersonComposed Person { get => _explicitNullValuePerson; set { _explicitNullValuePerson = value; AdditionalData?.Remove("person"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person"); else _explicitNullProperties?.Remove("person"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TracePersonComposed _explicitNullValuePerson = default!;
 #endif
         /// <summary>The sessionId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -201,12 +201,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "defaultNodeId", n => { DefaultNodeId = n.GetStringValue(); } },
                 { "errorCount", n => { ErrorCount = n.GetIntValue(); } },
-                { "git", n => { Git = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceGit>(global::Soenneker.PostHog.OpenApiClient.Models.TraceGit.CreateFromDiscriminatorValue); } },
+                { "git", n => { Git = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceGitComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TraceGitComposed.CreateFromDiscriminatorValue); } },
                 { "hasError", n => { HasError = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "nodeIdsByAlias", n => { NodeIdsByAlias = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeIdsByAliasProperty>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeIdsByAliasProperty.CreateFromDiscriminatorValue); } },
-                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePerson>(global::Soenneker.PostHog.OpenApiClient.Models.TracePerson.CreateFromDiscriminatorValue); } },
+                { "person", n => { Person = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePersonComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TracePersonComposed.CreateFromDiscriminatorValue); } },
                 { "sessionId", n => { SessionId = n.GetStringValue(); } },
                 { "threadNodeIds", n => { ThreadNodeIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "timeline", n => { Timeline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRow>(global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRow.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -225,12 +225,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
             writer.WriteStringValue("defaultNodeId", DefaultNodeId);
             writer.WriteIntValue("errorCount", ErrorCount);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceGit>("git", Git);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceGitComposed>("git", Git);
             writer.WriteBoolValue("hasError", HasError);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNodeIdsByAliasProperty>("nodeIdsByAlias", NodeIdsByAlias);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePerson>("person", Person);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracePersonComposed>("person", Person);
             writer.WriteStringValue("sessionId", SessionId);
             writer.WriteCollectionOfPrimitiveValues<string>("threadNodeIds", ThreadNodeIds);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceTimelineRow>("timeline", Timeline);

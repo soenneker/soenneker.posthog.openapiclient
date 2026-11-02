@@ -64,12 +64,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The approved_by property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? ApprovedBy { get => _explicitNullValueApprovedBy; set { _explicitNullValueApprovedBy = value; AdditionalData?.Remove("approved_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approved_by"); else _explicitNullProperties?.Remove("approved_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo? _explicitNullValueApprovedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy? ApprovedBy { get => _explicitNullValueApprovedBy; set { _explicitNullValueApprovedBy = value; AdditionalData?.Remove("approved_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approved_by"); else _explicitNullProperties?.Remove("approved_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy? _explicitNullValueApprovedBy = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo ApprovedBy { get => _explicitNullValueApprovedBy; set { _explicitNullValueApprovedBy = value; AdditionalData?.Remove("approved_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approved_by"); else _explicitNullProperties?.Remove("approved_by"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo _explicitNullValueApprovedBy = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy ApprovedBy { get => _explicitNullValueApprovedBy; set { _explicitNullValueApprovedBy = value; AdditionalData?.Remove("approved_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approved_by"); else _explicitNullProperties?.Remove("approved_by"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy _explicitNullValueApprovedBy = default!;
 #endif
         /// <summary>The branch property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -199,7 +199,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "approved", n => { Approved = n.GetBoolValue(); } },
                 { "approved_at", n => { ApprovedAt = n.GetDateTimeOffsetValue(); } },
-                { "approved_by", n => { ApprovedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "approved_by", n => { ApprovedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy.CreateFromDiscriminatorValue); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
                 { "commit_sha", n => { CommitSha = n.GetStringValue(); } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
@@ -227,7 +227,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("approved", Approved);
             writer.WriteDateTimeOffsetValue("approved_at", ApprovedAt);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.UserBasicInfo>("approved_by", ApprovedBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummaryCreatedBy>("approved_by", ApprovedBy);
             writer.WriteStringValue("branch", Branch);
             writer.WriteStringValue("commit_sha", CommitSha);
             writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);

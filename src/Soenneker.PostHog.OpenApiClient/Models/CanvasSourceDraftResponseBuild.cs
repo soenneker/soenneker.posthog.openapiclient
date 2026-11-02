@@ -83,12 +83,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The frozen artifact manifest — present once the build is ready.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest? Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; AdditionalData?.Remove("manifest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest? _explicitNullValueManifest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest? Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; AdditionalData?.Remove("manifest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest? _explicitNullValueManifest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; AdditionalData?.Remove("manifest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest _explicitNullValueManifest = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest Manifest { get => _explicitNullValueManifest; set { _explicitNullValueManifest = value; AdditionalData?.Remove("manifest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest"); else _explicitNullProperties?.Remove("manifest"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest _explicitNullValueManifest = default!;
 #endif
         /// <summary>Pinned builds are retained for the lifetime of the canvas.</summary>
         public bool? Pinned { get => _explicitNullValuePinned; set { _explicitNullValuePinned = value; AdditionalData?.Remove("pinned"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned"); else _explicitNullProperties?.Remove("pinned"); } }
@@ -128,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "finished_at", n => { FinishedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "integrity", n => { Integrity = n.GetStringValue(); } },
-                { "manifest", n => { Manifest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest.CreateFromDiscriminatorValue); } },
+                { "manifest", n => { Manifest = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest.CreateFromDiscriminatorValue); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "source_version_id", n => { SourceVersionId = n.GetGuidValue(); } },
             };
@@ -146,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("finished_at", FinishedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("integrity", Integrity);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifest>("manifest", Manifest);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasBuildManifest>("manifest", Manifest);
             writer.WriteBoolValue("pinned", Pinned);
             writer.WriteGuidValue("source_version_id", SourceVersionId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

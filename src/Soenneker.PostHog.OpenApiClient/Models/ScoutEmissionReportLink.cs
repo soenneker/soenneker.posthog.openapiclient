@@ -41,12 +41,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The inbox report this finding linked to, or null if none could be resolved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LinkedSignalReport? Report { get => _explicitNullValueReport; set { _explicitNullValueReport = value; AdditionalData?.Remove("report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report"); else _explicitNullProperties?.Remove("report"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LinkedSignalReport? _explicitNullValueReport = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutEmissionReportLinkReport? Report { get => _explicitNullValueReport; set { _explicitNullValueReport = value; AdditionalData?.Remove("report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report"); else _explicitNullProperties?.Remove("report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutEmissionReportLinkReport? _explicitNullValueReport = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LinkedSignalReport Report { get => _explicitNullValueReport; set { _explicitNullValueReport = value; AdditionalData?.Remove("report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report"); else _explicitNullProperties?.Remove("report"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.LinkedSignalReport _explicitNullValueReport = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutEmissionReportLinkReport Report { get => _explicitNullValueReport; set { _explicitNullValueReport = value; AdditionalData?.Remove("report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report"); else _explicitNullProperties?.Remove("report"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ScoutEmissionReportLinkReport _explicitNullValueReport = default!;
 #endif
         /// <summary>Deterministic `run:&lt;run_id&gt;:finding:&lt;finding_id&gt;` join key into the signal store.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,7 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "finding_id", n => { FindingId = n.GetStringValue(); } },
-                { "report", n => { Report = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LinkedSignalReport>(global::Soenneker.PostHog.OpenApiClient.Models.LinkedSignalReport.CreateFromDiscriminatorValue); } },
+                { "report", n => { Report = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutEmissionReportLinkReport>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutEmissionReportLinkReport.CreateFromDiscriminatorValue); } },
                 { "source_id", n => { SourceId = n.GetStringValue(); } },
             };
         }
@@ -96,7 +96,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("finding_id", FindingId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LinkedSignalReport>("report", Report);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutEmissionReportLinkReport>("report", Report);
             writer.WriteStringValue("source_id", SourceId);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

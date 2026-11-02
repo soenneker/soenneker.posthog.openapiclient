@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import* `knowledge_writer` - Knowledge Writer</summary>
+    /// <summary>* `onboarding` - Onboarding* `account_audit` - Account audit* `error_tracking` - Error Tracking* `eval_clusters` - Eval Clusters* `user_created` - User Created* `slack` - Slack* `support_queue` - Support Queue* `session_summaries` - Session Summaries* `posthog_ai` - PostHog AI* `experiments` - Experiments* `signal_report` - Signal Report* `autoresearch` - Autoresearch* `signals_scout` - Signals Scout* `scout_suggestions` - Signals Scout Suggestions* `support_reply` - Support Reply* `hogdesk` - HogDesk* `review_hog` - ReviewHog* `image_builder` - Image Builder* `loop` - Loop* `mcp_analytics` - MCP Analytics* `signals_chat` - Signals Chat* `task_analysis` - Task Analysis* `workflow` - Workflow* `space_setup` - Space Setup* `business_knowledge` - Business Knowledge* `metrics_import` - Metrics Import* `knowledge_writer` - Knowledge Writer* `context_layer` - Context Layer</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum PatchedTaskWriteOriginProduct
     {
@@ -114,6 +114,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "knowledge_writer")]
         #pragma warning disable CS1591
         KnowledgeWriter,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "context_layer")]
+        #pragma warning disable CS1591
+        ContextLayer,
         #pragma warning restore CS1591
     }
 }

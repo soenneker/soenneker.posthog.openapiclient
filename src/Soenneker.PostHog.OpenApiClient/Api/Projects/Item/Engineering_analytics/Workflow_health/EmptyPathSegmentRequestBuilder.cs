@@ -129,7 +129,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
             /// <summary>Which group of runs to report on: &apos;all&apos; (default) is every run; &apos;default_branch&apos; is runs on master or main; &apos;pull_request&apos; is runs on PR branches, excluding default-branch and merge-queue runs; &apos;merge_queue&apos; is the gate runs the merge queue fired before a merge landed. Fork PRs carry no PR attribution (a GitHub limitation), so they appear only under &apos;all&apos;. Any other value is a 400.</summary>
             [QueryParameter("run_scope")]
             public global::Soenneker.PostHog.OpenApiClient.Models.EngineeringAnalyticsWorkflowHealthRunScopeParameter? RunScope { get; set; }
-            /// <summary>Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source when the team has more than one.</summary>
+            /// <summary>Connected GitHub data warehouse source to read from. Defaults to the oldest connected GitHub source that the `sources` list reports as synced, when the team has more than one.</summary>
             [QueryParameter("source_id")]
             public Guid? SourceId { get; set; }
             /// <summary>Optional exact workflow name to scope results to, e.g. &apos;Backend CI&apos;. Omit to rank every workflow. Pass it when you want one workflow&apos;s figures over the whole window rather than the top slice.</summary>

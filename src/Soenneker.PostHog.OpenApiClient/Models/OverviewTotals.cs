@@ -35,12 +35,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Graded runs in each period, over evaluations with results in both. Null when none has.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; AdditionalData?.Remove("gradedComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? _explicitNullValueGradedComparison = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsGradedComparison? GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; AdditionalData?.Remove("gradedComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsGradedComparison? _explicitNullValueGradedComparison = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; AdditionalData?.Remove("gradedComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison _explicitNullValueGradedComparison = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsGradedComparison GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; AdditionalData?.Remove("gradedComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsGradedComparison _explicitNullValueGradedComparison = default!;
 #endif
         /// <summary>The gradedTrend property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -55,12 +55,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The sentiment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; AdditionalData?.Remove("sentiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment? _explicitNullValueSentiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsSentiment? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; AdditionalData?.Remove("sentiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsSentiment? _explicitNullValueSentiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; AdditionalData?.Remove("sentiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment _explicitNullValueSentiment = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsSentiment Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; AdditionalData?.Remove("sentiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsSentiment _explicitNullValueSentiment = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotals"/> and sets the default values.
@@ -88,9 +88,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "graded", n => { Graded = n.GetIntValue(); } },
-                { "gradedComparison", n => { GradedComparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison>(global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison.CreateFromDiscriminatorValue); } },
+                { "gradedComparison", n => { GradedComparison = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsGradedComparison>(global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsGradedComparison.CreateFromDiscriminatorValue); } },
                 { "gradedTrend", n => { GradedTrend = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
-                { "sentiment", n => { Sentiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment>(global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment.CreateFromDiscriminatorValue); } },
+                { "sentiment", n => { Sentiment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsSentiment>(global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsSentiment.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -101,9 +101,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("graded", Graded);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison>("gradedComparison", GradedComparison);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsGradedComparison>("gradedComparison", GradedComparison);
             writer.WriteCollectionOfPrimitiveValues<int?>("gradedTrend", GradedTrend);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment>("sentiment", Sentiment);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OverviewTotalsSentiment>("sentiment", Sentiment);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

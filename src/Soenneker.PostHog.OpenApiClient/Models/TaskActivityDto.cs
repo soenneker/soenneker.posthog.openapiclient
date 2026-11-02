@@ -78,12 +78,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Author of the thread message tied to the latest activity, when one applies.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? LatestAuthor { get => _explicitNullValueLatestAuthor; set { _explicitNullValueLatestAuthor = value; AdditionalData?.Remove("latest_author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_author"); else _explicitNullProperties?.Remove("latest_author"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo? _explicitNullValueLatestAuthor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor? LatestAuthor { get => _explicitNullValueLatestAuthor; set { _explicitNullValueLatestAuthor = value; AdditionalData?.Remove("latest_author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_author"); else _explicitNullProperties?.Remove("latest_author"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor? _explicitNullValueLatestAuthor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo LatestAuthor { get => _explicitNullValueLatestAuthor; set { _explicitNullValueLatestAuthor = value; AdditionalData?.Remove("latest_author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_author"); else _explicitNullProperties?.Remove("latest_author"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo _explicitNullValueLatestAuthor = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor LatestAuthor { get => _explicitNullValueLatestAuthor; set { _explicitNullValueLatestAuthor = value; AdditionalData?.Remove("latest_author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_author"); else _explicitNullProperties?.Remove("latest_author"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor _explicitNullValueLatestAuthor = default!;
 #endif
         /// <summary>The latest_comment_id property</summary>
         public Guid? LatestCommentId { get => _explicitNullValueLatestCommentId; set { _explicitNullValueLatestCommentId = value; AdditionalData?.Remove("latest_comment_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_comment_id"); else _explicitNullProperties?.Remove("latest_comment_id"); } }
@@ -165,7 +165,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "channel_name", n => { ChannelName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_unread", n => { IsUnread = n.GetBoolValue(); } },
-                { "latest_author", n => { LatestAuthor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>(global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo.CreateFromDiscriminatorValue); } },
+                { "latest_author", n => { LatestAuthor = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor>(global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor.CreateFromDiscriminatorValue); } },
                 { "latest_comment_id", n => { LatestCommentId = n.GetGuidValue(); } },
                 { "latest_comment_item_id", n => { LatestCommentItemId = n.GetStringValue(); } },
                 { "latest_comment_scope", n => { LatestCommentScope = n.GetStringValue(); } },
@@ -188,7 +188,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("channel_name", ChannelName);
             writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("is_unread", IsUnread);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskUserBasicInfo>("latest_author", LatestAuthor);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityDtoLatestAuthor>("latest_author", LatestAuthor);
             writer.WriteGuidValue("latest_comment_id", LatestCommentId);
             writer.WriteStringValue("latest_comment_item_id", LatestCommentItemId);
             writer.WriteStringValue("latest_comment_scope", LatestCommentScope);

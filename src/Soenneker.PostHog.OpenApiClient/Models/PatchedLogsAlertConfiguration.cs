@@ -132,12 +132,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocked local time windows when the alert must not run. Times use the project timezone. Null disables quiet hours.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailScheduleRestriction? ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailScheduleRestriction? _explicitNullValueScheduleRestriction = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction _explicitNullValueScheduleRestriction = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailScheduleRestriction ScheduleRestriction { get => _explicitNullValueScheduleRestriction; set { _explicitNullValueScheduleRestriction = value; AdditionalData?.Remove("schedule_restriction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schedule_restriction"); else _explicitNullProperties?.Remove("schedule_restriction"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailScheduleRestriction _explicitNullValueScheduleRestriction = default!;
 #endif
         /// <summary>ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.</summary>
         public DateTimeOffset? SnoozeUntil { get => _explicitNullValueSnoozeUntil; set { _explicitNullValueSnoozeUntil = value; AdditionalData?.Remove("snooze_until"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snooze_until"); else _explicitNullProperties?.Remove("snooze_until"); } }
@@ -213,7 +213,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_check_at", n => { NextCheckAt = n.GetDateTimeOffsetValue(); } },
                 { "platform_owned", n => { PlatformOwned = n.GetBoolValue(); } },
-                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction.CreateFromDiscriminatorValue); } },
+                { "schedule_restriction", n => { ScheduleRestriction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailScheduleRestriction>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailScheduleRestriction.CreateFromDiscriminatorValue); } },
                 { "snooze_until", n => { SnoozeUntil = n.GetDateTimeOffsetValue(); } },
                 { "state", n => { State = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationState>(); } },
                 { "state_timeline", n => { StateTimeline = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval>(global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertStateInterval.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -237,7 +237,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationFilters>("filters", Filters);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationGrouping>("grouping", Grouping);
             writer.WriteStringValue("name", Name);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertScheduleRestriction>("schedule_restriction", ScheduleRestriction);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertConfigurationDetailScheduleRestriction>("schedule_restriction", ScheduleRestriction);
             writer.WriteDateTimeOffsetValue("snooze_until", SnoozeUntil);
             writer.WriteIntValue("threshold_count", ThresholdCount);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsAlertConfigurationThresholdOperator>("threshold_operator", ThresholdOperator);

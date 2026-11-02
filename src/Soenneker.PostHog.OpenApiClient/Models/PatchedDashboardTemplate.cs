@@ -68,12 +68,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Display settings that a dashboard made from this template starts with: tile spacing, layout compaction, and the tile groups that tiles join through their group_key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization? Customization { get => _explicitNullValueCustomization; set { _explicitNullValueCustomization = value; AdditionalData?.Remove("customization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customization"); else _explicitNullProperties?.Remove("customization"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization? _explicitNullValueCustomization = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCustomization? Customization { get => _explicitNullValueCustomization; set { _explicitNullValueCustomization = value; AdditionalData?.Remove("customization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customization"); else _explicitNullProperties?.Remove("customization"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCustomization? _explicitNullValueCustomization = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization Customization { get => _explicitNullValueCustomization; set { _explicitNullValueCustomization = value; AdditionalData?.Remove("customization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customization"); else _explicitNullProperties?.Remove("customization"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization _explicitNullValueCustomization = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCustomization Customization { get => _explicitNullValueCustomization; set { _explicitNullValueCustomization = value; AdditionalData?.Remove("customization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customization"); else _explicitNullProperties?.Remove("customization"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCustomization _explicitNullValueCustomization = default!;
 #endif
         /// <summary>The dashboard_description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -201,7 +201,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "availability_contexts", n => { AvailabilityContexts = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplateCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedDashboardTemplateCreatedBy.CreateFromDiscriminatorValue); } },
-                { "customization", n => { Customization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization.CreateFromDiscriminatorValue); } },
+                { "customization", n => { Customization = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCustomization>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCustomization.CreateFromDiscriminatorValue); } },
                 { "dashboard_description", n => { DashboardDescription = n.GetStringValue(); } },
                 { "dashboard_filters", n => { DashboardFilters = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "deleted", n => { Deleted = n.GetBoolValue(); } },
@@ -225,7 +225,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("availability_contexts", AvailabilityContexts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardCustomization>("customization", Customization);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardTemplateCustomization>("customization", Customization);
             writer.WriteStringValue("dashboard_description", DashboardDescription);
             writer.WriteObjectValue<UntypedNode>("dashboard_filters", DashboardFilters);
             writer.WriteBoolValue("deleted", Deleted);

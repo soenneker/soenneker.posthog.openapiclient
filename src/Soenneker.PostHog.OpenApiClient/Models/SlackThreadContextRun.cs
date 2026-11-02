@@ -131,12 +131,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The discovery-agent sandbox that picked this run&apos;s repo, when the mention was ambiguous.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch? RepoResearch { get => _explicitNullValueRepoResearch; set { _explicitNullValueRepoResearch = value; AdditionalData?.Remove("repo_research"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_research"); else _explicitNullProperties?.Remove("repo_research"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch? _explicitNullValueRepoResearch = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch? RepoResearch { get => _explicitNullValueRepoResearch; set { _explicitNullValueRepoResearch = value; AdditionalData?.Remove("repo_research"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_research"); else _explicitNullProperties?.Remove("repo_research"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch? _explicitNullValueRepoResearch = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch RepoResearch { get => _explicitNullValueRepoResearch; set { _explicitNullValueRepoResearch = value; AdditionalData?.Remove("repo_research"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_research"); else _explicitNullProperties?.Remove("repo_research"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch _explicitNullValueRepoResearch = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch RepoResearch { get => _explicitNullValueRepoResearch; set { _explicitNullValueRepoResearch = value; AdditionalData?.Remove("repo_research"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_research"); else _explicitNullProperties?.Remove("repo_research"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch _explicitNullValueRepoResearch = default!;
 #endif
         /// <summary>Live sandbox tunnel URL, when one was attached.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -222,7 +222,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "mention_workflow_id", n => { MentionWorkflowId = n.GetStringValue(); } },
                 { "mention_workflow_url", n => { MentionWorkflowUrl = n.GetStringValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
-                { "repo_research", n => { RepoResearch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch.CreateFromDiscriminatorValue); } },
+                { "repo_research", n => { RepoResearch = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch>(global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch.CreateFromDiscriminatorValue); } },
                 { "sandbox_url", n => { SandboxUrl = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "task_processing_workflow_id", n => { TaskProcessingWorkflowId = n.GetStringValue(); } },
@@ -246,7 +246,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("mention_workflow_id", MentionWorkflowId);
             writer.WriteStringValue("mention_workflow_url", MentionWorkflowUrl);
             writer.WriteStringValue("pr_url", PrUrl);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRepoResearch>("repo_research", RepoResearch);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SlackThreadContextRunRepoResearch>("repo_research", RepoResearch);
             writer.WriteStringValue("sandbox_url", SandboxUrl);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("task_processing_workflow_id", TaskProcessingWorkflowId);
